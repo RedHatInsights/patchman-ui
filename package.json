@@ -1,6 +1,6 @@
 {
-  "name": "insights-frontend-starter-app",
-  "version": "1.1.0",
+  "name": "patchman-ui",
+  "version": "0.0.1",
   "private": false,
   "dependencies": {
     "@babel/runtime": "^7.1.2",
