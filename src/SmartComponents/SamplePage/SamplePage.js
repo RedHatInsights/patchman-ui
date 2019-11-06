@@ -1,12 +1,9 @@
-import { Button, EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateSecondaryActions, EmptyStateVariant, Title } from '@patternfly/react-core';
+import { EmptyState, EmptyStateIcon, EmptyStateVariant, Title } from '@patternfly/react-core';
 import { CubesIcon } from '@patternfly/react-icons';
 import { Main, PageHeader, PageHeaderTitle } from '@redhat-cloud-services/frontend-components';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import asyncComponent from '../../Utilities/asyncComponent';
 import './sample-page.scss';
-
-const SampleComponent = asyncComponent(() => import('../../PresentationalComponents/SampleComponent/sample-component'));
 
 class SamplePage extends Component {
     render() {
