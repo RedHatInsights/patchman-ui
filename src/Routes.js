@@ -21,7 +21,7 @@ import some from 'lodash/some';
 const SamplePage = asyncComponent(() => import(/* webpackChunkName: "SamplePage" */ './SmartComponents/SamplePage/SamplePage'));
 const Rules = asyncComponent(() => import(/* webpackChunkName: "Rules" */ './PresentationalComponents/Rules/ListRules'));
 const paths = {
-    samplepage: '/samplepage',
+    samplepage: '/',
     rules: '/rules'
 };
 
@@ -35,7 +35,7 @@ const InsightsRoute = ({ component: Component, rootClass, ...rest }) => {
     root.classList.add(`page__${rootClass}`, 'pf-c-page__main');
     root.setAttribute('role', 'main');
 
-    return (<Route { ...rest } component={ Component } />);
+    return <Route { ...rest } component={ Component } />;
 };
 
 InsightsRoute.propTypes = {
@@ -56,11 +56,11 @@ export const Routes = (props: Props) => {
 
     return (
         <Switch>
-            <InsightsRoute path={ paths.samplepage } component={ SamplePage } rootClass='samplepage'/>
-            <InsightsRoute path={ paths.rules } component={ Rules } rootClass='rules'/>
+            <InsightsRoute path={ paths.samplepage } component={ SamplePage } rootClass="samplepage" />
+            <InsightsRoute path={ paths.rules } component={ Rules } rootClass="rules" />
 
             { /* Finally, catch all unmatched routes */ }
-            <Route render={ () => some(paths, p => p === path) ? null : (<Redirect to={ paths.samplepage }/>) }/>
+            <Route render={ () => (some(paths, p => p === path) ? null : <Redirect to={ paths.samplepage } />) } />
         </Switch>
     );
 };
