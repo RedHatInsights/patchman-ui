@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Routes } from './Routes';
+import { withRouter } from 'react-router-dom';
 import './App.scss';
+import { Routes } from './Routes';
 
 class App extends Component {
 
@@ -11,7 +11,7 @@ class App extends Component {
         insights.chrome.init();
         // TODO change this to your appname
         // TODO should the sample app webpack just rewrite this automatically?
-        insights.chrome.identifyApp('insights');
+        insights.chrome.identifyApp('patch');
         insights.chrome.navigation(buildNavigation());
 
         this.appNav = insights.chrome.on('APP_NAVIGATION', event => this.props.history.push(`/${event.navId}`));

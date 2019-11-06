@@ -86,6 +86,6 @@
     "nightly": "npm run deploy"
   },
   "insights": {
-    "appname": "starter"
+    "appname": "patch"
   }
 }
