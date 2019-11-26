@@ -1,0 +1,959 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render with 1 breadcrumb item and last is active 1`] = `
+<StaticRouter
+  basename=""
+  context={Object {}}
+  location="/"
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Header
+      breadcrumbs={
+        Array [
+          Object {
+            "isActive": true,
+            "title": "First item",
+            "to": "#",
+          },
+        ]
+      }
+    >
+      <PageHeader>
+        <section
+          className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          widget-type="InsightsPageHeader"
+        >
+          <HeaderBreadcrumbs
+            items={
+              Array [
+                Object {
+                  "isActive": true,
+                  "title": "First item",
+                  "to": "#",
+                },
+              ]
+            }
+          >
+            <Component>
+              <ComponentWithOuia
+                component={[Function]}
+                componentProps={
+                  Object {
+                    "children": Array [
+                      <BreadcrumbItem
+                        isActive={true}
+                      >
+                        <Link
+                          replace={false}
+                          to="#"
+                        >
+                          First item
+                        </Link>
+                      </BreadcrumbItem>,
+                    ],
+                  }
+                }
+                consumerContext={null}
+              >
+                <Breadcrumb
+                  ouiaContext={
+                    Object {
+                      "isOuia": false,
+                      "ouiaId": null,
+                    }
+                  }
+                >
+                  <nav
+                    aria-label="Breadcrumb"
+                    className="pf-c-breadcrumb"
+                  >
+                    <ol
+                      className="pf-c-breadcrumb__list"
+                    >
+                      <BreadcrumbItem
+                        isActive={true}
+                        key="First item"
+                      >
+                        <li
+                          className="pf-c-breadcrumb__item"
+                        >
+                          <Link
+                            replace={false}
+                            to="#"
+                          >
+                            <a
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              First item
+                            </a>
+                          </Link>
+                        </li>
+                      </BreadcrumbItem>
+                    </ol>
+                  </nav>
+                </Breadcrumb>
+              </ComponentWithOuia>
+            </Component>
+          </HeaderBreadcrumbs>
+          <PageHeaderTitle>
+            <Title
+              className=""
+              size="2xl"
+              widget-type="InsightsPageHeaderTitle"
+            >
+              <h1
+                className="pf-c-title pf-m-2xl"
+                widget-type="InsightsPageHeaderTitle"
+              >
+                 
+                 
+              </h1>
+            </Title>
+          </PageHeaderTitle>
+        </section>
+      </PageHeader>
+    </Header>
+  </Router>
+</StaticRouter>
+`;
+
+exports[`Header component should render with 2 breadcrumb items and last is active 1`] = `
+<StaticRouter
+  basename=""
+  context={Object {}}
+  location="/"
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Header
+      breadcrumbs={
+        Array [
+          Object {
+            "isActive": false,
+            "title": "First item",
+            "to": "#",
+          },
+          Object {
+            "isActive": true,
+            "title": "Second item",
+            "to": "#",
+          },
+        ]
+      }
+    >
+      <PageHeader>
+        <section
+          className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          widget-type="InsightsPageHeader"
+        >
+          <HeaderBreadcrumbs
+            items={
+              Array [
+                Object {
+                  "isActive": false,
+                  "title": "First item",
+                  "to": "#",
+                },
+                Object {
+                  "isActive": true,
+                  "title": "Second item",
+                  "to": "#",
+                },
+              ]
+            }
+          >
+            <Component>
+              <ComponentWithOuia
+                component={[Function]}
+                componentProps={
+                  Object {
+                    "children": Array [
+                      <BreadcrumbItem
+                        isActive={false}
+                      >
+                        <Link
+                          replace={false}
+                          to="#"
+                        >
+                          First item
+                        </Link>
+                      </BreadcrumbItem>,
+                      <BreadcrumbItem
+                        isActive={true}
+                      >
+                        <Link
+                          replace={false}
+                          to="#"
+                        >
+                          Second item
+                        </Link>
+                      </BreadcrumbItem>,
+                    ],
+                  }
+                }
+                consumerContext={null}
+              >
+                <Breadcrumb
+                  ouiaContext={
+                    Object {
+                      "isOuia": false,
+                      "ouiaId": null,
+                    }
+                  }
+                >
+                  <nav
+                    aria-label="Breadcrumb"
+                    className="pf-c-breadcrumb"
+                  >
+                    <ol
+                      className="pf-c-breadcrumb__list"
+                    >
+                      <BreadcrumbItem
+                        isActive={false}
+                        key="First item"
+                      >
+                        <li
+                          className="pf-c-breadcrumb__item"
+                        >
+                          <Link
+                            replace={false}
+                            to="#"
+                          >
+                            <a
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              First item
+                            </a>
+                          </Link>
+                          <span
+                            className="pf-c-breadcrumb__item-divider"
+                          >
+                            <AngleRightIcon
+                              color="currentColor"
+                              noVerticalAlign={false}
+                              size="sm"
+                              title={null}
+                            >
+                              <svg
+                                aria-hidden={true}
+                                aria-labelledby={null}
+                                fill="currentColor"
+                                height="1em"
+                                role="img"
+                                style={
+                                  Object {
+                                    "verticalAlign": "-0.125em",
+                                  }
+                                }
+                                viewBox="0 0 256 512"
+                                width="1em"
+                              >
+                                <path
+                                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                                  transform=""
+                                />
+                              </svg>
+                            </AngleRightIcon>
+                          </span>
+                        </li>
+                      </BreadcrumbItem>
+                      <BreadcrumbItem
+                        isActive={true}
+                        key="Second item"
+                      >
+                        <li
+                          className="pf-c-breadcrumb__item"
+                        >
+                          <Link
+                            replace={false}
+                            to="#"
+                          >
+                            <a
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              Second item
+                            </a>
+                          </Link>
+                        </li>
+                      </BreadcrumbItem>
+                    </ol>
+                  </nav>
+                </Breadcrumb>
+              </ComponentWithOuia>
+            </Component>
+          </HeaderBreadcrumbs>
+          <PageHeaderTitle>
+            <Title
+              className=""
+              size="2xl"
+              widget-type="InsightsPageHeaderTitle"
+            >
+              <h1
+                className="pf-c-title pf-m-2xl"
+                widget-type="InsightsPageHeaderTitle"
+              >
+                 
+                 
+              </h1>
+            </Title>
+          </PageHeaderTitle>
+        </section>
+      </PageHeader>
+    </Header>
+  </Router>
+</StaticRouter>
+`;
+
+exports[`Header component should render with 3 breadcrumb items and last is active 1`] = `
+<StaticRouter
+  basename=""
+  context={Object {}}
+  location="/"
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Header
+      breadcrumbs={
+        Array [
+          Object {
+            "isActive": false,
+            "title": "First item",
+            "to": "#",
+          },
+          Object {
+            "isActive": false,
+            "title": "Second item",
+            "to": "#",
+          },
+          Object {
+            "isActive": true,
+            "title": "Third item",
+            "to": "#",
+          },
+        ]
+      }
+      showTabs={false}
+    >
+      <PageHeader>
+        <section
+          className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          widget-type="InsightsPageHeader"
+        >
+          <HeaderBreadcrumbs
+            items={
+              Array [
+                Object {
+                  "isActive": false,
+                  "title": "First item",
+                  "to": "#",
+                },
+                Object {
+                  "isActive": false,
+                  "title": "Second item",
+                  "to": "#",
+                },
+                Object {
+                  "isActive": true,
+                  "title": "Third item",
+                  "to": "#",
+                },
+              ]
+            }
+          >
+            <Component>
+              <ComponentWithOuia
+                component={[Function]}
+                componentProps={
+                  Object {
+                    "children": Array [
+                      <BreadcrumbItem
+                        isActive={false}
+                      >
+                        <Link
+                          replace={false}
+                          to="#"
+                        >
+                          First item
+                        </Link>
+                      </BreadcrumbItem>,
+                      <BreadcrumbItem
+                        isActive={false}
+                      >
+                        <Link
+                          replace={false}
+                          to="#"
+                        >
+                          Second item
+                        </Link>
+                      </BreadcrumbItem>,
+                      <BreadcrumbItem
+                        isActive={true}
+                      >
+                        <Link
+                          replace={false}
+                          to="#"
+                        >
+                          Third item
+                        </Link>
+                      </BreadcrumbItem>,
+                    ],
+                  }
+                }
+                consumerContext={null}
+              >
+                <Breadcrumb
+                  ouiaContext={
+                    Object {
+                      "isOuia": false,
+                      "ouiaId": null,
+                    }
+                  }
+                >
+                  <nav
+                    aria-label="Breadcrumb"
+                    className="pf-c-breadcrumb"
+                  >
+                    <ol
+                      className="pf-c-breadcrumb__list"
+                    >
+                      <BreadcrumbItem
+                        isActive={false}
+                        key="First item"
+                      >
+                        <li
+                          className="pf-c-breadcrumb__item"
+                        >
+                          <Link
+                            replace={false}
+                            to="#"
+                          >
+                            <a
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              First item
+                            </a>
+                          </Link>
+                          <span
+                            className="pf-c-breadcrumb__item-divider"
+                          >
+                            <AngleRightIcon
+                              color="currentColor"
+                              noVerticalAlign={false}
+                              size="sm"
+                              title={null}
+                            >
+                              <svg
+                                aria-hidden={true}
+                                aria-labelledby={null}
+                                fill="currentColor"
+                                height="1em"
+                                role="img"
+                                style={
+                                  Object {
+                                    "verticalAlign": "-0.125em",
+                                  }
+                                }
+                                viewBox="0 0 256 512"
+                                width="1em"
+                              >
+                                <path
+                                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                                  transform=""
+                                />
+                              </svg>
+                            </AngleRightIcon>
+                          </span>
+                        </li>
+                      </BreadcrumbItem>
+                      <BreadcrumbItem
+                        isActive={false}
+                        key="Second item"
+                      >
+                        <li
+                          className="pf-c-breadcrumb__item"
+                        >
+                          <Link
+                            replace={false}
+                            to="#"
+                          >
+                            <a
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              Second item
+                            </a>
+                          </Link>
+                          <span
+                            className="pf-c-breadcrumb__item-divider"
+                          >
+                            <AngleRightIcon
+                              color="currentColor"
+                              noVerticalAlign={false}
+                              size="sm"
+                              title={null}
+                            >
+                              <svg
+                                aria-hidden={true}
+                                aria-labelledby={null}
+                                fill="currentColor"
+                                height="1em"
+                                role="img"
+                                style={
+                                  Object {
+                                    "verticalAlign": "-0.125em",
+                                  }
+                                }
+                                viewBox="0 0 256 512"
+                                width="1em"
+                              >
+                                <path
+                                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                                  transform=""
+                                />
+                              </svg>
+                            </AngleRightIcon>
+                          </span>
+                        </li>
+                      </BreadcrumbItem>
+                      <BreadcrumbItem
+                        isActive={true}
+                        key="Third item"
+                      >
+                        <li
+                          className="pf-c-breadcrumb__item"
+                        >
+                          <Link
+                            replace={false}
+                            to="#"
+                          >
+                            <a
+                              href="/"
+                              onClick={[Function]}
+                            >
+                              Third item
+                            </a>
+                          </Link>
+                        </li>
+                      </BreadcrumbItem>
+                    </ol>
+                  </nav>
+                </Breadcrumb>
+              </ComponentWithOuia>
+            </Component>
+          </HeaderBreadcrumbs>
+          <PageHeaderTitle>
+            <Title
+              className=""
+              size="2xl"
+              widget-type="InsightsPageHeaderTitle"
+            >
+              <h1
+                className="pf-c-title pf-m-2xl"
+                widget-type="InsightsPageHeaderTitle"
+              >
+                 
+                 
+              </h1>
+            </Title>
+          </PageHeaderTitle>
+        </section>
+      </PageHeader>
+    </Header>
+  </Router>
+</StaticRouter>
+`;
+
+exports[`Header component should render with empty breadcrumb 1`] = `
+<StaticRouter
+  basename=""
+  context={Object {}}
+  location="/"
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Header
+      breadcrumbs={Array []}
+      title=""
+    >
+      <PageHeader>
+        <section
+          className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          widget-type="InsightsPageHeader"
+        >
+          <HeaderBreadcrumbs
+            items={Array []}
+          >
+            <Component>
+              <ComponentWithOuia
+                component={[Function]}
+                componentProps={
+                  Object {
+                    "children": Array [],
+                  }
+                }
+                consumerContext={null}
+              >
+                <Breadcrumb
+                  ouiaContext={
+                    Object {
+                      "isOuia": false,
+                      "ouiaId": null,
+                    }
+                  }
+                >
+                  <nav
+                    aria-label="Breadcrumb"
+                    className="pf-c-breadcrumb"
+                  >
+                    <ol
+                      className="pf-c-breadcrumb__list"
+                    />
+                  </nav>
+                </Breadcrumb>
+              </ComponentWithOuia>
+            </Component>
+          </HeaderBreadcrumbs>
+          <PageHeaderTitle
+            title=""
+          >
+            <Title
+              className=""
+              size="2xl"
+              widget-type="InsightsPageHeaderTitle"
+            >
+              <h1
+                className="pf-c-title pf-m-2xl"
+                widget-type="InsightsPageHeaderTitle"
+              >
+                 
+                 
+              </h1>
+            </Title>
+          </PageHeaderTitle>
+        </section>
+      </PageHeader>
+    </Header>
+  </Router>
+</StaticRouter>
+`;
+
+exports[`Header component should render with header Hello world 1`] = `
+<StaticRouter
+  basename=""
+  context={Object {}}
+  location="/"
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Header
+      title="Hello world"
+    >
+      <PageHeader>
+        <section
+          className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          widget-type="InsightsPageHeader"
+        >
+          <PageHeaderTitle
+            title="Hello world"
+          >
+            <Title
+              className=""
+              size="2xl"
+              widget-type="InsightsPageHeaderTitle"
+            >
+              <h1
+                className="pf-c-title pf-m-2xl"
+                widget-type="InsightsPageHeaderTitle"
+              >
+                 
+                Hello world
+                 
+              </h1>
+            </Title>
+          </PageHeaderTitle>
+        </section>
+      </PageHeader>
+    </Header>
+  </Router>
+</StaticRouter>
+`;
+
+exports[`Header component should render with header as empty string 1`] = `
+<StaticRouter
+  basename=""
+  context={Object {}}
+  location="/"
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Header
+      title=""
+    >
+      <PageHeader>
+        <section
+          className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          widget-type="InsightsPageHeader"
+        >
+          <PageHeaderTitle
+            title=""
+          >
+            <Title
+              className=""
+              size="2xl"
+              widget-type="InsightsPageHeaderTitle"
+            >
+              <h1
+                className="pf-c-title pf-m-2xl"
+                widget-type="InsightsPageHeaderTitle"
+              >
+                 
+                 
+              </h1>
+            </Title>
+          </PageHeaderTitle>
+        </section>
+      </PageHeader>
+    </Header>
+  </Router>
+</StaticRouter>
+`;
+
+exports[`Header component should render without to attribute 1`] = `
+<StaticRouter
+  basename=""
+  context={Object {}}
+  location="/"
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Header
+      breadcrumbs={
+        Array [
+          Object {
+            "isActive": true,
+            "title": "First item",
+          },
+        ]
+      }
+    >
+      <PageHeader>
+        <section
+          className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          widget-type="InsightsPageHeader"
+        >
+          <HeaderBreadcrumbs
+            items={
+              Array [
+                Object {
+                  "isActive": true,
+                  "title": "First item",
+                },
+              ]
+            }
+          >
+            <Component>
+              <ComponentWithOuia
+                component={[Function]}
+                componentProps={
+                  Object {
+                    "children": Array [
+                      <BreadcrumbItem
+                        isActive={true}
+                      >
+                        First item
+                      </BreadcrumbItem>,
+                    ],
+                  }
+                }
+                consumerContext={null}
+              >
+                <Breadcrumb
+                  ouiaContext={
+                    Object {
+                      "isOuia": false,
+                      "ouiaId": null,
+                    }
+                  }
+                >
+                  <nav
+                    aria-label="Breadcrumb"
+                    className="pf-c-breadcrumb"
+                  >
+                    <ol
+                      className="pf-c-breadcrumb__list"
+                    >
+                      <BreadcrumbItem
+                        isActive={true}
+                        key="First item"
+                      >
+                        <li
+                          className="pf-c-breadcrumb__item"
+                        >
+                          First item
+                        </li>
+                      </BreadcrumbItem>
+                    </ol>
+                  </nav>
+                </Breadcrumb>
+              </ComponentWithOuia>
+            </Component>
+          </HeaderBreadcrumbs>
+          <PageHeaderTitle>
+            <Title
+              className=""
+              size="2xl"
+              widget-type="InsightsPageHeaderTitle"
+            >
+              <h1
+                className="pf-c-title pf-m-2xl"
+                widget-type="InsightsPageHeaderTitle"
+              >
+                 
+                 
+              </h1>
+            </Title>
+          </PageHeaderTitle>
+        </section>
+      </PageHeader>
+    </Header>
+  </Router>
+</StaticRouter>
+`;
