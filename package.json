@@ -6,7 +6,7 @@
     "@babel/runtime": "^7.1.5",
     "@patternfly/react-core": "^3.120.8",
     "@patternfly/react-icons": "^3.14.22",
-    "@redhat-cloud-services/frontend-components": "0.0.29",
+    "@redhat-cloud-services/frontend-components": "0.0.41",
     "@redhat-cloud-services/frontend-components-utilities": "0.0.9",
     "classnames": "^2.2.5",
     "eslint": "^5.16.0",
