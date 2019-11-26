@@ -8,8 +8,6 @@ import { Routes } from './Routes';
 class App extends Component {
     componentDidMount() {
         insights.chrome.init();
-        // TODO change this to your appname
-        // TODO should the sample app webpack just rewrite this automatically?
         insights.chrome.identifyApp('patch');
         insights.chrome.navigation(buildNavigation());
 
@@ -31,11 +29,6 @@ App.propTypes = {
     history: PropTypes.object
 };
 
-/**
- * withRouter: https://reacttraining.com/react-router/web/api/withRouter
- * connect: https://github.com/reactjs/react-redux/blob/master/docs/api.md
- *          https://reactjs.org/docs/higher-order-components.html
- */
 export default withRouter(connect()(App));
 
 function buildNavigation() {

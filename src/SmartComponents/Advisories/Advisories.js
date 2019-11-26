@@ -9,7 +9,6 @@ import { Main } from '@redhat-cloud-services/frontend-components';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Header from '../../PresentationalComponents/Header/Header';
-import './sample-page.scss';
 
 class SamplePage extends Component {
     render() {
