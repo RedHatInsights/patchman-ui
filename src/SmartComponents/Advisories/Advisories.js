@@ -1,32 +1,25 @@
-import {
-    EmptyState,
-    EmptyStateIcon,
-    EmptyStateVariant,
-    Title
-} from '@patternfly/react-core';
-import { CubesIcon } from '@patternfly/react-icons';
 import { Main } from '@redhat-cloud-services/frontend-components';
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
+import { advisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import Header from '../../PresentationalComponents/Header/Header';
+import { fetchApplicableAdvisories } from '../../store/Actions/Actions';
+import { useMountDispatch } from '../../Utilities/Helpers';
 
-class SamplePage extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Header title={'Advisories'} showTabs />
-                <Main>
-                    <EmptyState variant={EmptyStateVariant.full}>
-                        <EmptyStateIcon icon={CubesIcon} />
-                        <Title headingLevel="h5" size="lg">
-                            System Patch Manager is still in onboarding
-                            processssd
-                        </Title>
-                    </EmptyState>
-                </Main>
-            </React.Fragment>
-        );
-    }
-}
+const Advisories = () => {
+    useMountDispatch(fetchApplicableAdvisories);
+    const rows = useSelector(
+        ({ AdvisoryListStore }) => AdvisoryListStore.rows || []
+    );
+    return (
+        <React.Fragment>
+            <Header title={'Advisories'} showTabs />
+            <Main>
+                <AdvisoriesTable columns={advisoriesColumns} rows={rows} />
+            </Main>
+        </React.Fragment>
+    );
+};
 
-export default withRouter(SamplePage);
+export default Advisories;
