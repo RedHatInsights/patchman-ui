@@ -7,6 +7,18 @@ import Header from '../../PresentationalComponents/Header/Header';
 import { fetchApplicableAdvisories } from '../../store/Actions/Actions';
 import { useMountDispatch } from '../../Utilities/Helpers';
 
+const makeRows = rows => {
+    return rows.map(row => ({
+        cells: [
+            row.id,
+            row.attributes.public_date,
+            row.attributes.advisory_type,
+            row.attributes.applicable_systems,
+            row.attributes.synopsis
+        ]
+    }));
+};
+
 const Advisories = () => {
     useMountDispatch(fetchApplicableAdvisories);
     const rows = useSelector(
@@ -16,7 +28,10 @@ const Advisories = () => {
         <React.Fragment>
             <Header title={'Advisories'} showTabs />
             <Main>
-                <AdvisoriesTable columns={advisoriesColumns} rows={rows} />
+                <AdvisoriesTable
+                    columns={advisoriesColumns}
+                    rows={makeRows(rows)}
+                />
             </Main>
         </React.Fragment>
     );

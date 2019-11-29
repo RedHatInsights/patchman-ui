@@ -9,7 +9,7 @@ export const AdvisoryListStore = (state = initialState, action) => {
 
     switch (action.type) {
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_FULFILLED':
-            newState.rows = action.payload;
+            newState.rows = action.payload.data;
             newState.loading = false;
             return newState;
 
