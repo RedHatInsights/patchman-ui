@@ -7,7 +7,6 @@ export const initialState = {
 
 export const AdvisoryListStore = (state = initialState, action) => {
     let newState = { ...state };
-
     switch (action.type) {
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_FULFILLED':
             newState.rows = action.payload.data;
@@ -21,7 +20,7 @@ export const AdvisoryListStore = (state = initialState, action) => {
         case ActionTypes.EXPAND_ADVISORY_ROW: {
             const rowState = action.payload;
             rowState.forEach(({ rowId, isOpen }) => {
-                const rowName = newState.rows[rowId].id;
+                const rowName = newState.rows[rowId / 2].id;
                 newState = {
                     ...newState,
                     expandedRows: {
