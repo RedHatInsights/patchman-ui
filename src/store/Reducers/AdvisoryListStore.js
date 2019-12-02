@@ -1,7 +1,8 @@
 import * as ActionTypes from '../ActionTypes';
 
 export const initialState = {
-    rows: []
+    rows: [],
+    expandedRows: {}
 };
 
 export const AdvisoryListStore = (state = initialState, action) => {
@@ -16,6 +17,22 @@ export const AdvisoryListStore = (state = initialState, action) => {
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_PENDING':
             newState.loading = true;
             return newState;
+
+        case ActionTypes.EXPAND_ADVISORY_ROW: {
+            const rowState = action.payload;
+            rowState.forEach(({ rowId, isOpen }) => {
+                const rowName = newState.rows[rowId].id;
+                newState = {
+                    ...newState,
+                    expandedRows: {
+                        ...newState.expandedRows,
+                        [rowName]: isOpen || undefined
+                    }
+                };
+            });
+            return newState;
+        }
+
         default:
             return state;
     }

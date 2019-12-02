@@ -1,10 +1,15 @@
 import { Table, TableBody, TableHeader } from '@patternfly/react-table';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-const AdvisoriesTable = ({ columns, rows }) => {
+const AdvisoriesTable = ({ columns, rows, onCollapse }) => {
     return (
-        <Table aria-label="Simple Table" cells={columns} rows={rows}>
+        <Table
+            aria-label="Advisories table"
+            cells={columns}
+            rows={rows}
+            onCollapse={onCollapse}
+        >
             <TableHeader />
             <TableBody />
         </Table>
@@ -13,7 +18,8 @@ const AdvisoriesTable = ({ columns, rows }) => {
 
 AdvisoriesTable.propTypes = {
     columns: PropTypes.array,
-    rows: PropTypes.array
+    rows: PropTypes.array,
+    onCollapse: PropTypes.func
 };
 
 export default AdvisoriesTable;

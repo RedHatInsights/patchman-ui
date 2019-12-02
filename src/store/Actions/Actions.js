@@ -7,3 +7,8 @@ export const fetchApplicableAdvisories = () => ({
         resolve(fetchApplicableSystems());
     }).then(result => result)
 });
+
+export const expandAdvisoryRow = rowState => ({
+    type: ActionTypes.EXPAND_ADVISORY_ROW,
+    payload: [].concat(rowState)
+});
