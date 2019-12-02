@@ -5,33 +5,23 @@ import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/Advi
 import { advisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import Header from '../../PresentationalComponents/Header/Header';
 import { fetchApplicableAdvisories } from '../../store/Actions/Actions';
+import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import { useMountDispatch } from '../../Utilities/Helpers';
-
-const makeRows = rows => {
-    return rows.map(row => ({
-        cells: [
-            row.id,
-            row.attributes.public_date,
-            row.attributes.advisory_type,
-            row.attributes.applicable_systems,
-            row.attributes.synopsis
-        ]
-    }));
-};
 
 const Advisories = () => {
     useMountDispatch(fetchApplicableAdvisories);
-    const rows = useSelector(
+    const advisories = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.rows || []
     );
+    const rows = React.useMemo(() => createAdvisoriesRows(advisories), [
+        advisories
+    ]);
+
     return (
         <React.Fragment>
             <Header title={'Advisories'} showTabs />
             <Main>
-                <AdvisoriesTable
-                    columns={advisoriesColumns}
-                    rows={makeRows(rows)}
-                />
+                <AdvisoriesTable columns={advisoriesColumns} rows={rows} />
             </Main>
         </React.Fragment>
     );

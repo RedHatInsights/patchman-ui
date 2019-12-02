@@ -23,6 +23,7 @@ globals:
     React: true
 rules:
     array-bracket-spacing: 2
+    react/no-console: 0
     react/boolean-prop-naming: 2
     react/no-children-prop: 2
     react/display-name: 0
