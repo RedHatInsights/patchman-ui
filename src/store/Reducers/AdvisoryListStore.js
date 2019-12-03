@@ -1,8 +1,10 @@
+import { addOrRemoveItemFromSet } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
 export const initialState = {
     rows: [],
-    expandedRows: {}
+    expandedRows: {},
+    selectedRows: {}
 };
 
 export const AdvisoryListStore = (state = initialState, action) => {
@@ -18,17 +20,20 @@ export const AdvisoryListStore = (state = initialState, action) => {
             return newState;
 
         case ActionTypes.EXPAND_ADVISORY_ROW: {
-            const rowState = action.payload;
-            rowState.forEach(({ rowId, isOpen }) => {
-                const rowName = newState.rows[rowId / 2].id;
-                newState = {
-                    ...newState,
-                    expandedRows: {
-                        ...newState.expandedRows,
-                        [rowName]: isOpen || undefined
-                    }
-                };
-            });
+            const expandedUpdated = addOrRemoveItemFromSet(
+                newState.expandedRows,
+                action.payload
+            );
+            newState = { ...newState, expandedRows: expandedUpdated };
+            return newState;
+        }
+
+        case ActionTypes.SELECT_ADVISORY_ROW: {
+            const selectedUpdated = addOrRemoveItemFromSet(
+                newState.selectedRows,
+                action.payload
+            );
+            newState = { ...newState, selectedRows: selectedUpdated };
             return newState;
         }
 

@@ -1,12 +1,13 @@
 /* eslint-disable no-console */
 import { flatMap } from 'lodash';
 
-export const createAdvisoriesRows = (rows, expandedRows) => {
+export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     return flatMap(rows, (row, index) => {
         return [
             {
                 id: row.id,
                 isOpen: expandedRows[row.id] === true,
+                selected: selectedRows[row.id] === true,
                 cells: [
                     row.id,
                     row.attributes.public_date,

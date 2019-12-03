@@ -6,13 +6,21 @@ import { advisoriesColumns } from '../../PresentationalComponents/AdvisoriesTabl
 import Header from '../../PresentationalComponents/Header/Header';
 import {
     expandAdvisoryRow,
-    fetchApplicableAdvisories
+    fetchApplicableAdvisories,
+    selectAdvisoryRow
 } from '../../store/Actions/Actions';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
-import { useMountDispatch } from '../../Utilities/Helpers';
+import {
+    getRowIdByIndexExpandable,
+    useMountDispatch
+} from '../../Utilities/Helpers';
 
 const onCollapse = (dispatch, rowState) => {
     dispatch(expandAdvisoryRow(rowState));
+};
+
+const onSelect = (dispatch, rowState) => {
+    dispatch(selectAdvisoryRow(rowState));
 };
 
 const Advisories = () => {
@@ -24,9 +32,12 @@ const Advisories = () => {
     const expandedRows = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.expandedRows
     );
+    const selectedRows = useSelector(
+        ({ AdvisoryListStore }) => AdvisoryListStore.selectedRows
+    );
     const rows = React.useMemo(
-        () => createAdvisoriesRows(advisories, expandedRows),
-        [advisories, expandedRows]
+        () => createAdvisoriesRows(advisories, expandedRows, selectedRows),
+        [advisories, expandedRows, selectedRows]
     );
 
     return (
@@ -36,8 +47,17 @@ const Advisories = () => {
                 <AdvisoriesTable
                     columns={advisoriesColumns}
                     rows={rows}
-                    onCollapse={(_, rowId, isOpen) =>
-                        onCollapse(dispatch, { rowId, isOpen })
+                    onCollapse={(_, rowId, value) =>
+                        onCollapse(dispatch, {
+                            rowId: getRowIdByIndexExpandable(advisories, rowId),
+                            value
+                        })
+                    }
+                    onSelect={(_, value, rowId) =>
+                        onSelect(dispatch, {
+                            rowId: getRowIdByIndexExpandable(advisories, rowId),
+                            value
+                        })
                     }
                 />
             </Main>

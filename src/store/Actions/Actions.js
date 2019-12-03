@@ -12,3 +12,8 @@ export const expandAdvisoryRow = rowState => ({
     type: ActionTypes.EXPAND_ADVISORY_ROW,
     payload: [].concat(rowState)
 });
+
+export const selectAdvisoryRow = rowState => ({
+    type: ActionTypes.SELECT_ADVISORY_ROW,
+    payload: [].concat(rowState)
+});
