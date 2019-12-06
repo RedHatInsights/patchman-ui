@@ -7,7 +7,7 @@
     "@patternfly/react-core": "^3.124.1",
     "@patternfly/react-icons": "^3.14.22",
     "@redhat-cloud-services/frontend-components": "0.0.42",
-    "@redhat-cloud-services/frontend-components-utilities": "0.0.9",
+    "@redhat-cloud-services/frontend-components-utilities": "0.0.14",
     "classnames": "^2.2.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
