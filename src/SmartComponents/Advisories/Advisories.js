@@ -34,6 +34,9 @@ const Advisories = () => {
     const metadata = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.metadata
     );
+    const isLoading = useSelector(
+        ({ AdvisoryListStore }) => AdvisoryListStore.isLoading
+    );
     const rows = React.useMemo(
         () => createAdvisoriesRows(advisories, expandedRows, selectedRows),
         [advisories, expandedRows, selectedRows]
@@ -80,6 +83,7 @@ const Advisories = () => {
                     onSelect={onSelect}
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}
+                    isLoading={isLoading}
                 />
             </Main>
         </React.Fragment>

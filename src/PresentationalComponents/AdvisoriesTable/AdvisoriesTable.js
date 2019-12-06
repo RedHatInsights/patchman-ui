@@ -1,5 +1,8 @@
 import { Table, TableBody, TableHeader } from '@patternfly/react-table';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components';
+import {
+    PrimaryToolbar,
+    SkeletonTable
+} from '@redhat-cloud-services/frontend-components';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { convertLimitOffset } from '../../Utilities/Helpers';
@@ -11,7 +14,8 @@ const AdvisoriesTable = ({
     onSelect,
     onSetPage,
     onPerPageSelect,
-    metadata
+    metadata,
+    isLoading
 }) => {
     const [page, perPage] = React.useMemo(
         () => convertLimitOffset(metadata.limit, metadata.offset),
@@ -30,16 +34,20 @@ const AdvisoriesTable = ({
                 }}
                 filterConfig={{ items: [] }}
             />
-            <Table
-                aria-label="Advisories table"
-                cells={columns}
-                onSelect={onSelect}
-                rows={rows}
-                onCollapse={onCollapse}
-            >
-                <TableHeader />
-                <TableBody />
-            </Table>
+            {isLoading ? (
+                <SkeletonTable colSize={5} rowSize={20} />
+            ) : (
+                <Table
+                    aria-label="Advisories table"
+                    cells={columns}
+                    onSelect={onSelect}
+                    rows={rows}
+                    onCollapse={onCollapse}
+                >
+                    <TableHeader />
+                    <TableBody />
+                </Table>
+            )}
         </React.Fragment>
     );
 };
@@ -51,7 +59,8 @@ AdvisoriesTable.propTypes = {
     onSelect: PropTypes.func,
     onSetPage: PropTypes.func,
     onPerPageSelect: PropTypes.func,
-    metadata: PropTypes.object
+    metadata: PropTypes.object,
+    isLoading: PropTypes.bool
 };
 
 export default AdvisoriesTable;

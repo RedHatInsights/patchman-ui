@@ -19,12 +19,12 @@ export const AdvisoryListStore = (state = initialState, action) => {
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_FULFILLED': {
             newState.rows = action.payload.data;
             newState.metadata = action.payload.meta;
-            newState.loading = false;
+            newState.isLoading = false;
             return newState;
         }
 
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_PENDING':
-            newState.loading = true;
+            newState.isLoading = true;
             return newState;
 
         case ActionTypes.CHANGE_ADVISORY_LIST_PARAMS:
