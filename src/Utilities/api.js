@@ -57,7 +57,5 @@ export function createApiCall(
 }
 
 export const fetchApplicableAdvisoriesApi = params => {
-    // eslint-disable-next-line no-console
-    console.log(params);
     return createApiCall('/vulnerabilities/cves', 'get', params);
 };

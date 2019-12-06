@@ -9,6 +9,24 @@ export const useMountDispatch = actionCreator => {
     }, []);
 };
 
+export const useSetPage = (limit, callback) => {
+    const onSetPage = React.useCallback((_, page) =>
+        callback({ offset: page * limit - limit })
+    );
+    return onSetPage;
+};
+
+export const usePerPageSelect = callback => {
+    const onPerPageSelect = React.useCallback((_, perPage) =>
+        callback({ limit: perPage, offset: 0 })
+    );
+    return onPerPageSelect;
+};
+
+export const convertLimitOffset = (limit, offset) => {
+    return [offset / limit + 1, limit];
+};
+
 export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
     const inputObj = inputArr.reduce(
         (obj, item) => ((obj[item.rowId] = item.value || undefined), obj),
