@@ -4,16 +4,27 @@ export const advisoriesColumns = [
     {
         title: 'Name',
         cellFormatters: [expandable],
-        transforms: [sortable, classNames('col-width-10')]
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'name'
     },
     {
         title: 'Publish date',
-        transforms: [sortable, classNames('col-width-10')]
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'public_date'
     },
-    { title: 'Type', transforms: [sortable, classNames('col-width-10')] },
+    {
+        title: 'Type',
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'type'
+    },
     {
         title: 'Applicable Systems',
-        transforms: [sortable, classNames('col-width-10')]
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'applicable_systems'
     },
-    { title: 'Synopsis', transforms: [sortable, classNames('col-width-10')] }
+    {
+        title: 'Synopsis',
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'synopsis'
+    }
 ];

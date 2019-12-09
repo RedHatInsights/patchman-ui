@@ -5,7 +5,7 @@ import {
 } from '@redhat-cloud-services/frontend-components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { convertLimitOffset } from '../../Utilities/Helpers';
+import { convertLimitOffset, createSortBy } from '../../Utilities/Helpers';
 
 const AdvisoriesTable = ({
     columns,
@@ -14,12 +14,17 @@ const AdvisoriesTable = ({
     onSelect,
     onSetPage,
     onPerPageSelect,
+    onSort,
     metadata,
     isLoading
 }) => {
     const [page, perPage] = React.useMemo(
         () => convertLimitOffset(metadata.limit, metadata.offset),
         [metadata.limit, metadata.offset]
+    );
+    const sortBy = React.useMemo(
+        () => createSortBy(columns, metadata.sort, 2),
+        [metadata.sort]
     );
     return (
         <React.Fragment>
@@ -43,6 +48,8 @@ const AdvisoriesTable = ({
                     onSelect={onSelect}
                     rows={rows}
                     onCollapse={onCollapse}
+                    onSort={onSort}
+                    sortBy={sortBy}
                 >
                     <TableHeader />
                     <TableBody />
@@ -59,6 +66,7 @@ AdvisoriesTable.propTypes = {
     onSelect: PropTypes.func,
     onSetPage: PropTypes.func,
     onPerPageSelect: PropTypes.func,
+    onSort: PropTypes.func,
     metadata: PropTypes.object,
     isLoading: PropTypes.bool
 };

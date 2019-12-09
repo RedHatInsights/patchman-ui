@@ -1,3 +1,5 @@
+import { SortByDirection } from '@patternfly/react-table';
+import findIndex from 'lodash/findIndex';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -23,8 +25,36 @@ export const usePerPageSelect = callback => {
     return onPerPageSelect;
 };
 
+export const useSortColumn = (columns, callback, offset = 0) => {
+    const onSort = React.useCallback((_, index, direction) => {
+        let columnName = columns[index - offset].key;
+        if (direction === SortByDirection.desc) {
+            columnName = '-' + columnName;
+        }
+
+        callback({ sort: columnName });
+    });
+    return onSort;
+};
+
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
+};
+
+export const createSortBy = (header, value, offset) => {
+    if (value) {
+        let direction =
+            value[0] === '-' ? SortByDirection.desc : SortByDirection.asc;
+        value = value.replace(/^(-|\+)/, '');
+        const index = findIndex(header, item => item.key === value);
+        let sort = {
+            index: index + offset,
+            direction
+        };
+        return sort;
+    }
+
+    return {};
 };
 
 export const addOrRemoveItemFromSet = (targetObj, inputArr) => {

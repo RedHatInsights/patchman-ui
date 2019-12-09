@@ -14,7 +14,8 @@ import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
     getRowIdByIndexExpandable,
     usePerPageSelect,
-    useSetPage
+    useSetPage,
+    useSortColumn
 } from '../../Utilities/Helpers';
 
 const Advisories = () => {
@@ -64,6 +65,8 @@ const Advisories = () => {
         )
     );
 
+    const onSort = useSortColumn(advisoriesColumns, apply, 2);
+
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
@@ -83,6 +86,7 @@ const Advisories = () => {
                     onSelect={onSelect}
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}
+                    onSort={onSort}
                     isLoading={isLoading}
                 />
             </Main>
