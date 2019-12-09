@@ -1,14 +1,5 @@
 import { SortByDirection } from '@patternfly/react-table';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-
-export const useMountDispatch = actionCreator => {
-    const dispatch = useDispatch();
-
-    React.useEffect(() => {
-        dispatch(actionCreator());
-    }, []);
-};
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
