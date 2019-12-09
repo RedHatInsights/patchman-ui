@@ -11,12 +11,12 @@ import {
     selectAdvisoryRow
 } from '../../store/Actions/Actions';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
+import { getRowIdByIndexExpandable } from '../../Utilities/Helpers';
 import {
-    getRowIdByIndexExpandable,
     usePerPageSelect,
     useSetPage,
     useSortColumn
-} from '../../Utilities/Helpers';
+} from '../../Utilities/Hooks';
 
 const Advisories = () => {
     const dispatch = useDispatch();
