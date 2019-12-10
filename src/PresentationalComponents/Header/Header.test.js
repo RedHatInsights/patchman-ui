@@ -35,6 +35,7 @@ describe('Header component', () => {
 
     it('should render with 1 breadcrumb item and last is active', () => {
         const header = {
+            title: '',
             breadcrumbs: [
                 {
                     title: 'First item',
@@ -49,6 +50,7 @@ describe('Header component', () => {
 
     it('should render without to attribute', () => {
         const header = {
+            title: '',
             breadcrumbs: [
                 {
                     title: 'First item',
@@ -62,6 +64,7 @@ describe('Header component', () => {
 
     it('should render with 2 breadcrumb items and last is active', () => {
         const header = {
+            title: '',
             breadcrumbs: [
                 {
                     title: 'First item',
@@ -82,6 +85,7 @@ describe('Header component', () => {
     it('should render with 3 breadcrumb items and last is active', () => {
         const header = {
             showTabs: false,
+            title: '',
             breadcrumbs: [
                 {
                     title: 'First item',
