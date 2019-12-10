@@ -11,8 +11,12 @@ const Advisories = asyncComponent(() =>
 );
 export const paths = {
     advisories: {
-        title: 'Advisories',
+        title: 'Applicable Advisories',
         to: '/'
+    },
+    systems: {
+        title: 'Systems',
+        to: '/systems'
     }
 };
 

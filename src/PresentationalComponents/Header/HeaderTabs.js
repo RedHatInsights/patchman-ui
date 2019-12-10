@@ -20,6 +20,7 @@ const HeaderTabs = ({ history }) => {
                 eventKey={paths.advisories.to}
                 title={paths.advisories.title}
             />
+            <Tab eventKey={paths.systems.to} title={paths.systems.title} />
         </Tabs>
     );
 };

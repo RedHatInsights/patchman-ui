@@ -76,7 +76,7 @@ const Advisories = () => {
 
     return (
         <React.Fragment>
-            <Header title={'Advisories'} showTabs />
+            <Header title={'System Patching'} showTabs />
             <Main>
                 <AdvisoriesTable
                     columns={advisoriesColumns}
