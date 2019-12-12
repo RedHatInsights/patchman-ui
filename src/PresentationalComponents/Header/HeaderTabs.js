@@ -13,7 +13,7 @@ const HeaderTabs = ({ history }) => {
     return (
         <Tabs
             onSelect={handleRedirect}
-            activeKey={paths.advisories.to}
+            activeKey={history.location.pathname}
             className={'patchman-tabs'}
         >
             <Tab

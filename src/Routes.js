@@ -9,6 +9,13 @@ const Advisories = asyncComponent(() =>
         /* webpackChunkName: "Advisories" */ './SmartComponents/Advisories/Advisories'
     )
 );
+
+const Systems = asyncComponent(() =>
+    import(
+        /* webpackChunkName: "Systems" */ './SmartComponents/Systems/Systems'
+    )
+);
+
 export const paths = {
     advisories: {
         title: 'Applicable Advisories',
@@ -40,20 +47,19 @@ InsightsRoute.propTypes = {
 
 export const Routes = (props: Props) => {
     const path = props.childProps.location.pathname;
-
     return (
         <Switch>
+            <Route exact path={paths.systems.to} component={Systems} />
             <InsightsRoute
                 path={paths.advisories.to}
                 component={Advisories}
                 rootClass="Patchman"
             />
 
-            {/* Finally, catch all unmatched routes */}
             <Route
                 render={() =>
                     some(paths, p => p.to === path) ? null : (
-                        <Redirect to={paths.advisories.to} />
+                        <Redirect to={paths.systems.to} />
                     )
                 }
             />
