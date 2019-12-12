@@ -18,7 +18,7 @@ export function createApiCall(
     let result = window.insights.chrome.auth
     .getUser()
     .then(() =>
-        fetch('/api/vulnerability/v1' + endpoint, {
+        fetch('/api/patch/v1' + endpoint, {
             method,
             credentials: 'include',
             body: JSON.stringify(data)
@@ -57,5 +57,5 @@ export function createApiCall(
 }
 
 export const fetchApplicableAdvisoriesApi = params => {
-    return createApiCall('/vulnerabilities/cves', 'get', params);
+    return createApiCall('/advisories', 'get', params);
 };
