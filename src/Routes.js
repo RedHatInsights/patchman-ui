@@ -49,7 +49,7 @@ export const Routes = (props: Props) => {
     const path = props.childProps.location.pathname;
     return (
         <Switch>
-            <Route exact path={paths.systems.to} component={Systems} />
+            <Route path={paths.systems.to} component={Systems} />
             <InsightsRoute
                 path={paths.advisories.to}
                 component={Advisories}

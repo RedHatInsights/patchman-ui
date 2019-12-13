@@ -5,13 +5,16 @@ import * as reactIcons from '@patternfly/react-icons';
 import * as pfReactTable from '@patternfly/react-table';
 import { Main } from '@redhat-cloud-services/frontend-components';
 import React from 'react';
-import { connect, Provider } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
 import Header from '../../PresentationalComponents/Header/Header';
 import { getStore, register } from '../../store';
+import { fetchSystemsAction } from '../../store/Actions/Actions';
 
 const Systems = () => {
+    const dispatch = useDispatch();
     const [InventoryCmp, setInventoryCmp] = React.useState();
+    const hosts = useSelector(({ SystemsListStore }) => SystemsListStore.rows);
 
     const fetchInventory = async () => {
         const {
@@ -28,27 +31,25 @@ const Systems = () => {
         register({
             ...mergeWithEntities()
         });
-        const { InventoryTable } = inventoryConnector();
-        console.log(inventoryConnector());
+        const { InventoryTable } = inventoryConnector(getStore());
         setInventoryCmp(() => InventoryTable);
     };
 
     React.useEffect(() => {
         fetchInventory();
     }, []);
+    React.useEffect(() => {
+        dispatch(fetchSystemsAction());
+    }, []);
 
-    console.log(<InventoryCmp />);
+    console.log(hosts);
 
     return (
         <React.Fragment>
             <Header title={'System Patching'} showTabs />
-            <Main>
-                <Provider store={getStore()}>
-                    {InventoryCmp && <InventoryCmp store={getStore()} />}
-                </Provider>
-            </Main>
+            <Main>{InventoryCmp && <InventoryCmp items={hosts} />}</Main>
         </React.Fragment>
     );
 };
 
-export default connect(() => ({}))(Systems);
+export default Systems;

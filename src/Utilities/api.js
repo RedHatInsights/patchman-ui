@@ -59,3 +59,7 @@ export function createApiCall(
 export const fetchApplicableAdvisoriesApi = params => {
     return createApiCall('/advisories', 'get', params);
 };
+
+export const fetchSystems = params => {
+    return createApiCall('/systems', 'get', params);
+};
