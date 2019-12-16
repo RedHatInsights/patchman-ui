@@ -23,6 +23,11 @@ export const changeAdvisoryListParams = params => ({
     payload: params
 });
 
+export const changeSystemsListParams = params => ({
+    type: ActionTypes.CHANGE_SYSTEMS_LIST_PARAMS,
+    payload: params
+});
+
 export const expandAdvisoryRow = rowState => ({
     type: ActionTypes.EXPAND_ADVISORY_ROW,
     payload: [].concat(rowState)

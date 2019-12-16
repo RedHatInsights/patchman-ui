@@ -34,3 +34,11 @@ export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
 export const getRowIdByIndexExpandable = (arrayOfObjects, index) => {
     return arrayOfObjects[index / 2].id;
 };
+
+export const getOffsetFromPageLimit = (page, limit) => {
+    return page * limit - limit;
+};
+
+export const getLimitFromPageSize = limit => {
+    return limit;
+};

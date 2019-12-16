@@ -1,16 +1,17 @@
 import { SortByDirection } from '@patternfly/react-table';
 import React from 'react';
+import { getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
-        callback({ offset: page * limit - limit })
+        callback({ offset: getOffsetFromPageLimit(page, limit) })
     );
     return onSetPage;
 };
 
 export const usePerPageSelect = callback => {
     const onPerPageSelect = React.useCallback((_, perPage) =>
-        callback({ limit: perPage, offset: 0 })
+        callback({ limit: getLimitFromPageSize(perPage), offset: 0 })
     );
     return onPerPageSelect;
 };
