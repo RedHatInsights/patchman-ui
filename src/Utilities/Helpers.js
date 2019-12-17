@@ -1,4 +1,8 @@
-import { EnhancementIcon } from '@patternfly/react-icons';
+import {
+    EnhancementIcon,
+    BugIcon,
+    SecurityIcon
+} from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
@@ -46,11 +50,21 @@ export const getLimitFromPageSize = limit => {
     return limit;
 };
 
-export function createAdvisoriesIcons([rhea]) {
+export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
     return (
-        <span>
-            <EnhancementIcon />
-            {rhea}
-        </span>
+        <div className="advisories-icons-wrapper">
+            <span>
+                <EnhancementIcon />
+                {rhea}
+            </span>
+            <span>
+                <BugIcon />
+                {rhba}
+            </span>
+            <span>
+                <SecurityIcon color={'var(--pf-global--warning-color--100)'} />
+                {rhsa}
+            </span>
+        </div>
     );
 }

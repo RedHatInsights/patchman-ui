@@ -34,9 +34,9 @@ export const createSystemsRows = rows => {
             id: row.id,
             key: row.id,
             applicable_advisories: [
-                row.attributes.rhea_count || 2,
-                row.attributes.rhba_count,
-                row.attributes.rhsa_count
+                row.attributes.rhea_count || 0,
+                row.attributes.rhba_count || 0,
+                row.attributes.rhsa_count || 0
             ]
         };
     });

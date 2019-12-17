@@ -6,14 +6,14 @@ export const systemsListColumns = [
         title: 'Name',
         composed: ['facts.os_release', 'display_name'],
         props: {
-            width: 70
+            width: 40
         }
     },
     {
         key: 'applicable_advisories',
         title: 'Applicable advisories',
         props: {
-            width: 15
+            width: 30
         },
         renderFunc: value => createAdvisoriesIcons(value)
     },
@@ -21,7 +21,7 @@ export const systemsListColumns = [
         key: 'status',
         title: 'Status',
         props: {
-            width: 15
+            width: 30
         }
     }
 ];

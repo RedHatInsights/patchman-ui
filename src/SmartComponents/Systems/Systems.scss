@@ -1,0 +1,8 @@
+.advisories-icons-wrapper {
+    > span {
+        margin-right: var(--pf-global--spacer--sm);
+        > svg {
+            margin-right: var(--pf-global--spacer--xs);
+        }
+    }
+}
