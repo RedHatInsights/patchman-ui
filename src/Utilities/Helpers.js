@@ -1,5 +1,8 @@
+import { EnhancementIcon } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -42,3 +45,12 @@ export const getOffsetFromPageLimit = (page, limit) => {
 export const getLimitFromPageSize = limit => {
     return limit;
 };
+
+export function createAdvisoriesIcons([rhea]) {
+    return (
+        <span>
+            <EnhancementIcon />
+            {rhea}
+        </span>
+    );
+}

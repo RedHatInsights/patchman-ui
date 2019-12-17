@@ -13,16 +13,24 @@ import {
     changeSystemsListParams,
     fetchSystemsAction
 } from '../../store/Actions/Actions';
+import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
+import { createSystemsRows } from '../../Utilities/DataMappers';
 import {
     convertLimitOffset,
     getLimitFromPageSize,
     getOffsetFromPageLimit
 } from '../../Utilities/Helpers';
+import { systemsListColumns } from './SystemsListAssets';
 
 const Systems = () => {
     const dispatch = useDispatch();
     const [InventoryCmp, setInventoryCmp] = React.useState();
-    const hosts = useSelector(({ SystemsListStore }) => SystemsListStore.rows);
+    const rawSystems = useSelector(
+        ({ SystemsListStore }) => SystemsListStore.rows
+    );
+    const hosts = React.useMemo(() => createSystemsRows(rawSystems), [
+        rawSystems
+    ]);
     const metadata = useSelector(
         ({ SystemsListStore }) => SystemsListStore.metadata
     );
@@ -47,7 +55,7 @@ const Systems = () => {
         });
 
         register({
-            ...mergeWithEntities()
+            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns))
         });
         const { InventoryTable } = inventoryConnector(getStore());
         setInventoryCmp(() => InventoryTable);
@@ -77,8 +85,6 @@ const Systems = () => {
             });
         }
     });
-
-    console.log(hosts);
     return (
         <React.Fragment>
             <Header title={'System Patching'} showTabs />

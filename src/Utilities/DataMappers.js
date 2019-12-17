@@ -27,3 +27,18 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
         ];
     });
 };
+
+export const createSystemsRows = rows => {
+    const data = rows.map(row => {
+        return {
+            id: row.id,
+            key: row.id,
+            applicable_advisories: [
+                row.attributes.rhea_count || 2,
+                row.attributes.rhba_count,
+                row.attributes.rhsa_count
+            ]
+        };
+    });
+    return data;
+};
