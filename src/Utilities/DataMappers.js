@@ -1,5 +1,8 @@
 /* eslint-disable no-console */
+import { Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { flatMap } from 'lodash';
+import React from 'react';
+import Label from '../PresentationalComponents/Snippets/Label';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     return flatMap(rows, (row, index) => {
@@ -19,7 +22,14 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
             {
                 cells: [
                     {
-                        title: 'asd'
+                        title: (
+                            <TextContent>
+                                <Label>Description</Label>
+                                <Text component={TextVariants.p}>
+                                    {row.attributes.description}
+                                </Text>
+                            </TextContent>
+                        )
                     }
                 ],
                 parent: index * 2
