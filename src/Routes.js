@@ -16,6 +16,11 @@ const Systems = asyncComponent(() =>
     )
 );
 
+const InventoryPage = asyncComponent(() =>
+    import(
+        /* webpackChunkName: "InventoryPage" */ './SmartComponents/SystemDetail/InventoryPage'
+    )
+);
 export const paths = {
     advisories: {
         title: 'Applicable Advisories',
@@ -24,6 +29,10 @@ export const paths = {
     systems: {
         title: 'Systems',
         to: '/systems'
+    },
+    inventoryDetail: {
+        title: 'Inventory Detail',
+        to: '/systems/:inventoryId'
     }
 };
 
@@ -49,6 +58,7 @@ export const Routes = (props: Props) => {
     const path = props.childProps.location.pathname;
     return (
         <Switch>
+            <Route path={paths.inventoryDetail.to} component={InventoryPage} />
             <Route path={paths.systems.to} component={Systems} />
             <InsightsRoute
                 path={paths.advisories.to}

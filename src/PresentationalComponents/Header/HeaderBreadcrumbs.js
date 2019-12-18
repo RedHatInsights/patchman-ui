@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const HeaderBreadcrumbs = ({ items }) => {
     return (
         <Breadcrumb>
-            {items.map(item => (
+            {items.filter(Boolean).map(item => (
                 <BreadcrumbItem key={item.title} isActive={item.isActive}>
                     {(item.to && <Link to={item.to}>{item.title}</Link>) ||
                         item.title}
