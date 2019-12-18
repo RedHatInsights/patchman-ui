@@ -1,8 +1,10 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table';
+import toJson from 'enzyme-to-json';
 import {
     addOrRemoveItemFromSet,
     convertLimitOffset,
+    createAdvisoriesIcons,
     createSortBy,
     getRowIdByIndexExpandable
 } from './Helpers';
@@ -126,6 +128,10 @@ describe('Helpers tests', () => {
         let expected = 1;
 
         expect(ret).toEqual(expected);
+    });
+    it('create advisory icons snapshot test', () => {
+        let wrapper = shallow(createAdvisoriesIcons([1, 2, 3]));
+        expect(toJson(wrapper)).toMatchSnapshot();
     });
 });
 /* eslint-enable */
