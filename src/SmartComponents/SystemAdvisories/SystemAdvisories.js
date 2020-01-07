@@ -4,6 +4,7 @@ import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/Advi
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import {
     changeSystemAdvisoryListParams,
+    clearSystemAdvisoriesStore,
     expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories,
     selectSystemAdvisoryRow
@@ -41,6 +42,10 @@ const SystemAdvisories = () => {
             createSystemAdvisoriesRows(advisories, expandedRows, selectedRows),
         [advisories, expandedRows, selectedRows]
     );
+
+    React.useEffect(() => {
+        return () => dispatch(clearSystemAdvisoriesStore());
+    }, []);
 
     React.useEffect(() => {
         dispatch(fetchApplicableSystemAdvisories(queryParams));

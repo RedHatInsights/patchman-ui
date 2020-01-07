@@ -52,6 +52,10 @@ export const SystemAdvisoryListStore = (state = initialState, action) => {
             return newState;
         }
 
+        case ActionTypes.CLEAR_SYSTEM_ADVISORIES: {
+            return initialState;
+        }
+
         default:
             return state;
     }

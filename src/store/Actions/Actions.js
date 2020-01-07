@@ -59,3 +59,8 @@ export const selectSystemAdvisoryRow = rowState => ({
     type: ActionTypes.SELECT_SYSTEM_ADVISORY_ROW,
     payload: [].concat(rowState)
 });
+
+export const clearSystemAdvisoriesStore = () => ({
+    type: ActionTypes.CLEAR_SYSTEM_ADVISORIES,
+    payload: []
+});
