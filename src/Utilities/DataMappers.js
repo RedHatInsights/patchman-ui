@@ -38,6 +38,43 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     });
 };
 
+export const createSystemAdvisoriesRows = (
+    rows,
+    expandedRows,
+    selectedRows
+) => {
+    return flatMap(rows, (row, index) => {
+        return [
+            {
+                id: row.id,
+                isOpen: expandedRows[row.id] === true,
+                selected: selectedRows[row.id] === true,
+                cells: [
+                    row.id,
+                    row.attributes.public_date,
+                    row.attributes.advisory_type,
+                    row.attributes.synopsis
+                ]
+            },
+            {
+                cells: [
+                    {
+                        title: (
+                            <TextContent>
+                                <Label>Description</Label>
+                                <Text component={TextVariants.p}>
+                                    {row.attributes.description}
+                                </Text>
+                            </TextContent>
+                        )
+                    }
+                ],
+                parent: index * 2
+            }
+        ];
+    });
+};
+
 export const createSystemsRows = rows => {
     const data = rows.map(row => {
         return {

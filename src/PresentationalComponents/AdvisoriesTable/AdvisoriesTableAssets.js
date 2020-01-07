@@ -28,3 +28,27 @@ export const advisoriesColumns = [
         key: 'synopsis'
     }
 ];
+
+export const systemAdvisoriesColumns = [
+    {
+        title: 'Name',
+        cellFormatters: [expandable],
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'name'
+    },
+    {
+        title: 'Publish date',
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'public_date'
+    },
+    {
+        title: 'Type',
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'type'
+    },
+    {
+        title: 'Synopsis',
+        transforms: [sortable, classNames('col-width-10')],
+        key: 'synopsis'
+    }
+];

@@ -1,6 +1,8 @@
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryListStore } from './Reducers/AdvisoryListStore';
+import { SystemAdvisoryListStore } from './Reducers/SystemAdvisoryListStore';
+import { SystemDetailStore } from './Reducers/SystemDetailStore';
 import { SystemsListStore } from './Reducers/SystemsListStore';
 
 let registry;
@@ -12,7 +14,12 @@ export function init(...middleware) {
 
     registry = new ReducerRegistry({}, [promiseMiddleware(), ...middleware]);
 
-    registry.register({ AdvisoryListStore, SystemsListStore });
+    registry.register({
+        AdvisoryListStore,
+        SystemsListStore,
+        SystemDetailStore,
+        SystemAdvisoryListStore
+    });
 
     return registry;
 }
