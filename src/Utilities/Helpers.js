@@ -7,7 +7,6 @@ import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import './Helpers.scss';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -53,16 +52,16 @@ export const getLimitFromPageSize = limit => {
 
 export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
     return (
-        <div className="advisories-icons-wrapper">
-            <span>
+        <div>
+            <span className="icon-with-label">
                 <EnhancementIcon />
                 {rhea}
             </span>
-            <span>
+            <span className="icon-with-label">
                 <BugIcon />
                 {rhba}
             </span>
-            <span>
+            <span className="icon-with-label">
                 <SecurityIcon color={'var(--pf-global--warning-color--100)'} />
                 {rhsa}
             </span>

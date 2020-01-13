@@ -2,6 +2,7 @@
 import { Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { flatMap } from 'lodash';
 import React from 'react';
+import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import Label from '../PresentationalComponents/Snippets/Label';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -14,7 +15,11 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                 cells: [
                     row.id,
                     row.attributes.public_date,
-                    row.attributes.advisory_type,
+                    {
+                        title: (
+                            <AdvisoryType type={row.attributes.advisory_type} />
+                        )
+                    },
                     row.attributes.applicable_systems,
                     row.attributes.synopsis
                 ]

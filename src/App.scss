@@ -1,3 +1,12 @@
 // Importing Global Variables
-@import "~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all";
-@import "~@redhat-cloud-services/frontend-components/index.css";
+@import '~@redhat-cloud-services/frontend-components-utilities/files/Utilities/_all';
+@import '~@redhat-cloud-services/frontend-components/index.css';
+
+.icon-with-label {
+    &:not(:last-child) {
+        margin-right: var(--pf-global--spacer--sm);
+    }
+    > svg {
+        margin-right: var(--pf-global--spacer--xs);
+    }
+}
