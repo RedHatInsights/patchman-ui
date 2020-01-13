@@ -1,12 +1,13 @@
 import {
-    EnhancementIcon,
     BugIcon,
+    EnhancementIcon,
     SecurityIcon
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import './Helpers.scss';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];

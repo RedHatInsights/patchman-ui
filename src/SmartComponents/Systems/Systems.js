@@ -21,7 +21,6 @@ import {
     getOffsetFromPageLimit
 } from '../../Utilities/Helpers';
 import { systemsListColumns } from './SystemsListAssets';
-import './Systems.scss';
 
 const Systems = () => {
     const dispatch = useDispatch();
