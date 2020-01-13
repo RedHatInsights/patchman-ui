@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
@@ -14,7 +15,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                 selected: selectedRows[row.id] === true,
                 cells: [
                     row.id,
-                    row.attributes.public_date,
+                    { title: processDate(row.attributes.public_date) },
                     {
                         title: (
                             <AdvisoryType type={row.attributes.advisory_type} />
