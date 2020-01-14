@@ -7,6 +7,7 @@ import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -67,4 +68,16 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
             </span>
         </div>
     );
+}
+
+export function handleAdvisoryLink(name, body) {
+    if (location.href.indexOf('patch') !== -1) {
+        return <Link to={'/advisories/' + name}>{body || name}</Link>;
+    } else {
+        return (
+            <a href={`${document.baseURI}rhel/patch/advisories/${name}`}>
+                {body || name}
+            </a>
+        );
+    }
 }

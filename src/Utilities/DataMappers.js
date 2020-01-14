@@ -5,6 +5,7 @@ import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import Label from '../PresentationalComponents/Snippets/Label';
+import { handleAdvisoryLink } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     return flatMap(rows, (row, index) => {
@@ -14,14 +15,18 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                 isOpen: expandedRows[row.id] === true,
                 selected: selectedRows[row.id] === true,
                 cells: [
-                    row.id,
+                    { title: handleAdvisoryLink(row.id) },
                     { title: processDate(row.attributes.public_date) },
                     {
                         title: (
                             <AdvisoryType type={row.attributes.advisory_type} />
                         )
                     },
-                    row.attributes.applicable_systems,
+                    {
+                        title: handleAdvisoryLink(
+                            row.attributes.applicable_systems
+                        )
+                    },
                     row.attributes.synopsis
                 ]
             },
