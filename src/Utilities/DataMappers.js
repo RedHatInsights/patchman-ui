@@ -64,9 +64,13 @@ export const createSystemAdvisoriesRows = (
                 isOpen: expandedRows[row.id] === true,
                 selected: selectedRows[row.id] === true,
                 cells: [
-                    row.id,
-                    row.attributes.public_date,
-                    row.attributes.advisory_type,
+                    { title: handleAdvisoryLink(row.id) },
+                    { title: processDate(row.attributes.public_date) },
+                    {
+                        title: (
+                            <AdvisoryType type={row.attributes.advisory_type} />
+                        )
+                    },
                     row.attributes.synopsis
                 ]
             },
@@ -79,6 +83,7 @@ export const createSystemAdvisoriesRows = (
                                 <Text component={TextVariants.p}>
                                     {row.attributes.description}
                                 </Text>
+                                <PortalAdvisoryLink advisory={row.id} />
                             </TextContent>
                         )
                     }
