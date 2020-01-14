@@ -5,6 +5,7 @@ import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import Label from '../PresentationalComponents/Snippets/Label';
+import PortalAdvisoryLink from '../PresentationalComponents/Snippets/PortalAdvisoryLink';
 import { handleAdvisoryLink } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -40,6 +41,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                                 <Text component={TextVariants.p}>
                                     {row.attributes.description}
                                 </Text>
+                                <PortalAdvisoryLink advisory={row.id} />
                             </TextContent>
                         )
                     }
