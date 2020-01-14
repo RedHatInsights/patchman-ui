@@ -1,5 +1,6 @@
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
+import * as pfReactTable from '@patternfly/react-table';
 import { Main } from '@redhat-cloud-services/frontend-components';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -25,7 +26,8 @@ const InventoryDetail = () => {
             react: React,
             reactRouterDom,
             reactCore,
-            reactIcons
+            reactIcons,
+            pfReactTable
         });
 
         register({
