@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Helpers tests create advisory icons snapshot test 1`] = `
-<div
-  className="advisories-icons-wrapper"
->
-  <span>
+<div>
+  <span
+    className="icon-with-label"
+  >
     <EnhancementIcon
       color="currentColor"
       noVerticalAlign={false}
@@ -13,7 +13,9 @@ exports[`Helpers tests create advisory icons snapshot test 1`] = `
     />
     1
   </span>
-  <span>
+  <span
+    className="icon-with-label"
+  >
     <BugIcon
       color="currentColor"
       noVerticalAlign={false}
@@ -22,7 +24,9 @@ exports[`Helpers tests create advisory icons snapshot test 1`] = `
     />
     2
   </span>
-  <span>
+  <span
+    className="icon-with-label"
+  >
     <SecurityIcon
       color="var(--pf-global--warning-color--100)"
       noVerticalAlign={false}
