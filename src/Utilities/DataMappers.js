@@ -24,6 +24,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                     },
                     {
                         title: handleAdvisoryLink(
+                            row.id,
                             row.attributes.applicable_systems
                         )
                     },
