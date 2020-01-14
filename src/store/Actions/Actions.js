@@ -1,5 +1,6 @@
 import {
     fetchApplicableAdvisoriesApi,
+    fetchApplicableSystemAdvisoriesApi,
     fetchSystems
 } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
@@ -14,7 +15,7 @@ export const fetchApplicableAdvisories = params => ({
 export const fetchApplicableSystemAdvisories = params => ({
     type: ActionTypes.FETCH_APPLICABLE_SYSTEM_ADVISORIES,
     payload: new Promise(resolve => {
-        resolve(fetchApplicableAdvisoriesApi(params));
+        resolve(fetchApplicableSystemAdvisoriesApi(params));
     }).then(result => result)
 });
 

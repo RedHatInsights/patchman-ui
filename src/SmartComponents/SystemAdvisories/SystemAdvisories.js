@@ -22,6 +22,9 @@ const SystemAdvisories = () => {
     const advisories = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.rows
     );
+
+    const entity = useSelector(({ entityDetails }) => entityDetails.entity);
+
     const expandedRows = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.expandedRows
     );
@@ -48,7 +51,9 @@ const SystemAdvisories = () => {
     }, []);
 
     React.useEffect(() => {
-        dispatch(fetchApplicableSystemAdvisories(queryParams));
+        dispatch(
+            fetchApplicableSystemAdvisories({ id: entity.id, ...queryParams })
+        );
     }, [queryParams]);
 
     const onCollapse = React.useCallback((_, rowId, value) =>
@@ -75,7 +80,7 @@ const SystemAdvisories = () => {
     const onPerPageSelect = usePerPageSelect(apply);
 
     function apply(params) {
-        dispatch(changeSystemAdvisoryListParams(params));
+        dispatch(changeSystemAdvisoryListParams({ id: entity.id, ...params }));
     }
 
     return (
