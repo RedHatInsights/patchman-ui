@@ -1,7 +1,9 @@
+import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table';
 import {
     PrimaryToolbar,
-    SkeletonTable
+    SkeletonTable,
+    TableToolbar
 } from '@redhat-cloud-services/frontend-components';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -42,18 +44,30 @@ const AdvisoriesTable = ({
             {isLoading ? (
                 <SkeletonTable colSize={5} rowSize={20} />
             ) : (
-                <Table
-                    aria-label="Advisories table"
-                    cells={columns}
-                    onSelect={onSelect}
-                    rows={rows}
-                    onCollapse={onCollapse}
-                    onSort={onSort}
-                    sortBy={sortBy}
-                >
-                    <TableHeader />
-                    <TableBody />
-                </Table>
+                <React.Fragment>
+                    <Table
+                        aria-label="Advisories table"
+                        cells={columns}
+                        onSelect={onSelect}
+                        rows={rows}
+                        onCollapse={onCollapse}
+                        onSort={onSort}
+                        sortBy={sortBy}
+                    >
+                        <TableHeader />
+                        <TableBody />
+                    </Table>
+                    <TableToolbar>
+                        <Pagination
+                            itemCount={metadata.total_items}
+                            perPage={perPage}
+                            page={page}
+                            onSetPage={onSetPage}
+                            widgetId={`pagination-options-menu-bottom`}
+                            variant={PaginationVariant.bottom}
+                        />
+                    </TableToolbar>
+                </React.Fragment>
             )}
         </React.Fragment>
     );
