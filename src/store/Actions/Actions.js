@@ -1,4 +1,5 @@
 import {
+    fetchAdvisoryDetailsApi,
     fetchApplicableAdvisoriesApi,
     fetchApplicableSystemAdvisoriesApi,
     fetchSystems
@@ -16,6 +17,13 @@ export const fetchApplicableSystemAdvisories = params => ({
     type: ActionTypes.FETCH_APPLICABLE_SYSTEM_ADVISORIES,
     payload: new Promise(resolve => {
         resolve(fetchApplicableSystemAdvisoriesApi(params));
+    }).then(result => result)
+});
+
+export const fetchAvisoryDetails = params => ({
+    type: ActionTypes.FETCH_ADVISORY_DETAILS,
+    payload: new Promise(resolve => {
+        resolve(fetchAdvisoryDetailsApi(params));
     }).then(result => result)
 });
 

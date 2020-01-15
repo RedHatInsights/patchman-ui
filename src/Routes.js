@@ -21,6 +21,12 @@ const InventoryPage = asyncComponent(() =>
         /* webpackChunkName: "InventoryPage" */ './SmartComponents/SystemDetail/InventoryPage'
     )
 );
+
+const AdvisoryPage = asyncComponent(() =>
+    import(
+        /* webpackChunkName: "AdvisoryyPage" */ './SmartComponents/AdvisoryDetail/AdvisoryDetail'
+    )
+);
 export const paths = {
     advisories: {
         title: 'Applicable Advisories',
@@ -33,6 +39,10 @@ export const paths = {
     inventoryDetail: {
         title: 'Inventory Detail',
         to: '/systems/:inventoryId'
+    },
+    advisoryDetail: {
+        title: 'Advisory Detail',
+        to: '/advisories/:advisoryId'
     }
 };
 
@@ -60,6 +70,7 @@ export const Routes = (props: Props) => {
         <Switch>
             <Route path={paths.inventoryDetail.to} component={InventoryPage} />
             <Route path={paths.systems.to} component={Systems} />
+            <Route path={paths.advisoryDetail.to} component={AdvisoryPage} />
             <InsightsRoute
                 path={paths.advisories.to}
                 component={Advisories}

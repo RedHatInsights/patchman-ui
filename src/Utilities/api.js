@@ -68,3 +68,7 @@ export const fetchApplicableSystemAdvisoriesApi = params => {
 export const fetchSystems = params => {
     return createApiCall('/systems', 'get', params);
 };
+
+export const fetchAdvisoryDetailsApi = params => {
+    return createApiCall(`/advisories/${params.advisoryName}`, 'get');
+};
