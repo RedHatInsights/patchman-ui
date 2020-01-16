@@ -35,7 +35,7 @@ const AdvisoryDetail = ({ match }) => {
                 ]}
             >
                 <AdvisoryHeader
-                    attributes={attributes}
+                    attributes={{ ...attributes, id: advisoryName }}
                     isLoading={advisoryDetails.isLoading}
                 />
             </Header>
