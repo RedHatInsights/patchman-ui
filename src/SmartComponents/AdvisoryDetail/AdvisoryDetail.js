@@ -1,13 +1,9 @@
-import { Grid, GridItem } from '@patternfly/react-core';
-import { SkeletonSize } from '@redhat-cloud-services/frontend-components';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
-import WithLoader, {
-    WithLoaderVariants
-} from '../../PresentationalComponents/WithLoader/WithLoader';
 import { paths } from '../../Routes';
 import { fetchAvisoryDetails } from '../../store/Actions/Actions';
 
@@ -20,6 +16,8 @@ const AdvisoryDetail = ({ match }) => {
     React.useEffect(() => {
         dispatch(fetchAvisoryDetails({ advisoryName }));
     }, []);
+
+    const { attributes } = advisoryDetails.data;
     return (
         <React.Fragment>
             <Header
@@ -36,17 +34,10 @@ const AdvisoryDetail = ({ match }) => {
                     }
                 ]}
             >
-                <Grid gutter="sm">
-                    <GridItem md={8} sm={12}>
-                        <WithLoader
-                            loading={advisoryDetails.isLoading}
-                            variant={WithLoaderVariants.skeleton}
-                            size={SkeletonSize.lg}
-                        >
-                            {advisoryDetails.data.attributes.description}
-                        </WithLoader>
-                    </GridItem>
-                </Grid>
+                <AdvisoryHeader
+                    attributes={attributes}
+                    isLoading={advisoryDetails.isLoading}
+                />
             </Header>
         </React.Fragment>
     );
