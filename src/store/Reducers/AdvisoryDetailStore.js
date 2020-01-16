@@ -1,7 +1,7 @@
 import { FETCH_ADVISORY_DETAILS } from '../ActionTypes';
 
 let initialState = {
-    data: {},
+    data: { attributes: {} },
     isLoading: true
 };
 
