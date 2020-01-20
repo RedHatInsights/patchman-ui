@@ -1,4 +1,5 @@
 import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
+import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -6,8 +7,11 @@ import PortalAdvisoryLink from '../../PresentationalComponents/Snippets/PortalAd
 import WithLoader, {
     WithLoaderVariants
 } from '../../PresentationalComponents/WithLoader/WithLoader';
+import { getSeverityById } from '../../Utilities/Helpers';
+import InfoBox from '../InfoBox/InfoBox';
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
+    const severityObject = getSeverityById(attributes.severity);
     return (
         <Grid gutter="sm">
             <GridItem md={8} sm={12}>
@@ -19,7 +23,11 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                     <Stack gutter="sm">
                         <StackItem />
                         <StackItem style={{ whiteSpace: 'pre-line' }}>
-                            {attributes.description}
+                            {attributes.description &&
+                                attributes.description.replace(
+                                    new RegExp('\\n(?=[^\\n])', 'g'),
+                                    ''
+                                )}
                         </StackItem>
                         <StackItem>
                             {attributes.public_date && (
@@ -43,6 +51,15 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                         </StackItem>
                     </Stack>
                 </WithLoader>
+            </GridItem>
+            <GridItem md={4} sm={12}>
+                <InfoBox
+                    isLoading={isLoading}
+                    title={severityObject.name}
+                    color={severityObject.color}
+                    text={<a>Learn more</a>}
+                    content={<SecurityIcon size="md" />}
+                />
             </GridItem>
         </Grid>
     );

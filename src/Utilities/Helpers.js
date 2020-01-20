@@ -8,6 +8,7 @@ import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { advisorySeverities } from './constants';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -67,6 +68,12 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
                 {rhsa}
             </span>
         </div>
+    );
+}
+
+export function getSeverityById(id) {
+    return (
+        advisorySeverities.find(item => item.id === id) || advisorySeverities[0]
     );
 }
 
