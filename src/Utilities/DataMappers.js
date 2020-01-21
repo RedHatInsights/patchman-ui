@@ -95,16 +95,18 @@ export const createSystemAdvisoriesRows = (
 };
 
 export const createSystemsRows = rows => {
-    const data = rows.map(row => {
-        return {
-            id: row.id,
-            key: row.id,
-            applicable_advisories: [
-                row.attributes.rhea_count || 0,
-                row.attributes.rhba_count || 0,
-                row.attributes.rhsa_count || 0
-            ]
-        };
-    });
+    const data =
+        rows &&
+        rows.map(row => {
+            return {
+                id: row.id,
+                key: row.id,
+                applicable_advisories: [
+                    row.attributes.rhea_count || 0,
+                    row.attributes.rhba_count || 0,
+                    row.attributes.rhsa_count || 0
+                ]
+            };
+        });
     return data;
 };

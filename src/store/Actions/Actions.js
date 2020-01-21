@@ -1,5 +1,6 @@
 import {
     fetchAdvisoryDetailsApi,
+    fetchAffectedSystems,
     fetchApplicableAdvisoriesApi,
     fetchApplicableSystemAdvisoriesApi,
     fetchSystems
@@ -49,6 +50,11 @@ export const changeSystemsListParams = params => ({
     payload: params
 });
 
+export const changeAffectedSystemsParams = params => ({
+    type: ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS,
+    payload: params
+});
+
 export const expandAdvisoryRow = rowState => ({
     type: ActionTypes.EXPAND_ADVISORY_ROW,
     payload: [].concat(rowState)
@@ -72,4 +78,11 @@ export const selectSystemAdvisoryRow = rowState => ({
 export const clearSystemAdvisoriesStore = () => ({
     type: ActionTypes.CLEAR_SYSTEM_ADVISORIES,
     payload: []
+});
+
+export const fetchAffectedSystemsAction = params => ({
+    type: ActionTypes.FETCH_AFFECTED_SYSTEMS,
+    payload: new Promise(resolve => {
+        resolve(fetchAffectedSystems(params));
+    }).then(result => result)
 });

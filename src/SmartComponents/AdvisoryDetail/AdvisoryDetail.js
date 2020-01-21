@@ -1,3 +1,5 @@
+import { Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { Main } from '@redhat-cloud-services/frontend-components';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +8,7 @@ import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/Adviso
 import Header from '../../PresentationalComponents/Header/Header';
 import { paths } from '../../Routes';
 import { fetchAvisoryDetails } from '../../store/Actions/Actions';
+import AffectedSystems from '../AffectedSystems/AffectedSystems';
 
 const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -39,6 +42,12 @@ const AdvisoryDetail = ({ match }) => {
                     isLoading={advisoryDetails.isLoading}
                 />
             </Header>
+            <Main>
+                <TextContent>
+                    <Text component={TextVariants.h2}>Affected Systems</Text>
+                </TextContent>
+                <AffectedSystems advisoryName={advisoryName} />
+            </Main>
         </React.Fragment>
     );
 };

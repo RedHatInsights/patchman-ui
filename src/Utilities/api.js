@@ -72,3 +72,8 @@ export const fetchSystems = params => {
 export const fetchAdvisoryDetailsApi = params => {
     return createApiCall(`/advisories/${params.advisoryName}`, 'get');
 };
+
+export const fetchAffectedSystems = params => {
+    const { id } = params;
+    return createApiCall(`/advisories/${id}/systems`);
+};
