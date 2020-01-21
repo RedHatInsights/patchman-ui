@@ -1,3 +1,14 @@
+export const storeListDefaults = {
+    rows: [],
+    metadata: {
+        limit: 25,
+        offset: 0,
+        total_items: 0
+    },
+    expandedRows: {},
+    selectedRows: {},
+    queryParams: {}
+};
 export const advisorySeverities = [
     {
         id: 0,

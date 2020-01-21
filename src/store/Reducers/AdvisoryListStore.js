@@ -1,19 +1,8 @@
+import { storeListDefaults } from '../../Utilities/constants';
 import { addOrRemoveItemFromSet } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
-export const initialState = {
-    rows: [],
-    metadata: {
-        limit: 25,
-        offset: 0,
-        total_items: 0
-    },
-    expandedRows: {},
-    selectedRows: {},
-    queryParams: {}
-};
-
-export const AdvisoryListStore = (state = initialState, action) => {
+export const AdvisoryListStore = (state = storeListDefaults, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_FULFILLED': {

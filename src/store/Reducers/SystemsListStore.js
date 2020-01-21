@@ -1,20 +1,7 @@
+import { storeListDefaults } from '../../Utilities/constants';
 import * as ActionTypes from '../ActionTypes';
 
-// Initial State
-export const initialState = {
-    rows: [],
-    metadata: {
-        limit: 25,
-        offset: 0,
-        total_items: 0
-    },
-    expandedRows: {},
-    selectedRows: {},
-    queryParams: {}
-};
-// Reducer
-
-export const SystemsListStore = (state = initialState, action) => {
+export const SystemsListStore = (state = storeListDefaults, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_SYSTEMS + '_PENDING':
