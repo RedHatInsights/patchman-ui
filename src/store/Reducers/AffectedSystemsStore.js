@@ -14,7 +14,7 @@ export const AffectedSystemsStore = (state = storeListDefaults, action) => {
             newState.isLoading = false;
             return newState;
 
-        case ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS:
+        case ActionTypes.CLEAR_AFFECTED_SYSTEMS:
             newState.queryParams = {
                 ...newState.queryParams,
                 ...action.payload

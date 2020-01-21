@@ -108,5 +108,5 @@ export const createSystemsRows = rows => {
                 ]
             };
         });
-    return data;
+    return data || [];
 };

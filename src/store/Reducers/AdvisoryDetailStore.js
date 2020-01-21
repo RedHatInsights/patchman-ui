@@ -1,4 +1,4 @@
-import { FETCH_ADVISORY_DETAILS } from '../ActionTypes';
+import { CLEAR_ADVISORY_DETAILS, FETCH_ADVISORY_DETAILS } from '../ActionTypes';
 
 let initialState = {
     data: { attributes: {} },
@@ -19,6 +19,9 @@ export const AdvisoryDetailStore = (state = initialState, action) => {
                 ...state,
                 isLoading: true
             };
+        case CLEAR_ADVISORY_DETAILS:
+            return initialState;
+
         default:
             return state;
     }

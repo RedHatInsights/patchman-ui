@@ -80,6 +80,16 @@ export const clearSystemAdvisoriesStore = () => ({
     payload: []
 });
 
+export const clearAffectedSystemsStore = () => ({
+    type: ActionTypes.CLEAR_AFFECTED_SYSTEMS,
+    payload: []
+});
+
+export const clearAdvisoryDetailStore = () => ({
+    type: ActionTypes.CLEAR_ADVISORY_DETAILS,
+    payload: []
+});
+
 export const fetchAffectedSystemsAction = params => ({
     type: ActionTypes.FETCH_AFFECTED_SYSTEMS,
     payload: new Promise(resolve => {

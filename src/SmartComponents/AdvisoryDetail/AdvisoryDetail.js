@@ -7,7 +7,11 @@ import { withRouter } from 'react-router-dom';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
 import { paths } from '../../Routes';
-import { fetchAvisoryDetails } from '../../store/Actions/Actions';
+import {
+    clearAdvisoryDetailStore,
+    clearAffectedSystemsStore,
+    fetchAvisoryDetails
+} from '../../store/Actions/Actions';
 import AffectedSystems from '../AffectedSystems/AffectedSystems';
 
 const AdvisoryDetail = ({ match }) => {
@@ -18,6 +22,13 @@ const AdvisoryDetail = ({ match }) => {
     );
     React.useEffect(() => {
         dispatch(fetchAvisoryDetails({ advisoryName }));
+    }, []);
+
+    React.useEffect(() => {
+        return () => {
+            dispatch(clearAffectedSystemsStore());
+            dispatch(clearAdvisoryDetailStore());
+        };
     }, []);
 
     const { attributes } = advisoryDetails.data;
