@@ -13,7 +13,7 @@ import InfoBox from '../InfoBox/InfoBox';
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const severityObject = getSeverityById(attributes.severity);
     return (
-        <Grid gutter="sm">
+        <Grid gutter="sm" style={{ minHeight: 150 }}>
             <GridItem md={8} sm={12}>
                 <WithLoader
                     loading={isLoading}
