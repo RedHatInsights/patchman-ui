@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-console */
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import * as pfReactTable from '@patternfly/react-table';
+import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
@@ -14,10 +13,10 @@ import {
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import {
-    convertLimitOffset,
     getLimitFromPageSize,
     getOffsetFromPageLimit
 } from '../../Utilities/Helpers';
+import { usePagePerPage } from '../../Utilities/Hooks';
 import { systemsListColumns } from '../Systems/SystemsListAssets';
 
 const AffectedSystems = ({ advisoryName }) => {
@@ -65,10 +64,7 @@ const AffectedSystems = ({ advisoryName }) => {
         fetchInventory();
     }, []);
 
-    const [page, perPage] = React.useMemo(
-        () => convertLimitOffset(metadata.limit, metadata.offset),
-        [metadata.limit, metadata.offset]
-    );
+    const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
     function apply(params) {
         dispatch(changeAffectedSystemsParams(params));
@@ -98,6 +94,10 @@ const AffectedSystems = ({ advisoryName }) => {
             )}
         </React.Fragment>
     );
+};
+
+AffectedSystems.propTypes = {
+    advisoryName: propTypes.string
 };
 
 export default AffectedSystems;

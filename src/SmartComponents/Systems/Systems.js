@@ -16,10 +16,10 @@ import {
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import {
-    convertLimitOffset,
     getLimitFromPageSize,
     getOffsetFromPageLimit
 } from '../../Utilities/Helpers';
+import { usePagePerPage } from '../../Utilities/Hooks';
 import { systemsListColumns } from './SystemsListAssets';
 
 const Systems = () => {
@@ -65,10 +65,7 @@ const Systems = () => {
         fetchInventory();
     }, []);
 
-    const [page, perPage] = React.useMemo(
-        () => convertLimitOffset(metadata.limit, metadata.offset),
-        [metadata.limit, metadata.offset]
-    );
+    const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
     function apply(params) {
         dispatch(changeSystemsListParams(params));
