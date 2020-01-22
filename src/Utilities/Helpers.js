@@ -55,18 +55,28 @@ export const getLimitFromPageSize = limit => {
 export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
     return (
         <div>
-            <span className="icon-with-label">
-                <EnhancementIcon />
-                {rhea}
-            </span>
-            <span className="icon-with-label">
-                <BugIcon />
-                {rhba}
-            </span>
-            <span className="icon-with-label">
-                <SecurityIcon color={'var(--pf-global--warning-color--100)'} />
-                {rhsa}
-            </span>
+            {[rhea, rhba, rhsa].every(item => item === 0) &&
+                'No applicable advisories'}
+            {rhea !== 0 && (
+                <span className="icon-with-label">
+                    <EnhancementIcon />
+                    {rhea.toString()}
+                </span>
+            )}
+            {rhba !== 0 && (
+                <span className="icon-with-label">
+                    <BugIcon />
+                    {rhba.toString()}
+                </span>
+            )}
+            {rhsa !== 0 && (
+                <span className="icon-with-label">
+                    <SecurityIcon
+                        color={'var(--pf-global--warning-color--100)'}
+                    />
+                    {rhsa.toString()}
+                </span>
+            )}
         </div>
     );
 }
