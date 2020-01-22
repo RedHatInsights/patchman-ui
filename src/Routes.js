@@ -43,6 +43,10 @@ export const paths = {
     advisoryDetail: {
         title: 'Advisory Detail',
         to: '/advisories/:advisoryId'
+    },
+    advisoryDetailSystem: {
+        title: '',
+        to: '/advisories/:advisoryId/:inventoryId'
     }
 };
 
@@ -68,10 +72,22 @@ export const Routes = (props: Props) => {
     const path = props.childProps.location.pathname;
     return (
         <Switch>
-            <Route path={paths.inventoryDetail.to} component={InventoryPage} />
-            <Route path={paths.systems.to} component={Systems} />
-            <Route path={paths.advisoryDetail.to} component={AdvisoryPage} />
+            <Redirect
+                from={paths.advisoryDetailSystem.to}
+                to={paths.inventoryDetail.to}
+            />
             <InsightsRoute
+                path={paths.inventoryDetail.to}
+                component={InventoryPage}
+            />
+            <InsightsRoute exact path={paths.systems.to} component={Systems} />
+            <InsightsRoute
+                exact
+                path={paths.advisoryDetail.to}
+                component={AdvisoryPage}
+            />
+            <InsightsRoute
+                exact
                 path={paths.advisories.to}
                 component={Advisories}
                 rootClass="Patchman"
@@ -79,8 +95,8 @@ export const Routes = (props: Props) => {
 
             <Route
                 render={() =>
-                    some(paths, p => p.to === path) ? null : (
-                        <Redirect to={paths.systems.to} />
+                    some(paths, p => p.to === path) || (
+                        <Redirect to={paths.advisories.to} />
                     )
                 }
             />
