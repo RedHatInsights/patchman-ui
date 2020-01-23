@@ -89,7 +89,11 @@ export function getSeverityById(id) {
 
 export function handleAdvisoryLink(name, body) {
     if (location.href.indexOf('patch') !== -1) {
-        return <Link to={'/advisories/' + name}>{body || name}</Link>;
+        return (
+            <Link to={'/advisories/' + name}>
+                {body === undefined ? name : body}
+            </Link>
+        );
     } else {
         return (
             <a href={`${document.baseURI}rhel/patch/advisories/${name}`}>
