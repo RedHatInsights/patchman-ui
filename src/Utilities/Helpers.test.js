@@ -6,7 +6,11 @@ import {
     convertLimitOffset,
     createAdvisoriesIcons,
     createSortBy,
-    getRowIdByIndexExpandable
+    getLimitFromPageSize,
+    getOffsetFromPageLimit,
+    getRowIdByIndexExpandable,
+    getSeverityById,
+    handleAdvisoryLink
 } from './Helpers';
 
 const TestHook = ({ callback }) => {
@@ -132,6 +136,86 @@ describe('Helpers tests', () => {
     it('create advisory icons snapshot test', () => {
         let wrapper = shallow(createAdvisoriesIcons([1, 2, 3]));
         expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('create advisory icons snapshot test with empty values', () => {
+        let wrapper = shallow(createAdvisoriesIcons([0, 0, 0]));
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('get severity object', () => {
+        let severity = 2;
+        let result = getSeverityById(severity);
+        expect(result.name).toEqual('Low');
+        result = getSeverityById(123);
+        expect(result.name).toEqual('N/A');
+    });
+
+    it('get advisory link from outside', () => {
+        const host = document.baseURI;
+        let advisoryName = 'ABCD';
+        const expected = `${host}rhel/patch/advisories/${advisoryName}`;
+        let result = handleAdvisoryLink(advisoryName);
+        let {
+            props: { href, children }
+        } = result;
+        expect(href).toEqual(expected);
+        expect(children).toEqual(advisoryName);
+    });
+
+    it('get advisory link from outside with custom text', () => {
+        const host = document.baseURI;
+        let advisoryName = 'ABCD';
+        const expected = `${host}rhel/patch/advisories/${advisoryName}`;
+        let result = handleAdvisoryLink(advisoryName, 'custom text');
+        let {
+            props: { href, children }
+        } = result;
+        expect(href).toEqual(expected);
+        expect(children).toEqual('custom text');
+    });
+
+    it('get advisory link from patch', () => {
+        delete global.window.location;
+        global.window.location = {
+            href: 'https://cloud.redhat.com/rhel/patch'
+        };
+        let advisoryName = 'ABCD';
+        const expected = `/advisories/${advisoryName}`;
+        let result = handleAdvisoryLink(advisoryName);
+        let {
+            props: { to, children }
+        } = result;
+        expect(to).toEqual(expected);
+        expect(children).toEqual(advisoryName);
+    });
+
+    it('get advisory link from patch', () => {
+        delete global.window.location;
+        global.window.location = {
+            href: 'https://cloud.redhat.com/rhel/patch'
+        };
+        let advisoryName = 'ABCD';
+        const expected = `/advisories/${advisoryName}`;
+        let result = handleAdvisoryLink(advisoryName, 'custom text');
+        let {
+            props: { to, children }
+        } = result;
+        expect(to).toEqual(expected);
+        expect(children).toEqual('custom text');
+    });
+
+    it('getLimitFromPageSize', () => {
+        let limit = Math.random();
+        let result = getLimitFromPageSize(limit);
+        expect(result).toEqual(limit);
+    });
+
+    it('getOffsetFromPageLimit', () => {
+        let page = Math.random() * 10;
+        let limit = Math.random() * 10;
+        let result = getOffsetFromPageLimit(page, limit);
+        expect(result).toEqual(page * limit - limit);
     });
 });
 /* eslint-enable */

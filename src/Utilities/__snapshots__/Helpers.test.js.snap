@@ -37,3 +37,9 @@ exports[`Helpers tests create advisory icons snapshot test 1`] = `
   </span>
 </div>
 `;
+
+exports[`Helpers tests create advisory icons snapshot test with empty values 1`] = `
+<div>
+  No applicable advisories
+</div>
+`;
