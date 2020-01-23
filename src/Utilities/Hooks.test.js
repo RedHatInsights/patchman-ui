@@ -1,6 +1,11 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table';
-import { usePerPageSelect, useSetPage, useSortColumn } from './Hooks';
+import {
+    usePagePerPage,
+    usePerPageSelect,
+    useSetPage,
+    useSortColumn
+} from './Hooks';
 
 const TestHook = ({ callback }) => {
     callback();
@@ -91,6 +96,16 @@ describe('Custom hooks tests', () => {
         onSort({}, index, direction);
 
         expect(callback).toHaveBeenCalledWith(result);
+    });
+    it('usePagePerPage, should return correct page and perPage', () => {
+        let limit = 50;
+        let offset = 1100;
+        let expected = [23, 50];
+        let res;
+        testHook(() => {
+            res = usePagePerPage(limit, offset);
+        });
+        expect(res).toEqual(expected);
     });
 });
 /* eslint-enable */
