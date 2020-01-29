@@ -101,7 +101,6 @@ export const createSystemsRows = rows => {
             return {
                 id: row.id,
                 key: row.id,
-                created: true,
                 applicable_advisories: [
                     row.attributes.rhea_count || 0,
                     row.attributes.rhba_count || 0,
