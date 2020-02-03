@@ -38,7 +38,7 @@ describe('Helpers tests', () => {
                 key: 'd'
             }
         ];
-        let value = '-a';
+        let value = ['-a'];
         let offset = 0;
         let expected = { index: 0, direction: SortByDirection.desc };
         let ret = createSortBy(header, value, offset);
@@ -61,7 +61,7 @@ describe('Helpers tests', () => {
                 key: 'd'
             }
         ];
-        let value = 'c';
+        let value = ['c'];
         let offset = 1;
         let expected = { index: 3, direction: SortByDirection.asc };
         let ret = createSortBy(header, value, offset);
