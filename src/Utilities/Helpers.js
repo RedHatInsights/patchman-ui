@@ -103,3 +103,16 @@ export function handleAdvisoryLink(name, body) {
         );
     }
 }
+
+export const remediationProvider = (selectedRows, entity) => {
+    const selected = Object.keys(selectedRows).filter(key => selectedRows[key]);
+    return selected.length
+        ? {
+            issues: selected.map(item => ({
+                id: `patch-advisory:${item}`,
+                description: item
+            })),
+            systems: [entity]
+        }
+        : false;
+};

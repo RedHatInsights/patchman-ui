@@ -10,7 +10,10 @@ import {
     selectSystemAdvisoryRow
 } from '../../store/Actions/Actions';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
-import { getRowIdByIndexExpandable } from '../../Utilities/Helpers';
+import {
+    getRowIdByIndexExpandable,
+    remediationProvider
+} from '../../Utilities/Helpers';
 import {
     usePerPageSelect,
     useSetPage,
@@ -95,6 +98,10 @@ const SystemAdvisories = () => {
                 onPerPageSelect={onPerPageSelect}
                 onSort={onSort}
                 isLoading={isLoading}
+                remediationProvider={() =>
+                    remediationProvider(selectedRows, entity.id)
+                }
+                systemId={entity.id}
             />
         </React.Fragment>
     );

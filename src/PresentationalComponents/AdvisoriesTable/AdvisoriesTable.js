@@ -1,13 +1,13 @@
-import { Pagination, PaginationVariant } from '@patternfly/react-core';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table';
 import {
     PrimaryToolbar,
-    SkeletonTable,
-    TableToolbar
+    SkeletonTable
 } from '@redhat-cloud-services/frontend-components';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Remediation from '../../SmartComponents/Remediation/Remediation';
 import { convertLimitOffset, createSortBy } from '../../Utilities/Helpers';
+import TableFooter from './TableFooter';
 
 const AdvisoriesTable = ({
     columns,
@@ -18,7 +18,9 @@ const AdvisoriesTable = ({
     onPerPageSelect,
     onSort,
     metadata,
-    isLoading
+    isLoading,
+    remediationProvider,
+    systemId
 }) => {
     const [page, perPage] = React.useMemo(
         () => convertLimitOffset(metadata.limit, metadata.offset),
@@ -40,7 +42,14 @@ const AdvisoriesTable = ({
                     onPerPageSelect
                 }}
                 filterConfig={{ items: [] }}
-            />
+            >
+                {remediationProvider && (
+                    <Remediation
+                        remediationProvider={remediationProvider}
+                        systemId={systemId}
+                    />
+                )}
+            </PrimaryToolbar>
             {isLoading ? (
                 <SkeletonTable colSize={5} rowSize={20} />
             ) : (
@@ -57,16 +66,12 @@ const AdvisoriesTable = ({
                         <TableHeader />
                         <TableBody />
                     </Table>
-                    <TableToolbar>
-                        <Pagination
-                            itemCount={metadata.total_items}
-                            perPage={perPage}
-                            page={page}
-                            onSetPage={onSetPage}
-                            widgetId={`pagination-options-menu-bottom`}
-                            variant={PaginationVariant.bottom}
-                        />
-                    </TableToolbar>
+                    <TableFooter
+                        totalItems={metadata.total_items}
+                        perPage={perPage}
+                        page={page}
+                        onSetPage={onSetPage}
+                    />
                 </React.Fragment>
             )}
         </React.Fragment>
@@ -82,7 +87,9 @@ AdvisoriesTable.propTypes = {
     onPerPageSelect: PropTypes.func,
     onSort: PropTypes.func,
     metadata: PropTypes.object,
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    remediationProvider: PropTypes.func,
+    systemId: PropTypes.string
 };
 
 export default AdvisoriesTable;
