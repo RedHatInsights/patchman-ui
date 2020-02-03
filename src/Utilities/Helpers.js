@@ -14,8 +14,9 @@ export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
 };
 
-export const createSortBy = (header, value, offset) => {
-    if (value) {
+export const createSortBy = (header, values, offset) => {
+    if (values) {
+        let [value] = values;
         let direction =
             value[0] === '-' ? SortByDirection.desc : SortByDirection.asc;
         value = value.replace(/^(-|\+)/, '');
