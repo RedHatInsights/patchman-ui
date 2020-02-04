@@ -13,10 +13,13 @@ import {
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import {
+    arrayFromObj,
     getLimitFromPageSize,
-    getOffsetFromPageLimit
+    getOffsetFromPageLimit,
+    remediationProvider
 } from '../../Utilities/Helpers';
 import { usePagePerPage } from '../../Utilities/Hooks';
+import Remediation from '../Remediation/Remediation';
 import { systemsListColumns } from '../Systems/SystemsListAssets';
 
 const AffectedSystems = ({ advisoryName }) => {
@@ -24,6 +27,9 @@ const AffectedSystems = ({ advisoryName }) => {
     const [InventoryCmp, setInventoryCmp] = React.useState();
     const rawAffectedSystems = useSelector(
         ({ AffectedSystemsStore }) => AffectedSystemsStore.rows
+    );
+    const selectedRows = useSelector(
+        ({ AffectedSystemsStore }) => AffectedSystemsStore.selectedRows
     );
     const hosts = React.useMemo(() => createSystemsRows(rawAffectedSystems), [
         rawAffectedSystems
@@ -90,7 +96,16 @@ const AffectedSystems = ({ advisoryName }) => {
                     total={metadata.total_items}
                     perPage={perPage}
                     onRefresh={handleRefresh}
-                />
+                >
+                    <Remediation
+                        remediationProvider={() =>
+                            remediationProvider(
+                                advisoryName,
+                                arrayFromObj(selectedRows)
+                            )
+                        }
+                    />
+                </InventoryCmp>
             )}
         </React.Fragment>
     );

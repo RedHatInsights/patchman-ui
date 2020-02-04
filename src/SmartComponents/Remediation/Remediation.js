@@ -5,6 +5,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 const Remediation = ({ remediationProvider }) => {
+    // eslint-disable-next-line no-console
+    console.log(remediationProvider());
     const dispatch = useDispatch();
     return (
         <div>

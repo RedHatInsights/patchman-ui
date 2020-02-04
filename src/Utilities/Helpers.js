@@ -1,8 +1,4 @@
-import {
-    BugIcon,
-    EnhancementIcon,
-    SecurityIcon
-} from '@patternfly/react-icons';
+import { BugIcon, EnhancementIcon, SecurityIcon } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
@@ -104,15 +100,21 @@ export function handleAdvisoryLink(name, body) {
     }
 }
 
-export const remediationProvider = (selectedRows, entity) => {
-    const selected = Object.keys(selectedRows).filter(key => selectedRows[key]);
-    return selected.length
+export const arrayFromObj = items =>
+    Object.keys(items).filter(key => items[key]);
+
+export const remediationProvider = (issues, systems) => {
+    issues = [].concat(issues);
+    systems = [].concat(systems);
+    // eslint-disable-next-line no-console
+    console.log(issues);
+    return issues.length && systems.length
         ? {
-            issues: selected.map(item => ({
+            issues: issues.map(item => ({
                 id: `patch-advisory:${item}`,
                 description: item
             })),
-            systems: [entity]
+            systems: [].concat(systems)
         }
         : false;
 };
