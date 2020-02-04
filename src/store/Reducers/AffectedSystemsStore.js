@@ -1,4 +1,5 @@
 import { storeListDefaults } from '../../Utilities/constants';
+import { addOrRemoveItemFromSet } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
 export const AffectedSystemsStore = (state = storeListDefaults, action) => {
@@ -7,6 +8,15 @@ export const AffectedSystemsStore = (state = storeListDefaults, action) => {
         case ActionTypes.FETCH_AFFECTED_SYSTEMS + '_PENDING':
             newState.isLoading = true;
             return newState;
+
+        case 'SELECT_ENTITY': {
+            const selectedUpdated = addOrRemoveItemFromSet(
+                newState.selectedRows,
+                [{ rowId: action.payload.id, value: action.payload.selected }]
+            );
+            newState = { ...newState, selectedRows: selectedUpdated };
+            return newState;
+        }
 
         case ActionTypes.FETCH_AFFECTED_SYSTEMS + '_FULFILLED':
             newState.rows = action.payload.data;
