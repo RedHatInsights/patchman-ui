@@ -106,15 +106,13 @@ export const arrayFromObj = items =>
 export const remediationProvider = (issues, systems) => {
     issues = [].concat(issues);
     systems = [].concat(systems);
-    // eslint-disable-next-line no-console
-    console.log(issues);
     return issues.length && systems.length
         ? {
             issues: issues.map(item => ({
                 id: `patch-advisory:${item}`,
                 description: item
             })),
-            systems: [].concat(systems)
+            systems
         }
         : false;
 };

@@ -11,6 +11,7 @@ import {
 } from '../../store/Actions/Actions';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
+    arrayFromObj,
     getRowIdByIndexExpandable,
     remediationProvider
 } from '../../Utilities/Helpers';
@@ -99,7 +100,7 @@ const SystemAdvisories = () => {
                 onSort={onSort}
                 isLoading={isLoading}
                 remediationProvider={() =>
-                    remediationProvider(selectedRows, entity.id)
+                    remediationProvider(arrayFromObj(selectedRows), entity.id)
                 }
                 systemId={entity.id}
             />
