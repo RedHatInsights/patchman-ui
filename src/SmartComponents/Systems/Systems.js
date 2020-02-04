@@ -91,6 +91,7 @@ const Systems = () => {
                         total={metadata.total_items}
                         perPage={perPage}
                         onRefresh={handleRefresh}
+                        hasCheckbox={false}
                     />
                 )}
             </Main>
