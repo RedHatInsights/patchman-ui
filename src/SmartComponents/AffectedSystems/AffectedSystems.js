@@ -1,5 +1,5 @@
 import * as reactCore from '@patternfly/react-core';
-import { Button } from '@patternfly/react-core';
+import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import * as pfReactTable from '@patternfly/react-table';
 import propTypes from 'prop-types';
@@ -22,6 +22,7 @@ import {
 import { usePagePerPage } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns } from '../Systems/SystemsListAssets';
+import { affectedSystemsRowActions } from './AffectedSystemsAssets';
 
 const AffectedSystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -106,21 +107,28 @@ const AffectedSystems = ({ advisoryName }) => {
                     total={metadata.total_items}
                     perPage={perPage}
                     onRefresh={handleRefresh}
+                    actions={affectedSystemsRowActions(showRemediationModal)}
                 >
-                    <Button
-                        isDisabled={arrayFromObj(selectedRows).length === 0}
-                        onClick={() =>
-                            showRemediationModal(
-                                remediationProvider(
-                                    advisoryName,
-                                    arrayFromObj(selectedRows)
-                                )
-                            )
-                        }
-                    >
-                        Apply
-                    </Button>
-                    <RemediationModalCmp />
+                    <ToolbarGroup>
+                        <ToolbarItem>
+                            <Button
+                                isDisabled={
+                                    arrayFromObj(selectedRows).length === 0
+                                }
+                                onClick={() =>
+                                    showRemediationModal(
+                                        remediationProvider(
+                                            advisoryName,
+                                            arrayFromObj(selectedRows)
+                                        )
+                                    )
+                                }
+                            >
+                                Apply
+                            </Button>
+                            <RemediationModalCmp />
+                        </ToolbarItem>
+                    </ToolbarGroup>
                 </InventoryCmp>
             )}
         </React.Fragment>

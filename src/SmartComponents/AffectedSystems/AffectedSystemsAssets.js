@@ -1,4 +1,8 @@
-import { createAdvisoriesIcons } from '../../Utilities/Helpers';
+import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
+import {
+    createAdvisoriesIcons,
+    remediationProvider
+} from '../../Utilities/Helpers';
 
 export const systemsListColumns = [
     {
@@ -25,3 +29,24 @@ export const systemsListColumns = [
         }
     }
 ];
+
+export const affectedSystemsRowActions = showRemediationModal => {
+    return [
+        {
+            title: 'Apply all applicable advisories',
+            onClick: (event, rowId, rowData) => {
+                fetchApplicableSystemAdvisoriesApi({
+                    id: rowData.id,
+                    limit: 10000
+                }).then(res =>
+                    showRemediationModal(
+                        remediationProvider(
+                            res.data.map(item => item.id),
+                            rowData.id
+                        )
+                    )
+                );
+            }
+        }
+    ];
+};
