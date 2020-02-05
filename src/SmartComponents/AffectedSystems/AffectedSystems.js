@@ -21,8 +21,10 @@ import {
 } from '../../Utilities/Helpers';
 import { usePagePerPage } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
-import { systemsListColumns } from '../Systems/SystemsListAssets';
-import { affectedSystemsRowActions } from './AffectedSystemsAssets';
+import {
+    systemsListColumns,
+    systemsRowActions
+} from '../Systems/SystemsListAssets';
 
 const AffectedSystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -107,7 +109,7 @@ const AffectedSystems = ({ advisoryName }) => {
                     total={metadata.total_items}
                     perPage={perPage}
                     onRefresh={handleRefresh}
-                    actions={affectedSystemsRowActions(showRemediationModal)}
+                    actions={systemsRowActions(showRemediationModal)}
                 >
                     <ToolbarGroup>
                         <ToolbarItem>
