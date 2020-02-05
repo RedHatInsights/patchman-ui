@@ -1,4 +1,5 @@
 import * as reactCore from '@patternfly/react-core';
+import { Button } from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import * as pfReactTable from '@patternfly/react-table';
 import propTypes from 'prop-types';
@@ -19,12 +20,16 @@ import {
     remediationProvider
 } from '../../Utilities/Helpers';
 import { usePagePerPage } from '../../Utilities/Hooks';
-import Remediation from '../Remediation/Remediation';
+import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns } from '../Systems/SystemsListAssets';
 
 const AffectedSystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
     const [InventoryCmp, setInventoryCmp] = React.useState();
+    const [
+        RemediationModalCmp,
+        setRemediationModalCmp
+    ] = React.useState(() => () => null);
     const rawAffectedSystems = useSelector(
         ({ AffectedSystemsStore }) => AffectedSystemsStore.rows
     );
@@ -76,6 +81,10 @@ const AffectedSystems = ({ advisoryName }) => {
         dispatch(changeAffectedSystemsParams(params));
     }
 
+    const showRemediationModal = data => {
+        setRemediationModalCmp(() => () => <RemediationModal data={data} />);
+    };
+
     const handleRefresh = React.useCallback(({ page, per_page: perPage }) => {
         if (metadata.page !== page || metadata.page_size !== perPage) {
             apply({
@@ -87,6 +96,7 @@ const AffectedSystems = ({ advisoryName }) => {
             });
         }
     });
+
     return (
         <React.Fragment>
             {InventoryCmp && (
@@ -97,14 +107,20 @@ const AffectedSystems = ({ advisoryName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                 >
-                    <Remediation
-                        remediationProvider={() =>
-                            remediationProvider(
-                                advisoryName,
-                                arrayFromObj(selectedRows)
+                    <Button
+                        isDisabled={arrayFromObj(selectedRows).length === 0}
+                        onClick={() =>
+                            showRemediationModal(
+                                remediationProvider(
+                                    advisoryName,
+                                    arrayFromObj(selectedRows)
+                                )
                             )
                         }
-                    />
+                    >
+                        Apply
+                    </Button>
+                    <RemediationModalCmp />
                 </InventoryCmp>
             )}
         </React.Fragment>
