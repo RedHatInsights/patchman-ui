@@ -102,6 +102,7 @@ const SystemAdvisories = () => {
                 remediationProvider={() =>
                     remediationProvider(arrayFromObj(selectedRows), entity.id)
                 }
+                selectedRows={selectedRows}
                 systemId={entity.id}
             />
         </React.Fragment>

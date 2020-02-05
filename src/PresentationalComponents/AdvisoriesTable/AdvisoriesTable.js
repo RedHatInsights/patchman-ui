@@ -1,3 +1,4 @@
+import { Button } from '@patternfly/react-core';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table';
 import {
     PrimaryToolbar,
@@ -5,8 +6,12 @@ import {
 } from '@redhat-cloud-services/frontend-components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Remediation from '../../SmartComponents/Remediation/Remediation';
-import { convertLimitOffset, createSortBy } from '../../Utilities/Helpers';
+import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
+import {
+    arrayFromObj,
+    convertLimitOffset,
+    createSortBy
+} from '../../Utilities/Helpers';
 import TableFooter from './TableFooter';
 
 const AdvisoriesTable = ({
@@ -20,8 +25,12 @@ const AdvisoriesTable = ({
     metadata,
     isLoading,
     remediationProvider,
-    systemId
+    selectedRows
 }) => {
+    const [
+        RemediationModalCmp,
+        setRemediationModalCmp
+    ] = React.useState(() => () => null);
     const [page, perPage] = React.useMemo(
         () => convertLimitOffset(metadata.limit, metadata.offset),
         [metadata.limit, metadata.offset]
@@ -30,6 +39,10 @@ const AdvisoriesTable = ({
         () => createSortBy(columns, metadata.sort, 2),
         [metadata.sort]
     );
+    const showRemediationModal = data => {
+        setRemediationModalCmp(() => () => <RemediationModal data={data} />);
+    };
+
     return (
         <React.Fragment>
             <PrimaryToolbar
@@ -44,10 +57,17 @@ const AdvisoriesTable = ({
                 filterConfig={{ items: [] }}
             >
                 {remediationProvider && (
-                    <Remediation
-                        remediationProvider={remediationProvider}
-                        systemId={systemId}
-                    />
+                    <React.Fragment>
+                        <Button
+                            isDisabled={arrayFromObj(selectedRows).length === 0}
+                            onClick={() =>
+                                showRemediationModal(remediationProvider())
+                            }
+                        >
+                            Apply
+                        </Button>
+                        <RemediationModalCmp />
+                    </React.Fragment>
                 )}
             </PrimaryToolbar>
             {isLoading ? (
@@ -89,7 +109,7 @@ AdvisoriesTable.propTypes = {
     metadata: PropTypes.object,
     isLoading: PropTypes.bool,
     remediationProvider: PropTypes.func,
-    systemId: PropTypes.string
+    selectedRows: PropTypes.object
 };
 
 export default AdvisoriesTable;
