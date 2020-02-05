@@ -18,11 +18,16 @@ import {
     getOffsetFromPageLimit
 } from '../../Utilities/Helpers';
 import { usePagePerPage } from '../../Utilities/Hooks';
-import { systemsListColumns } from './SystemsListAssets';
+import RemediationModal from '../Remediation/RemediationModal';
+import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 
 const Systems = () => {
     const dispatch = useDispatch();
     const [InventoryCmp, setInventoryCmp] = React.useState();
+    const [
+        RemediationModalCmp,
+        setRemediationModalCmp
+    ] = React.useState(() => () => null);
     const rawSystems = useSelector(
         ({ SystemsListStore }) => SystemsListStore.rows
     );
@@ -65,6 +70,10 @@ const Systems = () => {
 
     const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
+    const showRemediationModal = data => {
+        setRemediationModalCmp(() => () => <RemediationModal data={data} />);
+    };
+
     function apply(params) {
         dispatch(changeSystemsListParams(params));
     }
@@ -83,6 +92,7 @@ const Systems = () => {
     return (
         <React.Fragment>
             <Header title={'System Patching'} showTabs />
+            <RemediationModalCmp />
             <Main>
                 {InventoryCmp && (
                     <InventoryCmp
@@ -92,6 +102,7 @@ const Systems = () => {
                         perPage={perPage}
                         onRefresh={handleRefresh}
                         hasCheckbox={false}
+                        actions={systemsRowActions(showRemediationModal)}
                     />
                 )}
             </Main>
