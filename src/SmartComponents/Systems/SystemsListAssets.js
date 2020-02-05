@@ -1,3 +1,5 @@
+import { DateFormat } from '@redhat-cloud-services/frontend-components';
+import React from 'react';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import {
     createAdvisoriesIcons,
@@ -22,11 +24,16 @@ export const systemsListColumns = [
         renderFunc: value => createAdvisoriesIcons(value)
     },
     {
-        key: 'status',
-        title: 'Status',
+        key: 'updated',
+        title: 'Last seen',
         props: {
             width: 30
-        }
+        },
+        renderFunc: value => (
+            <React.Fragment>
+                <DateFormat date={value} />
+            </React.Fragment>
+        )
     }
 ];
 
