@@ -1,4 +1,4 @@
-import { ExternalLinkSquareAltIcon } from '@patternfly/react-icons';
+import ExternalLinkSquareAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-square-alt-icon';
 import propTypes from 'prop-types';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import { Main } from '@redhat-cloud-services/frontend-components';
+import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';

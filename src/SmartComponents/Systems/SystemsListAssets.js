@@ -1,5 +1,5 @@
 import { classNames } from '@patternfly/react-table';
-import { DateFormat } from '@redhat-cloud-services/frontend-components';
+import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
 import React from 'react';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import {

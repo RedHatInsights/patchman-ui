@@ -1,5 +1,4 @@
 import * as reactCore from '@patternfly/react-core';
-import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import * as pfReactTable from '@patternfly/react-table';
 import propTypes from 'prop-types';
@@ -111,9 +110,9 @@ const AffectedSystems = ({ advisoryName }) => {
                     onRefresh={handleRefresh}
                     actions={systemsRowActions(showRemediationModal)}
                 >
-                    <ToolbarGroup>
-                        <ToolbarItem>
-                            <Button
+                    <reactCore.ToolbarGroup>
+                        <reactCore.ToolbarItem>
+                            <reactCore.Button
                                 isDisabled={
                                     arrayFromObj(selectedRows).length === 0
                                 }
@@ -127,10 +126,10 @@ const AffectedSystems = ({ advisoryName }) => {
                                 }
                             >
                                 Apply
-                            </Button>
+                            </reactCore.Button>
                             <RemediationModalCmp />
-                        </ToolbarItem>
-                    </ToolbarGroup>
+                        </reactCore.ToolbarItem>
+                    </reactCore.ToolbarGroup>
                 </InventoryCmp>
             )}
         </React.Fragment>

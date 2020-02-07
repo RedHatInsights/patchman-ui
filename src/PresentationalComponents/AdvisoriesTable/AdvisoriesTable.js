@@ -1,9 +1,11 @@
-import { Button } from '@patternfly/react-core';
-import { Table, TableBody, TableHeader } from '@patternfly/react-table';
+import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
 import {
-    PrimaryToolbar,
-    SkeletonTable
-} from '@redhat-cloud-services/frontend-components';
+    Table,
+    TableBody,
+    TableHeader
+} from '@patternfly/react-table/dist/js/components/Table';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
+import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/SkeletonTable';
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
