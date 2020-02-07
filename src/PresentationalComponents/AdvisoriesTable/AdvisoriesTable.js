@@ -1,9 +1,11 @@
 import { Button } from '@patternfly/react-core';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table';
 import {
+    conditionalFilterType,
     PrimaryToolbar,
     SkeletonTable
 } from '@redhat-cloud-services/frontend-components';
+import debounce from 'lodash/debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
@@ -25,8 +27,10 @@ const AdvisoriesTable = ({
     metadata,
     isLoading,
     remediationProvider,
-    selectedRows
+    selectedRows,
+    apply
 }) => {
+    const [searchValue, setSearchValue] = React.useState();
     const [
         RemediationModalCmp,
         setRemediationModalCmp
@@ -43,6 +47,10 @@ const AdvisoriesTable = ({
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
 
+    const [searchAdvisory] = React.useState(() =>
+        debounce(value => apply({ search: value }), 400)
+    );
+
     return (
         <React.Fragment>
             <PrimaryToolbar
@@ -54,7 +62,23 @@ const AdvisoriesTable = ({
                     onSetPage,
                     onPerPageSelect
                 }}
-                filterConfig={{ items: [] }}
+                filterConfig={{
+                    items: [
+                        {
+                            type: conditionalFilterType.text,
+                            label: 'Search advisories',
+                            value: searchValue,
+                            filterValues: {
+                                onChange: (event, value) => {
+                                    setSearchValue(value);
+                                    searchAdvisory(value);
+                                },
+                                placeholder: 'Search advisories',
+                                value: searchValue
+                            }
+                        }
+                    ]
+                }}
             >
                 {remediationProvider && (
                     <React.Fragment>
@@ -109,7 +133,8 @@ AdvisoriesTable.propTypes = {
     metadata: PropTypes.object,
     isLoading: PropTypes.bool,
     remediationProvider: PropTypes.func,
-    selectedRows: PropTypes.object
+    selectedRows: PropTypes.object,
+    apply: PropTypes.func
 };
 
 export default AdvisoriesTable;

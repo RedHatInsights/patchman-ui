@@ -88,6 +88,7 @@ const Advisories = () => {
                     onPerPageSelect={onPerPageSelect}
                     onSort={onSort}
                     isLoading={isLoading}
+                    apply={apply}
                 />
             </Main>
         </React.Fragment>

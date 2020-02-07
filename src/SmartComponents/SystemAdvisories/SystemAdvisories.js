@@ -104,6 +104,7 @@ const SystemAdvisories = () => {
                 }
                 selectedRows={selectedRows}
                 systemId={entity.id}
+                apply={apply}
             />
         </React.Fragment>
     );
