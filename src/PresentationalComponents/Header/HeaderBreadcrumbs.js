@@ -1,4 +1,7 @@
-import { Breadcrumb, BreadcrumbItem } from '@patternfly/react-core';
+import {
+    Breadcrumb,
+    BreadcrumbItem
+} from '@patternfly/react-core/dist/js/components/Breadcrumb/';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';

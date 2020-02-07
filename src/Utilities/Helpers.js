@@ -1,8 +1,6 @@
-import {
-    BugIcon,
-    EnhancementIcon,
-    SecurityIcon
-} from '@patternfly/react-icons';
+import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
+import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
+import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars

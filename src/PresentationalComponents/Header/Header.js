@@ -1,7 +1,7 @@
 import {
     PageHeader,
     PageHeaderTitle
-} from '@redhat-cloud-services/frontend-components';
+} from '@redhat-cloud-services/frontend-components/components/PageHeader';
 import PropTypes from 'prop-types';
 import React from 'react';
 import HeaderBreadcrumbs from './HeaderBreadcrumbs';
