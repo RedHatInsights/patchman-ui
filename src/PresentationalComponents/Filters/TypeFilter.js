@@ -4,7 +4,14 @@ import { advisoryTypes } from '../../Utilities/constants';
 
 const typeFilter = apply => {
     const [type, setType] = React.useState();
-
+    const advisoryTypesMap = React.useMemo(
+        () =>
+            advisoryTypes.map(({ value, label }) => ({
+                label,
+                value: value.toString()
+            })),
+        []
+    );
     const filterByType = value => {
         apply({ filter: { advisory_type: value } });
     };
@@ -18,7 +25,7 @@ const typeFilter = apply => {
                 setType(value);
                 filterByType(value);
             },
-            items: advisoryTypes
+            items: advisoryTypesMap
         }
     };
 };
