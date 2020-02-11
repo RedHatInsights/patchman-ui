@@ -1,38 +1,15 @@
-import {
-    BugIcon,
-    EnhancementIcon,
-    SecurityIcon,
-    UnknownIcon
-} from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-export const AdvisoryTypes = [
-    {
-        title: 'Unknown',
-        icon: <UnknownIcon />
-    },
-    {
-        title: 'Enhancement',
-        icon: <EnhancementIcon />
-    },
-    {
-        title: 'Bugfix',
-        icon: <BugIcon />
-    },
-    {
-        title: 'Security',
-        icon: <SecurityIcon />
-    }
-];
+import { advisoryTypes } from '../../Utilities/constants';
 
 const AdvisoryType = ({ type }) => {
-    const advisoryType = AdvisoryTypes[type] || AdvisoryTypes[0];
+    const advisoryType =
+        advisoryTypes.find(item => item.value === type) || advisoryTypes[3];
     return (
         <React.Fragment>
             <div className={'icon-with-label'}>
                 {advisoryType.icon}
-                {advisoryType.title}
+                {advisoryType.label}
             </div>
         </React.Fragment>
     );

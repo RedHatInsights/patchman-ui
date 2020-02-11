@@ -1,3 +1,5 @@
+import { prepareFilters } from './Helpers';
+
 export function createApiCall(
     endpoint,
     method,
@@ -57,7 +59,9 @@ export function createApiCall(
 }
 
 export const fetchApplicableAdvisoriesApi = params => {
-    return createApiCall('/advisories', 'get', params);
+    let { filter, ...allParams } = params;
+    allParams = { ...allParams, ...prepareFilters(filter) };
+    return createApiCall('/advisories', 'get', allParams);
 };
 
 export const fetchApplicableSystemAdvisoriesApi = params => {

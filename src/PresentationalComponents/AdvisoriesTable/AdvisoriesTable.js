@@ -1,11 +1,9 @@
 import { Button } from '@patternfly/react-core';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table';
 import {
-    conditionalFilterType,
     PrimaryToolbar,
     SkeletonTable
 } from '@redhat-cloud-services/frontend-components';
-import debounce from 'lodash/debounce';
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
@@ -14,6 +12,9 @@ import {
     convertLimitOffset,
     createSortBy
 } from '../../Utilities/Helpers';
+import publishDateFilter from '../Filters/PublishDateFilter';
+import searchFilter from '../Filters/SearchFilter';
+import typeFilter from '../Filters/TypeFilter';
 import TableFooter from './TableFooter';
 
 const AdvisoriesTable = ({
@@ -30,7 +31,6 @@ const AdvisoriesTable = ({
     selectedRows,
     apply
 }) => {
-    const [searchValue, setSearchValue] = React.useState();
     const [
         RemediationModalCmp,
         setRemediationModalCmp
@@ -47,10 +47,6 @@ const AdvisoriesTable = ({
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
 
-    const [searchAdvisory] = React.useState(() =>
-        debounce(value => apply({ search: value }), 400)
-    );
-
     return (
         <React.Fragment>
             <PrimaryToolbar
@@ -64,19 +60,9 @@ const AdvisoriesTable = ({
                 }}
                 filterConfig={{
                     items: [
-                        {
-                            type: conditionalFilterType.text,
-                            label: 'Search advisories',
-                            value: searchValue,
-                            filterValues: {
-                                onChange: (event, value) => {
-                                    setSearchValue(value);
-                                    searchAdvisory(value);
-                                },
-                                placeholder: 'Search advisories',
-                                value: searchValue
-                            }
-                        }
+                        searchFilter(apply),
+                        typeFilter(apply),
+                        publishDateFilter(apply)
                     ]
                 }}
             >

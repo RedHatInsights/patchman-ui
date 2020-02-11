@@ -1,4 +1,8 @@
-import { BugIcon, EnhancementIcon, SecurityIcon } from '@patternfly/react-icons';
+import {
+    BugIcon,
+    EnhancementIcon,
+    SecurityIcon
+} from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
@@ -115,4 +119,20 @@ export const remediationProvider = (issues, systems) => {
             systems
         }
         : false;
+};
+
+export const prepareFilters = filter => {
+    let result = {};
+    filter &&
+        Object.entries(filter).forEach(item => {
+            const [key, value] = item;
+            // eslint-disable-next-line no-console
+            console.log(value);
+            const operator = [].concat(value).length > 1 ? 'in:' : '';
+            result = {
+                ...result,
+                [`filter[${key}]`]: `${operator}${value.toString()}`
+            };
+        });
+    return result;
 };
