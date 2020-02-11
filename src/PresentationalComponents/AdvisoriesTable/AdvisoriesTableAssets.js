@@ -5,7 +5,7 @@ export const advisoriesColumns = [
         title: 'Name',
         cellFormatters: [expandable],
         transforms: [sortable],
-        key: 'name'
+        key: 'id'
     },
     {
         title: 'Publish date',
@@ -34,7 +34,7 @@ export const systemAdvisoriesColumns = [
         title: 'Name',
         cellFormatters: [expandable],
         transforms: [sortable],
-        key: 'name'
+        key: 'id'
     },
     {
         title: 'Publish date',
