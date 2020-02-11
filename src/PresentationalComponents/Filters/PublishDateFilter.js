@@ -10,7 +10,6 @@ const publishDateFilter = apply => {
 
     return {
         label: 'Publish date',
-        value: 'public_date',
         type: conditionalFilterType.radio,
         filterValues: {
             onChange: (event, value) => {

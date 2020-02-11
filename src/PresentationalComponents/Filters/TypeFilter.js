@@ -6,12 +6,11 @@ const typeFilter = apply => {
     const [type, setType] = React.useState();
 
     const filterByType = value => {
-        apply({ filter: { type: value } });
+        apply({ filter: { advisory_type: value } });
     };
 
     return {
         label: 'Type',
-        value: 'type',
         type: conditionalFilterType.checkbox,
         filterValues: {
             onChange: (event, value) => {
