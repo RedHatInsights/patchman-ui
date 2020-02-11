@@ -1,8 +1,4 @@
-import {
-    BugIcon,
-    EnhancementIcon,
-    SecurityIcon
-} from '@patternfly/react-icons';
+import { BugIcon, EnhancementIcon, SecurityIcon } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
@@ -135,4 +131,14 @@ export const prepareFilters = filter => {
             };
         });
     return result;
+};
+
+export const changeListParams = (oldParams, newParams) => {
+    const offsetResetParams = ['filter', 'search', 'limit'];
+    const newOffset =
+        (offsetResetParams.some(item => newParams.hasOwnProperty(item)) && {
+            offset: 0
+        }) ||
+        {};
+    return { ...oldParams, ...newParams, ...newOffset };
 };
