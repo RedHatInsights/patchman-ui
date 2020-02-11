@@ -146,9 +146,9 @@ describe('Helpers tests', () => {
     it('get severity object', () => {
         let severity = 2;
         let result = getSeverityById(severity);
-        expect(result.name).toEqual('Low');
+        expect(result.label).toEqual('Moderate');
         result = getSeverityById(123);
-        expect(result.name).toEqual('N/A');
+        expect(result.label).toEqual('N/A');
     });
 
     it('get advisory link from outside', () => {

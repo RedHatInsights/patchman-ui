@@ -1,4 +1,8 @@
-import { BugIcon, EnhancementIcon, SecurityIcon } from '@patternfly/react-icons';
+import {
+    BugIcon,
+    EnhancementIcon,
+    SecurityIcon
+} from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
@@ -80,7 +84,8 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
 
 export function getSeverityById(id) {
     return (
-        advisorySeverities.find(item => item.id === id) || advisorySeverities[0]
+        advisorySeverities.find(item => item.value === id) ||
+        advisorySeverities[0]
     );
 }
 
