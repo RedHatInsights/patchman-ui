@@ -122,7 +122,7 @@ export const remediationProvider = (issues, systems) => {
         : false;
 };
 
-export const prepareFilters = filter => {
+export const flattenFilters = filter => {
     let result = {};
     filter &&
         Object.entries(filter).forEach(item => {

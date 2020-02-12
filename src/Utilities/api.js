@@ -1,4 +1,4 @@
-import { prepareFilters } from './Helpers';
+import { flattenFilters } from './Helpers';
 
 export function createApiCall(
     endpoint,
@@ -62,13 +62,13 @@ export function createApiCall(
 
 export const fetchApplicableAdvisoriesApi = params => {
     let { filter, ...allParams } = params;
-    allParams = { ...allParams, ...prepareFilters(filter) };
+    allParams = { ...allParams, ...flattenFilters(filter) };
     return createApiCall('/advisories', 'get', allParams);
 };
 
 export const fetchApplicableSystemAdvisoriesApi = params => {
     let { id, filter, ...allParams } = params;
-    allParams = { ...allParams, ...prepareFilters(filter) };
+    allParams = { ...allParams, ...flattenFilters(filter) };
     return createApiCall(`/systems/${id}/advisories`, 'get', allParams);
 };
 
