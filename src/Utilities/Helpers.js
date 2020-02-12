@@ -137,11 +137,15 @@ export const flattenFilters = filter => {
 };
 
 export const changeListParams = (oldParams, newParams) => {
+    const newState = { ...oldParams, ...newParams };
     const offsetResetParams = ['filter', 'search', 'limit'];
-    const newOffset =
-        (offsetResetParams.some(item => newParams.hasOwnProperty(item)) && {
-            offset: 0
-        }) ||
-        {};
-    return { ...oldParams, ...newParams, ...newOffset };
+    if (offsetResetParams.some(item => newParams.hasOwnProperty(item))) {
+        newState.offset = 0;
+    }
+
+    if (newParams.hasOwnProperty('filter')) {
+        newState.filter = { ...oldParams.filter, ...newParams.filter };
+    }
+
+    return newState;
 };
