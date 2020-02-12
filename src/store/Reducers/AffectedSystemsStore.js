@@ -1,5 +1,8 @@
 import { storeListDefaults } from '../../Utilities/constants';
-import { addOrRemoveItemFromSet } from '../../Utilities/Helpers';
+import {
+    addOrRemoveItemFromSet,
+    changeListParams
+} from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
 export const AffectedSystemsStore = (state = storeListDefaults, action) => {
@@ -17,6 +20,12 @@ export const AffectedSystemsStore = (state = storeListDefaults, action) => {
             newState = { ...newState, selectedRows: selectedUpdated };
             return newState;
         }
+
+        case ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS:
+            return {
+                ...state,
+                queryParams: changeListParams(state.queryParams, action.payload)
+            };
 
         case ActionTypes.FETCH_AFFECTED_SYSTEMS + '_FULFILLED':
             newState.rows = action.payload.data;
