@@ -1,9 +1,7 @@
-import {
-    BugIcon,
-    EnhancementIcon,
-    SecurityIcon,
-    UnknownIcon
-} from '@patternfly/react-icons';
+import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
+import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
+import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
+import UnknownIcon from '@patternfly/react-icons/dist/js/icons/unknown-icon';
 import moment from 'moment';
 import React from 'react';
 
