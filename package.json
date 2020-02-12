@@ -10,7 +10,7 @@
     "@redhat-cloud-services/frontend-components": "0.0.47-beta",
     "@redhat-cloud-services/frontend-components-notifications": "0.0.5-RC2",
     "@redhat-cloud-services/frontend-components-remediations": "0.0.5-RC2",
-    "@redhat-cloud-services/frontend-components-utilities": "0.0.15-RC2",
+    "@redhat-cloud-services/frontend-components-utilities": "1.0.0",
     "axios": "^0.19.0",
     "classnames": "^2.2.5",
     "html-webpack-plugin": "^4.0.0-alpha.1",
