@@ -15,7 +15,7 @@ export const advisoriesColumns = [
     {
         title: 'Type',
         transforms: [sortable],
-        key: 'type'
+        key: 'advisory_type'
     },
     {
         title: 'Applicable Systems',
@@ -44,7 +44,7 @@ export const systemAdvisoriesColumns = [
     {
         title: 'Type',
         transforms: [sortable],
-        key: 'type'
+        key: 'advisory_type'
     },
     {
         title: 'Synopsis',
