@@ -3,9 +3,9 @@ import React from 'react';
 import { publicDateOptions } from '../../Utilities/constants';
 
 const publishDateFilter = apply => {
-    const [type, setType] = React.useState();
-    const filterByType = value => {
-        apply({ filter: { public_date: value } });
+    const [, setPublicDate] = React.useState();
+    const filterByPublicDate = value => {
+        apply({ filter: { public_date: (value !== '0' && value) || '' } });
     };
 
     return {
@@ -13,9 +13,8 @@ const publishDateFilter = apply => {
         type: conditionalFilterType.radio,
         filterValues: {
             onChange: (event, value) => {
-                type;
-                setType(value);
-                filterByType(value);
+                setPublicDate(value);
+                filterByPublicDate(value);
             },
             items: publicDateOptions
         }

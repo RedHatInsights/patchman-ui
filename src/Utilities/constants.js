@@ -22,31 +22,31 @@ export const storeListDefaults = {
 export const publicDateOptions = [
     { value: '', label: 'All' },
     {
-        value: `>:${moment()
+        value: `gt:${moment()
         .subtract(7, 'days')
         .toISOString()}`,
         label: 'Last 7 days'
     },
     {
-        value: `>:${moment()
+        value: `gt:${moment()
         .subtract(30, 'days')
         .toISOString()}`,
         label: 'Last 30 days'
     },
     {
-        value: `>:${moment()
+        value: `gt:${moment()
         .subtract(90, 'days')
         .toISOString()}`,
         label: 'Last 90 days'
     },
     {
-        value: `>:${moment()
+        value: `gt:${moment()
         .subtract(1, 'years')
         .toISOString()}`,
         label: 'Last year'
     },
     {
-        value: `<:${moment()
+        value: `lt:${moment()
         .subtract(1, 'years')
         .toISOString()}`,
         label: 'More than 1 year ago'

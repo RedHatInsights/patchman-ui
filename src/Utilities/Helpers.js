@@ -127,8 +127,6 @@ export const flattenFilters = filter => {
     filter &&
         Object.entries(filter).forEach(item => {
             const [key, value] = item;
-            // eslint-disable-next-line no-console
-            console.log(value);
             const operator = [].concat(value).length > 1 ? 'in:' : '';
             result = {
                 ...result,
