@@ -18,7 +18,7 @@ export const advisoriesColumns = [
         key: 'advisory_type'
     },
     {
-        title: 'Applicable Systems',
+        title: 'Applicable systems',
         transforms: [sortable],
         key: 'applicable_systems'
     },
