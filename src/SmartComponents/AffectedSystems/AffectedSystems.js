@@ -88,15 +88,12 @@ const AffectedSystems = ({ advisoryName }) => {
     };
 
     const handleRefresh = React.useCallback(({ page, per_page: perPage }) => {
-        if (metadata.page !== page || metadata.page_size !== perPage) {
-            apply({
-                offset:
-                    metadata.limit !== perPage
-                        ? 0
-                        : getOffsetFromPageLimit(page, perPage),
-                limit: getLimitFromPageSize(perPage)
-            });
-        }
+        const offset = getOffsetFromPageLimit(page, perPage);
+        const limit = getLimitFromPageSize(perPage);
+        apply({
+            ...(metadata.offset !== offset && { offset }),
+            ...(metadata.limit !== limit && { limit })
+        });
     });
 
     return (
