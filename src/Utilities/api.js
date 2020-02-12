@@ -7,14 +7,16 @@ export function createApiCall(
     data = undefined
 ) {
     if (parameters && method === 'get') {
-        let params = Object.keys(parameters)
-        .map(key => [
-            encodeURIComponent(key)
-            .concat('=')
-            .concat(encodeURIComponent(parameters[key]))
-        ])
-        .join('&');
-        endpoint = endpoint.concat('?').concat(params);
+        let params = [];
+        Object.keys(parameters).forEach(key => {
+            const argKey = encodeURIComponent(key);
+            const argValue = encodeURIComponent(parameters[key]);
+            if (argValue !== '') {
+                params.push(argKey.concat('=').concat(argValue));
+            }
+        });
+
+        endpoint = endpoint.concat('?').concat(params.join('&'));
     }
 
     let result = window.insights.chrome.auth
