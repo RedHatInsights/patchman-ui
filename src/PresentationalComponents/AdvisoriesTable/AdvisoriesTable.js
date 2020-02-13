@@ -9,11 +9,7 @@ import { SkeletonTable } from '@redhat-cloud-services/frontend-components/compon
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
-import {
-    arrayFromObj,
-    convertLimitOffset,
-    createSortBy
-} from '../../Utilities/Helpers';
+import { arrayFromObj, convertLimitOffset } from '../../Utilities/Helpers';
 import publishDateFilter from '../Filters/PublishDateFilter';
 import searchFilter from '../Filters/SearchFilter';
 import typeFilter from '../Filters/TypeFilter';
@@ -29,6 +25,7 @@ const AdvisoriesTable = ({
     onSort,
     metadata,
     isLoading,
+    sortBy,
     remediationProvider,
     selectedRows,
     apply
@@ -41,10 +38,7 @@ const AdvisoriesTable = ({
         () => convertLimitOffset(metadata.limit, metadata.offset),
         [metadata.limit, metadata.offset]
     );
-    const sortBy = React.useMemo(
-        () => createSortBy(columns, metadata.sort, 2),
-        [metadata.sort]
-    );
+
     const showRemediationModal = data => {
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
@@ -123,7 +117,8 @@ AdvisoriesTable.propTypes = {
     isLoading: PropTypes.bool,
     remediationProvider: PropTypes.func,
     selectedRows: PropTypes.object,
-    apply: PropTypes.func
+    apply: PropTypes.func,
+    sortBy: PropTypes.func
 };
 
 export default AdvisoriesTable;

@@ -10,7 +10,10 @@ import {
     fetchApplicableAdvisories
 } from '../../store/Actions/Actions';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
-import { getRowIdByIndexExpandable } from '../../Utilities/Helpers';
+import {
+    createSortBy,
+    getRowIdByIndexExpandable
+} from '../../Utilities/Helpers';
 import {
     usePerPageSelect,
     useSetPage,
@@ -55,7 +58,11 @@ const Advisories = () => {
         )
     );
 
-    const onSort = useSortColumn(advisoriesColumns, apply, 2);
+    const onSort = useSortColumn(advisoriesColumns, apply, 1);
+    const sortBy = React.useMemo(
+        () => createSortBy(advisoriesColumns, metadata.sort, 1),
+        [metadata.sort]
+    );
 
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
@@ -76,6 +83,7 @@ const Advisories = () => {
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}
                     onSort={onSort}
+                    sortBy={sortBy}
                     isLoading={isLoading}
                     apply={apply}
                 />

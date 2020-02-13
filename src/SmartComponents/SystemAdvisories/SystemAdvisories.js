@@ -12,6 +12,7 @@ import {
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
     arrayFromObj,
+    createSortBy,
     getRowIdByIndexExpandable,
     remediationProvider
 } from '../../Utilities/Helpers';
@@ -79,7 +80,10 @@ const SystemAdvisories = () => {
     );
 
     const onSort = useSortColumn(systemAdvisoriesColumns, apply, 2);
-
+    const sortBy = React.useMemo(
+        () => createSortBy(systemAdvisoriesColumns, metadata.sort, 2),
+        [metadata.sort]
+    );
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
@@ -99,6 +103,7 @@ const SystemAdvisories = () => {
                 onPerPageSelect={onPerPageSelect}
                 onSort={onSort}
                 isLoading={isLoading}
+                sortBy={sortBy}
                 remediationProvider={() =>
                     remediationProvider(arrayFromObj(selectedRows), entity.id)
                 }
