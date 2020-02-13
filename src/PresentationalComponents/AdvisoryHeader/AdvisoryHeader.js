@@ -57,13 +57,17 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                 </WithLoader>
             </GridItem>
             <GridItem md={4} sm={12}>
-                <InfoBox
-                    isLoading={isLoading}
-                    title={severityObject.label}
-                    color={severityObject.color}
-                    text={<AdvisorySeverityInfo severity={severityObject} />}
-                    content={<SecurityIcon size="lg" />}
-                />
+                {severityObject.value !== 0 && (
+                    <InfoBox
+                        isLoading={isLoading}
+                        title={severityObject.label}
+                        color={severityObject.color}
+                        text={
+                            <AdvisorySeverityInfo severity={severityObject} />
+                        }
+                        content={<SecurityIcon size="lg" />}
+                    />
+                )}
             </GridItem>
         </Grid>
     );
