@@ -13,11 +13,7 @@ import {
 } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import {
-    getLimitFromPageSize,
-    getOffsetFromPageLimit
-} from '../../Utilities/Helpers';
-import { usePagePerPage } from '../../Utilities/Hooks';
+import { useHandleRefresh, usePagePerPage } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 
@@ -40,6 +36,8 @@ const Systems = () => {
     const queryParams = useSelector(
         ({ SystemsListStore }) => SystemsListStore.queryParams
     );
+
+    const handleRefresh = useHandleRefresh(metadata, apply);
 
     React.useEffect(() => {
         dispatch(fetchSystemsAction(queryParams));
@@ -77,15 +75,6 @@ const Systems = () => {
     function apply(params) {
         dispatch(changeSystemsListParams(params));
     }
-
-    const handleRefresh = React.useCallback(({ page, per_page: perPage }) => {
-        const offset = getOffsetFromPageLimit(page, perPage);
-        const limit = getLimitFromPageSize(perPage);
-        apply({
-            ...(metadata.offset !== offset && { offset }),
-            ...(metadata.limit !== limit && { limit })
-        });
-    });
 
     return (
         <React.Fragment>

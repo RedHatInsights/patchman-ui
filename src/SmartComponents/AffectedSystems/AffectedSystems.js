@@ -12,13 +12,8 @@ import {
 } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import {
-    arrayFromObj,
-    getLimitFromPageSize,
-    getOffsetFromPageLimit,
-    remediationProvider
-} from '../../Utilities/Helpers';
-import { usePagePerPage } from '../../Utilities/Hooks';
+import { arrayFromObj, remediationProvider } from '../../Utilities/Helpers';
+import { useHandleRefresh, usePagePerPage } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import {
     systemsListColumns,
@@ -47,6 +42,8 @@ const AffectedSystems = ({ advisoryName }) => {
     const queryParams = useSelector(
         ({ AffectedSystemsStore }) => AffectedSystemsStore.queryParams
     );
+
+    const handleRefresh = useHandleRefresh(metadata, apply);
 
     React.useEffect(() => {
         dispatch(
@@ -86,15 +83,6 @@ const AffectedSystems = ({ advisoryName }) => {
     const showRemediationModal = data => {
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
-
-    const handleRefresh = React.useCallback(({ page, per_page: perPage }) => {
-        const offset = getOffsetFromPageLimit(page, perPage);
-        const limit = getLimitFromPageSize(perPage);
-        apply({
-            ...(metadata.offset !== offset && { offset }),
-            ...(metadata.limit !== limit && { limit })
-        });
-    });
 
     return (
         <React.Fragment>

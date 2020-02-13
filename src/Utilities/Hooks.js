@@ -13,6 +13,19 @@ export const useSetPage = (limit, callback) => {
     return onSetPage;
 };
 
+export const useHandleRefresh = (metadata, callback) => {
+    const handleRefresh = React.useCallback(({ page, per_page: perPage }) => {
+        const offset = getOffsetFromPageLimit(page, perPage);
+        const limit = getLimitFromPageSize(perPage);
+        (metadata.offset !== offset || metadata.limit !== limit) &&
+            callback({
+                ...(metadata.offset !== offset && { offset }),
+                ...(metadata.limit !== limit && { limit })
+            });
+    });
+    return handleRefresh;
+};
+
 export const usePagePerPage = (limit, offset) => {
     const [page, perPage] = React.useMemo(
         () => convertLimitOffset(limit, offset),
