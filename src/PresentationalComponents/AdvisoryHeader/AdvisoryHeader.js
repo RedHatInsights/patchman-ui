@@ -12,6 +12,7 @@ import WithLoader, {
 } from '../../PresentationalComponents/WithLoader/WithLoader';
 import { getSeverityById } from '../../Utilities/Helpers';
 import InfoBox from '../InfoBox/InfoBox';
+import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const severityObject = getSeverityById(attributes.severity);
@@ -58,10 +59,10 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
             <GridItem md={4} sm={12}>
                 <InfoBox
                     isLoading={isLoading}
-                    title={severityObject.name}
+                    title={severityObject.label}
                     color={severityObject.color}
-                    text={<a>Learn more</a>}
-                    content={<SecurityIcon size="md" />}
+                    text={<AdvisorySeverityInfo severity={severityObject} />}
+                    content={<SecurityIcon size="lg" />}
                 />
             </GridItem>
         </Grid>
