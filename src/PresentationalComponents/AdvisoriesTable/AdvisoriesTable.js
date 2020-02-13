@@ -92,6 +92,7 @@ const AdvisoriesTable = ({
                         onSelect={onSelect}
                         rows={rows}
                         onCollapse={onCollapse}
+                        canSelectAll={false}
                         onSort={onSort}
                         sortBy={sortBy}
                     >
