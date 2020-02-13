@@ -7,8 +7,7 @@ import Header from '../../PresentationalComponents/Header/Header';
 import {
     changeAdvisoryListParams,
     expandAdvisoryRow,
-    fetchApplicableAdvisories,
-    selectAdvisoryRow
+    fetchApplicableAdvisories
 } from '../../store/Actions/Actions';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import { getRowIdByIndexExpandable } from '../../Utilities/Helpers';
@@ -56,15 +55,6 @@ const Advisories = () => {
         )
     );
 
-    const onSelect = React.useCallback((_, value, rowId) =>
-        dispatch(
-            selectAdvisoryRow({
-                rowId: getRowIdByIndexExpandable(advisories, rowId),
-                value
-            })
-        )
-    );
-
     const onSort = useSortColumn(advisoriesColumns, apply, 2);
 
     const onSetPage = useSetPage(metadata.limit, apply);
@@ -83,7 +73,6 @@ const Advisories = () => {
                     rows={rows}
                     metadata={metadata}
                     onCollapse={onCollapse}
-                    onSelect={onSelect}
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}
                     onSort={onSort}
