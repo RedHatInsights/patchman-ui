@@ -118,7 +118,7 @@ AdvisoriesTable.propTypes = {
     remediationProvider: PropTypes.func,
     selectedRows: PropTypes.object,
     apply: PropTypes.func,
-    sortBy: PropTypes.func
+    sortBy: PropTypes.object
 };
 
 export default AdvisoriesTable;
