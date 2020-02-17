@@ -4,52 +4,69 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
+import EmptyAdvisoryList from '../PresentationalComponents/Snippets/EmptyAdvisoryList';
 import Label from '../PresentationalComponents/Snippets/Label';
 import PortalAdvisoryLink from '../PresentationalComponents/Snippets/PortalAdvisoryLink';
 import { handleAdvisoryLink } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
-    return flatMap(rows, (row, index) => {
+    if (rows.length !== 0) {
+        return flatMap(rows, (row, index) => {
+            return [
+                {
+                    id: row.id,
+                    isOpen: expandedRows[row.id] === true,
+                    selected: selectedRows[row.id] === true,
+                    cells: [
+                        { title: handleAdvisoryLink(row.id) },
+                        { title: processDate(row.attributes.public_date) },
+                        {
+                            title: (
+                                <AdvisoryType
+                                    type={row.attributes.advisory_type}
+                                />
+                            )
+                        },
+                        {
+                            title: handleAdvisoryLink(
+                                row.id,
+                                row.attributes.applicable_systems
+                            )
+                        },
+                        row.attributes.synopsis
+                    ]
+                },
+                {
+                    cells: [
+                        {
+                            title: (
+                                <TextContent>
+                                    <Label>Description</Label>
+                                    <Text component={TextVariants.p}>
+                                        {row.attributes.description}
+                                    </Text>
+                                    <PortalAdvisoryLink advisory={row.id} />
+                                </TextContent>
+                            )
+                        }
+                    ],
+                    parent: index * 2
+                }
+            ];
+        });
+    } else {
         return [
             {
-                id: row.id,
-                isOpen: expandedRows[row.id] === true,
-                selected: selectedRows[row.id] === true,
-                cells: [
-                    { title: handleAdvisoryLink(row.id) },
-                    { title: processDate(row.attributes.public_date) },
-                    {
-                        title: (
-                            <AdvisoryType type={row.attributes.advisory_type} />
-                        )
-                    },
-                    {
-                        title: handleAdvisoryLink(
-                            row.id,
-                            row.attributes.applicable_systems
-                        )
-                    },
-                    row.attributes.synopsis
-                ]
-            },
-            {
+                heightAuto: true,
                 cells: [
                     {
-                        title: (
-                            <TextContent>
-                                <Label>Description</Label>
-                                <Text component={TextVariants.p}>
-                                    {row.attributes.description}
-                                </Text>
-                                <PortalAdvisoryLink advisory={row.id} />
-                            </TextContent>
-                        )
+                        props: { colSpan: 5 },
+                        title: <EmptyAdvisoryList />
                     }
-                ],
-                parent: index * 2
+                ]
             }
         ];
-    });
+    }
 };
 
 export const createSystemAdvisoriesRows = (
@@ -57,41 +74,57 @@ export const createSystemAdvisoriesRows = (
     expandedRows,
     selectedRows
 ) => {
-    return flatMap(rows, (row, index) => {
+    if (rows.length !== 0) {
+        return flatMap(rows, (row, index) => {
+            return [
+                {
+                    id: row.id,
+                    isOpen: expandedRows[row.id] === true,
+                    selected: selectedRows[row.id] === true,
+                    cells: [
+                        { title: handleAdvisoryLink(row.id) },
+                        { title: processDate(row.attributes.public_date) },
+                        {
+                            title: (
+                                <AdvisoryType
+                                    type={row.attributes.advisory_type}
+                                />
+                            )
+                        },
+                        row.attributes.synopsis
+                    ]
+                },
+                {
+                    cells: [
+                        {
+                            title: (
+                                <TextContent>
+                                    <Label>Description</Label>
+                                    <Text component={TextVariants.p}>
+                                        {row.attributes.description}
+                                    </Text>
+                                    <PortalAdvisoryLink advisory={row.id} />
+                                </TextContent>
+                            )
+                        }
+                    ],
+                    parent: index * 2
+                }
+            ];
+        });
+    } else {
         return [
             {
-                id: row.id,
-                isOpen: expandedRows[row.id] === true,
-                selected: selectedRows[row.id] === true,
-                cells: [
-                    { title: handleAdvisoryLink(row.id) },
-                    { title: processDate(row.attributes.public_date) },
-                    {
-                        title: (
-                            <AdvisoryType type={row.attributes.advisory_type} />
-                        )
-                    },
-                    row.attributes.synopsis
-                ]
-            },
-            {
+                heightAuto: true,
                 cells: [
                     {
-                        title: (
-                            <TextContent>
-                                <Label>Description</Label>
-                                <Text component={TextVariants.p}>
-                                    {row.attributes.description}
-                                </Text>
-                                <PortalAdvisoryLink advisory={row.id} />
-                            </TextContent>
-                        )
+                        props: { colSpan: 5 },
+                        title: <EmptyAdvisoryList />
                     }
-                ],
-                parent: index * 2
+                ]
             }
         ];
-    });
+    }
 };
 
 export const createSystemsRows = rows => {

@@ -98,7 +98,7 @@ const SystemAdvisories = () => {
                 rows={rows}
                 metadata={metadata}
                 onCollapse={onCollapse}
-                onSelect={onSelect}
+                onSelect={(advisories.length && onSelect) || undefined}
                 onSetPage={onSetPage}
                 onPerPageSelect={onPerPageSelect}
                 onSort={onSort}
