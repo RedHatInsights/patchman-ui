@@ -122,3 +122,14 @@ export const advisoryTypes = [
         icon: <UnknownIcon />
     }
 ];
+
+export const filterCategories = {
+    advisory_type: {
+        label: 'Advisory type',
+        values: advisoryTypes
+    },
+    public_date: {
+        label: 'Public date',
+        values: publicDateOptions
+    }
+};

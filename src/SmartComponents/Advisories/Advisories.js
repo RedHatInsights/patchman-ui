@@ -86,6 +86,7 @@ const Advisories = () => {
                     sortBy={sortBy}
                     isLoading={isLoading}
                     apply={apply}
+                    filters={queryParams.filter}
                 />
             </Main>
         </React.Fragment>

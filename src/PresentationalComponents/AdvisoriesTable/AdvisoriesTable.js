@@ -9,7 +9,12 @@ import { SkeletonTable } from '@redhat-cloud-services/frontend-components/compon
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
-import { arrayFromObj, convertLimitOffset } from '../../Utilities/Helpers';
+import {
+    arrayFromObj,
+    buildFilterChips,
+    convertLimitOffset
+} from '../../Utilities/Helpers';
+import { useRemoveFilter } from '../../Utilities/Hooks';
 import publishDateFilter from '../Filters/PublishDateFilter';
 import searchFilter from '../Filters/SearchFilter';
 import typeFilter from '../Filters/TypeFilter';
@@ -28,7 +33,8 @@ const AdvisoriesTable = ({
     sortBy,
     remediationProvider,
     selectedRows,
-    apply
+    apply,
+    filters
 }) => {
     const [
         RemediationModalCmp,
@@ -42,6 +48,8 @@ const AdvisoriesTable = ({
     const showRemediationModal = data => {
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
+
+    const removeFilter = useRemoveFilter(filters, apply);
 
     return (
         <React.Fragment>
@@ -57,9 +65,13 @@ const AdvisoriesTable = ({
                 filterConfig={{
                     items: [
                         searchFilter(apply),
-                        typeFilter(apply),
-                        publishDateFilter(apply)
+                        typeFilter(apply, filters),
+                        publishDateFilter(apply, filters)
                     ]
+                }}
+                activeFiltersConfig={{
+                    filters: buildFilterChips(filters),
+                    onDelete: removeFilter
                 }}
             >
                 {remediationProvider && (
@@ -118,7 +130,8 @@ AdvisoriesTable.propTypes = {
     remediationProvider: PropTypes.func,
     selectedRows: PropTypes.object,
     apply: PropTypes.func,
-    sortBy: PropTypes.object
+    sortBy: PropTypes.object,
+    filters: PropTypes.object
 };
 
 export default AdvisoriesTable;

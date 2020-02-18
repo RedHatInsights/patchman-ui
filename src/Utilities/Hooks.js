@@ -52,3 +52,23 @@ export const useSortColumn = (columns, callback, offset = 0) => {
     });
     return onSort;
 };
+
+export const useRemoveFilter = (filters, callback) => {
+    const removeFilter = React.useCallback((event, selected) => {
+        let newFilter = {};
+        selected.forEach(selectedItem => {
+            let { id: categoryId, chips } = selectedItem;
+            let activeFilter = filters[categoryId];
+            const toRemove = chips.map(item => item.id.toString());
+            if (Array.isArray(activeFilter)) {
+                newFilter[categoryId] = activeFilter.filter(
+                    item => !toRemove.includes(item.toString())
+                );
+            } else {
+                newFilter[categoryId] = '';
+            }
+        });
+        callback({ filter: newFilter });
+    });
+    return removeFilter;
+};

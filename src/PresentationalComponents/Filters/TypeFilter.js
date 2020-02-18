@@ -2,8 +2,7 @@ import { conditionalFilterType } from '@redhat-cloud-services/frontend-component
 import React from 'react';
 import { advisoryTypes } from '../../Utilities/constants';
 
-const typeFilter = apply => {
-    const [type, setType] = React.useState();
+const typeFilter = (apply, currentFilter = {}) => {
     const advisoryTypesMap = React.useMemo(
         () =>
             advisoryTypes.map(({ value, label }) => ({
@@ -21,11 +20,10 @@ const typeFilter = apply => {
         type: conditionalFilterType.checkbox,
         filterValues: {
             onChange: (event, value) => {
-                type;
-                setType(value);
                 filterByType(value);
             },
-            items: advisoryTypesMap
+            items: advisoryTypesMap,
+            value: currentFilter.advisory_type
         }
     };
 };

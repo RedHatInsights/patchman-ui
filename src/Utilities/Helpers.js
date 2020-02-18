@@ -6,7 +6,7 @@ import findIndex from 'lodash/findIndex';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { advisorySeverities } from './constants';
+import { advisorySeverities, filterCategories } from './constants';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -132,6 +132,34 @@ export const flattenFilters = filter => {
             };
         });
     return result;
+};
+
+export const buildFilterChips = filters => {
+    if (filters) {
+        let categories = Object.keys(filters).filter(
+            item =>
+                filters[item] !== '' && [].concat(filters[item]).length !== 0
+        );
+        return categories.map(category => {
+            const { label, values } = filterCategories[category];
+            return {
+                category: label,
+                id: category,
+                chips: [].concat(filters[category]).map(filterValue => {
+                    const match = values.find(
+                        item => item.value.toString() === filterValue.toString()
+                    );
+                    return {
+                        name: match.label,
+                        value: filterValue,
+                        id: match.value
+                    };
+                })
+            };
+        });
+    }
+
+    return [];
 };
 
 export const changeListParams = (oldParams, newParams) => {

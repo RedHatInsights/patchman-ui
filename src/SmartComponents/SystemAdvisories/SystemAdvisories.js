@@ -110,6 +110,7 @@ const SystemAdvisories = () => {
                 selectedRows={selectedRows}
                 systemId={entity.id}
                 apply={apply}
+                filters={queryParams.filter}
             />
         </React.Fragment>
     );
