@@ -22,19 +22,21 @@ import TableFooter from './TableFooter';
 
 const AdvisoriesTable = ({
     columns,
-    rows,
+    store: {
+        rows,
+        metadata,
+        isLoading,
+        queryParams: { filter }
+    },
     onCollapse,
     onSelect,
     onSetPage,
     onPerPageSelect,
     onSort,
-    metadata,
-    isLoading,
     sortBy,
     remediationProvider,
     selectedRows,
-    apply,
-    filters
+    apply
 }) => {
     const [
         RemediationModalCmp,
@@ -49,7 +51,7 @@ const AdvisoriesTable = ({
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
 
-    const removeFilter = useRemoveFilter(filters, apply);
+    const removeFilter = useRemoveFilter(filter, apply);
 
     return (
         <React.Fragment>
@@ -65,12 +67,12 @@ const AdvisoriesTable = ({
                 filterConfig={{
                     items: [
                         searchFilter(apply),
-                        typeFilter(apply, filters),
-                        publishDateFilter(apply, filters)
+                        typeFilter(apply, filter),
+                        publishDateFilter(apply, filter)
                     ]
                 }}
                 activeFiltersConfig={{
-                    filters: buildFilterChips(filters),
+                    filters: buildFilterChips(filter),
                     onDelete: removeFilter
                 }}
             >
@@ -119,19 +121,16 @@ const AdvisoriesTable = ({
 
 AdvisoriesTable.propTypes = {
     columns: PropTypes.array,
-    rows: PropTypes.array,
     onCollapse: PropTypes.func,
     onSelect: PropTypes.func,
     onSetPage: PropTypes.func,
     onPerPageSelect: PropTypes.func,
     onSort: PropTypes.func,
-    metadata: PropTypes.object,
-    isLoading: PropTypes.bool,
     remediationProvider: PropTypes.func,
     selectedRows: PropTypes.object,
     apply: PropTypes.func,
     sortBy: PropTypes.object,
-    filters: PropTypes.object
+    store: PropTypes.object
 };
 
 export default AdvisoriesTable;

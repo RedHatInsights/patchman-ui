@@ -77,16 +77,13 @@ const Advisories = () => {
             <Main>
                 <AdvisoriesTable
                     columns={advisoriesColumns}
-                    rows={rows}
-                    metadata={metadata}
                     onCollapse={onCollapse}
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}
                     onSort={onSort}
                     sortBy={sortBy}
-                    isLoading={isLoading}
                     apply={apply}
-                    filters={queryParams.filter}
+                    store={{ rows, metadata, isLoading, queryParams }}
                 />
             </Main>
         </React.Fragment>

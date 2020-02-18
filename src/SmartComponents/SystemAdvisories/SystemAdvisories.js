@@ -95,14 +95,11 @@ const SystemAdvisories = () => {
         <React.Fragment>
             <AdvisoriesTable
                 columns={systemAdvisoriesColumns}
-                rows={rows}
-                metadata={metadata}
                 onCollapse={onCollapse}
                 onSelect={(advisories.length && onSelect) || undefined}
                 onSetPage={onSetPage}
                 onPerPageSelect={onPerPageSelect}
                 onSort={onSort}
-                isLoading={isLoading}
                 sortBy={sortBy}
                 remediationProvider={() =>
                     remediationProvider(arrayFromObj(selectedRows), entity.id)
@@ -110,7 +107,7 @@ const SystemAdvisories = () => {
                 selectedRows={selectedRows}
                 systemId={entity.id}
                 apply={apply}
-                filters={queryParams.filter}
+                store={{ rows, metadata, isLoading, queryParams }}
             />
         </React.Fragment>
     );
