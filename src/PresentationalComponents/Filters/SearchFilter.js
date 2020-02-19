@@ -13,7 +13,6 @@ const searchFilter = (apply, search) => {
     return {
         type: conditionalFilterType.text,
         label: 'Search',
-        value: searchValue,
         filterValues: {
             onChange: (event, value) => {
                 setSearchValue(value);
