@@ -26,7 +26,7 @@ const AdvisoriesTable = ({
         rows,
         metadata,
         isLoading,
-        queryParams: { filter }
+        queryParams: { filter, search }
     },
     onCollapse,
     onSelect,
@@ -66,13 +66,13 @@ const AdvisoriesTable = ({
                 }}
                 filterConfig={{
                     items: [
-                        searchFilter(apply),
+                        searchFilter(apply, search),
                         typeFilter(apply, filter),
                         publishDateFilter(apply, filter)
                     ]
                 }}
                 activeFiltersConfig={{
-                    filters: buildFilterChips(filter),
+                    filters: buildFilterChips(filter, search),
                     onDelete: removeFilter
                 }}
             >

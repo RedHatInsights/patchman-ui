@@ -134,32 +134,54 @@ export const flattenFilters = filter => {
     return result;
 };
 
-export const buildFilterChips = filters => {
-    if (filters) {
+export const buildFilterChips = (filters, search) => {
+    let filterConfig = [];
+    const processFilters = () => {
         let categories = Object.keys(filters).filter(
             item =>
                 filters[item] !== '' && [].concat(filters[item]).length !== 0
         );
-        return categories.map(category => {
-            const { label, values } = filterCategories[category];
-            return {
-                category: label,
-                id: category,
-                chips: [].concat(filters[category]).map(filterValue => {
-                    const match = values.find(
-                        item => item.value.toString() === filterValue.toString()
-                    );
-                    return {
-                        name: match.label,
-                        value: filterValue,
-                        id: match.value
-                    };
-                })
-            };
-        });
-    }
+        filterConfig = filterConfig.concat(
+            categories.map(category => {
+                const { label, values } = filterCategories[category];
+                return {
+                    category: label,
+                    id: category,
+                    chips: [].concat(filters[category]).map(filterValue => {
+                        const match = values.find(
+                            item =>
+                                item.value.toString() === filterValue.toString()
+                        );
+                        return {
+                            name: match.label,
+                            value: filterValue,
+                            id: match.value
+                        };
+                    })
+                };
+            })
+        );
+    };
 
-    return [];
+    const processSearch = () => {
+        filterConfig = filterConfig.concat([
+            {
+                category: 'Search',
+                id: 'search',
+                chips: [
+                    {
+                        name: search,
+                        value: search
+                    }
+                ]
+            }
+        ]);
+    };
+
+    filters && processFilters();
+    search && processSearch();
+
+    return filterConfig;
 };
 
 export const changeListParams = (oldParams, newParams) => {

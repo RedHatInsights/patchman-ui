@@ -55,20 +55,24 @@ export const useSortColumn = (columns, callback, offset = 0) => {
 
 export const useRemoveFilter = (filters, callback) => {
     const removeFilter = React.useCallback((event, selected) => {
-        let newFilter = {};
+        let newParams = { filter: {} };
         selected.forEach(selectedItem => {
             let { id: categoryId, chips } = selectedItem;
-            let activeFilter = filters[categoryId];
-            const toRemove = chips.map(item => item.id.toString());
-            if (Array.isArray(activeFilter)) {
-                newFilter[categoryId] = activeFilter.filter(
-                    item => !toRemove.includes(item.toString())
-                );
+            if (categoryId !== 'search') {
+                let activeFilter = filters[categoryId];
+                const toRemove = chips.map(item => item.id.toString());
+                if (Array.isArray(activeFilter)) {
+                    newParams.filter[categoryId] = activeFilter.filter(
+                        item => !toRemove.includes(item.toString())
+                    );
+                } else {
+                    newParams.filter[categoryId] = '';
+                }
             } else {
-                newFilter[categoryId] = '';
+                newParams.search = '';
             }
         });
-        callback({ filter: newFilter });
+        callback({ ...newParams });
     });
     return removeFilter;
 };

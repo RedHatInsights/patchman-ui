@@ -2,11 +2,13 @@ import { conditionalFilterType } from '@redhat-cloud-services/frontend-component
 import debounce from 'lodash/debounce';
 import React from 'react';
 
-const searchFilter = apply => {
+const searchFilter = (apply, search) => {
     const [searchValue, setSearchValue] = React.useState();
     const [searchAdvisory] = React.useState(() =>
         debounce(value => apply({ search: value }), 400)
     );
+
+    React.useEffect(() => setSearchValue(search), [search]);
 
     return {
         type: conditionalFilterType.text,
