@@ -60,7 +60,7 @@ const AdvisoriesTable = ({
                     itemCount: metadata.total_items,
                     page,
                     perPage,
-                    isCompact: false,
+                    isCompact: true,
                     onSetPage,
                     onPerPageSelect
                 }}
