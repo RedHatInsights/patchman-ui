@@ -127,7 +127,7 @@ export const createSystemAdvisoriesRows = (
     }
 };
 
-export const createSystemsRows = rows => {
+export const createSystemsRows = (rows, selectedRows = {}) => {
     const data =
         rows &&
         rows.map(row => {
@@ -138,7 +138,8 @@ export const createSystemsRows = rows => {
                     row.attributes.rhea_count || 0,
                     row.attributes.rhba_count || 0,
                     row.attributes.rhsa_count || 0
-                ]
+                ],
+                selected: selectedRows[row.id] === true
             };
         });
     return data || [];

@@ -33,9 +33,10 @@ const AffectedSystems = ({ advisoryName }) => {
     const selectedRows = useSelector(
         ({ AffectedSystemsStore }) => AffectedSystemsStore.selectedRows
     );
-    const hosts = React.useMemo(() => createSystemsRows(rawAffectedSystems), [
-        rawAffectedSystems
-    ]);
+    const hosts = React.useMemo(
+        () => createSystemsRows(rawAffectedSystems, selectedRows),
+        [rawAffectedSystems]
+    );
     const metadata = useSelector(
         ({ AffectedSystemsStore }) => AffectedSystemsStore.metadata
     );
