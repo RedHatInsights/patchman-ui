@@ -29,7 +29,7 @@ const AdvisoryPage = asyncComponent(() =>
 );
 export const paths = {
     advisories: {
-        title: 'Applicable Advisories',
+        title: 'Applicable advisories',
         to: '/'
     },
     systems: {
@@ -37,11 +37,11 @@ export const paths = {
         to: '/systems'
     },
     inventoryDetail: {
-        title: 'Inventory Detail',
+        title: 'Inventory detail',
         to: '/systems/:inventoryId'
     },
     advisoryDetail: {
-        title: 'Advisory Detail',
+        title: 'Advisory detail',
         to: '/advisories/:advisoryId'
     },
     advisoryDetailSystem: {

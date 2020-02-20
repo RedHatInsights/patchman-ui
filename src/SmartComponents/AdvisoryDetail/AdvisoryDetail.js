@@ -59,7 +59,7 @@ const AdvisoryDetail = ({ match }) => {
             </Header>
             <Main>
                 <TextContent>
-                    <Text component={TextVariants.h2}>Affected Systems</Text>
+                    <Text component={TextVariants.h2}>Affected systems</Text>
                 </TextContent>
                 <AffectedSystems advisoryName={advisoryName} />
             </Main>
