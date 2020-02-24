@@ -1,3 +1,4 @@
+import { notifications } from '@redhat-cloud-services/frontend-components-notifications';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
@@ -22,7 +23,8 @@ export function init(...middleware) {
         SystemDetailStore,
         SystemAdvisoryListStore,
         AdvisoryDetailStore,
-        AffectedSystemsStore
+        AffectedSystemsStore,
+        notifications
     });
 
     return registry;

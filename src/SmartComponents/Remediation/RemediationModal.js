@@ -1,7 +1,9 @@
 import * as ReactCore from '@patternfly/react-core';
 import * as pfReactTable from '@patternfly/react-table';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import propTypes from 'prop-types';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 function getLoader() {
     return (
@@ -10,7 +12,8 @@ function getLoader() {
     );
 }
 
-const RemediationModal = ({ data, onRemediationCreated }) => {
+const RemediationModal = ({ data }) => {
+    const dispatch = useDispatch();
     const [remediations, setRemediations] = React.useState(false);
     React.useEffect(() => {
         getLoader()({
@@ -21,11 +24,15 @@ const RemediationModal = ({ data, onRemediationCreated }) => {
         return () => setRemediations(false);
     }, []);
 
+    const handleRemediationSuccess = res => {
+        dispatch(addNotification(res.getNotification()));
+    };
+
     React.useEffect(() => {
         remediations &&
             remediations
             .openWizard(data)
-            .then(result => result && onRemediationCreated(result));
+            .then(result => result && handleRemediationSuccess(result));
     }, [remediations]);
 
     return (
@@ -38,8 +45,7 @@ const RemediationModal = ({ data, onRemediationCreated }) => {
 };
 
 RemediationModal.propTypes = {
-    data: propTypes.object,
-    onRemediationCreated: propTypes.func
+    data: propTypes.object
 };
 
 RemediationModal.defaultProps = {

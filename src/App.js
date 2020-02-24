@@ -1,3 +1,4 @@
+import { NotificationsPortal } from '@redhat-cloud-services/frontend-components-notifications';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -11,8 +12,12 @@ class App extends Component {
         insights.chrome.identifyApp('patch');
         insights.chrome.navigation(buildNavigation());
 
-        this.appNav = insights.chrome.on('APP_NAVIGATION', event => this.props.history.push(`/${event.navId}`));
-        this.buildNav = this.props.history.listen(() => insights.chrome.navigation(buildNavigation()));
+        this.appNav = insights.chrome.on('APP_NAVIGATION', event =>
+            this.props.history.push(`/${event.navId}`)
+        );
+        this.buildNav = this.props.history.listen(() =>
+            insights.chrome.navigation(buildNavigation())
+        );
     }
 
     componentWillUnmount() {
@@ -21,7 +26,12 @@ class App extends Component {
     }
 
     render() {
-        return <Routes childProps={ this.props } />;
+        return (
+            <React.Fragment>
+                <NotificationsPortal />
+                <Routes childProps={this.props} />
+            </React.Fragment>
+        );
     }
 }
 
