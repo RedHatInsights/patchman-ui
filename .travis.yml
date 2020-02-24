@@ -17,6 +17,8 @@ jobs:
       script: npm run test && npx codecov
     - stage: Deploy
       script: npm run deploy && curl -sSL https://raw.githubusercontent.com/RedHatInsights/insights-frontend-builder-common/master/src/bootstrap.sh | bash -s
+    - stage: Generate package manifest
+      script: .travis/create_manifest.sh
 env:
   global:
     - REPO="git@github.com:RedHatInsights/patchman-ui-build"
