@@ -135,10 +135,12 @@ export const flattenFilters = filter => {
 };
 
 export const encodeQueryParams = parameters => {
+    let { filter, ...allParams } = parameters;
+    allParams = { ...allParams, ...flattenFilters(filter) };
     let params = [];
-    Object.keys(parameters).forEach(key => {
+    Object.keys(allParams).forEach(key => {
         const argKey = encodeURIComponent(key);
-        const argValue = encodeURIComponent(parameters[key]);
+        const argValue = encodeURIComponent(allParams[key]);
         if (argValue !== '') {
             params.push(argKey.concat('=').concat(argValue));
         }

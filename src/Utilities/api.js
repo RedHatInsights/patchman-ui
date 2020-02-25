@@ -1,4 +1,4 @@
-import { flattenFilters, encodeQueryParams } from './Helpers';
+import { encodeQueryParams } from './Helpers';
 
 export function createApiCall(
     endpoint,
@@ -52,14 +52,11 @@ export function createApiCall(
 }
 
 export const fetchApplicableAdvisoriesApi = params => {
-    let { filter, ...allParams } = params;
-    allParams = { ...allParams, ...flattenFilters(filter) };
-    return createApiCall('/advisories', 'get', allParams);
+    return createApiCall('/advisories', 'get', params);
 };
 
 export const fetchApplicableSystemAdvisoriesApi = params => {
-    let { id, filter, ...allParams } = params;
-    allParams = { ...allParams, ...flattenFilters(filter) };
+    let { id, ...allParams } = params;
     return createApiCall(`/systems/${id}/advisories`, 'get', allParams);
 };
 
