@@ -1,4 +1,4 @@
-import { flattenFilters } from './Helpers';
+import { flattenFilters, encodeQueryParams } from './Helpers';
 
 export function createApiCall(
     endpoint,
@@ -7,16 +7,7 @@ export function createApiCall(
     data = undefined
 ) {
     if (parameters && method === 'get') {
-        let params = [];
-        Object.keys(parameters).forEach(key => {
-            const argKey = encodeURIComponent(key);
-            const argValue = encodeURIComponent(parameters[key]);
-            if (argValue !== '') {
-                params.push(argKey.concat('=').concat(argValue));
-            }
-        });
-
-        endpoint = endpoint.concat('?').concat(params.join('&'));
+        endpoint = endpoint.concat(encodeQueryParams(parameters));
     }
 
     let result = window.insights.chrome.auth

@@ -134,6 +134,19 @@ export const flattenFilters = filter => {
     return result;
 };
 
+export const encodeQueryParams = parameters => {
+    let params = [];
+    Object.keys(parameters).forEach(key => {
+        const argKey = encodeURIComponent(key);
+        const argValue = encodeURIComponent(parameters[key]);
+        if (argValue !== '') {
+            params.push(argKey.concat('=').concat(argValue));
+        }
+    });
+
+    return '?'.concat(params.join('&'));
+};
+
 export const buildFilterChips = (filters, search) => {
     let filterConfig = [];
     const processFilters = () => {
