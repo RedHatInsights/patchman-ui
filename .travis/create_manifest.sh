@@ -24,7 +24,7 @@ else
         git config user.email $MANIFEST_REPO_EMAIL
         git config user.name "vmaas-bot"
         git add .
-        git commit -m "Update manifest for System Patch Manager UI"
+        git diff-index --quiet HEAD || git commit -m "Update manifest for System Patch Manager UI"
         git push
     else
         echo -e "Other branch than master or prod-stable, not pushing a build"
