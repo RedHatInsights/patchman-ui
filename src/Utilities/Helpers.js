@@ -3,7 +3,7 @@ import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-i
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import { SortByDirection } from '@patternfly/react-table';
 import findIndex from 'lodash/findIndex';
-// eslint-disable-next-line no-unused-vars
+import qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { advisorySeverities, filterCategories } from './constants';
@@ -120,21 +120,32 @@ export const remediationProvider = (issues, systems) => {
         : false;
 };
 
-export const flattenFilters = filter => {
-    let result = {};
-    filter &&
-        Object.entries(filter).forEach(item => {
-            const [key, value] = item;
-            const operator = [].concat(value).length > 1 ? 'in:' : '';
-            result = {
-                ...result,
-                [`filter[${key}]`]: `${operator}${value.toString()}`
-            };
-        });
-    return result;
+export const getFilterValue = (category, key) => {
+    const filterCategory = filterCategories[category];
+    if (filterCategory) {
+        const filterOption = filterCategory.values.find(
+            item => item.value === key
+        );
+        return filterOption || { apiValue: key };
+    }
 };
 
-export const encodeQueryParams = parameters => {
+export const encodeParams = (parameters, shouldTranslateKeys) => {
+    const flattenFilters = filter => {
+        let result = {};
+        filter &&
+            Object.entries(filter).forEach(item => {
+                let [key, value] = item;
+                value = shouldTranslateKeys && getFilterValue(key, value).apiValue || value;
+                const operator = [].concat(value).length > 1 ? 'in:' : '';
+                result = {
+                    ...result,
+                    [`filter[${key}]`]: `${operator}${value.toString()}`
+                };
+            });
+        return result;
+    };
+
     let { filter, ...allParams } = parameters;
     allParams = { ...allParams, ...flattenFilters(filter) };
     let params = [];
@@ -147,6 +158,43 @@ export const encodeQueryParams = parameters => {
     });
 
     return '?'.concat(params.join('&'));
+};
+
+export const encodeApiParams = parameters => {
+    return encodeParams(parameters, true);
+};
+
+export const encodeURLParams = parameters => {
+    return encodeParams(parameters, false);
+};
+
+export const decomposeFilterValue = filterValue => {
+    if (filterValue.startsWith('in:')) {
+        const values = filterValue.slice(3);
+        return values.split(',');
+    }
+
+    return filterValue;
+};
+
+export const decodeQueryparams = queryString => {
+    const parsed = qs.parse(queryString);
+    const res = {};
+    Object.keys(parsed).forEach(key => {
+        const value = parsed[key];
+        const bracketIndex = key.search(/\[.*\]/);
+        if (bracketIndex > 0) {
+            const objParent = key.slice(0, bracketIndex);
+            const objKey = key.slice(bracketIndex + 1, -1);
+            res[objParent] = {
+                ...res[objParent],
+                [objKey]: decomposeFilterValue(value)
+            };
+        } else {
+            res[key] = value;
+        }
+    });
+    return res;
 };
 
 export const buildFilterChips = (filters, search) => {

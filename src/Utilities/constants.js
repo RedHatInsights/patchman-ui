@@ -18,36 +18,41 @@ export const storeListDefaults = {
 };
 
 export const publicDateOptions = [
-    { value: '', label: 'All' },
+    { apiValue: '', label: 'All', value: '' },
     {
-        value: `gt:${moment()
+        apiValue: `gt:${moment()
         .subtract(7, 'days')
         .toISOString()}`,
-        label: 'Last 7 days'
+        label: 'Last 7 days',
+        value: 'last7'
     },
     {
-        value: `gt:${moment()
+        apiValue: `gt:${moment()
         .subtract(30, 'days')
         .toISOString()}`,
-        label: 'Last 30 days'
+        label: 'Last 30 days',
+        value: 'last30'
     },
     {
-        value: `gt:${moment()
+        apiValue: `gt:${moment()
         .subtract(90, 'days')
         .toISOString()}`,
-        label: 'Last 90 days'
+        label: 'Last 90 days',
+        value: 'last90'
     },
     {
-        value: `gt:${moment()
+        apiValue: `gt:${moment()
         .subtract(1, 'years')
         .toISOString()}`,
-        label: 'Last year'
+        label: 'Last year',
+        value: 'lastYear'
     },
     {
-        value: `lt:${moment()
+        apiValue: `lt:${moment()
         .subtract(1, 'years')
         .toISOString()}`,
-        label: 'More than 1 year ago'
+        label: 'More than 1 year ago',
+        value: 'moreThanYear'
     }
 ];
 

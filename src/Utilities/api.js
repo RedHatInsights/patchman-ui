@@ -1,4 +1,4 @@
-import { encodeQueryParams } from './Helpers';
+import { encodeApiParams } from './Helpers';
 
 export function createApiCall(
     endpoint,
@@ -7,7 +7,7 @@ export function createApiCall(
     data = undefined
 ) {
     if (parameters && method === 'get') {
-        endpoint = endpoint.concat(encodeQueryParams(parameters));
+        endpoint = endpoint.concat(encodeApiParams(parameters));
     }
 
     let result = window.insights.chrome.auth

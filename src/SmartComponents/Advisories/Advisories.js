@@ -1,27 +1,19 @@
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
+import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
 import { advisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import Header from '../../PresentationalComponents/Header/Header';
-import {
-    changeAdvisoryListParams,
-    expandAdvisoryRow,
-    fetchApplicableAdvisories
-} from '../../store/Actions/Actions';
+import { changeAdvisoryListParams, expandAdvisoryRow, fetchApplicableAdvisories } from '../../store/Actions/Actions';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
-import {
-    createSortBy,
-    getRowIdByIndexExpandable
-} from '../../Utilities/Helpers';
-import {
-    usePerPageSelect,
-    useSetPage,
-    useSortColumn
-} from '../../Utilities/Hooks';
+import { createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable } from '../../Utilities/Helpers';
+import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
-const Advisories = () => {
+const Advisories = ({ history }) => {
     const dispatch = useDispatch();
+    const [firstMount, setFirstMount] = React.useState(true);
     const advisories = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.rows
     );
@@ -46,7 +38,13 @@ const Advisories = () => {
     );
 
     React.useEffect(() => {
-        dispatch(fetchApplicableAdvisories(queryParams));
+        if (firstMount) {
+            apply(decodeQueryparams(history.location.search));
+            setFirstMount(false);
+        } else {
+            history.push(encodeURLParams(queryParams));
+            dispatch(fetchApplicableAdvisories(queryParams));
+        }
     }, [queryParams]);
 
     const onCollapse = React.useCallback((_, rowId, value) =>
@@ -90,4 +88,8 @@ const Advisories = () => {
     );
 };
 
-export default Advisories;
+Advisories.propTypes = {
+    history: propTypes.object
+};
+
+export default withRouter(Advisories);
