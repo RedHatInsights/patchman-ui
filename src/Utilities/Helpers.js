@@ -165,6 +165,7 @@ export const encodeApiParams = parameters => {
 };
 
 export const encodeURLParams = parameters => {
+    delete parameters.id;
     return encodeParams(parameters, false);
 };
 

@@ -1,29 +1,21 @@
+import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
-import {
-    changeSystemAdvisoryListParams,
-    clearSystemAdvisoriesStore,
-    expandSystemAdvisoryRow,
-    fetchApplicableSystemAdvisories,
-    selectSystemAdvisoryRow
-} from '../../store/Actions/Actions';
+import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore,
+    expandSystemAdvisoryRow, fetchApplicableSystemAdvisories,
+    selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
-import {
-    arrayFromObj,
-    createSortBy,
-    getRowIdByIndexExpandable,
-    remediationProvider
-} from '../../Utilities/Helpers';
-import {
-    usePerPageSelect,
-    useSetPage,
-    useSortColumn
-} from '../../Utilities/Hooks';
+import { arrayFromObj, createSortBy, decodeQueryparams,
+    encodeURLParams, getRowIdByIndexExpandable,
+    remediationProvider } from '../../Utilities/Helpers';
+import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
-const SystemAdvisories = () => {
+const SystemAdvisories = ({ history }) => {
     const dispatch = useDispatch();
+    const [firstMount, setFirstMount] = React.useState(true);
     const advisories = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.rows
     );
@@ -56,9 +48,15 @@ const SystemAdvisories = () => {
     }, []);
 
     React.useEffect(() => {
-        dispatch(
-            fetchApplicableSystemAdvisories({ id: entity.id, ...queryParams })
-        );
+        if (firstMount) {
+            apply(decodeQueryparams(history.location.search));
+            setFirstMount(false);
+        } else {
+            history.push(encodeURLParams(queryParams));
+            dispatch(
+                fetchApplicableSystemAdvisories({ id: entity.id, ...queryParams })
+            );
+        }
     }, [queryParams]);
 
     const onCollapse = React.useCallback((_, rowId, value) =>
@@ -113,4 +111,7 @@ const SystemAdvisories = () => {
     );
 };
 
-export default SystemAdvisories;
+SystemAdvisories.propTypes = {
+    history: propTypes.object
+};
+export default withRouter(SystemAdvisories);
