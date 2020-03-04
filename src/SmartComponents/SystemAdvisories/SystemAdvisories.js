@@ -5,12 +5,10 @@ import { withRouter } from 'react-router-dom';
 import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore,
-    expandSystemAdvisoryRow, fetchApplicableSystemAdvisories,
-    selectSystemAdvisoryRow } from '../../store/Actions/Actions';
+    expandSystemAdvisoryRow, fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams,
-    encodeURLParams, getRowIdByIndexExpandable,
-    remediationProvider } from '../../Utilities/Helpers';
+    encodeURLParams, getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
 const SystemAdvisories = ({ history }) => {
@@ -68,13 +66,42 @@ const SystemAdvisories = ({ history }) => {
         )
     );
 
-    const onSelect = React.useCallback((_, value, rowId) =>
+    const onSelect = React.useCallback((event, value, rowId) => {
+        const toSelect = [];
+        switch (event) {
+            case 'none': {
+                Object.keys(selectedRows).forEach(id=>{
+                    toSelect.push(
+                        {
+                            rowId: id,
+                            value: false
+                        }
+                    );
+                });
+                break;
+            }
+
+            case 'page': {
+                advisories.forEach(({ id })=>{
+                    toSelect.push(
+                        {
+                            rowId: id,
+                            value: true
+                        }
+                    );});
+                break;
+            }
+
+            default: {
+                toSelect.push({
+                    rowId: getRowIdByIndexExpandable(advisories, rowId),
+                    value
+                });
+            }}
+
         dispatch(
-            selectSystemAdvisoryRow({
-                rowId: getRowIdByIndexExpandable(advisories, rowId),
-                value
-            })
-        )
+            selectSystemAdvisoryRow(toSelect)
+        );}
     );
 
     const onSort = useSortColumn(systemAdvisoriesColumns, apply, 2);

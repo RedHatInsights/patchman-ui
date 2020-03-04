@@ -1,19 +1,11 @@
 import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
-import {
-    Table,
-    TableBody,
-    TableHeader
-} from '@patternfly/react-table/dist/js/components/Table';
+import { Table, TableBody, TableHeader } from '@patternfly/react-table/dist/js/components/Table';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/SkeletonTable';
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
-import {
-    arrayFromObj,
-    buildFilterChips,
-    convertLimitOffset
-} from '../../Utilities/Helpers';
+import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter } from '../../Utilities/Hooks';
 import publishDateFilter from '../Filters/PublishDateFilter';
 import searchFilter from '../Filters/SearchFilter';
@@ -52,6 +44,7 @@ const AdvisoriesTable = ({
     };
 
     const removeFilter = useRemoveFilter(filter, apply);
+    const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
     return (
         <React.Fragment>
@@ -75,11 +68,29 @@ const AdvisoriesTable = ({
                     filters: buildFilterChips(filter, search),
                     onDelete: removeFilter
                 }}
+                bulkSelect={onSelect && {
+                    count: selectedCount,
+                    items: [{
+                        title: `Select none (0)`,
+                        onClick: () => {
+                            onSelect('none');
+                        }
+                    }, {
+                        title: `Select page (${perPage})`,
+                        onClick: () => {
+                            onSelect('page');
+                        }
+                    }],
+                    onSelect: (value) => {
+                        value ? onSelect('page') : onSelect('none');
+                    },
+                    checked: Boolean(selectedCount)
+                }}
             >
                 {remediationProvider && (
                     <React.Fragment>
                         <Button
-                            isDisabled={arrayFromObj(selectedRows).length === 0}
+                            isDisabled={selectedCount === 0}
                             onClick={() =>
                                 showRemediationModal(remediationProvider())
                             }
@@ -89,6 +100,7 @@ const AdvisoriesTable = ({
                         <RemediationModalCmp />
                     </React.Fragment>
                 )}
+
             </PrimaryToolbar>
             {isLoading ? (
                 <SkeletonTable colSize={5} rowSize={20} />
