@@ -1,10 +1,5 @@
-import {
-    fetchAdvisoryDetailsApi,
-    fetchAffectedSystems,
-    fetchApplicableAdvisoriesApi,
-    fetchApplicableSystemAdvisoriesApi,
-    fetchSystems
-} from '../../Utilities/api';
+import { fetchAdvisoryDetailsApi, fetchAffectedSystems, fetchApplicableAdvisoriesApi,
+    fetchApplicableSystemAdvisoriesApi, fetchSystems } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({
@@ -57,22 +52,22 @@ export const changeAffectedSystemsParams = params => ({
 
 export const expandAdvisoryRow = rowState => ({
     type: ActionTypes.EXPAND_ADVISORY_ROW,
-    payload: [].concat(rowState)
+    payload: rowState
 });
 
 export const expandSystemAdvisoryRow = rowState => ({
     type: ActionTypes.EXPAND_SYSTEM_ADVISORY_ROW,
-    payload: [].concat(rowState)
+    payload: rowState
 });
 
 export const selectAdvisoryRow = rowState => ({
     type: ActionTypes.SELECT_ADVISORY_ROW,
-    payload: [].concat(rowState)
+    payload: rowState
 });
 
 export const selectSystemAdvisoryRow = rowState => ({
     type: ActionTypes.SELECT_SYSTEM_ADVISORY_ROW,
-    payload: [].concat(rowState)
+    payload: rowState
 });
 
 export const clearSystemAdvisoriesStore = () => ({

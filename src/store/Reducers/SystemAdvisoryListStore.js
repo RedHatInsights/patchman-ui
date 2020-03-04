@@ -1,5 +1,5 @@
 import { STATUS_LOADING, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
-import { addOrRemoveItemFromSet } from '../../Utilities/Helpers';
+import { addOrRemoveItemFromSet, getNewSelectedItems } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
 export const SystemAdvisoryListStore = (state = storeListDefaults, action) => {
@@ -33,10 +33,7 @@ export const SystemAdvisoryListStore = (state = storeListDefaults, action) => {
         }
 
         case ActionTypes.SELECT_SYSTEM_ADVISORY_ROW: {
-            const selectedUpdated = addOrRemoveItemFromSet(
-                newState.selectedRows,
-                action.payload
-            );
+            const selectedUpdated = getNewSelectedItems(action.payload, newState.selectedRows);
             newState = { ...newState, selectedRows: selectedUpdated };
             return newState;
         }

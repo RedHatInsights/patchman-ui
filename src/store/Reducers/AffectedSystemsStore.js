@@ -1,5 +1,5 @@
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
-import { addOrRemoveItemFromSet, changeListParams } from '../../Utilities/Helpers';
+import { changeListParams, getNewSelectedItems } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
 export const AffectedSystemsStore = (state = storeListDefaults, action) => {
@@ -16,10 +16,7 @@ export const AffectedSystemsStore = (state = storeListDefaults, action) => {
             return newState;
 
         case 'SELECT_ENTITY': {
-            const selectedUpdated = addOrRemoveItemFromSet(
-                newState.selectedRows,
-                [{ rowId: action.payload.id, value: action.payload.selected }]
-            );
+            const selectedUpdated = getNewSelectedItems(action.payload, newState.selectedRows);
             newState = { ...newState, selectedRows: selectedUpdated };
             return newState;
         }

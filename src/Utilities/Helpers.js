@@ -38,6 +38,14 @@ export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
     return result;
 };
 
+export const getNewSelectedItems = (selectedItems, currentItems) => {
+    let payload = [].concat(selectedItems).map(item=>({ rowId: item.id, value: item.selected }));
+    return addOrRemoveItemFromSet(
+        currentItems,
+        payload
+    );
+};
+
 // for expandable rows only
 export const getRowIdByIndexExpandable = (arrayOfObjects, index) => {
     return arrayOfObjects[index / 2].id;

@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import Error from '../../PresentationalComponents/Snippets/Error';
-import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore,
-    expandSystemAdvisoryRow, fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
+import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
+    fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
@@ -71,15 +71,15 @@ const SystemAdvisories = ({ history }) => {
         )
     );
 
-    const onSelect = React.useCallback((event, value, rowId) => {
+    const onSelect = React.useCallback((event, selected, rowId) => {
         const toSelect = [];
         switch (event) {
             case 'none': {
                 Object.keys(selectedRows).forEach(id=>{
                     toSelect.push(
                         {
-                            rowId: id,
-                            value: false
+                            id,
+                            selected: false
                         }
                     );
                 });
@@ -90,8 +90,8 @@ const SystemAdvisories = ({ history }) => {
                 advisories.forEach(({ id })=>{
                     toSelect.push(
                         {
-                            rowId: id,
-                            value: true
+                            id,
+                            selected: true
                         }
                     );});
                 break;
@@ -99,8 +99,8 @@ const SystemAdvisories = ({ history }) => {
 
             default: {
                 toSelect.push({
-                    rowId: getRowIdByIndexExpandable(advisories, rowId),
-                    value
+                    id: getRowIdByIndexExpandable(advisories, rowId),
+                    selected
                 });
             }}
 
