@@ -91,6 +91,39 @@ const AffectedSystems = ({ advisoryName }) => {
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
 
+    const onSelect = React.useCallback((event) => {
+        const toSelect = [];
+        switch (event) {
+            case 'none': {
+                Object.keys(selectedRows).forEach(id=>{
+                    toSelect.push(
+                        {
+                            id,
+                            selected: false
+                        }
+                    );
+                });
+                break;
+            }
+
+            case 'page': {
+                rawAffectedSystems.forEach(({ id })=>{
+                    toSelect.push(
+                        {
+                            id,
+                            selected: true
+                        }
+                    );});
+                break;
+            }}
+
+        dispatch(
+            { type: 'SELECT_ENTITY', payload: toSelect }
+        );}
+    );
+
+    const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
+
     return (
         <React.Fragment>
             {status === STATUS_REJECTED ? <Error message={error.detail}/> : InventoryCmp && (
@@ -101,6 +134,24 @@ const AffectedSystems = ({ advisoryName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                     actions={systemsRowActions(showRemediationModal)}
+                    bulkSelect={onSelect && {
+                        count: selectedCount,
+                        items: [{
+                            title: `Select none (0)`,
+                            onClick: () => {
+                                onSelect('none');
+                            }
+                        }, {
+                            title: `Select page (${perPage})`,
+                            onClick: () => {
+                                onSelect('page');
+                            }
+                        }],
+                        onSelect: (value) => {
+                            value ? onSelect('page') : onSelect('none');
+                        },
+                        checked: Boolean(selectedCount)
+                    }}
                 >
                     <reactCore.ToolbarGroup>
                         <reactCore.ToolbarItem>
