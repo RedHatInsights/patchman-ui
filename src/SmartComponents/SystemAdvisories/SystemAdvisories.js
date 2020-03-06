@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
+import Error from '../../PresentationalComponents/Snippets/Error';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore,
     expandSystemAdvisoryRow, fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
+import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
@@ -34,6 +36,9 @@ const SystemAdvisories = ({ history }) => {
     );
     const status = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.status
+    );
+    const error = useSelector(
+        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.error
     );
     const rows = React.useMemo(
         () =>
@@ -118,7 +123,7 @@ const SystemAdvisories = ({ history }) => {
 
     return (
         <React.Fragment>
-            <AdvisoriesTable
+            {status === STATUS_REJECTED ? <Error message={error.detail}/> : <AdvisoriesTable
                 columns={systemAdvisoriesColumns}
                 onCollapse={onCollapse}
                 onSelect={(advisories.length && onSelect) || undefined}
@@ -133,7 +138,7 @@ const SystemAdvisories = ({ history }) => {
                 systemId={entity.id}
                 apply={apply}
                 store={{ rows, metadata, status, queryParams }}
-            />
+            />}
         </React.Fragment>
     );
 };

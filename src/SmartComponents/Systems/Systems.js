@@ -6,12 +6,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
 import Header from '../../PresentationalComponents/Header/Header';
+import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
-import {
-    changeSystemsListParams,
-    fetchSystemsAction
-} from '../../store/Actions/Actions';
+import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
+import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { useHandleRefresh, usePagePerPage } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
@@ -30,6 +29,12 @@ const Systems = () => {
     const hosts = React.useMemo(() => createSystemsRows(rawSystems), [
         rawSystems
     ]);
+    const error = useSelector(
+        ({ SystemsListStore }) => SystemsListStore.error
+    );
+    const status = useSelector(
+        ({ SystemsListStore }) => SystemsListStore.status
+    );
     const metadata = useSelector(
         ({ SystemsListStore }) => SystemsListStore.metadata
     );
@@ -78,20 +83,22 @@ const Systems = () => {
 
     return (
         <React.Fragment>
+
             <Header title={'System Patching'} showTabs />
             <RemediationModalCmp />
             <Main>
-                {InventoryCmp && (
-                    <InventoryCmp
-                        items={hosts}
-                        page={page}
-                        total={metadata.total_items}
-                        perPage={perPage}
-                        onRefresh={handleRefresh}
-                        hasCheckbox={false}
-                        actions={systemsRowActions(showRemediationModal)}
-                    />
-                )}
+                {status === STATUS_REJECTED ? <Error message={error.detail}/> :
+                    InventoryCmp && (
+                        <InventoryCmp
+                            items={hosts}
+                            page={page}
+                            total={metadata.total_items}
+                            perPage={perPage}
+                            onRefresh={handleRefresh}
+                            hasCheckbox={false}
+                            actions={systemsRowActions(showRemediationModal)}
+                        />
+                    )}
             </Main>
         </React.Fragment>
     );

@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
+import Error from '../../PresentationalComponents/Snippets/Error';
 import { paths } from '../../Routes';
 import { clearAdvisoryDetailStore, clearAffectedSystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
-import { STATUS_LOADING } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 import AffectedSystems from '../AffectedSystems/AffectedSystems';
 
 const AdvisoryDetail = ({ match }) => {
@@ -19,6 +20,9 @@ const AdvisoryDetail = ({ match }) => {
     );
     const status = useSelector(
         ({ AdvisoryDetailStore }) => AdvisoryDetailStore.status
+    );
+    const error = useSelector(
+        ({ AdvisoryDetailStore }) => AdvisoryDetailStore.error
     );
     React.useEffect(() => {
         dispatch(fetchAvisoryDetails({ advisoryName }));
@@ -47,11 +51,11 @@ const AdvisoryDetail = ({ match }) => {
                         isActive: true
                     }
                 ]}
-            >
-                <AdvisoryHeader
-                    attributes={{ ...attributes, id: advisoryName }}
-                    isLoading={status === STATUS_LOADING}
-                />
+            >{status === STATUS_REJECTED ? <Error message={error.detail}/> :
+                    <AdvisoryHeader
+                        attributes={{ ...attributes, id: advisoryName }}
+                        isLoading={status === STATUS_LOADING}
+                    />}
             </Header>
             <Main>
                 <TextContent>

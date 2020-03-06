@@ -5,7 +5,7 @@ import { SkeletonTable } from '@redhat-cloud-services/frontend-components/compon
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
-import { STATUS_LOADING } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_RESOLVED } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter } from '../../Utilities/Hooks';
 import publishDateFilter from '../Filters/PublishDateFilter';
@@ -103,9 +103,8 @@ const AdvisoriesTable = ({
                 )}
 
             </PrimaryToolbar>
-            {status === STATUS_LOADING ? (
-                <SkeletonTable colSize={5} rowSize={20} />
-            ) : (
+            {status === STATUS_LOADING && <SkeletonTable colSize={5} rowSize={20} />}
+            {status === STATUS_RESOLVED && (
                 <React.Fragment>
                     <Table
                         aria-label="Advisories table"
@@ -126,8 +125,7 @@ const AdvisoriesTable = ({
                         page={page}
                         onSetPage={onSetPage}
                     />
-                </React.Fragment>
-            )}
+                </React.Fragment>)}
         </React.Fragment>
     );
 };

@@ -8,16 +8,19 @@ export const AdvisoryListStore = (state = storeListDefaults, action) => {
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_FULFILLED': {
             newState.rows = action.payload.data;
             newState.metadata = action.payload.meta;
+            newState.error = {};
             newState.status = STATUS_RESOLVED;
             return newState;
         }
 
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_PENDING':
+            newState.error = {};
             newState.status = STATUS_LOADING;
             return newState;
 
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_REJECTED':
             newState.status = STATUS_REJECTED;
+            newState.error = action.payload;
             return newState;
 
         case ActionTypes.CHANGE_ADVISORY_LIST_PARAMS:

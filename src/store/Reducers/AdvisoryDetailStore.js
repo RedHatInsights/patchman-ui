@@ -1,4 +1,4 @@
-import { STATUS_LOADING, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { CLEAR_ADVISORY_DETAILS, FETCH_ADVISORY_DETAILS } from '../ActionTypes';
 
 let initialState = {
@@ -13,12 +13,20 @@ export const AdvisoryDetailStore = (state = initialState, action) => {
             return {
                 ...state,
                 status: STATUS_RESOLVED,
-                data: action.payload.data
+                data: action.payload.data,
+                error: {}
             };
         case FETCH_ADVISORY_DETAILS + '_PENDING':
             return {
                 ...state,
-                status: STATUS_LOADING
+                status: STATUS_LOADING,
+                error: {}
+            };
+        case FETCH_ADVISORY_DETAILS + '_REJECTED':
+            return {
+                ...state,
+                status: STATUS_REJECTED,
+                error: action.payload
             };
         case CLEAR_ADVISORY_DETAILS:
             return initialState;

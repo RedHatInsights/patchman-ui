@@ -18,7 +18,8 @@ export const storeListDefaults = {
     },
     expandedRows: {},
     selectedRows: {},
-    queryParams: {}
+    queryParams: {},
+    error: {}
 };
 
 export const publicDateOptions = [

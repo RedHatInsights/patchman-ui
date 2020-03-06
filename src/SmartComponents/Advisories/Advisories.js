@@ -6,7 +6,9 @@ import { withRouter } from 'react-router-dom';
 import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
 import { advisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import Header from '../../PresentationalComponents/Header/Header';
+import Error from '../../PresentationalComponents/Snippets/Error';
 import { changeAdvisoryListParams, expandAdvisoryRow, fetchApplicableAdvisories } from '../../store/Actions/Actions';
+import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
@@ -16,6 +18,9 @@ const Advisories = ({ history }) => {
     const [firstMount, setFirstMount] = React.useState(true);
     const advisories = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.rows
+    );
+    const error = useSelector(
+        ({ AdvisoryListStore }) => AdvisoryListStore.error
     );
     const expandedRows = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.expandedRows
@@ -73,16 +78,17 @@ const Advisories = ({ history }) => {
         <React.Fragment>
             <Header title={'System Patching'} showTabs />
             <Main>
-                <AdvisoriesTable
-                    columns={advisoriesColumns}
-                    onCollapse={onCollapse}
-                    onSetPage={onSetPage}
-                    onPerPageSelect={onPerPageSelect}
-                    onSort={onSort}
-                    sortBy={sortBy}
-                    apply={apply}
-                    store={{ rows, metadata, status, queryParams }}
-                />
+                {status === STATUS_REJECTED ? <Error message={error.detail}/> :
+                    <AdvisoriesTable
+                        columns={advisoriesColumns}
+                        onCollapse={onCollapse}
+                        onSetPage={onSetPage}
+                        onPerPageSelect={onPerPageSelect}
+                        onSort={onSort}
+                        sortBy={sortBy}
+                        apply={apply}
+                        store={{ rows, metadata, status, queryParams }}
+                    />}
             </Main>
         </React.Fragment>
     );
