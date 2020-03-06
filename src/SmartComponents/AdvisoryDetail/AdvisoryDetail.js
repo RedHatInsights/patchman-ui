@@ -1,8 +1,4 @@
-import {
-    Text,
-    TextContent,
-    TextVariants
-} from '@patternfly/react-core/dist/js/components/Text';
+import { Text, TextContent, TextVariants } from '@patternfly/react-core/dist/js/components/Text';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -11,11 +7,8 @@ import { withRouter } from 'react-router-dom';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
 import { paths } from '../../Routes';
-import {
-    clearAdvisoryDetailStore,
-    clearAffectedSystemsStore,
-    fetchAvisoryDetails
-} from '../../store/Actions/Actions';
+import { clearAdvisoryDetailStore, clearAffectedSystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
+import { STATUS_LOADING } from '../../Utilities/constants';
 import AffectedSystems from '../AffectedSystems/AffectedSystems';
 
 const AdvisoryDetail = ({ match }) => {
@@ -23,6 +16,9 @@ const AdvisoryDetail = ({ match }) => {
     const [advisoryName] = React.useState(match.params.advisoryId);
     const advisoryDetails = useSelector(
         ({ AdvisoryDetailStore }) => AdvisoryDetailStore
+    );
+    const status = useSelector(
+        ({ AdvisoryDetailStore }) => AdvisoryDetailStore.status
     );
     React.useEffect(() => {
         dispatch(fetchAvisoryDetails({ advisoryName }));
@@ -54,7 +50,7 @@ const AdvisoryDetail = ({ match }) => {
             >
                 <AdvisoryHeader
                     attributes={{ ...attributes, id: advisoryName }}
-                    isLoading={advisoryDetails.isLoading}
+                    isLoading={status === STATUS_LOADING}
                 />
             </Header>
             <Main>

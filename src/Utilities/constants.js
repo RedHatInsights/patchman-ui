@@ -5,6 +5,10 @@ import UnknownIcon from '@patternfly/react-icons/dist/js/icons/unknown-icon';
 import moment from 'moment';
 import React from 'react';
 
+export const STATUS_REJECTED = 'rejected';
+export const STATUS_LOADING = 'loading';
+export const STATUS_RESOLVED = 'resolved';
+
 export const storeListDefaults = {
     rows: [],
     metadata: {

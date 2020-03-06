@@ -5,6 +5,7 @@ import { SkeletonTable } from '@redhat-cloud-services/frontend-components/compon
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
+import { STATUS_LOADING } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter } from '../../Utilities/Hooks';
 import publishDateFilter from '../Filters/PublishDateFilter';
@@ -17,7 +18,7 @@ const AdvisoriesTable = ({
     store: {
         rows,
         metadata,
-        isLoading,
+        status,
         queryParams: { filter, search }
     },
     onCollapse,
@@ -102,7 +103,7 @@ const AdvisoriesTable = ({
                 )}
 
             </PrimaryToolbar>
-            {isLoading ? (
+            {status === STATUS_LOADING ? (
                 <SkeletonTable colSize={5} rowSize={20} />
             ) : (
                 <React.Fragment>

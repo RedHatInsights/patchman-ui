@@ -7,8 +7,8 @@ import { systemAdvisoriesColumns } from '../../PresentationalComponents/Advisori
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore,
     expandSystemAdvisoryRow, fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, createSortBy, decodeQueryparams,
-    encodeURLParams, getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
+import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
+    getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
 const SystemAdvisories = ({ history }) => {
@@ -32,8 +32,8 @@ const SystemAdvisories = ({ history }) => {
     const metadata = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.metadata
     );
-    const isLoading = useSelector(
-        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.isLoading
+    const status = useSelector(
+        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.status
     );
     const rows = React.useMemo(
         () =>
@@ -132,7 +132,7 @@ const SystemAdvisories = ({ history }) => {
                 selectedRows={selectedRows}
                 systemId={entity.id}
                 apply={apply}
-                store={{ rows, metadata, isLoading, queryParams }}
+                store={{ rows, metadata, status, queryParams }}
             />
         </React.Fragment>
     );

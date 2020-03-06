@@ -1,8 +1,9 @@
+import { STATUS_LOADING, STATUS_RESOLVED } from '../../Utilities/constants';
 import { CLEAR_ADVISORY_DETAILS, FETCH_ADVISORY_DETAILS } from '../ActionTypes';
 
 let initialState = {
     data: { attributes: {} },
-    isLoading: true
+    status: STATUS_LOADING
 };
 
 // Reducer
@@ -11,13 +12,13 @@ export const AdvisoryDetailStore = (state = initialState, action) => {
         case FETCH_ADVISORY_DETAILS + '_FULFILLED':
             return {
                 ...state,
-                isLoading: false,
+                status: STATUS_RESOLVED,
                 data: action.payload.data
             };
         case FETCH_ADVISORY_DETAILS + '_PENDING':
             return {
                 ...state,
-                isLoading: true
+                status: STATUS_LOADING
             };
         case CLEAR_ADVISORY_DETAILS:
             return initialState;

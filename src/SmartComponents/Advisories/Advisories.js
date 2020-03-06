@@ -29,8 +29,8 @@ const Advisories = ({ history }) => {
     const metadata = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.metadata
     );
-    const isLoading = useSelector(
-        ({ AdvisoryListStore }) => AdvisoryListStore.isLoading
+    const status = useSelector(
+        ({ AdvisoryListStore }) => AdvisoryListStore.status
     );
     const rows = React.useMemo(
         () => createAdvisoriesRows(advisories, expandedRows, selectedRows),
@@ -81,7 +81,7 @@ const Advisories = ({ history }) => {
                     onSort={onSort}
                     sortBy={sortBy}
                     apply={apply}
-                    store={{ rows, metadata, isLoading, queryParams }}
+                    store={{ rows, metadata, status, queryParams }}
                 />
             </Main>
         </React.Fragment>
