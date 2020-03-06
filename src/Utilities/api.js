@@ -40,12 +40,12 @@ export function createApiCall(
     .catch(error => {
         error = Promise.resolve(error || {});
         const genericError = {
-            detail:
-                    'There was an error getting data. Reload the page and try again'
+            title:
+                    'There was an error getting data'
         };
         return error.then(error => {
-            const res = (error.errors && error.errors[0]) || genericError;
-            throw { ...res };
+            const res = error.error && { ...genericError, detail: error.error } || genericError;
+            throw res ;
         });
     });
     return result;

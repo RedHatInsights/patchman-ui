@@ -1,4 +1,4 @@
-import { STATUS_LOADING, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
 import { addOrRemoveItemFromSet, changeListParams } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
@@ -14,6 +14,10 @@ export const AdvisoryListStore = (state = storeListDefaults, action) => {
 
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_PENDING':
             newState.status = STATUS_LOADING;
+            return newState;
+
+        case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_REJECTED':
+            newState.status = STATUS_REJECTED;
             return newState;
 
         case ActionTypes.CHANGE_ADVISORY_LIST_PARAMS:

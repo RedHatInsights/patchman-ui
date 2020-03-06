@@ -1,4 +1,4 @@
-import { notifications } from '@redhat-cloud-services/frontend-components-notifications';
+import { notifications, notificationsMiddleware } from '@redhat-cloud-services/frontend-components-notifications';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/ReducerRegistry';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
@@ -15,7 +15,7 @@ export function init(...middleware) {
         throw new Error('store already initialized');
     }
 
-    registry = new ReducerRegistry({}, [promiseMiddleware(), ...middleware]);
+    registry = new ReducerRegistry({}, [promiseMiddleware(), notificationsMiddleware(), ...middleware]);
 
     registry.register({
         AdvisoryListStore,
