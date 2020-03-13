@@ -38,11 +38,7 @@ export const AffectedSystemsStore = (state = storeListDefaults, action) => {
             return newState;
 
         case ActionTypes.CLEAR_AFFECTED_SYSTEMS:
-            newState.queryParams = {
-                ...newState.queryParams,
-                ...action.payload
-            };
-            return newState;
+            return storeListDefaults;
 
         default:
             return state;

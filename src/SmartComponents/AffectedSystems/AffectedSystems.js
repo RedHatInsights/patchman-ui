@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
-import { changeAffectedSystemsParams, fetchAffectedSystemsAction } from '../../store/Actions/Actions';
+import { changeAffectedSystemsParams, clearAffectedSystemsStore, fetchAffectedSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
@@ -47,6 +47,10 @@ const AffectedSystems = ({ advisoryName }) => {
     );
 
     const handleRefresh = useHandleRefresh(metadata, apply);
+
+    React.useEffect(() => {
+        return () => dispatch(clearAffectedSystemsStore());
+    }, []);
 
     React.useEffect(() => {
         dispatch(
