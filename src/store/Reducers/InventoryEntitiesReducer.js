@@ -8,9 +8,13 @@ export const init = {
 
 function modifyInventory(columns, state) {
     if (state.loaded) {
+        const lastSeenColumn = state.columns.filter(({ key }) => key === 'updated');
         return {
             ...state,
-            columns
+            columns: [
+                ...columns || [],
+                ...lastSeenColumn || []
+            ]
         };
     }
 

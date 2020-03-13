@@ -1,11 +1,6 @@
 import { classNames } from '@patternfly/react-table';
-import { DateFormat } from '@redhat-cloud-services/frontend-components/components/DateFormat';
-import React from 'react';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
-import {
-    createAdvisoriesIcons,
-    remediationProvider
-} from '../../Utilities/Helpers';
+import { createAdvisoriesIcons, remediationProvider } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 
 export const systemsListColumns = [
@@ -20,16 +15,6 @@ export const systemsListColumns = [
         title: 'Applicable advisories',
         transforms: [classNames('col-width-30')],
         renderFunc: value => createAdvisoriesIcons(value)
-    },
-    {
-        key: 'updated',
-        title: 'Last seen',
-        transforms: [classNames('col-width-30')],
-        renderFunc: value => (
-            <React.Fragment>
-                <DateFormat date={value} />
-            </React.Fragment>
-        )
     }
 ];
 
