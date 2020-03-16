@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import { flatMap } from 'lodash';
@@ -128,7 +127,6 @@ export const createSystemAdvisoriesRows = (
 };
 
 export const createSystemsRows = (rows, selectedRows = {}) => {
-    console.log(selectedRows);
     const data =
         rows &&
         rows.map(row => {
