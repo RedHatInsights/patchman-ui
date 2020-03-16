@@ -34,7 +34,7 @@ export const AdvisoryListStore = (state = storeListDefaults, action) => {
         case ActionTypes.EXPAND_ADVISORY_ROW: {
             const expandedUpdated = addOrRemoveItemFromSet(
                 newState.expandedRows,
-                action.payload
+                [].concat(action.payload)
             );
             newState = { ...newState, expandedRows: expandedUpdated };
             return newState;
