@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.2.0...v0.2.1) (2020-03-16)
+
+
+### Bug Fixes
+
+* **expand-rows:** Fix expansion of rows in tables ([8747d4c](https://github.com/RedHatInsights/patchman-ui/commit/8747d4c01c14b8f744155a68bb590396bc38e829))
+
 # [0.2.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.1.0...v0.2.0) (2020-03-13)
 
 
