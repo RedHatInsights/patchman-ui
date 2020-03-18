@@ -1,3 +1,10 @@
+## [0.2.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.2.1...v0.2.2) (2020-03-18)
+
+
+### Bug Fixes
+
+* **name:** Rename System Patch Manager to just Patch ([8dfac54](https://github.com/RedHatInsights/patchman-ui/commit/8dfac54ae5e43b062c93fa32d822d05ae7dd2455))
+
 ## [0.2.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.2.0...v0.2.1) (2020-03-16)
 
 
