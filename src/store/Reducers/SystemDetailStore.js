@@ -14,7 +14,7 @@ export const SystemDetailStore = (state = initialState, action) => {
                 loaded: true,
                 activeApps: [
                     {
-                        title: 'System Patching',
+                        title: 'Patch',
                         name: 'patch',
                         component: () => <SystemAdvisories />
                     }
@@ -26,7 +26,7 @@ export const SystemDetailStore = (state = initialState, action) => {
                 loaded: true,
                 activeApps: [
                     {
-                        title: 'System Patching',
+                        title: 'Patch',
                         name: 'patch',
                         component: () => <SystemAdvisories />
                     }

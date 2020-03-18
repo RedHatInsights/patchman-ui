@@ -84,7 +84,7 @@ const Systems = () => {
     return (
         <React.Fragment>
 
-            <Header title={'System Patching'} showTabs />
+            <Header title={'Patch'} showTabs />
             <RemediationModalCmp />
             <Main>
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :

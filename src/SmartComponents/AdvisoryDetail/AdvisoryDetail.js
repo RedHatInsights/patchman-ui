@@ -42,7 +42,7 @@ const AdvisoryDetail = ({ match }) => {
                 title={advisoryName}
                 breadcrumbs={[
                     {
-                        title: 'System Patching',
+                        title: 'Patch',
                         to: paths.advisories.to,
                         isActive: false
                     },
