@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.3.0...v0.3.1) (2020-03-19)
+
+
+### Bug Fixes
+
+* **build:** travis stages do not share storage, merge it ([8bfe2ae](https://github.com/RedHatInsights/patchman-ui/commit/8bfe2ae0d07f1c5a75f503fc8747f8f378514ad4))
+
 # [0.3.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.2.2...v0.3.0) (2020-03-19)
 
 
