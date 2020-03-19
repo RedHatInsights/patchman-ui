@@ -1,3 +1,11 @@
+# [0.3.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.2.2...v0.3.0) (2020-03-19)
+
+
+### Features
+
+* **build:** Setup build of patchman components ([908945a](https://github.com/RedHatInsights/patchman-ui/commit/908945af4b11100e6509fe7fbbfda2097ead3601))
+* **build:** setup travis to build components ([d9cb62b](https://github.com/RedHatInsights/patchman-ui/commit/d9cb62b4326ecd517f8de22dd96c70d3825fb585))
+
 ## [0.2.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.2.1...v0.2.2) (2020-03-18)
 
 
