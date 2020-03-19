@@ -1,8 +1,6 @@
-[![Build Status](https://travis-ci.org/RedHatInsights/insights-frontend-starter-app.svg?branch=master)](https://travis-ci.org/RedHatInsights/insights-frontend-starter-app)
+[![Build Status](https://travis-ci.org/RedHatInsights/patchman-ui.svg?branch=master)](https://travis-ci.org/RedHatInsights/patchman-ui)
 
-# insights-frontend-starter-app
-
-React.js starter app for Red Hat Insights products that includes Patternfly 3 and Patternfly Next.
+# Patchman UI
 
 ## Getting Started
 
