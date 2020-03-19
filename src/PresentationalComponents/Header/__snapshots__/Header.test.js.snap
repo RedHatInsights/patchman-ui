@@ -2,7 +2,6 @@
 
 exports[`Header component should render with 1 breadcrumb item and last is active 1`] = `
 <StaticRouter
-  basename=""
   context={Object {}}
   location="/"
 >
@@ -26,6 +25,7 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
         "replace": [Function],
       }
     }
+    staticContext={Object {}}
   >
     <Header
       breadcrumbs={
@@ -64,12 +64,11 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
                       <BreadcrumbItem
                         isActive={true}
                       >
-                        <Link
-                          replace={false}
+                        <ForwardRef
                           to="#"
                         >
                           First item
-                        </Link>
+                        </ForwardRef>
                       </BreadcrumbItem>,
                     ],
                   }
@@ -99,15 +98,19 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
                           className="pf-c-breadcrumb__item"
                         >
                           <Link
-                            replace={false}
                             to="#"
                           >
-                            <a
+                            <LinkAnchor
                               href="/"
-                              onClick={[Function]}
+                              navigate={[Function]}
                             >
-                              First item
-                            </a>
+                              <a
+                                href="/"
+                                onClick={[Function]}
+                              >
+                                First item
+                              </a>
+                            </LinkAnchor>
                           </Link>
                         </li>
                       </BreadcrumbItem>
@@ -143,7 +146,6 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
 
 exports[`Header component should render with 2 breadcrumb items and last is active 1`] = `
 <StaticRouter
-  basename=""
   context={Object {}}
   location="/"
 >
@@ -167,6 +169,7 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
         "replace": [Function],
       }
     }
+    staticContext={Object {}}
   >
     <Header
       breadcrumbs={
@@ -215,22 +218,20 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                       <BreadcrumbItem
                         isActive={false}
                       >
-                        <Link
-                          replace={false}
+                        <ForwardRef
                           to="#"
                         >
                           First item
-                        </Link>
+                        </ForwardRef>
                       </BreadcrumbItem>,
                       <BreadcrumbItem
                         isActive={true}
                       >
-                        <Link
-                          replace={false}
+                        <ForwardRef
                           to="#"
                         >
                           Second item
-                        </Link>
+                        </ForwardRef>
                       </BreadcrumbItem>,
                     ],
                   }
@@ -260,15 +261,19 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                           className="pf-c-breadcrumb__item"
                         >
                           <Link
-                            replace={false}
                             to="#"
                           >
-                            <a
+                            <LinkAnchor
                               href="/"
-                              onClick={[Function]}
+                              navigate={[Function]}
                             >
-                              First item
-                            </a>
+                              <a
+                                href="/"
+                                onClick={[Function]}
+                              >
+                                First item
+                              </a>
+                            </LinkAnchor>
                           </Link>
                           <span
                             className="pf-c-breadcrumb__item-divider"
@@ -310,15 +315,19 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                           className="pf-c-breadcrumb__item"
                         >
                           <Link
-                            replace={false}
                             to="#"
                           >
-                            <a
+                            <LinkAnchor
                               href="/"
-                              onClick={[Function]}
+                              navigate={[Function]}
                             >
-                              Second item
-                            </a>
+                              <a
+                                href="/"
+                                onClick={[Function]}
+                              >
+                                Second item
+                              </a>
+                            </LinkAnchor>
                           </Link>
                         </li>
                       </BreadcrumbItem>
@@ -354,7 +363,6 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
 
 exports[`Header component should render with 3 breadcrumb items and last is active 1`] = `
 <StaticRouter
-  basename=""
   context={Object {}}
   location="/"
 >
@@ -378,6 +386,7 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
         "replace": [Function],
       }
     }
+    staticContext={Object {}}
   >
     <Header
       breadcrumbs={
@@ -437,32 +446,29 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                       <BreadcrumbItem
                         isActive={false}
                       >
-                        <Link
-                          replace={false}
+                        <ForwardRef
                           to="#"
                         >
                           First item
-                        </Link>
+                        </ForwardRef>
                       </BreadcrumbItem>,
                       <BreadcrumbItem
                         isActive={false}
                       >
-                        <Link
-                          replace={false}
+                        <ForwardRef
                           to="#"
                         >
                           Second item
-                        </Link>
+                        </ForwardRef>
                       </BreadcrumbItem>,
                       <BreadcrumbItem
                         isActive={true}
                       >
-                        <Link
-                          replace={false}
+                        <ForwardRef
                           to="#"
                         >
                           Third item
-                        </Link>
+                        </ForwardRef>
                       </BreadcrumbItem>,
                     ],
                   }
@@ -492,15 +498,19 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           className="pf-c-breadcrumb__item"
                         >
                           <Link
-                            replace={false}
                             to="#"
                           >
-                            <a
+                            <LinkAnchor
                               href="/"
-                              onClick={[Function]}
+                              navigate={[Function]}
                             >
-                              First item
-                            </a>
+                              <a
+                                href="/"
+                                onClick={[Function]}
+                              >
+                                First item
+                              </a>
+                            </LinkAnchor>
                           </Link>
                           <span
                             className="pf-c-breadcrumb__item-divider"
@@ -542,15 +552,19 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           className="pf-c-breadcrumb__item"
                         >
                           <Link
-                            replace={false}
                             to="#"
                           >
-                            <a
+                            <LinkAnchor
                               href="/"
-                              onClick={[Function]}
+                              navigate={[Function]}
                             >
-                              Second item
-                            </a>
+                              <a
+                                href="/"
+                                onClick={[Function]}
+                              >
+                                Second item
+                              </a>
+                            </LinkAnchor>
                           </Link>
                           <span
                             className="pf-c-breadcrumb__item-divider"
@@ -592,15 +606,19 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           className="pf-c-breadcrumb__item"
                         >
                           <Link
-                            replace={false}
                             to="#"
                           >
-                            <a
+                            <LinkAnchor
                               href="/"
-                              onClick={[Function]}
+                              navigate={[Function]}
                             >
-                              Third item
-                            </a>
+                              <a
+                                href="/"
+                                onClick={[Function]}
+                              >
+                                Third item
+                              </a>
+                            </LinkAnchor>
                           </Link>
                         </li>
                       </BreadcrumbItem>
@@ -636,7 +654,6 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
 
 exports[`Header component should render with empty breadcrumb 1`] = `
 <StaticRouter
-  basename=""
   context={Object {}}
   location="/"
 >
@@ -660,6 +677,7 @@ exports[`Header component should render with empty breadcrumb 1`] = `
         "replace": [Function],
       }
     }
+    staticContext={Object {}}
   >
     <Header
       breadcrumbs={Array []}
@@ -729,7 +747,6 @@ exports[`Header component should render with empty breadcrumb 1`] = `
 
 exports[`Header component should render with header Hello world 1`] = `
 <StaticRouter
-  basename=""
   context={Object {}}
   location="/"
 >
@@ -753,6 +770,7 @@ exports[`Header component should render with header Hello world 1`] = `
         "replace": [Function],
       }
     }
+    staticContext={Object {}}
   >
     <Header
       title="Hello world"
@@ -789,7 +807,6 @@ exports[`Header component should render with header Hello world 1`] = `
 
 exports[`Header component should render with header as empty string 1`] = `
 <StaticRouter
-  basename=""
   context={Object {}}
   location="/"
 >
@@ -813,6 +830,7 @@ exports[`Header component should render with header as empty string 1`] = `
         "replace": [Function],
       }
     }
+    staticContext={Object {}}
   >
     <Header
       title=""
@@ -848,7 +866,6 @@ exports[`Header component should render with header as empty string 1`] = `
 
 exports[`Header component should render without to attribute 1`] = `
 <StaticRouter
-  basename=""
   context={Object {}}
   location="/"
 >
@@ -872,6 +889,7 @@ exports[`Header component should render without to attribute 1`] = `
         "replace": [Function],
       }
     }
+    staticContext={Object {}}
   >
     <Header
       breadcrumbs={
