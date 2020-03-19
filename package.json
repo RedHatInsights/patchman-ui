@@ -12,6 +12,7 @@
     "@redhat-cloud-services/frontend-components-notifications": "^1.0.1",
     "@redhat-cloud-services/frontend-components-remediations": "^1.0.0",
     "@redhat-cloud-services/frontend-components-utilities": "^1.0.0",
+    "@semantic-release/npm": "^7.0.4",
     "axios": "^0.19.2",
     "classnames": "^2.2.5",
     "html-webpack-plugin": "^4.0.0-alpha.1",
@@ -119,13 +120,15 @@
     },
     "getLastRelease": "last-release-git",
     "publish": [
-      "@semantic-release/github"
+      "@semantic-release/github",
+      "@semantic-release/npm"
     ],
     "verifyConditions": [
       "@semantic-release/github"
     ],
     "fail": "",
     "prepare": [
+      "@semantic-release/npm",
       "@semantic-release/changelog",
       [
         "@semantic-release/git",
