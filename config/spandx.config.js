@@ -12,6 +12,7 @@ module.exports = {
         '/rhel/patch': { host: `https://${localhost}:8002` },
         '/apps/inventory': { host: `https://${localhost}:8002` },
         '/beta/apps/patch': { host: `https://${localhost}:8002` },
-        '/beta/rhel/patch': { host: `https://${localhost}:8002` }
+        '/beta/rhel/patch': { host: `https://${localhost}:8002` },
+        '/apps/dashboard': { host: `http://${localhost}:8002` }
     }
 };
