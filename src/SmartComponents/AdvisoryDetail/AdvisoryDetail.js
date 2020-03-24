@@ -47,6 +47,11 @@ const AdvisoryDetail = ({ match }) => {
                         isActive: false
                     },
                     {
+                        title: 'Advisories',
+                        to: paths.advisories.to,
+                        isActive: false
+                    },
+                    {
                         title: advisoryName,
                         isActive: true
                     }

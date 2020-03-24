@@ -53,6 +53,11 @@ const InventoryDetail = () => {
                         to: paths.advisories.to,
                         isActive: false
                     },
+                    {
+                        title: 'Systems',
+                        to: paths.systems.to,
+                        isActive: false
+                    },
                     entityDetails && {
                         title: entityDetails.display_name,
                         isActive: true
