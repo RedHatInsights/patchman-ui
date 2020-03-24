@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.3.1...v0.3.2) (2020-03-24)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** Add subpage links to breadcrumbs ([5572e45](https://github.com/RedHatInsights/patchman-ui/commit/5572e4530c534cb637740858d728e577a2ad8f0f))
+
 ## [0.3.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.3.0...v0.3.1) (2020-03-19)
 
 
