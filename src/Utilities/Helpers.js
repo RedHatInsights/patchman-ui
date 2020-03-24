@@ -1,3 +1,4 @@
+import { Tooltip } from '@patternfly/react-core';
 import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
 import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
@@ -65,24 +66,30 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
             {[rhea, rhba, rhsa].every(item => item === 0) &&
                 'No applicable advisories'}
             {rhea !== 0 && (
-                <span className="icon-with-label">
-                    <EnhancementIcon />
-                    {rhea.toString()}
-                </span>
+                <Tooltip content={'Enhancements'}>
+                    <span className="icon-with-label">
+                        <EnhancementIcon />
+                        {rhea.toString()}
+                    </span>
+                </Tooltip>
             )}
             {rhba !== 0 && (
-                <span className="icon-with-label">
-                    <BugIcon />
-                    {rhba.toString()}
-                </span>
+                <Tooltip content={'Bug fixes'}>
+                    <span className="icon-with-label">
+                        <BugIcon />
+                        {rhba.toString()}
+                    </span>
+                </Tooltip>
             )}
             {rhsa !== 0 && (
-                <span className="icon-with-label">
-                    <SecurityIcon
-                        color={'var(--pf-global--warning-color--100)'}
-                    />
-                    {rhsa.toString()}
-                </span>
+                <Tooltip content={'Security advisories'}>
+                    <span className="icon-with-label">
+                        <SecurityIcon
+                            color={'var(--pf-global--warning-color--100)'}
+                        />
+                        {rhsa.toString()}
+                    </span>
+                </Tooltip>
             )}
         </div>
     );
