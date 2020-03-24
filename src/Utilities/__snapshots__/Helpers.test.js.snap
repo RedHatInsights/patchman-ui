@@ -2,39 +2,135 @@
 
 exports[`Helpers tests create advisory icons snapshot test 1`] = `
 <div>
-  <span
-    className="icon-with-label"
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Enhancements"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
   >
-    <EnhancementIcon
-      color="currentColor"
-      noVerticalAlign={false}
-      size="sm"
-      title={null}
-    />
-    1
-  </span>
-  <span
-    className="icon-with-label"
+    <span
+      className="icon-with-label"
+    >
+      <EnhancementIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      1
+    </span>
+  </Tooltip>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Bug fixes"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
   >
-    <BugIcon
-      color="currentColor"
-      noVerticalAlign={false}
-      size="sm"
-      title={null}
-    />
-    2
-  </span>
-  <span
-    className="icon-with-label"
+    <span
+      className="icon-with-label"
+    >
+      <BugIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      2
+    </span>
+  </Tooltip>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Security advisories"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
   >
-    <SecurityIcon
-      color="var(--pf-global--warning-color--100)"
-      noVerticalAlign={false}
-      size="sm"
-      title={null}
-    />
-    3
-  </span>
+    <span
+      className="icon-with-label"
+    >
+      <SecurityIcon
+        color="var(--pf-global--warning-color--100)"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      3
+    </span>
+  </Tooltip>
 </div>
 `;
 
