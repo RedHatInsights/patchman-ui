@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.3.2...v0.4.0) (2020-03-24)
+
+
+### Features
+
+* **icons:** Advisories icons should have a tooltip on them ([9e00f3e](https://github.com/RedHatInsights/patchman-ui/commit/9e00f3e1e8dad44b9ffa306fb8ef08ec97bd0b95))
+
 ## [0.3.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.3.1...v0.3.2) (2020-03-24)
 
 
