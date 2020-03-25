@@ -12,6 +12,8 @@ import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 
 const SystemAdvisories = ({ history }) => {
     const dispatch = useDispatch();
@@ -121,9 +123,18 @@ const SystemAdvisories = ({ history }) => {
         dispatch(changeSystemAdvisoryListParams({ id: entity.id, ...params }));
     }
 
+    const errorState = error.status === 404 ?  <NoSystemData/> : <Error message={error.detail}/>;
+
+    if (status === STATUS_REJECTED && error.status !== 404) {
+        dispatch(addNotification({
+            variant: 'danger',
+            title: error.title,
+            description: error.detail
+        }));}
+
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? <Error message={error.detail}/> : <AdvisoriesTable
+            {status === STATUS_REJECTED ? errorState : <AdvisoriesTable
                 columns={systemAdvisoriesColumns}
                 onCollapse={onCollapse}
                 onSelect={(advisories.length && onSelect) || undefined}

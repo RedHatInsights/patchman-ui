@@ -23,7 +23,7 @@ export function createApiCall(
         if (!res.ok) {
             const contentType = res.headers.get('content-type');
             if (contentType.indexOf('json') !== -1) {
-                throw res.json();
+                throw res;
             } else {
                 throw new Promise(resolve =>
                     resolve({
@@ -37,15 +37,15 @@ export function createApiCall(
 
         return res.json();
     })
-    .catch(error => {
-        error = Promise.resolve(error || {});
+    .catch(res => {
+        const error = Promise.resolve(res.json() || {});
         const genericError = {
             title:
                     'There was an error getting data'
         };
         return error.then(error => {
-            const res = error.error && { ...genericError, detail: error.error } || genericError;
-            throw res ;
+            const result = error.error && { ...genericError, detail: error.error, status: res.status } || genericError;
+            throw result ;
         });
     });
     return result;

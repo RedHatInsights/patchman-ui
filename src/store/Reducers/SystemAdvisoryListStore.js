@@ -1,4 +1,4 @@
-import { STATUS_LOADING, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
 import { addOrRemoveItemFromSet, getNewSelectedItems } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
@@ -14,6 +14,11 @@ export const SystemAdvisoryListStore = (state = storeListDefaults, action) => {
 
         case ActionTypes.FETCH_APPLICABLE_SYSTEM_ADVISORIES + '_PENDING':
             newState.status = STATUS_LOADING;
+            return newState;
+
+        case ActionTypes.FETCH_APPLICABLE_SYSTEM_ADVISORIES + '_REJECTED':
+            newState.status = STATUS_REJECTED;
+            newState.error = action.payload;
             return newState;
 
         case ActionTypes.CHANGE_SYSTEM_ADVISORY_LIST_PARAMS:
