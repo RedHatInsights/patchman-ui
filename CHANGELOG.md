@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.4.0...v0.4.1) (2020-03-25)
+
+
+### Bug Fixes
+
+* **error-handling:** Stop automatic notifications and handle error manually for SystemAdvisories ([d6bb711](https://github.com/RedHatInsights/patchman-ui/commit/d6bb711c4a99d541c79430aec2112a782bb9714b))
+
 # [0.4.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.3.2...v0.4.0) (2020-03-24)
 
 
