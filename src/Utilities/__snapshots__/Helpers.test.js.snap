@@ -1,6 +1,285 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Helpers tests create advisory icons snapshot test 1`] = `
+exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [0, 0, 0] 1`] = `
+<div>
+  No applicable advisories
+</div>
+`;
+
+exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [0, 5, 3] 1`] = `
+<div>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Bug fixes"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span
+      className="icon-with-label"
+    >
+      <BugIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      5
+    </span>
+  </Tooltip>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Security advisories"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span
+      className="icon-with-label"
+    >
+      <SecurityIcon
+        color="var(--pf-global--warning-color--100)"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      3
+    </span>
+  </Tooltip>
+</div>
+`;
+
+exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 0, 3] 1`] = `
+<div>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Enhancements"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span
+      className="icon-with-label"
+    >
+      <EnhancementIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      1
+    </span>
+  </Tooltip>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Security advisories"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span
+      className="icon-with-label"
+    >
+      <SecurityIcon
+        color="var(--pf-global--warning-color--100)"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      3
+    </span>
+  </Tooltip>
+</div>
+`;
+
+exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 2, 0] 1`] = `
+<div>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Enhancements"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span
+      className="icon-with-label"
+    >
+      <EnhancementIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      1
+    </span>
+  </Tooltip>
+  <Tooltip
+    appendTo={[Function]}
+    aria="describedby"
+    boundary="window"
+    className=""
+    content="Bug fixes"
+    distance={15}
+    enableFlip={true}
+    entryDelay={500}
+    exitDelay={500}
+    flipBehavior={
+      Array [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top",
+        "right",
+        "bottom",
+      ]
+    }
+    id=""
+    isAppLauncher={false}
+    isContentLeftAligned={false}
+    isVisible={false}
+    maxWidth="18.75rem"
+    position="top"
+    tippyProps={Object {}}
+    trigger="mouseenter focus"
+    zIndex={9999}
+  >
+    <span
+      className="icon-with-label"
+    >
+      <BugIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+        title={null}
+      />
+      2
+    </span>
+  </Tooltip>
+</div>
+`;
+
+exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 2, 3] 1`] = `
 <div>
   <Tooltip
     appendTo={[Function]}
@@ -131,11 +410,5 @@ exports[`Helpers tests create advisory icons snapshot test 1`] = `
       3
     </span>
   </Tooltip>
-</div>
-`;
-
-exports[`Helpers tests create advisory icons snapshot test with empty values 1`] = `
-<div>
-  No applicable advisories
 </div>
 `;
