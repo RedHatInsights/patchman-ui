@@ -1,11 +1,6 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table';
-import {
-    usePagePerPage,
-    usePerPageSelect,
-    useSetPage,
-    useSortColumn
-} from './Hooks';
+import { useHandleRefresh, usePagePerPage, usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from './Hooks';
 
 const TestHook = ({ callback }) => {
     callback();
@@ -106,6 +101,39 @@ describe('Custom hooks tests', () => {
             res = usePagePerPage(limit, offset);
         });
         expect(res).toEqual(expected);
+    });
+
+    it.each`
+    filter                    | apply        | selected                                       |result
+    ${{advisory_type: 2}}     | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{id: 1}] }]} | ${{filter: {advisory_type: ""}}}
+    ${{advisory_type: [2,1]}} | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{id: 1}] }]} | ${{filter: {advisory_type: [2]}}}
+    ${{search: "asd"}}        | ${jest.fn()} | ${[{ id: "search"}]}                           | ${{filter: {}, search: ''}}
+    `('useRemoveFilter: should return correct filter for $filter',({filter, apply, result, selected}) => {
+        let res;
+        testHook(() => {
+            res = useRemoveFilter(filter, apply);
+        });
+        res({}, selected)
+        expect(apply).toHaveBeenCalledWith(result);
+    });
+
+    it.each`
+    metadata                    | apply         | input                        | result
+    ${{limit: 10, offset: 0}}   | ${jest.fn()}  | ${{page: 2, per_page: 10}}                 | ${{offset:10}}
+    ${{limit: 10, offset: 10}}  | ${jest.fn()}  | ${{page: 2, per_page: 20}}                 | ${{offset:20, limit: 20}}
+    ${{limit: 10, offset: 10}}  | ${jest.fn()}  | ${{page: 2, per_page: 10}}                 | ${undefined}
+    `('useHandleRefresh: should return correct filter',({metadata, apply, result, input}) => {
+        let res;
+        testHook(() => {
+            res = useHandleRefresh(metadata, apply);
+        });
+        res(input)
+        if (result) {
+            expect(apply).toHaveBeenCalledWith(result);
+        }
+        else {
+            expect(apply).not.toHaveBeenCalled();
+        }
     });
 });
 /* eslint-enable */
