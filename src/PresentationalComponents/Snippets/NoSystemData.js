@@ -1,16 +1,16 @@
 import { Bullseye, Button, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
-import { CubesIcon } from '@patternfly/react-icons';
+import { WrenchIcon } from '@patternfly/react-icons';
 import React from 'react';
 
 export const NoSystemData = () => (
     <Bullseye>
-        <EmptyState>
-            <EmptyStateIcon icon={CubesIcon} />
+        <EmptyState style={{ paddingTop: 40 }}>
+            <EmptyStateIcon icon={WrenchIcon} />
             <Title headingLevel="h5" size="lg">
-                No Patch data
+                Patch is not yet configured
             </Title>
             <EmptyStateBody>
-                Activate the Insights client for this system to report for applicable advisories
+                Activate the Insights client for this system
             </EmptyStateBody>
             <Button
                 variant="primary"
