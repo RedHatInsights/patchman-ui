@@ -1,3 +1,10 @@
+## [0.4.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.4.1...v0.4.2) (2020-04-01)
+
+
+### Bug Fixes
+
+* **empty-state:** Fix wording and style of no-data empty state ([d718c4f](https://github.com/RedHatInsights/patchman-ui/commit/d718c4fd3961e1565d257428f7693d0d8e86efba))
+
 ## [0.4.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.4.0...v0.4.1) (2020-03-25)
 
 
