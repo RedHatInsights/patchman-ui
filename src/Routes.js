@@ -2,6 +2,7 @@ import some from 'lodash/some';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { fetchSystems } from './Utilities/api';
 import asyncComponent from './Utilities/asyncComponent';
 
 const Advisories = asyncComponent(() =>
@@ -27,6 +28,12 @@ const AdvisoryPage = asyncComponent(() =>
         /* webpackChunkName: "AdvisoryyPage" */ './SmartComponents/AdvisoryDetail/AdvisoryDetail'
     )
 );
+
+const RegisterPage = asyncComponent(() =>
+    import(
+        /* webpackChunkName: "Register" */ './PresentationalComponents/RegisterPage/RegisterPage'
+    )
+);
 export const paths = {
     advisories: {
         title: 'Applicable advisories',
@@ -47,6 +54,10 @@ export const paths = {
     advisoryDetailSystem: {
         title: '',
         to: '/advisories/:advisoryId/:inventoryId'
+    },
+    register: {
+        title: '',
+        to: '/register'
     }
 };
 
@@ -69,7 +80,18 @@ InsightsRoute.propTypes = {
 };
 
 export const Routes = (props: Props) => {
+
+    React.useEffect(() => {
+        const systems = fetchSystems();
+        systems.then((res) => {
+            if (res.meta.total_items === 0) {
+                props.childProps.history.replace(paths.register.to);
+            }
+        });
+    }, []);
+
     const path = props.childProps.location.pathname;
+
     return (
         <Switch>
             <Redirect
@@ -93,6 +115,13 @@ export const Routes = (props: Props) => {
                 rootClass="Patchman"
             />
 
+            <InsightsRoute
+                exact
+                path={paths.register.to}
+                component={RegisterPage}
+                rootClass="Patchman"
+            />
+
             <Route
                 render={() =>
                     some(paths, p => p.to === path) || (
@@ -108,6 +137,7 @@ Routes.propTypes = {
     childProps: PropTypes.shape({
         location: PropTypes.shape({
             pathname: PropTypes.string
-        })
+        }),
+        history: PropTypes.any
     })
 };
