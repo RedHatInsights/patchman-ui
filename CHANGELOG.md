@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.4.2...v0.5.0) (2020-04-01)
+
+
+### Features
+
+* **empty-state:** Add empty state when no systems are registered ([5372051](https://github.com/RedHatInsights/patchman-ui/commit/5372051566b6e4bc0e2ce8692987364181a1cc3d))
+
 ## [0.4.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.4.1...v0.4.2) (2020-04-01)
 
 
