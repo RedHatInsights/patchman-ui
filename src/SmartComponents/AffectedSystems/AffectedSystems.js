@@ -5,14 +5,15 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
+import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
 import { changeAffectedSystemsParams, clearAffectedSystemsStore, fetchAffectedSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, usePagePerPage } from '../../Utilities/Hooks';
+import { arrayFromObj, buildFilterChips, remediationProvider } from '../../Utilities/Helpers';
+import { useHandleRefresh, usePagePerPage, useRemoveFilter } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 
@@ -47,6 +48,7 @@ const AffectedSystems = ({ advisoryName }) => {
     );
 
     const handleRefresh = useHandleRefresh(metadata, apply);
+    const { filter, search } = queryParams;
 
     React.useEffect(() => {
         return () => dispatch(clearAffectedSystemsStore());
@@ -86,6 +88,24 @@ const AffectedSystems = ({ advisoryName }) => {
     function apply(params) {
         dispatch(changeAffectedSystemsParams(params));
     }
+
+    function applyWithInventoryLoading(params) {
+        apply(params);
+        dispatch({ type: 'LOAD_ENTITIES_PENDING' });
+    }
+
+    const removeFilter = useRemoveFilter(filter, applyWithInventoryLoading);
+
+    const filterConfig = {
+        items: [
+            searchFilter(applyWithInventoryLoading, search, 'Search systems')
+        ]
+    };
+
+    const activeFiltersConfig = {
+        filters: buildFilterChips(filter, search),
+        onDelete: removeFilter
+    };
 
     const showRemediationModal = data => {
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
@@ -134,6 +154,8 @@ const AffectedSystems = ({ advisoryName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                     actions={systemsRowActions(showRemediationModal)}
+                    filterConfig={filterConfig}
+                    activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={onSelect && {
                         count: selectedCount,
                         items: [{

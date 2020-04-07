@@ -5,6 +5,7 @@ import { Main } from '@redhat-cloud-services/frontend-components/components/Main
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
+import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
@@ -12,8 +13,10 @@ import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import { useHandleRefresh, usePagePerPage } from '../../Utilities/Hooks';
+import { buildFilterChips } from '../../Utilities/Helpers';
+import { useHandleRefresh, usePagePerPage, useRemoveFilter } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
+import './Systems.scss';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 
 const Systems = () => {
@@ -41,6 +44,8 @@ const Systems = () => {
     const queryParams = useSelector(
         ({ SystemsListStore }) => SystemsListStore.queryParams
     );
+
+    const { filter, search } = queryParams;
 
     const handleRefresh = useHandleRefresh(metadata, apply);
 
@@ -81,6 +86,24 @@ const Systems = () => {
         dispatch(changeSystemsListParams(params));
     }
 
+    function applyWithInventoryLoading(params) {
+        apply(params);
+        dispatch({ type: 'LOAD_ENTITIES_PENDING' });
+    }
+
+    const removeFilter = useRemoveFilter(filter, applyWithInventoryLoading);
+
+    const filterConfig = {
+        items: [
+            searchFilter(applyWithInventoryLoading, search, 'Search systems')
+        ]
+    };
+
+    const activeFiltersConfig = {
+        filters: buildFilterChips(filter, search),
+        onDelete: removeFilter
+    };
+
     return (
         <React.Fragment>
 
@@ -97,8 +120,12 @@ const Systems = () => {
                             onRefresh={handleRefresh}
                             hasCheckbox={false}
                             actions={systemsRowActions(showRemediationModal)}
+                            filterConfig={filterConfig}
+                            activeFiltersConfig = {activeFiltersConfig}
+
                         />
-                    )}
+                    )
+                }
             </Main>
         </React.Fragment>
     );

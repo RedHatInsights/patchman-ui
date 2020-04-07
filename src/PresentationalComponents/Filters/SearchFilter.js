@@ -2,7 +2,7 @@ import { conditionalFilterType } from '@redhat-cloud-services/frontend-component
 import debounce from 'lodash/debounce';
 import React from 'react';
 
-const searchFilter = (apply, search) => {
+const searchFilter = (apply, search, placeholder) => {
     const [searchValue, setSearchValue] = React.useState();
     const [searchAdvisory] = React.useState(() =>
         debounce(value => apply({ search: value }), 400)
@@ -18,7 +18,7 @@ const searchFilter = (apply, search) => {
                 setSearchValue(value);
                 searchAdvisory(value);
             },
-            placeholder: 'Search advisories',
+            placeholder: placeholder || 'Search advisories',
             value: searchValue
         }
     };
