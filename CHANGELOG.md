@@ -1,3 +1,15 @@
+# [0.6.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.5.0...v0.6.0) (2020-04-07)
+
+
+### Bug Fixes
+
+* **import:** Remove incorrect import ([fd1f002](https://github.com/RedHatInsights/patchman-ui/commit/fd1f0027155a22499bd955ce9ff572c682b08a7b))
+
+
+### Features
+
+* **system-search:** Add possibility to filter by system name ([5f58954](https://github.com/RedHatInsights/patchman-ui/commit/5f58954da0264129573a8f5397b4c2347ddddb10))
+
 # [0.5.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.4.2...v0.5.0) (2020-04-01)
 
 
