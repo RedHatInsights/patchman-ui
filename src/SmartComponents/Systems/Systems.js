@@ -16,7 +16,6 @@ import { createSystemsRows } from '../../Utilities/DataMappers';
 import { buildFilterChips } from '../../Utilities/Helpers';
 import { useHandleRefresh, usePagePerPage, useRemoveFilter } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
-import './Systems.scss';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 
 const Systems = () => {
