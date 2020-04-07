@@ -190,7 +190,7 @@ const AffectedSystems = ({ advisoryName }) => {
                                     )
                                 }
                             >
-                                Apply
+                                <reactIcons.AnsibeTowerIcon/>&nbsp;Remediate
                             </reactCore.Button>
                             <RemediationModalCmp />
                         </reactCore.ToolbarItem>

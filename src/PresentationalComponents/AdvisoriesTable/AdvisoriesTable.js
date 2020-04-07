@@ -1,4 +1,5 @@
 import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
+import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table/dist/js/components/Table';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/SkeletonTable';
@@ -96,7 +97,7 @@ const AdvisoriesTable = ({
                                 showRemediationModal(remediationProvider())
                             }
                         >
-                            Apply
+                            <AnsibeTowerIcon/>&nbsp;Remediate
                         </Button>
                         <RemediationModalCmp />
                     </React.Fragment>
