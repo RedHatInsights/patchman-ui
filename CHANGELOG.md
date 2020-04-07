@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.0...v0.6.1) (2020-04-07)
+
+
+### Bug Fixes
+
+* **remediation:** Rename remediation buttons ([de6204d](https://github.com/RedHatInsights/patchman-ui/commit/de6204d0d871c98ec8af2f2610b0f6fb7cbb8c9f))
+
 # [0.6.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.5.0...v0.6.0) (2020-04-07)
 
 
