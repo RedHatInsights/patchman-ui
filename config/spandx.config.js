@@ -9,10 +9,10 @@ const localhost = process.env.PLATFORM === 'linux' ? 'localhost' : 'host.docker.
 module.exports = {
     routes: {
         '/apps/patch': { host: `https://${localhost}:8002` },
-        '/rhel/patch': { host: `https://${localhost}:8002` },
+        '/insights/patch': { host: `https://${localhost}:8002` },
         '/apps/inventory': { host: `https://${localhost}:8002` },
         '/beta/apps/patch': { host: `https://${localhost}:8002` },
-        '/beta/rhel/patch': { host: `https://${localhost}:8002` },
+        '/beta/insights/patch': { host: `https://${localhost}:8002` },
         '/apps/dashboard': { host: `http://${localhost}:8002` }
     }
 };
