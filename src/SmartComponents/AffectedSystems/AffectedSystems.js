@@ -89,16 +89,11 @@ const AffectedSystems = ({ advisoryName }) => {
         dispatch(changeAffectedSystemsParams(params));
     }
 
-    function applyWithInventoryLoading(params) {
-        apply(params);
-        dispatch({ type: 'LOAD_ENTITIES_PENDING' });
-    }
-
-    const removeFilter = useRemoveFilter(filter, applyWithInventoryLoading);
+    const removeFilter = useRemoveFilter(filter, apply);
 
     const filterConfig = {
         items: [
-            searchFilter(applyWithInventoryLoading, search, 'Search systems')
+            searchFilter(apply, search, 'Search systems')
         ]
     };
 
