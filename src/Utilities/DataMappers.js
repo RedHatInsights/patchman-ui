@@ -6,7 +6,7 @@ import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType'
 import EmptyAdvisoryList from '../PresentationalComponents/Snippets/EmptyAdvisoryList';
 import Label from '../PresentationalComponents/Snippets/Label';
 import PortalAdvisoryLink from '../PresentationalComponents/Snippets/PortalAdvisoryLink';
-import { handleAdvisoryLink } from './Helpers';
+import { handleAdvisoryLink, truncate } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -41,8 +41,11 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                             title: (
                                 <TextContent>
                                     <Label>Description</Label>
-                                    <Text component={TextVariants.p}>
-                                        {row.attributes.description}
+                                    <Text component={TextVariants.p} style={{ whiteSpace: 'pre-line' }}>
+                                        {truncate(row.attributes.description.replace(
+                                            new RegExp('\\n(?=[^\\n])', 'g'),
+                                            ''
+                                        ), 570, handleAdvisoryLink(row.id, 'Read more'))}
                                     </Text>
                                     <PortalAdvisoryLink advisory={row.id} />
                                 </TextContent>
@@ -99,8 +102,11 @@ export const createSystemAdvisoriesRows = (
                             title: (
                                 <TextContent>
                                     <Label>Description</Label>
-                                    <Text component={TextVariants.p}>
-                                        {row.attributes.description}
+                                    <Text component={TextVariants.p} style={{ whiteSpace: 'pre-line' }}>
+                                        {truncate(row.attributes.description.replace(
+                                            new RegExp('\\n(?=[^\\n])', 'g'),
+                                            ''
+                                        ), 570, handleAdvisoryLink(row.id, 'Read more'))}
                                     </Text>
                                     <PortalAdvisoryLink advisory={row.id} />
                                 </TextContent>

@@ -60,6 +60,15 @@ export const getLimitFromPageSize = limit => {
     return limit;
 };
 
+export function truncate(str, max, end) {
+    return str.length > max ? (
+        <React.Fragment>
+            {str.substr(0, max - 1)}
+            ...&nbsp;{end}
+        </React.Fragment>
+    ) : str;
+}
+
 export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
     return (
         <div>
