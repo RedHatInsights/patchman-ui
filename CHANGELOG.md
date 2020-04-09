@@ -1,3 +1,10 @@
+## [0.6.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.2...v0.6.3) (2020-04-09)
+
+
+### Bug Fixes
+
+* **text-style:** Wrap and truncate expandable description ([f1ee036](https://github.com/RedHatInsights/patchman-ui/commit/f1ee0367f064c5b7f66925082a4382b070d22f23))
+
 ## [0.6.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.1...v0.6.2) (2020-04-09)
 
 
