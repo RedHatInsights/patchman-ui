@@ -1,3 +1,10 @@
+## [0.6.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.1...v0.6.2) (2020-04-09)
+
+
+### Bug Fixes
+
+* **system-search:** don't call loading with each search ([08f3f62](https://github.com/RedHatInsights/patchman-ui/commit/08f3f6216207ab6c79c0e1ed8769235e203a65ca))
+
 ## [0.6.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.0...v0.6.1) (2020-04-07)
 
 
