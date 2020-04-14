@@ -1,3 +1,10 @@
+## [0.6.4](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.3...v0.6.4) (2020-04-14)
+
+
+### Bug Fixes
+
+* **advisories-table:** Justify column widths so it does not change width with row expands ([ee4f93b](https://github.com/RedHatInsights/patchman-ui/commit/ee4f93b4d2aa441bee4ab2bfe49b5fa8d60e6d4f))
+
 ## [0.6.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.2...v0.6.3) (2020-04-09)
 
 
