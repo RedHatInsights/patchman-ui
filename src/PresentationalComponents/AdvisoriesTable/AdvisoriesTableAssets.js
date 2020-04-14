@@ -1,25 +1,25 @@
-import { expandable, sortable } from '@patternfly/react-table';
+import { cellWidth, expandable, sortable } from '@patternfly/react-table';
 
 export const advisoriesColumns = [
     {
         title: 'Name',
         cellFormatters: [expandable],
-        transforms: [sortable],
+        transforms: [sortable, cellWidth(15)],
         key: 'id'
     },
     {
         title: 'Publish date',
-        transforms: [sortable],
+        transforms: [sortable, cellWidth(15)],
         key: 'public_date'
     },
     {
         title: 'Type',
-        transforms: [sortable],
+        transforms: [sortable, cellWidth(15)],
         key: 'advisory_type'
     },
     {
         title: 'Applicable systems',
-        transforms: [sortable],
+        transforms: [sortable, cellWidth(15)],
         key: 'applicable_systems'
     },
     {
