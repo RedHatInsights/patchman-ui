@@ -33,17 +33,17 @@ export const systemAdvisoriesColumns = [
     {
         title: 'Name',
         cellFormatters: [expandable],
-        transforms: [sortable],
+        transforms: [sortable, cellWidth(15)],
         key: 'id'
     },
     {
         title: 'Publish date',
-        transforms: [sortable],
+        transforms: [sortable, cellWidth(15)],
         key: 'public_date'
     },
     {
         title: 'Type',
-        transforms: [sortable],
+        transforms: [sortable, cellWidth(15)],
         key: 'advisory_type'
     },
     {
