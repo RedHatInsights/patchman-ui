@@ -1,3 +1,10 @@
+## [0.6.5](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.4...v0.6.5) (2020-04-16)
+
+
+### Bug Fixes
+
+* **actions:** disable action when no applicable advisories ([4caf94d](https://github.com/RedHatInsights/patchman-ui/commit/4caf94de374b3c6ec1e5aec1f7af2ec00e4a33df))
+
 ## [0.6.4](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.3...v0.6.4) (2020-04-14)
 
 
