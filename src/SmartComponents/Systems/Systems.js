@@ -98,6 +98,12 @@ const Systems = () => {
         onDelete: removeFilter
     };
 
+    const areActionsDisabled = (rowData) => {
+        // eslint-disable-next-line camelcase
+        const { applicable_advisories } = rowData;
+        return applicable_advisories.every(typeSum => typeSum === 0);
+    };
+
     return (
         <React.Fragment>
 
@@ -116,6 +122,7 @@ const Systems = () => {
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}
+                            tableProps = {{ areActionsDisabled }}
 
                         />
                     )
