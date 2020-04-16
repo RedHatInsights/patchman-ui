@@ -1,3 +1,10 @@
+## [0.6.6](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.5...v0.6.6) (2020-04-16)
+
+
+### Bug Fixes
+
+* **system-advisories:** Fixcolumn width changing with expands ([42aee80](https://github.com/RedHatInsights/patchman-ui/commit/42aee803e050800fdbe067256797f2842243cf12))
+
 ## [0.6.5](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.4...v0.6.5) (2020-04-16)
 
 
