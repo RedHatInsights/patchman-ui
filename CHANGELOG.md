@@ -1,3 +1,10 @@
+## [0.6.8](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.7...v0.6.8) (2020-04-17)
+
+
+### Bug Fixes
+
+* **system-actions:** Don't disable kebabs on each row ([23a964e](https://github.com/RedHatInsights/patchman-ui/commit/23a964ee2a9e5b2cae10ef25489c2b8f9715a35d))
+
 ## [0.6.7](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.6...v0.6.7) (2020-04-17)
 
 
