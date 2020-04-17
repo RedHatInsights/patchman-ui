@@ -41,7 +41,7 @@ export const paths = {
     },
     systems: {
         title: 'Systems',
-        to: '/systems'
+        to: '/systems/'
     },
     inventoryDetail: {
         title: 'Inventory detail',
@@ -94,6 +94,7 @@ export const Routes = (props: Props) => {
 
     return (
         <Switch>
+            <Route path="/:url*" exact strict render={() => <Redirect to={`${path}/`}/>}/>
             <Redirect
                 from={paths.advisoryDetailSystem.to}
                 to={paths.inventoryDetail.to}
