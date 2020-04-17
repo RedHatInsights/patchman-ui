@@ -1,3 +1,10 @@
+## [0.6.7](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.6...v0.6.7) (2020-04-17)
+
+
+### Bug Fixes
+
+* **router:** Make trailing slash optional ([595ca6f](https://github.com/RedHatInsights/patchman-ui/commit/595ca6f4f678123cf38d98f248d52626b9bca4b8))
+
 ## [0.6.6](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.5...v0.6.6) (2020-04-16)
 
 
