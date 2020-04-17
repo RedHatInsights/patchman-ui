@@ -1,3 +1,10 @@
+## [0.6.9](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.8...v0.6.9) (2020-04-17)
+
+
+### Bug Fixes
+
+* **inventory-table:** generate different key for each fetch ([d1ffb45](https://github.com/RedHatInsights/patchman-ui/commit/d1ffb45d49f0d8081b91b209e719e6646f553683))
+
 ## [0.6.8](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.7...v0.6.8) (2020-04-17)
 
 
