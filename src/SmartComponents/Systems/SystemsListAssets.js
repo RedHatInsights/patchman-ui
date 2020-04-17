@@ -34,8 +34,7 @@ export const systemsRowActions = showRemediationModal => {
                         )
                     )
                 );
-            },
-            isDisabled: true
+            }
         }
     ];
 };
