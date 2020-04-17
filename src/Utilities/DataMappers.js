@@ -138,7 +138,7 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
         rows.map(row => {
             return {
                 id: row.id,
-                key: row.id,
+                key: Math.random().toString() + row.id,
                 applicable_advisories: [
                     row.attributes.rhea_count || 0,
                     row.attributes.rhba_count || 0,
