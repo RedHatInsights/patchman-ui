@@ -1,3 +1,10 @@
+## [0.6.10](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.9...v0.6.10) (2020-04-20)
+
+
+### Bug Fixes
+
+* **affected-systems:** Disable default select all checkbox ([2742526](https://github.com/RedHatInsights/patchman-ui/commit/27425267ffdd2486a7467c2f9375c1072f622d66))
+
 ## [0.6.9](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.8...v0.6.9) (2020-04-17)
 
 
