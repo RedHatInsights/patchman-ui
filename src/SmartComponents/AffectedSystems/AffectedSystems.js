@@ -149,6 +149,7 @@ const AffectedSystems = ({ advisoryName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                     actions={systemsRowActions(showRemediationModal)}
+                    tableProps = {{ canSelectAll: false }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={onSelect && {
