@@ -1,3 +1,16 @@
+# [0.8.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.7.0...v0.8.0) (2020-04-22)
+
+
+### Bug Fixes
+
+* **inventory-loading:** Indicate that our API is loading ([bd7ef88](https://github.com/RedHatInsights/patchman-ui/commit/bd7ef88c4aba390dd6672aacf9fa1a493bd8fab2))
+
+
+### Features
+
+* **affected-systems:** Add sorting systems ([f90d03c](https://github.com/RedHatInsights/patchman-ui/commit/f90d03cf102da4b285b3639653b03b60816e61b5))
+* **systems:** Add ability to sort columns ([04926db](https://github.com/RedHatInsights/patchman-ui/commit/04926dbc8b5ea1db3f07a5f702fbd5edbbff9107))
+
 # [0.7.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.10...v0.7.0) (2020-04-22)
 
 
