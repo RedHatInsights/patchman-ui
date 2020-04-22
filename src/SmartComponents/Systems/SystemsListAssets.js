@@ -1,4 +1,4 @@
-import { classNames } from '@patternfly/react-table';
+import { classNames, sortable } from '@patternfly/react-table';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { createAdvisoriesIcons, remediationProvider } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
@@ -8,7 +8,7 @@ export const systemsListColumns = [
         key: 'display_name',
         title: 'Name',
         composed: ['facts.os_release', 'display_name'],
-        transforms: [classNames('col-width-40')]
+        transforms: [classNames('col-width-40'), sortable]
     },
     {
         key: 'applicable_advisories',

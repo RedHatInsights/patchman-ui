@@ -1,3 +1,5 @@
+import { sortable } from '@patternfly/react-table';
+
 // Initial State
 export const init = {
     columns: [],
@@ -8,7 +10,8 @@ export const init = {
 
 function modifyInventory(columns, state) {
     if (state.loaded) {
-        const lastSeenColumn = state.columns.filter(({ key }) => key === 'updated');
+        let lastSeenColumn = state.columns.filter(({ key }) => key === 'updated');
+        lastSeenColumn = [{ ...lastSeenColumn[0], transforms: [sortable] }];
         return {
             ...state,
             columns: [

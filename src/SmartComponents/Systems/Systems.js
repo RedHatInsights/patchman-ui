@@ -13,8 +13,8 @@ import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import { buildFilterChips } from '../../Utilities/Helpers';
-import { useHandleRefresh, usePagePerPage, useRemoveFilter } from '../../Utilities/Hooks';
+import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
+import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 
@@ -42,6 +42,10 @@ const Systems = () => {
     );
     const queryParams = useSelector(
         ({ SystemsListStore }) => SystemsListStore.queryParams
+    );
+
+    const inventoryColumns = useSelector(
+        ({ entities }) => entities && entities.columns
     );
 
     const { filter, search } = queryParams;
@@ -98,6 +102,19 @@ const Systems = () => {
         onDelete: removeFilter
     };
 
+    // This is used ONLY for sorting purposes
+    const getMangledColumns = () => {
+        let updated = inventoryColumns && inventoryColumns.filter(({ key }) => key === 'updated')[0];
+        updated = { ...updated, key: 'last_upload' };
+        return [...systemsListColumns, updated];
+    };
+
+    const onSort = useSortColumn(getMangledColumns(), apply);
+    const sortBy = React.useMemo(
+        () => createSortBy(getMangledColumns(), metadata.sort, 0),
+        [metadata.sort]
+    );
+
     const areActionsDisabled = (rowData) => {
         // eslint-disable-next-line camelcase
         const { applicable_advisories } = rowData;
@@ -122,7 +139,7 @@ const Systems = () => {
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}
-                            tableProps = {{ areActionsDisabled }}
+                            tableProps = {{ areActionsDisabled, onSort, sortBy }}
 
                         />
                     )
