@@ -1,3 +1,4 @@
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -5,15 +6,15 @@ import { withRouter } from 'react-router-dom';
 import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import Error from '../../PresentationalComponents/Snippets/Error';
+import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
+import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
-import { STATUS_REJECTED } from '../../Utilities/constants';
+import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
-import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 
 const SystemAdvisories = ({ history }) => {
     const dispatch = useDispatch();
@@ -132,9 +133,12 @@ const SystemAdvisories = ({ history }) => {
             description: error.detail
         }));}
 
-    return (
-        <React.Fragment>
-            {status === STATUS_REJECTED ? errorState : <AdvisoriesTable
+    const MainComponent = () => {
+        if (status === STATUS_RESOLVED && metadata.total_items === 0) {
+            return <SystemUpToDate/>;
+        }
+        else {
+            return <AdvisoriesTable
                 columns={systemAdvisoriesColumns}
                 onCollapse={onCollapse}
                 onSelect={(advisories.length && onSelect) || undefined}
@@ -149,7 +153,13 @@ const SystemAdvisories = ({ history }) => {
                 systemId={entity.id}
                 apply={apply}
                 store={{ rows, metadata, status, queryParams }}
-            />}
+            />;
+        }
+    };
+
+    return (
+        <React.Fragment>
+            {status === STATUS_REJECTED ? errorState : <MainComponent/>}
         </React.Fragment>
     );
 };
