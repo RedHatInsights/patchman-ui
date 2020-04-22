@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.10...v0.7.0) (2020-04-22)
+
+
+### Features
+
+* **empty-state:** Add empty state for up-to-date system ([6bc18ed](https://github.com/RedHatInsights/patchman-ui/commit/6bc18ed030cc2550eeb1d25d782d7fee52006b2c))
+
 ## [0.6.10](https://github.com/RedHatInsights/patchman-ui/compare/v0.6.9...v0.6.10) (2020-04-20)
 
 
