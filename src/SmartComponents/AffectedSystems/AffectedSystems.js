@@ -12,8 +12,8 @@ import { changeAffectedSystemsParams, clearAffectedSystemsStore, fetchAffectedSy
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, buildFilterChips, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, usePagePerPage, useRemoveFilter } from '../../Utilities/Hooks';
+import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
+import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 
@@ -45,6 +45,10 @@ const AffectedSystems = ({ advisoryName }) => {
     );
     const queryParams = useSelector(
         ({ AffectedSystemsStore }) => AffectedSystemsStore.queryParams
+    );
+
+    const inventoryColumns = useSelector(
+        ({ entities }) => entities && entities.columns
     );
 
     const handleRefresh = useHandleRefresh(metadata, apply);
@@ -137,6 +141,19 @@ const AffectedSystems = ({ advisoryName }) => {
         );}
     );
 
+    // This is used ONLY for sorting purposes
+    const getMangledColumns = () => {
+        let updated = inventoryColumns && inventoryColumns.filter(({ key }) => key === 'updated')[0];
+        updated = { ...updated, key: 'last_upload' };
+        return [...systemsListColumns, updated];
+    };
+
+    const onSort = useSortColumn(getMangledColumns(), apply, 1);
+    const sortBy = React.useMemo(
+        () => createSortBy(getMangledColumns(), metadata.sort, 1),
+        [metadata.sort]
+    );
+
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
     return (
@@ -149,7 +166,7 @@ const AffectedSystems = ({ advisoryName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                     actions={systemsRowActions(showRemediationModal)}
-                    tableProps = {{ canSelectAll: false }}
+                    tableProps = {{ canSelectAll: false, onSort, sortBy }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={onSelect && {
