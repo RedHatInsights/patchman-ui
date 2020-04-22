@@ -11,7 +11,7 @@ import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
 import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
-import { STATUS_REJECTED } from '../../Utilities/constants';
+import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
 import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
@@ -134,6 +134,7 @@ const Systems = () => {
                             page={page}
                             total={metadata.total_items}
                             perPage={perPage}
+                            isLoaded={status === STATUS_RESOLVED}
                             onRefresh={handleRefresh}
                             hasCheckbox={false}
                             actions={systemsRowActions(showRemediationModal)}
