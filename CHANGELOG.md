@@ -1,3 +1,10 @@
+## [0.8.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.8.0...v0.8.1) (2020-04-23)
+
+
+### Bug Fixes
+
+* **advisory-link:** Fix advisory link from inventory ([d785347](https://github.com/RedHatInsights/patchman-ui/commit/d7853475f7f2c1a63d240e2fd95867f3c7378de0))
+
 # [0.8.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.7.0...v0.8.0) (2020-04-22)
 
 
