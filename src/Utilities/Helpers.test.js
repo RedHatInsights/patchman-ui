@@ -124,10 +124,14 @@ describe('Helpers tests', () => {
         expect(ret).toEqual(expected);
     });
 
-    it('handleAdvisoryLink: Get advisory link from outside', () => {
+    it('handleAdvisoryLink: Get advisory link from inventory', () => {
+        delete global.window.location;
+        global.window.location = {
+            href: 'https://cloud.redhat.com/insights/inventory'
+        };
         const host = document.baseURI;
         let advisoryName = 'ABCD';
-        const expected = `${host}rhel/patch/advisories/${advisoryName}`;
+        const expected = `${host}insights/patch/advisories/${advisoryName}`;
         let result = handleAdvisoryLink(advisoryName);
         let {
             props: { href, children }
@@ -136,10 +140,14 @@ describe('Helpers tests', () => {
         expect(children).toEqual(advisoryName);
     });
 
-    it('handleAdvisoryLink: Get advisory link from outside with custom text', () => {
+    it('handleAdvisoryLink: Get advisory link from inventory with custom text', () => {
+        delete global.window.location;
+        global.window.location = {
+            href: 'https://cloud.redhat.com/insights/inventory'
+        };
         const host = document.baseURI;
         let advisoryName = 'ABCD';
-        const expected = `${host}rhel/patch/advisories/${advisoryName}`;
+        const expected = `${host}insights/patch/advisories/${advisoryName}`;
         let result = handleAdvisoryLink(advisoryName, 'custom text');
         let {
             props: { href, children }
