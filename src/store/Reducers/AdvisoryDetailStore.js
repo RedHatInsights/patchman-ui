@@ -1,7 +1,7 @@
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { CLEAR_ADVISORY_DETAILS, FETCH_ADVISORY_DETAILS } from '../ActionTypes';
 
-let initialState = {
+export let initialState = {
     data: { attributes: {} },
     status: STATUS_LOADING
 };
