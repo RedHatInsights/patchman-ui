@@ -26,10 +26,10 @@ describe('AdvisoryListStore tests', () => {
     ${storeListDefaults} | ${{ type: action_rejected, payload: error }}                         | ${{ ...storeListDefaults, status: STATUS_REJECTED, error }}
     ${storeListDefaults} | ${{ type: action_rejected, payload: error }}                         | ${{ ...storeListDefaults, status: STATUS_REJECTED, error }}
     ${storeListDefaults} | ${{ type: EXPAND_ADVISORY_ROW, payload: { rowId: 1, value: true } }} | ${{ ...storeListDefaults, expandedRows: { 1: true } }}
-    ${storeListDefaults} | ${{ type: CHANGE_ADVISORY_LIST_PARAMS, payload: { limit: 10 } }} | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0 } }}
+    ${storeListDefaults} | ${{ type: CHANGE_ADVISORY_LIST_PARAMS, payload: { limit: 10 } }}     | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0 } }}
     ${storeListDefaults} | ${{ type: SELECT_ADVISORY_ROW, payload: { id: 1, selected: true } }} | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
-    ${storeListDefaults}          | ${{ type: 'NONSENSE', payload: {} }}                       | ${storeListDefaults}
-    ${undefined}          | ${{ type: 'NONSENSE', payload: {} }}                       | ${storeListDefaults}
+    ${storeListDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                 | ${storeListDefaults}
+    ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                 | ${storeListDefaults}
     `('$action', ({ state, action: { type, payload }, result }) => {
     const res = AdvisoryListStore(state, { type, payload });
     expect(res).toEqual(result);

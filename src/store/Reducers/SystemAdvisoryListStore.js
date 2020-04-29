@@ -1,5 +1,5 @@
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
-import { addOrRemoveItemFromSet, getNewSelectedItems } from '../../Utilities/Helpers';
+import { addOrRemoveItemFromSet, changeListParams, getNewSelectedItems } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
 export const SystemAdvisoryListStore = (state = storeListDefaults, action) => {
@@ -22,10 +22,10 @@ export const SystemAdvisoryListStore = (state = storeListDefaults, action) => {
             return newState;
 
         case ActionTypes.CHANGE_SYSTEM_ADVISORY_LIST_PARAMS:
-            newState.queryParams = {
-                ...newState.queryParams,
-                ...action.payload
-            };
+            newState.queryParams = changeListParams(
+                newState.queryParams,
+                action.payload
+            );
             return newState;
 
         case ActionTypes.EXPAND_SYSTEM_ADVISORY_ROW: {
