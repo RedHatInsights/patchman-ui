@@ -1,4 +1,5 @@
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
+import { changeListParams } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
 export const SystemsListStore = (state = storeListDefaults, action) => {
@@ -22,10 +23,10 @@ export const SystemsListStore = (state = storeListDefaults, action) => {
             return newState;
 
         case ActionTypes.CHANGE_SYSTEMS_LIST_PARAMS:
-            newState.queryParams = {
-                ...newState.queryParams,
-                ...action.payload
-            };
+            newState.queryParams = changeListParams(
+                newState.queryParams,
+                action.payload
+            );
             return newState;
 
         default:
