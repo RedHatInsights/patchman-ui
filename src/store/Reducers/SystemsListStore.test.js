@@ -18,7 +18,7 @@ const fulfilled_payload = {
 
 const error = 'Error';
 
-describe('SystemAdvisoryListStore tests', () => {
+describe('SystemsListStore tests', () => {
     it.each`
     state                | action                                                                      | result
     ${storeListDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}                   | ${{ ...storeListDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: STATUS_RESOLVED, error: {} }}
