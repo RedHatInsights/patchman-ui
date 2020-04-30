@@ -22,10 +22,11 @@ export const AffectedSystemsStore = (state = storeListDefaults, action) => {
         }
 
         case ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS:
-            return {
-                ...state,
-                queryParams: changeListParams(state.queryParams, action.payload)
-            };
+            newState.queryParams = changeListParams(
+                newState.queryParams,
+                action.payload
+            );
+            return newState;
 
         case ActionTypes.FETCH_AFFECTED_SYSTEMS + '_FULFILLED':
             newState.rows = action.payload.data;
