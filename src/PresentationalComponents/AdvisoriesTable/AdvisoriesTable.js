@@ -82,9 +82,15 @@ const AdvisoriesTable = ({
                         onClick: () => {
                             onSelect('page');
                         }
+                    },
+                    {
+                        title: `Select all (${metadata.total_items})`,
+                        onClick: () => {
+                            onSelect('all');
+                        }
                     }],
                     onSelect: (value) => {
-                        value ? onSelect('page') : onSelect('none');
+                        value ? onSelect('all') : onSelect('none');
                     },
                     checked: Boolean(selectedCount)
                 }}
