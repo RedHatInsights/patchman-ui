@@ -1,3 +1,10 @@
+## [0.8.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.8.1...v0.8.2) (2020-05-06)
+
+
+### Bug Fixes
+
+* **filter:** Remove Unknown filter ([60b798d](https://github.com/RedHatInsights/patchman-ui/commit/60b798d35bcda147f9134176b8f86ab3b0831504))
+
 ## [0.8.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.8.0...v0.8.1) (2020-04-23)
 
 
