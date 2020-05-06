@@ -10,6 +10,7 @@ import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
 import { changeAffectedSystemsParams, clearAffectedSystemsStore, fetchAffectedSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
+import { fetchAffectedSystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
@@ -122,6 +123,9 @@ const AffectedSystems = ({ advisoryName }) => {
                         }
                     );
                 });
+                dispatch(
+                    { type: 'SELECT_ENTITY', payload: toSelect }
+                );
                 break;
             }
 
@@ -133,12 +137,31 @@ const AffectedSystems = ({ advisoryName }) => {
                             selected: true
                         }
                     );});
+                dispatch(
+                    { type: 'SELECT_ENTITY', payload: toSelect }
+                );
                 break;
-            }}
+            }
 
-        dispatch(
-            { type: 'SELECT_ENTITY', payload: toSelect }
-        );}
+            case 'all': {
+                const fetchCallback = ({ data }) => {
+                    data.forEach(({ id })=>{
+                        toSelect.push(
+                            {
+                                id,
+                                selected: true
+                            }
+                        );});
+                    dispatch(
+                        { type: 'SELECT_ENTITY', payload: toSelect }
+                    );
+                };
+
+                fetchAffectedSystems({ id: advisoryName, limit: 999999 }).then(fetchCallback);
+
+                break;
+            }
+        }}
     );
 
     // This is used ONLY for sorting purposes
@@ -182,9 +205,15 @@ const AffectedSystems = ({ advisoryName }) => {
                             onClick: () => {
                                 onSelect('page');
                             }
+                        },
+                        {
+                            title: `Select all (${metadata.total_items})`,
+                            onClick: () => {
+                                onSelect('all');
+                            }
                         }],
                         onSelect: (value) => {
-                            value ? onSelect('page') : onSelect('none');
+                            value ? onSelect('all') : onSelect('none');
                         },
                         checked: Boolean(selectedCount)
                     }}
