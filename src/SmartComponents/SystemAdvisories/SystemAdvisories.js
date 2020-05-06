@@ -8,11 +8,13 @@ import { systemAdvisoriesColumns } from '../../PresentationalComponents/Advisori
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
-import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow, fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
+import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
+    fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
+import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable,
+    remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
 const SystemAdvisories = ({ history }) => {
