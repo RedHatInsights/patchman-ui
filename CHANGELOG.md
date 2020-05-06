@@ -1,3 +1,16 @@
+# [0.9.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.8.2...v0.9.0) (2020-05-06)
+
+
+### Bug Fixes
+
+* **lint:** Fix lint ([0bb3cb5](https://github.com/RedHatInsights/patchman-ui/commit/0bb3cb54affeb1286963af23527a706ead5a3f64))
+
+
+### Features
+
+* **select-all:** Add select all for AffectedSystems ([2147b19](https://github.com/RedHatInsights/patchman-ui/commit/2147b192e85c2b517492fcf3f87ea3945b4f55fe))
+* **select-all:** Support select all on the SystemAdvisories ([9e91d71](https://github.com/RedHatInsights/patchman-ui/commit/9e91d71b69c0a40f1e0657bdfcdd61616ee13eff))
+
 ## [0.8.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.8.1...v0.8.2) (2020-05-06)
 
 
