@@ -1,3 +1,10 @@
+# [0.10.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.9.0...v0.10.0) (2020-05-12)
+
+
+### Features
+
+* **select-all:** add indeterminate state for checkboxes ([2cb0605](https://github.com/RedHatInsights/patchman-ui/commit/2cb06051f1906133d2c45523dd6a3b3992773a4f))
+
 # [0.9.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.8.2...v0.9.0) (2020-05-06)
 
 
