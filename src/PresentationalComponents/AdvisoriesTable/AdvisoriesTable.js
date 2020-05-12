@@ -47,7 +47,6 @@ const AdvisoriesTable = ({
 
     const removeFilter = useRemoveFilter(filter, apply);
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
-
     return (
         <React.Fragment>
             <PrimaryToolbar
@@ -92,7 +91,7 @@ const AdvisoriesTable = ({
                     onSelect: (value) => {
                         value ? onSelect('all') : onSelect('none');
                     },
-                    checked: Boolean(selectedCount)
+                    checked: selectedCount === metadata.total_items ? true : selectedCount === 0 ? false : null
                 }}
             >
                 {remediationProvider && (

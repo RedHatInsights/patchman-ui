@@ -215,7 +215,7 @@ const AffectedSystems = ({ advisoryName }) => {
                         onSelect: (value) => {
                             value ? onSelect('all') : onSelect('none');
                         },
-                        checked: Boolean(selectedCount)
+                        checked: selectedCount === metadata.total_items ? true : selectedCount === 0 ? false : null
                     }}
                 >
                     <reactCore.ToolbarGroup>
