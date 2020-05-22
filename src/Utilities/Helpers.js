@@ -285,3 +285,9 @@ export const changeListParams = (oldParams, newParams) => {
 
     return newState;
 };
+
+export const subtractDate = (days) => {
+    const date = new Date();
+    date.setDate(date.getDate() - days);
+    return date.toISOString();
+};

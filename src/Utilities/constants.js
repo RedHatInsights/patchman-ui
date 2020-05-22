@@ -1,8 +1,8 @@
 import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
 import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
-import moment from 'moment';
 import React from 'react';
+import { subtractDate } from './Helpers';
 
 export const STATUS_REJECTED = 'rejected';
 export const STATUS_LOADING = 'loading';
@@ -24,37 +24,27 @@ export const storeListDefaults = {
 export const publicDateOptions = [
     { apiValue: '', label: 'All', value: '' },
     {
-        apiValue: `gt:${moment()
-        .subtract(7, 'days')
-        .toISOString()}`,
+        apiValue: `gt:${subtractDate(7)}`,
         label: 'Last 7 days',
         value: 'last7'
     },
     {
-        apiValue: `gt:${moment()
-        .subtract(30, 'days')
-        .toISOString()}`,
+        apiValue: `gt:${subtractDate(30)}`,
         label: 'Last 30 days',
         value: 'last30'
     },
     {
-        apiValue: `gt:${moment()
-        .subtract(90, 'days')
-        .toISOString()}`,
+        apiValue: `gt:${subtractDate(90)}`,
         label: 'Last 90 days',
         value: 'last90'
     },
     {
-        apiValue: `gt:${moment()
-        .subtract(1, 'years')
-        .toISOString()}`,
+        apiValue: `gt:${subtractDate(365)}`,
         label: 'Last year',
         value: 'lastYear'
     },
     {
-        apiValue: `lt:${moment()
-        .subtract(1, 'years')
-        .toISOString()}`,
+        apiValue: `lt:${subtractDate(365)}`,
         label: 'More than 1 year ago',
         value: 'moreThanYear'
     }
