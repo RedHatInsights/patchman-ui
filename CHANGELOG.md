@@ -1,3 +1,11 @@
+## [0.10.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.10.0...v0.10.1) (2020-05-22)
+
+
+### Bug Fixes
+
+* **datetime:** Remove momentjs and use Date() instead ([3b389a1](https://github.com/RedHatInsights/patchman-ui/commit/3b389a19d9b700af97b254da6afc04761c0ebced))
+* **tests:** Fix test for filter ([b70262b](https://github.com/RedHatInsights/patchman-ui/commit/b70262bb1e2ac133cc6bd9c3d0d308563b3c18c1))
+
 # [0.10.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.9.0...v0.10.0) (2020-05-12)
 
 
