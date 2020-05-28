@@ -6,7 +6,7 @@ let deps = {};
 
 function processPackageName(node) {
     const version = (node.from && 'NOVER') || node.version;
-    const packageName = `mgmt_services:${buildVer}:patchman-ui/${node.name}@${version}`;
+    const packageName = `mgmt_services/patch/patchman-ui/${node.name}@${version}`;
     deps[packageName] = packageName;
 }
 
