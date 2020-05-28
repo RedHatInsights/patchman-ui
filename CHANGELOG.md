@@ -1,3 +1,10 @@
+## [0.11.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.1...v0.11.2) (2020-05-28)
+
+
+### Bug Fixes
+
+* **pagination:** Fix bottom pagination in tables: ([634c595](https://github.com/RedHatInsights/patchman-ui/commit/634c595b51c4315867fd5ee0ddff479b68f30ccd))
+
 ## [0.11.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.0...v0.11.1) (2020-05-28)
 
 
