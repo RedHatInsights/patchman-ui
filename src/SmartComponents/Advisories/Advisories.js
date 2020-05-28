@@ -1,3 +1,4 @@
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -8,6 +9,7 @@ import { advisoriesColumns } from '../../PresentationalComponents/AdvisoriesTabl
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { changeAdvisoryListParams, expandAdvisoryRow, fetchApplicableAdvisories } from '../../store/Actions/Actions';
+import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable } from '../../Utilities/Helpers';
@@ -67,6 +69,17 @@ const Advisories = ({ history }) => {
         [metadata.sort]
     );
 
+    const onExport = (_, format) => {
+        const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
+        const filename = `applicable-advisories-${date}`;
+        if (format === 'csv') {
+            exportAdvisoriesCSV(queryParams).then(data => downloadFile(data, filename, 'csv'));
+        }
+        else {
+            exportAdvisoriesJSON(queryParams).then(data => downloadFile(JSON.stringify(data), filename, 'json'));
+        }
+    };
+
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
@@ -85,6 +98,7 @@ const Advisories = ({ history }) => {
                         onSetPage={onSetPage}
                         onPerPageSelect={onPerPageSelect}
                         onSort={onSort}
+                        onExport={onExport}
                         sortBy={sortBy}
                         apply={apply}
                         store={{ rows, metadata, status, queryParams }}

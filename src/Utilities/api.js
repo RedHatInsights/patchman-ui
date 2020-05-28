@@ -72,3 +72,23 @@ export const fetchAffectedSystems = params => {
     const { id, ...args } = params;
     return createApiCall(`/advisories/${id}/systems`, 'get', args);
 };
+
+export const exportAdvisoriesCSV = params => {
+    let endpoint = '/export/advisories';
+    endpoint = endpoint.concat(encodeApiParams(params));
+    return fetch('/api/patch/v1' + endpoint, {
+        method: 'get',
+        credentials: 'include',
+        headers: new Headers({ accept: 'text/csv' })
+    }).then(res => res.text());
+};
+
+export const exportAdvisoriesJSON = params => {
+    let endpoint = '/export/advisories';
+    endpoint = endpoint.concat(encodeApiParams(params));
+    return fetch('/api/patch/v1' + endpoint, {
+        method: 'get',
+        credentials: 'include',
+        headers: new Headers({ accept: 'application/json' })
+    }).then(res => res.json());
+};

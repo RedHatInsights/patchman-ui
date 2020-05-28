@@ -27,6 +27,7 @@ const AdvisoriesTable = ({
     onSetPage,
     onPerPageSelect,
     onSort,
+    onExport,
     sortBy,
     remediationProvider,
     selectedRows,
@@ -69,6 +70,20 @@ const AdvisoriesTable = ({
                     filters: buildFilterChips(filter, search),
                     onDelete: removeFilter
                 }}
+                actionsConfig={{ actions: [remediationProvider && (
+                    <React.Fragment>
+                        <Button
+                            isDisabled={selectedCount === 0}
+                            onClick={() =>
+                                showRemediationModal(remediationProvider())
+                            }
+                        >
+                            <AnsibeTowerIcon/>&nbsp;Remediate
+                        </Button>
+                        <RemediationModalCmp />
+                    </React.Fragment>
+                )] }}
+                exportConfig={{ onSelect: onExport }}
                 bulkSelect={onSelect && {
                     count: selectedCount,
                     items: [{
@@ -93,22 +108,9 @@ const AdvisoriesTable = ({
                     },
                     checked: selectedCount === metadata.total_items ? true : selectedCount === 0 ? false : null
                 }}
-            >
-                {remediationProvider && (
-                    <React.Fragment>
-                        <Button
-                            isDisabled={selectedCount === 0}
-                            onClick={() =>
-                                showRemediationModal(remediationProvider())
-                            }
-                        >
-                            <AnsibeTowerIcon/>&nbsp;Remediate
-                        </Button>
-                        <RemediationModalCmp />
-                    </React.Fragment>
-                )}
 
-            </PrimaryToolbar>
+            />
+
             {status === STATUS_LOADING && <SkeletonTable colSize={5} rowSize={20} />}
             {status === STATUS_RESOLVED && (
                 <React.Fragment>
@@ -143,6 +145,7 @@ AdvisoriesTable.propTypes = {
     onSetPage: PropTypes.func,
     onPerPageSelect: PropTypes.func,
     onSort: PropTypes.func,
+    onExport: PropTypes.func,
     remediationProvider: PropTypes.func,
     selectedRows: PropTypes.object,
     apply: PropTypes.func,
