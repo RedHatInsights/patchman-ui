@@ -132,6 +132,7 @@ const AdvisoriesTable = ({
                         perPage={perPage}
                         page={page}
                         onSetPage={onSetPage}
+                        onPerPageSelect={onPerPageSelect}
                     />
                 </React.Fragment>)}
         </React.Fragment>
