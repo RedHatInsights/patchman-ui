@@ -1,3 +1,11 @@
+# [0.11.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.10.1...v0.11.0) (2020-05-28)
+
+
+### Features
+
+* **export:** add export to advisories page ([dbead6a](https://github.com/RedHatInsights/patchman-ui/commit/dbead6a1645dd944e94b6018044a7a98c2825662))
+* **export:** Add export to systems page ([7c284d9](https://github.com/RedHatInsights/patchman-ui/commit/7c284d9aac383bfc31dbb378d6f712fbfb376436))
+
 ## [0.10.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.10.0...v0.10.1) (2020-05-22)
 
 
