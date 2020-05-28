@@ -1,6 +1,7 @@
 import * as reactCore from '@patternfly/react-core';
 import * as reactIcons from '@patternfly/react-icons';
 import * as pfReactTable from '@patternfly/react-table';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +12,7 @@ import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
 import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
+import { exportSystemsCSV, exportSystemsJSON } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
@@ -115,6 +117,17 @@ const Systems = () => {
         [metadata.sort]
     );
 
+    const onExport = (_, format) => {
+        const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
+        const filename = `systems-${date}`;
+        if (format === 'csv') {
+            exportSystemsCSV(queryParams).then(data => downloadFile(data, filename, 'csv'));
+        }
+        else {
+            exportSystemsJSON(queryParams).then(data => downloadFile(JSON.stringify(data), filename, 'json'));
+        }
+    };
+
     const areActionsDisabled = (rowData) => {
         // eslint-disable-next-line camelcase
         const { applicable_advisories } = rowData;
@@ -136,6 +149,7 @@ const Systems = () => {
                             perPage={perPage}
                             isLoaded={status === STATUS_RESOLVED}
                             onRefresh={handleRefresh}
+                            exportConfig={{ onSelect: onExport }}
                             hasCheckbox={false}
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}

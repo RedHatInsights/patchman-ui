@@ -92,3 +92,23 @@ export const exportAdvisoriesJSON = params => {
         headers: new Headers({ accept: 'application/json' })
     }).then(res => res.json());
 };
+
+export const exportSystemsCSV = params => {
+    let endpoint = '/export/systems';
+    endpoint = endpoint.concat(encodeApiParams(params));
+    return fetch('/api/patch/v1' + endpoint, {
+        method: 'get',
+        credentials: 'include',
+        headers: new Headers({ accept: 'text/csv' })
+    }).then(res => res.text());
+};
+
+export const exportSystemsJSON = params => {
+    let endpoint = '/export/systems';
+    endpoint = endpoint.concat(encodeApiParams(params));
+    return fetch('/api/patch/v1' + endpoint, {
+        method: 'get',
+        credentials: 'include',
+        headers: new Headers({ accept: 'application/json' })
+    }).then(res => res.json());
+};
