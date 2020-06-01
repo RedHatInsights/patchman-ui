@@ -1,3 +1,11 @@
+## [0.11.4](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.3...v0.11.4) (2020-06-01)
+
+
+### Bug Fixes
+
+* **select:** fix select page number on advisories table ([9d7244f](https://github.com/RedHatInsights/patchman-ui/commit/9d7244fb9fe057f5592e611cee72f2548ec449b9))
+* **select-all:** Fix select page number for affected systems ([7ad6212](https://github.com/RedHatInsights/patchman-ui/commit/7ad62121b7d96987856048b79e887f83a8a3018b))
+
 ## [0.11.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.2...v0.11.3) (2020-06-01)
 
 
