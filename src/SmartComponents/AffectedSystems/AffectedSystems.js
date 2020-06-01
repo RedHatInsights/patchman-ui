@@ -201,7 +201,7 @@ const AffectedSystems = ({ advisoryName }) => {
                                 onSelect('none');
                             }
                         }, {
-                            title: `Select page (${perPage})`,
+                            title: `Select page (${hosts.length})`,
                             onClick: () => {
                                 onSelect('page');
                             }
