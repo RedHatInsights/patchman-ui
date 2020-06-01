@@ -92,7 +92,7 @@ const AdvisoriesTable = ({
                             onSelect('none');
                         }
                     }, {
-                        title: `Select page (${perPage})`,
+                        title: `Select page (${rows.length / 2})`,
                         onClick: () => {
                             onSelect('page');
                         }
