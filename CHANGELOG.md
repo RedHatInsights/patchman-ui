@@ -1,3 +1,10 @@
+## [0.11.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.2...v0.11.3) (2020-06-01)
+
+
+### Bug Fixes
+
+* **manifest:** fix manifest format ([545d1f1](https://github.com/RedHatInsights/patchman-ui/commit/545d1f1beb107af8d77d4e3ac54c909d0dd8f4b7))
+
 ## [0.11.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.1...v0.11.2) (2020-05-28)
 
 
