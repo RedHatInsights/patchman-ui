@@ -1,3 +1,10 @@
+## [0.11.5](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.4...v0.11.5) (2020-06-02)
+
+
+### Bug Fixes
+
+* **empty-state:** Fix incorrect empty state ([919fa65](https://github.com/RedHatInsights/patchman-ui/commit/919fa651fa74194b0121e9b559a7459361d919af))
+
 ## [0.11.4](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.3...v0.11.4) (2020-06-01)
 
 
