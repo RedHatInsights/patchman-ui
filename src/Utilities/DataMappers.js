@@ -123,7 +123,7 @@ export const createSystemAdvisoriesRows = (
                 heightAuto: true,
                 cells: [
                     {
-                        props: { colSpan: 5 },
+                        props: { colSpan: 6 },
                         title: <EmptyAdvisoryList />
                     }
                 ]

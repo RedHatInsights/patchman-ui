@@ -116,13 +116,13 @@ const AdvisoriesTable = ({
                 <React.Fragment>
                     <Table
                         aria-label="Advisories table"
-                        cells={columns}
+                        cells={metadata.total_items && columns || ['']}
                         onSelect={onSelect}
                         rows={rows}
-                        onCollapse={onCollapse}
+                        onCollapse={metadata.total_items && onCollapse}
                         canSelectAll={false}
                         onSort={onSort}
-                        sortBy={sortBy}
+                        sortBy={metadata.total_items && sortBy}
                     >
                         <TableHeader />
                         <TableBody />
