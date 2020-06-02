@@ -161,7 +161,8 @@ const SystemAdvisories = ({ history }) => {
         }));}
 
     const MainComponent = () => {
-        if (status === STATUS_RESOLVED && metadata.total_items === 0) {
+        if (status === STATUS_RESOLVED && metadata.total_items === 0
+            && Object.keys(queryParams).length === 0) {
             return <SystemUpToDate/>;
         }
         else {
