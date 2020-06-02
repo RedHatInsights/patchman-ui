@@ -1,3 +1,10 @@
+## [0.11.6](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.5...v0.11.6) (2020-06-02)
+
+
+### Bug Fixes
+
+* **empty-state:** Polish display of empty states ([cb7cc49](https://github.com/RedHatInsights/patchman-ui/commit/cb7cc49515b7402c0b38f49b16ed4ce248c4ca8d))
+
 ## [0.11.5](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.4...v0.11.5) (2020-06-02)
 
 
