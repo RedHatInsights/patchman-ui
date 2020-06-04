@@ -1,35 +1,34 @@
+import React, { lazy, Suspense, Fragment } from 'react';
 import some from 'lodash/some';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
-import asyncComponent from './Utilities/asyncComponent';
 
-const Advisories = asyncComponent(() =>
+const Advisories = lazy(() =>
     import(
         /* webpackChunkName: "Advisories" */ './SmartComponents/Advisories/Advisories'
     )
 );
 
-const Systems = asyncComponent(() =>
+const Systems = lazy(() =>
     import(
         /* webpackChunkName: "Systems" */ './SmartComponents/Systems/Systems'
     )
 );
 
-const InventoryPage = asyncComponent(() =>
+const InventoryPage = lazy(() =>
     import(
         /* webpackChunkName: "InventoryPage" */ './SmartComponents/SystemDetail/InventoryPage'
     )
 );
 
-const AdvisoryPage = asyncComponent(() =>
+const AdvisoryPage = lazy(() =>
     import(
         /* webpackChunkName: "AdvisoryyPage" */ './SmartComponents/AdvisoryDetail/AdvisoryDetail'
     )
 );
 
-const RegisterPage = asyncComponent(() =>
+const RegisterPage = lazy(() =>
     import(
         /* webpackChunkName: "Register" */ './PresentationalComponents/RegisterPage/RegisterPage'
     )
@@ -93,44 +92,47 @@ export const Routes = (props: Props) => {
     const path = props.childProps.location.pathname;
 
     return (
-        <Switch>
-            <Route path="/:url*" exact strict render={() => <Redirect to={`${path}/`}/>}/>
-            <Redirect
-                from={paths.advisoryDetailSystem.to}
-                to={paths.inventoryDetail.to}
-            />
-            <InsightsRoute
-                path={paths.inventoryDetail.to}
-                component={InventoryPage}
-            />
-            <InsightsRoute exact path={paths.systems.to} component={Systems} />
-            <InsightsRoute
-                exact
-                path={paths.advisoryDetail.to}
-                component={AdvisoryPage}
-            />
-            <InsightsRoute
-                exact
-                path={paths.advisories.to}
-                component={Advisories}
-                rootClass="Patchman"
-            />
+        // I recommend discussing with UX some nice loading placeholder
+        <Suspense fallback={Fragment}>
+            <Switch>
+                <Route path="/:url*" exact strict render={() => <Redirect to={`${path}/`}/>}/>
+                <Redirect
+                    from={paths.advisoryDetailSystem.to}
+                    to={paths.inventoryDetail.to}
+                />
+                <InsightsRoute
+                    path={paths.inventoryDetail.to}
+                    component={InventoryPage}
+                />
+                <InsightsRoute exact path={paths.systems.to} component={Systems} />
+                <InsightsRoute
+                    exact
+                    path={paths.advisoryDetail.to}
+                    component={AdvisoryPage}
+                />
+                <InsightsRoute
+                    exact
+                    path={paths.advisories.to}
+                    component={Advisories}
+                    rootClass="Patchman"
+                />
 
-            <InsightsRoute
-                exact
-                path={paths.register.to}
-                component={RegisterPage}
-                rootClass="Patchman"
-            />
+                <InsightsRoute
+                    exact
+                    path={paths.register.to}
+                    component={RegisterPage}
+                    rootClass="Patchman"
+                />
 
-            <Route
-                render={() =>
-                    some(paths, p => p.to === path) || (
-                        <Redirect to={paths.advisories.to} />
-                    )
-                }
-            />
-        </Switch>
+                <Route
+                    render={() =>
+                        some(paths, p => p.to === path) || (
+                            <Redirect to={paths.advisories.to} />
+                        )
+                    }
+                />
+            </Switch>
+        </Suspense>
     );
 };
 
