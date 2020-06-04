@@ -1,4 +1,4 @@
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import propTypes from 'prop-types';
 import React from 'react';

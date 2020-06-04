@@ -1,4 +1,4 @@
-import { cellWidth, expandable, sortable } from '@patternfly/react-table';
+import { cellWidth, expandable, sortable } from '@patternfly/react-table/dist/js';
 
 export const advisoriesColumns = [
     {

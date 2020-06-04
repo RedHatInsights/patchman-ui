@@ -1,4 +1,4 @@
-import { SortByDirection } from '@patternfly/react-table';
+import { SortByDirection } from '@patternfly/react-table/dist/js';
 import React from 'react';
 import {
     convertLimitOffset,

@@ -1,8 +1,8 @@
 import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
-import { AnsibeTowerIcon } from '@patternfly/react-icons';
+import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon'; // PF typo
 import { Table, TableBody, TableHeader } from '@patternfly/react-table/dist/js/components/Table';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/PrimaryToolbar';
-import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/SkeletonTable';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/PrimaryToolbar';
+import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/cjs/SkeletonTable';
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
