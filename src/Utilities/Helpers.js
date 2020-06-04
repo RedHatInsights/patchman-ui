@@ -2,7 +2,7 @@ import { Tooltip } from '@patternfly/react-core';
 import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
 import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
-import { SortByDirection } from '@patternfly/react-table';
+import { SortByDirection } from '@patternfly/react-table/dist/js';
 import findIndex from 'lodash/findIndex';
 import qs from 'query-string';
 import React from 'react';

@@ -3,7 +3,7 @@ import { GridItem } from '@patternfly/react-core/dist/js/layouts/Grid/GridItem';
 import { Stack } from '@patternfly/react-core/dist/js/layouts/Stack/Stack';
 import { StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/StackItem';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
-import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import propTypes from 'prop-types';
 import React from 'react';
 import PortalAdvisoryLink from '../../PresentationalComponents/Snippets/PortalAdvisoryLink';

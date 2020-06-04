@@ -1,4 +1,4 @@
-import { classNames, sortable } from '@patternfly/react-table';
+import { classNames, sortable } from '@patternfly/react-table/dist/js';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { createAdvisoriesIcons, remediationProvider } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';

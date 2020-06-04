@@ -1,5 +1,15 @@
-import * as ReactCore from '@patternfly/react-core';
-import * as pfReactTable from '@patternfly/react-table';
+import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/inventoryDependencies';
+import {
+    Table as PfTable,
+    TableBody,
+    TableHeader,
+    TableGridBreakpoint,
+    cellWidth,
+    TableVariant,
+    sortable,
+    expandable,
+    SortByDirection
+} from '@patternfly/react-table/dist/js';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -18,8 +28,18 @@ const RemediationModal = ({ data }) => {
     React.useEffect(() => {
         getLoader()({
             react: React,
-            reactCore: ReactCore,
-            pfReactTable
+            reactCore,
+            pfReactTable: {
+                Table: PfTable,
+                TableBody,
+                TableHeader,
+                TableGridBreakpoint,
+                cellWidth,
+                TableVariant,
+                sortable,
+                expandable,
+                SortByDirection
+            }
         }).then(remediations => setRemediations(remediations));
         return () => setRemediations(false);
     }, []);

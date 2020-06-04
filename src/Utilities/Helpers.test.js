@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { SortByDirection } from '@patternfly/react-table';
+import { SortByDirection } from '@patternfly/react-table/dist/js';
 import toJson from 'enzyme-to-json';
 import { publicDateOptions } from '../Utilities/constants';
 import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams, getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, getSeverityById, handleAdvisoryLink, remediationProvider } from './Helpers';

@@ -1,4 +1,4 @@
-import { sortable } from '@patternfly/react-table';
+import { sortable } from '@patternfly/react-table/dist/js';
 
 // Initial State
 export const init = {

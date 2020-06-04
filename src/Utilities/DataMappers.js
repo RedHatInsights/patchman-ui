@@ -1,5 +1,5 @@
 import { Text, TextContent, TextVariants } from '@patternfly/react-core';
-import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';

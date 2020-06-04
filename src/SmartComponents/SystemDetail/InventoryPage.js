@@ -1,6 +1,15 @@
-import * as reactCore from '@patternfly/react-core';
-import * as reactIcons from '@patternfly/react-icons';
-import * as pfReactTable from '@patternfly/react-table';
+import {
+    Table as PfTable,
+    TableBody,
+    TableHeader,
+    TableGridBreakpoint,
+    cellWidth,
+    TableVariant,
+    sortable,
+    expandable,
+    SortByDirection
+} from '@patternfly/react-table/dist/js';
+import { reactCore, reactIcons } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/inventoryDependencies';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -27,7 +36,17 @@ const InventoryDetail = () => {
             reactRouterDom,
             reactCore,
             reactIcons,
-            pfReactTable
+            pfReactTable: {
+                Table: PfTable,
+                TableBody,
+                TableHeader,
+                TableGridBreakpoint,
+                cellWidth,
+                TableVariant,
+                sortable,
+                expandable,
+                SortByDirection
+            }
         });
 
         register({

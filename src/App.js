@@ -1,4 +1,4 @@
-import { NotificationsPortal } from '@redhat-cloud-services/frontend-components-notifications';
+import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/cjs/NotificationPortal';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import './App.scss';
 import { Routes } from './Routes';
 
+// console.log('dev mode');
 class App extends Component {
     componentDidMount() {
         insights.chrome.init();

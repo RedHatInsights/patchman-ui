@@ -1,6 +1,17 @@
-import * as reactCore from '@patternfly/react-core';
-import * as reactIcons from '@patternfly/react-icons';
-import * as pfReactTable from '@patternfly/react-table';
+import {
+    Table as PfTable,
+    TableBody,
+    TableHeader,
+    TableGridBreakpoint,
+    cellWidth,
+    TableVariant,
+    sortable,
+    expandable,
+    SortByDirection
+} from '@patternfly/react-table/dist/js';
+import { reactCore, reactIcons } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/inventoryDependencies';
+import { ToolbarItem, ToolbarGroup, Button } from '@patternfly/react-core';
+import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -74,7 +85,17 @@ const AffectedSystems = ({ advisoryName }) => {
             reactRouterDom,
             reactCore,
             reactIcons,
-            pfReactTable
+            pfReactTable: {
+                Table: PfTable,
+                TableBody,
+                TableHeader,
+                TableGridBreakpoint,
+                cellWidth,
+                TableVariant,
+                sortable,
+                expandable,
+                SortByDirection
+            }
         });
 
         register({
@@ -218,9 +239,9 @@ const AffectedSystems = ({ advisoryName }) => {
                         checked: selectedCount === metadata.total_items ? true : selectedCount === 0 ? false : null
                     }}
                 >
-                    <reactCore.ToolbarGroup>
-                        <reactCore.ToolbarItem>
-                            <reactCore.Button
+                    <ToolbarGroup>
+                        <ToolbarItem>
+                            <Button
                                 isDisabled={
                                     arrayFromObj(selectedRows).length === 0
                                 }
@@ -233,11 +254,11 @@ const AffectedSystems = ({ advisoryName }) => {
                                     )
                                 }
                             >
-                                <reactIcons.AnsibeTowerIcon/>&nbsp;Remediate
-                            </reactCore.Button>
+                                <AnsibeTowerIcon/>&nbsp;Remediate
+                            </Button>
                             <RemediationModalCmp />
-                        </reactCore.ToolbarItem>
-                    </reactCore.ToolbarGroup>
+                        </ToolbarItem>
+                    </ToolbarGroup>
                 </InventoryCmp>
             )}
         </React.Fragment>
