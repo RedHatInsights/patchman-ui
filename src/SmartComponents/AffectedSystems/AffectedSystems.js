@@ -9,9 +9,8 @@ import {
     expandable,
     SortByDirection
 } from '@patternfly/react-table/dist/js';
-import { reactCore, reactIcons } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/inventoryDependencies';
 import { ToolbarItem, ToolbarGroup, Button } from '@patternfly/react-core';
-import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon';
+import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -81,10 +80,7 @@ const AffectedSystems = ({ advisoryName }) => {
             inventoryConnector,
             mergeWithEntities
         } = await insights.loadInventory({
-            react: React,
             reactRouterDom,
-            reactCore,
-            reactIcons,
             pfReactTable: {
                 Table: PfTable,
                 TableBody,

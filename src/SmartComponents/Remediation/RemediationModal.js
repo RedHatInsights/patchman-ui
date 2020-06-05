@@ -1,4 +1,3 @@
-import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/inventoryDependencies';
 import {
     Table as PfTable,
     TableBody,
@@ -27,8 +26,6 @@ const RemediationModal = ({ data }) => {
     const [remediations, setRemediations] = React.useState(false);
     React.useEffect(() => {
         getLoader()({
-            react: React,
-            reactCore,
             pfReactTable: {
                 Table: PfTable,
                 TableBody,
