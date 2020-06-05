@@ -1,3 +1,4 @@
+/* global module, __dirname, require */
 require.extensions['.css'] = () => undefined;
 const path = require('path');
 const glob = require('glob');
@@ -8,6 +9,23 @@ const glob = require('glob');
 const mapper = {
     TextVariants: 'Text',
     EmptyStateVariant: 'EmptyState'
+};
+
+const IconMapper = {
+    AnsibeTowerIcon: 'ansibeTower-icon'
+};
+
+const FECMapper = {
+    SkeletonSize: 'Skeleton',
+    PageHeaderTitle: 'PageHeader',
+    conditionalFilterType: 'ConditionalFilter'
+};
+
+const NotificationMapper = {
+    REMOVE_NOTIFICATION: 'actionTypes',
+    ADD_NOTIFICATION: 'actionTypes',
+    NotificationsPortal: 'NotificationPortal',
+    addNotification: 'actions'
 };
 
 /**
@@ -49,14 +67,32 @@ const patternflyTransformImports = [
         },
         '@patternfly/react-icons': {
             transform: (importName) =>
-                `@patternfly/react-icons/dist/js/icons/${importName
+                `@patternfly/react-icons/dist/js/icons/${IconMapper[importName] || importName
                 .split(/(?=[A-Z])/)
                 .join('-')
-                .toLowerCase()}`,
+                .toLowerCase()}.js`,
             preventFullImport: true
         }
     },
     'patternfly-react'
+];
+
+const fecTransformImports = [
+    'transform-imports',
+    {
+        '@redhat-cloud-services/frontend-components': {
+            transform: (importName) =>
+                `@redhat-cloud-services/frontend-components/components/cjs/${FECMapper[importName] || importName}.js`,
+            preventFullImport: false,
+            skipDefaultConversion: true
+        },
+        '@redhat-cloud-services/frontend-components-notifications': {
+            transform: (importName) =>
+                `@redhat-cloud-services/frontend-components-notifications/cjs/${NotificationMapper[importName] || importName}.js`,
+            preventFullImport: true
+        }
+    },
+    'frontend-components'
 ];
 
 module.exports = {
@@ -67,6 +103,7 @@ module.exports = {
         '@babel/plugin-proposal-object-rest-spread',
         'lodash',
         '@babel/plugin-proposal-class-properties',
-        patternflyTransformImports
+        patternflyTransformImports,
+        fecTransformImports
     ]
 };

@@ -9,7 +9,6 @@ import {
     expandable,
     SortByDirection
 } from '@patternfly/react-table/dist/js';
-import { reactCore, reactIcons } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/inventoryDependencies';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -32,10 +31,7 @@ const InventoryDetail = () => {
             inventoryConnector,
             mergeWithDetail
         } = await insights.loadInventory({
-            react: React,
             reactRouterDom,
-            reactCore,
-            reactIcons,
             pfReactTable: {
                 Table: PfTable,
                 TableBody,
