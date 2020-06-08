@@ -1,3 +1,10 @@
+# [0.12.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.6...v0.12.0) (2020-06-08)
+
+
+### Features
+
+* **Build tool:** Use rollup for lib build ([f0d2051](https://github.com/RedHatInsights/patchman-ui/commit/f0d2051e0d4334b80831ea262c35940d5d1d83f2))
+
 ## [0.11.6](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.5...v0.11.6) (2020-06-02)
 
 
