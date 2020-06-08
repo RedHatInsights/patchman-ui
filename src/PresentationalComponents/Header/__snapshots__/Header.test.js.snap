@@ -125,6 +125,7 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
           >
             <Title
               className=""
+              headingLevel="h1"
               size="2xl"
               widget-type="InsightsPageHeaderTitle"
             >
@@ -342,6 +343,7 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
           >
             <Title
               className=""
+              headingLevel="h1"
               size="2xl"
               widget-type="InsightsPageHeaderTitle"
             >
@@ -633,6 +635,7 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
           >
             <Title
               className=""
+              headingLevel="h1"
               size="2xl"
               widget-type="InsightsPageHeaderTitle"
             >
@@ -726,6 +729,7 @@ exports[`Header component should render with empty breadcrumb 1`] = `
           >
             <Title
               className=""
+              headingLevel="h1"
               size="2xl"
               widget-type="InsightsPageHeaderTitle"
             >
@@ -785,6 +789,7 @@ exports[`Header component should render with header Hello world 1`] = `
           >
             <Title
               className=""
+              headingLevel="h1"
               size="2xl"
               widget-type="InsightsPageHeaderTitle"
             >
@@ -845,6 +850,7 @@ exports[`Header component should render with header as empty string 1`] = `
           >
             <Title
               className=""
+              headingLevel="h1"
               size="2xl"
               widget-type="InsightsPageHeaderTitle"
             >
@@ -969,6 +975,7 @@ exports[`Header component should render without to attribute 1`] = `
           >
             <Title
               className=""
+              headingLevel="h1"
               size="2xl"
               widget-type="InsightsPageHeaderTitle"
             >
