@@ -1,5 +1,5 @@
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
-import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/cjs/RemediationButton';
+import RemediationButton from '@redhat-cloud-services/frontend-components-remediations/RemediationButton';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch } from 'react-redux';

@@ -10,13 +10,17 @@ import { dependencies, peerDependencies, devDependencies, name } from '../packag
 import { createFilter } from '@rollup/pluginutils';
 import image from '@rollup/plugin-image';
 
-const externalDeps = Object.keys({ ...dependencies, ...peerDependencies, ...devDependencies }).map(item =>
+const externalDeps = Object.keys({
+    ...dependencies,
+    ...peerDependencies,
+    ...devDependencies,
+    lodash: 'lodash'
+}).map(item =>
     (
         item.includes('@patternfly') ||
-        item.includes('@redhat-cloud-services'),
+        item.includes('@redhat-cloud-services') ||
         item.includes('lodash')
-    ) &&
-    !item.includes('@patternfly/react-table') ?
+    ) ?
         `${item}/**` :
         item
 );
@@ -62,6 +66,7 @@ const plugins = [
         keep_fnames: true
     }),
     postcss({
+        minimize: true,
         extract: true
     }),
     image(),
