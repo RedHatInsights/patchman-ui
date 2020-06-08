@@ -12,7 +12,7 @@
     "@redhat-cloud-services/frontend-components": "^2.0.6",
     "@redhat-cloud-services/frontend-components-notifications": "^2.0.3",
     "@redhat-cloud-services/frontend-components-remediations": "^2.0.4",
-    "@redhat-cloud-services/frontend-components-utilities": "^2.0.2",
+    "@redhat-cloud-services/frontend-components-utilities": "^2.0.4",
     "@semantic-release/npm": "^7.0.4",
     "axios": "^0.19.2",
     "classnames": "^2.2.5",
