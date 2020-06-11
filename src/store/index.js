@@ -1,3 +1,4 @@
+/* eslint new-cap: 0 */
 import notifications from '@redhat-cloud-services/frontend-components-notifications/cjs/notifications';
 import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/cjs/notificationsMiddleware';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/cjs/ReducerRegistry';
@@ -26,7 +27,7 @@ export function init(...middleware) {
     const storage = JSON.parse(sessionStorage.getItem('PatchStore')) || {};
 
     registry.register({
-        AdvisoryListStore: (state = storage.AdvisoryListStore, action) => AdvisoryListStore,
+        AdvisoryListStore: (state = storage.AdvisoryListStore, action) => AdvisoryListStore(state, action),
         SystemsListStore: (state = storage.SystemsListStore, action) => SystemsListStore(state, action),
         SystemDetailStore: (state = storage.SystemDetailStore, action) => SystemDetailStore(state, action),
         SystemAdvisoryListStore: (state = storage.SystemAdvisoryListStore, action) => SystemAdvisoryListStore(state, action),
