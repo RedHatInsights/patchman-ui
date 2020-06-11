@@ -1,3 +1,10 @@
+# [0.13.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.12.0...v0.13.0) (2020-06-11)
+
+
+### Features
+
+* **filtering:** introduce persistent filtering ([babdc07](https://github.com/RedHatInsights/patchman-ui/commit/babdc07a280358eedc15ee9d052e09a21d51a368))
+
 # [0.12.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.11.6...v0.12.0) (2020-06-08)
 
 
