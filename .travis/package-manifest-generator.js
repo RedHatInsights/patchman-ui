@@ -11,7 +11,7 @@ function processPackageName(node) {
 }
 
 function processPackage(node) {
-    if (node.bundled && listBundled !== 'bundled') {
+    if (node.bundled && listBundled !== 'bundled' || node.dev) {
         return;
     }
 
