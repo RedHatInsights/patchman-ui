@@ -1,3 +1,10 @@
+## [0.13.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.13.0...v0.13.1) (2020-06-15)
+
+
+### Bug Fixes
+
+* **manifest:** Don't include dev deps in the manifest ([0703045](https://github.com/RedHatInsights/patchman-ui/commit/07030459f9a25ee413a98f5261393041621333ab))
+
 # [0.13.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.12.0...v0.13.0) (2020-06-11)
 
 
