@@ -1,3 +1,10 @@
+# [0.14.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.13.1...v0.14.0) (2020-06-17)
+
+
+### Features
+
+* **sort:** sort by applicable_advisories ([897fa88](https://github.com/RedHatInsights/patchman-ui/commit/897fa88f3e69b33648f66e6ba584c89ff6094eec))
+
 ## [0.13.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.13.0...v0.13.1) (2020-06-15)
 
 
