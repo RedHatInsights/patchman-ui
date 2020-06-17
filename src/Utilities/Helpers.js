@@ -7,7 +7,7 @@ import findIndex from 'lodash/findIndex';
 import qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { advisorySeverities, filterCategories } from './constants';
+import { advisorySeverities, APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC, filterCategories } from './constants';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -16,6 +16,14 @@ export const convertLimitOffset = (limit, offset) => {
 export const createSortBy = (header, values, offset) => {
     if (values) {
         let [value] = values;
+        let multiple = values.join();
+        if (multiple === APPLICABLE_ADVISORIES_DESC) {
+            value = '-applicable_advisories';
+        }
+        else if (multiple === APPLICABLE_ADVISORIES_ASC) {
+            value = 'applicable_advisories';
+        }
+
         let direction =
             value[0] === '-' ? SortByDirection.desc : SortByDirection.asc;
         value = value.replace(/^(-|\+)/, '');

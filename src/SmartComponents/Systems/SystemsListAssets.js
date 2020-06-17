@@ -13,7 +13,7 @@ export const systemsListColumns = [
     {
         key: 'applicable_advisories',
         title: 'Applicable advisories',
-        transforms: [classNames('col-width-30')],
+        transforms: [classNames('col-width-30'), sortable],
         renderFunc: value => createAdvisoriesIcons(value)
     }
 ];

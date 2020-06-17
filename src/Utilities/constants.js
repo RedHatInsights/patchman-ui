@@ -7,6 +7,8 @@ import { subtractDate } from './Helpers';
 export const STATUS_REJECTED = 'rejected';
 export const STATUS_LOADING = 'loading';
 export const STATUS_RESOLVED = 'resolved';
+export const APPLICABLE_ADVISORIES_DESC = '-rhsa_count,-rhba_count,-rhea_count';
+export const APPLICABLE_ADVISORIES_ASC = 'rhsa_count,rhba_count,rhea_count';
 
 export const storeListDefaults = {
     rows: [],

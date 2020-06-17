@@ -1,10 +1,7 @@
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import React from 'react';
-import {
-    convertLimitOffset,
-    getLimitFromPageSize,
-    getOffsetFromPageLimit
-} from './Helpers';
+import { APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC } from './constants';
+import { convertLimitOffset, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -46,6 +43,13 @@ export const useSortColumn = (columns, callback, offset = 0) => {
         let columnName = columns[index - offset].key;
         if (direction === SortByDirection.desc) {
             columnName = '-' + columnName;
+        }
+
+        if (columnName === '-applicable_advisories') {
+            columnName = APPLICABLE_ADVISORIES_DESC;
+        }
+        else if (columnName === 'applicable_advisories') {
+            columnName = APPLICABLE_ADVISORIES_ASC;
         }
 
         callback({ sort: columnName });
