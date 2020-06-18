@@ -1,3 +1,10 @@
+# [0.15.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.14.0...v0.15.0) (2020-06-18)
+
+
+### Features
+
+* **nav:** remove tabs and use only left navigation ([77b28c4](https://github.com/RedHatInsights/patchman-ui/commit/77b28c4b200bbf1bb378c9b9055693178243080c))
+
 # [0.14.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.13.1...v0.14.0) (2020-06-17)
 
 
