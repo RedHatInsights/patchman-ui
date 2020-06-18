@@ -89,7 +89,7 @@ const Advisories = ({ history }) => {
 
     return (
         <React.Fragment>
-            <Header title={'Patch'} showTabs />
+            <Header title={'Advisories'} />
             <Main>
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :
                     <AdvisoriesTable
