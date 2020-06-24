@@ -5,7 +5,8 @@ import React from 'react';
 export const SystemUpToDate = () => (
     <Bullseye>
         <EmptyState style={{ paddingTop: 40 }}>
-            <EmptyStateIcon icon={CheckCircleIcon} size='md' color={'var(--pf-global--success-color--200)'}/>
+            <EmptyStateIcon icon={()=><CheckCircleIcon size='xl' color={'var(--pf-global--success-color--200)' }
+                style={{ marginBottom: 15 }} />}/>
             <Title headingLevel="h5" size="lg">
                 No applicable advisories
             </Title>
