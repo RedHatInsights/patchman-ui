@@ -46,7 +46,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       5
     </span>
@@ -89,7 +88,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="var(--pf-global--warning-color--100)"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       3
     </span>
@@ -137,7 +135,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       1
     </span>
@@ -180,7 +177,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="var(--pf-global--warning-color--100)"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       3
     </span>
@@ -228,7 +224,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       1
     </span>
@@ -271,7 +266,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       2
     </span>
@@ -319,7 +313,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       1
     </span>
@@ -362,7 +355,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="currentColor"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       2
     </span>
@@ -405,7 +397,6 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         color="var(--pf-global--warning-color--100)"
         noVerticalAlign={false}
         size="sm"
-        title={null}
       />
       3
     </span>
