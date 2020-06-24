@@ -1,3 +1,10 @@
+# [0.16.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.15.0...v0.16.0) (2020-06-24)
+
+
+### Features
+
+* **pf4:** upgrade PF4 ([f5f2053](https://github.com/RedHatInsights/patchman-ui/commit/f5f20537ce2fa1f716644c93a05504d66d7fc205))
+
 # [0.15.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.14.0...v0.15.0) (2020-06-18)
 
 
