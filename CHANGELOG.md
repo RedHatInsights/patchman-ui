@@ -1,3 +1,10 @@
+## [0.16.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.16.0...v0.16.1) (2020-06-25)
+
+
+### Bug Fixes
+
+* **remediation:** fix remediation color disabled ([693eb4f](https://github.com/RedHatInsights/patchman-ui/commit/693eb4f1a15bd338b5196ef5301d0bc3254f6d09))
+
 # [0.16.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.15.0...v0.16.0) (2020-06-24)
 
 
