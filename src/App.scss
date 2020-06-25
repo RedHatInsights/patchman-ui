@@ -11,3 +11,11 @@
         margin-right: var(--pf-global--spacer--xs);
     }
 }
+
+.remediationButtonPatch {
+    &:disabled {
+        svg {
+            color: white;
+        }
+    }
+}

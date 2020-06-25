@@ -1,16 +1,7 @@
-import {
-    Table as PfTable,
-    TableBody,
-    TableHeader,
-    TableGridBreakpoint,
-    cellWidth,
-    TableVariant,
-    sortable,
-    expandable,
-    SortByDirection
-} from '@patternfly/react-table/dist/js';
-import { ToolbarItem, ToolbarGroup, Button } from '@patternfly/react-core';
+import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
+import { cellWidth, expandable, sortable, SortByDirection, Table as PfTable, TableBody, TableGridBreakpoint,
+    TableHeader, TableVariant } from '@patternfly/react-table/dist/js';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -238,6 +229,7 @@ const AffectedSystems = ({ advisoryName }) => {
                     <ToolbarGroup>
                         <ToolbarItem>
                             <Button
+                                className={'remediationButtonPatch'}
                                 isDisabled={
                                     arrayFromObj(selectedRows).length === 0
                                 }

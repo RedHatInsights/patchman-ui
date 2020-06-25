@@ -74,6 +74,7 @@ const AdvisoriesTable = ({
                     <React.Fragment>
                         <Button
                             isDisabled={selectedCount === 0}
+                            className={'remediationButtonPatch'}
                             onClick={() =>
                                 showRemediationModal(remediationProvider())
                             }
