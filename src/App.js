@@ -13,8 +13,11 @@ class App extends Component {
         insights.chrome.identifyApp('patch');
         insights.chrome.navigation(buildNavigation());
 
-        this.appNav = insights.chrome.on('APP_NAVIGATION', event =>
-            this.props.history.push(`/${event.navId}`)
+        this.appNav = insights.chrome.on('APP_NAVIGATION', event => {
+            if (event.domEvent) {
+                this.props.history.push(`/${event.navId}`);
+            }
+        }
         );
         this.buildNav = this.props.history.listen(() =>
             insights.chrome.navigation(buildNavigation())
