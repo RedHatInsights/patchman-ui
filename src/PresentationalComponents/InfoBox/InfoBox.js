@@ -1,13 +1,6 @@
-import {
-    Text,
-    TextContent,
-    TextVariants
-} from '@patternfly/react-core/dist/js/components/Text/';
+import { Text, TextContent, TextVariants } from '@patternfly/react-core/dist/js/components/Text/';
 import { Bullseye } from '@patternfly/react-core/dist/js/layouts/Bullseye/';
-import {
-    Split,
-    SplitItem
-} from '@patternfly/react-core/dist/js/layouts/Split/';
+import { Split, SplitItem } from '@patternfly/react-core/dist/js/layouts/Split/';
 import propTypes from 'prop-types';
 import React from 'react';
 import WithLoader, { WithLoaderVariants } from '../WithLoader/WithLoader';
@@ -15,7 +8,7 @@ import './InfoBox.scss';
 
 const InfoBox = ({ title, text, isLoading, content, color }) => {
     return (
-        <Split className="infobox" gutter="md">
+        <Split className="infobox" hasGutter>
             <WithLoader
                 variant={WithLoaderVariants.skeleton}
                 loading={isLoading}

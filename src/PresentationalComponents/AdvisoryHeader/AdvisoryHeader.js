@@ -7,9 +7,7 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import propTypes from 'prop-types';
 import React from 'react';
 import PortalAdvisoryLink from '../../PresentationalComponents/Snippets/PortalAdvisoryLink';
-import WithLoader, {
-    WithLoaderVariants
-} from '../../PresentationalComponents/WithLoader/WithLoader';
+import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';
 import { getSeverityById } from '../../Utilities/Helpers';
 import InfoBox from '../InfoBox/InfoBox';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
@@ -17,14 +15,14 @@ import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const severityObject = getSeverityById(attributes.severity);
     return (
-        <Grid gutter="sm" style={{ minHeight: 150 }}>
+        <Grid hasGutter style={{ minHeight: 150 }}>
             <GridItem md={8} sm={12}>
                 <WithLoader
                     loading={isLoading}
                     variant={WithLoaderVariants.spinner}
                     centered
                 >
-                    <Stack gutter="sm">
+                    <Stack hasGutter>
                         <StackItem />
                         <StackItem style={{ whiteSpace: 'pre-line' }}>
                             {attributes.description &&
