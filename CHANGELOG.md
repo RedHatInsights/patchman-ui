@@ -1,3 +1,10 @@
+## [0.16.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.16.1...v0.16.2) (2020-06-25)
+
+
+### Bug Fixes
+
+* **styles:** fix PF4 styles ([c61725a](https://github.com/RedHatInsights/patchman-ui/commit/c61725ab52bf7c456aa8844d0142765f3303b7b2))
+
 ## [0.16.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.16.0...v0.16.1) (2020-06-25)
 
 
