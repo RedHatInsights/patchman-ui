@@ -1,3 +1,10 @@
+## [0.16.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.16.2...v0.16.3) (2020-06-25)
+
+
+### Bug Fixes
+
+* **routing:** refresh redirects to landing page ([0418d3a](https://github.com/RedHatInsights/patchman-ui/commit/0418d3a0f30c4f2179a500290561535da5e3ec90))
+
 ## [0.16.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.16.1...v0.16.2) (2020-06-25)
 
 
