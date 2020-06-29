@@ -76,7 +76,8 @@ const plugins = [
 export default [
     ...['esm', 'cjs'].map(env => ({
         input: {
-            index: 'src/index.js'
+            index: 'src/index.js',
+            SystemAdvisoryListStore: 'src/store/Reducers/SystemAdvisoryListStore.js'
         },
         output: {
             dir: `./dist/${env}`,
@@ -89,7 +90,8 @@ export default [
         plugins
     })),
     ...Object.entries({
-        index: 'src/index.js'
+        index: 'src/index.js',
+        SystemAdvisoryListStore: 'src/store/Reducers/SystemAdvisoryListStore.js'
     }).map(([key, input]) => ({
         input,
         output: {
