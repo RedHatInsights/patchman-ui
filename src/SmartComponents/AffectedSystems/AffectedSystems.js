@@ -71,6 +71,7 @@ const AffectedSystems = ({ advisoryName }) => {
             inventoryConnector,
             mergeWithEntities
         } = await insights.loadInventory({
+            React,
             reactRouterDom,
             pfReactTable: {
                 Table: PfTable,

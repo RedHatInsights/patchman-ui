@@ -71,6 +71,7 @@ const Systems = () => {
             inventoryConnector,
             mergeWithEntities
         } = await insights.loadInventory({
+            React,
             reactRouterDom,
             pfReactTable: {
                 Table: PfTable,
