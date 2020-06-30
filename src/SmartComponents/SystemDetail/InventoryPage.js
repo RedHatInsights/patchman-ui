@@ -31,6 +31,7 @@ const InventoryDetail = () => {
             inventoryConnector,
             mergeWithDetail
         } = await insights.loadInventory({
+            React,
             reactRouterDom,
             pfReactTable: {
                 Table: PfTable,
