@@ -1,5 +1,5 @@
 import React from 'react';
-import SystemAdvisories from '../../SmartComponents/SystemAdvisories/SystemAdvisories';
+import SystemDetail from '../../SmartComponents/SystemDetail/SystemDetail';
 
 let initialState = {
     loaded: false
@@ -16,7 +16,7 @@ export const SystemDetailStore = (state = initialState, action) => {
                     {
                         title: 'Patch',
                         name: 'patch',
-                        component: () => <SystemAdvisories />
+                        component: () => <SystemDetail />
                     }
                 ]
             };
@@ -28,7 +28,7 @@ export const SystemDetailStore = (state = initialState, action) => {
                     {
                         title: 'Patch',
                         name: 'patch',
-                        component: () => <SystemAdvisories />
+                        component: () => <SystemDetail />
                     }
                 ]
             };
