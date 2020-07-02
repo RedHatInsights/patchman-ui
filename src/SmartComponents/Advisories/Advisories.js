@@ -4,10 +4,10 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
-import { advisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
+import TableView from '../../PresentationalComponents/TableView/TableView';
+import { advisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeAdvisoryListParams, expandAdvisoryRow, fetchApplicableAdvisories } from '../../store/Actions/Actions';
 import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api';
 import { STATUS_REJECTED } from '../../Utilities/constants';
@@ -92,7 +92,7 @@ const Advisories = ({ history }) => {
             <Header title={'Advisories'} />
             <Main>
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :
-                    <AdvisoriesTable
+                    <TableView
                         columns={advisoriesColumns}
                         onCollapse={onCollapse}
                         onSetPage={onSetPage}

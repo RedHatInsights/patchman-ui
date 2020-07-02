@@ -14,7 +14,7 @@ import searchFilter from '../Filters/SearchFilter';
 import typeFilter from '../Filters/TypeFilter';
 import TableFooter from './TableFooter';
 
-const AdvisoriesTable = ({
+const TableView = ({
     columns,
     store: {
         rows,
@@ -116,7 +116,7 @@ const AdvisoriesTable = ({
             {status === STATUS_RESOLVED && (
                 <React.Fragment>
                     <Table
-                        aria-label="Advisories table"
+                        aria-label="Patch table view"
                         cells={metadata.total_items && columns || ['']}
                         onSelect={onSelect}
                         rows={rows}
@@ -140,7 +140,7 @@ const AdvisoriesTable = ({
     );
 };
 
-AdvisoriesTable.propTypes = {
+TableView.propTypes = {
     columns: PropTypes.array,
     onCollapse: PropTypes.func,
     onSelect: PropTypes.func,
@@ -155,4 +155,4 @@ AdvisoriesTable.propTypes = {
     store: PropTypes.object
 };
 
-export default AdvisoriesTable;
+export default TableView;

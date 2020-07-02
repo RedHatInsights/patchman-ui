@@ -3,18 +3,18 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import AdvisoriesTable from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTable';
-import { systemAdvisoriesColumns } from '../../PresentationalComponents/AdvisoriesTable/AdvisoriesTableAssets';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
+import TableView from '../../PresentationalComponents/TableView/TableView';
+import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable,
-    remediationProvider } from '../../Utilities/Helpers';
+import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
+    getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
 const SystemAdvisories = ({ history }) => {
@@ -166,7 +166,7 @@ const SystemAdvisories = ({ history }) => {
             return <SystemUpToDate/>;
         }
         else {
-            return <AdvisoriesTable
+            return <TableView
                 columns={systemAdvisoriesColumns}
                 onCollapse={onCollapse}
                 onSelect={(advisories.length && onSelect) || undefined}
