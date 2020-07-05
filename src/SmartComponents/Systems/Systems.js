@@ -14,6 +14,7 @@ import { Main } from '@redhat-cloud-services/frontend-components/components/Main
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
+import * as ReactRedux from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
@@ -71,6 +72,7 @@ const Systems = () => {
             inventoryConnector,
             mergeWithEntities
         } = await insights.loadInventory({
+            ReactRedux,
             React,
             reactRouterDom,
             pfReactTable: {
