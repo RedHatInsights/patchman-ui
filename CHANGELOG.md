@@ -1,3 +1,10 @@
+# [0.17.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.16.3...v0.17.0) (2020-07-09)
+
+
+### Features
+
+* **inventory:** pass react-redux to inventory ([031278e](https://github.com/RedHatInsights/patchman-ui/commit/031278e832365c6ab3c7d1ebca71a580367c8832))
+
 ## [0.16.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.16.2...v0.16.3) (2020-06-25)
 
 
