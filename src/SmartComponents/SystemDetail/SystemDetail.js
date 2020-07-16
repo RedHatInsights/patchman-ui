@@ -1,6 +1,7 @@
 import { Tab, Tabs, TabTitleText } from '@patternfly/react-core';
 import React from 'react';
 import SystemAdvisories from '../SystemAdvisories/SystemAdvisories';
+import SystemPackages from '../SystemPackages/SystemPackages';
 
 const SystemDetail = () => {
     const [activeTabKey, setActiveTabKey] = React.useState(0);
@@ -14,7 +15,7 @@ const SystemDetail = () => {
                 <SystemAdvisories/>
             </Tab>
             <Tab eventKey={1} title={<TabTitleText>Packages</TabTitleText>}>
-            Containers
+                <SystemPackages/>
             </Tab>
         </Tabs>
     );

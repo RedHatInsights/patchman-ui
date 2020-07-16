@@ -1,5 +1,5 @@
 import { fetchAdvisoryDetailsApi, fetchAffectedSystems, fetchApplicableAdvisoriesApi,
-    fetchApplicableSystemAdvisoriesApi, fetchSystems } from '../../Utilities/api';
+    fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchSystems } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({
@@ -93,4 +93,16 @@ export const fetchAffectedSystemsAction = params => ({
     payload: new Promise(resolve => {
         resolve(fetchAffectedSystems(params));
     }).then(result => result)
+});
+
+export const fetchApplicableSystemPackages = params => ({
+    type: ActionTypes.FETCH_APPLICABLE_SYSTEM_PACKAGES,
+    payload: new Promise(resolve => {
+        resolve(fetchApplicablePackagesApi(params));
+    }).then(result => result)
+});
+
+export const selectSystemPackagesRow = rowState => ({
+    type: ActionTypes.SELECT_SYSTEM_PACKAGES_ROW,
+    payload: rowState
 });

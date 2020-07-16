@@ -52,3 +52,26 @@ export const systemAdvisoriesColumns = [
         key: 'synopsis'
     }
 ];
+
+export const systemPackagesColumns = [
+    {
+        title: 'Package',
+        transforms: [sortable, cellWidth(15)],
+        key: 'id'
+    },
+    {
+        title: 'Installed version',
+        transforms: [sortable, cellWidth(15)],
+        key: 'version'
+    },
+    {
+        title: 'Latest update available',
+        transforms: [sortable, cellWidth(15)],
+        key: 'latest_update'
+    },
+    {
+        title: 'Summary',
+        transforms: [sortable, cellWidth(15)],
+        key: 'summary'
+    }
+];

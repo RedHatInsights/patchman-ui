@@ -149,3 +149,23 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
         });
     return data || [];
 };
+
+export const createSystemPackagesRows = (rows, selectedRows = {}) => {
+    const res = Object.keys(rows).map(id => {
+        const pkg = rows[id];
+        const pkgUpdates = pkg.updates || [];
+        const latestUpdate = pkgUpdates.pop();
+        return {
+            id,
+            selected: selectedRows[id] === true,
+            cells: [
+                { title: id },
+                { title: pkg.version },
+                { title: latestUpdate && latestUpdate.version },
+                { title: 'Package summary once we have it :-)' }
+            ]
+        };
+    });
+
+    return res;
+};
