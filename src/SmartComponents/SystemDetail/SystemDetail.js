@@ -10,7 +10,7 @@ const SystemDetail = () => {
     };
 
     return (
-        <Tabs activeKey={activeTabKey} onSelect={onTabSelect}>
+        <Tabs activeKey={activeTabKey} onSelect={onTabSelect} style={{ backgroundColor: 'white' }}>
             <Tab eventKey={0} title={<TabTitleText>Advisories</TabTitleText>}>
                 <SystemAdvisories/>
             </Tab>
