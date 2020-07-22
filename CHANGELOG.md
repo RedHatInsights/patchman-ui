@@ -1,3 +1,10 @@
+## [0.17.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.17.0...v0.17.1) (2020-07-22)
+
+
+### Bug Fixes
+
+* **deps:** Fix securitiy issue in lodash by updating ([f62d1c2](https://github.com/RedHatInsights/patchman-ui/commit/f62d1c2ff9e6c2e477b8470692193bd6fedd8630))
+
 # [0.17.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.16.3...v0.17.0) (2020-07-09)
 
 
