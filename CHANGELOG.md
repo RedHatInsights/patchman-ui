@@ -1,3 +1,10 @@
+# [0.18.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.17.1...v0.18.0) (2020-07-23)
+
+
+### Features
+
+* **advisoryDetail:** Add information about CVEs ([17d9571](https://github.com/RedHatInsights/patchman-ui/commit/17d9571076ea8e2d202e2dc92822da2f271f1063))
+
 ## [0.17.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.17.0...v0.17.1) (2020-07-22)
 
 
