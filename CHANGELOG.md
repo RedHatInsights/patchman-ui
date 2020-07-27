@@ -1,3 +1,11 @@
+## [0.18.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.18.0...v0.18.1) (2020-07-27)
+
+
+### Bug Fixes
+
+* **manifest:** Change manifest prefixes ([f5df648](https://github.com/RedHatInsights/patchman-ui/commit/f5df6480df965a3fd0dd836383a37c360dd768cb))
+* **revert): Revert "feat(advisoryDetail:** Add information about CVEs" ([817d05e](https://github.com/RedHatInsights/patchman-ui/commit/817d05ef8c458a701b62daa9a449ae301088eace))
+
 # [0.18.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.17.1...v0.18.0) (2020-07-23)
 
 
