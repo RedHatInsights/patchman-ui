@@ -1,3 +1,10 @@
+## [0.18.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.18.1...v0.18.2) (2020-07-28)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** fix breadcrumbs styling ([0ebad64](https://github.com/RedHatInsights/patchman-ui/commit/0ebad6495146872446ad6f1aae7c39021fa59245))
+
 ## [0.18.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.18.0...v0.18.1) (2020-07-27)
 
 
