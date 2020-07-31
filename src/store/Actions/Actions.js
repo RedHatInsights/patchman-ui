@@ -1,5 +1,4 @@
-import { fetchAdvisoryDetailsApi, fetchAffectedSystems, fetchApplicableAdvisoriesApi,
-    fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchSystems } from '../../Utilities/api';
+import { fetchAdvisoryDetailsApi, fetchAffectedSystems, fetchApplicableAdvisoriesApi, fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchSystems } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({
@@ -105,4 +104,9 @@ export const fetchApplicableSystemPackages = params => ({
 export const selectSystemPackagesRow = rowState => ({
     type: ActionTypes.SELECT_SYSTEM_PACKAGES_ROW,
     payload: rowState
+});
+
+export const changeSystemPackagesParams = params => ({
+    type: ActionTypes.CHANGE_SYSTEM_PACKAGES_LIST_PARAMS,
+    payload: params
 });

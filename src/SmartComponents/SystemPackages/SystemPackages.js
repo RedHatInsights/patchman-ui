@@ -2,9 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemPackagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
-import { fetchApplicableSystemPackages, selectSystemPackagesRow } from '../../store/Actions/Actions';
+import { changeSystemPackagesParams, fetchApplicableSystemPackages, selectSystemPackagesRow } from '../../store/Actions/Actions';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
+import { createSortBy } from '../../Utilities/Helpers';
+import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
 const SystemPackages = () => {
     const dispatch = useDispatch();
@@ -18,10 +20,9 @@ const SystemPackages = () => {
     const selectedRows = useSelector(
         ({ SystemPackageListStore }) => SystemPackageListStore.selectedRows
     );
-    /*
     const metadata = useSelector(
         ({ SystemPackageListStore }) => SystemPackageListStore.metadata
-    );*/
+    );
     const status = useSelector(
         ({ SystemPackageListStore }) => SystemPackageListStore.status
     );/*
@@ -35,8 +36,8 @@ const SystemPackages = () => {
     );
 
     React.useEffect(()=> {
-        dispatch(fetchApplicableSystemPackages({ id: entity.id }));
-    }, []);
+        dispatch(fetchApplicableSystemPackages({ id: entity.id, ...queryParams }));
+    }, [queryParams]);
 
     const onSelect = React.useCallback((event, selected, rowId) => {
         const toSelect = [];
@@ -102,13 +103,29 @@ const SystemPackages = () => {
     }
     );
 
+    function apply(params) {
+        dispatch(changeSystemPackagesParams({ id: entity.id, ...params }));
+    }
+
+    const onSort = useSortColumn(systemPackagesColumns, apply, 1);
+    const sortBy = React.useMemo(
+        () => createSortBy(systemPackagesColumns, metadata.sort, 1),
+        [metadata.sort]
+    );
+    const onSetPage = useSetPage(metadata.limit, apply);
+    const onPerPageSelect = usePerPageSelect(apply);
+
     return (
         <React.Fragment>
             <TableView
                 columns={systemPackagesColumns}
-                store={{ rows, metadata: { total_items: 15 }, status, queryParams }}
+                store={{ rows, metadata, status, queryParams }}
                 onSelect={onSelect}
                 selectedRows={selectedRows}
+                onSort={onSort}
+                sortBy={sortBy}
+                onSetPage={onSetPage}
+                onPerPageSelect={onPerPageSelect}
             />
         </React.Fragment>
     );

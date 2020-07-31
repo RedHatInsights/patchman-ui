@@ -151,18 +151,18 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
 };
 
 export const createSystemPackagesRows = (rows, selectedRows = {}) => {
-    const res = Object.keys(rows).map(id => {
-        const pkg = rows[id];
+    console.log(rows);
+    const res = rows.map(pkg => {
         const pkgUpdates = pkg.updates || [];
         const latestUpdate = pkgUpdates.pop();
         return {
-            id,
-            selected: selectedRows[id] === true,
+            id: pkg.name,
+            selected: selectedRows[name] === true,
             cells: [
-                { title: id },
-                { title: pkg.version },
-                { title: latestUpdate && latestUpdate.version },
-                { title: 'Package summary once we have it :-)' }
+                { title: pkg.name },
+                { title: pkg.evra },
+                { title: latestUpdate && latestUpdate.evra },
+                { title: pkg.summary }
             ]
         };
     });

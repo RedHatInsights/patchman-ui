@@ -57,16 +57,16 @@ export const systemPackagesColumns = [
     {
         title: 'Package',
         transforms: [sortable, cellWidth(15)],
-        key: 'id'
+        key: 'name'
     },
     {
         title: 'Installed version',
         transforms: [sortable, cellWidth(15)],
-        key: 'version'
+        key: 'evra'
     },
     {
         title: 'Latest update available',
-        transforms: [sortable, cellWidth(15)],
+        transforms: [cellWidth(15)],
         key: 'latest_update'
     },
     {
