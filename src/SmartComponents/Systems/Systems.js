@@ -15,6 +15,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
 import * as ReactRedux from 'react-redux';
+import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
@@ -85,7 +86,8 @@ const Systems = () => {
                 sortable,
                 expandable,
                 SortByDirection
-            }
+            },
+            pfReact: reactCore
         });
 
         register({
