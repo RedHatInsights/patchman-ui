@@ -14,6 +14,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import * as ReactRedux from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
+import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import Header from '../../PresentationalComponents/Header/Header';
 import { paths } from '../../Routes';
 import { getStore, register } from '../../store';
@@ -22,6 +23,7 @@ import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 const InventoryDetail = () => {
     const [InventoryHeader, setInventoryHeader] = React.useState();
     const [InventoryBody, setInventoryBody] = React.useState();
+    const [InventoryWrapper, setInventoryWrapper] = React.useState();
 
     const entityDetails = useSelector(
         ({ entityDetails }) => entityDetails && entityDetails.entity
@@ -45,24 +47,27 @@ const InventoryDetail = () => {
                 sortable,
                 expandable,
                 SortByDirection
-            }
+            },
+            pfReact: reactCore
         });
 
         register({
             ...mergeWithDetail(SystemDetailStore)
         });
 
-        const { InventoryDetailHead, AppInfo } = inventoryConnector(getStore());
+        const { InventoryDetailHead, AppInfo, DetailWrapper } = inventoryConnector(getStore());
         setInventoryHeader(() => InventoryDetailHead);
         setInventoryBody(() => AppInfo);
+        setInventoryWrapper(() => DetailWrapper);
     };
 
     React.useEffect(() => {
         fetchInventory();
     }, []);
 
+    const Wrapper = InventoryWrapper || React.Fragment;
     return (
-        <React.Fragment>
+        <Wrapper>
             <Header
                 title=""
                 breadcrumbs={[
@@ -89,7 +94,7 @@ const InventoryDetail = () => {
                     <InventoryBody />
                 </Main>
             )}
-        </React.Fragment>
+        </Wrapper>
     );
 };
 
