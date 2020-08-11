@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoBox Should match to snapshots 1`] = `
+<Split
+  className="infobox"
+  hasGutter={true}
+>
+  <WithLoader
+    loading={false}
+    size="lg"
+    variant="skeleton"
+  >
+    <SplitItem
+      style={
+        Object {
+          "backgroundColor": "testColor",
+        }
+      }
+    >
+      <Bullseye>
+        testContent
+      </Bullseye>
+    </SplitItem>
+    <SplitItem
+      isFilled={true}
+    >
+      <TextContent>
+        <Text
+          component="h6"
+        >
+          testTitle
+        </Text>
+        <Text
+          component="p"
+        >
+          testText
+        </Text>
+      </TextContent>
+    </SplitItem>
+  </WithLoader>
+</Split>
+`;
