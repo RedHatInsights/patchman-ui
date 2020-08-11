@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error.js Should match the snapshot 1`] = `
+<Card>
+  <EmptyState
+    variant="full"
+  >
+    <EmptyStateIcon
+      color="black"
+      icon={[Function]}
+    />
+    <Title
+      headingLevel="h5"
+      size="lg"
+    >
+      Error
+    </Title>
+    <EmptyStateBody>
+      testMessage
+    </EmptyStateBody>
+  </EmptyState>
+</Card>
+`;

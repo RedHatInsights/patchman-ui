@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SystemUpToDate Should match the snapshot 1`] = `
+<Bullseye>
+  <EmptyState
+    style={
+      Object {
+        "paddingTop": 40,
+      }
+    }
+  >
+    <EmptyStateIcon
+      icon={[Function]}
+    />
+    <Title
+      headingLevel="h5"
+      size="lg"
+    >
+      No applicable advisories
+    </Title>
+    <EmptyStateBody>
+      This system is up to date, based on package information submitted at the most recent system check-in
+    </EmptyStateBody>
+  </EmptyState>
+</Bullseye>
+`;

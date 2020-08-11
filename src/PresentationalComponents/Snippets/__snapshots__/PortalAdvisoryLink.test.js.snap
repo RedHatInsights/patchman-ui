@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PortalAdvisoryLink Should match the snapshot 1`] = `
+<span
+  className="icon-with-label"
+>
+  <a
+    href="https://access.redhat.com/errata/testAdvisory"
+    target="__blank"
+  >
+    <ExternalLinkSquareAltIcon
+      color="currentColor"
+      noVerticalAlign={false}
+      size="sm"
+    />
+     View packages and errata at access.redhat.com
+  </a>
+</span>
+`;
