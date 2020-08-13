@@ -14,6 +14,7 @@ const searchFilter = (apply, search, placeholder) => {
         type: conditionalFilterType.text,
         label: 'Search',
         filterValues: {
+            'aria-label': 'search-field',
             onChange: (event, value) => {
                 setSearchValue(value);
                 searchAdvisory(value);
