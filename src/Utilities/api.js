@@ -25,20 +25,17 @@ export function createApiCall(
             if (contentType.indexOf('json') !== -1) {
                 throw res;
             } else {
-                throw new Promise(resolve =>
-                    resolve({
-                        errors: [
-                            { status: res.status, detail: res.statusText }
-                        ]
-                    })
-                );
+                throw {
+                    errors: [
+                        { status: res.status, detail: res.statusText }
+                    ]
+                };
             }
         }
 
         return res.json();
     })
-    .catch(async promise => {
-        const caughtError = await promise.then(error => error);
+    .catch(caughtError => {
         const error = Promise.resolve(caughtError || {});
         const genericError = {
             title:
