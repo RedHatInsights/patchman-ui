@@ -151,13 +151,12 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
 };
 
 export const createSystemPackagesRows = (rows, selectedRows = {}) => {
-    console.log(rows);
     const res = rows.map(pkg => {
         const pkgUpdates = pkg.updates || [];
         const latestUpdate = pkgUpdates.pop();
         return {
             id: pkg.name,
-            selected: selectedRows[name] === true,
+            selected: selectedRows[pkg.name] === true,
             cells: [
                 { title: pkg.name },
                 { title: pkg.evra },

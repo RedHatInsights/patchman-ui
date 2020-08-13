@@ -1,4 +1,5 @@
-import { fetchAdvisoryDetailsApi, fetchAffectedSystems, fetchApplicableAdvisoriesApi, fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchSystems } from '../../Utilities/api';
+import { fetchAdvisoryDetailsApi, fetchAffectedSystems, fetchApplicableAdvisoriesApi,
+    fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchSystems } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({

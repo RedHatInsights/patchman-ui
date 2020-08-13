@@ -73,10 +73,10 @@ const SystemPackages = () => {
 
             case 'all': {
                 const fetchCallback = (res) => {
-                    Object.keys(res).forEach((pkg)=>{
+                    res.data.forEach((pkg)=>{
                         toSelect.push(
                             {
-                                id: pkg,
+                                id: pkg.name,
                                 selected: true
                             }
                         );});
@@ -92,7 +92,7 @@ const SystemPackages = () => {
 
             default: {
                 toSelect.push({
-                    id: Object.keys(packages)[rowId],
+                    id: packages[rowId].name,
                     selected
                 });
                 dispatch(
@@ -126,6 +126,7 @@ const SystemPackages = () => {
                 sortBy={sortBy}
                 onSetPage={onSetPage}
                 onPerPageSelect={onPerPageSelect}
+                apply={apply}
             />
         </React.Fragment>
     );
