@@ -37,14 +37,16 @@ export function createApiCall(
 
         return res.json();
     })
-    .catch(res => {
-        const error = Promise.resolve(res.json() || {});
+    .catch(async promise => {
+        const caughtError = await promise.then(error => error);
+        const error = Promise.resolve(caughtError || {});
         const genericError = {
             title:
                     'There was an error getting data'
         };
         return error.then(error => {
-            const result = error.error && { ...genericError, detail: error.error, status: res.status } || genericError;
+            const [info] = error.errors;
+            const result = error.errors && { ...genericError, detail: info.detail, status: info.status } || genericError;
             throw result ;
         });
     });
