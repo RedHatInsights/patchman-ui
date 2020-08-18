@@ -1,4 +1,4 @@
-import { SystemDetailStore, initialState } from './SystemDetailStore';
+import { initialState, SystemDetailStore } from './SystemDetailStore';
 
 /* eslint-disable */
 
@@ -28,13 +28,13 @@ describe('SystemDetailStore', () => {
 
     it.each`
     state                   | action                                                                  | result
-    ${initialState}         | ${{ type: 'LOAD_ENTITY_REJECTED', payload: {} }}                        | ${'SystemAdvisories'}
-    ${initialState}         | ${{ type: 'LOAD_ENTITY_FULFILLED', payload: {} }}                       | ${'SystemAdvisories'}
+    ${initialState}         | ${{ type: 'LOAD_ENTITY_REJECTED', payload: {} }}                        | ${'SystemDetail'}
+    ${initialState}         | ${{ type: 'LOAD_ENTITY_FULFILLED', payload: {} }}                       | ${'SystemDetail'}
 
     `('$component', ({ state, action: { type, payload }, result }) => {
         const res = SystemDetailStore(state, { type, payload });
         const component = res.activeApps[0].component();
-        expect(component.type.displayName).toEqual(expect.stringMatching(result))
+        expect(component.type.name).toEqual(expect.stringMatching(result))
     });
 
 });
