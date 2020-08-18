@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemPackagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeSystemPackagesParams, fetchApplicableSystemPackages, selectSystemPackagesRow } from '../../store/Actions/Actions';
@@ -127,6 +128,11 @@ const SystemPackages = () => {
                 onSetPage={onSetPage}
                 onPerPageSelect={onPerPageSelect}
                 apply={apply}
+                filterConfig={{
+                    items: [
+                        searchFilter(apply, queryParams.search)
+                    ]
+                }}
             />
         </React.Fragment>
     );

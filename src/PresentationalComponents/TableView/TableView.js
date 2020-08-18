@@ -9,9 +9,6 @@ import RemediationModal from '../../SmartComponents/Remediation/RemediationModal
 import { STATUS_LOADING, STATUS_RESOLVED } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter } from '../../Utilities/Hooks';
-import publishDateFilter from '../Filters/PublishDateFilter';
-import searchFilter from '../Filters/SearchFilter';
-import typeFilter from '../Filters/TypeFilter';
 import TableFooter from './TableFooter';
 
 const TableView = ({
@@ -28,6 +25,7 @@ const TableView = ({
     onPerPageSelect,
     onSort,
     onExport,
+    filterConfig,
     sortBy,
     remediationProvider,
     selectedRows,
@@ -59,13 +57,7 @@ const TableView = ({
                     onSetPage,
                     onPerPageSelect
                 }}
-                filterConfig={{
-                    items: [
-                        searchFilter(apply, search),
-                        typeFilter(apply, filter),
-                        publishDateFilter(apply, filter)
-                    ]
-                }}
+                filterConfig={filterConfig}
                 activeFiltersConfig={{
                     filters: buildFilterChips(filter, search),
                     onDelete: removeFilter
@@ -152,6 +144,7 @@ TableView.propTypes = {
     selectedRows: PropTypes.object,
     apply: PropTypes.func,
     sortBy: PropTypes.object,
+    filterConfig: PropTypes.object,
     store: PropTypes.object
 };
 

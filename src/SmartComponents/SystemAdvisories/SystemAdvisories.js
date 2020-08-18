@@ -3,6 +3,9 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
+import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
+import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
@@ -181,6 +184,13 @@ const SystemAdvisories = ({ history }) => {
                 systemId={entity.id}
                 apply={apply}
                 store={{ rows, metadata, status, queryParams }}
+                filterConfig={{
+                    items: [
+                        searchFilter(apply, queryParams.search),
+                        typeFilter(apply, queryParams.filter),
+                        publishDateFilter(apply, queryParams.filter)
+                    ]
+                }}
             />;
         }
     };

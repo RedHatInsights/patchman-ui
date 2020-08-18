@@ -4,6 +4,9 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
+import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
+import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import TableView from '../../PresentationalComponents/TableView/TableView';
@@ -102,6 +105,13 @@ const Advisories = ({ history }) => {
                         sortBy={sortBy}
                         apply={apply}
                         store={{ rows, metadata, status, queryParams }}
+                        filterConfig={{
+                            items: [
+                                searchFilter(apply, queryParams.search),
+                                typeFilter(apply, queryParams.filter),
+                                publishDateFilter(apply, queryParams.filter)
+                            ]
+                        }}
                     />}
             </Main>
         </React.Fragment>
