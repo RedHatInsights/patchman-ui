@@ -130,7 +130,7 @@ const SystemPackages = () => {
                 apply={apply}
                 filterConfig={{
                     items: [
-                        searchFilter(apply, queryParams.search)
+                        searchFilter(apply, queryParams.search, 'Search packages')
                     ]
                 }}
             />
