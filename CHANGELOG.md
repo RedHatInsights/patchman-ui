@@ -1,3 +1,19 @@
+# [0.19.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.18.2...v0.19.0) (2020-08-18)
+
+
+### Bug Fixes
+
+* **packages:** add search and fix select all ([077d19d](https://github.com/RedHatInsights/patchman-ui/commit/077d19d4d5c1cf505786aa83467f2c5a12f55410))
+* **packages:** Update placeholder for search ([549ad29](https://github.com/RedHatInsights/patchman-ui/commit/549ad2928a3a71b782dfd3ce9f06c9db3a73eb72))
+* **style:** Update style of tabs ([2c43fae](https://github.com/RedHatInsights/patchman-ui/commit/2c43fae120f03e251fda294eed40beef068785dd))
+* **tables:** Rename advisories table to TableView ([d048825](https://github.com/RedHatInsights/patchman-ui/commit/d0488252d35db250491ef510f23e86dbb56c2174))
+
+
+### Features
+
+* **packages:** add filtering and refactor usage on other talbes ([f3576cd](https://github.com/RedHatInsights/patchman-ui/commit/f3576cd488ff368c65f919aaaa54284c66caec2f))
+* **system-packages:** Introduce tabs to select between advisories and packages ([d394a4b](https://github.com/RedHatInsights/patchman-ui/commit/d394a4b850ba1a11ba8a8251ed47925f14397a59))
+
 ## [0.18.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.18.1...v0.18.2) (2020-07-28)
 
 
