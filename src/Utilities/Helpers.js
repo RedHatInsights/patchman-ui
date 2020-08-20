@@ -8,6 +8,7 @@ import qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { advisorySeverities, APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC, filterCategories } from './constants';
+import { Flex, FlexItem } from '@patternfly/react-core';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -82,30 +83,41 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
         <div>
             {[rhea, rhba, rhsa].every(item => item === 0) &&
                 'No applicable advisories'}
-            {rhea !== 0 && (
-                <Tooltip content={'Enhancements'}>
-                    <span className="icon-with-label">
-                        <EnhancementIcon />
-                        {rhea.toString()}
-                    </span>
+            {rhsa !== 0 && (
+                <Tooltip content={'Security advisories'}>
+                    <Flex flex={{ default: 'inlineFlex' }}>
+                        <FlexItem spacer={{ default: 'spacerSm' }}>
+                            <SecurityIcon/>
+                        </FlexItem>
+                        <FlexItem spacer={{ default: 'spacerSm' }}>
+                            {rhsa.toString()}
+                        </FlexItem>
+                    </Flex>
                 </Tooltip>
             )}
             {rhba !== 0 && (
                 <Tooltip content={'Bug fixes'}>
-                    <span className="icon-with-label">
-                        <BugIcon />
-                        {rhba.toString()}
-                    </span>
+                    <Flex flex={{ default: 'inlineFlex' }}>
+                        <FlexItem spacer={{ default: 'spacerSm' }}>
+                            <BugIcon />
+                        </FlexItem>
+                        <FlexItem spacer={{ default: 'spacerSm' }}>
+                            {rhba.toString()}
+                        </FlexItem>
+                    </Flex>
                 </Tooltip>
             )}
-            {rhsa !== 0 && (
-                <Tooltip content={'Security advisories'}>
-                    <span className="icon-with-label">
-                        <SecurityIcon
-                            color={'var(--pf-global--warning-color--100)'}
-                        />
-                        {rhsa.toString()}
-                    </span>
+            {rhea !== 0 && (
+                <Tooltip content={'Enhancements'}>
+                    <Flex flex={{ default: 'inlineFlex' }}>
+                        <FlexItem spacer={{ default: 'spacerSm' }}>
+                            <EnhancementIcon />
+                        </FlexItem>
+                        <FlexItem spacer={{ default: 'spacerSm' }}>
+                            {rhea.toString()}
+                        </FlexItem>
+
+                    </Flex>
                 </Tooltip>
             )}
         </div>
