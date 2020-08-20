@@ -3,6 +3,7 @@ import { Popover } from '@patternfly/react-core/dist/js/components/Popover/Popov
 import { ExternalLinkSquareAltIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
+import { Flex, FlexItem } from '@patternfly/react-core';
 
 const AdvisorySeverityInfo = ({ severity }) => {
     return (
@@ -21,10 +22,14 @@ const AdvisorySeverityInfo = ({ severity }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <span className={'icon-with-label'}>
-                        <ExternalLinkSquareAltIcon />
-                        Learn more about security ratings
-                    </span>
+                    <Flex>
+                        <FlexItem spacer={{ default: 'spacerSm' }}>
+                            <ExternalLinkSquareAltIcon />
+                        </FlexItem>
+                        <FlexItem spacer={{ default: 'spacerSm' }}>
+                            Learn more about security ratings
+                        </FlexItem>
+                    </Flex>
                 </a>
             }
         >

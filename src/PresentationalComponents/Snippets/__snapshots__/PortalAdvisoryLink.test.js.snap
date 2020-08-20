@@ -1,19 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PortalAdvisoryLink Should match the snapshot 1`] = `
-<span
-  className="icon-with-label"
+<a
+  href="https://access.redhat.com/errata/testAdvisory"
+  target="__blank"
 >
-  <a
-    href="https://access.redhat.com/errata/testAdvisory"
-    target="__blank"
+  <Flex
+    flex={
+      Object {
+        "default": "inlineFlex",
+      }
+    }
   >
-    <ExternalLinkSquareAltIcon
-      color="currentColor"
-      noVerticalAlign={false}
-      size="sm"
-    />
-     View packages and errata at access.redhat.com
-  </a>
-</span>
+    <FlexItem
+      spacer={
+        Object {
+          "default": "spacerSm",
+        }
+      }
+    >
+      <ExternalLinkSquareAltIcon
+        color="currentColor"
+        noVerticalAlign={false}
+        size="sm"
+      />
+    </FlexItem>
+    <FlexItem
+      spacer={
+        Object {
+          "default": "spacerSm",
+        }
+      }
+    >
+      View packages and errata at access.redhat.com
+    </FlexItem>
+  </Flex>
+</a>
 `;

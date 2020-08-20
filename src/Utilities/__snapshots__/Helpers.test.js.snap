@@ -9,32 +9,72 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [0, 5, 3] 1`] = `
 <div>
   <Tooltip
-    content="Bug fixes"
-  >
-    <span
-      className="icon-with-label"
-    >
-      <BugIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      5
-    </span>
-  </Tooltip>
-  <Tooltip
     content="Security advisories"
   >
-    <span
-      className="icon-with-label"
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
     >
-      <SecurityIcon
-        color="var(--pf-global--warning-color--100)"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      3
-    </span>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <SecurityIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        3
+      </FlexItem>
+    </Flex>
+  </Tooltip>
+  <Tooltip
+    content="Bug fixes"
+  >
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
+    >
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <BugIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        5
+      </FlexItem>
+    </Flex>
   </Tooltip>
 </div>
 `;
@@ -42,32 +82,72 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 0, 3] 1`] = `
 <div>
   <Tooltip
-    content="Enhancements"
-  >
-    <span
-      className="icon-with-label"
-    >
-      <EnhancementIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      1
-    </span>
-  </Tooltip>
-  <Tooltip
     content="Security advisories"
   >
-    <span
-      className="icon-with-label"
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
     >
-      <SecurityIcon
-        color="var(--pf-global--warning-color--100)"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      3
-    </span>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <SecurityIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        3
+      </FlexItem>
+    </Flex>
+  </Tooltip>
+  <Tooltip
+    content="Enhancements"
+  >
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
+    >
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <EnhancementIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        1
+      </FlexItem>
+    </Flex>
   </Tooltip>
 </div>
 `;
@@ -75,32 +155,72 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 2, 0] 1`] = `
 <div>
   <Tooltip
-    content="Enhancements"
-  >
-    <span
-      className="icon-with-label"
-    >
-      <EnhancementIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      1
-    </span>
-  </Tooltip>
-  <Tooltip
     content="Bug fixes"
   >
-    <span
-      className="icon-with-label"
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
     >
-      <BugIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      2
-    </span>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <BugIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        2
+      </FlexItem>
+    </Flex>
+  </Tooltip>
+  <Tooltip
+    content="Enhancements"
+  >
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
+    >
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <EnhancementIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        1
+      </FlexItem>
+    </Flex>
   </Tooltip>
 </div>
 `;
@@ -108,46 +228,106 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 2, 3] 1`] = `
 <div>
   <Tooltip
-    content="Enhancements"
+    content="Security advisories"
   >
-    <span
-      className="icon-with-label"
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
     >
-      <EnhancementIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      1
-    </span>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <SecurityIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        3
+      </FlexItem>
+    </Flex>
   </Tooltip>
   <Tooltip
     content="Bug fixes"
   >
-    <span
-      className="icon-with-label"
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
     >
-      <BugIcon
-        color="currentColor"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      2
-    </span>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <BugIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        2
+      </FlexItem>
+    </Flex>
   </Tooltip>
   <Tooltip
-    content="Security advisories"
+    content="Enhancements"
   >
-    <span
-      className="icon-with-label"
+    <Flex
+      flex={
+        Object {
+          "default": "inlineFlex",
+        }
+      }
     >
-      <SecurityIcon
-        color="var(--pf-global--warning-color--100)"
-        noVerticalAlign={false}
-        size="sm"
-      />
-      3
-    </span>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        <EnhancementIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+        />
+      </FlexItem>
+      <FlexItem
+        spacer={
+          Object {
+            "default": "spacerSm",
+          }
+        }
+      >
+        1
+      </FlexItem>
+    </Flex>
   </Tooltip>
 </div>
 `;
