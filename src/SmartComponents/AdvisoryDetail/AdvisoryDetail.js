@@ -1,4 +1,4 @@
-import { Text, TextContent, TextVariants } from '@patternfly/react-core/dist/js/components/Text';
+import { Text, TextContent, TextVariants, Stack, StackItem } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -63,10 +63,16 @@ const AdvisoryDetail = ({ match }) => {
                     />}
             </Header>
             <Main>
-                <TextContent>
-                    <Text component={TextVariants.h2}>Affected systems</Text>
-                </TextContent>
-                <AffectedSystems advisoryName={advisoryName} />
+                <Stack hasGutter>
+                    <StackItem>
+                        <TextContent>
+                            <Text component={TextVariants.h2}>Affected systems</Text>
+                        </TextContent>
+                    </StackItem>
+                    <StackItem>
+                        <AffectedSystems advisoryName={advisoryName} />
+                    </StackItem>
+                </Stack>
             </Main>
         </React.Fragment>
     );
