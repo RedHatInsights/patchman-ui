@@ -1,3 +1,12 @@
+## [0.19.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.19.0...v0.19.1) (2020-08-21)
+
+
+### Bug Fixes
+
+* **AffectedSystems:** header has space underneath ([16e2ecb](https://github.com/RedHatInsights/patchman-ui/commit/16e2ecbfab9e6394256877e8ebaf67959a533968))
+* **Icons:** applicable advisories icons according to mockups ([25ca890](https://github.com/RedHatInsights/patchman-ui/commit/25ca890c59842ff0a6b088077a799bb47959a40b))
+* **tableFooter:** footer misalignment fixed ([da1d728](https://github.com/RedHatInsights/patchman-ui/commit/da1d728619e3bc79b90183e5d4db1188e5e5d92d))
+
 # [0.19.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.18.2...v0.19.0) (2020-08-18)
 
 
