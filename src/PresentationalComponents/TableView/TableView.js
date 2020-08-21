@@ -3,6 +3,7 @@ import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-i
 import { Table, TableBody, TableHeader } from '@patternfly/react-table/dist/js/components/Table';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/PrimaryToolbar';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/cjs/SkeletonTable';
+import globalBackgroundColor100 from '@patternfly/react-tokens/dist/js/global_BackgroundColor_100';
 import PropTypes from 'prop-types';
 import React from 'react';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
@@ -71,7 +72,7 @@ const TableView = ({
                                 showRemediationModal(remediationProvider())
                             }
                         >
-                            <AnsibeTowerIcon/>&nbsp;Remediate
+                            <AnsibeTowerIcon color={globalBackgroundColor100.value} />&nbsp;Remediate
                         </Button>
                         <RemediationModalCmp />
                     </React.Fragment>
