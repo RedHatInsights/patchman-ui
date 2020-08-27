@@ -157,6 +157,7 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
         return {
             id: pkg.name,
             selected: selectedRows[pkg.name] === true,
+            disableCheckbox: !latestUpdate,
             cells: [
                 { title: pkg.name },
                 { title: pkg.evra },
