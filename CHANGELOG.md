@@ -1,3 +1,10 @@
+## [0.19.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.19.1...v0.19.2) (2020-08-28)
+
+
+### Bug Fixes
+
+* **notifications:** notifications has cancal button ([69fa459](https://github.com/RedHatInsights/patchman-ui/commit/69fa459dff8083baef727653fb4f949cb343686f))
+
 ## [0.19.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.19.0...v0.19.1) (2020-08-21)
 
 
