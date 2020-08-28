@@ -75,12 +75,17 @@ const SystemPackages = () => {
             case 'all': {
                 const fetchCallback = (res) => {
                     res.data.forEach((pkg)=>{
-                        toSelect.push(
-                            {
-                                id: pkg.name,
-                                selected: true
-                            }
-                        );});
+                        let pkgUpdates = pkg.updates || [];
+                        if (pkgUpdates.pop()) {
+                            toSelect.push(
+                                {
+                                    id: pkg.name,
+                                    selected: true
+                                }
+                            );
+                        }
+                    }
+                    );
                     dispatch(
                         selectSystemPackagesRow(toSelect)
                     );
