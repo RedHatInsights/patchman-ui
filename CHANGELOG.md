@@ -1,3 +1,10 @@
+## [0.19.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.19.2...v0.19.3) (2020-08-28)
+
+
+### Bug Fixes
+
+* **select:** disallow selection of non-updatable packages ([62b17b3](https://github.com/RedHatInsights/patchman-ui/commit/62b17b3e21ddf7a826db5392c603042a06eb186e))
+
 ## [0.19.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.19.1...v0.19.2) (2020-08-28)
 
 
