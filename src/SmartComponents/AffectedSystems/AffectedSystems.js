@@ -91,7 +91,7 @@ const AffectedSystems = ({ advisoryName }) => {
         });
 
         register({
-            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns))
+            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns, 'AFFECTED_SYSTEMS'))
         });
         const { InventoryTable } = inventoryConnector(getStore());
         setInventoryCmp(() => InventoryTable);

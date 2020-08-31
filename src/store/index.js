@@ -13,8 +13,13 @@ import { SystemsListStore } from './Reducers/SystemsListStore';
 
 let registry;
 const persistenceMiddleware = store => next => action => {
-    next(action);
+
     const storeContent = store.getState();
+    if (action.type === 'LOAD_ENTITIES_FULFILLED') {
+        action = { ...action, store };
+    }
+
+    next(action);
     sessionStorage.setItem('PatchStore', JSON.stringify(storeContent));
 };
 

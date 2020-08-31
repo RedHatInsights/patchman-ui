@@ -91,7 +91,7 @@ const Systems = () => {
         });
 
         register({
-            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns))
+            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns, 'SYSTEMS_PAGE'))
         });
         const { InventoryTable } = inventoryConnector(getStore());
         setInventoryCmp(() => InventoryTable);
