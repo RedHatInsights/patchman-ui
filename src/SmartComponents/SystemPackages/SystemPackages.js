@@ -8,6 +8,11 @@ import { fetchApplicablePackagesApi } from '../../Utilities/api';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
+import Error from '../../PresentationalComponents/Snippets/Error';
+import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 
 const SystemPackages = () => {
     const dispatch = useDispatch();
@@ -26,10 +31,10 @@ const SystemPackages = () => {
     );
     const status = useSelector(
         ({ SystemPackageListStore }) => SystemPackageListStore.status
-    );/*
+    );
     const error = useSelector(
         ({ SystemPackageListStore }) => SystemPackageListStore.error
-    );*/
+    );
     const rows = React.useMemo(
         () =>
             createSystemPackagesRows(packages, selectedRows),
@@ -121,26 +126,45 @@ const SystemPackages = () => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
+    const errorState = error.status === 404 ?  <NoSystemData/> : <Error message={error.detail}/>;
+
+    if (status === STATUS_REJECTED && error.status !== 404) {
+        dispatch(addNotification({
+            variant: 'danger',
+            title: error.title,
+            description: error.detail
+        }));}
+
+    const MainComponent = () => {
+
+        if (status === STATUS_RESOLVED && metadata.total_items === 0
+            && Object.keys(queryParams).length === 0) { return <SystemUpToDate/>; }
+
+        return (<TableView
+            columns={systemPackagesColumns}
+            store={{ rows, metadata, status, queryParams }}
+            onSelect={onSelect}
+            selectedRows={selectedRows}
+            onSort={onSort}
+            sortBy={sortBy}
+            onSetPage={onSetPage}
+            onPerPageSelect={onPerPageSelect}
+            apply={apply}
+            filterConfig={{
+                items: [
+                    searchFilter(apply, queryParams.search, 'Search packages')
+                ]
+            }}
+        />);
+
+    };
+
     return (
         <React.Fragment>
-            <TableView
-                columns={systemPackagesColumns}
-                store={{ rows, metadata, status, queryParams }}
-                onSelect={onSelect}
-                selectedRows={selectedRows}
-                onSort={onSort}
-                sortBy={sortBy}
-                onSetPage={onSetPage}
-                onPerPageSelect={onPerPageSelect}
-                apply={apply}
-                filterConfig={{
-                    items: [
-                        searchFilter(apply, queryParams.search, 'Search packages')
-                    ]
-                }}
-            />
+            {status === STATUS_REJECTED ? errorState : <MainComponent/>}
         </React.Fragment>
     );
 };
 
 export default SystemPackages;
+
