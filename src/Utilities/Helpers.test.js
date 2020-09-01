@@ -200,8 +200,8 @@ describe('Helpers tests', () => {
     });
 
     it('arrayFromObj: Should create correct array', () => {
-        let items = {a: true, b: false, c: true}
-        let expected = ["a", "c"]
+        let items = {a: "value1", b: false, c: "value2"}
+        let expected = ["value1", "value2"]
         let result = arrayFromObj(items);
         expect(result).toEqual(expected);
     });
