@@ -1,3 +1,10 @@
+# [0.22.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.21.0...v0.22.0) (2020-09-01)
+
+
+### Features
+
+* **packages-remediation:** Allow to remediate packages ([7e18ecc](https://github.com/RedHatInsights/patchman-ui/commit/7e18ecce89376764554350522571ea2f6a434b19))
+
 # [0.21.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.20.0...v0.21.0) (2020-09-01)
 
 
