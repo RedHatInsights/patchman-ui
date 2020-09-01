@@ -1,3 +1,10 @@
+# [0.21.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.20.0...v0.21.0) (2020-09-01)
+
+
+### Features
+
+* **packages-count:** Count of packages on system lists ([8ff4bca](https://github.com/RedHatInsights/patchman-ui/commit/8ff4bca64b7bd0c649191ac1cae946eee2d779fb))
+
 # [0.20.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.19.3...v0.20.0) (2020-08-31)
 
 
