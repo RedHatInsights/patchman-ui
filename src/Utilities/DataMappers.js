@@ -15,7 +15,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                 {
                     id: row.id,
                     isOpen: expandedRows[row.id] === true,
-                    selected: selectedRows[row.id] === true,
+                    selected: selectedRows[row.id] !== undefined,
                     cells: [
                         { title: handleAdvisoryLink(row.id) },
                         { title: processDate(row.attributes.public_date) },
@@ -82,7 +82,7 @@ export const createSystemAdvisoriesRows = (
                 {
                     id: row.id,
                     isOpen: expandedRows[row.id] === true,
-                    selected: selectedRows[row.id] === true,
+                    selected: selectedRows[row.id] !== undefined,
                     cells: [
                         { title: handleAdvisoryLink(row.id) },
                         { title: processDate(row.attributes.public_date) },
@@ -144,7 +144,7 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                     row.attributes.rhba_count || 0,
                     row.attributes.rhsa_count || 0
                 ],
-                selected: selectedRows[row.id] === true
+                selected: selectedRows[row.id] !== undefined
             };
         });
     return data || [];
@@ -153,10 +153,12 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
 export const createSystemPackagesRows = (rows, selectedRows = {}) => {
     const res = rows.map(pkg => {
         const pkgUpdates = pkg.updates || [];
-        const latestUpdate = pkgUpdates.pop();
+        const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
+
         return {
             id: pkg.name,
-            selected: selectedRows[pkg.name] === true,
+            key: pkg.name,
+            selected: selectedRows[pkg.name] !== undefined,
             disableCheckbox: !latestUpdate,
             cells: [
                 { title: pkg.name },

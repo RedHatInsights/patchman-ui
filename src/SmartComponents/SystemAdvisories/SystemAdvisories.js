@@ -101,7 +101,7 @@ const SystemAdvisories = ({ history }) => {
                     toSelect.push(
                         {
                             id,
-                            selected: true
+                            selected: id
                         }
                     );});
                 dispatch(
@@ -116,7 +116,7 @@ const SystemAdvisories = ({ history }) => {
                         toSelect.push(
                             {
                                 id,
-                                selected: true
+                                selected: id
                             }
                         );});
                     dispatch(
@@ -132,7 +132,7 @@ const SystemAdvisories = ({ history }) => {
             default: {
                 toSelect.push({
                     id: getRowIdByIndexExpandable(advisories, rowId),
-                    selected
+                    selected: selected && getRowIdByIndexExpandable(advisories, rowId)
                 });
                 dispatch(
                     selectSystemAdvisoryRow(toSelect)

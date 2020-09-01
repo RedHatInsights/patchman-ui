@@ -1,4 +1,4 @@
-import { Tooltip } from '@patternfly/react-core';
+import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
 import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
@@ -8,7 +8,6 @@ import qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { advisorySeverities, APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC, filterCategories } from './constants';
-import { Flex, FlexItem } from '@patternfly/react-core';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -148,7 +147,7 @@ export function handleAdvisoryLink(name, body) {
 }
 
 export const arrayFromObj = items =>
-    Object.keys(items).filter(key => items[key]);
+    Object.values(items).filter(value => value);
 
 export const remediationProvider = (issues, systems) => {
     issues = [].concat(issues);
