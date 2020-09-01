@@ -139,6 +139,7 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
             return {
                 id: row.id,
                 key: Math.random().toString() + row.id,
+                packages_installed: row.attributes.packages_installed,
                 applicable_advisories: [
                     row.attributes.rhea_count || 0,
                     row.attributes.rhba_count || 0,
