@@ -1,18 +1,18 @@
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
+import Error from '../../PresentationalComponents/Snippets/Error';
+import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
+import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemPackagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeSystemPackagesParams, fetchApplicableSystemPackages, selectSystemPackagesRow } from '../../store/Actions/Actions';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
-import { createSystemPackagesRows } from '../../Utilities/DataMappers';
-import { createSortBy } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
-import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
-import Error from '../../PresentationalComponents/Snippets/Error';
-import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
+import { createSystemPackagesRows } from '../../Utilities/DataMappers';
+import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
+import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
 const SystemPackages = () => {
     const dispatch = useDispatch();
@@ -47,6 +47,12 @@ const SystemPackages = () => {
 
     const onSelect = React.useCallback((event, selected, rowId) => {
         const toSelect = [];
+        const constructFilename = (pkg) => {
+            const pkgUpdates = pkg.updates || [];
+            const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
+            return latestUpdate && `${pkg.name}-${latestUpdate.evra}`;
+        };
+
         switch (event) {
             case 'none': {
                 Object.keys(selectedRows).forEach(id=>{
@@ -64,11 +70,11 @@ const SystemPackages = () => {
             }
 
             case 'page': {
-                packages.forEach(({ id })=>{
+                packages.forEach((pkg)=>{
                     toSelect.push(
                         {
-                            id,
-                            selected: true
+                            id: pkg.name,
+                            selected: constructFilename(pkg)
                         }
                     );});
                 dispatch(
@@ -80,12 +86,12 @@ const SystemPackages = () => {
             case 'all': {
                 const fetchCallback = (res) => {
                     res.data.forEach((pkg)=>{
-                        let pkgUpdates = pkg.updates || [];
-                        if (pkgUpdates.pop()) {
+                        let pkgUpdate = constructFilename(pkg);
+                        if (pkgUpdate) {
                             toSelect.push(
                                 {
                                     id: pkg.name,
-                                    selected: true
+                                    selected: pkgUpdate
                                 }
                             );
                         }
@@ -104,7 +110,7 @@ const SystemPackages = () => {
             default: {
                 toSelect.push({
                     id: packages[rowId].name,
-                    selected
+                    selected: selected && constructFilename(packages[rowId])
                 });
                 dispatch(
                     selectSystemPackagesRow(toSelect)
@@ -149,6 +155,9 @@ const SystemPackages = () => {
             sortBy={sortBy}
             onSetPage={onSetPage}
             onPerPageSelect={onPerPageSelect}
+            remediationProvider={() =>
+                remediationProvider(arrayFromObj(selectedRows), entity.id)
+            }
             apply={apply}
             filterConfig={{
                 items: [
