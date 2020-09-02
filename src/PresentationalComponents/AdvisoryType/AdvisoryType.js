@@ -5,7 +5,7 @@ import { Flex, FlexItem } from '@patternfly/react-core';
 
 const AdvisoryType = ({ type }) => {
     const advisoryType =
-        advisoryTypes.find(item => item.value === type) || advisoryTypes[3];
+        advisoryTypes.find(item => item.value === type) || advisoryTypes[2];
     return (
         <React.Fragment>
             <Flex>
