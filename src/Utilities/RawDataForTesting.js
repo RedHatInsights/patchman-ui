@@ -39,3 +39,16 @@ export const systemRows = [{
     id: '8ddb54f5-aeeb-49b1-8448-c29049d686c1',
     type: 'system'
 }];
+
+export const advisoryHeader = {
+    attributes: {
+        advisory_type: 3,
+        description: 'Kernel-based Virtual.',
+        public_date: '2020-06-30T13:38:53Z',
+        modified_date: '2020-06-30T13:38:53Z',
+        severity: 3,
+        synopsis: 'Important'
+    },
+    id: 'RHSA-2020:2774',
+    type: 'advisory'
+};

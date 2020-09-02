@@ -1,0 +1,310 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableView TableView 1`] = `
+<Fragment>
+  <PrimaryToolbar
+    actionsConfig={
+      Object {
+        "actions": Array [
+          <React.Fragment>
+            <Button
+              className="remediationButtonPatch"
+              isDisabled={true}
+              onClick={[Function]}
+            >
+              <AnsibeTowerIcon
+                color="#151515"
+                noVerticalAlign={false}
+                size="sm"
+              />
+               Remediate
+            </Button>
+            <Unknown />
+          </React.Fragment>,
+        ],
+      }
+    }
+    activeFiltersConfig={
+      Object {
+        "filters": Array [],
+        "onDelete": [Function],
+      }
+    }
+    bulkSelect={
+      Object {
+        "checked": false,
+        "count": 0,
+        "items": Array [
+          Object {
+            "onClick": [Function],
+            "title": "Select none (0)",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select page (0)",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select all (undefined)",
+          },
+        ],
+        "onSelect": [Function],
+      }
+    }
+    exportConfig={
+      Object {
+        "onSelect": [MockFunction],
+      }
+    }
+    filterConfig={
+      Object {
+        "items": Array [
+          Object {
+            "label": "First filter",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Some checkbox",
+                },
+              ],
+            },
+            "label": "Second filter",
+            "type": "checkbox",
+          },
+        ],
+      }
+    }
+    pagination={
+      Object {
+        "isCompact": true,
+        "itemCount": undefined,
+        "onPerPageSelect": [MockFunction],
+        "onSetPage": [MockFunction],
+        "page": NaN,
+        "perPage": undefined,
+      }
+    }
+    toggleIsExpanded={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`TableView TableView 2`] = `
+<Fragment>
+  <PrimaryToolbar
+    actionsConfig={
+      Object {
+        "actions": Array [
+          <React.Fragment>
+            <Button
+              className="remediationButtonPatch"
+              isDisabled={true}
+              onClick={[Function]}
+            >
+              <AnsibeTowerIcon
+                color="#151515"
+                noVerticalAlign={false}
+                size="sm"
+              />
+               Remediate
+            </Button>
+            <Unknown />
+          </React.Fragment>,
+        ],
+      }
+    }
+    activeFiltersConfig={
+      Object {
+        "filters": Array [],
+        "onDelete": [Function],
+      }
+    }
+    bulkSelect={
+      Object {
+        "checked": false,
+        "count": 0,
+        "items": Array [
+          Object {
+            "onClick": [Function],
+            "title": "Select none (0)",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select page (0)",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select all (undefined)",
+          },
+        ],
+        "onSelect": [Function],
+      }
+    }
+    exportConfig={
+      Object {
+        "onSelect": [MockFunction],
+      }
+    }
+    filterConfig={
+      Object {
+        "items": Array [
+          Object {
+            "label": "First filter",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Some checkbox",
+                },
+              ],
+            },
+            "label": "Second filter",
+            "type": "checkbox",
+          },
+        ],
+      }
+    }
+    pagination={
+      Object {
+        "isCompact": true,
+        "itemCount": undefined,
+        "onPerPageSelect": [MockFunction],
+        "onSetPage": [MockFunction],
+        "page": NaN,
+        "perPage": undefined,
+      }
+    }
+    toggleIsExpanded={[Function]}
+  />
+  <SkeletonTable
+    colSize={5}
+    paddingColumnSize={0}
+    rowSize={20}
+  />
+</Fragment>
+`;
+
+exports[`TableView test table props TableView 1`] = `
+<Fragment>
+  <PrimaryToolbar
+    actionsConfig={
+      Object {
+        "actions": Array [
+          <React.Fragment>
+            <Button
+              className="remediationButtonPatch"
+              isDisabled={true}
+              onClick={[Function]}
+            >
+              <AnsibeTowerIcon
+                color="#151515"
+                noVerticalAlign={false}
+                size="sm"
+              />
+               Remediate
+            </Button>
+            <Unknown />
+          </React.Fragment>,
+        ],
+      }
+    }
+    activeFiltersConfig={
+      Object {
+        "filters": Array [],
+        "onDelete": [Function],
+      }
+    }
+    bulkSelect={
+      Object {
+        "checked": false,
+        "count": 0,
+        "items": Array [
+          Object {
+            "onClick": [Function],
+            "title": "Select none (0)",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select page (0)",
+          },
+          Object {
+            "onClick": [Function],
+            "title": "Select all (10)",
+          },
+        ],
+        "onSelect": [Function],
+      }
+    }
+    exportConfig={
+      Object {
+        "onSelect": [MockFunction],
+      }
+    }
+    filterConfig={
+      Object {
+        "items": Array [
+          Object {
+            "label": "First filter",
+          },
+          Object {
+            "filterValues": Object {
+              "items": Array [
+                Object {
+                  "label": "Some checkbox",
+                },
+              ],
+            },
+            "label": "Second filter",
+            "type": "checkbox",
+          },
+        ],
+      }
+    }
+    pagination={
+      Object {
+        "isCompact": true,
+        "itemCount": 10,
+        "onPerPageSelect": [MockFunction],
+        "onSetPage": [MockFunction],
+        "page": NaN,
+        "perPage": undefined,
+      }
+    }
+    toggleIsExpanded={[Function]}
+  />
+  <Table
+    aria-label="Patch table view"
+    borders={true}
+    canSelectAll={false}
+    cells={Array []}
+    className=""
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    isStickyHeader={false}
+    onCollapse={[MockFunction]}
+    onSelect={[MockFunction]}
+    onSort={[MockFunction]}
+    ouiaSafe={true}
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={Array []}
+    sortBy={Object {}}
+    variant={null}
+  >
+    <TableHeader />
+    <Component />
+  </Table>
+  <TableFooter
+    onPerPageSelect={[MockFunction]}
+    onSetPage={[MockFunction]}
+    page={NaN}
+    totalItems={10}
+  />
+</Fragment>
+`;
