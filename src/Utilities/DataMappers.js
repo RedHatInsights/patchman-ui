@@ -4,7 +4,7 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
-import EmptyAdvisoryList from '../PresentationalComponents/Snippets/EmptyAdvisoryList';
+import { EmptyAdvisoryList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
 import Label from '../PresentationalComponents/Snippets/Label';
 import PortalAdvisoryLink from '../PresentationalComponents/Snippets/PortalAdvisoryLink';
 import { handleAdvisoryLink, truncate } from './Helpers';
@@ -153,24 +153,36 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
 };
 
 export const createSystemPackagesRows = (rows, selectedRows = {}) => {
-    const res = rows.map(pkg => {
-        const pkgUpdates = pkg.updates || [];
-        const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
+    if (rows.length !== 0) {
+        return rows.map(pkg => {
+            const pkgUpdates = pkg.updates || [];
+            const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
 
-        return {
-            id: pkg.name,
-            key: pkg.name,
-            selected: selectedRows[pkg.name] !== undefined,
-            disableCheckbox: !latestUpdate,
-            cells: [
-                { title: pkg.name },
-                { title: pkg.evra },
-                { title: latestUpdate && latestUpdate.evra },
-                { title: pkg.updatable && <CheckCircleIcon style={{ color: 'var(--pf-global--success-color--100)' }} /> },
-                { title: pkg.summary }
-            ]
-        };
-    });
-
-    return res;
+            return {
+                id: pkg.name,
+                key: pkg.name,
+                selected: selectedRows[pkg.name] !== undefined,
+                disableCheckbox: !latestUpdate,
+                cells: [
+                    { title: pkg.name },
+                    { title: pkg.evra },
+                    { title: latestUpdate && latestUpdate.evra },
+                    { title: pkg.updatable && <CheckCircleIcon style={{ color: 'var(--pf-global--success-color--100)' }} /> },
+                    { title: pkg.summary }
+                ]
+            };
+        });
+    } else {
+        return [
+            {
+                heightAuto: true,
+                cells: [
+                    {
+                        props: { colSpan: 7 },
+                        title: <EmptyPackagesList />
+                    }
+                ]
+            }
+        ];
+    }
 };

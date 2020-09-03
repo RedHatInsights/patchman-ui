@@ -73,3 +73,10 @@ export const advisoryDetailRows = {
     id: 'RHSA-2020:2755',
     type: 'advisory'
 };
+export const systemPackages = [{
+    description: 'This package contains testing data',
+    evra: '2.2.*',
+    name: 'acl',
+    summary: 'Access control list utilities',
+    updates: null
+}];
