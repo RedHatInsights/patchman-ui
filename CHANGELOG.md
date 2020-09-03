@@ -1,3 +1,10 @@
+## [0.22.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.22.0...v0.22.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* **LastSeen:** sorting bug fix by displaying last_upload instead of updated ([f7743b5](https://github.com/RedHatInsights/patchman-ui/commit/f7743b5208c324418ad1ba49b0c18837311d7e42))
+
 # [0.22.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.21.0...v0.22.0) (2020-09-01)
 
 
