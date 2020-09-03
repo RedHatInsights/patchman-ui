@@ -1,15 +1,17 @@
 import {
     createAdvisoriesRows,
     createSystemAdvisoriesRows,
-    createSystemsRows
+    createSystemsRows,
+    createSystemPackagesRows
 } from './DataMappers';
 import {
     advisoryRows,
     systemAdvisoryRows,
-    systemRows
+    systemRows,
+    systemPackages
 } from './RawDataForTesting';
 import { handleAdvisoryLink } from './Helpers';
-import EmptyAdvisoryList from '../PresentationalComponents/Snippets/EmptyAdvisoryList';
+import { EmptyAdvisoryList } from '../PresentationalComponents/Snippets/EmptyStates';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 
 describe('DataMappers', () => {
@@ -93,5 +95,32 @@ describe('DataMappers', () => {
             0,
             0
         ]);
+    });
+
+    it('Should create package list', () => {
+        const packages = createSystemPackagesRows(systemPackages);
+        expect(packages).toEqual([{
+            id: 'acl',
+            selected: false,
+            cells: [
+                { title: 'acl' },
+                { title: '2.2.*' },
+                { title: undefined },
+                { title: 'Access control list utilities' }
+            ]
+        }]);
+    });
+
+    it('Should create empty package list', () => {
+        const packages = createSystemPackagesRows([]);
+        expect(packages).toEqual([{
+            heightAuto: true,
+            cells: [
+                {
+                    props: { colSpan: 7 },
+                    title: expect.anything()
+                }
+            ]
+        }]);
     });
 });

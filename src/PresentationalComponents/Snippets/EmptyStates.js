@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {
     EmptyState,
     EmptyStateIcon,
@@ -17,4 +16,11 @@ export const EmptyAdvisoryList = () => (
     </EmptyState>
 );
 
-export default EmptyAdvisoryList;
+export const EmptyPackagesList = () => (
+    <EmptyState variant={EmptyStateVariant.full}>
+        <EmptyStateIcon icon={SearchIcon} />
+        <Title headingLevel="h5" size="lg">
+            No matching packages found
+        </Title>
+    </EmptyState>
+);

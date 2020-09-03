@@ -39,3 +39,11 @@ export const systemRows = [{
     id: '8ddb54f5-aeeb-49b1-8448-c29049d686c1',
     type: 'system'
 }];
+
+export const systemPackages = [{
+    description: 'This package contains testing data',
+    evra: '2.2.*',
+    name: 'acl',
+    summary: 'Access control list utilities',
+    updates: null
+}];
