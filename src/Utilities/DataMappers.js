@@ -1,4 +1,5 @@
 import { Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { CheckCircleIcon } from '@patternfly/react-icons/dist/js/icons/check-circle-icon';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
@@ -165,6 +166,7 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
                 { title: pkg.name },
                 { title: pkg.evra },
                 { title: latestUpdate && latestUpdate.evra },
+                { title: pkg.updatable && <CheckCircleIcon style={{ color: 'var(--pf-global--success-color--100)' }} /> },
                 { title: pkg.summary }
             ]
         };

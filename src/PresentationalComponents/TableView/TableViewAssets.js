@@ -56,7 +56,7 @@ export const systemAdvisoriesColumns = [
 export const systemPackagesColumns = [
     {
         title: 'Package',
-        transforms: [sortable, cellWidth(15)],
+        transforms: [sortable, cellWidth(20)],
         key: 'name'
     },
     {
@@ -65,13 +65,18 @@ export const systemPackagesColumns = [
         key: 'evra'
     },
     {
-        title: 'Latest update available',
+        title: 'Latest version',
         transforms: [cellWidth(15)],
         key: 'latest_update'
     },
     {
+        title: 'Upgradable',
+        transforms: [cellWidth(10)],
+        key: 'updatable'
+    },
+    {
         title: 'Summary',
-        transforms: [sortable, cellWidth(15)],
+        transforms: [sortable, cellWidth(40)],
         key: 'summary'
     }
 ];
