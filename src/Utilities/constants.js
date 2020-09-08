@@ -119,6 +119,17 @@ export const advisoryTypes = [
     }
 ];
 
+export const updatableTypes = [
+    {
+        value: '',
+        label: 'All'
+    },
+    {
+        value: true,
+        label: 'Upgradable'
+    }
+];
+
 export const filterCategories = {
     advisory_type: {
         label: 'Advisory type',
@@ -127,5 +138,9 @@ export const filterCategories = {
     public_date: {
         label: 'Public date',
         values: publicDateOptions
+    },
+    updatable: {
+        label: 'Status',
+        values: updatableTypes
     }
 };

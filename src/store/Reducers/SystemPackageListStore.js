@@ -2,7 +2,8 @@ import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } f
 import { changeListParams, getNewSelectedItems } from '../../Utilities/Helpers';
 import * as ActionTypes from '../ActionTypes';
 
-export const SystemPackageListStore = (state = storeListDefaults, action) => {
+let stateInit = { queryParams: { filter: { updatable: 'true' } } };
+export const SystemPackageListStore = (state = { ...storeListDefaults, ...stateInit }, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_APPLICABLE_SYSTEM_PACKAGES + '_FULFILLED': {

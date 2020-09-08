@@ -2,6 +2,7 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
+import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
@@ -161,7 +162,8 @@ const SystemPackages = () => {
             apply={apply}
             filterConfig={{
                 items: [
-                    searchFilter(apply, queryParams.search, 'Search packages')
+                    searchFilter(apply, queryParams.search, 'Search packages'),
+                    statusFilter(apply, queryParams.filter)
                 ]
             }}
         />);
