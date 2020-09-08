@@ -1,3 +1,10 @@
+# [0.23.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.22.1...v0.23.0) (2020-09-08)
+
+
+### Features
+
+* **filter:** Filter by upgradable on packages ([2a59343](https://github.com/RedHatInsights/patchman-ui/commit/2a593430449607cbcabd9d3813489d9863c92ed2))
+
 ## [0.22.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.22.0...v0.22.1) (2020-09-03)
 
 
