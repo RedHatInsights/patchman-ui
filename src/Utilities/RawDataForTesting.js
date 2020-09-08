@@ -6,7 +6,8 @@ export const advisoryRows = [{
         applicable_systems: 1,
         description: 'The microcode_ctl ',
         public_date: '2020-06-24T17:22:25Z',
-        synopsis: 'microcode_ctl'
+        synopsis: 'microcode_ctl',
+        severity: 3
     },
     id: 'RHEA-2020:2743',
     type: 'advisory'
@@ -50,5 +51,25 @@ export const advisoryHeader = {
         synopsis: 'Important'
     },
     id: 'RHSA-2020:2774',
+    type: 'advisory'
+};
+
+export const advisoryDetailRows = {
+    data: {
+        attributes: {
+            cves: ['CVE-2020-11080'],
+            description: 'libnghttp2.',
+            fixes: null,
+            modified_date: '2020-06-25T16:31:29Z',
+            packages: { libnghttp2: '1.33.0-3.el8_2.1.x86_64' },
+            public_date: '2020-06-25T16:31:29Z',
+            references: [],
+            severity: 3,
+            solution: 'For details',
+            synopsis: 'Important: ',
+            topic: 'An update .'
+        }
+    },
+    id: 'RHSA-2020:2755',
     type: 'advisory'
 };
