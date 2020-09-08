@@ -1,0 +1,2037 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Advisories.js Should match the snapshots 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <withRouter(Advisories)>
+        <Advisories
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <Header
+            title="Advisories"
+          >
+            <PageHeader>
+              <section
+                className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+                widget-type="InsightsPageHeader"
+              >
+                <PageHeaderTitle
+                  title="Advisories"
+                >
+                  <Title
+                    className=""
+                    headingLevel="h1"
+                    size="2xl"
+                    widget-type="InsightsPageHeaderTitle"
+                  >
+                    <h1
+                      className="pf-c-title pf-m-2xl"
+                      widget-type="InsightsPageHeaderTitle"
+                    >
+                       
+                      Advisories
+                       
+                    </h1>
+                  </Title>
+                </PageHeaderTitle>
+              </section>
+            </PageHeader>
+          </Header>
+          <Connect(Main)>
+            <Main>
+              <section
+                className="pf-l-page__main-section pf-c-page__main-section"
+                page-type=""
+              >
+                <TableView
+                  apply={[Function]}
+                  columns={
+                    Array [
+                      Object {
+                        "cellFormatters": Array [
+                          [Function],
+                        ],
+                        "key": "id",
+                        "title": "Name",
+                        "transforms": Array [
+                          [Function],
+                          [Function],
+                        ],
+                      },
+                      Object {
+                        "key": "public_date",
+                        "title": "Publish date",
+                        "transforms": Array [
+                          [Function],
+                          [Function],
+                        ],
+                      },
+                      Object {
+                        "key": "advisory_type",
+                        "title": "Type",
+                        "transforms": Array [
+                          [Function],
+                          [Function],
+                        ],
+                      },
+                      Object {
+                        "key": "applicable_systems",
+                        "title": "Applicable systems",
+                        "transforms": Array [
+                          [Function],
+                          [Function],
+                        ],
+                      },
+                      Object {
+                        "key": "synopsis",
+                        "title": "Synopsis",
+                        "transforms": Array [
+                          [Function],
+                        ],
+                      },
+                    ]
+                  }
+                  filterConfig={
+                    Object {
+                      "items": Array [
+                        Object {
+                          "filterValues": Object {
+                            "aria-label": "search-field",
+                            "onChange": [Function],
+                            "placeholder": "Search advisories",
+                            "value": undefined,
+                          },
+                          "label": "Search",
+                          "type": "text",
+                        },
+                        Object {
+                          "filterValues": Object {
+                            "items": Array [
+                              Object {
+                                "label": "Security",
+                                "value": "3",
+                              },
+                              Object {
+                                "label": "Bugfix",
+                                "value": "2",
+                              },
+                              Object {
+                                "label": "Enhancement",
+                                "value": "1",
+                              },
+                            ],
+                            "onChange": [Function],
+                            "value": undefined,
+                          },
+                          "label": "Type",
+                          "type": "checkbox",
+                        },
+                        Object {
+                          "filterValues": Object {
+                            "items": [MockFunction],
+                            "onChange": [Function],
+                            "value": "0",
+                          },
+                          "label": "Publish date",
+                          "type": "radio",
+                        },
+                      ],
+                    }
+                  }
+                  onCollapse={[Function]}
+                  onExport={[Function]}
+                  onPerPageSelect={[Function]}
+                  onSetPage={[Function]}
+                  onSort={[Function]}
+                  sortBy={Object {}}
+                  store={
+                    Object {
+                      "metadata": Object {
+                        "limit": 25,
+                        "offset": 0,
+                        "total_items": 0,
+                      },
+                      "queryParams": Object {},
+                      "rows": Array [
+                        Object {
+                          "cells": Array [
+                            Object {
+                              "title": <ForwardRef
+                                to="/advisories/RHEA-2020:2743"
+                              >
+                                RHEA-2020:2743
+                              </ForwardRef>,
+                            },
+                            Object {
+                              "title": "24 June 2020",
+                            },
+                            Object {
+                              "title": <AdvisoryType
+                                type={1}
+                              />,
+                            },
+                            Object {
+                              "title": <ForwardRef
+                                to="/advisories/RHEA-2020:2743"
+                              >
+                                1
+                              </ForwardRef>,
+                            },
+                            "microcode_ctl",
+                          ],
+                          "id": "RHEA-2020:2743",
+                          "isOpen": false,
+                          "selected": false,
+                        },
+                        Object {
+                          "cells": Array [
+                            Object {
+                              "title": <TextContent>
+                                <Label>
+                                  Description
+                                </Label>
+                                <Text
+                                  component="p"
+                                  style={
+                                    Object {
+                                      "whiteSpace": "pre-line",
+                                    }
+                                  }
+                                >
+                                  The microcode_ctl 
+                                </Text>
+                                <PortalAdvisoryLink
+                                  advisory="RHEA-2020:2743"
+                                />
+                              </TextContent>,
+                            },
+                          ],
+                          "parent": 0,
+                        },
+                      ],
+                      "status": undefined,
+                    }
+                  }
+                >
+                  <PrimaryToolbar
+                    actionsConfig={
+                      Object {
+                        "actions": Array [
+                          undefined,
+                        ],
+                      }
+                    }
+                    activeFiltersConfig={
+                      Object {
+                        "filters": Array [],
+                        "onDelete": [Function],
+                      }
+                    }
+                    exportConfig={
+                      Object {
+                        "onSelect": [Function],
+                      }
+                    }
+                    filterConfig={
+                      Object {
+                        "items": Array [
+                          Object {
+                            "filterValues": Object {
+                              "aria-label": "search-field",
+                              "onChange": [Function],
+                              "placeholder": "Search advisories",
+                              "value": undefined,
+                            },
+                            "label": "Search",
+                            "type": "text",
+                          },
+                          Object {
+                            "filterValues": Object {
+                              "items": Array [
+                                Object {
+                                  "label": "Security",
+                                  "value": "3",
+                                },
+                                Object {
+                                  "label": "Bugfix",
+                                  "value": "2",
+                                },
+                                Object {
+                                  "label": "Enhancement",
+                                  "value": "1",
+                                },
+                              ],
+                              "onChange": [Function],
+                              "value": undefined,
+                            },
+                            "label": "Type",
+                            "type": "checkbox",
+                          },
+                          Object {
+                            "filterValues": Object {
+                              "items": [MockFunction],
+                              "onChange": [Function],
+                              "value": "0",
+                            },
+                            "label": "Publish date",
+                            "type": "radio",
+                          },
+                        ],
+                      }
+                    }
+                    pagination={
+                      Object {
+                        "isCompact": true,
+                        "itemCount": 0,
+                        "onPerPageSelect": [Function],
+                        "onSetPage": [Function],
+                        "page": 1,
+                        "perPage": 25,
+                      }
+                    }
+                    toggleIsExpanded={[Function]}
+                  >
+                    <Toolbar
+                      className=" ins-c-primary-toolbar"
+                      id="ins-primary-data-toolbar"
+                      toggleIsExpanded={[Function]}
+                    >
+                      <div
+                        className="pf-c-toolbar  ins-c-primary-toolbar"
+                        id="ins-primary-data-toolbar"
+                      >
+                        <ToolbarContent
+                          isExpanded={false}
+                          showClearFiltersButton={false}
+                        >
+                          <div
+                            className="pf-c-toolbar__content"
+                          >
+                            <div
+                              className="pf-c-toolbar__content-section"
+                            >
+                              <ForwardRef
+                                className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+                                variant="filter-group"
+                              >
+                                <ToolbarGroupWithRef
+                                  className="ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+                                  innerRef={null}
+                                  variant="filter-group"
+                                >
+                                  <div
+                                    className="pf-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-lg pf-m-space-items-lg"
+                                  >
+                                    <ToolbarItem
+                                      className="ins-c-primary-toolbar__filter"
+                                    >
+                                      <div
+                                        className="pf-c-toolbar__item ins-c-primary-toolbar__filter"
+                                      >
+                                        <ConditionalFilter
+                                          hideLabel={false}
+                                          isDisabled={false}
+                                          items={
+                                            Array [
+                                              Object {
+                                                "filterValues": Object {
+                                                  "aria-label": "search-field",
+                                                  "onChange": [Function],
+                                                  "placeholder": "Search advisories",
+                                                  "value": undefined,
+                                                },
+                                                "label": "Search",
+                                                "type": "text",
+                                              },
+                                              Object {
+                                                "filterValues": Object {
+                                                  "items": Array [
+                                                    Object {
+                                                      "label": "Security",
+                                                      "value": "3",
+                                                    },
+                                                    Object {
+                                                      "label": "Bugfix",
+                                                      "value": "2",
+                                                    },
+                                                    Object {
+                                                      "label": "Enhancement",
+                                                      "value": "1",
+                                                    },
+                                                  ],
+                                                  "onChange": [Function],
+                                                  "value": undefined,
+                                                },
+                                                "label": "Type",
+                                                "type": "checkbox",
+                                              },
+                                              Object {
+                                                "filterValues": Object {
+                                                  "items": [MockFunction],
+                                                  "onChange": [Function],
+                                                  "value": "0",
+                                                },
+                                                "label": "Publish date",
+                                                "type": "radio",
+                                              },
+                                            ]
+                                          }
+                                          value=""
+                                        >
+                                          <Split
+                                            className="ins-c-conditional-filter"
+                                          >
+                                            <div
+                                              className="pf-l-split ins-c-conditional-filter"
+                                            >
+                                              <SplitItem>
+                                                <div
+                                                  className="pf-l-split__item"
+                                                >
+                                                  <Dropdown
+                                                    className="ins-c-conditional-filter__group"
+                                                    dropdownItems={
+                                                      Array [
+                                                        <DropdownItem
+                                                          component="button"
+                                                          isHovered={true}
+                                                          onClick={[Function]}
+                                                        >
+                                                          Search
+                                                        </DropdownItem>,
+                                                        <DropdownItem
+                                                          component="button"
+                                                          isHovered={false}
+                                                          onClick={[Function]}
+                                                        >
+                                                          Type
+                                                        </DropdownItem>,
+                                                        <DropdownItem
+                                                          component="button"
+                                                          isHovered={false}
+                                                          onClick={[Function]}
+                                                        >
+                                                          Publish date
+                                                        </DropdownItem>,
+                                                      ]
+                                                    }
+                                                    isOpen={false}
+                                                    onSelect={[Function]}
+                                                    toggle={
+                                                      <DropdownToggle
+                                                        className=""
+                                                        isDisabled={false}
+                                                        onToggle={[Function]}
+                                                      >
+                                                        <FilterIcon
+                                                          color="currentColor"
+                                                          noVerticalAlign={false}
+                                                          size="sm"
+                                                        />
+                                                        <span
+                                                          className="ins-c-conditional-filter__value-selector"
+                                                        >
+                                                          Search
+                                                        </span>
+                                                      </DropdownToggle>
+                                                    }
+                                                  >
+                                                    <DropdownWithContext
+                                                      autoFocus={true}
+                                                      className="ins-c-conditional-filter__group"
+                                                      direction="down"
+                                                      dropdownItems={
+                                                        Array [
+                                                          <DropdownItem
+                                                            component="button"
+                                                            isHovered={true}
+                                                            onClick={[Function]}
+                                                          >
+                                                            Search
+                                                          </DropdownItem>,
+                                                          <DropdownItem
+                                                            component="button"
+                                                            isHovered={false}
+                                                            onClick={[Function]}
+                                                          >
+                                                            Type
+                                                          </DropdownItem>,
+                                                          <DropdownItem
+                                                            component="button"
+                                                            isHovered={false}
+                                                            onClick={[Function]}
+                                                          >
+                                                            Publish date
+                                                          </DropdownItem>,
+                                                        ]
+                                                      }
+                                                      isGrouped={false}
+                                                      isOpen={false}
+                                                      isPlain={false}
+                                                      menuAppendTo="inline"
+                                                      onSelect={[Function]}
+                                                      position="left"
+                                                      toggle={
+                                                        <DropdownToggle
+                                                          className=""
+                                                          isDisabled={false}
+                                                          onToggle={[Function]}
+                                                        >
+                                                          <FilterIcon
+                                                            color="currentColor"
+                                                            noVerticalAlign={false}
+                                                            size="sm"
+                                                          />
+                                                          <span
+                                                            className="ins-c-conditional-filter__value-selector"
+                                                          >
+                                                            Search
+                                                          </span>
+                                                        </DropdownToggle>
+                                                      }
+                                                    >
+                                                      <div
+                                                        className="pf-c-dropdown ins-c-conditional-filter__group"
+                                                        data-ouia-component-id={7}
+                                                        data-ouia-component-type="PF4/Dropdown"
+                                                        data-ouia-safe={true}
+                                                      >
+                                                        <DropdownToggle
+                                                          aria-haspopup={true}
+                                                          className=""
+                                                          getMenuRef={[Function]}
+                                                          id="pf-dropdown-toggle-id-4"
+                                                          isDisabled={false}
+                                                          isOpen={false}
+                                                          isPlain={false}
+                                                          key=".0"
+                                                          onEnter={[Function]}
+                                                          onToggle={[Function]}
+                                                          parentRef={
+                                                            Object {
+                                                              "current": <div
+                                                                class="pf-c-dropdown ins-c-conditional-filter__group"
+                                                                data-ouia-component-id="7"
+                                                                data-ouia-component-type="PF4/Dropdown"
+                                                                data-ouia-safe="true"
+                                                              >
+                                                                <button
+                                                                  aria-expanded="false"
+                                                                  aria-haspopup="true"
+                                                                  class="pf-c-dropdown__toggle"
+                                                                  id="pf-dropdown-toggle-id-4"
+                                                                  type="button"
+                                                                >
+                                                                  <span
+                                                                    class="pf-c-dropdown__toggle-text"
+                                                                  >
+                                                                    <svg
+                                                                      aria-hidden="true"
+                                                                      fill="currentColor"
+                                                                      height="1em"
+                                                                      role="img"
+                                                                      style="vertical-align: -0.125em;"
+                                                                      viewBox="0 0 512 512"
+                                                                      width="1em"
+                                                                    >
+                                                                      <path
+                                                                        d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                                                                        transform=""
+                                                                      />
+                                                                    </svg>
+                                                                    <span
+                                                                      class="ins-c-conditional-filter__value-selector"
+                                                                    >
+                                                                      Search
+                                                                    </span>
+                                                                  </span>
+                                                                  <span
+                                                                    class="pf-c-dropdown__toggle-icon"
+                                                                  >
+                                                                    <svg
+                                                                      aria-hidden="true"
+                                                                      fill="currentColor"
+                                                                      height="1em"
+                                                                      role="img"
+                                                                      style="vertical-align: -0.125em;"
+                                                                      viewBox="0 0 320 512"
+                                                                      width="1em"
+                                                                    >
+                                                                      <path
+                                                                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                                        transform=""
+                                                                      />
+                                                                    </svg>
+                                                                  </span>
+                                                                </button>
+                                                              </div>,
+                                                            }
+                                                          }
+                                                        >
+                                                          <Toggle
+                                                            aria-haspopup={true}
+                                                            bubbleEvent={false}
+                                                            className=""
+                                                            getMenuRef={[Function]}
+                                                            id="pf-dropdown-toggle-id-4"
+                                                            isActive={false}
+                                                            isDisabled={false}
+                                                            isOpen={false}
+                                                            isPlain={false}
+                                                            isPrimary={false}
+                                                            isSplitButton={false}
+                                                            onEnter={[Function]}
+                                                            onToggle={[Function]}
+                                                            parentRef={
+                                                              Object {
+                                                                "current": <div
+                                                                  class="pf-c-dropdown ins-c-conditional-filter__group"
+                                                                  data-ouia-component-id="7"
+                                                                  data-ouia-component-type="PF4/Dropdown"
+                                                                  data-ouia-safe="true"
+                                                                >
+                                                                  <button
+                                                                    aria-expanded="false"
+                                                                    aria-haspopup="true"
+                                                                    class="pf-c-dropdown__toggle"
+                                                                    id="pf-dropdown-toggle-id-4"
+                                                                    type="button"
+                                                                  >
+                                                                    <span
+                                                                      class="pf-c-dropdown__toggle-text"
+                                                                    >
+                                                                      <svg
+                                                                        aria-hidden="true"
+                                                                        fill="currentColor"
+                                                                        height="1em"
+                                                                        role="img"
+                                                                        style="vertical-align: -0.125em;"
+                                                                        viewBox="0 0 512 512"
+                                                                        width="1em"
+                                                                      >
+                                                                        <path
+                                                                          d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                                                                          transform=""
+                                                                        />
+                                                                      </svg>
+                                                                      <span
+                                                                        class="ins-c-conditional-filter__value-selector"
+                                                                      >
+                                                                        Search
+                                                                      </span>
+                                                                    </span>
+                                                                    <span
+                                                                      class="pf-c-dropdown__toggle-icon"
+                                                                    >
+                                                                      <svg
+                                                                        aria-hidden="true"
+                                                                        fill="currentColor"
+                                                                        height="1em"
+                                                                        role="img"
+                                                                        style="vertical-align: -0.125em;"
+                                                                        viewBox="0 0 320 512"
+                                                                        width="1em"
+                                                                      >
+                                                                        <path
+                                                                          d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                                          transform=""
+                                                                        />
+                                                                      </svg>
+                                                                    </span>
+                                                                  </button>
+                                                                </div>,
+                                                              }
+                                                            }
+                                                          >
+                                                            <button
+                                                              aria-expanded={false}
+                                                              aria-haspopup={true}
+                                                              className="pf-c-dropdown__toggle"
+                                                              disabled={false}
+                                                              id="pf-dropdown-toggle-id-4"
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
+                                                              type="button"
+                                                            >
+                                                              <span
+                                                                className="pf-c-dropdown__toggle-text"
+                                                              >
+                                                                <FilterIcon
+                                                                  color="currentColor"
+                                                                  noVerticalAlign={false}
+                                                                  size="sm"
+                                                                >
+                                                                  <svg
+                                                                    aria-hidden={true}
+                                                                    aria-labelledby={null}
+                                                                    fill="currentColor"
+                                                                    height="1em"
+                                                                    role="img"
+                                                                    style={
+                                                                      Object {
+                                                                        "verticalAlign": "-0.125em",
+                                                                      }
+                                                                    }
+                                                                    viewBox="0 0 512 512"
+                                                                    width="1em"
+                                                                  >
+                                                                    <path
+                                                                      d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                                                                      transform=""
+                                                                    />
+                                                                  </svg>
+                                                                </FilterIcon>
+                                                                <span
+                                                                  className="ins-c-conditional-filter__value-selector"
+                                                                >
+                                                                  Search
+                                                                </span>
+                                                              </span>
+                                                              <span
+                                                                className="pf-c-dropdown__toggle-icon"
+                                                              >
+                                                                <CaretDownIcon
+                                                                  color="currentColor"
+                                                                  noVerticalAlign={false}
+                                                                  size="sm"
+                                                                >
+                                                                  <svg
+                                                                    aria-hidden={true}
+                                                                    aria-labelledby={null}
+                                                                    fill="currentColor"
+                                                                    height="1em"
+                                                                    role="img"
+                                                                    style={
+                                                                      Object {
+                                                                        "verticalAlign": "-0.125em",
+                                                                      }
+                                                                    }
+                                                                    viewBox="0 0 320 512"
+                                                                    width="1em"
+                                                                  >
+                                                                    <path
+                                                                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                                      transform=""
+                                                                    />
+                                                                  </svg>
+                                                                </CaretDownIcon>
+                                                              </span>
+                                                            </button>
+                                                          </Toggle>
+                                                        </DropdownToggle>
+                                                      </div>
+                                                    </DropdownWithContext>
+                                                  </Dropdown>
+                                                </div>
+                                              </SplitItem>
+                                              <SplitItem
+                                                isFilled={true}
+                                              >
+                                                <div
+                                                  className="pf-l-split__item pf-m-fill"
+                                                >
+                                                  <Text
+                                                    aria-label="search-field"
+                                                    isDisabled={false}
+                                                    onChange={[Function]}
+                                                    onSubmit={[Function]}
+                                                    placeholder="Search advisories"
+                                                    value=""
+                                                  >
+                                                    <ForwardRef
+                                                      aria-label="search-field"
+                                                      className="ins-c-conditional-filter "
+                                                      isDisabled={false}
+                                                      onChange={[Function]}
+                                                      onKeyDown={[Function]}
+                                                      placeholder="Search advisories"
+                                                      value=""
+                                                      widget-type="InsightsInput"
+                                                    >
+                                                      <TextInputBase
+                                                        aria-label="search-field"
+                                                        className="ins-c-conditional-filter "
+                                                        innerRef={null}
+                                                        isDisabled={false}
+                                                        isLeftTruncated={false}
+                                                        isReadOnly={false}
+                                                        isRequired={false}
+                                                        onChange={[Function]}
+                                                        onKeyDown={[Function]}
+                                                        placeholder="Search advisories"
+                                                        type="text"
+                                                        validated="default"
+                                                        value=""
+                                                        widget-type="InsightsInput"
+                                                      >
+                                                        <input
+                                                          aria-invalid={false}
+                                                          aria-label="search-field"
+                                                          className="pf-c-form-control ins-c-conditional-filter "
+                                                          disabled={false}
+                                                          onBlur={[Function]}
+                                                          onChange={[Function]}
+                                                          onFocus={[Function]}
+                                                          onKeyDown={[Function]}
+                                                          placeholder="Search advisories"
+                                                          readOnly={false}
+                                                          required={false}
+                                                          type="text"
+                                                          value=""
+                                                          widget-type="InsightsInput"
+                                                        />
+                                                      </TextInputBase>
+                                                    </ForwardRef>
+                                                    <SearchIcon
+                                                      className="ins-c-search-icon"
+                                                      color="currentColor"
+                                                      noVerticalAlign={false}
+                                                      size="sm"
+                                                    >
+                                                      <svg
+                                                        aria-hidden={true}
+                                                        aria-labelledby={null}
+                                                        className="ins-c-search-icon"
+                                                        fill="currentColor"
+                                                        height="1em"
+                                                        role="img"
+                                                        style={
+                                                          Object {
+                                                            "verticalAlign": "-0.125em",
+                                                          }
+                                                        }
+                                                        viewBox="0 0 512 512"
+                                                        width="1em"
+                                                      >
+                                                        <path
+                                                          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                                          transform=""
+                                                        />
+                                                      </svg>
+                                                    </SearchIcon>
+                                                  </Text>
+                                                </div>
+                                              </SplitItem>
+                                            </div>
+                                          </Split>
+                                        </ConditionalFilter>
+                                      </div>
+                                    </ToolbarItem>
+                                  </div>
+                                </ToolbarGroupWithRef>
+                              </ForwardRef>
+                              <Actions
+                                actions={
+                                  Array [
+                                    undefined,
+                                  ]
+                                }
+                                dropdownProps={Object {}}
+                                exportConfig={
+                                  Object {
+                                    "onSelect": [Function],
+                                  }
+                                }
+                                onSelect={[Function]}
+                                overflowActions={Array []}
+                              >
+                                <ToolbarItem
+                                  className="pf-m-spacer-sm"
+                                >
+                                  <div
+                                    className="pf-c-toolbar__item pf-m-spacer-sm"
+                                  >
+                                    <DownloadButton
+                                      extraItems={Array []}
+                                      onSelect={[Function]}
+                                    >
+                                      <Dropdown
+                                        dropdownItems={
+                                          Array [
+                                            <DropdownItem
+                                              component="button"
+                                              onClick={[Function]}
+                                            >
+                                              Export to CSV
+                                            </DropdownItem>,
+                                            <DropdownItem
+                                              component="button"
+                                              onClick={[Function]}
+                                            >
+                                              Export to JSON
+                                            </DropdownItem>,
+                                          ]
+                                        }
+                                        isOpen={false}
+                                        isPlain={true}
+                                        onSelect={[Function]}
+                                        toggle={
+                                          <DropdownToggle
+                                            onToggle={[Function]}
+                                            toggleIndicator={null}
+                                          >
+                                            <ExportIcon
+                                              color="currentColor"
+                                              noVerticalAlign={false}
+                                              size="sm"
+                                            />
+                                          </DropdownToggle>
+                                        }
+                                      >
+                                        <DropdownWithContext
+                                          autoFocus={true}
+                                          className=""
+                                          direction="down"
+                                          dropdownItems={
+                                            Array [
+                                              <DropdownItem
+                                                component="button"
+                                                onClick={[Function]}
+                                              >
+                                                Export to CSV
+                                              </DropdownItem>,
+                                              <DropdownItem
+                                                component="button"
+                                                onClick={[Function]}
+                                              >
+                                                Export to JSON
+                                              </DropdownItem>,
+                                            ]
+                                          }
+                                          isGrouped={false}
+                                          isOpen={false}
+                                          isPlain={true}
+                                          menuAppendTo="inline"
+                                          onSelect={[Function]}
+                                          position="left"
+                                          toggle={
+                                            <DropdownToggle
+                                              onToggle={[Function]}
+                                              toggleIndicator={null}
+                                            >
+                                              <ExportIcon
+                                                color="currentColor"
+                                                noVerticalAlign={false}
+                                                size="sm"
+                                              />
+                                            </DropdownToggle>
+                                          }
+                                        >
+                                          <div
+                                            className="pf-c-dropdown"
+                                            data-ouia-component-id={8}
+                                            data-ouia-component-type="PF4/Dropdown"
+                                            data-ouia-safe={true}
+                                          >
+                                            <DropdownToggle
+                                              aria-haspopup={true}
+                                              getMenuRef={[Function]}
+                                              id="pf-dropdown-toggle-id-5"
+                                              isOpen={false}
+                                              isPlain={true}
+                                              key=".0"
+                                              onEnter={[Function]}
+                                              onToggle={[Function]}
+                                              parentRef={
+                                                Object {
+                                                  "current": <div
+                                                    class="pf-c-dropdown"
+                                                    data-ouia-component-id="8"
+                                                    data-ouia-component-type="PF4/Dropdown"
+                                                    data-ouia-safe="true"
+                                                  >
+                                                    <button
+                                                      aria-expanded="false"
+                                                      aria-haspopup="true"
+                                                      class="pf-c-dropdown__toggle pf-m-plain"
+                                                      id="pf-dropdown-toggle-id-5"
+                                                      type="button"
+                                                    >
+                                                      <span>
+                                                        <svg
+                                                          aria-hidden="true"
+                                                          fill="currentColor"
+                                                          height="1em"
+                                                          role="img"
+                                                          style="vertical-align: -0.125em;"
+                                                          viewBox="0 64 1024 1024"
+                                                          width="1em"
+                                                        >
+                                                          <path
+                                                            d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
+                                                            transform="rotate(180 0 512) scale(-1 1)"
+                                                          />
+                                                        </svg>
+                                                      </span>
+                                                    </button>
+                                                  </div>,
+                                                }
+                                              }
+                                              toggleIndicator={null}
+                                            >
+                                              <Toggle
+                                                aria-haspopup={true}
+                                                bubbleEvent={false}
+                                                className=""
+                                                getMenuRef={[Function]}
+                                                id="pf-dropdown-toggle-id-5"
+                                                isActive={false}
+                                                isDisabled={false}
+                                                isOpen={false}
+                                                isPlain={true}
+                                                isPrimary={false}
+                                                isSplitButton={false}
+                                                onEnter={[Function]}
+                                                onToggle={[Function]}
+                                                parentRef={
+                                                  Object {
+                                                    "current": <div
+                                                      class="pf-c-dropdown"
+                                                      data-ouia-component-id="8"
+                                                      data-ouia-component-type="PF4/Dropdown"
+                                                      data-ouia-safe="true"
+                                                    >
+                                                      <button
+                                                        aria-expanded="false"
+                                                        aria-haspopup="true"
+                                                        class="pf-c-dropdown__toggle pf-m-plain"
+                                                        id="pf-dropdown-toggle-id-5"
+                                                        type="button"
+                                                      >
+                                                        <span>
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            fill="currentColor"
+                                                            height="1em"
+                                                            role="img"
+                                                            style="vertical-align: -0.125em;"
+                                                            viewBox="0 64 1024 1024"
+                                                            width="1em"
+                                                          >
+                                                            <path
+                                                              d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
+                                                              transform="rotate(180 0 512) scale(-1 1)"
+                                                            />
+                                                          </svg>
+                                                        </span>
+                                                      </button>
+                                                    </div>,
+                                                  }
+                                                }
+                                              >
+                                                <button
+                                                  aria-expanded={false}
+                                                  aria-haspopup={true}
+                                                  className="pf-c-dropdown__toggle pf-m-plain"
+                                                  disabled={false}
+                                                  id="pf-dropdown-toggle-id-5"
+                                                  onClick={[Function]}
+                                                  onKeyDown={[Function]}
+                                                  type="button"
+                                                >
+                                                  <span
+                                                    className={null}
+                                                  >
+                                                    <ExportIcon
+                                                      color="currentColor"
+                                                      noVerticalAlign={false}
+                                                      size="sm"
+                                                    >
+                                                      <svg
+                                                        aria-hidden={true}
+                                                        aria-labelledby={null}
+                                                        fill="currentColor"
+                                                        height="1em"
+                                                        role="img"
+                                                        style={
+                                                          Object {
+                                                            "verticalAlign": "-0.125em",
+                                                          }
+                                                        }
+                                                        viewBox="0 64 1024 1024"
+                                                        width="1em"
+                                                      >
+                                                        <path
+                                                          d="M980.293 278.754l-95.387-95.387-393.84 393.856c-5.285 5.262-11.353 7.909-18.203 7.911-6.862 0-12.935-2.649-18.222-7.911l-81.019-81.019c-5.262-5.285-7.909-11.353-7.909-18.219 0-6.85 2.649-12.914 7.909-18.203l393.856-393.84-95.381-95.381c-24.039-24.037-15.89-43.705 18.105-43.705h271.982c53.227 0 61.813 9.273 61.813 61.813v271.982c0.005 33.998-19.662 42.151-43.703 18.105zM146.286 793.143c0 3.312 1.077 6.048 3.232 8.203 2.151 2.151 4.889 3.227 8.199 3.225h708.661c3.287 0 5.998-1.067 8.137-3.202 2.135-2.137 3.202-4.848 3.202-8.135v-331.701c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h100.933c6.571-0.002 11.998 2.137 16.267 6.405 4.277 4.277 6.409 9.701 6.409 16.272v466.647c0.002 6.571-2.137 11.998-6.405 16.267-4.277 4.274-9.701 6.409-16.272 6.409h-978.649c-6.571 0.002-11.998-2.137-16.267-6.405-4.274-4.277-6.409-9.701-6.409-16.272v-978.647c0-6.571 2.135-11.995 6.409-16.272 4.27-4.267 9.696-6.407 16.267-6.405h466.647c6.571 0 11.995 2.135 16.272 6.411 4.267 4.267 6.407 9.696 6.405 16.265v100.933c0.002 6.569-2.137 11.998-6.405 16.265-4.277 4.277-9.701 6.411-16.272 6.411h-331.609c-3.312 0-6.048 1.077-8.203 3.232-2.151 2.149-3.227 4.889-3.225 8.197v708.571z"
+                                                          transform="rotate(180 0 512) scale(-1 1)"
+                                                        />
+                                                      </svg>
+                                                    </ExportIcon>
+                                                  </span>
+                                                </button>
+                                              </Toggle>
+                                            </DropdownToggle>
+                                          </div>
+                                        </DropdownWithContext>
+                                      </Dropdown>
+                                    </DownloadButton>
+                                  </div>
+                                </ToolbarItem>
+                                <ToolbarItem
+                                  className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+                                >
+                                  <div
+                                    className="pf-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+                                  >
+                                    <Dropdown
+                                      dropdownItems={Array []}
+                                      isOpen={false}
+                                      isPlain={true}
+                                      onSelect={[Function]}
+                                      toggle={
+                                        <KebabToggle
+                                          onToggle={[Function]}
+                                        />
+                                      }
+                                    >
+                                      <DropdownWithContext
+                                        autoFocus={true}
+                                        className=""
+                                        direction="down"
+                                        dropdownItems={Array []}
+                                        isGrouped={false}
+                                        isOpen={false}
+                                        isPlain={true}
+                                        menuAppendTo="inline"
+                                        onSelect={[Function]}
+                                        position="left"
+                                        toggle={
+                                          <KebabToggle
+                                            onToggle={[Function]}
+                                          />
+                                        }
+                                      >
+                                        <div
+                                          className="pf-c-dropdown"
+                                          data-ouia-component-id={9}
+                                          data-ouia-component-type="PF4/Dropdown"
+                                          data-ouia-safe={true}
+                                        >
+                                          <KebabToggle
+                                            aria-haspopup={false}
+                                            getMenuRef={[Function]}
+                                            id="pf-dropdown-toggle-id-6"
+                                            isOpen={false}
+                                            isPlain={true}
+                                            key=".0"
+                                            onEnter={[Function]}
+                                            onToggle={[Function]}
+                                            parentRef={
+                                              Object {
+                                                "current": <div
+                                                  class="pf-c-dropdown"
+                                                  data-ouia-component-id="9"
+                                                  data-ouia-component-type="PF4/Dropdown"
+                                                  data-ouia-safe="true"
+                                                >
+                                                  <button
+                                                    aria-expanded="false"
+                                                    aria-haspopup="false"
+                                                    aria-label="Actions"
+                                                    class="pf-c-dropdown__toggle pf-m-plain"
+                                                    id="pf-dropdown-toggle-id-6"
+                                                    type="button"
+                                                  >
+                                                    <svg
+                                                      aria-hidden="true"
+                                                      fill="currentColor"
+                                                      height="1em"
+                                                      role="img"
+                                                      style="vertical-align: -0.125em;"
+                                                      viewBox="0 0 192 512"
+                                                      width="1em"
+                                                    >
+                                                      <path
+                                                        d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+                                                        transform=""
+                                                      />
+                                                    </svg>
+                                                  </button>
+                                                </div>,
+                                              }
+                                            }
+                                          >
+                                            <Toggle
+                                              aria-haspopup={false}
+                                              aria-label="Actions"
+                                              bubbleEvent={false}
+                                              className=""
+                                              getMenuRef={[Function]}
+                                              id="pf-dropdown-toggle-id-6"
+                                              isActive={false}
+                                              isDisabled={false}
+                                              isOpen={false}
+                                              isPlain={true}
+                                              isPrimary={false}
+                                              isSplitButton={false}
+                                              onEnter={[Function]}
+                                              onToggle={[Function]}
+                                              parentRef={
+                                                Object {
+                                                  "current": <div
+                                                    class="pf-c-dropdown"
+                                                    data-ouia-component-id="9"
+                                                    data-ouia-component-type="PF4/Dropdown"
+                                                    data-ouia-safe="true"
+                                                  >
+                                                    <button
+                                                      aria-expanded="false"
+                                                      aria-haspopup="false"
+                                                      aria-label="Actions"
+                                                      class="pf-c-dropdown__toggle pf-m-plain"
+                                                      id="pf-dropdown-toggle-id-6"
+                                                      type="button"
+                                                    >
+                                                      <svg
+                                                        aria-hidden="true"
+                                                        fill="currentColor"
+                                                        height="1em"
+                                                        role="img"
+                                                        style="vertical-align: -0.125em;"
+                                                        viewBox="0 0 192 512"
+                                                        width="1em"
+                                                      >
+                                                        <path
+                                                          d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+                                                          transform=""
+                                                        />
+                                                      </svg>
+                                                    </button>
+                                                  </div>,
+                                                }
+                                              }
+                                            >
+                                              <button
+                                                aria-expanded={false}
+                                                aria-haspopup={false}
+                                                aria-label="Actions"
+                                                className="pf-c-dropdown__toggle pf-m-plain"
+                                                disabled={false}
+                                                id="pf-dropdown-toggle-id-6"
+                                                onClick={[Function]}
+                                                onKeyDown={[Function]}
+                                                type="button"
+                                              >
+                                                <EllipsisVIcon
+                                                  color="currentColor"
+                                                  noVerticalAlign={false}
+                                                  size="sm"
+                                                >
+                                                  <svg
+                                                    aria-hidden={true}
+                                                    aria-labelledby={null}
+                                                    fill="currentColor"
+                                                    height="1em"
+                                                    role="img"
+                                                    style={
+                                                      Object {
+                                                        "verticalAlign": "-0.125em",
+                                                      }
+                                                    }
+                                                    viewBox="0 0 192 512"
+                                                    width="1em"
+                                                  >
+                                                    <path
+                                                      d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+                                                      transform=""
+                                                    />
+                                                  </svg>
+                                                </EllipsisVIcon>
+                                              </button>
+                                            </Toggle>
+                                          </KebabToggle>
+                                        </div>
+                                      </DropdownWithContext>
+                                    </Dropdown>
+                                  </div>
+                                </ToolbarItem>
+                              </Actions>
+                              <ToolbarItem
+                                className="ins-c-primary-toolbar__pagination"
+                              >
+                                <div
+                                  className="pf-c-toolbar__item ins-c-primary-toolbar__pagination"
+                                >
+                                  <Pagination
+                                    className=""
+                                    defaultToFullPage={false}
+                                    firstPage={1}
+                                    isCompact={true}
+                                    isDisabled={false}
+                                    itemCount={0}
+                                    itemsEnd={null}
+                                    itemsStart={null}
+                                    offset={0}
+                                    onFirstClick={[Function]}
+                                    onLastClick={[Function]}
+                                    onNextClick={[Function]}
+                                    onPageInput={[Function]}
+                                    onPerPageSelect={[Function]}
+                                    onPreviousClick={[Function]}
+                                    onSetPage={[Function]}
+                                    ouiaSafe={true}
+                                    page={1}
+                                    perPage={25}
+                                    perPageOptions={
+                                      Array [
+                                        Object {
+                                          "title": "10",
+                                          "value": 10,
+                                        },
+                                        Object {
+                                          "title": "20",
+                                          "value": 20,
+                                        },
+                                        Object {
+                                          "title": "50",
+                                          "value": 50,
+                                        },
+                                        Object {
+                                          "title": "100",
+                                          "value": 100,
+                                        },
+                                      ]
+                                    }
+                                    titles={
+                                      Object {
+                                        "currPage": "Current page",
+                                        "items": "",
+                                        "itemsPerPage": "Items per page",
+                                        "optionsToggle": "Items per page",
+                                        "page": "",
+                                        "paginationTitle": "Pagination",
+                                        "perPageSuffix": "per page",
+                                        "toFirstPage": "Go to first page",
+                                        "toLastPage": "Go to last page",
+                                        "toNextPage": "Go to next page",
+                                        "toPreviousPage": "Go to previous page",
+                                      }
+                                    }
+                                    toggleTemplate={[Function]}
+                                    variant="top"
+                                    widgetId="pagination-options-menu"
+                                  >
+                                    <div
+                                      className="pf-c-pagination pf-m-compact"
+                                      data-ouia-component-id={10}
+                                      data-ouia-component-type="PF4/Pagination"
+                                      data-ouia-safe={true}
+                                      id="pagination-options-menu-1"
+                                    >
+                                      <div
+                                        className="pf-c-pagination__total-items"
+                                      >
+                                        <ToggleTemplate
+                                          firstIndex={0}
+                                          itemCount={0}
+                                          itemsTitle=""
+                                          lastIndex={0}
+                                        >
+                                          <b>
+                                            0
+                                             - 
+                                            0
+                                          </b>
+                                           
+                                          of 
+                                          <b>
+                                            0
+                                          </b>
+                                           
+                                        </ToggleTemplate>
+                                      </div>
+                                      <PaginationOptionsMenu
+                                        className=""
+                                        defaultToFullPage={false}
+                                        dropDirection="down"
+                                        firstIndex={0}
+                                        isDisabled={false}
+                                        itemCount={0}
+                                        itemsPerPageTitle="Items per page"
+                                        itemsTitle=""
+                                        lastIndex={0}
+                                        lastPage={0}
+                                        onPerPageSelect={[Function]}
+                                        optionsToggle="Items per page"
+                                        page={0}
+                                        perPage={25}
+                                        perPageOptions={
+                                          Array [
+                                            Object {
+                                              "title": "10",
+                                              "value": 10,
+                                            },
+                                            Object {
+                                              "title": "20",
+                                              "value": 20,
+                                            },
+                                            Object {
+                                              "title": "50",
+                                              "value": 50,
+                                            },
+                                            Object {
+                                              "title": "100",
+                                              "value": 100,
+                                            },
+                                          ]
+                                        }
+                                        perPageSuffix="per page"
+                                        toggleTemplate={[Function]}
+                                        widgetId="pagination-options-menu"
+                                      >
+                                        <DropdownWithContext
+                                          autoFocus={true}
+                                          className=""
+                                          direction="down"
+                                          dropdownItems={
+                                            Array [
+                                              <DropdownItem
+                                                className=""
+                                                component="button"
+                                                data-action="per-page-10"
+                                                onClick={[Function]}
+                                              >
+                                                10
+                                                 per page
+                                              </DropdownItem>,
+                                              <DropdownItem
+                                                className=""
+                                                component="button"
+                                                data-action="per-page-20"
+                                                onClick={[Function]}
+                                              >
+                                                20
+                                                 per page
+                                              </DropdownItem>,
+                                              <DropdownItem
+                                                className=""
+                                                component="button"
+                                                data-action="per-page-50"
+                                                onClick={[Function]}
+                                              >
+                                                50
+                                                 per page
+                                              </DropdownItem>,
+                                              <DropdownItem
+                                                className=""
+                                                component="button"
+                                                data-action="per-page-100"
+                                                onClick={[Function]}
+                                              >
+                                                100
+                                                 per page
+                                              </DropdownItem>,
+                                            ]
+                                          }
+                                          isGrouped={false}
+                                          isOpen={false}
+                                          isPlain={true}
+                                          menuAppendTo="inline"
+                                          onSelect={[Function]}
+                                          position="left"
+                                          toggle={
+                                            <OptionsToggle
+                                              firstIndex={0}
+                                              isDisabled={false}
+                                              isOpen={false}
+                                              itemCount={0}
+                                              itemsPerPageTitle="Items per page"
+                                              itemsTitle=""
+                                              lastIndex={0}
+                                              onToggle={[Function]}
+                                              optionsToggle="Items per page"
+                                              parentRef={null}
+                                              showToggle={true}
+                                              toggleTemplate={[Function]}
+                                              widgetId="pagination-options-menu"
+                                            />
+                                          }
+                                        >
+                                          <div
+                                            className="pf-c-options-menu"
+                                            data-ouia-component-id={11}
+                                            data-ouia-component-type="PF4/PaginationOptionsMenu"
+                                            data-ouia-safe={true}
+                                          >
+                                            <OptionsToggle
+                                              aria-haspopup={true}
+                                              firstIndex={0}
+                                              getMenuRef={[Function]}
+                                              id="pf-dropdown-toggle-id-7"
+                                              isDisabled={false}
+                                              isOpen={false}
+                                              isPlain={true}
+                                              itemCount={0}
+                                              itemsPerPageTitle="Items per page"
+                                              itemsTitle=""
+                                              key=".0"
+                                              lastIndex={0}
+                                              onEnter={[Function]}
+                                              onToggle={[Function]}
+                                              optionsToggle="Items per page"
+                                              parentRef={
+                                                Object {
+                                                  "current": <div
+                                                    class="pf-c-options-menu"
+                                                    data-ouia-component-id="11"
+                                                    data-ouia-component-type="PF4/PaginationOptionsMenu"
+                                                    data-ouia-safe="true"
+                                                  >
+                                                    <div
+                                                      class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                                    >
+                                                      <span
+                                                        class="pf-c-options-menu__toggle-text"
+                                                      >
+                                                        <b>
+                                                          0
+                                                           - 
+                                                          0
+                                                        </b>
+                                                         
+                                                        of 
+                                                        <b>
+                                                          0
+                                                        </b>
+                                                         
+                                                        
+                                                      </span>
+                                                      <button
+                                                        aria-expanded="false"
+                                                        aria-label="Items per page"
+                                                        class="  pf-c-options-menu__toggle-button"
+                                                        disabled=""
+                                                        id="pagination-options-menu-toggle-1"
+                                                        type="button"
+                                                      >
+                                                        <span
+                                                          class="pf-c-options-menu__toggle-button-icon"
+                                                        >
+                                                          <svg
+                                                            aria-hidden="true"
+                                                            fill="currentColor"
+                                                            height="1em"
+                                                            role="img"
+                                                            style="vertical-align: -0.125em;"
+                                                            viewBox="0 0 320 512"
+                                                            width="1em"
+                                                          >
+                                                            <path
+                                                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                              transform=""
+                                                            />
+                                                          </svg>
+                                                        </span>
+                                                      </button>
+                                                    </div>
+                                                  </div>,
+                                                }
+                                              }
+                                              showToggle={true}
+                                              toggleTemplate={[Function]}
+                                              widgetId="pagination-options-menu"
+                                            >
+                                              <div
+                                                className="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                              >
+                                                <span
+                                                  className="pf-c-options-menu__toggle-text"
+                                                >
+                                                  <ToggleTemplate
+                                                    firstIndex={0}
+                                                    itemCount={0}
+                                                    itemsTitle=""
+                                                    lastIndex={0}
+                                                  >
+                                                    <b>
+                                                      0
+                                                       - 
+                                                      0
+                                                    </b>
+                                                     
+                                                    of 
+                                                    <b>
+                                                      0
+                                                    </b>
+                                                     
+                                                  </ToggleTemplate>
+                                                </span>
+                                                <DropdownToggle
+                                                  aria-label="Items per page"
+                                                  className="pf-c-options-menu__toggle-button"
+                                                  id="pagination-options-menu-toggle-1"
+                                                  isDisabled={true}
+                                                  isOpen={false}
+                                                  onEnter={[Function]}
+                                                  onToggle={[Function]}
+                                                  parentRef={
+                                                    Object {
+                                                      "current": <div
+                                                        class="pf-c-options-menu"
+                                                        data-ouia-component-id="11"
+                                                        data-ouia-component-type="PF4/PaginationOptionsMenu"
+                                                        data-ouia-safe="true"
+                                                      >
+                                                        <div
+                                                          class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                                        >
+                                                          <span
+                                                            class="pf-c-options-menu__toggle-text"
+                                                          >
+                                                            <b>
+                                                              0
+                                                               - 
+                                                              0
+                                                            </b>
+                                                             
+                                                            of 
+                                                            <b>
+                                                              0
+                                                            </b>
+                                                             
+                                                            
+                                                          </span>
+                                                          <button
+                                                            aria-expanded="false"
+                                                            aria-label="Items per page"
+                                                            class="  pf-c-options-menu__toggle-button"
+                                                            disabled=""
+                                                            id="pagination-options-menu-toggle-1"
+                                                            type="button"
+                                                          >
+                                                            <span
+                                                              class="pf-c-options-menu__toggle-button-icon"
+                                                            >
+                                                              <svg
+                                                                aria-hidden="true"
+                                                                fill="currentColor"
+                                                                height="1em"
+                                                                role="img"
+                                                                style="vertical-align: -0.125em;"
+                                                                viewBox="0 0 320 512"
+                                                                width="1em"
+                                                              >
+                                                                <path
+                                                                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                                  transform=""
+                                                                />
+                                                              </svg>
+                                                            </span>
+                                                          </button>
+                                                        </div>
+                                                      </div>,
+                                                    }
+                                                  }
+                                                >
+                                                  <Toggle
+                                                    aria-label="Items per page"
+                                                    bubbleEvent={false}
+                                                    className="pf-c-options-menu__toggle-button"
+                                                    getMenuRef={null}
+                                                    id="pagination-options-menu-toggle-1"
+                                                    isActive={false}
+                                                    isDisabled={true}
+                                                    isOpen={false}
+                                                    isPlain={false}
+                                                    isPrimary={false}
+                                                    isSplitButton={false}
+                                                    onEnter={[Function]}
+                                                    onToggle={[Function]}
+                                                    parentRef={
+                                                      Object {
+                                                        "current": <div
+                                                          class="pf-c-options-menu"
+                                                          data-ouia-component-id="11"
+                                                          data-ouia-component-type="PF4/PaginationOptionsMenu"
+                                                          data-ouia-safe="true"
+                                                        >
+                                                          <div
+                                                            class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                                          >
+                                                            <span
+                                                              class="pf-c-options-menu__toggle-text"
+                                                            >
+                                                              <b>
+                                                                0
+                                                                 - 
+                                                                0
+                                                              </b>
+                                                               
+                                                              of 
+                                                              <b>
+                                                                0
+                                                              </b>
+                                                               
+                                                              
+                                                            </span>
+                                                            <button
+                                                              aria-expanded="false"
+                                                              aria-label="Items per page"
+                                                              class="  pf-c-options-menu__toggle-button"
+                                                              disabled=""
+                                                              id="pagination-options-menu-toggle-1"
+                                                              type="button"
+                                                            >
+                                                              <span
+                                                                class="pf-c-options-menu__toggle-button-icon"
+                                                              >
+                                                                <svg
+                                                                  aria-hidden="true"
+                                                                  fill="currentColor"
+                                                                  height="1em"
+                                                                  role="img"
+                                                                  style="vertical-align: -0.125em;"
+                                                                  viewBox="0 0 320 512"
+                                                                  width="1em"
+                                                                >
+                                                                  <path
+                                                                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                                    transform=""
+                                                                  />
+                                                                </svg>
+                                                              </span>
+                                                            </button>
+                                                          </div>
+                                                        </div>,
+                                                      }
+                                                    }
+                                                  >
+                                                    <button
+                                                      aria-expanded={false}
+                                                      aria-label="Items per page"
+                                                      className="  pf-c-options-menu__toggle-button"
+                                                      disabled={true}
+                                                      id="pagination-options-menu-toggle-1"
+                                                      onClick={[Function]}
+                                                      onKeyDown={[Function]}
+                                                      type="button"
+                                                    >
+                                                      <span
+                                                        className="pf-c-options-menu__toggle-button-icon"
+                                                      >
+                                                        <CaretDownIcon
+                                                          color="currentColor"
+                                                          noVerticalAlign={false}
+                                                          size="sm"
+                                                        >
+                                                          <svg
+                                                            aria-hidden={true}
+                                                            aria-labelledby={null}
+                                                            fill="currentColor"
+                                                            height="1em"
+                                                            role="img"
+                                                            style={
+                                                              Object {
+                                                                "verticalAlign": "-0.125em",
+                                                              }
+                                                            }
+                                                            viewBox="0 0 320 512"
+                                                            width="1em"
+                                                          >
+                                                            <path
+                                                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                              transform=""
+                                                            />
+                                                          </svg>
+                                                        </CaretDownIcon>
+                                                      </span>
+                                                    </button>
+                                                  </Toggle>
+                                                </DropdownToggle>
+                                              </div>
+                                            </OptionsToggle>
+                                          </div>
+                                        </DropdownWithContext>
+                                      </PaginationOptionsMenu>
+                                      <Navigation
+                                        className=""
+                                        currPage="Current page"
+                                        firstPage={1}
+                                        isCompact={true}
+                                        isDisabled={false}
+                                        lastPage={0}
+                                        onFirstClick={[Function]}
+                                        onLastClick={[Function]}
+                                        onNextClick={[Function]}
+                                        onPageInput={[Function]}
+                                        onPreviousClick={[Function]}
+                                        onSetPage={[Function]}
+                                        page={0}
+                                        pagesTitle=""
+                                        paginationTitle="Pagination"
+                                        perPage={25}
+                                        toFirstPage="Go to first page"
+                                        toLastPage="Go to last page"
+                                        toNextPage="Go to next page"
+                                        toPreviousPage="Go to previous page"
+                                      >
+                                        <nav
+                                          aria-label="Pagination"
+                                          className="pf-c-pagination__nav"
+                                        >
+                                          <div
+                                            className="pf-c-pagination__nav-control"
+                                          >
+                                            <Button
+                                              aria-label="Go to previous page"
+                                              data-action="previous"
+                                              isDisabled={true}
+                                              onClick={[Function]}
+                                              variant="plain"
+                                            >
+                                              <button
+                                                aria-disabled={true}
+                                                aria-label="Go to previous page"
+                                                className="pf-c-button pf-m-plain pf-m-disabled"
+                                                data-action="previous"
+                                                data-ouia-component-id={12}
+                                                data-ouia-component-type="PF4/Button"
+                                                data-ouia-safe={true}
+                                                disabled={true}
+                                                onClick={[Function]}
+                                                tabIndex={null}
+                                                type="button"
+                                              >
+                                                <AngleLeftIcon
+                                                  color="currentColor"
+                                                  noVerticalAlign={false}
+                                                  size="sm"
+                                                >
+                                                  <svg
+                                                    aria-hidden={true}
+                                                    aria-labelledby={null}
+                                                    fill="currentColor"
+                                                    height="1em"
+                                                    role="img"
+                                                    style={
+                                                      Object {
+                                                        "verticalAlign": "-0.125em",
+                                                      }
+                                                    }
+                                                    viewBox="0 0 256 512"
+                                                    width="1em"
+                                                  >
+                                                    <path
+                                                      d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+                                                      transform=""
+                                                    />
+                                                  </svg>
+                                                </AngleLeftIcon>
+                                              </button>
+                                            </Button>
+                                          </div>
+                                          <div
+                                            className="pf-c-pagination__nav-control"
+                                          >
+                                            <Button
+                                              aria-label="Go to next page"
+                                              data-action="next"
+                                              isDisabled={true}
+                                              onClick={[Function]}
+                                              variant="plain"
+                                            >
+                                              <button
+                                                aria-disabled={true}
+                                                aria-label="Go to next page"
+                                                className="pf-c-button pf-m-plain pf-m-disabled"
+                                                data-action="next"
+                                                data-ouia-component-id={13}
+                                                data-ouia-component-type="PF4/Button"
+                                                data-ouia-safe={true}
+                                                disabled={true}
+                                                onClick={[Function]}
+                                                tabIndex={null}
+                                                type="button"
+                                              >
+                                                <AngleRightIcon
+                                                  color="currentColor"
+                                                  noVerticalAlign={false}
+                                                  size="sm"
+                                                >
+                                                  <svg
+                                                    aria-hidden={true}
+                                                    aria-labelledby={null}
+                                                    fill="currentColor"
+                                                    height="1em"
+                                                    role="img"
+                                                    style={
+                                                      Object {
+                                                        "verticalAlign": "-0.125em",
+                                                      }
+                                                    }
+                                                    viewBox="0 0 256 512"
+                                                    width="1em"
+                                                  >
+                                                    <path
+                                                      d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                                                      transform=""
+                                                    />
+                                                  </svg>
+                                                </AngleRightIcon>
+                                              </button>
+                                            </Button>
+                                          </div>
+                                        </nav>
+                                      </Navigation>
+                                    </div>
+                                  </Pagination>
+                                </div>
+                              </ToolbarItem>
+                            </div>
+                            <ToolbarExpandableContent
+                              chipContainerRef={
+                                Object {
+                                  "current": null,
+                                }
+                              }
+                              clearFiltersButtonText="Clear all filters"
+                              expandableContentRef={
+                                Object {
+                                  "current": <div
+                                    class="pf-c-toolbar__expandable-content"
+                                    id="ins-primary-data-toolbar-expandable-content-1"
+                                  >
+                                    <div
+                                      class="pf-c-toolbar__group"
+                                    />
+                                  </div>,
+                                }
+                              }
+                              id="ins-primary-data-toolbar-expandable-content-1"
+                              isExpanded={false}
+                              showClearFiltersButton={false}
+                            >
+                              <div
+                                className="pf-c-toolbar__expandable-content"
+                                id="ins-primary-data-toolbar-expandable-content-1"
+                              >
+                                <ForwardRef>
+                                  <ToolbarGroupWithRef
+                                    innerRef={null}
+                                  >
+                                    <div
+                                      className="pf-c-toolbar__group"
+                                    />
+                                  </ToolbarGroupWithRef>
+                                </ForwardRef>
+                              </div>
+                            </ToolbarExpandableContent>
+                          </div>
+                        </ToolbarContent>
+                        <ToolbarChipGroupContent
+                          chipGroupContentRef={
+                            Object {
+                              "current": <div
+                                class="pf-c-toolbar__content pf-m-hidden"
+                                hidden=""
+                              >
+                                <div
+                                  class="pf-c-toolbar__group"
+                                />
+                              </div>,
+                            }
+                          }
+                          clearFiltersButtonText="Clear all filters"
+                          collapseListedFiltersBreakpoint="lg"
+                          numberOfFilters={0}
+                          showClearFiltersButton={false}
+                        >
+                          <div
+                            className="pf-c-toolbar__content pf-m-hidden"
+                            hidden={true}
+                          >
+                            <ForwardRef
+                              className=""
+                            >
+                              <ToolbarGroupWithRef
+                                className=""
+                                innerRef={null}
+                              >
+                                <div
+                                  className="pf-c-toolbar__group"
+                                />
+                              </ToolbarGroupWithRef>
+                            </ForwardRef>
+                          </div>
+                        </ToolbarChipGroupContent>
+                      </div>
+                    </Toolbar>
+                  </PrimaryToolbar>
+                </TableView>
+              </section>
+            </Main>
+          </Connect(Main)>
+        </Advisories>
+      </withRouter(Advisories)>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;

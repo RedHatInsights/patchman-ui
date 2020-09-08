@@ -1,0 +1,357 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <withRouter(AdvisoryDetail)>
+        <AdvisoryDetail
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          location={
+            Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            }
+          }
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+        >
+          <Header
+            breadcrumbs={
+              Array [
+                Object {
+                  "isActive": false,
+                  "title": "Patch",
+                  "to": "/",
+                },
+                Object {
+                  "isActive": false,
+                  "title": "Advisories",
+                  "to": "/",
+                },
+                Object {
+                  "isActive": true,
+                  "title": undefined,
+                },
+              ]
+            }
+          >
+            <PageHeader>
+              <section
+                className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+                widget-type="InsightsPageHeader"
+              >
+                <HeaderBreadcrumbs
+                  items={
+                    Array [
+                      Object {
+                        "isActive": false,
+                        "title": "Patch",
+                        "to": "/",
+                      },
+                      Object {
+                        "isActive": false,
+                        "title": "Advisories",
+                        "to": "/",
+                      },
+                      Object {
+                        "isActive": true,
+                        "title": undefined,
+                      },
+                    ]
+                  }
+                >
+                  <Breadcrumb>
+                    <nav
+                      aria-label="Breadcrumb"
+                      className="pf-c-breadcrumb"
+                      data-ouia-component-id={0}
+                      data-ouia-component-type="PF4/Breadcrumb"
+                      data-ouia-safe={true}
+                    >
+                      <ol
+                        className="pf-c-breadcrumb__list"
+                      >
+                        <BreadcrumbItem
+                          isActive={false}
+                          key=".$Patch"
+                          showDivider={false}
+                        >
+                          <li
+                            className="pf-c-breadcrumb__item"
+                          >
+                            <Link
+                              to="/"
+                            >
+                              <LinkAnchor
+                                href="/"
+                                navigate={[Function]}
+                              >
+                                <a
+                                  href="/"
+                                  onClick={[Function]}
+                                >
+                                  Patch
+                                </a>
+                              </LinkAnchor>
+                            </Link>
+                          </li>
+                        </BreadcrumbItem>
+                        <BreadcrumbItem
+                          isActive={false}
+                          key=".$Advisories"
+                          showDivider={true}
+                        >
+                          <li
+                            className="pf-c-breadcrumb__item"
+                          >
+                            <span
+                              className="pf-c-breadcrumb__item-divider"
+                            >
+                              <AngleRightIcon
+                                color="currentColor"
+                                noVerticalAlign={false}
+                                size="sm"
+                              >
+                                <svg
+                                  aria-hidden={true}
+                                  aria-labelledby={null}
+                                  fill="currentColor"
+                                  height="1em"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "verticalAlign": "-0.125em",
+                                    }
+                                  }
+                                  viewBox="0 0 256 512"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                                    transform=""
+                                  />
+                                </svg>
+                              </AngleRightIcon>
+                            </span>
+                            <Link
+                              to="/"
+                            >
+                              <LinkAnchor
+                                href="/"
+                                navigate={[Function]}
+                              >
+                                <a
+                                  href="/"
+                                  onClick={[Function]}
+                                >
+                                  Advisories
+                                </a>
+                              </LinkAnchor>
+                            </Link>
+                          </li>
+                        </BreadcrumbItem>
+                        <BreadcrumbItem
+                          isActive={true}
+                          key=".2"
+                          showDivider={true}
+                        >
+                          <li
+                            className="pf-c-breadcrumb__item"
+                          >
+                            <span
+                              className="pf-c-breadcrumb__item-divider"
+                            >
+                              <AngleRightIcon
+                                color="currentColor"
+                                noVerticalAlign={false}
+                                size="sm"
+                              >
+                                <svg
+                                  aria-hidden={true}
+                                  aria-labelledby={null}
+                                  fill="currentColor"
+                                  height="1em"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "verticalAlign": "-0.125em",
+                                    }
+                                  }
+                                  viewBox="0 0 256 512"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                                    transform=""
+                                  />
+                                </svg>
+                              </AngleRightIcon>
+                            </span>
+                          </li>
+                        </BreadcrumbItem>
+                      </ol>
+                    </nav>
+                  </Breadcrumb>
+                </HeaderBreadcrumbs>
+                <PageHeaderTitle>
+                  <Title
+                    className=""
+                    headingLevel="h1"
+                    size="2xl"
+                    widget-type="InsightsPageHeaderTitle"
+                  >
+                    <h1
+                      className="pf-c-title pf-m-2xl"
+                      widget-type="InsightsPageHeaderTitle"
+                    >
+                       
+                       
+                    </h1>
+                  </Title>
+                </PageHeaderTitle>
+                <Component
+                  attributes={
+                    Object {
+                      "cves": Array [
+                        "CVE-2020-11080",
+                      ],
+                      "description": "libnghttp2.",
+                      "fixes": null,
+                      "id": undefined,
+                      "modified_date": "2020-06-25T16:31:29Z",
+                      "packages": Object {
+                        "libnghttp2": "1.33.0-3.el8_2.1.x86_64",
+                      },
+                      "public_date": "2020-06-25T16:31:29Z",
+                      "references": Array [],
+                      "severity": 3,
+                      "solution": "For details",
+                      "synopsis": "Important: ",
+                      "topic": "An update .",
+                    }
+                  }
+                  isLoading={false}
+                >
+                  <div>
+                     hello 
+                  </div>
+                </Component>
+              </section>
+            </PageHeader>
+          </Header>
+          <Connect(Main)>
+            <Main>
+              <section
+                className="pf-l-page__main-section pf-c-page__main-section"
+                page-type=""
+              >
+                <Stack
+                  hasGutter={true}
+                >
+                  <div
+                    className="pf-l-stack pf-m-gutter"
+                  >
+                    <StackItem>
+                      <div
+                        className="pf-l-stack__item"
+                      >
+                        <TextContent>
+                          <div
+                            className="pf-c-content"
+                          >
+                            <Text
+                              component="h2"
+                            >
+                              <h2
+                                className=""
+                                data-pf-content={true}
+                              >
+                                Affected systems
+                              </h2>
+                            </Text>
+                          </div>
+                        </TextContent>
+                      </div>
+                    </StackItem>
+                    <StackItem>
+                      <div
+                        className="pf-l-stack__item"
+                      >
+                        <Component>
+                          <div>
+                             hello 
+                          </div>
+                        </Component>
+                      </div>
+                    </StackItem>
+                  </div>
+                </Stack>
+              </section>
+            </Main>
+          </Connect(Main)>
+        </AdvisoryDetail>
+      </withRouter(AdvisoryDetail)>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;
