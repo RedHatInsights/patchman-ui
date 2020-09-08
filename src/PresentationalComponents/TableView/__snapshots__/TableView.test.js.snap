@@ -13,7 +13,7 @@ exports[`TableView TableView 1`] = `
               onClick={[Function]}
             >
               <AnsibeTowerIcon
-                color="#151515"
+                color="#fff"
                 noVerticalAlign={false}
                 size="sm"
               />
@@ -104,7 +104,7 @@ exports[`TableView TableView 2`] = `
               onClick={[Function]}
             >
               <AnsibeTowerIcon
-                color="#151515"
+                color="#fff"
                 noVerticalAlign={false}
                 size="sm"
               />
@@ -200,7 +200,7 @@ exports[`TableView test table props TableView 1`] = `
               onClick={[Function]}
             >
               <AnsibeTowerIcon
-                color="#151515"
+                color="#fff"
                 noVerticalAlign={false}
                 size="sm"
               />
