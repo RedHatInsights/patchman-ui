@@ -1,3 +1,10 @@
+# [0.24.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.23.0...v0.24.0) (2020-09-10)
+
+
+### Features
+
+* **packages:** Add updatable column to package view ([336c896](https://github.com/RedHatInsights/patchman-ui/commit/336c8966afbec39731a1588130d5aefe1a358c48))
+
 # [0.23.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.22.1...v0.23.0) (2020-09-08)
 
 
