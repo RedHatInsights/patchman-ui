@@ -11,7 +11,6 @@ class App extends Component {
     componentDidMount() {
         insights.chrome.init();
         insights.chrome.identifyApp('patch');
-        insights.chrome.navigation(buildNavigation());
 
         this.triggerNavigation();
         this.unregister = this.listenNavigation();
@@ -31,8 +30,6 @@ class App extends Component {
 
     triggerNavigation() {
         this.props.history.listen(() => {
-
-            insights.chrome.navigation(buildNavigation());
 
             const { pathname } = this.props.location;
             const currentRoute = Object.values(paths).filter(element => pathname !== '/' && pathname.includes(element.to));
@@ -64,7 +61,3 @@ App.propTypes = {
 };
 
 export default withRouter(connect()(App));
-
-function buildNavigation() {
-    return [];
-}
