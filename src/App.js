@@ -11,6 +11,7 @@ class App extends Component {
     componentDidMount() {
         insights.chrome.init();
         insights.chrome.identifyApp('patch');
+        insights.chrome.hideGlobalFilter();
 
         this.triggerNavigation();
         this.unregister = this.listenNavigation();
