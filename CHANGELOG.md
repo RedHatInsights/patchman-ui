@@ -1,3 +1,10 @@
+## [0.24.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.24.0...v0.24.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* **SystemPackages:** Empty state added for empty table in Systems packages page ([1524ba9](https://github.com/RedHatInsights/patchman-ui/commit/1524ba975222f2212c93ca1fb54c6b057f0cf4f3))
+
 # [0.24.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.23.0...v0.24.0) (2020-09-10)
 
 
