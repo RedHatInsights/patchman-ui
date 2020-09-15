@@ -242,7 +242,7 @@ const AffectedSystems = ({ advisoryName }) => {
                                     showRemediationModal(
                                         remediationProvider(
                                             advisoryName,
-                                            arrayFromObj(selectedRows)
+                                            Object.keys(selectedRows)
                                         )
                                     )
                                 }
