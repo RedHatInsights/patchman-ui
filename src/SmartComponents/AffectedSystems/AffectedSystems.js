@@ -132,7 +132,7 @@ const AffectedSystems = ({ advisoryName }) => {
                     toSelect.push(
                         {
                             id,
-                            selected: id
+                            selected: false
                         }
                     );
                 });
