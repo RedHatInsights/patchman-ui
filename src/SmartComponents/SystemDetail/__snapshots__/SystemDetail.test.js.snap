@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SystemDetail.js Should match the snapshots 1`] = `
+<Tabs
+  activeKey={0}
+  component="div"
+  isBox={false}
+  isFilled={false}
+  isSecondary={false}
+  isVertical={false}
+  leftScrollAriaLabel="Scroll left"
+  mountOnEnter={false}
+  onSelect={[Function]}
+  ouiaSafe={true}
+  rightScrollAriaLabel="Scroll right"
+  style={
+    Object {
+      "backgroundColor": "white",
+    }
+  }
+  unmountOnExit={false}
+>
+  <Tab
+    eventKey={0}
+    title={
+      <TabTitleText>
+        Advisories
+      </TabTitleText>
+    }
+  >
+    <withRouter(SystemAdvisories) />
+  </Tab>
+  <Tab
+    eventKey={1}
+    title={
+      <TabTitleText>
+        Packages
+      </TabTitleText>
+    }
+  >
+    <SystemPackages />
+  </Tab>
+</Tabs>
+`;
