@@ -7,10 +7,16 @@ export const initMocks = () => {
         loadInventory: (args) => new Promise((resolve, reject) =>  {
             resolve(({
                 inventoryConnector: (args) => {
-                            const InventoryTable = ({ children }) => <div >A mock passed! {children} </div>;
-                            return ({ InventoryTable });
-                        },
-                        mergeWithEntities: () => {}
+                    
+                    const InventoryTable = ({ children }) => <div>A mock passed! {children} </div>;
+                    const InventoryDetailHead = ({ children }) => <div>A mock passed! {children} </div>;
+                    const AppInfo = ({ children }) => <div>A mock passed! {children} </div>;
+                    const DetailWrapper = ({ children }) => <div>A mock passed! {children} </div>;
+
+                    return ({ InventoryTable, InventoryDetailHead, AppInfo, DetailWrapper });
+                },
+                mergeWithEntities: () => {},
+                mergeWithDetail: () => {}
             }));
         }),
         loadRemediations: () => new Promise((resolve, reject) =>  {

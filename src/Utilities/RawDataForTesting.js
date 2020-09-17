@@ -80,3 +80,11 @@ export const systemPackages = [{
     summary: 'Access control list utilities',
     updates: null
 }];
+
+export const entityDetail = {
+    loaded: true,
+    activeApps: [],
+    entity: {
+        account: '60'
+    }
+};
