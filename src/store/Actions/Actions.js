@@ -111,3 +111,8 @@ export const changeSystemPackagesParams = params => ({
     type: ActionTypes.CHANGE_SYSTEM_PACKAGES_LIST_PARAMS,
     payload: params
 });
+
+export const globalFilter = params => ({
+    type: ActionTypes.TRIGGER_GLOBAL_FILTER,
+    payload: params
+});
