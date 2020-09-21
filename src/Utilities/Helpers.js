@@ -195,8 +195,15 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
     Object.keys(allParams).forEach(key => {
         const argKey = encodeURIComponent(key);
         const argValue = encodeURIComponent(allParams[key]);
-        if (argValue !== '') {
-            params.push(argKey.concat('=').concat(argValue));
+
+        if (!['', undefined, null].some(value => [argValue, key].includes(value))) {
+            if (!['selectedTags', 'systemProfile'].includes(key)) {
+                params.push(argKey.concat('=').concat(argValue));
+            } else if (key === 'selectedTags') {
+                params.push.apply(params, allParams[key]);
+            } else {
+                params.push(allParams[key]);
+            }
         }
     });
 
@@ -223,6 +230,10 @@ export const decomposeFilterValue = filterValue => {
 
 export const decodeQueryparams = queryString => {
     const parsed = qs.parse(queryString);
+
+    //TODO: find a way to parse query filters with the type deep object
+    parsed && delete parsed['filter[system_profile][sap_system]=true'];
+
     const res = {};
     Object.keys(parsed).forEach(key => {
         const value = parsed[key];
@@ -242,6 +253,7 @@ export const decodeQueryparams = queryString => {
 };
 
 export const buildFilterChips = (filters, search) => {
+
     let filterConfig = [];
     const processFilters = () => {
         let categories = Object.keys(filters).filter(
@@ -300,6 +312,10 @@ export const changeListParams = (oldParams, newParams) => {
 
     if (newParams.hasOwnProperty('filter')) {
         newState.filter = { ...oldParams.filter, ...newParams.filter };
+    }
+
+    if (newState.hasOwnProperty('tags')) {
+        newState && delete newState.tags;
     }
 
     return newState;

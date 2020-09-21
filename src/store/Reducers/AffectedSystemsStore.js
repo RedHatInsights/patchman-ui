@@ -1,42 +1,36 @@
-import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
-import { changeListParams, getNewSelectedItems } from '../../Utilities/Helpers';
+import { storeListDefaults } from '../../Utilities/constants';
 import * as ActionTypes from '../ActionTypes';
+import {
+    changeFilters,
+    selectRows,
+    fetchPending,
+    fetchRejected,
+    fetchFulfilled
+} from './HelperReducers';
 
 export const AffectedSystemsStore = (state = storeListDefaults, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_AFFECTED_SYSTEMS + '_PENDING':
-            newState.status = STATUS_LOADING;
-            newState.error = {};
-            return newState;
+            return fetchPending(newState);
 
         case ActionTypes.FETCH_AFFECTED_SYSTEMS + '_REJECTED':
-            newState.status = STATUS_REJECTED;
-            newState.error = action.payload;
-            return newState;
+            return fetchRejected(newState, action);
 
-        case 'SELECT_ENTITY': {
-            const selectedUpdated = getNewSelectedItems(action.payload, newState.selectedRows);
-            newState = { ...newState, selectedRows: selectedUpdated };
-            return newState;
-        }
+        case 'SELECT_ENTITY':
+            return selectRows(newState, action);
 
         case ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS:
-            newState.queryParams = changeListParams(
-                newState.queryParams,
-                action.payload
-            );
-            return newState;
+            return changeFilters(newState, action);
 
         case ActionTypes.FETCH_AFFECTED_SYSTEMS + '_FULFILLED':
-            newState.rows = action.payload.data;
-            newState.metadata = action.payload.meta;
-            newState.status = STATUS_RESOLVED;
-            newState.error = {};
-            return newState;
+            return fetchFulfilled(newState, action);
 
         case ActionTypes.CLEAR_AFFECTED_SYSTEMS:
             return storeListDefaults;
+
+        case ActionTypes.TRIGGER_GLOBAL_FILTER:
+            return changeFilters(newState, action);
 
         default:
             return state;

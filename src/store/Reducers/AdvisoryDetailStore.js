@@ -1,5 +1,10 @@
-import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_RESOLVED } from '../../Utilities/constants';
 import { CLEAR_ADVISORY_DETAILS, FETCH_ADVISORY_DETAILS } from '../ActionTypes';
+import {
+
+    fetchPending,
+    fetchRejected
+} from './HelperReducers';
 
 export let initialState = {
     data: { attributes: {} },
@@ -8,6 +13,7 @@ export let initialState = {
 
 // Reducer
 export const AdvisoryDetailStore = (state = initialState, action) => {
+    let newState = { ...state };
     switch (action.type) {
         case FETCH_ADVISORY_DETAILS + '_FULFILLED':
             return {
@@ -16,18 +22,13 @@ export const AdvisoryDetailStore = (state = initialState, action) => {
                 data: action.payload.data,
                 error: {}
             };
+
         case FETCH_ADVISORY_DETAILS + '_PENDING':
-            return {
-                ...state,
-                status: STATUS_LOADING,
-                error: {}
-            };
+            return fetchPending(newState);
+
         case FETCH_ADVISORY_DETAILS + '_REJECTED':
-            return {
-                ...state,
-                status: STATUS_REJECTED,
-                error: action.payload
-            };
+            return fetchRejected(newState, action);
+
         case CLEAR_ADVISORY_DETAILS:
             return initialState;
 
