@@ -163,6 +163,7 @@ const Systems = () => {
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :
                     InventoryCmp && (
                         <InventoryCmp
+                            isFullView
                             items={hosts}
                             page={page}
                             total={metadata.total_items}
