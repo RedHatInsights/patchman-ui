@@ -28,6 +28,12 @@ const AdvisoryPage = lazy(() =>
     )
 );
 
+const PackagsPage = lazy(() =>
+    import(
+        /* webpackChunkName: "Packages" */ './SmartComponents/Packages/Packages'
+    )
+);
+
 const RegisterPage = lazy(() =>
     import(
         /* webpackChunkName: "Register" */ './PresentationalComponents/RegisterPage/RegisterPage'
@@ -57,6 +63,10 @@ export const paths = {
     register: {
         title: '',
         to: '/register'
+    },
+    packages: {
+        title: 'Packages',
+        to: '/packages'
     }
 };
 
@@ -116,7 +126,12 @@ export const Routes = (props: Props) => {
                     component={Advisories}
                     rootClass="Patchman"
                 />
-
+                <InsightsRoute
+                    exact
+                    path={paths.packages.to}
+                    component={PackagsPage}
+                    rootClass="Patchman"
+                />
                 <InsightsRoute
                     exact
                     path={paths.register.to}

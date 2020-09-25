@@ -10,7 +10,7 @@ import { SystemAdvisoryListStore } from './Reducers/SystemAdvisoryListStore';
 import { SystemDetailStore } from './Reducers/SystemDetailStore';
 import { SystemPackageListStore } from './Reducers/SystemPackageListStore';
 import { SystemsListStore } from './Reducers/SystemsListStore';
-
+import { PackagesListStore } from './Reducers/PackagesListStore';
 let registry;
 const persistenceMiddleware = store => next => action => {
 
@@ -40,6 +40,7 @@ export function init(...middleware) {
         AdvisoryDetailStore: (state = storage.AdvisoryDetailStore, action) => AdvisoryDetailStore(state, action),
         AffectedSystemsStore: (state = storage.AffectedSystemsStore, action) => AffectedSystemsStore(state, action),
         SystemPackageListStore: (state = storage.SystemPackageListStore, action) => SystemPackageListStore(state, action),
+        PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
         notifications
     });
 

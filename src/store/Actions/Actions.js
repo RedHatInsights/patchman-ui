@@ -1,5 +1,6 @@
 import { fetchAdvisoryDetailsApi, fetchAffectedSystems, fetchApplicableAdvisoriesApi,
-    fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchSystems } from '../../Utilities/api';
+    fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchSystems,
+    fetchPackagesList } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({
@@ -114,5 +115,17 @@ export const changeSystemPackagesParams = params => ({
 
 export const globalFilter = params => ({
     type: ActionTypes.TRIGGER_GLOBAL_FILTER,
+    payload: params
+});
+
+export const fetchPackagesAction = params => ({
+    type: ActionTypes.FETCH_PACKAGES_LIST,
+    payload: new Promise(resolve => {
+        resolve(fetchPackagesList(params));
+    }).then(result => result)
+});
+
+export const changePackagesListParams = params => ({
+    type: ActionTypes.CHANGE_PACKAGES_LIST_PARAMS,
     payload: params
 });
