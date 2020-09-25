@@ -77,6 +77,10 @@ export const fetchAffectedSystems = params => {
     return createApiCall(`/advisories/${id}/systems`, 'get', args);
 };
 
+export const fetchPackagesList = params => {
+    return createApiCall('/packages', 'get', params);
+};
+
 export const exportAdvisoriesCSV = params => {
     let endpoint = '/export/advisories';
     endpoint = endpoint.concat(encodeApiParams(params));
