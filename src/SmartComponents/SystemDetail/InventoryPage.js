@@ -14,7 +14,6 @@ import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 const InventoryDetail = () => {
     const [InventoryHeader, setInventoryHeader] = React.useState();
     const [InventoryBody, setInventoryBody] = React.useState();
-    const [InventoryWrapper, setInventoryWrapper] = React.useState();
 
     const entityDetails = useSelector(
         ({ entityDetails }) => entityDetails && entityDetails.entity
@@ -46,19 +45,17 @@ const InventoryDetail = () => {
             ...mergeWithDetail(SystemDetailStore)
         });
 
-        const { InventoryDetailHead, AppInfo, DetailWrapper } = inventoryConnector(getStore());
+        const { InventoryDetailHead, AppInfo } = inventoryConnector(getStore());
         setInventoryHeader(() => InventoryDetailHead);
         setInventoryBody(() => AppInfo);
-        setInventoryWrapper(() => DetailWrapper);
     };
 
     React.useEffect(() => {
         fetchInventory();
     }, []);
 
-    const Wrapper = InventoryWrapper || React.Fragment;
     return (
-        <Wrapper>
+        <React.Fragment>
             <Header
                 title=""
                 breadcrumbs={[
@@ -85,7 +82,7 @@ const InventoryDetail = () => {
                     <InventoryBody />
                 </Main>
             )}
-        </Wrapper>
+        </React.Fragment>
     );
 };
 
