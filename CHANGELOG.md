@@ -1,3 +1,10 @@
+## [0.24.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.24.1...v0.24.2) (2020-09-29)
+
+
+### Bug Fixes
+
+* **SystemDetails:** infinite re-render is fixed ([1fb90ae](https://github.com/RedHatInsights/patchman-ui/commit/1fb90aeaed43b1ae8330ebe2b2143c47429d63ba))
+
 ## [0.24.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.24.0...v0.24.1) (2020-09-15)
 
 
