@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-inventory-patchman",
-  "version": "0.24.2",
+  "version": "0.25.0",
   "browser": "dist/index.js",
   "private": false,
   "dependencies": {

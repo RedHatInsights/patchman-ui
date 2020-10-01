@@ -1,3 +1,10 @@
+# [0.25.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.24.2...v0.25.0) (2020-10-01)
+
+
+### Features
+
+* **GlobalFilter:** global filtering is enabled ([2366d55](https://github.com/RedHatInsights/patchman-ui/commit/2366d55039e4d65e3134cffb5bde6724f3c0e52e))
+
 ## [0.24.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.24.1...v0.24.2) (2020-09-29)
 
 
