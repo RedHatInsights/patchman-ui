@@ -1,3 +1,10 @@
+## [0.25.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.0...v0.25.1) (2020-10-02)
+
+
+### Bug Fixes
+
+* **packages:** reflect most recent mockups on system-packages ([304cab3](https://github.com/RedHatInsights/patchman-ui/commit/304cab307d2d7f7b496729fdc89dd28002e454b2))
+
 # [0.25.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.24.2...v0.25.0) (2020-10-01)
 
 
