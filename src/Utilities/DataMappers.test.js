@@ -107,8 +107,8 @@ describe('DataMappers', () => {
             cells: [
                 { title: 'acl' },
                 { title: '2.2.*' },
-                { title: undefined },
-                { title: undefined },
+                { title: '2.2.*' },
+                { title: expect.anything() },
                 { title: 'Access control list utilities' }
             ]
         }]);
