@@ -152,6 +152,7 @@ const SystemPackages = () => {
             store={{ rows, metadata, status, queryParams }}
             onSelect={(packages.length && onSelect) || undefined}
             selectedRows={selectedRows}
+            compact
             onSort={onSort}
             sortBy={sortBy}
             onSetPage={onSetPage}

@@ -70,7 +70,7 @@ export const systemPackagesColumns = [
         key: 'latest_update'
     },
     {
-        title: 'Upgradable',
+        title: 'Status',
         transforms: [cellWidth(10)],
         key: 'updatable'
     },

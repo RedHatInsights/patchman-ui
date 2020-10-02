@@ -1,5 +1,5 @@
 import { Text, TextContent, TextVariants } from '@patternfly/react-core';
-import { CheckCircleIcon } from '@patternfly/react-icons/dist/js/icons/check-circle-icon';
+import { CheckIcon, LongArrowAltUpIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
@@ -166,8 +166,23 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
                 cells: [
                     { title: pkg.name },
                     { title: pkg.evra },
-                    { title: latestUpdate && latestUpdate.evra },
-                    { title: pkg.updatable && <CheckCircleIcon style={{ color: 'var(--pf-global--success-color--100)' }} /> },
+                    { title: (latestUpdate && latestUpdate.evra) || pkg.evra },
+                    { title:
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}>
+                            {
+                                pkg.updatable && <LongArrowAltUpIcon style={{ color: 'var(--pf-global--palette--blue-400)' }} />
+                                    || <CheckIcon style={{ color: 'var(--pf-global--success-color--100)' }}/>
+                            }
+                            {<span style={{ marginLeft: 'var(--pf-global--spacer--sm)' }}>
+                                {
+                                    pkg.updatable && 'Upgradable' || 'Up-to-date'
+                                }
+                            </span>}
+                        </div>
+                    },
                     { title: pkg.summary }
                 ]
             };

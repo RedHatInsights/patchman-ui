@@ -1,6 +1,6 @@
 import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
 import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon'; // PF typo
-import { Table, TableBody, TableHeader } from '@patternfly/react-table/dist/js/components/Table';
+import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table/dist/js/components/Table';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/PrimaryToolbar';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/cjs/SkeletonTable';
 import globalPaletteWhite from '@patternfly/react-tokens/dist/js/global_palette_white';
@@ -30,6 +30,7 @@ const TableView = ({
     sortBy,
     remediationProvider,
     selectedRows,
+    compact,
     apply
 }) => {
     const [
@@ -117,6 +118,7 @@ const TableView = ({
                         canSelectAll={false}
                         onSort={onSort}
                         sortBy={metadata.total_items && sortBy}
+                        variant={compact && TableVariant.compact}
                     >
                         <TableHeader />
                         <TableBody />
@@ -146,7 +148,8 @@ TableView.propTypes = {
     apply: PropTypes.func,
     sortBy: PropTypes.object,
     filterConfig: PropTypes.object,
-    store: PropTypes.object
+    store: PropTypes.object,
+    compact: PropTypes.bool
 };
 
 export default TableView;
