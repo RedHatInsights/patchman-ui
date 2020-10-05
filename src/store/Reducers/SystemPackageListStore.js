@@ -1,15 +1,10 @@
 import { storeListDefaults } from '../../Utilities/constants';
 import * as ActionTypes from '../ActionTypes';
-import {
-    changeFilters,
-    selectRows,
-    fetchPending,
-    fetchRejected,
-    fetchFulfilled
-} from './HelperReducers';
+import { changeFilters, fetchFulfilled, fetchPending, fetchRejected, selectRows } from './HelperReducers';
 
-let stateInit = { queryParams: { filter: { updatable: 'true' } } };
-export const SystemPackageListStore = (state = { ...storeListDefaults, ...stateInit }, action) => {
+let initializeState = { queryParams: { filter: { updatable: 'true' } } };
+
+export const SystemPackageListStore = (state = { ...storeListDefaults, ...initializeState }, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_APPLICABLE_SYSTEM_PACKAGES + '_FULFILLED':
@@ -28,7 +23,7 @@ export const SystemPackageListStore = (state = { ...storeListDefaults, ...stateI
             return selectRows(newState, action);
 
         case ActionTypes.CLEAR_SYSTEM_PACKAGES:
-            return storeListDefaults;
+            return { ...storeListDefaults, ...initializeState };
 
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);

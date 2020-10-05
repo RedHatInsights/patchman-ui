@@ -78,6 +78,11 @@ export const clearSystemAdvisoriesStore = () => ({
     payload: []
 });
 
+export const clearSystemPackagesStore = () => ({
+    type: ActionTypes.CLEAR_SYSTEM_PACKAGES,
+    payload: []
+});
+
 export const clearAffectedSystemsStore = () => ({
     type: ActionTypes.CLEAR_AFFECTED_SYSTEMS,
     payload: []

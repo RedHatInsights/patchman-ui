@@ -8,7 +8,8 @@ import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemDa
 import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemPackagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
-import { changeSystemPackagesParams, fetchApplicableSystemPackages, selectSystemPackagesRow } from '../../store/Actions/Actions';
+import { changeSystemPackagesParams, clearSystemPackagesStore,
+    fetchApplicableSystemPackages, selectSystemPackagesRow } from '../../store/Actions/Actions';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
@@ -41,6 +42,10 @@ const SystemPackages = () => {
             createSystemPackagesRows(packages, selectedRows),
         [packages,  selectedRows]
     );
+
+    React.useEffect(() => {
+        return () => dispatch(clearSystemPackagesStore());
+    }, []);
 
     React.useEffect(()=> {
         dispatch(fetchApplicableSystemPackages({ id: entity.id, ...queryParams }));
