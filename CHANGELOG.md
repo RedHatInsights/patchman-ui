@@ -1,3 +1,10 @@
+## [0.25.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.1...v0.25.2) (2020-10-05)
+
+
+### Bug Fixes
+
+* **packages:** Fix not updating entity ([115cd7a](https://github.com/RedHatInsights/patchman-ui/commit/115cd7a4d8d5e50931ff59851708f7b26023c0f5))
+
 ## [0.25.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.0...v0.25.1) (2020-10-02)
 
 
