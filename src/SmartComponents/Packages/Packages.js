@@ -10,7 +10,7 @@ import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemDa
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
-import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
 import { usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from '../../Utilities/Hooks';
@@ -69,36 +69,27 @@ const Packages = () => {
             description: error.detail
         }));}
 
-    const MainComponent = () => {
-        return (
-            <React.Fragment>
-                <Header title={'Package Updates'} />
-                <Main>
-                    {status === STATUS_REJECTED ? errorState :
-                        (status === STATUS_RESOLVED ? <TableView
-                            columns={packagesColumns}
-                            store={{ rows, metadata, status, queryParams }}
-                            onSort={onSort}
-                            sortBy={sortBy}
-                            onSetPage={onSetPage}
-                            onPerPageSelect={onPerPageSelect}
-                            apply={apply}
-                            filterConfig={{
-                                items: [
-                                    searchFilter(apply, queryParams.search, 'Search packages')
-                                ]
-                            }}
-                        /> : ''
-                        )
-                    }
-                </Main>
-            </React.Fragment>
-        );
-    };
-
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? errorState : <MainComponent/>}
+            <Header title={'Package Updates'} />
+            <Main>
+                {status === STATUS_REJECTED ? errorState :
+                    <TableView
+                        columns={packagesColumns}
+                        store={{ rows, metadata, status, queryParams }}
+                        onSort={onSort}
+                        sortBy={sortBy}
+                        onSetPage={onSetPage}
+                        onPerPageSelect={onPerPageSelect}
+                        apply={apply}
+                        filterConfig={{
+                            items: [
+                                searchFilter(apply, queryParams.search, 'Search packages')
+                            ]
+                        }}
+                    />
+                }
+            </Main>
         </React.Fragment>
     );
 };
