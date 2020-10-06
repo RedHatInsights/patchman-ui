@@ -80,3 +80,35 @@ export const systemPackagesColumns = [
         key: 'summary'
     }
 ];
+
+export const packagesColumns = [
+    {
+        key: 'name',
+        title: 'Package',
+        transforms: [sortable, cellWidth(40)]
+    },
+    {
+        key: 'systems_installed',
+        title: 'Applicable systems',
+        transforms: [sortable, cellWidth(10)],
+        props: {
+            width: 10
+        }
+    },
+    {
+        key: 'systems_updatable',
+        title: 'Upgradable',
+        transforms: [sortable, cellWidth(10)],
+        props: {
+            width: 10
+        }
+    },
+    {
+        key: 'summary',
+        title: 'Summary',
+        transforms: [sortable, cellWidth(40)],
+        props: {
+            width: 30
+        }
+    }
+];

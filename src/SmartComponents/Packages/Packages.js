@@ -1,20 +1,19 @@
 /* eslint-disable no-unused-vars */
-import TableView from '../../PresentationalComponents/TableView/TableView';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
+import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
+import TableView from '../../PresentationalComponents/TableView/TableView';
+import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
-import { packagesColumns } from './PackagesAssets';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
-import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
-import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
+import { usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 
 const Packages = () => {
     const dispatch = useDispatch();
