@@ -13,10 +13,15 @@ import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import { setPageTitle } from '../../Utilities/Hooks';
 
 const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
     const [advisoryName] = React.useState(match.params.advisoryId);
+
+    const pageTitle = `${advisoryName} - ${intl.formatMessage(messages.advisories)}`;
+    setPageTitle(pageTitle);
+
     const advisoryDetails = useSelector(
         ({ AdvisoryDetailStore }) => AdvisoryDetailStore
     );

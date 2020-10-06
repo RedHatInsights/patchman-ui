@@ -13,10 +13,13 @@ import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Action
 import { STATUS_LOADING, STATUS_REJECTED, ENABLE_PACKAGES } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import { setPageTitle } from '../../Utilities/Hooks';
 
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
     const [packageName] = React.useState(match.params.packageName);
+    const pageTitle = `${packageName} - ${intl.formatMessage(messages.packages)}`;
+    setPageTitle(pageTitle);
     const packageDetails = useSelector(
         ({ PackageDetailStore }) => PackageDetailStore
     );

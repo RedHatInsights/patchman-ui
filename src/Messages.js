@@ -91,5 +91,20 @@ export default defineMessages({
         id: 'systems',
         description: 'title with capital letters',
         defaultMessage: 'Systems'
+    },
+    pageTitlesAdvisories: {
+        id: 'pageTitlesAdvisories',
+        description: 'title for Advisories page',
+        defaultMessage: 'Patch advisories'
+    },
+    pageTitlesSystems: {
+        id: 'pageTitlesSystems',
+        description: 'title for Systems page',
+        defaultMessage: 'Patch systems'
+    },
+    pageTitlesPackages: {
+        id: 'pageTitlesPackages',
+        description: 'title for Packages page',
+        defaultMessage: 'Patch packages'
     }
 });

@@ -12,6 +12,7 @@ import { getStore, register } from '../../store';
 import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import { setPageTitle } from '../../Utilities/Hooks';
 
 const InventoryDetail = () => {
     const [InventoryHeader, setInventoryHeader] = React.useState();
@@ -20,6 +21,9 @@ const InventoryDetail = () => {
     const entityDetails = useSelector(
         ({ entityDetails }) => entityDetails && entityDetails.entity
     );
+
+    const pageTitle = entityDetails && `${entityDetails.display_name} - ${intl.formatMessage(messages.systems)}`;
+    setPageTitle(pageTitle);
 
     const fetchInventory = async () => {
         const {
@@ -63,12 +67,7 @@ const InventoryDetail = () => {
                 headerOUIA={'inventory-details'}
                 breadcrumbs={[
                     {
-                        title: intl.formatMessage(messages.appName),
-                        to: paths.advisories.to,
-                        isActive: false
-                    },
-                    {
-                        title: intl.formatMessage(messages.systems),
+                        title: intl.formatMessage(messages.pageTitlesSystems),
                         to: paths.systems.to,
                         isActive: false
                     },

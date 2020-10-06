@@ -138,3 +138,11 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows, con
 
     return onSelect;
 };
+
+export const setPageTitle = (title) => {
+    React.useEffect(() => {
+        if (title) {
+            document.title = `${title} - Patch | Red Hat Insights`;
+        }
+    }, [title]);
+};
