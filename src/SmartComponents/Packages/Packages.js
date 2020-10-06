@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { Main } from '@redhat-cloud-services/frontend-components';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
@@ -13,12 +13,14 @@ import { changePackagesListParams, fetchPackagesAction } from '../../store/Actio
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
-import { usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const Packages = () => {
     const dispatch = useDispatch();
+    const pageTitle = 'Packages';
+    setPageTitle(pageTitle);
     const packageRows = useSelector(
         ({ PackagesListStore }) => PackagesListStore.rows
     );
@@ -73,7 +75,7 @@ const Packages = () => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.packageUpdates)} headerOUIA={'packages'}/>
+            <Header title={intl.formatMessage(messages.pageTitlesPackages)} headerOUIA={'packages'}/>
             <Main>
                 <TableView
                     columns={packagesColumns}

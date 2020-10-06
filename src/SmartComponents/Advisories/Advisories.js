@@ -1,5 +1,5 @@
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { Main } from '@redhat-cloud-services/frontend-components';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,11 +16,15 @@ import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const Advisories = ({ history }) => {
+    const pageTitle = intl.formatMessage(messages.advisories);
+
+    setPageTitle(pageTitle);
+
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = React.useState(true);
     const advisories = useSelector(
@@ -44,6 +48,7 @@ const Advisories = ({ history }) => {
     const status = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.status
     );
+
     const rows = React.useMemo(
         () => createAdvisoriesRows(advisories, expandedRows, selectedRows),
         [advisories, expandedRows, selectedRows]
@@ -96,7 +101,7 @@ const Advisories = ({ history }) => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.advisories)} headerOUIA={'advisories'}/>
+            <Header title={intl.formatMessage(messages.pageTitlesAdvisories)} headerOUIA={'advisories'}/>
             <Main>
                 <TableView
                     columns={advisoriesColumns}

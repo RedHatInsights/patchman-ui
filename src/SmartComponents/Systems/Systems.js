@@ -1,21 +1,12 @@
-import {
-    Table as PfTable,
-    TableBody,
-    TableHeader,
-    TableGridBreakpoint,
-    cellWidth,
-    TableVariant,
-    sortable,
-    expandable,
-    SortByDirection
-} from '@patternfly/react-table';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { cellWidth, expandable, sortable, SortByDirection, Table as PfTable,
+    TableBody, TableGridBreakpoint, TableHeader, TableVariant } from '@patternfly/react-table';
 import { Main } from '@redhat-cloud-services/frontend-components';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import React from 'react';
+import * as ReactRedux from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
-import * as ReactRedux from 'react-redux';
-import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
@@ -26,14 +17,19 @@ import { exportSystemsCSV, exportSystemsJSON } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
-import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { setPageTitle, useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const Systems = () => {
+    const pageTitle = intl.formatMessage(messages.systems);
+
+    setPageTitle(pageTitle);
+
     const dispatch = useDispatch();
+
     const [InventoryCmp, setInventoryCmp] = React.useState();
     const [
         RemediationModalCmp,
@@ -158,8 +154,7 @@ const Systems = () => {
 
     return (
         <React.Fragment>
-
-            <Header title={intl.formatMessage(messages.systems)} headerOUIA={'systems'}/>
+            <Header title={intl.formatMessage(messages.pageTitlesSystems)} headerOUIA={'systems'}/>
             <RemediationModalCmp />
             <Main>
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :
