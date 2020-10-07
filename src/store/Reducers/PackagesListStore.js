@@ -1,33 +1,24 @@
-import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
-import { changeListParams } from '../../Utilities/Helpers';
+import { storeListDefaults } from '../../Utilities/constants';
 import * as ActionTypes from '../ActionTypes';
+import { changeFilters, fetchFulfilled, fetchPending, fetchRejected } from './HelperReducers';
 
 export const PackagesListStore = (state = storeListDefaults, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_PACKAGES_LIST + '_PENDING':
-            newState.status = STATUS_LOADING;
-            newState.error = {};
-            return newState;
+            return fetchPending(newState);
 
         case ActionTypes.FETCH_PACKAGES_LIST + '_FULFILLED':
-            newState.rows = action.payload.data;
-            newState.metadata = action.payload.meta;
-            newState.status = STATUS_RESOLVED;
-            newState.error = {};
-            return newState;
+            return fetchFulfilled(newState, action);
 
         case ActionTypes.FETCH_PACKAGES_LIST + '_REJECTED':
-            newState.status = STATUS_REJECTED;
-            newState.error = action.payload;
-            return newState;
+            return fetchRejected(newState, action);
 
         case ActionTypes.CHANGE_PACKAGES_LIST_PARAMS:
-            newState.queryParams = changeListParams(
-                newState.queryParams,
-                action.payload
-            );
-            return newState;
+            return changeFilters(newState, action);
+
+        case ActionTypes.TRIGGER_GLOBAL_FILTER:
+            return changeFilters(newState, action);
 
         default:
             return state;
