@@ -85,12 +85,12 @@ export const packagesColumns = [
     {
         key: 'name',
         title: 'Package',
-        transforms: [sortable, cellWidth(40)]
+        transforms: [sortable, cellWidth(25)]
     },
     {
         key: 'systems_installed',
         title: 'Applicable systems',
-        transforms: [sortable, cellWidth(10)],
+        transforms: [sortable, cellWidth(15)],
         props: {
             width: 10
         }

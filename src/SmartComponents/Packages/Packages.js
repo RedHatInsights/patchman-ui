@@ -81,6 +81,7 @@ const Packages = () => {
                         sortBy={sortBy}
                         onSetPage={onSetPage}
                         onPerPageSelect={onPerPageSelect}
+                        compact
                         apply={apply}
                         filterConfig={{
                             items: [
