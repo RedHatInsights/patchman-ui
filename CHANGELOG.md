@@ -1,3 +1,10 @@
+## [0.25.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.2...v0.25.3) (2020-10-08)
+
+
+### Bug Fixes
+
+* **APP:** fix SAP error in App ([8b7d396](https://github.com/RedHatInsights/patchman-ui/commit/8b7d396f4c5dfe1c932eae3b53a3ffbbb78bcff1))
+
 ## [0.25.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.1...v0.25.2) (2020-10-05)
 
 
