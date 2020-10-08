@@ -1,6 +1,6 @@
-import React, { lazy, Suspense, Fragment } from 'react';
 import some from 'lodash/some';
 import PropTypes from 'prop-types';
+import React, { Fragment, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
 
@@ -31,6 +31,12 @@ const AdvisoryPage = lazy(() =>
 const PackagsPage = lazy(() =>
     import(
         /* webpackChunkName: "Packages" */ './SmartComponents/Packages/Packages'
+    )
+);
+
+const PackageDetail = lazy(() =>
+    import(
+        /* webpackChunkName: "PackageDetail" */ './SmartComponents/PackageDetail/PackageDetail'
     )
 );
 
@@ -67,6 +73,10 @@ export const paths = {
     packages: {
         title: 'Packages',
         to: '/packages'
+    },
+    packageDetail: {
+        title: 'Package detail',
+        to: '/packages/:packageName'
     }
 };
 
@@ -137,6 +147,11 @@ export const Routes = (props: Props) => {
                     path={paths.register.to}
                     component={RegisterPage}
                     rootClass="Patchman"
+                />
+                <InsightsRoute
+                    exact
+                    path={paths.packageDetail.to}
+                    component={PackageDetail}
                 />
 
                 <Route

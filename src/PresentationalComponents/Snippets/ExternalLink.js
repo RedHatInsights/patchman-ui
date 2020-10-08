@@ -1,12 +1,12 @@
+import { Flex, FlexItem } from '@patternfly/react-core';
 import ExternalLinkSquareAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-square-alt-icon';
 import propTypes from 'prop-types';
 import React from 'react';
-import { Flex, FlexItem } from '@patternfly/react-core';
 
-const PortalAdvisoryLink = ({ advisory }) => {
+const ExternalLink = ({ link, text }) => {
     return (
         <a
-            href={`https://access.redhat.com/errata/${advisory}`}
+            href={link}
             target="__blank"
         >
             <Flex flex={{ default: 'inlineFlex' }}>
@@ -14,8 +14,7 @@ const PortalAdvisoryLink = ({ advisory }) => {
                     <ExternalLinkSquareAltIcon />
                 </FlexItem>
                 <FlexItem spacer={{ default: 'spacerSm' }}>
-                    View packages and errata at
-                    access.redhat.com
+                    {text}
                 </FlexItem>
             </Flex>
         </a>
@@ -23,8 +22,9 @@ const PortalAdvisoryLink = ({ advisory }) => {
     );
 };
 
-PortalAdvisoryLink.propTypes = {
-    advisory: propTypes.string
+ExternalLink.propTypes = {
+    link: propTypes.string,
+    text: propTypes.string
 };
 
-export default PortalAdvisoryLink;
+export default ExternalLink;

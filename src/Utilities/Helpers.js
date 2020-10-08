@@ -326,3 +326,10 @@ export function subtractDate(days) {
     date.setDate(date.getDate() - days);
     return date.toISOString();
 }
+
+export function preserveNewlines(input) {
+    return input && input.replace(
+        new RegExp('\\n(?=[^\\n])', 'g'),
+        ''
+    );
+}

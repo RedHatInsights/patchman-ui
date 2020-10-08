@@ -6,11 +6,12 @@ import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
 import { AdvisoryListStore } from './Reducers/AdvisoryListStore';
 import { AffectedSystemsStore } from './Reducers/AffectedSystemsStore';
+import { PackageDetailStore } from './Reducers/PackageDetailStore';
+import { PackagesListStore } from './Reducers/PackagesListStore';
 import { SystemAdvisoryListStore } from './Reducers/SystemAdvisoryListStore';
 import { SystemDetailStore } from './Reducers/SystemDetailStore';
 import { SystemPackageListStore } from './Reducers/SystemPackageListStore';
 import { SystemsListStore } from './Reducers/SystemsListStore';
-import { PackagesListStore } from './Reducers/PackagesListStore';
 let registry;
 const persistenceMiddleware = store => next => action => {
 
@@ -41,6 +42,7 @@ export function init(...middleware) {
         AffectedSystemsStore: (state = storage.AffectedSystemsStore, action) => AffectedSystemsStore(state, action),
         SystemPackageListStore: (state = storage.SystemPackageListStore, action) => SystemPackageListStore(state, action),
         PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
+        PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
         notifications
     });
 

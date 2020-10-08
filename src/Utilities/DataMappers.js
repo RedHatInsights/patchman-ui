@@ -5,8 +5,8 @@ import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { EmptyAdvisoryList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
+import ExternalLink from '../PresentationalComponents/Snippets/ExternalLink';
 import Label from '../PresentationalComponents/Snippets/Label';
-import PortalAdvisoryLink from '../PresentationalComponents/Snippets/PortalAdvisoryLink';
 import { handleAdvisoryLink, truncate } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -48,7 +48,8 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                                             ''
                                         ), 570, handleAdvisoryLink(row.id, 'Read more'))}
                                     </Text>
-                                    <PortalAdvisoryLink advisory={row.id} />
+                                    <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
+                                        text={'View packages and errata at access.redhat.com'} />
                                 </TextContent>
                             )
                         }
@@ -109,7 +110,8 @@ export const createSystemAdvisoriesRows = (
                                             ''
                                         ), 570, handleAdvisoryLink(row.id, 'Read more'))}
                                     </Text>
-                                    <PortalAdvisoryLink advisory={row.id} />
+                                    <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
+                                        text={'View packages and errata at access.redhat.com'} />
                                 </TextContent>
                             )
                         }

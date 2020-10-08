@@ -6,11 +6,11 @@ import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import propTypes from 'prop-types';
 import React from 'react';
-import PortalAdvisoryLink from '../../PresentationalComponents/Snippets/PortalAdvisoryLink';
 import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';
-import { getSeverityById } from '../../Utilities/Helpers';
+import { getSeverityById, preserveNewlines } from '../../Utilities/Helpers';
 import InfoBox from '../InfoBox/InfoBox';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
+import ExternalLink from '../Snippets/ExternalLink';
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const severityObject = getSeverityById(attributes.severity);
@@ -25,11 +25,9 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                     <Stack hasGutter>
                         <StackItem />
                         <StackItem style={{ whiteSpace: 'pre-line' }}>
-                            {attributes.description &&
-                                attributes.description.replace(
-                                    new RegExp('\\n(?=[^\\n])', 'g'),
-                                    ''
-                                )}
+                            {
+                                preserveNewlines(attributes.description)
+                            }
                         </StackItem>
                         <StackItem>
                             {attributes.public_date && (
@@ -49,7 +47,8 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                             )}
                         </StackItem>
                         <StackItem>
-                            <PortalAdvisoryLink advisory={attributes.id} />
+                            <ExternalLink link={`https://access.redhat.com/errata/${attributes.id}`}
+                                text={'View packages and errata at access.redhat.com'} />
                         </StackItem>
                     </Stack>
                 </WithLoader>
