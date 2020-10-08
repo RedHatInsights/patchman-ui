@@ -7,7 +7,8 @@ import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType'
 import { EmptyAdvisoryList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
 import ExternalLink from '../PresentationalComponents/Snippets/ExternalLink';
 import Label from '../PresentationalComponents/Snippets/Label';
-import { handleAdvisoryLink, truncate } from './Helpers';
+import { entityTypes } from './constants';
+import { handlePatchLink, truncate } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -18,7 +19,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                     isOpen: expandedRows[row.id] === true,
                     selected: selectedRows[row.id] !== undefined,
                     cells: [
-                        { title: handleAdvisoryLink(row.id) },
+                        { title: handlePatchLink(entityTypes.advisories, row.id) },
                         { title: processDate(row.attributes.public_date) },
                         {
                             title: (
@@ -28,7 +29,8 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                             )
                         },
                         {
-                            title: handleAdvisoryLink(
+                            title: handlePatchLink(
+                                entityTypes.advisories,
                                 row.id,
                                 row.attributes.applicable_systems
                             )
@@ -46,7 +48,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                                         {truncate(row.attributes.description.replace(
                                             new RegExp('\\n(?=[^\\n])', 'g'),
                                             ''
-                                        ), 570, handleAdvisoryLink(row.id, 'Read more'))}
+                                        ), 570, handlePatchLink(entityTypes.advisories, row.id, 'Read more'))}
                                     </Text>
                                     <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
                                         text={'View packages and errata at access.redhat.com'} />
@@ -86,7 +88,7 @@ export const createSystemAdvisoriesRows = (
                     isOpen: expandedRows[row.id] === true,
                     selected: selectedRows[row.id] !== undefined,
                     cells: [
-                        { title: handleAdvisoryLink(row.id) },
+                        { title: handlePatchLink(entityTypes.advisories, row.id) },
                         { title: processDate(row.attributes.public_date) },
                         {
                             title: (
@@ -108,7 +110,7 @@ export const createSystemAdvisoriesRows = (
                                         {truncate(row.attributes.description.replace(
                                             new RegExp('\\n(?=[^\\n])', 'g'),
                                             ''
-                                        ), 570, handleAdvisoryLink(row.id, 'Read more'))}
+                                        ), 570, handlePatchLink(entityTypes.advisories, row.id, 'Read more'))}
                                     </Text>
                                     <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
                                         text={'View packages and errata at access.redhat.com'} />
@@ -166,7 +168,7 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
                 selected: selectedRows[pkg.name] !== undefined,
                 disableCheckbox: !latestUpdate,
                 cells: [
-                    { title: pkg.name },
+                    { title: handlePatchLink(entityTypes.packages, pkg.name) },
                     { title: pkg.evra },
                     { title: (latestUpdate && latestUpdate.evra) || pkg.evra },
                     { title:
@@ -211,7 +213,7 @@ export const createPackagesRows = (rows) => {
                 id: pkg.name,
                 key: pkg.name,
                 cells: [
-                    { title: pkg.name },
+                    { title: handlePatchLink(entityTypes.packages, pkg.name) },
                     { title: pkg.systems_installed },
                     { title: pkg.systems_updatable },
                     { title: pkg.summary }

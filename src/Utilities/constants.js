@@ -144,3 +144,8 @@ export const filterCategories = {
         values: updatableTypes
     }
 };
+
+export const entityTypes = {
+    advisories: 'advisories',
+    packages: 'packages'
+};

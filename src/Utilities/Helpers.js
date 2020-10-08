@@ -130,16 +130,16 @@ export function getSeverityById(id) {
     );
 }
 
-export function handleAdvisoryLink(name, body) {
+export function handlePatchLink(type, name, body) {
     if (location.href.indexOf('inventory') === -1) {
         return (
-            <Link to={'/advisories/' + name}>
+            <Link to={`/${type}/${name}`}>
                 {body === undefined ? name : body}
             </Link>
         );
     } else {
         return (
-            <a href={`${document.baseURI}insights/patch/advisories/${name}`}>
+            <a href={`${document.baseURI}insights/patch/${type}/${name}`}>
                 {body || name}
             </a>
         );
