@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './App.scss';
-import { Routes, paths } from './Routes';
+import { paths, Routes } from './Routes';
 import { globalFilter } from './store/Actions/Actions';
 // console.log('dev mode');
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
 
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
-                const { SAP } = data.Workloads;
+                const SAP = data?.Workloads?.SAP;
                 const selectedTags = insights.chrome?.mapGlobalFilter?.(data)
                     ?.filter(item => !item.includes('Workloads')).map(tag => (`tags=${encodeURIComponent(tag)}`));
 
