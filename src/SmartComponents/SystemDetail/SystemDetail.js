@@ -2,6 +2,7 @@ import { Tab, Tabs, TabTitleText } from '@patternfly/react-core';
 import React from 'react';
 import SystemAdvisories from '../SystemAdvisories/SystemAdvisories';
 import SystemPackages from '../SystemPackages/SystemPackages';
+import './SystemDetail.scss';
 
 const SystemDetail = () => {
     const [activeTabKey, setActiveTabKey] = React.useState(0);
@@ -10,7 +11,7 @@ const SystemDetail = () => {
     };
 
     return (
-        <Tabs activeKey={activeTabKey} onSelect={onTabSelect} style={{ backgroundColor: 'white' }}>
+        <Tabs activeKey={activeTabKey} onSelect={onTabSelect} className={'patchTabSelect'}>
             <Tab eventKey={0} title={<TabTitleText>Advisories</TabTitleText>}>
                 <SystemAdvisories/>
             </Tab>
