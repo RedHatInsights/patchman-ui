@@ -1,3 +1,10 @@
+## [0.25.4](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.3...v0.25.4) (2020-10-09)
+
+
+### Bug Fixes
+
+* **packages:** Add padding to the tabs ([ac7fd75](https://github.com/RedHatInsights/patchman-ui/commit/ac7fd759df8fa06793dd4129280ce530b35f3857))
+
 ## [0.25.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.2...v0.25.3) (2020-10-08)
 
 
