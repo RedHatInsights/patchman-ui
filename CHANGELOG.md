@@ -1,3 +1,18 @@
+# [0.26.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.4...v0.26.0) (2020-10-12)
+
+
+### Bug Fixes
+
+* **packages:** fix loading of packages ([12b1db1](https://github.com/RedHatInsights/patchman-ui/commit/12b1db1eadf5a6888281c60b9c13c01a2d5a65f8))
+* **packages:** make table compact ([e90caf9](https://github.com/RedHatInsights/patchman-ui/commit/e90caf9f446e8edb987f071438f6382976779a8b))
+* **packages:** Trigger global filter ([c44d50d](https://github.com/RedHatInsights/patchman-ui/commit/c44d50d6917af5ec9bf7b0d1b90e94b932efc446))
+
+
+### Features
+
+* **package-detail:** implement package detail page ([34b8641](https://github.com/RedHatInsights/patchman-ui/commit/34b8641f8e77f67955b55a7a46031eedca3c2cad))
+* **packages:** link package details ([b429005](https://github.com/RedHatInsights/patchman-ui/commit/b42900559dba4d68e8a32f25289efa567a9f2fd6))
+
 ## [0.25.4](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.3...v0.25.4) (2020-10-09)
 
 
