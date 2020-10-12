@@ -37,7 +37,10 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
           Modified: 30 June 2020
         </StackItem>
         <StackItem>
-          <PortalAdvisoryLink />
+          <ExternalLink
+            link="https://access.redhat.com/errata/undefined"
+            text="View packages and errata at access.redhat.com"
+          />
         </StackItem>
       </Stack>
     </WithLoader>
@@ -111,7 +114,10 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
           Modified: 30 June 2020
         </StackItem>
         <StackItem>
-          <PortalAdvisoryLink />
+          <ExternalLink
+            link="https://access.redhat.com/errata/undefined"
+            text="View packages and errata at access.redhat.com"
+          />
         </StackItem>
       </Stack>
     </WithLoader>

@@ -268,8 +268,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 >
                                   The microcode_ctl 
                                 </Text>
-                                <PortalAdvisoryLink
-                                  advisory="RHEA-2020:2743"
+                                <ExternalLink
+                                  link="https://access.redhat.com/errata/RHEA-2020:2743"
+                                  text="View packages and errata at access.redhat.com"
                                 />
                               </TextContent>,
                             },

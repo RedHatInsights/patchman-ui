@@ -2,7 +2,7 @@
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import toJson from 'enzyme-to-json';
 import { publicDateOptions } from '../Utilities/constants';
-import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams, getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, getSeverityById, handleAdvisoryLink, remediationProvider } from './Helpers';
+import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams, getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, getSeverityById, handlePatchLink, remediationProvider } from './Helpers';
 
 const TestHook = ({ callback }) => {
     callback();
@@ -124,7 +124,7 @@ describe('Helpers tests', () => {
         expect(ret).toEqual(expected);
     });
 
-    it('handleAdvisoryLink: Get advisory link from inventory', () => {
+    it('handlePatchLink: Get advisory link from inventory', () => {
         delete global.window.location;
         global.window.location = {
             href: 'https://cloud.redhat.com/insights/inventory'
@@ -132,7 +132,7 @@ describe('Helpers tests', () => {
         const host = document.baseURI;
         let advisoryName = 'ABCD';
         const expected = `${host}insights/patch/advisories/${advisoryName}`;
-        let result = handleAdvisoryLink(advisoryName);
+        let result = handlePatchLink('advisories',advisoryName);
         let {
             props: { href, children }
         } = result;
@@ -140,7 +140,7 @@ describe('Helpers tests', () => {
         expect(children).toEqual(advisoryName);
     });
 
-    it('handleAdvisoryLink: Get advisory link from inventory with custom text', () => {
+    it('handlePatchLink: Get advisory link from inventory with custom text', () => {
         delete global.window.location;
         global.window.location = {
             href: 'https://cloud.redhat.com/insights/inventory'
@@ -148,7 +148,7 @@ describe('Helpers tests', () => {
         const host = document.baseURI;
         let advisoryName = 'ABCD';
         const expected = `${host}insights/patch/advisories/${advisoryName}`;
-        let result = handleAdvisoryLink(advisoryName, 'custom text');
+        let result = handlePatchLink('advisories',advisoryName, 'custom text');
         let {
             props: { href, children }
         } = result;
@@ -156,14 +156,14 @@ describe('Helpers tests', () => {
         expect(children).toEqual('custom text');
     });
 
-    it('handleAdvisoryLink: Get advisory link from patch', () => {
+    it('handlePatchLink: Get advisory link from patch', () => {
         delete global.window.location;
         global.window.location = {
             href: 'https://cloud.redhat.com/rhel/patch'
         };
         let advisoryName = 'ABCD';
         const expected = `/advisories/${advisoryName}`;
-        let result = handleAdvisoryLink(advisoryName);
+        let result = handlePatchLink('advisories',advisoryName);
         let {
             props: { to, children }
         } = result;
@@ -171,14 +171,14 @@ describe('Helpers tests', () => {
         expect(children).toEqual(advisoryName);
     });
 
-    it('handleAdvisoryLink: Get advisory link from patch', () => {
+    it('handlePatchLink: Get advisory link from patch', () => {
         delete global.window.location;
         global.window.location = {
             href: 'https://cloud.redhat.com/rhel/patch'
         };
         let advisoryName = 'ABCD';
         const expected = `/advisories/${advisoryName}`;
-        let result = handleAdvisoryLink(advisoryName, 'custom text');
+        let result = handlePatchLink('advisories',advisoryName, 'custom text');
         let {
             props: { to, children }
         } = result;
