@@ -1,3 +1,5 @@
+## [0.26.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.26.0...v0.26.1) (2020-10-13)
+
 # [0.26.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.4...v0.26.0) (2020-10-12)
 
 
