@@ -2,7 +2,7 @@
 /* eslint-disable */
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
 import { CHANGE_AFFECTED_SYSTEMS_PARAMS, CLEAR_AFFECTED_SYSTEMS, FETCH_AFFECTED_SYSTEMS } from '../ActionTypes';
-import { AffectedSystemsStore } from './AffectedSystemsStore';
+import { AdvisorySystemsStore } from './AdvisorySystemsStore';
 const action_fulfilled = FETCH_AFFECTED_SYSTEMS + '_FULFILLED';
 const action_rejected = FETCH_AFFECTED_SYSTEMS + '_REJECTED';
 const action_pending = FETCH_AFFECTED_SYSTEMS + '_PENDING';
@@ -18,7 +18,7 @@ const fulfilled_payload = {
 
 const error = 'Error';
 
-describe('AffectedSystemsStore tests', () => {
+describe('AdvisorySystemsStore tests', () => {
     it.each`
     state                | action                                                              | result
     ${storeListDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}           | ${{ ...storeListDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: STATUS_RESOLVED, error: {} }}
@@ -31,7 +31,7 @@ describe('AffectedSystemsStore tests', () => {
     ${storeListDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                | ${storeListDefaults}
     ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                | ${storeListDefaults}
     `('$action', ({ state, action: { type, payload }, result }) => {
-    const res = AffectedSystemsStore(state, { type, payload });
+    const res = AdvisorySystemsStore(state, { type, payload });
     expect(res).toEqual(result);
 });
 });

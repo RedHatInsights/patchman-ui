@@ -1,13 +1,12 @@
-import AffectedSystems from './AffectedSystems';
 import toJson from 'enzyme-to-json';
-import { Provider } from 'react-redux';
-import { systemRows } from '../../Utilities/RawDataForTesting';
-import configureStore from 'redux-mock-store';
-import { initMocks } from '../../Utilities/unitTestingUtilities.js';
-import { storeListDefaults } from '../../Utilities/constants';
-import { useSelector } from 'react-redux';
 import { act } from 'react-dom/test-utils';
-import { fetchAffectedSystems } from '../../Utilities/api';
+import { Provider, useSelector } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { fetchAdvisorySystems } from '../../Utilities/api';
+import { storeListDefaults } from '../../Utilities/constants';
+import { systemRows } from '../../Utilities/RawDataForTesting';
+import { initMocks } from '../../Utilities/unitTestingUtilities.js';
+import AdvisorySystems from './AdvisorySystems';
 /* eslint-disable */
 initMocks()
 
@@ -24,7 +23,7 @@ jest.mock('../../store', () => ({
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    fetchAffectedSystems: jest.fn()
+    fetchAdvisorySystems: jest.fn()
 }));
 
 const mockState = { ...storeListDefaults, rows: systemRows, selectedRows: { 'f99c98e6-e17c-4536-acbb-2bc795547d4f': true }};
@@ -32,12 +31,12 @@ const mockState = { ...storeListDefaults, rows: systemRows, selectedRows: { 'f99
 const initStore = (state) => {
     const customMiddleWare = store => next => action => {
         useSelector.mockImplementation(callback => {
-            return callback({ AffectedSystemsStore: state });
+            return callback({ AdvisorySystemsStore: state });
         });
         next(action);
     };
     const mockStore = configureStore([customMiddleWare]);
-    return mockStore({ AffectedSystemsStore: state });
+    return mockStore({ AdvisorySystemsStore: state });
 }
 
 let store = initStore(mockState);
@@ -46,12 +45,12 @@ beforeEach(() => {
     console.error = () => {};
     store.clearActions();
     useSelector.mockImplementation(callback => {
-        return callback({ AffectedSystemsStore: mockState });
+        return callback({ AdvisorySystemsStore: mockState });
     });
 
     act(() => {
         wrapper = mount(<Provider store={store}>
-            <AffectedSystems advisoryName = {'RHSA-2020:2755'} />
+            <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
         </Provider>);
 
     });
@@ -61,7 +60,7 @@ afterEach(() => {
     useSelector.mockClear();
 });
 
-describe('AffectedSystems.js', () => {
+describe('AdvisorySystems.js', () => {
     it('Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -69,11 +68,11 @@ describe('AffectedSystems.js', () => {
     it('Should display error page when status is rejected', () => {
         const rejectedState = { ...mockState, status: 'rejected', error: { detail: 'test' } };
         useSelector.mockImplementation(callback => {
-            return callback({ AffectedSystemsStore: rejectedState });
+            return callback({ AdvisorySystemsStore: rejectedState });
         });
         const tempStore = initStore(rejectedState);
         const tempWrapper = mount(<Provider store={tempStore}>
-            <AffectedSystems advisoryName = {'RHSA-2020:2755'} />
+            <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
         </Provider>);
         expect(tempWrapper.find('Error')).toBeTruthy();
     });
@@ -109,19 +108,19 @@ describe('AffectedSystems.js', () => {
         });
 
         it('Should select all', () => {
-            fetchAffectedSystems.mockReturnValue(new Promise((resolve, reject) =>  {
+            fetchAdvisorySystems.mockReturnValue(new Promise((resolve, reject) =>  {
                 resolve({ data: systemRows });
             }));
 
             const { bulkSelect } = wrapper.update().find('InventoryTable').props();
 
             bulkSelect.items[2].onClick();
-            expect(fetchAffectedSystems).toHaveBeenCalled();
+            expect(fetchAdvisorySystems).toHaveBeenCalled();
             expect(bulkSelect.items[2].title).toEqual('Select all (0)');            
         });
 
         it('Should handle onSelect', () => {
-            fetchAffectedSystems.mockReturnValue(new Promise((resolve, reject) =>  {
+            fetchAdvisorySystems.mockReturnValue(new Promise((resolve, reject) =>  {
                 resolve({ data: systemRows });
             }));
 

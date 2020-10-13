@@ -5,7 +5,7 @@ import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilitie
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
 import { AdvisoryListStore } from './Reducers/AdvisoryListStore';
-import { AffectedSystemsStore } from './Reducers/AffectedSystemsStore';
+import { AdvisorySystemsStore } from './Reducers/AdvisorySystemsStore';
 import { PackageDetailStore } from './Reducers/PackageDetailStore';
 import { PackagesListStore } from './Reducers/PackagesListStore';
 import { SystemAdvisoryListStore } from './Reducers/SystemAdvisoryListStore';
@@ -39,7 +39,7 @@ export function init(...middleware) {
         SystemDetailStore: (state = storage.SystemDetailStore, action) => SystemDetailStore(state, action),
         SystemAdvisoryListStore: (state = storage.SystemAdvisoryListStore, action) => SystemAdvisoryListStore(state, action),
         AdvisoryDetailStore: (state = storage.AdvisoryDetailStore, action) => AdvisoryDetailStore(state, action),
-        AffectedSystemsStore: (state = storage.AffectedSystemsStore, action) => AffectedSystemsStore(state, action),
+        AdvisorySystemsStore: (state = storage.AdvisorySystemsStore, action) => AdvisorySystemsStore(state, action),
         SystemPackageListStore: (state = storage.SystemPackageListStore, action) => SystemPackageListStore(state, action),
         PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
         PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),

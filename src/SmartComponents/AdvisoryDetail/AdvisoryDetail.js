@@ -1,4 +1,4 @@
-import { Text, TextContent, TextVariants, Stack, StackItem } from '@patternfly/react-core';
+import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -8,9 +8,9 @@ import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/Adviso
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { paths } from '../../Routes';
-import { clearAdvisoryDetailStore, clearAffectedSystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
+import { clearAdvisoryDetailStore, clearAdvisorySystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
 import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
-import AffectedSystems from '../AffectedSystems/AffectedSystems';
+import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
 
 const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const AdvisoryDetail = ({ match }) => {
 
     React.useEffect(() => {
         return () => {
-            dispatch(clearAffectedSystemsStore());
+            dispatch(clearAdvisorySystemsStore());
             dispatch(clearAdvisoryDetailStore());
         };
     }, []);
@@ -70,7 +70,7 @@ const AdvisoryDetail = ({ match }) => {
                         </TextContent>
                     </StackItem>
                     <StackItem>
-                        <AffectedSystems advisoryName={advisoryName} />
+                        <AdvisorySystems advisoryName={advisoryName} />
                     </StackItem>
                 </Stack>
             </Main>

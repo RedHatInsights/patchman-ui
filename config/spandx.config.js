@@ -11,7 +11,6 @@ module.exports = {
         '/beta/insights/patch': { host: `https://${localhost}:8002` },
         '/insights/patch': { host: `https://${localhost}:8002` },
         '/apps/patch': { host: `https://${localhost}:8002` },
-        '/apps/chrome': { host: `https://ci.cloud.redhat.com/beta/` },
         '/apps/inventory': { host: `https://${localhost}:8002` },
         '/beta/apps/patch': { host: `https://${localhost}:8002` },
         '/apps/dashboard': { host: `http://${localhost}:8002` }

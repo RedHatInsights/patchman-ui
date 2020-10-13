@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AffectedSystems.js Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once 1`] = `
+exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once 1`] = `
 <Provider
   store={
     Object {
@@ -13,7 +13,7 @@ exports[`AffectedSystems.js Should match the snapshots and dispatch FETCH_AFFECT
     }
   }
 >
-  <AffectedSystems
+  <AdvisorySystems
     advisoryName="RHSA-2020:2755"
   />
 </Provider>

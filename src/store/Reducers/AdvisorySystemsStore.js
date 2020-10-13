@@ -8,7 +8,7 @@ import {
     fetchFulfilled
 } from './HelperReducers';
 
-export const AffectedSystemsStore = (state = storeListDefaults, action) => {
+export const AdvisorySystemsStore = (state = storeListDefaults, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_AFFECTED_SYSTEMS + '_PENDING':

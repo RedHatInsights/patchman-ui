@@ -39,7 +39,7 @@ export const inventoryEntitiesReducer = (columns, currentPage) => (state = init,
     const store = action.store && action.store.getState();
 
     //display patch 'last_upload' instead of Inventory 'updated' column
-    const PatchStore  = store && (currentPage === 'SYSTEMS_PAGE' ? store.SystemsListStore : store.AffectedSystemsStore);
+    const PatchStore  = store && (currentPage === 'SYSTEMS_PAGE' ? store.SystemsListStore : store.AdvisorySystemsStore);
 
     switch (action.type) {
         case 'LOAD_ENTITIES_FULFILLED':

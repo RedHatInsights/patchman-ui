@@ -1,12 +1,11 @@
-import AdvisoryDetail from './AdvisoryDetail';
 import toJson from 'enzyme-to-json';
-import { Provider } from 'react-redux';
-import { advisoryDetailRows } from '../../Utilities/RawDataForTesting';
-import configureStore from 'redux-mock-store';
-import { initMocks } from '../../Utilities/unitTestingUtilities.js';
-import { storeListDefaults } from '../../Utilities/constants';
+import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { storeListDefaults } from '../../Utilities/constants';
+import { advisoryDetailRows } from '../../Utilities/RawDataForTesting';
+import { initMocks } from '../../Utilities/unitTestingUtilities.js';
+import AdvisoryDetail from './AdvisoryDetail';
 
 /* eslint-disable */
 initMocks()
@@ -20,7 +19,7 @@ jest.mock('react-redux', () => ({
     useSelector: jest.fn()
 }));
 
-jest.mock('../AffectedSystems/AffectedSystems', () => 
+jest.mock('../AdvisorySystems/AdvisorySystems', () => 
     () =>  <div> hello </div> 
 );
 

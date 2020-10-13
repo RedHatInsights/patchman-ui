@@ -11,9 +11,9 @@ import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
-import { changeAffectedSystemsParams, clearAffectedSystemsStore, fetchAffectedSystemsAction } from '../../store/Actions/Actions';
+import { changeAdvisorySystemsParams, clearAdvisorySystemsStore, fetchAdvisorySystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
-import { fetchAffectedSystems } from '../../Utilities/api';
+import { fetchAdvisorySystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
@@ -21,34 +21,34 @@ import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 
-const AffectedSystems = ({ advisoryName }) => {
+const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
     const [InventoryCmp, setInventoryCmp] = React.useState();
     const [
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-    const rawAffectedSystems = useSelector(
-        ({ AffectedSystemsStore }) => AffectedSystemsStore.rows
+    const rawAdvisorySystems = useSelector(
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.rows
     );
     const status = useSelector(
-        ({ AffectedSystemsStore }) => AffectedSystemsStore.status
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.status
     );
     const error = useSelector(
-        ({ AffectedSystemsStore }) => AffectedSystemsStore.error
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.error
     );
     const selectedRows = useSelector(
-        ({ AffectedSystemsStore }) => AffectedSystemsStore.selectedRows
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.selectedRows
     );
     const hosts = React.useMemo(
-        () => createSystemsRows(rawAffectedSystems, selectedRows),
-        [rawAffectedSystems]
+        () => createSystemsRows(rawAdvisorySystems, selectedRows),
+        [rawAdvisorySystems]
     );
     const metadata = useSelector(
-        ({ AffectedSystemsStore }) => AffectedSystemsStore.metadata
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.metadata
     );
     const queryParams = useSelector(
-        ({ AffectedSystemsStore }) => AffectedSystemsStore.queryParams
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.queryParams
     );
 
     const inventoryColumns = useSelector(
@@ -59,12 +59,12 @@ const AffectedSystems = ({ advisoryName }) => {
     const { filter, search } = queryParams;
 
     React.useEffect(() => {
-        return () => dispatch(clearAffectedSystemsStore());
+        return () => dispatch(clearAdvisorySystemsStore());
     }, []);
 
     React.useEffect(() => {
         dispatch(
-            fetchAffectedSystemsAction({ id: advisoryName, ...queryParams })
+            fetchAdvisorySystemsAction({ id: advisoryName, ...queryParams })
         );
     }, [queryParams]);
 
@@ -104,7 +104,7 @@ const AffectedSystems = ({ advisoryName }) => {
     const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
     function apply(params) {
-        dispatch(changeAffectedSystemsParams(params));
+        dispatch(changeAdvisorySystemsParams(params));
     }
 
     const removeFilter = useRemoveFilter(filter, apply);
@@ -143,7 +143,7 @@ const AffectedSystems = ({ advisoryName }) => {
             }
 
             case 'page': {
-                rawAffectedSystems.forEach(({ id })=>{
+                rawAdvisorySystems.forEach(({ id })=>{
                     toSelect.push(
                         {
                             id,
@@ -170,7 +170,7 @@ const AffectedSystems = ({ advisoryName }) => {
                     );
                 };
 
-                fetchAffectedSystems({ id: advisoryName, limit: 999999 }).then(fetchCallback);
+                fetchAdvisorySystems({ id: advisoryName, limit: 999999 }).then(fetchCallback);
 
                 break;
             }
@@ -258,8 +258,8 @@ const AffectedSystems = ({ advisoryName }) => {
     );
 };
 
-AffectedSystems.propTypes = {
+AdvisorySystems.propTypes = {
     advisoryName: propTypes.string
 };
 
-export default AffectedSystems;
+export default AdvisorySystems;

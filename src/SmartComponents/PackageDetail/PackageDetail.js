@@ -29,7 +29,7 @@ const PackageDetail = ({ match }) => {
 
     React.useEffect(() => {
         return () => {
-            //dispatch(clearAffectedSystemsStore());
+            //dispatch(clearAdvisorySystemsStore());
             dispatch(clearPackageDetailStore());
         };
     }, []);
