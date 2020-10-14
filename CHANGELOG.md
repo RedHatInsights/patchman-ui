@@ -1,3 +1,10 @@
+## [0.26.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.26.1...v0.26.2) (2020-10-14)
+
+
+### Bug Fixes
+
+* **globalFilter:** remove Patch scope ([03be66f](https://github.com/RedHatInsights/patchman-ui/commit/03be66f5a328b0b8631a188cced11f038d74dd0b))
+
 ## [0.26.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.26.0...v0.26.1) (2020-10-13)
 
 # [0.26.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.25.4...v0.26.0) (2020-10-12)
