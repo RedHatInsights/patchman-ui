@@ -13,7 +13,6 @@ class App extends Component {
         insights.chrome.init();
         insights.chrome.identifyApp('patch');
         insights.chrome.enable.globalFilter();
-        insights.chrome?.globalFilterScope?.('patch');
 
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
