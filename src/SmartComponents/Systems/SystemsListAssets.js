@@ -1,6 +1,6 @@
 import { sortable } from '@patternfly/react-table/dist/js';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
-import { createAdvisoriesIcons, remediationProvider } from '../../Utilities/Helpers';
+import { createAdvisoriesIcons, createUpgradableColumn, remediationProvider } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 
 export const systemsListColumns = [
@@ -29,6 +29,42 @@ export const systemsListColumns = [
             width: 20
         },
         renderFunc: value => createAdvisoriesIcons(value)
+    }
+];
+
+export const packageSystemsColumns = [
+    {
+        key: 'display_name',
+        title: 'Name',
+        composed: ['facts.os_release', 'display_name'],
+        transforms: [sortable],
+        props: {
+            width: 50
+        }
+    },
+    {
+        key: 'installed_version',
+        title: 'Installed version',
+        transforms: [sortable],
+        props: {
+            width: 10
+        }
+    },
+    {
+        key: 'latest_version',
+        title: 'Latest version',
+        transforms: [sortable],
+        props: {
+            width: 10
+        }
+    },
+    {
+        key: 'upgradable',
+        title: 'Status',
+        props: {
+            width: 20
+        },
+        renderFunc: value => createUpgradableColumn(value)
     }
 ];
 

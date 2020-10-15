@@ -8,6 +8,7 @@ import Header from '../../PresentationalComponents/Header/Header';
 import PackageHeader from '../../PresentationalComponents/PackageHeader/PackageHeader';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { paths } from '../../Routes';
+import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
 import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 
@@ -69,7 +70,7 @@ const PackageDetail = ({ match }) => {
                         </TextContent>
                     </StackItem>
                     <StackItem>
-
+                        <PackageSystems packageName={packageName}></PackageSystems>
                     </StackItem>
                 </Stack>
             </Main>

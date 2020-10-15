@@ -1,5 +1,4 @@
 import { Text, TextContent, TextVariants } from '@patternfly/react-core';
-import { CheckIcon, LongArrowAltUpIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
@@ -8,7 +7,7 @@ import { EmptyAdvisoryList, EmptyPackagesList } from '../PresentationalComponent
 import ExternalLink from '../PresentationalComponents/Snippets/ExternalLink';
 import Label from '../PresentationalComponents/Snippets/Label';
 import { entityTypes } from './constants';
-import { handlePatchLink, truncate } from './Helpers';
+import { createUpgradableColumn, handlePatchLink, truncate } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -156,6 +155,22 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
     return data || [];
 };
 
+export const createPackageSystemsRows = (rows, selectedRows = {}) => {
+    const data =
+        rows &&
+        rows.map(row => {
+            return {
+                id: row.id,
+                key: Math.random().toString() + row.id,
+                installed_version: row.installed_evra,
+                latest_version: row.available_evra,
+                upgradable: row.updatable,
+                selected: selectedRows[row.id] !== undefined
+            };
+        });
+    return data || [];
+};
+
 export const createSystemPackagesRows = (rows, selectedRows = {}) => {
     if (rows.length !== 0) {
         return rows.map(pkg => {
@@ -171,22 +186,7 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
                     { title: handlePatchLink(entityTypes.packages, pkg.name) },
                     { title: pkg.evra },
                     { title: (latestUpdate && latestUpdate.evra) || pkg.evra },
-                    { title:
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center'
-                        }}>
-                            {
-                                pkg.updatable && <LongArrowAltUpIcon style={{ color: 'var(--pf-global--palette--blue-400)' }} />
-                                    || <CheckIcon style={{ color: 'var(--pf-global--success-color--100)' }}/>
-                            }
-                            {<span style={{ marginLeft: 'var(--pf-global--spacer--sm)' }}>
-                                {
-                                    pkg.updatable && 'Upgradable' || 'Up-to-date'
-                                }
-                            </span>}
-                        </div>
-                    },
+                    { title: createUpgradableColumn(pkg.updatable) },
                     { title: pkg.summary }
                 ]
             };

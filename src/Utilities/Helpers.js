@@ -1,4 +1,5 @@
 import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
+import { CheckIcon, LongArrowAltUpIcon } from '@patternfly/react-icons';
 import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
 import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
@@ -121,6 +122,23 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
             )}
         </div>
     );
+}
+
+export function createUpgradableColumn(value) {
+    return <div style={{
+        display: 'flex',
+        alignItems: 'center'
+    }}>
+        {
+            value && <LongArrowAltUpIcon style={{ color: 'var(--pf-global--palette--blue-400)' }} />
+                || <CheckIcon style={{ color: 'var(--pf-global--success-color--100)' }}/>
+        }
+        {<span style={{ marginLeft: 'var(--pf-global--spacer--sm)' }}>
+            {
+                value && 'Upgradable' || 'Up-to-date'
+            }
+        </span>}
+    </div>;
 }
 
 export function getSeverityById(id) {

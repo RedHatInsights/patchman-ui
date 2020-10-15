@@ -35,6 +35,17 @@ function modifyInventory(columns, hosts, state) {
     return state;
 }
 
+function modifyPackageSystems(columns, hosts, state) {
+    if (state.loaded) {
+        return {
+            ...state,
+            columns
+        };
+    }
+
+    return state;
+}
+
 export const inventoryEntitiesReducer = (columns, currentPage) => (state = init, action) => {
     const store = action.store && action.store.getState();
 
@@ -44,6 +55,17 @@ export const inventoryEntitiesReducer = (columns, currentPage) => (state = init,
     switch (action.type) {
         case 'LOAD_ENTITIES_FULFILLED':
             return modifyInventory(columns, PatchStore.rows, state);
+
+        default:
+            return state;
+    }
+};
+
+export const packagesSystemsInventoryReducer = (columns) => (state = init, action) => {
+    const store = action.store && action.store.getState();
+    switch (action.type) {
+        case 'LOAD_ENTITIES_FULFILLED':
+            return modifyPackageSystems(columns, store.PackageSystemsStore?.rows, state);
 
         default:
             return state;
