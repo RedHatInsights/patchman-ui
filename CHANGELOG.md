@@ -1,3 +1,10 @@
+# [0.27.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.26.2...v0.27.0) (2020-10-15)
+
+
+### Features
+
+* **systemPackages:** add systems view per package ([f1be044](https://github.com/RedHatInsights/patchman-ui/commit/f1be044f638029097c28492360251fd408fbfdd4))
+
 ## [0.26.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.26.1...v0.26.2) (2020-10-14)
 
 
