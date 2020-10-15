@@ -1,3 +1,10 @@
+## [0.27.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.0...v0.27.1) (2020-10-15)
+
+
+### Bug Fixes
+
+* **SAP:** fix SAP filtering, don't encode url ([3c52ae8](https://github.com/RedHatInsights/patchman-ui/commit/3c52ae89263b31bb46634b6e570f047cfbc5bc41))
+
 # [0.27.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.26.2...v0.27.0) (2020-10-15)
 
 
