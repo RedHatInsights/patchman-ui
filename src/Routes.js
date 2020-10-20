@@ -106,7 +106,7 @@ InsightsRoute.propTypes = {
 export const Routes = (props: Props) => {
 
     React.useEffect(() => {
-        const systems = fetchSystems();
+        const systems = fetchSystems({ limit: 1 });
         systems.then((res) => {
             if (res.meta.total_items === 0) {
                 props.childProps.history.replace(paths.register.to);
