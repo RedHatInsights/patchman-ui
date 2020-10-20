@@ -77,6 +77,10 @@ export const paths = {
     packageDetail: {
         title: 'Package detail',
         to: '/packages/:packageName'
+    },
+    packageDetailSystem: {
+        title: '',
+        to: '/packages/:packageName/:inventoryId'
     }
 };
 
@@ -118,6 +122,10 @@ export const Routes = (props: Props) => {
                 <Route path="/:url*" exact strict render={() => <Redirect to={`${path}/`}/>}/>
                 <Redirect
                     from={paths.advisoryDetailSystem.to}
+                    to={paths.inventoryDetail.to}
+                />
+                <Redirect
+                    from={paths.packageDetailSystem.to}
                     to={paths.inventoryDetail.to}
                 />
                 <InsightsRoute
