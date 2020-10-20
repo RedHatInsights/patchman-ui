@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import './App.scss';
 import { paths, Routes } from './Routes';
 import { globalFilter } from './store/Actions/Actions';
+/*eslint-disable */
 // console.log('dev mode');
 class App extends Component {
 
@@ -16,6 +17,7 @@ class App extends Component {
 
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
+                const [workloads, SID, tags] = insights.chrome?.mapGlobalFilter?.(data, false, true);
                 const SAP = data?.Workloads?.SAP;
                 const selectedTags = insights.chrome?.mapGlobalFilter?.(data)
                     ?.filter(item => !item.includes('Workloads')).map(tag => (`tags=${encodeURIComponent(tag)}`));
@@ -25,6 +27,10 @@ class App extends Component {
                     ? (config.systemProfile = `filter[system_profile][sap_system]=${SAP.isSelected}`)
                     : config.systemProfile = undefined;
                 selectedTags && (config.selectedTags = selectedTags);
+                if (SID?.length !== 0) {
+                    const SID_filter = `filter[system_profile][sap_sids][in]=${SID}`;
+                    config.systemProfile = config.systemProfile?.concat(SID_filter) || SID_filter;
+                }
 
                 this.props.globalFilter(config);
 
