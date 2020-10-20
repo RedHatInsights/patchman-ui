@@ -1,3 +1,11 @@
+## [0.27.5](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.4...v0.27.5) (2020-10-20)
+
+
+### Bug Fixes
+
+* **api:** reduce size of initial "/systems" response ([0dbca04](https://github.com/RedHatInsights/patchman-ui/commit/0dbca04166f437245fd821da9d330ca6258e469a))
+* **packageDetail:** display latest version when same as installed ([7a9f07a](https://github.com/RedHatInsights/patchman-ui/commit/7a9f07a9cdd58548b94662ffc53ba21ac0f35816))
+
 ## [0.27.4](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.3...v0.27.4) (2020-10-20)
 
 
