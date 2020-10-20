@@ -1,3 +1,10 @@
+## [0.27.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.2...v0.27.3) (2020-10-20)
+
+
+### Bug Fixes
+
+* **SAP:** enable SID filtering ([ed1f307](https://github.com/RedHatInsights/patchman-ui/commit/ed1f307d5592d6638c5b1c002e6f316a6fa00833))
+
 ## [0.27.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.1...v0.27.2) (2020-10-20)
 
 
