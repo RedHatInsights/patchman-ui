@@ -10,7 +10,7 @@ import Error from '../../PresentationalComponents/Snippets/Error';
 import { paths } from '../../Routes';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
-import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_REJECTED, ENABLE_PACKAGES } from '../../Utilities/constants';
 
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const PackageDetail = ({ match }) => {
                         to: paths.advisories.to,
                         isActive: false
                     },
-                    {
+                    ENABLE_PACKAGES && {
                         title: 'Packages',
                         to: paths.packages.to,
                         isActive: false

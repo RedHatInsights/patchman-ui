@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { Fragment, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
+import { ENABLE_PACKAGES } from './Utilities/constants';
 
 const Advisories = lazy(() =>
     import(
@@ -144,12 +145,13 @@ export const Routes = (props: Props) => {
                     component={Advisories}
                     rootClass="Patchman"
                 />
+                {ENABLE_PACKAGES &&
                 <InsightsRoute
                     exact
                     path={paths.packages.to}
                     component={PackagsPage}
                     rootClass="Patchman"
-                />
+                />}
                 <InsightsRoute
                     exact
                     path={paths.register.to}
