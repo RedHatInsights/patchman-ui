@@ -1,3 +1,10 @@
+## [0.27.4](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.3...v0.27.4) (2020-10-20)
+
+
+### Bug Fixes
+
+* **packageDetail:** affected systems by a package are now clickable ([14eb462](https://github.com/RedHatInsights/patchman-ui/commit/14eb46269f0a5ffa43d6356ec940866b1690bc53))
+
 ## [0.27.3](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.2...v0.27.3) (2020-10-20)
 
 
