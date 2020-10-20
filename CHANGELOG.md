@@ -1,3 +1,10 @@
+## [0.27.2](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.1...v0.27.2) (2020-10-20)
+
+
+### Bug Fixes
+
+* **SAP:** fix offset when setting global filter ([ad8372e](https://github.com/RedHatInsights/patchman-ui/commit/ad8372ebfa4f0ee2ab4238275e3a9a8e304a452d))
+
 ## [0.27.1](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.0...v0.27.1) (2020-10-15)
 
 
