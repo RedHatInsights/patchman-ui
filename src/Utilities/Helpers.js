@@ -323,7 +323,7 @@ export const buildFilterChips = (filters, search) => {
 
 export const changeListParams = (oldParams, newParams) => {
     const newState = { ...oldParams, ...newParams };
-    const offsetResetParams = ['filter', 'search', 'limit'];
+    const offsetResetParams = ['filter', 'search', 'limit', 'selectedTags'];
     if (offsetResetParams.some(item => newParams.hasOwnProperty(item))) {
         newState.offset = 0;
     }
