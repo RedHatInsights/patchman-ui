@@ -1,4 +1,5 @@
 import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/cjs/NotificationPortal';
+import { isEqual } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -9,7 +10,14 @@ import { globalFilter } from './store/Actions/Actions';
 /*eslint-disable */
 // console.log('dev mode');
 class App extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = { config:
+            {
+                selectedTags: [],
+                systemProfile: undefined
+            }};
+    }
     componentDidMount() {
         insights.chrome.init();
         insights.chrome.identifyApp('patch');
@@ -31,8 +39,10 @@ class App extends Component {
                     const SID_filter = `filter[system_profile][sap_sids][in]=${SID}`;
                     config.systemProfile = config.systemProfile?.concat(SID_filter) || SID_filter;
                 }
-
-                this.props.globalFilter(config);
+                if (!isEqual(this.state.config, config)) {
+                    this.props.globalFilter(config);
+                    this.setState({config});
+                }
 
             });
         }
