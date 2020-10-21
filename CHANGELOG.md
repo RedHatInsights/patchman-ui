@@ -1,3 +1,10 @@
+## [0.27.6](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.5...v0.27.6) (2020-10-21)
+
+
+### Bug Fixes
+
+* **SAP:** don't trigger update when there is no change ([2bc6355](https://github.com/RedHatInsights/patchman-ui/commit/2bc63555b88ee0da29a75d3ee322fda11d5e26ad))
+
 ## [0.27.5](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.4...v0.27.5) (2020-10-20)
 
 
