@@ -170,7 +170,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     );
                 };
 
-                fetchAdvisorySystems({ id: advisoryName, limit: 999999 }).then(fetchCallback);
+                fetchAdvisorySystems({ ...queryParams, id: advisoryName, limit: -1 }).then(fetchCallback);
 
                 break;
             }

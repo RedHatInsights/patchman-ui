@@ -124,7 +124,7 @@ const SystemAdvisories = ({ history }) => {
                     );
                 };
 
-                fetchApplicableSystemAdvisoriesApi({ id: entity.id, limit: 999999 }).then(fetchCallback);
+                fetchApplicableSystemAdvisoriesApi({ id: entity.id, limit: -1 }).then(fetchCallback);
 
                 break;
             }

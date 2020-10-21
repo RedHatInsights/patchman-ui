@@ -108,7 +108,7 @@ const SystemPackages = () => {
                     );
                 };
 
-                fetchApplicablePackagesApi({ id: entity.id, limit: 999999 }).then(fetchCallback);
+                fetchApplicablePackagesApi({ id: entity.id, limit: -1 }).then(fetchCallback);
 
                 break;
             }
