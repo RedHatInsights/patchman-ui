@@ -132,7 +132,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     toSelect.push(
                         {
                             id,
-                            selected: id
+                            selected: false
                         }
                     );
                 });
