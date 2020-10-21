@@ -132,7 +132,7 @@ describe('AdvisorySystems.js', () => {
             expect(dispatchedActions[1].payload).toEqual([
                     {
                     id: 'f99c98e6-e17c-4536-acbb-2bc795547d4f',
-                    selected: 'f99c98e6-e17c-4536-acbb-2bc795547d4f'
+                    selected: false
                     }
                 ]
             );            
