@@ -1,3 +1,11 @@
+## [0.27.7](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.6...v0.27.7) (2020-10-21)
+
+
+### Bug Fixes
+
+* **advisorySystems:** deselect of items fixed ([304750e](https://github.com/RedHatInsights/patchman-ui/commit/304750e0455688d904d44b7e51fb4782fa0a9193))
+* **selectAll:** select should take tags into account ([cafe86a](https://github.com/RedHatInsights/patchman-ui/commit/cafe86a58f974c652bad3428c75bbbd1171c6071))
+
 ## [0.27.6](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.5...v0.27.6) (2020-10-21)
 
 
