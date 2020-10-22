@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import SystemAdvisories from './SmartComponents/SystemAdvisories/SystemAdvisories';
-const WrappedSystemAdvisories = (props) => {
+import SystemDetail from './SmartComponents/SystemDetail/SystemDetail';
+const WrappedSystemDetail = (props) => {
     return <Router>
-        <SystemAdvisories {...props} />
+        <SystemDetail {...props} />
     </Router>;
 };
 
 export { SystemAdvisoryListStore } from './store/Reducers/SystemAdvisoryListStore';
-export default WrappedSystemAdvisories;
+export { SystemPackageListStore } from './store/Reducers/SystemPackageListStore';
+
+export default WrappedSystemDetail;
