@@ -1,3 +1,10 @@
+## [0.27.8](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.7...v0.27.8) (2020-10-22)
+
+
+### Bug Fixes
+
+* **tableView:** fix selectAll select page number ([015654e](https://github.com/RedHatInsights/patchman-ui/commit/015654ed9236fbea90d5b22ee9fc92c38f60a200))
+
 ## [0.27.7](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.6...v0.27.7) (2020-10-21)
 
 
