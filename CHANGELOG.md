@@ -1,3 +1,11 @@
+## [0.27.9](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.8...v0.27.9) (2020-10-22)
+
+
+### Bug Fixes
+
+* **exports:** Add new exports to rollup ([33f9e70](https://github.com/RedHatInsights/patchman-ui/commit/33f9e70de67eecd688cee5a65befdf92a5e89536))
+* **exports:** fix exports of components ([b981c88](https://github.com/RedHatInsights/patchman-ui/commit/b981c888d913fc0459bf77c30875f3f7bf857903))
+
 ## [0.27.8](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.7...v0.27.8) (2020-10-22)
 
 
