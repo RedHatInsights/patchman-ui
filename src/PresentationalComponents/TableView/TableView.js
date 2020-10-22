@@ -87,7 +87,7 @@ const TableView = ({
                             onSelect('none');
                         }
                     }, {
-                        title: `Select page (${rows.length / 2})`,
+                        title: `Select page (${onCollapse && rows.length / 2 || rows.length})`,
                         onClick: () => {
                             onSelect('page');
                         }
