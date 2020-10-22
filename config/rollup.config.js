@@ -77,7 +77,8 @@ export default [
     ...['esm', 'cjs'].map(env => ({
         input: {
             index: 'src/index.js',
-            SystemAdvisoryListStore: 'src/store/Reducers/SystemAdvisoryListStore.js'
+            SystemAdvisoryListStore: 'src/store/Reducers/SystemAdvisoryListStore.js',
+            SystemPackageListStore: 'src/store/Reducers/SystemPackageListStore.js'
         },
         output: {
             dir: `./dist/${env}`,
@@ -91,7 +92,8 @@ export default [
     })),
     ...Object.entries({
         index: 'src/index.js',
-        SystemAdvisoryListStore: 'src/store/Reducers/SystemAdvisoryListStore.js'
+        SystemAdvisoryListStore: 'src/store/Reducers/SystemAdvisoryListStore.js',
+        SystemPackageListStore: 'src/store/Reducers/SystemPackageListStore.js'
     }).map(([key, input]) => ({
         input,
         output: {
