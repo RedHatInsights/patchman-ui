@@ -162,8 +162,8 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
             return {
                 id: row.id,
                 key: Math.random().toString() + row.id,
-                installed_version: row.installed_evra,
-                latest_version: row.updatable && row.available_evra || row.installed_evra,
+                installed_evra: row.installed_evra,
+                available_evra: row.updatable && row.available_evra || row.installed_evra,
                 upgradable: row.updatable,
                 selected: selectedRows[row.id] !== undefined
             };

@@ -202,9 +202,9 @@ const PackageSystems = ({ packageName }) => {
         return [...packageSystemsColumns, updated];
     };
 
-    const onSort = useSortColumn(getMangledColumns(), apply, 1);
+    const onSort = useSortColumn(getMangledColumns(), apply, 0);
     const sortBy = React.useMemo(
-        () => createSortBy(getMangledColumns(), metadata.sort, 1),
+        () => createSortBy(getMangledColumns(), metadata.sort, 0),
         [metadata.sort]
     );
 

@@ -37,13 +37,12 @@ export const packageSystemsColumns = [
         key: 'display_name',
         title: 'Name',
         composed: ['facts.os_release', 'display_name'],
-        transforms: [sortable],
         props: {
             width: 50
         }
     },
     {
-        key: 'installed_version',
+        key: 'installed_evra',
         title: 'Installed version',
         transforms: [sortable],
         props: {
@@ -51,7 +50,7 @@ export const packageSystemsColumns = [
         }
     },
     {
-        key: 'latest_version',
+        key: 'available_evra',
         title: 'Latest version',
         transforms: [sortable],
         props: {
