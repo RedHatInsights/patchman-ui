@@ -21,7 +21,6 @@ class App extends Component {
     componentDidMount() {
         insights.chrome.init();
         insights.chrome.identifyApp('patch');
-        insights.chrome.enable.globalFilter();
 
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
