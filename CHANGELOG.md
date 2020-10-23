@@ -1,3 +1,11 @@
+## [0.27.10](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.9...v0.27.10) (2020-10-23)
+
+
+### Bug Fixes
+
+* **SAP:** Fix multiple SID filter result ([ae8502c](https://github.com/RedHatInsights/patchman-ui/commit/ae8502c91d0c978d44b15dae76bfc831f0dc1590))
+* **sorting:** fix sorting of packageSystems table ([e44f444](https://github.com/RedHatInsights/patchman-ui/commit/e44f444154bb94cfec9ce255b1386c1fec188e77))
+
 ## [0.27.9](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.8...v0.27.9) (2020-10-22)
 
 
