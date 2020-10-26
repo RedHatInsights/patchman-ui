@@ -1,3 +1,10 @@
+## [0.27.12](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.11...v0.27.12) (2020-10-26)
+
+
+### Bug Fixes
+
+* **SID:** check for SID existence before checking length ([45b3798](https://github.com/RedHatInsights/patchman-ui/commit/45b3798632ca0be6d844155f46644a1075fc559d))
+
 ## [0.27.11](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.10...v0.27.11) (2020-10-26)
 
 
