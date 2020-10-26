@@ -34,7 +34,7 @@ class App extends Component {
                     ? (config.systemProfile = `filter[system_profile][sap_system]=${SAP.isSelected}`)
                     : config.systemProfile = undefined;
                 selectedTags && (config.selectedTags = selectedTags);
-                if (SID?.length !== 0) {
+                if (SID && SID?.length !== 0) {
                     const SID_filter = SID.map(item=> `filter[system_profile][sap_sids][in]=${item}`).join('&') ;
                     config.systemProfile = config.systemProfile?.concat(SID_filter) || SID_filter;
                 }
