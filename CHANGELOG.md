@@ -1,3 +1,10 @@
+## [0.27.11](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.10...v0.27.11) (2020-10-26)
+
+
+### Bug Fixes
+
+* **packages:** Fix "isBeta" variable in tests ([e1b7431](https://github.com/RedHatInsights/patchman-ui/commit/e1b7431e4961176758f59d72201ee87eaadc41b9))
+
 ## [0.27.10](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.9...v0.27.10) (2020-10-23)
 
 
