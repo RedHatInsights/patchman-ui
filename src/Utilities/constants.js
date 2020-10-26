@@ -10,7 +10,8 @@ export const STATUS_RESOLVED = 'resolved';
 export const APPLICABLE_ADVISORIES_DESC = '-rhsa_count,-rhba_count,-rhea_count';
 export const APPLICABLE_ADVISORIES_ASC = 'rhsa_count,rhba_count,rhea_count';
 
-export const ENABLE_PACKAGES = insights?.chrome?.isBeta();
+// messy check because of frontend-components tests
+export const ENABLE_PACKAGES = window?.insights?.chrome?.isBeta && insights?.chrome?.isBeta();
 export const storeListDefaults = {
     rows: [],
     metadata: {
