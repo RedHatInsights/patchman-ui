@@ -1,3 +1,10 @@
+## [0.27.13](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.12...v0.27.13) (2020-10-27)
+
+
+### Bug Fixes
+
+* **persistence:** Do not persist store when there was an error ([3a47235](https://github.com/RedHatInsights/patchman-ui/commit/3a47235998a3b9621458e7034a6e948f605a69df))
+
 ## [0.27.12](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.11...v0.27.12) (2020-10-26)
 
 
