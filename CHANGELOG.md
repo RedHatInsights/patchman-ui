@@ -1,3 +1,15 @@
+# [1.0.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.14...v1.0.0) (2020-10-27)
+
+
+### Features
+
+* **Patch:** Patch UI 1.0.0 ([0c305e7](https://github.com/RedHatInsights/patchman-ui/commit/0c305e73c9a27fc39feb6e4a294c0e5871a64f5d))
+
+
+### BREAKING CHANGES
+
+* **Patch:** Patch-UI 1.0.0 is released!
+
 ## [0.27.14](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.13...v0.27.14) (2020-10-27)
 
 
