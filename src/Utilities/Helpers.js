@@ -234,7 +234,10 @@ export const encodeApiParams = parameters => {
 
 export const encodeURLParams = parameters => {
     delete parameters.id;
-    return encodeParams(parameters, false);
+    let urlParams = { ...parameters };
+    delete urlParams.systemProfile;
+    delete urlParams.selectedTags;
+    return encodeParams(urlParams, false);
 };
 
 export const decomposeFilterValue = filterValue => {
@@ -248,23 +251,21 @@ export const decomposeFilterValue = filterValue => {
 
 export const decodeQueryparams = queryString => {
     const parsed = qs.parse(queryString);
-
-    //TODO: find a way to parse query filters with the type deep object
-    parsed && delete parsed['filter[system_profile][sap_system]=true'];
-
     const res = {};
     Object.keys(parsed).forEach(key => {
-        const value = parsed[key];
-        const bracketIndex = key.search(/\[.*\]/);
-        if (bracketIndex > 0) {
-            const objParent = key.slice(0, bracketIndex);
-            const objKey = key.slice(bracketIndex + 1, -1);
-            res[objParent] = {
-                ...res[objParent],
-                [objKey]: decomposeFilterValue(value)
-            };
-        } else {
-            res[key] = value;
+        if (!key.startsWith('filter[system_profile]')) {
+            const value = parsed[key];
+            const bracketIndex = key.search(/\[.*\]/);
+            if (bracketIndex > 0) {
+                const objParent = key.slice(0, bracketIndex);
+                const objKey = key.slice(bracketIndex + 1, -1);
+                res[objParent] = {
+                    ...res[objParent],
+                    [objKey]: decomposeFilterValue(value)
+                };
+            } else {
+                res[key] = value;
+            }
         }
     });
     return res;
