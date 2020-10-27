@@ -1,3 +1,10 @@
+## [0.27.14](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.13...v0.27.14) (2020-10-27)
+
+
+### Bug Fixes
+
+* **url:** Fix URL parsing with global filter on ([56d606f](https://github.com/RedHatInsights/patchman-ui/commit/56d606f2a5adef6f06277655aa397063c87683a9))
+
 ## [0.27.13](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.12...v0.27.13) (2020-10-27)
 
 
