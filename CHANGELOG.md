@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.0...v1.0.1) (2020-11-10)
+
+
+### Bug Fixes
+
+* **SID:** SAP should work together with SID ([2f01afc](https://github.com/RedHatInsights/patchman-ui/commit/2f01afc594476de9d57e563b9edca20bcfb8f72f))
+
 # [1.0.0](https://github.com/RedHatInsights/patchman-ui/compare/v0.27.14...v1.0.0) (2020-10-27)
 
 
