@@ -3,6 +3,7 @@
 exports[`SystemDetail.js Should match the snapshots 1`] = `
 <Tabs
   activeKey={0}
+  className="patchTabSelect"
   component="div"
   isBox={false}
   isFilled={false}
@@ -13,11 +14,6 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
   onSelect={[Function]}
   ouiaSafe={true}
   rightScrollAriaLabel="Scroll right"
-  style={
-    Object {
-      "backgroundColor": "white",
-    }
-  }
   unmountOnExit={false}
 >
   <Tab

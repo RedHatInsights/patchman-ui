@@ -224,8 +224,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                             >
                               Kernel-based Virtual.
                             </Text>
-                            <PortalAdvisoryLink
-                              advisory="RHSA-2020:2774"
+                            <ExternalLink
+                              link="https://access.redhat.com/errata/RHSA-2020:2774"
+                              text="View packages and errata at access.redhat.com"
                             />
                           </TextContent>,
                         },
@@ -2395,8 +2396,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                             >
                               Kernel-based Virtual.
                             </Text>
-                            <PortalAdvisoryLink
-                              advisory="RHSA-2020:2774"
+                            <ExternalLink
+                              link="https://access.redhat.com/errata/RHSA-2020:2774"
+                              text="View packages and errata at access.redhat.com"
                             />
                           </TextContent>,
                         },
@@ -3957,8 +3959,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     >
                                       Kernel-based Virtual.
                                     </Text>
-                                    <PortalAdvisoryLink
-                                      advisory="RHSA-2020:2774"
+                                    <ExternalLink
+                                      link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                      text="View packages and errata at access.redhat.com"
                                     />
                                   </TextContent>,
                                 },
@@ -4049,8 +4052,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       >
                                         Kernel-based Virtual.
                                       </Text>
-                                      <PortalAdvisoryLink
-                                        advisory="RHSA-2020:2774"
+                                      <ExternalLink
+                                        link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                        text="View packages and errata at access.redhat.com"
                                       />
                                     </TextContent>,
                                   },
@@ -4080,8 +4084,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     >
                                       Kernel-based Virtual.
                                     </Text>
-                                    <PortalAdvisoryLink
-                                      advisory="RHSA-2020:2774"
+                                    <ExternalLink
+                                      link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                      text="View packages and errata at access.redhat.com"
                                     />
                                   </TextContent>,
                                 },
@@ -4169,8 +4174,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       >
                                         Kernel-based Virtual.
                                       </Text>
-                                      <PortalAdvisoryLink
-                                        advisory="RHSA-2020:2774"
+                                      <ExternalLink
+                                        link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                        text="View packages and errata at access.redhat.com"
                                       />
                                     </TextContent>,
                                   },
@@ -4200,8 +4206,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     >
                                       Kernel-based Virtual.
                                     </Text>
-                                    <PortalAdvisoryLink
-                                      advisory="RHSA-2020:2774"
+                                    <ExternalLink
+                                      link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                      text="View packages and errata at access.redhat.com"
                                     />
                                   </TextContent>,
                                 },
@@ -4569,8 +4576,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         >
                                           Kernel-based Virtual.
                                         </Text>
-                                        <PortalAdvisoryLink
-                                          advisory="RHSA-2020:2774"
+                                        <ExternalLink
+                                          link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                          text="View packages and errata at access.redhat.com"
                                         />
                                       </TextContent>,
                                     },
@@ -4600,8 +4608,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       >
                                         Kernel-based Virtual.
                                       </Text>
-                                      <PortalAdvisoryLink
-                                        advisory="RHSA-2020:2774"
+                                      <ExternalLink
+                                        link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                        text="View packages and errata at access.redhat.com"
                                       />
                                     </TextContent>,
                                   },
@@ -4704,8 +4713,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         >
                                           Kernel-based Virtual.
                                         </Text>
-                                        <PortalAdvisoryLink
-                                          advisory="RHSA-2020:2774"
+                                        <ExternalLink
+                                          link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                          text="View packages and errata at access.redhat.com"
                                         />
                                       </TextContent>,
                                     },
@@ -4735,8 +4745,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       >
                                         Kernel-based Virtual.
                                       </Text>
-                                      <PortalAdvisoryLink
-                                        advisory="RHSA-2020:2774"
+                                      <ExternalLink
+                                        link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                        text="View packages and errata at access.redhat.com"
                                       />
                                     </TextContent>,
                                   },
@@ -4826,8 +4837,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           >
                                             Kernel-based Virtual.
                                           </Text>
-                                          <PortalAdvisoryLink
-                                            advisory="RHSA-2020:2774"
+                                          <ExternalLink
+                                            link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                            text="View packages and errata at access.redhat.com"
                                           />
                                         </TextContent>,
                                       },
@@ -4857,8 +4869,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         >
                                           Kernel-based Virtual.
                                         </Text>
-                                        <PortalAdvisoryLink
-                                          advisory="RHSA-2020:2774"
+                                        <ExternalLink
+                                          link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                          text="View packages and errata at access.redhat.com"
                                         />
                                       </TextContent>,
                                     },
@@ -5848,8 +5861,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             >
                                               Kernel-based Virtual.
                                             </Text>
-                                            <PortalAdvisoryLink
-                                              advisory="RHSA-2020:2774"
+                                            <ExternalLink
+                                              link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                              text="View packages and errata at access.redhat.com"
                                             />
                                           </TextContent>,
                                         },
@@ -5879,8 +5893,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           >
                                             Kernel-based Virtual.
                                           </Text>
-                                          <PortalAdvisoryLink
-                                            advisory="RHSA-2020:2774"
+                                          <ExternalLink
+                                            link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                            text="View packages and errata at access.redhat.com"
                                           />
                                         </TextContent>,
                                       },
@@ -5911,8 +5926,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               >
                                                 Kernel-based Virtual.
                                               </Text>
-                                              <PortalAdvisoryLink
-                                                advisory="RHSA-2020:2774"
+                                              <ExternalLink
+                                                link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                                text="View packages and errata at access.redhat.com"
                                               />
                                             </TextContent>,
                                           },
@@ -5942,8 +5958,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             >
                                               Kernel-based Virtual.
                                             </Text>
-                                            <PortalAdvisoryLink
-                                              advisory="RHSA-2020:2774"
+                                            <ExternalLink
+                                              link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                              text="View packages and errata at access.redhat.com"
                                             />
                                           </TextContent>,
                                         },
@@ -6050,8 +6067,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       Kernel-based Virtual.
                                                     </p>
                                                   </Text>
-                                                  <PortalAdvisoryLink
-                                                    advisory="RHSA-2020:2774"
+                                                  <ExternalLink
+                                                    link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                                    text="View packages and errata at access.redhat.com"
                                                   >
                                                     <a
                                                       href="https://access.redhat.com/errata/RHSA-2020:2774"
@@ -6120,7 +6138,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                         </div>
                                                       </Flex>
                                                     </a>
-                                                  </PortalAdvisoryLink>
+                                                  </ExternalLink>
                                                 </div>
                                               </TextContent>
                                             </div>
