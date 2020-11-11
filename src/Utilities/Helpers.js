@@ -1,4 +1,3 @@
-import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import { CheckIcon, LongArrowAltUpIcon } from '@patternfly/react-icons';
 import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
 import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
@@ -9,7 +8,7 @@ import qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { advisorySeverities, APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC, filterCategories } from './constants';
-
+import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
 };
@@ -83,43 +82,9 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
         <div>
             {[rhea, rhba, rhsa].every(item => item === 0) &&
                 'No applicable advisories'}
-            {rhsa !== 0 && (
-                <Tooltip content={'Security advisories'}>
-                    <Flex flex={{ default: 'inlineFlex' }}>
-                        <FlexItem spacer={{ default: 'spacerSm' }}>
-                            <SecurityIcon/>
-                        </FlexItem>
-                        <FlexItem spacer={{ default: 'spacerSm' }}>
-                            {rhsa.toString()}
-                        </FlexItem>
-                    </Flex>
-                </Tooltip>
-            )}
-            {rhba !== 0 && (
-                <Tooltip content={'Bug fixes'}>
-                    <Flex flex={{ default: 'inlineFlex' }}>
-                        <FlexItem spacer={{ default: 'spacerSm' }}>
-                            <BugIcon />
-                        </FlexItem>
-                        <FlexItem spacer={{ default: 'spacerSm' }}>
-                            {rhba.toString()}
-                        </FlexItem>
-                    </Flex>
-                </Tooltip>
-            )}
-            {rhea !== 0 && (
-                <Tooltip content={'Enhancements'}>
-                    <Flex flex={{ default: 'inlineFlex' }}>
-                        <FlexItem spacer={{ default: 'spacerSm' }}>
-                            <EnhancementIcon />
-                        </FlexItem>
-                        <FlexItem spacer={{ default: 'spacerSm' }}>
-                            {rhea.toString()}
-                        </FlexItem>
-
-                    </Flex>
-                </Tooltip>
-            )}
+            {rhsa !== 0 && (<AdvisoriesIcon tooltipText={'Security advisories'} count = { rhsa } Icon = { SecurityIcon} />)}
+            {rhba !== 0 && (<AdvisoriesIcon tooltipText={'Bug fixes'} count = { rhba } Icon = { BugIcon} />)}
+            {rhea !== 0 && (<AdvisoriesIcon tooltipText={'Enhancements'} count = { rhea } Icon = { EnhancementIcon} />)}
         </div>
     );
 }
