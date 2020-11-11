@@ -1,13 +1,11 @@
-import { Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { EmptyAdvisoryList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
-import ExternalLink from '../PresentationalComponents/Snippets/ExternalLink';
-import Label from '../PresentationalComponents/Snippets/Label';
 import { entityTypes } from './constants';
-import { createUpgradableColumn, handlePatchLink, truncate } from './Helpers';
+import { createUpgradableColumn, handlePatchLink } from './Helpers';
+import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -40,19 +38,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                 {
                     cells: [
                         {
-                            title: (
-                                <TextContent>
-                                    <Label>Description</Label>
-                                    <Text component={TextVariants.p} style={{ whiteSpace: 'pre-line' }}>
-                                        {truncate(row.attributes.description.replace(
-                                            new RegExp('\\n(?=[^\\n])', 'g'),
-                                            ''
-                                        ), 570, handlePatchLink(entityTypes.advisories, row.id, 'Read more'))}
-                                    </Text>
-                                    <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
-                                        text={'View packages and errata at access.redhat.com'} />
-                                </TextContent>
-                            )
+                            title: <DescriptionWithLink row = {row} />
                         }
                     ],
                     parent: index * 2
@@ -102,19 +88,7 @@ export const createSystemAdvisoriesRows = (
                 {
                     cells: [
                         {
-                            title: (
-                                <TextContent>
-                                    <Label>Description</Label>
-                                    <Text component={TextVariants.p} style={{ whiteSpace: 'pre-line' }}>
-                                        {truncate(row.attributes.description.replace(
-                                            new RegExp('\\n(?=[^\\n])', 'g'),
-                                            ''
-                                        ), 570, handlePatchLink(entityTypes.advisories, row.id, 'Read more'))}
-                                    </Text>
-                                    <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
-                                        text={'View packages and errata at access.redhat.com'} />
-                                </TextContent>
-                            )
+                            title: <DescriptionWithLink row = {row} />
                         }
                     ],
                     parent: index * 2

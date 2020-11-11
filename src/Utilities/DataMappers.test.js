@@ -17,8 +17,8 @@ describe('DataMappers', () => {
             handlePatchLink('advisories', advisoryRows[0].id, advisoryRows[0].attributes.applicable_systems)
         );
         expect(firstRow.cells[4]).toEqual(advisoryRows[0].attributes.synopsis);
-        const portalAdvisoryLink = secondRow.cells[0].title.props.children[2];
-        expect(portalAdvisoryLink.props.link).toEqual(`https://access.redhat.com/errata/${advisoryRows[0].id}`);
+        const portalAdvisoryLink = secondRow.cells[0].title;
+        expect(portalAdvisoryLink.props.row).toEqual(advisoryRows[0]);
     });
 
     it('Should createAdvisoriesRows handle empty row data', () => {
@@ -37,8 +37,8 @@ describe('DataMappers', () => {
         expect(firstRow.cells[1].title).toEqual(processDate(systemAdvisoryRows[0].attributes.public_date));
         expect(firstRow.cells[2].title.props.type).toEqual(systemAdvisoryRows[0].attributes.advisory_type);
         expect(firstRow.cells[3]).toEqual(systemAdvisoryRows[0].attributes.synopsis);
-        const portalAdvisoryLink = secondRow.cells[0].title.props.children[2];
-        expect(portalAdvisoryLink.props.link).toEqual(`https://access.redhat.com/errata/${systemAdvisoryRows[0].id}`);
+        const portalAdvisoryLink = secondRow.cells[0].title;
+        expect(portalAdvisoryLink.props.row).toEqual(systemAdvisoryRows[0]);
     });
 
     it('Should createSystemAdvisoriesRows handle empty row data', () => {

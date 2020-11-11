@@ -210,25 +210,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                     Object {
                       "cells": Array [
                         Object {
-                          "title": <TextContent>
-                            <Label>
-                              Description
-                            </Label>
-                            <Text
-                              component="p"
-                              style={
-                                Object {
-                                  "whiteSpace": "pre-line",
-                                }
+                          "title": <DescriptionWithLink
+                            row={
+                              Object {
+                                "attributes": Object {
+                                  "advisory_type": 3,
+                                  "description": "Kernel-based Virtual.",
+                                  "public_date": "2020-06-30T13:38:53Z",
+                                  "severity": 3,
+                                  "synopsis": "Important",
+                                },
+                                "id": "RHSA-2020:2774",
+                                "type": "advisory",
                               }
-                            >
-                              Kernel-based Virtual.
-                            </Text>
-                            <ExternalLink
-                              link="https://access.redhat.com/errata/RHSA-2020:2774"
-                              text="View packages and errata at access.redhat.com"
-                            />
-                          </TextContent>,
+                            }
+                          />,
                         },
                       ],
                       "parent": 0,
@@ -2382,25 +2378,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                     Object {
                       "cells": Array [
                         Object {
-                          "title": <TextContent>
-                            <Label>
-                              Description
-                            </Label>
-                            <Text
-                              component="p"
-                              style={
-                                Object {
-                                  "whiteSpace": "pre-line",
-                                }
+                          "title": <DescriptionWithLink
+                            row={
+                              Object {
+                                "attributes": Object {
+                                  "advisory_type": 3,
+                                  "description": "Kernel-based Virtual.",
+                                  "public_date": "2020-06-30T13:38:53Z",
+                                  "severity": 3,
+                                  "synopsis": "Important",
+                                },
+                                "id": "RHSA-2020:2774",
+                                "type": "advisory",
                               }
-                            >
-                              Kernel-based Virtual.
-                            </Text>
-                            <ExternalLink
-                              link="https://access.redhat.com/errata/RHSA-2020:2774"
-                              text="View packages and errata at access.redhat.com"
-                            />
-                          </TextContent>,
+                            }
+                          />,
                         },
                       ],
                       "parent": 0,
@@ -3945,25 +3937,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                             Object {
                               "cells": Array [
                                 Object {
-                                  "title": <TextContent>
-                                    <Label>
-                                      Description
-                                    </Label>
-                                    <Text
-                                      component="p"
-                                      style={
-                                        Object {
-                                          "whiteSpace": "pre-line",
-                                        }
+                                  "title": <DescriptionWithLink
+                                    row={
+                                      Object {
+                                        "attributes": Object {
+                                          "advisory_type": 3,
+                                          "description": "Kernel-based Virtual.",
+                                          "public_date": "2020-06-30T13:38:53Z",
+                                          "severity": 3,
+                                          "synopsis": "Important",
+                                        },
+                                        "id": "RHSA-2020:2774",
+                                        "type": "advisory",
                                       }
-                                    >
-                                      Kernel-based Virtual.
-                                    </Text>
-                                    <ExternalLink
-                                      link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                      text="View packages and errata at access.redhat.com"
-                                    />
-                                  </TextContent>,
+                                    }
+                                  />,
                                 },
                               ],
                               "parent": 0,
@@ -4038,25 +4026,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                               Object {
                                 "cells": Array [
                                   Object {
-                                    "title": <TextContent>
-                                      <Label>
-                                        Description
-                                      </Label>
-                                      <Text
-                                        component="p"
-                                        style={
-                                          Object {
-                                            "whiteSpace": "pre-line",
-                                          }
+                                    "title": <DescriptionWithLink
+                                      row={
+                                        Object {
+                                          "attributes": Object {
+                                            "advisory_type": 3,
+                                            "description": "Kernel-based Virtual.",
+                                            "public_date": "2020-06-30T13:38:53Z",
+                                            "severity": 3,
+                                            "synopsis": "Important",
+                                          },
+                                          "id": "RHSA-2020:2774",
+                                          "type": "advisory",
                                         }
-                                      >
-                                        Kernel-based Virtual.
-                                      </Text>
-                                      <ExternalLink
-                                        link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                        text="View packages and errata at access.redhat.com"
-                                      />
-                                    </TextContent>,
+                                      }
+                                    />,
                                   },
                                 ],
                                 "id": 1,
@@ -4070,25 +4054,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "props": Object {
                                     "isVisible": true,
                                   },
-                                  "title": <TextContent>
-                                    <Label>
-                                      Description
-                                    </Label>
-                                    <Text
-                                      component="p"
-                                      style={
-                                        Object {
-                                          "whiteSpace": "pre-line",
-                                        }
+                                  "title": <DescriptionWithLink
+                                    row={
+                                      Object {
+                                        "attributes": Object {
+                                          "advisory_type": 3,
+                                          "description": "Kernel-based Virtual.",
+                                          "public_date": "2020-06-30T13:38:53Z",
+                                          "severity": 3,
+                                          "synopsis": "Important",
+                                        },
+                                        "id": "RHSA-2020:2774",
+                                        "type": "advisory",
                                       }
-                                    >
-                                      Kernel-based Virtual.
-                                    </Text>
-                                    <ExternalLink
-                                      link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                      text="View packages and errata at access.redhat.com"
-                                    />
-                                  </TextContent>,
+                                    }
+                                  />,
                                 },
                                 "parent": 0,
                               },
@@ -4160,25 +4140,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                               Object {
                                 "cells": Array [
                                   Object {
-                                    "title": <TextContent>
-                                      <Label>
-                                        Description
-                                      </Label>
-                                      <Text
-                                        component="p"
-                                        style={
-                                          Object {
-                                            "whiteSpace": "pre-line",
-                                          }
+                                    "title": <DescriptionWithLink
+                                      row={
+                                        Object {
+                                          "attributes": Object {
+                                            "advisory_type": 3,
+                                            "description": "Kernel-based Virtual.",
+                                            "public_date": "2020-06-30T13:38:53Z",
+                                            "severity": 3,
+                                            "synopsis": "Important",
+                                          },
+                                          "id": "RHSA-2020:2774",
+                                          "type": "advisory",
                                         }
-                                      >
-                                        Kernel-based Virtual.
-                                      </Text>
-                                      <ExternalLink
-                                        link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                        text="View packages and errata at access.redhat.com"
-                                      />
-                                    </TextContent>,
+                                      }
+                                    />,
                                   },
                                 ],
                                 "id": 1,
@@ -4192,25 +4168,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "props": Object {
                                     "isVisible": true,
                                   },
-                                  "title": <TextContent>
-                                    <Label>
-                                      Description
-                                    </Label>
-                                    <Text
-                                      component="p"
-                                      style={
-                                        Object {
-                                          "whiteSpace": "pre-line",
-                                        }
+                                  "title": <DescriptionWithLink
+                                    row={
+                                      Object {
+                                        "attributes": Object {
+                                          "advisory_type": 3,
+                                          "description": "Kernel-based Virtual.",
+                                          "public_date": "2020-06-30T13:38:53Z",
+                                          "severity": 3,
+                                          "synopsis": "Important",
+                                        },
+                                        "id": "RHSA-2020:2774",
+                                        "type": "advisory",
                                       }
-                                    >
-                                      Kernel-based Virtual.
-                                    </Text>
-                                    <ExternalLink
-                                      link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                      text="View packages and errata at access.redhat.com"
-                                    />
-                                  </TextContent>,
+                                    }
+                                  />,
                                 },
                                 "parent": 0,
                               },
@@ -4562,25 +4534,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 Object {
                                   "cells": Array [
                                     Object {
-                                      "title": <TextContent>
-                                        <Label>
-                                          Description
-                                        </Label>
-                                        <Text
-                                          component="p"
-                                          style={
-                                            Object {
-                                              "whiteSpace": "pre-line",
-                                            }
+                                      "title": <DescriptionWithLink
+                                        row={
+                                          Object {
+                                            "attributes": Object {
+                                              "advisory_type": 3,
+                                              "description": "Kernel-based Virtual.",
+                                              "public_date": "2020-06-30T13:38:53Z",
+                                              "severity": 3,
+                                              "synopsis": "Important",
+                                            },
+                                            "id": "RHSA-2020:2774",
+                                            "type": "advisory",
                                           }
-                                        >
-                                          Kernel-based Virtual.
-                                        </Text>
-                                        <ExternalLink
-                                          link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                          text="View packages and errata at access.redhat.com"
-                                        />
-                                      </TextContent>,
+                                        }
+                                      />,
                                     },
                                   ],
                                   "id": 1,
@@ -4594,25 +4562,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     "props": Object {
                                       "isVisible": true,
                                     },
-                                    "title": <TextContent>
-                                      <Label>
-                                        Description
-                                      </Label>
-                                      <Text
-                                        component="p"
-                                        style={
-                                          Object {
-                                            "whiteSpace": "pre-line",
-                                          }
+                                    "title": <DescriptionWithLink
+                                      row={
+                                        Object {
+                                          "attributes": Object {
+                                            "advisory_type": 3,
+                                            "description": "Kernel-based Virtual.",
+                                            "public_date": "2020-06-30T13:38:53Z",
+                                            "severity": 3,
+                                            "synopsis": "Important",
+                                          },
+                                          "id": "RHSA-2020:2774",
+                                          "type": "advisory",
                                         }
-                                      >
-                                        Kernel-based Virtual.
-                                      </Text>
-                                      <ExternalLink
-                                        link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                        text="View packages and errata at access.redhat.com"
-                                      />
-                                    </TextContent>,
+                                      }
+                                    />,
                                   },
                                   "parent": 0,
                                 },
@@ -4699,25 +4663,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 Object {
                                   "cells": Array [
                                     Object {
-                                      "title": <TextContent>
-                                        <Label>
-                                          Description
-                                        </Label>
-                                        <Text
-                                          component="p"
-                                          style={
-                                            Object {
-                                              "whiteSpace": "pre-line",
-                                            }
+                                      "title": <DescriptionWithLink
+                                        row={
+                                          Object {
+                                            "attributes": Object {
+                                              "advisory_type": 3,
+                                              "description": "Kernel-based Virtual.",
+                                              "public_date": "2020-06-30T13:38:53Z",
+                                              "severity": 3,
+                                              "synopsis": "Important",
+                                            },
+                                            "id": "RHSA-2020:2774",
+                                            "type": "advisory",
                                           }
-                                        >
-                                          Kernel-based Virtual.
-                                        </Text>
-                                        <ExternalLink
-                                          link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                          text="View packages and errata at access.redhat.com"
-                                        />
-                                      </TextContent>,
+                                        }
+                                      />,
                                     },
                                   ],
                                   "id": 1,
@@ -4731,25 +4691,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     "props": Object {
                                       "isVisible": true,
                                     },
-                                    "title": <TextContent>
-                                      <Label>
-                                        Description
-                                      </Label>
-                                      <Text
-                                        component="p"
-                                        style={
-                                          Object {
-                                            "whiteSpace": "pre-line",
-                                          }
+                                    "title": <DescriptionWithLink
+                                      row={
+                                        Object {
+                                          "attributes": Object {
+                                            "advisory_type": 3,
+                                            "description": "Kernel-based Virtual.",
+                                            "public_date": "2020-06-30T13:38:53Z",
+                                            "severity": 3,
+                                            "synopsis": "Important",
+                                          },
+                                          "id": "RHSA-2020:2774",
+                                          "type": "advisory",
                                         }
-                                      >
-                                        Kernel-based Virtual.
-                                      </Text>
-                                      <ExternalLink
-                                        link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                        text="View packages and errata at access.redhat.com"
-                                      />
-                                    </TextContent>,
+                                      }
+                                    />,
                                   },
                                   "parent": 0,
                                 },
@@ -4823,25 +4779,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   Object {
                                     "cells": Array [
                                       Object {
-                                        "title": <TextContent>
-                                          <Label>
-                                            Description
-                                          </Label>
-                                          <Text
-                                            component="p"
-                                            style={
-                                              Object {
-                                                "whiteSpace": "pre-line",
-                                              }
+                                        "title": <DescriptionWithLink
+                                          row={
+                                            Object {
+                                              "attributes": Object {
+                                                "advisory_type": 3,
+                                                "description": "Kernel-based Virtual.",
+                                                "public_date": "2020-06-30T13:38:53Z",
+                                                "severity": 3,
+                                                "synopsis": "Important",
+                                              },
+                                              "id": "RHSA-2020:2774",
+                                              "type": "advisory",
                                             }
-                                          >
-                                            Kernel-based Virtual.
-                                          </Text>
-                                          <ExternalLink
-                                            link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                            text="View packages and errata at access.redhat.com"
-                                          />
-                                        </TextContent>,
+                                          }
+                                        />,
                                       },
                                     ],
                                     "id": 1,
@@ -4855,25 +4807,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "props": Object {
                                         "isVisible": true,
                                       },
-                                      "title": <TextContent>
-                                        <Label>
-                                          Description
-                                        </Label>
-                                        <Text
-                                          component="p"
-                                          style={
-                                            Object {
-                                              "whiteSpace": "pre-line",
-                                            }
+                                      "title": <DescriptionWithLink
+                                        row={
+                                          Object {
+                                            "attributes": Object {
+                                              "advisory_type": 3,
+                                              "description": "Kernel-based Virtual.",
+                                              "public_date": "2020-06-30T13:38:53Z",
+                                              "severity": 3,
+                                              "synopsis": "Important",
+                                            },
+                                            "id": "RHSA-2020:2774",
+                                            "type": "advisory",
                                           }
-                                        >
-                                          Kernel-based Virtual.
-                                        </Text>
-                                        <ExternalLink
-                                          link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                          text="View packages and errata at access.redhat.com"
-                                        />
-                                      </TextContent>,
+                                        }
+                                      />,
                                     },
                                     "parent": 0,
                                   },
@@ -5847,25 +5795,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     Object {
                                       "cells": Array [
                                         Object {
-                                          "title": <TextContent>
-                                            <Label>
-                                              Description
-                                            </Label>
-                                            <Text
-                                              component="p"
-                                              style={
-                                                Object {
-                                                  "whiteSpace": "pre-line",
-                                                }
+                                          "title": <DescriptionWithLink
+                                            row={
+                                              Object {
+                                                "attributes": Object {
+                                                  "advisory_type": 3,
+                                                  "description": "Kernel-based Virtual.",
+                                                  "public_date": "2020-06-30T13:38:53Z",
+                                                  "severity": 3,
+                                                  "synopsis": "Important",
+                                                },
+                                                "id": "RHSA-2020:2774",
+                                                "type": "advisory",
                                               }
-                                            >
-                                              Kernel-based Virtual.
-                                            </Text>
-                                            <ExternalLink
-                                              link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                              text="View packages and errata at access.redhat.com"
-                                            />
-                                          </TextContent>,
+                                            }
+                                          />,
                                         },
                                       ],
                                       "id": 1,
@@ -5879,25 +5823,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         "props": Object {
                                           "isVisible": true,
                                         },
-                                        "title": <TextContent>
-                                          <Label>
-                                            Description
-                                          </Label>
-                                          <Text
-                                            component="p"
-                                            style={
-                                              Object {
-                                                "whiteSpace": "pre-line",
-                                              }
+                                        "title": <DescriptionWithLink
+                                          row={
+                                            Object {
+                                              "attributes": Object {
+                                                "advisory_type": 3,
+                                                "description": "Kernel-based Virtual.",
+                                                "public_date": "2020-06-30T13:38:53Z",
+                                                "severity": 3,
+                                                "synopsis": "Important",
+                                              },
+                                              "id": "RHSA-2020:2774",
+                                              "type": "advisory",
                                             }
-                                          >
-                                            Kernel-based Virtual.
-                                          </Text>
-                                          <ExternalLink
-                                            link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                            text="View packages and errata at access.redhat.com"
-                                          />
-                                        </TextContent>,
+                                          }
+                                        />,
                                       },
                                       "parent": 0,
                                     }
@@ -5912,25 +5852,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       Object {
                                         "cells": Array [
                                           Object {
-                                            "title": <TextContent>
-                                              <Label>
-                                                Description
-                                              </Label>
-                                              <Text
-                                                component="p"
-                                                style={
-                                                  Object {
-                                                    "whiteSpace": "pre-line",
-                                                  }
+                                            "title": <DescriptionWithLink
+                                              row={
+                                                Object {
+                                                  "attributes": Object {
+                                                    "advisory_type": 3,
+                                                    "description": "Kernel-based Virtual.",
+                                                    "public_date": "2020-06-30T13:38:53Z",
+                                                    "severity": 3,
+                                                    "synopsis": "Important",
+                                                  },
+                                                  "id": "RHSA-2020:2774",
+                                                  "type": "advisory",
                                                 }
-                                              >
-                                                Kernel-based Virtual.
-                                              </Text>
-                                              <ExternalLink
-                                                link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                                text="View packages and errata at access.redhat.com"
-                                              />
-                                            </TextContent>,
+                                              }
+                                            />,
                                           },
                                         ],
                                         "id": 1,
@@ -5944,25 +5880,21 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           "props": Object {
                                             "isVisible": true,
                                           },
-                                          "title": <TextContent>
-                                            <Label>
-                                              Description
-                                            </Label>
-                                            <Text
-                                              component="p"
-                                              style={
-                                                Object {
-                                                  "whiteSpace": "pre-line",
-                                                }
+                                          "title": <DescriptionWithLink
+                                            row={
+                                              Object {
+                                                "attributes": Object {
+                                                  "advisory_type": 3,
+                                                  "description": "Kernel-based Virtual.",
+                                                  "public_date": "2020-06-30T13:38:53Z",
+                                                  "severity": 3,
+                                                  "synopsis": "Important",
+                                                },
+                                                "id": "RHSA-2020:2774",
+                                                "type": "advisory",
                                               }
-                                            >
-                                              Kernel-based Virtual.
-                                            </Text>
-                                            <ExternalLink
-                                              link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                              text="View packages and errata at access.redhat.com"
-                                            />
-                                          </TextContent>,
+                                            }
+                                          />,
                                         },
                                         "parent": 0,
                                       }
@@ -6036,111 +5968,127 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             <div
                                               className="pf-c-table__expandable-row-content"
                                             >
-                                              <TextContent>
-                                                <div
-                                                  className="pf-c-content"
-                                                >
-                                                  <Label>
-                                                    <span
-                                                      className="patchman-label"
-                                                    >
-                                                      Description
-                                                    </span>
-                                                  </Label>
-                                                  <Text
-                                                    component="p"
-                                                    style={
-                                                      Object {
-                                                        "whiteSpace": "pre-line",
-                                                      }
-                                                    }
+                                              <DescriptionWithLink
+                                                row={
+                                                  Object {
+                                                    "attributes": Object {
+                                                      "advisory_type": 3,
+                                                      "description": "Kernel-based Virtual.",
+                                                      "public_date": "2020-06-30T13:38:53Z",
+                                                      "severity": 3,
+                                                      "synopsis": "Important",
+                                                    },
+                                                    "id": "RHSA-2020:2774",
+                                                    "type": "advisory",
+                                                  }
+                                                }
+                                              >
+                                                <TextContent>
+                                                  <div
+                                                    className="pf-c-content"
                                                   >
-                                                    <p
-                                                      className=""
-                                                      data-pf-content={true}
+                                                    <Label>
+                                                      <span
+                                                        className="patchman-label"
+                                                      >
+                                                        Description
+                                                      </span>
+                                                    </Label>
+                                                    <Text
+                                                      component="p"
                                                       style={
                                                         Object {
                                                           "whiteSpace": "pre-line",
                                                         }
                                                       }
                                                     >
-                                                      Kernel-based Virtual.
-                                                    </p>
-                                                  </Text>
-                                                  <ExternalLink
-                                                    link="https://access.redhat.com/errata/RHSA-2020:2774"
-                                                    text="View packages and errata at access.redhat.com"
-                                                  >
-                                                    <a
-                                                      href="https://access.redhat.com/errata/RHSA-2020:2774"
-                                                      target="__blank"
-                                                    >
-                                                      <Flex
-                                                        flex={
+                                                      <p
+                                                        className=""
+                                                        data-pf-content={true}
+                                                        style={
                                                           Object {
-                                                            "default": "inlineFlex",
+                                                            "whiteSpace": "pre-line",
                                                           }
                                                         }
                                                       >
-                                                        <div
-                                                          className="pf-l-flex pf-m-inline-flex"
+                                                        Kernel-based Virtual.
+                                                      </p>
+                                                    </Text>
+                                                    <ExternalLink
+                                                      link="https://access.redhat.com/errata/RHSA-2020:2774"
+                                                      text="View packages and errata at access.redhat.com"
+                                                    >
+                                                      <a
+                                                        href="https://access.redhat.com/errata/RHSA-2020:2774"
+                                                        target="__blank"
+                                                      >
+                                                        <Flex
+                                                          flex={
+                                                            Object {
+                                                              "default": "inlineFlex",
+                                                            }
+                                                          }
                                                         >
-                                                          <FlexItem
-                                                            spacer={
-                                                              Object {
-                                                                "default": "spacerSm",
-                                                              }
-                                                            }
+                                                          <div
+                                                            className="pf-l-flex pf-m-inline-flex"
                                                           >
-                                                            <div
-                                                              className="pf-m-spacer-sm"
+                                                            <FlexItem
+                                                              spacer={
+                                                                Object {
+                                                                  "default": "spacerSm",
+                                                                }
+                                                              }
                                                             >
-                                                              <ExternalLinkSquareAltIcon
-                                                                color="currentColor"
-                                                                noVerticalAlign={false}
-                                                                size="sm"
+                                                              <div
+                                                                className="pf-m-spacer-sm"
                                                               >
-                                                                <svg
-                                                                  aria-hidden={true}
-                                                                  aria-labelledby={null}
-                                                                  fill="currentColor"
-                                                                  height="1em"
-                                                                  role="img"
-                                                                  style={
-                                                                    Object {
-                                                                      "verticalAlign": "-0.125em",
-                                                                    }
-                                                                  }
-                                                                  viewBox="0 0 448 512"
-                                                                  width="1em"
+                                                                <ExternalLinkSquareAltIcon
+                                                                  color="currentColor"
+                                                                  noVerticalAlign={false}
+                                                                  size="sm"
                                                                 >
-                                                                  <path
-                                                                    d="M448 80v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48zm-88 16H248.029c-21.313 0-32.08 25.861-16.971 40.971l31.984 31.987L67.515 364.485c-4.686 4.686-4.686 12.284 0 16.971l31.029 31.029c4.687 4.686 12.285 4.686 16.971 0l195.526-195.526 31.988 31.991C358.058 263.977 384 253.425 384 231.979V120c0-13.255-10.745-24-24-24z"
-                                                                    transform=""
-                                                                  />
-                                                                </svg>
-                                                              </ExternalLinkSquareAltIcon>
-                                                            </div>
-                                                          </FlexItem>
-                                                          <FlexItem
-                                                            spacer={
-                                                              Object {
-                                                                "default": "spacerSm",
+                                                                  <svg
+                                                                    aria-hidden={true}
+                                                                    aria-labelledby={null}
+                                                                    fill="currentColor"
+                                                                    height="1em"
+                                                                    role="img"
+                                                                    style={
+                                                                      Object {
+                                                                        "verticalAlign": "-0.125em",
+                                                                      }
+                                                                    }
+                                                                    viewBox="0 0 448 512"
+                                                                    width="1em"
+                                                                  >
+                                                                    <path
+                                                                      d="M448 80v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48zm-88 16H248.029c-21.313 0-32.08 25.861-16.971 40.971l31.984 31.987L67.515 364.485c-4.686 4.686-4.686 12.284 0 16.971l31.029 31.029c4.687 4.686 12.285 4.686 16.971 0l195.526-195.526 31.988 31.991C358.058 263.977 384 253.425 384 231.979V120c0-13.255-10.745-24-24-24z"
+                                                                      transform=""
+                                                                    />
+                                                                  </svg>
+                                                                </ExternalLinkSquareAltIcon>
+                                                              </div>
+                                                            </FlexItem>
+                                                            <FlexItem
+                                                              spacer={
+                                                                Object {
+                                                                  "default": "spacerSm",
+                                                                }
                                                               }
-                                                            }
-                                                          >
-                                                            <div
-                                                              className="pf-m-spacer-sm"
                                                             >
-                                                              View packages and errata at access.redhat.com
-                                                            </div>
-                                                          </FlexItem>
-                                                        </div>
-                                                      </Flex>
-                                                    </a>
-                                                  </ExternalLink>
-                                                </div>
-                                              </TextContent>
+                                                              <div
+                                                                className="pf-m-spacer-sm"
+                                                              >
+                                                                View packages and errata at access.redhat.com
+                                                              </div>
+                                                            </FlexItem>
+                                                          </div>
+                                                        </Flex>
+                                                      </a>
+                                                    </ExternalLink>
+                                                  </div>
+                                                </TextContent>
+                                              </DescriptionWithLink>
                                             </div>
                                           </ExpandableRowContent>
                                         </td>

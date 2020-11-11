@@ -254,25 +254,22 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         Object {
                           "cells": Array [
                             Object {
-                              "title": <TextContent>
-                                <Label>
-                                  Description
-                                </Label>
-                                <Text
-                                  component="p"
-                                  style={
-                                    Object {
-                                      "whiteSpace": "pre-line",
-                                    }
+                              "title": <DescriptionWithLink
+                                row={
+                                  Object {
+                                    "attributes": Object {
+                                      "advisory_type": 1,
+                                      "applicable_systems": 1,
+                                      "description": "The microcode_ctl ",
+                                      "public_date": "2020-06-24T17:22:25Z",
+                                      "severity": 3,
+                                      "synopsis": "microcode_ctl",
+                                    },
+                                    "id": "RHEA-2020:2743",
+                                    "type": "advisory",
                                   }
-                                >
-                                  The microcode_ctl 
-                                </Text>
-                                <ExternalLink
-                                  link="https://access.redhat.com/errata/RHEA-2020:2743"
-                                  text="View packages and errata at access.redhat.com"
-                                />
-                              </TextContent>,
+                                }
+                              />,
                             },
                           ],
                           "parent": 0,
