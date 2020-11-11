@@ -18,7 +18,7 @@ import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
 
 const SystemAdvisories = ({ history }) => {
     const dispatch = useDispatch();
@@ -78,69 +78,16 @@ const SystemAdvisories = ({ history }) => {
         )
     );
 
-    const onSelect = React.useCallback((event, selected, rowId) => {
-        const toSelect = [];
-        switch (event) {
-            case 'none': {
-                Object.keys(selectedRows).forEach(id=>{
-                    toSelect.push(
-                        {
-                            id,
-                            selected: false
-                        }
-                    );
-                });
-                dispatch(
-                    selectSystemAdvisoryRow(toSelect)
-                );
-                break;
-            }
+    const selectRows = (toSelect) => {
+        dispatch(
+            selectSystemAdvisoryRow(toSelect)
+        );
+    };
 
-            case 'page': {
-                advisories.forEach(({ id })=>{
-                    toSelect.push(
-                        {
-                            id,
-                            selected: id
-                        }
-                    );});
-                dispatch(
-                    selectSystemAdvisoryRow(toSelect)
-                );
-                break;
-            }
+    const fetchAllData = () =>
+        fetchApplicableSystemAdvisoriesApi({ id: entity.id, limit: -1 });
 
-            case 'all': {
-                const fetchCallback = ({ data }) => {
-                    data.forEach(({ id })=>{
-                        toSelect.push(
-                            {
-                                id,
-                                selected: id
-                            }
-                        );});
-                    dispatch(
-                        selectSystemAdvisoryRow(toSelect)
-                    );
-                };
-
-                fetchApplicableSystemAdvisoriesApi({ id: entity.id, limit: -1 }).then(fetchCallback);
-
-                break;
-            }
-
-            default: {
-                toSelect.push({
-                    id: getRowIdByIndexExpandable(advisories, rowId),
-                    selected: selected && getRowIdByIndexExpandable(advisories, rowId)
-                });
-                dispatch(
-                    selectSystemAdvisoryRow(toSelect)
-                );
-            }}
-
-    }
-    );
+    const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows);
 
     const onSort = useSortColumn(systemAdvisoriesColumns, apply, 2);
     const sortBy = React.useMemo(
