@@ -80,3 +80,61 @@ export const useRemoveFilter = (filters, callback) => {
     });
     return removeFilter;
 };
+
+export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows, constructFilename = undefined) =>{
+
+    const onSelect =  React.useCallback((event, selected, rowId) => {
+        const createSelectedRow = (rawData, toSelect = []) => {
+            rawData.forEach((row)=>{
+                toSelect.push(
+                    {
+                        id: row.id && row.id || row.name,
+                        selected: constructFilename && constructFilename(row) || row.id
+                    }
+                );});
+
+            return toSelect;
+        };
+
+        switch (event) {
+            case 'none': {
+                const toSelect = [];
+                Object.keys(selectedRows).forEach(id=>{
+                    toSelect.push(
+                        {
+                            id,
+                            selected: false
+                        }
+                    );
+                });
+                selectRows(toSelect);
+                break;
+            }
+
+            case 'page': {
+                selectRows(createSelectedRow(rawData));
+                break;
+            }
+
+            case 'all': {
+                const fetchCallback = ({ data }) => {
+                    selectRows(createSelectedRow(data));
+                };
+
+                fetchAllData().then(fetchCallback);
+
+                break;
+            }
+
+            default: {
+                selectRows([{
+                    id: rawData[rowId].id && rawData[rowId].id || rawData[rowId].name,
+                    selected: selected && (constructFilename && constructFilename(rawData[rowId]) || true)
+                }]);
+            }
+
+        }}
+    );
+
+    return onSelect;
+};

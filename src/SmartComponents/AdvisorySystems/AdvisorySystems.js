@@ -17,7 +17,7 @@ import { fetchAdvisorySystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 
@@ -124,58 +124,16 @@ const AdvisorySystems = ({ advisoryName }) => {
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
 
-    const onSelect = React.useCallback((event) => {
-        const toSelect = [];
-        switch (event) {
-            case 'none': {
-                Object.keys(selectedRows).forEach(id=>{
-                    toSelect.push(
-                        {
-                            id,
-                            selected: false
-                        }
-                    );
-                });
-                dispatch(
-                    { type: 'SELECT_ENTITY', payload: toSelect }
-                );
-                break;
-            }
+    const selectRows = (toSelect) => {
+        dispatch(
+            { type: 'SELECT_ENTITY', payload: toSelect }
+        );
+    };
 
-            case 'page': {
-                rawAdvisorySystems.forEach(({ id })=>{
-                    toSelect.push(
-                        {
-                            id,
-                            selected: id
-                        }
-                    );});
-                dispatch(
-                    { type: 'SELECT_ENTITY', payload: toSelect }
-                );
-                break;
-            }
+    const fetchAllData = () =>
+        fetchAdvisorySystems({ ...queryParams, id: advisoryName, limit: -1 });
 
-            case 'all': {
-                const fetchCallback = ({ data }) => {
-                    data.forEach(({ id })=>{
-                        toSelect.push(
-                            {
-                                id,
-                                selected: id
-                            }
-                        );});
-                    dispatch(
-                        { type: 'SELECT_ENTITY', payload: toSelect }
-                    );
-                };
-
-                fetchAdvisorySystems({ ...queryParams, id: advisoryName, limit: -1 }).then(fetchCallback);
-
-                break;
-            }
-        }}
-    );
+    const onSelect = useOnSelect(rawAdvisorySystems,  selectedRows, fetchAllData, selectRows);
 
     // This is used ONLY for sorting purposes
     const getMangledColumns = () => {

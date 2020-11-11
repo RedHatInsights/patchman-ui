@@ -14,7 +14,7 @@ import { fetchApplicablePackagesApi } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
 
 const SystemPackages = () => {
     const dispatch = useDispatch();
@@ -51,80 +51,20 @@ const SystemPackages = () => {
         dispatch(fetchApplicableSystemPackages({ id: entity.id, ...queryParams }));
     }, [queryParams]);
 
-    const onSelect = React.useCallback((event, selected, rowId) => {
-        const toSelect = [];
-        const constructFilename = (pkg) => {
-            const pkgUpdates = pkg.updates || [];
-            const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
-            return latestUpdate && `${pkg.name}-${latestUpdate.evra}`;
-        };
+    const constructFilename = (pkg) => {
+        const pkgUpdates = pkg.updates || [];
+        const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
+        return latestUpdate && `${pkg.name}-${latestUpdate.evra}`;
+    };
 
-        switch (event) {
-            case 'none': {
-                Object.keys(selectedRows).forEach(id=>{
-                    toSelect.push(
-                        {
-                            id,
-                            selected: false
-                        }
-                    );
-                });
-                dispatch(
-                    selectSystemPackagesRow(toSelect)
-                );
-                break;
-            }
+    const fetchAllData = () =>
+        fetchApplicablePackagesApi({ id: entity.id, limit: -1 });
 
-            case 'page': {
-                packages.forEach((pkg)=>{
-                    toSelect.push(
-                        {
-                            id: pkg.name,
-                            selected: constructFilename(pkg)
-                        }
-                    );});
-                dispatch(
-                    selectSystemPackagesRow(toSelect)
-                );
-                break;
-            }
+    const selectRows = (toSelect) => {
+        dispatch(selectSystemPackagesRow(toSelect));
+    };
 
-            case 'all': {
-                const fetchCallback = (res) => {
-                    res.data.forEach((pkg)=>{
-                        let pkgUpdate = constructFilename(pkg);
-                        if (pkgUpdate) {
-                            toSelect.push(
-                                {
-                                    id: pkg.name,
-                                    selected: pkgUpdate
-                                }
-                            );
-                        }
-                    }
-                    );
-                    dispatch(
-                        selectSystemPackagesRow(toSelect)
-                    );
-                };
-
-                fetchApplicablePackagesApi({ id: entity.id, limit: -1 }).then(fetchCallback);
-
-                break;
-            }
-
-            default: {
-                toSelect.push({
-                    id: packages[rowId].name,
-                    selected: selected && constructFilename(packages[rowId])
-                });
-                dispatch(
-                    selectSystemPackagesRow(toSelect)
-                );
-            }}
-
-    }
-    );
+    const onSelect = useOnSelect(packages, selectedRows, fetchAllData, selectRows, constructFilename);
 
     function apply(params) {
         dispatch(changeSystemPackagesParams({ id: entity.id, ...params }));

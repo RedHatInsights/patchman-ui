@@ -18,7 +18,7 @@ import { fetchPackageSystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 
@@ -127,73 +127,19 @@ const PackageSystems = ({ packageName }) => {
         setRemediationModalCmp(() => () => <RemediationModal data={data} />);
     };
 
-    const onSelect = enableRemediation && React.useCallback((event, selected, rowId) => {
-        const toSelect = [];
-        const constructFilename = (system) => {
-            return `${packageName}-${system.available_evra}`;
-        };
+    const constructFilename = (system) => {
+        return `${packageName}-${system.available_evra}`;
+    };
 
-        switch (event) {
-            case 'none': {
-                Object.keys(selectedRows).forEach(id=>{
-                    toSelect.push(
-                        {
-                            id,
-                            selected: false
-                        }
-                    );
-                });
-                dispatch(
-                    { type: 'SELECT_ENTITY', payload: toSelect }
-                );
-                break;
-            }
+    const fetchAllData = () =>
+        fetchPackageSystems({ id: packageName, limit: 999999 });
 
-            case 'page': {
-                rawPackageSystems.forEach((system)=>{
-                    toSelect.push(
-                        {
-                            id: system.id,
-                            selected: constructFilename(system)
-                        }
-                    );});
-                dispatch(
-                    { type: 'SELECT_ENTITY', payload: toSelect }
-                );
-                break;
-            }
+    const selectRows = (toSelect) => {
+        dispatch({ type: 'SELECT_ENTITY', payload: toSelect });
+    };
 
-            case 'all': {
-                const fetchCallback = ({ data }) => {
-                    data.forEach((system)=>{
-                        toSelect.push(
-                            {
-                                id: system.id,
-                                selected: constructFilename(system)
-                            }
-                        );});
-                    dispatch(
-                        { type: 'SELECT_ENTITY', payload: toSelect }
-                    );
-                };
-
-                fetchPackageSystems({ id: packageName, limit: 999999 }).then(fetchCallback);
-
-                break;
-            }
-
-            default: {
-                toSelect.push({
-                    id: hosts[rowId].id,
-                    selected: selected && constructFilename(rawPackageSystems[rowId])
-                });
-                dispatch(
-                    { type: 'SELECT_ENTITY', payload: toSelect }
-                );
-            }
-
-        }}
-    );
+    const onSelect = enableRemediation && useOnSelect(rawPackageSystems,  selectedRows,
+        fetchAllData, selectRows, constructFilename);
 
     // This is used ONLY for sorting purposes
     const getMangledColumns = () => {
