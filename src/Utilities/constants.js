@@ -26,7 +26,7 @@ export const storeListDefaults = {
 };
 
 export const publicDateOptions = [
-    { apiValue: '', label: 'All', value: '' },
+    { apiValue: '', label: 'All', value: 'all' },
     {
         apiValue: `gt:${subtractDate(7)}`,
         label: 'Last 7 days',

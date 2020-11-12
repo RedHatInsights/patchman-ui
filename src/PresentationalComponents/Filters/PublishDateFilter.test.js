@@ -6,7 +6,7 @@ const currentFilter = { public_date: 'filter' };
 describe('PublishDateFitler', () => {
     it('Should set currentValue to zero and init', () => {
         const response = publishDateFilter(apply);
-        expect(response.filterValues.value).toEqual('0');
+        expect(response.filterValues.value).toEqual(undefined);
         expect(response.label).toEqual('Publish date');
         expect(response.type).toEqual('radio');
     });
@@ -17,7 +17,7 @@ describe('PublishDateFitler', () => {
         expect(apply).toHaveBeenCalledWith({ filter: { public_date: 'testValue' } });
     });
 
-    it('Should call apply with 0 ', () => {
+    it('Should call apply with empty string ', () => {
         const response = publishDateFilter(apply);
         response.filterValues.onChange();
         expect(apply).toHaveBeenCalledWith({ filter: { public_date: '' } });
