@@ -155,7 +155,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                       "filterValues": Object {
                         "items": [MockFunction],
                         "onChange": [Function],
-                        "value": "0",
+                        "value": undefined,
                       },
                       "label": "Publish date",
                       "type": "radio",
@@ -332,7 +332,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "filterValues": Object {
                           "items": [MockFunction],
                           "onChange": [Function],
-                          "value": "0",
+                          "value": undefined,
                         },
                         "label": "Publish date",
                         "type": "radio",
@@ -831,7 +831,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             "filterValues": Object {
                                               "items": [MockFunction],
                                               "onChange": [Function],
-                                              "value": "0",
+                                              "value": undefined,
                                             },
                                             "label": "Publish date",
                                             "type": "radio",
