@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.1...v1.0.2) (2020-11-13)
+
+
+### Bug Fixes
+
+* **ConditionalFilter:** radio typw filter empty value is fixed ([cf7ca1f](https://github.com/RedHatInsights/patchman-ui/commit/cf7ca1fb289adf296b628bf9044d6fd5b7a01070))
+
 ## [1.0.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.0...v1.0.1) (2020-11-10)
 
 
