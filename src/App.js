@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './App.scss';
 import { paths, Routes } from './Routes';
-import { globalFilter } from './store/Actions/Actions';
+import { globalFilter, toggleInventoryAccess } from './store/Actions/Actions';
+
 /*eslint-disable */
 // console.log('dev mode');
 class App extends Component {
@@ -45,9 +46,10 @@ class App extends Component {
 
             });
         }
-
-        this.triggerNavigation();
         this.unregister = this.listenNavigation();
+        this.checkInventoryAccess();
+        this.triggerNavigation();
+
     }
 
     componentWillUnmount() {
@@ -60,6 +62,18 @@ class App extends Component {
                 this.props.history.push(`/${event.navId}`);
             }
         });
+    }
+
+    async checkInventoryAccess() 
+    {
+        const permissions = await insights.chrome.getUserPermissions('inventory');
+        const hasAccess = permissions.some((access) => [
+            'inventory:*:*', 
+            'inventory:*:read', 
+            'inventory:hosts:read'
+        ].includes(access?.permission || access));
+
+        this.props.toggleInventoryAccess(hasAccess);
     }
 
     triggerNavigation() {
@@ -92,9 +106,13 @@ class App extends Component {
 App.propTypes = {
     history: PropTypes.object,
     location: PropTypes.object,
-    globalFilter: PropTypes.func
+    globalFilter: PropTypes.func,
+    toggleInventoryAccess: PropTypes.func
 };
 
-const mapDispatchToProps = dispatch => ({ globalFilter: (filter) => dispatch(globalFilter(filter)) });
+const mapDispatchToProps = dispatch => ({ 
+    globalFilter: (filter) => dispatch(globalFilter(filter)), 
+    toggleInventoryAccess: (hasAccess) => dispatch(toggleInventoryAccess(hasAccess))
+});
 
 export default withRouter(connect(null, mapDispatchToProps)(App));

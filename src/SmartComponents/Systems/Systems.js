@@ -60,12 +60,16 @@ const Systems = () => {
         ({ entities }) => entities && entities.columns
     );
 
+    const hasAccess = useSelector(
+        ({ SharedAppStateStore }) => SharedAppStateStore.hasAccess
+    );
+
     const { filter, search } = queryParams;
 
     const handleRefresh = useHandleRefresh(metadata, apply);
 
     React.useEffect(() => {
-        dispatch(fetchSystemsAction(queryParams));
+        hasAccess && dispatch(fetchSystemsAction(queryParams));
     }, [queryParams]);
 
     const fetchInventory = async () => {
