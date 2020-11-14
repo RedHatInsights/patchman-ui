@@ -4,6 +4,7 @@ import React, { Fragment, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
 import { ENABLE_PACKAGES } from './Utilities/constants';
+import { useSelector } from 'react-redux';
 
 const Advisories = lazy(() =>
     import(
@@ -105,13 +106,20 @@ InsightsRoute.propTypes = {
 
 export const Routes = (props: Props) => {
 
+    const hasAccess = useSelector(
+        ({ SharedAppStateStore }) => SharedAppStateStore.hasAccess
+    );
+
     React.useEffect(() => {
-        const systems = fetchSystems({ limit: 1 });
-        systems.then((res) => {
-            if (res.meta.total_items === 0) {
-                props.childProps.history.replace(paths.register.to);
-            }
-        });
+
+        if (hasAccess) {
+            const systems = fetchSystems({ limit: 1 });
+            systems.then((res) => {
+                if (res.meta.total_items === 0) {
+                    props.childProps.history.replace(paths.register.to);
+                }
+            });
+        }
     }, []);
 
     const path = props.childProps.location.pathname;

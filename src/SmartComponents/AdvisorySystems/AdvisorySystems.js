@@ -55,6 +55,10 @@ const AdvisorySystems = ({ advisoryName }) => {
         ({ entities }) => entities && entities.columns
     );
 
+    const hasAccess = useSelector(
+        ({ SharedAppStateStore }) => SharedAppStateStore.hasAccess
+    );
+
     const handleRefresh = useHandleRefresh(metadata, apply);
     const { filter, search } = queryParams;
 
@@ -63,7 +67,7 @@ const AdvisorySystems = ({ advisoryName }) => {
     }, []);
 
     React.useEffect(() => {
-        dispatch(
+        hasAccess && dispatch(
             fetchAdvisorySystemsAction({ id: advisoryName, ...queryParams })
         );
     }, [queryParams]);
