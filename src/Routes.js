@@ -1,10 +1,11 @@
 import some from 'lodash/some';
 import PropTypes from 'prop-types';
-import React, { Fragment, lazy, Suspense } from 'react';
+import React, { Fragment, lazy, Suspense, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
 import { ENABLE_PACKAGES } from './Utilities/constants';
 import { useSelector } from 'react-redux';
+import NoAccess from './PresentationalComponents/Snippets/NoAccess';
 
 const Advisories = lazy(() =>
     import(
@@ -105,26 +106,26 @@ InsightsRoute.propTypes = {
 };
 
 export const Routes = (props: Props) => {
-
-    const hasAccess = useSelector(
-        ({ SharedAppStateStore }) => SharedAppStateStore.hasAccess
+    const [hasPatchAccess, setPatchAccess] = useState(true);
+    const hasInventoryAccess = useSelector(
+        ({ SharedAppStateStore }) => SharedAppStateStore.hasInventoryAccess
     );
 
     React.useEffect(() => {
-
-        if (hasAccess) {
+        if (hasInventoryAccess) {
             const systems = fetchSystems({ limit: 1 });
             systems.then((res) => {
                 if (res.meta.total_items === 0) {
                     props.childProps.history.replace(paths.register.to);
                 }
-            });
+
+            }).catch(err => err.status === 401 && setPatchAccess(false));
         }
     }, []);
 
     const path = props.childProps.location.pathname;
 
-    return (
+    return hasPatchAccess && (
         // I recommend discussing with UX some nice loading placeholder
         <Suspense fallback={Fragment}>
             <Switch>
@@ -181,7 +182,7 @@ export const Routes = (props: Props) => {
                 />
             </Switch>
         </Suspense>
-    );
+    ) || <NoAccess /> ;
 };
 
 Routes.propTypes = {

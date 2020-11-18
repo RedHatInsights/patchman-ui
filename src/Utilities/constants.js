@@ -151,3 +151,8 @@ export const entityTypes = {
     advisories: 'advisories',
     packages: 'packages'
 };
+
+export const ReadOnlyNotification = {
+    title: 'title',
+    detail: 'message'
+};

@@ -1,4 +1,5 @@
 import { encodeApiParams } from './Helpers';
+import axios from './axiosInterceptors';
 
 export function createApiCall(
     endpoint,
@@ -13,40 +14,15 @@ export function createApiCall(
     let result = window.insights.chrome.auth
     .getUser()
     .then(() =>
-        fetch('/api/patch/v1' + endpoint, {
+        axios({
             method,
-            credentials: 'include',
-            body: JSON.stringify(data)
+            url: '/api/patch/v1' + endpoint,
+            withCredentials: true,
+            timeout: 4000,
+            data
         })
-    )
-    .then(res => {
-        if (!res.ok) {
-            const contentType = res.headers.get('content-type');
-            if (contentType.indexOf('json') !== -1) {
-                throw res;
-            } else {
-                throw {
-                    errors: [
-                        { status: res.status, detail: res.statusText }
-                    ]
-                };
-            }
-        }
+    );
 
-        return res.json();
-    })
-    .catch(caughtError => {
-        const error = Promise.resolve(caughtError || {});
-        const genericError = {
-            title:
-                    'There was an error getting data'
-        };
-        return error.then(error => {
-            const [info] = error.errors;
-            const result = error.errors && { ...genericError, detail: info.detail, status: info.status } || genericError;
-            throw result ;
-        });
-    });
     return result;
 }
 

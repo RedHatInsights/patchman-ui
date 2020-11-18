@@ -13,16 +13,18 @@ import { globalFilter, toggleInventoryAccess } from './store/Actions/Actions';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { config:
-            {
+        this.state = {
+            hasPatchAccess: true, 
+            config: {
                 selectedTags: [],
                 systemProfile: undefined
-            }};
+            }
+        };
     }
     componentDidMount() {
         insights.chrome.init();
         insights.chrome.identifyApp('patch');
-
+        this.checkInventoryAccess();
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
                 const [workloads, SID, tags] = insights.chrome?.mapGlobalFilter?.(data, false, true);
@@ -46,8 +48,8 @@ class App extends Component {
 
             });
         }
+
         this.unregister = this.listenNavigation();
-        this.checkInventoryAccess();
         this.triggerNavigation();
 
     }
@@ -66,14 +68,12 @@ class App extends Component {
 
     async checkInventoryAccess() 
     {
-        const permissions = await insights.chrome.getUserPermissions('inventory');
-        const hasAccess = permissions.some((access) => [
-            'inventory:*:*', 
-            'inventory:*:read', 
-            'inventory:hosts:read'
-        ].includes(access?.permission || access));
+        const userPermissions = await insights.chrome.getUserPermissions();
+        const inventoryPermissionList = ['inventory:*:*', 'inventory:*:read', 'inventory:hosts:read'];
 
-        this.props.toggleInventoryAccess(hasAccess);
+        this.props.toggleInventoryAccess(
+            userPermissions.some((access) => inventoryPermissionList.includes(access?.permission))
+        );
     }
 
     triggerNavigation() {
@@ -112,7 +112,7 @@ App.propTypes = {
 
 const mapDispatchToProps = dispatch => ({ 
     globalFilter: (filter) => dispatch(globalFilter(filter)), 
-    toggleInventoryAccess: (hasAccess) => dispatch(toggleInventoryAccess(hasAccess))
+    toggleInventoryAccess: (hasInventoryAccess) => dispatch(toggleInventoryAccess(hasInventoryAccess))
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(App));
