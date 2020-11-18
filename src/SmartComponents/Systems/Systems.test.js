@@ -59,12 +59,20 @@ const mockState = {
 const initStore = (state) => {
     const customMiddleWare = store => next => action => {
         useSelector.mockImplementation(callback => {
+<<<<<<< HEAD
             return callback({  SystemsListStore: state, SharedAppStateStore: {hasAccess: true} });
+=======
+            return callback({  SystemsListStore: state, SharedAppStateStore: { hasInventoryAccess: true } });
+>>>>>>> 4c67a59... feat(Errors) handle 403 error
         });
         next(action);
     };
     const mockStore = configureStore([customMiddleWare]);
+<<<<<<< HEAD
     return mockStore({  SystemsListStore: state, SharedAppStateStore: {hasAccess: true} });
+=======
+    return mockStore({  SystemsListStore: state, SharedAppStateStore: { hasInventoryAccess: true } });
+>>>>>>> 4c67a59... feat(Errors) handle 403 error
 }
 
 let wrapper;
@@ -74,7 +82,11 @@ beforeEach(() => {
     console.error = () => {};
     store.clearActions();
     useSelector.mockImplementation(callback => {
+<<<<<<< HEAD
         return callback({ SystemsListStore: mockState, SharedAppStateStore: {hasAccess: true} });
+=======
+        return callback({ SystemsListStore: mockState, SharedAppStateStore: { hasInventoryAccess: true } });
+>>>>>>> 4c67a59... feat(Errors) handle 403 error
     });
     wrapper = mount(<Provider store={store}>
             <Router><Systems /></Router>
@@ -147,7 +159,11 @@ describe('Systems.js', () => {
         };
 
         useSelector.mockImplementation(callback => {
-            return callback({ SystemsListStore: notFoundState, entities: { columns: [{ id: 'entity' }] }, SharedAppStateStore: {hasAccess: true} });
+            return callback({ 
+                SystemsListStore: notFoundState, 
+                entities: { columns: [{ id: 'entity' }] },
+                SharedAppStateStore: { hasInventoryAccess: true }  
+            });
         });
         
         const tempStore = initStore(notFoundState);

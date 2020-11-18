@@ -1,14 +1,14 @@
 
 // Initial State
 export const init = {
-    hasAccess: false
+    hasInventoryAccess: false
 };
 // Reducer
 
 export const SharedAppStateStore = (state = init, action) => {
     switch (action.type) {
         case 'TOGGLE_INVENTORY_ACCESS':
-            return { ...state, hasAccess: action.payload };
+            return { ...state, hasInventoryAccess: action.payload };
 
         default:
             return state;

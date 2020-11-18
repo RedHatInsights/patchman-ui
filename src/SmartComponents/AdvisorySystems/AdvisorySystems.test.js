@@ -31,12 +31,12 @@ const mockState = { ...storeListDefaults, rows: systemRows, selectedRows: { 'f99
 const initStore = (state) => {
     const customMiddleWare = store => next => action => {
         useSelector.mockImplementation(callback => {
-            return callback({ AdvisorySystemsStore: state, SharedAppStateStore: { hasAccess: true } });
+            return callback({ AdvisorySystemsStore: state, SharedAppStateStore: { hasInventoryAccess: true } });
         });
         next(action);
     };
     const mockStore = configureStore([customMiddleWare]);
-    return mockStore({ AdvisorySystemsStore: state, SharedAppStateStore: { hasAccess: true } });
+    return mockStore({ AdvisorySystemsStore: state, SharedAppStateStore: { hasInventoryAccess: true } });
 }
 
 let store = initStore(mockState);
@@ -45,7 +45,7 @@ beforeEach(() => {
     console.error = () => {};
     store.clearActions();
     useSelector.mockImplementation(callback => {
-        return callback({ AdvisorySystemsStore: mockState, SharedAppStateStore: { hasAccess: true } });
+        return callback({ AdvisorySystemsStore: mockState, SharedAppStateStore: { hasInventoryAccess: true } });
     });
 
     act(() => {
@@ -68,7 +68,7 @@ describe('AdvisorySystems.js', () => {
     it('Should display error page when status is rejected', () => {
         const rejectedState = { ...mockState, status: 'rejected', error: { detail: 'test' } };
         useSelector.mockImplementation(callback => {
-            return callback({ AdvisorySystemsStore: rejectedState, SharedAppStateStore: { hasAccess: true } });
+            return callback({ AdvisorySystemsStore: rejectedState, SharedAppStateStore: { hasInventoryAccess: true } });
         });
         const tempStore = initStore(rejectedState);
         const tempWrapper = mount(<Provider store={tempStore}>

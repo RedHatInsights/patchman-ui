@@ -60,8 +60,8 @@ const Systems = () => {
         ({ entities }) => entities && entities.columns
     );
 
-    const hasAccess = useSelector(
-        ({ SharedAppStateStore }) => SharedAppStateStore.hasAccess
+    const hasInventoryAccess = useSelector(
+        ({ SharedAppStateStore }) => SharedAppStateStore.hasInventoryAccess
     );
 
     const { filter, search } = queryParams;
@@ -69,7 +69,7 @@ const Systems = () => {
     const handleRefresh = useHandleRefresh(metadata, apply);
 
     React.useEffect(() => {
-        hasAccess && dispatch(fetchSystemsAction(queryParams));
+        hasInventoryAccess && dispatch(fetchSystemsAction(queryParams));
     }, [queryParams]);
 
     const fetchInventory = async () => {

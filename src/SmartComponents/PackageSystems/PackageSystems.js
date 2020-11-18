@@ -57,8 +57,8 @@ const PackageSystems = ({ packageName }) => {
         ({ entities }) => entities && entities.columns
     );
 
-    const hasAccess = useSelector(
-        ({ SharedAppStateStore }) => SharedAppStateStore.hasAccess
+    const hasInventoryAccess = useSelector(
+        ({ SharedAppStateStore }) => SharedAppStateStore.hasInventoryAccess
     );
 
     const handleRefresh = useHandleRefresh(metadata, apply);
@@ -69,7 +69,7 @@ const PackageSystems = ({ packageName }) => {
     }, []);
 
     React.useEffect(() => {
-        hasAccess && dispatch(
+        hasInventoryAccess && dispatch(
             fetchPackageSystemsAction({ id: packageName, ...queryParams })
         );
     }, [queryParams]);
