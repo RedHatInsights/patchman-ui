@@ -1,12 +1,11 @@
-import Systems from './Systems';
-import { Provider } from 'react-redux';
-import { systemRows } from '../../Utilities/RawDataForTesting';
-import configureStore from 'redux-mock-store';
-import { initMocks } from '../../Utilities/unitTestingUtilities.js';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { act } from 'react-dom/test-utils';
+import { Provider, useSelector } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import configureStore from 'redux-mock-store';
 import { exportSystemsCSV, exportSystemsJSON } from '../../Utilities/api';
+import { systemRows } from '../../Utilities/RawDataForTesting';
+import { initMocks } from '../../Utilities/unitTestingUtilities.js';
+import Systems from './Systems';
 
 /* eslint-disable */
 initMocks()
@@ -60,12 +59,12 @@ const mockState = {
 const initStore = (state) => {
     const customMiddleWare = store => next => action => {
         useSelector.mockImplementation(callback => {
-            return callback({  SystemsListStore: state });
+            return callback({  SystemsListStore: state, SharedAppStateStore: {hasAccess: true} });
         });
         next(action);
     };
     const mockStore = configureStore([customMiddleWare]);
-    return mockStore({  SystemsListStore: state });
+    return mockStore({  SystemsListStore: state, SharedAppStateStore: {hasAccess: true} });
 }
 
 let wrapper;
@@ -75,7 +74,7 @@ beforeEach(() => {
     console.error = () => {};
     store.clearActions();
     useSelector.mockImplementation(callback => {
-        return callback({ SystemsListStore: mockState });
+        return callback({ SystemsListStore: mockState, SharedAppStateStore: {hasAccess: true} });
     });
     wrapper = mount(<Provider store={store}>
             <Router><Systems /></Router>
@@ -148,7 +147,7 @@ describe('Systems.js', () => {
         };
 
         useSelector.mockImplementation(callback => {
-            return callback({ SystemsListStore: notFoundState, entities: { columns: [{ id: 'entity' }] } });
+            return callback({ SystemsListStore: notFoundState, entities: { columns: [{ id: 'entity' }] }, SharedAppStateStore: {hasAccess: true} });
         });
         
         const tempStore = initStore(notFoundState);
