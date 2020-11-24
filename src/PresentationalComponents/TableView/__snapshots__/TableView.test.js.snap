@@ -49,6 +49,9 @@ exports[`TableView TableView 1`] = `
           },
         ],
         "onSelect": [Function],
+        "toggleProps": Object {
+          "data-ouia-component-type": "bulk-select-toggle-button",
+        },
       }
     }
     exportConfig={
@@ -82,6 +85,7 @@ exports[`TableView TableView 1`] = `
         "itemCount": undefined,
         "onPerPageSelect": [MockFunction],
         "onSetPage": [MockFunction],
+        "ouiaId": "top-undefined",
         "page": NaN,
         "perPage": undefined,
       }
@@ -140,6 +144,9 @@ exports[`TableView TableView 2`] = `
           },
         ],
         "onSelect": [Function],
+        "toggleProps": Object {
+          "data-ouia-component-type": "bulk-select-toggle-button",
+        },
       }
     }
     exportConfig={
@@ -173,6 +180,7 @@ exports[`TableView TableView 2`] = `
         "itemCount": undefined,
         "onPerPageSelect": [MockFunction],
         "onSetPage": [MockFunction],
+        "ouiaId": "top-undefined",
         "page": NaN,
         "perPage": undefined,
       }
@@ -236,6 +244,9 @@ exports[`TableView test table props TableView 1`] = `
           },
         ],
         "onSelect": [Function],
+        "toggleProps": Object {
+          "data-ouia-component-type": "bulk-select-toggle-button",
+        },
       }
     }
     exportConfig={
@@ -269,6 +280,7 @@ exports[`TableView test table props TableView 1`] = `
         "itemCount": 10,
         "onPerPageSelect": [MockFunction],
         "onSetPage": [MockFunction],
+        "ouiaId": "top-undefined",
         "page": NaN,
         "perPage": undefined,
       }
@@ -304,6 +316,7 @@ exports[`TableView test table props TableView 1`] = `
     onPerPageSelect={[MockFunction]}
     onSetPage={[MockFunction]}
     page={NaN}
+    paginationOUIA="bottom-undefined"
     totalItems={10}
   />
 </Fragment>

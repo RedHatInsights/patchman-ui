@@ -56,14 +56,19 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
               },
             ]
           }
+          headerOUIA="inventory-details"
           title=""
         >
-          <PageHeader>
+          <PageHeader
+            data-ouia-component-type="inventory-details-page-header"
+          >
             <section
               className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+              data-ouia-component-type="inventory-details-page-header"
               widget-type="InsightsPageHeader"
             >
               <HeaderBreadcrumbs
+                headerOUIA="inventory-details"
                 items={
                   Array [
                     Object {
@@ -103,13 +108,19 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                           className="pf-c-breadcrumb__item"
                         >
                           <Link
+                            data-ouia-component-id="breadcrumb-to-Patch"
+                            data-ouia-component-type="inventory-details-breadcrumb"
                             to="/"
                           >
                             <LinkAnchor
+                              data-ouia-component-id="breadcrumb-to-Patch"
+                              data-ouia-component-type="inventory-details-breadcrumb"
                               href="/"
                               navigate={[Function]}
                             >
                               <a
+                                data-ouia-component-id="breadcrumb-to-Patch"
+                                data-ouia-component-type="inventory-details-breadcrumb"
                                 href="/"
                                 onClick={[Function]}
                               >
@@ -157,13 +168,19 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                             </AngleRightIcon>
                           </span>
                           <Link
+                            data-ouia-component-id="breadcrumb-to-Systems"
+                            data-ouia-component-type="inventory-details-breadcrumb"
                             to="/systems/"
                           >
                             <LinkAnchor
+                              data-ouia-component-id="breadcrumb-to-Systems"
+                              data-ouia-component-type="inventory-details-breadcrumb"
                               href="/systems/"
                               navigate={[Function]}
                             >
                               <a
+                                data-ouia-component-id="breadcrumb-to-Systems"
+                                data-ouia-component-type="inventory-details-breadcrumb"
                                 href="/systems/"
                                 onClick={[Function]}
                               >

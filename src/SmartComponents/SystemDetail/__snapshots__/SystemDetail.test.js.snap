@@ -17,6 +17,8 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
   unmountOnExit={false}
 >
   <Tab
+    data-ouia-component-id="system-advisories-tab"
+    data-ouia-component-type="system-advisories-tab"
     eventKey={0}
     title={
       <TabTitleText>
@@ -27,6 +29,8 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
     <withRouter(SystemAdvisories) />
   </Tab>
   <Tab
+    data-ouia-component-id="system-packages-tab"
+    data-ouia-component-type="system-packages-tab"
     eventKey={1}
     title={
       <TabTitleText>

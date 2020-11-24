@@ -40,6 +40,7 @@ const PackageDetail = ({ match }) => {
         <React.Fragment>
             <Header
                 title={packageName}
+                headerOUIA={'package-details'}
                 breadcrumbs={[
                     {
                         title: 'Patch',

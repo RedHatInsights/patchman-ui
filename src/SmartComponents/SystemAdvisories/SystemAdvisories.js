@@ -131,6 +131,9 @@ const SystemAdvisories = ({ history }) => {
                 systemId={entity.id}
                 apply={apply}
                 store={{ rows, metadata, status, queryParams }}
+                remediationButtonOUIA={'toolbar-remediation-button'}
+                tableOUIA={'system-advisories-table'}
+                paginationOUIA={'system-advisories-pagination'}
                 filterConfig={{
                     items: [
                         searchFilter(apply, queryParams.search),

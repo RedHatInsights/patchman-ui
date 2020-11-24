@@ -71,7 +71,7 @@ const Packages = () => {
 
     return (
         <React.Fragment>
-            <Header title={'Package Updates'} />
+            <Header title={'Package Updates'} headerOUIA={'packages'}/>
             <Main>
                 {status === STATUS_REJECTED ? errorState :
                     <TableView
@@ -88,6 +88,9 @@ const Packages = () => {
                                 searchFilter(apply, queryParams.search, 'Search packages')
                             ]
                         }}
+                        remediationButtonOUIA={'toolbar-remediation-button'}
+                        tableOUIA={'package-details-table'}
+                        paginationOUIA={'package-details-pagination'}
                     />
                 }
             </Main>

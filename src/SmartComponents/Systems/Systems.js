@@ -161,7 +161,7 @@ const Systems = () => {
     return (
         <React.Fragment>
 
-            <Header title={'Systems'} />
+            <Header title={'Systems'} headerOUIA={'systems'}/>
             <RemediationModalCmp />
             <Main>
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :
