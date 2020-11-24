@@ -40,6 +40,7 @@ const AdvisoryDetail = ({ match }) => {
         <React.Fragment>
             <Header
                 title={advisoryName}
+                headerOUIA={'advisory-details'}
                 breadcrumbs={[
                     {
                         title: 'Patch',

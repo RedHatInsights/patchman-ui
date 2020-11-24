@@ -76,11 +76,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
           }
         >
           <Header
+            headerOUIA="advisories"
             title="Advisories"
           >
-            <PageHeader>
+            <PageHeader
+              data-ouia-component-type="advisories-page-header"
+            >
               <section
                 className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+                data-ouia-component-type="advisories-page-header"
                 widget-type="InsightsPageHeader"
               >
                 <PageHeaderTitle
@@ -211,6 +215,8 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                   onPerPageSelect={[Function]}
                   onSetPage={[Function]}
                   onSort={[Function]}
+                  paginationOUIA="advisories-pagination"
+                  remediationButtonOUIA="toolbar-remediation-button"
                   sortBy={Object {}}
                   store={
                     Object {
@@ -278,6 +284,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                       "status": undefined,
                     }
                   }
+                  tableOUIA="advisories-table"
                 >
                   <PrimaryToolbar
                     actionsConfig={
@@ -351,6 +358,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "itemCount": 0,
                         "onPerPageSelect": [Function],
                         "onSetPage": [Function],
+                        "ouiaId": "top-advisories-pagination",
                         "page": 1,
                         "perPage": 25,
                       }
@@ -558,7 +566,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     >
                                                       <div
                                                         className="pf-c-dropdown ins-c-conditional-filter__group"
-                                                        data-ouia-component-id={7}
+                                                        data-ouia-component-id={6}
                                                         data-ouia-component-type="PF4/Dropdown"
                                                         data-ouia-safe={true}
                                                       >
@@ -577,7 +585,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                             Object {
                                                               "current": <div
                                                                 class="pf-c-dropdown ins-c-conditional-filter__group"
-                                                                data-ouia-component-id="7"
+                                                                data-ouia-component-id="6"
                                                                 data-ouia-component-type="PF4/Dropdown"
                                                                 data-ouia-safe="true"
                                                               >
@@ -652,7 +660,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                               Object {
                                                                 "current": <div
                                                                   class="pf-c-dropdown ins-c-conditional-filter__group"
-                                                                  data-ouia-component-id="7"
+                                                                  data-ouia-component-id="6"
                                                                   data-ouia-component-type="PF4/Dropdown"
                                                                   data-ouia-safe="true"
                                                                 >
@@ -985,7 +993,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         >
                                           <div
                                             className="pf-c-dropdown"
-                                            data-ouia-component-id={8}
+                                            data-ouia-component-id={7}
                                             data-ouia-component-type="PF4/Dropdown"
                                             data-ouia-safe={true}
                                           >
@@ -1002,7 +1010,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 Object {
                                                   "current": <div
                                                     class="pf-c-dropdown"
-                                                    data-ouia-component-id="8"
+                                                    data-ouia-component-id="7"
                                                     data-ouia-component-type="PF4/Dropdown"
                                                     data-ouia-safe="true"
                                                   >
@@ -1053,7 +1061,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                   Object {
                                                     "current": <div
                                                       class="pf-c-dropdown"
-                                                      data-ouia-component-id="8"
+                                                      data-ouia-component-id="7"
                                                       data-ouia-component-type="PF4/Dropdown"
                                                       data-ouia-safe="true"
                                                     >
@@ -1169,7 +1177,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       >
                                         <div
                                           className="pf-c-dropdown"
-                                          data-ouia-component-id={9}
+                                          data-ouia-component-id={8}
                                           data-ouia-component-type="PF4/Dropdown"
                                           data-ouia-safe={true}
                                         >
@@ -1186,7 +1194,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               Object {
                                                 "current": <div
                                                   class="pf-c-dropdown"
-                                                  data-ouia-component-id="9"
+                                                  data-ouia-component-id="8"
                                                   data-ouia-component-type="PF4/Dropdown"
                                                   data-ouia-safe="true"
                                                 >
@@ -1236,7 +1244,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 Object {
                                                   "current": <div
                                                     class="pf-c-dropdown"
-                                                    data-ouia-component-id="9"
+                                                    data-ouia-component-id="8"
                                                     data-ouia-component-type="PF4/Dropdown"
                                                     data-ouia-safe="true"
                                                   >
@@ -1335,6 +1343,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     onPerPageSelect={[Function]}
                                     onPreviousClick={[Function]}
                                     onSetPage={[Function]}
+                                    ouiaId="top-advisories-pagination"
                                     ouiaSafe={true}
                                     page={1}
                                     perPage={25}
@@ -1379,7 +1388,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   >
                                     <div
                                       className="pf-c-pagination pf-m-compact"
-                                      data-ouia-component-id={10}
+                                      data-ouia-component-id="top-advisories-pagination"
                                       data-ouia-component-type="PF4/Pagination"
                                       data-ouia-safe={true}
                                       id="pagination-options-menu-1"
@@ -1515,7 +1524,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         >
                                           <div
                                             className="pf-c-options-menu"
-                                            data-ouia-component-id={11}
+                                            data-ouia-component-id={9}
                                             data-ouia-component-type="PF4/PaginationOptionsMenu"
                                             data-ouia-safe={true}
                                           >
@@ -1539,7 +1548,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 Object {
                                                   "current": <div
                                                     class="pf-c-options-menu"
-                                                    data-ouia-component-id="11"
+                                                    data-ouia-component-id="9"
                                                     data-ouia-component-type="PF4/PaginationOptionsMenu"
                                                     data-ouia-safe="true"
                                                   >
@@ -1634,7 +1643,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     Object {
                                                       "current": <div
                                                         class="pf-c-options-menu"
-                                                        data-ouia-component-id="11"
+                                                        data-ouia-component-id="9"
                                                         data-ouia-component-type="PF4/PaginationOptionsMenu"
                                                         data-ouia-safe="true"
                                                       >
@@ -1707,7 +1716,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       Object {
                                                         "current": <div
                                                           class="pf-c-options-menu"
-                                                          data-ouia-component-id="11"
+                                                          data-ouia-component-id="9"
                                                           data-ouia-component-type="PF4/PaginationOptionsMenu"
                                                           data-ouia-safe="true"
                                                         >
@@ -1850,7 +1859,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 aria-label="Go to previous page"
                                                 className="pf-c-button pf-m-plain pf-m-disabled"
                                                 data-action="previous"
-                                                data-ouia-component-id={12}
+                                                data-ouia-component-id={10}
                                                 data-ouia-component-type="PF4/Button"
                                                 data-ouia-safe={true}
                                                 disabled={true}
@@ -1901,7 +1910,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 aria-label="Go to next page"
                                                 className="pf-c-button pf-m-plain pf-m-disabled"
                                                 data-action="next"
-                                                data-ouia-component-id={13}
+                                                data-ouia-component-id={11}
                                                 data-ouia-component-type="PF4/Button"
                                                 data-ouia-safe={true}
                                                 disabled={true}

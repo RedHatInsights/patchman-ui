@@ -39,9 +39,12 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
       }
       title=""
     >
-      <PageHeader>
+      <PageHeader
+        data-ouia-component-type="undefined-page-header"
+      >
         <section
           className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          data-ouia-component-type="undefined-page-header"
           widget-type="InsightsPageHeader"
         >
           <HeaderBreadcrumbs
@@ -75,13 +78,19 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
                       className="pf-c-breadcrumb__item"
                     >
                       <Link
+                        data-ouia-component-id="breadcrumb-to-First item"
+                        data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
                         <LinkAnchor
+                          data-ouia-component-id="breadcrumb-to-First item"
+                          data-ouia-component-type="undefined-breadcrumb"
                           href="/"
                           navigate={[Function]}
                         >
                           <a
+                            data-ouia-component-id="breadcrumb-to-First item"
+                            data-ouia-component-type="undefined-breadcrumb"
                             href="/"
                             onClick={[Function]}
                           >
@@ -164,9 +173,12 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
       }
       title=""
     >
-      <PageHeader>
+      <PageHeader
+        data-ouia-component-type="undefined-page-header"
+      >
         <section
           className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          data-ouia-component-type="undefined-page-header"
           widget-type="InsightsPageHeader"
         >
           <HeaderBreadcrumbs
@@ -205,13 +217,19 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                       className="pf-c-breadcrumb__item"
                     >
                       <Link
+                        data-ouia-component-id="breadcrumb-to-First item"
+                        data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
                         <LinkAnchor
+                          data-ouia-component-id="breadcrumb-to-First item"
+                          data-ouia-component-type="undefined-breadcrumb"
                           href="/"
                           navigate={[Function]}
                         >
                           <a
+                            data-ouia-component-id="breadcrumb-to-First item"
+                            data-ouia-component-type="undefined-breadcrumb"
                             href="/"
                             onClick={[Function]}
                           >
@@ -259,13 +277,19 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                         </AngleRightIcon>
                       </span>
                       <Link
+                        data-ouia-component-id="breadcrumb-to-Second item"
+                        data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
                         <LinkAnchor
+                          data-ouia-component-id="breadcrumb-to-Second item"
+                          data-ouia-component-type="undefined-breadcrumb"
                           href="/"
                           navigate={[Function]}
                         >
                           <a
+                            data-ouia-component-id="breadcrumb-to-Second item"
+                            data-ouia-component-type="undefined-breadcrumb"
                             href="/"
                             onClick={[Function]}
                           >
@@ -354,9 +378,12 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
       showTabs={false}
       title=""
     >
-      <PageHeader>
+      <PageHeader
+        data-ouia-component-type="undefined-page-header"
+      >
         <section
           className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          data-ouia-component-type="undefined-page-header"
           widget-type="InsightsPageHeader"
         >
           <HeaderBreadcrumbs
@@ -400,13 +427,19 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                       className="pf-c-breadcrumb__item"
                     >
                       <Link
+                        data-ouia-component-id="breadcrumb-to-First item"
+                        data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
                         <LinkAnchor
+                          data-ouia-component-id="breadcrumb-to-First item"
+                          data-ouia-component-type="undefined-breadcrumb"
                           href="/"
                           navigate={[Function]}
                         >
                           <a
+                            data-ouia-component-id="breadcrumb-to-First item"
+                            data-ouia-component-type="undefined-breadcrumb"
                             href="/"
                             onClick={[Function]}
                           >
@@ -454,13 +487,19 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                         </AngleRightIcon>
                       </span>
                       <Link
+                        data-ouia-component-id="breadcrumb-to-Second item"
+                        data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
                         <LinkAnchor
+                          data-ouia-component-id="breadcrumb-to-Second item"
+                          data-ouia-component-type="undefined-breadcrumb"
                           href="/"
                           navigate={[Function]}
                         >
                           <a
+                            data-ouia-component-id="breadcrumb-to-Second item"
+                            data-ouia-component-type="undefined-breadcrumb"
                             href="/"
                             onClick={[Function]}
                           >
@@ -508,13 +547,19 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                         </AngleRightIcon>
                       </span>
                       <Link
+                        data-ouia-component-id="breadcrumb-to-Third item"
+                        data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
                         <LinkAnchor
+                          data-ouia-component-id="breadcrumb-to-Third item"
+                          data-ouia-component-type="undefined-breadcrumb"
                           href="/"
                           navigate={[Function]}
                         >
                           <a
+                            data-ouia-component-id="breadcrumb-to-Third item"
+                            data-ouia-component-type="undefined-breadcrumb"
                             href="/"
                             onClick={[Function]}
                           >
@@ -584,9 +629,12 @@ exports[`Header component should render with empty breadcrumb 1`] = `
       breadcrumbs={Array []}
       title=""
     >
-      <PageHeader>
+      <PageHeader
+        data-ouia-component-type="undefined-page-header"
+      >
         <section
           className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          data-ouia-component-type="undefined-page-header"
           widget-type="InsightsPageHeader"
         >
           <HeaderBreadcrumbs
@@ -661,9 +709,12 @@ exports[`Header component should render with header Hello world 1`] = `
     <Header
       title="Hello world"
     >
-      <PageHeader>
+      <PageHeader
+        data-ouia-component-type="undefined-page-header"
+      >
         <section
           className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          data-ouia-component-type="undefined-page-header"
           widget-type="InsightsPageHeader"
         >
           <PageHeaderTitle
@@ -722,9 +773,12 @@ exports[`Header component should render with header as empty string 1`] = `
     <Header
       title=""
     >
-      <PageHeader>
+      <PageHeader
+        data-ouia-component-type="undefined-page-header"
+      >
         <section
           className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          data-ouia-component-type="undefined-page-header"
           widget-type="InsightsPageHeader"
         >
           <PageHeaderTitle
@@ -790,9 +844,12 @@ exports[`Header component should render without to attribute 1`] = `
       }
       title=""
     >
-      <PageHeader>
+      <PageHeader
+        data-ouia-component-type="undefined-page-header"
+      >
         <section
           className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+          data-ouia-component-type="undefined-page-header"
           widget-type="InsightsPageHeader"
         >
           <HeaderBreadcrumbs

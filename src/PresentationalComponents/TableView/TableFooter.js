@@ -3,7 +3,7 @@ import { TableToolbar } from '@redhat-cloud-services/frontend-components/compone
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const TableFooter = ({ page, perPage, onSetPage, totalItems, onPerPageSelect }) => {
+const TableFooter = ({ page, perPage, onSetPage, totalItems, onPerPageSelect, paginationOUIA }) => {
     return (
         <TableToolbar>
             <Pagination
@@ -14,6 +14,7 @@ const TableFooter = ({ page, perPage, onSetPage, totalItems, onPerPageSelect }) 
                 onPerPageSelect={onPerPageSelect}
                 widgetId={`pagination-options-menu-bottom`}
                 variant={PaginationVariant.bottom}
+                ouiaId={paginationOUIA}
             />
         </TableToolbar>
     );
@@ -24,7 +25,8 @@ TableFooter.propTypes = {
     onPerPageSelect: PropTypes.func,
     page: PropTypes.number,
     perPage: PropTypes.number,
-    totalItems: PropTypes.number
+    totalItems: PropTypes.number,
+    paginationOUIA: PropTypes.string
 };
 
 export default TableFooter;

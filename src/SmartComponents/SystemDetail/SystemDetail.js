@@ -12,10 +12,18 @@ const SystemDetail = () => {
 
     return (
         <Tabs activeKey={activeTabKey} onSelect={onTabSelect} className={'patchTabSelect'}>
-            <Tab eventKey={0} title={<TabTitleText>Advisories</TabTitleText>}>
+            <Tab eventKey={0} title={<TabTitleText>Advisories</TabTitleText>}
+                data-ouia-component-type={`system-advisories-tab`}
+                data-ouia-component-id={`system-advisories-tab`}
+            >
                 <SystemAdvisories/>
             </Tab>
-            <Tab eventKey={1} title={<TabTitleText>Packages</TabTitleText>}>
+            <Tab
+                eventKey={1}
+                title={<TabTitleText>Packages</TabTitleText>}
+                data-ouia-component-type={`system-packages-tab`}
+                data-ouia-component-id={`system-packages-tab`}
+            >
                 <SystemPackages/>
             </Tab>
         </Tabs>

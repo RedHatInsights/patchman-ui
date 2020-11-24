@@ -31,7 +31,10 @@ const TableView = ({
     remediationProvider,
     selectedRows,
     compact,
-    apply
+    apply,
+    remediationButtonOUIA,
+    tableOUIA,
+    paginationOUIA
 }) => {
     const [
         RemediationModalCmp,
@@ -57,7 +60,8 @@ const TableView = ({
                     perPage,
                     isCompact: true,
                     onSetPage,
-                    onPerPageSelect
+                    onPerPageSelect,
+                    ouiaId: `top-${paginationOUIA}`
                 }}
                 filterConfig={filterConfig}
                 activeFiltersConfig={{
@@ -72,6 +76,7 @@ const TableView = ({
                             onClick={() =>
                                 showRemediationModal(remediationProvider())
                             }
+                            ouiaId={remediationButtonOUIA}
                         >
                             <AnsibeTowerIcon color={globalPaletteWhite.value} />&nbsp;Remediate
                         </Button>
@@ -101,6 +106,9 @@ const TableView = ({
                     onSelect: (value) => {
                         value ? onSelect('all') : onSelect('none');
                     },
+                    toggleProps: {
+                        'data-ouia-component-type': 'bulk-select-toggle-button'
+                    },
                     checked: selectedCount === metadata.total_items ? true : selectedCount === 0 ? false : null
                 }}
 
@@ -117,6 +125,7 @@ const TableView = ({
                         onCollapse={metadata.total_items && onCollapse}
                         canSelectAll={false}
                         onSort={onSort}
+                        ouiaId={tableOUIA}
                         sortBy={metadata.total_items && sortBy}
                         variant={compact && TableVariant.compact}
                     >
@@ -129,6 +138,7 @@ const TableView = ({
                         page={page}
                         onSetPage={onSetPage}
                         onPerPageSelect={onPerPageSelect}
+                        paginationOUIA={`bottom-${paginationOUIA}`}
                     />
                 </React.Fragment>)}
         </React.Fragment>
@@ -149,7 +159,10 @@ TableView.propTypes = {
     sortBy: PropTypes.object,
     filterConfig: PropTypes.object,
     store: PropTypes.object,
-    compact: PropTypes.bool
+    compact: PropTypes.bool,
+    remediationButtonOUIA: PropTypes.string,
+    tableOUIA: PropTypes.string,
+    paginationOUIA: PropTypes.string
 };
 
 export default TableView;

@@ -58,6 +58,7 @@ const InventoryDetail = () => {
         <React.Fragment>
             <Header
                 title=""
+                headerOUIA={'inventory-details'}
                 breadcrumbs={[
                     {
                         title: 'Patch',

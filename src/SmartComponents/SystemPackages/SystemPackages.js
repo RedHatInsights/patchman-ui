@@ -112,6 +112,9 @@ const SystemPackages = () => {
                     statusFilter(apply, queryParams.filter)
                 ]
             }}
+            remediationButtonOUIA={'toolbar-remediation-button'}
+            tableOUIA={'system-packages-table'}
+            paginationOUIA={'system-packages-pagination'}
         />);
 
     };

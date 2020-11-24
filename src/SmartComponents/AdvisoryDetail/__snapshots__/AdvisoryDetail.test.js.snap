@@ -94,13 +94,18 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                 },
               ]
             }
+            headerOUIA="advisory-details"
           >
-            <PageHeader>
+            <PageHeader
+              data-ouia-component-type="advisory-details-page-header"
+            >
               <section
                 className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+                data-ouia-component-type="advisory-details-page-header"
                 widget-type="InsightsPageHeader"
               >
                 <HeaderBreadcrumbs
+                  headerOUIA="advisory-details"
                   items={
                     Array [
                       Object {
@@ -140,13 +145,19 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                             className="pf-c-breadcrumb__item"
                           >
                             <Link
+                              data-ouia-component-id="breadcrumb-to-Patch"
+                              data-ouia-component-type="advisory-details-breadcrumb"
                               to="/"
                             >
                               <LinkAnchor
+                                data-ouia-component-id="breadcrumb-to-Patch"
+                                data-ouia-component-type="advisory-details-breadcrumb"
                                 href="/"
                                 navigate={[Function]}
                               >
                                 <a
+                                  data-ouia-component-id="breadcrumb-to-Patch"
+                                  data-ouia-component-type="advisory-details-breadcrumb"
                                   href="/"
                                   onClick={[Function]}
                                 >
@@ -194,13 +205,19 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                               </AngleRightIcon>
                             </span>
                             <Link
+                              data-ouia-component-id="breadcrumb-to-Advisories"
+                              data-ouia-component-type="advisory-details-breadcrumb"
                               to="/"
                             >
                               <LinkAnchor
+                                data-ouia-component-id="breadcrumb-to-Advisories"
+                                data-ouia-component-type="advisory-details-breadcrumb"
                                 href="/"
                                 navigate={[Function]}
                               >
                                 <a
+                                  data-ouia-component-id="breadcrumb-to-Advisories"
+                                  data-ouia-component-type="advisory-details-breadcrumb"
                                   href="/"
                                   onClick={[Function]}
                                 >

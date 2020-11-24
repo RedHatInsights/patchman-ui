@@ -195,6 +195,9 @@ const PackageSystems = ({ packageName }) => {
                         onSelect: (value) => {
                             value ? onSelect('all') : onSelect('none');
                         },
+                        toggleProps: {
+                            'data-ouia-component-type': 'bulk-select-toggle-button'
+                        },
                         checked: selectedCount === metadata.total_items ? true : selectedCount === 0 ? false : null
                     }}
                 >
@@ -214,6 +217,7 @@ const PackageSystems = ({ packageName }) => {
                                         )
                                     )
                                 }
+                                ouiaId={'toolbar-remediation-button'}
                             >
                                 <AnsibeTowerIcon/>&nbsp;Remediate
                             </Button>

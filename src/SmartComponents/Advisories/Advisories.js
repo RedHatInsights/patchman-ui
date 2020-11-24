@@ -92,7 +92,7 @@ const Advisories = ({ history }) => {
 
     return (
         <React.Fragment>
-            <Header title={'Advisories'} />
+            <Header title={'Advisories'} headerOUIA={'advisories'}/>
             <Main>
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :
                     <TableView
@@ -104,6 +104,9 @@ const Advisories = ({ history }) => {
                         onExport={onExport}
                         sortBy={sortBy}
                         apply={apply}
+                        remediationButtonOUIA={'toolbar-remediation-button'}
+                        tableOUIA={'advisories-table'}
+                        paginationOUIA={'advisories-pagination'}
                         store={{ rows, metadata, status, queryParams }}
                         filterConfig={{
                             items: [
