@@ -4,7 +4,6 @@ import React, { Fragment, lazy, Suspense, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
 import { ENABLE_PACKAGES } from './Utilities/constants';
-import { useSelector } from 'react-redux';
 import NoAccess from './PresentationalComponents/Snippets/NoAccess';
 
 const Advisories = lazy(() =>
@@ -107,20 +106,15 @@ InsightsRoute.propTypes = {
 
 export const Routes = (props: Props) => {
     const [hasPatchAccess, setPatchAccess] = useState(true);
-    const hasInventoryAccess = useSelector(
-        ({ SharedAppStateStore }) => SharedAppStateStore.hasInventoryAccess
-    );
 
     React.useEffect(() => {
-        if (hasInventoryAccess) {
-            const systems = fetchSystems({ limit: 1 });
-            systems.then((res) => {
-                if (res.meta.total_items === 0) {
-                    props.childProps.history.replace(paths.register.to);
-                }
+        const systems = fetchSystems({ limit: 1 });
+        systems.then((res) => {
+            if (res.meta.total_items === 0) {
+                props.childProps.history.replace(paths.register.to);
+            }
 
-            }).catch(err => err.status === 401 && setPatchAccess(false));
-        }
+        }).catch(err => err.status === 401 && setPatchAccess(false));
     }, []);
 
     const path = props.childProps.location.pathname;
