@@ -163,8 +163,3 @@ export const changePackageSystemsParams = params => ({
     type: ActionTypes.CHANGE_PACKAGE_SYSTEMS_PARAMS,
     payload: params
 });
-
-export const toggleInventoryAccess = params => ({
-    type: ActionTypes.TOGGLE_INVENTORY_ACCESS,
-    payload: params
-});

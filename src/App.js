@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './App.scss';
 import { paths, Routes } from './Routes';
-import { globalFilter, toggleInventoryAccess } from './store/Actions/Actions';
+import { globalFilter } from './store/Actions/Actions';
 
 /*eslint-disable */
 // console.log('dev mode');
@@ -24,7 +24,7 @@ class App extends Component {
     componentDidMount() {
         insights.chrome.init();
         insights.chrome.identifyApp('patch');
-        this.checkInventoryAccess();
+
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
                 const [workloads, SID, tags] = insights.chrome?.mapGlobalFilter?.(data, false, true);
@@ -66,16 +66,6 @@ class App extends Component {
         });
     }
 
-    async checkInventoryAccess() 
-    {
-        const userPermissions = await insights.chrome.getUserPermissions();
-        const inventoryPermissionList = ['inventory:*:*', 'inventory:*:read', 'inventory:hosts:read'];
-
-        this.props.toggleInventoryAccess(
-            userPermissions.some((access) => inventoryPermissionList.includes(access?.permission))
-        );
-    }
-
     triggerNavigation() {
         this.props.history.listen(() => {
 
@@ -111,8 +101,7 @@ App.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({ 
-    globalFilter: (filter) => dispatch(globalFilter(filter)), 
-    toggleInventoryAccess: (hasInventoryAccess) => dispatch(toggleInventoryAccess(hasInventoryAccess))
+    globalFilter: (filter) => dispatch(globalFilter(filter))
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(App));

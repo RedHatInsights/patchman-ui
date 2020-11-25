@@ -13,7 +13,6 @@ import { SystemAdvisoryListStore } from './Reducers/SystemAdvisoryListStore';
 import { SystemDetailStore } from './Reducers/SystemDetailStore';
 import { SystemPackageListStore } from './Reducers/SystemPackageListStore';
 import { SystemsListStore } from './Reducers/SystemsListStore';
-import { SharedAppStateStore } from './Reducers/SharedAppStateStore';
 
 let registry;
 const persistenceMiddleware = store => next => action => {
@@ -48,7 +47,6 @@ export function init(...middleware) {
         PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
         PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
         PackageSystemsStore: (state = storage.PackageSystemsStore, action) => PackageSystemsStore(state, action),
-        SharedAppStateStore: (state = storage.SharedAppStateStore, action) => SharedAppStateStore(state, action),
         notifications
     });
 
