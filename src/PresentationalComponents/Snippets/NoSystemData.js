@@ -10,7 +10,7 @@ export const NoSystemData = () => (
                 Patch is not yet configured
             </Title>
             <EmptyStateBody>
-                Activate the Insights client for this system
+                Activate the Insights client
             </EmptyStateBody>
             <Button
                 variant="primary"
