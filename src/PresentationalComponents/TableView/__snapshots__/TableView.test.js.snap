@@ -188,7 +188,10 @@ exports[`TableView TableView 2`] = `
     toggleIsExpanded={[Function]}
   />
   <SkeletonTable
+    canSelectAll={false}
     colSize={5}
+    hasRadio={false}
+    isSelectable={false}
     paddingColumnSize={0}
     rowSize={20}
   />
