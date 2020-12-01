@@ -101,7 +101,10 @@ const SystemAdvisories = ({ history }) => {
         dispatch(changeSystemAdvisoryListParams({ id: entity.id, ...params }));
     }
 
-    const errorState = error.status === 404 ?  <NoSystemData/> : <Error message={error.detail}/>;
+    const errorState = error.status === 404 ? <NoSystemData/> : <Error message={error.detail}/>;
+    const emptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
+                            && Object.keys(queryParams).length === 0)
+                                && <SystemUpToDate/>;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({
@@ -110,13 +113,9 @@ const SystemAdvisories = ({ history }) => {
             description: error.detail
         }));}
 
-    const MainComponent = () => {
-        if (status === STATUS_RESOLVED && metadata.total_items === 0
-            && Object.keys(queryParams).length === 0) {
-            return <SystemUpToDate/>;
-        }
-        else {
-            return <TableView
+    return (
+        <React.Fragment>
+            <TableView
                 columns={systemAdvisoriesColumns}
                 onCollapse={onCollapse}
                 onSelect={(advisories.length && onSelect) || undefined}
@@ -141,13 +140,9 @@ const SystemAdvisories = ({ history }) => {
                         publishDateFilter(apply, queryParams.filter)
                     ]
                 }}
-            />;
-        }
-    };
-
-    return (
-        <React.Fragment>
-            {status === STATUS_REJECTED ? errorState : <MainComponent/>}
+                errorState={errorState}
+                emptyState={emptyState}
+            />
         </React.Fragment>
     );
 };

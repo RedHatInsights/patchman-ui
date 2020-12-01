@@ -73,26 +73,25 @@ const Packages = () => {
         <React.Fragment>
             <Header title={'Package Updates'} headerOUIA={'packages'}/>
             <Main>
-                {status === STATUS_REJECTED ? errorState :
-                    <TableView
-                        columns={packagesColumns}
-                        store={{ rows, metadata, status, queryParams }}
-                        onSort={onSort}
-                        sortBy={sortBy}
-                        onSetPage={onSetPage}
-                        onPerPageSelect={onPerPageSelect}
-                        compact
-                        apply={apply}
-                        filterConfig={{
-                            items: [
-                                searchFilter(apply, queryParams.search, 'Search packages')
-                            ]
-                        }}
-                        remediationButtonOUIA={'toolbar-remediation-button'}
-                        tableOUIA={'package-details-table'}
-                        paginationOUIA={'package-details-pagination'}
-                    />
-                }
+                <TableView
+                    columns={packagesColumns}
+                    store={{ rows, metadata, status, queryParams }}
+                    onSort={onSort}
+                    sortBy={sortBy}
+                    onSetPage={onSetPage}
+                    onPerPageSelect={onPerPageSelect}
+                    compact
+                    apply={apply}
+                    filterConfig={{
+                        items: [
+                            searchFilter(apply, queryParams.search, 'Search packages')
+                        ]
+                    }}
+                    remediationButtonOUIA={'toolbar-remediation-button'}
+                    tableOUIA={'package-details-table'}
+                    paginationOUIA={'package-details-pagination'}
+                    errorState={errorState}
+                />
             </Main>
         </React.Fragment>
     );

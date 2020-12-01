@@ -90,32 +90,34 @@ const Advisories = ({ history }) => {
         dispatch(changeAdvisoryListParams(params));
     }
 
+    const errorState  = status === STATUS_REJECTED && <Error message={error.detail}/>;
+
     return (
         <React.Fragment>
             <Header title={'Advisories'} headerOUIA={'advisories'}/>
             <Main>
-                {status === STATUS_REJECTED ? <Error message={error.detail}/> :
-                    <TableView
-                        columns={advisoriesColumns}
-                        onCollapse={onCollapse}
-                        onSetPage={onSetPage}
-                        onPerPageSelect={onPerPageSelect}
-                        onSort={onSort}
-                        onExport={onExport}
-                        sortBy={sortBy}
-                        apply={apply}
-                        remediationButtonOUIA={'toolbar-remediation-button'}
-                        tableOUIA={'advisories-table'}
-                        paginationOUIA={'advisories-pagination'}
-                        store={{ rows, metadata, status, queryParams }}
-                        filterConfig={{
-                            items: [
-                                searchFilter(apply, queryParams.search),
-                                typeFilter(apply, queryParams.filter),
-                                publishDateFilter(apply, queryParams.filter)
-                            ]
-                        }}
-                    />}
+                <TableView
+                    columns={advisoriesColumns}
+                    onCollapse={onCollapse}
+                    onSetPage={onSetPage}
+                    onPerPageSelect={onPerPageSelect}
+                    onSort={onSort}
+                    onExport={onExport}
+                    sortBy={sortBy}
+                    apply={apply}
+                    remediationButtonOUIA={'toolbar-remediation-button'}
+                    tableOUIA={'advisories-table'}
+                    paginationOUIA={'advisories-pagination'}
+                    store={{ rows, metadata, status, queryParams }}
+                    filterConfig={{
+                        items: [
+                            searchFilter(apply, queryParams.search),
+                            typeFilter(apply, queryParams.filter),
+                            publishDateFilter(apply, queryParams.filter)
+                        ]
+                    }}
+                    errorState={errorState}
+                />
             </Main>
         </React.Fragment>
     );
