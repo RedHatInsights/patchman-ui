@@ -79,6 +79,8 @@ const SystemPackages = () => {
     const onPerPageSelect = usePerPageSelect(apply);
 
     const errorState = error.status === 404 ?  <NoSystemData/> : <Error message={error.detail}/>;
+    const emptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
+                            && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({
@@ -87,41 +89,34 @@ const SystemPackages = () => {
             description: error.detail
         }));}
 
-    const MainComponent = () => {
-
-        if (status === STATUS_RESOLVED && metadata.total_items === 0
-            && Object.keys(queryParams).length === 0) { return <SystemUpToDate/>; }
-
-        return (<TableView
-            columns={systemPackagesColumns}
-            store={{ rows, metadata, status, queryParams }}
-            onSelect={(packages.length && onSelect) || undefined}
-            selectedRows={selectedRows}
-            compact
-            onSort={onSort}
-            sortBy={sortBy}
-            onSetPage={onSetPage}
-            onPerPageSelect={onPerPageSelect}
-            remediationProvider={() =>
-                remediationProvider(arrayFromObj(selectedRows), entity.id)
-            }
-            apply={apply}
-            filterConfig={{
-                items: [
-                    searchFilter(apply, queryParams.search, 'Search packages'),
-                    statusFilter(apply, queryParams.filter)
-                ]
-            }}
-            remediationButtonOUIA={'toolbar-remediation-button'}
-            tableOUIA={'system-packages-table'}
-            paginationOUIA={'system-packages-pagination'}
-        />);
-
-    };
-
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? errorState : <MainComponent/>}
+            <TableView
+                columns={systemPackagesColumns}
+                store={{ rows, metadata, status, queryParams }}
+                onSelect={(packages.length && onSelect) || undefined}
+                selectedRows={selectedRows}
+                compact
+                onSort={onSort}
+                sortBy={sortBy}
+                onSetPage={onSetPage}
+                onPerPageSelect={onPerPageSelect}
+                remediationProvider={() =>
+                    remediationProvider(arrayFromObj(selectedRows), entity.id)
+                }
+                apply={apply}
+                filterConfig={{
+                    items: [
+                        searchFilter(apply, queryParams.search, 'Search packages'),
+                        statusFilter(apply, queryParams.filter)
+                    ]
+                }}
+                remediationButtonOUIA={'toolbar-remediation-button'}
+                tableOUIA={'system-packages-table'}
+                paginationOUIA={'system-packages-pagination'}
+                errorState={errorState}
+                emptyState={emptyState}
+            />
         </React.Fragment>
     );
 };

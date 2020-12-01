@@ -163,6 +163,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                       },
                     ]
                   }
+                  errorState={false}
                   filterConfig={
                     Object {
                       "items": Array [
