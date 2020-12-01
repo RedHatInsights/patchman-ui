@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.2...v1.0.3) (2020-12-01)
+
+
+### Bug Fixes
+
+* **NoSystemData:** fix misleading wording ([0785947](https://github.com/RedHatInsights/patchman-ui/commit/07859479e710a96216b22084ffac64c0a4474632))
+
 ## [1.0.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.1...v1.0.2) (2020-11-13)
 
 
