@@ -309,6 +309,7 @@ exports[`TableView test table props TableView 1`] = `
     role="grid"
     rowLabeledBy="simple-node"
     rows={Array []}
+    selectVariant="checkbox"
     sortBy={Object {}}
     variant={null}
   >
