@@ -113,7 +113,10 @@
     "verify": "npm-run-all build lint test",
     "nightly": "npm run deploy",
     "semantic-release": "semantic-release",
-    "semantic-release-local": "semantic-release --prepare --debug=false"
+    "semantic-release-local": "semantic-release --prepare --debug=false",
+    "translations": "npm-run-all translations:*",
+    "translations:extract": "npx formatjs extract ./src/*.js --out-file ./build/messages/src/Messages.json --extract-from-format-message-call",
+    "translations:compile": "npx formatjs compile ./build/messages/src/Messages.json --out-file ./locales/en.json"
   },
   "release": {
     "analyzeCommits": {
