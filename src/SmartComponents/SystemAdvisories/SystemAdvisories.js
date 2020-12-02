@@ -87,7 +87,7 @@ const SystemAdvisories = ({ history }) => {
     const fetchAllData = () =>
         fetchApplicableSystemAdvisoriesApi({ id: entity.id, limit: -1 });
 
-    const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows);
+    const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows, (advisory) => advisory.id);
 
     const onSort = useSortColumn(systemAdvisoriesColumns, apply, 2);
     const sortBy = React.useMemo(
