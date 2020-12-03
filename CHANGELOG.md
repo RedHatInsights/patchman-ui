@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.3...v1.0.4) (2020-12-03)
+
+
+### Bug Fixes
+
+* **select:** fix selecting of advisories ([5ea61fc](https://github.com/RedHatInsights/patchman-ui/commit/5ea61fceb7a935d03bd560c143d36b1894e6629d))
+
 ## [1.0.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.2...v1.0.3) (2020-12-01)
 
 
