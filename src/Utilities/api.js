@@ -18,7 +18,6 @@ export function createApiCall(
             method,
             url: '/api/patch/v1' + endpoint,
             withCredentials: true,
-            timeout: 4000,
             data
         })
     );
