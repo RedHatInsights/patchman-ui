@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.4...v1.1.0) (2020-12-08)
+
+
+### Features
+
+* **internationalization:** autogenerate translations ([df49a19](https://github.com/RedHatInsights/patchman-ui/commit/df49a19dde7c5d618cf2306590ff61ba9aa9c877))
+
 ## [1.0.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.3...v1.0.4) (2020-12-03)
 
 
