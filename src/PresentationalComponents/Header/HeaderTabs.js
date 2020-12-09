@@ -1,4 +1,4 @@
-import { Tab, Tabs } from '@patternfly/react-core/dist/js/components/Tabs';
+import { Tab, Tabs } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router-dom';

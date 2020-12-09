@@ -1,4 +1,4 @@
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';

@@ -1,6 +1,6 @@
 import { cellWidth, expandable, sortable, SortByDirection,
-    Table as PfTable, TableBody, TableGridBreakpoint, TableHeader, TableVariant } from '@patternfly/react-table/dist/js';
-import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
+    Table as PfTable, TableBody, TableGridBreakpoint, TableHeader, TableVariant } from '@patternfly/react-table';
+import { Main } from '@redhat-cloud-services/frontend-components';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import * as ReactRedux from 'react-redux';

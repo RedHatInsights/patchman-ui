@@ -1,4 +1,4 @@
-import { Main } from '@redhat-cloud-services/frontend-components/components/Main';
+import { Main } from '@redhat-cloud-services/frontend-components';
 import React from 'react';
 import Header from '../Header/Header';
 import { NoSystemData } from '../Snippets/NoSystemData';

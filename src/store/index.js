@@ -1,6 +1,5 @@
 /* eslint new-cap: 0 */
-import notifications from '@redhat-cloud-services/frontend-components-notifications/cjs/notifications';
-import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/cjs/notificationsMiddleware';
+import { notifications, notificationsMiddleware } from '@redhat-cloud-services/frontend-components-notifications';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/cjs/ReducerRegistry';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';

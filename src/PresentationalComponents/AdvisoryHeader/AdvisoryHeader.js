@@ -1,8 +1,5 @@
-import { Grid } from '@patternfly/react-core/dist/js/layouts/Grid/Grid';
-import { GridItem } from '@patternfly/react-core/dist/js/layouts/Grid/GridItem';
-import { Stack } from '@patternfly/react-core/dist/js/layouts/Stack/Stack';
-import { StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/StackItem';
-import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
+import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
+import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import propTypes from 'prop-types';
 import React from 'react';

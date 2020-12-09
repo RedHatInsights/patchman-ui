@@ -1,7 +1,4 @@
-import { Grid } from '@patternfly/react-core/dist/js/layouts/Grid/Grid';
-import { GridItem } from '@patternfly/react-core/dist/js/layouts/Grid/GridItem';
-import { Stack } from '@patternfly/react-core/dist/js/layouts/Stack/Stack';
-import { StackItem } from '@patternfly/react-core/dist/js/layouts/Stack/StackItem';
+import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
 import { preserveNewlines } from '../../Utilities/Helpers';
