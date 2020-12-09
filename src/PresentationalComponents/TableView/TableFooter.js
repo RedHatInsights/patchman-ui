@@ -1,5 +1,5 @@
-import { Pagination, PaginationVariant } from '@patternfly/react-core/dist/js/components/Pagination';
-import { TableToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/TableToolbar';
+import { Pagination, PaginationVariant } from '@patternfly/react-core';
+import { TableToolbar } from '@redhat-cloud-services/frontend-components';
 import PropTypes from 'prop-types';
 import React from 'react';
 

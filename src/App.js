@@ -1,4 +1,4 @@
-import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/cjs/NotificationPortal';
+import { NotificationsPortal } from '@redhat-cloud-services/frontend-components-notifications';
 import { isEqual } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';

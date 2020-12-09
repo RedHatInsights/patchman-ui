@@ -1,5 +1,4 @@
-import { Text, TextContent, TextVariants } from '@patternfly/react-core';
-import { Popover } from '@patternfly/react-core/dist/js/components/Popover/Popover';
+import { Text, TextContent, TextVariants, Popover } from '@patternfly/react-core';
 import { ExternalLinkSquareAltIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';

@@ -8,7 +8,14 @@ const glob = require('glob');
  */
 const mapper = {
     TextVariants: 'Text',
-    EmptyStateVariant: 'EmptyState'
+    EmptyStateVariant: 'EmptyState',
+    PaginationVariant: 'Pagination',
+    SelectVariant: 'selectConstants',
+    DropdownPosition: 'dropdownConstants',
+    TextListVariants: 'TextList',
+    TextListItemVariants: 'TextListItem',
+    ClipboardCopyVariant: 'ClipboardCopy',
+    TooltipPosition: 'Tooltip'
 };
 
 const IconMapper = {
@@ -34,12 +41,12 @@ const NotificationMapper = {
  * There fore its better to use commonJS version of the build to avoid duplicate cjs/esm variants of components
  * After its fixed in PF we can swap to using esm build
  */
-const patternflyTransformImports = [
+const patternflyTransformImports = (env) => [
     'transform-imports',
     {
         '@patternfly/react-table': {
             skipDefaultConversion: true,
-            transform: '@patternfly/react-core/dist/js'
+            transform: `@patternfly/react-table/dist/${env}`
         },
         '@patternfly/react-core': {
             transform: (importName) => {
@@ -47,7 +54,7 @@ const patternflyTransformImports = [
                 const files = glob.sync(
                     path.resolve(
                         __dirname,
-                        `./node_modules/@patternfly/react-core/dist/js/**/${mapper[
+                        `./node_modules/@patternfly/react-core/dist/${env}/**/${mapper[
                         importName
                         ] || importName}.js`
                     )
@@ -67,7 +74,7 @@ const patternflyTransformImports = [
         },
         '@patternfly/react-icons': {
             transform: (importName) =>
-                `@patternfly/react-icons/dist/js/icons/${IconMapper[importName] || importName
+                `@patternfly/react-icons/dist/${env}/icons/${IconMapper[importName] || importName
                 .split(/(?=[A-Z])/)
                 .join('-')
                 .toLowerCase()}.js`,
@@ -77,18 +84,25 @@ const patternflyTransformImports = [
     'patternfly-react'
 ];
 
-const fecTransformImports = [
+const fecTransformImports = (env) => [
     'transform-imports',
     {
         '@redhat-cloud-services/frontend-components': {
-            transform: (importName) =>
-                `@redhat-cloud-services/frontend-components/components/cjs/${FECMapper[importName] || importName}.js`,
+            transform: (importName) => `@redhat-cloud-services/frontend-components/components/${
+                env
+            }/${
+                FECMapper[importName] || importName
+            }.js`,
             preventFullImport: false,
             skipDefaultConversion: true
         },
         '@redhat-cloud-services/frontend-components-notifications': {
             transform: (importName) =>
-                `@redhat-cloud-services/frontend-components-notifications/cjs/${NotificationMapper[importName] || importName}.js`,
+                `@redhat-cloud-services/frontend-components-notifications/${
+                    env
+                }/${
+                    NotificationMapper[importName] || importName
+                }.js`,
             preventFullImport: true
         }
     },
@@ -98,12 +112,41 @@ const fecTransformImports = [
 module.exports = {
     presets: ['@babel/env', '@babel/react', '@babel/flow'],
     plugins: [
+        ['transform-inline-environment-variables', {
+            include: [
+                'NODE_ENV'
+            ]
+        }],
         '@babel/plugin-transform-runtime',
         '@babel/plugin-syntax-dynamic-import',
         '@babel/plugin-proposal-object-rest-spread',
         'lodash',
-        '@babel/plugin-proposal-class-properties',
-        patternflyTransformImports,
-        fecTransformImports
-    ]
+        '@babel/plugin-proposal-class-properties'
+    ],
+    env: {
+        cjs: {
+            plugins: [
+                patternflyTransformImports('js'),
+                fecTransformImports('cjs')
+            ]
+        },
+        esm: {
+            plugins: [
+                patternflyTransformImports('esm'),
+                fecTransformImports('esm')
+            ]
+        },
+        production: {
+            plugins: [
+                patternflyTransformImports('js'),
+                fecTransformImports('cjs')
+            ]
+        },
+        development: {
+            plugins: [
+                patternflyTransformImports('js'),
+                fecTransformImports('cjs')
+            ]
+        }
+    }
 };

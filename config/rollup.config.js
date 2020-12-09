@@ -74,7 +74,10 @@ const plugins = [
 ];
 
 export default [
-    ...['esm', 'cjs'].map(env => ({
+    ...[
+        ...process.env.FORMAT === 'esm' || !process.env.FORMAT ? ['esm'] : [],
+        ...process.env.FORMAT === 'cjs' || !process.env.FORMAT ? ['cjs'] : []
+    ].map(env => ({
         input: {
             index: 'src/index.js',
             SystemAdvisoryListStore: 'src/store/Reducers/SystemAdvisoryListStore.js',
@@ -90,7 +93,7 @@ export default [
         external,
         plugins
     })),
-    ...Object.entries({
+    ...process.env.FORMAT === 'umd' || !process.env.FORMAT ? [...Object.entries({
         index: 'src/index.js',
         SystemAdvisoryListStore: 'src/store/Reducers/SystemAdvisoryListStore.js',
         SystemPackageListStore: 'src/store/Reducers/SystemPackageListStore.js'
@@ -105,5 +108,5 @@ export default [
         },
         external,
         plugins
-    }))
+    }))] : []
 ];

@@ -1,8 +1,7 @@
-import { Button } from '@patternfly/react-core/dist/js/components/Button/Button';
-import AnsibeTowerIcon from '@patternfly/react-icons/dist/js/icons/ansibeTower-icon'; // PF typo
-import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table/dist/js/components/Table';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/components/cjs/PrimaryToolbar';
-import { SkeletonTable } from '@redhat-cloud-services/frontend-components/components/cjs/SkeletonTable';
+import { Button } from '@patternfly/react-core';
+import { AnsibeTowerIcon } from '@patternfly/react-icons'; // PF typo
+import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
+import { PrimaryToolbar, SkeletonTable } from '@redhat-cloud-services/frontend-components';
 import globalPaletteWhite from '@patternfly/react-tokens/dist/js/global_palette_white';
 import PropTypes from 'prop-types';
 import React from 'react';

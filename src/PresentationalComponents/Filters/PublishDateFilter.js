@@ -1,4 +1,4 @@
-import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/components/cjs/ConditionalFilter';
+import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
 import { publicDateOptions } from '../../Utilities/constants';
 
 const publishDateFilter = (apply, currentFilter = {}) => {

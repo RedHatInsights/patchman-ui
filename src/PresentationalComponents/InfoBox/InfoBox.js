@@ -1,6 +1,4 @@
-import { Text, TextContent, TextVariants } from '@patternfly/react-core/dist/js/components/Text/';
-import { Bullseye } from '@patternfly/react-core/dist/js/layouts/Bullseye/';
-import { Split, SplitItem } from '@patternfly/react-core/dist/js/layouts/Split/';
+import { Text, TextContent, TextVariants, Bullseye, Split, SplitItem } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
 import WithLoader, { WithLoaderVariants } from '../WithLoader/WithLoader';
