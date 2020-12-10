@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.1.0...v1.1.1) (2020-12-10)
+
+
+### Bug Fixes
+
+* **treeshaking:** Improve treeshaking of imported patch detail ([6d70adc](https://github.com/RedHatInsights/patchman-ui/commit/6d70adc6fcf304e467e48d9ab41238d817de6d71))
+
 # [1.1.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.0.4...v1.1.0) (2020-12-08)
 
 
