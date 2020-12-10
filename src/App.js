@@ -1,75 +1,37 @@
-import { NotificationsPortal } from '@redhat-cloud-services/frontend-components-notifications';
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
+
+import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/cjs/NotificationPortal';
 import { isEqual } from 'lodash';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import './App.scss';
 import { paths, Routes } from './Routes';
 import { globalFilter } from './store/Actions/Actions';
+import { useEffect, useState } from 'react';
+import '@redhat-cloud-services/frontend-components-notifications/index.css';
+import { useLocation, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+const App = () => {
+    const dispatch = useDispatch();
+    const [config, setConfig] = useState({
+        selectedTags: [],
+        systemProfile: false
+    });
+    const location = useLocation();
+    const history = useHistory();
 
-/*eslint-disable */
-// console.log('dev mode');
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            hasPatchAccess: true, 
-            config: {
-                selectedTags: [],
-                systemProfile: undefined
-            }
-        };
-    }
-    componentDidMount() {
-        insights.chrome.init();
-        insights.chrome.identifyApp('patch');
-
-        if (insights.chrome?.globalFilterScope) {
-            insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
-                const [workloads, SID, tags] = insights.chrome?.mapGlobalFilter?.(data, false, true);
-                const SAP = data?.Workloads?.SAP;
-                const selectedTags = insights.chrome?.mapGlobalFilter?.(data)
-                    ?.filter(item => !item.includes('Workloads')).map(tag => (`tags=${encodeURIComponent(tag)}`));
-
-                const config = { };
-                (SAP && SAP.isSelected)
-                    ? (config.systemProfile = `filter[system_profile][sap_system]=${SAP.isSelected}&`)
-                    : config.systemProfile = undefined;
-                selectedTags && (config.selectedTags = selectedTags);
-                if (SID && SID?.length !== 0) {
-                    const SID_filter = SID.map(item=> `filter[system_profile][sap_sids][in]=${item}`).join('&') ;
-                    config.systemProfile = config.systemProfile?.concat(SID_filter) || SID_filter;
-                }
-                if (!isEqual(this.state.config, config)) {
-                    this.props.globalFilter(config);
-                    this.setState({config});
-                }
-
-            });
-        }
-
-        this.unregister = this.listenNavigation();
-        this.triggerNavigation();
-
-    }
-
-    componentWillUnmount() {
-        this.unregister();
-    }
-
-    listenNavigation() {
+    const listenNavigation = () => {
         return  insights.chrome.on('APP_NAVIGATION', event => {
             if (event.domEvent) {
-                this.props.history.push(`/${event.navId}`);
+                history.push(`/${event.navId}`);
             }
         });
-    }
+    };
 
-    triggerNavigation() {
-        this.props.history.listen(() => {
-
-            const { pathname } = this.props.location;
+    const triggerNavigation = () => {
+        history.listen(() => {
+            const { pathname } = location;
             const currentRoute = Object.values(paths).filter(element => pathname !== '/' && pathname.includes(element.to));
 
             if (pathname === '/') {
@@ -80,28 +42,48 @@ class App extends Component {
                 navId && insights.chrome.appNavClick({ id: navId });
             }
         });
-    }
+    };
 
-    render() {
-        return (
-            <React.Fragment>
-                <NotificationsPortal />
-                <Routes childProps={this.props} />
-            </React.Fragment>
-        );
-    }
+    useEffect(() => {
+        insights.chrome.init();
+        insights.chrome.identifyApp('patch');
 
-}
+        if (insights.chrome?.globalFilterScope) {
+            insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
+                const [workloads, SID, tags] = insights.chrome?.mapGlobalFilter?.(data, false, true);
+                const SAP = data?.Workloads?.SAP;
+                const selectedTags = insights.chrome?.mapGlobalFilter?.(data)
+                    ?.filter(item => !item.includes('Workloads')).map(tag => (`tags=${encodeURIComponent(tag)}`));
 
-App.propTypes = {
-    history: PropTypes.object,
-    location: PropTypes.object,
-    globalFilter: PropTypes.func,
-    toggleInventoryAccess: PropTypes.func
+                const newconfig = { };
+                (SAP && SAP.isSelected)
+                    ? (newconfig.systemProfile = `filter[system_profile][sap_system]=${SAP.isSelected}&`)
+                    : newconfig.systemProfile = undefined;
+                selectedTags && (newconfig.selectedTags = selectedTags);
+                if (SID && SID?.length !== 0) {
+                    const SID_filter = SID.map(item=> `filter[system_profile][sap_sids][in]=${item}`).join('&') ;
+                    newconfig.systemProfile = newconfig.systemProfile?.concat(SID_filter) || SID_filter;
+                }
+
+                if (!isEqual(config, newconfig)) {
+                    dispatch(globalFilter(newconfig));
+                    setConfig(newconfig);
+                }
+
+            });
+        }
+
+        const unregister = listenNavigation();
+        triggerNavigation();
+        return () => unregister();
+    }, []);
+
+    return (
+        <React.Fragment>
+            <NotificationsPortal />
+            <Routes childProps={location, history} />
+        </React.Fragment>
+    );
 };
 
-const mapDispatchToProps = dispatch => ({ 
-    globalFilter: (filter) => dispatch(globalFilter(filter))
-});
-
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(App);
