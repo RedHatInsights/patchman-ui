@@ -6,6 +6,7 @@ import { EmptyAdvisoryList, EmptyPackagesList } from '../PresentationalComponent
 import { entityTypes } from './constants';
 import { createUpgradableColumn, handlePatchLink } from './Helpers';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
+import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -63,7 +64,8 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
 export const createSystemAdvisoriesRows = (
     rows,
     expandedRows,
-    selectedRows
+    selectedRows,
+    metadata
 ) => {
     if (rows.length !== 0) {
         return flatMap(rows, (row, index) => {
@@ -102,7 +104,9 @@ export const createSystemAdvisoriesRows = (
                 cells: [
                     {
                         props: { colSpan: 6 },
-                        title: <EmptyAdvisoryList />
+                        title: !metadata.search && (metadata.filter &&  Object.keys(metadata.filter).length === 0)
+                            && <SystemUpToDate />
+                            || <EmptyAdvisoryList />
                     }
                 ]
             }

@@ -178,9 +178,11 @@ describe('Advisories.js', () => {
         const emptyState = {
             ...mockState,  
             metadata: { 
-                limit: 25 ,
+                limit: 25,
                 offset: 0,
-                total_items: 0
+                total_items: 10,
+                search: 'test',
+                filter: {}
             }
         };
 
@@ -188,7 +190,7 @@ describe('Advisories.js', () => {
             return callback({ SystemAdvisoryListStore: emptyState, entityDetails: { entity: 'test' } });
         });
         
-        const tempStore = initStore(emptyState);
+        const tempStore = initStore(mockState);
         const tempWrapper = mount(<Provider store={tempStore}>
             <Router><SystemAdvisories/></Router>
         </Provider>);

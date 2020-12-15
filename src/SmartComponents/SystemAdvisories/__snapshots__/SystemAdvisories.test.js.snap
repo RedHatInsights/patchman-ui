@@ -115,7 +115,6 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                 },
               ]
             }
-            emptyState={false}
             errorState={<Error />}
             filterConfig={
               Object {

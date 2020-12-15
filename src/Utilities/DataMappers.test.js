@@ -3,6 +3,7 @@ import { EmptyAdvisoryList } from '../PresentationalComponents/Snippets/EmptySta
 import { createAdvisoriesRows, createSystemAdvisoriesRows, createSystemPackagesRows, createSystemsRows } from './DataMappers';
 import { handlePatchLink } from './Helpers';
 import { advisoryRows, systemAdvisoryRows, systemPackages, systemRows } from './RawDataForTesting';
+import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 
 describe('DataMappers', () => {
     it('Should create advisories rows', () => {
@@ -41,8 +42,15 @@ describe('DataMappers', () => {
         expect(portalAdvisoryLink.props.row).toEqual(systemAdvisoryRows[0]);
     });
 
-    it('Should createSystemAdvisoriesRows handle empty row data', () => {
-        const result = createSystemAdvisoriesRows([], [], []);
+    it('Should createSystemAdvisoriesRows handle empty row data and show SystemUpToDate', () => {
+        const result = createSystemAdvisoriesRows([], [], [], { filter: {} });
+        expect(result[0].heightAuto).toBeTruthy();
+        expect(result[0].cells[0].props).toEqual({ colSpan: 6 });
+        expect(result[0].cells[0].title.type).toEqual(SystemUpToDate);
+    });
+
+    it('Should createSystemAdvisoriesRows handle empty row data and show EmptyAdvisoryList', () => {
+        const result = createSystemAdvisoriesRows([], [], [], { filter: { search: 'test' } });
         expect(result[0].heightAuto).toBeTruthy();
         expect(result[0].cells[0].props).toEqual({ colSpan: 6 });
         expect(result[0].cells[0].title.type).toEqual(EmptyAdvisoryList);
