@@ -1,6 +1,8 @@
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
 import React from 'react';
 import { updatableTypes } from '../../Utilities/constants';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const statusFilter = (apply, currentFilter = {}) => {
 
@@ -23,7 +25,7 @@ const statusFilter = (apply, currentFilter = {}) => {
     };
 
     return {
-        label: 'Status',
+        label: intl.formatMessage(messages.labelsFiltersStatus),
         type: conditionalFilterType.radio,
         filterValues: {
             onChange: (event, value) => {

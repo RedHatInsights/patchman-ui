@@ -1,6 +1,8 @@
 import { Bullseye, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
 import { CheckCircleIcon } from '@patternfly/react-icons';
 import React from 'react';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 export const SystemUpToDate = () => (
     <Bullseye>
@@ -8,10 +10,10 @@ export const SystemUpToDate = () => (
             <EmptyStateIcon icon={()=><CheckCircleIcon size='xl' color={'var(--pf-global--success-color--200)' }
                 style={{ marginBottom: 15 }} />}/>
             <Title headingLevel="h5" size="lg">
-                No applicable advisories
+                {intl.formatMessage(messages.statesNoApplicableAdvisories)}
             </Title>
             <EmptyStateBody>
-                This system is up to date, based on package information submitted at the most recent system check-in
+                {intl.formatMessage(messages.statesSystemUpToDate)}
             </EmptyStateBody>
         </EmptyState>
     </Bullseye>

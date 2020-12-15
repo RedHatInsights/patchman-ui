@@ -1,6 +1,8 @@
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
 import React from 'react';
 import { advisoryTypes } from '../../Utilities/constants';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const typeFilter = (apply, currentFilter = {}) => {
     const advisoryTypesMap = React.useMemo(
@@ -16,7 +18,7 @@ const typeFilter = (apply, currentFilter = {}) => {
     };
 
     return {
-        label: 'Type',
+        label: intl.formatMessage(messages.labelsFiltersType),
         type: conditionalFilterType.checkbox,
         filterValues: {
             onChange: (event, value) => {

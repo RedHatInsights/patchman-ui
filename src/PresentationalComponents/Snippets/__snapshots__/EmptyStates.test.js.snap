@@ -11,7 +11,7 @@ exports[`EmptyAdvisoryList Should match the snapshot 1`] = `
     headingLevel="h5"
     size="lg"
   >
-    No matching Advisories found
+    No matching advisories found
   </Title>
 </EmptyState>
 `;

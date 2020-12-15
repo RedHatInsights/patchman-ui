@@ -8,6 +8,8 @@ import { getSeverityById, preserveNewlines } from '../../Utilities/Helpers';
 import InfoBox from '../InfoBox/InfoBox';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
 import ExternalLink from '../Snippets/ExternalLink';
+import messages from '../../Messages';
+import { intl } from '../../Utilities/IntlProvider';
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const severityObject = getSeverityById(attributes.severity);
@@ -29,23 +31,25 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                         <StackItem>
                             {attributes.public_date && (
                                 <React.Fragment>
-                                    {`Issued: ${processDate(
+                                    {intl.formatMessage(messages.labelsPublicDate, { date: processDate(
                                         attributes.public_date
-                                    )}`}
+                                    )
+                                    })}
                                     <br />
                                 </React.Fragment>
                             )}
                             {attributes.modified_date && (
                                 <React.Fragment>
-                                    {`Modified: ${processDate(
+                                    {intl.formatMessage(messages.labelsModifiedDate, { date: processDate(
                                         attributes.modified_date
-                                    )}`}
+                                    )
+                                    })}
                                 </React.Fragment>
                             )}
                         </StackItem>
                         <StackItem>
                             <ExternalLink link={`https://access.redhat.com/errata/${attributes.id}`}
-                                text={'View packages and errata at access.redhat.com'} />
+                                text={intl.formatMessage(messages.linksViewPackagesAndErrata)} />
                         </StackItem>
                     </Stack>
                 </WithLoader>
