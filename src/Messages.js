@@ -4,25 +4,206 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
+
     generalAppName: {
         id: 'generalAppName',
         description: 'regsiter page title',
         defaultMessage: 'Patch'
+    },
+    labelsBulkSelectAll: {
+        id: 'labelsBulkSelectAll',
+        description: 'bulk select option',
+        defaultMessage: 'Select all ({count})'
+    },
+    labelsBulkSelectNone: {
+        id: 'labelsBulkSelectNone',
+        description: 'bulk select option',
+        defaultMessage: 'Select none (0)'
+    },
+    labelsBulkSelectPage: {
+        id: 'labelsBulkSelectPage',
+        description: 'bulk select option',
+        defaultMessage: 'Select page ({count})'
+    },
+    labelsColumnsApplicableSystems: {
+        id: 'labelsColumnsApplicableSystems',
+        description: 'shared label',
+        defaultMessage: 'Applicable systems'
+    },
+    labelsColumnsInstalledVersion: {
+        id: 'labelsColumnsInstalledVersion',
+        description: 'shared label',
+        defaultMessage: 'Installed version'
+    },
+    labelsColumnsLatestVersion: {
+        id: 'labelsColumnsLatestVersion',
+        description: 'shared label',
+        defaultMessage: 'Latest version'
+    },
+    labelsColumnsName: {
+        id: 'labelsColumnsName',
+        description: 'shared label',
+        defaultMessage: 'Name'
+    },
+    labelsColumnsPackage: {
+        id: 'labelsColumnsPackage',
+        description: 'shared single noun label',
+        defaultMessage: 'Package'
+    },
+    labelsColumnsPublishDate: {
+        id: 'labelsColumnsPublishDate',
+        description: 'shared label',
+        defaultMessage: 'Publish date'
+    },
+    labelsColumnsStatus: {
+        id: 'labelsColumnsStatus',
+        description: 'Label for status fitler placeholder',
+        defaultMessage: 'Status'
+    },
+    labelsColumnsSummary: {
+        id: 'labelsColumnsSummary',
+        description: 'shared label',
+        defaultMessage: 'Summary'
+    },
+    labelsColumnsSynopsis: {
+        id: 'labelsColumnsSynopsis',
+        description: 'shared label',
+        defaultMessage: 'Synopsis'
+    },
+    labelsColumnsType: {
+        id: 'labelsColumnsType',
+        description: 'Label for type fitler placeholder',
+        defaultMessage: 'Type'
+    },
+    labelsColumnsUpgradable: {
+        id: 'labelsColumnsUpgradable',
+        description: 'shared label',
+        defaultMessage: 'Upgradable'
+    },
+    labelsDescription: {
+        id: 'labelsDescription',
+        description: 'Label',
+        defaultMessage: 'Description'
     },
     labelsFiltersPackagesSearch: {
         id: 'labelsFiltersPackagesSearch',
         description: 'search filter placeholder for packages pages',
         defaultMessage: 'Search packages'
     },
+    labelsFiltersPublishDate: {
+        id: 'labelsFiltersPublishDate',
+        description: 'shared label',
+        defaultMessage: 'Publish date'
+    },
+    labelsFiltersSearch: {
+        id: 'labelsFiltersSearch',
+        description: 'Label for search fitler placeholder',
+        defaultMessage: 'Search '
+    },
+    labelsFiltersSearchAdvisories: {
+        id: 'labelsFiltersSearchAdvisories',
+        description: 'Label for search fitler placeholder',
+        defaultMessage: 'Search advisories'
+    },
+    labelsFiltersStatus: {
+        id: 'labelsFiltersStatus',
+        description: 'Label for status fitler placeholder',
+        defaultMessage: 'Status'
+    },
     labelsFiltersSystemsSearch: {
         id: 'labelsFiltersSystemsSearch',
         description: 'search filter placeholder for systems pages',
         defaultMessage: 'Search systems'
     },
+    labelsFiltersType: {
+        id: 'labelsFiltersType',
+        description: 'Label for type fitler placeholder',
+        defaultMessage: 'Type'
+    },
+    labelsModifiedDate: {
+        id: 'labelsModifiedDate',
+        description: 'Modified date label',
+        defaultMessage: 'Modified {date}'
+    },
+    labelsPublicDate: {
+        id: 'labelsPublicDate',
+        description: 'Public date label',
+        defaultMessage: 'Issued {date}'
+    },
     labelsRemediate: {
         id: 'labelsRemediate',
         description: 'Button label',
         defaultMessage: 'Remediate'
+    },
+    linksLearnAboutInsights: {
+        id: 'linksLearnAboutInsights',
+        description: 'no system data page button label',
+        defaultMessage: 'Learn about the Insights client'
+    },
+    linksLearnMore: {
+        id: 'linksLearnMore',
+        description: 'Learn more',
+        defaultMessage: 'Learn more'
+    },
+    linksReadMore: {
+        id: 'linksReadMore',
+        description: 'Label',
+        defaultMessage: 'Read more'
+    },
+    linksSearchSecurityRatings: {
+        id: 'linksSearchSecurityRatings',
+        description: 'A link label to security ratings page',
+        defaultMessage: 'Learn more about security ratings'
+    },
+    linksViewPackagesAndErrata: {
+        id: 'viewPackagesAndErrata',
+        description: 'A link label to access.redhat.com ',
+        defaultMessage: 'View packages and errata at access.redhat.com'
+    },
+    statesActivateInsights: {
+        id: 'statesActivateInsights',
+        description: 'no system data page body',
+        defaultMessage: 'Activate the Insights client'
+    },
+    statesError: {
+        id: 'statesError',
+        description: 'Label',
+        defaultMessage: 'Error'
+    },
+    statesMinimumPatchPermissionsRequired: {
+        id: 'statesMinimumPatchPermissionsRequired',
+        description: 'No access page body',
+        defaultMessage: 'To view the content of this page, you must be granted a minimum of Patch permissions from your Organisation Administratior'
+    },
+    statesNoApplicableAdvisories: {
+        id: 'statesNoApplicableAdvisories',
+        description: 'system up to date page title',
+        defaultMessage: 'No applicable advisories'
+    },
+    statesNoMatchingAdvisories: {
+        id: 'statesNoMatchingAdvisories',
+        description: 'Label',
+        defaultMessage: 'No matching advisories found'
+    },
+    statesNoMatchingPackages: {
+        id: 'statesNoMatchingPackages',
+        description: 'Label',
+        defaultMessage: 'No matching packages found'
+    },
+    statesPatchNotConfigured: {
+        id: 'statesPatchNotConfigured',
+        description: 'no system data page title',
+        defaultMessage: 'Patch is not yet configured'
+    },
+    statesRequiresPatchPermissions: {
+        id: 'statesRequiresPatchPermissions',
+        description: 'No access page title',
+        defaultMessage: 'This application requires Patch permissions'
+    },
+    statesSystemUpToDate: {
+        id: 'statesSystemUpToDate',
+        description: 'system up to date page body',
+        defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
     },
     titlesAdvisories: {
         id: 'titlesAdvisories',

@@ -10,6 +10,8 @@ import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilitie
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter } from '../../Utilities/Hooks';
 import TableFooter from './TableFooter';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const TableView = ({
     columns,
@@ -93,18 +95,20 @@ const TableView = ({
                         bulkSelect={onSelect && {
                             count: selectedCount,
                             items: [{
-                                title: `Select none (0)`,
+                                title: intl.formatMessage(messages.labelsBulkSelectNone),
                                 onClick: () => {
                                     onSelect('none');
                                 }
                             }, {
-                                title: `Select page (${onCollapse && rows.length / 2 || rows.length})`,
+                                title: intl.formatMessage(messages.labelsBulkSelectPage,
+                                    { count: onCollapse && rows.length / 2 || rows.length }
+                                ),
                                 onClick: () => {
                                     onSelect('page');
                                 }
                             },
                             {
-                                title: `Select all (${metadata.total_items})`,
+                                title: intl.formatMessage(messages.labelsBulkSelectAll, { count: metadata.total_items }),
                                 onClick: () => {
                                     onSelect('all');
                                 }

@@ -3,6 +3,8 @@ import { ExternalLinkSquareAltIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
 import { Flex, FlexItem } from '@patternfly/react-core';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const AdvisorySeverityInfo = ({ severity }) => {
     return (
@@ -26,13 +28,13 @@ const AdvisorySeverityInfo = ({ severity }) => {
                             <ExternalLinkSquareAltIcon />
                         </FlexItem>
                         <FlexItem spacer={{ default: 'spacerSm' }}>
-                            Learn more about security ratings
+                            {intl.formatMessage(messages.linksSearchSecurityRatings)}
                         </FlexItem>
                     </Flex>
                 </a>
             }
         >
-            <a>Learn more</a>
+            <a>{intl.formatMessage(messages.linksLearnMore)}</a>
         </Popover>
     );
 };

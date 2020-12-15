@@ -1,5 +1,7 @@
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
 import { publicDateOptions } from '../../Utilities/constants';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const publishDateFilter = (apply, currentFilter = {}) => {
     let { public_date: currentValue } = currentFilter;
@@ -9,7 +11,7 @@ const publishDateFilter = (apply, currentFilter = {}) => {
     };
 
     return {
-        label: 'Publish date',
+        label: intl.formatMessage(messages.labelsFiltersPublishDate),
         type: conditionalFilterType.radio,
         filterValues: {
             onChange: (event, value) => {

@@ -174,7 +174,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                             "placeholder": "Search advisories",
                             "value": undefined,
                           },
-                          "label": "Search",
+                          "label": "Search ",
                           "type": "text",
                         },
                         Object {
@@ -316,7 +316,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                               "placeholder": "Search advisories",
                               "value": undefined,
                             },
-                            "label": "Search",
+                            "label": "Search ",
                             "type": "text",
                           },
                           Object {
@@ -416,7 +416,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                   "placeholder": "Search advisories",
                                                   "value": undefined,
                                                 },
-                                                "label": "Search",
+                                                "label": "Search ",
                                                 "type": "text",
                                               },
                                               Object {
@@ -473,7 +473,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           isHovered={true}
                                                           onClick={[Function]}
                                                         >
-                                                          Search
+                                                          Search 
                                                         </DropdownItem>,
                                                         <DropdownItem
                                                           component="button"
@@ -507,7 +507,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                         <span
                                                           className="ins-c-conditional-filter__value-selector"
                                                         >
-                                                          Search
+                                                          Search 
                                                         </span>
                                                       </DropdownToggle>
                                                     }
@@ -523,7 +523,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                             isHovered={true}
                                                             onClick={[Function]}
                                                           >
-                                                            Search
+                                                            Search 
                                                           </DropdownItem>,
                                                           <DropdownItem
                                                             component="button"
@@ -561,7 +561,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           <span
                                                             className="ins-c-conditional-filter__value-selector"
                                                           >
-                                                            Search
+                                                            Search 
                                                           </span>
                                                         </DropdownToggle>
                                                       }
@@ -620,7 +620,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                     <span
                                                                       class="ins-c-conditional-filter__value-selector"
                                                                     >
-                                                                      Search
+                                                                      Search 
                                                                     </span>
                                                                   </span>
                                                                   <span
@@ -699,7 +699,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                       <span
                                                                         class="ins-c-conditional-filter__value-selector"
                                                                       >
-                                                                        Search
+                                                                        Search 
                                                                       </span>
                                                                     </span>
                                                                     <span
@@ -767,7 +767,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                 <span
                                                                   className="ins-c-conditional-filter__value-selector"
                                                                 >
-                                                                  Search
+                                                                  Search 
                                                                 </span>
                                                               </span>
                                                               <span

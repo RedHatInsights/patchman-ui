@@ -32,9 +32,9 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
           Kernel-based Virtual.
         </StackItem>
         <StackItem>
-          Issued: 30 June 2020
+          Issued 30 June 2020
           <br />
-          Modified: 30 June 2020
+          Modified 30 June 2020
         </StackItem>
         <StackItem>
           <ExternalLink
@@ -109,9 +109,9 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
           Kernel-based Virtual.
         </StackItem>
         <StackItem>
-          Issued: 30 June 2020
+          Issued 30 June 2020
           <br />
-          Modified: 30 June 2020
+          Modified 30 June 2020
         </StackItem>
         <StackItem>
           <ExternalLink
