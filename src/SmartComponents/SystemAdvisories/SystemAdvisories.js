@@ -8,13 +8,12 @@ import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
-import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
@@ -49,7 +48,7 @@ const SystemAdvisories = ({ history }) => {
     );
     const rows = React.useMemo(
         () =>
-            createSystemAdvisoriesRows(advisories, expandedRows, selectedRows),
+            createSystemAdvisoriesRows(advisories, expandedRows, selectedRows, metadata),
         [advisories, expandedRows, selectedRows]
     );
 
@@ -102,9 +101,6 @@ const SystemAdvisories = ({ history }) => {
     }
 
     const errorState = error.status === 404 ? <NoSystemData/> : <Error message={error.detail}/>;
-    const emptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
-                            && Object.keys(queryParams).length === 0)
-                                && <SystemUpToDate/>;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({
@@ -141,7 +137,6 @@ const SystemAdvisories = ({ history }) => {
                     ]
                 }}
                 errorState={errorState}
-                emptyState={emptyState}
             />
         </React.Fragment>
     );
