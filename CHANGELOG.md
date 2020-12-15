@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.1.1...v1.2.0) (2020-12-15)
+
+
+### Features
+
+* **internationalization:** install dependencies and adopt intl ([044aadb](https://github.com/RedHatInsights/patchman-ui/commit/044aadbd0ae2e08f5e3691c951910e2c73db2ea2))
+
 ## [1.1.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.1.0...v1.1.1) (2020-12-10)
 
 
