@@ -2,16 +2,14 @@
 /* eslint-disable camelcase */
 
 import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/cjs/NotificationPortal';
+import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { isEqual } from 'lodash';
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import './App.scss';
 import { paths, Routes } from './Routes';
 import { globalFilter } from './store/Actions/Actions';
-import { useEffect, useState } from 'react';
-import '@redhat-cloud-services/frontend-components-notifications/index.css';
-import { useLocation, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 const App = () => {
     const dispatch = useDispatch();
     const [config, setConfig] = useState({
@@ -29,8 +27,8 @@ const App = () => {
         });
     };
 
-    const triggerNavigation = () => {
-        history.listen(() => {
+    useEffect(() => {
+        history.listen((location) => {
             const { pathname } = location;
             const currentRoute = Object.values(paths).filter(element => pathname !== '/' && pathname.includes(element.to));
 
@@ -42,7 +40,7 @@ const App = () => {
                 navId && insights.chrome.appNavClick({ id: navId });
             }
         });
-    };
+    }, [location]);;
 
     useEffect(() => {
         insights.chrome.init();
@@ -74,7 +72,6 @@ const App = () => {
         }
 
         const unregister = listenNavigation();
-        triggerNavigation();
         return () => unregister();
     }, []);
 
