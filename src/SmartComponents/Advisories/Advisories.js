@@ -17,6 +17,8 @@ import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const Advisories = ({ history }) => {
     const dispatch = useDispatch();
@@ -94,7 +96,7 @@ const Advisories = ({ history }) => {
 
     return (
         <React.Fragment>
-            <Header title={'Advisories'} headerOUIA={'advisories'}/>
+            <Header title={intl.formatMessage(messages.advisories)} headerOUIA={'advisories'}/>
             <Main>
                 <TableView
                     columns={advisoriesColumns}

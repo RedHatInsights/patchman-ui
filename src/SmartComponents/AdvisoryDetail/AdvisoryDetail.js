@@ -11,6 +11,8 @@ import { paths } from '../../Routes';
 import { clearAdvisoryDetailStore, clearAdvisorySystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
 import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -43,12 +45,12 @@ const AdvisoryDetail = ({ match }) => {
                 headerOUIA={'advisory-details'}
                 breadcrumbs={[
                     {
-                        title: 'Patch',
+                        title: intl.formatMessage(messages.appName),
                         to: paths.advisories.to,
                         isActive: false
                     },
                     {
-                        title: 'Advisories',
+                        title: intl.formatMessage(messages.advisories),
                         to: paths.advisories.to,
                         isActive: false
                     },
@@ -67,7 +69,7 @@ const AdvisoryDetail = ({ match }) => {
                 <Stack hasGutter>
                     <StackItem>
                         <TextContent>
-                            <Text component={TextVariants.h2}>Affected systems</Text>
+                            <Text component={TextVariants.h2}>{intl.formatMessage(messages.affectedSystems)}</Text>
                         </TextContent>
                     </StackItem>
                     <StackItem>

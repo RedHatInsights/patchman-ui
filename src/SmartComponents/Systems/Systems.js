@@ -29,6 +29,8 @@ import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
 import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const Systems = () => {
     const dispatch = useDispatch();
@@ -115,7 +117,7 @@ const Systems = () => {
 
     const filterConfig = {
         items: [
-            searchFilter(apply, search, 'Search systems')
+            searchFilter(apply, search, intl.formatMessage(messages.searchSystems))
         ]
     };
 
@@ -157,7 +159,7 @@ const Systems = () => {
     return (
         <React.Fragment>
 
-            <Header title={'Systems'} headerOUIA={'systems'}/>
+            <Header title={intl.formatMessage(messages.systems)} headerOUIA={'systems'}/>
             <RemediationModalCmp />
             <Main>
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :

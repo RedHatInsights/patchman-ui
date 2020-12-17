@@ -2,6 +2,11 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
+    appName: {
+        id: 'appName',
+        description: 'regsiter page title',
+        defaultMessage: 'Patch'
+    },
     yes: {
         id: 'yes',
         description: 'Yes general label',
@@ -46,5 +51,45 @@ export default defineMessages({
         id: 'count',
         description: 'Label for the number of systems',
         defaultMessage: 'Num. systems'
+    },
+    advisories: {
+        id: 'advisories',
+        description: 'page title with capital letter',
+        defaultMessage: 'Advisories'
+    },
+    affectedSystems: {
+        id: 'affectedSystems',
+        description: 'page title with capital letter',
+        defaultMessage: 'Affected systems'
+    },
+    searchSystems: {
+        id: 'searchSystems',
+        description: 'search filter placeholder for affected systems page',
+        defaultMessage: 'Search systems'
+    },
+    remediate: {
+        id: 'remediate',
+        description: 'Button label',
+        defaultMessage: 'Remediate'
+    },
+    packages: {
+        id: 'packages',
+        description: 'page title with capital letters',
+        defaultMessage: 'Packages'
+    },
+    packageUpdates: {
+        id: 'packageUpdates',
+        description: 'page title with capital letters',
+        defaultMessage: 'Package updates'
+    },
+    searchPackages: {
+        id: 'searchPackages',
+        description: 'search filter placeholder for affected systems page',
+        defaultMessage: 'Search packages'
+    },
+    systems: {
+        id: 'systems',
+        description: 'title with capital letters',
+        defaultMessage: 'Systems'
     }
 });

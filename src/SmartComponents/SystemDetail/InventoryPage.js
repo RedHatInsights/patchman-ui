@@ -10,6 +10,8 @@ import Header from '../../PresentationalComponents/Header/Header';
 import { paths } from '../../Routes';
 import { getStore, register } from '../../store';
 import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const InventoryDetail = () => {
     const [InventoryHeader, setInventoryHeader] = React.useState();
@@ -61,12 +63,12 @@ const InventoryDetail = () => {
                 headerOUIA={'inventory-details'}
                 breadcrumbs={[
                     {
-                        title: 'Patch',
+                        title: intl.formatMessage(messages.appName),
                         to: paths.advisories.to,
                         isActive: false
                     },
                     {
-                        title: 'Systems',
+                        title: intl.formatMessage(messages.systems),
                         to: paths.systems.to,
                         isActive: false
                     },
