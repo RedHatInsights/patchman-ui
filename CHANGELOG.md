@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.2.0...v1.2.1) (2020-12-17)
+
+
+### Bug Fixes
+
+* **nav:** fix novaigation updates ([9c83dfa](https://github.com/RedHatInsights/patchman-ui/commit/9c83dfa8b8b629267072f8a30d20235e1de68ac3))
+
 # [1.2.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.1.1...v1.2.0) (2020-12-15)
 
 
