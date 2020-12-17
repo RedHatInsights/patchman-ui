@@ -21,6 +21,8 @@ import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } fro
 import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -113,7 +115,7 @@ const PackageSystems = ({ packageName }) => {
 
     const filterConfig = {
         items: [
-            searchFilter(apply, search, 'Search systems'),
+            searchFilter(apply, search, intl.formatMessage(messages.searchSystems)),
             statusFilter(apply, filter)
         ]
     };
@@ -215,7 +217,7 @@ const PackageSystems = ({ packageName }) => {
                                 }
                                 ouiaId={'toolbar-remediation-button'}
                             >
-                                <AnsibeTowerIcon/>&nbsp;Remediate
+                                <AnsibeTowerIcon/>&nbsp;{intl.formatMessage(messages.remediate)}
                             </Button>
                             <RemediationModalCmp />
                         </ToolbarItem>

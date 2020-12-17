@@ -11,6 +11,8 @@ import { paths } from '../../Routes';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
 import { STATUS_LOADING, STATUS_REJECTED, ENABLE_PACKAGES } from '../../Utilities/constants';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -43,12 +45,12 @@ const PackageDetail = ({ match }) => {
                 headerOUIA={'package-details'}
                 breadcrumbs={[
                     {
-                        title: 'Patch',
+                        title: intl.formatMessage(messages.appName),
                         to: paths.advisories.to,
                         isActive: false
                     },
                     ENABLE_PACKAGES && {
-                        title: 'Packages',
+                        title: intl.formatMessage(messages.packages),
                         to: paths.packages.to,
                         isActive: false
                     },
@@ -67,7 +69,7 @@ const PackageDetail = ({ match }) => {
                 <Stack hasGutter>
                     <StackItem>
                         <TextContent>
-                            <Text component={TextVariants.h2}>Affected systems</Text>
+                            <Text component={TextVariants.h2}>{intl.formatMessage(messages.affectedSystems)}</Text>
                         </TextContent>
                     </StackItem>
                     <StackItem>

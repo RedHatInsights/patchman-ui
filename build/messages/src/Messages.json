@@ -1,0 +1,74 @@
+{
+  "advisories": {
+    "defaultMessage": "Advisories",
+    "description": "page title with capital letter"
+  },
+  "affectedSystems": {
+    "defaultMessage": "Affected systems",
+    "description": "page title with capital letter"
+  },
+  "appName": {
+    "defaultMessage": "Patch",
+    "description": "regsiter page title"
+  },
+  "cancel": {
+    "defaultMessage": "Cancel",
+    "description": "Cancel label for general usage"
+  },
+  "count": {
+    "defaultMessage": "Num. systems",
+    "description": "Label for the number of systems"
+  },
+  "delete": {
+    "defaultMessage": "Delete",
+    "description": "Delete label for general usage"
+  },
+  "edit": {
+    "defaultMessage": "Edit",
+    "description": "Edit label for general usage"
+  },
+  "loading": {
+    "defaultMessage": "Loading...",
+    "description": "Loading label for general usage"
+  },
+  "no": {
+    "defaultMessage": "No",
+    "description": "No general label"
+  },
+  "packageUpdates": {
+    "defaultMessage": "Package updates",
+    "description": "page title with capital letters"
+  },
+  "packages": {
+    "defaultMessage": "Packages",
+    "description": "page title with capital letters"
+  },
+  "remediate": {
+    "defaultMessage": "Remediate",
+    "description": "Button label"
+  },
+  "save": {
+    "defaultMessage": "Save",
+    "description": "Save label for general usage"
+  },
+  "search": {
+    "defaultMessage": "Search",
+    "description": "Search label for general usage"
+  },
+  "searchPackages": {
+    "defaultMessage": "Search packages",
+    "description": "search filter placeholder for affected systems page"
+  },
+  "searchSystems": {
+    "defaultMessage": "Search systems",
+    "description": "search filter placeholder for affected systems page"
+  },
+  "systems": {
+    "defaultMessage": "Systems",
+    "description": "title with capital letters"
+  },
+  "yes": {
+    "defaultMessage": "Yes",
+    "description": "Yes general label"
+  }
+}

@@ -15,6 +15,8 @@ import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const SystemPackages = () => {
     const dispatch = useDispatch();
@@ -107,7 +109,7 @@ const SystemPackages = () => {
                 apply={apply}
                 filterConfig={{
                     items: [
-                        searchFilter(apply, queryParams.search, 'Search packages'),
+                        searchFilter(apply, queryParams.search, intl.formatMessage(messages.searchPackages)),
                         statusFilter(apply, queryParams.filter)
                     ]
                 }}

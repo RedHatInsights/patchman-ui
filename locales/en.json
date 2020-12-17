@@ -1,3 +1,20 @@
 {
-    
+  "advisories": "Advisories",
+  "affectedSystems": "Affected systems",
+  "appName": "Patch",
+  "cancel": "Cancel",
+  "count": "Num. systems",
+  "delete": "Delete",
+  "edit": "Edit",
+  "loading": "Loading...",
+  "no": "No",
+  "packageUpdates": "Package updates",
+  "packages": "Packages",
+  "remediate": "Remediate",
+  "save": "Save",
+  "search": "Search",
+  "searchPackages": "Search packages",
+  "searchSystems": "Search systems",
+  "systems": "Systems",
+  "yes": "Yes"
 }

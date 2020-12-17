@@ -14,6 +14,8 @@ import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
 import { usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const Packages = () => {
     const dispatch = useDispatch();
@@ -71,7 +73,7 @@ const Packages = () => {
 
     return (
         <React.Fragment>
-            <Header title={'Package Updates'} headerOUIA={'packages'}/>
+            <Header title={intl.formatMessage(messages.packageUpdates)} headerOUIA={'packages'}/>
             <Main>
                 <TableView
                     columns={packagesColumns}
@@ -84,7 +86,7 @@ const Packages = () => {
                     apply={apply}
                     filterConfig={{
                         items: [
-                            searchFilter(apply, queryParams.search, 'Search packages')
+                            searchFilter(apply, queryParams.search, intl.formatMessage(messages.searchPackages))
                         ]
                     }}
                     remediationButtonOUIA={'toolbar-remediation-button'}
