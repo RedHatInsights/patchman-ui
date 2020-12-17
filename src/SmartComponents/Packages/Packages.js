@@ -16,6 +16,8 @@ import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
 import { usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api';
 
 const Packages = () => {
     const dispatch = useDispatch();
@@ -56,6 +58,17 @@ const Packages = () => {
         onDelete: removeFilter
     };
 
+    const onExport = (_, format) => {
+        const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
+        const filename = `packages-${date}`;
+        if (format === 'csv') {
+            exportPackagesCSV(queryParams).then(data => downloadFile(data, filename, 'csv'));
+        }
+        else {
+            exportPackagesJSON(queryParams).then(data => downloadFile(JSON.stringify(data), filename, 'json'));
+        }
+    };
+
     const onSort = useSortColumn(packagesColumns, apply);
     const sortBy = React.useMemo(
         () => createSortBy(packagesColumns, metadata.sort, 0),
@@ -81,6 +94,7 @@ const Packages = () => {
                     columns={packagesColumns}
                     store={{ rows, metadata, status, queryParams }}
                     onSort={onSort}
+                    onExport={onExport}
                     sortBy={sortBy}
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}
