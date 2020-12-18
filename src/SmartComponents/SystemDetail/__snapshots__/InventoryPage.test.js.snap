@@ -42,12 +42,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
             Array [
               Object {
                 "isActive": false,
-                "title": "Patch",
-                "to": "/",
-              },
-              Object {
-                "isActive": false,
-                "title": "Systems",
+                "title": "Patch systems",
                 "to": "/systems/",
               },
               Object {
@@ -73,12 +68,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                   Array [
                     Object {
                       "isActive": false,
-                      "title": "Patch",
-                      "to": "/",
-                    },
-                    Object {
-                      "isActive": false,
-                      "title": "Systems",
+                      "title": "Patch systems",
                       "to": "/systems/",
                     },
                     Object {
@@ -101,90 +91,30 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                     >
                       <BreadcrumbItem
                         isActive={false}
-                        key=".$Patch"
+                        key=".$Patch systems"
                         showDivider={false}
                       >
                         <li
                           className="pf-c-breadcrumb__item"
                         >
                           <Link
-                            data-ouia-component-id="breadcrumb-to-Patch"
-                            data-ouia-component-type="inventory-details-breadcrumb"
-                            to="/"
-                          >
-                            <LinkAnchor
-                              data-ouia-component-id="breadcrumb-to-Patch"
-                              data-ouia-component-type="inventory-details-breadcrumb"
-                              href="/"
-                              navigate={[Function]}
-                            >
-                              <a
-                                data-ouia-component-id="breadcrumb-to-Patch"
-                                data-ouia-component-type="inventory-details-breadcrumb"
-                                href="/"
-                                onClick={[Function]}
-                              >
-                                Patch
-                              </a>
-                            </LinkAnchor>
-                          </Link>
-                        </li>
-                      </BreadcrumbItem>
-                      <BreadcrumbItem
-                        isActive={false}
-                        key=".$Systems"
-                        showDivider={true}
-                      >
-                        <li
-                          className="pf-c-breadcrumb__item"
-                        >
-                          <span
-                            className="pf-c-breadcrumb__item-divider"
-                          >
-                            <AngleRightIcon
-                              color="currentColor"
-                              noVerticalAlign={false}
-                              size="sm"
-                            >
-                              <svg
-                                aria-hidden={true}
-                                aria-labelledby={null}
-                                fill="currentColor"
-                                height="1em"
-                                role="img"
-                                style={
-                                  Object {
-                                    "verticalAlign": "-0.125em",
-                                  }
-                                }
-                                viewBox="0 0 256 512"
-                                width="1em"
-                              >
-                                <path
-                                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                                  transform=""
-                                />
-                              </svg>
-                            </AngleRightIcon>
-                          </span>
-                          <Link
-                            data-ouia-component-id="breadcrumb-to-Systems"
+                            data-ouia-component-id="breadcrumb-to-Patch systems"
                             data-ouia-component-type="inventory-details-breadcrumb"
                             to="/systems/"
                           >
                             <LinkAnchor
-                              data-ouia-component-id="breadcrumb-to-Systems"
+                              data-ouia-component-id="breadcrumb-to-Patch systems"
                               data-ouia-component-type="inventory-details-breadcrumb"
                               href="/systems/"
                               navigate={[Function]}
                             >
                               <a
-                                data-ouia-component-id="breadcrumb-to-Systems"
+                                data-ouia-component-id="breadcrumb-to-Patch systems"
                                 data-ouia-component-type="inventory-details-breadcrumb"
                                 href="/systems/"
                                 onClick={[Function]}
                               >
-                                Systems
+                                Patch systems
                               </a>
                             </LinkAnchor>
                           </Link>
@@ -192,7 +122,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                       </BreadcrumbItem>
                       <BreadcrumbItem
                         isActive={true}
-                        key=".2"
+                        key=".1"
                         showDivider={true}
                       >
                         <li

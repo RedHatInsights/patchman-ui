@@ -77,7 +77,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
         >
           <Header
             headerOUIA="advisories"
-            title="Advisories"
+            title="Patch advisories"
           >
             <PageHeader
               data-ouia-component-type="advisories-page-header"
@@ -88,7 +88,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                 widget-type="InsightsPageHeader"
               >
                 <PageHeaderTitle
-                  title="Advisories"
+                  title="Patch advisories"
                 >
                   <Title
                     className=""
@@ -101,7 +101,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                       widget-type="InsightsPageHeaderTitle"
                     >
                        
-                      Advisories
+                      Patch advisories
                        
                     </h1>
                   </Title>
