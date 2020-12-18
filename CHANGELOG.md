@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.2.1...v1.3.0) (2020-12-18)
+
+
+### Features
+
+* **internationalization:** translate smart components ([43c46fa](https://github.com/RedHatInsights/patchman-ui/commit/43c46fa9bc5e7d62b2452e6cd763bb4e4c58514d))
+
 ## [1.2.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.2.0...v1.2.1) (2020-12-17)
 
 
