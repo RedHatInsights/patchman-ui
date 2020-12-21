@@ -109,7 +109,7 @@ const SystemPackages = () => {
                 apply={apply}
                 filterConfig={{
                     items: [
-                        searchFilter(apply, queryParams.search, intl.formatMessage(messages.searchPackages)),
+                        searchFilter(apply, queryParams.search, intl.formatMessage(messages.labelsFiltersPackagesSearch)),
                         statusFilter(apply, queryParams.filter)
                     ]
                 }}

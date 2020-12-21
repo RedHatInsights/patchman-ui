@@ -21,7 +21,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const Advisories = ({ history }) => {
-    const pageTitle = intl.formatMessage(messages.advisories);
+    const pageTitle = intl.formatMessage(messages.titlesAdvisories);
 
     setPageTitle(pageTitle);
 
@@ -101,7 +101,7 @@ const Advisories = ({ history }) => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.pageTitlesAdvisories)} headerOUIA={'advisories'}/>
+            <Header title={intl.formatMessage(messages.titlesPatchAdvisories)} headerOUIA={'advisories'}/>
             <Main>
                 <TableView
                     columns={advisoriesColumns}

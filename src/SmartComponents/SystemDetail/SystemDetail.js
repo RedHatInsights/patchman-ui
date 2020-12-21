@@ -14,7 +14,7 @@ const SystemDetail = () => {
 
     return (
         <Tabs activeKey={activeTabKey} onSelect={onTabSelect} className={'patchTabSelect'}>
-            <Tab eventKey={0} title={<TabTitleText>{intl.formatMessage(messages.advisories)}</TabTitleText>}
+            <Tab eventKey={0} title={<TabTitleText>{intl.formatMessage(messages.titlesAdvisories)}</TabTitleText>}
                 data-ouia-component-type={`system-advisories-tab`}
                 data-ouia-component-id={`system-advisories-tab`}
             >
@@ -22,7 +22,7 @@ const SystemDetail = () => {
             </Tab>
             <Tab
                 eventKey={1}
-                title={<TabTitleText>{intl.formatMessage(messages.packages)}</TabTitleText>}
+                title={<TabTitleText>{intl.formatMessage(messages.titlesPackages)}</TabTitleText>}
                 data-ouia-component-type={`system-packages-tab`}
                 data-ouia-component-id={`system-packages-tab`}
             >

@@ -113,7 +113,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const filterConfig = {
         items: [
-            searchFilter(apply, search, intl.formatMessage(messages.searchSystems))
+            searchFilter(apply, search, intl.formatMessage(messages.labelsFiltersSystemsSearch))
         ]
     };
 
@@ -211,7 +211,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                                 }
                                 ouiaId={'toolbar-remediation-button'}
                             >
-                                <AnsibeTowerIcon/>&nbsp;{intl.formatMessage(messages.remediate)}
+                                <AnsibeTowerIcon/>&nbsp;{intl.formatMessage(messages.labelsRemediate)}
                             </Button>
                             <RemediationModalCmp />
                         </ToolbarItem>

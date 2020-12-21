@@ -24,7 +24,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const Systems = () => {
-    const pageTitle = intl.formatMessage(messages.systems);
+    const pageTitle = intl.formatMessage(messages.titlesSystems);
 
     setPageTitle(pageTitle);
 
@@ -113,7 +113,7 @@ const Systems = () => {
 
     const filterConfig = {
         items: [
-            searchFilter(apply, search, intl.formatMessage(messages.searchSystems))
+            searchFilter(apply, search, intl.formatMessage(messages.labelsFiltersSystemsSearch))
         ]
     };
 
@@ -154,7 +154,7 @@ const Systems = () => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.pageTitlesSystems)} headerOUIA={'systems'}/>
+            <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'}/>
             <RemediationModalCmp />
             <Main>
                 {status === STATUS_REJECTED ? <Error message={error.detail}/> :

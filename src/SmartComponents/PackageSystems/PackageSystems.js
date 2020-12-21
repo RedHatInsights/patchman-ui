@@ -115,7 +115,7 @@ const PackageSystems = ({ packageName }) => {
 
     const filterConfig = {
         items: [
-            searchFilter(apply, search, intl.formatMessage(messages.searchSystems)),
+            searchFilter(apply, search, intl.formatMessage(messages.labelsFiltersSystemsSearch)),
             statusFilter(apply, filter)
         ]
     };
@@ -217,7 +217,7 @@ const PackageSystems = ({ packageName }) => {
                                 }
                                 ouiaId={'toolbar-remediation-button'}
                             >
-                                <AnsibeTowerIcon/>&nbsp;{intl.formatMessage(messages.remediate)}
+                                <AnsibeTowerIcon/>&nbsp;{intl.formatMessage(messages.labelsRemediate)}
                             </Button>
                             <RemediationModalCmp />
                         </ToolbarItem>

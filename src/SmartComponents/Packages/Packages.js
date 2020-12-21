@@ -75,7 +75,7 @@ const Packages = () => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.pageTitlesPackages)} headerOUIA={'packages'}/>
+            <Header title={intl.formatMessage(messages.titlesPatchPackages)} headerOUIA={'packages'}/>
             <Main>
                 <TableView
                     columns={packagesColumns}
@@ -88,7 +88,7 @@ const Packages = () => {
                     apply={apply}
                     filterConfig={{
                         items: [
-                            searchFilter(apply, queryParams.search, intl.formatMessage(messages.searchPackages))
+                            searchFilter(apply, queryParams.search, intl.formatMessage(messages.labelsFiltersPackagesSearch))
                         ]
                     }}
                     remediationButtonOUIA={'toolbar-remediation-button'}
