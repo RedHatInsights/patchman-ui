@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.3.0...v1.3.1) (2020-12-21)
+
+
+### Bug Fixes
+
+* **titles:** add dynamic titles ([c957ca0](https://github.com/RedHatInsights/patchman-ui/commit/c957ca0e84be1b8e8398f719fad2cdd242eb5b71))
+
 # [1.3.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.2.1...v1.3.0) (2020-12-18)
 
 
