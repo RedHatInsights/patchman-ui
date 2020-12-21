@@ -22,7 +22,7 @@ const InventoryDetail = () => {
         ({ entityDetails }) => entityDetails && entityDetails.entity
     );
 
-    const pageTitle = entityDetails && `${entityDetails.display_name} - ${intl.formatMessage(messages.systems)}`;
+    const pageTitle = entityDetails && `${entityDetails.display_name} - ${intl.formatMessage(messages.titlesSystems)}`;
     setPageTitle(pageTitle);
 
     const fetchInventory = async () => {
@@ -67,7 +67,7 @@ const InventoryDetail = () => {
                 headerOUIA={'inventory-details'}
                 breadcrumbs={[
                     {
-                        title: intl.formatMessage(messages.pageTitlesSystems),
+                        title: intl.formatMessage(messages.titlesPatchSystems),
                         to: paths.systems.to,
                         isActive: false
                     },

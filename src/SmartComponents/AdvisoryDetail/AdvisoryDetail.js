@@ -19,7 +19,7 @@ const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
     const [advisoryName] = React.useState(match.params.advisoryId);
 
-    const pageTitle = `${advisoryName} - ${intl.formatMessage(messages.advisories)}`;
+    const pageTitle = `${advisoryName} - ${intl.formatMessage(messages.titlesAdvisories)}`;
     setPageTitle(pageTitle);
 
     const advisoryDetails = useSelector(
@@ -50,12 +50,12 @@ const AdvisoryDetail = ({ match }) => {
                 headerOUIA={'advisory-details'}
                 breadcrumbs={[
                     {
-                        title: intl.formatMessage(messages.appName),
+                        title: intl.formatMessage(messages.generalAppName),
                         to: paths.advisories.to,
                         isActive: false
                     },
                     {
-                        title: intl.formatMessage(messages.advisories),
+                        title: intl.formatMessage(messages.titlesAdvisories),
                         to: paths.advisories.to,
                         isActive: false
                     },
@@ -74,7 +74,7 @@ const AdvisoryDetail = ({ match }) => {
                 <Stack hasGutter>
                     <StackItem>
                         <TextContent>
-                            <Text component={TextVariants.h2}>{intl.formatMessage(messages.affectedSystems)}</Text>
+                            <Text component={TextVariants.h2}>{intl.formatMessage(messages.titlesAffectedSystems)}</Text>
                         </TextContent>
                     </StackItem>
                     <StackItem>

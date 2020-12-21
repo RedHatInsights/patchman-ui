@@ -18,7 +18,7 @@ import { setPageTitle } from '../../Utilities/Hooks';
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
     const [packageName] = React.useState(match.params.packageName);
-    const pageTitle = `${packageName} - ${intl.formatMessage(messages.packages)}`;
+    const pageTitle = `${packageName} - ${intl.formatMessage(messages.titlesPackages)}`;
     setPageTitle(pageTitle);
     const packageDetails = useSelector(
         ({ PackageDetailStore }) => PackageDetailStore
@@ -48,12 +48,12 @@ const PackageDetail = ({ match }) => {
                 headerOUIA={'package-details'}
                 breadcrumbs={[
                     {
-                        title: intl.formatMessage(messages.appName),
+                        title: intl.formatMessage(messages.generalAppName),
                         to: paths.advisories.to,
                         isActive: false
                     },
                     ENABLE_PACKAGES && {
-                        title: intl.formatMessage(messages.packages),
+                        title: intl.formatMessage(messages.titlesPackages),
                         to: paths.packages.to,
                         isActive: false
                     },
@@ -72,7 +72,7 @@ const PackageDetail = ({ match }) => {
                 <Stack hasGutter>
                     <StackItem>
                         <TextContent>
-                            <Text component={TextVariants.h2}>{intl.formatMessage(messages.affectedSystems)}</Text>
+                            <Text component={TextVariants.h2}>{intl.formatMessage(messages.titlesAffectedSystems)}</Text>
                         </TextContent>
                     </StackItem>
                     <StackItem>

@@ -4,109 +4,59 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-    appName: {
-        id: 'appName',
+    generalAppName: {
+        id: 'generalAppName',
         description: 'regsiter page title',
         defaultMessage: 'Patch'
     },
-    yes: {
-        id: 'yes',
-        description: 'Yes general label',
-        defaultMessage: 'Yes'
+    labelsFiltersPackagesSearch: {
+        id: 'labelsFiltersPackagesSearch',
+        description: 'search filter placeholder for packages pages',
+        defaultMessage: 'Search packages'
     },
-    no: {
-        id: 'no',
-        description: 'No general label',
-        defaultMessage: 'No'
+    labelsFiltersSystemsSearch: {
+        id: 'labelsFiltersSystemsSearch',
+        description: 'search filter placeholder for systems pages',
+        defaultMessage: 'Search systems'
     },
-    cancel: {
-        id: 'cancel',
-        description: 'Cancel label for general usage',
-        defaultMessage: 'Cancel'
+    labelsRemediate: {
+        id: 'labelsRemediate',
+        description: 'Button label',
+        defaultMessage: 'Remediate'
     },
-    save: {
-        id: 'save',
-        description: 'Save label for general usage',
-        defaultMessage: 'Save'
-    },
-    edit: {
-        id: 'edit',
-        description: 'Edit label for general usage',
-        defaultMessage: 'Edit'
-    },
-    delete: {
-        id: 'delete',
-        description: 'Delete label for general usage',
-        defaultMessage: 'Delete'
-    },
-    search: {
-        id: 'search',
-        description: 'Search label for general usage',
-        defaultMessage: 'Search'
-    },
-    loading: {
-        id: 'loading',
-        description: 'Loading label for general usage',
-        defaultMessage: 'Loading...'
-    },
-    count: {
-        id: 'count',
-        description: 'Label for the number of systems',
-        defaultMessage: 'Num. systems'
-    },
-    advisories: {
-        id: 'advisories',
+    titlesAdvisories: {
+        id: 'titlesAdvisories',
         description: 'page title with capital letter',
         defaultMessage: 'Advisories'
     },
-    affectedSystems: {
+    titlesAffectedSystems: {
         id: 'affectedSystems',
         description: 'page title with capital letter',
         defaultMessage: 'Affected systems'
     },
-    searchSystems: {
-        id: 'searchSystems',
-        description: 'search filter placeholder for affected systems page',
-        defaultMessage: 'Search systems'
-    },
-    remediate: {
-        id: 'remediate',
-        description: 'Button label',
-        defaultMessage: 'Remediate'
-    },
-    packages: {
-        id: 'packages',
+    titlesPackages: {
+        id: 'titlesPackages',
         description: 'page title with capital letters',
         defaultMessage: 'Packages'
     },
-    packageUpdates: {
-        id: 'packageUpdates',
-        description: 'page title with capital letters',
-        defaultMessage: 'Package updates'
-    },
-    searchPackages: {
-        id: 'searchPackages',
-        description: 'search filter placeholder for affected systems page',
-        defaultMessage: 'Search packages'
-    },
-    systems: {
-        id: 'systems',
-        description: 'title with capital letters',
-        defaultMessage: 'Systems'
-    },
-    pageTitlesAdvisories: {
-        id: 'pageTitlesAdvisories',
+    titlesPatchAdvisories: {
+        id: 'titlesPatchAdvisories',
         description: 'title for Advisories page',
         defaultMessage: 'Patch advisories'
     },
-    pageTitlesSystems: {
-        id: 'pageTitlesSystems',
+    titlesPatchPackages: {
+        id: 'titlesPatchPackages',
+        description: 'title for Packages page',
+        defaultMessage: 'Patch packages'
+    },
+    titlesPatchSystems: {
+        id: 'titlesPatchSystems',
         description: 'title for Systems page',
         defaultMessage: 'Patch systems'
     },
-    pageTitlesPackages: {
-        id: 'pageTitlesPackages',
-        description: 'title for Packages page',
-        defaultMessage: 'Patch packages'
+    titlesSystems: {
+        id: 'titlesSystems',
+        description: 'title with capital letters',
+        defaultMessage: 'Systems'
     }
 });
