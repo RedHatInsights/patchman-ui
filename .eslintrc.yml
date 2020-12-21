@@ -4,9 +4,9 @@ env:
     es6: true
     node: true
 extends:
-    - 'eslint:recommended'
-    - 'prettier'
-    - 'plugin:react/recommended'
+    - "eslint:recommended"
+    - "prettier"
+    - "plugin:react/recommended"
 parserOptions:
     ecmaVersion: 7
     sourceType: module
@@ -47,11 +47,11 @@ rules:
             {
                 order:
                     [
-                        'static-methods',
-                        'lifecycle',
-                        'everything-else',
-                        '/^handle.+$/',
-                        'render',
+                        "static-methods",
+                        "lifecycle",
+                        "everything-else",
+                        "/^handle.+$/",
+                        "render",
                     ],
             },
         ]
@@ -85,13 +85,15 @@ rules:
     max-len:
         - 2
         - 130
-    new-cap: [2, { 'capIsNewExceptions': ['Immutable'] }]
+    new-cap: [2, { "capIsNewExceptions": ["Immutable"] }]
     no-bitwise: 2
     no-caller: 2
     no-mixed-spaces-and-tabs: 2
     no-multiple-empty-lines:
         - error
         - max: 1
+    no-redeclare: 0
+    no-prototype-builtins: 0
     no-trailing-spaces: 2
     no-use-before-define:
         - error
@@ -111,7 +113,7 @@ rules:
         - error
         - blankLine: always
           prev: block-like
-          next: '*'
+          next: "*"
     quote-props:
         - error
         - as-needed
