@@ -15,6 +15,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
   ouiaSafe={true}
   rightScrollAriaLabel="Scroll right"
   unmountOnExit={false}
+  variant="default"
 >
   <Tab
     data-ouia-component-id="system-advisories-tab"
