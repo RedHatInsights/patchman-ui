@@ -129,6 +129,11 @@ export const updatableTypes = [
     {
         value: true,
         label: 'Upgradable'
+    },
+    {
+        //only way to sort is sending systems_updatable = 'gt:0'
+        value: 'gt:0',
+        label: 'Upgradable'
     }
 ];
 
@@ -142,6 +147,10 @@ export const filterCategories = {
         values: publicDateOptions
     },
     updatable: {
+        label: 'Status',
+        values: updatableTypes
+    },
+    systems_updatable: {
         label: 'Status',
         values: updatableTypes
     }
