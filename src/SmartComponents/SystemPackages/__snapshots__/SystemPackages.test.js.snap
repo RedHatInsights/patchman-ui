@@ -108,6 +108,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                         "label": "Upgradable",
                         "value": "true",
                       },
+                      Object {
+                        "label": "Upgradable",
+                        "value": "gt:0",
+                      },
                     ],
                     "onChange": [Function],
                     "value": "0",
@@ -277,6 +281,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                         Object {
                           "label": "Upgradable",
                           "value": "true",
+                        },
+                        Object {
+                          "label": "Upgradable",
+                          "value": "gt:0",
                         },
                       ],
                       "onChange": [Function],
@@ -760,6 +768,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                             Object {
                                               "label": "Upgradable",
                                               "value": "true",
+                                            },
+                                            Object {
+                                              "label": "Upgradable",
+                                              "value": "gt:0",
                                             },
                                           ],
                                           "onChange": [Function],

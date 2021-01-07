@@ -2,7 +2,9 @@ import { storeListDefaults } from '../../Utilities/constants';
 import * as ActionTypes from '../ActionTypes';
 import { changeFilters, fetchFulfilled, fetchPending, fetchRejected } from './HelperReducers';
 
-export const PackagesListStore = (state = storeListDefaults, action) => {
+const initialStore = { ...storeListDefaults,  queryParams: { filter: { systems_updatable: 'gt:0' } } };
+
+export const PackagesListStore = (state = initialStore, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_PACKAGES_LIST + '_PENDING':
