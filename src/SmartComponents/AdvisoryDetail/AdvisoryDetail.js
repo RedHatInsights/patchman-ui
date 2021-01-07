@@ -4,16 +4,16 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import messages from '../../Messages';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { paths } from '../../Routes';
 import { clearAdvisoryDetailStore, clearAdvisorySystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
 import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
-import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
-import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
 import { setPageTitle } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
+import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
 
 const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -50,12 +50,7 @@ const AdvisoryDetail = ({ match }) => {
                 headerOUIA={'advisory-details'}
                 breadcrumbs={[
                     {
-                        title: intl.formatMessage(messages.generalAppName),
-                        to: paths.advisories.to,
-                        isActive: false
-                    },
-                    {
-                        title: intl.formatMessage(messages.titlesAdvisories),
+                        title: intl.formatMessage(messages.titlesPatchAdvisories),
                         to: paths.advisories.to,
                         isActive: false
                     },

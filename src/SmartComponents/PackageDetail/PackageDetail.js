@@ -4,16 +4,16 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import PackageHeader from '../../PresentationalComponents/PackageHeader/PackageHeader';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { paths } from '../../Routes';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
-import { STATUS_LOADING, STATUS_REJECTED, ENABLE_PACKAGES } from '../../Utilities/constants';
-import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
+import { ENABLE_PACKAGES, STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 import { setPageTitle } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
 
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -48,13 +48,8 @@ const PackageDetail = ({ match }) => {
                 headerOUIA={'package-details'}
                 breadcrumbs={[
                     {
-                        title: intl.formatMessage(messages.generalAppName),
-                        to: paths.advisories.to,
-                        isActive: false
-                    },
-                    ENABLE_PACKAGES && {
-                        title: intl.formatMessage(messages.titlesPackages),
-                        to: paths.packages.to,
+                        title: intl.formatMessage(messages.titlesPatchPackages),
+                        to: ENABLE_PACKAGES && paths.packages.to,
                         isActive: false
                     },
                     {
