@@ -9,6 +9,9 @@ const { config: webpackConfig, plugins } = config({
 const customPlugins = plugins.slice();
 const HtmlWebpackPlugin = customPlugins[5]; //htmlwebpackplugin workaround
 HtmlWebpackPlugin.options.chunksSortMode = 'none';
+
+webpackConfig.serve.hot = true;
+
 module.exports = {
     ...webpackConfig,
     plugins: customPlugins
