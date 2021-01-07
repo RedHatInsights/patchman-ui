@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.3.1...v1.3.2) (2021-01-07)
+
+
+### Bug Fixes
+
+* **breadcrumb:** Fix breadcrumb for consistency ([2f055b3](https://github.com/RedHatInsights/patchman-ui/commit/2f055b33632ec7cc86efc5033cca903fa500387a))
+
 ## [1.3.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.3.0...v1.3.1) (2020-12-21)
 
 
