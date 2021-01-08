@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.3.2...v1.4.0) (2021-01-08)
+
+
+### Features
+
+* **Packages:** add export feature ([086338b](https://github.com/RedHatInsights/patchman-ui/commit/086338be8f6dbe515099e11b8b5f5e9687982907))
+
 ## [1.3.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.3.1...v1.3.2) (2021-01-07)
 
 
