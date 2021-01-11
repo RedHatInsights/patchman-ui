@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.4.0...v1.5.0) (2021-01-11)
+
+
+### Features
+
+* **internationalization:** translate presentational components ([46f1b45](https://github.com/RedHatInsights/patchman-ui/commit/46f1b45e9db943a64d9546cc36d3215a2436fa90))
+
 # [1.4.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.3.2...v1.4.0) (2021-01-08)
 
 
