@@ -2,7 +2,7 @@ import { inventoryEntitiesReducer, init } from './InventoryEntitiesReducer';
 import { sortable } from '@patternfly/react-table/dist/js';
 
 /* eslint-disable */
-const store = { getState: () => ({ SystemsListStore: { rows: [] } }) };
+const store = { SystemsListStore: { rows: [] } };
 const testColumns = ['col1', 'col2'];
 describe('InventoryEntitiesReducer tests', () => {
     it.each`

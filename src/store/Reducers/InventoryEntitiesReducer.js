@@ -46,13 +46,13 @@ function modifyPackageSystems(columns, hosts, state) {
     return state;
 }
 
-export const inventoryEntitiesReducer = (columns, currentPage) => (state = init, action) => {
-    const store = action.store && action.store.getState();
+export const inventoryEntitiesReducer = (columns, currentPage) => (state = init, { type, store }) => {
 
     //display patch 'last_upload' instead of Inventory 'updated' column
-    const PatchStore  = store && (currentPage === 'SYSTEMS_PAGE' ? store.SystemsListStore : store.AdvisorySystemsStore);
+    const PatchStore  = store && (currentPage === 'SYSTEMS_PAGE'
+        ? store.SystemsListStore : store.AdvisorySystemsStore);
 
-    switch (action.type) {
+    switch (type) {
         case 'LOAD_ENTITIES_FULFILLED':
             return modifyInventory(columns, PatchStore.rows, state);
 

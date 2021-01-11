@@ -17,7 +17,7 @@ let registry;
 const persistenceMiddleware = store => next => action => {
     const storeContent = store.getState();
     if (action.type === 'LOAD_ENTITIES_FULFILLED') {
-        action = { ...action, store };
+        action = { ...action, store: storeContent };
     }
 
     next(action);
