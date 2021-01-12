@@ -9,7 +9,7 @@ import * as reactRouterDom from 'react-router-dom';
 import * as ReactRedux from 'react-redux';
 import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { getStore, register } from '../../store';
 import { changeAdvisorySystemsParams, clearAdvisorySystemsStore, fetchAdvisorySystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -36,9 +36,7 @@ const AdvisorySystems = ({ advisoryName }) => {
     const status = useSelector(
         ({ AdvisorySystemsStore }) => AdvisorySystemsStore.status
     );
-    const error = useSelector(
-        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.error
-    );
+
     const selectedRows = useSelector(
         ({ AdvisorySystemsStore }) => AdvisorySystemsStore.selectedRows
     );
@@ -154,7 +152,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? <Error message={error.detail}/> : InventoryCmp && (
+            {status === STATUS_REJECTED ? <Unavailable/> : InventoryCmp && (
                 <InventoryCmp
                     items={hosts}
                     page={page}

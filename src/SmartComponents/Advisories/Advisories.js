@@ -8,7 +8,7 @@ import publishDateFilter from '../../PresentationalComponents/Filters/PublishDat
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import Header from '../../PresentationalComponents/Header/Header';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { advisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeAdvisoryListParams, expandAdvisoryRow, fetchApplicableAdvisories } from '../../store/Actions/Actions';
@@ -30,9 +30,7 @@ const Advisories = ({ history }) => {
     const advisories = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.rows
     );
-    const error = useSelector(
-        ({ AdvisoryListStore }) => AdvisoryListStore.error
-    );
+
     const expandedRows = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.expandedRows
     );
@@ -97,7 +95,7 @@ const Advisories = ({ history }) => {
         dispatch(changeAdvisoryListParams(params));
     }
 
-    const errorState  = status === STATUS_REJECTED && <Error message={error.detail}/>;
+    const errorState  = status === STATUS_REJECTED && <Unavailable />;
 
     return (
         <React.Fragment>

@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { getStore, register } from '../../store';
 import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -41,9 +41,6 @@ const Systems = () => {
     const hosts = React.useMemo(() => createSystemsRows(rawSystems), [
         rawSystems
     ]);
-    const error = useSelector(
-        ({ SystemsListStore }) => SystemsListStore.error
-    );
     const status = useSelector(
         ({ SystemsListStore }) => SystemsListStore.status
     );
@@ -157,7 +154,7 @@ const Systems = () => {
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'}/>
             <RemediationModalCmp />
             <Main>
-                {status === STATUS_REJECTED ? <Error message={error.detail}/> :
+                {status === STATUS_REJECTED ? <Unavailable/> :
                     InventoryCmp && (
                         <InventoryCmp
                             isFullView
