@@ -1,5 +1,7 @@
-import { cellWidth, expandable, sortable, SortByDirection, Table as PfTable,
-    TableBody, TableGridBreakpoint, TableHeader, TableVariant } from '@patternfly/react-table';
+import {
+    cellWidth, expandable, sortable, SortByDirection, Table as PfTable,
+    TableBody, TableGridBreakpoint, TableHeader, TableVariant
+} from '@patternfly/react-table';
 import { Main } from '@redhat-cloud-services/frontend-components';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
@@ -7,6 +9,7 @@ import React from 'react';
 import * as ReactRedux from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
+import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import Error from '../../PresentationalComponents/Snippets/Error';
@@ -18,10 +21,9 @@ import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
 import { setPageTitle, useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
-import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -67,6 +69,7 @@ const Systems = () => {
     }, [queryParams]);
 
     const fetchInventory = async () => {
+        const store = getStore();
         const {
             inventoryConnector,
             mergeWithEntities
@@ -89,9 +92,9 @@ const Systems = () => {
         });
 
         register({
-            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns, 'SYSTEMS_PAGE'))
+            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns, store.getState().SystemsListStore))
         });
-        const { InventoryTable } = inventoryConnector(getStore());
+        const { InventoryTable } = inventoryConnector(store);
         setInventoryCmp(() => InventoryTable);
     };
 
