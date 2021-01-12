@@ -1,13 +1,16 @@
 import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
-import { cellWidth, expandable, sortable, SortByDirection,
-    Table as PfTable, TableBody, TableGridBreakpoint, TableHeader, TableVariant } from '@patternfly/react-table/dist/js';
+import {
+    cellWidth, expandable, sortable, SortByDirection,
+    Table as PfTable, TableBody, TableGridBreakpoint, TableHeader, TableVariant
+} from '@patternfly/react-table/dist/js';
 import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import propTypes from 'prop-types';
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
+import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import Error from '../../PresentationalComponents/Snippets/Error';
@@ -18,11 +21,10 @@ import { fetchPackageSystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
+import { useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
-import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -73,6 +75,7 @@ const PackageSystems = ({ packageName }) => {
     }, [queryParams]);
 
     const fetchInventory = async () => {
+        const store = getStore();
         const {
             inventoryConnector,
             mergeWithEntities
@@ -95,9 +98,9 @@ const PackageSystems = ({ packageName }) => {
         });
 
         register({
-            ...mergeWithEntities(packagesSystemsInventoryReducer(packageSystemsColumns))
+            ...mergeWithEntities(packagesSystemsInventoryReducer(packageSystemsColumns, store.getState().PackageSystemsStore))
         });
-        const { InventoryTable } = inventoryConnector(getStore());
+        const { InventoryTable } = inventoryConnector(store);
         setInventoryCmp(() => InventoryTable);
     };
 

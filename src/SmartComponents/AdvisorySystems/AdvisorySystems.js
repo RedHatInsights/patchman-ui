@@ -1,13 +1,16 @@
 import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
-import { cellWidth, expandable, sortable, SortByDirection, Table as PfTable, TableBody, TableGridBreakpoint,
-    TableHeader, TableVariant } from '@patternfly/react-table/dist/js';
+import {
+    cellWidth, expandable, sortable, SortByDirection, Table as PfTable, TableBody, TableGridBreakpoint,
+    TableHeader, TableVariant
+} from '@patternfly/react-table/dist/js';
+import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import propTypes from 'prop-types';
 import React from 'react';
+import * as ReactRedux from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reactRouterDom from 'react-router-dom';
-import * as ReactRedux from 'react-redux';
-import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
+import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Error from '../../PresentationalComponents/Snippets/Error';
 import { getStore, register } from '../../store';
@@ -17,11 +20,10 @@ import { fetchAdvisorySystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
+import { useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
-import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -71,6 +73,7 @@ const AdvisorySystems = ({ advisoryName }) => {
     }, [queryParams]);
 
     const fetchInventory = async () => {
+        const store = getStore();
         const {
             inventoryConnector,
             mergeWithEntities
@@ -93,9 +96,9 @@ const AdvisorySystems = ({ advisoryName }) => {
         });
 
         register({
-            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns, 'AFFECTED_SYSTEMS'))
+            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns, store.getState().AdvisorySystemsStore))
         });
-        const { InventoryTable } = inventoryConnector(getStore());
+        const { InventoryTable } = inventoryConnector(store);
         setInventoryCmp(() => InventoryTable);
     };
 
