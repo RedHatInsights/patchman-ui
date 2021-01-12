@@ -83,7 +83,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
           }
           compact={true}
           emptyState={false}
-          errorState={<Error />}
+          errorState={<Unavailable />}
           filterConfig={
             Object {
               "items": Array [

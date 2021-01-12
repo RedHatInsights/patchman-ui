@@ -13,7 +13,7 @@ import * as reactRouterDom from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { getStore, register } from '../../store';
 import { changePackageSystemsParams, clearPackageSystemsStore, fetchPackageSystemsAction } from '../../store/Actions/Actions';
 import { packagesSystemsInventoryReducer } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -39,9 +39,6 @@ const PackageSystems = ({ packageName }) => {
     );
     const status = useSelector(
         ({ PackageSystemsStore }) => PackageSystemsStore.status
-    );
-    const error = useSelector(
-        ({ PackageSystemsStore }) => PackageSystemsStore.error
     );
     const selectedRows = useSelector(
         ({ PackageSystemsStore }) => PackageSystemsStore.selectedRows
@@ -163,7 +160,7 @@ const PackageSystems = ({ packageName }) => {
 
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? <Error message={error.detail}/> : InventoryCmp && (
+            {status === STATUS_REJECTED ? <Unavailable/> : InventoryCmp && (
                 <InventoryCmp
                     items={hosts}
                     page={page}

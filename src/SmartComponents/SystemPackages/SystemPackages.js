@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
 import TableView from '../../PresentationalComponents/TableView/TableView';
@@ -80,7 +80,7 @@ const SystemPackages = () => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const errorState = error.status === 404 ?  <NoSystemData/> : <Error message={error.detail}/>;
+    const errorState = error.status === 404 ?  <NoSystemData/> : <Unavailable/>;
     const emptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
                             && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
 

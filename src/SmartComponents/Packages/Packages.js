@@ -5,7 +5,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
@@ -77,7 +77,7 @@ const Packages = () => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const errorState = error.status === 404 ?  <NoSystemData/> : <Error message={error.detail}/>;
+    const errorState = error.status === 404 ?  <NoSystemData/> : <Unavailable />;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({

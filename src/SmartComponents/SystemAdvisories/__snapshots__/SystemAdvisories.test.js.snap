@@ -115,7 +115,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                 },
               ]
             }
-            errorState={<Error />}
+            errorState={<Unavailable />}
             filterConfig={
               Object {
                 "items": Array [

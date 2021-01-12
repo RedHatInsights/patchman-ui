@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
@@ -100,7 +100,7 @@ const SystemAdvisories = ({ history }) => {
         dispatch(changeSystemAdvisoryListParams({ id: entity.id, ...params }));
     }
 
-    const errorState = error.status === 404 ? <NoSystemData/> : <Error message={error.detail}/>;
+    const errorState = error.status === 404 ? <NoSystemData/> : <Unavailable/>;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({

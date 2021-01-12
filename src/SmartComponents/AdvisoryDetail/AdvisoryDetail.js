@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { paths } from '../../Routes';
 import { clearAdvisoryDetailStore, clearAdvisorySystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
 import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
@@ -28,9 +28,7 @@ const AdvisoryDetail = ({ match }) => {
     const status = useSelector(
         ({ AdvisoryDetailStore }) => AdvisoryDetailStore.status
     );
-    const error = useSelector(
-        ({ AdvisoryDetailStore }) => AdvisoryDetailStore.error
-    );
+
     React.useEffect(() => {
         dispatch(fetchAvisoryDetails({ advisoryName }));
     }, []);
@@ -59,7 +57,7 @@ const AdvisoryDetail = ({ match }) => {
                         isActive: true
                     }
                 ]}
-            >{status === STATUS_REJECTED ? <Error message={error.detail}/> :
+            >{status === STATUS_REJECTED ? <Unavailable /> :
                     <AdvisoryHeader
                         attributes={{ ...attributes, id: advisoryName }}
                         isLoading={status === STATUS_LOADING}

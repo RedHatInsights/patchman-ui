@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import PackageHeader from '../../PresentationalComponents/PackageHeader/PackageHeader';
-import Error from '../../PresentationalComponents/Snippets/Error';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { paths } from '../../Routes';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
@@ -26,9 +26,7 @@ const PackageDetail = ({ match }) => {
     const status = useSelector(
         ({ PackageDetailStore }) => PackageDetailStore.status
     );
-    const error = useSelector(
-        ({ PackageDetailStore }) => PackageDetailStore.error
-    );
+
     React.useEffect(() => {
         dispatch(fetchPackageDetails({ packageName }));
     }, []);
@@ -57,7 +55,7 @@ const PackageDetail = ({ match }) => {
                         isActive: true
                     }
                 ]}
-            >{status === STATUS_REJECTED ? <Error message={error.detail}/> :
+            >{status === STATUS_REJECTED ? <Unavailable/> :
                     <PackageHeader
                         attributes={{ ...attributes, id: packageName }}
                         isLoading={status === STATUS_LOADING}
