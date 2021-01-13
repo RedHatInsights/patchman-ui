@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.5.0...v1.5.1) (2021-01-13)
+
+
+### Bug Fixes
+
+* **store:** remove getState from reducer ([c2f03fa](https://github.com/RedHatInsights/patchman-ui/commit/c2f03facb181dc8e77f352169100a892659c0f9a))
+
 # [1.5.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.4.0...v1.5.0) (2021-01-11)
 
 
