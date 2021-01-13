@@ -13,7 +13,9 @@ initMocks()
 
 jest.mock('../../store', () => ({
     ...jest.requireActual('../../store'),
-    getStore: jest.fn(),
+    getStore: jest.fn(()=>({
+        getState: () => ({ SystemsListStore: { rows: [] }})
+    })),
     register: jest.fn()
 }));
 
