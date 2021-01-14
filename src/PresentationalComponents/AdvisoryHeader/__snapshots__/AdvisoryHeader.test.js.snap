@@ -74,6 +74,7 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
       title="Important"
     />
   </GridItem>
+  <Component />
 </Grid>
 `;
 
@@ -151,5 +152,6 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
       title="Important"
     />
   </GridItem>
+  <Component />
 </Grid>
 `;

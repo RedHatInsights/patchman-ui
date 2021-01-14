@@ -31,6 +31,11 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Applicable systems'
     },
+    labelsColumnsCveID: {
+        id: 'labelsColumnsCveID',
+        description: 'shared label',
+        defaultMessage: 'CVE ID'
+    },
     labelsColumnsInstalledVersion: {
         id: 'labelsColumnsInstalledVersion',
         description: 'shared label',
@@ -80,6 +85,16 @@ export default defineMessages({
         id: 'labelsColumnsUpgradable',
         description: 'shared label',
         defaultMessage: 'Upgradable'
+    },
+    labelsCves: {
+        id: 'labelsCves',
+        description: 'label for cves info link',
+        defaultMessage: 'CVEs'
+    },
+    labelsCvesButton: {
+        id: 'labelsCvesButton',
+        description: 'label for cves button',
+        defaultMessage: '{cvesCount, plural, one {# CVE} other {# CVEs}} associated with this patch'
     },
     labelsDescription: {
         id: 'labelsDescription',
