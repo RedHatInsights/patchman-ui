@@ -2,7 +2,7 @@ import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';
 import { getSeverityById, preserveNewlines } from '../../Utilities/Helpers';
 import InfoBox from '../InfoBox/InfoBox';
@@ -10,9 +10,23 @@ import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
 import ExternalLink from '../Snippets/ExternalLink';
 import messages from '../../Messages';
 import { intl } from '../../Utilities/IntlProvider';
+import {
+    TextContent,
+    Text,
+    TextVariants,
+    Button
+} from '@patternfly/react-core';
+import CvesModal from '../../SmartComponents/AdvisoryDetail/CvesModal';
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
+    const [CvesInfoModal, setCvesModal] = useState(() => () => null);
     const severityObject = getSeverityById(attributes.severity);
+    const cves = attributes.cves;
+
+    const showCvesModal = () => {
+        setCvesModal(() => () => <CvesModal cves={cves} />);
+    };
+
     return (
         <Grid hasGutter style={{ minHeight: 150 }}>
             <GridItem md={8} sm={12}>
@@ -67,6 +81,19 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                     />
                 )}
             </GridItem>
+            {cves && cves.length !== 0 && (
+                <GridItem md={4} sm={12}>
+                    <TextContent>
+                        <Text component={TextVariants.h3}>
+                            {intl.formatMessage(messages.labelsCves)}
+                        </Text>
+                        <Button variant='link' style={{ padding: 0 }} onClick = {showCvesModal} >
+                            {intl.formatMessage(messages.labelsCvesButton, { cvesCount: cves.length })}
+                        </Button>
+                    </TextContent>
+                </GridItem>
+            )}
+            <CvesInfoModal/>
         </Grid>
     );
 };

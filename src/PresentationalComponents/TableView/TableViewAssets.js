@@ -114,3 +114,11 @@ export const packagesColumns = [
         }
     }
 ];
+
+export const cvesTableColumns = [
+    {
+        title: intl.formatMessage(messages.labelsColumnsCveID),
+        transforms: [sortable, cellWidth(100)],
+        key: 'id'
+    }
+];

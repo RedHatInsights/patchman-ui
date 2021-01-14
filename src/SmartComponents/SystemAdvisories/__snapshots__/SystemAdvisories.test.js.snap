@@ -6673,6 +6673,35 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                 <div
                                                                   className="pf-c-content"
                                                                 >
+                                                                  <TextList
+                                                                    component="dl"
+                                                                  >
+                                                                    <dl
+                                                                      className=""
+                                                                      data-pf-content={true}
+                                                                    >
+                                                                      <TextListItem
+                                                                        component="dt"
+                                                                      >
+                                                                        <dt
+                                                                          className=""
+                                                                          data-pf-content={true}
+                                                                        >
+                                                                          CVEs
+                                                                        </dt>
+                                                                      </TextListItem>
+                                                                      <TextListItem
+                                                                        component="dd"
+                                                                      >
+                                                                        <dd
+                                                                          className=""
+                                                                          data-pf-content={true}
+                                                                        >
+                                                                          3
+                                                                        </dd>
+                                                                      </TextListItem>
+                                                                    </dl>
+                                                                  </TextList>
                                                                   <Label>
                                                                     <span
                                                                       className="patchman-label"
