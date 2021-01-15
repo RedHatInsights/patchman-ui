@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.6.0...v1.7.0) (2021-01-15)
+
+
+### Features
+
+* **GenericError:** use frontend components generic error component ([793aa4a](https://github.com/RedHatInsights/patchman-ui/commit/793aa4a69160ddb19cc6a5197a43b29deea90756))
+
 # [1.6.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.5.1...v1.6.0) (2021-01-15)
 
 
