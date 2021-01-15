@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.5.1...v1.6.0) (2021-01-15)
+
+
+### Features
+
+* **Packages:**  sort by updatable packages by default ([27579d1](https://github.com/RedHatInsights/patchman-ui/commit/27579d17bd7e22679f87466ac1fda8add345ca05))
+
 ## [1.5.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.5.0...v1.5.1) (2021-01-13)
 
 
