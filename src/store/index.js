@@ -31,7 +31,7 @@ export function init(...middleware) {
         throw new Error('store already initialized');
     }
 
-    registry = new ReducerRegistry({}, [promiseMiddleware(), notificationsMiddleware(), persistenceMiddleware, ...middleware]);
+    registry = new ReducerRegistry({}, [promiseMiddleware, notificationsMiddleware(), persistenceMiddleware, ...middleware]);
 
     const storage = JSON.parse(sessionStorage.getItem('PatchStore')) || {};
 

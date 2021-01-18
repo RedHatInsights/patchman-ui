@@ -51,7 +51,7 @@ const App = () => {
                 const [workloads, SID, tags] = insights.chrome?.mapGlobalFilter?.(data, false, true);
                 const SAP = data?.Workloads?.SAP;
                 const selectedTags = insights.chrome?.mapGlobalFilter?.(data)
-                    ?.filter(item => !item.includes('Workloads')).map(tag => (`tags=${encodeURIComponent(tag)}`));
+                ?.filter(item => !item.includes('Workloads')).map(tag => (`tags=${encodeURIComponent(tag)}`));
 
                 const newconfig = { };
                 (SAP && SAP.isSelected)

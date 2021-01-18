@@ -86,14 +86,20 @@ export const paths = {
     }
 };
 
-type Props = {
-    childProps: any
-};
-
 const InsightsRoute = ({ component: Component, rootClass, ...rest }) => {
     const root = document.getElementById('root');
+    /**
+     * @deprecated
+     * Mutating chrome root element is deprecated.
+     * Please add custom classes on different elements exclusive to patch UI DOM.
+     * This functionality will no longer exist in chrome 2 to prevent global styling issues
+     */
     root.removeAttribute('class');
-    root.classList.add(`page__${rootClass}`, 'pf-c-page__main');
+    /**
+     * Adding root class to root element to scope the CSS classes.
+     * Chrome 2 will add this class automatically to root element.
+     */
+    root.classList.add(`page__${rootClass}`, 'pf-c-page__main', 'patch');
     root.setAttribute('role', 'main');
 
     return <Route {...rest} component={Component} />;
@@ -104,7 +110,7 @@ InsightsRoute.propTypes = {
     rootClass: PropTypes.string
 };
 
-export const Routes = (props: Props) => {
+export const Routes = (props) => {
     const [hasPatchAccess, setPatchAccess] = useState(true);
 
     React.useEffect(() => {
