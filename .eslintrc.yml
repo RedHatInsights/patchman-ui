@@ -1,8 +1,11 @@
-parser: babel-eslint
+parser: "@babel/eslint-parser"
 env:
     browser: true
     es6: true
     node: true
+settings:
+  react:
+    version: detect
 extends:
     - "eslint:recommended"
     - "prettier"
