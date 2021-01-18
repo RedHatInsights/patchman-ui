@@ -143,11 +143,11 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                 Object {
                   "cells": Array [
                     Object {
-                      "title": <ForwardRef
+                      "title": <Link
                         to="/packages/acl"
                       >
                         acl
-                      </ForwardRef>,
+                      </Link>,
                     },
                     Object {
                       "title": "2.2.*",

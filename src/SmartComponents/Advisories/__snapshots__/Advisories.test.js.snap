@@ -232,11 +232,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         Object {
                           "cells": Array [
                             Object {
-                              "title": <ForwardRef
+                              "title": <Link
                                 to="/advisories/RHEA-2020:2743"
                               >
                                 RHEA-2020:2743
-                              </ForwardRef>,
+                              </Link>,
                             },
                             "microcode_ctl",
                             Object {
@@ -245,11 +245,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                               />,
                             },
                             Object {
-                              "title": <ForwardRef
+                              "title": <Link
                                 to="/advisories/RHEA-2020:2743"
                               >
                                 1
-                              </ForwardRef>,
+                              </Link>,
                             },
                             Object {
                               "title": "24 June 2020",

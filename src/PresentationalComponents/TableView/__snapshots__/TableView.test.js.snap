@@ -294,6 +294,7 @@ exports[`TableView test table props TableView 1`] = `
     aria-label="Patch table view"
     borders={true}
     canSelectAll={false}
+    canSortFavorites={true}
     cells={Array []}
     className=""
     contentId="expanded-content"

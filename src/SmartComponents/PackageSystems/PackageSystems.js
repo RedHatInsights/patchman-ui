@@ -1,15 +1,8 @@
 import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
-import {
-    cellWidth, expandable, sortable, SortByDirection,
-    Table as PfTable, TableBody, TableGridBreakpoint, TableHeader, TableVariant
-} from '@patternfly/react-table/dist/js';
-import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
 import propTypes from 'prop-types';
 import React from 'react';
-import * as ReactRedux from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
-import * as reactRouterDom from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
@@ -26,11 +19,11 @@ import { useHandleRefresh, useOnSelect, usePagePerPage,
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
     const enableRemediation = false;
-    const [InventoryCmp, setInventoryCmp] = React.useState();
     const [
         RemediationModalCmp,
         setRemediationModalCmp
@@ -71,40 +64,6 @@ const PackageSystems = ({ packageName }) => {
             fetchPackageSystemsAction({ id: packageName, ...queryParams })
         );
     }, [queryParams]);
-
-    const fetchInventory = async () => {
-        const store = getStore();
-        const {
-            inventoryConnector,
-            mergeWithEntities
-        } = await insights.loadInventory({
-            ReactRedux,
-            React,
-            reactRouterDom,
-            pfReactTable: {
-                Table: PfTable,
-                TableBody,
-                TableHeader,
-                TableGridBreakpoint,
-                cellWidth,
-                TableVariant,
-                sortable,
-                expandable,
-                SortByDirection
-            },
-            pfReact: reactCore
-        });
-
-        register({
-            ...mergeWithEntities(packagesSystemsInventoryReducer(packageSystemsColumns, store.getState().PackageSystemsStore))
-        });
-        const { InventoryTable } = inventoryConnector(store);
-        setInventoryCmp(() => InventoryTable);
-    };
-
-    React.useEffect(() => {
-        fetchInventory();
-    }, []);
 
     const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
@@ -161,8 +120,17 @@ const PackageSystems = ({ packageName }) => {
 
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? <Unavailable/> : InventoryCmp && (
-                <InventoryCmp
+            {status === STATUS_REJECTED ? <Unavailable/> : (
+                <InventoryTable
+                    onLoad={({ mergeWithEntities }) => {
+                        const store = getStore();
+                        register({
+                            ...mergeWithEntities(
+                                packagesSystemsInventoryReducer(packageSystemsColumns, store.getState().PackageSystemsStore)
+                            )
+                        });
+
+                    }}
                     items={hosts}
                     page={page}
                     total={metadata.total_items}
@@ -224,7 +192,7 @@ const PackageSystems = ({ packageName }) => {
                         </ToolbarItem>
                     </ToolbarGroup>
                     }
-                </InventoryCmp>
+                </InventoryTable>
             )}
         </React.Fragment>
     );

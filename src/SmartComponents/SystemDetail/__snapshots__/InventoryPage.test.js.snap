@@ -52,6 +52,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
             ]
           }
           headerOUIA="inventory-details"
+          onLoad={[Function]}
           title=""
         >
           <PageHeader
@@ -180,14 +181,182 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                   </h1>
                 </Title>
               </PageHeaderTitle>
-              <InventoryDetailHead
+              <ForwardRef
+                fallback={
+                  <Bullseye>
+                    <Spinner
+                      size="xl"
+                    />
+                  </Bullseye>
+                }
                 hideBack={true}
               >
-                <div>
-                  A mock passed! 
-                   
-                </div>
-              </InventoryDetailHead>
+                <BaseInventoryDetailHead
+                  fallback={
+                    <Bullseye>
+                      <Spinner
+                        size="xl"
+                      />
+                    </Bullseye>
+                  }
+                  hideBack={true}
+                  innerProps={null}
+                >
+                  <Suspense
+                    fallback={
+                      <Bullseye>
+                        <Spinner
+                          size="xl"
+                        />
+                      </Bullseye>
+                    }
+                  >
+                    <ForwardRef
+                      ErrorComponent={
+                        <UNDEFINED
+                          component="InventoryDetailHead"
+                          fallback={
+                            <Bullseye>
+                              <Spinner
+                                size="xl"
+                              />
+                            </Bullseye>
+                          }
+                          hideBack={true}
+                          innerProps={null}
+                        />
+                      }
+                      appName="chrome"
+                      fallback={
+                        <Bullseye>
+                          <Spinner
+                            size="xl"
+                          />
+                        </Bullseye>
+                      }
+                      hideBack={true}
+                      history={
+                        Object {
+                          "action": "POP",
+                          "block": [Function],
+                          "createHref": [Function],
+                          "go": [Function],
+                          "goBack": [Function],
+                          "goForward": [Function],
+                          "length": 1,
+                          "listen": [Function],
+                          "location": Object {
+                            "hash": "",
+                            "pathname": "/",
+                            "search": "",
+                            "state": undefined,
+                          },
+                          "push": [Function],
+                          "replace": [Function],
+                        }
+                      }
+                      innerProps={null}
+                      module="./InventoryDetailHead"
+                      scope="chrome"
+                      store={
+                        Object {
+                          "clearActions": [Function],
+                          "dispatch": [Function],
+                          "getActions": [Function],
+                          "getState": [Function],
+                          "replaceReducer": [Function],
+                          "subscribe": [Function],
+                        }
+                      }
+                    >
+                      <BaseScalprumComponent
+                        ErrorComponent={
+                          <UNDEFINED
+                            component="InventoryDetailHead"
+                            fallback={
+                              <Bullseye>
+                                <Spinner
+                                  size="xl"
+                                />
+                              </Bullseye>
+                            }
+                            hideBack={true}
+                            innerProps={null}
+                          />
+                        }
+                        appName="chrome"
+                        fallback={
+                          <Bullseye>
+                            <Spinner
+                              size="xl"
+                            />
+                          </Bullseye>
+                        }
+                        hideBack={true}
+                        history={
+                          Object {
+                            "action": "POP",
+                            "block": [Function],
+                            "createHref": [Function],
+                            "go": [Function],
+                            "goBack": [Function],
+                            "goForward": [Function],
+                            "length": 1,
+                            "listen": [Function],
+                            "location": Object {
+                              "hash": "",
+                              "pathname": "/",
+                              "search": "",
+                              "state": undefined,
+                            },
+                            "push": [Function],
+                            "replace": [Function],
+                          }
+                        }
+                        innerProps={null}
+                        innerRef={null}
+                        module="./InventoryDetailHead"
+                        scope="chrome"
+                        store={
+                          Object {
+                            "clearActions": [Function],
+                            "dispatch": [Function],
+                            "getActions": [Function],
+                            "getState": [Function],
+                            "replaceReducer": [Function],
+                            "subscribe": [Function],
+                          }
+                        }
+                      />
+                    </ForwardRef>
+                    <Bullseye>
+                      <div
+                        className="pf-l-bullseye"
+                      >
+                        <Spinner
+                          size="xl"
+                        >
+                          <span
+                            aria-valuetext="Loading..."
+                            className="pf-c-spinner pf-m-xl"
+                            role="progressbar"
+                          >
+                            <span
+                              className="pf-c-spinner__clipper"
+                            />
+                            <span
+                              className="pf-c-spinner__lead-ball"
+                            />
+                            <span
+                              className="pf-c-spinner__tail-ball"
+                            />
+                          </span>
+                        </Spinner>
+                      </div>
+                    </Bullseye>
+                  </Suspense>
+                </BaseInventoryDetailHead>
+              </ForwardRef>
             </section>
           </PageHeader>
         </Header>
@@ -197,12 +366,175 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
               className="pf-l-page__main-section pf-c-page__main-section"
               page-type=""
             >
-              <AppInfo>
-                <div>
-                  A mock passed! 
-                   
-                </div>
-              </AppInfo>
+              <ForwardRef
+                fallback={
+                  <Bullseye>
+                    <Spinner
+                      size="xl"
+                    />
+                  </Bullseye>
+                }
+              >
+                <BaseAppInfo
+                  fallback={
+                    <Bullseye>
+                      <Spinner
+                        size="xl"
+                      />
+                    </Bullseye>
+                  }
+                  innerRef={null}
+                >
+                  <Suspense
+                    fallback={
+                      <Bullseye>
+                        <Spinner
+                          size="xl"
+                        />
+                      </Bullseye>
+                    }
+                  >
+                    <ForwardRef
+                      ErrorComponent={
+                        <UNDEFINED
+                          component="AppInfo"
+                          fallback={
+                            <Bullseye>
+                              <Spinner
+                                size="xl"
+                              />
+                            </Bullseye>
+                          }
+                          innerRef={null}
+                        />
+                      }
+                      appName="chrome"
+                      fallback={
+                        <Bullseye>
+                          <Spinner
+                            size="xl"
+                          />
+                        </Bullseye>
+                      }
+                      history={
+                        Object {
+                          "action": "POP",
+                          "block": [Function],
+                          "createHref": [Function],
+                          "go": [Function],
+                          "goBack": [Function],
+                          "goForward": [Function],
+                          "length": 1,
+                          "listen": [Function],
+                          "location": Object {
+                            "hash": "",
+                            "pathname": "/",
+                            "search": "",
+                            "state": undefined,
+                          },
+                          "push": [Function],
+                          "replace": [Function],
+                        }
+                      }
+                      innerRef={null}
+                      module="./AppInfo"
+                      scope="chrome"
+                      store={
+                        Object {
+                          "clearActions": [Function],
+                          "dispatch": [Function],
+                          "getActions": [Function],
+                          "getState": [Function],
+                          "replaceReducer": [Function],
+                          "subscribe": [Function],
+                        }
+                      }
+                    >
+                      <BaseScalprumComponent
+                        ErrorComponent={
+                          <UNDEFINED
+                            component="AppInfo"
+                            fallback={
+                              <Bullseye>
+                                <Spinner
+                                  size="xl"
+                                />
+                              </Bullseye>
+                            }
+                            innerRef={null}
+                          />
+                        }
+                        appName="chrome"
+                        fallback={
+                          <Bullseye>
+                            <Spinner
+                              size="xl"
+                            />
+                          </Bullseye>
+                        }
+                        history={
+                          Object {
+                            "action": "POP",
+                            "block": [Function],
+                            "createHref": [Function],
+                            "go": [Function],
+                            "goBack": [Function],
+                            "goForward": [Function],
+                            "length": 1,
+                            "listen": [Function],
+                            "location": Object {
+                              "hash": "",
+                              "pathname": "/",
+                              "search": "",
+                              "state": undefined,
+                            },
+                            "push": [Function],
+                            "replace": [Function],
+                          }
+                        }
+                        innerRef={null}
+                        module="./AppInfo"
+                        scope="chrome"
+                        store={
+                          Object {
+                            "clearActions": [Function],
+                            "dispatch": [Function],
+                            "getActions": [Function],
+                            "getState": [Function],
+                            "replaceReducer": [Function],
+                            "subscribe": [Function],
+                          }
+                        }
+                      />
+                    </ForwardRef>
+                    <Bullseye>
+                      <div
+                        className="pf-l-bullseye"
+                      >
+                        <Spinner
+                          size="xl"
+                        >
+                          <span
+                            aria-valuetext="Loading..."
+                            className="pf-c-spinner pf-m-xl"
+                            role="progressbar"
+                          >
+                            <span
+                              className="pf-c-spinner__clipper"
+                            />
+                            <span
+                              className="pf-c-spinner__lead-ball"
+                            />
+                            <span
+                              className="pf-c-spinner__tail-ball"
+                            />
+                          </span>
+                        </Spinner>
+                      </div>
+                    </Bullseye>
+                  </Suspense>
+                </BaseAppInfo>
+              </ForwardRef>
             </section>
           </Main>
         </Connect(Main)>

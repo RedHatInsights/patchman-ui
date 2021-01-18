@@ -1,13 +1,32 @@
+/* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux';
-
-/* eslint-disable */
 export const initMocks = () => {
 
     window.insights = {
-        loadInventory: (args) => new Promise((resolve, reject) =>  {
+        chrome: {
+            appNavClick: () => {},
+            init: () => {},
+            identifyApp: () => {},
+            navigation: () => {},
+            on: () => {
+                return () => {};
+            },
+            isBeta: () => true,
+            auth: {
+                getUser: () =>
+                    new Promise((resolve) =>
+                        resolve({
+                            identity: {
+                                user: {}
+                            }
+                        })
+                    )
+            },
+            getUserPermissions: () => Promise.resolve([])
+        },
+        loadInventory: () => new Promise((resolve) =>  {
             resolve(({
-                inventoryConnector: (args) => {
-                    
+                inventoryConnector: () => {
                     const InventoryTable = ({ children }) => <div>A mock passed! {children} </div>;
                     const InventoryDetailHead = ({ children }) => <div>A mock passed! {children} </div>;
                     const AppInfo = ({ children }) => <div>A mock passed! {children} </div>;
@@ -19,10 +38,10 @@ export const initMocks = () => {
                 mergeWithDetail: () => {}
             }));
         }),
-        loadRemediations: () => new Promise((resolve, reject) =>  {
-            resolve({ 
-                openWizard: () => new Promise((resolve, reject) =>  { 
-                    resolve(true)
+        loadRemediations: () => new Promise((resolve) =>  {
+            resolve({
+                openWizard: () => new Promise((resolve) =>  {
+                    resolve(true);
                 })
             });
         })
@@ -31,15 +50,15 @@ export const initMocks = () => {
 };
 
 export const mockStore = (initialState, mutatedState) => {
-    const customMiddleWare = store => next => action => {
+    const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
             return callback(mutatedState);
         });
         next(action);
     };
 
+    // eslint-disable-next-line no-undef
     const mockStore = configureStore([customMiddleWare]);
 
     return mockStore(initialState);
-}
-/* eslint-enable */
+};
