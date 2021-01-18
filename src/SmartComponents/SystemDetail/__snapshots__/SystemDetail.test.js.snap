@@ -7,6 +7,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
   component="div"
   isBox={false}
   isFilled={false}
+  isHidden={true}
   isSecondary={false}
   isVertical={false}
   leftScrollAriaLabel="Scroll left"
@@ -27,7 +28,9 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
       </TabTitleText>
     }
   >
-    <withRouter(SystemAdvisories) />
+    <withRouter(SystemAdvisories)
+      handleNoSystemData={[Function]}
+    />
   </Tab>
   <Tab
     data-ouia-component-id="system-packages-tab"
@@ -39,7 +42,9 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
       </TabTitleText>
     }
   >
-    <SystemPackages />
+    <SystemPackages
+      handleNoSystemData={[Function]}
+    />
   </Tab>
 </Tabs>
 `;

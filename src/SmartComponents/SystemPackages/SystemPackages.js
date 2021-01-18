@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import { Unavailable } from '@redhat-cloud-services/frontend-components';
-import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemPackagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
@@ -17,8 +16,9 @@ import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities
 import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import propTypes from 'prop-types';
 
-const SystemPackages = () => {
+const SystemPackages = ({ handleNoSystemData }) => {
     const dispatch = useDispatch();
     const entity = useSelector(({ entityDetails }) => entityDetails.entity);
     const packages = useSelector(
@@ -80,7 +80,7 @@ const SystemPackages = () => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const errorState = error.status === 404 ?  <NoSystemData/> : <Unavailable/>;
+    const errorState = error.status === 404 ?  handleNoSystemData() : <Unavailable/>;
     const emptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
                             && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
 
@@ -123,5 +123,8 @@ const SystemPackages = () => {
     );
 };
 
+SystemPackages.propTypes = {
+    handleNoSystemData: propTypes.func
+};
 export default SystemPackages;
 
