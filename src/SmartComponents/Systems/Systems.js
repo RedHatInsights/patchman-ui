@@ -1,14 +1,7 @@
-import {
-    cellWidth, expandable, sortable, SortByDirection, Table as PfTable,
-    TableBody, TableGridBreakpoint, TableHeader, TableVariant
-} from '@patternfly/react-table';
+import React from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
-import { reactCore } from '@redhat-cloud-services/frontend-components-utilities/files/inventoryDependencies';
-import React from 'react';
-import * as ReactRedux from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
-import * as reactRouterDom from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
@@ -25,6 +18,7 @@ import { setPageTitle, useHandleRefresh, usePagePerPage,
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -33,7 +27,6 @@ const Systems = () => {
 
     const dispatch = useDispatch();
 
-    const [InventoryCmp, setInventoryCmp] = React.useState();
     const [
         RemediationModalCmp,
         setRemediationModalCmp
@@ -65,40 +58,6 @@ const Systems = () => {
     useDeepCompareEffect(() => {
         dispatch(fetchSystemsAction(queryParams));
     }, [queryParams]);
-
-    const fetchInventory = async () => {
-        const store = getStore();
-        const {
-            inventoryConnector,
-            mergeWithEntities
-        } = await insights.loadInventory({
-            ReactRedux,
-            React,
-            reactRouterDom,
-            pfReactTable: {
-                Table: PfTable,
-                TableBody,
-                TableHeader,
-                TableGridBreakpoint,
-                cellWidth,
-                TableVariant,
-                sortable,
-                expandable,
-                SortByDirection
-            },
-            pfReact: reactCore
-        });
-
-        register({
-            ...mergeWithEntities(inventoryEntitiesReducer(systemsListColumns, store.getState().SystemsListStore))
-        });
-        const { InventoryTable } = inventoryConnector(store);
-        setInventoryCmp(() => InventoryTable);
-    };
-
-    React.useEffect(() => {
-        fetchInventory();
-    }, []);
 
     const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
@@ -159,8 +118,16 @@ const Systems = () => {
             <RemediationModalCmp />
             <Main>
                 {status === STATUS_REJECTED ? <Unavailable/> :
-                    InventoryCmp && (
-                        <InventoryCmp
+                    (
+                        <InventoryTable
+                            onLoad={({ mergeWithEntities }) => {
+                                const store = getStore();
+                                register({
+                                    ...mergeWithEntities(
+                                        inventoryEntitiesReducer(systemsListColumns, store.getState().SystemsListStore)
+                                    )
+                                });
+                            }}
                             isFullView
                             items={hosts}
                             page={page}
