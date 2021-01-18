@@ -1,4 +1,5 @@
 import toJson from 'enzyme-to-json';
+import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
@@ -7,8 +8,7 @@ import { advisoryDetailRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisoryDetail from './AdvisoryDetail';
 
-/* eslint-disable */
-initMocks()
+initMocks();
 
 jest.mock('../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader', () =>
     () => <div> hello </div>
@@ -19,22 +19,23 @@ jest.mock('react-redux', () => ({
     useSelector: jest.fn()
 }));
 
-jest.mock('../AdvisorySystems/AdvisorySystems', () => 
-    () =>  <div> hello </div> 
+jest.mock('../AdvisorySystems/AdvisorySystems', () =>
+    () =>  <div> hello </div>
 );
 
 const mockState = { ...storeListDefaults, ...advisoryDetailRows };
 
 const initStore = (state) => {
-    const customMiddleWare = store => next => action => {
+    const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
             return callback({  AdvisoryDetailStore: state });
         });
         next(action);
     };
+
     const mockStore = configureStore([customMiddleWare]);
     return mockStore({  AdvisoryDetailStore: state });
-}
+};
 
 let wrapper;
 let store = initStore(mockState);
@@ -45,8 +46,8 @@ beforeEach(() => {
         return callback({ AdvisoryDetailStore: mockState });
     });
     wrapper = mount(<Provider store={store}>
-            <Router><AdvisoryDetail /></Router>
-        </Provider>); 
+        <Router><AdvisoryDetail /></Router>
+    </Provider>);
 });
 
 afterEach(() => {
@@ -58,8 +59,18 @@ describe('AdvisoryDetail.js', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it('Should clear store on unmount', () => {
-        wrapper.unmount();
+    it('Should clear store on unmount', async () => {
+        let wrapper;
+        await act(async() => {
+            wrapper = mount(
+                <Provider store={store}>
+                    <Router><AdvisoryDetail /></Router>
+                </Provider>
+            );
+        });
+        act(() => {
+            wrapper.unmount();
+        });
         const dispatchedActions = store.getActions();
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_AFFECTED_SYSTEMS')).toHaveLength(1);
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_ADVISORY_DETAILS')).toHaveLength(1);
@@ -81,4 +92,3 @@ describe('AdvisoryDetail.js', () => {
     });
 
 });
-/* eslint-enable */
