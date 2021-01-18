@@ -9,6 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
 import { remediationProvider } from '../../Utilities/Helpers';
+import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 /* eslint-disable */
 initMocks()
 
@@ -157,7 +158,7 @@ describe('SystemPackages.js', () => {
         
         const tempStore = initStore(notFoundState);
         const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages/></Router>
+            <Router><SystemPackages  handleNoSystemData= { () => <NoSystemData /> }/></Router>
         </Provider>);
          expect(tempWrapper.find('NoSystemData')).toBeTruthy();
    

@@ -7,7 +7,6 @@ import publishDateFilter from '../../PresentationalComponents/Filters/PublishDat
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import { Unavailable } from '@redhat-cloud-services/frontend-components';
-import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
@@ -19,7 +18,7 @@ import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
 
-const SystemAdvisories = ({ history }) => {
+const SystemAdvisories = ({ history, handleNoSystemData }) => {
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = React.useState(true);
     const advisories = useSelector(
@@ -100,7 +99,7 @@ const SystemAdvisories = ({ history }) => {
         dispatch(changeSystemAdvisoryListParams({ id: entity.id, ...params }));
     }
 
-    const errorState = error.status === 404 ? <NoSystemData/> : <Unavailable/>;
+    const errorState = error.status === 404 ? handleNoSystemData() : <Unavailable/>;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({
@@ -143,6 +142,7 @@ const SystemAdvisories = ({ history }) => {
 };
 
 SystemAdvisories.propTypes = {
-    history: propTypes.object
+    history: propTypes.object,
+    handleNoSystemData: propTypes.func
 };
 export default withRouter(SystemAdvisories);

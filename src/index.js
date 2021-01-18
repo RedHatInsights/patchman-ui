@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import SystemDetail from './SmartComponents/SystemDetail/SystemDetail';
 const WrappedSystemDetail = (props) => {
     return <Router>
-        <SystemDetail {...props} />
+        <SystemDetail {...props} isInventoryApp/>
     </Router>;
 };
 
