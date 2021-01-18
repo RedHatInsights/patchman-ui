@@ -191,11 +191,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                   Object {
                     "cells": Array [
                       Object {
-                        "title": <ForwardRef
+                        "title": <Link
                           to="/advisories/RHSA-2020:2774"
                         >
                           RHSA-2020:2774
-                        </ForwardRef>,
+                        </Link>,
                       },
                       "Important",
                       Object {
@@ -2354,6 +2354,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
               aria-label="Patch table view"
               borders={true}
               canSelectAll={false}
+              canSortFavorites={true}
               cells={
                 Array [
                   Object {
@@ -2412,11 +2413,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                   Object {
                     "cells": Array [
                       Object {
-                        "title": <ForwardRef
+                        "title": <Link
                           to="/advisories/RHSA-2020:2774"
                         >
                           RHSA-2020:2774
-                        </ForwardRef>,
+                        </Link>,
                       },
                       "Important",
                       Object {
@@ -2484,6 +2485,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "allRowsSelected": true,
                         "areActionsDisabled": undefined,
                         "canSelectAll": false,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -2491,6 +2493,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "firstUserColumnIndex": 2,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": [Function],
                         "onSort": [Function],
@@ -2530,6 +2533,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "allRowsSelected": true,
                         "areActionsDisabled": undefined,
                         "canSelectAll": false,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -2537,6 +2541,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "firstUserColumnIndex": 2,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": [Function],
                         "onSort": [Function],
@@ -2577,6 +2582,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "allRowsSelected": true,
                         "areActionsDisabled": undefined,
                         "canSelectAll": false,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -2584,6 +2590,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "firstUserColumnIndex": 2,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": [Function],
                         "onSort": [Function],
@@ -2625,6 +2632,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "allRowsSelected": true,
                         "areActionsDisabled": undefined,
                         "canSelectAll": false,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -2632,6 +2640,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "firstUserColumnIndex": 2,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": [Function],
                         "onSort": [Function],
@@ -2673,6 +2682,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "allRowsSelected": true,
                         "areActionsDisabled": undefined,
                         "canSelectAll": false,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -2680,6 +2690,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "firstUserColumnIndex": 2,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": [Function],
                         "onSort": [Function],
@@ -2721,6 +2732,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "allRowsSelected": true,
                         "areActionsDisabled": undefined,
                         "canSelectAll": false,
+                        "canSortFavorites": true,
                         "contentId": "expanded-content",
                         "dropdownDirection": "down",
                         "dropdownPosition": "right",
@@ -2728,6 +2740,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         "firstUserColumnIndex": 2,
                         "onCollapse": [Function],
                         "onExpand": undefined,
+                        "onFavorite": undefined,
                         "onRowEdit": undefined,
                         "onSelect": [Function],
                         "onSort": [Function],
@@ -2833,6 +2846,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -2840,6 +2854,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -2879,6 +2894,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -2886,6 +2902,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -2926,6 +2943,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -2933,6 +2951,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -2974,6 +2993,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -2981,6 +3001,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -3022,6 +3043,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3029,6 +3051,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -3070,6 +3093,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -3077,6 +3101,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -3114,18 +3139,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     "cell": [Function],
                                     "row": Object {
                                       "$$typeof": Symbol(react.forward_ref),
-                                      "displayName": "Tr",
                                       "render": [Function],
                                     },
                                     "wrapper": Object {
                                       "$$typeof": Symbol(react.forward_ref),
-                                      "displayName": "Thead",
                                       "render": [Function],
                                     },
                                   },
                                   "table": Object {
                                     "$$typeof": Symbol(react.forward_ref),
-                                    "displayName": "TableComposable",
                                     "render": [Function],
                                   },
                                 }
@@ -3148,12 +3170,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           "cell": [Function],
                                           "row": Object {
                                             "$$typeof": Symbol(react.forward_ref),
-                                            "displayName": "Tr",
                                             "render": [Function],
                                           },
                                           "wrapper": Object {
                                             "$$typeof": Symbol(react.forward_ref),
-                                            "displayName": "Thead",
                                             "render": [Function],
                                           },
                                         }
@@ -3178,6 +3198,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "allRowsSelected": true,
                                               "areActionsDisabled": undefined,
                                               "canSelectAll": false,
+                                              "canSortFavorites": true,
                                               "contentId": "expanded-content",
                                               "dropdownDirection": "down",
                                               "dropdownPosition": "right",
@@ -3185,6 +3206,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "firstUserColumnIndex": 2,
                                               "onCollapse": [Function],
                                               "onExpand": undefined,
+                                              "onFavorite": undefined,
                                               "onRowEdit": undefined,
                                               "onSelect": [Function],
                                               "onSort": [Function],
@@ -3224,6 +3246,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "allRowsSelected": true,
                                               "areActionsDisabled": undefined,
                                               "canSelectAll": false,
+                                              "canSortFavorites": true,
                                               "contentId": "expanded-content",
                                               "dropdownDirection": "down",
                                               "dropdownPosition": "right",
@@ -3231,6 +3254,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "firstUserColumnIndex": 2,
                                               "onCollapse": [Function],
                                               "onExpand": undefined,
+                                              "onFavorite": undefined,
                                               "onRowEdit": undefined,
                                               "onSelect": [Function],
                                               "onSort": [Function],
@@ -3271,6 +3295,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "allRowsSelected": true,
                                               "areActionsDisabled": undefined,
                                               "canSelectAll": false,
+                                              "canSortFavorites": true,
                                               "contentId": "expanded-content",
                                               "dropdownDirection": "down",
                                               "dropdownPosition": "right",
@@ -3278,6 +3303,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "firstUserColumnIndex": 2,
                                               "onCollapse": [Function],
                                               "onExpand": undefined,
+                                              "onFavorite": undefined,
                                               "onRowEdit": undefined,
                                               "onSelect": [Function],
                                               "onSort": [Function],
@@ -3319,6 +3345,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "allRowsSelected": true,
                                               "areActionsDisabled": undefined,
                                               "canSelectAll": false,
+                                              "canSortFavorites": true,
                                               "contentId": "expanded-content",
                                               "dropdownDirection": "down",
                                               "dropdownPosition": "right",
@@ -3326,6 +3353,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "firstUserColumnIndex": 2,
                                               "onCollapse": [Function],
                                               "onExpand": undefined,
+                                              "onFavorite": undefined,
                                               "onRowEdit": undefined,
                                               "onSelect": [Function],
                                               "onSort": [Function],
@@ -3367,6 +3395,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "allRowsSelected": true,
                                               "areActionsDisabled": undefined,
                                               "canSelectAll": false,
+                                              "canSortFavorites": true,
                                               "contentId": "expanded-content",
                                               "dropdownDirection": "down",
                                               "dropdownPosition": "right",
@@ -3374,6 +3403,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "firstUserColumnIndex": 2,
                                               "onCollapse": [Function],
                                               "onExpand": undefined,
+                                              "onFavorite": undefined,
                                               "onRowEdit": undefined,
                                               "onSelect": [Function],
                                               "onSort": [Function],
@@ -3415,6 +3445,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "allRowsSelected": true,
                                               "areActionsDisabled": undefined,
                                               "canSelectAll": false,
+                                              "canSortFavorites": true,
                                               "contentId": "expanded-content",
                                               "dropdownDirection": "down",
                                               "dropdownPosition": "right",
@@ -3422,6 +3453,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "firstUserColumnIndex": 2,
                                               "onCollapse": [Function],
                                               "onExpand": undefined,
+                                              "onFavorite": undefined,
                                               "onRowEdit": undefined,
                                               "onSelect": [Function],
                                               "onSort": [Function],
@@ -3949,6 +3981,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "allRowsSelected": true,
                                   "areActionsDisabled": undefined,
                                   "canSelectAll": false,
+                                  "canSortFavorites": true,
                                   "contentId": "expanded-content",
                                   "dropdownDirection": "down",
                                   "dropdownPosition": "right",
@@ -3956,6 +3989,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "firstUserColumnIndex": 2,
                                   "onCollapse": [Function],
                                   "onExpand": undefined,
+                                  "onFavorite": undefined,
                                   "onRowEdit": undefined,
                                   "onSelect": [Function],
                                   "onSort": [Function],
@@ -3995,6 +4029,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "allRowsSelected": true,
                                   "areActionsDisabled": undefined,
                                   "canSelectAll": false,
+                                  "canSortFavorites": true,
                                   "contentId": "expanded-content",
                                   "dropdownDirection": "down",
                                   "dropdownPosition": "right",
@@ -4002,6 +4037,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "firstUserColumnIndex": 2,
                                   "onCollapse": [Function],
                                   "onExpand": undefined,
+                                  "onFavorite": undefined,
                                   "onRowEdit": undefined,
                                   "onSelect": [Function],
                                   "onSort": [Function],
@@ -4042,6 +4078,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "allRowsSelected": true,
                                   "areActionsDisabled": undefined,
                                   "canSelectAll": false,
+                                  "canSortFavorites": true,
                                   "contentId": "expanded-content",
                                   "dropdownDirection": "down",
                                   "dropdownPosition": "right",
@@ -4049,6 +4086,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "firstUserColumnIndex": 2,
                                   "onCollapse": [Function],
                                   "onExpand": undefined,
+                                  "onFavorite": undefined,
                                   "onRowEdit": undefined,
                                   "onSelect": [Function],
                                   "onSort": [Function],
@@ -4090,6 +4128,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "allRowsSelected": true,
                                   "areActionsDisabled": undefined,
                                   "canSelectAll": false,
+                                  "canSortFavorites": true,
                                   "contentId": "expanded-content",
                                   "dropdownDirection": "down",
                                   "dropdownPosition": "right",
@@ -4097,6 +4136,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "firstUserColumnIndex": 2,
                                   "onCollapse": [Function],
                                   "onExpand": undefined,
+                                  "onFavorite": undefined,
                                   "onRowEdit": undefined,
                                   "onSelect": [Function],
                                   "onSort": [Function],
@@ -4138,6 +4178,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "allRowsSelected": true,
                                   "areActionsDisabled": undefined,
                                   "canSelectAll": false,
+                                  "canSortFavorites": true,
                                   "contentId": "expanded-content",
                                   "dropdownDirection": "down",
                                   "dropdownPosition": "right",
@@ -4145,6 +4186,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "firstUserColumnIndex": 2,
                                   "onCollapse": [Function],
                                   "onExpand": undefined,
+                                  "onFavorite": undefined,
                                   "onRowEdit": undefined,
                                   "onSelect": [Function],
                                   "onSort": [Function],
@@ -4186,6 +4228,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "allRowsSelected": true,
                                   "areActionsDisabled": undefined,
                                   "canSelectAll": false,
+                                  "canSortFavorites": true,
                                   "contentId": "expanded-content",
                                   "dropdownDirection": "down",
                                   "dropdownPosition": "right",
@@ -4193,6 +4236,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   "firstUserColumnIndex": 2,
                                   "onCollapse": [Function],
                                   "onExpand": undefined,
+                                  "onFavorite": undefined,
                                   "onRowEdit": undefined,
                                   "onSelect": [Function],
                                   "onSort": [Function],
@@ -4227,11 +4271,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                               Object {
                                 "cells": Array [
                                   Object {
-                                    "title": <ForwardRef
+                                    "title": <Link
                                       to="/advisories/RHSA-2020:2774"
                                     >
                                       RHSA-2020:2774
-                                    </ForwardRef>,
+                                    </Link>,
                                   },
                                   "Important",
                                   Object {
@@ -4280,11 +4324,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 Object {
                                   "cells": Array [
                                     Object {
-                                      "title": <ForwardRef
+                                      "title": <Link
                                         to="/advisories/RHSA-2020:2774"
                                       >
                                         RHSA-2020:2774
-                                      </ForwardRef>,
+                                      </Link>,
                                     },
                                     "Important",
                                     Object {
@@ -4309,11 +4353,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     "props": Object {
                                       "isVisible": true,
                                     },
-                                    "title": <ForwardRef
+                                    "title": <Link
                                       to="/advisories/RHSA-2020:2774"
                                     >
                                       RHSA-2020:2774
-                                    </ForwardRef>,
+                                    </Link>,
                                   },
                                   "publish-date": Object {
                                     "formatters": Array [],
@@ -4400,11 +4444,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 Object {
                                   "cells": Array [
                                     Object {
-                                      "title": <ForwardRef
+                                      "title": <Link
                                         to="/advisories/RHSA-2020:2774"
                                       >
                                         RHSA-2020:2774
-                                      </ForwardRef>,
+                                      </Link>,
                                     },
                                     "Important",
                                     Object {
@@ -4429,11 +4473,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     "props": Object {
                                       "isVisible": true,
                                     },
-                                    "title": <ForwardRef
+                                    "title": <Link
                                       to="/advisories/RHSA-2020:2774"
                                     >
                                       RHSA-2020:2774
-                                    </ForwardRef>,
+                                    </Link>,
                                   },
                                   "publish-date": Object {
                                     "formatters": Array [],
@@ -4536,6 +4580,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4543,6 +4588,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -4582,6 +4628,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4589,6 +4636,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -4629,6 +4677,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4636,6 +4685,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -4677,6 +4727,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4684,6 +4735,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -4725,6 +4777,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4732,6 +4785,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -4773,6 +4827,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "allRowsSelected": true,
                                       "areActionsDisabled": undefined,
                                       "canSelectAll": false,
+                                      "canSortFavorites": true,
                                       "contentId": "expanded-content",
                                       "dropdownDirection": "down",
                                       "dropdownPosition": "right",
@@ -4780,6 +4835,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "firstUserColumnIndex": 2,
                                       "onCollapse": [Function],
                                       "onExpand": undefined,
+                                      "onFavorite": undefined,
                                       "onRowEdit": undefined,
                                       "onSelect": [Function],
                                       "onSort": [Function],
@@ -4811,11 +4867,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   Object {
                                     "cells": Array [
                                       Object {
-                                        "title": <ForwardRef
+                                        "title": <Link
                                           to="/advisories/RHSA-2020:2774"
                                         >
                                           RHSA-2020:2774
-                                        </ForwardRef>,
+                                        </Link>,
                                       },
                                       "Important",
                                       Object {
@@ -4840,11 +4896,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "props": Object {
                                         "isVisible": true,
                                       },
-                                      "title": <ForwardRef
+                                      "title": <Link
                                         to="/advisories/RHSA-2020:2774"
                                       >
                                         RHSA-2020:2774
-                                      </ForwardRef>,
+                                      </Link>,
                                     },
                                     "publish-date": Object {
                                       "formatters": Array [],
@@ -4936,18 +4992,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     "cell": [Function],
                                     "row": Object {
                                       "$$typeof": Symbol(react.forward_ref),
-                                      "displayName": "Tr",
                                       "render": [Function],
                                     },
                                     "wrapper": Object {
                                       "$$typeof": Symbol(react.forward_ref),
-                                      "displayName": "Thead",
                                       "render": [Function],
                                     },
                                   },
                                   "table": Object {
                                     "$$typeof": Symbol(react.forward_ref),
-                                    "displayName": "TableComposable",
                                     "render": [Function],
                                   },
                                 }
@@ -4958,11 +5011,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   Object {
                                     "cells": Array [
                                       Object {
-                                        "title": <ForwardRef
+                                        "title": <Link
                                           to="/advisories/RHSA-2020:2774"
                                         >
                                           RHSA-2020:2774
-                                        </ForwardRef>,
+                                        </Link>,
                                       },
                                       "Important",
                                       Object {
@@ -4987,11 +5040,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       "props": Object {
                                         "isVisible": true,
                                       },
-                                      "title": <ForwardRef
+                                      "title": <Link
                                         to="/advisories/RHSA-2020:2774"
                                       >
                                         RHSA-2020:2774
-                                      </ForwardRef>,
+                                      </Link>,
                                     },
                                     "publish-date": Object {
                                       "formatters": Array [],
@@ -5080,11 +5133,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     Object {
                                       "cells": Array [
                                         Object {
-                                          "title": <ForwardRef
+                                          "title": <Link
                                             to="/advisories/RHSA-2020:2774"
                                           >
                                             RHSA-2020:2774
-                                          </ForwardRef>,
+                                          </Link>,
                                         },
                                         "Important",
                                         Object {
@@ -5109,11 +5162,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         "props": Object {
                                           "isVisible": true,
                                         },
-                                        "title": <ForwardRef
+                                        "title": <Link
                                           to="/advisories/RHSA-2020:2774"
                                         >
                                           RHSA-2020:2774
-                                        </ForwardRef>,
+                                        </Link>,
                                       },
                                       "publish-date": Object {
                                         "formatters": Array [],
@@ -5229,6 +5282,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -5236,6 +5290,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -5275,6 +5330,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -5282,6 +5338,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -5322,6 +5379,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -5329,6 +5387,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -5370,6 +5429,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -5377,6 +5437,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -5418,6 +5479,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -5425,6 +5487,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -5466,6 +5529,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -5473,6 +5537,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -5511,11 +5576,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           Object {
                                             "cells": Array [
                                               Object {
-                                                "title": <ForwardRef
+                                                "title": <Link
                                                   to="/advisories/RHSA-2020:2774"
                                                 >
                                                   RHSA-2020:2774
-                                                </ForwardRef>,
+                                                </Link>,
                                               },
                                               "Important",
                                               Object {
@@ -5540,11 +5605,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               "props": Object {
                                                 "isVisible": true,
                                               },
-                                              "title": <ForwardRef
+                                              "title": <Link
                                                 to="/advisories/RHSA-2020:2774"
                                               >
                                                 RHSA-2020:2774
-                                              </ForwardRef>,
+                                              </Link>,
                                             },
                                             "publish-date": Object {
                                               "formatters": Array [],
@@ -5583,11 +5648,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             Object {
                                               "cells": Array [
                                                 Object {
-                                                  "title": <ForwardRef
+                                                  "title": <Link
                                                     to="/advisories/RHSA-2020:2774"
                                                   >
                                                     RHSA-2020:2774
-                                                  </ForwardRef>,
+                                                  </Link>,
                                                 },
                                                 "Important",
                                                 Object {
@@ -5612,11 +5677,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "props": Object {
                                                   "isVisible": true,
                                                 },
-                                                "title": <ForwardRef
+                                                "title": <Link
                                                   to="/advisories/RHSA-2020:2774"
                                                 >
                                                   RHSA-2020:2774
-                                                </ForwardRef>,
+                                                </Link>,
                                               },
                                               "publish-date": Object {
                                                 "formatters": Array [],
@@ -5720,7 +5785,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                               aria-label="Details"
                                                               aria-labelledby="simple-node0 expandable-toggle0"
                                                               className="pf-c-button pf-m-plain"
-                                                              data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                                                              data-ouia-component-id="OUIA-Generated-Button-plain-3"
                                                               data-ouia-component-type="PF4/Button"
                                                               data-ouia-safe={true}
                                                               disabled={false}
@@ -6048,6 +6113,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -6055,6 +6121,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -6094,6 +6161,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -6101,6 +6169,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -6141,6 +6210,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -6148,6 +6218,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -6189,6 +6260,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -6196,6 +6268,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -6237,6 +6310,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -6244,6 +6318,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -6285,6 +6360,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "allRowsSelected": true,
                                                 "areActionsDisabled": undefined,
                                                 "canSelectAll": false,
+                                                "canSortFavorites": true,
                                                 "contentId": "expanded-content",
                                                 "dropdownDirection": "down",
                                                 "dropdownPosition": "right",
@@ -6292,6 +6368,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "firstUserColumnIndex": 2,
                                                 "onCollapse": [Function],
                                                 "onExpand": undefined,
+                                                "onFavorite": undefined,
                                                 "onRowEdit": undefined,
                                                 "onSelect": [Function],
                                                 "onSort": [Function],
@@ -7277,7 +7354,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     aria-label="Go to first page"
                                     className="pf-c-button pf-m-plain pf-m-disabled"
                                     data-action="first"
-                                    data-ouia-component-id="OUIA-Generated-Button-plain-3"
+                                    data-ouia-component-id="OUIA-Generated-Button-plain-4"
                                     data-ouia-component-type="PF4/Button"
                                     data-ouia-safe={true}
                                     disabled={true}
@@ -7328,7 +7405,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     aria-label="Go to previous page"
                                     className="pf-c-button pf-m-plain pf-m-disabled"
                                     data-action="previous"
-                                    data-ouia-component-id="OUIA-Generated-Button-plain-4"
+                                    data-ouia-component-id="OUIA-Generated-Button-plain-5"
                                     data-ouia-component-type="PF4/Button"
                                     data-ouia-safe={true}
                                     disabled={true}
@@ -7400,7 +7477,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     aria-label="Go to next page"
                                     className="pf-c-button pf-m-plain pf-m-disabled"
                                     data-action="next"
-                                    data-ouia-component-id="OUIA-Generated-Button-plain-5"
+                                    data-ouia-component-id="OUIA-Generated-Button-plain-6"
                                     data-ouia-component-type="PF4/Button"
                                     data-ouia-safe={true}
                                     disabled={true}
@@ -7451,7 +7528,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     aria-label="Go to last page"
                                     className="pf-c-button pf-m-plain pf-m-disabled"
                                     data-action="last"
-                                    data-ouia-component-id="OUIA-Generated-Button-plain-6"
+                                    data-ouia-component-id="OUIA-Generated-Button-plain-7"
                                     data-ouia-component-type="PF4/Button"
                                     data-ouia-safe={true}
                                     disabled={true}
