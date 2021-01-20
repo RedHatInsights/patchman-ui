@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components';
 import { useSelector } from 'react-redux';
 import Header from '../../PresentationalComponents/Header/Header';
@@ -21,11 +22,6 @@ const InventoryDetail = () => {
     return (
         <React.Fragment>
             <Header
-                onLoad={({ mergeWithDetail }) => {
-                    register({
-                        ...mergeWithDetail(SystemDetailStore)
-                    });
-                }}
                 title=""
                 headerOUIA={'inventory-details'}
                 breadcrumbs={[
@@ -40,7 +36,14 @@ const InventoryDetail = () => {
                     }
                 ]}
             >
-                {<InventoryDetailHead hideBack />}
+                <InventoryDetailHead
+                    onLoad={({ mergeWithDetail }) => {
+                        console.log('Inventory on load');
+                        register({
+                            ...mergeWithDetail(SystemDetailStore)
+                        });
+                    }} hideBack
+                />
             </Header>
             <Main>
                 <AppInfo />
