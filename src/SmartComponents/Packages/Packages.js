@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Main } from '@redhat-cloud-services/frontend-components';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';

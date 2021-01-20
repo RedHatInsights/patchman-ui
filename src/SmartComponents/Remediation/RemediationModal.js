@@ -9,7 +9,7 @@ import {
     expandable,
     SortByDirection
 } from '@patternfly/react-table';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch } from 'react-redux';
