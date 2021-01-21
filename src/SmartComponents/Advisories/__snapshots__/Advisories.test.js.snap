@@ -131,10 +131,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         ],
                       },
                       Object {
-                        "key": "public_date",
-                        "title": "Publish date",
+                        "key": "synopsis",
+                        "title": "Synopsis",
                         "transforms": Array [
-                          [Function],
                           [Function],
                         ],
                       },
@@ -155,14 +154,16 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                         ],
                       },
                       Object {
-                        "key": "synopsis",
-                        "title": "Synopsis",
+                        "key": "public_date",
+                        "title": "Publish date",
                         "transforms": Array [
+                          [Function],
                           [Function],
                         ],
                       },
                     ]
                   }
+                  compact={true}
                   errorState={false}
                   filterConfig={
                     Object {
@@ -237,9 +238,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 RHEA-2020:2743
                               </ForwardRef>,
                             },
-                            Object {
-                              "title": "24 June 2020",
-                            },
+                            "microcode_ctl",
                             Object {
                               "title": <AdvisoryType
                                 type={1}
@@ -252,7 +251,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 1
                               </ForwardRef>,
                             },
-                            "microcode_ctl",
+                            Object {
+                              "title": "24 June 2020",
+                            },
                           ],
                           "id": "RHEA-2020:2743",
                           "isOpen": false,
