@@ -103,6 +103,7 @@ const Advisories = ({ history }) => {
             <Main>
                 <TableView
                     columns={advisoriesColumns}
+                    compact
                     onCollapse={onCollapse}
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}

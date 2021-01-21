@@ -2,11 +2,11 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
+import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
 import { EmptyAdvisoryList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
+import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { entityTypes } from './constants';
 import { createUpgradableColumn, handlePatchLink } from './Helpers';
-import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
-import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -18,7 +18,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                     selected: selectedRows[row.id] !== undefined,
                     cells: [
                         { title: handlePatchLink(entityTypes.advisories, row.id) },
-                        { title: processDate(row.attributes.public_date) },
+                        row.attributes.synopsis,
                         {
                             title: (
                                 <AdvisoryType
@@ -33,7 +33,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                                 row.attributes.applicable_systems
                             )
                         },
-                        row.attributes.synopsis
+                        { title: processDate(row.attributes.public_date) }
                     ]
                 },
                 {
@@ -76,7 +76,7 @@ export const createSystemAdvisoriesRows = (
                     selected: selectedRows[row.id] !== undefined,
                     cells: [
                         { title: handlePatchLink(entityTypes.advisories, row.id) },
-                        { title: processDate(row.attributes.public_date) },
+                        row.attributes.synopsis,
                         {
                             title: (
                                 <AdvisoryType
@@ -84,7 +84,7 @@ export const createSystemAdvisoriesRows = (
                                 />
                             )
                         },
-                        row.attributes.synopsis
+                        { title: processDate(row.attributes.public_date) }
                     ]
                 },
                 {

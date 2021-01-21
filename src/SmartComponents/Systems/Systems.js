@@ -172,7 +172,7 @@ const Systems = () => {
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}
-                            tableProps = {{ areActionsDisabled, onSort, sortBy }}
+                            tableProps = {{ areActionsDisabled, onSort, sortBy, variant: TableVariant.compact }}
 
                         />
                     )

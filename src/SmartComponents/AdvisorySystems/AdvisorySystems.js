@@ -164,7 +164,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     onRefresh={handleRefresh}
                     isLoaded={status === STATUS_RESOLVED}
                     actions={systemsRowActions(showRemediationModal)}
-                    tableProps = {{ canSelectAll: false, onSort, sortBy }}
+                    tableProps = {{ canSelectAll: false, onSort, sortBy, variant: TableVariant.compact }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={onSelect && {

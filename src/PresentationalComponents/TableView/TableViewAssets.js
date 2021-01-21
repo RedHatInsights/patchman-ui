@@ -1,6 +1,6 @@
 import { cellWidth, expandable, sortable } from '@patternfly/react-table/dist/js';
-import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import { intl } from '../../Utilities/IntlProvider';
 
 export const advisoriesColumns = [
     {
@@ -10,13 +10,13 @@ export const advisoriesColumns = [
         key: 'id'
     },
     {
-        title: intl.formatMessage(messages.labelsColumnsPublishDate),
-        transforms: [sortable, cellWidth(15)],
-        key: 'public_date'
+        title: intl.formatMessage(messages.labelsColumnsSynopsis),
+        transforms: [sortable],
+        key: 'synopsis'
     },
     {
         title: intl.formatMessage(messages.labelsColumnsType),
-        transforms: [sortable, cellWidth(15)],
+        transforms: [sortable, cellWidth(10)],
         key: 'advisory_type'
     },
     {
@@ -25,9 +25,9 @@ export const advisoriesColumns = [
         key: 'applicable_systems'
     },
     {
-        title: intl.formatMessage(messages.labelsColumnsSynopsis),
-        transforms: [sortable],
-        key: 'synopsis'
+        title: intl.formatMessage(messages.labelsColumnsPublishDate),
+        transforms: [sortable, cellWidth(15)],
+        key: 'public_date'
     }
 ];
 
@@ -39,9 +39,9 @@ export const systemAdvisoriesColumns = [
         key: 'id'
     },
     {
-        title: intl.formatMessage(messages.labelsColumnsPublishDate),
-        transforms: [sortable, cellWidth(15)],
-        key: 'public_date'
+        title: 'Synopsis',
+        transforms: [sortable, cellWidth(45)],
+        key: 'synopsis'
     },
     {
         title: intl.formatMessage(messages.labelsColumnsType),
@@ -49,9 +49,9 @@ export const systemAdvisoriesColumns = [
         key: 'advisory_type'
     },
     {
-        title: 'Synopsis',
-        transforms: [sortable],
-        key: 'synopsis'
+        title: intl.formatMessage(messages.labelsColumnsPublishDate),
+        transforms: [sortable, cellWidth(25)],
+        key: 'public_date'
     }
 ];
 

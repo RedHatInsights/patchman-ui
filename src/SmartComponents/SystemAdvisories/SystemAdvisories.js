@@ -112,6 +112,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
         <React.Fragment>
             <TableView
                 columns={systemAdvisoriesColumns}
+                compact
                 onCollapse={onCollapse}
                 onSelect={(advisories.length && onSelect) || undefined}
                 onSetPage={onSetPage}
