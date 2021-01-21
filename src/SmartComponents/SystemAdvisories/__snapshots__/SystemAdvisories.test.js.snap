@@ -91,8 +91,8 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                   ],
                 },
                 Object {
-                  "key": "public_date",
-                  "title": "Publish date",
+                  "key": "synopsis",
+                  "title": "Synopsis",
                   "transforms": Array [
                     [Function],
                     [Function],
@@ -107,14 +107,16 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                   ],
                 },
                 Object {
-                  "key": "synopsis",
-                  "title": "Synopsis",
+                  "key": "public_date",
+                  "title": "Publish date",
                   "transforms": Array [
+                    [Function],
                     [Function],
                   ],
                 },
               ]
             }
+            compact={true}
             errorState={<Unavailable />}
             filterConfig={
               Object {
@@ -195,15 +197,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                           RHSA-2020:2774
                         </ForwardRef>,
                       },
-                      Object {
-                        "title": "30 June 2020",
-                      },
+                      "Important",
                       Object {
                         "title": <AdvisoryType
                           type={3}
                         />,
                       },
-                      "Important",
+                      Object {
+                        "title": "30 June 2020",
+                      },
                     ],
                     "id": "RHSA-2020:2774",
                     "isOpen": false,
@@ -2363,8 +2365,8 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                     ],
                   },
                   Object {
-                    "key": "public_date",
-                    "title": "Publish date",
+                    "key": "synopsis",
+                    "title": "Synopsis",
                     "transforms": Array [
                       [Function],
                       [Function],
@@ -2379,9 +2381,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                     ],
                   },
                   Object {
-                    "key": "synopsis",
-                    "title": "Synopsis",
+                    "key": "public_date",
+                    "title": "Publish date",
                     "transforms": Array [
+                      [Function],
                       [Function],
                     ],
                   },
@@ -2412,15 +2415,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                           RHSA-2020:2774
                         </ForwardRef>,
                       },
-                      Object {
-                        "title": "30 June 2020",
-                      },
+                      "Important",
                       Object {
                         "title": <AdvisoryType
                           type={3}
                         />,
                       },
-                      "Important",
+                      Object {
+                        "title": "30 June 2020",
+                      },
                     ],
                     "id": "RHSA-2020:2774",
                     "isOpen": false,
@@ -2452,7 +2455,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
               }
               selectVariant="checkbox"
               sortBy={Object {}}
-              variant={null}
+              variant="compact"
             >
               <Provider
                 aria-label="Patch table view"
@@ -2635,7 +2638,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                       },
                       "header": Object {
                         "formatters": Array [],
-                        "label": "Publish date",
+                        "label": "Synopsis",
                         "transforms": Array [
                           [Function],
                           [Function],
@@ -2643,10 +2646,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                           [Function],
                         ],
                       },
-                      "property": "publish-date",
+                      "property": "synopsis",
                       "props": Object {
                         "data-key": 3,
-                        "data-label": "Publish date",
+                        "data-label": "Synopsis",
                       },
                     },
                     Object {
@@ -2731,17 +2734,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                       },
                       "header": Object {
                         "formatters": Array [],
-                        "label": "Synopsis",
+                        "label": "Publish date",
                         "transforms": Array [
+                          [Function],
                           [Function],
                           [Function],
                           [Function],
                         ],
                       },
-                      "property": "synopsis",
+                      "property": "publish-date",
                       "props": Object {
                         "data-key": 5,
-                        "data-label": "Synopsis",
+                        "data-label": "Publish date",
                       },
                     },
                   ]
@@ -2763,7 +2767,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                   }
                 }
                 role="grid"
-                variant={null}
+                variant="compact"
               >
                 <TableComposable
                   aria-label="Patch table view"
@@ -2774,7 +2778,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                   ouiaId="system-advisories-table"
                   ouiaSafe={true}
                   role="grid"
-                  variant={null}
+                  variant="compact"
                 >
                   <TableComposableBase
                     aria-label="Patch table view"
@@ -2786,11 +2790,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                     ouiaId="system-advisories-table"
                     ouiaSafe={true}
                     role="grid"
-                    variant={null}
+                    variant="compact"
                   >
                     <table
                       aria-label="Patch table view"
-                      className="pf-c-table pf-m-grid-md"
+                      className="pf-c-table pf-m-grid-md pf-m-compact"
                       data-ouia-component-id="system-advisories-table"
                       data-ouia-component-type="PF4/Table"
                       data-ouia-safe={true}
@@ -2983,7 +2987,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     },
                                     "header": Object {
                                       "formatters": Array [],
-                                      "label": "Publish date",
+                                      "label": "Synopsis",
                                       "transforms": Array [
                                         [Function],
                                         [Function],
@@ -2991,10 +2995,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         [Function],
                                       ],
                                     },
-                                    "property": "publish-date",
+                                    "property": "synopsis",
                                     "props": Object {
                                       "data-key": 3,
-                                      "data-label": "Publish date",
+                                      "data-label": "Synopsis",
                                     },
                                   },
                                   Object {
@@ -3079,17 +3083,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     },
                                     "header": Object {
                                       "formatters": Array [],
-                                      "label": "Synopsis",
+                                      "label": "Publish date",
                                       "transforms": Array [
+                                        [Function],
                                         [Function],
                                         [Function],
                                         [Function],
                                       ],
                                     },
-                                    "property": "synopsis",
+                                    "property": "publish-date",
                                     "props": Object {
                                       "data-key": 5,
-                                      "data-label": "Synopsis",
+                                      "data-label": "Publish date",
                                     },
                                   },
                                 ]
@@ -3327,7 +3332,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             },
                                             "header": Object {
                                               "formatters": Array [],
-                                              "label": "Publish date",
+                                              "label": "Synopsis",
                                               "transforms": Array [
                                                 [Function],
                                                 [Function],
@@ -3335,10 +3340,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 [Function],
                                               ],
                                             },
-                                            "property": "publish-date",
+                                            "property": "synopsis",
                                             "props": Object {
                                               "data-key": 3,
-                                              "data-label": "Publish date",
+                                              "data-label": "Synopsis",
                                             },
                                           },
                                           Object {
@@ -3423,17 +3428,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             },
                                             "header": Object {
                                               "formatters": Array [],
-                                              "label": "Synopsis",
+                                              "label": "Publish date",
                                               "transforms": Array [
+                                                [Function],
                                                 [Function],
                                                 [Function],
                                                 [Function],
                                               ],
                                             },
-                                            "property": "synopsis",
+                                            "property": "publish-date",
                                             "props": Object {
                                               "data-key": 5,
-                                              "data-label": "Synopsis",
+                                              "data-label": "Publish date",
                                             },
                                           },
                                         ]
@@ -3623,18 +3629,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             </HeaderCell>
                                             <HeaderCell
                                               aria-sort="none"
-                                              className="pf-c-table__sort pf-m-width-15"
+                                              className="pf-c-table__sort pf-m-width-45"
                                               data-key={3}
-                                              data-label="Publish date"
+                                              data-label="Synopsis"
                                               key="3-header"
                                               scope="col"
                                             >
                                               <Th
                                                 aria-sort="none"
-                                                className="pf-c-table__sort pf-m-width-15"
+                                                className="pf-c-table__sort pf-m-width-45"
                                                 component="th"
                                                 data-key={3}
-                                                data-label="Publish date"
+                                                data-label="Synopsis"
                                                 onMouseEnter={[Function]}
                                                 scope="col"
                                                 textCenter={false}
@@ -3642,10 +3648,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               >
                                                 <ThBase
                                                   aria-sort="none"
-                                                  className="pf-c-table__sort pf-m-width-15"
+                                                  className="pf-c-table__sort pf-m-width-45"
                                                   component="th"
                                                   data-key={3}
-                                                  data-label="Publish date"
+                                                  data-label="Synopsis"
                                                   innerRef={null}
                                                   onMouseEnter={[Function]}
                                                   scope="col"
@@ -3654,9 +3660,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 >
                                                   <th
                                                     aria-sort="none"
-                                                    className="pf-c-table__sort pf-m-width-15"
+                                                    className="pf-c-table__sort pf-m-width-45"
                                                     data-key={3}
-                                                    data-label="Publish date"
+                                                    data-label="Synopsis"
                                                     onMouseEnter={[Function]}
                                                     scope="col"
                                                   >
@@ -3678,7 +3684,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                               className="pf-c-table__text"
                                                               onMouseEnter={[Function]}
                                                             >
-                                                              Publish date
+                                                              Synopsis
                                                             </span>
                                                           </TableText>
                                                           <span
@@ -3813,18 +3819,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             </HeaderCell>
                                             <HeaderCell
                                               aria-sort="none"
-                                              className="pf-c-table__sort"
+                                              className="pf-c-table__sort pf-m-width-25"
                                               data-key={5}
-                                              data-label="Synopsis"
+                                              data-label="Publish date"
                                               key="5-header"
                                               scope="col"
                                             >
                                               <Th
                                                 aria-sort="none"
-                                                className="pf-c-table__sort"
+                                                className="pf-c-table__sort pf-m-width-25"
                                                 component="th"
                                                 data-key={5}
-                                                data-label="Synopsis"
+                                                data-label="Publish date"
                                                 onMouseEnter={[Function]}
                                                 scope="col"
                                                 textCenter={false}
@@ -3832,10 +3838,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               >
                                                 <ThBase
                                                   aria-sort="none"
-                                                  className="pf-c-table__sort"
+                                                  className="pf-c-table__sort pf-m-width-25"
                                                   component="th"
                                                   data-key={5}
-                                                  data-label="Synopsis"
+                                                  data-label="Publish date"
                                                   innerRef={null}
                                                   onMouseEnter={[Function]}
                                                   scope="col"
@@ -3844,9 +3850,9 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 >
                                                   <th
                                                     aria-sort="none"
-                                                    className="pf-c-table__sort"
+                                                    className="pf-c-table__sort pf-m-width-25"
                                                     data-key={5}
-                                                    data-label="Synopsis"
+                                                    data-label="Publish date"
                                                     onMouseEnter={[Function]}
                                                     scope="col"
                                                   >
@@ -3868,7 +3874,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                               className="pf-c-table__text"
                                                               onMouseEnter={[Function]}
                                                             >
-                                                              Synopsis
+                                                              Publish date
                                                             </span>
                                                           </TableText>
                                                           <span
@@ -4097,7 +4103,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 },
                                 "header": Object {
                                   "formatters": Array [],
-                                  "label": "Publish date",
+                                  "label": "Synopsis",
                                   "transforms": Array [
                                     [Function],
                                     [Function],
@@ -4105,10 +4111,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     [Function],
                                   ],
                                 },
-                                "property": "publish-date",
+                                "property": "synopsis",
                                 "props": Object {
                                   "data-key": 3,
-                                  "data-label": "Publish date",
+                                  "data-label": "Synopsis",
                                 },
                               },
                               Object {
@@ -4193,17 +4199,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 },
                                 "header": Object {
                                   "formatters": Array [],
-                                  "label": "Synopsis",
+                                  "label": "Publish date",
                                   "transforms": Array [
+                                    [Function],
                                     [Function],
                                     [Function],
                                     [Function],
                                   ],
                                 },
-                                "property": "synopsis",
+                                "property": "publish-date",
                                 "props": Object {
                                   "data-key": 5,
-                                  "data-label": "Synopsis",
+                                  "data-label": "Publish date",
                                 },
                               },
                             ]
@@ -4223,15 +4230,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       RHSA-2020:2774
                                     </ForwardRef>,
                                   },
-                                  Object {
-                                    "title": "30 June 2020",
-                                  },
+                                  "Important",
                                   Object {
                                     "title": <AdvisoryType
                                       type={3}
                                     />,
                                   },
-                                  "Important",
+                                  Object {
+                                    "title": "30 June 2020",
+                                  },
                                 ],
                                 "id": "RHSA-2020:2774",
                                 "isOpen": false,
@@ -4276,15 +4283,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         RHSA-2020:2774
                                       </ForwardRef>,
                                     },
-                                    Object {
-                                      "title": "30 June 2020",
-                                    },
+                                    "Important",
                                     Object {
                                       "title": <AdvisoryType
                                         type={3}
                                       />,
                                     },
-                                    "Important",
+                                    Object {
+                                      "title": "30 June 2020",
+                                    },
                                   ],
                                   "id": "RHSA-2020:2774",
                                   "isExpanded": undefined,
@@ -4396,15 +4403,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         RHSA-2020:2774
                                       </ForwardRef>,
                                     },
-                                    Object {
-                                      "title": "30 June 2020",
-                                    },
+                                    "Important",
                                     Object {
                                       "title": <AdvisoryType
                                         type={3}
                                       />,
                                     },
-                                    "Important",
+                                    Object {
+                                      "title": "30 June 2020",
+                                    },
                                   ],
                                   "id": "RHSA-2020:2774",
                                   "isExpanded": undefined,
@@ -4683,7 +4690,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     },
                                     "header": Object {
                                       "formatters": Array [],
-                                      "label": "Publish date",
+                                      "label": "Synopsis",
                                       "transforms": Array [
                                         [Function],
                                         [Function],
@@ -4691,10 +4698,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         [Function],
                                       ],
                                     },
-                                    "property": "publish-date",
+                                    "property": "synopsis",
                                     "props": Object {
                                       "data-key": 3,
-                                      "data-label": "Publish date",
+                                      "data-label": "Synopsis",
                                     },
                                   },
                                   Object {
@@ -4779,17 +4786,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     },
                                     "header": Object {
                                       "formatters": Array [],
-                                      "label": "Synopsis",
+                                      "label": "Publish date",
                                       "transforms": Array [
+                                        [Function],
                                         [Function],
                                         [Function],
                                         [Function],
                                       ],
                                     },
-                                    "property": "synopsis",
+                                    "property": "publish-date",
                                     "props": Object {
                                       "data-key": 5,
-                                      "data-label": "Synopsis",
+                                      "data-label": "Publish date",
                                     },
                                   },
                                 ]
@@ -4806,15 +4814,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           RHSA-2020:2774
                                         </ForwardRef>,
                                       },
-                                      Object {
-                                        "title": "30 June 2020",
-                                      },
+                                      "Important",
                                       Object {
                                         "title": <AdvisoryType
                                           type={3}
                                         />,
                                       },
-                                      "Important",
+                                      Object {
+                                        "title": "30 June 2020",
+                                      },
                                     ],
                                     "id": "RHSA-2020:2774",
                                     "isExpanded": undefined,
@@ -4953,15 +4961,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           RHSA-2020:2774
                                         </ForwardRef>,
                                       },
-                                      Object {
-                                        "title": "30 June 2020",
-                                      },
+                                      "Important",
                                       Object {
                                         "title": <AdvisoryType
                                           type={3}
                                         />,
                                       },
-                                      "Important",
+                                      Object {
+                                        "title": "30 June 2020",
+                                      },
                                     ],
                                     "id": "RHSA-2020:2774",
                                     "isExpanded": undefined,
@@ -5075,15 +5083,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             RHSA-2020:2774
                                           </ForwardRef>,
                                         },
-                                        Object {
-                                          "title": "30 June 2020",
-                                        },
+                                        "Important",
                                         Object {
                                           "title": <AdvisoryType
                                             type={3}
                                           />,
                                         },
-                                        "Important",
+                                        Object {
+                                          "title": "30 June 2020",
+                                        },
                                       ],
                                       "id": "RHSA-2020:2774",
                                       "isExpanded": undefined,
@@ -5375,7 +5383,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               },
                                               "header": Object {
                                                 "formatters": Array [],
-                                                "label": "Publish date",
+                                                "label": "Synopsis",
                                                 "transforms": Array [
                                                   [Function],
                                                   [Function],
@@ -5383,10 +5391,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                   [Function],
                                                 ],
                                               },
-                                              "property": "publish-date",
+                                              "property": "synopsis",
                                               "props": Object {
                                                 "data-key": 3,
-                                                "data-label": "Publish date",
+                                                "data-label": "Synopsis",
                                               },
                                             },
                                             Object {
@@ -5471,17 +5479,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               },
                                               "header": Object {
                                                 "formatters": Array [],
-                                                "label": "Synopsis",
+                                                "label": "Publish date",
                                                 "transforms": Array [
+                                                  [Function],
                                                   [Function],
                                                   [Function],
                                                   [Function],
                                                 ],
                                               },
-                                              "property": "synopsis",
+                                              "property": "publish-date",
                                               "props": Object {
                                                 "data-key": 5,
-                                                "data-label": "Synopsis",
+                                                "data-label": "Publish date",
                                               },
                                             },
                                           ]
@@ -5505,15 +5514,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                   RHSA-2020:2774
                                                 </ForwardRef>,
                                               },
-                                              Object {
-                                                "title": "30 June 2020",
-                                              },
+                                              "Important",
                                               Object {
                                                 "title": <AdvisoryType
                                                   type={3}
                                                 />,
                                               },
-                                              "Important",
+                                              Object {
+                                                "title": "30 June 2020",
+                                              },
                                             ],
                                             "id": "RHSA-2020:2774",
                                             "isExpanded": undefined,
@@ -5577,15 +5586,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     RHSA-2020:2774
                                                   </ForwardRef>,
                                                 },
-                                                Object {
-                                                  "title": "30 June 2020",
-                                                },
+                                                "Important",
                                                 Object {
                                                   "title": <AdvisoryType
                                                     type={3}
                                                   />,
                                                 },
-                                                "Important",
+                                                Object {
+                                                  "title": "30 June 2020",
+                                                },
                                               ],
                                               "id": "RHSA-2020:2774",
                                               "isExpanded": undefined,
@@ -5852,7 +5861,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 </BodyCell>
                                                 <BodyCell
                                                   data-key={3}
-                                                  data-label="Publish date"
+                                                  data-label="Synopsis"
                                                   isVisible={true}
                                                   key="col-3-row-0"
                                                 >
@@ -5860,7 +5869,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     className=""
                                                     component="td"
                                                     data-key={3}
-                                                    dataLabel="Publish date"
+                                                    dataLabel="Synopsis"
                                                     onMouseEnter={[Function]}
                                                     textCenter={false}
                                                   >
@@ -5868,7 +5877,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       className=""
                                                       component="td"
                                                       data-key={3}
-                                                      dataLabel="Publish date"
+                                                      dataLabel="Synopsis"
                                                       innerRef={null}
                                                       onMouseEnter={[Function]}
                                                       textCenter={false}
@@ -5876,10 +5885,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       <td
                                                         className=""
                                                         data-key={3}
-                                                        data-label="Publish date"
+                                                        data-label="Synopsis"
                                                         onMouseEnter={[Function]}
                                                       >
-                                                        30 June 2020
+                                                        Important
                                                       </td>
                                                     </TdBase>
                                                   </Td>
@@ -5978,7 +5987,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 </BodyCell>
                                                 <BodyCell
                                                   data-key={5}
-                                                  data-label="Synopsis"
+                                                  data-label="Publish date"
                                                   isVisible={true}
                                                   key="col-5-row-0"
                                                 >
@@ -5986,7 +5995,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     className=""
                                                     component="td"
                                                     data-key={5}
-                                                    dataLabel="Synopsis"
+                                                    dataLabel="Publish date"
                                                     onMouseEnter={[Function]}
                                                     textCenter={false}
                                                   >
@@ -5994,7 +6003,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       className=""
                                                       component="td"
                                                       data-key={5}
-                                                      dataLabel="Synopsis"
+                                                      dataLabel="Publish date"
                                                       innerRef={null}
                                                       onMouseEnter={[Function]}
                                                       textCenter={false}
@@ -6002,10 +6011,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       <td
                                                         className=""
                                                         data-key={5}
-                                                        data-label="Synopsis"
+                                                        data-label="Publish date"
                                                         onMouseEnter={[Function]}
                                                       >
-                                                        Important
+                                                        30 June 2020
                                                       </td>
                                                     </TdBase>
                                                   </Td>
@@ -6193,7 +6202,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               },
                                               "header": Object {
                                                 "formatters": Array [],
-                                                "label": "Publish date",
+                                                "label": "Synopsis",
                                                 "transforms": Array [
                                                   [Function],
                                                   [Function],
@@ -6201,10 +6210,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                   [Function],
                                                 ],
                                               },
-                                              "property": "publish-date",
+                                              "property": "synopsis",
                                               "props": Object {
                                                 "data-key": 3,
-                                                "data-label": "Publish date",
+                                                "data-label": "Synopsis",
                                               },
                                             },
                                             Object {
@@ -6289,17 +6298,18 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               },
                                               "header": Object {
                                                 "formatters": Array [],
-                                                "label": "Synopsis",
+                                                "label": "Publish date",
                                                 "transforms": Array [
+                                                  [Function],
                                                   [Function],
                                                   [Function],
                                                   [Function],
                                                 ],
                                               },
-                                              "property": "synopsis",
+                                              "property": "publish-date",
                                               "props": Object {
                                                 "data-key": 5,
-                                                "data-label": "Synopsis",
+                                                "data-label": "Publish date",
                                               },
                                             },
                                           ]
@@ -6692,7 +6702,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 </BodyCell>
                                                 <BodyCell
                                                   data-key={3}
-                                                  data-label="Publish date"
+                                                  data-label="Synopsis"
                                                   key="col-3-row-1"
                                                   parentId={0}
                                                 />
@@ -6704,7 +6714,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 />
                                                 <BodyCell
                                                   data-key={5}
-                                                  data-label="Synopsis"
+                                                  data-label="Publish date"
                                                   key="col-5-row-1"
                                                   parentId={0}
                                                 />
