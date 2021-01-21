@@ -168,7 +168,7 @@ const PackageSystems = ({ packageName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                     isLoaded={status === STATUS_RESOLVED}
-                    tableProps = {{ canSelectAll: false, onSort, sortBy, onSelect }}
+                    tableProps = {{ canSelectAll: false, onSort, sortBy, onSelect, variant: TableVariant.compact }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={enableRemediation && onSelect && {
