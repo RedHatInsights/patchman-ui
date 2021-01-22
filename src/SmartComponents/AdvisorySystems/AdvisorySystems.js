@@ -20,7 +20,8 @@ import { fetchAdvisorySystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter,
+    useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
@@ -64,7 +65,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         return () => dispatch(clearAdvisorySystemsStore());
     }, []);
 
-    React.useEffect(() => {
+    useDeepCompareEffect(() => {
         dispatch(
             fetchAdvisorySystemsAction({ id: advisoryName, ...queryParams })
         );
