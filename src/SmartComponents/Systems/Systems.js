@@ -20,7 +20,8 @@ import { exportSystemsCSV, exportSystemsJSON } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
-import { setPageTitle, useHandleRefresh, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { setPageTitle, useHandleRefresh, usePagePerPage,
+    useRemoveFilter, useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
@@ -61,7 +62,7 @@ const Systems = () => {
 
     const handleRefresh = useHandleRefresh(metadata, apply);
 
-    React.useEffect(() => {
+    useDeepCompareEffect(() => {
         dispatch(fetchSystemsAction(queryParams));
     }, [queryParams]);
 

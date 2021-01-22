@@ -21,7 +21,8 @@ import { fetchPackageSystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter, useSortColumn } from '../../Utilities/Hooks';
+import { useHandleRefresh, useOnSelect, usePagePerPage,
+    useRemoveFilter, useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
@@ -65,7 +66,7 @@ const PackageSystems = ({ packageName }) => {
         return () => dispatch(clearPackageSystemsStore());
     }, []);
 
-    React.useEffect(() => {
+    useDeepCompareEffect(() => {
         dispatch(
             fetchPackageSystemsAction({ id: packageName, ...queryParams })
         );

@@ -824,6 +824,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     <TextInput
                                                       aria-label="search-field"
                                                       className="ins-c-conditional-filter "
+                                                      data-ouia-component-type="PF4/TextInput"
                                                       isDisabled={false}
                                                       onChange={[Function]}
                                                       onKeyDown={[Function]}
@@ -834,6 +835,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       <TextInputBase
                                                         aria-label="search-field"
                                                         className="ins-c-conditional-filter "
+                                                        data-ouia-component-type="PF4/TextInput"
                                                         innerRef={null}
                                                         isDisabled={false}
                                                         isLeftTruncated={false}
@@ -851,6 +853,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           aria-invalid={false}
                                                           aria-label="search-field"
                                                           className="pf-c-form-control ins-c-conditional-filter "
+                                                          data-ouia-component-type="PF4/TextInput"
                                                           disabled={false}
                                                           onBlur={[Function]}
                                                           onChange={[Function]}

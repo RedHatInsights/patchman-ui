@@ -2,6 +2,7 @@ import { SortByDirection } from '@patternfly/react-table/dist/js';
 import React from 'react';
 import { APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC } from './constants';
 import { convertLimitOffset, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
+import isDeepEqualReact from 'fast-deep-equal/react';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -145,4 +146,14 @@ export const setPageTitle = (title) => {
             document.title = `${title} - Patch | Red Hat Insights`;
         }
     }, [title]);
+};
+
+export const useDeepCompareEffect = (effect, deps) => {
+    const ref = React.useRef(undefined);
+
+    if (!ref.current || !isDeepEqualReact(deps, ref.current)) {
+        ref.current = deps;
+    }
+
+    React.useEffect(effect, ref.current);
 };
