@@ -4,6 +4,7 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
+import packagesListStatusFilter from '../../PresentationalComponents/Filters/PackagesListStatusFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
@@ -102,7 +103,8 @@ const Packages = () => {
                     apply={apply}
                     filterConfig={{
                         items: [
-                            searchFilter(apply, queryParams.search, intl.formatMessage(messages.labelsFiltersPackagesSearch))
+                            searchFilter(apply, queryParams.search, intl.formatMessage(messages.labelsFiltersPackagesSearch)),
+                            packagesListStatusFilter(apply, queryParams.filter)
                         ]
                     }}
                     remediationButtonOUIA={'toolbar-remediation-button'}
