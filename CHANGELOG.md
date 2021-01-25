@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.0...v1.8.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* **imports:** update imports for TableVariant ([b453196](https://github.com/RedHatInsights/patchman-ui/commit/b453196700fd49f1eaae576abad803a9fabe3bfc))
+
 # [1.8.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.7.0...v1.8.0) (2021-01-25)
 
 
