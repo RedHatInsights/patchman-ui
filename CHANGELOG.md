@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.7.0...v1.8.0) (2021-01-25)
+
+
+### Features
+
+* **tables:** use compact tables for consistency ([3515879](https://github.com/RedHatInsights/patchman-ui/commit/3515879bc6bc5f198726d06bfe4624339a3a5ee3))
+
 # [1.7.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.6.0...v1.7.0) (2021-01-15)
 
 
