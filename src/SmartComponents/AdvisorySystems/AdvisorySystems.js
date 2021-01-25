@@ -19,6 +19,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
+import { TableVariant } from '@patternfly/react-table';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
