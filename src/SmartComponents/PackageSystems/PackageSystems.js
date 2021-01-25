@@ -20,6 +20,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
+import { TableVariant } from '@patternfly/react-table';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
