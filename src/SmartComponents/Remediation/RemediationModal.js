@@ -48,8 +48,7 @@ const RemediationModal = ({ data }) => {
     React.useEffect(() => {
         remediations &&
             remediations
-            .openWizard(data)
-            .then(result => result && handleRemediationSuccess(result));
+            .openWizard({ ...data, onRemediationCreated: handleRemediationSuccess });
     }, [remediations]);
 
     return (
