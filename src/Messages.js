@@ -31,10 +31,20 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Applicable systems'
     },
+    labelsColumnsCVSS: {
+        id: 'labelsColumnsCVSS',
+        description: 'shared label',
+        defaultMessage: 'CVSS'
+    },
     labelsColumnsCveID: {
         id: 'labelsColumnsCveID',
         description: 'shared label',
         defaultMessage: 'CVE ID'
+    },
+    labelsColumnsImpact: {
+        id: 'labelsColumnsImpact',
+        description: 'shared label',
+        defaultMessage: 'Impact'
     },
     labelsColumnsInstalledVersion: {
         id: 'labelsColumnsInstalledVersion',
@@ -151,6 +161,11 @@ export default defineMessages({
         description: 'Button label',
         defaultMessage: 'Remediate'
     },
+    labelsSeverity: {
+        id: 'labelsSeverity',
+        description: 'label for cves info',
+        defaultMessage: 'Severity'
+    },
     linksLearnAboutInsights: {
         id: 'linksLearnAboutInsights',
         description: 'no system data page button label',
@@ -200,6 +215,11 @@ export default defineMessages({
         id: 'statesNoMatchingAdvisories',
         description: 'Label',
         defaultMessage: 'No matching advisories found'
+    },
+    statesNoMatchingCve: {
+        id: 'statesNoMatchingCve',
+        description: 'Label',
+        defaultMessage: 'No matching CVES found'
     },
     statesNoMatchingPackages: {
         id: 'statesNoMatchingPackages',

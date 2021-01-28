@@ -24,7 +24,7 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
     const cves = attributes.cves;
 
     const showCvesModal = () => {
-        setCvesModal(() => () => <CvesModal cves={cves} />);
+        setCvesModal(() => () => <CvesModal cveIds={cves} />);
     };
 
     return (

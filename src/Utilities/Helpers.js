@@ -13,6 +13,7 @@ import {
     compoundSortValues,
     filterCategories
 } from './constants';
+
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
 };
@@ -324,4 +325,25 @@ export function preserveNewlines(input) {
         new RegExp('\\n(?=[^\\n])', 'g'),
         ''
     );
+}
+
+export function sortCves(cves, index, direction) {
+
+    const sortedCves = cves.sort(
+        ({ cells: aCells }, { cells: bCells }) => {
+            const aCell = aCells[index].value && aCells[index].value || aCells[index].title;
+            const bCell = bCells[index].value && bCells[index].value || bCells[index].title;
+
+            const stringA = aCell.toString().toUpperCase();
+            const stringB = bCell.toString().toUpperCase();
+
+            return stringA.localeCompare(stringB);
+        }
+    );
+
+    return {
+        sortBy: { index, direction },
+        sortedCves: direction === SortByDirection.asc ? sortedCves : sortedCves.reverse()
+    };
+
 }

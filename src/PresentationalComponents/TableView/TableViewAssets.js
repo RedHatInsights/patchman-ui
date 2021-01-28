@@ -118,7 +118,23 @@ export const packagesColumns = [
 export const cvesTableColumns = [
     {
         title: intl.formatMessage(messages.labelsColumnsCveID),
-        transforms: [sortable, cellWidth(100)],
-        key: 'id'
+        transforms: [sortable, cellWidth(40)],
+        key: 'synopsis'
+    },
+    {
+        key: 'impact',
+        title: intl.formatMessage(messages.labelsColumnsImpact),
+        transforms: [sortable, cellWidth(30)],
+        props: {
+            width: 30
+        }
+    },
+    {
+        key: 'cvss',
+        title: intl.formatMessage(messages.labelsColumnsCVSS),
+        transforms: [sortable, cellWidth(30)],
+        props: {
+            width: 30
+        }
     }
 ];

@@ -26,3 +26,12 @@ export const EmptyPackagesList = () => (
         </Title>
     </EmptyState>
 );
+
+export const EmptyCvesList = () => (
+    <EmptyState variant={EmptyStateVariant.full}>
+        <EmptyStateIcon icon={SearchIcon} />
+        <Title headingLevel="h5" size="lg">
+            {intl.formatMessage(messages.statesNoMatchingCve)}
+        </Title>
+    </EmptyState>
+);

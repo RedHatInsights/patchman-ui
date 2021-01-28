@@ -1,5 +1,4 @@
 import SystemAdvisories from './SystemAdvisories';
-import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 import { systemAdvisoryRows } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
@@ -15,11 +14,6 @@ initMocks()
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
     useSelector: jest.fn()
-}));
-
-jest.mock('../../Utilities/constants', () => ({
-    ...jest.requireActual('../../Utilities/constants'),
-    publicDateOptions: jest.fn().mockReturnValue([])
 }));
 
 jest.mock('../../Utilities/Helpers', () => ({
@@ -75,10 +69,7 @@ afterEach(() => {
     useSelector.mockClear();
 });
 
-describe('Advisories.js', () => {
-    it('Should match the snapshots', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
-    });
+describe('SystemAdvisories.js', () => {
 
     it('Should dispatch CHANGE_ADVISORY_LIST_PARAMS only once on load', () => {
         const dispatchedActions = store.getActions();

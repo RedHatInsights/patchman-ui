@@ -65,6 +65,21 @@ export const fetchPackagesList = params => {
     return createApiCall('/packages', 'get', params);
 };
 
+export const fetchCvesInfo = async ({ cveIds }) => {
+
+    const result = await fetch(`api/vulnerability/v1/vulnerabilities/cves?limit=${cveIds && cveIds.length}`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ cve_list: cveIds })
+    }).then(res => res.json()).then(data => data);
+
+    return result;
+};
+
 export const exportAdvisoriesCSV = params => {
     let endpoint = '/export/advisories';
     endpoint = endpoint.concat(encodeApiParams(params));
