@@ -1,3 +1,11 @@
+## [1.8.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.1...v1.8.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* **packages:** ID should be unique for packages ([fba33e5](https://github.com/RedHatInsights/patchman-ui/commit/fba33e5e45ba008ec54dce704f08526bf8be6b3b))
+* **select:** fix selection of packages with duplicate names ([4827cd0](https://github.com/RedHatInsights/patchman-ui/commit/4827cd0620cc29b1cbe3cc249aca74fb6c85c90c))
+
 ## [1.8.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.0...v1.8.1) (2021-01-25)
 
 
