@@ -18,8 +18,8 @@ describe('SystemDetailStore', () => {
     ${initialState}                                     | ${{ type: 'TEST_INVALID_ACTION', payload: {} }}      | ${{ loaded: false }}
     ${undefined}                                        | ${{ type: 'LOAD_ENTITY_FULFILLED', payload: {} }}    | ${{ ...initialState, ...stateAfterAction }}
     ${{ ...initialState, test: 'testState' }}           | ${{ type: 'LOAD_ENTITY_FULFILLED', payload: {} }}    | ${{ ...initialState, ...stateAfterAction, test: 'testState' }}
-    ${undefined}                                        | ${{ type: 'LOAD_ENTITY_REJECTED', payload: {} }}     | ${{ ...initialState, ...stateAfterAction, entity: {} }}
-    ${{ ...initialState, test: 'testState' }}           | ${{ type: 'LOAD_ENTITY_REJECTED', payload: {} }}     | ${{ ...initialState, ...stateAfterAction, entity: {}, test: 'testState' }}
+    ${undefined}                                        | ${{ type: 'LOAD_ENTITY_REJECTED', payload: {} }}     | ${{ ...initialState, ...stateAfterAction, }}
+    ${{ ...initialState, test: 'testState' }}           | ${{ type: 'LOAD_ENTITY_REJECTED', payload: {} }}     | ${{ ...initialState, ...stateAfterAction, test: 'testState' }}
     `('$action', ({ state, action: { type, payload }, result }) => {
         const res = SystemDetailStore(state, { type, payload });
         expect(res).toEqual(result);
