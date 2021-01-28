@@ -24,8 +24,6 @@ export const SystemDetailStore = (state = initialState, action) => {
             return {
                 ...state,
                 loaded: true,
-                //we have to send empty object if there is not entity so that inventory does not throw error
-                entity: state.entity && state.entity || {},
                 activeApps: [
                     {
                         title: 'Patch',
