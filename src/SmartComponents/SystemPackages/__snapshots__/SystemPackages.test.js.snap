@@ -190,7 +190,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                     },
                   ],
                   "disableCheckbox": true,
-                  "id": "acl",
+                  "id": "acl-2.2.*",
                   "key": "acl-2.2.*",
                   "selected": false,
                 },
