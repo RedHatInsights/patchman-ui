@@ -1,8 +1,8 @@
 import { SortByDirection } from '@patternfly/react-table/dist/js';
+import isDeepEqualReact from 'fast-deep-equal/react';
 import React from 'react';
 import { APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC } from './constants';
 import { convertLimitOffset, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
-import isDeepEqualReact from 'fast-deep-equal/react';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -82,14 +82,23 @@ export const useRemoveFilter = (filters, callback) => {
     return removeFilter;
 };
 
-export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows, constructFilename = undefined) =>{
+export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
+    constructFilename = undefined, transformKey = undefined) =>{
+    const constructKey = (row) => {
+        if (transformKey) {
+            return transformKey(row);
+        }
+        else {
+            return row.id && row.id || row.name;
+        }
+    };
 
     const onSelect =  React.useCallback((event, selected, rowId) => {
         const createSelectedRow = (rawData, toSelect = []) => {
             rawData.forEach((row)=>{
                 toSelect.push(
                     {
-                        id: row.id && row.id || row.name,
+                        id: constructKey(row),
                         selected: constructFilename && constructFilename(row) || row.id
                     }
                 );});
@@ -129,7 +138,7 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows, con
 
             default: {
                 selectRows([{
-                    id: rawData[rowId].id && rawData[rowId].id || rawData[rowId].name,
+                    id: constructKey(rawData[rowId]),
                     selected: selected && (constructFilename && constructFilename(rawData[rowId]) || true)
                 }]);
             }
