@@ -1,22 +1,24 @@
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
+import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUpToDate';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemPackagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
-import { changeSystemPackagesParams, clearSystemPackagesStore,
-    fetchApplicableSystemPackages, selectSystemPackagesRow } from '../../store/Actions/Actions';
+import {
+    changeSystemPackagesParams, clearSystemPackagesStore,
+    fetchApplicableSystemPackages, selectSystemPackagesRow
+} from '../../store/Actions/Actions';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
+import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
-import propTypes from 'prop-types';
 
 const SystemPackages = ({ handleNoSystemData }) => {
     const dispatch = useDispatch();
@@ -59,6 +61,10 @@ const SystemPackages = ({ handleNoSystemData }) => {
         return latestUpdate && `${pkg.name}-${latestUpdate.evra}`;
     };
 
+    const transformKey = (row) => {
+        return `${row.name}-${row.evra}`;
+    };
+
     const fetchAllData = () =>
         fetchApplicablePackagesApi({ id: entity.id, limit: -1 });
 
@@ -66,7 +72,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
         dispatch(selectSystemPackagesRow(toSelect));
     };
 
-    const onSelect = useOnSelect(packages, selectedRows, fetchAllData, selectRows, constructFilename);
+    const onSelect = useOnSelect(packages, selectedRows, fetchAllData, selectRows, constructFilename, transformKey);
 
     function apply(params) {
         dispatch(changeSystemPackagesParams({ id: entity.id, ...params }));

@@ -152,13 +152,14 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
 export const createSystemPackagesRows = (rows, selectedRows = {}) => {
     if (rows.length !== 0) {
         return rows.map(pkg => {
+            const pkgNEVRA = `${pkg.name}-${pkg.evra}`;
             const pkgUpdates = pkg.updates || [];
             const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
 
             return {
                 id: pkg.name,
-                key: pkg.name,
-                selected: selectedRows[pkg.name] !== undefined,
+                key: pkgNEVRA,
+                selected: selectedRows[pkgNEVRA] !== undefined,
                 disableCheckbox: !latestUpdate,
                 cells: [
                     { title: handlePatchLink(entityTypes.packages, pkg.name) },
