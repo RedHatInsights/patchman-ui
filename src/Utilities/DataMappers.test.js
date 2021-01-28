@@ -98,7 +98,7 @@ describe('DataMappers', () => {
     it('Should create package list', () => {
         const packages = createSystemPackagesRows(systemPackages);
         expect(packages).toEqual([{
-            id: 'acl',
+            id: 'acl-2.2.*',
             key: 'acl-2.2.*',
             selected: false,
             disableCheckbox: true,
@@ -118,7 +118,7 @@ describe('DataMappers', () => {
         }]);
 
         expect(packagesWithCompleteData).toEqual([{
-            id: 'acl',
+            id: 'acl-2.2.*',
             key: 'acl-2.2.*',
             selected: false,
             disableCheckbox: false,
