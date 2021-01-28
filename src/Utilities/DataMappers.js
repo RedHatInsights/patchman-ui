@@ -157,7 +157,7 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
             const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
 
             return {
-                id: pkg.name,
+                id: pkgNEVRA,
                 key: pkgNEVRA,
                 selected: selectedRows[pkgNEVRA] !== undefined,
                 disableCheckbox: !latestUpdate,
