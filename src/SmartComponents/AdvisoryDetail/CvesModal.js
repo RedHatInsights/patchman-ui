@@ -1,36 +1,59 @@
 import React, { useState, useMemo } from 'react';
-import propTypes from 'prop-types';
 import { Modal } from '@patternfly/react-core';
 import messages from '../../Messages';
 import { intl } from '../../Utilities/IntlProvider';
 import TableView from '../../PresentationalComponents/TableView/TableView';
-import { STATUS_RESOLVED } from '../../Utilities/constants';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { cvesTableColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCves } from '../../store/Actions/Actions';
+import propTypes from 'prop-types';
+import { createCvesRows } from '../../Utilities/DataMappers';
+import { sortCves } from '..//../Utilities/Helpers';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
+import { STATUS_REJECTED } from '../../Utilities/constants';
+import { SortByDirection } from '@patternfly/react-table';
 
-const CvesModal = ({ cves: data }) =>{
-    const [cves, setCves] = useState(data);
+const CvesModal = ({ cveIds }) =>{
+    const dispatch = useDispatch();
+    const [cves, setCves] = useState([]);
     const [rows, setRows] = useState([]);
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(10);
     const [search, setSearch] = useState(undefined);
+    const [sortBy, setSortBy] = useState({
+        direction: SortByDirection.asc,
+        index: 0
+    });
 
-    const handlePagination = (cves) => {
-        setRows(cves.slice((page - 1) * perPage, page * perPage).map(cve => ({ cells: [{ title: cve }] })));
-        setCves(cves);
-    };
+    const data = useSelector(({ CvesListStore }) => CvesListStore.rows);
+
+    const status = useSelector(
+        ({ CvesListStore }) => CvesListStore.status
+    );
+
+    React.useEffect(() => {
+        dispatch(fetchCves({ cveIds }));
+    }, []);
+
+    React.useMemo(() => {
+        setRows(cves.slice((page - 1) * perPage, page * perPage));
+    }, [cves, page, perPage, sortBy]);
 
     useMemo(() => {
-        const sortedCves = data.filter(cve => cve.toString().includes(search || ''));
-        handlePagination(sortedCves);
-    }, [search]);
+        const sortedCves = (search !== undefined && search !== '')
+            && data.filter(
+                cve => {
+                    const { attributes: { synopsis, impact, cvss_score: cvssScore } } = cve;
+                    return [synopsis, impact, cvssScore].some(string => string.toLowerCase().includes(search));
+                }
+            ) || data;
 
-    useMemo(() => {
-        handlePagination(cves);
-    }, [page, perPage]);
+        setCves(createCvesRows((sortedCves.length !== 0 || search) && sortedCves || data));
+    }, [search, data]);
 
     const handleClose = () => {
-        setCves(undefined);
+        setRows(undefined);
     };
 
     const handleFilter = ({ search }) =>{
@@ -43,15 +66,25 @@ const CvesModal = ({ cves: data }) =>{
     };
 
     const handlePerPageChange = (_, perPage) => {
+        setPage(1);
         setPerPage(perPage);
     };
+
+    const handleSort = (_, index, direction) => {
+        const { sortBy, sortedCves } = sortCves(cves, index, direction);
+
+        setSortBy(sortBy);
+        setCves(sortedCves);
+    };
+
+    const errorState = status === STATUS_REJECTED && <Unavailable />;
 
     return (
         <React.Fragment>
             <Modal
                 variant='small'
                 title={intl.formatMessage(messages.labelsCves)}
-                isOpen={Boolean(cves)}
+                isOpen={Boolean(rows)}
                 onClose={handleClose}
             >
                 <TableView
@@ -61,16 +94,19 @@ const CvesModal = ({ cves: data }) =>{
                     apply={handleFilter}
                     tableOUIA={'cves-table'}
                     paginationOUIA={'cves-pagination'}
+                    onSort={handleSort}
+                    sortBy={sortBy}
                     store={{
                         rows,
                         metadata: { limit: perPage, offset: (page - 1) * perPage, total_items: cves && cves.length },
-                        status: STATUS_RESOLVED, queryParams: { filter: {}, search }
+                        status, queryParams: { filter: {}, search }
                     }}
                     filterConfig={{
                         items: [
                             searchFilter(handleFilter, search)
                         ]
                     }}
+                    errorState={errorState}
                 />
             </Modal>
         </React.Fragment>
@@ -79,7 +115,7 @@ const CvesModal = ({ cves: data }) =>{
 };
 
 CvesModal.propTypes = {
-    cves: propTypes.array
+    cveIds: propTypes.array
 };
 
 export default CvesModal;

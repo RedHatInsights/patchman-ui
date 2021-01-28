@@ -2,11 +2,13 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
-import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
-import { EmptyAdvisoryList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
-import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
-import { entityTypes } from './constants';
+import { EmptyAdvisoryList, EmptyPackagesList, EmptyCvesList } from '../PresentationalComponents/Snippets/EmptyStates';
+import { entityTypes, advisorySeverities } from './constants';
 import { createUpgradableColumn, handlePatchLink } from './Helpers';
+import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
+import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
+import { TextContent, TextListItem, TextListItemVariants } from '@patternfly/react-core';
+import { SecurityIcon } from '@patternfly/react-icons';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -210,6 +212,44 @@ export const createPackagesRows = (rows) => {
                     {
                         props: { colSpan: 7 },
                         title: <EmptyPackagesList />
+                    }
+                ]
+            }
+        ];
+    }
+};
+
+export const createCvesRows = (rows) => {
+    if (rows.length !== 0) {
+        return rows.map(cve => {
+            const { attributes, id } = cve;
+            const severityObject = advisorySeverities.filter(severity => severity.label === attributes.impact)[0];
+
+            return {
+                id,
+                key: id,
+                cells: [
+                    { title: attributes.synopsis },
+                    {
+                        title: (<TextContent>
+                            <TextListItem component={TextListItemVariants.dd}>
+                                <SecurityIcon size="sm" color={severityObject.color}/>  {severityObject.label}
+                            </TextListItem>
+                        </TextContent>),
+                        value: severityObject.label
+                    },
+                    { title: attributes.cvss_score }
+                ]
+            };
+        });
+    } else {
+        return [
+            {
+                heightAuto: true,
+                cells: [
+                    {
+                        props: { colSpan: 4 },
+                        title: <EmptyCvesList />
                     }
                 ]
             }
