@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.2...v1.8.3) (2021-01-29)
+
+
+### Bug Fixes
+
+* **notifications:** Display notification when remediation is created ([6bb452b](https://github.com/RedHatInsights/patchman-ui/commit/6bb452b6dfe193129af497c447a09f14c3a4508e))
+
 ## [1.8.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.1...v1.8.2) (2021-01-28)
 
 
