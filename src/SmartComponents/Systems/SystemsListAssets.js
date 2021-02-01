@@ -26,9 +26,17 @@ export const systemsListColumns = [
         title: 'Applicable advisories',
         transforms: [sortable],
         props: {
-            width: 20
+            width: 15
         },
         renderFunc: value => createAdvisoriesIcons(value)
+    },
+    {
+        key: 'operating_system',
+        title: 'OS',
+        transforms: [sortable],
+        props: {
+            width: 10
+        }
     }
 ];
 

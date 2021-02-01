@@ -9,6 +9,8 @@ export const STATUS_LOADING = 'loading';
 export const STATUS_RESOLVED = 'resolved';
 export const APPLICABLE_ADVISORIES_DESC = '-rhsa_count,-rhba_count,-rhea_count';
 export const APPLICABLE_ADVISORIES_ASC = 'rhsa_count,rhba_count,rhea_count';
+export const OPERATING_SYSTEM_DESC = '-os_name,-os_major,-os_minor';
+export const OPERATING_SYSTEM_ASC = 'os_name,os_major,os_minor';
 
 // messy check because of frontend-components tests
 export const ENABLE_PACKAGES = window?.insights?.chrome?.isBeta && insights?.chrome?.isBeta();

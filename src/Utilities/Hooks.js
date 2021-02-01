@@ -1,7 +1,7 @@
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import isDeepEqualReact from 'fast-deep-equal/react';
 import React from 'react';
-import { APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC } from './constants';
+import { APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC, OPERATING_SYSTEM_ASC, OPERATING_SYSTEM_DESC } from './constants';
 import { convertLimitOffset, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
 
 export const useSetPage = (limit, callback) => {
@@ -51,6 +51,12 @@ export const useSortColumn = (columns, callback, offset = 0) => {
         }
         else if (columnName === 'applicable_advisories') {
             columnName = APPLICABLE_ADVISORIES_ASC;
+        }
+        else if (columnName === '-operating_system') {
+            columnName = OPERATING_SYSTEM_DESC;
+        }
+        else if (columnName === 'operating_system') {
+            columnName = OPERATING_SYSTEM_ASC;
         }
 
         callback({ sort: columnName });
