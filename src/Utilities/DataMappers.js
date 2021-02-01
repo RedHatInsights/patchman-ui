@@ -127,7 +127,9 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                     attributes.rhba_count || 0,
                     attributes.rhsa_count || 0
                 ],
-                operating_system: attributes.os_name && `${attributes.os_name} ${attributes.os_major}.${attributes.os_minor}`,
+                operating_system:
+                    attributes.os_name && `${attributes.os_name} ${attributes.os_major}.${attributes.os_minor}`
+                        || 'No data',
                 selected: selectedRows[id] !== undefined
             };
         });
