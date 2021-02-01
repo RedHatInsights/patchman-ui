@@ -1,3 +1,16 @@
+# [1.9.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.4...v1.9.0) (2021-02-01)
+
+
+### Bug Fixes
+
+* **OS:** display No data if column is empty ([1de867c](https://github.com/RedHatInsights/patchman-ui/commit/1de867c461ff268386b4df3457a775bbeccf97d7))
+* **sort:** Make sorting of multiple values work out of the box ([d80f3a5](https://github.com/RedHatInsights/patchman-ui/commit/d80f3a5b0f0764de87205870ed181966e55192fd))
+
+
+### Features
+
+* **OS:** Add OS column to systems pages ([277182a](https://github.com/RedHatInsights/patchman-ui/commit/277182a93e5cf07cfbb1e6537c94490b607ffcf4))
+
 ## [1.8.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.3...v1.8.4) (2021-02-01)
 
 
