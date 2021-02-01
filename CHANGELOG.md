@@ -1,3 +1,10 @@
+## [1.8.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.3...v1.8.4) (2021-02-01)
+
+
+### Bug Fixes
+
+* **SystemDetail:** non-existing entity causes UI stuck ([76ba416](https://github.com/RedHatInsights/patchman-ui/commit/76ba416758da2f584892dce448ce146ee768d127))
+
 ## [1.8.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.2...v1.8.3) (2021-01-29)
 
 
