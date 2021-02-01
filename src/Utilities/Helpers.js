@@ -7,7 +7,8 @@ import findIndex from 'lodash/findIndex';
 import qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { advisorySeverities, APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC, filterCategories } from './constants';
+import { advisorySeverities, APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC,
+    filterCategories, OPERATING_SYSTEM_ASC, OPERATING_SYSTEM_DESC } from './constants';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -22,6 +23,12 @@ export const createSortBy = (header, values, offset) => {
         }
         else if (multiple === APPLICABLE_ADVISORIES_ASC) {
             value = 'applicable_advisories';
+        }
+        else if (multiple === OPERATING_SYSTEM_DESC) {
+            value = '-operating_system';
+        }
+        else if (multiple === OPERATING_SYSTEM_ASC) {
+            value = 'operating_system';
         }
 
         let direction =

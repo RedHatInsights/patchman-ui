@@ -117,17 +117,18 @@ export const createSystemAdvisoriesRows = (
 export const createSystemsRows = (rows, selectedRows = {}) => {
     const data =
         rows &&
-        rows.map(row => {
+        rows.map(({ id, attributes }) => {
             return {
-                id: row.id,
-                key: Math.random().toString() + row.id,
-                packages_installed: row.attributes.packages_installed,
+                id,
+                key: Math.random().toString() + id,
+                packages_installed: attributes.packages_installed,
                 applicable_advisories: [
-                    row.attributes.rhea_count || 0,
-                    row.attributes.rhba_count || 0,
-                    row.attributes.rhsa_count || 0
+                    attributes.rhea_count || 0,
+                    attributes.rhba_count || 0,
+                    attributes.rhsa_count || 0
                 ],
-                selected: selectedRows[row.id] !== undefined
+                operating_system: attributes.os_name && `${attributes.os_name} ${attributes.os_major}.${attributes.os_minor}`,
+                selected: selectedRows[id] !== undefined
             };
         });
     return data || [];
