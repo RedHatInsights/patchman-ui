@@ -7,10 +7,17 @@ import { subtractDate } from './Helpers';
 export const STATUS_REJECTED = 'rejected';
 export const STATUS_LOADING = 'loading';
 export const STATUS_RESOLVED = 'resolved';
-export const APPLICABLE_ADVISORIES_DESC = '-rhsa_count,-rhba_count,-rhea_count';
-export const APPLICABLE_ADVISORIES_ASC = 'rhsa_count,rhba_count,rhea_count';
-export const OPERATING_SYSTEM_DESC = '-os_name,-os_major,-os_minor';
-export const OPERATING_SYSTEM_ASC = 'os_name,os_major,os_minor';
+
+export const compoundSortValues = {
+    operating_system: {
+        asc: 'os_name,os_major,os_minor',
+        desc: '-os_name,-os_major,-os_minor'
+    },
+    applicable_advisories: {
+        asc: 'rhsa_count,rhba_count,rhea_count',
+        desc: '-rhsa_count,-rhba_count,-rhea_count'
+    }
+};
 
 // messy check because of frontend-components tests
 export const ENABLE_PACKAGES = window?.insights?.chrome?.isBeta && insights?.chrome?.isBeta();

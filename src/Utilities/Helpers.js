@@ -7,34 +7,33 @@ import findIndex from 'lodash/findIndex';
 import qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { advisorySeverities, APPLICABLE_ADVISORIES_ASC, APPLICABLE_ADVISORIES_DESC,
-    filterCategories, OPERATING_SYSTEM_ASC, OPERATING_SYSTEM_DESC } from './constants';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
+import {
+    advisorySeverities,
+    compoundSortValues,
+    filterCategories
+} from './constants';
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
 };
 
 export const createSortBy = (header, values, offset) => {
     if (values) {
-        let [value] = values;
+        let [column] = values;
         let multiple = values.join();
-        if (multiple === APPLICABLE_ADVISORIES_DESC) {
-            value = '-applicable_advisories';
-        }
-        else if (multiple === APPLICABLE_ADVISORIES_ASC) {
-            value = 'applicable_advisories';
-        }
-        else if (multiple === OPERATING_SYSTEM_DESC) {
-            value = '-operating_system';
-        }
-        else if (multiple === OPERATING_SYSTEM_ASC) {
-            value = 'operating_system';
-        }
-
         let direction =
-            value[0] === '-' ? SortByDirection.desc : SortByDirection.asc;
-        value = value.replace(/^(-|\+)/, '');
-        const index = findIndex(header, item => item.key === value);
+            column[0] === '-' ? SortByDirection.desc : SortByDirection.asc;
+        Object.keys(compoundSortValues).forEach(col => {
+            Object.keys(compoundSortValues[col]).forEach(dir => {
+                if (compoundSortValues[col][dir] === multiple) {
+                    column = col;
+                    direction = dir;
+                }
+            });
+        });
+
+        column = column.replace(/^(-|\+)/, '');
+        const index = findIndex(header, item => item.key === column);
         let sort = {
             index: index + offset,
             direction
