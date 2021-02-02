@@ -1,10 +1,12 @@
 /* eslint new-cap: 0 */
-import { notifications, notificationsMiddleware } from '@redhat-cloud-services/frontend-components-notifications';
+import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
+import { notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/Registry';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
 import { AdvisoryListStore } from './Reducers/AdvisoryListStore';
 import { AdvisorySystemsStore } from './Reducers/AdvisorySystemsStore';
+import { CvesListStore } from './Reducers/CvesListStore';
 import { PackageDetailStore } from './Reducers/PackageDetailStore';
 import { PackagesListStore } from './Reducers/PackagesListStore';
 import { PackageSystemsStore } from './Reducers/PackageSystemsStore';
@@ -12,7 +14,6 @@ import { SystemAdvisoryListStore } from './Reducers/SystemAdvisoryListStore';
 import { SystemDetailStore } from './Reducers/SystemDetailStore';
 import { SystemPackageListStore } from './Reducers/SystemPackageListStore';
 import { SystemsListStore } from './Reducers/SystemsListStore';
-import { CvesListStore } from './Reducers/CvesListStore';
 
 const persistenceMiddleware = store => next => action => {
     const storeContent = store.getState();
@@ -41,7 +42,7 @@ registry.register({
     PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
     PackageSystemsStore: (state = storage.PackageSystemsStore, action) => PackageSystemsStore(state, action),
     CvesListStore: (state = storage.CvesListStore, action) => CvesListStore(state, action),
-    notifications
+    notifications: notificationsReducer
 });
 
 export const getStore = () => registry.getStore();
