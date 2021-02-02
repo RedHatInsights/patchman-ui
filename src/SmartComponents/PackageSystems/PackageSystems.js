@@ -1,12 +1,14 @@
 import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
+import { TableVariant } from '@patternfly/react-table';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { getStore, register } from '../../store';
 import { changePackageSystemsParams, clearPackageSystemsStore, fetchPackageSystemsAction } from '../../store/Actions/Actions';
 import { packagesSystemsInventoryReducer } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -14,13 +16,13 @@ import { fetchPackageSystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, useOnSelect, usePagePerPage,
-    useRemoveFilter, useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
+import {
+    useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
+    useRemoveFilter, useSortColumn
+} from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
-import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
-import { TableVariant } from '@patternfly/react-table';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -138,7 +140,8 @@ const PackageSystems = ({ packageName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                     isLoaded={status === STATUS_RESOLVED}
-                    tableProps = {{ canSelectAll: false, onSort, sortBy, onSelect, variant: TableVariant.compact }}
+                    tableProps = {{ canSelectAll: false, onSort, sortBy, onSelect,
+                        variant: TableVariant.compact, className: 'patchCompactInventory' }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={enableRemediation && onSelect && {

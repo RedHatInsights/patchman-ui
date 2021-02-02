@@ -1,11 +1,13 @@
 import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
+import { TableVariant } from '@patternfly/react-table';
+import { Unavailable } from '@redhat-cloud-services/frontend-components';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { getStore, register } from '../../store';
 import { changeAdvisorySystemsParams, clearAdvisorySystemsStore, fetchAdvisorySystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -13,13 +15,13 @@ import { fetchAdvisorySystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter,
-    useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
+import {
+    useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter,
+    useSortColumn
+} from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
-import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
-import { TableVariant } from '@patternfly/react-table';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -133,7 +135,8 @@ const AdvisorySystems = ({ advisoryName }) => {
                     onRefresh={handleRefresh}
                     isLoaded={status === STATUS_RESOLVED}
                     actions={systemsRowActions(showRemediationModal)}
-                    tableProps = {{ canSelectAll: false, onSort, sortBy, variant: TableVariant.compact }}
+                    tableProps = {{ canSelectAll: false, onSort, sortBy,
+                        variant: TableVariant.compact, className: 'patchCompactInventory' }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={onSelect && {
