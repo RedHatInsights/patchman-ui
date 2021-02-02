@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 
-import NotificationsPortal from '@redhat-cloud-services/frontend-components-notifications/cjs/NotificationPortal';
+import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
 import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { isEqual } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -77,7 +77,7 @@ const App = () => {
 
     return (
         <React.Fragment>
-            <NotificationsPortal />
+            <NotificationPortal />
             <Routes childProps={location, history} />
         </React.Fragment>
     );
