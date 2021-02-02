@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.9.0...v1.9.1) (2021-02-02)
+
+
+### Bug Fixes
+
+* **styles:** fix font-size of inventory tables ([abb41d8](https://github.com/RedHatInsights/patchman-ui/commit/abb41d83512245674d3ea960cfdc1d81f6d25bec))
+
 # [1.9.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.8.4...v1.9.0) (2021-02-01)
 
 
