@@ -10,3 +10,9 @@
         }
     }
 }
+
+table.patchCompactInventory {
+    .ins-composed-col {
+       font-size: var(--pf-c-table--m-compact--FontSize);
+    }
+}

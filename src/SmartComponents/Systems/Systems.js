@@ -1,11 +1,12 @@
-import React from 'react';
-import { Main } from '@redhat-cloud-services/frontend-components';
+import { TableVariant } from '@patternfly/react-table';
+import { Main, Unavailable } from '@redhat-cloud-services/frontend-components';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { getStore, register } from '../../store';
 import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -13,13 +14,14 @@ import { exportSystemsCSV, exportSystemsJSON } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
-import { setPageTitle, useHandleRefresh, usePagePerPage,
-    useRemoveFilter, useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
+import {
+    setPageTitle,
+    useDeepCompareEffect, useHandleRefresh, usePagePerPage,
+    useRemoveFilter, useSortColumn
+} from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
-import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
-import { TableVariant } from '@patternfly/react-table';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -141,7 +143,8 @@ const Systems = () => {
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}
-                            tableProps = {{ areActionsDisabled, onSort, sortBy, variant: TableVariant.compact }}
+                            tableProps = {{ areActionsDisabled, onSort, sortBy,
+                                variant: TableVariant.compact, className: 'patchCompactInventory' }}
 
                         />
                     )
