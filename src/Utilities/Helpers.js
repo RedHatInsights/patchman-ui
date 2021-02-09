@@ -44,20 +44,22 @@ export const createSortBy = (header, values, offset) => {
     return {};
 };
 
-export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
+export const addOrRemoveItemFromSet = (targetObj, inputArr, selectionType) => {
     const inputObj = inputArr.reduce(
         (obj, item) => ((obj[item.rowId] = item.value || undefined), obj),
         {}
     );
-    const result = { ...targetObj, ...inputObj };
+    const result = selectionType === 'page' ? inputObj : { ...targetObj, ...inputObj };
     return result;
 };
 
-export const getNewSelectedItems = (selectedItems, currentItems) => {
+export const getNewSelectedItems = ({ selectedItems, selectionType }, currentItems) => {
+
     let payload = [].concat(selectedItems).map(item=>({ rowId: item.id, value: item.selected }));
     return addOrRemoveItemFromSet(
         currentItems,
-        payload
+        payload,
+        selectionType
     );
 };
 

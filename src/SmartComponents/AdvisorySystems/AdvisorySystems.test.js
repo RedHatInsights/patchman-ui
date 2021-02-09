@@ -200,13 +200,10 @@ describe('AdvisorySystems.js', () => {
             bulkSelect.onSelect();
             const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
-            expect(dispatchedActions[1].payload).toEqual([
-                {
-                    id: 'f99c98e6-e17c-4536-acbb-2bc795547d4f',
-                    selected: false
-                }
-            ]
-            );
+            expect(dispatchedActions[1].payload).toEqual({
+                selectedItems: [{ id: 'f99c98e6-e17c-4536-acbb-2bc795547d4f', selected: false }],
+                selectionType: 'none'
+            });
         });
     });
 
