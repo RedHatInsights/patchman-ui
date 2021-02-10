@@ -9,7 +9,7 @@
     "@patternfly/react-table": "^4.19.45",
     "@redhat-cloud-services/frontend-components": "^2.5.8",
     "@redhat-cloud-services/frontend-components-notifications": "^2.2.4",
-    "@redhat-cloud-services/frontend-components-remediations": "^2.3.9",
+    "@redhat-cloud-services/frontend-components-remediations": "^2.3.10",
     "@redhat-cloud-services/frontend-components-translations": "^2.2.1",
     "@redhat-cloud-services/frontend-components-utilities": "^2.2.9",
     "axios": "^0.21.1",
