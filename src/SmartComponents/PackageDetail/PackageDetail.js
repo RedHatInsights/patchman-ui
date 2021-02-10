@@ -11,7 +11,7 @@ import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import { paths } from '../../Routes';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
-import { ENABLE_PACKAGES, STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 
@@ -47,7 +47,7 @@ const PackageDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchPackages),
-                        to: ENABLE_PACKAGES && paths.packages.to,
+                        to: paths.packages.to,
                         isActive: false
                     },
                     {
