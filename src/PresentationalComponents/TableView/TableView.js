@@ -36,7 +36,8 @@ const TableView = ({
     tableOUIA,
     paginationOUIA,
     errorState,
-    emptyState
+    emptyState,
+    defaultFilters
 }) => {
     const [
         RemediationModalCmp,
@@ -56,7 +57,7 @@ const TableView = ({
         setRemediationLoading(false);
     }
 
-    const removeFilter = useRemoveFilter(filter, apply);
+    const [deleteFilters, deleteFilterGroup] = useRemoveFilter(filter, apply, defaultFilters);
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
     return (
@@ -78,22 +79,27 @@ const TableView = ({
                         filterConfig={filterConfig}
                         activeFiltersConfig={{
                             filters: buildFilterChips(filter, search),
-                            onDelete: removeFilter
+                            onDelete: deleteFilters,
+                            deleteTitle: intl.formatMessage(defaultFilters
+                                && messages.labelsFiltersReset || messages.labelsFiltersClear),
+                            onDeleteGroup: deleteFilterGroup
                         }}
-                        actionsConfig={{ actions: [remediationProvider && (
-                            <React.Fragment>
-                                <PatchRemediationButton
-                                    isDisabled={selectedCount === 0 || isRemediationLoading}
-                                    onClick={() =>
-                                        showRemediationModal(remediationProvider())
-                                    }
-                                    ouia={remediationButtonOUIA}
-                                    isLoading={isRemediationLoading}
-                                />
+                        actionsConfig={{
+                            actions: [remediationProvider && (
+                                <React.Fragment>
+                                    <PatchRemediationButton
+                                        isDisabled={selectedCount === 0 || isRemediationLoading}
+                                        onClick={() =>
+                                            showRemediationModal(remediationProvider())
+                                        }
+                                        ouia={remediationButtonOUIA}
+                                        isLoading={isRemediationLoading}
+                                    />
 
-                                <RemediationModalCmp />
-                            </React.Fragment>
-                        )] }}
+                                    <RemediationModalCmp />
+                                </React.Fragment>
+                            )]
+                        }}
                         exportConfig={{ onSelect: onExport }}
                         bulkSelect={onSelect && {
                             count: selectedCount,
@@ -180,7 +186,8 @@ TableView.propTypes = {
     tableOUIA: PropTypes.string,
     paginationOUIA: PropTypes.string,
     errorState: PropTypes.any,
-    emptyState: PropTypes.any
+    emptyState: PropTypes.any,
+    defaultFilters: PropTypes.object
 };
 
 export default TableView;

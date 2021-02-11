@@ -82,6 +82,13 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
             ]
           }
           compact={true}
+          defaultFilters={
+            Object {
+              "filter": Object {
+                "updatable": "true",
+              },
+            }
+          }
           emptyState={false}
           errorState={<Unavailable />}
           filterConfig={
@@ -214,8 +221,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
             }
             activeFiltersConfig={
               Object {
+                "deleteTitle": "Reset filters",
                 "filters": Array [],
                 "onDelete": [Function],
+                "onDeleteGroup": [Function],
               }
             }
             bulkSelect={

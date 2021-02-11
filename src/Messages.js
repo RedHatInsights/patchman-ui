@@ -111,6 +111,11 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'Description'
     },
+    labelsFiltersClear: {
+        id: 'labelsFiltersClear',
+        description: 'label for remove filter chips',
+        defaultMessage: 'Clear filters'
+    },
     labelsFiltersCvesSearchPlaceHolder: {
         id: 'labelsFiltersCvesSearch',
         description: 'search filter placeholder for packages pages',
@@ -130,6 +135,11 @@ export default defineMessages({
         id: 'labelsFiltersPublishDate',
         description: 'shared label',
         defaultMessage: 'Publish date'
+    },
+    labelsFiltersReset: {
+        id: 'labelsFiltersReset',
+        description: 'label for remove filter chips',
+        defaultMessage: 'Reset filters'
     },
     labelsFiltersSearch: {
         id: 'labelsFiltersSearch',

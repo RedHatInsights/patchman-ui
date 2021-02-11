@@ -55,8 +55,8 @@ export const useSortColumn = (columns, callback, offset = 0) => {
     return onSort;
 };
 
-export const useRemoveFilter = (filters, callback) => {
-    const removeFilter = React.useCallback((event, selected) => {
+export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {} }) => {
+    const removeFilter = React.useCallback((event, selected, resetFilters) => {
         let newParams = { filter: {} };
         selected.forEach(selectedItem => {
             let { id: categoryId, chips } = selectedItem;
@@ -73,10 +73,35 @@ export const useRemoveFilter = (filters, callback) => {
             } else {
                 newParams.search = '';
             }
+
         });
+
+        if (resetFilters) {
+            newParams =  resetFilters(newParams);
+        }
+
+        console.log(newParams);
         callback({ ...newParams });
     });
-    return removeFilter;
+
+    const deleteFilterGroup = (__, filters) => {
+        removeFilter(__, filters);
+    };
+
+    const deleteFilters = (__, selected) => {
+        const resetFilters = (currentFilters) => {
+            if (Object.keys(defaultFilters.filter).length > 0)
+            {
+                currentFilters.filter = { ...currentFilters.filter, ...defaultFilters.filter };
+            }
+
+            return currentFilters;
+        };
+
+        removeFilter(__, selected, resetFilters);
+    };
+
+    return [deleteFilters, deleteFilterGroup];
 };
 
 export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,

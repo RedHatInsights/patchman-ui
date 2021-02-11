@@ -10,7 +10,7 @@ import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemDa
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
-import { STATUS_REJECTED } from '../../Utilities/constants';
+import { STATUS_REJECTED, packagesListDefaultFilters } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
@@ -104,6 +104,7 @@ const Packages = () => {
                     tableOUIA={'package-details-table'}
                     paginationOUIA={'package-details-pagination'}
                     errorState={errorState}
+                    defaultFilters={packagesListDefaultFilters}
                 />
             </Main>
         </React.Fragment>
