@@ -1,3 +1,15 @@
+# [1.10.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.9.1...v1.10.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* **bulkSelect:** page selecting after selecting all items ([0e34ae9](https://github.com/RedHatInsights/patchman-ui/commit/0e34ae98adbee490885501ef21120a6cd0b127d8))
+
+
+### Features
+
+* **Advisories:** display cve info ([ab5d6de](https://github.com/RedHatInsights/patchman-ui/commit/ab5d6decb7be805b00af74b7625da7bc53eb1377))
+
 ## [1.9.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.9.0...v1.9.1) (2021-02-02)
 
 
