@@ -309,8 +309,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                     }
                     activeFiltersConfig={
                       Object {
+                        "deleteTitle": "Clear filters",
                         "filters": Array [],
                         "onDelete": [Function],
+                        "onDeleteGroup": [Function],
                       }
                     }
                     bulkSelect={

@@ -19,8 +19,10 @@ exports[`TableView TableView 1`] = `
     }
     activeFiltersConfig={
       Object {
+        "deleteTitle": "Clear filters",
         "filters": Array [],
         "onDelete": [Function],
+        "onDeleteGroup": [Function],
       }
     }
     bulkSelect={
@@ -107,8 +109,10 @@ exports[`TableView TableView 2`] = `
     }
     activeFiltersConfig={
       Object {
+        "deleteTitle": "Clear filters",
         "filters": Array [],
         "onDelete": [Function],
+        "onDeleteGroup": [Function],
       }
     }
     bulkSelect={
@@ -204,8 +208,10 @@ exports[`TableView test table props TableView 1`] = `
     }
     activeFiltersConfig={
       Object {
+        "deleteTitle": "Clear filters",
         "filters": Array [],
         "onDelete": [Function],
+        "onDeleteGroup": [Function],
       }
     }
     bulkSelect={

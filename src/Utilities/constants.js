@@ -34,6 +34,14 @@ export const storeListDefaults = {
     error: {}
 };
 
+export const systemPackagesDefaultFilters = {
+    filter: { updatable: 'true' }
+};
+
+export const packagesListDefaultFilters = {
+    filter: { systems_updatable: 'gt:0'  }
+};
+
 export const publicDateOptions = [
     { apiValue: '', label: 'All', value: 'all' },
     {

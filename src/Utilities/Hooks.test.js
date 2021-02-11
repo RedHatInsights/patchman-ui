@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import { useHandleRefresh, usePagePerPage, usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from './Hooks';
-
+import { packagesListDefaultFilters } from './constants';
 const TestHook = ({ callback }) => {
     callback();
     return null;
@@ -109,11 +109,24 @@ describe('Custom hooks tests', () => {
     ${{advisory_type: [2,1]}} | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{id: 1}] }]} | ${{filter: {advisory_type: [2]}}}
     ${{search: "asd"}}        | ${jest.fn()} | ${[{ id: "search"}]}                           | ${{filter: {}, search: ''}}
     `('useRemoveFilter: should return correct filter for $filter',({filter, apply, result, selected}) => {
-        let res;
+        let deleteFilters;
         testHook(() => {
-            res = useRemoveFilter(filter, apply);
+            [deleteFilters] = useRemoveFilter(filter, apply);
         });
-        res({}, selected)
+        deleteFilters({}, selected)
+        expect(apply).toHaveBeenCalledWith(result);
+    });
+
+    it.each`
+    filter                    | apply        | selected                                       |result
+    ${{ advisory_type: 2 }}     | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{ id: 1 }] }]} | ${{ filter: { advisory_type: "", systems_updatable: "gt:0" } }}
+    ${{ search: "asd" }}        | ${jest.fn()} | ${[{ id: "search" }]}                           | ${{ filter: { systems_updatable: "gt:0" }, search: '' }}
+    `('useRemoveFilter: should reset to default filters for $filter while ', ({ filter, apply, result, selected }) => {
+        let deleteFilters;
+        testHook(() => {
+            [deleteFilters] = useRemoveFilter(filter, apply, packagesListDefaultFilters);
+        });
+        deleteFilters({}, selected)
         expect(apply).toHaveBeenCalledWith(result);
     });
 
