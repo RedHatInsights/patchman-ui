@@ -40,7 +40,7 @@ const App = () => {
                 navId && insights.chrome.appNavClick({ id: navId });
             }
         });
-    }, [location]);;
+    }, [location.pathname]);;
 
     useEffect(() => {
         insights.chrome.init();
