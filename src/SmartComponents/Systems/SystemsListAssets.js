@@ -1,5 +1,6 @@
 import { sortable } from '@patternfly/react-table/dist/js';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
+import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesIcons, createUpgradableColumn, remediationProvider } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 
@@ -87,7 +88,8 @@ export const systemsRowActions = showRemediationModal => {
                     showRemediationModal(
                         remediationProvider(
                             res.data.map(item => item.id),
-                            rowData.id
+                            rowData.id,
+                            remediationIdentifiers.advisory
                         )
                     )
                 );

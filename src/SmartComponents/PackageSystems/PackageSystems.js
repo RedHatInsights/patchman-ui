@@ -13,7 +13,7 @@ import { getStore, register } from '../../store';
 import { changePackageSystemsParams, clearPackageSystemsStore, fetchPackageSystemsAction } from '../../store/Actions/Actions';
 import { packagesSystemsInventoryReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchPackageSystems } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import {
@@ -184,7 +184,8 @@ const PackageSystems = ({ packageName }) => {
                                     showRemediationModal(
                                         remediationProvider(
                                             packageName,
-                                            Object.keys(selectedRows)
+                                            Object.keys(selectedRows),
+                                            remediationIdentifiers.package
                                         )
                                     )
                                 }

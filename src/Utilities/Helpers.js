@@ -141,13 +141,13 @@ export function handlePatchLink(type, name, body) {
 export const arrayFromObj = items =>
     Object.values(items).filter(value => value);
 
-export const remediationProvider = (issues, systems) => {
+export const remediationProvider = (issues, systems, remediationIdentifier) => {
     issues = [].concat(issues);
     systems = [].concat(systems);
     return issues.length && systems.length
         ? {
             issues: issues.map(item => ({
-                id: `patch-advisory:${item}`,
+                id: `${remediationIdentifier}:${item}`,
                 description: item
             })),
             systems

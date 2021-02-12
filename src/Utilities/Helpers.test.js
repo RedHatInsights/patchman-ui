@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import toJson from 'enzyme-to-json';
-import { publicDateOptions } from '../Utilities/constants';
+import { publicDateOptions, remediationIdentifiers } from '../Utilities/constants';
 import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams, getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, getSeverityById, handlePatchLink, remediationProvider } from './Helpers';
 
 const TestHook = ({ callback }) => {
@@ -207,12 +207,12 @@ describe('Helpers tests', () => {
     });
 
     it.each`
-    issues         | systems            | result
-    ${["issue-1"]} | ${["system-1"]}    | ${{issues: [{id: "patch-advisory:issue-1", description: "issue-1"}],systems: ["system-1"]}}
-    ${"issue-1"}   | ${"system-1"}      | ${{issues: [{id: "patch-advisory:issue-1", description: "issue-1"}],systems: ["system-1"]}}
-    ${[]}          | ${["system-1"]}    | ${false}
-    `('remediationProvider: Should create correct remediation object for $issues $systems', ({issues, systems, result}) => {
-        expect(remediationProvider(issues,systems)).toEqual(result);
+    issues         | systems            |  identifier                        | result
+    ${["issue-1"]} | ${["system-1"]}    | ${remediationIdentifiers.advisory} | ${{issues: [{id: "patch-advisory:issue-1", description: "issue-1"}],systems: ["system-1"]}}
+    ${"issue-1"}   | ${"system-1"}      | ${remediationIdentifiers.package}  | ${{issues: [{id: "patch-package:issue-1", description: "issue-1"}],systems: ["system-1"]}}
+    ${[]}          | ${["system-1"]}    | ${remediationIdentifiers.package}  | ${false}
+    `('remediationProvider: Should create correct remediation object for $issues $systems', ({issues, systems, identifier, result}) => {
+        expect(remediationProvider(issues,systems, identifier)).toEqual(result);
     });
 
     it.each`

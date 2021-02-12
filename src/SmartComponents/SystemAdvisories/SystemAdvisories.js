@@ -12,7 +12,7 @@ import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableVie
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
-import { STATUS_REJECTED } from '../../Utilities/constants';
+import { STATUS_REJECTED, remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
@@ -120,7 +120,11 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
                 onSort={onSort}
                 sortBy={sortBy}
                 remediationProvider={() =>
-                    remediationProvider(arrayFromObj(selectedRows), entity.id)
+                    remediationProvider(
+                        arrayFromObj(selectedRows),
+                        entity.id,
+                        remediationIdentifiers.advisory
+                    )
                 }
                 selectedRows={selectedRows}
                 systemId={entity.id}

@@ -12,7 +12,7 @@ import { getStore, register } from '../../store';
 import { changeAdvisorySystemsParams, clearAdvisorySystemsStore, fetchAdvisorySystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import {
@@ -178,7 +178,8 @@ const AdvisorySystems = ({ advisoryName }) => {
                                     showRemediationModal(
                                         remediationProvider(
                                             advisoryName,
-                                            Object.keys(selectedRows)
+                                            Object.keys(selectedRows),
+                                            remediationIdentifiers.advisory
                                         )
                                     )
                                 }
