@@ -1,6 +1,6 @@
 /* eslint new-cap: 0 */
 import { notifications, notificationsMiddleware } from '@redhat-cloud-services/frontend-components-notifications';
-import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/cjs/ReducerRegistry';
+import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/Registry';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
 import { AdvisoryListStore } from './Reducers/AdvisoryListStore';
@@ -14,7 +14,6 @@ import { SystemPackageListStore } from './Reducers/SystemPackageListStore';
 import { SystemsListStore } from './Reducers/SystemsListStore';
 import { CvesListStore } from './Reducers/CvesListStore';
 
-let registry;
 const persistenceMiddleware = store => next => action => {
     const storeContent = store.getState();
     if (action.type === 'LOAD_ENTITIES_FULFILLED') {
@@ -27,37 +26,25 @@ const persistenceMiddleware = store => next => action => {
     }
 };
 
-export function init(...middleware) {
-    if (registry) {
-        throw new Error('store already initialized');
-    }
+const storage = JSON.parse(sessionStorage.getItem('PatchStore')) || {};
 
-    registry = new ReducerRegistry({}, [promiseMiddleware, notificationsMiddleware(), persistenceMiddleware, ...middleware]);
+const registry = getRegistry({}, [promiseMiddleware, notificationsMiddleware(), persistenceMiddleware]);
+registry.register({
+    AdvisoryListStore: (state = storage.AdvisoryListStore, action) => AdvisoryListStore(state, action),
+    SystemsListStore: (state = storage.SystemsListStore, action) => SystemsListStore(state, action),
+    SystemDetailStore: (state = storage.SystemDetailStore, action) => SystemDetailStore(state, action),
+    SystemAdvisoryListStore: (state = storage.SystemAdvisoryListStore, action) => SystemAdvisoryListStore(state, action),
+    AdvisoryDetailStore: (state = storage.AdvisoryDetailStore, action) => AdvisoryDetailStore(state, action),
+    AdvisorySystemsStore: (state = storage.AdvisorySystemsStore, action) => AdvisorySystemsStore(state, action),
+    SystemPackageListStore: (state = storage.SystemPackageListStore, action) => SystemPackageListStore(state, action),
+    PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
+    PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
+    PackageSystemsStore: (state = storage.PackageSystemsStore, action) => PackageSystemsStore(state, action),
+    CvesListStore: (state = storage.CvesListStore, action) => CvesListStore(state, action),
+    notifications
+});
 
-    const storage = JSON.parse(sessionStorage.getItem('PatchStore')) || {};
-
-    registry.register({
-        AdvisoryListStore: (state = storage.AdvisoryListStore, action) => AdvisoryListStore(state, action),
-        SystemsListStore: (state = storage.SystemsListStore, action) => SystemsListStore(state, action),
-        SystemDetailStore: (state = storage.SystemDetailStore, action) => SystemDetailStore(state, action),
-        SystemAdvisoryListStore: (state = storage.SystemAdvisoryListStore, action) => SystemAdvisoryListStore(state, action),
-        AdvisoryDetailStore: (state = storage.AdvisoryDetailStore, action) => AdvisoryDetailStore(state, action),
-        AdvisorySystemsStore: (state = storage.AdvisorySystemsStore, action) => AdvisorySystemsStore(state, action),
-        SystemPackageListStore: (state = storage.SystemPackageListStore, action) => SystemPackageListStore(state, action),
-        PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
-        PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
-        PackageSystemsStore: (state = storage.PackageSystemsStore, action) => PackageSystemsStore(state, action),
-        CvesListStore: (state = storage.CvesListStore, action) => CvesListStore(state, action),
-        notifications
-    });
-
-    return registry;
-}
-
-export function getStore() {
-    return registry.getStore();
-}
-
-export function register(...args) {
-    return registry.register(...args);
-}
+export const getStore = () => registry.getStore();
+export const register = newReducers => {
+    registry.register(newReducers);
+};
