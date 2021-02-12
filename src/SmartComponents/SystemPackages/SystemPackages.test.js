@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { systemPackages } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
-import { storeListDefaults } from '../../Utilities/constants';
+import { storeListDefaults, remediationIdentifiers } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
@@ -116,7 +116,7 @@ describe('SystemPackages.js', () => {
     it('Should provide correct remediation data', () => {
         const remediation = wrapper.find('TableView').props().remediationProvider;
         remediation();
-        expect(remediationProvider).toHaveBeenCalledWith([], 'entity');
+        expect(remediationProvider).toHaveBeenCalledWith([], 'entity', remediationIdentifiers.package);
     });
 
     it('Should display SystemUpToDate when status is resolved, but there is no items', () => {

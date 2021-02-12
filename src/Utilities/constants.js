@@ -180,3 +180,8 @@ export const ReadOnlyNotification = {
     title: 'title',
     detail: 'message'
 };
+
+export const remediationIdentifiers = {
+    package: 'patch-package',
+    advisory: 'patch-advisory'
+};

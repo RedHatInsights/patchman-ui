@@ -7,7 +7,7 @@ import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { remediationProvider } from '../../Utilities/Helpers';
-
+import { remediationIdentifiers } from '../../Utilities/constants';
 /* eslint-disable */
 initMocks()
 
@@ -101,7 +101,7 @@ describe('SystemAdvisories.js', () => {
     it('Should provide correct remediation data', () => {
         const remediation = wrapper.find('TableView').props().remediationProvider;
         remediation();
-        expect(remediationProvider).toHaveBeenCalledWith([true], 'test');
+        expect(remediationProvider).toHaveBeenCalledWith([true], 'test', remediationIdentifiers.advisory);
     });
 
     describe('test entity selecting', () => {

@@ -14,7 +14,7 @@ import {
     fetchApplicableSystemPackages, selectSystemPackagesRow
 } from '../../store/Actions/Actions';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
@@ -110,7 +110,11 @@ const SystemPackages = ({ handleNoSystemData }) => {
                 onSetPage={onSetPage}
                 onPerPageSelect={onPerPageSelect}
                 remediationProvider={() =>
-                    remediationProvider(arrayFromObj(selectedRows), entity.id)
+                    remediationProvider(
+                        arrayFromObj(selectedRows),
+                        entity.id,
+                        remediationIdentifiers.package
+                    )
                 }
                 apply={apply}
                 filterConfig={{

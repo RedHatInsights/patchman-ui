@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Main } from '@redhat-cloud-services/frontend-components';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/cjs/actions';
 import React from 'react';
@@ -13,8 +12,8 @@ import { packagesColumns } from '../../PresentationalComponents/TableView/TableV
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
-import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
-import { usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
+import { createSortBy } from '../../Utilities/Helpers';
+import { usePerPageSelect, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
@@ -42,8 +41,6 @@ const Packages = () => {
         ({ PackagesListStore }) => PackagesListStore.queryParams
     );
 
-    const { filter, search } = queryParams;
-
     React.useEffect(() => {
         dispatch(fetchPackagesAction(queryParams));
     }, [queryParams]);
@@ -51,13 +48,6 @@ const Packages = () => {
     function apply(params) {
         dispatch(changePackagesListParams(params));
     }
-
-    const removeFilter = useRemoveFilter(filter, apply);
-
-    const activeFiltersConfig = {
-        filters: buildFilterChips(filter, search),
-        onDelete: removeFilter
-    };
 
     const onExport = (_, format) => {
         const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';

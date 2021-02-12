@@ -1,6 +1,7 @@
 import { systemsListColumns, packageSystemsColumns, systemsRowActions } from './SystemsListAssets';
 import { createAdvisoriesIcons, createUpgradableColumn, remediationProvider } from '../../Utilities/Helpers';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
+import { remediationIdentifiers } from '../../Utilities/constants';
 /* eslint-disable */
 jest.mock('../../Utilities/Helpers', () => ({
     ...jest.requireActual('../../Utilities/Helpers'),
@@ -40,6 +41,7 @@ describe('SystemListAssets.js', () => {
             expect(remediationProvider).toHaveBeenCalledWith(
                 ['testDataID'],
                 'testId',
+                remediationIdentifiers.advisory
             )
         });
     });
