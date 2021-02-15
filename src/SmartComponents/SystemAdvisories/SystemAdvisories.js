@@ -83,7 +83,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
     };
 
     const fetchAllData = () =>
-        fetchApplicableSystemAdvisoriesApi({ id: entity.id, limit: -1 });
+        fetchApplicableSystemAdvisoriesApi({ id: entity.id, ...queryParams, limit: -1 });
 
     const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows, (advisory) => advisory.id);
 
