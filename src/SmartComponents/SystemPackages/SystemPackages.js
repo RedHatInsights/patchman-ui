@@ -66,7 +66,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
     };
 
     const fetchAllData = () =>
-        fetchApplicablePackagesApi({ id: entity.id, limit: -1 });
+        fetchApplicablePackagesApi({ id: entity.id, ...queryParams, limit: -1 });
 
     const selectRows = (toSelect) => {
         dispatch(selectSystemPackagesRow(toSelect));
