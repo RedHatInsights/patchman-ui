@@ -1,24 +1,24 @@
-import { Main } from '@redhat-cloud-services/frontend-components';
+import { Main, Unavailable } from '@redhat-cloud-services/frontend-components';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import messages from '../../Messages';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import Header from '../../PresentationalComponents/Header/Header';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { advisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
-import { changeAdvisoryListParams, expandAdvisoryRow, fetchApplicableAdvisories } from '../../store/Actions/Actions';
-import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api';
+import { changeAdvisoryListParams, expandAdvisoryRow,
+    fetchApplicableAdvisories, selectAdvisoryRow } from '../../store/Actions/Actions';
+import { exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi } from '../../Utilities/api';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
+import { setPageTitle, useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
 
 const Advisories = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
@@ -71,9 +71,20 @@ const Advisories = ({ history }) => {
         )
     );
 
-    const onSort = useSortColumn(advisoriesColumns, apply, 1);
+    const fetchAllData = () =>
+        fetchApplicableAdvisoriesApi({ limit: -1 });
+
+    const selectRows = (toSelect) => {
+        dispatch(
+            selectAdvisoryRow(toSelect)
+        );
+    };
+
+    const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows, (advisory) => advisory.id);
+
+    const onSort = useSortColumn(advisoriesColumns, apply, 2);
     const sortBy = React.useMemo(
-        () => createSortBy(advisoriesColumns, metadata.sort, 1),
+        () => createSortBy(advisoriesColumns, metadata.sort, 2),
         [metadata.sort]
     );
 
@@ -109,6 +120,8 @@ const Advisories = ({ history }) => {
                     onPerPageSelect={onPerPageSelect}
                     onSort={onSort}
                     onExport={onExport}
+                    selectedRows={selectedRows}
+                    onSelect={onSelect}
                     sortBy={sortBy}
                     apply={apply}
                     remediationButtonOUIA={'toolbar-remediation-button'}
