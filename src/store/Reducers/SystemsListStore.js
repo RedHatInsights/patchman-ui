@@ -2,9 +2,10 @@ import { storeListDefaults } from '../../Utilities/constants';
 import * as ActionTypes from '../ActionTypes';
 import {
     changeFilters,
-    fetchPending,
+
+    fetchFulfilled, fetchPending,
     fetchRejected,
-    fetchFulfilled
+    selectRows
 } from './HelperReducers';
 
 export const SystemsListStore = (state = storeListDefaults, action) => {
@@ -24,6 +25,9 @@ export const SystemsListStore = (state = storeListDefaults, action) => {
 
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);
+
+        case 'SELECT_ENTITY':
+            return selectRows(newState, action);
 
         default:
             return state;

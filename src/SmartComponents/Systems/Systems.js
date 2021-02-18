@@ -10,13 +10,13 @@ import Header from '../../PresentationalComponents/Header/Header';
 import { getStore, register } from '../../store';
 import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
-import { exportSystemsCSV, exportSystemsJSON } from '../../Utilities/api';
+import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import { buildFilterChips, createSortBy } from '../../Utilities/Helpers';
+import { arrayFromObj, buildFilterChips, createSortBy } from '../../Utilities/Helpers';
 import {
     setPageTitle,
-    useDeepCompareEffect, useHandleRefresh, usePagePerPage,
+    useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
     useRemoveFilter, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -37,7 +37,10 @@ const Systems = () => {
     const rawSystems = useSelector(
         ({ SystemsListStore }) => SystemsListStore.rows
     );
-    const hosts = React.useMemo(() => createSystemsRows(rawSystems), [
+    const selectedRows = useSelector(
+        ({ SystemsListStore }) => SystemsListStore.selectedRows
+    );
+    const hosts = React.useMemo(() => createSystemsRows(rawSystems, selectedRows), [
         rawSystems
     ]);
     const status = useSelector(
@@ -95,11 +98,23 @@ const Systems = () => {
         return [...systemsListColumns, updated];
     };
 
+    const fetchAllData = () =>
+        fetchSystems({ ...queryParams, limit: -1 });
+
+    const selectRows = (toSelect) => {
+        dispatch(
+            { type: 'SELECT_ENTITY', payload: toSelect }
+        );
+    };
+
+    const onSelect = useOnSelect(rawSystems,  selectedRows, fetchAllData, selectRows);
+
     const onSort = useSortColumn(getMangledColumns(), apply);
     const sortBy = React.useMemo(
         () => createSortBy(getMangledColumns(), metadata.sort, 0),
         [metadata.sort]
     );
+    const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
     const onExport = (_, format) => {
         const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
@@ -142,11 +157,37 @@ const Systems = () => {
                             isLoaded={status === STATUS_RESOLVED}
                             onRefresh={handleRefresh}
                             exportConfig={{ onSelect: onExport }}
-                            hasCheckbox={false}
+                            bulkSelect={onSelect && {
+                                count: selectedCount,
+                                items: [{
+                                    title: `Select none (0)`,
+                                    onClick: () => {
+                                        onSelect('none');
+                                    }
+                                }, {
+                                    title: `Select page (${hosts.length})`,
+                                    onClick: () => {
+                                        onSelect('page');
+                                    }
+                                },
+                                {
+                                    title: `Select all (${metadata.total_items})`,
+                                    onClick: () => {
+                                        onSelect('all');
+                                    }
+                                }],
+                                onSelect: (value) => {
+                                    value ? onSelect('all') : onSelect('none');
+                                },
+                                toggleProps: {
+                                    'data-ouia-component-type': 'bulk-select-toggle-button'
+                                },
+                                checked: selectedCount === metadata.total_items ? true : selectedCount === 0 ? false : null
+                            }}
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}
-                            tableProps = {{ areActionsDisabled, onSort, sortBy,
+                            tableProps = {{ areActionsDisabled, onSort, sortBy, canSelectAll: false,
                                 variant: TableVariant.compact, className: 'patchCompactInventory' }}
 
                         />

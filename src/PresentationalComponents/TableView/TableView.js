@@ -1,5 +1,5 @@
-import { Button } from '@patternfly/react-core';
-import { AnsibeTowerIcon } from '@patternfly/react-icons'; // PF typo
+import { Button, Flex, FlexItem, Spinner } from '@patternfly/react-core';
+import { AnsibleTowerIcon } from '@patternfly/react-icons';
 import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
 import globalPaletteWhite from '@patternfly/react-tokens/dist/js/global_palette_white';
 import { PrimaryToolbar, SkeletonTable } from '@redhat-cloud-services/frontend-components';
@@ -48,10 +48,14 @@ const TableView = ({
         [metadata.limit, metadata.offset]
     );
 
+    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
+
     async function showRemediationModal(data) {
+        setRemediationLoading(true);
         const resolvedData = await data;
         console.log(resolvedData);
         setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
+        setRemediationLoading(false);
     }
 
     const removeFilter = useRemoveFilter(filter, apply);
@@ -81,14 +85,24 @@ const TableView = ({
                         actionsConfig={{ actions: [remediationProvider && (
                             <React.Fragment>
                                 <Button
-                                    isDisabled={selectedCount === 0}
+                                    isDisabled={selectedCount === 0 || isRemediationLoading}
                                     className={'remediationButtonPatch'}
                                     onClick={() =>
                                         showRemediationModal(remediationProvider())
                                     }
                                     ouiaId={remediationButtonOUIA}
-                                >
-                                    <AnsibeTowerIcon color={globalPaletteWhite.value} />&nbsp;Remediate
+                                ><Flex flex={{ default: 'inlineFlex' }}
+                                        alignItems={{ default: 'alignItemsCenter' }}
+                                        justifyContent={{ default: 'justifyContentCenter' }}>
+                                        <FlexItem spacer={{ default: 'spacerXs' }} style={{ display: 'flex' }}>
+                                            {isRemediationLoading &&
+                                                <Spinner isSVG size='md'/>
+                                     || <AnsibleTowerIcon color={globalPaletteWhite.value}/>}
+                                        </FlexItem>
+                                        <FlexItem spacer={{ default: 'spacerXs' }} style={{ display: 'flex' }}>
+                                     &nbsp;Remediate
+                                        </FlexItem>
+                                    </Flex>
                                 </Button>
                                 <RemediationModalCmp />
                             </React.Fragment>
