@@ -85,30 +85,6 @@ export const paths = {
     }
 };
 
-const InsightsRoute = ({ component: Component, rootClass, ...rest }) => {
-    const root = document.getElementById('root');
-    /**
-     * @deprecated
-     * Mutating chrome root element is deprecated.
-     * Please add custom classes on different elements exclusive to patch UI DOM.
-     * This functionality will no longer exist in chrome 2 to prevent global styling issues
-     */
-    root.removeAttribute('class');
-    /**
-     * Adding root class to root element to scope the CSS classes.
-     * Chrome 2 will add this class automatically to root element.
-     */
-    root.classList.add(`page__${rootClass}`, 'pf-c-page__main', 'patch');
-    root.setAttribute('role', 'main');
-
-    return <Route {...rest} component={Component} />;
-};
-
-InsightsRoute.propTypes = {
-    component: PropTypes.func,
-    rootClass: PropTypes.string
-};
-
 export const Routes = (props) => {
     const [hasPatchAccess, setPatchAccess] = useState(true);
 
@@ -137,35 +113,32 @@ export const Routes = (props) => {
                     from={paths.packageDetailSystem.to}
                     to={paths.inventoryDetail.to}
                 />
-                <InsightsRoute
+                <Route
                     path={paths.inventoryDetail.to}
                     component={InventoryPage}
                 />
-                <InsightsRoute exact path={paths.systems.to} component={Systems} />
-                <InsightsRoute
+                <Route exact path={paths.systems.to} component={Systems} />
+                <Route
                     exact
                     path={paths.advisoryDetail.to}
                     component={AdvisoryPage}
                 />
-                <InsightsRoute
+                <Route
                     exact
                     path={paths.advisories.to}
                     component={Advisories}
-                    rootClass="Patchman"
                 />
-                <InsightsRoute
+                <Route
                     exact
                     path={paths.packages.to}
                     component={PackagsPage}
-                    rootClass="Patchman"
                 />
-                <InsightsRoute
+                <Route
                     exact
                     path={paths.register.to}
                     component={RegisterPage}
-                    rootClass="Patchman"
                 />
-                <InsightsRoute
+                <Route
                     exact
                     path={paths.packageDetail.to}
                     component={PackageDetail}
