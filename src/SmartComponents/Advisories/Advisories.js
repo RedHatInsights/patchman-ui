@@ -11,12 +11,20 @@ import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { advisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
-import { changeAdvisoryListParams, expandAdvisoryRow,
-    fetchApplicableAdvisories, selectAdvisoryRow } from '../../store/Actions/Actions';
-import { exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi } from '../../Utilities/api';
+import {
+    changeAdvisoryListParams, expandAdvisoryRow,
+    fetchApplicableAdvisories, selectAdvisoryRow
+} from '../../store/Actions/Actions';
+import {
+    exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi,
+    fetchSystems, fetchViewAdvisoriesSystems
+} from '../../Utilities/api';
 import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
-import { createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable } from '../../Utilities/Helpers';
+import {
+    arrayFromObj, createSortBy, decodeQueryparams,
+    encodeURLParams, getRowIdByIndexExpandable, remediationProviderWithPairs, transformPairs
+} from '../../Utilities/Helpers';
 import { setPageTitle, useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 
@@ -108,6 +116,16 @@ const Advisories = ({ history }) => {
 
     const errorState  = status === STATUS_REJECTED && <Unavailable />;
 
+    const prepareRemediationPairs = (issues) => {
+        return fetchSystems({ limit: -1 }).then(
+            ({ data }) => fetchViewAdvisoriesSystems(
+                {
+                    advisories: issues,
+                    systems: data.map(system => system.id)
+                }
+            ));
+    };
+
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchAdvisories)} headerOUIA={'advisories'}/>
@@ -123,6 +141,9 @@ const Advisories = ({ history }) => {
                     selectedRows={selectedRows}
                     onSelect={onSelect}
                     sortBy={sortBy}
+                    remediationProvider={() =>
+                        remediationProviderWithPairs(arrayFromObj(selectedRows), prepareRemediationPairs, transformPairs)
+                    }
                     apply={apply}
                     remediationButtonOUIA={'toolbar-remediation-button'}
                     tableOUIA={'advisories-table'}

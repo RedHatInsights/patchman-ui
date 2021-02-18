@@ -19,6 +19,20 @@ export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
 };
 
+// eslint-disable-next-line no-unused-vars
+export const transformPairs = (input) => {
+    return {
+        issues: Object.keys(input.data).map(advisory => {
+            return {
+                id: 'patch-advisory:' + advisory,
+                description: advisory,
+                systems: input.data[advisory]
+            };
+        }
+        )
+    };
+};
+
 export const createSortBy = (header, values, offset) => {
     if (values) {
         let [column] = values;
@@ -153,6 +167,20 @@ export const remediationProvider = (issues, systems, remediationIdentifier) => {
         }
         : false;
 };
+
+export async function remediationProviderWithPairs(issues, createPairs, transformFunc) {
+    if (issues) {
+        const pairsCreated = await createPairs(issues);
+        const res = transformFunc(pairsCreated);
+        console.log(await res);
+        return await res;
+    }
+    else {
+        return false;
+    }
+}
+
+;
 
 export const getFilterValue = (category, key) => {
     const filterCategory = filterCategories[category];

@@ -1,17 +1,17 @@
 import { Button } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons'; // PF typo
 import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
-import { PrimaryToolbar, SkeletonTable } from '@redhat-cloud-services/frontend-components';
 import globalPaletteWhite from '@patternfly/react-tokens/dist/js/global_palette_white';
+import { PrimaryToolbar, SkeletonTable } from '@redhat-cloud-services/frontend-components';
 import PropTypes from 'prop-types';
 import React from 'react';
+import messages from '../../Messages';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter } from '../../Utilities/Hooks';
-import TableFooter from './TableFooter';
 import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
+import TableFooter from './TableFooter';
 
 const TableView = ({
     columns,
@@ -48,9 +48,11 @@ const TableView = ({
         [metadata.limit, metadata.offset]
     );
 
-    const showRemediationModal = data => {
-        setRemediationModalCmp(() => () => <RemediationModal data={data} />);
-    };
+    async function showRemediationModal(data) {
+        const resolvedData = await data;
+        console.log(resolvedData);
+        setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
+    }
 
     const removeFilter = useRemoveFilter(filter, apply);
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
