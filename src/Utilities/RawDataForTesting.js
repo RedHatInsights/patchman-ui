@@ -88,8 +88,3 @@ export const entityDetail = {
         account: '60'
     }
 };
-
-export const selectionPayload = {
-    selectedItems: { id: 1, selected: true },
-    selectionType: 'all'
-};

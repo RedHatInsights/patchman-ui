@@ -142,10 +142,7 @@ describe('SystemAdvisories.js', () => {
             onSelect(null, 'test', 0);
             const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');
-            expect(dispatchedActions[1].payload).toEqual({
-                selectedItems: [{id: 'RHSA-2020:2774', selected: 'RHSA-2020:2774'}], 
-                selectionType: 'single'
-            });          
+            expect(dispatchedActions[1].payload).toEqual([{ id: 'RHSA-2020:2774', selected: 'RHSA-2020:2774' }]);          
         });
 
         it('Should handle onSelect', () => {
@@ -158,10 +155,13 @@ describe('SystemAdvisories.js', () => {
             bulkSelect.onSelect();
             const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');            
-            expect(dispatchedActions[1].payload).toEqual({
-                selectedItems: [{id: 'RHSA-2020:2774', selected: false}], 
-                selectionType: 'none'
-            });            
+            expect(dispatchedActions[1].payload).toEqual([
+                    {
+                        id: 'RHSA-2020:2774',
+                        selected: false,
+                    }
+                ]
+            );            
         });
     });
         

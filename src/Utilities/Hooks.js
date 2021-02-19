@@ -91,7 +91,6 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
     };
 
     const onSelect =  React.useCallback((event, selected, rowId) => {
-
         const createSelectedRow = (rawData, toSelect = []) => {
             rawData.forEach((row)=>{
                 toSelect.push(
@@ -106,27 +105,27 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
 
         switch (event) {
             case 'none': {
-                const selectedItems = [];
+                const toSelect = [];
                 Object.keys(selectedRows).forEach(id=>{
-                    selectedItems.push(
+                    toSelect.push(
                         {
                             id,
                             selected: false
                         }
                     );
                 });
-                selectRows({ selectedItems, selectionType: 'none' });
+                selectRows(toSelect);
                 break;
             }
 
             case 'page': {
-                selectRows({ selectedItems: createSelectedRow(rawData), selectionType: 'page' });
+                selectRows(createSelectedRow(rawData));
                 break;
             }
 
             case 'all': {
                 const fetchCallback = ({ data }) => {
-                    selectRows({ selectedItems: createSelectedRow(data), selectionType: 'all' });
+                    selectRows(createSelectedRow(data));
                 };
 
                 fetchAllData().then(fetchCallback);
@@ -135,13 +134,10 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
             }
 
             default: {
-                selectRows({
-                    selectedItems: [{
-                        id: constructKey(rawData[rowId]),
-                        selected: selected && (constructFilename && constructFilename(rawData[rowId]) || true)
-                    }],
-                    selectionType: 'single'
-                });
+                selectRows([{
+                    id: constructKey(rawData[rowId]),
+                    selected: selected && (constructFilename && constructFilename(rawData[rowId]) || true)
+                }]);
             }
 
         }}

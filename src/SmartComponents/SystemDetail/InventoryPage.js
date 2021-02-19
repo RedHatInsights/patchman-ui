@@ -38,6 +38,7 @@ const InventoryDetail = () => {
             >
                 <InventoryDetailHead
                     onLoad={({ mergeWithDetail }) => {
+                        console.log('Inventory on load');
                         register({
                             ...mergeWithDetail(SystemDetailStore)
                         });

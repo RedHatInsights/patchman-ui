@@ -3,7 +3,6 @@
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
 import { CHANGE_SYSTEM_ADVISORY_LIST_PARAMS, CLEAR_SYSTEM_ADVISORIES, EXPAND_SYSTEM_ADVISORY_ROW, FETCH_APPLICABLE_SYSTEM_ADVISORIES, SELECT_SYSTEM_ADVISORY_ROW } from '../ActionTypes';
 import { SystemAdvisoryListStore } from './SystemAdvisoryListStore';
-import { selectionPayload } from '../../Utilities/RawDataForTesting';
 const action_fulfilled = FETCH_APPLICABLE_SYSTEM_ADVISORIES + '_FULFILLED';
 const action_rejected = FETCH_APPLICABLE_SYSTEM_ADVISORIES + '_REJECTED';
 const action_pending = FETCH_APPLICABLE_SYSTEM_ADVISORIES + '_PENDING';
@@ -28,7 +27,7 @@ describe('SystemAdvisoryListStore tests', () => {
     ${storeListDefaults} | ${{ type: action_rejected, payload: error }}                                | ${{ ...storeListDefaults, status: STATUS_REJECTED, error }}
     ${storeListDefaults} | ${{ type: EXPAND_SYSTEM_ADVISORY_ROW, payload: { rowId: 1, value: true } }} | ${{ ...storeListDefaults, expandedRows: { 1: true } }}
     ${storeListDefaults} | ${{ type: CHANGE_SYSTEM_ADVISORY_LIST_PARAMS, payload: { limit: 10 } }}     | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0 } }}
-    ${storeListDefaults} | ${{ type: SELECT_SYSTEM_ADVISORY_ROW, payload: selectionPayload }}          | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
+    ${storeListDefaults} | ${{ type: SELECT_SYSTEM_ADVISORY_ROW, payload: { id: 1, selected: true } }} | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
     ${storeListDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                        | ${storeListDefaults}
     ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                        | ${storeListDefaults}
     ${storeListDefaults} | ${{type: CLEAR_SYSTEM_ADVISORIES, payload: {}}}                             | ${storeListDefaults}

@@ -3,7 +3,6 @@
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED, storeListDefaults } from '../../Utilities/constants';
 import { CHANGE_AFFECTED_SYSTEMS_PARAMS, CLEAR_AFFECTED_SYSTEMS, FETCH_AFFECTED_SYSTEMS } from '../ActionTypes';
 import { AdvisorySystemsStore } from './AdvisorySystemsStore';
-import { selectionPayload } from '../../Utilities/RawDataForTesting';
 const action_fulfilled = FETCH_AFFECTED_SYSTEMS + '_FULFILLED';
 const action_rejected = FETCH_AFFECTED_SYSTEMS + '_REJECTED';
 const action_pending = FETCH_AFFECTED_SYSTEMS + '_PENDING';
@@ -28,7 +27,7 @@ describe('AdvisorySystemsStore tests', () => {
     ${storeListDefaults} | ${{ type: action_rejected, payload: error }}                        | ${{ ...storeListDefaults, status: STATUS_REJECTED, error }}
     ${storeListDefaults} | ${{ type: CHANGE_AFFECTED_SYSTEMS_PARAMS, payload: { limit: 10 } }} | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0 } }}
     ${storeListDefaults} | ${{ type: CLEAR_AFFECTED_SYSTEMS, payload: {} }}                    | ${storeListDefaults}
-    ${storeListDefaults} | ${{ type: 'SELECT_ENTITY', payload: selectionPayload }}             | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
+    ${storeListDefaults} | ${{ type: 'SELECT_ENTITY', payload: { id: 1, selected: true } }}    | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
     ${storeListDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                | ${storeListDefaults}
     ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                | ${storeListDefaults}
     `('$action', ({ state, action: { type, payload }, result }) => {

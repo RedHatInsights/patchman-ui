@@ -97,10 +97,7 @@ describe('SystemPackages.js', () => {
         const dispatchedActions = store.getActions();
 
         expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_PACKAGES_ROW');
-        expect(dispatchedActions[1].payload).toEqual({
-            selectedItems: [{id: 'acl-2.2.*', selected: true}],
-            selectionType: 'single'
-        });
+        expect(dispatchedActions[1].payload).toEqual([ { id: 'acl-2.2.*', selected: true } ]);
     });
 
     it('Should fetch fetchApplicablePackagesApi on selecting all rows', () => {
