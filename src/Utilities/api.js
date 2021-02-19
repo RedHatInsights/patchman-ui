@@ -67,7 +67,7 @@ export const fetchPackagesList = params => {
 
 export const fetchCvesInfo = async ({ cveIds }) => {
 
-    const result = await fetch(`api/vulnerability/v1/vulnerabilities/cves?limit=${cveIds && cveIds.length}`, {
+    const result = await fetch(`/api/vulnerability/v1/vulnerabilities/cves?limit=${cveIds && cveIds.length}`, {
         method: 'POST',
         credentials: 'include',
         headers: {
