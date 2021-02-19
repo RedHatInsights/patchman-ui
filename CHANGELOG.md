@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.10.0...v1.11.0) (2021-02-19)
+
+
+### Features
+
+* **Packages:** change remediation identifier to patch-package ([b9d031f](https://github.com/RedHatInsights/patchman-ui/commit/b9d031ff6bd7be0ea33228f27e0e7755bea101e6))
+
 # [1.10.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.9.1...v1.10.0) (2021-02-11)
 
 
