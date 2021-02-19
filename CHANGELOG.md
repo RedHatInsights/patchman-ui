@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.11.0...v1.11.1) (2021-02-19)
+
+
+### Bug Fixes
+
+* **bulkSelect): Revert "fix(bulkSelect:** page selecting after selecting all items" ([88210b2](https://github.com/RedHatInsights/patchman-ui/commit/88210b2369f98197044a1a337123562030a69ab8))
+
 # [1.11.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.10.0...v1.11.0) (2021-02-19)
 
 
