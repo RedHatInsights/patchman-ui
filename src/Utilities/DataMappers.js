@@ -9,6 +9,7 @@ import { DescriptionWithLink } from '../PresentationalComponents/Snippets/Descri
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { TextContent, TextListItem, TextListItemVariants } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
+import { Button } from '@patternfly/react-core';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -229,7 +230,10 @@ export const createCvesRows = (rows) => {
                 id,
                 key: id,
                 cells: [
-                    { title: attributes.synopsis },
+                    { title: (
+                        <Button variant="link" component="a" href={`/insights/vulnerability/cves/${attributes.synopsis}`} >
+                            {attributes.synopsis}
+                        </Button>) },
                     {
                         title: (<TextContent>
                             <TextListItem component={TextListItemVariants.dd}>
@@ -238,7 +242,7 @@ export const createCvesRows = (rows) => {
                         </TextContent>),
                         value: severityObject.label
                     },
-                    { title: attributes.cvss_score }
+                    { title: parseFloat(attributes.cvss_score).toFixed(1) }
                 ]
             };
         });
