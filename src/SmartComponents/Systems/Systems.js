@@ -163,6 +163,12 @@ const Systems = () => {
                     (
                         <InventoryTable
                             disableDefaultColumns
+                            getEntities={
+                                () =>  Promise.resolve({
+                                    results: rawSystems.map((system) => ({ ...system.attributes, id: system.id })),
+                                    total: metadata.total_items
+                                })
+                            }
                             onLoad={({ mergeWithEntities }) => {
                                 const store = getStore();
                                 register({

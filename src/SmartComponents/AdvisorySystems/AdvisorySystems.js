@@ -11,7 +11,7 @@ import { getStore, register } from '../../store';
 import { changeAdvisorySystemsParams, clearAdvisorySystemsStore, fetchAdvisorySystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems } from '../../Utilities/api';
-import { remediationIdentifiers, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider, filterSelectedRowIDs } from '../../Utilities/Helpers';
 import {
@@ -124,6 +124,10 @@ const AdvisorySystems = ({ advisoryName }) => {
             {status === STATUS_REJECTED ? <Unavailable/> : (
                 <InventoryTable
                     disableDefaultColumns
+                    getEntities={() => Promise.resolve({
+                        results: rawAdvisorySystems.map((system) => ({ ...system.attributes, id: system.id })),
+                        total: metadata.total_items
+                    })}
                     onLoad={({ mergeWithEntities }) => {
                         const store = getStore();
                         register({
