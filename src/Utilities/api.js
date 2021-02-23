@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { encodeApiParams } from './Helpers';
 import axios from './axiosInterceptors';
 
@@ -157,3 +158,4 @@ export const exportPackagesJSON = params => {
         headers: new Headers({ accept: 'application/json' })
     }).then(res => res.json());
 };
+
