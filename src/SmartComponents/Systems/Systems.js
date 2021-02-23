@@ -1,3 +1,5 @@
+import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
+import { AnsibleTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
 import { Main, Unavailable } from '@redhat-cloud-services/frontend-components';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
@@ -10,10 +12,16 @@ import Header from '../../PresentationalComponents/Header/Header';
 import { getStore, register } from '../../store';
 import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
-import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api';
+import {
+    exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
+    fetchSystems, fetchViewAdvisoriesSystems
+} from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, buildFilterChips, createSortBy } from '../../Utilities/Helpers';
+import {
+    arrayFromObj, buildFilterChips, createSortBy,
+    remediationProviderWithPairs, transformPairs
+} from '../../Utilities/Helpers';
 import {
     setPageTitle,
     useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
@@ -67,9 +75,10 @@ const Systems = () => {
 
     const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
-    const showRemediationModal = data => {
-        setRemediationModalCmp(() => () => <RemediationModal data={data} />);
-    };
+    async function showRemediationModal(data) {
+        const resolvedData = await data;
+        setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
+    }
 
     function apply(params) {
         dispatch(changeSystemsListParams(params));
@@ -107,7 +116,7 @@ const Systems = () => {
         );
     };
 
-    const onSelect = useOnSelect(rawSystems,  selectedRows, fetchAllData, selectRows);
+    const onSelect = useOnSelect(hosts,  selectedRows, fetchAllData, selectRows);
 
     const onSort = useSortColumn(getMangledColumns(), apply);
     const sortBy = React.useMemo(
@@ -131,6 +140,16 @@ const Systems = () => {
         // eslint-disable-next-line camelcase
         const { applicable_advisories } = rowData;
         return applicable_advisories.every(typeSum => typeSum === 0);
+    };
+
+    const prepareRemediationPairs = (systems) => {
+        return fetchApplicableAdvisoriesApi({ limit: -1 }).then(
+            ({ data }) => fetchViewAdvisoriesSystems(
+                {
+                    advisories: data.map(advisory=> advisory.id),
+                    systems
+                }
+            ));
     };
 
     return (
@@ -190,7 +209,29 @@ const Systems = () => {
                             tableProps = {{ areActionsDisabled, onSort, sortBy, canSelectAll: false,
                                 variant: TableVariant.compact, className: 'patchCompactInventory' }}
 
-                        />
+                        >
+                            <ToolbarGroup>
+                                <ToolbarItem>
+                                    <Button
+                                        className={'remediationButtonPatch'}
+                                        isDisabled={
+                                            arrayFromObj(selectedRows).length === 0
+                                        }
+                                        onClick={() =>
+                                            showRemediationModal(
+                                                remediationProviderWithPairs(
+                                                    Object.keys(selectedRows).filter(row=>selectedRows[row]),
+                                                    prepareRemediationPairs, transformPairs)
+                                            )
+                                        }
+                                        ouiaId={'toolbar-remediation-button'}
+                                    >
+                                        <AnsibleTowerIcon/>&nbsp;{intl.formatMessage(messages.labelsRemediate)}
+                                    </Button>
+                                    <RemediationModalCmp />
+                                </ToolbarItem>
+                            </ToolbarGroup>
+                        </InventoryTable>
                     )
                 }
             </Main>
