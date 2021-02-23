@@ -41,11 +41,6 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'CVE ID'
     },
-    labelsColumnsImpact: {
-        id: 'labelsColumnsImpact',
-        description: 'shared label',
-        defaultMessage: 'Impact'
-    },
     labelsColumnsInstalledVersion: {
         id: 'labelsColumnsInstalledVersion',
         description: 'shared label',
@@ -70,6 +65,11 @@ export default defineMessages({
         id: 'labelsColumnsPublishDate',
         description: 'shared label',
         defaultMessage: 'Publish date'
+    },
+    labelsColumnsSeverity: {
+        id: 'labelsColumnsSeverity',
+        description: 'shared label',
+        defaultMessage: 'Severity'
     },
     labelsColumnsStatus: {
         id: 'labelsColumnsStatus',

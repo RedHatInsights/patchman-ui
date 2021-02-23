@@ -123,7 +123,7 @@ export const cvesTableColumns = [
     },
     {
         key: 'impact',
-        title: intl.formatMessage(messages.labelsColumnsImpact),
+        title: intl.formatMessage(messages.labelsColumnsSeverity),
         transforms: [sortable, cellWidth(30)],
         props: {
             width: 30
