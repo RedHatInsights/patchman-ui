@@ -81,7 +81,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                 Object {
                   "isActive": false,
                   "title": "Patch advisories",
-                  "to": "/",
+                  "to": "/advisories",
                 },
                 Object {
                   "isActive": true,
@@ -106,7 +106,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                       Object {
                         "isActive": false,
                         "title": "Patch advisories",
-                        "to": "/",
+                        "to": "/advisories",
                       },
                       Object {
                         "isActive": true,
@@ -137,18 +137,18 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                             <Link
                               data-ouia-component-id="breadcrumb-to-Patch advisories"
                               data-ouia-component-type="advisory-details-breadcrumb"
-                              to="/"
+                              to="/advisories"
                             >
                               <LinkAnchor
                                 data-ouia-component-id="breadcrumb-to-Patch advisories"
                                 data-ouia-component-type="advisory-details-breadcrumb"
-                                href="/"
+                                href="/advisories"
                                 navigate={[Function]}
                               >
                                 <a
                                   data-ouia-component-id="breadcrumb-to-Patch advisories"
                                   data-ouia-component-type="advisory-details-breadcrumb"
-                                  href="/"
+                                  href="/advisories"
                                   onClick={[Function]}
                                 >
                                   Patch advisories
