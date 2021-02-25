@@ -1,3 +1,10 @@
+## [1.11.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.11.2...v1.11.3) (2021-02-25)
+
+
+### Bug Fixes
+
+* **select:** after filering ([12ccc83](https://github.com/RedHatInsights/patchman-ui/commit/12ccc8396a8cd6fc586d88acc2afafe6a7d2db56))
+
 ## [1.11.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.11.1...v1.11.2) (2021-02-25)
 
 
