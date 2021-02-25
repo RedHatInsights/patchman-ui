@@ -49,7 +49,7 @@ const RegisterPage = lazy(() =>
 export const paths = {
     advisories: {
         title: 'Applicable advisories',
-        to: '/'
+        to: '/advisories'
     },
     systems: {
         title: 'Systems',
@@ -104,7 +104,6 @@ export const Routes = (props) => {
         // I recommend discussing with UX some nice loading placeholder
         <Suspense fallback={Fragment}>
             <Switch>
-                <Route path="/:url*" exact strict render={() => <Redirect to={`${path}/`}/>}/>
                 <Redirect
                     from={paths.advisoryDetailSystem.to}
                     to={paths.inventoryDetail.to}
