@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.11.1...v1.11.2) (2021-02-25)
+
+
+### Bug Fixes
+
+* **CVEs:** inconsistencies in cves info modal ([ff150b6](https://github.com/RedHatInsights/patchman-ui/commit/ff150b6873b29d1a40c8e357ede8fd24d8ea317f))
+
 ## [1.11.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.11.0...v1.11.1) (2021-02-19)
 
 
