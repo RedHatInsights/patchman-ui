@@ -241,6 +241,11 @@ export default defineMessages({
         description: 'system up to date page body',
         defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
     },
+    textThirdPartyInfo: {
+        id: 'textThirdPartyInfo',
+        description: 'text about the third paty managed hosts',
+        defaultMessage: 'This system has content that is managed by repositories other than the Red Hat CDN'
+    },
     titlesAdvisories: {
         id: 'titlesAdvisories',
         description: 'page title with capital letter',

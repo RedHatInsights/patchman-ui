@@ -38,6 +38,10 @@ export const fetchSystems = params => {
     return createApiCall('/systems', 'get', params);
 };
 
+export const fetchSystemDetails = id => {
+    return createApiCall(`/systems/${id}`, 'get');
+};
+
 export const fetchAdvisoryDetailsApi = params => {
     return createApiCall(`/advisories/${params.advisoryName}`, 'get');
 };

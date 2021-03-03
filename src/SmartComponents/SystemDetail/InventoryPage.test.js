@@ -45,7 +45,7 @@ beforeEach(() => {
         return callback({ entityDetails: mockState });
     });
     wrapper = mount(<Provider store={store}>
-            <Router><InventoryPage /></Router>
+            <Router><InventoryPage match = {{ params: { inventoryId: 'test' } }}/></Router>
         </Provider>); 
 });
 

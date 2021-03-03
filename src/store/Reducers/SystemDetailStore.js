@@ -6,8 +6,11 @@ let initialState = {
 };
 
 // Reducer
-export const SystemDetailStore = (state = initialState, action) => {
-    switch (action.type) {
+export const SystemDetailStore = (state = initialState, { type, payload }) => {
+    switch (type) {
+        case 'FETCH_SYSTEM_DETAIL_FULFILLED':
+            state.hasThirdPartyRepo = payload.data?.attributes.third_party;
+            return state;
         case 'LOAD_ENTITY_FULFILLED':
             return {
                 ...state,
