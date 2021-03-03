@@ -1,6 +1,6 @@
 import { fetchAdvisoryDetailsApi, fetchAdvisorySystems, fetchApplicableAdvisoriesApi,
     fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchPackageDetailsApi,
-    fetchPackagesList, fetchPackageSystems, fetchSystems, fetchCvesInfo } from '../../Utilities/api';
+    fetchPackagesList, fetchPackageSystems, fetchSystems, fetchCvesInfo, fetchSystemDetails } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({
@@ -174,4 +174,11 @@ export const fetchCves = (params) => ({
 export const changeCvesListParams = params => ({
     type: ActionTypes.CHANGE_CVES_STORE_PARAMS,
     payload: params
+});
+
+export const fetchSystemDetailsAction = params => ({
+    type: ActionTypes.FETCH_SYSTEM_DETAIL,
+    payload: new Promise(resolve => {
+        resolve(fetchSystemDetails(params));
+    }).then(result => result)
 });

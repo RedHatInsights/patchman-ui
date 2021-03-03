@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Header from '../../PresentationalComponents/Header/Header';
 import { paths } from '../../Routes';
 import { register } from '../../store';
@@ -10,11 +9,21 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { InventoryDetailHead, AppInfo } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
+import { Label } from '@patternfly/react-core';
+import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
+import propTypes from 'prop-types';
 
-const InventoryDetail = () => {
+const InventoryDetail = ({ match }) => {
+    const dispatch = useDispatch();
     const entityDetails = useSelector(
         ({ entityDetails }) => entityDetails && entityDetails.entity
     );
+
+    const hasThirdPartyRepo = useSelector(
+        ({ entityDetails }) => entityDetails && entityDetails.hasThirdPartyRepo
+    );
+    const entityId = match.params?.inventoryId;
+    useEffect(() => { dispatch(fetchSystemDetailsAction(entityId)); }, []);
 
     const pageTitle = entityDetails && `${entityDetails.display_name} - ${intl.formatMessage(messages.titlesSystems)}`;
     setPageTitle(pageTitle);
@@ -43,13 +52,21 @@ const InventoryDetail = () => {
                             ...mergeWithDetail(SystemDetailStore)
                         });
                     }} hideBack
-                />
+                >
+                    { hasThirdPartyRepo &&
+                        (<Label color="purple">{intl.formatMessage(messages.textThirdPartyInfo)}</Label>)
+                    }
+                </InventoryDetailHead>
             </Header>
             <Main>
                 <AppInfo />
             </Main>
         </React.Fragment>
     );
+};
+
+InventoryDetail.propTypes = {
+    match: propTypes.object
 };
 
 export default InventoryDetail;
