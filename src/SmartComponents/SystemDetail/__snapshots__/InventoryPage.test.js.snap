@@ -36,7 +36,15 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
         }
       }
     >
-      <InventoryDetail>
+      <InventoryDetail
+        match={
+          Object {
+            "params": Object {
+              "inventoryId": "test",
+            },
+          }
+        }
+      >
         <Header
           breadcrumbs={
             Array [
