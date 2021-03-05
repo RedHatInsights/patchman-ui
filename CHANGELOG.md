@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.11.3...v1.12.0) (2021-03-05)
+
+
+### Features
+
+* **SystemDetail:** add third party info ([f42978c](https://github.com/RedHatInsights/patchman-ui/commit/f42978c9c68ad0ff51a38dee2ada0eb4dbabef37))
+
 ## [1.11.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.11.2...v1.11.3) (2021-02-25)
 
 
