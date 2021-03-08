@@ -117,7 +117,10 @@ const Advisories = ({ history }) => {
                     store={{ rows, metadata, status, queryParams }}
                     filterConfig={{
                         items: [
-                            searchFilter(apply, queryParams.search),
+                            searchFilter(apply, queryParams.search,
+                                intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle),
+                                intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder)
+                            ),
                             typeFilter(apply, queryParams.filter),
                             publishDateFilter(apply, queryParams.filter)
                         ]

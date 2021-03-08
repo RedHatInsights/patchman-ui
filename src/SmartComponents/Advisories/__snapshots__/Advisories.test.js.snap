@@ -172,10 +172,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                           "filterValues": Object {
                             "aria-label": "search-field",
                             "onChange": [Function],
-                            "placeholder": "Search advisories",
+                            "placeholder": "Filter by name or synopsis",
                             "value": undefined,
                           },
-                          "label": "Search ",
+                          "label": "Advisory",
                           "type": "text",
                         },
                         Object {
@@ -314,10 +314,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                             "filterValues": Object {
                               "aria-label": "search-field",
                               "onChange": [Function],
-                              "placeholder": "Search advisories",
+                              "placeholder": "Filter by name or synopsis",
                               "value": undefined,
                             },
-                            "label": "Search ",
+                            "label": "Advisory",
                             "type": "text",
                           },
                           Object {
@@ -414,10 +414,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "filterValues": Object {
                                                   "aria-label": "search-field",
                                                   "onChange": [Function],
-                                                  "placeholder": "Search advisories",
+                                                  "placeholder": "Filter by name or synopsis",
                                                   "value": undefined,
                                                 },
-                                                "label": "Search ",
+                                                "label": "Advisory",
                                                 "type": "text",
                                               },
                                               Object {
@@ -474,7 +474,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           isHovered={true}
                                                           onClick={[Function]}
                                                         >
-                                                          Search 
+                                                          Advisory
                                                         </DropdownItem>,
                                                         <DropdownItem
                                                           component="button"
@@ -508,7 +508,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                         <span
                                                           className="ins-c-conditional-filter__value-selector"
                                                         >
-                                                          Search 
+                                                          Advisory
                                                         </span>
                                                       </DropdownToggle>
                                                     }
@@ -524,7 +524,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                             isHovered={true}
                                                             onClick={[Function]}
                                                           >
-                                                            Search 
+                                                            Advisory
                                                           </DropdownItem>,
                                                           <DropdownItem
                                                             component="button"
@@ -562,7 +562,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           <span
                                                             className="ins-c-conditional-filter__value-selector"
                                                           >
-                                                            Search 
+                                                            Advisory
                                                           </span>
                                                         </DropdownToggle>
                                                       }
@@ -621,7 +621,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                     <span
                                                                       class="ins-c-conditional-filter__value-selector"
                                                                     >
-                                                                      Search 
+                                                                      Advisory
                                                                     </span>
                                                                   </span>
                                                                   <span
@@ -700,7 +700,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                       <span
                                                                         class="ins-c-conditional-filter__value-selector"
                                                                       >
-                                                                        Search 
+                                                                        Advisory
                                                                       </span>
                                                                     </span>
                                                                     <span
@@ -768,7 +768,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                 <span
                                                                   className="ins-c-conditional-filter__value-selector"
                                                                 >
-                                                                  Search 
+                                                                  Advisory
                                                                 </span>
                                                               </span>
                                                               <span
@@ -818,7 +818,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     isDisabled={false}
                                                     onChange={[Function]}
                                                     onSubmit={[Function]}
-                                                    placeholder="Search advisories"
+                                                    placeholder="Filter by name or synopsis"
                                                     value=""
                                                   >
                                                     <TextInput
@@ -828,7 +828,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       isDisabled={false}
                                                       onChange={[Function]}
                                                       onKeyDown={[Function]}
-                                                      placeholder="Search advisories"
+                                                      placeholder="Filter by name or synopsis"
                                                       value=""
                                                       widget-type="InsightsInput"
                                                     >
@@ -843,7 +843,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                         isRequired={false}
                                                         onChange={[Function]}
                                                         onKeyDown={[Function]}
-                                                        placeholder="Search advisories"
+                                                        placeholder="Filter by name or synopsis"
                                                         type="text"
                                                         validated="default"
                                                         value=""
@@ -859,7 +859,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           onChange={[Function]}
                                                           onFocus={[Function]}
                                                           onKeyDown={[Function]}
-                                                          placeholder="Search advisories"
+                                                          placeholder="Filter by name or synopsis"
                                                           readOnly={false}
                                                           required={false}
                                                           type="text"

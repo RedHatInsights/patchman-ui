@@ -111,10 +111,20 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'Description'
     },
-    labelsFiltersPackagesSearch: {
-        id: 'labelsFiltersPackagesSearch',
+    labelsFiltersCvesSearch: {
+        id: 'labelsFiltersCvesSearch',
         description: 'search filter placeholder for packages pages',
-        defaultMessage: 'Search packages'
+        defaultMessage: 'Filter by ID'
+    },
+    labelsFiltersPackagesSearchPlaceHolder: {
+        id: 'labelsFiltersPackagesSearchPlaceHolder',
+        description: 'search filter placeholder for packages pages',
+        defaultMessage: 'Filter by name or summary'
+    },
+    labelsFiltersPackagesSearchTitle: {
+        id: 'labelsFiltersPackagesSearchTitle',
+        description: 'search filter placeholder for packages pages',
+        defaultMessage: 'Package'
     },
     labelsFiltersPublishDate: {
         id: 'labelsFiltersPublishDate',
@@ -126,20 +136,30 @@ export default defineMessages({
         description: 'Label for search fitler placeholder',
         defaultMessage: 'Search '
     },
-    labelsFiltersSearchAdvisories: {
-        id: 'labelsFiltersSearchAdvisories',
+    labelsFiltersSearchAdvisoriesPlaceholder: {
+        id: 'labelsFiltersSearchAdvisoriesPlaceholder',
         description: 'Label for search fitler placeholder',
-        defaultMessage: 'Search advisories'
+        defaultMessage: 'Filter by name or synopsis'
+    },
+    labelsFiltersSearchAdvisoriesTitle: {
+        id: 'labelsFiltersSearchAdvisoriesTitle',
+        description: 'Label for search fitler placeholder',
+        defaultMessage: 'Advisory'
     },
     labelsFiltersStatus: {
         id: 'labelsFiltersStatus',
         description: 'Label for status fitler placeholder',
         defaultMessage: 'Status'
     },
-    labelsFiltersSystemsSearch: {
+    labelsFiltersSystemsSearchPlaceholder: {
         id: 'labelsFiltersSystemsSearch',
         description: 'search filter placeholder for systems pages',
-        defaultMessage: 'Search systems'
+        defaultMessage: 'Filter by name'
+    },
+    labelsFiltersSystemsSearchTitle: {
+        id: 'labelsFiltersSystemsSearchTitle',
+        description: 'search filter placeholder for systems pages',
+        defaultMessage: 'System'
     },
     labelsFiltersType: {
         id: 'labelsFiltersType',

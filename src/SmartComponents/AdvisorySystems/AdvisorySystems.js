@@ -77,7 +77,10 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const filterConfig = {
         items: [
-            searchFilter(apply, search, intl.formatMessage(messages.labelsFiltersSystemsSearch))
+            searchFilter(apply, search,
+                intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+                intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
+            )
         ]
     };
 
