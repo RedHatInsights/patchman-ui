@@ -91,10 +91,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   "filterValues": Object {
                     "aria-label": "search-field",
                     "onChange": [Function],
-                    "placeholder": "Search packages",
+                    "placeholder": "Filter by name or summary",
                     "value": undefined,
                   },
-                  "label": "Search ",
+                  "label": "Package",
                   "type": "text",
                 },
                 Object {
@@ -261,10 +261,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                     "filterValues": Object {
                       "aria-label": "search-field",
                       "onChange": [Function],
-                      "placeholder": "Search packages",
+                      "placeholder": "Filter by name or summary",
                       "value": undefined,
                     },
-                    "label": "Search ",
+                    "label": "Package",
                     "type": "text",
                   },
                   Object {
@@ -744,10 +744,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                         "filterValues": Object {
                                           "aria-label": "search-field",
                                           "onChange": [Function],
-                                          "placeholder": "Search packages",
+                                          "placeholder": "Filter by name or summary",
                                           "value": undefined,
                                         },
-                                        "label": "Search ",
+                                        "label": "Package",
                                         "type": "text",
                                       },
                                       Object {
@@ -791,7 +791,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   isHovered={true}
                                                   onClick={[Function]}
                                                 >
-                                                  Search 
+                                                  Package
                                                 </DropdownItem>,
                                                 <DropdownItem
                                                   component="button"
@@ -818,7 +818,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                 <span
                                                   className="ins-c-conditional-filter__value-selector"
                                                 >
-                                                  Search 
+                                                  Package
                                                 </span>
                                               </DropdownToggle>
                                             }
@@ -834,7 +834,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                     isHovered={true}
                                                     onClick={[Function]}
                                                   >
-                                                    Search 
+                                                    Package
                                                   </DropdownItem>,
                                                   <DropdownItem
                                                     component="button"
@@ -865,7 +865,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   <span
                                                     className="ins-c-conditional-filter__value-selector"
                                                   >
-                                                    Search 
+                                                    Package
                                                   </span>
                                                 </DropdownToggle>
                                               }
@@ -924,7 +924,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                             <span
                                                               class="ins-c-conditional-filter__value-selector"
                                                             >
-                                                              Search 
+                                                              Package
                                                             </span>
                                                           </span>
                                                           <span
@@ -1003,7 +1003,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                               <span
                                                                 class="ins-c-conditional-filter__value-selector"
                                                               >
-                                                                Search 
+                                                                Package
                                                               </span>
                                                             </span>
                                                             <span
@@ -1071,7 +1071,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                         <span
                                                           className="ins-c-conditional-filter__value-selector"
                                                         >
-                                                          Search 
+                                                          Package
                                                         </span>
                                                       </span>
                                                       <span
@@ -1121,7 +1121,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                             isDisabled={false}
                                             onChange={[Function]}
                                             onSubmit={[Function]}
-                                            placeholder="Search packages"
+                                            placeholder="Filter by name or summary"
                                             value=""
                                           >
                                             <TextInput
@@ -1131,7 +1131,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                               isDisabled={false}
                                               onChange={[Function]}
                                               onKeyDown={[Function]}
-                                              placeholder="Search packages"
+                                              placeholder="Filter by name or summary"
                                               value=""
                                               widget-type="InsightsInput"
                                             >
@@ -1146,7 +1146,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                 isRequired={false}
                                                 onChange={[Function]}
                                                 onKeyDown={[Function]}
-                                                placeholder="Search packages"
+                                                placeholder="Filter by name or summary"
                                                 type="text"
                                                 validated="default"
                                                 value=""
@@ -1162,7 +1162,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   onChange={[Function]}
                                                   onFocus={[Function]}
                                                   onKeyDown={[Function]}
-                                                  placeholder="Search packages"
+                                                  placeholder="Filter by name or summary"
                                                   readOnly={false}
                                                   required={false}
                                                   type="text"

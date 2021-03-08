@@ -93,7 +93,10 @@ const Packages = () => {
                     apply={apply}
                     filterConfig={{
                         items: [
-                            searchFilter(apply, queryParams.search, intl.formatMessage(messages.labelsFiltersPackagesSearch)),
+                            searchFilter(apply, queryParams.search,
+                                intl.formatMessage(messages.labelsFiltersPackagesSearchTitle),
+                                intl.formatMessage(messages.labelsFiltersPackagesSearchPlaceHolder)
+                            ),
                             packagesListStatusFilter(apply, queryParams.filter)
                         ]
                     }}
