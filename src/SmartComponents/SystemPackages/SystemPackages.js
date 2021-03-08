@@ -119,7 +119,10 @@ const SystemPackages = ({ handleNoSystemData }) => {
                 apply={apply}
                 filterConfig={{
                     items: [
-                        searchFilter(apply, queryParams.search, intl.formatMessage(messages.labelsFiltersPackagesSearch)),
+                        searchFilter(apply, queryParams.search,
+                            intl.formatMessage(messages.labelsFiltersPackagesSearchTitle),
+                            intl.formatMessage(messages.labelsFiltersPackagesSearchPlaceHolder)
+                        ),
                         statusFilter(apply, queryParams.filter)
                     ]
                 }}

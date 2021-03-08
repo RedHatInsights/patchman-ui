@@ -17,6 +17,8 @@ import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const SystemAdvisories = ({ history, handleNoSystemData }) => {
     const dispatch = useDispatch();
@@ -135,7 +137,10 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
                 paginationOUIA={'system-advisories-pagination'}
                 filterConfig={{
                     items: [
-                        searchFilter(apply, queryParams.search),
+                        searchFilter(apply, queryParams.search,
+                            intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle),
+                            intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder)
+                        ),
                         typeFilter(apply, queryParams.filter),
                         publishDateFilter(apply, queryParams.filter)
                     ]
