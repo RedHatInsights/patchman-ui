@@ -1,7 +1,8 @@
 import { sortable } from '@patternfly/react-table/dist/js';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
-import { createAdvisoriesIcons, createUpgradableColumn, remediationProvider } from '../../Utilities/Helpers';
+import { createAdvisoriesIcons, createUpgradableColumn,
+    remediationProvider, createOSColumn } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 
 export const systemsListColumns = [
@@ -35,6 +36,7 @@ export const systemsListColumns = [
         key: 'operating_system',
         title: 'OS',
         transforms: [sortable],
+        renderFunc: value => createOSColumn(value),
         props: {
             width: 10
         }

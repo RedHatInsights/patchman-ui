@@ -42,7 +42,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                 {
                     cells: [
                         {
-                            title: <DescriptionWithLink row = {row} />
+                            title: <DescriptionWithLink row={row} />
                         }
                     ],
                     parent: index * 2
@@ -93,7 +93,7 @@ export const createSystemAdvisoriesRows = (
                 {
                     cells: [
                         {
-                            title: <DescriptionWithLink row = {row} />
+                            title: <DescriptionWithLink row={row} />
                         }
                     ],
                     parent: index * 2
@@ -107,7 +107,7 @@ export const createSystemAdvisoriesRows = (
                 cells: [
                     {
                         props: { colSpan: 6 },
-                        title: !metadata.search && (metadata.filter &&  Object.keys(metadata.filter).length === 0)
+                        title: !metadata.search && (metadata.filter && Object.keys(metadata.filter).length === 0)
                             && <SystemUpToDate />
                             || <EmptyAdvisoryList />
                     }
@@ -130,9 +130,11 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                     attributes.rhba_count || 0,
                     attributes.rhsa_count || 0
                 ],
-                operating_system:
-                    attributes.os_name && `${attributes.os_name} ${attributes.os_major}.${attributes.os_minor}`
+                operating_system: {
+                    osName: attributes.os_name && `${attributes.os_name} ${attributes.os_major}.${attributes.os_minor}`
                         || 'No data',
+                    rhsmVersion: attributes.rhsm_version
+                },
                 selected: selectedRows[id] !== undefined
             };
         });
