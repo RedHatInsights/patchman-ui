@@ -45,7 +45,7 @@ const CvesModal = ({ cveIds }) =>{
             && data.filter(
                 cve => {
                     const { attributes: { synopsis } } = cve;
-                    return synopsis.toLowerCase().includes(search);
+                    return synopsis && search && (synopsis.toLowerCase().includes(search.toLowerCase()));
                 }
             ) || data;
 
@@ -103,7 +103,8 @@ const CvesModal = ({ cveIds }) =>{
                     }}
                     filterConfig={{
                         items: [
-                            searchFilter(handleFilter, search, intl.formatMessage(messages.labelsFiltersCvesSearch))
+                            searchFilter(handleFilter, search, '',
+                                intl.formatMessage(messages.labelsFiltersCvesSearchPlaceHolder))
                         ]
                     }}
                     errorState={errorState}
