@@ -261,6 +261,11 @@ export default defineMessages({
         description: 'system up to date page body',
         defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
     },
+    textLockVersionTooltip: {
+        id: 'textLockVersionTooltip',
+        description: 'Tooltip text for vesrion lock column',
+        defaultMessage: `Your RHEL version is locked at version {lockedVersion}`
+    },
     textThirdPartyInfo: {
         id: 'textThirdPartyInfo',
         description: 'text about the third paty managed hosts',

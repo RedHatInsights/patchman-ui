@@ -1,7 +1,5 @@
-import { CheckIcon, LongArrowAltUpIcon } from '@patternfly/react-icons';
-import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
-import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
-import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
+import { CheckIcon, LongArrowAltUpIcon,
+    InfoCircleIcon, BugIcon, EnhancementIcon, SecurityIcon } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import findIndex from 'lodash/findIndex';
 import qs from 'query-string';
@@ -13,6 +11,9 @@ import {
     compoundSortValues,
     filterCategories
 } from './constants';
+import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
+import messages from '../Messages';
+import { intl } from './IntlProvider';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -345,3 +346,18 @@ export function sortCves(cves, index, direction) {
     };
 
 }
+
+export const createOSColumn = ({ osName, rhsmVersion }) => rhsmVersion === '' &&  osName || (
+    <Tooltip
+        content={
+            intl.formatMessage(messages.textLockVersionTooltip, { lockedVersion: rhsmVersion })
+        }
+    >
+        <Flex flex={{ default: 'inlineFlex' }}>
+            <FlexItem spacer={{ default: 'spacerSm' }}>{osName}</FlexItem>
+            <FlexItem spacer={{ default: 'spacerSm' }}>
+                <InfoCircleIcon size="sm" color={'var(--pf-global--info-color--100)'} />
+            </FlexItem>
+        </Flex>
+    </Tooltip>
+);
