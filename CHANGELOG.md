@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.12.0...v1.12.1) (2021-03-11)
+
+
+### Bug Fixes
+
+* **SearchFilter:** wordings are made consistent with platform ([52b97c6](https://github.com/RedHatInsights/patchman-ui/commit/52b97c6228848ae57849384970be5f5841d7cf70))
+
 # [1.12.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.11.3...v1.12.0) (2021-03-05)
 
 
