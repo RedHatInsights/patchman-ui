@@ -111,10 +111,10 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'Description'
     },
-    labelsFiltersCvesSearch: {
+    labelsFiltersCvesSearchPlaceHolder: {
         id: 'labelsFiltersCvesSearch',
         description: 'search filter placeholder for packages pages',
-        defaultMessage: 'Filter by ID'
+        defaultMessage: 'Filter by CVE ID'
     },
     labelsFiltersPackagesSearchPlaceHolder: {
         id: 'labelsFiltersPackagesSearchPlaceHolder',
