@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.12.1...v1.13.0) (2021-03-12)
+
+
+### Features
+
+* **Systems:** display OS version lock info ([ad93614](https://github.com/RedHatInsights/patchman-ui/commit/ad93614cdd02c2367cf1c35810a6e80cf4831102))
+
 ## [1.12.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.12.0...v1.12.1) (2021-03-11)
 
 
