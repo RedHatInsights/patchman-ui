@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.13.0...v1.13.1) (2021-03-17)
+
+
+### Bug Fixes
+
+* **OSLock:** change rhsm_version object key name to rhsm ([fc1163e](https://github.com/RedHatInsights/patchman-ui/commit/fc1163e8b76a3807198b1becbfe26a8298e779dc))
+
 # [1.13.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.12.1...v1.13.0) (2021-03-12)
 
 
