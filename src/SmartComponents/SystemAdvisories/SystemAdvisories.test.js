@@ -139,7 +139,7 @@ describe('SystemAdvisories.js', () => {
         it('Should select a single entity', () => {
             const { onSelect } = wrapper.find('TableView').props();
 
-            onSelect(null, 'test', 0);
+            onSelect('single', 'test', 0);
             const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');
             expect(dispatchedActions[1].payload).toEqual([{ id: 'RHSA-2020:2774', selected: 'RHSA-2020:2774' }]);          
