@@ -133,7 +133,7 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 operating_system: {
                     osName: attributes.os_name && `${attributes.os_name} ${attributes.os_major}.${attributes.os_minor}`
                         || 'No data',
-                    rhsmVersion: attributes.rhsm_version
+                    rhsm: attributes.rhsm
                 },
                 selected: selectedRows[id] !== undefined
             };
