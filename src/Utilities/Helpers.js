@@ -330,8 +330,8 @@ export function sortCves(cves, index, direction) {
 
     const sortedCves = cves.sort(
         ({ cells: aCells }, { cells: bCells }) => {
-            const aCell = aCells[index].value && aCells[index].value || aCells[index].title;
-            const bCell = bCells[index].value && bCells[index].value || bCells[index].title;
+            const aCell = aCells[index].value || aCells[index].title;
+            const bCell = bCells[index].value || bCells[index].title;
 
             const stringA = aCell.toString().toUpperCase();
             const stringB = bCell.toString().toUpperCase();

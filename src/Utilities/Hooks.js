@@ -86,7 +86,7 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
             return transformKey(row);
         }
         else {
-            return row.id && row.id || row.name;
+            return row.id || row.name;
         }
     };
 

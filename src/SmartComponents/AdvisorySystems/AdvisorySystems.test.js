@@ -98,7 +98,7 @@ describe('AdvisorySystems.js', () => {
             );
         });
         await act(async() => {
-            wrapper.update;
+            wrapper.update();
         });
         const { onRefresh } = wrapper.update().find('InventoryTable').props();
         onRefresh({ page: 1, per_page: 10 });
@@ -120,7 +120,7 @@ describe('AdvisorySystems.js', () => {
                 );
             });
             await act(async() => {
-                wrapper.update;
+                wrapper.update();
             });
             const { bulkSelect } = wrapper.update().find('InventoryTable').props();
 
@@ -141,7 +141,7 @@ describe('AdvisorySystems.js', () => {
                 );
             });
             await act(async() => {
-                wrapper.update;
+                wrapper.update();
             });
 
             const { bulkSelect } = wrapper.update().find('InventoryTable').props();
@@ -167,7 +167,7 @@ describe('AdvisorySystems.js', () => {
                 );
             });
             await act(async() => {
-                wrapper.update;
+                wrapper.update();
             });
 
             const { bulkSelect } = wrapper.update().find('InventoryTable').props();
@@ -192,7 +192,7 @@ describe('AdvisorySystems.js', () => {
                 );
             });
             await act(async() => {
-                wrapper.update;
+                wrapper.update();
             });
 
             const { bulkSelect } = wrapper.update().find('InventoryTable').props();

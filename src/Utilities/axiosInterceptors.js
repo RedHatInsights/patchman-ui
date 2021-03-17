@@ -4,6 +4,7 @@ import {
 } from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
 import axios from 'axios';
 import { ReadOnlyNotification } from './constants';
+
 const axiosInstance = axios.create();
 
 export async function  accessCheckInterceptor (config)  {
@@ -37,7 +38,7 @@ export function errorInterceptor(err) {
                             'There was an error getting data'
                 };
 
-                const result = { ...genericError, detail: data.error && data.error || statusText, status };
+                const result = { ...genericError, detail: data.error || statusText, status };
 
                 throw result;
             }
