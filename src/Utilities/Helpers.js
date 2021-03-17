@@ -347,10 +347,10 @@ export function sortCves(cves, index, direction) {
 
 }
 
-export const createOSColumn = ({ osName, rhsmVersion }) => rhsmVersion === '' &&  osName || (
+export const createOSColumn = ({ osName, rhsm }) => rhsm === '' &&  osName || (
     <Tooltip
         content={
-            intl.formatMessage(messages.textLockVersionTooltip, { lockedVersion: rhsmVersion })
+            intl.formatMessage(messages.textLockVersionTooltip, { lockedVersion: rhsm })
         }
     >
         <Flex flex={{ default: 'inlineFlex' }}>
