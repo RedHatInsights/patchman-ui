@@ -1,6 +1,7 @@
-import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
+import { Button, Flex, FlexItem, Spinner, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibleTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
+import globalPaletteWhite from '@patternfly/react-tokens/dist/js/global_palette_white';
 import { Main, Unavailable } from '@redhat-cloud-services/frontend-components';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
@@ -37,7 +38,7 @@ const Systems = () => {
     setPageTitle(pageTitle);
 
     const dispatch = useDispatch();
-
+    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
     const [
         RemediationModalCmp,
         setRemediationModalCmp
@@ -76,8 +77,10 @@ const Systems = () => {
     const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
     async function showRemediationModal(data) {
+        setRemediationLoading(true);
         const resolvedData = await data;
         setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
+        setRemediationLoading(false);
     }
 
     function apply(params) {
@@ -226,7 +229,18 @@ const Systems = () => {
                                         }
                                         ouiaId={'toolbar-remediation-button'}
                                     >
-                                        <AnsibleTowerIcon/>&nbsp;{intl.formatMessage(messages.labelsRemediate)}
+                                        <Flex flex={{ default: 'inlineFlex' }}
+                                            alignItems={{ default: 'alignItemsCenter' }}
+                                            justifyContent={{ default: 'justifyContentCenter' }}>
+                                            <FlexItem spacer={{ default: 'spacerXs' }} style={{ display: 'flex' }}>
+                                                {isRemediationLoading &&
+                                            <Spinner isSVG size='md'/>
+                                 || <AnsibleTowerIcon color={globalPaletteWhite.value}/>}
+                                            </FlexItem>
+                                            <FlexItem spacer={{ default: 'spacerXs' }} style={{ display: 'flex' }}>
+                                 &nbsp;Remediate
+                                            </FlexItem>
+                                        </Flex>
                                     </Button>
                                     <RemediationModalCmp />
                                 </ToolbarItem>

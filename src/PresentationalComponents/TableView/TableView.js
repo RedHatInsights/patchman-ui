@@ -100,7 +100,7 @@ const TableView = ({
                                      || <AnsibleTowerIcon color={globalPaletteWhite.value}/>}
                                         </FlexItem>
                                         <FlexItem spacer={{ default: 'spacerXs' }} style={{ display: 'flex' }}>
-                                     &nbsp;Remediate
+                                     &nbsp;{intl.formatMessage(messages.labelsRemediate)}
                                         </FlexItem>
                                     </Flex>
                                 </Button>
