@@ -31,7 +31,7 @@ jest.mock('../../Utilities/Helpers', () => ({
 const mockState = { ...storeListDefaults, rows:  systemPackages };
 
 const initStore = (state) => {
-    const customMiddleWare = store => next => action => {
+    const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
             return callback({  SystemPackageListStore: state, entityDetails : { entity: { id: 'entity' } } });
         });

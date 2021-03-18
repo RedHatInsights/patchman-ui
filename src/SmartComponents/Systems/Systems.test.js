@@ -59,7 +59,7 @@ const mockState = {
 };
 
 const initStore = (state) => {
-    const customMiddleWare = store => next => action => {
+    const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
             return callback({  SystemsListStore: state });
         });

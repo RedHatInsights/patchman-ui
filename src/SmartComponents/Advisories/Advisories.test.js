@@ -38,7 +38,7 @@ jest.mock('../../Utilities/constants', () => ({
 const mockState = { ...storeListDefaults, rows:  advisoryRows };
 
 const initStore = (state) => {
-    const customMiddleWare = store => next => action => {
+    const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
             return callback({  AdvisoryListStore: state });
         });

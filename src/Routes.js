@@ -17,9 +17,9 @@ const Systems = lazy(() =>
     )
 );
 
-const InventoryPage = lazy(() =>
+const InventoryDetail = lazy(() =>
     import(
-        /* webpackChunkName: "InventoryPage" */ './SmartComponents/SystemDetail/InventoryPage'
+        /* webpackChunkName: "InventoryDetail" */ './SmartComponents/SystemDetail/InventoryDetail'
     )
 );
 
@@ -114,7 +114,7 @@ export const Routes = (props) => {
                 />
                 <Route
                     path={paths.inventoryDetail.to}
-                    component={InventoryPage}
+                    component={InventoryDetail}
                 />
                 <Route exact path={paths.systems.to} component={Systems} />
                 <Route
