@@ -60,16 +60,16 @@ describe('AdvisoryDetail.js', () => {
     });
 
     it('Should clear store on unmount', async () => {
-        let wrapper;
+        let tempWrapper;
         await act(async() => {
-            wrapper = mount(
+            tempWrapper = mount(
                 <Provider store={store}>
                     <Router><AdvisoryDetail /></Router>
                 </Provider>
             );
         });
         act(() => {
-            wrapper.unmount();
+            tempWrapper.unmount();
         });
         const dispatchedActions = store.getActions();
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_AFFECTED_SYSTEMS')).toHaveLength(1);

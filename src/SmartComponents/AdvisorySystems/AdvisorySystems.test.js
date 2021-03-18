@@ -65,9 +65,9 @@ describe('AdvisorySystems.js', () => {
          * Before the snapshot was only shallow and did not display the real virtual DOM.
          * Shallow snapshot has the same result as the mount before.
          */
-        const store = initStore(rejectedState);
+        const testStore = initStore(rejectedState);
         const wrapper = shallow(
-            <Provider store={store}>
+            <Provider store={testStore}>
                 <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
             </Provider>
         );
@@ -75,13 +75,12 @@ describe('AdvisorySystems.js', () => {
     });
 
     it('Should display error page when status is rejected', () => {
-        const rejectedState = { ...mockState, status: 'rejected', error: { detail: 'test' } };
         useSelector.mockImplementation(callback => {
             return callback({ AdvisorySystemsStore: rejectedState });
         });
-        const store = initStore(rejectedState);
+        const testStore = initStore(rejectedState);
         const wrapper = mount(
-            <Provider store={store}>
+            <Provider store={testStore}>
                 <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
             </Provider>
         );
@@ -110,11 +109,11 @@ describe('AdvisorySystems.js', () => {
 
     describe('test entity selecting', () => {
         it('Should unselect all', async() => {
-            const store = initStore(rejectedState);
+            const testStore = initStore(rejectedState);
             let wrapper;
             await act(async() => {
                 wrapper = mount(
-                    <Provider store={store}>
+                    <Provider store={testStore}>
                         <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
                     </Provider>
                 );
@@ -125,17 +124,17 @@ describe('AdvisorySystems.js', () => {
             const { bulkSelect } = wrapper.update().find('InventoryTable').props();
 
             bulkSelect.items[0].onClick();
-            const dispatchedActions = store.getActions();
+            const dispatchedActions = testStore.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
         });
 
         it('Should select a page', async () => {
-            const store = initStore(rejectedState);
+            const testStore = initStore(rejectedState);
             let wrapper;
             await act(async() => {
                 wrapper = mount(
-                    <Provider store={store}>
+                    <Provider store={testStore}>
                         <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
                     </Provider>
                 );
@@ -147,7 +146,7 @@ describe('AdvisorySystems.js', () => {
             const { bulkSelect } = wrapper.update().find('InventoryTable').props();
 
             bulkSelect.items[1].onClick();
-            const dispatchedActions = store.getActions();
+            const dispatchedActions = testStore.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[1].title).toEqual('Select page (1)');
         });
@@ -156,12 +155,12 @@ describe('AdvisorySystems.js', () => {
             fetchAdvisorySystems.mockReturnValue(new Promise((resolve) =>  {
                 resolve({ data: systemRows });
             }));
-            const store = initStore(rejectedState);
+            const testStore = initStore(rejectedState);
 
             let wrapper;
             await act(async() => {
                 wrapper = mount(
-                    <Provider store={store}>
+                    <Provider store={testStore}>
                         <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
                     </Provider>
                 );
@@ -181,12 +180,12 @@ describe('AdvisorySystems.js', () => {
             fetchAdvisorySystems.mockReturnValue(new Promise((resolve) =>  {
                 resolve({ data: systemRows });
             }));
-            const store = initStore(rejectedState);
+            const testStore = initStore(rejectedState);
 
             let wrapper;
             await act(async() => {
                 wrapper = mount(
-                    <Provider store={store}>
+                    <Provider store={testStore}>
                         <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
                     </Provider>
                 );
@@ -198,7 +197,7 @@ describe('AdvisorySystems.js', () => {
             const { bulkSelect } = wrapper.update().find('InventoryTable').props();
 
             bulkSelect.onSelect();
-            const dispatchedActions = store.getActions();
+            const dispatchedActions = testStore.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(dispatchedActions[1].payload).toEqual([
                 {
@@ -211,11 +210,11 @@ describe('AdvisorySystems.js', () => {
     });
 
     it('Should open remediation modal', async () => {
-        const store = initStore(rejectedState);
+        const testStore = initStore(rejectedState);
         let wrapper;
         await act(async() => {
             wrapper = mount(
-                <Provider store={store}>
+                <Provider store={testStore}>
                     <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
                 </Provider>
             );
@@ -227,11 +226,11 @@ describe('AdvisorySystems.js', () => {
     });
 
     it('Should clear store on unmount', async () => {
-        const store = initStore(rejectedState);
+        const testStore = initStore(rejectedState);
         let wrapper;
         await act(async() => {
             wrapper = mount(
-                <Provider store={store}>
+                <Provider store={testStore}>
                     <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
                 </Provider>
             );
@@ -239,7 +238,7 @@ describe('AdvisorySystems.js', () => {
         await act(() => {
             wrapper.unmount();
         });
-        const dispatchedActions = store.getActions();
+        const dispatchedActions = testStore.getActions();
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_AFFECTED_SYSTEMS')).toHaveLength(1);
     });
 });

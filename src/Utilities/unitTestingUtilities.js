@@ -58,7 +58,7 @@ export const mockStore = (initialState, mutatedState) => {
     };
 
     // eslint-disable-next-line no-undef
-    const mockStore = configureStore([customMiddleWare]);
+    const configuredMockStore = configureStore([customMiddleWare]);
 
-    return mockStore(initialState);
+    return configuredMockStore(initialState);
 };

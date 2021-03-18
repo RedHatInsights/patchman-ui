@@ -1,4 +1,4 @@
-import InventoryPage from './InventoryPage';
+import InventoryDetail from './InventoryDetail';
 import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 import { entityDetail } from '../../Utilities/RawDataForTesting';
@@ -25,7 +25,7 @@ jest.mock('react-redux', () => ({
 const mockState = { ...entityDetail };
 
 const initStore = (state) => {
-    const customMiddleWare = store => next => action => {
+    const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
             return callback({  entityDetails: state });
         });
@@ -45,7 +45,7 @@ beforeEach(() => {
         return callback({ entityDetails: mockState });
     });
     wrapper = mount(<Provider store={store}>
-            <Router><InventoryPage match = {{ params: { inventoryId: 'test' } }}/></Router>
+        <Router><InventoryDetail match = {{ params: { inventoryId: 'test' } }}/></Router>
         </Provider>); 
 });
 

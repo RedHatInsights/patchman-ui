@@ -28,8 +28,8 @@ const App = () => {
     };
 
     useEffect(() => {
-        history.listen((location) => {
-            const { pathname } = location;
+        history.listen((newLocation) => {
+            const { pathname } = newLocation;
             const currentRoute = Object.values(paths).filter(element => pathname !== '/' && pathname.includes(element.to));
 
             if (pathname === '/') {
@@ -40,7 +40,7 @@ const App = () => {
                 navId && insights.chrome.appNavClick({ id: navId });
             }
         });
-    }, [location.pathname]);;
+    }, [location.pathname]);
 
     useEffect(() => {
         insights.chrome.init();
@@ -48,7 +48,7 @@ const App = () => {
 
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
-                const [workloads, SID, tags] = insights.chrome?.mapGlobalFilter?.(data, false, true);
+                const SID = insights.chrome?.mapGlobalFilter?.(data, false, true)[1];
                 const SAP = data?.Workloads?.SAP;
                 const selectedTags = insights.chrome?.mapGlobalFilter?.(data)
                 ?.filter(item => !item.includes('Workloads')).map(tag => (`tags=${encodeURIComponent(tag)}`));
@@ -78,7 +78,7 @@ const App = () => {
     return (
         <React.Fragment>
             <NotificationPortal />
-            <Routes childProps={location, history} />
+            <Routes childProps={{ location, history }} />
         </React.Fragment>
     );
 };
