@@ -1,4 +1,4 @@
-import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
+import { ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
 import { Unavailable } from '@redhat-cloud-services/frontend-components';
@@ -12,7 +12,7 @@ import { getStore, register } from '../../store';
 import { changeAdvisorySystemsParams, clearAdvisorySystemsStore, fetchAdvisorySystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
+import { remediationIdentifiers, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import {
@@ -20,6 +20,7 @@ import {
     useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
+import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 
@@ -172,8 +173,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                 >
                     <ToolbarGroup>
                         <ToolbarItem>
-                            <Button
-                                className={'remediationButtonPatch'}
+                            <PatchRemediationButton
                                 isDisabled={
                                     arrayFromObj(selectedRows).length === 0
                                 }
@@ -186,10 +186,11 @@ const AdvisorySystems = ({ advisoryName }) => {
                                         )
                                     )
                                 }
-                                ouiaId={'toolbar-remediation-button'}
+                                ouia={'toolbar-remediation-button'}
+                                isLoading={false}
                             >
                                 <AnsibeTowerIcon/>&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                            </Button>
+                            </PatchRemediationButton>
                             <RemediationModalCmp />
                         </ToolbarItem>
                     </ToolbarGroup>

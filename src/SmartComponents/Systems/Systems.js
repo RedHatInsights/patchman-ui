@@ -1,7 +1,5 @@
-import { Button, Flex, FlexItem, Spinner, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
-import { AnsibleTowerIcon } from '@patternfly/react-icons';
+import { ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { TableVariant } from '@patternfly/react-table';
-import globalPaletteWhite from '@patternfly/react-tokens/dist/js/global_palette_white';
 import { Main, Unavailable } from '@redhat-cloud-services/frontend-components';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
@@ -29,6 +27,7 @@ import {
     useRemoveFilter, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
+import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 
@@ -215,33 +214,17 @@ const Systems = () => {
                         >
                             <ToolbarGroup>
                                 <ToolbarItem>
-                                    <Button
-                                        className={'remediationButtonPatch'}
-                                        isDisabled={
-                                            arrayFromObj(selectedRows).length === 0
-                                        }
+                                    <PatchRemediationButton
                                         onClick={() =>
                                             showRemediationModal(
                                                 remediationProviderWithPairs(
                                                     Object.keys(selectedRows).filter(row=>selectedRows[row]),
                                                     prepareRemediationPairs, transformPairs)
-                                            )
-                                        }
-                                        ouiaId={'toolbar-remediation-button'}
-                                    >
-                                        <Flex flex={{ default: 'inlineFlex' }}
-                                            alignItems={{ default: 'alignItemsCenter' }}
-                                            justifyContent={{ default: 'justifyContentCenter' }}>
-                                            <FlexItem spacer={{ default: 'spacerXs' }} style={{ display: 'flex' }}>
-                                                {isRemediationLoading &&
-                                            <Spinner isSVG size='md'/>
-                                 || <AnsibleTowerIcon color={globalPaletteWhite.value}/>}
-                                            </FlexItem>
-                                            <FlexItem spacer={{ default: 'spacerXs' }} style={{ display: 'flex' }}>
-                                 &nbsp;Remediate
-                                            </FlexItem>
-                                        </Flex>
-                                    </Button>
+                                            )}
+                                        isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                                        isLoading={isRemediationLoading}
+                                        ouia={'toolbar-remediation-button'}
+                                    />
                                     <RemediationModalCmp />
                                 </ToolbarItem>
                             </ToolbarGroup>
