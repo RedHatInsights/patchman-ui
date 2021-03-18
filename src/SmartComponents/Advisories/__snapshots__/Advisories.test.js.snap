@@ -215,10 +215,13 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                   onCollapse={[Function]}
                   onExport={[Function]}
                   onPerPageSelect={[Function]}
+                  onSelect={[Function]}
                   onSetPage={[Function]}
                   onSort={[Function]}
                   paginationOUIA="advisories-pagination"
                   remediationButtonOUIA="toolbar-remediation-button"
+                  remediationProvider={[Function]}
+                  selectedRows={Object {}}
                   sortBy={Object {}}
                   store={
                     Object {
@@ -292,7 +295,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                     actionsConfig={
                       Object {
                         "actions": Array [
-                          undefined,
+                          <React.Fragment>
+                            <PatchRemediationButton
+                              isDisabled={true}
+                              isLoading={false}
+                              onClick={[Function]}
+                              ouia="toolbar-remediation-button"
+                            />
+                            <Unknown />
+                          </React.Fragment>,
                         ],
                       }
                     }
@@ -300,6 +311,30 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                       Object {
                         "filters": Array [],
                         "onDelete": [Function],
+                      }
+                    }
+                    bulkSelect={
+                      Object {
+                        "checked": true,
+                        "count": 0,
+                        "items": Array [
+                          Object {
+                            "onClick": [Function],
+                            "title": "Select none (0)",
+                          },
+                          Object {
+                            "onClick": [Function],
+                            "title": "Select page (1)",
+                          },
+                          Object {
+                            "onClick": [Function],
+                            "title": "Select all (0)",
+                          },
+                        ],
+                        "onSelect": [Function],
+                        "toggleProps": Object {
+                          "data-ouia-component-type": "bulk-select-toggle-button",
+                        },
                       }
                     }
                     exportConfig={
@@ -398,6 +433,402 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   <div
                                     className="pf-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
                                   >
+                                    <ToolbarItem>
+                                      <div
+                                        className="pf-c-toolbar__item"
+                                      >
+                                        <BulkSelect
+                                          checked={true}
+                                          className=""
+                                          count={0}
+                                          isDisabled={false}
+                                          items={
+                                            Array [
+                                              Object {
+                                                "onClick": [Function],
+                                                "title": "Select none (0)",
+                                              },
+                                              Object {
+                                                "onClick": [Function],
+                                                "title": "Select page (1)",
+                                              },
+                                              Object {
+                                                "onClick": [Function],
+                                                "title": "Select all (0)",
+                                              },
+                                            ]
+                                          }
+                                          onSelect={[Function]}
+                                          toggleProps={
+                                            Object {
+                                              "data-ouia-component-type": "bulk-select-toggle-button",
+                                            }
+                                          }
+                                        >
+                                          <Dropdown
+                                            className="ins-c-bulk-select"
+                                            dropdownItems={
+                                              Array [
+                                                <DropdownItem
+                                                  component="button"
+                                                  onClick={[Function]}
+                                                >
+                                                  Select none (0)
+                                                </DropdownItem>,
+                                                <DropdownItem
+                                                  component="button"
+                                                  onClick={[Function]}
+                                                >
+                                                  Select page (1)
+                                                </DropdownItem>,
+                                                <DropdownItem
+                                                  component="button"
+                                                  onClick={[Function]}
+                                                >
+                                                  Select all (0)
+                                                </DropdownItem>,
+                                              ]
+                                            }
+                                            isOpen={false}
+                                            onSelect={[Function]}
+                                            toggle={
+                                              <DropdownToggle
+                                                data-ouia-component-type="bulk-select-toggle-button"
+                                                isDisabled={false}
+                                                onToggle={[Function]}
+                                                splitButtonItems={
+                                                  Array [
+                                                    <React.Fragment>
+                                                      <DropdownToggleCheckbox
+                                                        aria-label="Select all"
+                                                        className=""
+                                                        id="toggle-checkbox"
+                                                        isChecked={true}
+                                                        isDisabled={false}
+                                                        isValid={true}
+                                                        onChange={[Function]}
+                                                      >
+
+                                                      </DropdownToggleCheckbox>
+                                                    </React.Fragment>,
+                                                  ]
+                                                }
+                                              />
+                                            }
+                                          >
+                                            <DropdownWithContext
+                                              autoFocus={true}
+                                              className="ins-c-bulk-select"
+                                              direction="down"
+                                              dropdownItems={
+                                                Array [
+                                                  <DropdownItem
+                                                    component="button"
+                                                    onClick={[Function]}
+                                                  >
+                                                    Select none (0)
+                                                  </DropdownItem>,
+                                                  <DropdownItem
+                                                    component="button"
+                                                    onClick={[Function]}
+                                                  >
+                                                    Select page (1)
+                                                  </DropdownItem>,
+                                                  <DropdownItem
+                                                    component="button"
+                                                    onClick={[Function]}
+                                                  >
+                                                    Select all (0)
+                                                  </DropdownItem>,
+                                                ]
+                                              }
+                                              isGrouped={false}
+                                              isOpen={false}
+                                              isPlain={false}
+                                              menuAppendTo="inline"
+                                              onSelect={[Function]}
+                                              position="left"
+                                              toggle={
+                                                <DropdownToggle
+                                                  data-ouia-component-type="bulk-select-toggle-button"
+                                                  isDisabled={false}
+                                                  onToggle={[Function]}
+                                                  splitButtonItems={
+                                                    Array [
+                                                      <React.Fragment>
+                                                        <DropdownToggleCheckbox
+                                                          aria-label="Select all"
+                                                          className=""
+                                                          id="toggle-checkbox"
+                                                          isChecked={true}
+                                                          isDisabled={false}
+                                                          isValid={true}
+                                                          onChange={[Function]}
+                                                        >
+
+                                                        </DropdownToggleCheckbox>
+                                                      </React.Fragment>,
+                                                    ]
+                                                  }
+                                                />
+                                              }
+                                            >
+                                              <div
+                                                className="pf-c-dropdown ins-c-bulk-select"
+                                                data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                                                data-ouia-component-type="PF4/Dropdown"
+                                                data-ouia-safe={true}
+                                              >
+                                                <DropdownToggle
+                                                  aria-haspopup={true}
+                                                  data-ouia-component-type="bulk-select-toggle-button"
+                                                  getMenuRef={[Function]}
+                                                  id="pf-dropdown-toggle-id-5"
+                                                  isDisabled={false}
+                                                  isOpen={false}
+                                                  isPlain={false}
+                                                  key=".0"
+                                                  onEnter={[Function]}
+                                                  onToggle={[Function]}
+                                                  parentRef={
+                                                    Object {
+                                                      "current": <div
+                                                        class="pf-c-dropdown ins-c-bulk-select"
+                                                        data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                                                        data-ouia-component-type="PF4/Dropdown"
+                                                        data-ouia-safe="true"
+                                                      >
+                                                        <div
+                                                          class="pf-c-dropdown__toggle pf-m-split-button"
+                                                        >
+                                                          <label
+                                                            class="pf-c-dropdown__toggle-check"
+                                                            for="toggle-checkbox"
+                                                          >
+                                                            <input
+                                                              aria-invalid="false"
+                                                              aria-label="Select all"
+                                                              checked=""
+                                                              data-ouia-component-id="OUIA-Generated-DropdownToggleCheckbox-1"
+                                                              data-ouia-component-type="PF4/DropdownToggleCheckbox"
+                                                              data-ouia-safe="true"
+                                                              id="toggle-checkbox"
+                                                              type="checkbox"
+                                                            />
+
+                                                          </label>
+                                                          <button
+                                                            aria-expanded="false"
+                                                            aria-haspopup="true"
+                                                            aria-label="Select"
+                                                            class="pf-c-dropdown__toggle-button"
+                                                            data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                                                            data-ouia-component-type="PF4/DropdownToggle"
+                                                            data-ouia-safe="true"
+                                                            id="pf-dropdown-toggle-id-5"
+                                                            type="button"
+                                                          >
+                                                            <span
+                                                              class=""
+                                                            >
+                                                              <svg
+                                                                aria-hidden="true"
+                                                                fill="currentColor"
+                                                                height="1em"
+                                                                role="img"
+                                                                style="vertical-align: -0.125em;"
+                                                                viewBox="0 0 320 512"
+                                                                width="1em"
+                                                              >
+                                                                <path
+                                                                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                                />
+                                                              </svg>
+                                                            </span>
+                                                          </button>
+                                                        </div>
+                                                      </div>,
+                                                    }
+                                                  }
+                                                  splitButtonItems={
+                                                    Array [
+                                                      <React.Fragment>
+                                                        <DropdownToggleCheckbox
+                                                          aria-label="Select all"
+                                                          className=""
+                                                          id="toggle-checkbox"
+                                                          isChecked={true}
+                                                          isDisabled={false}
+                                                          isValid={true}
+                                                          onChange={[Function]}
+                                                        >
+
+                                                        </DropdownToggleCheckbox>
+                                                      </React.Fragment>,
+                                                    ]
+                                                  }
+                                                >
+                                                  <div
+                                                    className="pf-c-dropdown__toggle pf-m-split-button"
+                                                  >
+                                                    <DropdownToggleCheckbox
+                                                      aria-label="Select all"
+                                                      className=""
+                                                      id="toggle-checkbox"
+                                                      isChecked={true}
+                                                      isDisabled={false}
+                                                      isValid={true}
+                                                      onChange={[Function]}
+                                                    >
+                                                      <label
+                                                        className="pf-c-dropdown__toggle-check"
+                                                        htmlFor="toggle-checkbox"
+                                                      >
+                                                        <input
+                                                          aria-invalid={false}
+                                                          aria-label="Select all"
+                                                          checked={true}
+                                                          data-ouia-component-id="OUIA-Generated-DropdownToggleCheckbox-1"
+                                                          data-ouia-component-type="PF4/DropdownToggleCheckbox"
+                                                          data-ouia-safe={true}
+                                                          disabled={false}
+                                                          id="toggle-checkbox"
+                                                          onChange={[Function]}
+                                                          type="checkbox"
+                                                        />
+                                                      </label>
+                                                    </DropdownToggleCheckbox>
+                                                    <Toggle
+                                                      aria-haspopup={true}
+                                                      aria-label="Select"
+                                                      bubbleEvent={false}
+                                                      className=""
+                                                      data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                                                      data-ouia-component-type="PF4/DropdownToggle"
+                                                      data-ouia-safe={true}
+                                                      getMenuRef={[Function]}
+                                                      id="pf-dropdown-toggle-id-5"
+                                                      isActive={false}
+                                                      isDisabled={false}
+                                                      isOpen={false}
+                                                      isPlain={false}
+                                                      isPrimary={false}
+                                                      isSplitButton={true}
+                                                      onEnter={[Function]}
+                                                      onToggle={[Function]}
+                                                      parentRef={
+                                                        Object {
+                                                          "current": <div
+                                                            class="pf-c-dropdown ins-c-bulk-select"
+                                                            data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                                                            data-ouia-component-type="PF4/Dropdown"
+                                                            data-ouia-safe="true"
+                                                          >
+                                                            <div
+                                                              class="pf-c-dropdown__toggle pf-m-split-button"
+                                                            >
+                                                              <label
+                                                                class="pf-c-dropdown__toggle-check"
+                                                                for="toggle-checkbox"
+                                                              >
+                                                                <input
+                                                                  aria-invalid="false"
+                                                                  aria-label="Select all"
+                                                                  checked=""
+                                                                  data-ouia-component-id="OUIA-Generated-DropdownToggleCheckbox-1"
+                                                                  data-ouia-component-type="PF4/DropdownToggleCheckbox"
+                                                                  data-ouia-safe="true"
+                                                                  id="toggle-checkbox"
+                                                                  type="checkbox"
+                                                                />
+
+                                                              </label>
+                                                              <button
+                                                                aria-expanded="false"
+                                                                aria-haspopup="true"
+                                                                aria-label="Select"
+                                                                class="pf-c-dropdown__toggle-button"
+                                                                data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                                                                data-ouia-component-type="PF4/DropdownToggle"
+                                                                data-ouia-safe="true"
+                                                                id="pf-dropdown-toggle-id-5"
+                                                                type="button"
+                                                              >
+                                                                <span
+                                                                  class=""
+                                                                >
+                                                                  <svg
+                                                                    aria-hidden="true"
+                                                                    fill="currentColor"
+                                                                    height="1em"
+                                                                    role="img"
+                                                                    style="vertical-align: -0.125em;"
+                                                                    viewBox="0 0 320 512"
+                                                                    width="1em"
+                                                                  >
+                                                                    <path
+                                                                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                                    />
+                                                                  </svg>
+                                                                </span>
+                                                              </button>
+                                                            </div>
+                                                          </div>,
+                                                        }
+                                                      }
+                                                    >
+                                                      <button
+                                                        aria-expanded={false}
+                                                        aria-haspopup={true}
+                                                        aria-label="Select"
+                                                        className="pf-c-dropdown__toggle-button"
+                                                        data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                                                        data-ouia-component-type="PF4/DropdownToggle"
+                                                        data-ouia-safe={true}
+                                                        disabled={false}
+                                                        id="pf-dropdown-toggle-id-5"
+                                                        onClick={[Function]}
+                                                        onKeyDown={[Function]}
+                                                        type="button"
+                                                      >
+                                                        <span
+                                                          className=""
+                                                        >
+                                                          <CaretDownIcon
+                                                            color="currentColor"
+                                                            noVerticalAlign={false}
+                                                            size="sm"
+                                                          >
+                                                            <svg
+                                                              aria-hidden={true}
+                                                              aria-labelledby={null}
+                                                              fill="currentColor"
+                                                              height="1em"
+                                                              role="img"
+                                                              style={
+                                                                Object {
+                                                                  "verticalAlign": "-0.125em",
+                                                                }
+                                                              }
+                                                              viewBox="0 0 320 512"
+                                                              width="1em"
+                                                            >
+                                                              <path
+                                                                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                                                              />
+                                                            </svg>
+                                                          </CaretDownIcon>
+                                                        </span>
+                                                      </button>
+                                                    </Toggle>
+                                                  </div>
+                                                </DropdownToggle>
+                                              </div>
+                                            </DropdownWithContext>
+                                          </Dropdown>
+                                        </BulkSelect>
+                                      </div>
+                                    </ToolbarItem>
                                     <ToolbarItem
                                       className="ins-c-primary-toolbar__filter"
                                     >
@@ -569,7 +1000,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     >
                                                       <div
                                                         className="pf-c-dropdown ins-c-conditional-filter__group"
-                                                        data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                                                        data-ouia-component-id="OUIA-Generated-Dropdown-2"
                                                         data-ouia-component-type="PF4/Dropdown"
                                                         data-ouia-safe={true}
                                                       >
@@ -577,7 +1008,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           aria-haspopup={true}
                                                           className=""
                                                           getMenuRef={[Function]}
-                                                          id="pf-dropdown-toggle-id-4"
+                                                          id="pf-dropdown-toggle-id-6"
                                                           isDisabled={false}
                                                           isOpen={false}
                                                           isPlain={false}
@@ -588,7 +1019,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                             Object {
                                                               "current": <div
                                                                 class="pf-c-dropdown ins-c-conditional-filter__group"
-                                                                data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                                                                data-ouia-component-id="OUIA-Generated-Dropdown-2"
                                                                 data-ouia-component-type="PF4/Dropdown"
                                                                 data-ouia-safe="true"
                                                               >
@@ -596,10 +1027,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                   aria-expanded="false"
                                                                   aria-haspopup="true"
                                                                   class="pf-c-dropdown__toggle"
-                                                                  data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                                                                  data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
                                                                   data-ouia-component-type="PF4/DropdownToggle"
                                                                   data-ouia-safe="true"
-                                                                  id="pf-dropdown-toggle-id-4"
+                                                                  id="pf-dropdown-toggle-id-6"
                                                                   type="button"
                                                                 >
                                                                   <span
@@ -650,11 +1081,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                             aria-haspopup={true}
                                                             bubbleEvent={false}
                                                             className=""
-                                                            data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                                                            data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
                                                             data-ouia-component-type="PF4/DropdownToggle"
                                                             data-ouia-safe={true}
                                                             getMenuRef={[Function]}
-                                                            id="pf-dropdown-toggle-id-4"
+                                                            id="pf-dropdown-toggle-id-6"
                                                             isActive={false}
                                                             isDisabled={false}
                                                             isOpen={false}
@@ -667,7 +1098,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                               Object {
                                                                 "current": <div
                                                                   class="pf-c-dropdown ins-c-conditional-filter__group"
-                                                                  data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                                                                  data-ouia-component-id="OUIA-Generated-Dropdown-2"
                                                                   data-ouia-component-type="PF4/Dropdown"
                                                                   data-ouia-safe="true"
                                                                 >
@@ -675,10 +1106,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                     aria-expanded="false"
                                                                     aria-haspopup="true"
                                                                     class="pf-c-dropdown__toggle"
-                                                                    data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                                                                    data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
                                                                     data-ouia-component-type="PF4/DropdownToggle"
                                                                     data-ouia-safe="true"
-                                                                    id="pf-dropdown-toggle-id-4"
+                                                                    id="pf-dropdown-toggle-id-6"
                                                                     type="button"
                                                                   >
                                                                     <span
@@ -729,11 +1160,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                               aria-expanded={false}
                                                               aria-haspopup={true}
                                                               className="pf-c-dropdown__toggle"
-                                                              data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
+                                                              data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
                                                               data-ouia-component-type="PF4/DropdownToggle"
                                                               data-ouia-safe={true}
                                                               disabled={false}
-                                                              id="pf-dropdown-toggle-id-4"
+                                                              id="pf-dropdown-toggle-id-6"
                                                               onClick={[Function]}
                                                               onKeyDown={[Function]}
                                                               type="button"
@@ -908,7 +1339,15 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                               <Actions
                                 actions={
                                   Array [
-                                    undefined,
+                                    <React.Fragment>
+                                      <PatchRemediationButton
+                                        isDisabled={true}
+                                        isLoading={false}
+                                        onClick={[Function]}
+                                        ouia="toolbar-remediation-button"
+                                      />
+                                      <Unknown />
+                                    </React.Fragment>,
                                   ]
                                 }
                                 dropdownProps={Object {}}
@@ -920,6 +1359,135 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 onSelect={[Function]}
                                 overflowActions={Array []}
                               >
+                                <ToolbarItem
+                                  className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+                                >
+                                  <div
+                                    className="pf-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
+                                  >
+                                    <PatchRemediationButton
+                                      isDisabled={true}
+                                      isLoading={false}
+                                      onClick={[Function]}
+                                      ouia="toolbar-remediation-button"
+                                    >
+                                      <Button
+                                        className="remediationButtonPatch"
+                                        isDisabled={true}
+                                        onClick={[Function]}
+                                        ouiaId="toolbar-remediation-button"
+                                      >
+                                        <button
+                                          aria-disabled={true}
+                                          aria-label={null}
+                                          className="pf-c-button pf-m-primary pf-m-disabled remediationButtonPatch"
+                                          data-ouia-component-id="toolbar-remediation-button"
+                                          data-ouia-component-type="PF4/Button"
+                                          data-ouia-safe={true}
+                                          disabled={true}
+                                          onClick={[Function]}
+                                          role={null}
+                                          tabIndex={null}
+                                          type="button"
+                                        >
+                                          <Flex
+                                            alignItems={
+                                              Object {
+                                                "default": "alignItemsCenter",
+                                              }
+                                            }
+                                            flex={
+                                              Object {
+                                                "default": "inlineFlex",
+                                              }
+                                            }
+                                            justifyContent={
+                                              Object {
+                                                "default": "justifyContentCenter",
+                                              }
+                                            }
+                                          >
+                                            <div
+                                              className="pf-l-flex pf-m-inline-flex pf-m-align-items-center pf-m-justify-content-center"
+                                            >
+                                              <FlexItem
+                                                spacer={
+                                                  Object {
+                                                    "default": "spacerXs",
+                                                  }
+                                                }
+                                                style={
+                                                  Object {
+                                                    "display": "flex",
+                                                  }
+                                                }
+                                              >
+                                                <div
+                                                  className="pf-m-spacer-xs"
+                                                  style={
+                                                    Object {
+                                                      "display": "flex",
+                                                    }
+                                                  }
+                                                >
+                                                  <AnsibleTowerIcon
+                                                    color="#fff"
+                                                    noVerticalAlign={false}
+                                                    size="sm"
+                                                  >
+                                                    <svg
+                                                      aria-hidden={true}
+                                                      aria-labelledby={null}
+                                                      fill="#fff"
+                                                      height="1em"
+                                                      role="img"
+                                                      style={
+                                                        Object {
+                                                          "verticalAlign": "-0.125em",
+                                                        }
+                                                      }
+                                                      viewBox="0 0 1024 1024"
+                                                      width="1em"
+                                                    >
+                                                      <path
+                                                        d="M512,0 C229.26,0 0,229.26 0,512 C0,794.74 229.26,1024 512,1024 C794.74,1024 1024,794.74 1024,512 C1024,229.26 794.74,0 512,0 Z M759.09,730.29 C759.09,751.77 741.71,766.86 721.83,766.86 C711.54,766.86 704,762.97 693.49,754.29 L429,541 L340.57,762.74 L264.23,762.74 L487.77,224.74 C493.49,210.79 506.06,203.25 520.23,203.25 C534.4,203.25 546.06,210.56 551.77,224.74 L755.89,715.2 C758.4,721.14 759.31,726.63 759.09,730.29 Z M520.69,312.69 L653.26,640 L453.26,482.51 L520.69,312.69 Z"
+                                                      />
+                                                    </svg>
+                                                  </AnsibleTowerIcon>
+                                                </div>
+                                              </FlexItem>
+                                              <FlexItem
+                                                spacer={
+                                                  Object {
+                                                    "default": "spacerXs",
+                                                  }
+                                                }
+                                                style={
+                                                  Object {
+                                                    "display": "flex",
+                                                  }
+                                                }
+                                              >
+                                                <div
+                                                  className="pf-m-spacer-xs"
+                                                  style={
+                                                    Object {
+                                                      "display": "flex",
+                                                    }
+                                                  }
+                                                >
+                                                   
+                                                  Remediate
+                                                </div>
+                                              </FlexItem>
+                                            </div>
+                                          </Flex>
+                                        </button>
+                                      </Button>
+                                    </PatchRemediationButton>
+                                    <Component />
+                                  </div>
+                                </ToolbarItem>
                                 <ToolbarItem
                                   className="pf-m-spacer-sm"
                                 >
@@ -1004,14 +1572,14 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         >
                                           <div
                                             className="pf-c-dropdown"
-                                            data-ouia-component-id="OUIA-Generated-Dropdown-2"
+                                            data-ouia-component-id="OUIA-Generated-Dropdown-3"
                                             data-ouia-component-type="PF4/Dropdown"
                                             data-ouia-safe={true}
                                           >
                                             <DropdownToggle
                                               aria-haspopup={true}
                                               getMenuRef={[Function]}
-                                              id="pf-dropdown-toggle-id-5"
+                                              id="pf-dropdown-toggle-id-7"
                                               isOpen={false}
                                               isPlain={true}
                                               key=".0"
@@ -1021,7 +1589,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 Object {
                                                   "current": <div
                                                     class="pf-c-dropdown"
-                                                    data-ouia-component-id="OUIA-Generated-Dropdown-2"
+                                                    data-ouia-component-id="OUIA-Generated-Dropdown-3"
                                                     data-ouia-component-type="PF4/Dropdown"
                                                     data-ouia-safe="true"
                                                   >
@@ -1029,10 +1597,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       aria-expanded="false"
                                                       aria-haspopup="true"
                                                       class="pf-c-dropdown__toggle pf-m-plain"
-                                                      data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
+                                                      data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
                                                       data-ouia-component-type="PF4/DropdownToggle"
                                                       data-ouia-safe="true"
-                                                      id="pf-dropdown-toggle-id-5"
+                                                      id="pf-dropdown-toggle-id-7"
                                                       type="button"
                                                     >
                                                       <span>
@@ -1060,11 +1628,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 aria-haspopup={true}
                                                 bubbleEvent={false}
                                                 className=""
-                                                data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
+                                                data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
                                                 data-ouia-component-type="PF4/DropdownToggle"
                                                 data-ouia-safe={true}
                                                 getMenuRef={[Function]}
-                                                id="pf-dropdown-toggle-id-5"
+                                                id="pf-dropdown-toggle-id-7"
                                                 isActive={false}
                                                 isDisabled={false}
                                                 isOpen={false}
@@ -1077,7 +1645,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                   Object {
                                                     "current": <div
                                                       class="pf-c-dropdown"
-                                                      data-ouia-component-id="OUIA-Generated-Dropdown-2"
+                                                      data-ouia-component-id="OUIA-Generated-Dropdown-3"
                                                       data-ouia-component-type="PF4/Dropdown"
                                                       data-ouia-safe="true"
                                                     >
@@ -1085,10 +1653,10 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                         aria-expanded="false"
                                                         aria-haspopup="true"
                                                         class="pf-c-dropdown__toggle pf-m-plain"
-                                                        data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
+                                                        data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
                                                         data-ouia-component-type="PF4/DropdownToggle"
                                                         data-ouia-safe="true"
-                                                        id="pf-dropdown-toggle-id-5"
+                                                        id="pf-dropdown-toggle-id-7"
                                                         type="button"
                                                       >
                                                         <span>
@@ -1115,11 +1683,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                   aria-expanded={false}
                                                   aria-haspopup={true}
                                                   className="pf-c-dropdown__toggle pf-m-plain"
-                                                  data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
+                                                  data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
                                                   data-ouia-component-type="PF4/DropdownToggle"
                                                   data-ouia-safe={true}
                                                   disabled={false}
-                                                  id="pf-dropdown-toggle-id-5"
+                                                  id="pf-dropdown-toggle-id-7"
                                                   onClick={[Function]}
                                                   onKeyDown={[Function]}
                                                   type="button"
@@ -1168,7 +1736,25 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                     className="pf-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
                                   >
                                     <Dropdown
-                                      dropdownItems={Array []}
+                                      dropdownItems={
+                                        Array [
+                                          <DropdownItem
+                                            className="ins-c-primary-toolbar__first-action "
+                                            component="div"
+                                            onClick={[Function]}
+                                          >
+                                            <React.Fragment>
+                                              <PatchRemediationButton
+                                                isDisabled={true}
+                                                isLoading={false}
+                                                onClick={[Function]}
+                                                ouia="toolbar-remediation-button"
+                                              />
+                                              <Unknown />
+                                            </React.Fragment>
+                                          </DropdownItem>,
+                                        ]
+                                      }
                                       isOpen={false}
                                       isPlain={true}
                                       onSelect={[Function]}
@@ -1182,7 +1768,25 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         autoFocus={true}
                                         className=""
                                         direction="down"
-                                        dropdownItems={Array []}
+                                        dropdownItems={
+                                          Array [
+                                            <DropdownItem
+                                              className="ins-c-primary-toolbar__first-action "
+                                              component="div"
+                                              onClick={[Function]}
+                                            >
+                                              <React.Fragment>
+                                                <PatchRemediationButton
+                                                  isDisabled={true}
+                                                  isLoading={false}
+                                                  onClick={[Function]}
+                                                  ouia="toolbar-remediation-button"
+                                                />
+                                                <Unknown />
+                                              </React.Fragment>
+                                            </DropdownItem>,
+                                          ]
+                                        }
                                         isGrouped={false}
                                         isOpen={false}
                                         isPlain={true}
@@ -1197,14 +1801,14 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       >
                                         <div
                                           className="pf-c-dropdown"
-                                          data-ouia-component-id="OUIA-Generated-Dropdown-3"
+                                          data-ouia-component-id="OUIA-Generated-Dropdown-4"
                                           data-ouia-component-type="PF4/Dropdown"
                                           data-ouia-safe={true}
                                         >
                                           <KebabToggle
-                                            aria-haspopup={false}
+                                            aria-haspopup={true}
                                             getMenuRef={[Function]}
-                                            id="pf-dropdown-toggle-id-6"
+                                            id="pf-dropdown-toggle-id-8"
                                             isOpen={false}
                                             isPlain={true}
                                             key=".0"
@@ -1214,16 +1818,16 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               Object {
                                                 "current": <div
                                                   class="pf-c-dropdown"
-                                                  data-ouia-component-id="OUIA-Generated-Dropdown-3"
+                                                  data-ouia-component-id="OUIA-Generated-Dropdown-4"
                                                   data-ouia-component-type="PF4/Dropdown"
                                                   data-ouia-safe="true"
                                                 >
                                                   <button
                                                     aria-expanded="false"
-                                                    aria-haspopup="false"
+                                                    aria-haspopup="true"
                                                     aria-label="Actions"
                                                     class="pf-c-dropdown__toggle pf-m-plain"
-                                                    id="pf-dropdown-toggle-id-6"
+                                                    id="pf-dropdown-toggle-id-8"
                                                     type="button"
                                                   >
                                                     <svg
@@ -1245,12 +1849,12 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             }
                                           >
                                             <Toggle
-                                              aria-haspopup={false}
+                                              aria-haspopup={true}
                                               aria-label="Actions"
                                               bubbleEvent={false}
                                               className=""
                                               getMenuRef={[Function]}
-                                              id="pf-dropdown-toggle-id-6"
+                                              id="pf-dropdown-toggle-id-8"
                                               isActive={false}
                                               isDisabled={false}
                                               isOpen={false}
@@ -1263,16 +1867,16 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 Object {
                                                   "current": <div
                                                     class="pf-c-dropdown"
-                                                    data-ouia-component-id="OUIA-Generated-Dropdown-3"
+                                                    data-ouia-component-id="OUIA-Generated-Dropdown-4"
                                                     data-ouia-component-type="PF4/Dropdown"
                                                     data-ouia-safe="true"
                                                   >
                                                     <button
                                                       aria-expanded="false"
-                                                      aria-haspopup="false"
+                                                      aria-haspopup="true"
                                                       aria-label="Actions"
                                                       class="pf-c-dropdown__toggle pf-m-plain"
-                                                      id="pf-dropdown-toggle-id-6"
+                                                      id="pf-dropdown-toggle-id-8"
                                                       type="button"
                                                     >
                                                       <svg
@@ -1295,11 +1899,11 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             >
                                               <button
                                                 aria-expanded={false}
-                                                aria-haspopup={false}
+                                                aria-haspopup={true}
                                                 aria-label="Actions"
                                                 className="pf-c-dropdown__toggle pf-m-plain"
                                                 disabled={false}
-                                                id="pf-dropdown-toggle-id-6"
+                                                id="pf-dropdown-toggle-id-8"
                                                 onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 type="button"
@@ -1549,7 +2153,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               aria-haspopup={true}
                                               firstIndex={0}
                                               getMenuRef={[Function]}
-                                              id="pf-dropdown-toggle-id-7"
+                                              id="pf-dropdown-toggle-id-9"
                                               isDisabled={false}
                                               isOpen={false}
                                               isPlain={true}
@@ -1591,7 +2195,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                         aria-expanded="false"
                                                         aria-label="Items per page"
                                                         class="  pf-c-options-menu__toggle-button"
-                                                        data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
+                                                        data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
                                                         data-ouia-component-type="PF4/DropdownToggle"
                                                         data-ouia-safe="true"
                                                         disabled=""
@@ -1687,7 +2291,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                             aria-expanded="false"
                                                             aria-label="Items per page"
                                                             class="  pf-c-options-menu__toggle-button"
-                                                            data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
+                                                            data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
                                                             data-ouia-component-type="PF4/DropdownToggle"
                                                             data-ouia-safe="true"
                                                             disabled=""
@@ -1721,7 +2325,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     aria-label="Items per page"
                                                     bubbleEvent={false}
                                                     className="pf-c-options-menu__toggle-button"
-                                                    data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
+                                                    data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
                                                     data-ouia-component-type="PF4/DropdownToggle"
                                                     data-ouia-safe={true}
                                                     getMenuRef={null}
@@ -1764,7 +2368,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                               aria-expanded="false"
                                                               aria-label="Items per page"
                                                               class="  pf-c-options-menu__toggle-button"
-                                                              data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
+                                                              data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
                                                               data-ouia-component-type="PF4/DropdownToggle"
                                                               data-ouia-safe="true"
                                                               disabled=""
@@ -1798,7 +2402,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       aria-expanded={false}
                                                       aria-label="Items per page"
                                                       className="  pf-c-options-menu__toggle-button"
-                                                      data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
+                                                      data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
                                                       data-ouia-component-type="PF4/DropdownToggle"
                                                       data-ouia-safe={true}
                                                       disabled={true}

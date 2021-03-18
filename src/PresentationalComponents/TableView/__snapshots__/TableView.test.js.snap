@@ -7,18 +7,11 @@ exports[`TableView TableView 1`] = `
       Object {
         "actions": Array [
           <React.Fragment>
-            <Button
-              className="remediationButtonPatch"
+            <PatchRemediationButton
               isDisabled={true}
+              isLoading={false}
               onClick={[Function]}
-            >
-              <AnsibeTowerIcon
-                color="#fff"
-                noVerticalAlign={false}
-                size="sm"
-              />
-               Remediate
-            </Button>
+            />
             <Unknown />
           </React.Fragment>,
         ],
@@ -102,18 +95,11 @@ exports[`TableView TableView 2`] = `
       Object {
         "actions": Array [
           <React.Fragment>
-            <Button
-              className="remediationButtonPatch"
+            <PatchRemediationButton
               isDisabled={true}
+              isLoading={false}
               onClick={[Function]}
-            >
-              <AnsibeTowerIcon
-                color="#fff"
-                noVerticalAlign={false}
-                size="sm"
-              />
-               Remediate
-            </Button>
+            />
             <Unknown />
           </React.Fragment>,
         ],
@@ -205,18 +191,11 @@ exports[`TableView test table props TableView 1`] = `
       Object {
         "actions": Array [
           <React.Fragment>
-            <Button
-              className="remediationButtonPatch"
+            <PatchRemediationButton
               isDisabled={true}
+              isLoading={false}
               onClick={[Function]}
-            >
-              <AnsibeTowerIcon
-                color="#fff"
-                noVerticalAlign={false}
-                size="sm"
-              />
-               Remediate
-            </Button>
+            />
             <Unknown />
           </React.Fragment>,
         ],
