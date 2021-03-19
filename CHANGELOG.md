@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.13.1...v1.13.2) (2021-03-19)
+
+
+### Bug Fixes
+
+* **SonarCube:** issues are resolved ([68df8ff](https://github.com/RedHatInsights/patchman-ui/commit/68df8fff3fc4403e59706d4e7c7eb05197efba97))
+
 ## [1.13.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.13.0...v1.13.1) (2021-03-17)
 
 
