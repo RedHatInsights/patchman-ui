@@ -172,7 +172,6 @@ export async function remediationProviderWithPairs(issues, createPairs, transfor
     if (issues) {
         const pairsCreated = await createPairs(issues);
         const res = transformFunc(pairsCreated);
-        console.log(await res);
         return await res;
     }
     else {
