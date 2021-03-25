@@ -1,3 +1,20 @@
+# [1.14.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.13.2...v1.14.0) (2021-03-25)
+
+
+### Bug Fixes
+
+* **remediation:** add missing file ([8987a7b](https://github.com/RedHatInsights/patchman-ui/commit/8987a7b21daf8ea367a3769aecab022c459a1aff))
+* **remediation:** create a separate component for remediation button ([513f7b6](https://github.com/RedHatInsights/patchman-ui/commit/513f7b6ed8a4dfffde25865dea548c8146235e78))
+
+
+### Features
+
+* **advisories:** Add checkboxes on advisory list page ([901082e](https://github.com/RedHatInsights/patchman-ui/commit/901082e1b321e54805644bc8ea2ad4325362753b))
+* **remediation:** add remediation loading state to systems ([f44903b](https://github.com/RedHatInsights/patchman-ui/commit/f44903ba63222079f97bb1742899d3ede565e807))
+* **remediation:** enable bulk remediations for advisory page ([075414d](https://github.com/RedHatInsights/patchman-ui/commit/075414dc3856997206462cf0f5ebb1711fca3996))
+* **remediation:** introduce remediation on system list page ([8e6f557](https://github.com/RedHatInsights/patchman-ui/commit/8e6f557239dfa8aa2f3867dae2a7f59e856c29e8))
+* **remediation:** Show animation when remediation is loading ([3f377c5](https://github.com/RedHatInsights/patchman-ui/commit/3f377c54e5047e402cd4d7e96fa81e1af19dc406))
+
 ## [1.13.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.13.1...v1.13.2) (2021-03-19)
 
 
