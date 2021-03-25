@@ -508,7 +508,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                         isValid={true}
                                                         onChange={[Function]}
                                                       >
-
+                                                        
                                                       </DropdownToggleCheckbox>
                                                     </React.Fragment>,
                                                   ]
@@ -565,7 +565,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           isValid={true}
                                                           onChange={[Function]}
                                                         >
-
+                                                          
                                                         </DropdownToggleCheckbox>
                                                       </React.Fragment>,
                                                     ]
@@ -615,7 +615,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                               id="toggle-checkbox"
                                                               type="checkbox"
                                                             />
-
+                                                            
                                                           </label>
                                                           <button
                                                             aria-expanded="false"
@@ -662,7 +662,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                           isValid={true}
                                                           onChange={[Function]}
                                                         >
-
+                                                          
                                                         </DropdownToggleCheckbox>
                                                       </React.Fragment>,
                                                     ]
@@ -741,7 +741,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                                   id="toggle-checkbox"
                                                                   type="checkbox"
                                                                 />
-
+                                                                
                                                               </label>
                                                               <button
                                                                 aria-expanded="false"
