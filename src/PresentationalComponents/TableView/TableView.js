@@ -140,6 +140,7 @@ const TableView = ({
                                 onSort={onSort}
                                 ouiaId={tableOUIA}
                                 sortBy={metadata.total_items && sortBy}
+                                isStickyHeader
                                 variant={compact && TableVariant.compact}
                             >
                                 <TableHeader />

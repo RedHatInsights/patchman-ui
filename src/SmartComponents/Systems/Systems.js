@@ -210,7 +210,7 @@ const Systems = () => {
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}
                             tableProps = {{ areActionsDisabled, onSort, sortBy, canSelectAll: false,
-                                variant: TableVariant.compact, className: 'patchCompactInventory' }}
+                                variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
 
                         >
                             <ToolbarGroup>
