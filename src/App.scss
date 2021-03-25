@@ -16,3 +16,7 @@ table.patchCompactInventory {
        font-size: var(--pf-c-table--m-compact--FontSize);
     }
 }
+
+.patch-root {
+    overflow: inherit !important;
+}

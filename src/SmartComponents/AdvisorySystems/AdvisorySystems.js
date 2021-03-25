@@ -140,7 +140,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     isLoaded={status === STATUS_RESOLVED}
                     actions={systemsRowActions(showRemediationModal)}
                     tableProps = {{ canSelectAll: false, onSort, sortBy,
-                        variant: TableVariant.compact, className: 'patchCompactInventory' }}
+                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={onSelect && {

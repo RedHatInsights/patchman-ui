@@ -144,7 +144,7 @@ const PackageSystems = ({ packageName }) => {
                     onRefresh={handleRefresh}
                     isLoaded={status === STATUS_RESOLVED}
                     tableProps = {{ canSelectAll: false, onSort, sortBy, onSelect,
-                        variant: TableVariant.compact, className: 'patchCompactInventory' }}
+                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={enableRemediation && onSelect && {
