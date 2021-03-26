@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.14.0...v1.14.1) (2021-03-26)
+
+
+### Bug Fixes
+
+* **OSLock:** add undefined case ([4ba677c](https://github.com/RedHatInsights/patchman-ui/commit/4ba677c8fcc90d67a60f5d4c37d4e6a76c0dc2e3))
+
 # [1.14.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.13.2...v1.14.0) (2021-03-25)
 
 
