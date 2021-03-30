@@ -1,8 +1,9 @@
 import { ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { TableVariant } from '@patternfly/react-table';
-import { Main, Unavailable } from '@redhat-cloud-services/frontend-components';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
-import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
+import { Main } from '@redhat-cloud-services/frontend-components/Main';
+import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';

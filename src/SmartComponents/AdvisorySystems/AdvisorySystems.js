@@ -1,8 +1,8 @@
 import { ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
-import { InventoryTable } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
+import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

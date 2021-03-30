@@ -1,11 +1,11 @@
-import { Main } from '@redhat-cloud-services/frontend-components';
+import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import packagesListStatusFilter from '../../PresentationalComponents/Filters/PackagesListStatusFilter';
 import Header from '../../PresentationalComponents/Header/Header';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
+import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
@@ -16,7 +16,7 @@ import { createSortBy } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api';
 
 const Packages = () => {

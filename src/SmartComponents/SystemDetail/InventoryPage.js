@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Main } from '@redhat-cloud-services/frontend-components';
+import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { useSelector, useDispatch } from 'react-redux';
 import Header from '../../PresentationalComponents/Header/Header';
 import { paths } from '../../Routes';
@@ -8,7 +8,7 @@ import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { setPageTitle } from '../../Utilities/Hooks';
-import { InventoryDetailHead, AppInfo } from '@redhat-cloud-services/frontend-components/components/cjs/Inventory';
+import { InventoryDetailHead, AppInfo } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Label } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import propTypes from 'prop-types';

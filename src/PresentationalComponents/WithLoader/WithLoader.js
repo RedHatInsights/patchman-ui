@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Skeleton, Spinner } from '@redhat-cloud-services/frontend-components';
+import { Skeleton } from '@redhat-cloud-services/frontend-components/Skeleton';
+import { Spinner } from '@redhat-cloud-services/frontend-components/Spinner';
 import propTypes from 'prop-types';
 import React from 'react';
 

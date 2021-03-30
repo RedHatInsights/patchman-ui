@@ -1,6 +1,6 @@
 import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
-import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
 import React, { useState } from 'react';
 import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';

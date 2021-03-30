@@ -24,8 +24,8 @@ jest.mock('react-redux', () => ({
     useSelector: jest.fn()
 }));
 
-jest.mock('@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers', () => ({
-    ...jest.requireActual('@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers'),
+jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => ({
+    ...jest.requireActual('@redhat-cloud-services/frontend-components-utilities/helpers'),
     downloadFile: jest.fn()
 }));
 

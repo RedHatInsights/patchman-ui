@@ -1,4 +1,4 @@
-import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { EmptyAdvisoryList } from '../PresentationalComponents/Snippets/EmptyStates';
 import { createAdvisoriesRows, createSystemAdvisoriesRows, createSystemPackagesRows, createSystemsRows } from './DataMappers';
 import { handlePatchLink } from './Helpers';

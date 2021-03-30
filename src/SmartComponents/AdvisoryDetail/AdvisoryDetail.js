@@ -1,5 +1,5 @@
 import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
-import { Main } from '@redhat-cloud-services/frontend-components';
+import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
+import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { paths } from '../../Routes';
 import { clearAdvisoryDetailStore, clearAdvisorySystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
 import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
