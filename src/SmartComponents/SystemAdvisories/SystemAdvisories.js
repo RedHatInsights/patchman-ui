@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
+import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,

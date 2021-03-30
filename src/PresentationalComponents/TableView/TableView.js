@@ -1,5 +1,6 @@
 import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
-import { PrimaryToolbar, SkeletonTable } from '@redhat-cloud-services/frontend-components';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
 import PropTypes from 'prop-types';
 import React from 'react';
 import messages from '../../Messages';

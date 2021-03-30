@@ -1,7 +1,7 @@
 import {
     authInterceptor,
     responseDataInterceptor
-} from '@redhat-cloud-services/frontend-components-utilities/files/interceptors';
+} from '@redhat-cloud-services/frontend-components-utilities/interceptors';
 import axios from 'axios';
 import { ReadOnlyNotification } from './constants';
 

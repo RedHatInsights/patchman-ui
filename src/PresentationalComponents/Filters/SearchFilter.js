@@ -1,4 +1,4 @@
-import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
+import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import debounce from 'lodash/debounce';
 import React from 'react';
 

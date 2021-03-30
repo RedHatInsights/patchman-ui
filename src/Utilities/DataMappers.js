@@ -1,4 +1,4 @@
-import { processDate } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';

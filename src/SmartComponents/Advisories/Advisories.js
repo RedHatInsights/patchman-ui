@@ -1,5 +1,6 @@
-import { Main, Unavailable } from '@redhat-cloud-services/frontend-components';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/files/cjs/helpers';
+import { Main } from '@redhat-cloud-services/frontend-components/Main';
+import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

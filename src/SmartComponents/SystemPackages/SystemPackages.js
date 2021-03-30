@@ -1,4 +1,4 @@
-import { Unavailable } from '@redhat-cloud-services/frontend-components';
+import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import propTypes from 'prop-types';
 import React from 'react';

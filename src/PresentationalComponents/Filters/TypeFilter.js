@@ -1,4 +1,4 @@
-import { conditionalFilterType } from '@redhat-cloud-services/frontend-components';
+import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import React from 'react';
 import { advisoryTypes } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
