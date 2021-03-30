@@ -190,7 +190,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
               </PageHeaderTitle>
               <ForwardRef
                 fallback={
-                  <Bullseye>
+                  <Bullseye
+                    className="pf-u-p-lg"
+                  >
                     <Spinner
                       size="xl"
                     />
@@ -201,7 +203,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
               >
                 <BaseInventoryDetailHead
                   fallback={
-                    <Bullseye>
+                    <Bullseye
+                      className="pf-u-p-lg"
+                    >
                       <Spinner
                         size="xl"
                       />
@@ -213,7 +217,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                 >
                   <Suspense
                     fallback={
-                      <Bullseye>
+                      <Bullseye
+                        className="pf-u-p-lg"
+                      >
                         <Spinner
                           size="xl"
                         />
@@ -222,10 +228,12 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                   >
                     <ForwardRef
                       ErrorComponent={
-                        <UNDEFINED
+                        <InventoryLoadError
                           component="InventoryDetailHead"
                           fallback={
-                            <Bullseye>
+                            <Bullseye
+                              className="pf-u-p-lg"
+                            >
                               <Spinner
                                 size="xl"
                               />
@@ -238,7 +246,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                       }
                       appName="chrome"
                       fallback={
-                        <Bullseye>
+                        <Bullseye
+                          className="pf-u-p-lg"
+                        >
                           <Spinner
                             size="xl"
                           />
@@ -282,10 +292,12 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                     >
                       <BaseScalprumComponent
                         ErrorComponent={
-                          <UNDEFINED
+                          <InventoryLoadError
                             component="InventoryDetailHead"
                             fallback={
-                              <Bullseye>
+                              <Bullseye
+                                className="pf-u-p-lg"
+                              >
                                 <Spinner
                                   size="xl"
                                 />
@@ -298,7 +310,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                         }
                         appName="chrome"
                         fallback={
-                          <Bullseye>
+                          <Bullseye
+                            className="pf-u-p-lg"
+                          >
                             <Spinner
                               size="xl"
                             />
@@ -340,33 +354,37 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                             "subscribe": [Function],
                           }
                         }
-                      />
-                    </ForwardRef>
-                    <Bullseye>
-                      <div
-                        className="pf-l-bullseye"
                       >
-                        <Spinner
-                          size="xl"
+                        <InventoryLoadError
+                          component="InventoryDetailHead"
+                          fallback={
+                            <Bullseye
+                              className="pf-u-p-lg"
+                            >
+                              <Spinner
+                                size="xl"
+                              />
+                            </Bullseye>
+                          }
+                          hideBack={true}
+                          innerProps={null}
+                          onLoad={[Function]}
                         >
-                          <span
-                            aria-valuetext="Loading..."
-                            className="pf-c-spinner pf-m-xl"
-                            role="progressbar"
-                          >
-                            <span
-                              className="pf-c-spinner__clipper"
-                            />
-                            <span
-                              className="pf-c-spinner__lead-ball"
-                            />
-                            <span
-                              className="pf-c-spinner__tail-ball"
-                            />
-                          </span>
-                        </Spinner>
-                      </div>
-                    </Bullseye>
+                          <div>
+                            <h1>
+                              Unable to load inventory component
+                            </h1>
+                            <h2>
+                              Failed to load 
+                              InventoryDetailHead
+                            </h2>
+                            <code>
+                              More info can be found in browser console output.
+                            </code>
+                          </div>
+                        </InventoryLoadError>
+                      </BaseScalprumComponent>
+                    </ForwardRef>
                   </Suspense>
                 </BaseInventoryDetailHead>
               </ForwardRef>
@@ -381,7 +399,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
             >
               <ForwardRef
                 fallback={
-                  <Bullseye>
+                  <Bullseye
+                    className="pf-u-p-lg"
+                  >
                     <Spinner
                       size="xl"
                     />
@@ -390,7 +410,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
               >
                 <BaseAppInfo
                   fallback={
-                    <Bullseye>
+                    <Bullseye
+                      className="pf-u-p-lg"
+                    >
                       <Spinner
                         size="xl"
                       />
@@ -400,7 +422,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                 >
                   <Suspense
                     fallback={
-                      <Bullseye>
+                      <Bullseye
+                        className="pf-u-p-lg"
+                      >
                         <Spinner
                           size="xl"
                         />
@@ -409,10 +433,12 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                   >
                     <ForwardRef
                       ErrorComponent={
-                        <UNDEFINED
+                        <InventoryLoadError
                           component="AppInfo"
                           fallback={
-                            <Bullseye>
+                            <Bullseye
+                              className="pf-u-p-lg"
+                            >
                               <Spinner
                                 size="xl"
                               />
@@ -423,7 +449,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                       }
                       appName="chrome"
                       fallback={
-                        <Bullseye>
+                        <Bullseye
+                          className="pf-u-p-lg"
+                        >
                           <Spinner
                             size="xl"
                           />
@@ -465,10 +493,12 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                     >
                       <BaseScalprumComponent
                         ErrorComponent={
-                          <UNDEFINED
+                          <InventoryLoadError
                             component="AppInfo"
                             fallback={
-                              <Bullseye>
+                              <Bullseye
+                                className="pf-u-p-lg"
+                              >
                                 <Spinner
                                   size="xl"
                                 />
@@ -479,7 +509,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                         }
                         appName="chrome"
                         fallback={
-                          <Bullseye>
+                          <Bullseye
+                            className="pf-u-p-lg"
+                          >
                             <Spinner
                               size="xl"
                             />
@@ -518,33 +550,35 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                             "subscribe": [Function],
                           }
                         }
-                      />
-                    </ForwardRef>
-                    <Bullseye>
-                      <div
-                        className="pf-l-bullseye"
                       >
-                        <Spinner
-                          size="xl"
+                        <InventoryLoadError
+                          component="AppInfo"
+                          fallback={
+                            <Bullseye
+                              className="pf-u-p-lg"
+                            >
+                              <Spinner
+                                size="xl"
+                              />
+                            </Bullseye>
+                          }
+                          innerRef={null}
                         >
-                          <span
-                            aria-valuetext="Loading..."
-                            className="pf-c-spinner pf-m-xl"
-                            role="progressbar"
-                          >
-                            <span
-                              className="pf-c-spinner__clipper"
-                            />
-                            <span
-                              className="pf-c-spinner__lead-ball"
-                            />
-                            <span
-                              className="pf-c-spinner__tail-ball"
-                            />
-                          </span>
-                        </Spinner>
-                      </div>
-                    </Bullseye>
+                          <div>
+                            <h1>
+                              Unable to load inventory component
+                            </h1>
+                            <h2>
+                              Failed to load 
+                              AppInfo
+                            </h2>
+                            <code>
+                              More info can be found in browser console output.
+                            </code>
+                          </div>
+                        </InventoryLoadError>
+                      </BaseScalprumComponent>
+                    </ForwardRef>
                   </Suspense>
                 </BaseAppInfo>
               </ForwardRef>

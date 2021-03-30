@@ -180,6 +180,7 @@ exports[`TableView TableView 2`] = `
     isSelectable={false}
     paddingColumnSize={0}
     rowSize={20}
+    variant={null}
   />
 </Fragment>
 `;

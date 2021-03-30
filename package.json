@@ -38,7 +38,11 @@
     ],
     "moduleNameMapper": {
       "\\.(css|scss)$": "identity-obj-proxy"
-    }
+    },
+    "testPathIgnorePatterns" : [
+      "<rootDir>/src/SmartComponents/Systems/Systems.test.js",
+      "<rootDir>/src/SmartComponents/AdvisorySystems/AdvisorySystems.test.js" 
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
