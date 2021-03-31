@@ -8,7 +8,7 @@ import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { setPageTitle } from '../../Utilities/Hooks';
-import { InventoryDetailHead, AppInfo } from '@redhat-cloud-services/frontend-components/Inventory';
+import { InventoryDetailHead, AppInfo, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Label } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import propTypes from 'prop-types';
@@ -29,7 +29,13 @@ const InventoryDetail = ({ match }) => {
     setPageTitle(pageTitle);
 
     return (
-        <React.Fragment>
+        <DetailWrapper
+            onLoad={({ mergeWithDetail }) => {
+                register({
+                    ...mergeWithDetail(SystemDetailStore)
+                });
+            }}
+        >
             <Header
                 title=""
                 headerOUIA={'inventory-details'}
@@ -45,14 +51,7 @@ const InventoryDetail = ({ match }) => {
                     }
                 ]}
             >
-                <InventoryDetailHead
-                    onLoad={({ mergeWithDetail }) => {
-                        console.log('Inventory on load');
-                        register({
-                            ...mergeWithDetail(SystemDetailStore)
-                        });
-                    }} hideBack
-                >
+                <InventoryDetailHead hideBack>
                     { hasThirdPartyRepo &&
                         (<Label color="purple">{intl.formatMessage(messages.textThirdPartyInfo)}</Label>)
                     }
@@ -61,7 +60,7 @@ const InventoryDetail = ({ match }) => {
             <Main>
                 <AppInfo />
             </Main>
-        </React.Fragment>
+        </DetailWrapper>
     );
 };
 

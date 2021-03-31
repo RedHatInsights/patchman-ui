@@ -45,177 +45,46 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
           }
         }
       >
-        <Header
-          breadcrumbs={
-            Array [
-              Object {
-                "isActive": false,
-                "title": "Patch systems",
-                "to": "/systems/",
-              },
-              Object {
-                "isActive": true,
-                "title": undefined,
-              },
-            ]
-          }
-          headerOUIA="inventory-details"
-          title=""
-        >
-          <PageHeader
-            data-ouia-component-type="inventory-details-page-header"
-          >
-            <section
-              className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
-              data-ouia-component-type="inventory-details-page-header"
-              widget-type="InsightsPageHeader"
+        <ForwardRef
+          fallback={
+            <Bullseye
+              className="pf-u-p-lg"
             >
-              <HeaderBreadcrumbs
-                headerOUIA="inventory-details"
-                items={
-                  Array [
-                    Object {
-                      "isActive": false,
-                      "title": "Patch systems",
-                      "to": "/systems/",
-                    },
-                    Object {
-                      "isActive": true,
-                      "title": undefined,
-                    },
-                  ]
-                }
+              <Spinner
+                size="xl"
+              />
+            </Bullseye>
+          }
+          onLoad={[Function]}
+        >
+          <BaseDetailWrapper
+            fallback={
+              <Bullseye
+                className="pf-u-p-lg"
               >
-                <Breadcrumb>
-                  <nav
-                    aria-label="Breadcrumb"
-                    className="pf-c-breadcrumb"
-                    data-ouia-component-id="OUIA-Generated-Breadcrumb-1"
-                    data-ouia-component-type="PF4/Breadcrumb"
-                    data-ouia-safe={true}
-                  >
-                    <ol
-                      className="pf-c-breadcrumb__list"
-                    >
-                      <BreadcrumbItem
-                        isActive={false}
-                        key=".$Patch systems"
-                        showDivider={false}
-                      >
-                        <li
-                          className="pf-c-breadcrumb__item"
-                        >
-                          <Link
-                            data-ouia-component-id="breadcrumb-to-Patch systems"
-                            data-ouia-component-type="inventory-details-breadcrumb"
-                            to="/systems/"
-                          >
-                            <LinkAnchor
-                              data-ouia-component-id="breadcrumb-to-Patch systems"
-                              data-ouia-component-type="inventory-details-breadcrumb"
-                              href="/systems/"
-                              navigate={[Function]}
-                            >
-                              <a
-                                data-ouia-component-id="breadcrumb-to-Patch systems"
-                                data-ouia-component-type="inventory-details-breadcrumb"
-                                href="/systems/"
-                                onClick={[Function]}
-                              >
-                                Patch systems
-                              </a>
-                            </LinkAnchor>
-                          </Link>
-                        </li>
-                      </BreadcrumbItem>
-                      <BreadcrumbItem
-                        isActive={true}
-                        key=".1"
-                        showDivider={true}
-                      >
-                        <li
-                          className="pf-c-breadcrumb__item"
-                        >
-                          <span
-                            className="pf-c-breadcrumb__item-divider"
-                          >
-                            <AngleRightIcon
-                              color="currentColor"
-                              noVerticalAlign={false}
-                              size="sm"
-                            >
-                              <svg
-                                aria-hidden={true}
-                                aria-labelledby={null}
-                                fill="currentColor"
-                                height="1em"
-                                role="img"
-                                style={
-                                  Object {
-                                    "verticalAlign": "-0.125em",
-                                  }
-                                }
-                                viewBox="0 0 256 512"
-                                width="1em"
-                              >
-                                <path
-                                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                                />
-                              </svg>
-                            </AngleRightIcon>
-                          </span>
-                        </li>
-                      </BreadcrumbItem>
-                    </ol>
-                  </nav>
-                </Breadcrumb>
-              </HeaderBreadcrumbs>
-              <PageHeaderTitle
-                title=""
-              >
-                <Title
-                  className=""
-                  headingLevel="h1"
-                  size="2xl"
-                  widget-type="InsightsPageHeaderTitle"
+                <Spinner
+                  size="xl"
+                />
+              </Bullseye>
+            }
+            innerRef={null}
+            onLoad={[Function]}
+          >
+            <Suspense
+              fallback={
+                <Bullseye
+                  className="pf-u-p-lg"
                 >
-                  <h1
-                    className="pf-c-title pf-m-2xl"
-                    widget-type="InsightsPageHeaderTitle"
-                  >
-                     
-                     
-                  </h1>
-                </Title>
-              </PageHeaderTitle>
+                  <Spinner
+                    size="xl"
+                  />
+                </Bullseye>
+              }
+            >
               <ForwardRef
-                fallback={
-                  <Bullseye
-                    className="pf-u-p-lg"
-                  >
-                    <Spinner
-                      size="xl"
-                    />
-                  </Bullseye>
-                }
-                hideBack={true}
-                onLoad={[Function]}
-              >
-                <BaseInventoryDetailHead
-                  fallback={
-                    <Bullseye
-                      className="pf-u-p-lg"
-                    >
-                      <Spinner
-                        size="xl"
-                      />
-                    </Bullseye>
-                  }
-                  hideBack={true}
-                  innerProps={null}
-                  onLoad={[Function]}
-                >
-                  <Suspense
+                ErrorComponent={
+                  <InventoryLoadError
+                    component="DetailWrapper"
                     fallback={
                       <Bullseye
                         className="pf-u-p-lg"
@@ -225,90 +94,27 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                         />
                       </Bullseye>
                     }
+                    innerRef={null}
+                    onLoad={[Function]}
                   >
-                    <ForwardRef
-                      ErrorComponent={
-                        <InventoryLoadError
-                          component="InventoryDetailHead"
-                          fallback={
-                            <Bullseye
-                              className="pf-u-p-lg"
-                            >
-                              <Spinner
-                                size="xl"
-                              />
-                            </Bullseye>
-                          }
-                          hideBack={true}
-                          innerProps={null}
-                          onLoad={[Function]}
-                        />
-                      }
-                      appName="chrome"
-                      fallback={
-                        <Bullseye
-                          className="pf-u-p-lg"
-                        >
-                          <Spinner
-                            size="xl"
-                          />
-                        </Bullseye>
-                      }
-                      hideBack={true}
-                      history={
-                        Object {
-                          "action": "POP",
-                          "block": [Function],
-                          "createHref": [Function],
-                          "go": [Function],
-                          "goBack": [Function],
-                          "goForward": [Function],
-                          "length": 1,
-                          "listen": [Function],
-                          "location": Object {
-                            "hash": "",
-                            "pathname": "/",
-                            "search": "",
-                            "state": undefined,
+                    <Header
+                      breadcrumbs={
+                        Array [
+                          Object {
+                            "isActive": false,
+                            "title": "Patch systems",
+                            "to": "/systems/",
                           },
-                          "push": [Function],
-                          "replace": [Function],
-                        }
+                          Object {
+                            "isActive": true,
+                            "title": undefined,
+                          },
+                        ]
                       }
-                      innerProps={null}
-                      module="./InventoryDetailHead"
-                      onLoad={[Function]}
-                      scope="chrome"
-                      store={
-                        Object {
-                          "clearActions": [Function],
-                          "dispatch": [Function],
-                          "getActions": [Function],
-                          "getState": [Function],
-                          "replaceReducer": [Function],
-                          "subscribe": [Function],
-                        }
-                      }
+                      headerOUIA="inventory-details"
+                      title=""
                     >
-                      <BaseScalprumComponent
-                        ErrorComponent={
-                          <InventoryLoadError
-                            component="InventoryDetailHead"
-                            fallback={
-                              <Bullseye
-                                className="pf-u-p-lg"
-                              >
-                                <Spinner
-                                  size="xl"
-                                />
-                              </Bullseye>
-                            }
-                            hideBack={true}
-                            innerProps={null}
-                            onLoad={[Function]}
-                          />
-                        }
-                        appName="chrome"
+                      <ForwardRef
                         fallback={
                           <Bullseye
                             className="pf-u-p-lg"
@@ -319,44 +125,102 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                           </Bullseye>
                         }
                         hideBack={true}
-                        history={
-                          Object {
-                            "action": "POP",
-                            "block": [Function],
-                            "createHref": [Function],
-                            "go": [Function],
-                            "goBack": [Function],
-                            "goForward": [Function],
-                            "length": 1,
-                            "listen": [Function],
-                            "location": Object {
-                              "hash": "",
-                              "pathname": "/",
-                              "search": "",
-                              "state": undefined,
+                      />
+                    </Header>
+                    <Memo(Connect(Main))>
+                      <ForwardRef
+                        fallback={
+                          <Bullseye
+                            className="pf-u-p-lg"
+                          >
+                            <Spinner
+                              size="xl"
+                            />
+                          </Bullseye>
+                        }
+                      />
+                    </Memo(Connect(Main))>
+                  </InventoryLoadError>
+                }
+                appName="chrome"
+                fallback={
+                  <Bullseye
+                    className="pf-u-p-lg"
+                  >
+                    <Spinner
+                      size="xl"
+                    />
+                  </Bullseye>
+                }
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                innerRef={null}
+                module="./DetailWrapper"
+                onLoad={[Function]}
+                scope="chrome"
+                store={
+                  Object {
+                    "clearActions": [Function],
+                    "dispatch": [Function],
+                    "getActions": [Function],
+                    "getState": [Function],
+                    "replaceReducer": [Function],
+                    "subscribe": [Function],
+                  }
+                }
+              >
+                <BaseScalprumComponent
+                  ErrorComponent={
+                    <InventoryLoadError
+                      component="DetailWrapper"
+                      fallback={
+                        <Bullseye
+                          className="pf-u-p-lg"
+                        >
+                          <Spinner
+                            size="xl"
+                          />
+                        </Bullseye>
+                      }
+                      innerRef={null}
+                      onLoad={[Function]}
+                    >
+                      <Header
+                        breadcrumbs={
+                          Array [
+                            Object {
+                              "isActive": false,
+                              "title": "Patch systems",
+                              "to": "/systems/",
                             },
-                            "push": [Function],
-                            "replace": [Function],
-                          }
+                            Object {
+                              "isActive": true,
+                              "title": undefined,
+                            },
+                          ]
                         }
-                        innerProps={null}
-                        innerRef={null}
-                        module="./InventoryDetailHead"
-                        onLoad={[Function]}
-                        scope="chrome"
-                        store={
-                          Object {
-                            "clearActions": [Function],
-                            "dispatch": [Function],
-                            "getActions": [Function],
-                            "getState": [Function],
-                            "replaceReducer": [Function],
-                            "subscribe": [Function],
-                          }
-                        }
+                        headerOUIA="inventory-details"
+                        title=""
                       >
-                        <InventoryLoadError
-                          component="InventoryDetailHead"
+                        <ForwardRef
                           fallback={
                             <Bullseye
                               className="pf-u-p-lg"
@@ -367,48 +231,24 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                             </Bullseye>
                           }
                           hideBack={true}
-                          innerProps={null}
-                          onLoad={[Function]}
-                        >
-                          <div>
-                            <h1>
-                              Unable to load inventory component
-                            </h1>
-                            <h2>
-                              Failed to load 
-                              InventoryDetailHead
-                            </h2>
-                            <code>
-                              More info can be found in browser console output.
-                            </code>
-                          </div>
-                        </InventoryLoadError>
-                      </BaseScalprumComponent>
-                    </ForwardRef>
-                  </Suspense>
-                </BaseInventoryDetailHead>
-              </ForwardRef>
-            </section>
-          </PageHeader>
-        </Header>
-        <Connect(Main)>
-          <Main>
-            <section
-              className="pf-l-page__main-section pf-c-page__main-section"
-              page-type=""
-            >
-              <ForwardRef
-                fallback={
-                  <Bullseye
-                    className="pf-u-p-lg"
-                  >
-                    <Spinner
-                      size="xl"
-                    />
-                  </Bullseye>
-                }
-              >
-                <BaseAppInfo
+                        />
+                      </Header>
+                      <Memo(Connect(Main))>
+                        <ForwardRef
+                          fallback={
+                            <Bullseye
+                              className="pf-u-p-lg"
+                            >
+                              <Spinner
+                                size="xl"
+                              />
+                            </Bullseye>
+                          }
+                        />
+                      </Memo(Connect(Main))>
+                    </InventoryLoadError>
+                  }
+                  appName="chrome"
                   fallback={
                     <Bullseye
                       className="pf-u-p-lg"
@@ -418,9 +258,43 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                       />
                     </Bullseye>
                   }
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
                   innerRef={null}
+                  module="./DetailWrapper"
+                  onLoad={[Function]}
+                  scope="chrome"
+                  store={
+                    Object {
+                      "clearActions": [Function],
+                      "dispatch": [Function],
+                      "getActions": [Function],
+                      "getState": [Function],
+                      "replaceReducer": [Function],
+                      "subscribe": [Function],
+                    }
+                  }
                 >
-                  <Suspense
+                  <InventoryLoadError
+                    component="DetailWrapper"
                     fallback={
                       <Bullseye
                         className="pf-u-p-lg"
@@ -430,161 +304,27 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                         />
                       </Bullseye>
                     }
+                    innerRef={null}
+                    onLoad={[Function]}
                   >
-                    <ForwardRef
-                      ErrorComponent={
-                        <InventoryLoadError
-                          component="AppInfo"
-                          fallback={
-                            <Bullseye
-                              className="pf-u-p-lg"
-                            >
-                              <Spinner
-                                size="xl"
-                              />
-                            </Bullseye>
-                          }
-                          innerRef={null}
-                        />
-                      }
-                      appName="chrome"
-                      fallback={
-                        <Bullseye
-                          className="pf-u-p-lg"
-                        >
-                          <Spinner
-                            size="xl"
-                          />
-                        </Bullseye>
-                      }
-                      history={
-                        Object {
-                          "action": "POP",
-                          "block": [Function],
-                          "createHref": [Function],
-                          "go": [Function],
-                          "goBack": [Function],
-                          "goForward": [Function],
-                          "length": 1,
-                          "listen": [Function],
-                          "location": Object {
-                            "hash": "",
-                            "pathname": "/",
-                            "search": "",
-                            "state": undefined,
-                          },
-                          "push": [Function],
-                          "replace": [Function],
-                        }
-                      }
-                      innerRef={null}
-                      module="./AppInfo"
-                      scope="chrome"
-                      store={
-                        Object {
-                          "clearActions": [Function],
-                          "dispatch": [Function],
-                          "getActions": [Function],
-                          "getState": [Function],
-                          "replaceReducer": [Function],
-                          "subscribe": [Function],
-                        }
-                      }
-                    >
-                      <BaseScalprumComponent
-                        ErrorComponent={
-                          <InventoryLoadError
-                            component="AppInfo"
-                            fallback={
-                              <Bullseye
-                                className="pf-u-p-lg"
-                              >
-                                <Spinner
-                                  size="xl"
-                                />
-                              </Bullseye>
-                            }
-                            innerRef={null}
-                          />
-                        }
-                        appName="chrome"
-                        fallback={
-                          <Bullseye
-                            className="pf-u-p-lg"
-                          >
-                            <Spinner
-                              size="xl"
-                            />
-                          </Bullseye>
-                        }
-                        history={
-                          Object {
-                            "action": "POP",
-                            "block": [Function],
-                            "createHref": [Function],
-                            "go": [Function],
-                            "goBack": [Function],
-                            "goForward": [Function],
-                            "length": 1,
-                            "listen": [Function],
-                            "location": Object {
-                              "hash": "",
-                              "pathname": "/",
-                              "search": "",
-                              "state": undefined,
-                            },
-                            "push": [Function],
-                            "replace": [Function],
-                          }
-                        }
-                        innerRef={null}
-                        module="./AppInfo"
-                        scope="chrome"
-                        store={
-                          Object {
-                            "clearActions": [Function],
-                            "dispatch": [Function],
-                            "getActions": [Function],
-                            "getState": [Function],
-                            "replaceReducer": [Function],
-                            "subscribe": [Function],
-                          }
-                        }
-                      >
-                        <InventoryLoadError
-                          component="AppInfo"
-                          fallback={
-                            <Bullseye
-                              className="pf-u-p-lg"
-                            >
-                              <Spinner
-                                size="xl"
-                              />
-                            </Bullseye>
-                          }
-                          innerRef={null}
-                        >
-                          <div>
-                            <h1>
-                              Unable to load inventory component
-                            </h1>
-                            <h2>
-                              Failed to load 
-                              AppInfo
-                            </h2>
-                            <code>
-                              More info can be found in browser console output.
-                            </code>
-                          </div>
-                        </InventoryLoadError>
-                      </BaseScalprumComponent>
-                    </ForwardRef>
-                  </Suspense>
-                </BaseAppInfo>
+                    <div>
+                      <h1>
+                        Unable to load inventory component
+                      </h1>
+                      <h2>
+                        Failed to load 
+                        DetailWrapper
+                      </h2>
+                      <code>
+                        More info can be found in browser console output.
+                      </code>
+                    </div>
+                  </InventoryLoadError>
+                </BaseScalprumComponent>
               </ForwardRef>
-            </section>
-          </Main>
-        </Connect(Main)>
+            </Suspense>
+          </BaseDetailWrapper>
+        </ForwardRef>
       </InventoryDetail>
     </Router>
   </BrowserRouter>
