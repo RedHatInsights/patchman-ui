@@ -9,7 +9,6 @@ import { DescriptionWithLink } from '../PresentationalComponents/Snippets/Descri
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { TextContent, TextListItem, TextListItemVariants } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
-import { Link } from 'react-router-dom';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -223,6 +222,7 @@ export const createPackagesRows = (rows) => {
 };
 
 export const createCvesRows = (rows) => {
+    console.log(window.location);
     if (rows.length !== 0) {
         return rows.map(cve => {
             const { attributes, id } = cve;
@@ -233,9 +233,9 @@ export const createCvesRows = (rows) => {
                 key: id,
                 cells: [
                     { title: (
-                        <Link to={`/insights/vulnerability/cves/${attributes.synopsis}`} >
+                        <a href={`${window.location.origin}/insights/vulnerability/cves/${attributes.synopsis}`}>
                             {attributes.synopsis}
-                        </Link>) },
+                        </a>) },
                     {
                         title: (<TextContent>
                             <TextListItem component={TextListItemVariants.dd}>
