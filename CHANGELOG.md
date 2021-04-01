@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.14.1...v1.14.2) (2021-04-01)
+
+
+### Bug Fixes
+
+* **Systems:** SPM-825 sorting systems table fixed ([7c97e5f](https://github.com/RedHatInsights/patchman-ui/commit/7c97e5ffe743cc56e18909e8e8a459de017b013b))
+
 ## [1.14.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.14.0...v1.14.1) (2021-03-26)
 
 
