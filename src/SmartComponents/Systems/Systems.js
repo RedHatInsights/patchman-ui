@@ -121,9 +121,9 @@ const Systems = () => {
 
     const onSelect = useOnSelect(hosts,  selectedRows, fetchAllData, selectRows);
 
-    const onSort = useSortColumn(getMangledColumns(), apply);
+    const onSort = useSortColumn(getMangledColumns(), apply, 1);
     const sortBy = React.useMemo(
-        () => createSortBy(getMangledColumns(), metadata.sort, 0),
+        () => createSortBy(getMangledColumns(), metadata.sort, 1),
         [metadata.sort]
     );
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
