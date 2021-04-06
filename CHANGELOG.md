@@ -1,3 +1,10 @@
+## [1.14.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.14.2...v1.14.3) (2021-04-06)
+
+
+### Bug Fixes
+
+* **CveModal:** fix url to Vulnerability app ([947df70](https://github.com/RedHatInsights/patchman-ui/commit/947df7077ef0eff34d6b11b64894791ff440755f))
+
 ## [1.14.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.14.1...v1.14.2) (2021-04-01)
 
 
