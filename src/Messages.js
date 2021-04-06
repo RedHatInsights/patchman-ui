@@ -56,11 +56,6 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Name'
     },
-    labelsColumnsPackage: {
-        id: 'labelsColumnsPackage',
-        description: 'shared single noun label',
-        defaultMessage: 'Package'
-    },
     labelsColumnsPublishDate: {
         id: 'labelsColumnsPublishDate',
         description: 'shared label',
@@ -124,7 +119,7 @@ export default defineMessages({
     labelsFiltersPackagesSearchTitle: {
         id: 'labelsFiltersPackagesSearchTitle',
         description: 'search filter placeholder for packages pages',
-        defaultMessage: 'Package'
+        defaultMessage: 'Name'
     },
     labelsFiltersPublishDate: {
         id: 'labelsFiltersPublishDate',
