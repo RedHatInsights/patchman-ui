@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.15.0...v1.16.0) (2021-04-06)
+
+
+### Features
+
+* **TableHeaders:** enable sticky headers ([51d8acd](https://github.com/RedHatInsights/patchman-ui/commit/51d8acd554d0a5dee637f6d16dd0c0779db1cf35))
+
 # [1.15.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.14.3...v1.15.0) (2021-04-06)
 
 
