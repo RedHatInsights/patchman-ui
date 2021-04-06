@@ -283,6 +283,7 @@ exports[`TableView test table props TableView 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={true}
+    isTreeTable={false}
     onCollapse={[MockFunction]}
     onSelect={[MockFunction]}
     onSort={[MockFunction]}

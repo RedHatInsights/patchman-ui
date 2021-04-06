@@ -57,7 +57,7 @@ export const systemAdvisoriesColumns = [
 
 export const systemPackagesColumns = [
     {
-        title: intl.formatMessage(messages.labelsColumnsPackage),
+        title: intl.formatMessage(messages.labelsColumnsName),
         transforms: [sortable, cellWidth(20)],
         key: 'name'
     },
@@ -86,7 +86,7 @@ export const systemPackagesColumns = [
 export const packagesColumns = [
     {
         key: 'name',
-        title: intl.formatMessage(messages.labelsColumnsPackage),
+        title: intl.formatMessage(messages.labelsColumnsName),
         transforms: [sortable, cellWidth(25)]
     },
     {
