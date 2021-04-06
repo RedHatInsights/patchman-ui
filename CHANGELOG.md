@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.14.3...v1.15.0) (2021-04-06)
+
+
+### Features
+
+* **git commits:** SPM-769 use commitizer plugin to enable conventional commit names ([27bb715](https://github.com/RedHatInsights/patchman-ui/commit/27bb71540cd6084c23d7e2fa4e3adfde98fdf242))
+
 ## [1.14.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.14.2...v1.14.3) (2021-04-06)
 
 
