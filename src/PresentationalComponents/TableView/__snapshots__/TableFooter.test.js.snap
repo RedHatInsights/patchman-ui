@@ -68,6 +68,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 "currPage": "Current page",
                 "items": "",
                 "itemsPerPage": "Items per page",
+                "ofWord": "of",
                 "optionsToggle": "Items per page",
                 "page": "",
                 "paginationTitle": "Pagination",
@@ -245,7 +246,8 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                   10
                                 </b>
                                  
-                                of 
+                                of
+                                 
                                 <b>
                                   10
                                 </b>
@@ -306,7 +308,8 @@ exports[`TableFooter Should match the snapshots 1`] = `
                               10
                             </b>
                              
-                            of 
+                            of
+                             
                             <b>
                               10
                             </b>
@@ -340,7 +343,8 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                       10
                                     </b>
                                      
-                                    of 
+                                    of
+                                     
                                     <b>
                                       10
                                     </b>
@@ -416,7 +420,8 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                         10
                                       </b>
                                        
-                                      of 
+                                      of
+                                       
                                       <b>
                                         10
                                       </b>
@@ -512,6 +517,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 isCompact={false}
                 isDisabled={false}
                 lastPage={1}
+                ofWord="of"
                 onFirstClick={[Function]}
                 onLastClick={[Function]}
                 onNextClick={[Function]}
@@ -650,7 +656,8 @@ exports[`TableFooter Should match the snapshots 1`] = `
                     <span
                       aria-hidden="true"
                     >
-                      of 
+                      of
+                       
                       1
                     </span>
                   </div>
