@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.16.1...v1.16.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* **Packages:** rename packages column ([622c78f](https://github.com/RedHatInsights/patchman-ui/commit/622c78fabfd8053e5a4822a7391ed1ab220ceabf))
+
 ## [1.16.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.16.0...v1.16.1) (2021-04-07)
 
 
