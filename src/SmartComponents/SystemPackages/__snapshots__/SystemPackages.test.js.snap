@@ -1618,6 +1618,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 "currPage": "Current page",
                                 "items": "",
                                 "itemsPerPage": "Items per page",
+                                "ofWord": "of",
                                 "optionsToggle": "Items per page",
                                 "page": "",
                                 "paginationTitle": "Pagination",
@@ -1647,6 +1648,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                   itemCount={0}
                                   itemsTitle=""
                                   lastIndex={0}
+                                  ofWord="of"
                                 >
                                   <b>
                                     0
@@ -1654,7 +1656,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                     0
                                   </b>
                                    
-                                  of 
+                                  of
+                                   
                                   <b>
                                     0
                                   </b>
@@ -1808,7 +1811,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   0
                                                 </b>
                                                  
-                                                of 
+                                                of
+                                                 
                                                 <b>
                                                   0
                                                 </b>
@@ -1870,7 +1874,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                               0
                                             </b>
                                              
-                                            of 
+                                            of
+                                             
                                             <b>
                                               0
                                             </b>
@@ -1904,7 +1909,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                       0
                                                     </b>
                                                      
-                                                    of 
+                                                    of
+                                                     
                                                     <b>
                                                       0
                                                     </b>
@@ -1981,7 +1987,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                         0
                                                       </b>
                                                        
-                                                      of 
+                                                      of
+                                                       
                                                       <b>
                                                         0
                                                       </b>
@@ -2078,6 +2085,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 isCompact={true}
                                 isDisabled={false}
                                 lastPage={0}
+                                ofWord="of"
                                 onFirstClick={[Function]}
                                 onLastClick={[Function]}
                                 onNextClick={[Function]}

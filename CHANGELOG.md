@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.16.0...v1.16.1) (2021-04-07)
+
+
+### Bug Fixes
+
+* **env:** remove html-webpack-plugin and rebuild ([7e14d90](https://github.com/RedHatInsights/patchman-ui/commit/7e14d90dd12a9b66eb440421f402b20dc8adb19a))
+
 # [1.16.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.15.0...v1.16.0) (2021-04-06)
 
 
