@@ -140,7 +140,7 @@ const Advisories = ({ history }) => {
                     onSort={onSort}
                     onExport={onExport}
                     selectedRows={selectedRows}
-                    onSelect={onSelect}
+                    onSelect={(advisories.length && onSelect) || undefined}
                     sortBy={sortBy}
                     remediationProvider={() =>
                         remediationProviderWithPairs(arrayFromObj(selectedRows), prepareRemediationPairs, transformPairs)
