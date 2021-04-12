@@ -74,7 +74,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         dispatch(changeAdvisorySystemsParams(params));
     }
 
-    const removeFilter = useRemoveFilter(filter, apply);
+    const [deleteFilters] = useRemoveFilter(filter, apply);
 
     const filterConfig = {
         items: [
@@ -87,7 +87,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const activeFiltersConfig = {
         filters: buildFilterChips(filter, search),
-        onDelete: removeFilter
+        onDelete: deleteFilters
     };
 
     const showRemediationModal = data => {
