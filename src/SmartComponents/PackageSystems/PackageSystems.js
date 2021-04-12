@@ -74,7 +74,7 @@ const PackageSystems = ({ packageName }) => {
         dispatch(changePackageSystemsParams(params));
     }
 
-    const removeFilter = useRemoveFilter(filter, apply);
+    const [deleteFilters] = useRemoveFilter(filter, apply);
 
     const filterConfig = {
         items: [
@@ -88,7 +88,7 @@ const PackageSystems = ({ packageName }) => {
 
     const activeFiltersConfig = {
         filters: buildFilterChips(filter, search),
-        onDelete: removeFilter
+        onDelete: deleteFilters
     };
 
     const showRemediationModal = data => {

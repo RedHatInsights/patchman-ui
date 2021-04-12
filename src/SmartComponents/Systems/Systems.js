@@ -87,7 +87,7 @@ const Systems = () => {
         dispatch(changeSystemsListParams(params));
     }
 
-    const removeFilter = useRemoveFilter(filter, apply);
+    const [deleteFilters] = useRemoveFilter(filter, apply);
 
     const filterConfig = {
         items: [
@@ -100,7 +100,7 @@ const Systems = () => {
 
     const activeFiltersConfig = {
         filters: buildFilterChips(filter, search),
-        onDelete: removeFilter
+        onDelete: deleteFilters
     };
 
     // This is used ONLY for sorting purposes
