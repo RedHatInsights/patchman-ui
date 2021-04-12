@@ -138,7 +138,7 @@ const TableView = ({
                         <React.Fragment>
                             <Table
                                 aria-label="Patch table view"
-                                cells={metadata.total_items && columns || ['']}
+                                cells={columns}
                                 onSelect={onSelect}
                                 rows={rows}
                                 onCollapse={metadata.total_items && onCollapse}
