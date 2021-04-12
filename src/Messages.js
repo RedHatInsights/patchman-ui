@@ -56,11 +56,6 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Name'
     },
-    labelsColumnsPackage: {
-        id: 'labelsColumnsPackage',
-        description: 'shared single noun label',
-        defaultMessage: 'Package'
-    },
     labelsColumnsPublishDate: {
         id: 'labelsColumnsPublishDate',
         description: 'shared label',
@@ -111,6 +106,11 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'Description'
     },
+    labelsFiltersClear: {
+        id: 'labelsFiltersClear',
+        description: 'label for remove filter chips',
+        defaultMessage: 'Clear filters'
+    },
     labelsFiltersCvesSearchPlaceHolder: {
         id: 'labelsFiltersCvesSearch',
         description: 'search filter placeholder for packages pages',
@@ -124,12 +124,17 @@ export default defineMessages({
     labelsFiltersPackagesSearchTitle: {
         id: 'labelsFiltersPackagesSearchTitle',
         description: 'search filter placeholder for packages pages',
-        defaultMessage: 'Package'
+        defaultMessage: 'Name'
     },
     labelsFiltersPublishDate: {
         id: 'labelsFiltersPublishDate',
         description: 'shared label',
         defaultMessage: 'Publish date'
+    },
+    labelsFiltersReset: {
+        id: 'labelsFiltersReset',
+        description: 'label for remove filter chips',
+        defaultMessage: 'Reset filters'
     },
     labelsFiltersSearch: {
         id: 'labelsFiltersSearch',

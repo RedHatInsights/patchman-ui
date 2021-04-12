@@ -1,8 +1,8 @@
-import { storeListDefaults } from '../../Utilities/constants';
+import { storeListDefaults, systemPackagesDefaultFilters } from '../../Utilities/constants';
 import * as ActionTypes from '../ActionTypes';
 import { changeFilters, fetchFulfilled, fetchPending, fetchRejected, selectRows } from './HelperReducers';
 
-let initializeState = { queryParams: { filter: { updatable: 'true' } } };
+let initializeState = { queryParams: systemPackagesDefaultFilters };
 
 export const SystemPackageListStore = (state = { ...storeListDefaults, ...initializeState }, action) => {
     let newState = { ...state };

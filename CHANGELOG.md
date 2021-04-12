@@ -1,3 +1,17 @@
+# [1.17.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.16.2...v1.17.0) (2021-04-09)
+
+
+### Features
+
+* **Filters:** reset filters introduced ([5c92da4](https://github.com/RedHatInsights/patchman-ui/commit/5c92da45a24f43fcd10c79da42b77e9b4a8f1be3))
+
+## [1.16.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.16.1...v1.16.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* **Packages:** rename packages column ([622c78f](https://github.com/RedHatInsights/patchman-ui/commit/622c78fabfd8053e5a4822a7391ed1ab220ceabf))
+
 ## [1.16.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.16.0...v1.16.1) (2021-04-07)
 
 

@@ -43,7 +43,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
             Array [
               Object {
                 "key": "name",
-                "title": "Package",
+                "title": "Name",
                 "transforms": Array [
                   [Function],
                   [Function],
@@ -82,6 +82,13 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
             ]
           }
           compact={true}
+          defaultFilters={
+            Object {
+              "filter": Object {
+                "updatable": "true",
+              },
+            }
+          }
           emptyState={false}
           errorState={<Unavailable />}
           filterConfig={
@@ -94,7 +101,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                     "placeholder": "Filter by name or summary",
                     "value": undefined,
                   },
-                  "label": "Package",
+                  "label": "Name",
                   "type": "text",
                 },
                 Object {
@@ -214,8 +221,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
             }
             activeFiltersConfig={
               Object {
+                "deleteTitle": "Reset filters",
                 "filters": Array [],
                 "onDelete": [Function],
+                "onDeleteGroup": [Function],
               }
             }
             bulkSelect={
@@ -257,7 +266,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                       "placeholder": "Filter by name or summary",
                       "value": undefined,
                     },
-                    "label": "Package",
+                    "label": "Name",
                     "type": "text",
                   },
                   Object {
@@ -740,7 +749,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           "placeholder": "Filter by name or summary",
                                           "value": undefined,
                                         },
-                                        "label": "Package",
+                                        "label": "Name",
                                         "type": "text",
                                       },
                                       Object {
@@ -784,7 +793,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   isHovered={true}
                                                   onClick={[Function]}
                                                 >
-                                                  Package
+                                                  Name
                                                 </DropdownItem>,
                                                 <DropdownItem
                                                   component="button"
@@ -811,7 +820,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                 <span
                                                   className="ins-c-conditional-filter__value-selector"
                                                 >
-                                                  Package
+                                                  Name
                                                 </span>
                                               </DropdownToggle>
                                             }
@@ -827,7 +836,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                     isHovered={true}
                                                     onClick={[Function]}
                                                   >
-                                                    Package
+                                                    Name
                                                   </DropdownItem>,
                                                   <DropdownItem
                                                     component="button"
@@ -858,7 +867,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   <span
                                                     className="ins-c-conditional-filter__value-selector"
                                                   >
-                                                    Package
+                                                    Name
                                                   </span>
                                                 </DropdownToggle>
                                               }
@@ -917,7 +926,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                             <span
                                                               class="ins-c-conditional-filter__value-selector"
                                                             >
-                                                              Package
+                                                              Name
                                                             </span>
                                                           </span>
                                                           <span
@@ -996,7 +1005,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                               <span
                                                                 class="ins-c-conditional-filter__value-selector"
                                                               >
-                                                                Package
+                                                                Name
                                                               </span>
                                                             </span>
                                                             <span
@@ -1064,7 +1073,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                         <span
                                                           className="ins-c-conditional-filter__value-selector"
                                                         >
-                                                          Package
+                                                          Name
                                                         </span>
                                                       </span>
                                                       <span
