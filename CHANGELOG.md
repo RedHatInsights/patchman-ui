@@ -1,3 +1,10 @@
+## [1.17.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.1...v1.17.2) (2021-04-13)
+
+
+### Bug Fixes
+
+* **Advisories:** SPM-844 wqremove unwanted checkbox ([8ed9317](https://github.com/RedHatInsights/patchman-ui/commit/8ed9317a0b95a5a3282e7fef25f31be56137ccfe))
+
 ## [1.17.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.0...v1.17.1) (2021-04-13)
 
 
