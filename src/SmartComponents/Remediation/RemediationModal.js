@@ -46,9 +46,12 @@ const RemediationModal = ({ data }) => {
     };
 
     React.useEffect(() => {
-        remediations &&
+        //temporary fix: this code decides if there is already mounted remediation modal
+        const remediationModal = document.getElementsByClassName('ins-c-remediation-modal');
+        if (remediations && remediationModal.length === 0) {
             remediations
             .openWizard({ ...data, onRemediationCreated: handleRemediationSuccess });
+        }
     }, [remediations]);
 
     return (
