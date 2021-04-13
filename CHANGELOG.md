@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.0...v1.17.1) (2021-04-13)
+
+
+### Bug Fixes
+
+* **Clear filters:** onDelete function error fixed ([0d5b0e3](https://github.com/RedHatInsights/patchman-ui/commit/0d5b0e379cff9bd60e0f45ddfc42ec998c003a2e))
+
 # [1.17.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.16.2...v1.17.0) (2021-04-09)
 
 
