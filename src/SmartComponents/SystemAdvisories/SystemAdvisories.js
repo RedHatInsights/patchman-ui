@@ -116,7 +116,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
                 columns={systemAdvisoriesColumns}
                 compact
                 onCollapse={onCollapse}
-                onSelect={(advisories.length && onSelect) || undefined}
+                onSelect={onSelect}
                 onSetPage={onSetPage}
                 onPerPageSelect={onPerPageSelect}
                 onSort={onSort}

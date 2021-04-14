@@ -204,7 +204,8 @@ const Systems = () => {
                                 toggleProps: {
                                     'data-ouia-component-type': 'bulk-select-toggle-button'
                                 },
-                                checked: selectedCount === metadata.total_items ? true : selectedCount === 0 ? false : null
+                                checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
+                                isDisabled: metadata.total_items === 0 && selectedCount === 0
                             }}
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}

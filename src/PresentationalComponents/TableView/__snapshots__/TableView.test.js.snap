@@ -29,6 +29,7 @@ exports[`TableView TableView 1`] = `
       Object {
         "checked": false,
         "count": 0,
+        "isDisabled": false,
         "items": Array [
           Object {
             "onClick": [Function],
@@ -119,6 +120,7 @@ exports[`TableView TableView 2`] = `
       Object {
         "checked": false,
         "count": 0,
+        "isDisabled": false,
         "items": Array [
           Object {
             "onClick": [Function],
@@ -218,6 +220,7 @@ exports[`TableView test table props TableView 1`] = `
       Object {
         "checked": false,
         "count": 0,
+        "isDisabled": false,
         "items": Array [
           Object {
             "onClick": [Function],
