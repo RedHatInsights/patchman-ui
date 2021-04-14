@@ -226,7 +226,6 @@ const Systems = () => {
                                         isLoading={isRemediationLoading}
                                         ouia={'toolbar-remediation-button'}
                                     />
-                                    <RemediationModalCmp />
                                 </ToolbarItem>
                             </ToolbarGroup>
                         </InventoryTable>
