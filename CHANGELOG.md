@@ -1,3 +1,10 @@
+## [1.17.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.2...v1.17.3) (2021-04-14)
+
+
+### Bug Fixes
+
+* **remediation:** SPM-847 fix double mounted remediation modal ([08bd67b](https://github.com/RedHatInsights/patchman-ui/commit/08bd67bea4a263ea00d95887f670e3530721a0d1))
+
 ## [1.17.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.1...v1.17.2) (2021-04-13)
 
 
