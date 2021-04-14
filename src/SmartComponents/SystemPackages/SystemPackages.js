@@ -103,7 +103,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
             <TableView
                 columns={systemPackagesColumns}
                 store={{ rows, metadata, status, queryParams }}
-                onSelect={(packages.length && onSelect) || undefined}
+                onSelect={onSelect}
                 selectedRows={selectedRows}
                 compact
                 onSort={onSort}
