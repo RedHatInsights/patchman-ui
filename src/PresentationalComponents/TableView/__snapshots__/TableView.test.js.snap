@@ -51,6 +51,7 @@ exports[`TableView TableView 1`] = `
     }
     exportConfig={
       Object {
+        "isDisabled": false,
         "onSelect": [MockFunction],
       }
     }
@@ -141,6 +142,7 @@ exports[`TableView TableView 2`] = `
     }
     exportConfig={
       Object {
+        "isDisabled": false,
         "onSelect": [MockFunction],
       }
     }
@@ -240,6 +242,7 @@ exports[`TableView test table props TableView 1`] = `
     }
     exportConfig={
       Object {
+        "isDisabled": false,
         "onSelect": [MockFunction],
       }
     }

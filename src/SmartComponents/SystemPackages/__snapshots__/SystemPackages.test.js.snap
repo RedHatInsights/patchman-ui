@@ -253,6 +253,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
             }
             exportConfig={
               Object {
+                "isDisabled": true,
                 "onSelect": undefined,
               }
             }
@@ -1227,6 +1228,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                         dropdownProps={Object {}}
                         exportConfig={
                           Object {
+                            "isDisabled": true,
                             "onSelect": undefined,
                           }
                         }
