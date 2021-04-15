@@ -342,6 +342,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                     }
                     exportConfig={
                       Object {
+                        "isDisabled": true,
                         "onSelect": [Function],
                       }
                     }
@@ -1356,6 +1357,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 dropdownProps={Object {}}
                                 exportConfig={
                                   Object {
+                                    "isDisabled": true,
                                     "onSelect": [Function],
                                   }
                                 }
@@ -1499,6 +1501,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                   >
                                     <DownloadButton
                                       extraItems={Array []}
+                                      isDisabled={true}
                                       onSelect={[Function]}
                                     >
                                       <Dropdown
@@ -1506,12 +1509,14 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           Array [
                                             <DropdownItem
                                               component="button"
+                                              isDisabled={true}
                                               onClick={[Function]}
                                             >
                                               Export to CSV
                                             </DropdownItem>,
                                             <DropdownItem
                                               component="button"
+                                              isDisabled={true}
                                               onClick={[Function]}
                                             >
                                               Export to JSON
@@ -1523,6 +1528,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                         onSelect={[Function]}
                                         toggle={
                                           <DropdownToggle
+                                            isDisabled={true}
                                             onToggle={[Function]}
                                             toggleIndicator={null}
                                           >
@@ -1542,12 +1548,14 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                             Array [
                                               <DropdownItem
                                                 component="button"
+                                                isDisabled={true}
                                                 onClick={[Function]}
                                               >
                                                 Export to CSV
                                               </DropdownItem>,
                                               <DropdownItem
                                                 component="button"
+                                                isDisabled={true}
                                                 onClick={[Function]}
                                               >
                                                 Export to JSON
@@ -1562,6 +1570,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                           position="left"
                                           toggle={
                                             <DropdownToggle
+                                              isDisabled={true}
                                               onToggle={[Function]}
                                               toggleIndicator={null}
                                             >
@@ -1583,6 +1592,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                               aria-haspopup={true}
                                               getMenuRef={[Function]}
                                               id="pf-dropdown-toggle-id-7"
+                                              isDisabled={true}
                                               isOpen={false}
                                               isPlain={true}
                                               key=".0"
@@ -1603,6 +1613,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                       data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
                                                       data-ouia-component-type="PF4/DropdownToggle"
                                                       data-ouia-safe="true"
+                                                      disabled=""
                                                       id="pf-dropdown-toggle-id-7"
                                                       type="button"
                                                     >
@@ -1637,7 +1648,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 getMenuRef={[Function]}
                                                 id="pf-dropdown-toggle-id-7"
                                                 isActive={false}
-                                                isDisabled={false}
+                                                isDisabled={true}
                                                 isOpen={false}
                                                 isPlain={true}
                                                 isPrimary={false}
@@ -1659,6 +1670,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                         data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
                                                         data-ouia-component-type="PF4/DropdownToggle"
                                                         data-ouia-safe="true"
+                                                        disabled=""
                                                         id="pf-dropdown-toggle-id-7"
                                                         type="button"
                                                       >
@@ -1689,7 +1701,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                   data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
                                                   data-ouia-component-type="PF4/DropdownToggle"
                                                   data-ouia-safe={true}
-                                                  disabled={false}
+                                                  disabled={true}
                                                   id="pf-dropdown-toggle-id-7"
                                                   onClick={[Function]}
                                                   onKeyDown={[Function]}

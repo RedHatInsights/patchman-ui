@@ -139,7 +139,9 @@ const AdvisorySystems = ({ advisoryName }) => {
                     onRefresh={handleRefresh}
                     isLoaded={status === STATUS_RESOLVED}
                     actions={systemsRowActions(showRemediationModal)}
-                    tableProps = {{ canSelectAll: false, onSort, sortBy,
+                    tableProps = {{ canSelectAll: false,
+                        onSort: metadata.total_items && onSort,
+                        sortBy: metadata.total_items && sortBy,
                         variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}

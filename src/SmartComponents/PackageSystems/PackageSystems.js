@@ -143,8 +143,10 @@ const PackageSystems = ({ packageName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                     isLoaded={status === STATUS_RESOLVED}
-                    tableProps = {{ canSelectAll: false, onSort, sortBy, onSelect,
-                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
+                    tableProps = {{ canSelectAll: false,
+                        onSort: metadata.total_items && onSort,
+                        sortBy: metadata.total_items && sortBy,
+                        onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={enableRemediation && onSelect && {

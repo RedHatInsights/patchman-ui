@@ -178,7 +178,10 @@ const Systems = () => {
                             perPage={perPage}
                             isLoaded={status === STATUS_RESOLVED}
                             onRefresh={handleRefresh}
-                            exportConfig={{ onSelect: onExport }}
+                            exportConfig={{
+                                isDisabled: metadata.total_items === 0,
+                                onSelect: onExport
+                            }}
                             bulkSelect={onSelect && {
                                 count: selectedCount,
                                 items: [{
@@ -210,7 +213,11 @@ const Systems = () => {
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}
-                            tableProps = {{ areActionsDisabled, onSort, sortBy, canSelectAll: false,
+                            tableProps={{
+                                areActionsDisabled,
+                                onSort: metadata.total_items && onSort,
+                                sortBy: metadata.total_items && sortBy,
+                                canSelectAll: false,
                                 variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
 
                         >

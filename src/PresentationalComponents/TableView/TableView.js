@@ -100,7 +100,10 @@ const TableView = ({
                                 </React.Fragment>
                             )]
                         }}
-                        exportConfig={{ onSelect: onExport }}
+                        exportConfig={{
+                            isDisabled: metadata.total_items === 0,
+                            onSelect: onExport
+                        }}
                         bulkSelect={onSelect && {
                             count: selectedCount,
                             items: [{
@@ -144,7 +147,7 @@ const TableView = ({
                                 rows={rows}
                                 onCollapse={metadata.total_items && onCollapse}
                                 canSelectAll={false}
-                                onSort={onSort}
+                                onSort={metadata.total_items && onSort}
                                 ouiaId={tableOUIA}
                                 sortBy={metadata.total_items && sortBy}
                                 isStickyHeader
