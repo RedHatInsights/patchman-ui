@@ -1,3 +1,11 @@
+## [1.17.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.3...v1.17.4) (2021-04-15)
+
+
+### Bug Fixes
+
+* **bulk select:** make bulk select consistence across tables ([5ad17b6](https://github.com/RedHatInsights/patchman-ui/commit/5ad17b62d56378cd2531feb9c57f46e254ab189e))
+* **EmmptyTables:** SPM-851 disable sorting and export on empty tables ([9c6e5f3](https://github.com/RedHatInsights/patchman-ui/commit/9c6e5f380fc4491184c6b24501e27b380a0d5336))
+
 ## [1.17.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.2...v1.17.3) (2021-04-14)
 
 
