@@ -18,7 +18,8 @@ const publishDateFilter = (apply, currentFilter = {}) => {
                 filterByPublicDate(value);
             },
             items: publicDateOptions,
-            value: currentValue
+            value: currentValue,
+            placeholder: intl.formatMessage(messages.labelsFiltersPublishDatePlaceholder)
         }
     };
 };

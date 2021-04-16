@@ -25,7 +25,8 @@ const typeFilter = (apply, currentFilter = {}) => {
                 filterByType(value);
             },
             items: advisoryTypesMap,
-            value: currentFilter.advisory_type
+            value: currentFilter.advisory_type,
+            placeholder: intl.formatMessage(messages.labelsFiltersTypePlaceholder)
         }
     };
 };

@@ -68,8 +68,13 @@ export default defineMessages({
     },
     labelsColumnsStatus: {
         id: 'labelsColumnsStatus',
-        description: 'Label for status fitler placeholder',
+        description: 'Label for status fitler',
         defaultMessage: 'Status'
+    },
+    labelsColumnsStatusPlaceholder: {
+        id: 'labelsColumnsStatus',
+        description: 'Label for status fitler placeholder',
+        defaultMessage: 'Filter by status'
     },
     labelsColumnsSummary: {
         id: 'labelsColumnsSummary',
@@ -131,6 +136,11 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Publish date'
     },
+    labelsFiltersPublishDatePlaceholder: {
+        id: 'labelsFiltersPublishDate',
+        description: 'shared placeholder label',
+        defaultMessage: 'Filter by publish date'
+    },
     labelsFiltersReset: {
         id: 'labelsFiltersReset',
         description: 'label for remove filter chips',
@@ -168,8 +178,13 @@ export default defineMessages({
     },
     labelsFiltersType: {
         id: 'labelsFiltersType',
-        description: 'Label for type fitler placeholder',
+        description: 'Label for type fitler',
         defaultMessage: 'Type'
+    },
+    labelsFiltersTypePlaceholder: {
+        id: 'labelsFiltersType',
+        description: 'Label for type fitler placeholder',
+        defaultMessage: 'Filter by type'
     },
     labelsModifiedDate: {
         id: 'labelsModifiedDate',
