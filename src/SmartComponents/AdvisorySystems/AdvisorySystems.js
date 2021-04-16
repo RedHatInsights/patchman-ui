@@ -1,4 +1,3 @@
-import { ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
@@ -173,30 +172,27 @@ const AdvisorySystems = ({ advisoryName }) => {
                         checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
                         isDisabled: metadata.total_items === 0 && selectedCount === 0
                     }}
+                    dedicatedAction={(<PatchRemediationButton
+                        isDisabled={
+                            arrayFromObj(selectedRows).length === 0
+                        }
+                        onClick={() =>
+                            showRemediationModal(
+                                remediationProvider(
+                                    advisoryName,
+                                    Object.keys(selectedRows),
+                                    remediationIdentifiers.advisory
+                                )
+                            )
+                        }
+                        ouia={'toolbar-remediation-button'}
+                        isLoading={false}
+                    >
+                        <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
+                    </PatchRemediationButton>
+                    )}
                 >
-                    <ToolbarGroup>
-                        <ToolbarItem>
-                            <PatchRemediationButton
-                                isDisabled={
-                                    arrayFromObj(selectedRows).length === 0
-                                }
-                                onClick={() =>
-                                    showRemediationModal(
-                                        remediationProvider(
-                                            advisoryName,
-                                            Object.keys(selectedRows),
-                                            remediationIdentifiers.advisory
-                                        )
-                                    )
-                                }
-                                ouia={'toolbar-remediation-button'}
-                                isLoading={false}
-                            >
-                                <AnsibeTowerIcon/>&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                            </PatchRemediationButton>
-                            <RemediationModalCmp />
-                        </ToolbarItem>
-                    </ToolbarGroup>
+                    <RemediationModalCmp />
                 </InventoryTable>
             )}
         </React.Fragment>

@@ -1,4 +1,3 @@
-import { ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { TableVariant } from '@patternfly/react-table';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
@@ -219,23 +218,20 @@ const Systems = () => {
                                 sortBy: metadata.total_items && sortBy,
                                 canSelectAll: false,
                                 variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
+                            dedicatedAction={(
+                                <PatchRemediationButton
+                                    onClick={() =>
+                                        showRemediationModal(
+                                            remediationProviderWithPairs(
+                                                Object.keys(selectedRows).filter(row => selectedRows[row]),
+                                                prepareRemediationPairs, transformPairs)
+                                        )}
+                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                                    isLoading={isRemediationLoading}
+                                    ouia={'toolbar-remediation-button'}
+                                />)}
 
                         >
-                            <ToolbarGroup>
-                                <ToolbarItem>
-                                    <PatchRemediationButton
-                                        onClick={() =>
-                                            showRemediationModal(
-                                                remediationProviderWithPairs(
-                                                    Object.keys(selectedRows).filter(row=>selectedRows[row]),
-                                                    prepareRemediationPairs, transformPairs)
-                                            )}
-                                        isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                                        isLoading={isRemediationLoading}
-                                        ouia={'toolbar-remediation-button'}
-                                    />
-                                </ToolbarItem>
-                            </ToolbarGroup>
                         </InventoryTable>
                     )
                 }
