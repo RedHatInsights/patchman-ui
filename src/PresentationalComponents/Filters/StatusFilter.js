@@ -32,7 +32,8 @@ const statusFilter = (apply, currentFilter = {}) => {
                 filterByType(value);
             },
             items: updatableTypesMap,
-            value: currentValue
+            value: currentValue,
+            placeholder: intl.formatMessage(messages.labelsColumnsStatusPlaceholder)
         }
     };
 };

@@ -195,6 +195,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                               },
                             ],
                             "onChange": [Function],
+                            "placeholder": "Filter by type",
                             "value": undefined,
                           },
                           "label": "Type",
@@ -204,6 +205,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                           "filterValues": Object {
                             "items": [MockFunction],
                             "onChange": [Function],
+                            "placeholder": "Filter by publish date",
                             "value": undefined,
                           },
                           "label": "Publish date",
@@ -376,6 +378,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                 },
                               ],
                               "onChange": [Function],
+                              "placeholder": "Filter by type",
                               "value": undefined,
                             },
                             "label": "Type",
@@ -385,6 +388,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                             "filterValues": Object {
                               "items": [MockFunction],
                               "onChange": [Function],
+                              "placeholder": "Filter by publish date",
                               "value": undefined,
                             },
                             "label": "Publish date",
@@ -872,6 +876,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                     },
                                                   ],
                                                   "onChange": [Function],
+                                                  "placeholder": "Filter by type",
                                                   "value": undefined,
                                                 },
                                                 "label": "Type",
@@ -881,6 +886,7 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                                 "filterValues": Object {
                                                   "items": [MockFunction],
                                                   "onChange": [Function],
+                                                  "placeholder": "Filter by publish date",
                                                   "value": undefined,
                                                 },
                                                 "label": "Publish date",
