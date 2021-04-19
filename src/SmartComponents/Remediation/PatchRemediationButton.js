@@ -13,6 +13,7 @@ const PatchRemediationButton = ({ onClick, isDisabled, isLoading, ouia }) => {
             className={'remediationButtonPatch'}
             onClick={onClick}
             ouiaId={ouia}
+            isSmall
         ><Flex flex={{ default: 'inlineFlex' }}
                 alignItems={{ default: 'alignItemsCenter' }}
                 justifyContent={{ default: 'justifyContentCenter' }}>

@@ -1,10 +1,3 @@
-## [1.17.6](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.5...v1.17.6) (2021-04-19)
-
-
-### Bug Fixes
-
-* **Bulk Select:** SPM-861 deselect after page selection ([c46558d](https://github.com/RedHatInsights/patchman-ui/commit/c46558de0cf9de8b95d7966dd6d55dfb4956e86d))
-
 ## [1.17.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.4...v1.17.5) (2021-04-19)
 
 

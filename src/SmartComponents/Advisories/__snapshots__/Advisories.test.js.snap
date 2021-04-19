@@ -1385,13 +1385,14 @@ exports[`Advisories.js Should match the snapshots 1`] = `
                                       <Button
                                         className="remediationButtonPatch"
                                         isDisabled={true}
+                                        isSmall={true}
                                         onClick={[Function]}
                                         ouiaId="toolbar-remediation-button"
                                       >
                                         <button
                                           aria-disabled={true}
                                           aria-label={null}
-                                          className="pf-c-button pf-m-primary pf-m-disabled remediationButtonPatch"
+                                          className="pf-c-button pf-m-primary pf-m-disabled pf-m-small remediationButtonPatch"
                                           data-ouia-component-id="toolbar-remediation-button"
                                           data-ouia-component-type="PF4/Button"
                                           data-ouia-safe={true}
