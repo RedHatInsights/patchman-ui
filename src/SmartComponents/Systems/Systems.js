@@ -200,8 +200,8 @@ const Systems = () => {
                                         onSelect('all');
                                     }
                                 }],
-                                onSelect: (value) => {
-                                    value ? onSelect('all') : onSelect('none');
+                                onSelect: () => {
+                                    selectedCount.length === 0 ? onSelect('all') : onSelect('none');
                                 },
                                 toggleProps: {
                                     'data-ouia-component-type': 'bulk-select-toggle-button'
