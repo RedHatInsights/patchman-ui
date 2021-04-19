@@ -20,3 +20,7 @@ table.patchCompactInventory {
 .patch-root {
     overflow: inherit !important;
 }
+
+.advisoryTypeSpacer {
+    --pf-l-split--m-gutter--MarginRight: 0.5rem !important;
+}
