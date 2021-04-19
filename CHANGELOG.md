@@ -1,3 +1,11 @@
+## [1.17.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.4...v1.17.5) (2021-04-19)
+
+
+### Bug Fixes
+
+* **Export button:** reorder the button ([25ec293](https://github.com/RedHatInsights/patchman-ui/commit/25ec29385f73ed07adce7a7fd1e1004822426c31))
+* **Filters:** make filter placeholders lower case ([4ffac53](https://github.com/RedHatInsights/patchman-ui/commit/4ffac5383dacbf6798385425f3df16f247f5cd90))
+
 ## [1.17.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.3...v1.17.4) (2021-04-15)
 
 
