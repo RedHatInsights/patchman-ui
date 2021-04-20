@@ -169,7 +169,7 @@ const PackageSystems = ({ packageName }) => {
                             }
                         }],
                         onSelect: () => {
-                            selectedCount.length === 0 ? onSelect('all') : onSelect('none');
+                            selectedCount === 0 ? onSelect('all') : onSelect('none');
                         },
                         toggleProps: {
                             'data-ouia-component-type': 'bulk-select-toggle-button'
