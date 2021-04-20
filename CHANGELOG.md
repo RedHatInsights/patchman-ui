@@ -1,3 +1,10 @@
+## [1.17.8](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.7...v1.17.8) (2021-04-20)
+
+
+### Bug Fixes
+
+* **Advisories:** SPM-837 make type column one line ([ab2bde7](https://github.com/RedHatInsights/patchman-ui/commit/ab2bde7b1d33dd6e042456e479a5a6d94b7ba24e))
+
 ## [1.17.7](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.6...v1.17.7) (2021-04-20)
 
 
