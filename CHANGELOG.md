@@ -1,3 +1,10 @@
+## [1.17.7](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.6...v1.17.7) (2021-04-20)
+
+
+### Bug Fixes
+
+* **remediation:** SPM-863 make remediation button smaller ([a911c55](https://github.com/RedHatInsights/patchman-ui/commit/a911c5567c3fb7adcaa19ae382980620e4081777))
+
 ## [1.17.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.4...v1.17.5) (2021-04-19)
 
 
