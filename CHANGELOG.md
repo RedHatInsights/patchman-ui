@@ -1,3 +1,10 @@
+## [1.17.9](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.8...v1.17.9) (2021-04-21)
+
+
+### Bug Fixes
+
+* **bulk select:** always select all when checkbox is not checked ([7e57002](https://github.com/RedHatInsights/patchman-ui/commit/7e5700276bfc45cae946c741226b5f684141c799))
+
 ## [1.17.8](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.7...v1.17.8) (2021-04-20)
 
 
