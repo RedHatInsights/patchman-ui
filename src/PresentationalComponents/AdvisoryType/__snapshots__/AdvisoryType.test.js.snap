@@ -4,16 +4,29 @@ exports[`AdvisoryType Should match the snapshots 1`] = `
 <AdvisoryType
   type={3}
 >
-  <Split
-    className="advisoryTypeSpacer"
-    hasGutter={true}
+  <Flex
+    flex={
+      Object {
+        "default": "inlineFlex",
+      }
+    }
+    style={
+      Object {
+        "flexWrap": "nowrap",
+      }
+    }
   >
     <div
-      className="pf-l-split pf-m-gutter advisoryTypeSpacer"
+      className="pf-l-flex pf-m-inline-flex"
+      style={
+        Object {
+          "flexWrap": "nowrap",
+        }
+      }
     >
-      <SplitItem>
+      <FlexItem>
         <div
-          className="pf-l-split__item"
+          className=""
         >
           <SecurityIcon
             color="currentColor"
@@ -40,33 +53,47 @@ exports[`AdvisoryType Should match the snapshots 1`] = `
             </svg>
           </SecurityIcon>
         </div>
-      </SplitItem>
-      <SplitItem
+      </FlexItem>
+      <FlexItem
         isFilled={true}
       >
         <div
-          className="pf-l-split__item pf-m-fill"
+          className=""
+          isFilled={true}
         >
           Security
         </div>
-      </SplitItem>
+      </FlexItem>
     </div>
-  </Split>
+  </Flex>
 </AdvisoryType>
 `;
 
 exports[`AdvisoryType Should match the snapshots 2`] = `
 <AdvisoryType>
-  <Split
-    className="advisoryTypeSpacer"
-    hasGutter={true}
+  <Flex
+    flex={
+      Object {
+        "default": "inlineFlex",
+      }
+    }
+    style={
+      Object {
+        "flexWrap": "nowrap",
+      }
+    }
   >
     <div
-      className="pf-l-split pf-m-gutter advisoryTypeSpacer"
+      className="pf-l-flex pf-m-inline-flex"
+      style={
+        Object {
+          "flexWrap": "nowrap",
+        }
+      }
     >
-      <SplitItem>
+      <FlexItem>
         <div
-          className="pf-l-split__item"
+          className=""
         >
           <EnhancementIcon
             color="currentColor"
@@ -93,17 +120,18 @@ exports[`AdvisoryType Should match the snapshots 2`] = `
             </svg>
           </EnhancementIcon>
         </div>
-      </SplitItem>
-      <SplitItem
+      </FlexItem>
+      <FlexItem
         isFilled={true}
       >
         <div
-          className="pf-l-split__item pf-m-fill"
+          className=""
+          isFilled={true}
         >
           Enhancement
         </div>
-      </SplitItem>
+      </FlexItem>
     </div>
-  </Split>
+  </Flex>
 </AdvisoryType>
 `;
