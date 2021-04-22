@@ -233,7 +233,7 @@ export const createCvesRows = (rows) => {
                 key: id,
                 cells: [
                     { title: (
-                        <a href={`${window.location.origin}/insights/vulnerability/cves/${attributes.synopsis}`}>
+                        <a href={`${document.baseURI}insights/vulnerability/cves/${attributes.synopsis}`}>
                             {attributes.synopsis}
                         </a>) },
                     {
