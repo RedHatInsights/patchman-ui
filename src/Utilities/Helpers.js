@@ -105,15 +105,15 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
             {[rhea, rhba, rhsa].every(item => item === 0) &&
                 'No applicable advisories'}
             {rhsa !== 0 && (
-                <FlexItem>
+                <FlexItem spacer={{ default: 'spacerXs' }}>
                     <AdvisoriesIcon tooltipText={'Security advisories'} count={rhsa} Icon={SecurityIcon} />
                 </FlexItem>)}
             {rhba !== 0 && (
-                <FlexItem>
+                <FlexItem spacer={{ default: 'spacerXs' }}>
                     <AdvisoriesIcon tooltipText={'Bug fixes'} count={rhba} Icon={BugIcon} />
                 </FlexItem>)}
             {rhea !== 0 && (
-                <FlexItem>
+                <FlexItem spacer={{ default: 'spacerXs' }}>
                     <AdvisoriesIcon tooltipText={'Enhancements'} count={rhea} Icon={EnhancementIcon} />
                 </FlexItem>)}
         </Flex>
