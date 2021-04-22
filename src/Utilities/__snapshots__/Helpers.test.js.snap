@@ -22,14 +22,26 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
     }
   }
 >
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={3}
       tooltipText="Security advisories"
     />
   </FlexItem>
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={5}
@@ -48,14 +60,26 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
     }
   }
 >
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={3}
       tooltipText="Security advisories"
     />
   </FlexItem>
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={1}
@@ -74,14 +98,26 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
     }
   }
 >
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={2}
       tooltipText="Bug fixes"
     />
   </FlexItem>
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={1}
@@ -100,21 +136,39 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
     }
   }
 >
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={3}
       tooltipText="Security advisories"
     />
   </FlexItem>
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={2}
       tooltipText="Bug fixes"
     />
   </FlexItem>
-  <FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
     <AdvisoriesIcon
       Icon={[Function]}
       count={1}
