@@ -1,72 +1,125 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [0, 0, 0] 1`] = `
-<div>
+<div
+  className="pf-l-flex pf-m-inline-flex"
+  style={
+    Object {
+      "flexWrap": "nowrap",
+    }
+  }
+>
   No applicable advisories
 </div>
 `;
 
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [0, 5, 3] 1`] = `
-<div>
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={3}
-    tooltipText="Security advisories"
-  />
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={5}
-    tooltipText="Bug fixes"
-  />
+<div
+  className="pf-l-flex pf-m-inline-flex"
+  style={
+    Object {
+      "flexWrap": "nowrap",
+    }
+  }
+>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={3}
+      tooltipText="Security advisories"
+    />
+  </FlexItem>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={5}
+      tooltipText="Bug fixes"
+    />
+  </FlexItem>
 </div>
 `;
 
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 0, 3] 1`] = `
-<div>
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={3}
-    tooltipText="Security advisories"
-  />
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={1}
-    tooltipText="Enhancements"
-  />
+<div
+  className="pf-l-flex pf-m-inline-flex"
+  style={
+    Object {
+      "flexWrap": "nowrap",
+    }
+  }
+>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={3}
+      tooltipText="Security advisories"
+    />
+  </FlexItem>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={1}
+      tooltipText="Enhancements"
+    />
+  </FlexItem>
 </div>
 `;
 
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 2, 0] 1`] = `
-<div>
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={2}
-    tooltipText="Bug fixes"
-  />
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={1}
-    tooltipText="Enhancements"
-  />
+<div
+  className="pf-l-flex pf-m-inline-flex"
+  style={
+    Object {
+      "flexWrap": "nowrap",
+    }
+  }
+>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={2}
+      tooltipText="Bug fixes"
+    />
+  </FlexItem>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={1}
+      tooltipText="Enhancements"
+    />
+  </FlexItem>
 </div>
 `;
 
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 2, 3] 1`] = `
-<div>
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={3}
-    tooltipText="Security advisories"
-  />
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={2}
-    tooltipText="Bug fixes"
-  />
-  <AdvisoriesIcon
-    Icon={[Function]}
-    count={1}
-    tooltipText="Enhancements"
-  />
+<div
+  className="pf-l-flex pf-m-inline-flex"
+  style={
+    Object {
+      "flexWrap": "nowrap",
+    }
+  }
+>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={3}
+      tooltipText="Security advisories"
+    />
+  </FlexItem>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={2}
+      tooltipText="Bug fixes"
+    />
+  </FlexItem>
+  <FlexItem>
+    <AdvisoriesIcon
+      Icon={[Function]}
+      count={1}
+      tooltipText="Enhancements"
+    />
+  </FlexItem>
 </div>
 `;

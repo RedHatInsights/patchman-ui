@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { advisoryTypes } from '../../Utilities/constants';
-import { Split, SplitItem } from '@patternfly/react-core';
+import { Flex, FlexItem } from '@patternfly/react-core';
 
 const AdvisoryType = ({ type }) => {
     const advisoryType =
         advisoryTypes.find(item => item.value === type) || advisoryTypes[2];
     return (
-        <Split hasGutter className='advisoryTypeSpacer'>
-            <SplitItem>{advisoryType.icon}</SplitItem>
-            <SplitItem isFilled>{advisoryType.label}</SplitItem>
-        </Split>
+        <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
+            <FlexItem>{advisoryType.icon}</FlexItem>
+            <FlexItem isFilled>{advisoryType.label}</FlexItem>
+        </Flex>
     );
 };
 

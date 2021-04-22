@@ -101,13 +101,22 @@ export function truncate(str, max, end) {
 
 export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
     return (
-        <div>
+        <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
             {[rhea, rhba, rhsa].every(item => item === 0) &&
                 'No applicable advisories'}
-            {rhsa !== 0 && (<AdvisoriesIcon tooltipText={'Security advisories'} count = { rhsa } Icon = { SecurityIcon} />)}
-            {rhba !== 0 && (<AdvisoriesIcon tooltipText={'Bug fixes'} count = { rhba } Icon = { BugIcon} />)}
-            {rhea !== 0 && (<AdvisoriesIcon tooltipText={'Enhancements'} count = { rhea } Icon = { EnhancementIcon} />)}
-        </div>
+            {rhsa !== 0 && (
+                <FlexItem>
+                    <AdvisoriesIcon tooltipText={'Security advisories'} count={rhsa} Icon={SecurityIcon} />
+                </FlexItem>)}
+            {rhba !== 0 && (
+                <FlexItem>
+                    <AdvisoriesIcon tooltipText={'Bug fixes'} count={rhba} Icon={BugIcon} />
+                </FlexItem>)}
+            {rhea !== 0 && (
+                <FlexItem>
+                    <AdvisoriesIcon tooltipText={'Enhancements'} count={rhea} Icon={EnhancementIcon} />
+                </FlexItem>)}
+        </Flex>
     );
 }
 

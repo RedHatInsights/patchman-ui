@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 const AdvisoriesIcon = ({ count, tooltipText, Icon }) =>(
     <Tooltip content={tooltipText}>
-        <Flex flex={{ default: 'inlineFlex' }}>
+        <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
             <FlexItem spacer={{ default: 'spacerSm' }}>
                 <Icon/>
             </FlexItem>
