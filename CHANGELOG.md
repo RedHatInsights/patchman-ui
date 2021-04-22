@@ -1,3 +1,10 @@
+## [1.17.10](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.9...v1.17.10) (2021-04-22)
+
+
+### Bug Fixes
+
+* **cves:** Fix link to Vulnerability to respect beta route ([8f7422d](https://github.com/RedHatInsights/patchman-ui/commit/8f7422d1b97a1cabc33ef54987b38d470738c4c9))
+
 ## [1.17.9](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.8...v1.17.9) (2021-04-21)
 
 
