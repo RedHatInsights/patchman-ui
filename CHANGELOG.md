@@ -1,3 +1,10 @@
+## [1.17.11](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.10...v1.17.11) (2021-04-22)
+
+
+### Bug Fixes
+
+* **select:** SPM-876 Select only visible advisories ([60c8db5](https://github.com/RedHatInsights/patchman-ui/commit/60c8db55269016a92546d4a481b607fcba13fd97))
+
 ## [1.17.10](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.9...v1.17.10) (2021-04-22)
 
 
