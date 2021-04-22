@@ -81,7 +81,7 @@ const Advisories = ({ history }) => {
     );
 
     const fetchAllData = () =>
-        fetchApplicableAdvisoriesApi({ limit: -1 });
+        fetchApplicableAdvisoriesApi({ ...queryParams, limit: -1 });
 
     const selectRows = (toSelect) => {
         dispatch(
