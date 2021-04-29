@@ -24,7 +24,7 @@ import {
 import {
     setPageTitle,
     useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
-    useRemoveFilter, useSortColumn
+    useRemoveFilter, useSortColumn, useBulkSelectConfig
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
@@ -181,34 +181,7 @@ const Systems = () => {
                                 isDisabled: metadata.total_items === 0,
                                 onSelect: onExport
                             }}
-                            bulkSelect={onSelect && {
-                                count: selectedCount,
-                                items: [{
-                                    title: `Select none (0)`,
-                                    onClick: () => {
-                                        onSelect('none');
-                                    }
-                                }, {
-                                    title: `Select page (${hosts.length})`,
-                                    onClick: () => {
-                                        onSelect('page');
-                                    }
-                                },
-                                {
-                                    title: `Select all (${metadata.total_items})`,
-                                    onClick: () => {
-                                        onSelect('all');
-                                    }
-                                }],
-                                onSelect: () => {
-                                    selectedCount === 0 ? onSelect('all') : onSelect('none');
-                                },
-                                toggleProps: {
-                                    'data-ouia-component-type': 'bulk-select-toggle-button'
-                                },
-                                checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
-                                isDisabled: metadata.total_items === 0 && selectedCount === 0
-                            }}
+                            bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, hosts)}
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}
