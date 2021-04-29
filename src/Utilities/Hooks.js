@@ -3,6 +3,8 @@ import isDeepEqualReact from 'fast-deep-equal/react';
 import React from 'react';
 import { compoundSortValues } from './constants';
 import { convertLimitOffset, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
+import { intl } from './IntlProvider';
+import messages from '../Messages';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -188,3 +190,34 @@ export const useDeepCompareEffect = (effect, deps) => {
 
     React.useEffect(effect, ref.current);
 };
+
+export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onCollapse) => ({
+    count: selectedCount,
+    items: [{
+        title: intl.formatMessage(messages.labelsBulkSelectNone),
+        onClick: () => {
+            onSelect('none');
+        }
+    }, {
+        title: intl.formatMessage(messages.labelsBulkSelectPage,
+            { count: onCollapse && rows.length / 2 || rows.length }
+        ),
+        onClick: () => {
+            onSelect('page');
+        }
+    },
+    {
+        title: intl.formatMessage(messages.labelsBulkSelectAll, { count: metadata.total_items }),
+        onClick: () => {
+            onSelect('all');
+        }
+    }],
+    onSelect: () => {
+        selectedCount === 0 ? onSelect('all') : onSelect('none');
+    },
+    toggleProps: {
+        'data-ouia-component-type': 'bulk-select-toggle-button'
+    },
+    checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
+    isDisabled: metadata.total_items === 0 && selectedCount === 0
+});

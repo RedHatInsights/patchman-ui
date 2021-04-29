@@ -8,7 +8,7 @@ import PatchRemediationButton from '../../SmartComponents/Remediation/PatchRemed
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
 import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
-import { useRemoveFilter } from '../../Utilities/Hooks';
+import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import TableFooter from './TableFooter';
 
@@ -104,36 +104,7 @@ const TableView = ({
                             isDisabled: metadata.total_items === 0,
                             onSelect: onExport
                         }}
-                        bulkSelect={onSelect && {
-                            count: selectedCount,
-                            items: [{
-                                title: intl.formatMessage(messages.labelsBulkSelectNone),
-                                onClick: () => {
-                                    onSelect('none');
-                                }
-                            }, {
-                                title: intl.formatMessage(messages.labelsBulkSelectPage,
-                                    { count: onCollapse && rows.length / 2 || rows.length }
-                                ),
-                                onClick: () => {
-                                    onSelect('page');
-                                }
-                            },
-                            {
-                                title: intl.formatMessage(messages.labelsBulkSelectAll, { count: metadata.total_items }),
-                                onClick: () => {
-                                    onSelect('all');
-                                }
-                            }],
-                            onSelect: () => {
-                                selectedCount === 0 ? onSelect('all') : onSelect('none');
-                            },
-                            toggleProps: {
-                                'data-ouia-component-type': 'bulk-select-toggle-button'
-                            },
-                            checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
-                            isDisabled: metadata.total_items === 0 && selectedCount === 0
-                        }}
+                        bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse)}
 
                     />
 
