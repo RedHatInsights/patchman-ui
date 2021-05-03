@@ -120,19 +120,32 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
     const data =
         rows &&
         rows.map(({ id, attributes }) => {
+            const {
+                packages_installed: installedPckg,
+                packages_updatable: updatablePckg,
+                rhba_count: rhba,
+                rhsa_count: rhsa,
+                rhea_count: rhea,
+                os_name: osName,
+                os_major: osMajor,
+                os_minor: osMinor,
+                rhsm
+            } = attributes;
+
             return {
                 id,
                 key: Math.random().toString() + id,
-                packages_installed: attributes.packages_installed,
+                packages_installed: installedPckg,
+                disableCheckbox: updatablePckg === 0 || [installedPckg, rhba, rhsa, rhea].every(count => count === 0),
                 applicable_advisories: [
-                    attributes.rhea_count || 0,
-                    attributes.rhba_count || 0,
-                    attributes.rhsa_count || 0
+                    rhea || 0,
+                    rhba || 0,
+                    rhsa || 0
                 ],
                 operating_system: {
-                    osName: attributes.os_name && `${attributes.os_name} ${attributes.os_major}.${attributes.os_minor}`
+                    osName: osName && `${attributes.os_name} ${osMajor}.${osMinor}`
                         || 'No data',
-                    rhsm: attributes.rhsm
+                    rhsm
                 },
                 selected: selectedRows[id] !== undefined
             };
