@@ -9,7 +9,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { InventoryDetailHead, AppInfo, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
-import { Label } from '@patternfly/react-core';
+import { Alert } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import propTypes from 'prop-types';
 
@@ -53,7 +53,7 @@ const InventoryDetail = ({ match }) => {
             >
                 <InventoryDetailHead hideBack>
                     { hasThirdPartyRepo &&
-                        (<Label color="purple">{intl.formatMessage(messages.textThirdPartyInfo)}</Label>)
+                        (<Alert variant="info" title={intl.formatMessage(messages.textThirdPartyInfo)}></Alert>)
                     }
                 </InventoryDetailHead>
             </Header>
