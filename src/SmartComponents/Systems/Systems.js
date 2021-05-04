@@ -162,6 +162,7 @@ const Systems = () => {
                 {status === STATUS_REJECTED ? <Unavailable/> :
                     (
                         <InventoryTable
+                            disableDefaultColumns
                             onLoad={({ mergeWithEntities }) => {
                                 const store = getStore();
                                 register({
