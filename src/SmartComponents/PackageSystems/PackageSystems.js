@@ -128,6 +128,7 @@ const PackageSystems = ({ packageName }) => {
         <React.Fragment>
             {status === STATUS_REJECTED ? <Unavailable/> : (
                 <InventoryTable
+                    disableDefaultColumns
                     onLoad={({ mergeWithEntities }) => {
                         const store = getStore();
                         register({
