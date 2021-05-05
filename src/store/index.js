@@ -16,13 +16,13 @@ import { SystemPackageListStore } from './Reducers/SystemPackageListStore';
 import { SystemsListStore } from './Reducers/SystemsListStore';
 
 const persistenceMiddleware = store => next => action => {
-    const storeContent = store.getState();
     if (action.type === 'LOAD_ENTITIES_FULFILLED') {
         action = { ...action, store };
     }
 
     next(action);
     if (!action.type.endsWith('_REJECTED')) {
+        const storeContent = store.getState();
         sessionStorage.setItem('PatchStore', JSON.stringify(storeContent));
     }
 };
