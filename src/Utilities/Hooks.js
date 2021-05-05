@@ -82,7 +82,6 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
             newParams =  resetFilters(newParams);
         }
 
-        console.log(newParams);
         callback({ ...newParams });
     });
 
