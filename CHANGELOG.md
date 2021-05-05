@@ -1,3 +1,10 @@
+## [1.17.12](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.11...v1.17.12) (2021-05-05)
+
+
+### Bug Fixes
+
+* **localStorage:** SPM-879 use latest store in localStorage ([69f0755](https://github.com/RedHatInsights/patchman-ui/commit/69f0755706141a49e71d1034c274cf2b96c200c3))
+
 ## [1.17.11](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.10...v1.17.11) (2021-04-22)
 
 
