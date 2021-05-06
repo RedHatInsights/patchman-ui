@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.12...v1.18.0) (2021-05-06)
+
+
+### Features
+
+* **Systems:** disable selecting on systems with 0 installed, updatable packages and advisories ([ed89173](https://github.com/RedHatInsights/patchman-ui/commit/ed89173522c6ea3bd3e8f876a78f7c7fe5bc2a11))
+
 ## [1.17.12](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.11...v1.17.12) (2021-05-05)
 
 
