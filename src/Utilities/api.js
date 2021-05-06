@@ -19,7 +19,7 @@ export function createApiCall(
             url: '/api/patch/v1' + endpoint,
             withCredentials: true,
             data
-        })
+        }).then(response => { console.log(response.status); return response; })
     );
 
     return result;

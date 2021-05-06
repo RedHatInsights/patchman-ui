@@ -1,10 +1,10 @@
 import {
-    authInterceptor,
-    responseDataInterceptor
+    authInterceptor
 } from '@redhat-cloud-services/frontend-components-utilities/interceptors';
 import axios from 'axios';
 import { ReadOnlyNotification } from './constants';
-
+import { paths } from '../Routes';
+import { useHistory } from 'react-router-dom';
 const axiosInstance = axios.create();
 
 export async function  accessCheckInterceptor (config)  {
@@ -49,6 +49,7 @@ export function errorInterceptor(err) {
 }
 
 export function readOnlyInterceptor(error) {
+    console.log(error, 'error');
     if (error.response && error.response.status === 503) {
         const data = ReadOnlyNotification;
         throw data;
@@ -57,10 +58,19 @@ export function readOnlyInterceptor(error) {
     throw error;
 }
 
+export function userAccountStatusCheck(response) {
+    if (response.status === 200) {
+        const history = useHistory();
+        history.replace(paths.register.to);
+    }
+
+    return response.data;
+}
+
 axiosInstance.interceptors.request.use(accessCheckInterceptor);
 axiosInstance.interceptors.request.use(authInterceptor);
-axiosInstance.interceptors.response.use(responseDataInterceptor);
 axiosInstance.interceptors.response.use(null, readOnlyInterceptor);
 axiosInstance.interceptors.response.use(null, errorInterceptor);
+axiosInstance.interceptors.response.use(userAccountStatusCheck, null);
 
 export default axiosInstance;

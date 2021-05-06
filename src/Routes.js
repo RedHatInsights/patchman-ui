@@ -1,9 +1,7 @@
 import some from 'lodash/some';
 import PropTypes from 'prop-types';
-import React, { Fragment, lazy, Suspense, useState } from 'react';
+import React, { Fragment, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { fetchSystems } from './Utilities/api';
-import NoAccess from './PresentationalComponents/Snippets/NoAccess';
 
 const Advisories = lazy(() =>
     import(
@@ -86,21 +84,10 @@ export const paths = {
 };
 
 export const Routes = (props) => {
-    const [hasPatchAccess, setPatchAccess] = useState(true);
-
-    React.useEffect(() => {
-        const systems = fetchSystems({ limit: 1 });
-        systems.then((res) => {
-            if (res.meta.total_items === 0) {
-                props.childProps.history.replace(paths.register.to);
-            }
-
-        }).catch(err => err.status === 401 && setPatchAccess(false));
-    }, []);
 
     const path = props.childProps.location.pathname;
 
-    return hasPatchAccess && (
+    return (
         // I recommend discussing with UX some nice loading placeholder
         <Suspense fallback={Fragment}>
             <Switch>
@@ -152,7 +139,7 @@ export const Routes = (props) => {
                 />
             </Switch>
         </Suspense>
-    ) || <NoAccess /> ;
+    );
 };
 
 Routes.propTypes = {
