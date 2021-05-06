@@ -39,11 +39,6 @@ const PackageDetail = lazy(() =>
     )
 );
 
-const RegisterPage = lazy(() =>
-    import(
-        /* webpackChunkName: "Register" */ './PresentationalComponents/RegisterPage/RegisterPage'
-    )
-);
 export const paths = {
     advisories: {
         title: 'Applicable advisories',
@@ -64,10 +59,6 @@ export const paths = {
     advisoryDetailSystem: {
         title: '',
         to: '/advisories/:advisoryId/:inventoryId'
-    },
-    register: {
-        title: '',
-        to: '/register'
     },
     packages: {
         title: 'Packages',
@@ -118,11 +109,6 @@ export const Routes = (props) => {
                     exact
                     path={paths.packages.to}
                     component={PackagsPage}
-                />
-                <Route
-                    exact
-                    path={paths.register.to}
-                    component={RegisterPage}
                 />
                 <Route
                     exact

@@ -46,7 +46,6 @@ export function errorInterceptor(err) {
 }
 
 export function readOnlyInterceptor(error) {
-    console.log(error, 'error');
     if (error.response && error.response.status === 503) {
         const data = ReadOnlyNotification;
         throw data;

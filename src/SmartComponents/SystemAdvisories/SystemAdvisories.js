@@ -101,7 +101,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
         dispatch(changeSystemAdvisoryListParams({ id: entity.id, ...params }));
     }
 
-    const errorState = error.status === 404 ? handleNoSystemData() : <Unavailable/>;
+    const ErrorState = error.status === 404 ? handleNoSystemData() : Unavailable;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({
@@ -145,7 +145,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
                         publishDateFilter(apply, queryParams.filter)
                     ]
                 }}
-                errorState={errorState}
+                ErrorState={ErrorState}
             />
         </React.Fragment>
     );

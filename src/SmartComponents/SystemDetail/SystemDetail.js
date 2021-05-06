@@ -20,7 +20,7 @@ const SystemDetail = ({ isInventoryApp }) => {
 
     const handleNoSystemData = () => {
         isInventoryApp && setTabsHidden(prevTabsHidden => !prevTabsHidden);
-        return isInventoryApp && null || <NoSystemData />;
+        return isInventoryApp && null || NoSystemData;
     };
 
     return !entity.id ? null : (!areTabsHidden && (

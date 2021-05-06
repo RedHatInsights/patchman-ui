@@ -1,5 +1,4 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -20,7 +19,6 @@ import {
     exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
-import { STATUS_REJECTED } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
     arrayFromObj, createSortBy, decodeQueryparams,
@@ -115,8 +113,6 @@ const Advisories = ({ history }) => {
         dispatch(changeAdvisoryListParams(params));
     }
 
-    const errorState  = status === STATUS_REJECTED && <Unavailable />;
-
     const prepareRemediationPairs = (issues) => {
         return fetchSystems({ limit: -1 }).then(
             ({ data }) => fetchViewAdvisoriesSystems(
@@ -160,7 +156,6 @@ const Advisories = ({ history }) => {
                             publishDateFilter(apply, queryParams.filter)
                         ]
                     }}
-                    errorState={errorState}
                 />
             </Main>
         </React.Fragment>

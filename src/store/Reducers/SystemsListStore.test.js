@@ -30,7 +30,7 @@ describe('SystemsListStore tests', () => {
     ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                        | ${storeListDefaults}
     `('$action', ({ state, action: { type, payload }, result }) => {
     const res = SystemsListStore(state, { type, payload });
-    console.log(res);
+
     expect(res).toEqual(result);
 });
 });

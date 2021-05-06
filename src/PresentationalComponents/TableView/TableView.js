@@ -37,7 +37,8 @@ const TableView = ({
     remediationButtonOUIA,
     tableOUIA,
     paginationOUIA,
-    emptyState,
+    ErrorState,
+    EmptyState,
     defaultFilters
 }) => {
     const [
@@ -63,7 +64,7 @@ const TableView = ({
 
     return (
         <React.Fragment>
-            <GeneralComponent status={status} EmptyStat={emptyState}>
+            <GeneralComponent status={status} EmptyState={EmptyState} ErrorState={ErrorState}>
                 <React.Fragment>
                     <PrimaryToolbar
                         pagination={{
@@ -157,7 +158,8 @@ TableView.propTypes = {
     remediationButtonOUIA: PropTypes.string,
     tableOUIA: PropTypes.string,
     paginationOUIA: PropTypes.string,
-    emptyState: PropTypes.any,
+    ErrorState: PropTypes.any,
+    EmptyState: PropTypes.any,
     defaultFilters: PropTypes.object
 };
 
