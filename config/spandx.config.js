@@ -11,8 +11,9 @@ module.exports = {
         '/beta/insights/patch': { host: `https://${localhost}:8002` },
         '/insights/patch': { host: `https://${localhost}:8002` },
         '/apps/patch': { host: `https://${localhost}:8002` },
-        '/apps/inventory': { host: `https://${localhost}:8002` },
         '/beta/apps/patch': { host: `https://${localhost}:8002` },
+        '/insights/inventory': { host: `http://${localhost}:8003` },
+        '/apps/inventory': { host: `http://${localhost}:8003` },
         '/apps/dashboard': { host: `http://${localhost}:8002` }
     }
 };
