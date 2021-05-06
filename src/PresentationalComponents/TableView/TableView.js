@@ -6,11 +6,13 @@ import React from 'react';
 import messages from '../../Messages';
 import PatchRemediationButton from '../../SmartComponents/Remediation/PatchRemediationButton';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
-import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_LOADING } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import TableFooter from './TableFooter';
+import GeneralComponent from '../Snippets/GeneralComponent';
+import { Fragment } from 'react';
 
 const TableView = ({
     columns,
@@ -35,7 +37,6 @@ const TableView = ({
     remediationButtonOUIA,
     tableOUIA,
     paginationOUIA,
-    errorState,
     emptyState,
     defaultFilters
 }) => {
@@ -62,10 +63,8 @@ const TableView = ({
 
     return (
         <React.Fragment>
-            {
-                (status === STATUS_REJECTED) && errorState ||
-                (status === STATUS_RESOLVED && emptyState !== false) && emptyState ||
-                (<React.Fragment>
+            <GeneralComponent status={status} EmptyStat={emptyState}>
+                <React.Fragment>
                     <PrimaryToolbar
                         pagination={{
                             itemCount: metadata.total_items,
@@ -81,7 +80,7 @@ const TableView = ({
                             filters: buildFilterChips(filter, search),
                             onDelete: deleteFilters,
                             deleteTitle: intl.formatMessage(defaultFilters
-                                && messages.labelsFiltersReset || messages.labelsFiltersClear),
+                                        && messages.labelsFiltersReset || messages.labelsFiltersClear),
                             onDeleteGroup: deleteFilterGroup
                         }}
                         actionsConfig={{
@@ -105,12 +104,9 @@ const TableView = ({
                             onSelect: onExport
                         }}
                         bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse)}
-
                     />
-
-                    {status === STATUS_LOADING && <SkeletonTable colSize={5} rowSize={20} />}
-                    {status === STATUS_RESOLVED && (
-                        <React.Fragment>
+                    {status === STATUS_LOADING ? <SkeletonTable colSize={5} rowSize={20} /> : (
+                        <Fragment>
                             <Table
                                 aria-label="Patch table view"
                                 cells={columns}
@@ -135,9 +131,10 @@ const TableView = ({
                                 onPerPageSelect={onPerPageSelect}
                                 paginationOUIA={`bottom-${paginationOUIA}`}
                             />
-                        </React.Fragment>)}
+                        </Fragment>
+                    )}
                 </React.Fragment>)
-            }
+            </GeneralComponent>
         </React.Fragment>
     );
 };
@@ -160,7 +157,6 @@ TableView.propTypes = {
     remediationButtonOUIA: PropTypes.string,
     tableOUIA: PropTypes.string,
     paginationOUIA: PropTypes.string,
-    errorState: PropTypes.any,
     emptyState: PropTypes.any,
     defaultFilters: PropTypes.object
 };

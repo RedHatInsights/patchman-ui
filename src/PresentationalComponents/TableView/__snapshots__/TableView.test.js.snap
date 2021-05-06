@@ -2,320 +2,365 @@
 
 exports[`TableView TableView 1`] = `
 <Fragment>
-  <PrimaryToolbar
-    actionsConfig={
-      Object {
-        "actions": Array [
-          <React.Fragment>
-            <PatchRemediationButton
-              isDisabled={true}
-              isLoading={false}
-              onClick={[Function]}
-            />
-            <Unknown />
-          </React.Fragment>,
-        ],
+  <GeneralComponent
+    status={false}
+  >
+    <PrimaryToolbar
+      actionsConfig={
+        Object {
+          "actions": Array [
+            <React.Fragment>
+              <PatchRemediationButton
+                isDisabled={true}
+                isLoading={false}
+                onClick={[Function]}
+              />
+              <Unknown />
+            </React.Fragment>,
+          ],
+        }
       }
-    }
-    activeFiltersConfig={
-      Object {
-        "deleteTitle": "Clear filters",
-        "filters": Array [],
-        "onDelete": [Function],
-        "onDeleteGroup": [Function],
+      activeFiltersConfig={
+        Object {
+          "deleteTitle": "Clear filters",
+          "filters": Array [],
+          "onDelete": [Function],
+          "onDeleteGroup": [Function],
+        }
       }
-    }
-    bulkSelect={
-      Object {
-        "checked": false,
-        "count": 0,
-        "isDisabled": false,
-        "items": Array [
-          Object {
-            "onClick": [Function],
-            "title": "Select none (0)",
-          },
-          Object {
-            "onClick": [Function],
-            "title": "Select page (0)",
-          },
-          Object {
-            "onClick": [Function],
-            "title": "Select all ()",
-          },
-        ],
-        "onSelect": [Function],
-        "toggleProps": Object {
-          "data-ouia-component-type": "bulk-select-toggle-button",
-        },
-      }
-    }
-    exportConfig={
-      Object {
-        "isDisabled": false,
-        "onSelect": [MockFunction],
-      }
-    }
-    filterConfig={
-      Object {
-        "items": Array [
-          Object {
-            "label": "First filter",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Some checkbox",
-                },
-              ],
+      bulkSelect={
+        Object {
+          "checked": false,
+          "count": 0,
+          "isDisabled": false,
+          "items": Array [
+            Object {
+              "onClick": [Function],
+              "title": "Select none (0)",
             },
-            "label": "Second filter",
-            "type": "checkbox",
+            Object {
+              "onClick": [Function],
+              "title": "Select page (0)",
+            },
+            Object {
+              "onClick": [Function],
+              "title": "Select all ()",
+            },
+          ],
+          "onSelect": [Function],
+          "toggleProps": Object {
+            "data-ouia-component-type": "bulk-select-toggle-button",
           },
-        ],
+        }
       }
-    }
-    pagination={
-      Object {
-        "isCompact": true,
-        "itemCount": undefined,
-        "onPerPageSelect": [MockFunction],
-        "onSetPage": [MockFunction],
-        "ouiaId": "top-undefined",
-        "page": NaN,
-        "perPage": undefined,
+      exportConfig={
+        Object {
+          "isDisabled": false,
+          "onSelect": [MockFunction],
+        }
       }
-    }
-    toggleIsExpanded={[Function]}
-  />
+      filterConfig={
+        Object {
+          "items": Array [
+            Object {
+              "label": "First filter",
+            },
+            Object {
+              "filterValues": Object {
+                "items": Array [
+                  Object {
+                    "label": "Some checkbox",
+                  },
+                ],
+              },
+              "label": "Second filter",
+              "type": "checkbox",
+            },
+          ],
+        }
+      }
+      pagination={
+        Object {
+          "isCompact": true,
+          "itemCount": undefined,
+          "onPerPageSelect": [MockFunction],
+          "onSetPage": [MockFunction],
+          "ouiaId": "top-undefined",
+          "page": NaN,
+          "perPage": undefined,
+        }
+      }
+      toggleIsExpanded={[Function]}
+    />
+    <Table
+      aria-label="Patch table view"
+      borders={true}
+      canSelectAll={false}
+      canSortFavorites={true}
+      cells={Array []}
+      className=""
+      contentId="expanded-content"
+      dropdownDirection="down"
+      dropdownPosition="right"
+      expandId="expandable-toggle"
+      gridBreakPoint="grid-md"
+      isStickyHeader={true}
+      isTreeTable={false}
+      ouiaSafe={true}
+      role="grid"
+      rowLabeledBy="simple-node"
+      rows={Array []}
+      selectVariant="checkbox"
+      variant={null}
+    >
+      <TableHeader />
+      <Component />
+    </Table>
+    <TableFooter
+      onPerPageSelect={[MockFunction]}
+      onSetPage={[MockFunction]}
+      page={NaN}
+      paginationOUIA="bottom-undefined"
+    />
+    )
+  </GeneralComponent>
 </Fragment>
 `;
 
 exports[`TableView TableView 2`] = `
 <Fragment>
-  <PrimaryToolbar
-    actionsConfig={
-      Object {
-        "actions": Array [
-          <React.Fragment>
-            <PatchRemediationButton
-              isDisabled={true}
-              isLoading={false}
-              onClick={[Function]}
-            />
-            <Unknown />
-          </React.Fragment>,
-        ],
+  <GeneralComponent
+    status="loading"
+  >
+    <PrimaryToolbar
+      actionsConfig={
+        Object {
+          "actions": Array [
+            <React.Fragment>
+              <PatchRemediationButton
+                isDisabled={true}
+                isLoading={false}
+                onClick={[Function]}
+              />
+              <Unknown />
+            </React.Fragment>,
+          ],
+        }
       }
-    }
-    activeFiltersConfig={
-      Object {
-        "deleteTitle": "Clear filters",
-        "filters": Array [],
-        "onDelete": [Function],
-        "onDeleteGroup": [Function],
+      activeFiltersConfig={
+        Object {
+          "deleteTitle": "Clear filters",
+          "filters": Array [],
+          "onDelete": [Function],
+          "onDeleteGroup": [Function],
+        }
       }
-    }
-    bulkSelect={
-      Object {
-        "checked": false,
-        "count": 0,
-        "isDisabled": false,
-        "items": Array [
-          Object {
-            "onClick": [Function],
-            "title": "Select none (0)",
-          },
-          Object {
-            "onClick": [Function],
-            "title": "Select page (0)",
-          },
-          Object {
-            "onClick": [Function],
-            "title": "Select all ()",
-          },
-        ],
-        "onSelect": [Function],
-        "toggleProps": Object {
-          "data-ouia-component-type": "bulk-select-toggle-button",
-        },
-      }
-    }
-    exportConfig={
-      Object {
-        "isDisabled": false,
-        "onSelect": [MockFunction],
-      }
-    }
-    filterConfig={
-      Object {
-        "items": Array [
-          Object {
-            "label": "First filter",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Some checkbox",
-                },
-              ],
+      bulkSelect={
+        Object {
+          "checked": false,
+          "count": 0,
+          "isDisabled": false,
+          "items": Array [
+            Object {
+              "onClick": [Function],
+              "title": "Select none (0)",
             },
-            "label": "Second filter",
-            "type": "checkbox",
+            Object {
+              "onClick": [Function],
+              "title": "Select page (0)",
+            },
+            Object {
+              "onClick": [Function],
+              "title": "Select all ()",
+            },
+          ],
+          "onSelect": [Function],
+          "toggleProps": Object {
+            "data-ouia-component-type": "bulk-select-toggle-button",
           },
-        ],
+        }
       }
-    }
-    pagination={
-      Object {
-        "isCompact": true,
-        "itemCount": undefined,
-        "onPerPageSelect": [MockFunction],
-        "onSetPage": [MockFunction],
-        "ouiaId": "top-undefined",
-        "page": NaN,
-        "perPage": undefined,
+      exportConfig={
+        Object {
+          "isDisabled": false,
+          "onSelect": [MockFunction],
+        }
       }
-    }
-    toggleIsExpanded={[Function]}
-  />
-  <SkeletonTable
-    canSelectAll={false}
-    colSize={5}
-    hasRadio={false}
-    isSelectable={false}
-    paddingColumnSize={0}
-    rowSize={20}
-    variant={null}
-  />
+      filterConfig={
+        Object {
+          "items": Array [
+            Object {
+              "label": "First filter",
+            },
+            Object {
+              "filterValues": Object {
+                "items": Array [
+                  Object {
+                    "label": "Some checkbox",
+                  },
+                ],
+              },
+              "label": "Second filter",
+              "type": "checkbox",
+            },
+          ],
+        }
+      }
+      pagination={
+        Object {
+          "isCompact": true,
+          "itemCount": undefined,
+          "onPerPageSelect": [MockFunction],
+          "onSetPage": [MockFunction],
+          "ouiaId": "top-undefined",
+          "page": NaN,
+          "perPage": undefined,
+        }
+      }
+      toggleIsExpanded={[Function]}
+    />
+    <SkeletonTable
+      canSelectAll={false}
+      colSize={5}
+      hasRadio={false}
+      isSelectable={false}
+      paddingColumnSize={0}
+      rowSize={20}
+      variant={null}
+    />
+    )
+  </GeneralComponent>
 </Fragment>
 `;
 
 exports[`TableView test table props TableView 1`] = `
 <Fragment>
-  <PrimaryToolbar
-    actionsConfig={
-      Object {
-        "actions": Array [
-          <React.Fragment>
-            <PatchRemediationButton
-              isDisabled={true}
-              isLoading={false}
-              onClick={[Function]}
-            />
-            <Unknown />
-          </React.Fragment>,
-        ],
-      }
-    }
-    activeFiltersConfig={
-      Object {
-        "deleteTitle": "Clear filters",
-        "filters": Array [],
-        "onDelete": [Function],
-        "onDeleteGroup": [Function],
-      }
-    }
-    bulkSelect={
-      Object {
-        "checked": false,
-        "count": 0,
-        "isDisabled": false,
-        "items": Array [
-          Object {
-            "onClick": [Function],
-            "title": "Select none (0)",
-          },
-          Object {
-            "onClick": [Function],
-            "title": "Select page (0)",
-          },
-          Object {
-            "onClick": [Function],
-            "title": "Select all (10)",
-          },
-        ],
-        "onSelect": [Function],
-        "toggleProps": Object {
-          "data-ouia-component-type": "bulk-select-toggle-button",
-        },
-      }
-    }
-    exportConfig={
-      Object {
-        "isDisabled": false,
-        "onSelect": [MockFunction],
-      }
-    }
-    filterConfig={
-      Object {
-        "items": Array [
-          Object {
-            "label": "First filter",
-          },
-          Object {
-            "filterValues": Object {
-              "items": Array [
-                Object {
-                  "label": "Some checkbox",
-                },
-              ],
-            },
-            "label": "Second filter",
-            "type": "checkbox",
-          },
-        ],
-      }
-    }
-    pagination={
-      Object {
-        "isCompact": true,
-        "itemCount": 10,
-        "onPerPageSelect": [MockFunction],
-        "onSetPage": [MockFunction],
-        "ouiaId": "top-undefined",
-        "page": NaN,
-        "perPage": undefined,
-      }
-    }
-    toggleIsExpanded={[Function]}
-  />
-  <Table
-    aria-label="Patch table view"
-    borders={true}
-    canSelectAll={false}
-    canSortFavorites={true}
-    cells={Array []}
-    className=""
-    contentId="expanded-content"
-    dropdownDirection="down"
-    dropdownPosition="right"
-    expandId="expandable-toggle"
-    gridBreakPoint="grid-md"
-    isStickyHeader={true}
-    isTreeTable={false}
-    onCollapse={[MockFunction]}
-    onSelect={[MockFunction]}
-    onSort={[MockFunction]}
-    ouiaSafe={true}
-    role="grid"
-    rowLabeledBy="simple-node"
-    rows={Array []}
-    selectVariant="checkbox"
-    sortBy={Object {}}
-    variant={null}
+  <GeneralComponent
+    status="resolved"
   >
-    <TableHeader />
-    <Component />
-  </Table>
-  <TableFooter
-    onPerPageSelect={[MockFunction]}
-    onSetPage={[MockFunction]}
-    page={NaN}
-    paginationOUIA="bottom-undefined"
-    totalItems={10}
-  />
+    <PrimaryToolbar
+      actionsConfig={
+        Object {
+          "actions": Array [
+            <React.Fragment>
+              <PatchRemediationButton
+                isDisabled={true}
+                isLoading={false}
+                onClick={[Function]}
+              />
+              <Unknown />
+            </React.Fragment>,
+          ],
+        }
+      }
+      activeFiltersConfig={
+        Object {
+          "deleteTitle": "Clear filters",
+          "filters": Array [],
+          "onDelete": [Function],
+          "onDeleteGroup": [Function],
+        }
+      }
+      bulkSelect={
+        Object {
+          "checked": false,
+          "count": 0,
+          "isDisabled": false,
+          "items": Array [
+            Object {
+              "onClick": [Function],
+              "title": "Select none (0)",
+            },
+            Object {
+              "onClick": [Function],
+              "title": "Select page (0)",
+            },
+            Object {
+              "onClick": [Function],
+              "title": "Select all (10)",
+            },
+          ],
+          "onSelect": [Function],
+          "toggleProps": Object {
+            "data-ouia-component-type": "bulk-select-toggle-button",
+          },
+        }
+      }
+      exportConfig={
+        Object {
+          "isDisabled": false,
+          "onSelect": [MockFunction],
+        }
+      }
+      filterConfig={
+        Object {
+          "items": Array [
+            Object {
+              "label": "First filter",
+            },
+            Object {
+              "filterValues": Object {
+                "items": Array [
+                  Object {
+                    "label": "Some checkbox",
+                  },
+                ],
+              },
+              "label": "Second filter",
+              "type": "checkbox",
+            },
+          ],
+        }
+      }
+      pagination={
+        Object {
+          "isCompact": true,
+          "itemCount": 10,
+          "onPerPageSelect": [MockFunction],
+          "onSetPage": [MockFunction],
+          "ouiaId": "top-undefined",
+          "page": NaN,
+          "perPage": undefined,
+        }
+      }
+      toggleIsExpanded={[Function]}
+    />
+    <Table
+      aria-label="Patch table view"
+      borders={true}
+      canSelectAll={false}
+      canSortFavorites={true}
+      cells={Array []}
+      className=""
+      contentId="expanded-content"
+      dropdownDirection="down"
+      dropdownPosition="right"
+      expandId="expandable-toggle"
+      gridBreakPoint="grid-md"
+      isStickyHeader={true}
+      isTreeTable={false}
+      onCollapse={[MockFunction]}
+      onSelect={[MockFunction]}
+      onSort={[MockFunction]}
+      ouiaSafe={true}
+      role="grid"
+      rowLabeledBy="simple-node"
+      rows={Array []}
+      selectVariant="checkbox"
+      sortBy={Object {}}
+      variant={null}
+    >
+      <TableHeader />
+      <Component />
+    </Table>
+    <TableFooter
+      onPerPageSelect={[MockFunction]}
+      onSetPage={[MockFunction]}
+      page={NaN}
+      paginationOUIA="bottom-undefined"
+      totalItems={10}
+    />
+    )
+  </GeneralComponent>
 </Fragment>
 `;
