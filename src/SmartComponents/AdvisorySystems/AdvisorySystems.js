@@ -1,6 +1,5 @@
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
-import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -11,7 +10,7 @@ import { getStore, register } from '../../store';
 import { changeAdvisorySystemsParams, clearAdvisorySystemsStore, fetchAdvisorySystemsAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems } from '../../Utilities/api';
-import { remediationIdentifiers, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { remediationIdentifiers, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import {
@@ -22,6 +21,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
+import GeneralComponent from '../../PresentationalComponents/Snippets/GeneralComponent';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -121,7 +121,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? <Unavailable/> : (
+            <GeneralComponent status={status}>
                 <InventoryTable
                     disableDefaultColumns
                     onLoad={({ mergeWithEntities }) => {
@@ -168,7 +168,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                 >
                     <RemediationModalCmp />
                 </InventoryTable>
-            )}
+            </GeneralComponent>
         </React.Fragment>
     );
 };

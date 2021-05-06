@@ -7,6 +7,8 @@ import { subtractDate } from './Helpers';
 export const STATUS_REJECTED = 'rejected';
 export const STATUS_LOADING = 'loading';
 export const STATUS_RESOLVED = 'resolved';
+export const STATUS_UNAUTHORIZED = 'unauthorized';
+export const STATUS_NO_REGISTERED_SYSTEMS = 'no_registered_systems';
 
 export const compoundSortValues = {
     operating_system: {

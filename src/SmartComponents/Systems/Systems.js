@@ -1,6 +1,5 @@
 import { TableVariant } from '@patternfly/react-table';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import React from 'react';
@@ -15,7 +14,7 @@ import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import {
     arrayFromObj, buildFilterChips, createSortBy,
@@ -30,6 +29,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+import GeneralComponent from '../../PresentationalComponents/Snippets/GeneralComponent';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -159,56 +159,55 @@ const Systems = () => {
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'}/>
             <RemediationModalCmp />
             <Main>
-                {status === STATUS_REJECTED ? <Unavailable/> :
-                    (
-                        <InventoryTable
-                            disableDefaultColumns
-                            onLoad={({ mergeWithEntities }) => {
-                                const store = getStore();
-                                register({
-                                    ...mergeWithEntities(
-                                        inventoryEntitiesReducer(systemsListColumns, store.getState().SystemsListStore)
-                                    )
-                                });
-                            }}
-                            isFullView
-                            items={hosts}
-                            page={page}
-                            total={metadata.total_items}
-                            perPage={perPage}
-                            isLoaded={status === STATUS_RESOLVED}
-                            onRefresh={handleRefresh}
-                            exportConfig={{
-                                isDisabled: metadata.total_items === 0,
-                                onSelect: onExport
-                            }}
-                            bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, hosts)}
-                            actions={systemsRowActions(showRemediationModal)}
-                            filterConfig={filterConfig}
-                            activeFiltersConfig = {activeFiltersConfig}
-                            tableProps={{
-                                areActionsDisabled,
-                                onSort: metadata.total_items && onSort,
-                                sortBy: metadata.total_items && sortBy,
-                                canSelectAll: false,
-                                variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
-                            dedicatedAction={(
-                                <PatchRemediationButton
-                                    onClick={() =>
-                                        showRemediationModal(
-                                            remediationProviderWithPairs(
-                                                Object.keys(selectedRows).filter(row => selectedRows[row]),
-                                                prepareRemediationPairs, transformPairs)
-                                        )}
-                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                                    isLoading={isRemediationLoading}
-                                    ouia={'toolbar-remediation-button'}
-                                />)}
+                <GeneralComponent status={status}>
+                    <InventoryTable
+                        disableDefaultColumns
+                        onLoad={({ mergeWithEntities }) => {
+                            const store = getStore();
+                            register({
+                                ...mergeWithEntities(
+                                    inventoryEntitiesReducer(systemsListColumns, store.getState().SystemsListStore)
+                                )
+                            });
+                        }}
+                        isFullView
+                        items={hosts}
+                        page={page}
+                        total={metadata.total_items}
+                        perPage={perPage}
+                        isLoaded={status === STATUS_RESOLVED}
+                        onRefresh={handleRefresh}
+                        exportConfig={{
+                            isDisabled: metadata.total_items === 0,
+                            onSelect: onExport
+                        }}
+                        bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, hosts)}
+                        actions={systemsRowActions(showRemediationModal)}
+                        filterConfig={filterConfig}
+                        activeFiltersConfig={activeFiltersConfig}
+                        tableProps={{
+                            areActionsDisabled,
+                            onSort: metadata.total_items && onSort,
+                            sortBy: metadata.total_items && sortBy,
+                            canSelectAll: false,
+                            variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                        }}
+                        dedicatedAction={(
+                            <PatchRemediationButton
+                                onClick={() =>
+                                    showRemediationModal(
+                                        remediationProviderWithPairs(
+                                            Object.keys(selectedRows).filter(row => selectedRows[row]),
+                                            prepareRemediationPairs, transformPairs)
+                                    )}
+                                isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                                isLoading={isRemediationLoading}
+                                ouia={'toolbar-remediation-button'}
+                            />)}
 
-                        >
-                        </InventoryTable>
-                    )
-                }
+                    >
+                    </InventoryTable>
+                </GeneralComponent>
             </Main>
         </React.Fragment>
     );

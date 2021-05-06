@@ -1,7 +1,6 @@
 import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
-import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -13,7 +12,7 @@ import { getStore, register } from '../../store';
 import { changePackageSystemsParams, clearPackageSystemsStore, fetchPackageSystemsAction } from '../../store/Actions/Actions';
 import { packagesSystemsInventoryReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchPackageSystems } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
+import { STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import {
@@ -23,6 +22,7 @@ import {
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
+import GeneralComponent from '../../PresentationalComponents/Snippets/GeneralComponent';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -126,7 +126,7 @@ const PackageSystems = ({ packageName }) => {
 
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? <Unavailable/> : (
+            <GeneralComponent status={status}>
                 <InventoryTable
                     disableDefaultColumns
                     onLoad={({ mergeWithEntities }) => {
@@ -178,7 +178,7 @@ const PackageSystems = ({ packageName }) => {
                     </ToolbarGroup>
                     }
                 </InventoryTable>
-            )}
+            </GeneralComponent>
         </React.Fragment>
     );
 };

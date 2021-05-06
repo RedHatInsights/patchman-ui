@@ -1,5 +1,6 @@
 import { addOrRemoveItemFromSet, changeListParams, getNewSelectedItems } from '../../Utilities/Helpers';
-import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
+import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED,
+    STATUS_NO_REGISTERED_SYSTEMS, STATUS_UNAUTHORIZED } from '../../Utilities/constants';
 
 export const changeFilters = (state, action) => {
     state.queryParams = changeListParams(
@@ -32,8 +33,8 @@ export const fetchPending = (state) => {
 };
 
 export const fetchRejected = (state, action) => {
-    state.status = STATUS_REJECTED;
     state.error = action.payload;
+    state.status = action.payload.status === 401 ? STATUS_UNAUTHORIZED : STATUS_REJECTED;
     return state;
 };
 
@@ -41,6 +42,6 @@ export const fetchFulfilled = (state, action) => {
     state.rows = action.payload.data;
     state.metadata = action.payload.meta;
     state.error = {};
-    state.status = STATUS_RESOLVED;
+    state.status = action.payload.status === 204 ? STATUS_NO_REGISTERED_SYSTEMS : STATUS_RESOLVED;
     return state;
 };
