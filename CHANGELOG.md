@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.0...v1.18.1) (2021-05-06)
+
+
+### Bug Fixes
+
+* **UserStatuses:** use different approach to check user account status ([44618d4](https://github.com/RedHatInsights/patchman-ui/commit/44618d4987879edd7e9707836e1c6c227fc1af34))
+
 # [1.18.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.12...v1.18.0) (2021-05-06)
 
 
