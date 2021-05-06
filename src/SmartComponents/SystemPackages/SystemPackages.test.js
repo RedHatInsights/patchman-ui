@@ -158,7 +158,7 @@ describe('SystemPackages.js', () => {
         
         const tempStore = initStore(notFoundState);
         const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages  handleNoSystemData= { () => <NoSystemData /> }/></Router>
+            <Router><SystemPackages  handleNoSystemData= { () => NoSystemData }/></Router>
         </Provider>);
          expect(tempWrapper.find('NoSystemData')).toBeTruthy();
    

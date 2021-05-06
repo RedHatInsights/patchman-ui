@@ -87,9 +87,9 @@ const SystemPackages = ({ handleNoSystemData }) => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const errorState = error.status === 404 ?  handleNoSystemData() : <Unavailable/>;
-    const emptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
-                            && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
+    const ErrorState = error.status === 404 ?  handleNoSystemData() : Unavailable;
+    const EmptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
+                            && Object.keys(queryParams).length === 0) && SystemUpToDate;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({
@@ -131,8 +131,8 @@ const SystemPackages = ({ handleNoSystemData }) => {
                 remediationButtonOUIA={'toolbar-remediation-button'}
                 tableOUIA={'system-packages-table'}
                 paginationOUIA={'system-packages-pagination'}
-                errorState={errorState}
-                emptyState={emptyState}
+                ErrorState={ErrorState}
+                EmptyState={EmptyState}
             />
         </React.Fragment>
     );

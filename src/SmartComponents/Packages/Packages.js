@@ -68,7 +68,7 @@ const Packages = () => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const errorState = error.status === 404 ?  <NoSystemData/> : <Unavailable />;
+    const ErrorState = error.status === 404 ?  NoSystemData : Unavailable;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({
@@ -103,7 +103,7 @@ const Packages = () => {
                     remediationButtonOUIA={'toolbar-remediation-button'}
                     tableOUIA={'package-details-table'}
                     paginationOUIA={'package-details-pagination'}
-                    errorState={errorState}
+                    ErrorState={ErrorState}
                     defaultFilters={packagesListDefaultFilters}
                 />
             </Main>
