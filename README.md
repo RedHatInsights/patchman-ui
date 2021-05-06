@@ -217,6 +217,17 @@ Have [insights-proxy](https://github.com/RedHatInsights/insights-proxy) installe
 SPANDX_CONFIG="./config/spandx.config.js" bash $PROXY_PATH/scripts/run.sh
 ```
 
+### Running with inventory
+
+In order to test system detail in inventory application pull [inventory UI app](https://github.com/RedHatInsights/insights-inventory-frontend), install dependencies and run it
+
+```shell
+>$ npm install
+>$ npm start
+```
+
+With our spandx config, patch and inventory running you should be able to see changes in the system detail of inventory.
+
 ### Testing - jest
 
 When you want to test your code with unit tests please use `jest` which is preconfigured in a way to colect codecoverage as well. If you want to see your coverage on server the travis config has been set in a way that it will send data to [codecov.io](https://codecov.io) the only thing you have to do is visit their website (register), enable your repository and add CODECOV_TOKEN to your travis web config (do not add it to .travis file, but trough [travis-ci.org](https://travis-ci.org/))
