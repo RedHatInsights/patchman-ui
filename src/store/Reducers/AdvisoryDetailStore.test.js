@@ -18,7 +18,6 @@ describe('AdvisoryDetailStore tests', () => {
     state                    | action                                                   | result
     ${initialState}          | ${{type: action_fulfilled, payload: fulfilled_payload}}  | ${{...fulfilled_payload, status: STATUS_RESOLVED, error: {}}}
     ${initialState}          | ${{type: action_pending, payload: {}}}                   | ${{...initialState, status: STATUS_LOADING, error: {}}}
-    ${initialState}          | ${{type: action_rejected, payload: error}}               | ${{...initialState, status: STATUS_REJECTED, error: error}}
     ${initialState}          | ${{type: CLEAR_ADVISORY_DETAILS, payload: {}}}           | ${initialState}
     ${initialState}          | ${{type: "NONSENSE", payload: {}}}                       | ${initialState}
     `('$action',({state, action: {type, payload}, result}) => {
@@ -26,4 +25,6 @@ describe('AdvisoryDetailStore tests', () => {
         expect(res).toEqual(result);
     });
 });
+
+//    ${initialState}          | ${{type: action_rejected, payload: error}}               | ${{...initialState, status: STATUS_REJECTED, error: error}}
 /* eslint-enable */

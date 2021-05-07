@@ -33,13 +33,14 @@ export const fetchPending = (state) => {
 
 export const fetchRejected = (state, action) => {
     state.status = STATUS_REJECTED;
+    state.metadata = action.payload.meta || {};
     state.error = action.payload;
     return state;
 };
 
 export const fetchFulfilled = (state, action) => {
     state.rows = action.payload.data;
-    state.metadata = action.payload.meta;
+    state.metadata = action.payload.meta || {};
     state.error = {};
     state.status = STATUS_RESOLVED;
     return state;
