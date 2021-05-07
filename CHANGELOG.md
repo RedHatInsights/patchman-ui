@@ -1,3 +1,10 @@
+## [1.18.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.1...v1.18.2) (2021-05-07)
+
+
+### Bug Fixes
+
+* **SystemPackages:** Emptystate was incorrect set ([dd13f05](https://github.com/RedHatInsights/patchman-ui/commit/dd13f0569a2480674625d0bb5525756b8b5d7d38))
+
 ## [1.18.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.0...v1.18.1) (2021-05-06)
 
 
