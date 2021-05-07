@@ -38,7 +38,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
     >
       <SystemPackages>
         <TableView
-          EmptyState={false}
           ErrorState={[Function]}
           apply={[Function]}
           columns={
@@ -205,7 +204,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
           tableOUIA="system-packages-table"
         >
           <GeneralComponent
-            EmptyState={false}
             ErrorState={[Function]}
           >
             <PrimaryToolbar

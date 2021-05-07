@@ -89,7 +89,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
 
     const ErrorState = error.status === 404 ?  handleNoSystemData() : Unavailable;
     const EmptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
-                            && Object.keys(queryParams).length === 0) && SystemUpToDate;
+                            && Object.keys(queryParams).length === 0) && SystemUpToDate ||  undefined;
 
     if (status === STATUS_REJECTED && error.status !== 404) {
         dispatch(addNotification({
