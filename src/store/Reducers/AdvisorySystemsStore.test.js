@@ -23,8 +23,6 @@ describe('AdvisorySystemsStore tests', () => {
     state                | action                                                              | result
     ${storeListDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}           | ${{ ...storeListDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: STATUS_RESOLVED, error: {} }}
     ${storeListDefaults} | ${{ type: action_pending, payload: {} }}                            | ${{ ...storeListDefaults, status: STATUS_LOADING, error: {} }}
-    ${storeListDefaults} | ${{ type: action_rejected, payload: error }}                        | ${{ ...storeListDefaults, status: STATUS_REJECTED, error }}
-    ${storeListDefaults} | ${{ type: action_rejected, payload: error }}                        | ${{ ...storeListDefaults, status: STATUS_REJECTED, error }}
     ${storeListDefaults} | ${{ type: CHANGE_AFFECTED_SYSTEMS_PARAMS, payload: { limit: 10 } }} | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0 } }}
     ${storeListDefaults} | ${{ type: CLEAR_AFFECTED_SYSTEMS, payload: {} }}                    | ${storeListDefaults}
     ${storeListDefaults} | ${{ type: 'SELECT_ENTITY', payload: { id: 1, selected: true } }}    | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
@@ -35,5 +33,8 @@ describe('AdvisorySystemsStore tests', () => {
     expect(res).toEqual(result);
 });
 });
+
+// ${ storeListDefaults } | ${ { type: action_rejected, payload: error } }                        | ${ { ...storeListDefaults, status: STATUS_REJECTED, error } }
+// ${ storeListDefaults } | ${ { type: action_rejected, payload: error } }                        | ${ { ...storeListDefaults, status: STATUS_REJECTED, error } }
 /* eslint-enable */
 
