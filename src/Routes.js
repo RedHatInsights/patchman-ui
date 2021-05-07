@@ -4,6 +4,7 @@ import React, { Fragment, lazy, Suspense, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
 import NoAccess from './PresentationalComponents/Snippets/NoAccess';
+import { useHistory } from 'react-router-dom';
 
 const Advisories = lazy(() =>
     import(
@@ -87,19 +88,19 @@ export const paths = {
 
 export const Routes = (props) => {
     const [hasPatchAccess, setPatchAccess] = useState(true);
+    const history = useHistory();
 
     React.useEffect(() => {
         const systems = fetchSystems({ limit: 1 });
         systems.then((res) => {
-            if (res.meta.total_items === 0) {
-                props.childProps.history.replace(paths.register.to);
+            if (!res.meta) {
+                history.replace(paths.register.to);
             }
 
         }).catch(err => err.status === 401 && setPatchAccess(false));
     }, []);
 
     const path = props.childProps.location.pathname;
-
     return hasPatchAccess && (
         // I recommend discussing with UX some nice loading placeholder
         <Suspense fallback={Fragment}>
