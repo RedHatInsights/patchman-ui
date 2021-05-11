@@ -22,6 +22,18 @@
 
 * **system detail:** use federated modules to share system detail ([3a00a6d](https://github.com/RedHatInsights/patchman-ui/commit/3a00a6d4d2454cdf3a7391d455dda49b01efa011))
 
+# [1.19.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.0...v1.19.0) (2021-05-11)
+
+
+### Bug Fixes
+
+* **Advisories:** blank page is fixed temporarly ([2895d91](https://github.com/RedHatInsights/patchman-ui/commit/2895d91129ee8123c02103ec8f0fb251405cdb57))
+
+
+### Features
+
+* **system detail:** use federated modules to share system detail ([3a00a6d](https://github.com/RedHatInsights/patchman-ui/commit/3a00a6d4d2454cdf3a7391d455dda49b01efa011))
+
 # [1.19.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.2...v1.19.0) (2021-05-11)
 
 
