@@ -1,3 +1,24 @@
+# [1.19.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.2...v1.19.0) (2021-05-11)
+
+
+### Features
+
+* **system detail:** use federated modules to share system detail ([58f3c85](https://github.com/RedHatInsights/patchman-ui/commit/58f3c8504d90186296e90a61116da31a5653bc71))
+
+## [1.18.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.1...v1.18.2) (2021-05-07)
+
+
+### Bug Fixes
+
+* **SystemPackages:** Emptystate was incorrect set ([dd13f05](https://github.com/RedHatInsights/patchman-ui/commit/dd13f0569a2480674625d0bb5525756b8b5d7d38))
+
+## [1.18.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.0...v1.18.1) (2021-05-06)
+
+
+### Bug Fixes
+
+* **UserStatuses:** use different approach to check user account status ([44618d4](https://github.com/RedHatInsights/patchman-ui/commit/44618d4987879edd7e9707836e1c6c227fc1af34))
+
 # [1.18.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.17.12...v1.18.0) (2021-05-06)
 
 
