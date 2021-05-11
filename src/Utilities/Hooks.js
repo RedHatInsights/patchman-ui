@@ -145,6 +145,10 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
             }
 
             case 'page': {
+                if (Array.isArray(rawData)) {
+                    rawData = rawData.filter(row => !row.disableCheckbox);
+                }
+
                 selectRows(createSelectedRow(rawData));
                 break;
             }
