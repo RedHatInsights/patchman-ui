@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.0...v1.19.0) (2021-05-11)
+
+
+### Features
+
+* **system detail:** use federated modules to share system detail ([7bc9d2d](https://github.com/RedHatInsights/patchman-ui/commit/7bc9d2d65e931f877be49704ceb9c20cc65d76c1))
+
 ## [1.18.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.1...v1.18.2) (2021-05-07)
 
 
