@@ -15,7 +15,7 @@ import { packagesSystemsInventoryReducer } from '../../store/Reducers/InventoryE
 import { fetchPackageSystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
+import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider, filterSelectedRowIDs } from '../../Utilities/Helpers';
 import {
     useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
     useRemoveFilter, useSortColumn, useBulkSelectConfig
@@ -164,7 +164,7 @@ const PackageSystems = ({ packageName }) => {
                                     showRemediationModal(
                                         remediationProvider(
                                             packageName,
-                                            Object.keys(selectedRows),
+                                            filterSelectedRowIDs(selectedRows),
                                             remediationIdentifiers.package
                                         )
                                     )

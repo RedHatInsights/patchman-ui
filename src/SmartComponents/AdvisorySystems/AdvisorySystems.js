@@ -13,7 +13,7 @@ import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntities
 import { fetchAdvisorySystems } from '../../Utilities/api';
 import { remediationIdentifiers, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider } from '../../Utilities/Helpers';
+import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider, filterSelectedRowIDs } from '../../Utilities/Helpers';
 import {
     useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter,
     useSortColumn, useBulkSelectConfig
@@ -154,7 +154,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                             showRemediationModal(
                                 remediationProvider(
                                     advisoryName,
-                                    Object.keys(selectedRows),
+                                    filterSelectedRowIDs(selectedRows),
                                     remediationIdentifiers.advisory
                                 )
                             )
