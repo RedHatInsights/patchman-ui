@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.19.0...v1.19.1) (2021-05-20)
+
+
+### Bug Fixes
+
+* **Advisories:** blank page is fixed temporarly ([75e2e3d](https://github.com/RedHatInsights/patchman-ui/commit/75e2e3dbeccb5e373292130eb54e88a3f479e33a))
+
 # [1.19.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.18.0...v1.19.0) (2021-05-12)
 
 
