@@ -35,7 +35,6 @@ export const systemsListColumns = [
     {
         key: 'operating_system',
         title: 'OS',
-        transforms: [sortable],
         renderFunc: value => createOSColumn(value),
         props: {
             width: 10
