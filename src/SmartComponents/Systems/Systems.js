@@ -19,7 +19,7 @@ import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import {
     arrayFromObj, buildFilterChips, createSortBy,
-    remediationProviderWithPairs, transformPairs
+    remediationProviderWithPairs, transformPairs, filterSelectedRowIDs
 } from '../../Utilities/Helpers';
 import {
     setPageTitle,
@@ -197,7 +197,7 @@ const Systems = () => {
                                     onClick={() =>
                                         showRemediationModal(
                                             remediationProviderWithPairs(
-                                                Object.keys(selectedRows).filter(row => selectedRows[row]),
+                                                filterSelectedRowIDs(selectedRows),
                                                 prepareRemediationPairs, transformPairs)
                                         )}
                                     isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}

@@ -397,3 +397,5 @@ export const createOSColumn = ({ osName, rhsm }) => (rhsm === '' || rhsm ===  un
         </Flex>
     </Tooltip>
 );
+
+export const filterSelectedRowIDs = (selectedRows) =>  Object.keys(selectedRows).filter(row => selectedRows[row]);
