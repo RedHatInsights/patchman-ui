@@ -1,3 +1,10 @@
+## [1.19.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.19.1...v1.19.2) (2021-05-20)
+
+
+### Bug Fixes
+
+* **os_version:** Os version sorting is disabled ([93ec810](https://github.com/RedHatInsights/patchman-ui/commit/93ec810f5b9f8e34bb073d6baf0663dd35a9db91))
+
 ## [1.19.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.19.0...v1.19.1) (2021-05-20)
 
 
