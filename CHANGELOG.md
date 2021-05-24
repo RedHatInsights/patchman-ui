@@ -1,3 +1,10 @@
+## [1.19.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.19.2...v1.19.3) (2021-05-24)
+
+
+### Bug Fixes
+
+* **SelectedRows:** fixlter out previously deselected rows ([8cacf58](https://github.com/RedHatInsights/patchman-ui/commit/8cacf5874c6d04ef689ffeb5d043a82e85933c9e))
+
 ## [1.19.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.19.1...v1.19.2) (2021-05-20)
 
 
