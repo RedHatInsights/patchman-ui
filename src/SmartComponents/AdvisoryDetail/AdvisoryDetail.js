@@ -10,7 +10,6 @@ import Header from '../../PresentationalComponents/Header/Header';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { paths } from '../../Routes';
 import { clearAdvisoryDetailStore, clearEntitiesStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
-import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
@@ -57,10 +56,10 @@ const AdvisoryDetail = ({ match }) => {
                         isActive: true
                     }
                 ]}
-            >{status === STATUS_REJECTED ? <Unavailable /> :
+            >{status.hasError ? <Unavailable /> :
                     <AdvisoryHeader
                         attributes={{ ...attributes, id: advisoryName }}
-                        isLoading={status === STATUS_LOADING}
+                        isLoading={status.isLoading}
                     />}
             </Header>
             <Main>

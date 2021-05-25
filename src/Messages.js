@@ -191,6 +191,16 @@ export default defineMessages({
         description: 'Modified date label',
         defaultMessage: 'Modified {date}'
     },
+    labelsNotAuthorizedDescription: {
+        id: 'notAuthorizedDescription',
+        description: 'Description for component which shows up when user doesn\'t have permission to view content',
+        defaultMessage: 'Contact your organization administrator(s) for more information.'
+    },
+    labelsNotAuthorizedTitle: {
+        id: 'notAuthorizedTitle',
+        description: 'Title for component which shows up when user doesn\'t have permission to view content',
+        defaultMessage: 'You do not have permissions to view or manage Vulnerability'
+    },
     labelsPublicDate: {
         id: 'labelsPublicDate',
         description: 'Public date label',
@@ -200,6 +210,16 @@ export default defineMessages({
         id: 'labelsRemediate',
         description: 'Button label',
         defaultMessage: 'Remediate'
+    },
+    labelsReturnToLandingPage: {
+        id: 'returnToLandingPage',
+        description: 'Return to landing page label for general usage',
+        defaultMessage: 'Go to landing page'
+    },
+    labelsReturnToPreviousPage: {
+        id: 'returnPreviousPage',
+        description: 'Return to previous page label for general usage',
+        defaultMessage: 'Return to previous page'
     },
     labelsSeverity: {
         id: 'labelsSeverity',

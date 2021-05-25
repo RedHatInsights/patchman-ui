@@ -236,7 +236,6 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                       "topic": "An update .",
                     }
                   }
-                  isLoading={false}
                 >
                   <div>
                      hello 

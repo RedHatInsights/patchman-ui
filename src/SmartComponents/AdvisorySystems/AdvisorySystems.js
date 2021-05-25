@@ -1,6 +1,5 @@
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
-import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -11,7 +10,7 @@ import { register } from '../../store';
 import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, initialState } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems } from '../../Utilities/api';
-import { STATUS_REJECTED, remediationIdentifiers } from '../../Utilities/constants';
+import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
     remediationProvider, filterSelectedRowIDs
@@ -24,6 +23,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
-        ({ entities }) => entities?.status
+        ({ entities }) => entities?.status || {}
     );
     const selectedRows = useSelector(
         ({ entities }) => entities?.selectedRows || []
@@ -93,7 +93,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     return (
         <React.Fragment>
-            {status === STATUS_REJECTED ? <Unavailable/> : (
+            {status.hasError && <ErrorHandler code={status.code}/> ||
                 <InventoryTable
                     disableDefaultColumns
                     isFullView
@@ -144,7 +144,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                 >
                     <RemediationModalCmp />
                 </InventoryTable>
-            )}
+            }
         </React.Fragment>
     );
 };

@@ -19,7 +19,7 @@ jest.mock('react-redux', () => ({
 
 jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => ({
     ...jest.requireActual('@redhat-cloud-services/frontend-components-utilities/helpers'),
-    downloadFile: jest.fn()
+    downloadFile: jest.fn(),
 }));
 
 jest.mock('../../Utilities/api', () => ({
@@ -30,12 +30,25 @@ jest.mock('../../Utilities/api', () => ({
 
 jest.mock('../../Utilities/constants', () => ({
     ...jest.requireActual('../../Utilities/constants'),
-    publicDateOptions: jest.fn().mockReturnValue([])
+    publicDateOptions: jest.fn().mockReturnValue([]),
+    advisorySeverities: [{
+        value: 0,
+        label: 'N/A',
+        color: 'var(--pf-global--Color--200)'
+    }]
 }));
 
 
 
-const mockState = { ...storeListDefaults, rows:  advisoryRows };
+const mockState = { ...storeListDefaults, 
+    rows:  advisoryRows, 
+    status: { isLoading: false, code: 200, hasError: false },
+    metadata: {
+        limit: 25,
+        offset: 0,
+        total_items: 10
+    },
+};
 
 const initStore = (state) => {
     const customMiddleWare = () => next => action => {
@@ -52,6 +65,7 @@ let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
+    console.error = () => { };
     store.clearActions();
     useSelector.mockImplementation(callback => {
         return callback({ AdvisoryListStore: mockState });

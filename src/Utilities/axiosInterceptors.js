@@ -1,6 +1,5 @@
 import {
-    authInterceptor,
-    responseDataInterceptor
+    authInterceptor
 } from '@redhat-cloud-services/frontend-components-utilities/interceptors';
 import axios from 'axios';
 import { ReadOnlyNotification } from './constants';
@@ -55,6 +54,14 @@ export function readOnlyInterceptor(error) {
     }
 
     throw error;
+}
+
+export function responseDataInterceptor(response) {
+    if (response.data && typeof response.data === 'object') {
+        return { ...response.data, status: response.status };
+    }
+
+    return response;
 }
 
 axiosInstance.interceptors.request.use(accessCheckInterceptor);

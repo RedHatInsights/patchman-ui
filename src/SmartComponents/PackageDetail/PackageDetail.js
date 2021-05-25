@@ -11,7 +11,6 @@ import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavaila
 import { paths } from '../../Routes';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
-import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 
@@ -55,10 +54,10 @@ const PackageDetail = ({ match }) => {
                         isActive: true
                     }
                 ]}
-            >{status === STATUS_REJECTED ? <Unavailable/> :
+            >{status.hasError ? <Unavailable/> :
                     <PackageHeader
                         attributes={{ ...attributes, id: packageName }}
-                        isLoading={status === STATUS_LOADING}
+                        isLoading={status.isLoading}
                     />}
             </Header>
             <Main>
