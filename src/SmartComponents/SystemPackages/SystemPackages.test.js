@@ -69,7 +69,7 @@ describe('SystemPackages.js', () => {
     });
     
     it('Should display error page when status is rejected', () => {
-        const rejectedState = { ...mockState, status: 'rejected', error: { detail: 'test' } };
+        const rejectedState = { ...mockState, status: { code: 403, isLoading: false, hasError: true }, error: { detail: 'test' } };
         useSelector.mockImplementation(callback => {
             return callback({ SystemPackageListStore: rejectedState, entityDetails : { entity: { id: 'entity' } } });
         });
@@ -144,7 +144,7 @@ describe('SystemPackages.js', () => {
     it('Should display NoSystemData', () => {
         const notFoundState = {
             ...mockState,
-            status: 'rejected', 
+            status: { code: 403, isLoading: false, hasError: true },
             error: {
                 status: 404,
                 title: 'testTitle',
@@ -167,7 +167,7 @@ describe('SystemPackages.js', () => {
     it('Should dispatch addNotification when status is rejected and error status is not 404', () => {
         const notFoundState = {
             ...mockState,
-            status: 'rejected', 
+            status: { code: 403, isLoading: false, hasError: true },
             error: {
                 status: 403,
                 title: 'testTitle',

@@ -5,12 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import packagesListStatusFilter from '../../PresentationalComponents/Filters/PackagesListStatusFilter';
 import Header from '../../PresentationalComponents/Header/Header';
-import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
-import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
-import { STATUS_REJECTED, packagesListDefaultFilters } from '../../Utilities/constants';
+import { packagesListDefaultFilters } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy } from '../../Utilities/Helpers';
 import { usePerPageSelect, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
@@ -68,9 +66,7 @@ const Packages = () => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const errorState = error.status === 404 ?  <NoSystemData/> : <Unavailable />;
-
-    if (status === STATUS_REJECTED && error.status !== 404) {
+    if (status.hasError && status.code !== 404) {
         dispatch(addNotification({
             variant: 'danger',
             title: error.title,
@@ -103,7 +99,6 @@ const Packages = () => {
                     remediationButtonOUIA={'toolbar-remediation-button'}
                     tableOUIA={'package-details-table'}
                     paginationOUIA={'package-details-pagination'}
-                    errorState={errorState}
                     defaultFilters={packagesListDefaultFilters}
                 />
             </Main>

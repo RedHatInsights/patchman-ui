@@ -6,11 +6,11 @@ import React from 'react';
 import messages from '../../Messages';
 import PatchRemediationButton from '../../SmartComponents/Remediation/PatchRemediationButton';
 import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
-import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import TableFooter from './TableFooter';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const TableView = ({
     columns,
@@ -59,12 +59,11 @@ const TableView = ({
 
     const [deleteFilters, deleteFilterGroup] = useRemoveFilter(filter, apply, defaultFilters);
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
+    const { code, hasError, isLoading } = status;
 
     return (
         <React.Fragment>
             {
-                (status === STATUS_REJECTED) && errorState ||
-                (status === STATUS_RESOLVED && emptyState !== false) && emptyState ||
                 (<React.Fragment>
                     <PrimaryToolbar
                         pagination={{
@@ -108,9 +107,9 @@ const TableView = ({
 
                     />
 
-                    {status === STATUS_LOADING && <SkeletonTable colSize={5} rowSize={20} />}
-                    {status === STATUS_RESOLVED && (
-                        <React.Fragment>
+                    {isLoading && <SkeletonTable colSize={5} rowSize={20} />
+                        || hasError && <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState}/>
+                        || <React.Fragment>
                             <Table
                                 aria-label="Patch table view"
                                 cells={columns}
@@ -135,7 +134,8 @@ const TableView = ({
                                 onPerPageSelect={onPerPageSelect}
                                 paginationOUIA={`bottom-${paginationOUIA}`}
                             />
-                        </React.Fragment>)}
+                        </React.Fragment>
+                    }
                 </React.Fragment>)
             }
         </React.Fragment>
@@ -160,8 +160,8 @@ TableView.propTypes = {
     remediationButtonOUIA: PropTypes.string,
     tableOUIA: PropTypes.string,
     paginationOUIA: PropTypes.string,
-    errorState: PropTypes.any,
-    emptyState: PropTypes.any,
+    errorState: PropTypes.element,
+    emptyState: PropTypes.element,
     defaultFilters: PropTypes.object
 };
 

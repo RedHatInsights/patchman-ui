@@ -12,7 +12,7 @@ import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableVie
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
-import { STATUS_REJECTED, remediationIdentifiers } from '../../Utilities/constants';
+import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
@@ -101,9 +101,9 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
         dispatch(changeSystemAdvisoryListParams({ id: entity.id, ...params }));
     }
 
-    const errorState = error.status === 404 ? handleNoSystemData() : <Unavailable/>;
+    const errorState = status.code === 404 ? handleNoSystemData() : <Unavailable/>;
 
-    if (status === STATUS_REJECTED && error.status !== 404) {
+    if (status.hasError && status.code !== 404) {
         dispatch(addNotification({
             variant: 'danger',
             title: error.title,

@@ -36,7 +36,7 @@ const mockState = {
     selectedRows: { 'RHSA-2020:2774': true },
     queryParams: {},
     error: {},
-    status: 'resolved', 
+    status: {}, 
     rows:  systemAdvisoryRows 
 };
 
@@ -192,7 +192,7 @@ describe('SystemAdvisories.js', () => {
     it('Should dispatch addNotification when status is rejected and error status is not 404', () => {
         const notFoundState = {
             ...mockState,
-            status: 'rejected', 
+            status: { code: 403, isLoading: false, hasError: true },
             error: {
                 status: 403,
                 title: 'testTitle',

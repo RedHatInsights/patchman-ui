@@ -89,6 +89,36 @@ exports[`TableView TableView 1`] = `
     }
     toggleIsExpanded={[Function]}
   />
+  <Table
+    aria-label="Patch table view"
+    borders={true}
+    canSelectAll={false}
+    canSortFavorites={true}
+    cells={Array []}
+    className=""
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    isStickyHeader={true}
+    isTreeTable={false}
+    ouiaSafe={true}
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={Array []}
+    selectVariant="checkbox"
+    variant={null}
+  >
+    <TableHeader />
+    <Component />
+  </Table>
+  <TableFooter
+    onPerPageSelect={[MockFunction]}
+    onSetPage={[MockFunction]}
+    page={NaN}
+    paginationOUIA="bottom-undefined"
+  />
 </Fragment>
 `;
 
@@ -181,14 +211,35 @@ exports[`TableView TableView 2`] = `
     }
     toggleIsExpanded={[Function]}
   />
-  <SkeletonTable
+  <Table
+    aria-label="Patch table view"
+    borders={true}
     canSelectAll={false}
-    colSize={5}
-    hasRadio={false}
-    isSelectable={false}
-    paddingColumnSize={0}
-    rowSize={20}
+    canSortFavorites={true}
+    cells={Array []}
+    className=""
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    isStickyHeader={true}
+    isTreeTable={false}
+    ouiaSafe={true}
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={Array []}
+    selectVariant="checkbox"
     variant={null}
+  >
+    <TableHeader />
+    <Component />
+  </Table>
+  <TableFooter
+    onPerPageSelect={[MockFunction]}
+    onSetPage={[MockFunction]}
+    page={NaN}
+    paginationOUIA="bottom-undefined"
   />
 </Fragment>
 `;

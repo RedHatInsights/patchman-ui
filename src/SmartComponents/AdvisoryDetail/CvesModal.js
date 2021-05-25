@@ -10,8 +10,6 @@ import { fetchCves } from '../../store/Actions/Actions';
 import propTypes from 'prop-types';
 import { createCvesRows } from '../../Utilities/DataMappers';
 import { sortCves } from '..//../Utilities/Helpers';
-import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
-import { STATUS_REJECTED } from '../../Utilities/constants';
 import { SortByDirection } from '@patternfly/react-table';
 
 const CvesModal = ({ cveIds }) =>{
@@ -77,8 +75,6 @@ const CvesModal = ({ cveIds }) =>{
         setCves(sortedCves);
     };
 
-    const errorState = status === STATUS_REJECTED && <Unavailable />;
-
     return (
         <React.Fragment>
             <Modal
@@ -107,7 +103,6 @@ const CvesModal = ({ cveIds }) =>{
                                 intl.formatMessage(messages.labelsFiltersCvesSearchPlaceHolder))
                         ]
                     }}
-                    errorState={errorState}
                 />
             </Modal>
         </React.Fragment>

@@ -1,5 +1,4 @@
 import { addOrRemoveItemFromSet, changeListParams, getNewSelectedItems } from '../../Utilities/Helpers';
-import { STATUS_LOADING, STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 
 export const changeFilters = (state, action) => {
     state.queryParams = changeListParams(
@@ -27,14 +26,14 @@ export const expandRows = (state, action) => {
 
 export const fetchPending = (state) => {
     state.error = {};
-    state.status = STATUS_LOADING;
+    state.status = { isLoading: true, hasError: false, code: undefined };
     return state;
 };
 
 export const fetchRejected = (state, action) => {
-    state.status = STATUS_REJECTED;
     state.metadata = action.payload.meta || {};
     state.error = action.payload;
+    state.status = { code: action.payload.status, isLoading: false, hasError: true };
     return state;
 };
 
@@ -42,6 +41,6 @@ export const fetchFulfilled = (state, action) => {
     state.rows = action.payload.data;
     state.metadata = action.payload.meta || {};
     state.error = {};
-    state.status = STATUS_RESOLVED;
+    state.status = { code: action.payload.status, isLoading: false, hasError: false };
     return state;
 };

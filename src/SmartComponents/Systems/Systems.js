@@ -1,6 +1,5 @@
 import { TableVariant } from '@patternfly/react-table';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import React from 'react';
@@ -15,7 +14,6 @@ import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
-import { STATUS_REJECTED } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips, remediationProviderWithPairs,
     transformPairs, filterSelectedRowIDs
@@ -27,6 +25,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -45,7 +44,7 @@ const Systems = () => {
         ({ entities }) => entities?.selectedRows || []
     );
     const status = useSelector(
-        ({ entities }) => entities?.status
+        ({ entities }) => entities?.status || {}
     );
     const queryParams = useSelector(
         ({ entities }) => entities?.queryParams || {}
@@ -133,7 +132,7 @@ const Systems = () => {
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'}/>
             <RemediationModalCmp />
             <Main>
-                {status === STATUS_REJECTED ? <Unavailable/> :
+                {status.hasError && <ErrorHandler code={status.code} /> ||
                     (
                         <InventoryTable
                             disableDefaultColumns

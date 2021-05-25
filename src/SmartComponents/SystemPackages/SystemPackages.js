@@ -14,8 +14,7 @@ import {
     fetchApplicableSystemPackages, selectSystemPackagesRow
 } from '../../store/Actions/Actions';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED,
-    remediationIdentifiers, systemPackagesDefaultFilters } from '../../Utilities/constants';
+import { remediationIdentifiers, systemPackagesDefaultFilters } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
@@ -88,10 +87,10 @@ const SystemPackages = ({ handleNoSystemData }) => {
     const onPerPageSelect = usePerPageSelect(apply);
 
     const errorState = error.status === 404 ?  handleNoSystemData() : <Unavailable/>;
-    const emptyState = (status === STATUS_RESOLVED && metadata.total_items === 0
+    const emptyState = (!status.isLoading && !status.hasError && metadata.total_items === 0
                             && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
 
-    if (status === STATUS_REJECTED && error.status !== 404) {
+    if (status.hasError && status.code !== 404) {
         dispatch(addNotification({
             variant: 'danger',
             title: error.title,
