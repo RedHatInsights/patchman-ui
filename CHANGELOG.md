@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.19.3...v1.20.0) (2021-06-01)
+
+
+### Features
+
+* **InventoryComp:** SPM-754 use custom getEntities ([30701d4](https://github.com/RedHatInsights/patchman-ui/commit/30701d4411db3c1ef74ce68f12df88515a5210bc))
+
 ## [1.19.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.19.2...v1.19.3) (2021-05-24)
 
 
