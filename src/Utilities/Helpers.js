@@ -399,3 +399,13 @@ export const createOSColumn = ({ osName, rhsm }) => (rhsm === '' || rhsm ===  un
 );
 
 export const filterSelectedRowIDs = (selectedRows) =>  Object.keys(selectedRows).filter(row => selectedRows[row]);
+
+export const handleRefresh = ({ page, per_page: perPage }, metadata, callback) => {
+    const offset = getOffsetFromPageLimit(page, perPage);
+    const limit = getLimitFromPageSize(perPage);
+    (metadata.offset !== offset || metadata.limit !== limit) &&
+        callback({
+            ...(metadata.offset !== offset && { offset }),
+            ...(metadata.limit !== limit && { limit })
+        });
+};
