@@ -13,9 +13,16 @@ import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntities
 import { fetchAdvisorySystems } from '../../Utilities/api';
 import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider, filterSelectedRowIDs } from '../../Utilities/Helpers';
 import {
-    useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage, useRemoveFilter,
+    arrayFromObj,
+    buildFilterChips,
+    createSortBy,
+    remediationProvider,
+    filterSelectedRowIDs,
+    handleRefresh
+} from '../../Utilities/Helpers';
+import {
+    useDeepCompareEffect, useOnSelect, usePagePerPage, useRemoveFilter,
     useSortColumn, useBulkSelectConfig
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -54,7 +61,6 @@ const AdvisorySystems = ({ advisoryName }) => {
         ({ entities }) => entities && entities.columns
     );
 
-    const handleRefresh = useHandleRefresh(metadata, apply);
     const { filter, search } = queryParams;
 
     React.useEffect(() => {
@@ -124,10 +130,13 @@ const AdvisorySystems = ({ advisoryName }) => {
             {status === STATUS_REJECTED ? <Unavailable/> : (
                 <InventoryTable
                     disableDefaultColumns
-                    getEntities={() => Promise.resolve({
-                        results: rawAdvisorySystems.map((system) => ({ ...system.attributes, id: system.id })),
-                        total: metadata.total_items
-                    })}
+                    getEntities={(_ids, pagination) => {
+                        handleRefresh(pagination, metadata, apply);
+                        return Promise.resolve({
+                            results: rawAdvisorySystems.map((system) => ({ ...system.attributes, id: system.id })),
+                            total: metadata.total_items
+                        });
+                    }}
                     onLoad={({ mergeWithEntities }) => {
                         const store = getStore();
                         register({
@@ -140,7 +149,6 @@ const AdvisorySystems = ({ advisoryName }) => {
                     page={page}
                     total={metadata.total_items}
                     perPage={perPage}
-                    onRefresh={handleRefresh}
                     isLoaded={status === STATUS_RESOLVED}
                     actions={systemsRowActions(showRemediationModal)}
                     tableProps = {{ canSelectAll: false,

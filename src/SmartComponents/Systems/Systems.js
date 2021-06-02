@@ -19,11 +19,11 @@ import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import {
     arrayFromObj, buildFilterChips, createSortBy,
-    remediationProviderWithPairs, transformPairs, filterSelectedRowIDs
+    remediationProviderWithPairs, transformPairs, filterSelectedRowIDs, handleRefresh
 } from '../../Utilities/Helpers';
 import {
     setPageTitle,
-    useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
+    useDeepCompareEffect, useOnSelect, usePagePerPage,
     useRemoveFilter, useSortColumn, useBulkSelectConfig
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -66,8 +66,6 @@ const Systems = () => {
     );
 
     const { filter, search } = queryParams;
-
-    const handleRefresh = useHandleRefresh(metadata, apply);
 
     useDeepCompareEffect(() => {
         dispatch(fetchSystemsAction(queryParams));
@@ -164,10 +162,13 @@ const Systems = () => {
                         <InventoryTable
                             disableDefaultColumns
                             getEntities={
-                                () =>  Promise.resolve({
-                                    results: rawSystems.map((system) => ({ ...system.attributes, id: system.id })),
-                                    total: metadata.total_items
-                                })
+                                (_ids, pagination) =>  {
+                                    handleRefresh(pagination, metadata, apply);
+                                    return Promise.resolve({
+                                        results: rawSystems.map((system) => ({ ...system.attributes, id: system.id })),
+                                        total: metadata.total_items
+                                    });
+                                }
                             }
                             onLoad={({ mergeWithEntities }) => {
                                 const store = getStore();
@@ -183,7 +184,6 @@ const Systems = () => {
                             total={metadata.total_items}
                             perPage={perPage}
                             isLoaded={status === STATUS_RESOLVED}
-                            onRefresh={handleRefresh}
                             exportConfig={{
                                 isDisabled: metadata.total_items === 0,
                                 onSelect: onExport
