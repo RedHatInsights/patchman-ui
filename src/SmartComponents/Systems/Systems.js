@@ -137,9 +137,8 @@ const Systems = () => {
     };
 
     const areActionsDisabled = (rowData) => {
-        // eslint-disable-next-line camelcase
-        const { applicable_advisories } = rowData;
-        return applicable_advisories.every(typeSum => typeSum === 0);
+        const { applicable_advisories: applicableAdvisories } = rowData;
+        return applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0);
     };
 
     const prepareRemediationPairs = (systems) => {
