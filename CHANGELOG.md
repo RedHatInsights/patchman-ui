@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.0...v1.20.1) (2021-06-02)
+
+
+### Bug Fixes
+
+* **Inventory:** fix clear filters issue after custom inventory fetch ([7f11aaf](https://github.com/RedHatInsights/patchman-ui/commit/7f11aaf89e73d389cb8018ac9178b84ac0419d90))
+
 # [1.20.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.19.3...v1.20.0) (2021-06-01)
 
 
