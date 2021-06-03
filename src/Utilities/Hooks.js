@@ -2,7 +2,7 @@ import { SortByDirection } from '@patternfly/react-table/dist/js';
 import isDeepEqualReact from 'fast-deep-equal/react';
 import React from 'react';
 import { compoundSortValues } from './constants';
-import { convertLimitOffset, getLimitFromPageSize, getOffsetFromPageLimit, handleRefresh } from './Helpers';
+import { convertLimitOffset, getLimitFromPageSize, getOffsetFromPageLimit, createSystemsSortBy } from './Helpers';
 import { intl } from './IntlProvider';
 import messages from '../Messages';
 
@@ -14,8 +14,16 @@ export const useSetPage = (limit, callback) => {
 };
 
 export const useHandleRefresh = (metadata, callback) => {
-    const refresh = React.useCallback((pagination) => handleRefresh(pagination, metadata, callback));
-    return refresh;
+    const handleRefresh = React.useCallback(({ page, per_page: perPage }) => {
+        const offset = getOffsetFromPageLimit(page, perPage);
+        const limit = getLimitFromPageSize(perPage);
+        (metadata.offset !== offset || metadata.limit !== limit) &&
+            callback({
+                ...(metadata.offset !== offset && { offset }),
+                ...(metadata.limit !== limit && { limit })
+            });
+    });
+    return handleRefresh;
 };
 
 export const usePagePerPage = (limit, offset) => {
@@ -216,3 +224,34 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
     checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
     isDisabled: metadata.total_items === 0 && selectedCount === 0
 });
+
+export const useGetEntities = (fetchApi, apply, id) => {
+    const getEntities = async (
+        _items,
+        { orderBy, orderDirection, page, per_page: perPage, patchParams }
+    ) => {
+
+        const sort = createSystemsSortBy(orderBy, orderDirection);
+
+        const items = await fetchApi({
+            page,
+            per_page: perPage,
+            ...patchParams,
+            sort,
+            ...id && { id } || {}
+        });
+
+        apply({
+            page,
+            per_page: perPage,
+            sort
+        });
+
+        return {
+            results: items.data.map(row => ({ id: row.id, ...row.attributes })),
+            total: items.meta?.total_items
+        };
+    };
+
+    return getEntities;
+};

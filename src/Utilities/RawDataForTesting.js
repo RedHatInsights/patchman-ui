@@ -26,19 +26,26 @@ export const systemAdvisoryRows = [{
 }];
 
 export const systemRows = [{
-    attributes: {
-        display_name: 'automation_host',
-        last_evaluation: '2020-08-12T13:57:54.028883Z',
-        last_upload: '2020-08-12T09:26:33.891907Z',
-        packages_installed: 0,
-        packages_updatable: 0,
-        rhba_count: 213,
-        rhea_count: 35,
-        rhsa_count: 77,
-        stale: false
-    },
-    id: '8ddb54f5-aeeb-49b1-8448-c29049d686c1',
-    type: 'system'
+    id: '83e97cde-74b4-4752-819d-704687bbc286',
+    created: '2021-06-05T09:03:09.154453Z',
+    culled_timestamp: '2021-06-20T14:03:09.096101Z',
+    display_name: 'RHIQE.zjjgPCaCgT.test',
+    insights_id: 'f87cff90-d61a-4f9e-92d4-cdb18f0dd5df',
+    last_evaluation: '2021-06-05T09:03:10.698831Z',
+    last_upload: '2021-06-07T12:34:18.186723Z',
+    os_major: '',
+    os_minor: '',
+    os_name: '',
+    packages_installed: 573,
+    packages_updatable: 0,
+    rhba_count: 0,
+    rhea_count: 0,
+    rhsa_count: 0,
+    rhsm: '',
+    stale: false,
+    stale_timestamp: '2021-06-06T14:03:09.096101Z',
+    stale_warning_timestamp: '2021-06-13T14:03:09.096101Z',
+    third_party: true
 }];
 
 export const advisoryHeader = {

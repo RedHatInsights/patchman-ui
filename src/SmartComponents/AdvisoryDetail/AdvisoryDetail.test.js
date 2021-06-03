@@ -72,7 +72,7 @@ describe('AdvisoryDetail.js', () => {
             tempWrapper.unmount();
         });
         const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'CLEAR_AFFECTED_SYSTEMS')).toHaveLength(1);
+        expect(dispatchedActions.filter(item => item.type === 'CLEAR_ENTITIES')).toHaveLength(1);
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_ADVISORY_DETAILS')).toHaveLength(1);
     });
 

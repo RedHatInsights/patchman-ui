@@ -1,4 +1,4 @@
-import { fetchAdvisoryDetailsApi, fetchAdvisorySystems, fetchApplicableAdvisoriesApi,
+import { fetchAdvisoryDetailsApi, fetchApplicableAdvisoriesApi,
     fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchPackageDetailsApi,
     fetchPackagesList, fetchPackageSystems, fetchSystems, fetchCvesInfo, fetchSystemDetails } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
@@ -51,11 +51,6 @@ export const changeSystemAdvisoryListParams = params => ({
     payload: params
 });
 
-export const changeSystemsListParams = params => ({
-    type: ActionTypes.CHANGE_SYSTEMS_LIST_PARAMS,
-    payload: params
-});
-
 export const changeAdvisorySystemsParams = params => ({
     type: ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS,
     payload: params
@@ -91,11 +86,6 @@ export const clearSystemPackagesStore = () => ({
     payload: []
 });
 
-export const clearAdvisorySystemsStore = () => ({
-    type: ActionTypes.CLEAR_AFFECTED_SYSTEMS,
-    payload: []
-});
-
 export const clearAdvisoryDetailStore = () => ({
     type: ActionTypes.CLEAR_ADVISORY_DETAILS,
     payload: []
@@ -104,13 +94,6 @@ export const clearAdvisoryDetailStore = () => ({
 export const clearPackageDetailStore = () => ({
     type: ActionTypes.CLEAR_ADVISORY_DETAILS,
     payload: []
-});
-
-export const fetchAdvisorySystemsAction = params => ({
-    type: ActionTypes.FETCH_AFFECTED_SYSTEMS,
-    payload: new Promise(resolve => {
-        resolve(fetchAdvisorySystems(params));
-    }).then(result => result)
 });
 
 export const fetchPackageSystemsAction = params => ({
@@ -181,4 +164,14 @@ export const fetchSystemDetailsAction = params => ({
     payload: new Promise(resolve => {
         resolve(fetchSystemDetails(params));
     }).then(result => result)
+});
+
+export const clearEntitiesStore = () => ({
+    type: ActionTypes.CLEAR_ENTITIES,
+    payload: []
+});
+
+export const changeEntitiesParams = params => ({
+    type: ActionTypes.CHANGE_ENTITIES_PARAMS,
+    payload: params
 });

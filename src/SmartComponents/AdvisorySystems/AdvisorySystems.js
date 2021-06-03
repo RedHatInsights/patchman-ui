@@ -4,26 +4,21 @@ import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavaila
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
-import { getStore, register } from '../../store';
-import { changeAdvisorySystemsParams, clearAdvisorySystemsStore, fetchAdvisorySystemsAction } from '../../store/Actions/Actions';
-import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
+import { register } from '../../store';
+import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
+import { inventoryEntitiesReducer, initialState } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED, remediationIdentifiers } from '../../Utilities/constants';
-import { createSystemsRows } from '../../Utilities/DataMappers';
+import { STATUS_REJECTED, remediationIdentifiers } from '../../Utilities/constants';
 import {
-    arrayFromObj,
-    buildFilterChips,
-    createSortBy,
-    remediationProvider,
-    filterSelectedRowIDs,
-    handleRefresh
+    arrayFromObj, buildFilterChips,
+    remediationProvider, filterSelectedRowIDs
 } from '../../Utilities/Helpers';
 import {
-    useDeepCompareEffect, useOnSelect, usePagePerPage, useRemoveFilter,
-    useSortColumn, useBulkSelectConfig
+    useOnSelect, useRemoveFilter,
+    useBulkSelectConfig, useGetEntities
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
@@ -36,50 +31,32 @@ const AdvisorySystems = ({ advisoryName }) => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-    const rawAdvisorySystems = useSelector(
-        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.rows
-    );
-    const status = useSelector(
-        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.status
-    );
 
+    const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
+    const status = useSelector(
+        ({ entities }) => entities?.status
+    );
     const selectedRows = useSelector(
-        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.selectedRows
+        ({ entities }) => entities?.selectedRows || []
     );
-    const hosts = React.useMemo(
-        () => createSystemsRows(rawAdvisorySystems, selectedRows),
-        [rawAdvisorySystems]
-    );
-    const metadata = useSelector(
-        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.metadata
+    const totalItems = useSelector(
+        ({ entities }) => entities?.total || 0
     );
     const queryParams = useSelector(
-        ({ AdvisorySystemsStore }) => AdvisorySystemsStore.queryParams
-    );
-
-    const inventoryColumns = useSelector(
-        ({ entities }) => entities && entities.columns
+        ({ entities }) => entities?.queryParams || {}
     );
 
     const { filter, search } = queryParams;
 
     React.useEffect(() => {
-        return () => dispatch(clearAdvisorySystemsStore());
+        return () => dispatch(clearEntitiesStore());
     }, []);
 
-    useDeepCompareEffect(() => {
-        dispatch(
-            fetchAdvisorySystemsAction({ id: advisoryName, ...queryParams })
-        );
-    }, [queryParams]);
-
-    const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
-
     function apply(params) {
-        dispatch(changeAdvisorySystemsParams(params));
+        dispatch(changeEntitiesParams(params));
     }
 
-    const [deleteFilters] = useRemoveFilter(filter, apply);
+    const [deleteFilters] = useRemoveFilter({ search }, apply);
 
     const filterConfig = {
         items: [
@@ -108,56 +85,43 @@ const AdvisorySystems = ({ advisoryName }) => {
     const fetchAllData = () =>
         fetchAdvisorySystems({ ...queryParams, id: advisoryName, limit: -1 });
 
-    const onSelect = useOnSelect(rawAdvisorySystems,  selectedRows, fetchAllData, selectRows);
-
-    // This is used ONLY for sorting purposes
-    const getMangledColumns = () => {
-        let updated = inventoryColumns && inventoryColumns.filter(({ key }) => key === 'updated')[0];
-        updated = { ...updated, key: 'last_upload' };
-        return [...systemsListColumns, updated];
-    };
-
-    const onSort = useSortColumn(getMangledColumns(), apply, 1);
-    const sortBy = React.useMemo(
-        () => createSortBy(getMangledColumns(), metadata.sort, 1),
-        [metadata.sort]
-    );
+    const onSelect = useOnSelect(systems,  selectedRows, fetchAllData, selectRows);
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
+
+    const getEntites = useGetEntities(fetchAdvisorySystems, apply, advisoryName);
 
     return (
         <React.Fragment>
             {status === STATUS_REJECTED ? <Unavailable/> : (
                 <InventoryTable
                     disableDefaultColumns
-                    getEntities={(_ids, pagination) => {
-                        handleRefresh(pagination, metadata, apply);
-                        return Promise.resolve({
-                            results: rawAdvisorySystems.map((system) => ({ ...system.attributes, id: system.id })),
-                            total: metadata.total_items
-                        });
+                    isFullView
+                    autoRefresh
+                    initialLoading
+                    ignoreRefresh
+                    hideFilters={{ all: true }}
+                    customFilters={{
+                        patchParams: {
+                            search,
+                            filter
+                        }
                     }}
                     onLoad={({ mergeWithEntities }) => {
-                        const store = getStore();
                         register({
                             ...mergeWithEntities(
-                                inventoryEntitiesReducer(systemsListColumns, store.getState().AdvisorySystemsStore)
+                                inventoryEntitiesReducer(systemsListColumns),
+                                initialState
                             )
                         });
                     }}
-                    items={hosts}
-                    page={page}
-                    total={metadata.total_items}
-                    perPage={perPage}
-                    isLoaded={status === STATUS_RESOLVED}
+                    getEntities={getEntites}
                     actions={systemsRowActions(showRemediationModal)}
                     tableProps = {{ canSelectAll: false,
-                        onSort: metadata.total_items && onSort,
-                        sortBy: metadata.total_items && sortBy,
                         variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
-                    bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, hosts)}
+                    bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
                     dedicatedAction={(<PatchRemediationButton
                         isDisabled={
                             arrayFromObj(selectedRows).length === 0

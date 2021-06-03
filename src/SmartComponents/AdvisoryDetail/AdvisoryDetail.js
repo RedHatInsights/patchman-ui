@@ -9,7 +9,7 @@ import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/Adviso
 import Header from '../../PresentationalComponents/Header/Header';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { paths } from '../../Routes';
-import { clearAdvisoryDetailStore, clearAdvisorySystemsStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
+import { clearAdvisoryDetailStore, clearEntitiesStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
 import { STATUS_LOADING, STATUS_REJECTED } from '../../Utilities/constants';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -35,7 +35,7 @@ const AdvisoryDetail = ({ match }) => {
 
     React.useEffect(() => {
         return () => {
-            dispatch(clearAdvisorySystemsStore());
+            dispatch(clearEntitiesStore());
             dispatch(clearAdvisoryDetailStore());
         };
     }, []);
