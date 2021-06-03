@@ -1,35 +1,44 @@
-import { TableVariant } from '@patternfly/react-table';
+/* eslint-disable no-unused-vars */
+import { nowrap, TableVariant } from '@patternfly/react-table';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
-import { getStore, register } from '../../store';
-import { changeSystemsListParams, fetchSystemsAction } from '../../store/Actions/Actions';
+import { register } from '../../store';
+import { changeSystemsListParams } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
-import { STATUS_REJECTED, STATUS_RESOLVED } from '../../Utilities/constants';
-import { createSystemsRows } from '../../Utilities/DataMappers';
+import { STATUS_REJECTED } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips, createSortBy,
     remediationProviderWithPairs, transformPairs, filterSelectedRowIDs
 } from '../../Utilities/Helpers';
 import {
-    setPageTitle,
-    useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
-    useRemoveFilter, useSortColumn, useBulkSelectConfig
+    setPageTitle, useOnSelect, useSortColumn, useRemoveFilter, useBulkSelectConfig
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+
+const createColumns = (defaultColumns) => {
+    let [nameColumn, ...restColumns] = systemsListColumns;
+    let lastSeenColumn = defaultColumns.filter(({ key }) => key === 'updated');
+
+    lastSeenColumn = { ...lastSeenColumn[0], cellTransforms: [nowrap], props: { width: 20 } };
+
+    let mergedColumns = [nameColumn, ...restColumns, lastSeenColumn];
+    console.log(mergedColumns);
+    return mergedColumns;
+};
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -42,23 +51,21 @@ const Systems = () => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-    const rawSystems = useSelector(
-        ({ SystemsListStore }) => SystemsListStore.rows
-    );
+
+    const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
+
     const selectedRows = useSelector(
-        ({ SystemsListStore }) => SystemsListStore.selectedRows
+        ({ entities }) => entities?.selectedRows || []
     );
-    const hosts = React.useMemo(() => createSystemsRows(rawSystems, selectedRows), [
-        rawSystems
-    ]);
+
     const status = useSelector(
-        ({ SystemsListStore }) => SystemsListStore.status
+        ({ entities }) => entities?.status
     );
     const metadata = useSelector(
-        ({ SystemsListStore }) => SystemsListStore.metadata
+        ({ entities }) => entities?.metadata || {}
     );
     const queryParams = useSelector(
-        ({ SystemsListStore }) => SystemsListStore.queryParams
+        ({ entities }) => entities?.queryParams || {}
     );
 
     const inventoryColumns = useSelector(
@@ -66,14 +73,6 @@ const Systems = () => {
     );
 
     const { filter, search } = queryParams;
-
-    const handleRefresh = useHandleRefresh(metadata, apply);
-
-    useDeepCompareEffect(() => {
-        dispatch(fetchSystemsAction(queryParams));
-    }, [queryParams]);
-
-    const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
 
     async function showRemediationModal(data) {
         setRemediationLoading(true);
@@ -118,7 +117,7 @@ const Systems = () => {
         );
     };
 
-    const onSelect = useOnSelect(hosts,  selectedRows, fetchAllData, selectRows);
+    const onSelect = useOnSelect(systems,  selectedRows, fetchAllData, selectRows);
 
     const onSort = useSortColumn(getMangledColumns(), apply, 1);
     const sortBy = React.useMemo(
@@ -140,8 +139,8 @@ const Systems = () => {
 
     const areActionsDisabled = (rowData) => {
         // eslint-disable-next-line camelcase
-        const { applicable_advisories } = rowData;
-        return applicable_advisories.every(typeSum => typeSum === 0);
+        const { applicable_advisories: ad } = rowData;
+        return ad && ad.every(typeSum => typeSum === 0);
     };
 
     const prepareRemediationPairs = (systems) => {
@@ -163,32 +162,62 @@ const Systems = () => {
                     (
                         <InventoryTable
                             disableDefaultColumns
-                            getEntities={
-                                () =>  Promise.resolve({
-                                    results: rawSystems.map((system) => ({ ...system.attributes, id: system.id })),
-                                    total: metadata.total_items
-                                })
-                            }
                             onLoad={({ mergeWithEntities }) => {
-                                const store = getStore();
                                 register({
                                     ...mergeWithEntities(
-                                        inventoryEntitiesReducer(systemsListColumns, store.getState().SystemsListStore)
+                                        inventoryEntitiesReducer(systemsListColumns),
+                                        {
+                                            page: Number(queryParams.page || 1),
+                                            perPage: Number(queryParams.page_size || 20),
+                                            ...(queryParams.sort && {
+                                                sortBy: {
+                                                    key: queryParams.sort.replace(/^-/, ''),
+                                                    direction: queryParams.sort.match(/^-/) ? 'desc' : 'asc'
+                                                }
+                                            })
+                                        }
                                     )
                                 });
                             }}
                             isFullView
-                            items={hosts}
-                            page={page}
-                            total={metadata.total_items}
-                            perPage={perPage}
-                            isLoaded={status === STATUS_RESOLVED}
-                            onRefresh={handleRefresh}
+                            autoRefresh
+                            ignoreRefresh
+                            initialLoading
+                            customFilters={{
+                                search: queryParams.search,
+                                filter: queryParams.filter
+                            }}
+                            getEntities={async (
+                                _items,
+                                { orderBy, orderDirection, page, per_page: perPage, filters }
+                            ) => {
+
+                                apply({
+                                    page,
+                                    per_page: perPage,
+                                    ...filters
+                                });
+
+                                const items = await fetchSystems({
+                                    page,
+                                    per_page: perPage,
+                                    ...filters
+                                });
+
+                                return Promise.resolve({
+                                    results: items.data.map(row => ({ id: row.id, ...row.attributes })),
+                                    total: items.meta?.total_itmes,
+                                    page,
+                                    perPage,
+                                    metadata
+                                });
+                            }}
+                            hideFilters={{ all: true }}
+                            columns={(defaultColumns) => createColumns(defaultColumns)}
                             exportConfig={{
                                 isDisabled: metadata.total_items === 0,
                                 onSelect: onExport
                             }}
-                            bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, hosts)}
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
                             activeFiltersConfig = {activeFiltersConfig}

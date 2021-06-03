@@ -30,7 +30,10 @@ export const storeListDefaults = {
     },
     expandedRows: {},
     selectedRows: {},
-    queryParams: {},
+    queryParams: {
+        page: 1,
+        page_size: 20
+    },
     error: {}
 };
 

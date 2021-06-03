@@ -20,9 +20,6 @@ export const SystemsListStore = (state = storeListDefaults, action) => {
         case ActionTypes.FETCH_SYSTEMS + '_REJECTED':
             return fetchRejected(newState, action);
 
-        case ActionTypes.CHANGE_SYSTEMS_LIST_PARAMS:
-            return changeFilters(newState, action);
-
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);
 

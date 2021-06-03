@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { encodeApiParams } from './Helpers';
 import axios from './axiosInterceptors';
-
+import { getOffsetFromPageLimit, getLimitFromPageSize } from './Helpers';
 export function createApiCall(
     endpoint,
     method,
@@ -36,7 +36,11 @@ export const fetchApplicableSystemAdvisoriesApi = params => {
 };
 
 export const fetchSystems = params => {
-    return createApiCall('/systems', 'get', params);
+    const offset = getOffsetFromPageLimit(params.page || 1, params.perPage || 20);
+    const limit = getLimitFromPageSize(params.perPage || 20);
+    const apiParams = { offset, limit, search: params.search, sort: params.sort };
+    Object.keys(apiParams).forEach(key => apiParams[key] === undefined && delete apiParams[key]);
+    return createApiCall('/systems', 'get', apiParams);
 };
 
 export const fetchSystemDetails = id => {

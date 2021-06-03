@@ -9,7 +9,7 @@ const AdvisoriesIcon = ({ count, tooltipText, Icon }) =>(
                 <Icon/>
             </FlexItem>
             <FlexItem spacer={{ default: 'spacerSm' }}>
-                {count.toString()}
+                {count && count.toString()}
             </FlexItem>
         </Flex>
     </Tooltip>
