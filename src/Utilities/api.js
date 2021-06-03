@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { encodeApiParams } from './Helpers';
 import axios from './axiosInterceptors';
-
+import { prepareEntitiesParams } from './Helpers';
 export function createApiCall(
     endpoint,
     method,
@@ -36,7 +36,7 @@ export const fetchApplicableSystemAdvisoriesApi = params => {
 };
 
 export const fetchSystems = params => {
-    return createApiCall('/systems', 'get', params);
+    return createApiCall('/systems', 'get', prepareEntitiesParams(params));
 };
 
 export const fetchSystemDetails = id => {
@@ -58,7 +58,7 @@ export const fetchApplicablePackagesApi = params => {
 
 export const fetchAdvisorySystems = params => {
     const { id, ...args } = params;
-    return createApiCall(`/advisories/${id}/systems`, 'get', args);
+    return createApiCall(`/advisories/${id}/systems`, 'get', prepareEntitiesParams(args));
 };
 
 export const fetchPackageSystems = params => {

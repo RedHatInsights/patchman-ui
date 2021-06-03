@@ -101,12 +101,18 @@ describe('Advisories.js', () => {
 
         it('Should download csv file', () => {
             wrapper.find('TableView').props().onExport(null, 'csv');
-            expect(exportAdvisoriesCSV).toHaveBeenCalledWith({});
+            expect(exportAdvisoriesCSV).toHaveBeenCalledWith({
+                page: 1,
+                page_size: 20,
+            });
         });
 
         it('Should download json file', () => {
             wrapper.find('TableView').props().onExport(null, 'json');
-            expect(exportAdvisoriesJSON).toHaveBeenCalledWith({});
+            expect(exportAdvisoriesJSON).toHaveBeenCalledWith({
+                page: 1,
+                page_size: 20,
+            });
         });
     });
     

@@ -61,15 +61,15 @@ describe('DataMappers', () => {
         expect(result[0].id).toEqual(systemRows[0].id);
         expect(result[0].key).toEqual(expect.stringContaining(systemRows[0].id));
         expect(result[0].applicable_advisories).toEqual([
-            systemRows[0].attributes.rhea_count,
-            systemRows[0].attributes.rhba_count,
-            systemRows[0].attributes.rhsa_count
+            systemRows[0].rhea_count,
+            systemRows[0].rhba_count,
+            systemRows[0].rhsa_count
         ]);
         expect(result[0].selected).toEqual(false);
     });
 
     it('Should createSystemRows handle empty data', () => {
-        const result = createSystemsRows(undefined, []);
+        const result = createSystemsRows([], []);
         expect(result).toEqual([]);
     });
 

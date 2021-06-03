@@ -142,7 +142,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                 "offset": 0,
                 "total_items": 0,
               },
-              "queryParams": Object {},
+              "queryParams": Object {
+                "page": 1,
+                "page_size": 20,
+              },
               "rows": Array [
                 Object {
                   "cells": Array [

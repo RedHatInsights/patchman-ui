@@ -60,6 +60,19 @@ export const createSortBy = (header, values, offset) => {
     return {};
 };
 
+export const createSystemsSortBy = (orderBy, orderDirection) => {
+    orderBy = orderBy === 'updated' && 'last_upload' || orderBy;
+    let sort = orderBy;
+
+    Object.keys(compoundSortValues).forEach(col => {
+        if (col === orderBy) {
+            sort = compoundSortValues[col].asc;
+        }
+    });
+
+    return `${orderDirection === 'ASC' ? '' : '-'}${sort}`;
+};
+
 export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
     const inputObj = inputArr.reduce(
         (obj, item) => ((obj[item.rowId] = item.value || undefined), obj),
@@ -400,12 +413,14 @@ export const createOSColumn = ({ osName, rhsm }) => (rhsm === '' || rhsm ===  un
 
 export const filterSelectedRowIDs = (selectedRows) =>  Object.keys(selectedRows).filter(row => selectedRows[row]);
 
-export const handleRefresh = ({ page, per_page: perPage }, metadata, callback) => {
-    const offset = getOffsetFromPageLimit(page, perPage);
-    const limit = getLimitFromPageSize(perPage);
-    (metadata.offset !== offset || metadata.limit !== limit) &&
-        callback({
-            ...(metadata.offset !== offset && { offset }),
-            ...(metadata.limit !== limit && { limit })
-        });
+export const prepareEntitiesParams = (parameters) => {
+    const offset = parameters.offset || getOffsetFromPageLimit(parameters.page || 1, parameters.perPage || 20);
+    const limit = parameters.limit || getLimitFromPageSize(parameters.perPage || 20);
+
+    const apiParams = { offset, limit, search: parameters.search, sort: parameters.sort };
+
+    //we need explicitly remove 'undefined' parameters for safety
+    Object.keys(apiParams).forEach(key => apiParams[key] === undefined && delete apiParams[key]);
+
+    return apiParams;
 };

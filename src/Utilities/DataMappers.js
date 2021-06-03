@@ -118,8 +118,7 @@ export const createSystemAdvisoriesRows = (
 
 export const createSystemsRows = (rows, selectedRows = {}) => {
     const data =
-        rows &&
-        rows.map(({ id, attributes }) => {
+        rows.map(({ id, ...rest }) => {
             const {
                 packages_installed: installedPckg,
                 packages_updatable: updatablePckg,
@@ -130,10 +129,11 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 os_major: osMajor,
                 os_minor: osMinor,
                 rhsm
-            } = attributes;
+            } = rest;
 
             return {
                 id,
+                ...rest,
                 key: Math.random().toString() + id,
                 packages_installed: installedPckg,
                 disableCheckbox: updatablePckg === 0 || [installedPckg, rhba, rhsa, rhea].every(count => count === 0),
@@ -143,7 +143,7 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                     rhsa || 0
                 ],
                 operating_system: {
-                    osName: osName && `${attributes.os_name} ${osMajor}.${osMinor}`
+                    osName: osName && `${rest.os_name} ${osMajor}.${osMinor}`
                         || 'No data',
                     rhsm
                 },

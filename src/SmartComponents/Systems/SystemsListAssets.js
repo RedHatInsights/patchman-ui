@@ -10,7 +10,6 @@ export const systemsListColumns = [
         key: 'display_name',
         title: 'Name',
         composed: ['facts.os_release', 'display_name'],
-        transforms: [sortable],
         props: {
             width: 50
         }
@@ -18,7 +17,6 @@ export const systemsListColumns = [
     {
         key: 'packages_installed',
         title: 'Packages',
-        transforms: [sortable],
         props: {
             width: 10
         }
@@ -26,7 +24,6 @@ export const systemsListColumns = [
     {
         key: 'applicable_advisories',
         title: 'Applicable advisories',
-        transforms: [sortable],
         props: {
             width: 15
         },
@@ -37,7 +34,8 @@ export const systemsListColumns = [
         title: 'OS',
         renderFunc: value => createOSColumn(value),
         props: {
-            width: 10
+            width: 10,
+            isStatic: true
         }
     }
 ];
