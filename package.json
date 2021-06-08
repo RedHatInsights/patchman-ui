@@ -4,7 +4,7 @@
   "browser": "dist/index.js",
   "private": false,
   "dependencies": {
-    "@patternfly/react-core": "^4.90.2",
+    "@patternfly/react-core": "^4.121.1",
     "@patternfly/react-icons": "^4.10.7",
     "@patternfly/react-table": "^4.23.2",
     "@redhat-cloud-services/frontend-components": "^3.2.3",
