@@ -10,8 +10,8 @@ export const STATUS_RESOLVED = 'resolved';
 
 export const compoundSortValues = {
     operating_system: {
-        asc: 'os_name,os_major,os_minor',
-        desc: '-os_name,-os_major,-os_minor'
+        asc: 'osname,osmajor,osminor',
+        desc: '-osname,-osmajor,-osminor'
     },
     applicable_advisories: {
         asc: 'rhsa_count,rhba_count,rhea_count',
