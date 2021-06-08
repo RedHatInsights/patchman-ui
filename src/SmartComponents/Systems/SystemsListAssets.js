@@ -34,8 +34,7 @@ export const systemsListColumns = [
         title: 'OS',
         renderFunc: value => createOSColumn(value),
         props: {
-            width: 10,
-            isStatic: true
+            width: 10
         }
     }
 ];
