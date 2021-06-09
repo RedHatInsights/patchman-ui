@@ -66,11 +66,11 @@ export const createSystemsSortBy = (orderBy, orderDirection) => {
 
     Object.keys(compoundSortValues).forEach(col => {
         if (col === orderBy) {
-            sort = compoundSortValues[col].asc;
+            sort = compoundSortValues[col][orderDirection.toLowerCase()];
         }
     });
 
-    return `${orderDirection === 'ASC' ? '' : '-'}${sort}`;
+    return sort;
 };
 
 export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
