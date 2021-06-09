@@ -1,3 +1,10 @@
+## [1.20.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.1...v1.20.2) (2021-06-09)
+
+
+### Bug Fixes
+
+* **OS:** SPM-925 column sorting is fixed ([b7a4d31](https://github.com/RedHatInsights/patchman-ui/commit/b7a4d310dd8cdd403a26162c32c08794afa61f0a))
+
 ## [1.20.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.0...v1.20.1) (2021-06-02)
 
 
