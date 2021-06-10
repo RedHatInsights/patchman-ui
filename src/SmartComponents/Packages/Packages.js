@@ -1,5 +1,4 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
@@ -26,9 +25,6 @@ const Packages = () => {
     );
     const rows = React.useMemo(() => createPackagesRows(packageRows), [packageRows]);
 
-    const error = useSelector(
-        ({ PackagesListStore }) => PackagesListStore.error
-    );
     const status = useSelector(
         ({ PackagesListStore }) => PackagesListStore.status
     );
@@ -65,13 +61,6 @@ const Packages = () => {
     );
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
-
-    if (status.hasError && status.code !== 404) {
-        dispatch(addNotification({
-            variant: 'danger',
-            title: error.title,
-            description: error.detail
-        }));}
 
     return (
         <React.Fragment>

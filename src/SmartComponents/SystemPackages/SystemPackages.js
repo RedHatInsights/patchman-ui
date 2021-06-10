@@ -1,5 +1,4 @@
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -89,13 +88,6 @@ const SystemPackages = ({ handleNoSystemData }) => {
     const errorState = error.status === 404 ?  handleNoSystemData() : <Unavailable/>;
     const emptyState = (!status.isLoading && !status.hasError && metadata.total_items === 0
                             && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
-
-    if (status.hasError && status.code !== 404) {
-        dispatch(addNotification({
-            variant: 'danger',
-            title: error.title,
-            description: error.detail
-        }));}
 
     return (
         <React.Fragment>
