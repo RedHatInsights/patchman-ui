@@ -235,7 +235,6 @@ export const createPackagesRows = (rows) => {
 };
 
 export const createCvesRows = (rows) => {
-    console.log(window.location);
     if (rows.length !== 0) {
         return rows.map(cve => {
             const { attributes, id } = cve;

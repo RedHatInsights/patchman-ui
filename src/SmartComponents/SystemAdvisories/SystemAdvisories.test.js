@@ -188,32 +188,5 @@ describe('SystemAdvisories.js', () => {
 
         expect(tempWrapper.find('SystemUpToDate')).toBeTruthy();
     });
-
-    it('Should dispatch addNotification when status is rejected and error status is not 404', () => {
-        const notFoundState = {
-            ...mockState,
-            status: { code: 403, isLoading: false, hasError: true },
-            error: {
-                status: 403,
-                title: 'testTitle',
-                detail: 'testDescription'
-            }
-        };
-
-        useSelector.mockImplementation(callback => {
-            return callback({ SystemAdvisoryListStore: notFoundState, entityDetails: { entity: 'test' } });
-        });
-        
-        const tempStore = initStore(notFoundState);
-        mount(<Provider store={tempStore}>
-            <Router><SystemAdvisories/></Router>
-        </Provider>);
-
-        const dispatchedActions = tempStore.getActions();
-        const notification = dispatchedActions.filter(item => item.type === '@@INSIGHTS-CORE/NOTIFICATIONS/ADD_NOTIFICATION');
-
-        expect(notification).toBeTruthy();
-        expect(notification[1].payload).toEqual({ description: 'testDescription', title: 'testTitle', variant: 'danger' });
-    });
 });
 /* eslint-enable */

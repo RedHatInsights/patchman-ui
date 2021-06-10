@@ -1,4 +1,3 @@
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,9 +42,6 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
     );
     const status = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.status
-    );
-    const error = useSelector(
-        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.error
     );
     const rows = React.useMemo(
         () =>
@@ -102,13 +98,6 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
     }
 
     const errorState = status.code === 404 ? handleNoSystemData() : <Unavailable/>;
-
-    if (status.hasError && status.code !== 404) {
-        dispatch(addNotification({
-            variant: 'danger',
-            title: error.title,
-            description: error.detail
-        }));}
 
     return (
         <React.Fragment>

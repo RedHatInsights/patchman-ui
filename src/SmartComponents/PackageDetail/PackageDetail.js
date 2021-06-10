@@ -32,7 +32,6 @@ const PackageDetail = ({ match }) => {
 
     React.useEffect(() => {
         return () => {
-            //dispatch(clearAdvisorySystemsStore());
             dispatch(clearPackageDetailStore());
         };
     }, []);
