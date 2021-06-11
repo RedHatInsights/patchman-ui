@@ -62,8 +62,9 @@ export const createSortBy = (header, values, offset) => {
 
 export const createSystemsSortBy = (orderBy, orderDirection) => {
     orderBy = orderBy === 'updated' && 'last_upload' || orderBy;
-    let sort = orderBy;
+    let sort = `${orderDirection === 'ASC' ? '' : '-'}${orderBy}`;
 
+    //if orderBy is for a compound column reset sort value to relative compound sort value
     Object.keys(compoundSortValues).forEach(col => {
         if (col === orderBy) {
             sort = compoundSortValues[col][orderDirection.toLowerCase()];
