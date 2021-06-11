@@ -118,7 +118,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     getEntities={getEntites}
                     actions={systemsRowActions(showRemediationModal)}
                     tableProps = {{ canSelectAll: false,
-                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
+                        variant: TableVariant.compact, isStickyHeader: true }}
                     filterConfig={filterConfig}
                     activeFiltersConfig = {activeFiltersConfig}
                     bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}

@@ -123,6 +123,7 @@ const TableView = ({
                                 sortBy={metadata.total_items && sortBy}
                                 isStickyHeader
                                 variant={compact && TableVariant.compact}
+                                className={emptyState === true ? 'ins-c-table-empty-state' : ''}
                             >
                                 <TableHeader />
                                 <TableBody />

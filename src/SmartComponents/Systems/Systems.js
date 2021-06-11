@@ -5,6 +5,8 @@ import { downloadFile } from '@redhat-cloud-services/frontend-components-utiliti
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import React from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import classNames from 'classnames';
+
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
@@ -167,7 +169,9 @@ const Systems = () => {
                             tableProps={{
                                 areActionsDisabled,
                                 canSelectAll: false,
-                                variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
+                                variant: TableVariant.compact,
+                                className: classNames('patchCompactInventory', { 'ins-c-table-empty-state': totalItems === 0 }),
+                                isStickyHeader: true }}
                             dedicatedAction={(
                                 <PatchRemediationButton
                                     onClick={() =>
