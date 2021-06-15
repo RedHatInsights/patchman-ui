@@ -1,10 +1,10 @@
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import isDeepEqualReact from 'fast-deep-equal/react';
 import React from 'react';
-import { compoundSortValues } from './constants';
-import { convertLimitOffset, getLimitFromPageSize, getOffsetFromPageLimit, createSystemsSortBy } from './Helpers';
-import { intl } from './IntlProvider';
 import messages from '../Messages';
+import { compoundSortValues } from './constants';
+import { convertLimitOffset, createSystemsSortBy, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
+import { intl } from './IntlProvider';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -79,7 +79,7 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
         });
 
         if (resetFilters) {
-            newParams =  resetFilters(newParams);
+            newParams = resetFilters(newParams);
         }
 
         callback({ ...newParams });
@@ -91,8 +91,7 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
 
     const deleteFilters = (__, selected) => {
         const resetFilters = (currentFilters) => {
-            if (Object.keys(defaultFilters.filter).length > 0)
-            {
+            if (Object.keys(defaultFilters.filter).length > 0) {
                 currentFilters.filter = { ...currentFilters.filter, ...defaultFilters.filter };
             }
 
@@ -106,7 +105,7 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
 };
 
 export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
-    constructFilename = undefined, transformKey = undefined) =>{
+    constructFilename = undefined, transformKey = undefined) => {
     const constructKey = (row) => {
         if (transformKey) {
             return transformKey(row);
@@ -116,15 +115,16 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
         }
     };
 
-    const onSelect =  React.useCallback((event, selected, rowId) => {
+    const onSelect = React.useCallback((event, selected, rowId) => {
         const createSelectedRow = (rawData, toSelect = []) => {
-            rawData.forEach((row)=>{
+            rawData.forEach((row) => {
                 toSelect.push(
                     {
                         id: constructKey(row),
                         selected: constructFilename && constructFilename(row) || row.id
                     }
-                );});
+                );
+            });
 
             return toSelect;
         };
@@ -132,7 +132,7 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
         switch (event) {
             case 'none': {
                 const toSelect = [];
-                Object.keys(selectedRows).forEach(id=>{
+                Object.keys(selectedRows).forEach(id => {
                     toSelect.push(
                         {
                             id,
@@ -170,7 +170,8 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
                 }]);
             }
 
-        }}
+        }
+    }
     );
 
     return onSelect;
@@ -235,7 +236,7 @@ export const useGetEntities = (fetchApi, apply, id) => {
 
         const items = await fetchApi({
             page,
-            per_page: perPage,
+            perPage,
             ...patchParams,
             sort,
             ...id && { id } || {}
@@ -243,7 +244,7 @@ export const useGetEntities = (fetchApi, apply, id) => {
 
         apply({
             page,
-            per_page: perPage,
+            perPage,
             sort
         });
 
