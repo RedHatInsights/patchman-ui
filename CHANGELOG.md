@@ -1,3 +1,10 @@
+## [1.20.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.3...v1.20.4) (2021-06-15)
+
+
+### Bug Fixes
+
+* **systems:** SPM-957 Fix setting per-page for getEntities ([7fdfe73](https://github.com/RedHatInsights/patchman-ui/commit/7fdfe731dd7cb4bc4ae84d950a4dd522fc9a2f4c))
+
 ## [1.20.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.2...v1.20.3) (2021-06-15)
 
 
