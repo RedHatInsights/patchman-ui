@@ -1,3 +1,10 @@
+## [1.20.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.2...v1.20.3) (2021-06-15)
+
+
+### Bug Fixes
+
+* **Inventory:** SPM:971 sort value needs correct initialization ([9fac81e](https://github.com/RedHatInsights/patchman-ui/commit/9fac81e811cea58668edc2dbb5dddb5b5cec70ad))
+
 ## [1.20.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.1...v1.20.2) (2021-06-09)
 
 
