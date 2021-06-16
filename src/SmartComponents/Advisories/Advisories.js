@@ -1,5 +1,4 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,7 +23,7 @@ import {
     arrayFromObj, createSortBy, decodeQueryparams,
     encodeURLParams, getRowIdByIndexExpandable, remediationProviderWithPairs, transformPairs
 } from '../../Utilities/Helpers';
-import { setPageTitle, useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { setPageTitle, useOnExport, useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 
 const Advisories = ({ history }) => {
@@ -95,16 +94,10 @@ const Advisories = ({ history }) => {
         [metadata.sort]
     );
 
-    const onExport = (_, format) => {
-        const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
-        const filename = `applicable-advisories-${date}`;
-        if (format === 'csv') {
-            exportAdvisoriesCSV(queryParams).then(data => downloadFile(data, filename, 'csv'));
-        }
-        else {
-            exportAdvisoriesJSON(queryParams).then(data => downloadFile(JSON.stringify(data), filename, 'json'));
-        }
-    };
+    const onExport = useOnExport('advisories', queryParams, {
+        csv: exportAdvisoriesCSV,
+        json: exportAdvisoriesJSON
+    }, dispatch);
 
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
@@ -125,7 +118,7 @@ const Advisories = ({ history }) => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.titlesPatchAdvisories)} headerOUIA={'advisories'}/>
+            <Header title={intl.formatMessage(messages.titlesPatchAdvisories)} headerOUIA={'advisories'} />
             <Main>
                 <TableView
                     columns={advisoriesColumns}

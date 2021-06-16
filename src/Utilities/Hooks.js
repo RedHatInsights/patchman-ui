@@ -1,10 +1,13 @@
 import { SortByDirection } from '@patternfly/react-table/dist/js';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
+import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import isDeepEqualReact from 'fast-deep-equal/react';
 import React from 'react';
 import messages from '../Messages';
-import { compoundSortValues } from './constants';
+import { compoundSortValues, exportNotifications } from './constants';
 import { convertLimitOffset, createSystemsSortBy, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
 import { intl } from './IntlProvider';
+
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -256,3 +259,16 @@ export const useGetEntities = (fetchApi, apply, id) => {
 
     return getEntities;
 };
+
+export const useOnExport = (prefix, queryParams, formatHandlers, dispatch) => {
+    const onExport = React.useCallback((_, format) => {
+        const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
+        const filename = `${prefix}-${date}`;
+        dispatch(addNotification(exportNotifications.pending));
+        formatHandlers[format](queryParams).then(data => {
+            dispatch(addNotification(exportNotifications.success));
+            downloadFile(data, filename, format);
+        }).catch(() => dispatch(addNotification(exportNotifications.error)));
+    });
+    return onExport;
+}

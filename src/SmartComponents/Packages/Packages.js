@@ -1,20 +1,19 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
+import messages from '../../Messages';
 import packagesListStatusFilter from '../../PresentationalComponents/Filters/PackagesListStatusFilter';
+import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
+import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api';
 import { packagesListDefaultFilters } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, setPageTitle } from '../../Utilities/Hooks';
+import { setPageTitle, useOnExport, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
-import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api';
 
 const Packages = () => {
     const dispatch = useDispatch();
@@ -43,16 +42,10 @@ const Packages = () => {
         dispatch(changePackagesListParams(params));
     }
 
-    const onExport = (_, format) => {
-        const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
-        const filename = `packages-${date}`;
-        if (format === 'csv') {
-            exportPackagesCSV(queryParams).then(data => downloadFile(data, filename, 'csv'));
-        }
-        else {
-            exportPackagesJSON(queryParams).then(data => downloadFile(JSON.stringify(data), filename, 'json'));
-        }
-    };
+    const onExport = useOnExport('packages', queryParams, {
+        csv: exportPackagesCSV,
+        json: exportPackagesJSON
+    }, dispatch);
 
     const onSort = useSortColumn(packagesColumns, apply);
     const sortBy = React.useMemo(
@@ -64,7 +57,7 @@ const Packages = () => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.titlesPatchPackages)} headerOUIA={'packages'}/>
+            <Header title={intl.formatMessage(messages.titlesPatchPackages)} headerOUIA={'packages'} />
             <Main>
                 <TableView
                     columns={packagesColumns}

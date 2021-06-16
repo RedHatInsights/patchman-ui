@@ -1,31 +1,31 @@
 import { TableVariant } from '@patternfly/react-table';
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
+import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
 import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
-import { inventoryEntitiesReducer, initialState } from '../../store/Reducers/InventoryEntitiesReducer';
+import { initialState, inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
 import {
-    arrayFromObj, buildFilterChips, remediationProviderWithPairs,
-    transformPairs, filterSelectedRowIDs
+    arrayFromObj, buildFilterChips,
+    filterSelectedRowIDs, remediationProviderWithPairs,
+    transformPairs
 } from '../../Utilities/Helpers';
 import {
-    setPageTitle, useOnSelect, useRemoveFilter, useBulkSelectConfig, useGetEntities
+    setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
-import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -95,20 +95,14 @@ const Systems = () => {
         );
     };
 
-    const onSelect = useOnSelect(systems,  selectedRows, fetchAllData, selectRows);
+    const onSelect = useOnSelect(systems, selectedRows, fetchAllData, selectRows);
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
-    const onExport = (_, format) => {
-        const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
-        const filename = `systems-${date}`;
-        if (format === 'csv') {
-            exportSystemsCSV(queryParams).then(data => downloadFile(data, filename, 'csv'));
-        }
-        else {
-            exportSystemsJSON(queryParams).then(data => downloadFile(JSON.stringify(data), filename, 'json'));
-        }
-    };
+    const onExport = useOnExport('systems', queryParams, {
+        csv: exportSystemsCSV,
+        json: exportSystemsJSON
+    }, dispatch);
 
     const areActionsDisabled = (rowData) => {
         const { applicable_advisories: applicableAdvisories } = rowData;
@@ -119,7 +113,7 @@ const Systems = () => {
         return fetchApplicableAdvisoriesApi({ limit: -1 }).then(
             ({ data }) => fetchViewAdvisoriesSystems(
                 {
-                    advisories: data.map(advisory=> advisory.id),
+                    advisories: data.map(advisory => advisory.id),
                     systems
                 }
             ));
@@ -129,7 +123,7 @@ const Systems = () => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'}/>
+            <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <RemediationModalCmp />
             <Main>
                 {status.hasError && <ErrorHandler code={status.code} /> ||
@@ -162,11 +156,12 @@ const Systems = () => {
                             }}
                             actions={systemsRowActions(showRemediationModal)}
                             filterConfig={filterConfig}
-                            activeFiltersConfig = {activeFiltersConfig}
+                            activeFiltersConfig={activeFiltersConfig}
                             tableProps={{
                                 areActionsDisabled,
                                 canSelectAll: false,
-                                variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
+                                variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                            }}
                             dedicatedAction={(
                                 <PatchRemediationButton
                                     onClick={() =>

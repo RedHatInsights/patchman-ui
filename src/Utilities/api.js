@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { encodeApiParams } from './Helpers';
 import axios from './axiosInterceptors';
-import { prepareEntitiesParams } from './Helpers';
+import { encodeApiParams, prepareEntitiesParams } from './Helpers';
 export function createApiCall(
     endpoint,
     method,
@@ -13,15 +12,15 @@ export function createApiCall(
     }
 
     let result = window.insights.chrome.auth
-    .getUser()
-    .then(() =>
-        axios({
-            method,
-            url: '/api/patch/v1' + endpoint,
-            withCredentials: true,
-            data
-        })
-    );
+        .getUser()
+        .then(() =>
+            axios({
+                method,
+                url: '/api/patch/v1' + endpoint,
+                withCredentials: true,
+                data
+            })
+        );
 
     return result;
 }
@@ -136,7 +135,8 @@ export const exportSystemsJSON = params => {
         method: 'get',
         credentials: 'include',
         headers: new Headers({ accept: 'application/json' })
-    }).then(res => res.json());
+    }).then(res => res.json())
+    .then(res => JSON.stringify(res));
 };
 
 export const exportPackagesCSV = params => {

@@ -1,18 +1,21 @@
-import { CheckIcon, LongArrowAltUpIcon,
-    InfoCircleIcon, BugIcon, EnhancementIcon, SecurityIcon } from '@patternfly/react-icons';
+import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
+import {
+    BugIcon, CheckIcon,
+    EnhancementIcon, InfoCircleIcon, LongArrowAltUpIcon,
+    SecurityIcon
+} from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import findIndex from 'lodash/findIndex';
 import qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
 import {
     advisorySeverities,
     compoundSortValues,
     filterCategories
 } from './constants';
-import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
-import messages from '../Messages';
 import { intl } from './IntlProvider';
 
 export const convertLimitOffset = (limit, offset) => {
@@ -84,7 +87,7 @@ export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
 };
 
 export const getNewSelectedItems = (selectedItems, currentItems) => {
-    let payload = [].concat(selectedItems).map(item=>({ rowId: item.id, value: item.selected }));
+    let payload = [].concat(selectedItems).map(item => ({ rowId: item.id, value: item.selected }));
     return addOrRemoveItemFromSet(
         currentItems,
         payload
@@ -141,7 +144,7 @@ export function createUpgradableColumn(value) {
     }}>
         {
             value && <LongArrowAltUpIcon style={{ color: 'var(--pf-global--palette--blue-400)' }} />
-                || <CheckIcon style={{ color: 'var(--pf-global--success-color--100)' }}/>
+            || <CheckIcon style={{ color: 'var(--pf-global--success-color--100)' }} />
         }
         {<span style={{ marginLeft: 'var(--pf-global--spacer--sm)' }}>
             {
@@ -397,7 +400,7 @@ export function sortCves(cves, index, direction) {
 
 }
 
-export const createOSColumn = ({ osName, rhsm }) => (rhsm === '' || rhsm ===  undefined) &&  osName || (
+export const createOSColumn = ({ osName, rhsm }) => (rhsm === '' || rhsm === undefined) && osName || (
     <Tooltip
         content={
             intl.formatMessage(messages.textLockVersionTooltip, { lockedVersion: rhsm })
@@ -412,7 +415,7 @@ export const createOSColumn = ({ osName, rhsm }) => (rhsm === '' || rhsm ===  un
     </Tooltip>
 );
 
-export const filterSelectedRowIDs = (selectedRows) =>  Object.keys(selectedRows).filter(row => selectedRows[row]);
+export const filterSelectedRowIDs = (selectedRows) => Object.keys(selectedRows).filter(row => selectedRows[row]);
 
 export const prepareEntitiesParams = (parameters) => {
     const offset = parameters.offset || getOffsetFromPageLimit(parameters.page || 1, parameters.perPage || 20);
@@ -425,3 +428,14 @@ export const prepareEntitiesParams = (parameters) => {
 
     return apiParams;
 };
+
+export const createExport = (_, format, prefix) => {
+    const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
+    const filename = `${prefix}-${date}`;
+    if (format === 'csv') {
+        exportSystemsCSV(queryParams).then(data => downloadFile(data, filename, 'csv'));
+    }
+    else {
+        exportSystemsJSON(queryParams).then(data => downloadFile(JSON.stringify(data), filename, 'json'));
+    }
+}

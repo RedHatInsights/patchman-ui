@@ -43,7 +43,7 @@ export const systemPackagesDefaultFilters = {
 };
 
 export const packagesListDefaultFilters = {
-    filter: { systems_updatable: 'gt:0'  }
+    filter: { systems_updatable: 'gt:0' }
 };
 
 export const publicDateOptions = [
@@ -196,4 +196,19 @@ export const ReadOnlyNotification = {
 export const remediationIdentifiers = {
     package: 'patch-package',
     advisory: 'patch-advisory'
+};
+
+export const exportNotifications = {
+    pending: {
+        title: 'Preparing export. Once complete, your download will start automatically.',
+        variant: 'info'
+    },
+    success: {
+        title: 'Downloading export',
+        variant: 'success'
+    },
+    error: {
+        title: 'Couldn’t download export. Reinitiate this export to try again.',
+        variant: 'danger'
+    }
 };
