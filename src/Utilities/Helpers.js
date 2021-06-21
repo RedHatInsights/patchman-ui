@@ -418,7 +418,8 @@ export const prepareEntitiesParams = (parameters) => {
     const offset = parameters.offset || getOffsetFromPageLimit(parameters.page || 1, parameters.perPage || 20);
     const limit = parameters.limit || getLimitFromPageSize(parameters.perPage || 20);
 
-    const apiParams = { offset, limit, search: parameters.search, sort: parameters.sort };
+    const apiParams = { offset, limit, search: parameters.search, sort: parameters.sort,
+        systemProfile: parameters.systemProfile, selectedTags: parameters.selectedTags };
 
     //we need explicitly remove 'undefined' parameters for safety
     Object.keys(apiParams).forEach(key => apiParams[key] === undefined && delete apiParams[key]);
