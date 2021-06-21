@@ -53,7 +53,7 @@ const Systems = () => {
         ({ entities }) => entities?.total || 0
     );
 
-    const { filter, search } = queryParams;
+    const { filter, search, systemProfile, selectedTags } = queryParams;
 
     React.useEffect(() => {
         return () => dispatch(clearEntitiesStore());
@@ -86,7 +86,7 @@ const Systems = () => {
         onDelete: deleteFilters
     };
 
-    const fetchAllData = () =>
+    const fetchAllData = (queryParams) =>
         fetchSystems({ ...queryParams, limit: -1 });
 
     const selectRows = (toSelect) => {
@@ -137,7 +137,9 @@ const Systems = () => {
                             customFilters={{
                                 patchParams: {
                                     search,
-                                    filter
+                                    filter,
+                                    systemProfile,
+                                    selectedTags
                                 }
                             }}
                             onLoad={({ mergeWithEntities }) => {

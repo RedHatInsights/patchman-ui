@@ -46,7 +46,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         ({ entities }) => entities?.queryParams || {}
     );
 
-    const { filter, search } = queryParams;
+    const { filter, search, systemProfile, selectedTags } = queryParams;
 
     React.useEffect(() => {
         return () => dispatch(clearEntitiesStore());
@@ -104,7 +104,9 @@ const AdvisorySystems = ({ advisoryName }) => {
                     customFilters={{
                         patchParams: {
                             search,
-                            filter
+                            filter,
+                            systemProfile,
+                            selectedTags
                         }
                     }}
                     onLoad={({ mergeWithEntities }) => {
