@@ -12,11 +12,11 @@ import {
     changeSystemPackagesParams, clearSystemPackagesStore,
     fetchApplicableSystemPackages, selectSystemPackagesRow
 } from '../../store/Actions/Actions';
-import { fetchApplicablePackagesApi } from '../../Utilities/api';
+import { fetchApplicablePackagesApi, exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utilities/api';
 import { remediationIdentifiers, systemPackagesDefaultFilters } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn, useOnExport } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 
 const SystemPackages = ({ handleNoSystemData }) => {
@@ -88,6 +88,10 @@ const SystemPackages = ({ handleNoSystemData }) => {
     const errorState = error.status === 404 ?  handleNoSystemData() : <Unavailable/>;
     const emptyState = (!status.isLoading && !status.hasError && metadata.total_items === 0
                             && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
+    const onExport = useOnExport(entity.id, queryParams, {
+        csv: exportSystemPackagesCSV,
+        json: exportSystemPackagesJSON
+    }, dispatch);
 
     return (
         <React.Fragment>
@@ -101,6 +105,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
                 sortBy={sortBy}
                 onSetPage={onSetPage}
                 onPerPageSelect={onPerPageSelect}
+                onExport={onExport}
                 remediationProvider={() =>
                     remediationProvider(
                         arrayFromObj(selectedRows),

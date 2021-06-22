@@ -9,7 +9,7 @@ import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { register } from '../../store';
 import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, initialState } from '../../store/Reducers/InventoryEntitiesReducer';
-import { fetchAdvisorySystems } from '../../Utilities/api';
+import { fetchAdvisorySystems, exportAdvisorySystemsCSV, exportAdvisorySystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
@@ -17,7 +17,7 @@ import {
 } from '../../Utilities/Helpers';
 import {
     useOnSelect, useRemoveFilter,
-    useBulkSelectConfig, useGetEntities
+    useBulkSelectConfig, useGetEntities, useOnExport
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
@@ -91,6 +91,11 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const getEntites = useGetEntities(fetchAdvisorySystems, apply, advisoryName);
 
+    const onExport = useOnExport(advisoryName, queryParams, {
+        csv: exportAdvisorySystemsCSV,
+        json: exportAdvisorySystemsJSON
+    }, dispatch);
+
     return (
         <React.Fragment>
             {status.hasError && <ErrorHandler code={status.code}/> ||
@@ -114,6 +119,10 @@ const AdvisorySystems = ({ advisoryName }) => {
                                 initialState
                             )
                         });
+                    }}
+                    exportConfig={{
+                        isDisabled: totalItems === 0,
+                        onSelect: onExport
                     }}
                     getEntities={getEntites}
                     actions={systemsRowActions(showRemediationModal)}

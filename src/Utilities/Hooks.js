@@ -8,7 +8,6 @@ import { compoundSortValues, exportNotifications } from './constants';
 import { convertLimitOffset, createSystemsSortBy, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
 import { intl } from './IntlProvider';
 
-
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
         callback({ offset: getOffsetFromPageLimit(page, limit) })
@@ -265,10 +264,10 @@ export const useOnExport = (prefix, queryParams, formatHandlers, dispatch) => {
         const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
         const filename = `${prefix}-${date}`;
         dispatch(addNotification(exportNotifications.pending));
-        formatHandlers[format](queryParams).then(data => {
+        formatHandlers[format](queryParams, prefix).then(data => {
             dispatch(addNotification(exportNotifications.success));
             downloadFile(data, filename, format);
         }).catch(() => dispatch(addNotification(exportNotifications.error)));
     });
     return onExport;
-}
+};
