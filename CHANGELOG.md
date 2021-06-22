@@ -1,3 +1,16 @@
+# [1.21.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.4...v1.21.0) (2021-06-22)
+
+
+### Bug Fixes
+
+* **Global Filter:** SPM-969 global filters fixed on inventory ([d86f53a](https://github.com/RedHatInsights/patchman-ui/commit/d86f53a000fb0e3c237568aaae91a414d8cb34ec))
+
+
+### Features
+
+* **export:** SPM-916 enable export on detail pages ([25f158f](https://github.com/RedHatInsights/patchman-ui/commit/25f158f1a331795deeaaffdaadca7543c2125202))
+* **notification:** Refactor exports and add notifications ([671ac38](https://github.com/RedHatInsights/patchman-ui/commit/671ac3812463fa26ad99c8cba370a8fdf34de8a6))
+
 ## [1.20.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.3...v1.20.4) (2021-06-15)
 
 
