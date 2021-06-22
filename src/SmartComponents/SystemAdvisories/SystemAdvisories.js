@@ -10,12 +10,14 @@ import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
-import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
+import { fetchApplicableSystemAdvisoriesApi,
+    exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON
+} from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect, useOnExport } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
@@ -99,6 +101,11 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
 
     const errorState = status.code === 404 ? handleNoSystemData() : <Unavailable/>;
 
+    const onExport = useOnExport(entity.id, queryParams, {
+        csv: exportSystemAdvisoriesCSV,
+        json: exportSystemAdvisoriesJSON
+    }, dispatch);
+
     return (
         <React.Fragment>
             <TableView
@@ -109,6 +116,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
                 onSetPage={onSetPage}
                 onPerPageSelect={onPerPageSelect}
                 onSort={onSort}
+                onExport={onExport}
                 sortBy={sortBy}
                 remediationProvider={() =>
                     remediationProvider(

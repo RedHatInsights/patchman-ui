@@ -11,13 +11,13 @@ import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import { getStore, register } from '../../store';
 import { changePackageSystemsParams, clearPackageSystemsStore, fetchPackageSystemsAction } from '../../store/Actions/Actions';
 import { packagesSystemsInventoryReducer } from '../../store/Reducers/InventoryEntitiesReducer';
-import { fetchPackageSystems } from '../../Utilities/api';
+import { fetchPackageSystems, exportPackageSystemsCSV, exportPackageSystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider, filterSelectedRowIDs } from '../../Utilities/Helpers';
 import {
     useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
-    useRemoveFilter, useSortColumn, useBulkSelectConfig
+    useRemoveFilter, useSortColumn, useBulkSelectConfig, useOnExport
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
@@ -124,6 +124,11 @@ const PackageSystems = ({ packageName }) => {
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
+    const onExport = useOnExport(packageName, queryParams, {
+        csv: exportPackageSystemsCSV,
+        json: exportPackageSystemsJSON
+    }, dispatch);
+
     return (
         <React.Fragment>
             {status.hasError && <ErrorHandler code={status.code} /> || (
@@ -144,6 +149,10 @@ const PackageSystems = ({ packageName }) => {
                     perPage={perPage}
                     onRefresh={handleRefresh}
                     isLoaded={!status.isLoading}
+                    exportConfig={{
+                        isDisabled: metadata.total_items === 0,
+                        onSelect: onExport
+                    }}
                     tableProps = {{ canSelectAll: false,
                         onSort: metadata.total_items && onSort,
                         sortBy: metadata.total_items && sortBy,

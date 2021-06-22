@@ -429,14 +429,3 @@ export const prepareEntitiesParams = (parameters) => {
 
     return apiParams;
 };
-
-export const createExport = (_, format, prefix) => {
-    const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
-    const filename = `${prefix}-${date}`;
-    if (format === 'csv') {
-        exportSystemsCSV(queryParams).then(data => downloadFile(data, filename, 'csv'));
-    }
-    else {
-        exportSystemsJSON(queryParams).then(data => downloadFile(JSON.stringify(data), filename, 'json'));
-    }
-}

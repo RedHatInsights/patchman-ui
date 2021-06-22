@@ -12,15 +12,15 @@ export function createApiCall(
     }
 
     let result = window.insights.chrome.auth
-        .getUser()
-        .then(() =>
-            axios({
-                method,
-                url: '/api/patch/v1' + endpoint,
-                withCredentials: true,
-                data
-            })
-        );
+    .getUser()
+    .then(() =>
+        axios({
+            method,
+            url: '/api/patch/v1' + endpoint,
+            withCredentials: true,
+            data
+        })
+    );
 
     return result;
 }
@@ -98,64 +98,81 @@ export const fetchViewAdvisoriesSystems = async (input) => {
     return result;
 };
 
-export const exportAdvisoriesCSV = params => {
-    let endpoint = '/export/advisories';
+const fetchFile = (params, endpoint, type) => {
     endpoint = endpoint.concat(encodeApiParams(params));
     return fetch('/api/patch/v1' + endpoint, {
         method: 'get',
         credentials: 'include',
-        headers: new Headers({ accept: 'text/csv' })
+        headers: new Headers({ accept: type })
     }).then(res => res.text());
+};
+
+export const exportAdvisoriesCSV = params => {
+    let endpoint = '/export/advisories';
+    return fetchFile(params, endpoint, 'text/csv');
 };
 
 export const exportAdvisoriesJSON = params => {
     let endpoint = '/export/advisories';
-    endpoint = endpoint.concat(encodeApiParams(params));
-    return fetch('/api/patch/v1' + endpoint, {
-        method: 'get',
-        credentials: 'include',
-        headers: new Headers({ accept: 'application/json' })
-    }).then(res => res.json());
+    return fetchFile(params, endpoint, 'application/json');
 };
 
 export const exportSystemsCSV = params => {
     let endpoint = '/export/systems';
-    endpoint = endpoint.concat(encodeApiParams(params));
-    return fetch('/api/patch/v1' + endpoint, {
-        method: 'get',
-        credentials: 'include',
-        headers: new Headers({ accept: 'text/csv' })
-    }).then(res => res.text());
+    return fetchFile(params, endpoint, 'text/csv');
 };
 
 export const exportSystemsJSON = params => {
     let endpoint = '/export/systems';
-    endpoint = endpoint.concat(encodeApiParams(params));
-    return fetch('/api/patch/v1' + endpoint, {
-        method: 'get',
-        credentials: 'include',
-        headers: new Headers({ accept: 'application/json' })
-    }).then(res => res.json())
-    .then(res => JSON.stringify(res));
+    return fetchFile(params, endpoint, 'application/json');
 };
 
 export const exportPackagesCSV = params => {
     let endpoint = '/export/packages';
-    endpoint = endpoint.concat(encodeApiParams(params));
-    return fetch('/api/patch/v1' + endpoint, {
-        method: 'get',
-        credentials: 'include',
-        headers: new Headers({ accept: 'text/csv' })
-    }).then(res => res.text());
+    return fetchFile(params, endpoint, 'text/csv');
 };
 
 export const exportPackagesJSON = params => {
     let endpoint = '/export/packages';
-    endpoint = endpoint.concat(encodeApiParams(params));
-    return fetch('/api/patch/v1' + endpoint, {
-        method: 'get',
-        credentials: 'include',
-        headers: new Headers({ accept: 'application/json' })
-    }).then(res => res.json());
+    return fetchFile(params, endpoint, 'application/json');
 };
 
+export const exportAdvisorySystemsCSV = (params, advisoryId) => {
+    let endpoint = `/export/advisories/${advisoryId}/systems`;
+    return fetchFile(params, endpoint, 'text/csv');
+};
+
+export const exportAdvisorySystemsJSON = (params, advisoryId) => {
+    let endpoint = `/export/advisories/${advisoryId}/systems`;
+    return fetchFile(params, endpoint, 'application/json');
+};
+
+export const exportSystemAdvisoriesCSV = (params, systemName) => {
+    let endpoint = `/export/systems/${systemName}/advisories`;
+    return fetchFile(params, endpoint, 'text/csv');
+};
+
+export const exportSystemAdvisoriesJSON = (params, systemName) => {
+    let endpoint = `/export/systems/${systemName}/advisories`;
+    return fetchFile(params, endpoint, 'application/json');
+};
+
+export const exportSystemPackagesCSV = (params, systemName) => {
+    let endpoint = `/export/systems/${systemName}/packages`;
+    return fetchFile(params, endpoint, 'text/csv');
+};
+
+export const exportSystemPackagesJSON = (params, systemName) => {
+    let endpoint = `/export/systems/${systemName}/packages`;
+    return fetchFile(params, endpoint, 'application/json');
+};
+
+export const exportPackageSystemsCSV = (params, packageName) => {
+    let endpoint = `/export/packages/${packageName}/systems`;
+    return fetchFile(params, endpoint, 'text/csv');
+};
+
+export const exportPackageSystemsJSON = (params, packageName) => {
+    let endpoint = `/export/packages/${packageName}/systems`;
+    return fetchFile(params, endpoint, 'application/json');
+};
