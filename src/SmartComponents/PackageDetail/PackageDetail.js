@@ -37,6 +37,7 @@ const PackageDetail = ({ match }) => {
     }, []);
 
     const { attributes } = packageDetails.data;
+
     return (
         <React.Fragment>
             <Header

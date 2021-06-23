@@ -1,10 +1,9 @@
-import { STATUS_LOADING, STATUS_RESOLVED } from '../../Utilities/constants';
 import { CLEAR_PACKAGE_DETAILS, FETCH_PACKAGE_DETAILS } from '../ActionTypes';
 import { fetchPending, fetchRejected } from './HelperReducers';
 
 export let initialState = {
     data: { attributes: {} },
-    status: STATUS_LOADING
+    status: { isLoading: true }
 };
 
 // Reducer
@@ -14,7 +13,7 @@ export const PackageDetailStore = (state = initialState, action) => {
         case FETCH_PACKAGE_DETAILS + '_FULFILLED':
             return {
                 ...state,
-                status: STATUS_RESOLVED,
+                status: { isLoading: false },
                 data: action.payload.data,
                 error: {}
             };
