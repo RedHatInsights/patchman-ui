@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.21.0...v1.21.1) (2021-06-24)
+
+
+### Bug Fixes
+
+* **Headers:** isLoading is set correctly ([50355b4](https://github.com/RedHatInsights/patchman-ui/commit/50355b44e0d4bc6be5f91a6e892300acc92f1c1b))
+
 # [1.21.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.20.4...v1.21.0) (2021-06-22)
 
 
