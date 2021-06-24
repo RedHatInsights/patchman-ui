@@ -160,6 +160,7 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
             return {
                 id: row.id,
                 key: Math.random().toString() + row.id,
+                display_name: row.display_name,
                 installed_evra: row.installed_evra,
                 available_evra: row.updatable && row.available_evra || row.installed_evra,
                 upgradable: row.updatable,

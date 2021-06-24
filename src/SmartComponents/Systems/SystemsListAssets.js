@@ -1,4 +1,3 @@
-import { sortable } from '@patternfly/react-table/dist/js';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesIcons, createUpgradableColumn,
@@ -51,7 +50,6 @@ export const packageSystemsColumns = [
     {
         key: 'installed_evra',
         title: 'Installed version',
-        transforms: [sortable],
         props: {
             width: 10
         }
@@ -59,7 +57,6 @@ export const packageSystemsColumns = [
     {
         key: 'available_evra',
         title: 'Latest version',
-        transforms: [sortable],
         props: {
             width: 10
         }
@@ -68,7 +65,8 @@ export const packageSystemsColumns = [
         key: 'upgradable',
         title: 'Status',
         props: {
-            width: 20
+            width: 20,
+            isStatic: true
         },
         renderFunc: value => createUpgradableColumn(value)
     }

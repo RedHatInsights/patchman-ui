@@ -8,7 +8,7 @@ import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { register } from '../../store';
 import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
-import { inventoryEntitiesReducer, initialState } from '../../store/Reducers/InventoryEntitiesReducer';
+import { inventoryEntitiesReducer, initialState, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems, exportAdvisorySystemsCSV, exportAdvisorySystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
@@ -89,7 +89,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
-    const getEntites = useGetEntities(fetchAdvisorySystems, apply, advisoryName);
+    const getEntites = useGetEntities(fetchAdvisorySystems, apply, { id: advisoryName });
 
     const onExport = useOnExport(advisoryName, queryParams, {
         csv: exportAdvisorySystemsCSV,
@@ -117,7 +117,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     onLoad={({ mergeWithEntities }) => {
                         register({
                             ...mergeWithEntities(
-                                inventoryEntitiesReducer(systemsListColumns),
+                                inventoryEntitiesReducer(systemsListColumns, modifyInventory),
                                 initialState
                             )
                         });
