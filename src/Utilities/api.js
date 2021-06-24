@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import axios from './axiosInterceptors';
 import { encodeApiParams, prepareEntitiesParams } from './Helpers';
@@ -61,8 +62,8 @@ export const fetchAdvisorySystems = params => {
 };
 
 export const fetchPackageSystems = params => {
-    const { id, ...args } = params;
-    return createApiCall(`/packages/${id}/systems`, 'get', args);
+    const { package_name, ...args } = params;
+    return createApiCall(`/packages/${package_name}/systems`, 'get', prepareEntitiesParams(args));
 };
 
 export const fetchPackagesList = params => {

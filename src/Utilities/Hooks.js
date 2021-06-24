@@ -228,20 +228,22 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
     isDisabled: metadata.total_items === 0 && selectedCount === 0
 });
 
-export const useGetEntities = (fetchApi, apply, id) => {
+export const useGetEntities = (fetchApi, apply, config) => {
+    const { id, packageName } = config || {};
     const getEntities = async (
         _items,
         { orderBy, orderDirection, page, per_page: perPage, patchParams }
     ) => {
 
-        const sort = createSystemsSortBy(orderBy, orderDirection);
+        const sort = createSystemsSortBy(orderBy, orderDirection, packageName);
 
         const items = await fetchApi({
             page,
             perPage,
             ...patchParams,
             sort,
-            ...id && { id } || {}
+            ...id && { id } || {},
+            ...packageName && { package_name: packageName } || {}
         });
 
         apply({
@@ -251,7 +253,7 @@ export const useGetEntities = (fetchApi, apply, id) => {
         });
 
         return {
-            results: items.data.map(row => ({ id: row.id, ...row.attributes })),
+            results: items.data.map(row => ({ ...row, ...row.attributes })),
             total: items.meta?.total_items
         };
     };

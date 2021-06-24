@@ -9,7 +9,7 @@ import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
 import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
-import { initialState, inventoryEntitiesReducer } from '../../store/Reducers/InventoryEntitiesReducer';
+import { initialState, inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
@@ -145,7 +145,7 @@ const Systems = () => {
                             onLoad={({ mergeWithEntities }) => {
                                 register({
                                     ...mergeWithEntities(
-                                        inventoryEntitiesReducer(systemsListColumns),
+                                        inventoryEntitiesReducer(systemsListColumns, modifyInventory),
                                         initialState
                                     )
                                 });

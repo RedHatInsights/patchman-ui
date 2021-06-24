@@ -8,7 +8,6 @@ import { AdvisoryListStore } from './Reducers/AdvisoryListStore';
 import { CvesListStore } from './Reducers/CvesListStore';
 import { PackageDetailStore } from './Reducers/PackageDetailStore';
 import { PackagesListStore } from './Reducers/PackagesListStore';
-import { PackageSystemsStore } from './Reducers/PackageSystemsStore';
 import { SystemAdvisoryListStore } from './Reducers/SystemAdvisoryListStore';
 import { SystemDetailStore } from './Reducers/SystemDetailStore';
 import { SystemPackageListStore } from './Reducers/SystemPackageListStore';
@@ -36,7 +35,6 @@ registry.register({
     SystemPackageListStore: (state = storage.SystemPackageListStore, action) => SystemPackageListStore(state, action),
     PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
     PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
-    PackageSystemsStore: (state = storage.PackageSystemsStore, action) => PackageSystemsStore(state, action),
     CvesListStore: (state = storage.CvesListStore, action) => CvesListStore(state, action),
     notifications: notificationsReducer
 });

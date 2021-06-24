@@ -4,20 +4,18 @@ import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
-import { getStore, register } from '../../store';
-import { changePackageSystemsParams, clearPackageSystemsStore, fetchPackageSystemsAction } from '../../store/Actions/Actions';
-import { packagesSystemsInventoryReducer } from '../../store/Reducers/InventoryEntitiesReducer';
+import { register } from '../../store';
+import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
+import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchPackageSystems, exportPackageSystemsCSV, exportPackageSystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
-import { createPackageSystemsRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, buildFilterChips, createSortBy, remediationProvider, filterSelectedRowIDs } from '../../Utilities/Helpers';
+import { arrayFromObj, buildFilterChips, remediationProvider, filterSelectedRowIDs } from '../../Utilities/Helpers';
 import {
-    useDeepCompareEffect, useHandleRefresh, useOnSelect, usePagePerPage,
-    useRemoveFilter, useSortColumn, useBulkSelectConfig, useOnExport
+    useOnSelect, useRemoveFilter, useBulkSelectConfig, useOnExport, useGetEntities
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
@@ -31,47 +29,28 @@ const PackageSystems = ({ packageName }) => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-    const rawPackageSystems = useSelector(
-        ({ PackageSystemsStore }) => PackageSystemsStore.rows
-    );
+    const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
-        ({ PackageSystemsStore }) => PackageSystemsStore.status
+        ({ entities }) => entities?.status || {}
     );
     const selectedRows = useSelector(
-        ({ PackageSystemsStore }) => PackageSystemsStore.selectedRows
-    );
-    const hosts = React.useMemo(
-        () => createPackageSystemsRows(rawPackageSystems, selectedRows),
-        [rawPackageSystems]
-    );
-    const metadata = useSelector(
-        ({ PackageSystemsStore }) => PackageSystemsStore.metadata
+        ({ entities }) => entities?.selectedRows || []
     );
     const queryParams = useSelector(
-        ({ PackageSystemsStore }) => PackageSystemsStore.queryParams
+        ({ entities }) => entities?.queryParams || {}
+    );
+    const totalItems = useSelector(
+        ({ entities }) => entities?.total || 0
     );
 
-    const inventoryColumns = useSelector(
-        ({ entities }) => entities && entities.columns
-    );
-
-    const handleRefresh = useHandleRefresh(metadata, apply);
-    const { filter, search } = queryParams;
+    const { filter, search, systemProfile, selectedTags } = queryParams;
 
     React.useEffect(() => {
-        return () => dispatch(clearPackageSystemsStore());
+        return () => dispatch(clearEntitiesStore());
     }, []);
 
-    useDeepCompareEffect(() => {
-        dispatch(
-            fetchPackageSystemsAction({ id: packageName, ...queryParams })
-        );
-    }, [queryParams]);
-
-    const [page, perPage] = usePagePerPage(metadata.limit, metadata.offset);
-
     function apply(params) {
-        dispatch(changePackageSystemsParams(params));
+        dispatch(changeEntitiesParams(params));
     }
 
     const [deleteFilters] = useRemoveFilter(filter, apply);
@@ -106,21 +85,8 @@ const PackageSystems = ({ packageName }) => {
         dispatch({ type: 'SELECT_ENTITY', payload: toSelect });
     };
 
-    const onSelect = enableRemediation && useOnSelect(rawPackageSystems,  selectedRows,
+    const onSelect = enableRemediation && useOnSelect(systems, selectedRows,
         fetchAllData, selectRows, constructFilename);
-
-    // This is used ONLY for sorting purposes
-    const getMangledColumns = () => {
-        let updated = inventoryColumns && inventoryColumns.filter(({ key }) => key === 'updated')[0];
-        updated = { ...updated, key: 'last_upload' };
-        return [...packageSystemsColumns, updated];
-    };
-
-    const onSort = useSortColumn(getMangledColumns(), apply, 0);
-    const sortBy = React.useMemo(
-        () => createSortBy(getMangledColumns(), metadata.sort, 0),
-        [metadata.sort]
-    );
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
@@ -129,62 +95,70 @@ const PackageSystems = ({ packageName }) => {
         json: exportPackageSystemsJSON
     }, dispatch);
 
+    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName });
     return (
         <React.Fragment>
             {status.hasError && <ErrorHandler code={status.code} /> || (
                 <InventoryTable
                     disableDefaultColumns
+                    isFullView
+                    autoRefresh
+                    initialLoading
+                    hideFilters={{ all: true }}
+                    getEntities={getEntites}
+                    customFilters={{
+                        patchParams: {
+                            search,
+                            filter,
+                            systemProfile,
+                            selectedTags
+                        }
+                    }}
                     onLoad={({ mergeWithEntities }) => {
-                        const store = getStore();
                         register({
                             ...mergeWithEntities(
-                                packagesSystemsInventoryReducer(packageSystemsColumns, store.getState().PackageSystemsStore)
+                                inventoryEntitiesReducer(packageSystemsColumns, modifyPackageSystems)
                             )
                         });
 
                     }}
-                    items={hosts}
-                    page={page}
-                    total={metadata.total_items}
-                    perPage={perPage}
-                    onRefresh={handleRefresh}
-                    isLoaded={!status.isLoading}
                     exportConfig={{
-                        isDisabled: metadata.total_items === 0,
+                        isDisabled: totalItems === 0,
                         onSelect: onExport
                     }}
-                    tableProps = {{ canSelectAll: false,
-                        onSort: metadata.total_items && onSort,
-                        sortBy: metadata.total_items && sortBy,
-                        onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
+                    tableProps={{
+                        canSelectAll: false,
+                        onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                    }}
                     filterConfig={filterConfig}
-                    activeFiltersConfig = {activeFiltersConfig}
-                    bulkSelect={enableRemediation && onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, hosts)}
+                    activeFiltersConfig={activeFiltersConfig}
+                    bulkSelect={enableRemediation &&
+                        onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
                 >
                     {enableRemediation &&
-                    <ToolbarGroup>
-                        <ToolbarItem>
-                            <Button
-                                className={'remediationButtonPatch'}
-                                isDisabled={
-                                    arrayFromObj(selectedRows).length === 0
-                                }
-                                onClick={() =>
-                                    showRemediationModal(
-                                        remediationProvider(
-                                            packageName,
-                                            filterSelectedRowIDs(selectedRows),
-                                            remediationIdentifiers.package
+                        <ToolbarGroup>
+                            <ToolbarItem>
+                                <Button
+                                    className={'remediationButtonPatch'}
+                                    isDisabled={
+                                        arrayFromObj(selectedRows).length === 0
+                                    }
+                                    onClick={() =>
+                                        showRemediationModal(
+                                            remediationProvider(
+                                                packageName,
+                                                filterSelectedRowIDs(selectedRows),
+                                                remediationIdentifiers.package
+                                            )
                                         )
-                                    )
-                                }
-                                ouiaId={'toolbar-remediation-button'}
-                            >
-                                <AnsibeTowerIcon/>&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                            </Button>
-                            <RemediationModalCmp />
-                        </ToolbarItem>
-                    </ToolbarGroup>
+                                    }
+                                    ouiaId={'toolbar-remediation-button'}
+                                >
+                                    <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
+                                </Button>
+                                <RemediationModalCmp />
+                            </ToolbarItem>
+                        </ToolbarGroup>
                     }
                 </InventoryTable>
             )}

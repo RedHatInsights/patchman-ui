@@ -17,6 +17,7 @@ import {
     filterCategories
 } from './constants';
 import { intl } from './IntlProvider';
+import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
@@ -63,8 +64,10 @@ export const createSortBy = (header, values, offset) => {
     return {};
 };
 
-export const createSystemsSortBy = (orderBy, orderDirection) => {
-    orderBy = orderBy === 'updated' && 'last_upload' || orderBy;
+export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
+    orderBy = (orderBy === 'updated' && !hasLastUpload) && 'last_upload' ||
+        (orderBy === 'updated' && hasLastUpload) && packageSystemsColumns[0].key || orderBy;
+
     let sort = `${orderDirection === 'ASC' ? '' : '-'}${orderBy}`;
 
     //if orderBy is for a compound column reset sort value to relative compound sort value
@@ -421,8 +424,7 @@ export const prepareEntitiesParams = (parameters) => {
     const offset = parameters.offset || getOffsetFromPageLimit(parameters.page || 1, parameters.perPage || 20);
     const limit = parameters.limit || getLimitFromPageSize(parameters.perPage || 20);
 
-    const apiParams = { offset, limit, search: parameters.search, sort: parameters.sort,
-        systemProfile: parameters.systemProfile, selectedTags: parameters.selectedTags };
+    const apiParams = { ...parameters, offset, limit };
 
     //we need explicitly remove 'undefined' parameters for safety
     Object.keys(apiParams).forEach(key => apiParams[key] === undefined && delete apiParams[key]);

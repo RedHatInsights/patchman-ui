@@ -1,6 +1,7 @@
 import * as ActionTypes from '../ActionTypes';
 import { changeFilters, selectRows } from './HelperReducers';
 import { createSystemsRows } from '../../Utilities/DataMappers';
+import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 
 // Initial State
 export const initialState = {
@@ -20,7 +21,7 @@ export const initialState = {
 };
 // Reducer
 
-function modifyInventory(columns, state) {
+export const modifyInventory = (columns, state) => {
     if (state.loaded) {
         let lastSeenColumn = state.columns.filter(({ key }) => key === 'updated');
         lastSeenColumn = [{ ...lastSeenColumn[0], key: 'last_upload' }];
@@ -36,27 +37,27 @@ function modifyInventory(columns, state) {
     }
 
     return state;
-}
+};
 
-function modifyPackageSystems(columns, hosts, state) {
+export const modifyPackageSystems = (columns, state) => {
     if (state.loaded) {
         return {
             ...state,
-            columns
+            columns,
+            rows: createPackageSystemsRows(state.rows, state.selectedRows)
         };
     }
 
     return state;
-}
+};
 
-export const inventoryEntitiesReducer = (columns) => (state = initialState, action) => {
+export const inventoryEntitiesReducer = (columns, inventoryModifier) => (state = initialState, action) => {
     let newState = { ...state };
     switch (action.type) {
         case 'LOAD_ENTITIES_FULFILLED':
-            return modifyInventory(columns, state);
+            return inventoryModifier(columns, state);
 
         case ActionTypes.CHANGE_ENTITIES_PARAMS:
-            delete action.payload?.filter;
             return changeFilters(newState, action);
 
         case 'SELECT_ENTITY':
@@ -67,16 +68,6 @@ export const inventoryEntitiesReducer = (columns) => (state = initialState, acti
 
         case 'CLEAR_ENTITIES':
             return initialState;
-
-        default:
-            return state;
-    }
-};
-
-export const packagesSystemsInventoryReducer = (columns, store) => (state = initialState, action) => {
-    switch (action.type) {
-        case 'LOAD_ENTITIES_FULFILLED':
-            return modifyPackageSystems(columns, store?.rows, state);
 
         default:
             return state;
