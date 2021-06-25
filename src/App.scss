@@ -21,3 +21,6 @@ table.patchCompactInventory {
     overflow: inherit !important;
 }
 
+.patch-root .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items) .pf-c-toolbar__content .pf-c-toolbar__item:last-child {
+    min-width: unset !important;
+}
