@@ -431,3 +431,16 @@ export const prepareEntitiesParams = (parameters) => {
 
     return apiParams;
 };
+
+export const persistantParams = (page, perPage, sort) => (
+    {
+        page: Number(page || 1),
+        perPage: Number(perPage || 20),
+        ...(sort && {
+            sortBy: {
+                key: sort.replace(/^-/, ''),
+                direction: sort.match(/^-/) ? 'desc' : 'asc'
+            }
+        })
+    }
+);

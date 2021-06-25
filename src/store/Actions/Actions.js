@@ -103,11 +103,6 @@ export const fetchPackageSystemsAction = params => ({
     }).then(result => result)
 });
 
-export const clearPackageSystemsStore = () => ({
-    type: ActionTypes.CLEAR_PACKAGE_SYSTEMS,
-    payload: []
-});
-
 export const fetchApplicableSystemPackages = params => ({
     type: ActionTypes.FETCH_APPLICABLE_SYSTEM_PACKAGES,
     payload: new Promise(resolve => {
@@ -171,7 +166,33 @@ export const clearEntitiesStore = () => ({
     payload: []
 });
 
+export const clearSystemsStore = () => ({
+    type: ActionTypes.CLEAR_SYSTEMS_STORE,
+    payload: []
+});
+
+export const clearAffectedSystemsStore = () => ({
+    type: ActionTypes.CLEAR_AFFECTED_SYSTEMS_STORE,
+    payload: []
+});
+
+export const clearPackageSystemsStore = () => ({
+    type: ActionTypes.CLEAR_AFFECTED_SYSTEMS_STORE,
+    payload: []
+});
+
 export const changeEntitiesParams = params => ({
     type: ActionTypes.CHANGE_ENTITIES_PARAMS,
     payload: params
 });
+
+export const changeSystemsParams = params => ({
+    type: ActionTypes.CHANGE_SYSTEMS_PARAMS,
+    payload: params
+});
+
+export const changeAffectedSystemsParams = params => ({
+    type: ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS,
+    payload: params
+});
+

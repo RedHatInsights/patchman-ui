@@ -7,13 +7,13 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { register } from '../../store';
-import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
-import { inventoryEntitiesReducer, initialState, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
+import { changeAffectedSystemsParams, clearAffectedSystemsStore } from '../../store/Actions/Actions';
+import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems, exportAdvisorySystemsCSV, exportAdvisorySystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
-    remediationProvider, filterSelectedRowIDs
+    remediationProvider, filterSelectedRowIDs, persistantParams
 } from '../../Utilities/Helpers';
 import {
     useOnSelect, useRemoveFilter,
@@ -45,15 +45,19 @@ const AdvisorySystems = ({ advisoryName }) => {
     const queryParams = useSelector(
         ({ entities }) => entities?.queryParams || {}
     );
+    const affectedSystemsParams = useSelector(
+        ({ entities }) => entities?.affectedSystemsParams || {}
+    );
 
-    const { filter, search, systemProfile, selectedTags } = queryParams;
+    const { systemProfile, selectedTags } = queryParams;
+    const { filter, search, page, perPage, sort } = affectedSystemsParams;
 
     React.useEffect(() => {
-        return () => dispatch(clearEntitiesStore());
+        return () => dispatch(clearAffectedSystemsStore());
     }, []);
 
     function apply(params) {
-        dispatch(changeEntitiesParams(params));
+        dispatch(changeAffectedSystemsParams(params));
     }
 
     const [deleteFilters] = useRemoveFilter({ search }, apply);
@@ -118,7 +122,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                         register({
                             ...mergeWithEntities(
                                 inventoryEntitiesReducer(systemsListColumns, modifyInventory),
-                                initialState
+                                persistantParams(page, perPage, sort)
                             )
                         });
                     }}

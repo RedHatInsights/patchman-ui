@@ -8,8 +8,8 @@ import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
-import { initialState, inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
+import { changeSystemsParams, clearSystemsStore } from '../../store/Actions/Actions';
+import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
@@ -17,7 +17,7 @@ import {
 import {
     arrayFromObj, buildFilterChips,
     filterSelectedRowIDs, remediationProviderWithPairs,
-    transformPairs
+    transformPairs, persistantParams
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter
@@ -49,14 +49,18 @@ const Systems = () => {
     const queryParams = useSelector(
         ({ entities }) => entities?.queryParams || {}
     );
+    const systemsParams = useSelector(
+        ({ entities }) => entities?.systemsParams || {}
+    );
     const totalItems = useSelector(
         ({ entities }) => entities?.total || 0
     );
 
-    const { filter, search, systemProfile, selectedTags } = queryParams;
+    const { systemProfile, selectedTags } = queryParams;
+    const { filter, search, page, perPage, sort } = systemsParams;
 
     React.useEffect(() => {
-        return () => dispatch(clearEntitiesStore());
+        return () => dispatch(clearSystemsStore());
     }, []);
 
     async function showRemediationModal(data) {
@@ -67,7 +71,7 @@ const Systems = () => {
     }
 
     function apply(params) {
-        dispatch(changeEntitiesParams(params));
+        dispatch(changeSystemsParams(params));
     }
 
     const [deleteFilters] = useRemoveFilter({ search }, apply);
@@ -87,7 +91,7 @@ const Systems = () => {
     };
 
     const fetchAllData = (queryParams) =>
-        fetchSystems({ ...queryParams, limit: -1 });
+        fetchSystems({ ...queryParams, ...systemsParams, limit: -1 });
 
     const selectRows = (toSelect) => {
         dispatch(
@@ -99,7 +103,7 @@ const Systems = () => {
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
-    const onExport = useOnExport('systems', queryParams, {
+    const onExport = useOnExport('systems', { ...queryParams, ...systemsParams }, {
         csv: exportSystemsCSV,
         json: exportSystemsJSON
     }, dispatch);
@@ -146,7 +150,7 @@ const Systems = () => {
                                 register({
                                     ...mergeWithEntities(
                                         inventoryEntitiesReducer(systemsListColumns, modifyInventory),
-                                        initialState
+                                        persistantParams(page, perPage, sort)
                                     )
                                 });
                             }}
