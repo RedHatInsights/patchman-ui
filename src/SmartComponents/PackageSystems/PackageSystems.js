@@ -9,11 +9,13 @@ import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import { register } from '../../store';
-import { changeEntitiesParams, clearEntitiesStore } from '../../store/Actions/Actions';
+import { changePackageSystemsParams, clearPackageSystemsStore } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchPackageSystems, exportPackageSystemsCSV, exportPackageSystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
-import { arrayFromObj, buildFilterChips, remediationProvider, filterSelectedRowIDs } from '../../Utilities/Helpers';
+import { arrayFromObj, buildFilterChips, remediationProvider,
+    filterSelectedRowIDs, persistantParams
+} from '../../Utilities/Helpers';
 import {
     useOnSelect, useRemoveFilter, useBulkSelectConfig, useOnExport, useGetEntities
 } from '../../Utilities/Hooks';
@@ -39,18 +41,21 @@ const PackageSystems = ({ packageName }) => {
     const queryParams = useSelector(
         ({ entities }) => entities?.queryParams || {}
     );
+    const packageSystemsParams = useSelector(
+        ({ entities }) => entities?.packageSystemsParams || {}
+    );
     const totalItems = useSelector(
         ({ entities }) => entities?.total || 0
     );
 
-    const { filter, search, systemProfile, selectedTags } = queryParams;
-
+    const { systemProfile, selectedTags } = queryParams;
+    const { filter, search, sort, page, perPage } = packageSystemsParams;
     React.useEffect(() => {
-        return () => dispatch(clearEntitiesStore());
+        return () => dispatch(clearPackageSystemsStore());
     }, []);
 
     function apply(params) {
-        dispatch(changeEntitiesParams(params));
+        dispatch(changePackageSystemsParams(params));
     }
 
     const [deleteFilters] = useRemoveFilter(filter, apply);
@@ -117,7 +122,8 @@ const PackageSystems = ({ packageName }) => {
                     onLoad={({ mergeWithEntities }) => {
                         register({
                             ...mergeWithEntities(
-                                inventoryEntitiesReducer(packageSystemsColumns, modifyPackageSystems)
+                                inventoryEntitiesReducer(packageSystemsColumns, modifyPackageSystems),
+                                persistantParams(page, perPage, sort)
                             )
                         });
 
