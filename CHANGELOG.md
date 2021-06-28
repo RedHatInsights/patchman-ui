@@ -1,3 +1,10 @@
+## [1.21.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.21.1...v1.21.2) (2021-06-28)
+
+
+### Bug Fixes
+
+* **Export button:** fix misalignment ([7a1cc01](https://github.com/RedHatInsights/patchman-ui/commit/7a1cc01323e4cedcf5fb73f67e8e1969a148330b))
+
 ## [1.21.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.21.0...v1.21.1) (2021-06-24)
 
 
