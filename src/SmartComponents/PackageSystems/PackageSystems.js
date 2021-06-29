@@ -83,14 +83,15 @@ const PackageSystems = ({ packageName }) => {
         return `${packageName}-${system.available_evra}`;
     };
 
-    const fetchAllData = () =>
-        fetchPackageSystems({ id: packageName, limit: 999999 });
+    const fetchAllData = () => {
+        return fetchPackageSystems({ package_name: packageName, limit: -1 });
+    };
 
     const selectRows = (toSelect) => {
         dispatch({ type: 'SELECT_ENTITY', payload: toSelect });
     };
 
-    const onSelect = enableRemediation && useOnSelect(systems, selectedRows,
+    const onSelect = useOnSelect(systems, selectedRows,
         fetchAllData, selectRows, constructFilename);
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
@@ -138,8 +139,7 @@ const PackageSystems = ({ packageName }) => {
                     }}
                     filterConfig={filterConfig}
                     activeFiltersConfig={activeFiltersConfig}
-                    bulkSelect={enableRemediation &&
-                        onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                    bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
                 >
                     {enableRemediation &&
                         <ToolbarGroup>
