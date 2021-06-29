@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.21.2...v1.22.0) (2021-06-29)
+
+
+### Features
+
+* **PackageSystems:** use getEntities ([531e052](https://github.com/RedHatInsights/patchman-ui/commit/531e05290bb2ce4e8e9d9e9d800f875f4f30ad80))
+
 ## [1.21.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.21.1...v1.21.2) (2021-06-28)
 
 
