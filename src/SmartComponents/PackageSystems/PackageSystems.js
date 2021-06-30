@@ -1,4 +1,4 @@
-import { Button, ToolbarGroup, ToolbarItem } from '@patternfly/react-core';
+import { Button } from '@patternfly/react-core';
 import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
@@ -28,7 +28,6 @@ import versionFilter from '../../PresentationalComponents/Filters/VersionFilter'
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
-    const enableRemediation = false;
     const [
         RemediationModalCmp,
         setRemediationModalCmp
@@ -145,32 +144,27 @@ const PackageSystems = ({ packageName }) => {
                     filterConfig={filterConfig}
                     activeFiltersConfig={activeFiltersConfig}
                     bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                    dedicatedAction={(
+                        <Button
+                            className={'remediationButtonPatch'}
+                            isDisabled={
+                                arrayFromObj(selectedRows).length === 0
+                            }
+                            onClick={() =>
+                                showRemediationModal(
+                                    remediationProvider(
+                                        packageName,
+                                        filterSelectedRowIDs(selectedRows),
+                                        remediationIdentifiers.package
+                                    )
+                                )
+                            }
+                            ouiaId={'toolbar-remediation-button'}
+                        >
+                            <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
+                        </Button>)}
                 >
-                    {enableRemediation &&
-                        <ToolbarGroup>
-                            <ToolbarItem>
-                                <Button
-                                    className={'remediationButtonPatch'}
-                                    isDisabled={
-                                        arrayFromObj(selectedRows).length === 0
-                                    }
-                                    onClick={() =>
-                                        showRemediationModal(
-                                            remediationProvider(
-                                                packageName,
-                                                filterSelectedRowIDs(selectedRows),
-                                                remediationIdentifiers.package
-                                            )
-                                        )
-                                    }
-                                    ouiaId={'toolbar-remediation-button'}
-                                >
-                                    <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                                </Button>
-                                <RemediationModalCmp />
-                            </ToolbarItem>
-                        </ToolbarGroup>
-                    }
+                    <RemediationModalCmp />
                 </InventoryTable>
             )}
         </React.Fragment>
