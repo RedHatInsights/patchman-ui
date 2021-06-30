@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.22.0...v1.23.0) (2021-06-30)
+
+
+### Features
+
+* **Inventory:** SPM-998 persist parameters ([5db3539](https://github.com/RedHatInsights/patchman-ui/commit/5db3539813615fbcd285603e980cfc63a542cc5b))
+
 # [1.22.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.21.2...v1.22.0) (2021-06-29)
 
 
