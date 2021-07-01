@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.23.0...v1.24.0) (2021-07-01)
+
+
+### Features
+
+* **PackageSystems:** SPM-960 enable checkbox ([cc9b30c](https://github.com/RedHatInsights/patchman-ui/commit/cc9b30c15a2cfabb1009320d287ab347491a724e))
+
 # [1.23.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.22.0...v1.23.0) (2021-06-30)
 
 
