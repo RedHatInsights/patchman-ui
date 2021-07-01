@@ -11,7 +11,8 @@ import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import { register } from '../../store';
 import { changePackageSystemsParams, clearPackageSystemsStore } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
-import { fetchPackageSystems, exportPackageSystemsCSV, exportPackageSystemsJSON } from '../../Utilities/api';
+import { fetchPackageSystems, exportPackageSystemsCSV,
+    exportPackageSystemsJSON, fetchPackageVersions } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, remediationProvider,
     filterSelectedRowIDs, persistantParams
@@ -23,6 +24,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
+import versionFilter from '../../PresentationalComponents/Filters/VersionFilter';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -31,6 +33,7 @@ const PackageSystems = ({ packageName }) => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
+    const [packageVersions, setPackageVersions] = React.useState([]);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -50,7 +53,8 @@ const PackageSystems = ({ packageName }) => {
 
     const { systemProfile, selectedTags } = queryParams;
     const { filter, search, sort, page, perPage } = packageSystemsParams;
-    React.useEffect(() => {
+    React.useEffect(async () => {
+        setPackageVersions(await fetchPackageVersions({ package_name: packageName }));
         return () => dispatch(clearPackageSystemsStore());
     }, []);
 
@@ -66,7 +70,8 @@ const PackageSystems = ({ packageName }) => {
                 intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
             ),
-            statusFilter(apply, filter)
+            statusFilter(apply, filter),
+            versionFilter(apply, filter, packageVersions)
         ]
     };
 
@@ -135,7 +140,7 @@ const PackageSystems = ({ packageName }) => {
                     }}
                     tableProps={{
                         canSelectAll: false,
-                        onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
                     filterConfig={filterConfig}
                     activeFiltersConfig={activeFiltersConfig}
