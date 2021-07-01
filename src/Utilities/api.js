@@ -66,6 +66,11 @@ export const fetchPackageSystems = params => {
     return createApiCall(`/packages/${package_name}/systems`, 'get', prepareEntitiesParams(args));
 };
 
+export const fetchPackageVersions = params => {
+    const { package_name, ...args } = params;
+    return createApiCall(`/packages/${package_name}/versions`, 'get', args);
+};
+
 export const fetchPackagesList = params => {
     return createApiCall('/packages', 'get', params);
 };
