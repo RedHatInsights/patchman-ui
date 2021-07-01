@@ -11,24 +11,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
+import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 import {
     advisorySeverities,
     compoundSortValues,
     filterCategories
 } from './constants';
 import { intl } from './IntlProvider';
-import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
 };
 
 // eslint-disable-next-line no-unused-vars
-export const transformPairs = (input) => {
+export const transformPairs = (input, remediationIdentifier) => {
+    console.log(input);
     return {
         issues: Object.keys(input.data).map(advisory => {
+            console.log(advisory);
             return {
-                id: 'patch-advisory:' + advisory,
+                id: `${remediationIdentifier}:${advisory}`,
                 description: advisory,
                 systems: input.data[advisory]
             };
@@ -197,10 +199,11 @@ export const remediationProvider = (issues, systems, remediationIdentifier) => {
         : false;
 };
 
-export async function remediationProviderWithPairs(issues, createPairs, transformFunc) {
+export async function remediationProviderWithPairs(issues, createPairs, transformFunc, remediationIdentifier) {
     if (issues) {
         const pairsCreated = await createPairs(issues);
-        const res = transformFunc(pairsCreated);
+        const res = transformFunc(pairsCreated, remediationIdentifier);
+        console.log(res);
         return await res;
     }
     else {

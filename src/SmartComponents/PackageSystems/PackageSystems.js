@@ -1,28 +1,26 @@
-import { Button } from '@patternfly/react-core';
-import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
 import { changePackageSystemsParams, clearPackageSystemsStore } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
-import { fetchPackageSystems, exportPackageSystemsCSV, exportPackageSystemsJSON } from '../../Utilities/api';
+import { exportPackageSystemsCSV, exportPackageSystemsJSON, fetchPackageSystems } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
-import { arrayFromObj, buildFilterChips, remediationProvider,
-    filterSelectedRowIDs, persistantParams
-} from '../../Utilities/Helpers';
 import {
-    useOnSelect, useRemoveFilter, useBulkSelectConfig, useOnExport, useGetEntities
-} from '../../Utilities/Hooks';
+    arrayFromObj, buildFilterChips,
+    filterSelectedRowIDs, persistantParams, remediationProviderWithPairs, transformPairs
+} from '../../Utilities/Helpers';
+import { useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
+import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
-import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -49,6 +47,7 @@ const PackageSystems = ({ packageName }) => {
 
     const { systemProfile, selectedTags } = queryParams;
     const { filter, search, sort, page, perPage } = packageSystemsParams;
+    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
     React.useEffect(() => {
         return () => dispatch(clearPackageSystemsStore());
     }, []);
@@ -74,8 +73,12 @@ const PackageSystems = ({ packageName }) => {
         onDelete: deleteFilters
     };
 
-    const showRemediationModal = data => {
-        setRemediationModalCmp(() => () => <RemediationModal data={data} />);
+    async function showRemediationModal(data) {
+        setRemediationLoading(true);
+        const resolvedData = await data;
+        setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
+        setRemediationLoading(false);
+
     };
 
     const constructFilename = (system) => {
@@ -99,6 +102,19 @@ const PackageSystems = ({ packageName }) => {
         csv: exportPackageSystemsCSV,
         json: exportPackageSystemsJSON
     }, dispatch);
+
+    const prepareRemediationPairs = () => {
+        let pairs = {};
+        Object.keys(selectedRows).forEach(system => {
+            if (pairs[selectedRows[system]]) {
+                pairs[selectedRows[system]].push(system);
+            }
+            else {
+                pairs[selectedRows[system]] = [system];
+            }
+        });
+        return { data: pairs };
+    };
 
     const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName });
     return (
@@ -140,24 +156,20 @@ const PackageSystems = ({ packageName }) => {
                     activeFiltersConfig={activeFiltersConfig}
                     bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
                     dedicatedAction={(
-                        <Button
-                            className={'remediationButtonPatch'}
-                            isDisabled={
-                                arrayFromObj(selectedRows).length === 0
-                            }
+                        <PatchRemediationButton
                             onClick={() =>
                                 showRemediationModal(
-                                    remediationProvider(
-                                        packageName,
+                                    remediationProviderWithPairs(
                                         filterSelectedRowIDs(selectedRows),
-                                        remediationIdentifiers.package
-                                    )
-                                )
-                            }
-                            ouiaId={'toolbar-remediation-button'}
-                        >
-                            <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                        </Button>)}
+                                        prepareRemediationPairs,
+                                        transformPairs,
+                                        remediationIdentifiers.package)
+
+                                )}
+                            isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                            isLoading={isRemediationLoading}
+                            ouia={'toolbar-remediation-button'}
+                        />)}
                 >
                     <RemediationModalCmp />
                 </InventoryTable>
