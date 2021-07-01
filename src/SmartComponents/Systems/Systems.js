@@ -14,6 +14,7 @@ import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
+import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
     filterSelectedRowIDs, remediationProviderWithPairs,
@@ -174,7 +175,9 @@ const Systems = () => {
                                         showRemediationModal(
                                             remediationProviderWithPairs(
                                                 filterSelectedRowIDs(selectedRows),
-                                                prepareRemediationPairs, transformPairs)
+                                                prepareRemediationPairs,
+                                                transformPairs,
+                                                remediationIdentifiers.advisory)
                                         )}
                                     isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
                                     isLoading={isRemediationLoading}
