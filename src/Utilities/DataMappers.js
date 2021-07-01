@@ -1,14 +1,14 @@
+import { TextContent, TextListItem, TextListItemVariants } from '@patternfly/react-core';
+import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
-import { EmptyAdvisoryList, EmptyPackagesList, EmptyCvesList } from '../PresentationalComponents/Snippets/EmptyStates';
-import { entityTypes, advisorySeverities } from './constants';
-import { createUpgradableColumn, handlePatchLink } from './Helpers';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
+import { EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
-import { TextContent, TextListItem, TextListItemVariants } from '@patternfly/react-core';
-import { SecurityIcon } from '@patternfly/react-icons';
+import { advisorySeverities, entityTypes } from './constants';
+import { createUpgradableColumn, handlePatchLink } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -163,6 +163,7 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                 display_name: row.display_name,
                 installed_evra: row.installed_evra,
                 available_evra: row.updatable && row.available_evra || row.installed_evra,
+                disableCheckbox: !row.updatable,
                 upgradable: row.updatable,
                 selected: selectedRows[row.id] !== undefined
             };
@@ -245,14 +246,16 @@ export const createCvesRows = (rows) => {
                 id,
                 key: id,
                 cells: [
-                    { title: (
-                        <a href={`${document.baseURI}insights/vulnerability/cves/${attributes.synopsis}`}>
-                            {attributes.synopsis}
-                        </a>) },
+                    {
+                        title: (
+                            <a href={`${document.baseURI}insights/vulnerability/cves/${attributes.synopsis}`}>
+                                {attributes.synopsis}
+                            </a>)
+                    },
                     {
                         title: (<TextContent>
                             <TextListItem component={TextListItemVariants.dd}>
-                                <SecurityIcon size="sm" color={severityObject.color}/>  {severityObject.label}
+                                <SecurityIcon size="sm" color={severityObject.color} />  {severityObject.label}
                             </TextListItem>
                         </TextContent>),
                         value: severityObject.label
