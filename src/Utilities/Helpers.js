@@ -25,10 +25,8 @@ export const convertLimitOffset = (limit, offset) => {
 
 // eslint-disable-next-line no-unused-vars
 export const transformPairs = (input, remediationIdentifier) => {
-    console.log(input);
     return {
         issues: Object.keys(input.data).map(advisory => {
-            console.log(advisory);
             return {
                 id: `${remediationIdentifier}:${advisory}`,
                 description: advisory,
@@ -203,7 +201,6 @@ export async function remediationProviderWithPairs(issues, createPairs, transfor
     if (issues) {
         const pairsCreated = await createPairs(issues);
         const res = transformFunc(pairsCreated, remediationIdentifier);
-        console.log(res);
         return await res;
     }
     else {

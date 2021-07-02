@@ -1,15 +1,9 @@
 import {
     cellWidth,
-
-
     expandable, sortable,
-
     SortByDirection, Table as PfTable,
     TableBody,
-
     TableGridBreakpoint, TableHeader,
-
-
     TableVariant
 } from '@patternfly/react-table';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -27,7 +21,6 @@ function getLoader() {
 const RemediationModal = ({ data }) => {
     const dispatch = useDispatch();
     const [remediations, setRemediations] = React.useState(false);
-    console.log(data);
     React.useEffect(() => {
         getLoader()({
             pfReactTable: {

@@ -78,8 +78,9 @@ const PackageSystems = ({ packageName }) => {
         const resolvedData = await data;
         setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
         setRemediationLoading(false);
+    }
 
-    };
+    ;
 
     const constructFilename = (system) => {
         return `${packageName}-${system.available_evra}`;
