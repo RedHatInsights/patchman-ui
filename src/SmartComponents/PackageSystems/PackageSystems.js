@@ -83,6 +83,7 @@ const PackageSystems = ({ packageName }) => {
         const resolvedData = await data;
         setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
         setRemediationLoading(false);
+    }
 
     }
 
