@@ -1,3 +1,10 @@
+## [1.24.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.24.0...v1.24.1) (2021-07-07)
+
+
+### Bug Fixes
+
+* **PackageDetail:** SPM-1015 hot fix for status filter ([327c13e](https://github.com/RedHatInsights/patchman-ui/commit/327c13e016955a460c6cc2042a240a8aaa7843e5))
+
 # [1.24.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.23.0...v1.24.0) (2021-07-01)
 
 
