@@ -67,7 +67,6 @@ export const inventoryEntitiesReducer = (columns, inventoryModifier) => (state =
             return newState;
 
         case ActionTypes.CHANGE_PACKAGE_SYSTEMS_PARAMS:
-            delete action.payload?.filter;
             newState.packageSystemsParams = changeListParams(newState.packageSystemsParams, action.payload);
             return newState;
 
