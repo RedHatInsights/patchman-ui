@@ -144,7 +144,7 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 ],
                 operating_system: {
                     osName: osName && `${rest.os_name} ${osMajor}.${osMinor}`
-                        || 'No data',
+                        || 'N/A',
                     rhsm
                 },
                 selected: selectedRows[id] !== undefined
