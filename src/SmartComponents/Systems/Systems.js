@@ -16,22 +16,25 @@ import {
 } from '../../Utilities/api';
 import {
     arrayFromObj, buildFilterChips,
-    filterSelectedRowIDs, remediationProviderWithPairs,
-    transformPairs, persistantParams
+    removeUndefinedObjectKeys, remediationProviderWithPairs,
+    transformPairs, persistantParams, decodeQueryparams
 } from '../../Utilities/Helpers';
 import {
-    setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter
+    setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
+    useOnSelect, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+import { useHistory } from 'react-router-dom';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
 
     setPageTitle(pageTitle);
 
+    const history = useHistory();
     const dispatch = useDispatch();
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
     const [
@@ -39,6 +42,7 @@ const Systems = () => {
         setRemediationModalCmp
     ] = React.useState(() => () => null);
 
+    const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const selectedRows = useSelector(
         ({ entities }) => entities?.selectedRows || []
@@ -60,9 +64,9 @@ const Systems = () => {
     const { filter, search, page, perPage, sort } = systemsParams;
 
     React.useEffect(() => {
+        apply(decodedParams);
         return () => dispatch(clearSystemsStore());
     }, []);
-
     async function showRemediationModal(data) {
         setRemediationLoading(true);
         const resolvedData = await data;
@@ -123,7 +127,7 @@ const Systems = () => {
             ));
     };
 
-    const getEntities = useGetEntities(fetchSystems, apply);
+    const getEntities = useGetEntities(fetchSystems, apply, {}, history);
 
     return (
         <React.Fragment>
@@ -150,7 +154,7 @@ const Systems = () => {
                                 register({
                                     ...mergeWithEntities(
                                         inventoryEntitiesReducer(systemsListColumns, modifyInventory),
-                                        persistantParams(page, perPage, sort)
+                                        persistantParams({ page, perPage, sort, search }, decodedParams)
                                     )
                                 });
                             }}
@@ -173,7 +177,7 @@ const Systems = () => {
                                     onClick={() =>
                                         showRemediationModal(
                                             remediationProviderWithPairs(
-                                                filterSelectedRowIDs(selectedRows),
+                                                removeUndefinedObjectKeys(selectedRows),
                                                 prepareRemediationPairs, transformPairs)
                                         )}
                                     isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}

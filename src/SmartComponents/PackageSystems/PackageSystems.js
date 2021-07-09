@@ -14,7 +14,7 @@ import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Redu
 import { fetchPackageSystems, exportPackageSystemsCSV, exportPackageSystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { arrayFromObj, buildFilterChips, remediationProvider,
-    filterSelectedRowIDs, persistantParams
+    filterSelectedRowIDs, persistantParams, decodeQueryparams
 } from '../../Utilities/Helpers';
 import {
     useOnSelect, useRemoveFilter, useBulkSelectConfig, useOnExport, useGetEntities
@@ -23,14 +23,18 @@ import { intl } from '../../Utilities/IntlProvider';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
+import { useHistory } from 'react-router-dom';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
     const enableRemediation = false;
+    const history = useHistory();
     const [
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
+
+    const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -50,7 +54,9 @@ const PackageSystems = ({ packageName }) => {
 
     const { systemProfile, selectedTags } = queryParams;
     const { filter, search, sort, page, perPage } = packageSystemsParams;
+
     React.useEffect(() => {
+        apply(decodedParams);
         return () => dispatch(clearPackageSystemsStore());
     }, []);
 
@@ -58,7 +64,7 @@ const PackageSystems = ({ packageName }) => {
         dispatch(changePackageSystemsParams(params));
     }
 
-    const [deleteFilters] = useRemoveFilter(filter, apply);
+    const [deleteFilters] = useRemoveFilter({ ...filter, search }, apply);
 
     const filterConfig = {
         items: [
@@ -101,7 +107,7 @@ const PackageSystems = ({ packageName }) => {
         json: exportPackageSystemsJSON
     }, dispatch);
 
-    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName });
+    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, history);
     return (
         <React.Fragment>
             {status.hasError && <ErrorHandler code={status.code} /> || (
@@ -124,7 +130,7 @@ const PackageSystems = ({ packageName }) => {
                         register({
                             ...mergeWithEntities(
                                 inventoryEntitiesReducer(packageSystemsColumns, modifyPackageSystems),
-                                persistantParams(page, perPage, sort)
+                                persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
                         });
 
@@ -135,7 +141,7 @@ const PackageSystems = ({ packageName }) => {
                     }}
                     tableProps={{
                         canSelectAll: false,
-                        onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
                     filterConfig={filterConfig}
                     activeFiltersConfig={activeFiltersConfig}
