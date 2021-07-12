@@ -198,17 +198,17 @@ export const remediationIdentifiers = {
     advisory: 'patch-advisory'
 };
 
-export const exportNotifications = {
+export const exportNotifications = (format) => ({
     pending: {
         title: 'Preparing export. Once complete, your download will start automatically.',
         variant: 'info'
     },
     success: {
-        title: 'Downloading export',
+        title: `The exported ${format?.toUpperCase()} file is being downloaded`,
         variant: 'success'
     },
     error: {
         title: 'Couldn’t download export. Reinitiate this export to try again.',
         variant: 'danger'
     }
-};
+});
