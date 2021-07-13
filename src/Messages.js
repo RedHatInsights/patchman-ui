@@ -129,7 +129,7 @@ export default defineMessages({
     labelsFiltersPackagesSearchTitle: {
         id: 'labelsFiltersPackagesSearchTitle',
         description: 'search filter placeholder for packages pages',
-        defaultMessage: 'Name'
+        defaultMessage: 'Package'
     },
     labelsFiltersPublishDate: {
         id: 'labelsFiltersPublishDate',
