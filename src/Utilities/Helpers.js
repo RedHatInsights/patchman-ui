@@ -444,3 +444,18 @@ export const persistantParams = (page, perPage, sort) => (
         })
     }
 );
+
+export const filterRemediatableSystems = result => ({ data: result?.data.filter(system => {
+    const {
+        packages_installed: installedPckg,
+        packages_updatable: updatablePckg,
+        rhba_count: rhba,
+        rhsa_count: rhsa,
+        rhea_count: rhea
+    } = system.attributes || {};
+
+    const isDisabled = updatablePckg === 0 || [installedPckg, rhba, rhsa, rhea].every(count => count === 0);
+
+    return !isDisabled;
+})
+});
