@@ -17,7 +17,7 @@ import {
 import {
     arrayFromObj, buildFilterChips,
     filterSelectedRowIDs, remediationProviderWithPairs,
-    transformPairs, persistantParams
+    transformPairs, persistantParams, filterRemediatableSystems
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter
@@ -91,7 +91,7 @@ const Systems = () => {
     };
 
     const fetchAllData = (queryParams) =>
-        fetchSystems({ ...queryParams, ...systemsParams, limit: -1 });
+        fetchSystems({ ...queryParams, ...systemsParams, limit: -1 }).then(filterRemediatableSystems);
 
     const selectRows = (toSelect) => {
         dispatch(

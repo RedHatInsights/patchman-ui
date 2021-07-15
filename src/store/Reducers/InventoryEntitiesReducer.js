@@ -71,7 +71,8 @@ export const inventoryEntitiesReducer = (columns, inventoryModifier) => (state =
             return newState;
 
         case 'SELECT_ENTITY':
-            return selectRows(newState, action);
+            newState = selectRows(newState, action);
+            return inventoryModifier(columns, newState);
 
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);

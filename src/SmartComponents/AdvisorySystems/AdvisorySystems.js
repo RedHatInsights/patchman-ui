@@ -12,7 +12,7 @@ import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/
 import { fetchAdvisorySystems, exportAdvisorySystemsCSV, exportAdvisorySystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
-    arrayFromObj, buildFilterChips,
+    arrayFromObj, buildFilterChips, filterRemediatableSystems,
     remediationProvider, filterSelectedRowIDs, persistantParams
 } from '../../Utilities/Helpers';
 import {
@@ -87,7 +87,7 @@ const AdvisorySystems = ({ advisoryName }) => {
     };
 
     const fetchAllData = () =>
-        fetchAdvisorySystems({ ...queryParams, id: advisoryName, limit: -1 });
+        fetchAdvisorySystems({ ...queryParams, id: advisoryName, limit: -1 }).then(filterRemediatableSystems);
 
     const onSelect = useOnSelect(systems,  selectedRows, fetchAllData, selectRows);
 
