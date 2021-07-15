@@ -13,15 +13,20 @@ exports[`TableFooter Should match the snapshots 1`] = `
   >
     <Toolbar
       className="ins-c-table__toolbar"
+      data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
+      data-ouia-component-type="RHI/TableToolbar"
+      data-ouia-safe={true}
     >
       <GenerateId
         prefix="pf-random-id-"
       >
         <div
           className="pf-c-toolbar ins-c-table__toolbar"
+          data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
+          data-ouia-component-type="RHI/TableToolbar"
+          data-ouia-safe={true}
           id="pf-random-id-0"
         >
-           
           <Pagination
             className=""
             defaultToFullPage={false}

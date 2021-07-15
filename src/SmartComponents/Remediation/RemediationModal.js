@@ -1,13 +1,10 @@
 import {
-    Table as PfTable,
-    TableBody,
-    TableHeader,
-    TableGridBreakpoint,
     cellWidth,
-    TableVariant,
-    sortable,
-    expandable,
-    SortByDirection
+    expandable, sortable,
+    SortByDirection, Table as PfTable,
+    TableBody,
+    TableGridBreakpoint, TableHeader,
+    TableVariant
 } from '@patternfly/react-table';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import propTypes from 'prop-types';

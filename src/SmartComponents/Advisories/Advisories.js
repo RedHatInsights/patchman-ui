@@ -18,6 +18,7 @@ import {
     exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
+import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
     arrayFromObj, createSortBy, decodeQueryparams,
@@ -132,7 +133,11 @@ const Advisories = ({ history }) => {
                     onSelect={onSelect}
                     sortBy={sortBy}
                     remediationProvider={() =>
-                        remediationProviderWithPairs(arrayFromObj(selectedRows), prepareRemediationPairs, transformPairs)
+                        remediationProviderWithPairs(
+                            arrayFromObj(selectedRows),
+                            prepareRemediationPairs,
+                            transformPairs,
+                            remediationIdentifiers.advisory)
                     }
                     apply={apply}
                     remediationButtonOUIA={'toolbar-remediation-button'}
