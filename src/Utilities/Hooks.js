@@ -265,11 +265,11 @@ export const useOnExport = (prefix, queryParams, formatHandlers, dispatch) => {
     const onExport = React.useCallback((_, format) => {
         const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
         const filename = `${prefix}-${date}`;
-        dispatch(addNotification(exportNotifications.pending));
+        dispatch(addNotification(exportNotifications().pending));
         formatHandlers[format](queryParams, prefix).then(data => {
-            dispatch(addNotification(exportNotifications.success));
+            dispatch(addNotification(exportNotifications(format).success));
             downloadFile(data, filename, format);
-        }).catch(() => dispatch(addNotification(exportNotifications.error)));
+        }).catch(() => dispatch(addNotification(exportNotifications().error)));
     });
     return onExport;
 };
