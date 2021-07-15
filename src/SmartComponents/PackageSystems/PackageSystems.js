@@ -113,7 +113,7 @@ const PackageSystems = ({ packageName }) => {
 
     const prepareRemediationPairs = () => {
         let pairs = {};
-        Object.keys(selectedRows).forEach(system => {
+        filterSelectedRowIDs(selectedRows).forEach(system => {
             if (pairs[selectedRows[system]]) {
                 pairs[selectedRows[system]].push(system);
             }
