@@ -12,6 +12,7 @@ export const initialState = {
     queryParams: {},
     systemsParams: {},
     affectedSystemsParams: {},
+    packageSystemsParams: {},
     metadata: {
         limit: 20,
         offset: 0,
@@ -67,7 +68,7 @@ export const inventoryEntitiesReducer = (columns, inventoryModifier) => (state =
             return newState;
 
         case ActionTypes.CHANGE_PACKAGE_SYSTEMS_PARAMS:
-            newState.packageSystemsParams = changeListParams(newState.packageSystemsParams, action.payload);
+            newState.packageSystemsParams = changeListParams(newState.packageSystemsParams || {}, action.payload);
             return newState;
 
         case 'SELECT_ENTITY':
