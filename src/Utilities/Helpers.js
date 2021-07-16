@@ -217,6 +217,8 @@ export const getFilterValue = (category, key) => {
             item => item.value === key
         );
         return filterOption || { apiValue: key };
+    } else {
+        return { apiValue: key };
     }
 };
 
@@ -227,7 +229,7 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
             Object.entries(filter).forEach(item => {
                 let [key, value] = item;
                 value = shouldTranslateKeys && getFilterValue(key, value).apiValue || value;
-                const operator = [].concat(value).length > 1 ? 'in:' : '';
+                const operator = ([].concat(value).length > 1 || key === 'installed_evra') ? 'in:' : '';
                 result = {
                     ...result,
                     [`filter[${key}]`]: `${operator}${value.toString()}`
@@ -303,6 +305,30 @@ export const decodeQueryparams = queryString => {
 export const buildFilterChips = (filters, search) => {
 
     let filterConfig = [];
+    const buildChips = (filters, category) =>{
+        if (category === 'installed_evra') {
+            const versions = filters[category] && filters[category].split(',') || [];
+            return versions.map(version => ({
+                name: version,
+                id: category,
+                value: version
+            }));
+        } else {
+            const { values } = filterCategories[category];
+            return [].concat(filters[category]).map(filterValue => {
+                const match = values.find(
+                    item =>
+                        item.value.toString() === filterValue.toString()
+                );
+                return {
+                    name: match.label,
+                    value: filterValue,
+                    id: match.value
+                };
+            });
+        }
+    };
+
     const processFilters = () => {
         let categories = Object.keys(filters).filter(
             item =>
@@ -310,21 +336,11 @@ export const buildFilterChips = (filters, search) => {
         );
         filterConfig = filterConfig.concat(
             categories.map(category => {
-                const { label, values } = filterCategories[category];
+                const label = category === 'installed_evra' && 'Package version' || filterCategories[category].label;
                 return {
                     category: label,
                     id: category,
-                    chips: [].concat(filters[category]).map(filterValue => {
-                        const match = values.find(
-                            item =>
-                                item.value.toString() === filterValue.toString()
-                        );
-                        return {
-                            name: match.label,
-                            value: filterValue,
-                            id: match.value
-                        };
-                    })
+                    chips: buildChips(filters, category)
                 };
             })
         );
@@ -360,6 +376,9 @@ export const changeListParams = (oldParams, newParams) => {
 
     if (newParams.hasOwnProperty('filter')) {
         newState.filter = { ...oldParams.filter, ...newParams.filter };
+
+        //we need explicitly remove 'undefined' filters for safety
+        Object.keys(newState.filter).forEach(key => newState.filter[key] === undefined && delete newState.filter[key]);
     }
 
     if (newState.hasOwnProperty('tags')) {

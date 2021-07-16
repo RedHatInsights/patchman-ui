@@ -219,7 +219,7 @@ describe('Helpers tests', () => {
     category         | key                  | result
     ${"public_date"} | ${"last7"}           | ${publicDateOptions[1]}
     ${"public_date"} | ${"random value"}    | ${{apiValue: "random value"}}
-    ${undefined}     | ${"last7"}           | ${undefined}
+    ${undefined}     | ${"last7"}           | ${{ "apiValue": "last7" }}
     `('getFilterValue: Should create object for $category', ({category, key, result}) => {
         expect(getFilterValue(category,key)).toEqual(result);
     });

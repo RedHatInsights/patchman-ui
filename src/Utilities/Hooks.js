@@ -64,7 +64,7 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
         let newParams = { filter: {} };
         selected.forEach(selectedItem => {
             let { id: categoryId, chips } = selectedItem;
-            if (categoryId !== 'search') {
+            if (categoryId !== 'search' && categoryId !== 'installed_evra') {
                 let activeFilter = filters[categoryId];
                 const toRemove = chips.map(item => item.id.toString());
                 if (Array.isArray(activeFilter)) {
@@ -72,9 +72,14 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
                         item => !toRemove.includes(item.toString())
                     );
                 } else {
-                    newParams.filter[categoryId] = '';
+                    newParams.filter[categoryId] = undefined;
                 }
-            } else {
+            } else if (categoryId === 'installed_evra') {
+                const versions = filters[categoryId].split(',');
+                newParams.filter[categoryId] = (versions.length !== 1) && versions
+                .filter(version => !chips.find(chip => chip.value === version)).join(',') || undefined;
+            }
+            else {
                 newParams.search = '';
             }
 

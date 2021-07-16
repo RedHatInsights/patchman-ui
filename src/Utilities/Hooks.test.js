@@ -105,7 +105,7 @@ describe('Custom hooks tests', () => {
 
     it.each`
     filter                    | apply        | selected                                       |result
-    ${{advisory_type: 2}}     | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{id: 1}] }]} | ${{filter: {advisory_type: ""}}}
+    ${{ advisory_type: 2 }}     | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{ id: 1 }] }]} | ${{ filter: { advisory_type: undefined }}}
     ${{advisory_type: [2,1]}} | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{id: 1}] }]} | ${{filter: {advisory_type: [2]}}}
     ${{search: "asd"}}        | ${jest.fn()} | ${[{ id: "search"}]}                           | ${{filter: {}, search: ''}}
     `('useRemoveFilter: should return correct filter for $filter',({filter, apply, result, selected}) => {
@@ -119,7 +119,7 @@ describe('Custom hooks tests', () => {
 
     it.each`
     filter                    | apply        | selected                                       |result
-    ${{ advisory_type: 2 }}     | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{ id: 1 }] }]} | ${{ filter: { advisory_type: "", systems_updatable: "gt:0" } }}
+    ${{ advisory_type: 2 }}     | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{ id: 1 }] }]} | ${{ filter: { advisory_type: undefined, systems_updatable: "gt:0" } }}
     ${{ search: "asd" }}        | ${jest.fn()} | ${[{ id: "search" }]}                           | ${{ filter: { systems_updatable: "gt:0" }, search: '' }}
     `('useRemoveFilter: should reset to default filters for $filter while ', ({ filter, apply, result, selected }) => {
         let deleteFilters;
