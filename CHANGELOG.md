@@ -1,3 +1,10 @@
+## [1.24.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.24.1...v1.24.2) (2021-07-19)
+
+
+### Bug Fixes
+
+* **Inventory:** SPM-1019 unwanted hosts are removed ([d2b9c95](https://github.com/RedHatInsights/patchman-ui/commit/d2b9c9582cd56f49bdff7a8a0a10fd2a759e0910))
+
 ## [1.24.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.24.0...v1.24.1) (2021-07-07)
 
 
