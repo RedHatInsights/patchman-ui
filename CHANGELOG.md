@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.24.2...v1.25.0) (2021-07-19)
+
+
+### Features
+
+* **Version filter:** SPM-914 version filter is finished ([d625681](https://github.com/RedHatInsights/patchman-ui/commit/d625681d0577413b6665bd5091642acef7603089))
+
 ## [1.24.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.24.1...v1.24.2) (2021-07-19)
 
 
