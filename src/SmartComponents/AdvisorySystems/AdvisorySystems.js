@@ -12,8 +12,8 @@ import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/
 import { fetchAdvisorySystems, exportAdvisorySystemsCSV, exportAdvisorySystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
-    arrayFromObj, buildFilterChips, filterRemediatableSystems,
-    remediationProvider, filterSelectedRowIDs, persistantParams
+    arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatableSystems,
+    remediationProvider, removeUndefinedObjectKeys, persistantParams
 } from '../../Utilities/Helpers';
 import {
     useOnSelect, useRemoveFilter,
@@ -24,6 +24,7 @@ import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
+import { useHistory } from 'react-router-dom';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -31,7 +32,9 @@ const AdvisorySystems = ({ advisoryName }) => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
+    const history = useHistory();
 
+    const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -50,6 +53,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         filter, search, page, perPage, sort } = queryParams;
 
     React.useEffect(() => {
+        apply(decodedParams);
         return () => dispatch(clearInventoryReducer());
     }, []);
 
@@ -86,11 +90,11 @@ const AdvisorySystems = ({ advisoryName }) => {
     const fetchAllData = () =>
         fetchAdvisorySystems({ ...queryParams, id: advisoryName, limit: -1 }).then(filterRemediatableSystems);
 
-    const onSelect = useOnSelect(systems,  selectedRows, fetchAllData, selectRows);
+    const onSelect = useOnSelect(systems, selectedRows, fetchAllData, selectRows);
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
-    const getEntites = useGetEntities(fetchAdvisorySystems, apply, { id: advisoryName });
+    const getEntites = useGetEntities(fetchAdvisorySystems, apply, { id: advisoryName }, history);
 
     const onExport = useOnExport(advisoryName, queryParams, {
         csv: exportAdvisorySystemsCSV,
@@ -99,7 +103,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     return (
         <React.Fragment>
-            {status.hasError && <ErrorHandler code={status.code}/> ||
+            {status.hasError && <ErrorHandler code={status.code} /> ||
                 <InventoryTable
                     disableDefaultColumns
                     isFullView
@@ -119,7 +123,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                         register({
                             ...mergeWithEntities(
                                 inventoryEntitiesReducer(systemsListColumns, modifyInventory),
-                                persistantParams(page, perPage, sort)
+                                persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
                         });
                     }}
@@ -129,10 +133,12 @@ const AdvisorySystems = ({ advisoryName }) => {
                     }}
                     getEntities={getEntites}
                     actions={systemsRowActions(showRemediationModal)}
-                    tableProps = {{ canSelectAll: false,
-                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true }}
+                    tableProps={{
+                        canSelectAll: false,
+                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                    }}
                     filterConfig={filterConfig}
-                    activeFiltersConfig = {activeFiltersConfig}
+                    activeFiltersConfig={activeFiltersConfig}
                     bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
                     dedicatedAction={(<PatchRemediationButton
                         isDisabled={
@@ -142,7 +148,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                             showRemediationModal(
                                 remediationProvider(
                                     advisoryName,
-                                    filterSelectedRowIDs(selectedRows),
+                                    removeUndefinedObjectKeys(selectedRows),
                                     remediationIdentifiers.advisory
                                 )
                             )

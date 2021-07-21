@@ -19,6 +19,13 @@ import {
 } from './constants';
 import { intl } from './IntlProvider';
 
+export const removeUndefinedObjectItems = (originalObject) => {
+    const newObject = JSON.parse(JSON.stringify(originalObject));
+    Object.keys(newObject).forEach(key => newObject[key] === undefined && delete newObject[key]);
+
+    return newObject;
+};
+
 export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
 };
@@ -268,7 +275,7 @@ export const encodeURLParams = parameters => {
     let urlParams = { ...parameters };
     delete urlParams.systemProfile;
     delete urlParams.selectedTags;
-    return encodeParams(urlParams, false);
+    return encodeParams(removeUndefinedObjectItems(urlParams), false);
 };
 
 export const decomposeFilterValue = filterValue => {
@@ -437,7 +444,7 @@ export const createOSColumn = ({ osName, rhsm }) => (rhsm === '' || rhsm === und
     </Tooltip>
 );
 
-export const filterSelectedRowIDs = (selectedRows) => Object.keys(selectedRows).filter(row => selectedRows[row]);
+export const removeUndefinedObjectKeys = (selectedRows) => Object.keys(selectedRows).filter(row => selectedRows[row]);
 
 export const prepareEntitiesParams = (parameters) => {
     const offset = parameters.offset || getOffsetFromPageLimit(parameters.page || 1, parameters.perPage || 20);
@@ -446,23 +453,8 @@ export const prepareEntitiesParams = (parameters) => {
     const apiParams = { ...parameters, offset, limit };
 
     //we need explicitly remove 'undefined' parameters for safety
-    Object.keys(apiParams).forEach(key => apiParams[key] === undefined && delete apiParams[key]);
-
-    return apiParams;
+    return removeUndefinedObjectItems(apiParams);
 };
-
-export const persistantParams = (page, perPage, sort) => (
-    {
-        page: Number(page || 1),
-        perPage: Number(perPage || 20),
-        ...(sort && {
-            sortBy: {
-                key: sort.replace(/^-/, ''),
-                direction: sort.match(/^-/) ? 'desc' : 'asc'
-            }
-        })
-    }
-);
 
 export const filterRemediatableSystems = result => ({ data: result?.data.filter(system => {
     const {
@@ -478,3 +470,18 @@ export const filterRemediatableSystems = result => ({ data: result?.data.filter(
     return !isDisabled;
 })
 });
+
+export const persistantParams = (patchParams, decodedParams) => {
+    const persistantParams = { ...patchParams, ...decodedParams };
+    return (
+        {
+            page: Number(persistantParams.page || 1),
+            perPage: Number(persistantParams.perPage || 20),
+            ...(persistantParams.sort && {
+                sortBy: {
+                    key: persistantParams.sort.replace(/^-/, ''),
+                    direction: persistantParams.sort.match(/^-/) ? 'desc' : 'asc'
+                }
+            })
+        }
+    );};
