@@ -5,7 +5,10 @@ import isDeepEqualReact from 'fast-deep-equal/react';
 import React from 'react';
 import messages from '../Messages';
 import { compoundSortValues, exportNotifications } from './constants';
-import { convertLimitOffset, createSystemsSortBy, getLimitFromPageSize, getOffsetFromPageLimit } from './Helpers';
+import {
+    convertLimitOffset, createSystemsSortBy, getLimitFromPageSize,
+    getOffsetFromPageLimit, encodeURLParams
+} from './Helpers';
 import { intl } from './IntlProvider';
 
 export const useSetPage = (limit, callback) => {
@@ -233,7 +236,7 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
     isDisabled: metadata.total_items === 0 && selectedCount === 0
 });
 
-export const useGetEntities = (fetchApi, apply, config) => {
+export const useGetEntities = (fetchApi, apply, config, history) => {
     const { id, packageName } = config || {};
     const getEntities = async (
         _items,
@@ -257,6 +260,12 @@ export const useGetEntities = (fetchApi, apply, config) => {
             sort
         });
 
+        history.push(encodeURLParams({
+            page,
+            perPage,
+            sort,
+            ...patchParams
+        }));
         return {
             results: items.data.map(row => ({ ...row, ...row.attributes })),
             total: items.meta?.total_items

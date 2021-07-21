@@ -14,7 +14,7 @@ import { fetchPackageSystems, exportPackageSystemsCSV,
     exportPackageSystemsJSON, fetchPackageVersions } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
-    arrayFromObj, buildFilterChips,
+    arrayFromObj, buildFilterChips, decodeQueryparams,
     filterSelectedRowIDs, persistantParams, remediationProviderWithPairs, transformPairs
 } from '../../Utilities/Helpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter } from '../../Utilities/Hooks';
@@ -23,14 +23,18 @@ import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import versionFilter from '../../PresentationalComponents/Filters/VersionFilter';
+import { useHistory } from 'react-router-dom';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
     const [packageVersions, setPackageVersions] = React.useState([]);
+
+    const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -50,6 +54,7 @@ const PackageSystems = ({ packageName }) => {
         filter, search, sort, page, perPage } = queryParams;
 
     React.useEffect(async () => {
+        apply(decodedParams);
         setPackageVersions(await fetchPackageVersions({ package_name: packageName }));
         return () => dispatch(clearInventoryReducer());
     }, []);
@@ -58,7 +63,7 @@ const PackageSystems = ({ packageName }) => {
         dispatch(changePackageSystemsParams(params));
     }
 
-    const [deleteFilters] = useRemoveFilter(filter, apply);
+    const [deleteFilters] = useRemoveFilter({ ...filter, search }, apply);
 
     const filterConfig = {
         items: [
@@ -120,7 +125,7 @@ const PackageSystems = ({ packageName }) => {
         return { data: pairs };
     };
 
-    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName });
+    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, history);
     return (
         <React.Fragment>
             {status.hasError && <ErrorHandler code={status.code} /> || (
@@ -143,7 +148,7 @@ const PackageSystems = ({ packageName }) => {
                         register({
                             ...mergeWithEntities(
                                 inventoryEntitiesReducer(packageSystemsColumns, modifyPackageSystems),
-                                persistantParams(page, perPage, sort)
+                                persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
                         });
 
