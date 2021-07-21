@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React, { Fragment, lazy, Suspense, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
-import NoAccess from './PresentationalComponents/Snippets/NoAccess';
 import { useHistory } from 'react-router-dom';
 
 const Advisories = lazy(() =>
@@ -42,9 +41,9 @@ const PackageDetail = lazy(() =>
     )
 );
 
-const RegisterPage = lazy(() =>
+const NoAccess = lazy(() =>
     import(
-        /* webpackChunkName: "Register" */ './PresentationalComponents/RegisterPage/RegisterPage'
+        /* webpackChunkName: "Register" */ './PresentationalComponents/NoAccessPage/NoAccess'
     )
 );
 export const paths = {
@@ -68,9 +67,9 @@ export const paths = {
         title: '',
         to: '/advisories/:advisoryId/:inventoryId'
     },
-    register: {
+    noaccess: {
         title: '',
-        to: '/register'
+        to: '/noaccess'
     },
     packages: {
         title: 'Packages',
@@ -87,21 +86,27 @@ export const paths = {
 };
 
 export const Routes = (props) => {
-    const [hasPatchAccess, setPatchAccess] = useState(true);
+    const [responseCode, setResponseCode] = useState();
     const history = useHistory();
+
+    const redirectToNoAccess = (statusCode) => {
+        setResponseCode(statusCode);
+        history.replace(paths.noaccess.to);
+    };
 
     React.useEffect(() => {
         const systems = fetchSystems({ limit: 1 });
         systems.then((res) => {
             if (!res.meta) {
-                history.replace(paths.register.to);
+                redirectToNoAccess(res.status);
             }
 
-        }).catch(err => err.status === 401 && setPatchAccess(false));
+        }).catch(err => redirectToNoAccess(err.status));
     }, []);
 
     const path = props.childProps.location.pathname;
-    return hasPatchAccess && (
+
+    return (
         // I recommend discussing with UX some nice loading placeholder
         <Suspense fallback={Fragment}>
             <Switch>
@@ -135,8 +140,8 @@ export const Routes = (props) => {
                 />
                 <Route
                     exact
-                    path={paths.register.to}
-                    component={RegisterPage}
+                    path={paths.noaccess.to}
+                    render={() => <NoAccess code={responseCode}/>}
                 />
                 <Route
                     exact
@@ -153,7 +158,7 @@ export const Routes = (props) => {
                 />
             </Switch>
         </Suspense>
-    ) || <NoAccess /> ;
+    );
 };
 
 Routes.propTypes = {
