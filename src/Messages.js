@@ -199,7 +199,7 @@ export default defineMessages({
     labelsNotAuthorizedTitle: {
         id: 'notAuthorizedTitle',
         description: 'Title for component which shows up when user doesn\'t have permission to view content',
-        defaultMessage: 'You do not have permissions to view or manage Vulnerability'
+        defaultMessage: 'You do not have permissions to view or manage Patch'
     },
     labelsPublicDate: {
         id: 'labelsPublicDate',

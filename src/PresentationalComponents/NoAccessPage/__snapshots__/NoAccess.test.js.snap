@@ -6,9 +6,7 @@ exports[`RegisterPage Should match the snapshot 1`] = `
     title="Patch"
   />
   <Connect(Main)>
-    <div>
-      <NoSystemData />
-    </div>
+    <ErrorHandler />
   </Connect(Main)>
 </Fragment>
 `;
