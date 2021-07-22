@@ -8,7 +8,7 @@ import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changeSystemsParams, clearSystemsStore } from '../../store/Actions/Actions';
+import { changeSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
@@ -41,27 +41,25 @@ const Systems = () => {
     ] = React.useState(() => () => null);
 
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
+    const totalItems = useSelector(
+        ({ entities }) => entities?.total || 0
+    );
+
     const selectedRows = useSelector(
-        ({ entities }) => entities?.selectedRows || []
+        ({ SystemsStore }) => SystemsStore?.selectedRows || []
     );
     const status = useSelector(
         ({ entities }) => entities?.status || {}
     );
     const queryParams = useSelector(
-        ({ entities }) => entities?.queryParams || {}
-    );
-    const systemsParams = useSelector(
-        ({ entities }) => entities?.systemsParams || {}
-    );
-    const totalItems = useSelector(
-        ({ entities }) => entities?.total || 0
+        ({ SystemsStore }) => SystemsStore?.queryParams || {}
     );
 
-    const { systemProfile, selectedTags } = queryParams;
-    const { filter, search, page, perPage, sort } = systemsParams;
+    const { systemProfile, selectedTags,
+        filter, search, page, perPage, sort } = queryParams;
 
     React.useEffect(() => {
-        return () => dispatch(clearSystemsStore());
+        return () => dispatch(clearInventoryReducer());
     }, []);
 
     async function showRemediationModal(data) {
@@ -92,7 +90,7 @@ const Systems = () => {
     };
 
     const fetchAllData = (queryParams) =>
-        fetchSystems({ ...queryParams, ...systemsParams, limit: -1 }).then(filterRemediatableSystems);
+        fetchSystems({ ...queryParams, limit: -1 }).then(filterRemediatableSystems);
 
     const selectRows = (toSelect) => {
         dispatch(
@@ -104,7 +102,7 @@ const Systems = () => {
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
-    const onExport = useOnExport('systems', { ...queryParams, ...systemsParams }, {
+    const onExport = useOnExport('systems', queryParams, {
         csv: exportSystemsCSV,
         json: exportSystemsJSON
     }, dispatch);

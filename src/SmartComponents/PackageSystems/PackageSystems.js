@@ -8,7 +8,7 @@ import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changePackageSystemsParams, clearPackageSystemsStore } from '../../store/Actions/Actions';
+import { changePackageSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchPackageSystems, exportPackageSystemsCSV,
     exportPackageSystemsJSON, fetchPackageVersions } from '../../Utilities/api';
@@ -35,25 +35,23 @@ const PackageSystems = ({ packageName }) => {
     const status = useSelector(
         ({ entities }) => entities?.status || {}
     );
-    const selectedRows = useSelector(
-        ({ entities }) => entities?.selectedRows || []
-    );
-    const queryParams = useSelector(
-        ({ entities }) => entities?.queryParams || {}
-    );
-    const packageSystemsParams = useSelector(
-        ({ entities }) => entities?.packageSystemsParams || {}
-    );
     const totalItems = useSelector(
         ({ entities }) => entities?.total || 0
     );
+    const selectedRows = useSelector(
+        ({ PackageSystemsStore }) => PackageSystemsStore?.selectedRows || []
+    );
+    const queryParams = useSelector(
+        ({ PackageSystemsStore }) => PackageSystemsStore?.queryParams || {}
+    );
 
-    const { systemProfile, selectedTags } = queryParams;
-    const { filter, search, sort, page, perPage } = packageSystemsParams;
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
+    const { systemProfile, selectedTags,
+        filter, search, sort, page, perPage } = queryParams;
+
     React.useEffect(async () => {
         setPackageVersions(await fetchPackageVersions({ package_name: packageName }));
-        return () => dispatch(clearPackageSystemsStore());
+        return () => dispatch(clearInventoryReducer());
     }, []);
 
     function apply(params) {

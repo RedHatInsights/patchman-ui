@@ -166,18 +166,8 @@ export const clearEntitiesStore = () => ({
     payload: []
 });
 
-export const clearSystemsStore = () => ({
-    type: ActionTypes.CLEAR_SYSTEMS_STORE,
-    payload: []
-});
-
-export const clearAffectedSystemsStore = () => ({
-    type: ActionTypes.CLEAR_AFFECTED_SYSTEMS_STORE,
-    payload: []
-});
-
-export const clearPackageSystemsStore = () => ({
-    type: ActionTypes.CLEAR_AFFECTED_SYSTEMS_STORE,
+export const clearInventoryReducer = () => ({
+    type: ActionTypes.CLEAR_INVENTORY_REDUCER,
     payload: []
 });
 
