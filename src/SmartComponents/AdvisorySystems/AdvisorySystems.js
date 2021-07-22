@@ -7,7 +7,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { register } from '../../store';
-import { changeAffectedSystemsParams, clearAffectedSystemsStore } from '../../store/Actions/Actions';
+import { changeAffectedSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems, exportAdvisorySystemsCSV, exportAdvisorySystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
@@ -36,24 +36,21 @@ const AdvisorySystems = ({ advisoryName }) => {
     const status = useSelector(
         ({ entities }) => entities?.status || {}
     );
-    const selectedRows = useSelector(
-        ({ entities }) => entities?.selectedRows || []
-    );
     const totalItems = useSelector(
         ({ entities }) => entities?.total || 0
     );
     const queryParams = useSelector(
-        ({ entities }) => entities?.queryParams || {}
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore?.queryParams || {}
     );
-    const affectedSystemsParams = useSelector(
-        ({ entities }) => entities?.affectedSystemsParams || {}
+    const selectedRows = useSelector(
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore?.selectedRows || []
     );
 
-    const { systemProfile, selectedTags } = queryParams;
-    const { filter, search, page, perPage, sort } = affectedSystemsParams;
+    const { systemProfile, selectedTags,
+        filter, search, page, perPage, sort } = queryParams;
 
     React.useEffect(() => {
-        return () => dispatch(clearAffectedSystemsStore());
+        return () => dispatch(clearInventoryReducer());
     }, []);
 
     function apply(params) {

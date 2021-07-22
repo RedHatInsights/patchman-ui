@@ -11,6 +11,9 @@ import { PackagesListStore } from './Reducers/PackagesListStore';
 import { SystemAdvisoryListStore } from './Reducers/SystemAdvisoryListStore';
 import { SystemDetailStore } from './Reducers/SystemDetailStore';
 import { SystemPackageListStore } from './Reducers/SystemPackageListStore';
+import { SystemsStore } from './Reducers/SystemsStore';
+import { PackageSystemsStore } from './Reducers/PackageSystemsStore';
+import { AdvisorySystemsStore } from './Reducers/AdvisorySystemsStore';
 
 const persistenceMiddleware = store => next => action => {
     if (action.type === 'LOAD_ENTITIES_FULFILLED') {
@@ -36,6 +39,9 @@ registry.register({
     PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
     PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
     CvesListStore: (state = storage.CvesListStore, action) => CvesListStore(state, action),
+    SystemsStore: (state = storage.SystemsStore, action) => SystemsStore(state, action),
+    PackageSystemsStore: (state = storage.PackageSystemsStore, action) => PackageSystemsStore(state, action),
+    AdvisorySystemsStore: (state = storage.AdvisorySystemsStore, action) => AdvisorySystemsStore(state, action),
     notifications: notificationsReducer
 });
 
