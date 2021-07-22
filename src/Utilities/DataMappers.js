@@ -164,6 +164,7 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                 installed_evra: row.installed_evra,
                 available_evra: row.updatable && row.available_evra || row.installed_evra,
                 disableCheckbox: !row.updatable,
+                updatable: row.updatable,
                 upgradable: row.updatable,
                 selected: selectedRows[row.id] !== undefined
             };
