@@ -1,3 +1,10 @@
+## [1.26.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.26.0...v1.26.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* **PackageSystems:** updatable key is added into reducer ([56987ad](https://github.com/RedHatInsights/patchman-ui/commit/56987ad5cdd90bd5cdca15f9710bfb954c81dfa9))
+
 # [1.26.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.25.0...v1.26.0) (2021-07-22)
 
 
