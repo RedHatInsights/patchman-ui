@@ -1,3 +1,17 @@
+# [1.26.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.25.0...v1.26.0) (2021-07-22)
+
+
+### Bug Fixes
+
+* **select:** Disable checkbox on up-to-date systems ([1325ec7](https://github.com/RedHatInsights/patchman-ui/commit/1325ec76ba43a5f5c06c037a4c71113887d22ada))
+* **select:** fix unselection of items on package-systems ([fafcbc4](https://github.com/RedHatInsights/patchman-ui/commit/fafcbc4c3f8d810da2383bf015472f8b67fe4dbf))
+
+
+### Features
+
+* **PackageDetail:** SPM-961 enable remediation ([e8cd664](https://github.com/RedHatInsights/patchman-ui/commit/e8cd664ab3c2c957100f35c4bc7f848f16291b94))
+* **remediation:** Add provider for system-package remediation ([2e52da1](https://github.com/RedHatInsights/patchman-ui/commit/2e52da10b795dfc60479f553b47e6511292b0614))
+
 # [1.25.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.24.2...v1.25.0) (2021-07-19)
 
 
