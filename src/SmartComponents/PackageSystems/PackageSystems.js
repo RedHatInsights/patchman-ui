@@ -92,7 +92,7 @@ const PackageSystems = ({ packageName }) => {
     };
 
     const fetchAllData = () => {
-        return fetchPackageSystems({ package_name: packageName, limit: -1 });
+        return fetchPackageSystems({ ...queryParams, package_name: packageName, limit: -1 });
     };
 
     const selectRows = (toSelect) => {
