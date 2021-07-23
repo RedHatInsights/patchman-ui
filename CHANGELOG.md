@@ -1,3 +1,10 @@
+## [1.26.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.26.1...v1.26.2) (2021-07-23)
+
+
+### Bug Fixes
+
+* **select:** Don't ignore query params in bulk select ([d6ce685](https://github.com/RedHatInsights/patchman-ui/commit/d6ce685338ea2f5156c0884e4aae4403c1efa074))
+
 ## [1.26.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.26.0...v1.26.1) (2021-07-22)
 
 
