@@ -269,6 +269,9 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                             >
                               <h2
                                 className=""
+                                data-ouia-component-id="OUIA-Generated-Text-1"
+                                data-ouia-component-type="PF4/Text"
+                                data-ouia-safe={true}
                                 data-pf-content={true}
                               >
                                 Affected systems
