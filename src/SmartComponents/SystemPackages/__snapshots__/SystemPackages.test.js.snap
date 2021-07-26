@@ -85,7 +85,9 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
           defaultFilters={
             Object {
               "filter": Object {
-                "updatable": "true",
+                "updatable": Array [
+                  "true",
+                ],
               },
             }
           }
@@ -108,8 +110,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   "filterValues": Object {
                     "items": Array [
                       Object {
-                        "label": "All",
-                        "value": "",
+                        "label": "Up-to-date ",
+                        "value": "false",
                       },
                       Object {
                         "label": "Upgradable",
@@ -118,10 +120,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                     ],
                     "onChange": [Function],
                     "placeholder": "Filter by status",
-                    "value": "0",
+                    "value": undefined,
                   },
                   "label": "Status",
-                  "type": "radio",
+                  "type": "checkbox",
                 },
               ],
             }
@@ -280,8 +282,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                     "filterValues": Object {
                       "items": Array [
                         Object {
-                          "label": "All",
-                          "value": "",
+                          "label": "Up-to-date ",
+                          "value": "false",
                         },
                         Object {
                           "label": "Upgradable",
@@ -290,10 +292,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                       ],
                       "onChange": [Function],
                       "placeholder": "Filter by status",
-                      "value": "0",
+                      "value": undefined,
                     },
                     "label": "Status",
-                    "type": "radio",
+                    "type": "checkbox",
                   },
                 ],
               }
@@ -780,8 +782,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                         "filterValues": Object {
                                           "items": Array [
                                             Object {
-                                              "label": "All",
-                                              "value": "",
+                                              "label": "Up-to-date ",
+                                              "value": "false",
                                             },
                                             Object {
                                               "label": "Upgradable",
@@ -790,10 +792,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           ],
                                           "onChange": [Function],
                                           "placeholder": "Filter by status",
-                                          "value": "0",
+                                          "value": undefined,
                                         },
                                         "label": "Status",
-                                        "type": "radio",
+                                        "type": "checkbox",
                                       },
                                     ]
                                   }

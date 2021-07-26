@@ -7,10 +7,6 @@ import messages from '../../Messages';
 const statusFilter = (apply, currentFilter = {}) => {
 
     let { updatable: currentValue } = currentFilter;
-    // Empty string value is not supported by PF Radio at the moment
-    if (currentValue === '' || !currentValue) {
-        currentValue = '0';
-    }
 
     const updatableTypesMap = React.useMemo(
         () =>
@@ -21,12 +17,12 @@ const statusFilter = (apply, currentFilter = {}) => {
         []
     );
     const filterByType = value => {
-        apply({ filter: { updatable: (value !== '0' && value) || '' } });
+        apply({ filter: { updatable: value } });
     };
 
     return {
         label: intl.formatMessage(messages.labelsFiltersStatus),
-        type: conditionalFilterType.radio,
+        type: conditionalFilterType.checkbox,
         filterValues: {
             onChange: (event, value) => {
                 filterByType(value);
