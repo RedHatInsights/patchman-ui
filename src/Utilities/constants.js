@@ -39,11 +39,11 @@ export const storeListDefaults = {
 };
 
 export const systemPackagesDefaultFilters = {
-    filter: { updatable: 'true' }
+    filter: { updatable: ['true'] }
 };
 
 export const packagesListDefaultFilters = {
-    filter: { systems_updatable: 'gt:0' }
+    filter: { systems_updatable: ['gt:0'] }
 };
 
 export const publicDateOptions = [
@@ -144,8 +144,8 @@ export const advisoryTypes = [
 
 export const updatableTypes = [
     {
-        value: '',
-        label: 'All'
+        value: false,
+        label: 'Up-to-date '
     },
     {
         value: true,
@@ -155,8 +155,8 @@ export const updatableTypes = [
 
 export const packagesListUpdatableTypes = [
     {
-        value: '',
-        label: 'All'
+        value: 'eq:0',
+        label: 'Up-to-date '
     },
     {
         value: 'gt:0',

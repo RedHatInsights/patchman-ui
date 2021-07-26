@@ -119,8 +119,8 @@ describe('Custom hooks tests', () => {
 
     it.each`
     filter                    | apply        | selected                                       |result
-    ${{ advisory_type: 2 }}     | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{ id: 1 }] }]} | ${{ filter: { advisory_type: undefined, systems_updatable: "gt:0" } }}
-    ${{ search: "asd" }}        | ${jest.fn()} | ${[{ id: "search" }]}                           | ${{ filter: { systems_updatable: "gt:0" }, search: '' }}
+    ${{ advisory_type: 2 }}     | ${jest.fn()} | ${[{ id: "advisory_type", chips: [{ id: 1 }] }]} | ${{ filter: { advisory_type: undefined, systems_updatable: ["gt:0"] } }}
+    ${{ search: "asd" }}        | ${jest.fn()} | ${[{ id: "search" }]}                           | ${{ filter: { systems_updatable: ["gt:0"] }, search: '' }}
     `('useRemoveFilter: should reset to default filters for $filter while ', ({ filter, apply, result, selected }) => {
         let deleteFilters;
         testHook(() => {
