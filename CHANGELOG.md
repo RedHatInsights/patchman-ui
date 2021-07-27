@@ -1,3 +1,11 @@
+# [1.27.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.26.2...v1.27.0) (2021-07-27)
+
+
+### Features
+
+* **NoAccess:** SPM-968 use shared not-connected component ([61fbea8](https://github.com/RedHatInsights/patchman-ui/commit/61fbea85022bb3c80cbb20f707c9a8c488e10555))
+* **StatusFilter:** SPM-1004 change to checkbox ([8d13cfd](https://github.com/RedHatInsights/patchman-ui/commit/8d13cfd2d6535aa204d127f5a3173c246a7fe527))
+
 ## [1.26.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.26.1...v1.26.2) (2021-07-23)
 
 
