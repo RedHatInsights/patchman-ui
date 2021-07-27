@@ -75,12 +75,13 @@ export const fetchPackagesList = params => {
     const { systems_updatable } = params.filter;
 
     // we have to reset systems_updatable filter to include all filters when we want to show all the data
-    if (Array.isArray(systems_updatable) && systems_updatable.length === 2){
+    if (Array.isArray(systems_updatable) && systems_updatable.length === 2) {
         const paramsWithoutSystemsUpdatable = JSON.parse(JSON.stringify(params));
         delete paramsWithoutSystemsUpdatable.filter.systems_updatable;
 
         return createApiCall('/packages', 'get', paramsWithoutSystemsUpdatable);
     }
+
     return createApiCall('/packages', 'get', params);
 };
 
