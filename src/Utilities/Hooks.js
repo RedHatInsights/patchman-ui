@@ -63,7 +63,7 @@ export const useSortColumn = (columns, callback, offset = 0) => {
 };
 
 export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {} }) => {
-    const removeFilter = React.useCallback((event, selected, resetFilters) => {
+    const removeFilter = React.useCallback((selected, resetFilters, shouldReset) => {
         let newParams = { filter: {} };
         selected.forEach(selectedItem => {
             let { id: categoryId, chips } = selectedItem;
@@ -88,7 +88,7 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
 
         });
 
-        if (resetFilters) {
+        if (shouldReset) {
             newParams = resetFilters(newParams);
         }
 
@@ -96,10 +96,10 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
     });
 
     const deleteFilterGroup = (__, filters) => {
-        removeFilter(__, filters);
+        removeFilter(filters);
     };
 
-    const deleteFilters = (__, selected) => {
+    const deleteFilters = (__, selected, shouldReset) => {
         const resetFilters = (currentFilters) => {
             if (Object.keys(defaultFilters.filter).length > 0) {
                 currentFilters.filter = { ...currentFilters.filter, ...defaultFilters.filter };
@@ -108,7 +108,7 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
             return currentFilters;
         };
 
-        removeFilter(__, selected, resetFilters);
+        removeFilter(selected, resetFilters, shouldReset);
     };
 
     return [deleteFilters, deleteFilterGroup];
