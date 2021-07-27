@@ -126,7 +126,7 @@ describe('Custom hooks tests', () => {
         testHook(() => {
             [deleteFilters] = useRemoveFilter(filter, apply, packagesListDefaultFilters);
         });
-        deleteFilters({}, selected)
+        deleteFilters({}, selected, true)
         expect(apply).toHaveBeenCalledWith(result);
     });
 
