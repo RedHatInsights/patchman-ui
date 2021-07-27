@@ -273,7 +273,6 @@ export const encodeApiParams = parameters => {
 export const encodeURLParams = parameters => {
     delete parameters.id;
     let urlParams = { ...parameters };
-    delete urlParams.systemProfile;
     delete urlParams.selectedTags;
     return encodeParams(removeUndefinedObjectItems(urlParams), false);
 };
