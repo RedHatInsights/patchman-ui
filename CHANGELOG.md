@@ -1,3 +1,11 @@
+## [1.27.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.27.0...v1.27.1) (2021-07-28)
+
+
+### Bug Fixes
+
+* **GlobalFilter:** SPM-1041 tags applied on load ([82c8e0c](https://github.com/RedHatInsights/patchman-ui/commit/82c8e0c0177527fde78c8ba63c3f677f928f8629))
+* **Packages:** SPM-1040 remove status filter with X button ([b9b49af](https://github.com/RedHatInsights/patchman-ui/commit/b9b49af3d79e54d6bd13e2b5fef17a545e70fe86))
+
 # [1.27.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.26.2...v1.27.0) (2021-07-27)
 
 
