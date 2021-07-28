@@ -470,6 +470,8 @@ export const filterRemediatableSystems = result => ({ data: result?.data.filter(
 })
 });
 
+export const filterRemediatablePackageSystems = result => ({ data: result.data.filter(system => system.updatable) });
+
 export const persistantParams = (patchParams, decodedParams) => {
     const persistantParams = { ...patchParams, ...decodedParams };
     return (

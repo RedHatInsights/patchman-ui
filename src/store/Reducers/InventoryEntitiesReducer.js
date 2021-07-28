@@ -54,8 +54,10 @@ export const inventoryEntitiesReducer = (columns, inventoryModifier) => (state =
         case 'LOAD_ENTITIES_FULFILLED':
             return inventoryModifier(columns, newState);
 
-        case 'SELECT_ENTITY':
-            return selectRows(newState, action);
+        case 'SELECT_ENTITY': {
+            const stateAfterSelection = selectRows(newState, action);
+            return inventoryModifier(columns, stateAfterSelection);
+        }
 
         case ActionTypes.CLEAR_INVENTORY_REDUCER:
             return initialState;

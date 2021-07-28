@@ -46,7 +46,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         ({ AdvisorySystemsStore }) => AdvisorySystemsStore?.queryParams || {}
     );
     const selectedRows = useSelector(
-        ({ AdvisorySystemsStore }) => AdvisorySystemsStore?.selectedRows || []
+        ({ entities }) => entities?.selectedRows || []
     );
 
     const { systemProfile, selectedTags,

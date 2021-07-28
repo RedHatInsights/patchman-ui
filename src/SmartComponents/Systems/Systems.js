@@ -17,7 +17,7 @@ import {
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
-    filterSelectedRowIDs, remediationProviderWithPairs,
+    removeUndefinedObjectKeys, remediationProviderWithPairs,
     transformPairs, persistantParams, filterRemediatableSystems, decodeQueryparams
 } from '../../Utilities/Helpers';
 import {
@@ -50,7 +50,7 @@ const Systems = () => {
     );
 
     const selectedRows = useSelector(
-        ({ SystemsStore }) => SystemsStore?.selectedRows || []
+        ({ entities }) => entities?.selectedRows || []
     );
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -176,7 +176,7 @@ const Systems = () => {
                                     onClick={() =>
                                         showRemediationModal(
                                             remediationProviderWithPairs(
-                                                filterSelectedRowIDs(selectedRows),
+                                                removeUndefinedObjectKeys(selectedRows),
                                                 prepareRemediationPairs,
                                                 transformPairs,
                                                 remediationIdentifiers.advisory)
