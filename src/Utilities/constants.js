@@ -200,7 +200,7 @@ export const remediationIdentifiers = {
 
 export const exportNotifications = (format) => ({
     pending: {
-        title: 'Preparing export. Once complete, your download will start automatically.',
+        title: `Preparing export of ${format?.toUpperCase()} format. Once complete, your download will start automatically.`,
         variant: 'info'
     },
     success: {
