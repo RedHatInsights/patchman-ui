@@ -14,8 +14,8 @@ import { fetchPackageSystems, exportPackageSystemsCSV,
     exportPackageSystemsJSON, fetchPackageVersions } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
-    arrayFromObj, buildFilterChips, decodeQueryparams,
-    filterSelectedRowIDs, persistantParams, remediationProviderWithPairs, transformPairs
+    arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatablePackageSystems,
+    removeUndefinedObjectKeys, persistantParams, remediationProviderWithPairs, transformPairs
 } from '../../Utilities/Helpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -43,7 +43,7 @@ const PackageSystems = ({ packageName }) => {
         ({ entities }) => entities?.total || 0
     );
     const selectedRows = useSelector(
-        ({ PackageSystemsStore }) => PackageSystemsStore?.selectedRows || []
+        ({ entities }) => entities?.selectedRows || []
     );
     const queryParams = useSelector(
         ({ PackageSystemsStore }) => PackageSystemsStore?.queryParams || {}
@@ -56,7 +56,12 @@ const PackageSystems = ({ packageName }) => {
     React.useEffect(async () => {
         apply(decodedParams);
         setPackageVersions(await fetchPackageVersions({ package_name: packageName }));
-        return () => dispatch(clearInventoryReducer());
+    }, []);
+
+    React.useEffect(() => {
+        return () => {
+            dispatch(clearInventoryReducer());
+        };
     }, []);
 
     function apply(params) {
@@ -95,7 +100,11 @@ const PackageSystems = ({ packageName }) => {
     };
 
     const fetchAllData = () => {
-        return fetchPackageSystems({ ...queryParams, package_name: packageName, limit: -1 });
+        return fetchPackageSystems({
+            ...queryParams,
+            package_name: packageName,
+            limit: -1 })
+        .then(filterRemediatablePackageSystems);
     };
 
     const selectRows = (toSelect) => {
@@ -114,7 +123,7 @@ const PackageSystems = ({ packageName }) => {
 
     const prepareRemediationPairs = () => {
         let pairs = {};
-        filterSelectedRowIDs(selectedRows).forEach(system => {
+        removeUndefinedObjectKeys(selectedRows).forEach(system => {
             if (pairs[selectedRows[system]]) {
                 pairs[selectedRows[system]].push(system);
             }
@@ -169,7 +178,7 @@ const PackageSystems = ({ packageName }) => {
                             onClick={() =>
                                 showRemediationModal(
                                     remediationProviderWithPairs(
-                                        filterSelectedRowIDs(selectedRows),
+                                        removeUndefinedObjectKeys(selectedRows),
                                         prepareRemediationPairs,
                                         transformPairs,
                                         remediationIdentifiers.package)
