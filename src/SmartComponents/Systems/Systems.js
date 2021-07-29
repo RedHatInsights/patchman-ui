@@ -29,6 +29,7 @@ import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import { useHistory } from 'react-router-dom';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -158,35 +159,38 @@ const Systems = () => {
                                 });
                             }}
                             getEntities={getEntities}
-                            bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
-                            exportConfig={{
-                                isDisabled: totalItems === 0,
-                                onSelect: onExport
-                            }}
                             actions={systemsRowActions(showRemediationModal)}
-                            filterConfig={filterConfig}
-                            activeFiltersConfig={activeFiltersConfig}
                             tableProps={{
                                 areActionsDisabled,
                                 canSelectAll: false,
                                 variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                             }}
-                            dedicatedAction={(
-                                <PatchRemediationButton
-                                    onClick={() =>
-                                        showRemediationModal(
-                                            remediationProviderWithPairs(
-                                                removeUndefinedObjectKeys(selectedRows),
-                                                prepareRemediationPairs,
-                                                transformPairs,
-                                                remediationIdentifiers.advisory)
-                                        )}
-                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                                    isLoading={isRemediationLoading}
-                                    ouia={'toolbar-remediation-button'}
-                                />)}
-
                         >
+                            {status.isLoading !== undefined && <PrimaryToolbar
+                                className="patch-systems-primary-toolbar"
+                                bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                                exportConfig={{
+                                    isDisabled: totalItems === 0,
+                                    onSelect: onExport
+                                }}
+                                filterConfig={filterConfig}
+                                activeFiltersConfig={activeFiltersConfig}
+                                dedicatedAction={(
+                                    <PatchRemediationButton
+                                        onClick={() =>
+                                            showRemediationModal(
+                                                remediationProviderWithPairs(
+                                                    removeUndefinedObjectKeys(selectedRows),
+                                                    prepareRemediationPairs,
+                                                    transformPairs,
+                                                    remediationIdentifiers.advisory)
+                                            )}
+                                        isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                                        isLoading={isRemediationLoading}
+                                        ouia={'toolbar-remediation-button'}
+                                    />
+                                )}
+                            />}
                         </InventoryTable>
                     )
                 }

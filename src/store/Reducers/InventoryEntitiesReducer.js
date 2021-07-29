@@ -8,6 +8,7 @@ const initialState = {
     rows: [],
     entities: [],
     selectedRows: {},
+    status: {},
     page: 1,
     perPage: 20,
     metadata: {
@@ -25,6 +26,7 @@ export const modifyInventory = (columns, state) => {
 
         return {
             ...state,
+            status: { isLoading: false, hasError: false },
             columns: [
                 ...columns || [],
                 ...lastSeenColumn || []
@@ -53,6 +55,14 @@ export const inventoryEntitiesReducer = (columns, inventoryModifier) => (state =
     switch (action.type) {
         case 'LOAD_ENTITIES_FULFILLED':
             return inventoryModifier(columns, newState);
+
+        case 'LOAD_ENTITIES_PENDING':
+            newState.status = { isLoading: true, hasError: false };
+            return newState;
+
+        case 'LOAD_ENTITIES_REJECTED':
+            newState.status = { isLoading: true, hasError: true };
+            return newState;
 
         case 'SELECT_ENTITY': {
             const stateAfterSelection = selectRows(newState, action);
