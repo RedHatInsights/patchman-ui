@@ -24,6 +24,8 @@ import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import versionFilter from '../../PresentationalComponents/Filters/VersionFilter';
 import { useHistory } from 'react-router-dom';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { Fragment } from 'react';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -162,34 +164,41 @@ const PackageSystems = ({ packageName }) => {
                         });
 
                     }}
-                    exportConfig={{
-                        isDisabled: totalItems === 0,
-                        onSelect: onExport
-                    }}
                     tableProps={{
                         canSelectAll: false,
                         onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
-                    filterConfig={filterConfig}
-                    activeFiltersConfig={activeFiltersConfig}
-                    bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
-                    dedicatedAction={(
-                        <PatchRemediationButton
-                            onClick={() =>
-                                showRemediationModal(
-                                    remediationProviderWithPairs(
-                                        removeUndefinedObjectKeys(selectedRows),
-                                        prepareRemediationPairs,
-                                        transformPairs,
-                                        remediationIdentifiers.package)
-
-                                )}
-                            isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                            isLoading={isRemediationLoading}
-                            ouia={'toolbar-remediation-button'}
-                        />)}
                 >
-                    <RemediationModalCmp />
+                    <Fragment>
+                        {status.isLoading !== undefined && <PrimaryToolbar
+                            className="patch-systems-primary-toolbar"
+                            filterConfig={filterConfig}
+                            activeFiltersConfig={activeFiltersConfig}
+                            bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                            dedicatedAction={(
+                                <PatchRemediationButton
+                                    onClick={() =>
+                                        showRemediationModal(
+                                            remediationProviderWithPairs(
+                                                removeUndefinedObjectKeys(selectedRows),
+                                                prepareRemediationPairs,
+                                                transformPairs,
+                                                remediationIdentifiers.package)
+
+                                        )}
+                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                                    isLoading={isRemediationLoading}
+                                    ouia={'toolbar-remediation-button'}
+                                    exportConfig={{
+                                        isDisabled: totalItems === 0,
+                                        onSelect: onExport
+                                    }}
+                                />)}
+                        />}
+                        <RemediationModalCmp />
+
+                    </Fragment>
+
                 </InventoryTable>
             )}
         </React.Fragment>

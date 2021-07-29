@@ -25,6 +25,8 @@ import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { useHistory } from 'react-router-dom';
+import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
+import { Fragment } from 'react';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -127,40 +129,48 @@ const AdvisorySystems = ({ advisoryName }) => {
                             )
                         });
                     }}
-                    exportConfig={{
-                        isDisabled: totalItems === 0,
-                        onSelect: onExport
-                    }}
                     getEntities={getEntites}
                     actions={systemsRowActions(showRemediationModal)}
                     tableProps={{
                         canSelectAll: false,
                         variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
-                    filterConfig={filterConfig}
-                    activeFiltersConfig={activeFiltersConfig}
-                    bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
-                    dedicatedAction={(<PatchRemediationButton
-                        isDisabled={
-                            arrayFromObj(selectedRows).length === 0
-                        }
-                        onClick={() =>
-                            showRemediationModal(
-                                remediationProvider(
-                                    advisoryName,
-                                    removeUndefinedObjectKeys(selectedRows),
-                                    remediationIdentifiers.advisory
-                                )
-                            )
-                        }
-                        ouia={'toolbar-remediation-button'}
-                        isLoading={false}
-                    >
-                        <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                    </PatchRemediationButton>
-                    )}
-                >
-                    <RemediationModalCmp />
+
+                >   <Fragment>
+                        {status.isLoading !== undefined && <PrimaryToolbar
+                            className="patch-systems-primary-toolbar"
+                            filterConfig={filterConfig}
+                            activeFiltersConfig={activeFiltersConfig}
+                            exportConfig={{
+                                isDisabled: totalItems === 0,
+                                onSelect: onExport
+                            }}
+                            bulkSelect={
+                                onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)
+                            }
+                            dedicatedAction={(<PatchRemediationButton
+                                isDisabled={
+                                    arrayFromObj(selectedRows).length === 0
+                                }
+                                onClick={() =>
+                                    showRemediationModal(
+                                        remediationProvider(
+                                            advisoryName,
+                                            removeUndefinedObjectKeys(selectedRows),
+                                            remediationIdentifiers.advisory
+                                        )
+                                    )
+                                }
+                                ouia={'toolbar-remediation-button'}
+                                isLoading={false}
+                            >
+                                <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
+                            </PatchRemediationButton>
+                            )}
+                        />}
+                        <RemediationModalCmp />
+                    </Fragment>
+
                 </InventoryTable>
             }
         </React.Fragment>
