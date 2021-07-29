@@ -1,3 +1,10 @@
+## [1.27.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.27.1...v1.27.2) (2021-07-29)
+
+
+### Bug Fixes
+
+* **Inventory:** problems after rebase are solved ([f03bab8](https://github.com/RedHatInsights/patchman-ui/commit/f03bab8f271c754702687a2afdf383cec3e9dda3))
+
 ## [1.27.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.27.0...v1.27.1) (2021-07-28)
 
 
