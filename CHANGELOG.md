@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.0...v1.28.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* **Clear Filters:** SPM-1020 redundant API call is removed ([3fdd793](https://github.com/RedHatInsights/patchman-ui/commit/3fdd7934cdbc7d93ecff6f64af165034098e6a95))
+
 # [1.28.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.27.2...v1.28.0) (2021-08-02)
 
 
