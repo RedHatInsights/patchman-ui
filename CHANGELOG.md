@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.27.2...v1.28.0) (2021-08-02)
+
+
+### Features
+
+* **webpack:** SPM-1062 Switch to webpack proxy and enable auto reload ([428b052](https://github.com/RedHatInsights/patchman-ui/commit/428b052759e90857d7c900b07f66d7b99462d13e))
+
 ## [1.27.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.27.1...v1.27.2) (2021-07-29)
 
 
