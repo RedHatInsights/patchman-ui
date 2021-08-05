@@ -1,3 +1,11 @@
+## [1.28.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.3...v1.28.4) (2021-08-05)
+
+
+### Bug Fixes
+
+* **PackageSystems:** SPM-1072 missing export button is added ([a4daa83](https://github.com/RedHatInsights/patchman-ui/commit/a4daa8312ffd70216bdbc82ba4c0826279e7ec1a))
+* **Reducers:** SPM-1073 clear details page reducers ([ddd321e](https://github.com/RedHatInsights/patchman-ui/commit/ddd321e8632ded47641e54e182b69d958598588c))
+
 ## [1.28.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.2...v1.28.3) (2021-08-05)
 
 
