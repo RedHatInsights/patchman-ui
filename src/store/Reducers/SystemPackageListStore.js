@@ -22,6 +22,9 @@ export const SystemPackageListStore = (state = { ...storeListDefaults, ...initia
         case ActionTypes.SELECT_SYSTEM_PACKAGES_ROW:
             return selectRows(newState, action);
 
+        case ActionTypes.CLEAR_SYSTEM_PACKAGES:
+            return { ...storeListDefaults, ...initializeState };
+
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);
 
