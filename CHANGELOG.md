@@ -1,3 +1,10 @@
+## [1.28.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.1...v1.28.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* **VersionFilter:** make sure installed_evra type is handled correctly ([9af8966](https://github.com/RedHatInsights/patchman-ui/commit/9af8966159e1ee14c50f60bc4903e541146222d4))
+
 ## [1.28.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.0...v1.28.1) (2021-08-02)
 
 
