@@ -7,7 +7,7 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { register } from '../../store';
-import { changeAffectedSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
+import { changeAffectedSystemsParams, clearInventoryReducer, clearAdvisorySystemsReducer } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchAdvisorySystems, exportAdvisorySystemsCSV, exportAdvisorySystemsJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
@@ -56,7 +56,10 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     React.useEffect(() => {
         apply(decodedParams);
-        return () => dispatch(clearInventoryReducer());
+        return () => {
+            dispatch(clearInventoryReducer());
+            dispatch(clearAdvisorySystemsReducer());
+        };
     }, []);
 
     function apply(params) {

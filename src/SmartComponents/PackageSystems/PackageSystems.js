@@ -8,7 +8,7 @@ import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changePackageSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
+import { changePackageSystemsParams, clearInventoryReducer, clearPackageSystemsReducer } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { fetchPackageSystems, exportPackageSystemsCSV,
     exportPackageSystemsJSON, fetchPackageVersions } from '../../Utilities/api';
@@ -63,6 +63,7 @@ const PackageSystems = ({ packageName }) => {
     React.useEffect(() => {
         return () => {
             dispatch(clearInventoryReducer());
+            dispatch(clearPackageSystemsReducer());
         };
     }, []);
 
