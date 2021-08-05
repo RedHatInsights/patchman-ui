@@ -8,7 +8,7 @@ import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
-import { changeSystemAdvisoryListParams, expandSystemAdvisoryRow,
+import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
 import { fetchApplicableSystemAdvisoriesApi,
     exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON
@@ -50,6 +50,10 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
             createSystemAdvisoriesRows(advisories, expandedRows, selectedRows, metadata),
         [advisories, expandedRows, selectedRows]
     );
+
+    React.useEffect(() => {
+        return () => dispatch(clearSystemAdvisoriesStore());
+    }, []);
 
     React.useEffect(() => {
         if (firstMount) {

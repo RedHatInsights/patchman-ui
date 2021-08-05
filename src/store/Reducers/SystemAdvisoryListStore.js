@@ -30,6 +30,9 @@ export const SystemAdvisoryListStore = (state = storeListDefaults, action) => {
         case ActionTypes.SELECT_SYSTEM_ADVISORY_ROW:
             return selectRows(newState, action);
 
+        case ActionTypes.CLEAR_SYSTEM_ADVISORIES:
+            return storeListDefaults;
+
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);
 

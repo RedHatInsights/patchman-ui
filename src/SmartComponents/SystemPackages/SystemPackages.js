@@ -9,7 +9,7 @@ import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUp
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemPackagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import {
-    changeSystemPackagesParams,
+    changeSystemPackagesParams, clearSystemPackagesStore,
     fetchApplicableSystemPackages, selectSystemPackagesRow
 } from '../../store/Actions/Actions';
 import { fetchApplicablePackagesApi, exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utilities/api';
@@ -45,6 +45,10 @@ const SystemPackages = ({ handleNoSystemData }) => {
             createSystemPackagesRows(packages, selectedRows),
         [packages,  selectedRows]
     );
+
+    React.useEffect(() => {
+        return () => dispatch(clearSystemPackagesStore());
+    }, []);
 
     React.useEffect(()=> {
         dispatch(fetchApplicableSystemPackages({ id: entity.id, ...queryParams }));
