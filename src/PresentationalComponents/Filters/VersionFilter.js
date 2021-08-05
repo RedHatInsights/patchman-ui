@@ -7,7 +7,9 @@ const VersionFilter = (apply, filter, packageVersions) => {
     const [numOptions, setNumOptions] = React.useState(10);
 
     const isSet = filter && filter.installed_evra;
-    const installedEvra = isSet && filter.installed_evra.split(',');
+    const installedEvra = isSet &&
+        (typeof(filter.installed_evra) === 'string' && filter.installed_evra.split(',')
+        || filter.installed_evra);
     const versionList = packageVersions.data && packageVersions.data.sort().map(version => ({ value: version.evra }))
         || [{ value: 'No version is available', disabled: true }];
 
