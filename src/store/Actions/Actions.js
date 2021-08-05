@@ -186,3 +186,13 @@ export const changeAffectedSystemsParams = params => ({
     payload: params
 });
 
+export const clearPackageSystemsReducer = () => ({
+    type: ActionTypes.CLEAR_PACKAGE_SYSTEMS_REDUCER,
+    payload: []
+});
+
+export const clearAdvisorySystemsReducer = () => ({
+    type: ActionTypes.CLEAR_ADVISORY_SYSTEMS_REDUCER,
+    payload: []
+});
+

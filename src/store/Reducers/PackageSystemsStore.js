@@ -22,6 +22,9 @@ export const PackageSystemsStore = (state = initialState, action) => {
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);
 
+        case ActionTypes.CLEAR_PACKAGE_SYSTEMS_REDUCER:
+            return initialState;
+
         default:
             return state;
     }
