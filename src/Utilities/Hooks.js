@@ -78,7 +78,10 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
                     newParams.filter[categoryId] = undefined;
                 }
             } else if (categoryId === 'installed_evra') {
-                const versions = filters[categoryId].split(',');
+                const versions = filters[categoryId] &&
+                    (typeof(filters[categoryId]) === 'string' && filters[categoryId].split(',')
+                        || filters[categoryId]) || [];
+
                 newParams.filter[categoryId] = (versions.length !== 1) && versions
                 .filter(version => !chips.find(chip => chip.value === version)).join(',') || undefined;
             }

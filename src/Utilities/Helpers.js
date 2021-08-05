@@ -313,7 +313,8 @@ export const buildFilterChips = (filters, search) => {
     let filterConfig = [];
     const buildChips = (filters, category) =>{
         if (category === 'installed_evra') {
-            const versions = filters[category] && filters[category].split(',') || [];
+            const versions = filters[category] && (typeof(filters[category]) === 'string' && filters[category].split(',')
+                || filters[category]) || [];
             return versions.map(version => ({
                 name: version,
                 id: category,
