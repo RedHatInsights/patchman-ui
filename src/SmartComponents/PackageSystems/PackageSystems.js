@@ -166,7 +166,7 @@ const PackageSystems = ({ packageName }) => {
                     }}
                     tableProps={{
                         canSelectAll: false,
-                        onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
                 >
                     <Fragment>
@@ -175,6 +175,10 @@ const PackageSystems = ({ packageName }) => {
                             filterConfig={filterConfig}
                             activeFiltersConfig={activeFiltersConfig}
                             bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                            exportConfig={{
+                                isDisabled: totalItems === 0,
+                                onSelect: onExport
+                            }}
                             dedicatedAction={(
                                 <PatchRemediationButton
                                     onClick={() =>
@@ -189,10 +193,6 @@ const PackageSystems = ({ packageName }) => {
                                     isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
                                     isLoading={isRemediationLoading}
                                     ouia={'toolbar-remediation-button'}
-                                    exportConfig={{
-                                        isDisabled: totalItems === 0,
-                                        onSelect: onExport
-                                    }}
                                 />)}
                         />}
                         <RemediationModalCmp />
