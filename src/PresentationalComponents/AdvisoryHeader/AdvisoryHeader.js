@@ -1,22 +1,20 @@
-import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
+import {
+    Button, Grid, GridItem, Stack, StackItem, Text, TextContent,
+
+    TextVariants
+} from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
 import React, { useState } from 'react';
+import messages from '../../Messages';
 import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';
+import CvesModal from '../../SmartComponents/AdvisoryDetail/CvesModal';
 import { getSeverityById, preserveNewlines } from '../../Utilities/Helpers';
+import { intl } from '../../Utilities/IntlProvider';
 import InfoBox from '../InfoBox/InfoBox';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
 import ExternalLink from '../Snippets/ExternalLink';
-import messages from '../../Messages';
-import { intl } from '../../Utilities/IntlProvider';
-import {
-    TextContent,
-    Text,
-    TextVariants,
-    Button
-} from '@patternfly/react-core';
-import CvesModal from '../../SmartComponents/AdvisoryDetail/CvesModal';
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const [CvesInfoModal, setCvesModal] = useState(() => () => null);
@@ -25,6 +23,10 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
 
     const showCvesModal = () => {
         setCvesModal(() => () => <CvesModal cveIds={cves} />);
+    };
+
+    const isRHAdvisory = (name) => {
+        return /^(RHEA|RHBA|RHSA)/.test(name);
     };
 
     return (
@@ -45,26 +47,30 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                         <StackItem>
                             {attributes.public_date && (
                                 <React.Fragment>
-                                    {intl.formatMessage(messages.labelsPublicDate, { date: processDate(
-                                        attributes.public_date
-                                    )
+                                    {intl.formatMessage(messages.labelsPublicDate, {
+                                        date: processDate(
+                                            attributes.public_date
+                                        )
                                     })}
                                     <br />
                                 </React.Fragment>
                             )}
                             {attributes.modified_date && (
                                 <React.Fragment>
-                                    {intl.formatMessage(messages.labelsModifiedDate, { date: processDate(
-                                        attributes.modified_date
-                                    )
+                                    {intl.formatMessage(messages.labelsModifiedDate, {
+                                        date: processDate(
+                                            attributes.modified_date
+                                        )
                                     })}
                                 </React.Fragment>
                             )}
                         </StackItem>
-                        <StackItem>
-                            <ExternalLink link={`https://access.redhat.com/errata/${attributes.id}`}
-                                text={intl.formatMessage(messages.linksViewPackagesAndErrata)} />
-                        </StackItem>
+                        {isRHAdvisory(attributes.id) &&
+                            <StackItem>
+                                <ExternalLink link={`https://access.redhat.com/errata/${attributes.id}`}
+                                    text={intl.formatMessage(messages.linksViewPackagesAndErrata)} />
+                            </StackItem>
+                        }
                     </Stack>
                 </WithLoader>
             </GridItem>
@@ -87,13 +93,13 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                         <Text component={TextVariants.h3}>
                             {intl.formatMessage(messages.labelsCves)}
                         </Text>
-                        <Button variant='link' style={{ padding: 0 }} onClick = {showCvesModal} >
+                        <Button variant='link' style={{ padding: 0 }} onClick={showCvesModal} >
                             {intl.formatMessage(messages.labelsCvesButton, { cvesCount: cves.length })}
                         </Button>
                     </TextContent>
                 </GridItem>
             )}
-            <CvesInfoModal/>
+            <CvesInfoModal />
         </Grid>
     );
 };
