@@ -13,6 +13,8 @@ import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems'
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
+import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const PackageDetail = ({ match }) => {
 
     React.useEffect(() => {
         return () => {
+            dispatch(clearNotifications());
             dispatch(clearPackageDetailStore());
         };
     }, []);
@@ -68,7 +71,9 @@ const PackageDetail = ({ match }) => {
                         </TextContent>
                     </StackItem>
                     <StackItem>
-                        <PackageSystems packageName={packageName}></PackageSystems>
+                        {status.hasError
+                            && < ErrorHandler /> || <PackageSystems packageName={packageName}></PackageSystems>
+                        }
                     </StackItem>
                 </Stack>
             </Main>

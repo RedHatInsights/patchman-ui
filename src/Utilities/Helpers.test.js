@@ -238,7 +238,7 @@ describe('Helpers tests', () => {
     it.each`
     parameters                                              | result
     ${"search=trolo"}                                       | ${{search: "trolo"}}
-    ${"filter%5Badvisory_type%5D=2"}                        | ${{filter: {advisory_type: "2"}}}
+    ${"filter%5Badvisory_type%5D=2"}                        | ${{filter: {advisory_type: 2}}}
     ${"param=text&filter%5Badvisory_type%5D=in%3A1%2C2"}    | ${{filter: {advisory_type: ["1","2"]}, param: "text"}}
     `('decodeQueryparams: Should decodeQueryParams $parameters', ({parameters, result}) => {
         expect(decodeQueryparams(parameters)).toEqual(result);

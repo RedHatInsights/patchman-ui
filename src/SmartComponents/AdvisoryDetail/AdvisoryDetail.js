@@ -13,6 +13,8 @@ import { clearAdvisoryDetailStore, clearEntitiesStore, fetchAvisoryDetails } fro
 import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
+import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -36,6 +38,7 @@ const AdvisoryDetail = ({ match }) => {
         return () => {
             dispatch(clearEntitiesStore());
             dispatch(clearAdvisoryDetailStore());
+            dispatch(clearNotifications());
         };
     }, []);
 
@@ -70,7 +73,9 @@ const AdvisoryDetail = ({ match }) => {
                         </TextContent>
                     </StackItem>
                     <StackItem>
-                        <AdvisorySystems advisoryName={advisoryName} />
+                        {status.hasError
+                            && < ErrorHandler />
+                            || <AdvisorySystems advisoryName={advisoryName} />}
                     </StackItem>
                 </Stack>
             </Main>

@@ -14,6 +14,10 @@ const ErrorHandler = ({ code, ErrorState, EmptyState }) => {
     switch (code) {
         case 204:
             return <NotConnected />;
+
+        case 400:
+            return <Unavailable />;
+
         case 401:
             return <NotAuthorized
                 icon={LockIcon}
