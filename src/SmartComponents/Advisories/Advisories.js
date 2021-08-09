@@ -24,8 +24,12 @@ import {
     arrayFromObj, createSortBy, decodeQueryparams,
     encodeURLParams, getRowIdByIndexExpandable, remediationProviderWithPairs, transformPairs
 } from '../../Utilities/Helpers';
-import { setPageTitle, useOnExport, useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import {
+    setPageTitle, useDeepCompareEffect, useOnExport,
+    useOnSelect, usePerPageSelect, useSetPage, useSortColumn
+} from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
+import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 const Advisories = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
@@ -60,6 +64,12 @@ const Advisories = ({ history }) => {
     );
 
     React.useEffect(() => {
+        return () => {
+            dispatch(clearNotifications());
+        };
+    }, []);
+
+    useDeepCompareEffect(() => {
         if (firstMount) {
             apply(decodeQueryparams(history.location.search));
             setFirstMount(false);
@@ -67,7 +77,7 @@ const Advisories = ({ history }) => {
             history.push(encodeURLParams(queryParams));
             dispatch(fetchApplicableAdvisories(queryParams));
         }
-    }, [queryParams]);
+    }, [queryParams, firstMount]);
 
     const onCollapse = React.useCallback((_, rowId, value) =>
         dispatch(

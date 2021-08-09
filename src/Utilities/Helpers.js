@@ -278,7 +278,7 @@ export const encodeURLParams = parameters => {
 };
 
 export const decomposeFilterValue = filterValue => {
-    if (filterValue.startsWith('in:')) {
+    if (typeof(filterValue) === 'string' && filterValue.startsWith('in:')) {
         const values = filterValue.slice(3);
         return values.split(',');
     }
@@ -291,17 +291,18 @@ export const decodeQueryparams = queryString => {
     const res = {};
     Object.keys(parsed).forEach(key => {
         if (!key.startsWith('filter[system_profile]')) {
-            const value = parsed[key];
+            const convertedToInt = parseInt(parsed[key], 10);
+            const typeHandledParam = isNaN(convertedToInt) ? parsed[key] : convertedToInt;
             const bracketIndex = key.search(/\[.*\]/);
             if (bracketIndex > 0) {
                 const objParent = key.slice(0, bracketIndex);
                 const objKey = key.slice(bracketIndex + 1, -1);
                 res[objParent] = {
                     ...res[objParent],
-                    [objKey]: decomposeFilterValue(value)
+                    [objKey]: decomposeFilterValue(typeHandledParam)
                 };
             } else {
-                res[key] = value;
+                res[key] = typeHandledParam;
             }
         }
     });

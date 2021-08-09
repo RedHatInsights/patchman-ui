@@ -14,17 +14,15 @@ export const fetchApplicableSystemAdvisories = params => ({
     type: ActionTypes.FETCH_APPLICABLE_SYSTEM_ADVISORIES,
     payload: new Promise(resolve => {
         resolve(fetchApplicableSystemAdvisoriesApi(params));
-    }).then(result => result),
-    meta: {
-        noError: true // Handle errors manually!
-    }
+    }).then(result => result)
 });
 
 export const fetchAvisoryDetails = params => ({
     type: ActionTypes.FETCH_ADVISORY_DETAILS,
     payload: new Promise(resolve => {
         resolve(fetchAdvisoryDetailsApi(params));
-    }).then(result => result)
+    }).then(result => result),
+    noError: true
 });
 
 export const fetchPackageDetails = params => ({
@@ -158,7 +156,8 @@ export const fetchSystemDetailsAction = params => ({
     type: ActionTypes.FETCH_SYSTEM_DETAIL,
     payload: new Promise(resolve => {
         resolve(fetchSystemDetails(params));
-    }).then(result => result)
+    }).then(result => result),
+    meta: { noError: true }
 });
 
 export const clearEntitiesStore = () => ({

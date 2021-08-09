@@ -12,6 +12,7 @@ import { InventoryDetailHead, AppInfo, DetailWrapper } from '@redhat-cloud-servi
 import { Alert } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import propTypes from 'prop-types';
+import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 const InventoryDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -23,7 +24,12 @@ const InventoryDetail = ({ match }) => {
         ({ entityDetails }) => entityDetails && entityDetails.hasThirdPartyRepo
     );
     const entityId = match.params?.inventoryId;
-    useEffect(() => { dispatch(fetchSystemDetailsAction(entityId)); }, []);
+    useEffect(() => {
+        dispatch(fetchSystemDetailsAction(entityId));
+        return () => {
+            dispatch(clearNotifications());
+        };
+    }, []);
 
     const pageTitle = entityDetails && `${entityDetails.display_name} - ${intl.formatMessage(messages.titlesSystems)}`;
     setPageTitle(pageTitle);

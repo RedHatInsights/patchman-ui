@@ -12,7 +12,8 @@ import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api';
 import { packagesListDefaultFilters } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
-import { setPageTitle, useOnExport, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { setPageTitle, useOnExport, usePerPageSelect,
+    useSetPage, useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { useHistory } from 'react-router-dom';
 
@@ -37,7 +38,7 @@ const Packages = () => {
         ({ PackagesListStore }) => PackagesListStore.queryParams
     );
 
-    React.useEffect(() => {
+    useDeepCompareEffect(() => {
         if (firstMount) {
             apply(decodeQueryparams(history.location.search));
             setFirstMount(false);
@@ -45,7 +46,7 @@ const Packages = () => {
             history.push(encodeURLParams(queryParams));
             dispatch(fetchPackagesAction(queryParams));
         }
-    }, [queryParams]);
+    }, [queryParams, firstMount]);
 
     function apply(params) {
         dispatch(changePackagesListParams(params));
