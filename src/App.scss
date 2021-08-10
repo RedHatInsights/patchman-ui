@@ -1,11 +1,11 @@
 // Importing Global Variables
-@import '~@redhat-cloud-services/frontend-components-utilities/styles/_all';
-@import '~@redhat-cloud-services/frontend-components/index.css';
-@import '~@redhat-cloud-services/frontend-components-notifications/index.css';
+@import "~@redhat-cloud-services/frontend-components-utilities/styles/_all";
+@import "~@redhat-cloud-services/frontend-components/index.css";
+@import "~@redhat-cloud-services/frontend-components-notifications/index.css";
 
 table.patchCompactInventory {
     .ins-composed-col {
-       font-size: var(--pf-c-table--m-compact--FontSize);
+        font-size: var(--pf-c-table--m-compact--FontSize);
     }
 }
 
@@ -13,12 +13,15 @@ table.patchCompactInventory {
     overflow: inherit !important;
 }
 
-.patch-root .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items) .pf-c-toolbar__content .pf-c-toolbar__item:last-child {
+.patch-root
+    .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items)
+    .pf-c-toolbar__content
+    .pf-c-toolbar__item:last-child {
     min-width: unset !important;
 }
 
 .patch-systems-primary-toolbar {
     .pf-c-toolbar__content.pf-m-hidden {
-        display: none
+        display: none;
     }
 }

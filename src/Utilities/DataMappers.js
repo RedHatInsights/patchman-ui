@@ -8,7 +8,7 @@ import { DescriptionWithLink } from '../PresentationalComponents/Snippets/Descri
 import { EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
-import { createUpgradableColumn, handlePatchLink } from './Helpers';
+import { createUpgradableColumn, handlePatchLink, handleLongSynopsis } from './Helpers';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -20,7 +20,9 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                     selected: selectedRows[row.id] !== undefined,
                     cells: [
                         { title: handlePatchLink(entityTypes.advisories, row.id) },
-                        row.attributes.synopsis,
+                        {
+                            title: handleLongSynopsis(row.attributes.synopsis)
+                        },
                         {
                             title: (
                                 <AdvisoryType
@@ -78,7 +80,9 @@ export const createSystemAdvisoriesRows = (
                     selected: selectedRows[row.id] !== undefined,
                     cells: [
                         { title: handlePatchLink(entityTypes.advisories, row.id) },
-                        row.attributes.synopsis,
+                        {
+                            title: handleLongSynopsis(row.attributes.synopsis)
+                        },
                         {
                             title: (
                                 <AdvisoryType

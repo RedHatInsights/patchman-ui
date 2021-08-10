@@ -1,4 +1,4 @@
-import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
+import { Flex, FlexItem } from '@patternfly/react-core';
 import {
     BugIcon, CheckIcon,
     EnhancementIcon, InfoCircleIcon, LongArrowAltUpIcon,
@@ -18,6 +18,8 @@ import {
     filterCategories
 } from './constants';
 import { intl } from './IntlProvider';
+import { Tooltip } from '@patternfly/react-core';
+import LinesEllipsis from 'react-lines-ellipsis';
 
 export const removeUndefinedObjectItems = (originalObject) => {
     const newObject = JSON.parse(JSON.stringify(originalObject));
@@ -488,3 +490,15 @@ export const persistantParams = (patchParams, decodedParams) => {
             })
         }
     );};
+
+export const handleLongSynopsis = (synopsis) => { console.log(synopsis);
+    return (
+        <LinesEllipsis
+            text={synopsis}
+            maxLine='1'
+            ellipsis='(...)'
+            trimRight
+            basedOn='letters'
+        />
+    );
+};
