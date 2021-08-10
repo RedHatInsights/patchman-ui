@@ -301,6 +301,11 @@ export default defineMessages({
         description: 'system up to date page body',
         defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
     },
+    textEmptyStateBody: {
+        id: 'textEmptyStateBody',
+        description: 'text for the Empty state body',
+        defaultMessage: 'To continue, edit your filter settings and search again.'
+    },
     textLockVersionTooltip: {
         id: 'textLockVersionTooltip',
         description: 'Tooltip text for vesrion lock column',

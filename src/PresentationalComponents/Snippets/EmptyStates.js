@@ -1,5 +1,6 @@
 import {
     EmptyState,
+    EmptyStateBody,
     EmptyStateIcon,
     EmptyStateVariant,
     Title
@@ -11,10 +12,12 @@ import messages from '../../Messages';
 
 export const EmptyAdvisoryList = () => (
     <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateIcon icon={SearchIcon} />
         <Title headingLevel="h5" size="lg">
             {intl.formatMessage(messages.statesNoMatchingAdvisories)}
         </Title>
+        <EmptyStateBody>
+            {intl.formatMessage(messages.textEmptyStateBody)}
+        </EmptyStateBody>
     </EmptyState>
 );
 
@@ -24,6 +27,9 @@ export const EmptyPackagesList = () => (
         <Title headingLevel="h5" size="lg">
             {intl.formatMessage(messages.statesNoMatchingPackages)}
         </Title>
+        <EmptyStateBody>
+            {intl.formatMessage(messages.textEmptyStateBody)}
+        </EmptyStateBody>
     </EmptyState>
 );
 
@@ -33,5 +39,8 @@ export const EmptyCvesList = () => (
         <Title headingLevel="h5" size="lg">
             {intl.formatMessage(messages.statesNoMatchingCve)}
         </Title>
+        <EmptyStateBody>
+            {intl.formatMessage(messages.textEmptyStateBody)}
+        </EmptyStateBody>
     </EmptyState>
 );

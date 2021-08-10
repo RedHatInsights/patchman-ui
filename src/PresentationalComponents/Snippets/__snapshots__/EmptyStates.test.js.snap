@@ -4,15 +4,15 @@ exports[`EmptyAdvisoryList Should match the snapshot 1`] = `
 <EmptyState
   variant="full"
 >
-  <EmptyStateIcon
-    icon={[Function]}
-  />
   <Title
     headingLevel="h5"
     size="lg"
   >
     No matching advisories found
   </Title>
+  <EmptyStateBody>
+    To continue, edit your filter settings and search again.
+  </EmptyStateBody>
 </EmptyState>
 `;
 
@@ -29,5 +29,8 @@ exports[`EmptyPackagesList Should match the snapshot 1`] = `
   >
     No matching packages found
   </Title>
+  <EmptyStateBody>
+    To continue, edit your filter settings and search again.
+  </EmptyStateBody>
 </EmptyState>
 `;
