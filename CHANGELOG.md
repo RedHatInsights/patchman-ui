@@ -1,3 +1,10 @@
+## [1.28.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.4...v1.28.5) (2021-08-10)
+
+
+### Bug Fixes
+
+* **advisoryDetail:** SPM-1080 don't show link to errata pages for non-RH content ([d3427d6](https://github.com/RedHatInsights/patchman-ui/commit/d3427d6f7bbeccf0f67830e2b04a54077105cc21))
+
 ## [1.28.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.3...v1.28.4) (2021-08-05)
 
 
