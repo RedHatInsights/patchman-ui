@@ -3,14 +3,6 @@
 @import '~@redhat-cloud-services/frontend-components/index.css';
 @import '~@redhat-cloud-services/frontend-components-notifications/index.css';
 
-.remediationButtonPatch {
-    &:disabled {
-        svg {
-            color: white;
-        }
-    }
-}
-
 table.patchCompactInventory {
     .ins-composed-col {
        font-size: var(--pf-c-table--m-compact--FontSize);
