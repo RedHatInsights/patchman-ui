@@ -6,7 +6,7 @@ import SystemPackages from '../SystemPackages/SystemPackages';
 import './SystemDetail.scss';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
+import { NotConnected } from '@redhat-cloud-services/frontend-components/NotConnected';
 import propTypes from 'prop-types';
 
 const SystemDetail = ({ isInventoryApp }) => {
@@ -20,7 +20,7 @@ const SystemDetail = ({ isInventoryApp }) => {
 
     const handleNoSystemData = () => {
         isInventoryApp && setTabsHidden(prevTabsHidden => !prevTabsHidden);
-        return isInventoryApp && null || <NoSystemData />;
+        return isInventoryApp && null || <NotConnected />;
     };
 
     return !entity.id ? null : (!areTabsHidden && (
@@ -40,7 +40,7 @@ const SystemDetail = ({ isInventoryApp }) => {
                 <SystemPackages handleNoSystemData={handleNoSystemData}/>
             </Tab>
         </Tabs>
-    )  || <NoSystemData/>);
+    ) || <NotConnected/>);
 };
 
 SystemDetail.propTypes = {

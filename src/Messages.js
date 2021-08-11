@@ -251,11 +251,6 @@ export default defineMessages({
         description: 'A link label to access.redhat.com ',
         defaultMessage: 'View packages and errata at access.redhat.com'
     },
-    statesActivateInsights: {
-        id: 'statesActivateInsights',
-        description: 'no system data page body',
-        defaultMessage: 'Activate the Insights client'
-    },
     statesError: {
         id: 'statesError',
         description: 'Label',
@@ -285,11 +280,6 @@ export default defineMessages({
         id: 'statesNoMatchingPackages',
         description: 'Label',
         defaultMessage: 'No matching packages found'
-    },
-    statesPatchNotConfigured: {
-        id: 'statesPatchNotConfigured',
-        description: 'no system data page title',
-        defaultMessage: 'Patch is not yet configured'
     },
     statesRequiresPatchPermissions: {
         id: 'statesRequiresPatchPermissions',
