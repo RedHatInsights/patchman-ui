@@ -87,7 +87,6 @@ exports[`TableView TableView 1`] = `
         "perPage": undefined,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="Patch table view"
@@ -209,7 +208,6 @@ exports[`TableView TableView 2`] = `
         "perPage": undefined,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="Patch table view"
@@ -331,7 +329,6 @@ exports[`TableView test table props TableView 1`] = `
         "perPage": undefined,
       }
     }
-    toggleIsExpanded={[Function]}
   />
   <Table
     aria-label="Patch table view"

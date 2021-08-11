@@ -311,15 +311,16 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                 "perPage": 25,
               }
             }
-            toggleIsExpanded={[Function]}
           >
             <Toolbar
               className=" ins-c-primary-toolbar"
               id="ins-primary-data-toolbar"
-              toggleIsExpanded={[Function]}
             >
               <div
                 className="pf-c-toolbar  ins-c-primary-toolbar"
+                data-ouia-component-id="OUIA-Generated-Toolbar-1"
+                data-ouia-component-type="PF4/Toolbar"
+                data-ouia-safe={true}
                 id="ins-primary-data-toolbar"
               >
                 <ToolbarContent
@@ -799,6 +800,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       },
                                     ]
                                   }
+                                  useMobileLayout={false}
                                   value=""
                                 >
                                   <Split
@@ -1175,6 +1177,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                 isRequired={false}
                                                 onChange={[Function]}
                                                 onKeyDown={[Function]}
+                                                ouiaSafe={true}
                                                 placeholder="Filter by name or summary"
                                                 type="text"
                                                 validated="default"
@@ -1185,7 +1188,9 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   aria-invalid={false}
                                                   aria-label="search-field"
                                                   className="pf-c-form-control ins-c-conditional-filter "
+                                                  data-ouia-component-id="OUIA-Generated-TextInputBase-1"
                                                   data-ouia-component-type="PF4/TextInput"
+                                                  data-ouia-safe={true}
                                                   disabled={false}
                                                   onBlur={[Function]}
                                                   onChange={[Function]}
@@ -2592,6 +2597,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   }
                   clearFiltersButtonText="Clear all filters"
                   collapseListedFiltersBreakpoint="lg"
+                  isExpanded={false}
                   numberOfFilters={0}
                   showClearFiltersButton={false}
                 >
