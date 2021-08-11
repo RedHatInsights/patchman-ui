@@ -9,7 +9,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { fetchApplicablePackagesApi } from '../../Utilities/api';
 import { remediationProvider } from '../../Utilities/Helpers';
-import { NoSystemData } from '../../PresentationalComponents/Snippets/NoSystemData';
+import { NotConnected } from '@redhat-cloud-services/frontend-components/NotConnected';
+
 /* eslint-disable */
 initMocks()
 
@@ -141,7 +142,7 @@ describe('SystemPackages.js', () => {
         expect(tempWrapper.find('SystemUpToDate')).toBeTruthy();
     });
 
-    it('Should display NoSystemData', () => {
+    it('Should display NotConnected', () => {
         const notFoundState = {
             ...mockState,
             status: { code: 403, isLoading: false, hasError: true },
@@ -158,9 +159,9 @@ describe('SystemPackages.js', () => {
         
         const tempStore = initStore(notFoundState);
         const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages  handleNoSystemData= { () => <NoSystemData /> }/></Router>
+            <Router><SystemPackages handleNoSystemData={() => <NotConnected /> }/></Router>
         </Provider>);
-         expect(tempWrapper.find('NoSystemData')).toBeTruthy();
+        expect(tempWrapper.find('NotConnected')).toBeTruthy();
    
     });
 });
