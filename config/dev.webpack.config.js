@@ -3,7 +3,7 @@ const { resolve } = require('path');
 const config = require('@redhat-cloud-services/frontend-components-config');
 
 const insightsProxy = {
-    https: false,
+    https: true,
     port: process.env.FRONTEND_PORT ? process.env.FRONTEND_PORT : '8002',
     ...(process.env.BETA && { deployment: 'beta/apps' })
 };
