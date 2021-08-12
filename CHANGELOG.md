@@ -1,3 +1,15 @@
+# [1.29.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.5...v1.29.0) (2021-08-12)
+
+
+### Bug Fixes
+
+* **Notifications:** do not fire multiple notifications ([6e2d87c](https://github.com/RedHatInsights/patchman-ui/commit/6e2d87cca8ebef2f41ccca8ab240d1320e08fad4))
+
+
+### Features
+
+* **remediation:** SPM-1050 redesign remediation button ([20bc20c](https://github.com/RedHatInsights/patchman-ui/commit/20bc20ca524a158e54f43003e5b721993ab58314))
+
 ## [1.28.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.4...v1.28.5) (2021-08-10)
 
 
