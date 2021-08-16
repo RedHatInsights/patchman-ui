@@ -1,3 +1,10 @@
+# [1.30.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.29.0...v1.30.0) (2021-08-16)
+
+
+### Features
+
+* **NoAccess:** SPM-968 use shared not-connected component ([e4c9186](https://github.com/RedHatInsights/patchman-ui/commit/e4c9186825844db5554574285ea4937cf06d6c69))
+
 # [1.29.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.28.5...v1.29.0) (2021-08-12)
 
 
