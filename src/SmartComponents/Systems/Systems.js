@@ -3,6 +3,7 @@ import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inven
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import Header from '../../PresentationalComponents/Header/Header';
@@ -17,8 +18,9 @@ import {
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
-    removeUndefinedObjectKeys, remediationProviderWithPairs,
-    transformPairs, persistantParams, filterRemediatableSystems, decodeQueryparams
+
+    decodeQueryparams, filterRemediatableSystems, persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys,
+    transformPairs
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
@@ -28,8 +30,6 @@ import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
-import { useHistory } from 'react-router-dom';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -165,33 +165,30 @@ const Systems = () => {
                                 canSelectAll: false,
                                 variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                             }}
-                        >
-                            {status.isLoading !== undefined && <PrimaryToolbar
-                                className="patch-systems-primary-toolbar"
-                                bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
-                                exportConfig={{
-                                    isDisabled: totalItems === 0,
-                                    onSelect: onExport
-                                }}
-                                filterConfig={filterConfig}
-                                activeFiltersConfig={activeFiltersConfig}
-                                dedicatedAction={(
-                                    <PatchRemediationButton
-                                        onClick={() =>
-                                            showRemediationModal(
-                                                remediationProviderWithPairs(
-                                                    removeUndefinedObjectKeys(selectedRows),
-                                                    prepareRemediationPairs,
-                                                    transformPairs,
-                                                    remediationIdentifiers.advisory)
-                                            )}
-                                        isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                                        isLoading={isRemediationLoading}
-                                        ouia={'toolbar-remediation-button'}
-                                    />
-                                )}
-                            />}
-                        </InventoryTable>
+                            bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                            exportConfig={{
+                                isDisabled: totalItems === 0,
+                                onSelect: onExport
+                            }}
+                            filterConfig={filterConfig}
+                            activeFiltersConfig={activeFiltersConfig}
+                            dedicatedAction={(
+                                <PatchRemediationButton
+                                    onClick={() =>
+                                        showRemediationModal(
+                                            remediationProviderWithPairs(
+                                                removeUndefinedObjectKeys(selectedRows),
+                                                prepareRemediationPairs,
+                                                transformPairs,
+                                                remediationIdentifiers.advisory)
+                                        )}
+                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                                    isLoading={isRemediationLoading}
+                                    ouia={'toolbar-remediation-button'}
+                                />
+                            )}
+                        />
+
                     )
                 }
             </Main>

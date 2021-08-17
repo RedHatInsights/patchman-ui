@@ -3,29 +3,30 @@ import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inven
 import propTypes from 'prop-types';
 import React from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
+import versionFilter from '../../PresentationalComponents/Filters/VersionFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
 import { changePackageSystemsParams, clearInventoryReducer, clearPackageSystemsReducer } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
-import { fetchPackageSystems, exportPackageSystemsCSV,
-    exportPackageSystemsJSON, fetchPackageVersions } from '../../Utilities/api';
+import {
+    exportPackageSystemsCSV,
+    exportPackageSystemsJSON, fetchPackageSystems,
+    fetchPackageVersions
+} from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatablePackageSystems,
-    removeUndefinedObjectKeys, persistantParams, remediationProviderWithPairs, transformPairs
+    persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys, transformPairs
 } from '../../Utilities/Helpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
-import versionFilter from '../../PresentationalComponents/Filters/VersionFilter';
-import { useHistory } from 'react-router-dom';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
-import { Fragment } from 'react';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -106,8 +107,9 @@ const PackageSystems = ({ packageName }) => {
         return fetchPackageSystems({
             ...queryParams,
             package_name: packageName,
-            limit: -1 })
-        .then(filterRemediatablePackageSystems);
+            limit: -1
+        })
+            .then(filterRemediatablePackageSystems);
     };
 
     const selectRows = (toSelect) => {
@@ -169,38 +171,29 @@ const PackageSystems = ({ packageName }) => {
                         canSelectAll: false,
                         onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
-                >
-                    <Fragment>
-                        {status.isLoading !== undefined && <PrimaryToolbar
-                            className="patch-systems-primary-toolbar"
-                            filterConfig={filterConfig}
-                            activeFiltersConfig={activeFiltersConfig}
-                            bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
-                            exportConfig={{
-                                isDisabled: totalItems === 0,
-                                onSelect: onExport
-                            }}
-                            dedicatedAction={(
-                                <PatchRemediationButton
-                                    onClick={() =>
-                                        showRemediationModal(
-                                            remediationProviderWithPairs(
-                                                removeUndefinedObjectKeys(selectedRows),
-                                                prepareRemediationPairs,
-                                                transformPairs,
-                                                remediationIdentifiers.package)
+                    filterConfig={filterConfig}
+                    activeFiltersConfig={activeFiltersConfig}
+                    bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                    exportConfig={{
+                        isDisabled: totalItems === 0,
+                        onSelect: onExport
+                    }}
+                    dedicatedAction={(
+                        <PatchRemediationButton
+                            onClick={() =>
+                                showRemediationModal(
+                                    remediationProviderWithPairs(
+                                        removeUndefinedObjectKeys(selectedRows),
+                                        prepareRemediationPairs,
+                                        transformPairs,
+                                        remediationIdentifiers.package)
 
-                                        )}
-                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                                    isLoading={isRemediationLoading}
-                                    ouia={'toolbar-remediation-button'}
-                                />)}
-                        />}
-                        <RemediationModalCmp />
-
-                    </Fragment>
-
-                </InventoryTable>
+                                )}
+                            isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                            isLoading={isRemediationLoading}
+                            ouia={'toolbar-remediation-button'}
+                        />)}
+                />
             )}
         </React.Fragment>
     );
