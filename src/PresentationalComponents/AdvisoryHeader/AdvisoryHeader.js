@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import messages from '../../Messages';
 import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';
 import CvesModal from '../../SmartComponents/AdvisoryDetail/CvesModal';
-import { getSeverityById, preserveNewlines } from '../../Utilities/Helpers';
+import { getSeverityById, isRHAdvisory, preserveNewlines } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import InfoBox from '../InfoBox/InfoBox';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
@@ -23,10 +23,6 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
 
     const showCvesModal = () => {
         setCvesModal(() => () => <CvesModal cveIds={cves} />);
-    };
-
-    const isRHAdvisory = (name) => {
-        return /^(RHEA|RHBA|RHSA)/.test(name);
     };
 
     return (

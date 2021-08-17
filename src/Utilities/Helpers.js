@@ -1,4 +1,4 @@
-import { Flex, FlexItem } from '@patternfly/react-core';
+import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import {
     BugIcon, CheckIcon,
     EnhancementIcon, InfoCircleIcon, LongArrowAltUpIcon,
@@ -8,6 +8,7 @@ import { SortByDirection } from '@patternfly/react-table/dist/js';
 import findIndex from 'lodash/findIndex';
 import qs from 'query-string';
 import React from 'react';
+import LinesEllipsis from 'react-lines-ellipsis';
 import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
@@ -18,8 +19,6 @@ import {
     filterCategories
 } from './constants';
 import { intl } from './IntlProvider';
-import { Tooltip } from '@patternfly/react-core';
-import LinesEllipsis from 'react-lines-ellipsis';
 
 export const removeUndefinedObjectItems = (originalObject) => {
     const newObject = JSON.parse(JSON.stringify(originalObject));
@@ -314,7 +313,7 @@ export const decodeQueryparams = queryString => {
 export const buildFilterChips = (filters, search) => {
 
     let filterConfig = [];
-    const buildChips = (filters, category) =>{
+    const buildChips = (filters, category) => {
         if (category === 'installed_evra') {
             const versions = filters[category] && (typeof(filters[category]) === 'string' && filters[category].split(',')
                 || filters[category]) || [];
@@ -459,19 +458,20 @@ export const prepareEntitiesParams = (parameters) => {
     return removeUndefinedObjectItems(apiParams);
 };
 
-export const filterRemediatableSystems = result => ({ data: result?.data.filter(system => {
-    const {
-        packages_installed: installedPckg,
-        packages_updatable: updatablePckg,
-        rhba_count: rhba,
-        rhsa_count: rhsa,
-        rhea_count: rhea
-    } = system.attributes || {};
+export const filterRemediatableSystems = result => ({
+    data: result?.data.filter(system => {
+        const {
+            packages_installed: installedPckg,
+            packages_updatable: updatablePckg,
+            rhba_count: rhba,
+            rhsa_count: rhsa,
+            rhea_count: rhea
+        } = system.attributes || {};
 
-    const isDisabled = updatablePckg === 0 || [installedPckg, rhba, rhsa, rhea].every(count => count === 0);
+        const isDisabled = updatablePckg === 0 || [installedPckg, rhba, rhsa, rhea].every(count => count === 0);
 
-    return !isDisabled;
-})
+        return !isDisabled;
+    })
 });
 
 export const filterRemediatablePackageSystems = result => ({ data: result.data.filter(system => system.updatable) });
@@ -489,9 +489,10 @@ export const persistantParams = (patchParams, decodedParams) => {
                 }
             })
         }
-    );};
+    );
+};
 
-export const handleLongSynopsis = (synopsis) => { console.log(synopsis);
+export const handleLongSynopsis = (synopsis) => {
     return (
         <LinesEllipsis
             text={synopsis}
@@ -501,4 +502,8 @@ export const handleLongSynopsis = (synopsis) => { console.log(synopsis);
             basedOn='letters'
         />
     );
+};
+
+export const isRHAdvisory = (name) => {
+    return /^(RHEA|RHBA|RHSA)/.test(name);
 };
