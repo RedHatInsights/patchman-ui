@@ -13,15 +13,15 @@ table.patchCompactInventory {
     overflow: inherit !important;
 }
 
+.ins-c-primary-toolbar {
+    .pf-c-toolbar__content.pf-m-hidden {
+        display: none !important;
+    }
+}
+
 .patch-root
     .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items)
     .pf-c-toolbar__content
     .pf-c-toolbar__item:last-child {
     min-width: unset !important;
-}
-
-.patch-systems-primary-toolbar {
-    .pf-c-toolbar__content.pf-m-hidden {
-        display: none;
-    }
 }
