@@ -1,3 +1,10 @@
+## [1.30.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.30.0...v1.30.1) (2021-08-17)
+
+
+### Bug Fixes
+
+* **remediation:** SPM-1114 Fix remediation of package-systems ([71c90f5](https://github.com/RedHatInsights/patchman-ui/commit/71c90f562a5d1f5ce83bd52ed57484d1f4f7f7c4))
+
 # [1.30.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.29.0...v1.30.0) (2021-08-16)
 
 
