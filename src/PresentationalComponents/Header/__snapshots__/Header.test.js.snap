@@ -115,6 +115,9 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
             >
               <h1
                 className="pf-c-title pf-m-2xl"
+                data-ouia-component-id="OUIA-Generated-Title-4"
+                data-ouia-component-type="PF4/Title"
+                data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
               >
                  
@@ -313,6 +316,9 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
             >
               <h1
                 className="pf-c-title pf-m-2xl"
+                data-ouia-component-id="OUIA-Generated-Title-6"
+                data-ouia-component-type="PF4/Title"
+                data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
               >
                  
@@ -581,6 +587,9 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
             >
               <h1
                 className="pf-c-title pf-m-2xl"
+                data-ouia-component-id="OUIA-Generated-Title-7"
+                data-ouia-component-type="PF4/Title"
+                data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
               >
                  
@@ -662,6 +671,9 @@ exports[`Header component should render with empty breadcrumb 1`] = `
             >
               <h1
                 className="pf-c-title pf-m-2xl"
+                data-ouia-component-id="OUIA-Generated-Title-3"
+                data-ouia-component-type="PF4/Title"
+                data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
               >
                  
@@ -725,6 +737,9 @@ exports[`Header component should render with header Hello world 1`] = `
             >
               <h1
                 className="pf-c-title pf-m-2xl"
+                data-ouia-component-id="OUIA-Generated-Title-2"
+                data-ouia-component-type="PF4/Title"
+                data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
               >
                  
@@ -789,6 +804,9 @@ exports[`Header component should render with header as empty string 1`] = `
             >
               <h1
                 className="pf-c-title pf-m-2xl"
+                data-ouia-component-id="OUIA-Generated-Title-1"
+                data-ouia-component-type="PF4/Title"
+                data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
               >
                  
@@ -896,6 +914,9 @@ exports[`Header component should render without to attribute 1`] = `
             >
               <h1
                 className="pf-c-title pf-m-2xl"
+                data-ouia-component-id="OUIA-Generated-Title-5"
+                data-ouia-component-type="PF4/Title"
+                data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
               >
                  
