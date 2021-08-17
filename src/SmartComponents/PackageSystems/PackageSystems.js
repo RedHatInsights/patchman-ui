@@ -109,7 +109,7 @@ const PackageSystems = ({ packageName }) => {
             package_name: packageName,
             limit: -1
         })
-            .then(filterRemediatablePackageSystems);
+        .then(filterRemediatablePackageSystems);
     };
 
     const selectRows = (toSelect) => {
@@ -142,6 +142,7 @@ const PackageSystems = ({ packageName }) => {
     const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, history);
     return (
         <React.Fragment>
+            <RemediationModalCmp/>
             {status.hasError && <ErrorHandler code={status.code} /> || (
                 <InventoryTable
                     disableDefaultColumns
