@@ -136,6 +136,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
           paginationOUIA="system-packages-pagination"
           remediationButtonOUIA="toolbar-remediation-button"
           remediationProvider={[Function]}
+          searchChipLabel="Package"
           selectedRows={Object {}}
           sortBy={Object {}}
           store={

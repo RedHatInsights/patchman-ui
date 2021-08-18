@@ -164,6 +164,7 @@ const Advisories = ({ history }) => {
                             publishDateFilter(apply, queryParams.filter)
                         ]
                     }}
+                    searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
                 />
             </Main>
         </React.Fragment>

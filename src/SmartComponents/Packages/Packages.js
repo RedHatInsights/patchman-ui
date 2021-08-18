@@ -92,6 +92,7 @@ const Packages = () => {
                     tableOUIA={'package-details-table'}
                     paginationOUIA={'package-details-pagination'}
                     defaultFilters={packagesListDefaultFilters}
+                    searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
                 />
             </Main>
         </React.Fragment>
