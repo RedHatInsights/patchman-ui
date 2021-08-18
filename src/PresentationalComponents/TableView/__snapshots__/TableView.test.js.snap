@@ -22,7 +22,6 @@ exports[`TableView TableView 1`] = `
         "deleteTitle": "Clear filters",
         "filters": Array [],
         "onDelete": [Function],
-        "onDeleteGroup": [Function],
       }
     }
     bulkSelect={
@@ -144,7 +143,6 @@ exports[`TableView TableView 2`] = `
         "deleteTitle": "Clear filters",
         "filters": Array [],
         "onDelete": [Function],
-        "onDeleteGroup": [Function],
       }
     }
     bulkSelect={
@@ -266,7 +264,6 @@ exports[`TableView test table props TableView 1`] = `
         "deleteTitle": "Clear filters",
         "filters": Array [],
         "onDelete": [Function],
-        "onDeleteGroup": [Function],
       }
     }
     bulkSelect={

@@ -231,7 +231,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                 "deleteTitle": "Reset filters",
                 "filters": Array [],
                 "onDelete": [Function],
-                "onDeleteGroup": [Function],
               }
             }
             bulkSelect={
