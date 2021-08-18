@@ -129,6 +129,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
                 paginationOUIA={'system-packages-pagination'}
                 errorState={errorState}
                 emptyState={emptyState}
+                searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
             />
         </React.Fragment>
     );

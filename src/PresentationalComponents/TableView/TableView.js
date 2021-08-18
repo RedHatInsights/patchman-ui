@@ -37,7 +37,8 @@ const TableView = ({
     paginationOUIA,
     errorState,
     emptyState,
-    defaultFilters
+    defaultFilters,
+    searchChipLabel
 }) => {
     const [
         RemediationModalCmp,
@@ -77,7 +78,7 @@ const TableView = ({
                         }}
                         filterConfig={filterConfig}
                         activeFiltersConfig={{
-                            filters: buildFilterChips(filter, search),
+                            filters: buildFilterChips(filter, search, searchChipLabel),
                             onDelete: deleteFilters,
                             deleteTitle: intl.formatMessage(defaultFilters
                                 && messages.labelsFiltersReset || messages.labelsFiltersClear),
@@ -162,7 +163,8 @@ TableView.propTypes = {
     paginationOUIA: PropTypes.string,
     errorState: PropTypes.element,
     emptyState: PropTypes.element,
-    defaultFilters: PropTypes.object
+    defaultFilters: PropTypes.object,
+    searchChipLabel: PropTypes.string
 };
 
 export default TableView;

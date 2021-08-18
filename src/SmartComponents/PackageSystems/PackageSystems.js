@@ -85,7 +85,7 @@ const PackageSystems = ({ packageName }) => {
     };
 
     const activeFiltersConfig = {
-        filters: buildFilterChips(filter, search),
+        filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
         onDelete: deleteFilters
     };
 

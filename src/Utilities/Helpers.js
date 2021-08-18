@@ -311,7 +311,7 @@ export const decodeQueryparams = queryString => {
     return res;
 };
 
-export const buildFilterChips = (filters, search) => {
+export const buildFilterChips = (filters, search, searchChipLabel = 'Search') => {
 
     let filterConfig = [];
     const buildChips = (filters, category) =>{
@@ -359,7 +359,7 @@ export const buildFilterChips = (filters, search) => {
     const processSearch = () => {
         filterConfig = filterConfig.concat([
             {
-                category: 'Search',
+                category: searchChipLabel,
                 id: 'search',
                 chips: [
                     {

@@ -143,6 +143,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
                     ]
                 }}
                 errorState={errorState}
+                searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
             />
         </React.Fragment>
     );
