@@ -13,7 +13,7 @@ import { SecurityIcon } from '@patternfly/react-icons';
 export const DescriptionWithLink = ({ row }) =>  {
     const severityObject = getSeverityById(row.attributes.severity);
     return (
-        <TextContent>
+        <TextContent className='patch-advisory-description'>
             {
                 row.attributes.cve_count > 0 &&
                 (<TextList component={TextListVariants.dl} style ={{ '--pf-c-content--dl--RowGap': '0.5rem' }}>
