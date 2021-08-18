@@ -1,6 +1,9 @@
 import React from 'react';
 import { Select, SelectOption, SelectVariant } from '@patternfly/react-core';
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
+
 const VersionFilter = (apply, filter, packageVersions) => {
 
     const [isOpen, setOpen] = React.useState(false);
@@ -11,7 +14,7 @@ const VersionFilter = (apply, filter, packageVersions) => {
         (typeof(filter.installed_evra) === 'string' && filter.installed_evra.split(',')
         || filter.installed_evra);
     const versionList = packageVersions.data && packageVersions.data.sort().map(version => ({ value: version.evra }))
-        || [{ value: 'No version is available', disabled: true }];
+        || [{ value: intl.formatMessage(messages.textNoVersionAvailable), disabled: true }];
 
     const onToggle = (isOpen) => {
         setOpen(isOpen);
@@ -40,20 +43,20 @@ const VersionFilter = (apply, filter, packageVersions) => {
     return (
         {
             type: conditionalFilterType.custom,
-            label: 'Version',
+            label: intl.formatMessage(messages.labelsFiltersPackageVersionTitle),
             value: 'custom',
             filterValues: {
                 children: (
                     <Select
                         variant={versionList.length > 0 && SelectVariant.checkbox || SelectVariant.typeaheadMulti}
-                        typeAheadAriaLabel="Filter by package version"
+                        typeAheadAriaLabel={intl.formatMessage(messages.labelsFiltersPackageVersionPlaceholder)}
                         onToggle={onToggle}
                         onSelect={onSelect}
                         selections={installedEvra}
                         isOpen={isOpen}
                         aria-labelledby={'patch-version-filter'}
-                        placeholderText="Filter by package version"
-                        {...(numOptions < versionList.length
+                        placeholderText={intl.formatMessage(messages.labelsFiltersPackageVersionPlaceholder)}
+                        {...(numOptions < versionList.lengt
                             && { loadingVariant: { text: 'View more', onClick: onViewMoreClick } })}
                         style={{ maxHeight: '400px', overflow: 'auto' }}
                     >

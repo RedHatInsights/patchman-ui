@@ -121,6 +121,16 @@ export default defineMessages({
         description: 'search filter placeholder for packages pages',
         defaultMessage: 'Filter by CVE ID'
     },
+    labelsFiltersPackageVersionPlaceholder: {
+        id: 'labelFiltersPackageVersionPlaceholder',
+        description: 'Label for version fitler placeholder',
+        defaultMessage: 'Filter by version'
+    },
+    labelsFiltersPackageVersionTitle: {
+        id: 'labelsFiltersPackageVersionTitle',
+        description: 'Label for version fitler title',
+        defaultMessage: 'Version'
+    },
     labelsFiltersPackagesSearchPlaceHolder: {
         id: 'labelsFiltersPackagesSearchPlaceHolder',
         description: 'search filter placeholder for packages pages',
@@ -300,6 +310,11 @@ export default defineMessages({
         id: 'textLockVersionTooltip',
         description: 'Tooltip text for vesrion lock column',
         defaultMessage: `Your RHEL version is locked at version {lockedVersion}`
+    },
+    textNoVersionAvailable: {
+        id: 'textNoVersionAvailable',
+        description: 'text to notify there is not available version',
+        defaultMessage: 'No version is available'
     },
     textThirdPartyInfo: {
         id: 'textThirdPartyInfo',
