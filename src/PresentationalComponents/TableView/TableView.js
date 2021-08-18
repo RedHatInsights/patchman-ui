@@ -57,7 +57,7 @@ const TableView = ({
         setRemediationLoading(false);
     }
 
-    const [deleteFilters, deleteFilterGroup] = useRemoveFilter(filter, apply, defaultFilters);
+    const [deleteFilters] = useRemoveFilter(filter, apply, defaultFilters);
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
     const { code, hasError, isLoading } = status;
 
@@ -80,8 +80,7 @@ const TableView = ({
                             filters: buildFilterChips(filter, search),
                             onDelete: deleteFilters,
                             deleteTitle: intl.formatMessage(defaultFilters
-                                && messages.labelsFiltersReset || messages.labelsFiltersClear),
-                            onDeleteGroup: deleteFilterGroup
+                                && messages.labelsFiltersReset || messages.labelsFiltersClear)
                         }}
                         actionsConfig={{
                             actions: [remediationProvider && (
