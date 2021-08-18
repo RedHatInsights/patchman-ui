@@ -10,7 +10,13 @@ table.patchCompactInventory {
 }
 
 .patch-root {
-    overflow: inherit !important;
+    overflow: inherit !important;    
+
+    .pf-c-table__expandable-row-content {
+        .patch-advisory-description {
+            font-size: var(--pf-global--FontSize--sm);
+        }
+    }
 }
 
 .ins-c-primary-toolbar {
