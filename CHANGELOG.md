@@ -1,3 +1,14 @@
+## [1.30.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.30.1...v1.30.2) (2021-08-19)
+
+
+### Bug Fixes
+
+* **Advisories:** SPM-1100 make advisory description font consistent ([159ec14](https://github.com/RedHatInsights/patchman-ui/commit/159ec1453a2f74f9cae0075409fed9fe1581c0c3))
+* **advisory:** SPM-1080 Don't show link on Advisories for EPEL ([9c65de1](https://github.com/RedHatInsights/patchman-ui/commit/9c65de172cc54cfd2bc368ef93532e609796efb8))
+* **FilterChips:** SPM-1097 remove filter chip group ([93c101f](https://github.com/RedHatInsights/patchman-ui/commit/93c101f0fd9c6abc855ff87c8bd00649ab5b3000))
+* **spacing:** SPM-1113 Fix inconsistent spacing on toolbars/tables ([e9162fe](https://github.com/RedHatInsights/patchman-ui/commit/e9162fee1e1fd7cac31e55b7853809049195b7bc))
+* **VersionFilter:** SPM-1098 reword to Filter by version ([1bcceeb](https://github.com/RedHatInsights/patchman-ui/commit/1bcceeb5c371860aa25af6b75f856062b2d93d79))
+
 ## [1.30.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.30.0...v1.30.1) (2021-08-17)
 
 
