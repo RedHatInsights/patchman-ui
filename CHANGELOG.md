@@ -1,3 +1,10 @@
+## [1.30.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.30.2...v1.30.3) (2021-08-19)
+
+
+### Bug Fixes
+
+* **Filter Chips:** SPM-1095 make search filter chip text consistent with search filter title ([84ef6a2](https://github.com/RedHatInsights/patchman-ui/commit/84ef6a21acbedee33b2a48167fc4d5a9bab5febb))
+
 ## [1.30.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.30.1...v1.30.2) (2021-08-19)
 
 
