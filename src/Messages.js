@@ -171,6 +171,16 @@ export default defineMessages({
         description: 'Label for search fitler placeholder',
         defaultMessage: 'Advisory'
     },
+    labelsFiltersStale: {
+        id: 'labelsFiltersStale',
+        description: 'Label for stale fitler title',
+        defaultMessage: 'System status'
+    },
+    labelsFiltersStalePlaceholder: {
+        id: 'labelsFiltersStalePlaceholder',
+        description: 'Label for stale fitler placeholder',
+        defaultMessage: 'Filter by system status'
+    },
     labelsFiltersStatus: {
         id: 'labelsFiltersStatus',
         description: 'Label for status fitler placeholder',
@@ -185,6 +195,16 @@ export default defineMessages({
         id: 'labelsFiltersSystemsSearchTitle',
         description: 'search filter placeholder for systems pages',
         defaultMessage: 'System'
+    },
+    labelsFiltersSystemsUpdatable: {
+        id: 'labelsFiltersSystemsUpdatable',
+        description: 'search filter placeholder for systems pages',
+        defaultMessage: 'Updatable packages'
+    },
+    labelsFiltersSystemsUpdatablePlaceholder: {
+        id: 'labelsFiltersSystemsUpdatablePlaceholder',
+        description: 'search filter placeholder for systems updatable pages',
+        defaultMessage: 'Filter by systems with updatable packages'
     },
     labelsFiltersType: {
         id: 'labelsFiltersType',
@@ -235,6 +255,21 @@ export default defineMessages({
         id: 'labelsSeverity',
         description: 'label for cves info',
         defaultMessage: 'Severity'
+    },
+    labelsStatusStaleSystems: {
+        id: 'labelsStatusStaleSystems',
+        description: 'Label for status report',
+        defaultMessage: 'Stale systems'
+    },
+    labelsStatusSystemsUpToDate: {
+        id: 'labelsSystemsUpToDate',
+        description: 'Label for status report',
+        defaultMessage: 'Systems up to date'
+    },
+    labelsStatusSystemsWithPatchesAvailable: {
+        id: 'labelsSystemsWithPatchesAvailable',
+        description: 'Label for status report',
+        defaultMessage: 'Systems with patches available'
     },
     linksLearnAboutInsights: {
         id: 'linksLearnAboutInsights',
