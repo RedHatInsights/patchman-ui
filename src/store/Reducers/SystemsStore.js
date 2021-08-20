@@ -7,7 +7,10 @@ const initialState = {
     selectedRows: {},
     queryParams: {
         page: 1,
-        perPage: 20
+        perPage: 20,
+        filter: {
+            stale: [true, false]
+        }
     }
 };
 // Reducer
@@ -17,12 +20,17 @@ export const SystemsStore = (state = initialState, action) => {
     switch (action.type) {
 
         case ActionTypes.CHANGE_SYSTEMS_PARAMS:
-            delete action.payload?.filter;
+            // delete action.payload?.filter;
+            // console.log(action.payload, 'action');
             newState.queryParams = changeListParams(newState.queryParams, action.payload);
             return newState;
 
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);
+
+        case ActionTypes.CHANGE_SYSTEMS_METADATA:
+            newState.metadata = action.payload;
+            return newState;
 
         default:
             return state;

@@ -6,16 +6,18 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
+import staleFilter from '../../PresentationalComponents/Filters/SystemStaleFilter';
+import systemsUpdatableFilter from '../../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changeSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
+import { changeSystemsParams, clearInventoryReducer, changeSystemsMetadata } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
-import { remediationIdentifiers } from '../../Utilities/constants';
+import { remediationIdentifiers, systemsListDefaultFilters } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
 
@@ -30,6 +32,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -59,6 +62,9 @@ const Systems = () => {
     const queryParams = useSelector(
         ({ SystemsStore }) => SystemsStore?.queryParams || {}
     );
+    const metadata = useSelector(
+        ({ SystemsStore }) => SystemsStore?.metadata || {}
+    );
 
     const { systemProfile, selectedTags,
         filter, search, page, perPage, sort } = queryParams;
@@ -74,24 +80,31 @@ const Systems = () => {
         setRemediationLoading(false);
     }
 
-    function apply(params) {
-        dispatch(changeSystemsParams(params));
+    function apply(queryParams) {
+        dispatch(changeSystemsParams(queryParams));
     }
 
-    const [deleteFilters] = useRemoveFilter({ search }, apply);
+    const applyMetadata = (metadata) => {
+        dispatch(changeSystemsMetadata(metadata));
+    };
+
+    const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
 
     const filterConfig = {
         items: [
             searchFilter(apply, search,
                 intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
-            )
+            ),
+            staleFilter(apply, filter),
+            systemsUpdatableFilter(apply, filter)
         ]
     };
 
     const activeFiltersConfig = {
         filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
-        onDelete: deleteFilters
+        onDelete: deleteFilters,
+        deleteTitle: intl.formatMessage(messages.labelsFiltersReset)
     };
 
     const fetchAllData = (queryParams) =>
@@ -127,12 +140,13 @@ const Systems = () => {
             ));
     };
 
-    const getEntities = useGetEntities(fetchSystems, apply, {}, history);
+    const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata);
 
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <RemediationModalCmp />
+            <SystemsStatusReport metadata={metadata} apply={apply}/>
             <Main>
                 {status.hasError && <ErrorHandler code={status.code} /> ||
                     (

@@ -239,7 +239,7 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
     isDisabled: metadata.total_items === 0 && selectedCount === 0
 });
 
-export const useGetEntities = (fetchApi, apply, config, history) => {
+export const useGetEntities = (fetchApi, apply, config, history, applyMetadata) => {
     const { id, packageName } = config || {};
     const getEntities = async (
         _items,
@@ -260,8 +260,11 @@ export const useGetEntities = (fetchApi, apply, config, history) => {
         apply({
             page,
             perPage,
-            sort
+            sort,
+            metadata: items.meta
         });
+
+        applyMetadata && applyMetadata(items.meta);
 
         history.push(encodeURLParams({
             page,

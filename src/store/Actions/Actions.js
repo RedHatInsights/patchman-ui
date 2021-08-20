@@ -195,3 +195,7 @@ export const clearAdvisorySystemsReducer = () => ({
     payload: []
 });
 
+export const changeSystemsMetadata = (params) => ({
+    type: ActionTypes.CHANGE_SYSTEMS_METADATA,
+    payload: params
+});

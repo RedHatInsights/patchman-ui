@@ -46,6 +46,10 @@ export const packagesListDefaultFilters = {
     filter: { systems_updatable: ['gt:0'] }
 };
 
+export const systemsListDefaultFilters = {
+    filter: { stale: [true, false] }
+};
+
 export const publicDateOptions = [
     { apiValue: '', label: 'All', value: 'all' },
     {
@@ -164,6 +168,17 @@ export const packagesListUpdatableTypes = [
     }
 ];
 
+export const staleSystems = [
+    {
+        value: true,
+        label: 'Stale'
+    },
+    {
+        value: false,
+        label: 'Fresh'
+    }
+];
+
 export const filterCategories = {
     advisory_type: {
         label: 'Advisory type',
@@ -180,6 +195,14 @@ export const filterCategories = {
     systems_updatable: {
         label: 'Status',
         values: packagesListUpdatableTypes
+    },
+    packages_updatable: {
+        label: 'Systems status',
+        values: packagesListUpdatableTypes
+    },
+    stale: {
+        label: 'Stale systems',
+        values: staleSystems
     }
 };
 

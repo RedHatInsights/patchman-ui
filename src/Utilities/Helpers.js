@@ -324,6 +324,7 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
             }));
         } else {
             const { values } = filterCategories[category];
+            console.log(values, filters[category], filters);
             return [].concat(filters[category]).map(filterValue => {
                 const match = values.find(
                     item =>
@@ -394,6 +395,7 @@ export const changeListParams = (oldParams, newParams) => {
         newState && delete newState.tags;
     }
 
+    // console.log(newState, 'state after changeparams');
     return newState;
 };
 
