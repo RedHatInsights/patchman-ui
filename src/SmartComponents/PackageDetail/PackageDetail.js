@@ -72,7 +72,8 @@ const PackageDetail = ({ match }) => {
                     </StackItem>
                     <StackItem>
                         {status.hasError
-                            && < ErrorHandler /> || <PackageSystems packageName={packageName}></PackageSystems>
+                            && < ErrorHandler />
+                                || (!status.isLoading && <PackageSystems packageName={packageName}></PackageSystems>)
                         }
                     </StackItem>
                 </Stack>
