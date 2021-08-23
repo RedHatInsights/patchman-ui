@@ -14,6 +14,14 @@ export const systemsListColumns = [
         }
     },
     {
+        key: 'operating_system',
+        title: 'OS',
+        renderFunc: value => createOSColumn(value),
+        props: {
+            width: 10
+        }
+    },
+    {
         key: 'packages_installed',
         title: 'Packages',
         props: {
@@ -27,14 +35,6 @@ export const systemsListColumns = [
             width: 15
         },
         renderFunc: value => createAdvisoriesIcons(value)
-    },
-    {
-        key: 'operating_system',
-        title: 'OS',
-        renderFunc: value => createOSColumn(value),
-        props: {
-            width: 10
-        }
     }
 ];
 
