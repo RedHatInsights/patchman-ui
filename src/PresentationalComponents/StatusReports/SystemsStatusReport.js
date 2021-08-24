@@ -5,7 +5,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import {
     CardTitle, Spinner, Button,
-    Card, Grid, GridItem, CardBody, Flex, FlexItem, Title
+    Card, Grid, GridItem, CardBody, Flex, FlexItem
 } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 
