@@ -1,3 +1,10 @@
+## [1.31.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.31.0...v1.31.1) (2021-08-24)
+
+
+### Bug Fixes
+
+* **Systems:** SPM-1120 OS column is placed correctly ([b9d9633](https://github.com/RedHatInsights/patchman-ui/commit/b9d963341ee0ede3c0744d6d5a78be46c8cabe79))
+
 # [1.31.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.30.3...v1.31.0) (2021-08-24)
 
 
