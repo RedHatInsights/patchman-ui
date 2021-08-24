@@ -1,3 +1,10 @@
+# [1.31.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.30.3...v1.31.0) (2021-08-24)
+
+
+### Features
+
+* **StatusReport:** SPM-1043 create System status report ([2ccee18](https://github.com/RedHatInsights/patchman-ui/commit/2ccee185721d4d06c8e6ee8ae273915724440fff))
+
 ## [1.30.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.30.2...v1.30.3) (2021-08-19)
 
 
