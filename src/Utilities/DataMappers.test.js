@@ -63,7 +63,8 @@ describe('DataMappers', () => {
         expect(result[0].applicable_advisories).toEqual([
             systemRows[0].rhea_count,
             systemRows[0].rhba_count,
-            systemRows[0].rhsa_count
+            systemRows[0].rhsa_count,
+            systemRows[0].other_count
         ]);
         expect(result[0].selected).toEqual(false);
     });
@@ -89,6 +90,7 @@ describe('DataMappers', () => {
 
         const result = createSystemsRows(testData);
         expect(result[0].applicable_advisories).toEqual([
+            0,
             0,
             0,
             0

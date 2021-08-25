@@ -1,6 +1,7 @@
 import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
 import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
+import FlagIcon from '@patternfly/react-icons/dist/js/icons/flag-icon';
 import React from 'react';
 import { subtractDate } from './Helpers';
 
@@ -143,6 +144,11 @@ export const advisoryTypes = [
         value: 1,
         label: 'Enhancement',
         icon: <EnhancementIcon />
+    },
+    {
+        value: 4,
+        label: 'Other',
+        icon: <FlagIcon />
     }
 ];
 

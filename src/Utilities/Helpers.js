@@ -1,6 +1,6 @@
 import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import {
-    BugIcon, CheckIcon,
+    BugIcon, CheckIcon, FlagIcon,
     EnhancementIcon, InfoCircleIcon, LongArrowAltUpIcon,
     SecurityIcon
 } from '@patternfly/react-icons';
@@ -127,7 +127,7 @@ export function truncate(str, max, end) {
     ) : str;
 }
 
-export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
+export function createAdvisoriesIcons([rhea, rhba, rhsa, other]) {
     return (
         <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
             {[rhea, rhba, rhsa].every(item => item === 0) &&
@@ -143,6 +143,10 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa]) {
             {rhea !== 0 && (
                 <FlexItem spacer={{ default: 'spacerXs' }}>
                     <AdvisoriesIcon tooltipText={'Enhancements'} count={rhea} Icon={EnhancementIcon} />
+                </FlexItem>)}
+            {other !== 0 && (
+                <FlexItem spacer={{ default: 'spacerXs' }}>
+                    <AdvisoriesIcon tooltipText={'Other'} count={other} Icon={FlagIcon} />
                 </FlexItem>)}
         </Flex>
     );
