@@ -41,6 +41,7 @@ export const systemRows = [{
     rhba_count: 0,
     rhea_count: 0,
     rhsa_count: 0,
+    other_count: 0,
     rhsm: '',
     stale: false,
     stale_timestamp: '2021-06-06T14:03:09.096101Z',

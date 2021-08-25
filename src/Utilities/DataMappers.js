@@ -121,6 +121,7 @@ export const createSystemAdvisoriesRows = (
 };
 
 export const createSystemsRows = (rows, selectedRows = {}) => {
+    console.log(rows);
     const data =
         rows.map(({ id, ...rest }) => {
             const {
@@ -132,6 +133,7 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 os_name: osName,
                 os_major: osMajor,
                 os_minor: osMinor,
+                other_count: other,
                 rhsm
             } = rest;
 
@@ -144,7 +146,8 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 applicable_advisories: [
                     rhea || 0,
                     rhba || 0,
-                    rhsa || 0
+                    rhsa || 0,
+                    other || 0
                 ],
                 operating_system: {
                     osName: osName && `${rest.os_name} ${osMajor}.${osMinor}`

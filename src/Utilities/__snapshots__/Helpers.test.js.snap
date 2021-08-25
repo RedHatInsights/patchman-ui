@@ -10,6 +10,18 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   }
 >
   No applicable advisories
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
+    <AdvisoriesIcon
+      Icon={[Function]}
+      tooltipText="Other"
+    />
+  </FlexItem>
 </div>
 `;
 
@@ -46,6 +58,18 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
       Icon={[Function]}
       count={5}
       tooltipText="Bug fixes"
+    />
+  </FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
+    <AdvisoriesIcon
+      Icon={[Function]}
+      tooltipText="Other"
     />
   </FlexItem>
 </div>
@@ -86,6 +110,18 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
       tooltipText="Enhancements"
     />
   </FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
+    <AdvisoriesIcon
+      Icon={[Function]}
+      tooltipText="Other"
+    />
+  </FlexItem>
 </div>
 `;
 
@@ -122,6 +158,18 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
       Icon={[Function]}
       count={1}
       tooltipText="Enhancements"
+    />
+  </FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
+    <AdvisoriesIcon
+      Icon={[Function]}
+      tooltipText="Other"
     />
   </FlexItem>
 </div>
@@ -173,6 +221,18 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
       Icon={[Function]}
       count={1}
       tooltipText="Enhancements"
+    />
+  </FlexItem>
+  <FlexItem
+    spacer={
+      Object {
+        "default": "spacerXs",
+      }
+    }
+  >
+    <AdvisoriesIcon
+      Icon={[Function]}
+      tooltipText="Other"
     />
   </FlexItem>
 </div>
