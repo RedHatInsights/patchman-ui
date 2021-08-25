@@ -1,3 +1,10 @@
+## [1.31.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.31.1...v1.31.2) (2021-08-25)
+
+
+### Bug Fixes
+
+* **SystemtatusBar:** regressions are resolved ([6d234a6](https://github.com/RedHatInsights/patchman-ui/commit/6d234a6ec152da428d85749d481a2f6da387ae47))
+
 ## [1.31.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.31.0...v1.31.1) (2021-08-24)
 
 
