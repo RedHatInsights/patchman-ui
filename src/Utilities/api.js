@@ -36,7 +36,6 @@ export const fetchApplicableSystemAdvisoriesApi = params => {
 };
 
 export const fetchSystems = params => {
-    console.log(params);
     return createApiCall('/systems', 'get', prepareEntitiesParams(params));
 };
 

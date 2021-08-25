@@ -20,8 +20,6 @@ export const SystemsStore = (state = initialState, action) => {
     switch (action.type) {
 
         case ActionTypes.CHANGE_SYSTEMS_PARAMS:
-            // delete action.payload?.filter;
-            // console.log(action.payload, 'action');
             newState.queryParams = changeListParams(newState.queryParams, action.payload);
             return newState;
 

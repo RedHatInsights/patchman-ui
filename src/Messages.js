@@ -174,12 +174,12 @@ export default defineMessages({
     labelsFiltersStale: {
         id: 'labelsFiltersStale',
         description: 'Label for stale fitler title',
-        defaultMessage: 'System status'
+        defaultMessage: 'Status'
     },
     labelsFiltersStalePlaceholder: {
         id: 'labelsFiltersStalePlaceholder',
         description: 'Label for stale fitler placeholder',
-        defaultMessage: 'Filter by system status'
+        defaultMessage: 'Filter by status'
     },
     labelsFiltersStatus: {
         id: 'labelsFiltersStatus',
@@ -199,12 +199,12 @@ export default defineMessages({
     labelsFiltersSystemsUpdatable: {
         id: 'labelsFiltersSystemsUpdatable',
         description: 'search filter placeholder for systems pages',
-        defaultMessage: 'Updatable packages'
+        defaultMessage: 'Patch status'
     },
     labelsFiltersSystemsUpdatablePlaceholder: {
         id: 'labelsFiltersSystemsUpdatablePlaceholder',
         description: 'search filter placeholder for systems updatable pages',
-        defaultMessage: 'Filter by systems with updatable packages'
+        defaultMessage: 'Filter by patch status'
     },
     labelsFiltersType: {
         id: 'labelsFiltersType',

@@ -160,11 +160,11 @@ export const updatableTypes = [
 export const packagesListUpdatableTypes = [
     {
         value: 'eq:0',
-        label: 'Up-to-date '
+        label: 'Systems up to date'
     },
     {
         value: 'gt:0',
-        label: 'Upgradable'
+        label: 'Systems with patches available'
     }
 ];
 
@@ -197,11 +197,11 @@ export const filterCategories = {
         values: packagesListUpdatableTypes
     },
     packages_updatable: {
-        label: 'Systems status',
+        label: 'Patch status',
         values: packagesListUpdatableTypes
     },
     stale: {
-        label: 'Stale systems',
+        label: 'Status',
         values: staleSystems
     }
 };

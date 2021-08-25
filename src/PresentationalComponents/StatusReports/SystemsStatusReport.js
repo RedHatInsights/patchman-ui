@@ -4,28 +4,33 @@ import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import {
-    CardTitle, Spinner, Button,
+    CardTitle, Button, Skeleton,
     Card, Grid, GridItem, CardBody, Flex, FlexItem
 } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 
 const StatusCard = ({ title, color, Icon, value, filter, apply }) => {
     return (
-        <Card isCompact>
+        <Card isCompact style={{ marginRight: 'var(--pf-global--spacer--sm)' }}>
             <CardTitle style={{ marginTop: '0px' }}>{title}</CardTitle>
             <CardBody className='fonst-size-sm'>
                 <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
-                    <FlexItem spacer={{ default: 'spacerNone' }}><Icon color={color} /></FlexItem>
+                    <FlexItem
+                        spacer={{ default: 'spacerMd' }}
+                        alignSelf={{ default: 'alignSelfCenter' }}
+                    >
+                        <Icon color={color} size='md'/>
+                    </FlexItem>
                     <FlexItem isFilled spacer={{ default: 'spacerNone' }}>
                         {
                             typeof(value) === 'undefined'
-                                &&  <Spinner isSVG size="md" />
-                                ||  <Button
-                                    variant="link"
-                                    onClick={() => {  apply(filter); } }
-                                    className='patch-status-report-text'>
-                                    {value}
-                                </Button>
+                            &&  <Skeleton width="24px" />
+                                    ||  <Button
+                                        variant="link"
+                                        onClick={() => apply(filter)}
+                                        className='patch-status-report-text'>
+                                        {value}
+                                    </Button>
                         }
                     </FlexItem>
                 </Flex>

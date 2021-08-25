@@ -16,6 +16,16 @@ const systemsStaleFilter = (apply, currentFilter = {}) => {
             })),
         []
     );
+
+    const currentValueStringType = (
+        currentValue
+            && (
+                Array.isArray(currentValue)
+                    && currentValue.map(value => value.toString())
+                    || [currentValue.toString()]
+            )
+    );
+
     const filterByStale = value => {
         apply({ filter: { stale: value } });
     };
@@ -28,7 +38,7 @@ const systemsStaleFilter = (apply, currentFilter = {}) => {
                 filterByStale(value);
             },
             items: staleMap,
-            value: currentValue,
+            value: currentValueStringType,
             placeholder: intl.formatMessage(messages.labelsFiltersStalePlaceholder)
         }
     };
