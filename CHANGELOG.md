@@ -1,3 +1,10 @@
+# [1.32.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.31.2...v1.32.0) (2021-08-26)
+
+
+### Features
+
+* **Other type:** SPM-1133 "Other" type is added ([cbe2e9f](https://github.com/RedHatInsights/patchman-ui/commit/cbe2e9fcc181a5648a6c06838f07bd3a95bbd84d))
+
 ## [1.31.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.31.1...v1.31.2) (2021-08-25)
 
 
