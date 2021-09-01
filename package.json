@@ -5,7 +5,7 @@
   "private": false,
   "dependencies": {
     "@patternfly/react-core": "^4.143.0",
-    "@patternfly/react-icons": "^4.11.0",
+    "@patternfly/react-icons": "^4.11.14",
     "@patternfly/react-table": "^4.23.2",
     "@redhat-cloud-services/frontend-components": "^3.3.3",
     "@redhat-cloud-services/frontend-components-notifications": "^3.2.2",
