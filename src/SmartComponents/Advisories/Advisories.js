@@ -30,6 +30,7 @@ import {
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 
 const Advisories = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
@@ -130,6 +131,7 @@ const Advisories = ({ history }) => {
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchAdvisories)} headerOUIA={'advisories'} />
+            <AdvisoriesStatusReport/>
             <Main>
                 <TableView
                     columns={advisoriesColumns}
