@@ -11,6 +11,11 @@ export default defineMessages({
         description: 'regsiter page title',
         defaultMessage: 'Patch'
     },
+    labelsApplicableSystemsCount: {
+        id: 'labelsApplicableSystemsCount',
+        description: 'applicable systems number label',
+        defaultMessage: '{systemsCount} applicable systems'
+    },
     labelsBulkSelectAll: {
         id: 'labelsBulkSelectAll',
         description: 'bulk select option',
@@ -351,6 +356,11 @@ export default defineMessages({
         description: 'text to notify there is not available version',
         defaultMessage: 'No version is available'
     },
+    textRebootIsRequired: {
+        id: 'textRebootIsRequired',
+        description: 'Advisories table cell text',
+        defaultMessage: 'Reboot is required'
+    },
     textThirdPartyInfo: {
         id: 'textThirdPartyInfo',
         description: 'text about the third paty managed hosts',
@@ -365,6 +375,11 @@ export default defineMessages({
         id: 'affectedSystems',
         description: 'page title with capital letter',
         defaultMessage: 'Affected systems'
+    },
+    titlesMostImpactfulAdvisories: {
+        id: 'titlesMostImpactfulAdvisories',
+        description: 'page title with capital letter',
+        defaultMessage: 'Most impactful advisories'
     },
     titlesPackages: {
         id: 'titlesPackages',
