@@ -7,6 +7,7 @@ import messages from '../../Messages';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
+import rebootFilter from '../../PresentationalComponents/Filters/RebootFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { advisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
@@ -161,7 +162,8 @@ const Advisories = ({ history }) => {
                                 intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder)
                             ),
                             typeFilter(apply, queryParams.filter),
-                            publishDateFilter(apply, queryParams.filter)
+                            publishDateFilter(apply, queryParams.filter),
+                            rebootFilter(apply, queryParams.filter)
                         ]
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}

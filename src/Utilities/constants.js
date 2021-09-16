@@ -185,6 +185,17 @@ export const staleSystems = [
     }
 ];
 
+export const rebootRequired = [
+    {
+        value: true,
+        label: 'Required'
+    },
+    {
+        value: false,
+        label: 'Not required'
+    }
+];
+
 export const filterCategories = {
     advisory_type: {
         label: 'Advisory type',
@@ -209,6 +220,10 @@ export const filterCategories = {
     stale: {
         label: 'Status',
         values: staleSystems
+    },
+    reboot_required: {
+        label: 'Reboot required',
+        values: rebootRequired
     }
 };
 
