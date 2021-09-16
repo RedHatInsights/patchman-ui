@@ -25,6 +25,11 @@ export const advisoriesColumns = [
         key: 'applicable_systems'
     },
     {
+        title: intl.formatMessage(messages.labelsColumnsReboot),
+        transforms: [sortable],
+        key: 'reboot_required'
+    },
+    {
         title: intl.formatMessage(messages.labelsColumnsPublishDate),
         transforms: [sortable, cellWidth(15)],
         key: 'public_date'
