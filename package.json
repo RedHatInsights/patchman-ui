@@ -7,7 +7,7 @@
     "@patternfly/react-core": "^4.152.4",
     "@patternfly/react-icons": "^4.11.14",
     "@patternfly/react-table": "^4.23.2",
-    "@redhat-cloud-services/frontend-components": "^3.3.3",
+    "@redhat-cloud-services/frontend-components": "^3.4.1",
     "@redhat-cloud-services/frontend-components-notifications": "^3.2.4",
     "@redhat-cloud-services/frontend-components-remediations": "^3.2.7",
     "@redhat-cloud-services/frontend-components-translations": "^3.2.3",
