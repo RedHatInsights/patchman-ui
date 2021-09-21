@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux';
 export const initMocks = () => {
-
     window.insights = {
         chrome: {
             appNavClick: () => {},
-            init: () => {},
+            init: jest.fn(),
             identifyApp: () => {},
             navigation: () => {},
             on: () => {

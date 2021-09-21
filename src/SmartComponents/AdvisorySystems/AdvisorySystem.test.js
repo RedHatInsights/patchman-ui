@@ -1,14 +1,23 @@
+/* eslint-disable no-unused-vars */
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { fetchAdvisorySystems } from '../../Utilities/api';
-import { storeListDefaults } from '../../Utilities/constants';
+// import { storeListDefaults } from '../../Utilities/constants';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
+import { BrowserRouter as Router } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+
 initMocks();
+
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useHistory: jest.fn(() => ({ location: { search: 'testSearch' } }))
+}));
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -28,49 +37,66 @@ jest.mock('../../Utilities/api', () => ({
     fetchAdvisorySystems: jest.fn()
 }));
 
-const mockState = { ...storeListDefaults, rows: systemRows, selectedRows: { 'f99c98e6-e17c-4536-acbb-2bc795547d4f': true } };
+const mockState = {
+    entities: {
+        rows: systemRows,
+        metadata: {
+            limit: 25,
+            offset: 0,
+            total_items: 10
+        },
+        expandedRows: {},
+        selectedRows: { 'RHSA-2020:2774': true },
+        error: {},
+        status: 'resolved'
+    },
+    AdvisorySystemsStore: {
+        queryParams: {}
+    }
+};
+//const mockState = { ...storeListDefaults, rows: systemRows, selectedRows: { 'f99c98e6-e17c-4536-acbb-2bc795547d4f': true } };
 
-const initStore = (state) => {
+const initStore = () => {
     const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
-            return callback({ AdvisorySystemsStore: state });
+            return callback(mockState);
         });
         next(action);
     };
 
     const mockStore = configureStore([customMiddleWare]);
-    return mockStore({ AdvisorySystemsStore: state });
+    return mockStore(mockState);
 };
 
-let store = initStore(mockState);
+let wrapper;
+let store = initStore();
+const rejectedState = { entities: { ...mockState, status: 'rejected', error: { detail: 'test' } },
+    AdvisorySystemsStore: mockState.AdvisorySystemsStore };
+beforeEach(() => {
+    console.error = () => { };
+
+    useSelector.mockImplementation(callback => {
+        return callback(mockState);
+    });
+
+    /**
+ * This mount snapshot test is failing because of randomly generated key in PF component.
+ * Before the snapshot was only shallow and did not display the real virtual DOM.
+ * Shallow snapshot has the same result as the mount before.
+ */
+    wrapper = mount(<Provider store={store}>
+        <Router> <AdvisorySystems advisoryName={'RHSA-2020:2755'} /></Router>
+    </Provider>);
+});
+
+afterEach(() => {
+    useSelector.mockClear();
+    store.clearActions();
+});
 
 describe('AdvisorySystems.js', () => {
-    const rejectedState = { ...mockState, status: 'rejected', error: { detail: 'test' } };
-    beforeEach(() => {
-        console.error = () => {};
-
-        useSelector.mockImplementation(callback => {
-            return callback({ AdvisorySystemsStore: mockState });
-        });
-    });
-
-    afterEach(() => {
-        useSelector.mockClear();
-        store.clearActions();
-    });
 
     it('Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once', () => {
-        /**
-         * This mount snapshot test is failing because of randomly generated key in PF component.
-         * Before the snapshot was only shallow and did not display the real virtual DOM.
-         * Shallow snapshot has the same result as the mount before.
-         */
-        const testStore = initStore(rejectedState);
-        const wrapper = shallow(
-            <Provider store={testStore}>
-                <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
-            </Provider>
-        );
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
@@ -87,29 +113,9 @@ describe('AdvisorySystems.js', () => {
         expect(wrapper.find('Error')).toBeTruthy();
     });
 
-    it('Should handle inventory and filter refresh', async () => {
-        let wrapper;
-        await act(async() => {
-            wrapper = mount(
-                <Provider store={store}>
-                    <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
-                </Provider>
-            );
-        });
-        await act(async() => {
-            wrapper.update();
-        });
-        const { onRefresh } = wrapper.update().find('InventoryTable').props();
-        onRefresh({ page: 1, per_page: 10 });
-
-        const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'CHANGE_AFFECTED_SYSTEMS_PARAMS')).toHaveLength(1);
-        expect(dispatchedActions[1].payload).toEqual({ limit: 10 });
-    });
-
     describe('test entity selecting', () => {
         it('Should unselect all', async() => {
-            const testStore = initStore(rejectedState);
+            const testStore = initStore(mockState);
             let wrapper;
             await act(async() => {
                 wrapper = mount(
@@ -130,7 +136,7 @@ describe('AdvisorySystems.js', () => {
         });
 
         it('Should select a page', async () => {
-            const testStore = initStore(rejectedState);
+            const testStore = initStore(mockState);
             let wrapper;
             await act(async() => {
                 wrapper = mount(
@@ -147,6 +153,7 @@ describe('AdvisorySystems.js', () => {
 
             bulkSelect.items[1].onClick();
             const dispatchedActions = testStore.getActions();
+
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[1].title).toEqual('Select page (1)');
         });
@@ -201,7 +208,7 @@ describe('AdvisorySystems.js', () => {
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(dispatchedActions[1].payload).toEqual([
                 {
-                    id: 'f99c98e6-e17c-4536-acbb-2bc795547d4f',
+                    id: 'RHSA-2020:2774',
                     selected: false
                 }
             ]
@@ -210,35 +217,20 @@ describe('AdvisorySystems.js', () => {
     });
 
     it('Should open remediation modal', async () => {
-        const testStore = initStore(rejectedState);
-        let wrapper;
-        await act(async() => {
-            wrapper = mount(
-                <Provider store={testStore}>
-                    <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
-                </Provider>
-            );
-        });
-        const { onClick } = wrapper.update().find('Button').props();
-        act(() => onClick());
-
+        const { dedicatedAction } = wrapper.update().find('InventoryTable').props();
+        act(() => dedicatedAction.props.onClick(null, null, {
+            id: 'patch-advisory:RHBA-2020:4282'
+        }));
         expect(wrapper.update().find('RemediationModal')).toBeTruthy();
     });
 
     it('Should clear store on unmount', async () => {
-        const testStore = initStore(rejectedState);
-        let wrapper;
-        await act(async() => {
-            wrapper = mount(
-                <Provider store={testStore}>
-                    <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
-                </Provider>
-            );
-        });
         await act(() => {
             wrapper.unmount();
         });
-        const dispatchedActions = testStore.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'CLEAR_AFFECTED_SYSTEMS')).toHaveLength(1);
+        const dispatchedActions = store.getActions();
+
+        expect(dispatchedActions.filter(item => item.type === 'CLEAR_INVENTORY_REDUCER')).toHaveLength(1);
+        expect(dispatchedActions.filter(item => item.type === 'CLEAR_ADVISORY_SYSTEMS_REDUCER')).toHaveLength(1);
     });
 });

@@ -96,3 +96,218 @@ export const entityDetail = {
         account: '60'
     }
 };
+
+export const cveRows = [{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29921'
+    },
+    id: 'CVE-2021-29921',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29922'
+    },
+    id: 'CVE-2021-29922',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29923'
+    },
+    id: 'CVE-2021-29923',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29924'
+    },
+    id: 'CVE-2021-29924',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29925'
+    },
+    id: 'CVE-2021-29925',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29926'
+    },
+    id: 'CVE-2021-29926',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29927'
+    },
+    id: 'CVE-2021-29927',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29928'
+    },
+    id: 'CVE-2021-29928',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29929'
+    },
+    id: 'CVE-2021-29929',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29930'
+    },
+    id: 'CVE-2021-29930',
+    type: 'cve'
+},
+{
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29931'
+    },
+    id: 'CVE-2021-29931',
+    type: 'cve'
+},  {
+    attributes: {
+        cvss_score: '7.300',
+        impact: 'Moderate',
+        synopsis: 'CVE-2021-29932'
+    },
+    id: 'CVE-2021-29932',
+    type: 'cve'
+}];
+
+export const readyCveRows = [
+    {
+        id: 'CVE-2021-29921',
+        key: 'CVE-2021-29921',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29922',
+        key: 'CVE-2021-29922',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29923',
+        key: 'CVE-2021-29923',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29924',
+        key: 'CVE-2021-29924',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29925',
+        key: 'CVE-2021-29925',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29926',
+        key: 'CVE-2021-29926',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            {    title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29927',
+        key: 'CVE-2021-29927',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29928',
+        key: 'CVE-2021-29928',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29929',
+        key: 'CVE-2021-29929',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29930',
+        key: 'CVE-2021-29930',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29931',
+        key: 'CVE-2021-29931',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    },
+    {
+        id: 'CVE-2021-29932',
+        key: 'CVE-2021-29932',
+        cells: [{ title: '[Object] ' },
+            { title: '[Object]', value: 'Moderate' },
+            { title: '7.3' }
+        ]
+    }
+];
+
+export const packageDetailData = {
+    data: {
+        attributes: {
+            description: 'testDescription'
+        }
+    }
+};

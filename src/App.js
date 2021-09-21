@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 
 import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';

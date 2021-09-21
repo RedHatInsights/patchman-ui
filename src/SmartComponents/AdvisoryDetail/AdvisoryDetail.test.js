@@ -41,6 +41,8 @@ let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
+    console.error = () => { };
+
     store.clearActions();
     useSelector.mockImplementation(callback => {
         return callback({ AdvisoryDetailStore: mockState });
@@ -78,7 +80,7 @@ describe('AdvisoryDetail.js', () => {
 
     it('Should display error page when status is rejected', () => {
 
-        const rejectedState = { ...mockState, status: 'rejected', error: { detail: 'test' } };
+        const rejectedState = { ...mockState, status: { hasError: true }, error: { detail: 'test' } };
 
         useSelector.mockImplementation(callback => {
             return callback({ AdvisoryDetailStore: rejectedState });
@@ -88,7 +90,8 @@ describe('AdvisoryDetail.js', () => {
         const tempWrapper = mount(<Provider store={tempStore}>
             <Router><AdvisoryDetail/></Router>
         </Provider>);
-        expect(tempWrapper.find('Error')).toBeTruthy();
+
+        expect(tempWrapper.find('Unavailable')).toBeTruthy();
     });
 
 });

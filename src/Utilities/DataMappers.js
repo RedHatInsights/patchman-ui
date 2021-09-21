@@ -121,7 +121,7 @@ export const createSystemAdvisoriesRows = (
 };
 
 export const createSystemsRows = (rows, selectedRows = {}) => {
-    console.log(rows);
+
     const data =
         rows.map(({ id, ...rest }) => {
             const {
