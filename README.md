@@ -6,23 +6,45 @@
 
 # Patchman UI
 
+Patch is one of the applications for console.redhat.com. It allows users to display and manage available patches for their registered systems. This repository containes source code for the frontend part of the application which uses the REST API available from [Patchman Engine](https://github.com/RedHatInsights/patchman-engine).
+
 ## Getting Started
 
-There is a [comprehensive quick start guide in the Storybook Documentation](https://github.com/RedHatInsights/insights-frontend-storybook/blob/master/src/docs/welcome/quickStart/DOC.md) to setting up an Insights environment complete with:
+The Patchman UI is a sub application under the Red Hat insights platform with [Insights chroming app as a wrapper](https://github.com/RedHatInsights/insights-chrome).
 
-- Insights Frontend Starter App
+There are 2 technologies used for integration with backend and deployment purposes: 
+1. [Insights Proxy](https://github.com/RedHatInsights/insights-proxy)
+2. [Webpackproxy](https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#useproxy)
+
+Note: the difference is insights proxy has to be reinitialised everytime you want to develop, while webpack proxy is auto initialized when you  run the command ```npm run start:proxy:beta```.
+
+There is [a comprehensive quick start guide in the Storybook Documentation](https://github.com/RedHatInsights/insights-frontend-storybook/blob/master/src/docs/welcome/quickStart/DOC.md) to setting up an Insights environment complete with:
+
+- [Insights Frontend Starter App](https://github.com/RedHatInsights/frontend-starter-app)
 
 - [Insights Chroming](https://github.com/RedHatInsights/insights-chrome)
+
 - [Insights Proxy](https://github.com/RedHatInsights/insights-proxy)
 
 Note: You will need to set up the Insights environment if you want to develop with the starter app due to the consumption of the chroming service as well as setting up your global/app navigation through the API.
 
-## Build app
 
-1. ```npm install```
 
-2. ```npm run start```
-    - starts webpack bundler and serves the files with webpack dev server
+## Run the app for the first time
+
+1. ```git clone git@github.com:RedHatInsights/patchman-ui.git```
+    - clone the Patch UI into your machine
+
+2. ```npm install```
+
+3. ```SPANDX_CONFIG="./config/spandx.config.js" bash $PROXY_PATH/scripts/run.sh```
+    - If you are using insights proxy, it is time to start it. Otherwise you can skip this step
+
+4. ```npm run start```
+    - use this command if you want to develop Patch UI using insights proxy. The command starts webpack bundler and serves the files with webpack dev server
+   
+  ```npm run start:proxy:beta``` 
+    - use this command if you wand to develop Patch UI using webpack proxy starts webpack bundler and serves the files with webpack dev server
 
 ### Testing
 
@@ -32,11 +54,17 @@ Note: You will need to set up the Insights environment if you want to develop wi
   - You are only notified on successful builds if the build before it failed
   - By default, both `push` events as well as `pull_request` events send notifications
   - Travis is defaulted to notify #insights-bots
+  - `npm run test` will run only Jest tests
+  - `npm run test:update` is used to update the test snapshots
 
 ## Deploying
 
 - The Platform team is using Travis to deploy the application
   - The Platform team will help you set up the Travis instance if this is the route you are wanting to take
+
+## Release process
+
+- [there is a comprehensive guidline on the release procedure](https://docs.engineering.redhat.com/pages/viewpage.action?spaceKey=SPM&title=Patch+UI+release+workflow)  
 
 ### How it works
 
