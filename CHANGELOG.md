@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.32.0...v1.33.0) (2021-09-24)
+
+
+### Features
+
+* **AdvisoriesReport:** SPM-1167 add most impactfull advisory info ([54742ed](https://github.com/RedHatInsights/patchman-ui/commit/54742ed0117eb484d20cf5d44e48bf58d9d72dbc))
+
 # [1.32.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.31.2...v1.32.0) (2021-08-26)
 
 
