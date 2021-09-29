@@ -57,8 +57,20 @@ describe('InventoryEntitiesReducer tests', () => {
     it('should return initial state on clear', () => {
         const wrapperReducer = inventoryEntitiesReducer([], modifyPackageSystems);
     
-        const res = wrapperReducer({ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }, { type: 'LOAD_ENTITIES_FULFILLED', payload: {} });
-        expect(res).toEqual({ ...initialState, loaded: false, columns: [{ key: 'testCol' }] });
+        const res = wrapperReducer({ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }, { type: 'CLEAR_INVENTORY_REDUCER', payload: {} });
+        expect(res).toEqual({
+            entities:[],
+            metadata: {
+                limit: 20,
+                offset: 0,
+                total_items: 0,
+            },
+            page: 1,
+            perPage: 20,
+            rows: [],
+            selectedRows: {},
+            status: {},
+        });
     });    
 });
 /* eslint-enable */

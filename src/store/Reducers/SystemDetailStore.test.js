@@ -20,6 +20,7 @@ describe('SystemDetailStore', () => {
     ${{ ...initialState, test: 'testState' }}           | ${{ type: 'LOAD_ENTITY_FULFILLED', payload: {} }}    | ${{ ...initialState, ...stateAfterAction, test: 'testState' }}
     ${undefined}                                        | ${{ type: 'LOAD_ENTITY_REJECTED', payload: {} }}     | ${{ ...initialState, ...stateAfterAction, }}
     ${{ ...initialState, test: 'testState' }}           | ${{ type: 'LOAD_ENTITY_REJECTED', payload: {} }}     | ${{ ...initialState, ...stateAfterAction, test: 'testState' }}
+    ${initialState}                                     | ${{ type: 'FETCH_SYSTEM_DETAIL_FULFILLED', payload: { data: { attributes: { third_party: true } } } }}    | ${{ ...initialState, loaded: false, hasThirdPartyRepo: true }}
     `('$action', ({ state, action: { type, payload }, result }) => {
         const res = SystemDetailStore(state, { type, payload });
         expect(res).toEqual(result);

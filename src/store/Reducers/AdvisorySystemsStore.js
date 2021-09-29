@@ -3,7 +3,7 @@ import { changeFilters } from './HelperReducers';
 import { changeListParams } from '../../Utilities/Helpers';
 
 // Initial State. It should not include page and perPage to persist them dynamically
-const initialState = {
+export const initialState = {
     selectedRows: {},
     queryParams: {
         page: 1,
