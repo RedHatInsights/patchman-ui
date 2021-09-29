@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.33.0...v1.34.0) (2021-09-29)
+
+
+### Features
+
+* **Reboot info:** SPM-1053 reboot required info is added ([a2e3e37](https://github.com/RedHatInsights/patchman-ui/commit/a2e3e3720ca314cd18b1cd3e49107b817c93dd61))
+
 # [1.33.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.32.0...v1.33.0) (2021-09-24)
 
 
