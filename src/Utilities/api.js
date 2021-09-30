@@ -119,7 +119,7 @@ const fetchFile = (params, endpoint, type) => {
     return fetch('/api/patch/v1' + endpoint, {
         method: 'get',
         credentials: 'include',
-        headers: new Headers({ accept: type })
+        headers: { accept: type }
     }).then(res => res.text());
 };
 
