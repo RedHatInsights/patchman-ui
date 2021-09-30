@@ -1,3 +1,10 @@
+## [1.34.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.34.0...v1.34.1) (2021-09-30)
+
+
+### Bug Fixes
+
+* **headers:** SPM-1189 headers are ignored for export endpoints ([4c42676](https://github.com/RedHatInsights/patchman-ui/commit/4c426766561db6b0d23c7d37c616e559544d0fd8))
+
 # [1.34.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.33.0...v1.34.0) (2021-09-29)
 
 
