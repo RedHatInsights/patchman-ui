@@ -6,6 +6,7 @@ import { exportSystemsCSV, exportSystemsJSON } from '../../Utilities/api';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import Systems from './Systems';
+import toJson from 'enzyme-to-json';
 
 /* eslint-disable */
 initMocks()
@@ -33,7 +34,7 @@ jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))), 
     exportSystemsJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
-    fetchApplicableSystemAdvisoriesApi: jest.fn(() => Promise.resolve({ data: [{ 
+    fetchApplicableSystemAdvisoriesApi: jest.fn(() => Promise.resolve({ data: [{
         attributes: {
             advisory_type: 2,
             description: "The tzdata penhancements.",
@@ -44,29 +45,32 @@ jest.mock('../../Utilities/api', () => ({
         type: "advisory"}] }).catch((err) => console.log(err))), 
 }));
 
-const mockState = { 
-    metadata: {
-        limit: 25,
-        offset: 0,
-        total_items: 10
+const mockState = {
+    entities: {
+        rows: systemRows,
+        metadata: {
+            limit: 25,
+            offset: 0,
+            total_items: 10
+        },
+        expandedRows: {},
+        selectedRows: { 'RHSA-2020:2774': true },
+        error: {},
+        status: 'resolved',
     },
-    expandedRows: {},
-    selectedRows: { 'RHSA-2020:2774': true },
-    queryParams: {},
-    error: {},
-    status: 'resolved', 
-    rows:  systemRows 
+    SystemsStore: {
+        queryParams: {},
+    }
 };
-
 const initStore = (state) => {
     const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
-            return callback({  SystemsListStore: state });
+            return callback(state);
         });
         next(action);
     };
     const mockStore = configureStore([customMiddleWare]);
-    return mockStore({  SystemsListStore: state });
+    return mockStore(state);
 }
 
 let wrapper;
@@ -76,7 +80,7 @@ beforeEach(() => {
     console.error = () => {};
     store.clearActions();
     useSelector.mockImplementation(callback => {
-        return callback({ SystemsListStore: mockState });
+        return callback(mockState);
     });
     wrapper = mount(<Provider store={store}>
             <Router><Systems /></Router>
@@ -88,20 +92,15 @@ afterEach(() => {
 });
 
 describe('Systems.js', () => {
+    it('should match the snapshot', () => {
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 
     it('Should dispatch FETCH_SYSTEMS action once only', () => {
         const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'FETCH_SYSTEMS')).toHaveLength(1);
+        expect(dispatchedActions.filter(item => item.type === 'CHANGE_SYSTEMS_PARAMS')).toHaveLength(1);
     });
 
-    it('Should handle inventory and filter refresh', () => {
-        const { onRefresh } = wrapper.update().find('InventoryTable').props();
-        onRefresh({ page: 1, per_page: 10 });
-
-        const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'CHANGE_SYSTEMS_LIST_PARAMS')).toHaveLength(1);
-        expect(dispatchedActions[1].payload).toEqual({ limit: 10 });
-    });
 
     describe('test exports',  ()  => {
 
@@ -111,13 +110,13 @@ describe('Systems.js', () => {
         it('Should download csv file', () => {
             const { exportConfig } = wrapper.update().find('InventoryTable').props();
             exportConfig.onSelect(null, 'csv');
-            expect(exportSystemsCSV).toHaveBeenCalledWith({});
+            expect(exportSystemsCSV).toHaveBeenCalledWith({}, 'systems');
         });
 
         it('Should download json file', () => {
             const { exportConfig } = wrapper.update().find('InventoryTable').props();
             exportConfig.onSelect(null, 'json');
-            expect(exportSystemsJSON).toHaveBeenCalledWith({});
+            expect(exportSystemsJSON).toHaveBeenCalledWith({}, 'systems');
         });
     });
 
@@ -128,13 +127,6 @@ describe('Systems.js', () => {
                 id: "patch-advisory:RHBA-2020:4282"
         }));
         expect(wrapper.update().find('RemediationModal')).toBeTruthy();
-    });
-
-    it('Should test if actions are disabled', () => {
-
-        const { tableProps } = wrapper.update().find('InventoryTable').props();
-        const isDisabled = tableProps.areActionsDisabled({ applicable_advisories: [0,0,0]});
-        expect(isDisabled).toBeTruthy();
     });
 
     it('Should display ErrorMessage component when status="rejected"', () => {

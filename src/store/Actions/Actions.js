@@ -90,7 +90,7 @@ export const clearAdvisoryDetailStore = () => ({
 });
 
 export const clearPackageDetailStore = () => ({
-    type: ActionTypes.CLEAR_ADVISORY_DETAILS,
+    type: ActionTypes.CLEAR_PACKAGE_DETAILS,
     payload: []
 });
 

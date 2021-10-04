@@ -1,17 +1,18 @@
-/* eslint-disable no-unused-vars */
+
+/* eslint-disable */
+
 import Advisories from './Advisories';
-import toJson from 'enzyme-to-json';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { advisoryRows } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { storeListDefaults } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api';
+import { exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi,
+    fetchSystems } from '../../Utilities/api';
+import { act } from 'react-dom/test-utils';
 
-/* eslint-disable */
-initMocks()
+initMocks();
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -26,7 +27,10 @@ jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportAdvisoriesJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))), 
-    exportAdvisoriesCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
+    exportAdvisoriesCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
+    fetchApplicableAdvisoriesApi: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
+    fetchSystems: jest.fn(() => Promise.resolve({ data: { id: 'testId' } }).catch((err) => console.log(err))),
+    fetchViewAdvisoriesSystems:  jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
 }));
 
 jest.mock('../../Utilities/constants', () => ({
@@ -38,7 +42,6 @@ jest.mock('../../Utilities/constants', () => ({
         color: 'var(--pf-global--Color--200)'
     }]
 }));
-
 
 
 const mockState = { ...storeListDefaults, 
@@ -81,9 +84,6 @@ afterEach(() => {
 });
 
 describe('Advisories.js', () => {
-    // it('Should match the snapshots', () => {
-    //     expect(toJson(wrapper)).toMatchSnapshot();
-    // });
 
     it('Should dispatch CHANGE_ADVISORY_LIST_PARAMS only once on load', () => {
         const dispatchedActions = store.getActions();
@@ -137,5 +137,44 @@ describe('Advisories.js', () => {
         });
     });
     
+    it('should clear notifications store on unmount', async () => {
+        let tempWrapper;
+        await act(async () => {
+            tempWrapper = mount(
+                <Provider store={store}>
+                    <Router><Advisories /></Router>
+                </Provider>
+            );
+        });
+        act(() => {
+            tempWrapper.unmount();
+        });
+        const dispatchedActions = store.getActions();
+        expect(dispatchedActions.filter(item => item.type === '@@INSIGHTS-CORE/NOTIFICATIONS/CLEAR_NOTIFICATIONS')).toHaveLength(1);
+    });
+
+    it('should fetch all the data using limit=-1', () => {
+        const onSelect = wrapper.find('TableView').props().onSelect;
+        onSelect('all');
+        expect(fetchApplicableAdvisoriesApi).toHaveBeenCalledWith({ page: 1, page_size: 20, limit: -1 });
+    });
+
+    it('should select rows', () => {
+        const onSelect = wrapper.find('TableView').props().onSelect;
+        onSelect('page');
+        const dispatchedActions = store.getActions();
+        expect(dispatchedActions[2].type).toEqual('SELECT_ADVISORY_ROW');
+        expect(dispatchedActions[2].payload[0]).toEqual({
+            id: "RHEA-2020:2743",
+            selected: "RHEA-2020:2743",
+        });
+    });
+
+    it('should handle remediation', () => {
+        const remediationProvider = wrapper.find('TableView').props().remediationProvider;
+        remediationProvider();
+        expect(fetchSystems).toHaveBeenCalledWith({ limit: -1 });
+        //expect(fetchViewAdvisoriesSystems).toHaveBeenCalledWith('');
+    });
 });
 /* eslint-enable */

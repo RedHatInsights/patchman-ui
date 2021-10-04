@@ -1,0 +1,849 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+       
+      <AdvisorySystems
+        advisoryName="RHSA-2020:2755"
+      >
+        <Component />
+        <ForwardRef
+          actions={
+            Array [
+              Object {
+                "onClick": [Function],
+                "title": "Apply all applicable advisories",
+              },
+            ]
+          }
+          activeFiltersConfig={
+            Object {
+              "filters": Array [],
+              "onDelete": [Function],
+            }
+          }
+          autoRefresh={true}
+          bulkSelect={
+            Object {
+              "checked": null,
+              "count": 1,
+              "isDisabled": false,
+              "items": Array [
+                Object {
+                  "onClick": [Function],
+                  "title": "Select none (0)",
+                },
+                Object {
+                  "onClick": [Function],
+                  "title": "Select page (1)",
+                },
+                Object {
+                  "onClick": [Function],
+                  "title": "Select all (0)",
+                },
+              ],
+              "onSelect": [Function],
+              "toggleProps": Object {
+                "data-ouia-component-type": "bulk-select-toggle-button",
+              },
+            }
+          }
+          customFilters={
+            Object {
+              "patchParams": Object {
+                "filter": undefined,
+                "search": undefined,
+                "selectedTags": undefined,
+                "systemProfile": undefined,
+              },
+            }
+          }
+          dedicatedAction={
+            <PatchRemediationButton
+              isDisabled={false}
+              isLoading={false}
+              onClick={[Function]}
+              ouia="toolbar-remediation-button"
+            >
+              <AnsibeTowerIcon
+                color="currentColor"
+                noVerticalAlign={false}
+                size="sm"
+              />
+               
+              Remediate
+            </PatchRemediationButton>
+          }
+          disableDefaultColumns={true}
+          exportConfig={
+            Object {
+              "isDisabled": true,
+              "onSelect": [Function],
+            }
+          }
+          fallback={
+            <Bullseye
+              className="pf-u-p-lg"
+            >
+              <Spinner
+                size="xl"
+              />
+            </Bullseye>
+          }
+          filterConfig={
+            Object {
+              "items": Array [
+                Object {
+                  "filterValues": Object {
+                    "aria-label": "search-field",
+                    "onChange": [Function],
+                    "placeholder": "Filter by name",
+                    "value": undefined,
+                  },
+                  "label": "System",
+                  "type": "text",
+                },
+              ],
+            }
+          }
+          getEntities={[Function]}
+          hideFilters={
+            Object {
+              "all": true,
+            }
+          }
+          ignoreRefresh={true}
+          initialLoading={true}
+          isFullView={true}
+          onLoad={[Function]}
+          tableProps={
+            Object {
+              "canSelectAll": false,
+              "className": "patchCompactInventory",
+              "isStickyHeader": true,
+              "variant": "compact",
+            }
+          }
+        >
+          <BaseInvTable
+            actions={
+              Array [
+                Object {
+                  "onClick": [Function],
+                  "title": "Apply all applicable advisories",
+                },
+              ]
+            }
+            activeFiltersConfig={
+              Object {
+                "filters": Array [],
+                "onDelete": [Function],
+              }
+            }
+            autoRefresh={true}
+            bulkSelect={
+              Object {
+                "checked": null,
+                "count": 1,
+                "isDisabled": false,
+                "items": Array [
+                  Object {
+                    "onClick": [Function],
+                    "title": "Select none (0)",
+                  },
+                  Object {
+                    "onClick": [Function],
+                    "title": "Select page (1)",
+                  },
+                  Object {
+                    "onClick": [Function],
+                    "title": "Select all (0)",
+                  },
+                ],
+                "onSelect": [Function],
+                "toggleProps": Object {
+                  "data-ouia-component-type": "bulk-select-toggle-button",
+                },
+              }
+            }
+            customFilters={
+              Object {
+                "patchParams": Object {
+                  "filter": undefined,
+                  "search": undefined,
+                  "selectedTags": undefined,
+                  "systemProfile": undefined,
+                },
+              }
+            }
+            dedicatedAction={
+              <PatchRemediationButton
+                isDisabled={false}
+                isLoading={false}
+                onClick={[Function]}
+                ouia="toolbar-remediation-button"
+              >
+                <AnsibeTowerIcon
+                  color="currentColor"
+                  noVerticalAlign={false}
+                  size="sm"
+                />
+                 
+                Remediate
+              </PatchRemediationButton>
+            }
+            disableDefaultColumns={true}
+            exportConfig={
+              Object {
+                "isDisabled": true,
+                "onSelect": [Function],
+              }
+            }
+            fallback={
+              <Bullseye
+                className="pf-u-p-lg"
+              >
+                <Spinner
+                  size="xl"
+                />
+              </Bullseye>
+            }
+            filterConfig={
+              Object {
+                "items": Array [
+                  Object {
+                    "filterValues": Object {
+                      "aria-label": "search-field",
+                      "onChange": [Function],
+                      "placeholder": "Filter by name",
+                      "value": undefined,
+                    },
+                    "label": "System",
+                    "type": "text",
+                  },
+                ],
+              }
+            }
+            getEntities={[Function]}
+            hideFilters={
+              Object {
+                "all": true,
+              }
+            }
+            ignoreRefresh={true}
+            initialLoading={true}
+            innerRef={null}
+            isFullView={true}
+            onLoad={[Function]}
+            tableProps={
+              Object {
+                "canSelectAll": false,
+                "className": "patchCompactInventory",
+                "isStickyHeader": true,
+                "variant": "compact",
+              }
+            }
+          >
+            <Suspense
+              fallback={
+                <Bullseye
+                  className="pf-u-p-lg"
+                >
+                  <Spinner
+                    size="xl"
+                  />
+                </Bullseye>
+              }
+            >
+              <ForwardRef
+                ErrorComponent={
+                  <UNDEFINED
+                    actions={
+                      Array [
+                        Object {
+                          "onClick": [Function],
+                          "title": "Apply all applicable advisories",
+                        },
+                      ]
+                    }
+                    activeFiltersConfig={
+                      Object {
+                        "filters": Array [],
+                        "onDelete": [Function],
+                      }
+                    }
+                    autoRefresh={true}
+                    bulkSelect={
+                      Object {
+                        "checked": null,
+                        "count": 1,
+                        "isDisabled": false,
+                        "items": Array [
+                          Object {
+                            "onClick": [Function],
+                            "title": "Select none (0)",
+                          },
+                          Object {
+                            "onClick": [Function],
+                            "title": "Select page (1)",
+                          },
+                          Object {
+                            "onClick": [Function],
+                            "title": "Select all (0)",
+                          },
+                        ],
+                        "onSelect": [Function],
+                        "toggleProps": Object {
+                          "data-ouia-component-type": "bulk-select-toggle-button",
+                        },
+                      }
+                    }
+                    component="InventoryTable"
+                    customFilters={
+                      Object {
+                        "patchParams": Object {
+                          "filter": undefined,
+                          "search": undefined,
+                          "selectedTags": undefined,
+                          "systemProfile": undefined,
+                        },
+                      }
+                    }
+                    dedicatedAction={
+                      <PatchRemediationButton
+                        isDisabled={false}
+                        isLoading={false}
+                        onClick={[Function]}
+                        ouia="toolbar-remediation-button"
+                      >
+                        <AnsibeTowerIcon
+                          color="currentColor"
+                          noVerticalAlign={false}
+                          size="sm"
+                        />
+                         
+                        Remediate
+                      </PatchRemediationButton>
+                    }
+                    disableDefaultColumns={true}
+                    exportConfig={
+                      Object {
+                        "isDisabled": true,
+                        "onSelect": [Function],
+                      }
+                    }
+                    fallback={
+                      <Bullseye
+                        className="pf-u-p-lg"
+                      >
+                        <Spinner
+                          size="xl"
+                        />
+                      </Bullseye>
+                    }
+                    filterConfig={
+                      Object {
+                        "items": Array [
+                          Object {
+                            "filterValues": Object {
+                              "aria-label": "search-field",
+                              "onChange": [Function],
+                              "placeholder": "Filter by name",
+                              "value": undefined,
+                            },
+                            "label": "System",
+                            "type": "text",
+                          },
+                        ],
+                      }
+                    }
+                    getEntities={[Function]}
+                    hideFilters={
+                      Object {
+                        "all": true,
+                      }
+                    }
+                    ignoreRefresh={true}
+                    initialLoading={true}
+                    innerRef={null}
+                    isFullView={true}
+                    onLoad={[Function]}
+                    tableProps={
+                      Object {
+                        "canSelectAll": false,
+                        "className": "patchCompactInventory",
+                        "isStickyHeader": true,
+                        "variant": "compact",
+                      }
+                    }
+                  />
+                }
+                actions={
+                  Array [
+                    Object {
+                      "onClick": [Function],
+                      "title": "Apply all applicable advisories",
+                    },
+                  ]
+                }
+                activeFiltersConfig={
+                  Object {
+                    "filters": Array [],
+                    "onDelete": [Function],
+                  }
+                }
+                appName="chrome"
+                autoRefresh={true}
+                bulkSelect={
+                  Object {
+                    "checked": null,
+                    "count": 1,
+                    "isDisabled": false,
+                    "items": Array [
+                      Object {
+                        "onClick": [Function],
+                        "title": "Select none (0)",
+                      },
+                      Object {
+                        "onClick": [Function],
+                        "title": "Select page (1)",
+                      },
+                      Object {
+                        "onClick": [Function],
+                        "title": "Select all (0)",
+                      },
+                    ],
+                    "onSelect": [Function],
+                    "toggleProps": Object {
+                      "data-ouia-component-type": "bulk-select-toggle-button",
+                    },
+                  }
+                }
+                customFilters={
+                  Object {
+                    "patchParams": Object {
+                      "filter": undefined,
+                      "search": undefined,
+                      "selectedTags": undefined,
+                      "systemProfile": undefined,
+                    },
+                  }
+                }
+                dedicatedAction={
+                  <PatchRemediationButton
+                    isDisabled={false}
+                    isLoading={false}
+                    onClick={[Function]}
+                    ouia="toolbar-remediation-button"
+                  >
+                    <AnsibeTowerIcon
+                      color="currentColor"
+                      noVerticalAlign={false}
+                      size="sm"
+                    />
+                     
+                    Remediate
+                  </PatchRemediationButton>
+                }
+                disableDefaultColumns={true}
+                exportConfig={
+                  Object {
+                    "isDisabled": true,
+                    "onSelect": [Function],
+                  }
+                }
+                fallback={
+                  <Bullseye
+                    className="pf-u-p-lg"
+                  >
+                    <Spinner
+                      size="xl"
+                    />
+                  </Bullseye>
+                }
+                filterConfig={
+                  Object {
+                    "items": Array [
+                      Object {
+                        "filterValues": Object {
+                          "aria-label": "search-field",
+                          "onChange": [Function],
+                          "placeholder": "Filter by name",
+                          "value": undefined,
+                        },
+                        "label": "System",
+                        "type": "text",
+                      },
+                    ],
+                  }
+                }
+                getEntities={[Function]}
+                hideFilters={
+                  Object {
+                    "all": true,
+                  }
+                }
+                history={
+                  Object {
+                    "location": Object {
+                      "search": "testSearch",
+                    },
+                  }
+                }
+                ignoreRefresh={true}
+                initialLoading={true}
+                innerRef={null}
+                isFullView={true}
+                module="./InventoryTable"
+                onLoad={[Function]}
+                scope="chrome"
+                store={
+                  Object {
+                    "clearActions": [Function],
+                    "dispatch": [Function],
+                    "getActions": [Function],
+                    "getState": [Function],
+                    "replaceReducer": [Function],
+                    "subscribe": [Function],
+                  }
+                }
+                tableProps={
+                  Object {
+                    "canSelectAll": false,
+                    "className": "patchCompactInventory",
+                    "isStickyHeader": true,
+                    "variant": "compact",
+                  }
+                }
+              >
+                <BaseScalprumComponent
+                  ErrorComponent={
+                    <UNDEFINED
+                      actions={
+                        Array [
+                          Object {
+                            "onClick": [Function],
+                            "title": "Apply all applicable advisories",
+                          },
+                        ]
+                      }
+                      activeFiltersConfig={
+                        Object {
+                          "filters": Array [],
+                          "onDelete": [Function],
+                        }
+                      }
+                      autoRefresh={true}
+                      bulkSelect={
+                        Object {
+                          "checked": null,
+                          "count": 1,
+                          "isDisabled": false,
+                          "items": Array [
+                            Object {
+                              "onClick": [Function],
+                              "title": "Select none (0)",
+                            },
+                            Object {
+                              "onClick": [Function],
+                              "title": "Select page (1)",
+                            },
+                            Object {
+                              "onClick": [Function],
+                              "title": "Select all (0)",
+                            },
+                          ],
+                          "onSelect": [Function],
+                          "toggleProps": Object {
+                            "data-ouia-component-type": "bulk-select-toggle-button",
+                          },
+                        }
+                      }
+                      component="InventoryTable"
+                      customFilters={
+                        Object {
+                          "patchParams": Object {
+                            "filter": undefined,
+                            "search": undefined,
+                            "selectedTags": undefined,
+                            "systemProfile": undefined,
+                          },
+                        }
+                      }
+                      dedicatedAction={
+                        <PatchRemediationButton
+                          isDisabled={false}
+                          isLoading={false}
+                          onClick={[Function]}
+                          ouia="toolbar-remediation-button"
+                        >
+                          <AnsibeTowerIcon
+                            color="currentColor"
+                            noVerticalAlign={false}
+                            size="sm"
+                          />
+                           
+                          Remediate
+                        </PatchRemediationButton>
+                      }
+                      disableDefaultColumns={true}
+                      exportConfig={
+                        Object {
+                          "isDisabled": true,
+                          "onSelect": [Function],
+                        }
+                      }
+                      fallback={
+                        <Bullseye
+                          className="pf-u-p-lg"
+                        >
+                          <Spinner
+                            size="xl"
+                          />
+                        </Bullseye>
+                      }
+                      filterConfig={
+                        Object {
+                          "items": Array [
+                            Object {
+                              "filterValues": Object {
+                                "aria-label": "search-field",
+                                "onChange": [Function],
+                                "placeholder": "Filter by name",
+                                "value": undefined,
+                              },
+                              "label": "System",
+                              "type": "text",
+                            },
+                          ],
+                        }
+                      }
+                      getEntities={[Function]}
+                      hideFilters={
+                        Object {
+                          "all": true,
+                        }
+                      }
+                      ignoreRefresh={true}
+                      initialLoading={true}
+                      innerRef={null}
+                      isFullView={true}
+                      onLoad={[Function]}
+                      tableProps={
+                        Object {
+                          "canSelectAll": false,
+                          "className": "patchCompactInventory",
+                          "isStickyHeader": true,
+                          "variant": "compact",
+                        }
+                      }
+                    />
+                  }
+                  actions={
+                    Array [
+                      Object {
+                        "onClick": [Function],
+                        "title": "Apply all applicable advisories",
+                      },
+                    ]
+                  }
+                  activeFiltersConfig={
+                    Object {
+                      "filters": Array [],
+                      "onDelete": [Function],
+                    }
+                  }
+                  appName="chrome"
+                  autoRefresh={true}
+                  bulkSelect={
+                    Object {
+                      "checked": null,
+                      "count": 1,
+                      "isDisabled": false,
+                      "items": Array [
+                        Object {
+                          "onClick": [Function],
+                          "title": "Select none (0)",
+                        },
+                        Object {
+                          "onClick": [Function],
+                          "title": "Select page (1)",
+                        },
+                        Object {
+                          "onClick": [Function],
+                          "title": "Select all (0)",
+                        },
+                      ],
+                      "onSelect": [Function],
+                      "toggleProps": Object {
+                        "data-ouia-component-type": "bulk-select-toggle-button",
+                      },
+                    }
+                  }
+                  customFilters={
+                    Object {
+                      "patchParams": Object {
+                        "filter": undefined,
+                        "search": undefined,
+                        "selectedTags": undefined,
+                        "systemProfile": undefined,
+                      },
+                    }
+                  }
+                  dedicatedAction={
+                    <PatchRemediationButton
+                      isDisabled={false}
+                      isLoading={false}
+                      onClick={[Function]}
+                      ouia="toolbar-remediation-button"
+                    >
+                      <AnsibeTowerIcon
+                        color="currentColor"
+                        noVerticalAlign={false}
+                        size="sm"
+                      />
+                       
+                      Remediate
+                    </PatchRemediationButton>
+                  }
+                  disableDefaultColumns={true}
+                  exportConfig={
+                    Object {
+                      "isDisabled": true,
+                      "onSelect": [Function],
+                    }
+                  }
+                  fallback={
+                    <Bullseye
+                      className="pf-u-p-lg"
+                    >
+                      <Spinner
+                        size="xl"
+                      />
+                    </Bullseye>
+                  }
+                  filterConfig={
+                    Object {
+                      "items": Array [
+                        Object {
+                          "filterValues": Object {
+                            "aria-label": "search-field",
+                            "onChange": [Function],
+                            "placeholder": "Filter by name",
+                            "value": undefined,
+                          },
+                          "label": "System",
+                          "type": "text",
+                        },
+                      ],
+                    }
+                  }
+                  getEntities={[Function]}
+                  hideFilters={
+                    Object {
+                      "all": true,
+                    }
+                  }
+                  history={
+                    Object {
+                      "location": Object {
+                        "search": "testSearch",
+                      },
+                    }
+                  }
+                  ignoreRefresh={true}
+                  initialLoading={true}
+                  innerRef={null}
+                  isFullView={true}
+                  module="./InventoryTable"
+                  onLoad={[Function]}
+                  scope="chrome"
+                  store={
+                    Object {
+                      "clearActions": [Function],
+                      "dispatch": [Function],
+                      "getActions": [Function],
+                      "getState": [Function],
+                      "replaceReducer": [Function],
+                      "subscribe": [Function],
+                    }
+                  }
+                  tableProps={
+                    Object {
+                      "canSelectAll": false,
+                      "className": "patchCompactInventory",
+                      "isStickyHeader": true,
+                      "variant": "compact",
+                    }
+                  }
+                />
+              </ForwardRef>
+              <Bullseye
+                className="pf-u-p-lg"
+              >
+                <div
+                  className="pf-l-bullseye pf-u-p-lg"
+                >
+                  <Spinner
+                    size="xl"
+                  >
+                    <span
+                      aria-valuetext="Loading..."
+                      className="pf-c-spinner pf-m-xl"
+                      role="progressbar"
+                    >
+                      <span
+                        className="pf-c-spinner__clipper"
+                      />
+                      <span
+                        className="pf-c-spinner__lead-ball"
+                      />
+                      <span
+                        className="pf-c-spinner__tail-ball"
+                      />
+                    </span>
+                  </Spinner>
+                </div>
+              </Bullseye>
+            </Suspense>
+          </BaseInvTable>
+        </ForwardRef>
+      </AdvisorySystems>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;

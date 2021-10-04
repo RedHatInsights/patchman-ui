@@ -11,6 +11,7 @@ import { remediationIdentifiers } from '../../Utilities/constants';
 /* eslint-disable */
 initMocks()
 
+
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
     useSelector: jest.fn()
