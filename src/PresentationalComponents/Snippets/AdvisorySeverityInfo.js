@@ -1,5 +1,5 @@
-import { Text, TextContent, TextVariants, Popover } from '@patternfly/react-core';
-import { ExternalLinkSquareAltIcon } from '@patternfly/react-icons';
+import { Split, SplitItem, Title } from '@patternfly/react-core';
+import { SecurityIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
 import { Flex, FlexItem } from '@patternfly/react-core';
@@ -8,34 +8,27 @@ import messages from '../../Messages';
 
 const AdvisorySeverityInfo = ({ severity }) => {
     return (
-        <Popover
-            position="bottom"
-            enableFlip
-            headerContent={<div>{severity.label + ' severity'}</div>}
-            bodyContent={
-                <TextContent>
-                    <Text component={TextVariants.p}>{severity.text}</Text>
-                </TextContent>
-            }
-            footerContent={
-                <a
-                    href="https://access.redhat.com/security/updates/classification/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Flex>
-                        <FlexItem spacer={{ default: 'spacerSm' }}>
-                            <ExternalLinkSquareAltIcon />
-                        </FlexItem>
-                        <FlexItem spacer={{ default: 'spacerSm' }}>
-                            {intl.formatMessage(messages.linksSearchSecurityRatings)}
-                        </FlexItem>
-                    </Flex>
-                </a>
-            }
-        >
-            <a>{intl.formatMessage(messages.linksLearnMore)}</a>
-        </Popover>
+        <Split className='infobox' hasGutter>
+            <SplitItem isFilled>
+                <Flex flex={{ default: 'column' }}>
+                    <FlexItem spacer={{ default: 'spacerNone' }}>
+                        <Title headingLevel='h5'>
+                            {intl.formatMessage(messages.labelsColumnsSeverity)}
+                        </Title>
+                    </FlexItem>
+                    <FlexItem spacer={{ default: 'spacerSm' }}>
+                        <Flex flex={{ default: 'row' }}>
+                            <FlexItem>
+                                <SecurityIcon size='sm' color={severity.color} />
+                            </FlexItem>
+                            <FlexItem>
+                                {severity.label}
+                            </FlexItem>
+                        </Flex>
+                    </FlexItem>
+                </Flex>
+            </SplitItem>
+        </Split>
     );
 };
 

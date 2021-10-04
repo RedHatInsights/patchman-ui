@@ -4,6 +4,8 @@ import { createAdvisoriesRows, createSystemAdvisoriesRows, createSystemPackagesR
 import { handlePatchLink } from './Helpers';
 import { advisoryRows, systemAdvisoryRows, systemPackages, systemRows } from './RawDataForTesting';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
+import messages from '../Messages';
+import { intl } from '../Utilities/IntlProvider';
 
 describe('DataMappers', () => {
     it('Should create advisories rows', () => {
@@ -12,7 +14,8 @@ describe('DataMappers', () => {
         expect(firstRow.isOpen).toEqual(false);
         expect(firstRow.selected).toEqual(false);
         expect(firstRow.cells[0].title).toEqual(handlePatchLink('advisories', advisoryRows[0].id));
-        expect(firstRow.cells[4].title).toEqual(processDate(advisoryRows[0].attributes.public_date));
+        expect(firstRow.cells[4].title).toEqual(intl.formatMessage(messages.labelsRebootRequired));
+        expect(firstRow.cells[5].title).toEqual(processDate(advisoryRows[0].attributes.public_date));
         expect(firstRow.cells[2].title.props.type).toEqual(advisoryRows[0].attributes.applicable_systems);
         expect(firstRow.cells[3].title).toEqual(
             handlePatchLink('advisories', advisoryRows[0].id, advisoryRows[0].attributes.applicable_systems)

@@ -66,6 +66,11 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Publish date'
     },
+    labelsColumnsReboot: {
+        id: 'labelsColumnsRebootRequired',
+        description: 'shared label',
+        defaultMessage: 'Reboot required'
+    },
     labelsColumnsSeverity: {
         id: 'labelsColumnsSeverity',
         description: 'shared label',
@@ -156,6 +161,16 @@ export default defineMessages({
         description: 'shared placeholder label',
         defaultMessage: 'Filter by publish date'
     },
+    labelsFiltersReboot: {
+        id: 'labelsFiltersReboot',
+        description: 'label for reboot filter chips',
+        defaultMessage: 'Reboot required'
+    },
+    labelsFiltersRebootPlaceholder: {
+        id: 'labelsFiltersRebootPlaceholder',
+        description: 'placeholder for reboot filter chips',
+        defaultMessage: 'Filter by reboot required'
+    },
     labelsFiltersReset: {
         id: 'labelsFiltersReset',
         description: 'label for remove filter chips',
@@ -240,6 +255,16 @@ export default defineMessages({
         id: 'labelsPublicDate',
         description: 'Public date label',
         defaultMessage: 'Issued {date}'
+    },
+    labelsRebootNotRequired: {
+        id: 'labelsRequired',
+        description: 'shared label',
+        defaultMessage: 'Not required'
+    },
+    labelsRebootRequired: {
+        id: 'labelsRequired',
+        description: 'shared label',
+        defaultMessage: 'Required'
     },
     labelsRemediate: {
         id: 'labelsRemediate',

@@ -11,6 +11,7 @@ import { getSeverityById, handlePatchLink, isRHAdvisory, truncate } from '../../
 import { intl } from '../../Utilities/IntlProvider';
 import ExternalLink from './ExternalLink';
 import Label from './Label';
+import RebootRequired from '../Snippets/RebootRequired';
 
 export const DescriptionWithLink = ({ row }) => {
     const severityObject = getSeverityById(row.attributes.severity);
@@ -31,7 +32,8 @@ export const DescriptionWithLink = ({ row }) => {
                     <TextListItem component={TextListItemVariants.dd}>
                         {row.attributes.cve_count}
                     </TextListItem>
-                </TextList>)}
+                </TextList>)
+            }
             <Label>{intl.formatMessage(messages.labelsDescription)}</Label>
             <Text component={TextVariants.p} style={{ whiteSpace: 'pre-line' }}>
                 {truncate(row.attributes.description.replace(
@@ -39,6 +41,9 @@ export const DescriptionWithLink = ({ row }) => {
                     ''
                 ), 570, handlePatchLink(entityTypes.advisories, row.id, intl.formatMessage(messages.linksReadMore)))}
             </Text>
+            {
+                row.attributes.reboot_required && <RebootRequired/>
+            }
             {isRHAdvisory(row.id) && <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
                 text={intl.formatMessage(messages.linksViewPackagesAndErrata)} />}
         </TextContent>);
@@ -47,6 +52,7 @@ export const DescriptionWithLink = ({ row }) => {
 DescriptionWithLink.propTypes = {
     row: propTypes.shape({
         id: propTypes.string,
-        attributes: propTypes.object
+        attributes: propTypes.object,
+        reboot_required: propTypes.bool
     })
 };

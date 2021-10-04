@@ -6,6 +6,7 @@ export const advisoryRows = [{
         applicable_systems: 1,
         description: 'The microcode_ctl ',
         public_date: '2020-06-24T17:22:25Z',
+        reboot_required: true,
         synopsis: 'microcode_ctl',
         severity: 3
     },

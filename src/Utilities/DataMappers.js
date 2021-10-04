@@ -9,6 +9,8 @@ import { EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList } from '../Presenta
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handlePatchLink, handleLongSynopsis } from './Helpers';
+import { intl } from './IntlProvider';
+import messages from '../Messages';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -36,6 +38,11 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                                 row.id,
                                 row.attributes.applicable_systems
                             )
+                        },
+                        {
+                            title: row.attributes.reboot_required &&
+                            intl.formatMessage(messages.labelsRebootRequired)
+                            || intl.formatMessage(messages.labelsRebootNotRequired)
                         },
                         { title: processDate(row.attributes.public_date) }
                     ]
@@ -121,7 +128,6 @@ export const createSystemAdvisoriesRows = (
 };
 
 export const createSystemsRows = (rows, selectedRows = {}) => {
-
     const data =
         rows.map(({ id, ...rest }) => {
             const {

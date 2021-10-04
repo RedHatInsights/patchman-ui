@@ -43,17 +43,14 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
     md={4}
     sm={12}
   >
-    <InfoBox
-      color="#ec7a08"
-      content={
-        <SecurityIcon
-          color="currentColor"
-          noVerticalAlign={false}
-          size="lg"
-        />
+    <Flex
+      flex={
+        Object {
+          "default": "column",
+        }
       }
-      isLoading={false}
-      text={
+    >
+      <FlexItem>
         <AdvisorySeverityInfo
           severity={
             Object {
@@ -64,9 +61,8 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
             }
           }
         />
-      }
-      title="Important"
-    />
+      </FlexItem>
+    </Flex>
   </GridItem>
   <Component />
 </Grid>
@@ -115,17 +111,14 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
     md={4}
     sm={12}
   >
-    <InfoBox
-      color="#ec7a08"
-      content={
-        <SecurityIcon
-          color="currentColor"
-          noVerticalAlign={false}
-          size="lg"
-        />
+    <Flex
+      flex={
+        Object {
+          "default": "column",
+        }
       }
-      isLoading={true}
-      text={
+    >
+      <FlexItem>
         <AdvisorySeverityInfo
           severity={
             Object {
@@ -136,9 +129,8 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
             }
           }
         />
-      }
-      title="Important"
-    />
+      </FlexItem>
+    </Flex>
   </GridItem>
   <Component />
 </Grid>

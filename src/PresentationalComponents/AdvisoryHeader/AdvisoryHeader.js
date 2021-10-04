@@ -1,9 +1,7 @@
 import {
     Button, Grid, GridItem, Stack, StackItem, Text, TextContent,
-
-    TextVariants
+    FlexItem, TextVariants, Flex
 } from '@patternfly/react-core';
-import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
 import React, { useState } from 'react';
@@ -12,7 +10,7 @@ import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/W
 import CvesModal from '../../SmartComponents/AdvisoryDetail/CvesModal';
 import { getSeverityById, isRHAdvisory, preserveNewlines } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
-import InfoBox from '../InfoBox/InfoBox';
+import RebootRequired from '../Snippets/RebootRequired';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
 import ExternalLink from '../Snippets/ExternalLink';
 
@@ -71,17 +69,16 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                 </WithLoader>
             </GridItem>
             <GridItem md={4} sm={12}>
-                {severityObject.value !== 0 && (
-                    <InfoBox
-                        isLoading={isLoading}
-                        title={severityObject.label}
-                        color={severityObject.color}
-                        text={
-                            <AdvisorySeverityInfo severity={severityObject} />
-                        }
-                        content={<SecurityIcon size="lg" />}
-                    />
-                )}
+                <Flex flex={{ default: 'column' }}>
+                    {severityObject.value !== 0 && (<FlexItem>
+                        <AdvisorySeverityInfo severity={severityObject}/>
+                    </FlexItem>
+                    )}
+
+                    {attributes.reboot_required && (<FlexItem spacer={{ default: 'spacerMd' }}>
+                        <RebootRequired />
+                    </FlexItem>)}
+                </Flex>
             </GridItem>
             {cves && cves.length !== 0 && (
                 <GridItem md={4} sm={12}>
