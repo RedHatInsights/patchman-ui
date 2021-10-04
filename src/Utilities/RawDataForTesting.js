@@ -344,3 +344,15 @@ export const systemsStoreState = {
         }
     ]
 };
+
+export const packageVersions = {
+    data: [
+        { evra: '0.0.25-1.el7.noarch' },
+        { evra: '0.0.25-4.el8.noarch' }
+    ],
+    links: {
+        first: '/packages/abattis-cantarell-fonts/versions?offset=0\u0026limit=20\u0026sort=evra',
+        last: '/packages/abattis-cantarell-fonts/versions?offset=0\u0026limit=20\u0026sort=evra',
+        next: null, previous: null },
+    meta: { limit: 20, offset: 0, sort: ['evra'], filter: {}, total_items: 2 }
+};
