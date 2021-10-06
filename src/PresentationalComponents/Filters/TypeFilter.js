@@ -14,7 +14,7 @@ const typeFilter = (apply, currentFilter = {}) => {
         []
     );
     const filterByType = value => {
-        apply({ filter: { advisory_type: value } });
+        apply({ filter: { advisory_type_name: value } });
     };
 
     return {
@@ -25,7 +25,7 @@ const typeFilter = (apply, currentFilter = {}) => {
                 filterByType(value);
             },
             items: advisoryTypesMap,
-            value: currentFilter.advisory_type,
+            value: currentFilter.advisory_type_name,
             placeholder: intl.formatMessage(messages.labelsFiltersTypePlaceholder)
         }
     };

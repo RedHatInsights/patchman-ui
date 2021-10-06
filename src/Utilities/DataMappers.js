@@ -3,14 +3,14 @@ import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
+import messages from '../Messages';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
 import { EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
-import { createUpgradableColumn, handlePatchLink, handleLongSynopsis } from './Helpers';
+import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
-import messages from '../Messages';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -28,7 +28,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                         {
                             title: (
                                 <AdvisoryType
-                                    type={row.attributes.advisory_type}
+                                    type={row.attributes.advisory_type_name}
                                 />
                             )
                         },
@@ -41,8 +41,8 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                         },
                         {
                             title: row.attributes.reboot_required &&
-                            intl.formatMessage(messages.labelsRebootRequired)
-                            || intl.formatMessage(messages.labelsRebootNotRequired)
+                                intl.formatMessage(messages.labelsRebootRequired)
+                                || intl.formatMessage(messages.labelsRebootNotRequired)
                         },
                         { title: processDate(row.attributes.public_date) }
                     ]

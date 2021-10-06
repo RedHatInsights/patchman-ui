@@ -25,7 +25,7 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
                         <Grid>
                             <GridItem>
                                 <AdvisoryType
-                                    type={attributes.advisory_type}
+                                    type={attributes.advisory_type_name}
                                 />
                             </GridItem>
                             <GridItem>
@@ -76,7 +76,7 @@ const AdvisoriesStatusBar = () => {
     const [advisories, setAdvisories] = React.useState([]);
     React.useEffect(async () => {
         setAdvisories(
-            await fetchApplicableAdvisoriesApi({ limit: 4, sort: '-advisory_type,-applicable_systems' })
+            await fetchApplicableAdvisoriesApi({ limit: 4, sort: '-advisory_type_name,-applicable_systems' })
         );
     }, []);
 
