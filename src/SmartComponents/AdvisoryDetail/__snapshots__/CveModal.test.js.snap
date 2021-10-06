@@ -2631,6 +2631,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   dropdownPosition="right"
                                   expandId="expandable-toggle"
                                   gridBreakPoint="grid-md"
+                                  isNested={false}
                                   isStickyHeader={true}
                                   isTreeTable={false}
                                   onSort={[Function]}
@@ -2978,6 +2979,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                       ]
                                     }
                                     gridBreakPoint="grid-md"
+                                    isNested={false}
                                     isStickyHeader={true}
                                     isTreeTable={false}
                                     ouiaId="cves-table"
@@ -3002,6 +3004,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                       borders={true}
                                       className=""
                                       gridBreakPoint="grid-md"
+                                      isNested={false}
                                       isStickyHeader={true}
                                       isTreeTable={false}
                                       ouiaId="cves-table"
@@ -3015,6 +3018,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                         className=""
                                         gridBreakPoint="grid-md"
                                         innerRef={null}
+                                        isNested={false}
                                         isStickyHeader={true}
                                         isTreeTable={false}
                                         ouiaId="cves-table"
@@ -3034,7 +3038,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             <ContextHeader
                                               headerRows={null}
                                             >
-                                              <Component
+                                              <Header
                                                 className=""
                                                 headerRows={null}
                                               >
@@ -3727,10 +3731,10 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                     </TheadBase>
                                                   </Thead>
                                                 </BaseHeader>
-                                              </Component>
+                                              </Header>
                                             </ContextHeader>
                                           </TableHeader>
-                                          <Component>
+                                          <TableBody>
                                             <ContextBody
                                               className=""
                                               headerData={
@@ -4064,7 +4068,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                 ]
                                               }
                                             >
-                                              <Component
+                                              <Body
                                                 className=""
                                                 headerRows={null}
                                                 mappedRows={
@@ -6720,7 +6724,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -6776,12 +6781,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -6789,7 +6796,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -7127,7 +7135,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -7183,12 +7192,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -7196,7 +7207,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -7534,7 +7546,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -7590,12 +7603,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -7603,7 +7618,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -7941,7 +7957,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -7997,12 +8014,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -8010,7 +8029,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -8348,7 +8368,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -8404,12 +8425,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -8417,7 +8440,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -8755,7 +8779,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -8811,12 +8836,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -8824,7 +8851,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -9162,7 +9190,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -9218,12 +9247,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -9231,7 +9262,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -9569,7 +9601,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -9625,12 +9658,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -9638,7 +9673,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -9976,7 +10012,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -10032,12 +10069,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -10045,7 +10084,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -10383,7 +10423,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           >
                                                             <RowWrapper
                                                               className=""
-                                                              onMouseDown={[Function]}
+                                                              onClick={[Function]}
+                                                              onKeyDown={[Function]}
                                                               row={
                                                                 Object {
                                                                   "cells": Array [
@@ -10439,12 +10480,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             >
                                                               <Tr
                                                                 className=""
-                                                                onMouseDown={[Function]}
+                                                                onClick={[Function]}
+                                                                onKeyDown={[Function]}
                                                               >
                                                                 <TrBase
                                                                   className=""
                                                                   innerRef={null}
-                                                                  onMouseDown={[Function]}
+                                                                  onClick={[Function]}
+                                                                  onKeyDown={[Function]}
                                                                 >
                                                                   <tr
                                                                     className=""
@@ -10452,7 +10495,8 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     data-ouia-component-type="PF4/TableRow"
                                                                     data-ouia-safe={true}
                                                                     hidden={false}
-                                                                    onMouseDown={[Function]}
+                                                                    onClick={[Function]}
+                                                                    onKeyDown={[Function]}
                                                                   >
                                                                     <BodyCell
                                                                       data-key={0}
@@ -10572,9 +10616,9 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                     </Tbody>
                                                   </BodyWrapper>
                                                 </BaseBody>
-                                              </Component>
+                                              </Body>
                                             </ContextBody>
-                                          </Component>
+                                          </TableBody>
                                         </table>
                                       </TableComposableBase>
                                     </TableComposable>
