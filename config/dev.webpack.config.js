@@ -11,10 +11,10 @@ const insightsProxy = {
 const webpackProxy = {
     deployment: process.env.BETA ? 'beta/apps' : 'apps',
     appUrl: process.env.BETA ? ['/beta/insights/patch'] : ['/insights/patch'],
-    env: `ci-${process.env.BETA ? 'beta' : 'stable'}`,
+    env: `stage-${process.env.BETA ? 'beta' : 'stable'}`,
     useProxy: true,
     proxyVerbose: true,
-    useCloud: true, // until console pre-prod env is ready
+    useCloud: false, // until console pre-prod env is ready
     // localChrome: '~/insights/insights-chrome/build/', // for local chrome builds
     routes: {
         //   '/beta/config': { host: 'http://localhost:8003' }, // for local CSC config
