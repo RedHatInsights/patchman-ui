@@ -246,7 +246,7 @@ describe('Helpers tests', () => {
 
     it.each`
     filters               | search       | result
-    ${{advisory_type: 2}} | ${undefined} | ${[{"category": "Advisory type", "chips": [{"id": 2, "name": "Bugfix", "value": 2}], "id": "advisory_type"}]}
+    ${{advisory_type_name: 'bugfix'}} | ${undefined} | ${[{"category": "Advisory type", "chips": [{"id": 'bugfix', "name": "Bugfix", "value": 'bugfix'}], "id": "advisory_type_name"}]}
     ${undefined}          | ${"firefox"} | ${[{"category": "Search", "chips": [{"name": "firefox", "value": "firefox"}], "id": "search"}]}
      `('buildFilterChips: Should build correct filter chip, $filters, $search ', ({filters, search, result}) => {
         expect(buildFilterChips(filters, search)).toEqual(result);

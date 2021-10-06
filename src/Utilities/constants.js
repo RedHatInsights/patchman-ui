@@ -197,7 +197,7 @@ export const rebootRequired = [
 ];
 
 export const filterCategories = {
-    advisory_type: {
+    advisory_type_name: {
         label: 'Advisory type',
         values: advisoryTypes
     },

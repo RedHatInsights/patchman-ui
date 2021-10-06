@@ -93,7 +93,7 @@ export const createSystemAdvisoriesRows = (
                         {
                             title: (
                                 <AdvisoryType
-                                    type={row.attributes.advisory_type}
+                                    type={row.attributes.advisory_type_name}
                                 />
                             )
                         },
