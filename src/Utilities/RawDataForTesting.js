@@ -3,6 +3,7 @@
 export const advisoryRows = [{
     attributes: {
         advisory_type: 1,
+        advisory_type_name: 'enhancement',
         applicable_systems: 1,
         description: 'The microcode_ctl ',
         public_date: '2020-06-24T17:22:25Z',
@@ -17,6 +18,7 @@ export const advisoryRows = [{
 export const systemAdvisoryRows = [{
     attributes: {
         advisory_type: 3,
+        advisory_type_name: 'security',
         description: 'Kernel-based Virtual.',
         public_date: '2020-06-30T13:38:53Z',
         severity: 3,
@@ -53,6 +55,7 @@ export const systemRows = [{
 export const advisoryHeader = {
     attributes: {
         advisory_type: 3,
+        advisory_type_name: 'security',
         description: 'Kernel-based Virtual.',
         public_date: '2020-06-30T13:38:53Z',
         modified_date: '2020-06-30T13:38:53Z',
