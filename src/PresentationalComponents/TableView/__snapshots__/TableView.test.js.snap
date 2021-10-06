@@ -99,6 +99,7 @@ exports[`TableView TableView 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isNested={false}
     isStickyHeader={true}
     isTreeTable={false}
     ouiaSafe={true}
@@ -109,7 +110,7 @@ exports[`TableView TableView 1`] = `
     variant={null}
   >
     <TableHeader />
-    <Component />
+    <TableBody />
   </Table>
   <TableFooter
     onPerPageSelect={[MockFunction]}
@@ -219,6 +220,7 @@ exports[`TableView TableView 2`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isNested={false}
     isStickyHeader={true}
     isTreeTable={false}
     ouiaSafe={true}
@@ -229,7 +231,7 @@ exports[`TableView TableView 2`] = `
     variant={null}
   >
     <TableHeader />
-    <Component />
+    <TableBody />
   </Table>
   <TableFooter
     onPerPageSelect={[MockFunction]}
@@ -339,6 +341,7 @@ exports[`TableView test table props TableView 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isNested={false}
     isStickyHeader={true}
     isTreeTable={false}
     onCollapse={[MockFunction]}
@@ -353,7 +356,7 @@ exports[`TableView test table props TableView 1`] = `
     variant={null}
   >
     <TableHeader />
-    <Component />
+    <TableBody />
   </Table>
   <TableFooter
     onPerPageSelect={[MockFunction]}

@@ -4,9 +4,9 @@ import { advisoryTypes } from '../../Utilities/constants';
 import { Flex, FlexItem } from '@patternfly/react-core';
 
 const AdvisoryType = ({ type }) => {
-    console.log(type);
     const advisoryType =
-        advisoryTypes.find(item => item.value === type);
+        advisoryTypes.find(item => item.value === type) || advisoryTypes[3];
+    console.log(advisoryType);
     return (
         <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
             <FlexItem>{advisoryType.icon}</FlexItem>
