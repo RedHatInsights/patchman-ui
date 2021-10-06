@@ -616,7 +616,85 @@ exports[`Systems.js should match the snapshot 1`] = `
                     },
                   ]
                 }
+                activeFiltersConfig={
+                  Object {
+                    "deleteTitle": "Reset filters",
+                    "filters": Array [],
+                    "onDelete": [Function],
+                  }
+                }
                 autoRefresh={true}
+                bulkSelect={
+                  Object {
+                    "checked": null,
+                    "count": 1,
+                    "isDisabled": false,
+                    "items": Array [
+                      Object {
+                        "onClick": [Function],
+                        "title": "Select none (0)",
+                      },
+                      Object {
+                        "onClick": [Function],
+                        "title": "Select page (1)",
+                      },
+                      Object {
+                        "onClick": [Function],
+                        "title": "Select all (0)",
+                      },
+                    ],
+                    "onSelect": [Function],
+                    "toggleProps": Object {
+                      "data-ouia-component-type": "bulk-select-toggle-button",
+                    },
+                  }
+                }
+                columns={
+                  Array [
+                    Object {
+                      "composed": Array [
+                        "facts.os_release",
+                        "display_name",
+                      ],
+                      "key": "display_name",
+                      "props": Object {
+                        "width": 50,
+                      },
+                      "title": "Name",
+                    },
+                    Object {
+                      "key": "tags",
+                      "props": Object {
+                        "isStatic": true,
+                        "width": 10,
+                      },
+                      "title": "Tags",
+                    },
+                    Object {
+                      "key": "operating_system",
+                      "props": Object {
+                        "width": 10,
+                      },
+                      "renderFunc": [Function],
+                      "title": "OS",
+                    },
+                    Object {
+                      "key": "packages_installed",
+                      "props": Object {
+                        "width": 10,
+                      },
+                      "title": "Packages",
+                    },
+                    Object {
+                      "key": "applicable_advisories",
+                      "props": Object {
+                        "width": 15,
+                      },
+                      "renderFunc": [Function],
+                      "title": "Applicable advisories",
+                    },
+                  ]
+                }
                 customFilters={
                   Object {
                     "patchParams": Object {
@@ -627,16 +705,351 @@ exports[`Systems.js should match the snapshot 1`] = `
                     },
                   }
                 }
-                disableDefaultColumns={true}
+                dedicatedAction={
+                  <PatchRemediationButton
+                    isDisabled={false}
+                    isLoading={false}
+                    onClick={[Function]}
+                    ouia="toolbar-remediation-button"
+                  />
+                }
+                exportConfig={
+                  Object {
+                    "isDisabled": true,
+                    "onSelect": [Function],
+                  }
+                }
+                filterConfig={
+                  Object {
+                    "items": Array [
+                      Object {
+                        "filterValues": Object {
+                          "aria-label": "search-field",
+                          "onChange": [Function],
+                          "placeholder": "Filter by name",
+                          "value": undefined,
+                        },
+                        "label": "System",
+                        "type": "text",
+                      },
+                      Object {
+                        "filterValues": Object {
+                          "items": Array [
+                            Object {
+                              "label": "Stale",
+                              "value": "true",
+                            },
+                            Object {
+                              "label": "Fresh",
+                              "value": "false",
+                            },
+                          ],
+                          "onChange": [Function],
+                          "placeholder": "Filter by status",
+                          "value": undefined,
+                        },
+                        "label": "Status",
+                        "type": "checkbox",
+                      },
+                      Object {
+                        "filterValues": Object {
+                          "items": Array [
+                            Object {
+                              "label": "Systems up to date",
+                              "value": "eq:0",
+                            },
+                            Object {
+                              "label": "Systems with patches available",
+                              "value": "gt:0",
+                            },
+                          ],
+                          "onChange": [Function],
+                          "placeholder": "Filter by patch status",
+                          "value": undefined,
+                        },
+                        "label": "Patch status",
+                        "type": "radio",
+                      },
+                      Object {
+                        "filterValues": Object {
+                          "children": <Select
+                            aria-describedby=""
+                            aria-invalid={false}
+                            aria-label=""
+                            aria-labelledby="patch-os-version-filter"
+                            chipGroupComponent={null}
+                            className=""
+                            clearSelectionsAriaLabel="Clear all"
+                            createText="Create"
+                            customBadgeText={null}
+                            customContent={null}
+                            direction="down"
+                            favorites={Array []}
+                            favoritesLabel="Favorites"
+                            hasInlineFilter={false}
+                            hasPlaceholderStyle={false}
+                            inlineFilterPlaceholderText={null}
+                            inputIdPrefix=""
+                            isCreatable={false}
+                            isCreateSelectOptionObject={false}
+                            isDisabled={false}
+                            isGrouped={false}
+                            isInputValuePersisted={false}
+                            isOpen={false}
+                            isPlain={false}
+                            loadingVariant={
+                              Object {
+                                "onClick": [Function],
+                                "text": "View more",
+                              }
+                            }
+                            menuAppendTo="inline"
+                            noResultsFoundText="No results found"
+                            onClear={[Function]}
+                            onCreateOption={[Function]}
+                            onFilter={null}
+                            onSelect={[Function]}
+                            onToggle={[Function]}
+                            onTypeaheadInputChanged={null}
+                            ouiaSafe={true}
+                            placeholderText="Filter by operating system"
+                            position="left"
+                            removeSelectionAriaLabel="Remove"
+                            selections={Array []}
+                            style={
+                              Object {
+                                "maxHeight": "400px",
+                                "overflow": "auto",
+                              }
+                            }
+                            toggleAriaLabel="Options menu"
+                            toggleIcon={null}
+                            toggleId={null}
+                            typeAheadAriaLabel="Filter by operating system"
+                            validated="default"
+                            variant="checkbox"
+                            width=""
+                          >
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 8.5"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 8.4"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 8.3"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 8.2"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 8.1"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 8.0"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 7.9"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 7.8"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 7.7"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 7.6"
+                            />
+                          </Select>,
+                        },
+                        "label": "Operating system",
+                        "type": "custom",
+                        "value": "custom",
+                      },
+                    ],
+                  }
+                }
                 getEntities={[Function]}
                 hideFilters={
                   Object {
                     "all": true,
+                    "tags": false,
                   }
                 }
                 initialLoading={true}
                 isFullView={true}
                 onLoad={[Function]}
+                showTags={true}
                 tableProps={
                   Object {
                     "areActionsDisabled": [Function],

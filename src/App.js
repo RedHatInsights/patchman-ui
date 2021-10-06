@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
 import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { isEqual } from 'lodash';
@@ -8,7 +6,9 @@ import { useDispatch } from 'react-redux';
 import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import './App.scss';
 import { paths, Routes } from './Routes';
-import { globalFilter } from './store/Actions/Actions';
+import { changeTags, changeWorkloads, changeSids, globalFilter } from './store/Actions/Actions';
+import { mapGlobalFilters } from './Utilities/Helpers';
+
 const App = () => {
     const dispatch = useDispatch();
     const [config, setConfig] = useState({
@@ -47,24 +47,19 @@ const App = () => {
 
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
-                const SID = insights.chrome?.mapGlobalFilter?.(data, false, true)[1];
+                const SIDs = insights.chrome?.mapGlobalFilter?.(data, false, true)[1];
                 const SAP = data?.Workloads?.SAP;
-                const selectedTags = insights.chrome?.mapGlobalFilter?.(data)
-                ?.filter(item => !item.includes('Workloads')).map(tag => (`tags=${encodeURIComponent(tag)}`));
+                const TAGs = insights.chrome?.mapGlobalFilter?.(data)
+                ?.filter(item => !item.includes('Workloads'));
 
-                const newconfig = { };
-                (SAP && SAP.isSelected)
-                    ? (newconfig.systemProfile = `filter[system_profile][sap_system]=${SAP.isSelected}&`)
-                    : newconfig.systemProfile = undefined;
-                selectedTags && (newconfig.selectedTags = selectedTags);
-                if (SID && SID?.length !== 0) {
-                    const SID_filter = SID.map(item=> `filter[system_profile][sap_sids][in]=${item}`).join('&') ;
-                    newconfig.systemProfile = newconfig.systemProfile?.concat(SID_filter) || SID_filter;
-                }
+                const globalFilterConfig = mapGlobalFilters(TAGs, SIDs, SAP);
 
-                if (!isEqual(config, newconfig)) {
-                    dispatch(globalFilter(newconfig));
-                    setConfig(newconfig);
+                if (!isEqual(config, globalFilterConfig)) {
+                    dispatch(globalFilter(globalFilterConfig));
+                    setConfig(globalFilterConfig);
+                    changeTags(TAGs);
+                    changeWorkloads(SAP);
+                    changeSids(SIDs);
                 }
 
             });

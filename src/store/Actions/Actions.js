@@ -116,6 +116,21 @@ export const globalFilter = params => ({
     payload: params
 });
 
+export const changeTags = params => ({
+    type: ActionTypes.CHANGE_TAGS,
+    payload: params
+});
+
+export const changeWorkloads = params => ({
+    type: ActionTypes.CHANGE_WORKLOADS,
+    payload: params
+});
+
+export const changeSids = params => ({
+    type: ActionTypes.CHANGE_SIDS,
+    payload: params
+});
+
 export const fetchPackagesAction = params => ({
     type: ActionTypes.FETCH_PACKAGES_LIST,
     payload: new Promise(resolve => {

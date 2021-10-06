@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import {
     BugIcon, CheckIcon, FlagIcon,
@@ -6,6 +7,7 @@ import {
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import findIndex from 'lodash/findIndex';
+import flatten from 'lodash/findIndex';
 import qs from 'query-string';
 import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
@@ -517,4 +519,38 @@ export const handleLongSynopsis = (synopsis) => {
 
 export const isRHAdvisory = (name) => {
     return /^(RHEA|RHBA|RHSA)/.test(name);
+};
+
+export const buildTagString = (tag) => {
+    return `${tag.category}/${tag.values?.tagKey}=${tag.value?.tagValue}`;
+};
+
+export const mapGlobalFilters = (tags, SIDs, SAP) => {
+    let tagsInUrlFormat = [];
+    tags && tags.forEach((tag, index) => {
+        let tagGruop = tag;
+        if (typeof tag === 'object') {
+            tagGruop = tag?.values.map(value => `tags=${encodeURIComponent(`${tag.category}/${value.tagKey}=${value.value}`)}`);
+            tagsInUrlFormat[index] = Array.isArray(tagGruop) && flatten(tagGruop) || tagGruop;
+        }
+        else {
+            tagsInUrlFormat[index] = `tags=${encodeURIComponent(tagGruop)}`;
+        }
+
+    });
+
+    const globalFilterConfig = { selectedTags: [], systemProfile: undefined };
+
+    (SAP && SAP.isSelected)
+        ? (globalFilterConfig.systemProfile = `filter[system_profile][sap_system]=${SAP.isSelected}&`)
+        : globalFilterConfig.systemProfile = undefined;
+    tagsInUrlFormat && (globalFilterConfig.selectedTags = tagsInUrlFormat);
+
+    if (SIDs && SIDs?.length !== 0) {
+        const SID_filter = SIDs.map(item => `filter[system_profile][sap_sids][in]=${item}`).join('&');
+        globalFilterConfig.systemProfile = globalFilterConfig.systemProfile?.concat(SID_filter) || SID_filter;
+    }
+
+    return globalFilterConfig;
+
 };

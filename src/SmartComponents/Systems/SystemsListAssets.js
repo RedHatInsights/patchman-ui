@@ -14,6 +14,11 @@ export const systemsListColumns = [
         }
     },
     {
+        key: 'tags',
+        title: 'Tags',
+        props: { width: 10, isStatic: true }
+    },
+    {
         key: 'operating_system',
         title: 'OS',
         renderFunc: value => createOSColumn(value),

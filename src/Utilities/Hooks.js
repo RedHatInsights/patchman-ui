@@ -7,7 +7,7 @@ import messages from '../Messages';
 import { compoundSortValues, exportNotifications } from './constants';
 import {
     convertLimitOffset, createSystemsSortBy, getLimitFromPageSize,
-    getOffsetFromPageLimit, encodeURLParams
+    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
@@ -245,8 +245,11 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata) 
     const { id, packageName } = config || {};
     const getEntities = async (
         _items,
-        { orderBy, orderDirection, page, per_page: perPage, patchParams }
+        { orderBy, orderDirection, page, per_page: perPage, patchParams, filters }
     ) => {
+
+        const { selectedTags: activeTags = [] } = patchParams;
+        const { selectedTags } = mapGlobalFilters(filters.tagFilters);
 
         const sort = createSystemsSortBy(orderBy, orderDirection, packageName);
 
@@ -254,6 +257,7 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata) 
             page,
             perPage,
             ...patchParams,
+            selectedTags: [...activeTags, ...selectedTags],
             sort,
             ...id && { id } || {},
             ...packageName && { package_name: packageName } || {}
@@ -274,6 +278,7 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata) 
             sort,
             ...patchParams
         }));
+
         return {
             results: items.data.map(row => ({ ...row, ...row.attributes })),
             total: items.meta?.total_items
