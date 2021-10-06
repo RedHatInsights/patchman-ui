@@ -17,7 +17,7 @@ export const advisoriesColumns = [
     {
         title: intl.formatMessage(messages.labelsColumnsType),
         transforms: [sortable, cellWidth(10)],
-        key: 'advisory_type'
+        key: 'advisory_type_name'
     },
     {
         title: intl.formatMessage(messages.labelsColumnsApplicableSystems),
@@ -51,7 +51,7 @@ export const systemAdvisoriesColumns = [
     {
         title: intl.formatMessage(messages.labelsColumnsType),
         transforms: [sortable, cellWidth(15)],
-        key: 'advisory_type'
+        key: 'advisory_type_name'
     },
     {
         title: intl.formatMessage(messages.labelsColumnsPublishDate),

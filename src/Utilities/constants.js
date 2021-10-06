@@ -131,22 +131,22 @@ export const advisorySeverities = [
 
 export const advisoryTypes = [
     {
-        value: 3,
+        value: 'security',
         label: 'Security',
         icon: <SecurityIcon />
     },
     {
-        value: 2,
+        value: 'bugfix',
         label: 'Bugfix',
         icon: <BugIcon />
     },
     {
-        value: 1,
+        value: 'enhancement',
         label: 'Enhancement',
         icon: <EnhancementIcon />
     },
     {
-        value: 4,
+        value: 'other',
         label: 'Other',
         icon: <FlagIcon />
     }
