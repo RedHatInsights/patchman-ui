@@ -82,7 +82,7 @@ const initStore = (state) => {
 
 let wrapper;
 let store = initStore(mockState);
-let primaryToolbarProps;
+
 beforeEach(() => {
     console.error = () => { };
 
@@ -93,8 +93,6 @@ beforeEach(() => {
     wrapper = mount(<Provider store={store}>
         <Router><Systems /></Router>
     </Provider>);
-
-    primaryToolbarProps = wrapper.find('.testInventroyComponentChild').parent().props().children.props;
 });
 
 afterEach(() => {
@@ -117,13 +115,13 @@ describe('Systems.js', () => {
         global.fetch = jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)));
 
         it('Should download csv file', () => {
-            const { exportConfig } = primaryToolbarProps;
+            const { exportConfig } = wrapper.find('.testInventroyComponentChild').parent().props();
             exportConfig.onSelect(null, 'csv');
             expect(exportSystemsCSV).toHaveBeenCalledWith({}, 'systems');
         });
 
         it('Should download json file', () => {
-            const { exportConfig } = primaryToolbarProps;
+            const { exportConfig } = wrapper.find('.testInventroyComponentChild').parent().props();
             exportConfig.onSelect(null, 'json');
             expect(exportSystemsJSON).toHaveBeenCalledWith({}, 'systems');
         });

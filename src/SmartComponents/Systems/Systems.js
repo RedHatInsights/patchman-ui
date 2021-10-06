@@ -21,7 +21,6 @@ import {
 import { remediationIdentifiers, systemsListDefaultFilters } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
-
     decodeQueryparams, filterRemediatableSystems, persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys,
     transformPairs
 } from '../../Utilities/Helpers';
@@ -34,7 +33,6 @@ import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -154,11 +152,12 @@ const Systems = () => {
                 {status.hasError && <ErrorHandler code={status.code} /> ||
                     (
                         <InventoryTable
-                            disableDefaultColumns
                             isFullView
                             autoRefresh
                             initialLoading
-                            hideFilters={{ all: true }}
+                            hideFilters={{ all: true, tags: false }}
+                            columns={systemsListColumns}
+                            showTags
                             customFilters={{
                                 patchParams: {
                                     search,
@@ -174,38 +173,37 @@ const Systems = () => {
                                         persistantParams({ page, perPage, sort, search }, decodedParams)
                                     )
                                 });
-                            } }
+                            }}
                             getEntities={getEntities}
                             actions={systemsRowActions(showRemediationModal)}
                             tableProps={{
                                 areActionsDisabled,
                                 canSelectAll: false,
                                 variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
-                            }}>
-                            <PrimaryToolbar
-                                className='testInventroyComponentChild'
-                                bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
-                                exportConfig={{
-                                    isDisabled: totalItems === 0,
-                                    onSelect: onExport
-                                }}
-                                filterConfig={filterConfig}
-                                activeFiltersConfig={activeFiltersConfig}
-                                dedicatedAction={(
-                                    <PatchRemediationButton
-                                        onClick={() => showRemediationModal(
+                            }}
+                            bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                            exportConfig={{
+                                isDisabled: totalItems === 0,
+                                onSelect: onExport
+                            }}
+                            filterConfig={filterConfig}
+                            activeFiltersConfig={activeFiltersConfig}
+                            dedicatedAction={(
+                                <PatchRemediationButton
+                                    onClick={() =>
+                                        showRemediationModal(
                                             remediationProviderWithPairs(
                                                 removeUndefinedObjectKeys(selectedRows),
                                                 prepareRemediationPairs,
                                                 transformPairs,
                                                 remediationIdentifiers.advisory)
                                         )}
-                                        isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                                        isLoading={isRemediationLoading}
-                                        ouia={'toolbar-remediation-button'} />
-                                )}
-                            />
-                        </InventoryTable>
+                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+                                    isLoading={isRemediationLoading}
+                                    ouia={'toolbar-remediation-button'}
+                                />
+                            )}
+                        />
 
                     )
                 }

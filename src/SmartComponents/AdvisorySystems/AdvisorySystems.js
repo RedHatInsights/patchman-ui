@@ -25,7 +25,6 @@ import { intl } from '../../Utilities/IntlProvider';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
-import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -111,12 +110,13 @@ const AdvisorySystems = ({ advisoryName }) => {
             <RemediationModalCmp />
             {status.hasError && <ErrorHandler code={status.code} /> ||
                 <InventoryTable
-                    disableDefaultColumns
                     isFullView
                     autoRefresh
                     initialLoading
                     ignoreRefresh
-                    hideFilters={{ all: true }}
+                    hideFilters={{ all: true, tags: false }}
+                    columns={systemsListColumns}
+                    showTags
                     customFilters={{
                         patchParams: {
                             search,
@@ -139,39 +139,36 @@ const AdvisorySystems = ({ advisoryName }) => {
                         canSelectAll: false,
                         variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
-                >
-                    <PrimaryToolbar
-                        className='testInventroyComponentChild'
-                        filterConfig={filterConfig}
-                        activeFiltersConfig={activeFiltersConfig}
-                        exportConfig={{
-                            isDisabled: totalItems === 0,
-                            onSelect: onExport
-                        }}
-                        bulkSelect={
-                            onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)
+                    filterConfig={filterConfig}
+                    activeFiltersConfig={activeFiltersConfig}
+                    exportConfig={{
+                        isDisabled: totalItems === 0,
+                        onSelect: onExport
+                    }}
+                    bulkSelect={
+                        onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)
+                    }
+                    dedicatedAction={(<PatchRemediationButton
+                        isDisabled={
+                            arrayFromObj(selectedRows).length === 0
                         }
-                        dedicatedAction={(<PatchRemediationButton
-                            isDisabled={
-                                arrayFromObj(selectedRows).length === 0
-                            }
-                            onClick={() =>
-                                showRemediationModal(
-                                    remediationProvider(
-                                        advisoryName,
-                                        removeUndefinedObjectKeys(selectedRows),
-                                        remediationIdentifiers.advisory
-                                    )
+                        onClick={() =>
+                            showRemediationModal(
+                                remediationProvider(
+                                    advisoryName,
+                                    removeUndefinedObjectKeys(selectedRows),
+                                    remediationIdentifiers.advisory
                                 )
-                            }
-                            ouia={'toolbar-remediation-button'}
-                            isLoading={false}
-                        >
-                            <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                        </PatchRemediationButton>
-                        )}
-                    />
-                </InventoryTable>
+                            )
+                        }
+                        ouia={'toolbar-remediation-button'}
+                        isLoading={false}
+                    >
+                        <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
+                    </PatchRemediationButton>
+                    )}
+
+                />
             }
         </React.Fragment>
     );

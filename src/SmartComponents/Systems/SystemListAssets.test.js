@@ -17,7 +17,7 @@ jest.mock('../../Utilities/api', () => ({
 describe('SystemListAssets.js', () => {
 
     it('Should call systemsListColumns on Applicable advisories renderFunc with correct params', () => {
-        systemsListColumns[3].renderFunc('testValue');
+        systemsListColumns[4].renderFunc('testValue');
         expect(createAdvisoriesIcons).toHaveBeenCalledWith('testValue');
     });
 

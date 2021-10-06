@@ -145,9 +145,9 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 os_major: osMajor,
                 os_minor: osMinor,
                 other_count: other,
-                rhsm
+                rhsm,
+                tags
             } = rest;
-
             return {
                 id,
                 ...rest,
@@ -165,7 +165,8 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                         || 'N/A',
                     rhsm
                 },
-                selected: selectedRows[id] !== undefined
+                selected: selectedRows[id] !== undefined,
+                tags
             };
         });
     return data || [];
