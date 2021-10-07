@@ -745,7 +745,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                               >
                                 <ForwardRef
                                   ErrorComponent={
-                                    <UNDEFINED
+                                    <InventoryLoadError
                                       activeFiltersConfig={
                                         Object {
                                           "filters": Array [],
@@ -778,7 +778,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                           },
                                         }
                                       }
-                                      component="InventoryTable"
+                                      component="InventoryDetailHead"
                                       customFilters={
                                         Object {
                                           "patchParams": Object {
@@ -931,10 +931,40 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                           "all": true,
                                         }
                                       }
+                                      history={
+                                        Object {
+                                          "action": "POP",
+                                          "block": [Function],
+                                          "createHref": [Function],
+                                          "go": [Function],
+                                          "goBack": [Function],
+                                          "goForward": [Function],
+                                          "length": 1,
+                                          "listen": [Function],
+                                          "location": Object {
+                                            "hash": "",
+                                            "pathname": "/",
+                                            "search": "",
+                                            "state": undefined,
+                                          },
+                                          "push": [Function],
+                                          "replace": [Function],
+                                        }
+                                      }
                                       initialLoading={true}
                                       innerRef={null}
                                       isFullView={true}
                                       onLoad={[Function]}
+                                      store={
+                                        Object {
+                                          "clearActions": [Function],
+                                          "dispatch": [Function],
+                                          "getActions": [Function],
+                                          "getState": [Function],
+                                          "replaceReducer": [Function],
+                                          "subscribe": [Function],
+                                        }
+                                      }
                                       tableProps={
                                         Object {
                                           "canSelectAll": false,
@@ -952,7 +982,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                       "onDelete": [Function],
                                     }
                                   }
-                                  appName="chrome"
+                                  appName="inventory"
                                   autoRefresh={true}
                                   bulkSelect={
                                     Object {
@@ -1156,7 +1186,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                   isFullView={true}
                                   module="./InventoryTable"
                                   onLoad={[Function]}
-                                  scope="chrome"
+                                  scope="inventory"
                                   store={
                                     Object {
                                       "clearActions": [Function],
@@ -1179,7 +1209,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                 >
                                   <BaseScalprumComponent
                                     ErrorComponent={
-                                      <UNDEFINED
+                                      <InventoryLoadError
                                         activeFiltersConfig={
                                           Object {
                                             "filters": Array [],
@@ -1212,7 +1242,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                             },
                                           }
                                         }
-                                        component="InventoryTable"
+                                        component="InventoryDetailHead"
                                         customFilters={
                                           Object {
                                             "patchParams": Object {
@@ -1365,10 +1395,40 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                             "all": true,
                                           }
                                         }
+                                        history={
+                                          Object {
+                                            "action": "POP",
+                                            "block": [Function],
+                                            "createHref": [Function],
+                                            "go": [Function],
+                                            "goBack": [Function],
+                                            "goForward": [Function],
+                                            "length": 1,
+                                            "listen": [Function],
+                                            "location": Object {
+                                              "hash": "",
+                                              "pathname": "/",
+                                              "search": "",
+                                              "state": undefined,
+                                            },
+                                            "push": [Function],
+                                            "replace": [Function],
+                                          }
+                                        }
                                         initialLoading={true}
                                         innerRef={null}
                                         isFullView={true}
                                         onLoad={[Function]}
+                                        store={
+                                          Object {
+                                            "clearActions": [Function],
+                                            "dispatch": [Function],
+                                            "getActions": [Function],
+                                            "getState": [Function],
+                                            "replaceReducer": [Function],
+                                            "subscribe": [Function],
+                                          }
+                                        }
                                         tableProps={
                                           Object {
                                             "canSelectAll": false,
@@ -1386,7 +1446,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                         "onDelete": [Function],
                                       }
                                     }
-                                    appName="chrome"
+                                    appName="inventory"
                                     autoRefresh={true}
                                     bulkSelect={
                                       Object {
@@ -1590,7 +1650,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                     isFullView={true}
                                     module="./InventoryTable"
                                     onLoad={[Function]}
-                                    scope="chrome"
+                                    scope="inventory"
                                     store={
                                       Object {
                                         "clearActions": [Function],
@@ -1610,35 +1670,277 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                         "variant": "compact",
                                       }
                                     }
-                                  />
-                                </ForwardRef>
-                                <Bullseye
-                                  className="pf-u-p-lg"
-                                >
-                                  <div
-                                    className="pf-l-bullseye pf-u-p-lg"
                                   >
-                                    <Spinner
-                                      size="xl"
+                                    <InventoryLoadError
+                                      activeFiltersConfig={
+                                        Object {
+                                          "filters": Array [],
+                                          "onDelete": [Function],
+                                        }
+                                      }
+                                      autoRefresh={true}
+                                      bulkSelect={
+                                        Object {
+                                          "checked": false,
+                                          "count": 0,
+                                          "isDisabled": true,
+                                          "items": Array [
+                                            Object {
+                                              "onClick": [Function],
+                                              "title": "Select none (0)",
+                                            },
+                                            Object {
+                                              "onClick": [Function],
+                                              "title": "Select page (0)",
+                                            },
+                                            Object {
+                                              "onClick": [Function],
+                                              "title": "Select all (0)",
+                                            },
+                                          ],
+                                          "onSelect": [Function],
+                                          "toggleProps": Object {
+                                            "data-ouia-component-type": "bulk-select-toggle-button",
+                                          },
+                                        }
+                                      }
+                                      component="InventoryDetailHead"
+                                      customFilters={
+                                        Object {
+                                          "patchParams": Object {
+                                            "filter": undefined,
+                                            "search": undefined,
+                                            "selectedTags": undefined,
+                                            "systemProfile": undefined,
+                                          },
+                                        }
+                                      }
+                                      dedicatedAction={
+                                        <PatchRemediationButton
+                                          isDisabled={true}
+                                          isLoading={false}
+                                          onClick={[Function]}
+                                          ouia="toolbar-remediation-button"
+                                        />
+                                      }
+                                      disableDefaultColumns={true}
+                                      error={[TypeError: Cannot read property 'appsMetaData' of undefined]}
+                                      errorInfo={
+                                        Object {
+                                          "componentStack": "
+    at LoadModule (/home/muslimjon/RedHat/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:21:3)
+    at BaseScalprumComponent (/home/muslimjon/RedHat/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:88:5)
+    at Suspense
+    at BaseInvTable (/home/muslimjon/RedHat/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Inventory/InventoryTable.js:35:48)
+    at PackageSystems (/home/muslimjon/RedHat/patchman-ui/src/SmartComponents/PackageSystems/PackageSystems.js:31:27)
+    at div
+    at StackItem (/home/muslimjon/RedHat/patchman-ui/node_modules/@patternfly/react-core/src/layouts/Stack/StackItem.tsx:15:3)
+    at div
+    at Stack (/home/muslimjon/RedHat/patchman-ui/node_modules/@patternfly/react-core/src/layouts/Stack/Stack.tsx:17:3)
+    at section
+    at Main (/home/muslimjon/RedHat/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Main/Main.js:68:37)
+    at Connect(Main) (/home/muslimjon/RedHat/patchman-ui/node_modules/react-redux/lib/components/connectAdvanced.js:233:41)
+    at PackageDetail (/home/muslimjon/RedHat/patchman-ui/src/SmartComponents/PackageDetail/PackageDetail.js:19:26)
+    at withRouter(PackageDetail) (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router/modules/withRouter.js:14:13)
+    at Router (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router/cjs/react-router.js:99:30)
+    at BrowserRouter (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router-dom/cjs/react-router-dom.js:67:35)
+    at Provider (/home/muslimjon/RedHat/patchman-ui/node_modules/react-redux/lib/components/Provider.js:21:20)
+    at WrapperComponent (/home/muslimjon/RedHat/patchman-ui/node_modules/enzyme-adapter-utils/src/createMountWrapper.jsx:49:26)",
+                                        }
+                                      }
+                                      exportConfig={
+                                        Object {
+                                          "isDisabled": true,
+                                          "onSelect": [Function],
+                                        }
+                                      }
+                                      fallback={
+                                        <Bullseye
+                                          className="pf-u-p-lg"
+                                        >
+                                          <Spinner
+                                            size="xl"
+                                          />
+                                        </Bullseye>
+                                      }
+                                      filterConfig={
+                                        Object {
+                                          "items": Array [
+                                            Object {
+                                              "filterValues": Object {
+                                                "aria-label": "search-field",
+                                                "onChange": [Function],
+                                                "placeholder": "Filter by name",
+                                                "value": undefined,
+                                              },
+                                              "label": "System",
+                                              "type": "text",
+                                            },
+                                            Object {
+                                              "filterValues": Object {
+                                                "items": Array [
+                                                  Object {
+                                                    "label": "Up-to-date ",
+                                                    "value": "false",
+                                                  },
+                                                  Object {
+                                                    "label": "Upgradable",
+                                                    "value": "true",
+                                                  },
+                                                ],
+                                                "onChange": [Function],
+                                                "placeholder": "Filter by status",
+                                                "value": undefined,
+                                              },
+                                              "label": "Status",
+                                              "type": "checkbox",
+                                            },
+                                            Object {
+                                              "filterValues": Object {
+                                                "children": <Select
+                                                  aria-describedby=""
+                                                  aria-invalid={false}
+                                                  aria-label=""
+                                                  aria-labelledby="patch-version-filter"
+                                                  chipGroupComponent={null}
+                                                  className=""
+                                                  clearSelectionsAriaLabel="Clear all"
+                                                  createText="Create"
+                                                  customBadgeText={null}
+                                                  customContent={null}
+                                                  direction="down"
+                                                  favorites={Array []}
+                                                  favoritesLabel="Favorites"
+                                                  hasInlineFilter={false}
+                                                  inlineFilterPlaceholderText={null}
+                                                  inputIdPrefix=""
+                                                  isCreatable={false}
+                                                  isDisabled={false}
+                                                  isGrouped={false}
+                                                  isInputValuePersisted={false}
+                                                  isOpen={false}
+                                                  isPlain={false}
+                                                  menuAppendTo="inline"
+                                                  noResultsFoundText="No results found"
+                                                  onClear={[Function]}
+                                                  onCreateOption={[Function]}
+                                                  onFilter={null}
+                                                  onSelect={[Function]}
+                                                  onToggle={[Function]}
+                                                  onTypeaheadInputChanged={null}
+                                                  ouiaSafe={true}
+                                                  placeholderText="Filter by version"
+                                                  removeSelectionAriaLabel="Remove"
+                                                  selections={Array []}
+                                                  style={
+                                                    Object {
+                                                      "maxHeight": "400px",
+                                                      "overflow": "auto",
+                                                    }
+                                                  }
+                                                  toggleAriaLabel="Options menu"
+                                                  toggleIcon={null}
+                                                  toggleId={null}
+                                                  typeAheadAriaLabel="Filter by version"
+                                                  validated="default"
+                                                  variant="checkbox"
+                                                  width=""
+                                                >
+                                                  <SelectOption
+                                                    className=""
+                                                    component="button"
+                                                    index={0}
+                                                    inputId=""
+                                                    isChecked={false}
+                                                    isDisabled={true}
+                                                    isFavorite={null}
+                                                    isLastOptionBeforeFooter={[Function]}
+                                                    isLoad={false}
+                                                    isLoading={false}
+                                                    isNoResultsOption={false}
+                                                    isPlaceholder={false}
+                                                    isSelected={false}
+                                                    keyHandler={[Function]}
+                                                    onClick={[Function]}
+                                                    sendRef={[Function]}
+                                                    setViewMoreNextIndex={[Function]}
+                                                    value="No version is available"
+                                                  />
+                                                </Select>,
+                                              },
+                                              "label": "Version",
+                                              "type": "custom",
+                                              "value": "custom",
+                                            },
+                                          ],
+                                        }
+                                      }
+                                      getEntities={[Function]}
+                                      hasError={true}
+                                      hideFilters={
+                                        Object {
+                                          "all": true,
+                                        }
+                                      }
+                                      history={
+                                        Object {
+                                          "action": "POP",
+                                          "block": [Function],
+                                          "createHref": [Function],
+                                          "go": [Function],
+                                          "goBack": [Function],
+                                          "goForward": [Function],
+                                          "length": 1,
+                                          "listen": [Function],
+                                          "location": Object {
+                                            "hash": "",
+                                            "pathname": "/",
+                                            "search": "",
+                                            "state": undefined,
+                                          },
+                                          "push": [Function],
+                                          "replace": [Function],
+                                        }
+                                      }
+                                      initialLoading={true}
+                                      innerRef={null}
+                                      isFullView={true}
+                                      onLoad={[Function]}
+                                      store={
+                                        Object {
+                                          "clearActions": [Function],
+                                          "dispatch": [Function],
+                                          "getActions": [Function],
+                                          "getState": [Function],
+                                          "replaceReducer": [Function],
+                                          "subscribe": [Function],
+                                        }
+                                      }
+                                      tableProps={
+                                        Object {
+                                          "canSelectAll": false,
+                                          "className": "patchCompactInventory",
+                                          "isStickyHeader": true,
+                                          "onSelect": [Function],
+                                          "variant": "compact",
+                                        }
+                                      }
                                     >
-                                      <span
-                                        aria-valuetext="Loading..."
-                                        className="pf-c-spinner pf-m-xl"
-                                        role="progressbar"
-                                      >
-                                        <span
-                                          className="pf-c-spinner__clipper"
-                                        />
-                                        <span
-                                          className="pf-c-spinner__lead-ball"
-                                        />
-                                        <span
-                                          className="pf-c-spinner__tail-ball"
-                                        />
-                                      </span>
-                                    </Spinner>
-                                  </div>
-                                </Bullseye>
+                                      <div>
+                                        <h1>
+                                          Unable to load inventory component
+                                        </h1>
+                                        <h2>
+                                          Failed to load 
+                                          InventoryDetailHead
+                                        </h2>
+                                        <code>
+                                          More info can be found in browser console output.
+                                        </code>
+                                      </div>
+                                    </InventoryLoadError>
+                                  </BaseScalprumComponent>
+                                </ForwardRef>
                               </Suspense>
                             </BaseInvTable>
                           </ForwardRef>

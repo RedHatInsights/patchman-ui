@@ -1,16 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { fetchAdvisorySystems } from '../../Utilities/api';
-// import { storeListDefaults } from '../../Utilities/constants';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
 
 initMocks();
 
@@ -37,6 +34,11 @@ jest.mock('../../Utilities/api', () => ({
     fetchAdvisorySystems: jest.fn()
 }));
 
+jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
+    ...jest.requireActual('@redhat-cloud-services/frontend-components/Inventory'),
+    InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
+}));
+
 const mockState = {
     entities: {
         rows: systemRows,
@@ -54,7 +56,6 @@ const mockState = {
         queryParams: {}
     }
 };
-//const mockState = { ...storeListDefaults, rows: systemRows, selectedRows: { 'f99c98e6-e17c-4536-acbb-2bc795547d4f': true } };
 
 const initStore = () => {
     const customMiddleWare = () => next => action => {
@@ -70,6 +71,7 @@ const initStore = () => {
 
 let wrapper;
 let store = initStore();
+// eslint-disable-next-line no-unused-vars
 const rejectedState = { entities: { ...mockState, status: 'rejected', error: { detail: 'test' } },
     AdvisorySystemsStore: mockState.AdvisorySystemsStore };
 beforeEach(() => {
@@ -127,7 +129,7 @@ describe('AdvisorySystems.js', () => {
             await act(async() => {
                 wrapper.update();
             });
-            const { bulkSelect } = wrapper.update().find('InventoryTable').props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[0].onClick();
             const dispatchedActions = testStore.getActions();
@@ -149,7 +151,7 @@ describe('AdvisorySystems.js', () => {
                 wrapper.update();
             });
 
-            const { bulkSelect } = wrapper.update().find('InventoryTable').props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[1].onClick();
             const dispatchedActions = testStore.getActions();
@@ -176,7 +178,7 @@ describe('AdvisorySystems.js', () => {
                 wrapper.update();
             });
 
-            const { bulkSelect } = wrapper.update().find('InventoryTable').props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[2].onClick();
             expect(fetchAdvisorySystems).toHaveBeenCalled();
@@ -201,7 +203,7 @@ describe('AdvisorySystems.js', () => {
                 wrapper.update();
             });
 
-            const { bulkSelect } = wrapper.update().find('InventoryTable').props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.onSelect();
             const dispatchedActions = testStore.getActions();
@@ -217,7 +219,7 @@ describe('AdvisorySystems.js', () => {
     });
 
     it('Should open remediation modal', async () => {
-        const { dedicatedAction } = wrapper.update().find('InventoryTable').props();
+        const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
         act(() => dedicatedAction.props.onClick(null, null, {
             id: 'patch-advisory:RHBA-2020:4282'
         }));

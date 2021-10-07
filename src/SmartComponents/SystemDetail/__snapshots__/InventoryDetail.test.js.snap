@@ -83,8 +83,8 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
             >
               <ForwardRef
                 ErrorComponent={
-                  <UNDEFINED
-                    component="DetailWrapper"
+                  <InventoryLoadError
+                    component="InventoryDetailHead"
                     fallback={
                       <Bullseye
                         className="pf-u-p-lg"
@@ -94,8 +94,38 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                         />
                       </Bullseye>
                     }
+                    history={
+                      Object {
+                        "action": "POP",
+                        "block": [Function],
+                        "createHref": [Function],
+                        "go": [Function],
+                        "goBack": [Function],
+                        "goForward": [Function],
+                        "length": 1,
+                        "listen": [Function],
+                        "location": Object {
+                          "hash": "",
+                          "pathname": "/",
+                          "search": "",
+                          "state": undefined,
+                        },
+                        "push": [Function],
+                        "replace": [Function],
+                      }
+                    }
                     innerRef={null}
                     onLoad={[Function]}
+                    store={
+                      Object {
+                        "clearActions": [Function],
+                        "dispatch": [Function],
+                        "getActions": [Function],
+                        "getState": [Function],
+                        "replaceReducer": [Function],
+                        "subscribe": [Function],
+                      }
+                    }
                   >
                     <Header
                       breadcrumbs={
@@ -140,9 +170,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                         }
                       />
                     </Memo(Connect(Main))>
-                  </UNDEFINED>
+                  </InventoryLoadError>
                 }
-                appName="chrome"
+                appName="inventory"
                 fallback={
                   <Bullseye
                     className="pf-u-p-lg"
@@ -175,7 +205,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                 innerRef={null}
                 module="./DetailWrapper"
                 onLoad={[Function]}
-                scope="chrome"
+                scope="inventory"
                 store={
                   Object {
                     "clearActions": [Function],
@@ -189,8 +219,8 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
               >
                 <BaseScalprumComponent
                   ErrorComponent={
-                    <UNDEFINED
-                      component="DetailWrapper"
+                    <InventoryLoadError
+                      component="InventoryDetailHead"
                       fallback={
                         <Bullseye
                           className="pf-u-p-lg"
@@ -200,8 +230,38 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                           />
                         </Bullseye>
                       }
+                      history={
+                        Object {
+                          "action": "POP",
+                          "block": [Function],
+                          "createHref": [Function],
+                          "go": [Function],
+                          "goBack": [Function],
+                          "goForward": [Function],
+                          "length": 1,
+                          "listen": [Function],
+                          "location": Object {
+                            "hash": "",
+                            "pathname": "/",
+                            "search": "",
+                            "state": undefined,
+                          },
+                          "push": [Function],
+                          "replace": [Function],
+                        }
+                      }
                       innerRef={null}
                       onLoad={[Function]}
+                      store={
+                        Object {
+                          "clearActions": [Function],
+                          "dispatch": [Function],
+                          "getActions": [Function],
+                          "getState": [Function],
+                          "replaceReducer": [Function],
+                          "subscribe": [Function],
+                        }
+                      }
                     >
                       <Header
                         breadcrumbs={
@@ -246,9 +306,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                           }
                         />
                       </Memo(Connect(Main))>
-                    </UNDEFINED>
+                    </InventoryLoadError>
                   }
-                  appName="chrome"
+                  appName="inventory"
                   fallback={
                     <Bullseye
                       className="pf-u-p-lg"
@@ -281,7 +341,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                   innerRef={null}
                   module="./DetailWrapper"
                   onLoad={[Function]}
-                  scope="chrome"
+                  scope="inventory"
                   store={
                     Object {
                       "clearActions": [Function],
@@ -292,35 +352,82 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                       "subscribe": [Function],
                     }
                   }
-                />
-              </ForwardRef>
-              <Bullseye
-                className="pf-u-p-lg"
-              >
-                <div
-                  className="pf-l-bullseye pf-u-p-lg"
                 >
-                  <Spinner
-                    size="xl"
+                  <InventoryLoadError
+                    component="InventoryDetailHead"
+                    error={[TypeError: Cannot read property 'appsMetaData' of undefined]}
+                    errorInfo={
+                      Object {
+                        "componentStack": "
+    at LoadModule (/home/muslimjon/RedHat/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:21:3)
+    at BaseScalprumComponent (/home/muslimjon/RedHat/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:88:5)
+    at Suspense
+    at BaseDetailWrapper (/home/muslimjon/RedHat/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Inventory/DetailWrapper.js:35:48)
+    at InventoryDetail (/home/muslimjon/RedHat/patchman-ui/src/SmartComponents/SystemDetail/InventoryDetail.js:17:28)
+    at Router (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router/cjs/react-router.js:99:30)
+    at BrowserRouter (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router-dom/cjs/react-router-dom.js:67:35)
+    at Provider (/home/muslimjon/RedHat/patchman-ui/node_modules/react-redux/lib/components/Provider.js:21:20)
+    at WrapperComponent (/home/muslimjon/RedHat/patchman-ui/node_modules/enzyme-adapter-utils/src/createMountWrapper.jsx:49:26)",
+                      }
+                    }
+                    fallback={
+                      <Bullseye
+                        className="pf-u-p-lg"
+                      >
+                        <Spinner
+                          size="xl"
+                        />
+                      </Bullseye>
+                    }
+                    hasError={true}
+                    history={
+                      Object {
+                        "action": "POP",
+                        "block": [Function],
+                        "createHref": [Function],
+                        "go": [Function],
+                        "goBack": [Function],
+                        "goForward": [Function],
+                        "length": 1,
+                        "listen": [Function],
+                        "location": Object {
+                          "hash": "",
+                          "pathname": "/",
+                          "search": "",
+                          "state": undefined,
+                        },
+                        "push": [Function],
+                        "replace": [Function],
+                      }
+                    }
+                    innerRef={null}
+                    onLoad={[Function]}
+                    store={
+                      Object {
+                        "clearActions": [Function],
+                        "dispatch": [Function],
+                        "getActions": [Function],
+                        "getState": [Function],
+                        "replaceReducer": [Function],
+                        "subscribe": [Function],
+                      }
+                    }
                   >
-                    <span
-                      aria-valuetext="Loading..."
-                      className="pf-c-spinner pf-m-xl"
-                      role="progressbar"
-                    >
-                      <span
-                        className="pf-c-spinner__clipper"
-                      />
-                      <span
-                        className="pf-c-spinner__lead-ball"
-                      />
-                      <span
-                        className="pf-c-spinner__tail-ball"
-                      />
-                    </span>
-                  </Spinner>
-                </div>
-              </Bullseye>
+                    <div>
+                      <h1>
+                        Unable to load inventory component
+                      </h1>
+                      <h2>
+                        Failed to load 
+                        InventoryDetailHead
+                      </h2>
+                      <code>
+                        More info can be found in browser console output.
+                      </code>
+                    </div>
+                  </InventoryLoadError>
+                </BaseScalprumComponent>
+              </ForwardRef>
             </Suspense>
           </BaseDetailWrapper>
         </ForwardRef>

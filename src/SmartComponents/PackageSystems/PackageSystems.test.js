@@ -26,6 +26,12 @@ jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => 
     downloadFile: jest.fn()
 }));
 
+
+jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
+    ...jest.requireActual('@redhat-cloud-services/frontend-components/Inventory'),
+    InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
+}));
+
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportPackageSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
@@ -101,7 +107,7 @@ describe('PackageSystems.js', () => {
 
     it('Should open remediation modal', () => {
 
-        const { dedicatedAction } = wrapper.update().find('InventoryTable').props();
+        const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
         act(() => dedicatedAction.props.onClick(null, null, {
             id: "patch-advisory:RHBA-2020:4282"
         }));
@@ -114,13 +120,13 @@ describe('PackageSystems.js', () => {
         global.fetch = jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)));
 
         it('Should download csv file', () => {
-            const { exportConfig } = wrapper.update().find('InventoryTable').props();
+            const { exportConfig } = wrapper.find('.testInventroyComponentChild').parent().props();
             exportConfig.onSelect(null, 'csv');
             expect(exportPackageSystemsCSV).toHaveBeenCalledWith({}, 'testName');
         });
 
         it('Should download json file', () => {
-            const { exportConfig } = wrapper.update().find('InventoryTable').props();
+            const { exportConfig } = wrapper.find('.testInventroyComponentChild').parent().props();
             exportConfig.onSelect(null, 'json');
             expect(exportPackageSystemsJSON).toHaveBeenCalledWith({}, 'testName');
         });
@@ -128,7 +134,7 @@ describe('PackageSystems.js', () => {
 
     describe('test entity selecting', () => {
         it('Should unselect all', () => {
-            const { bulkSelect } = wrapper.update().find('InventoryTable').props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[0].onClick();
             const dispatchedActions = store.getActions();
@@ -139,18 +145,17 @@ describe('PackageSystems.js', () => {
 
         it('Should select a page', async () => {
 
-            const { bulkSelect } = wrapper.update().find('InventoryTable').props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[1].onClick();
             const dispatchedActions = store.getActions();
- 
-            expect(dispatchedActions[3].type).toEqual('SELECT_ENTITY');
+            expect(dispatchedActions[2].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[1].title).toEqual('Select page (1)');
         });
 
         it('Should select all', async () => {
 
-            const { bulkSelect } = wrapper.update().find('InventoryTable').props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[2].onClick();
             expect(fetchPackageSystems).toHaveBeenCalled();
