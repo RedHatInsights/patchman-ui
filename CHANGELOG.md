@@ -1,3 +1,10 @@
+## [1.34.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.34.1...v1.34.2) (2021-10-07)
+
+
+### Bug Fixes
+
+* **env:** fix environment setup ([743d7b2](https://github.com/RedHatInsights/patchman-ui/commit/743d7b2e44f35d27c1b2f2046c18a6890244aaad))
+
 ## [1.34.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.34.0...v1.34.1) (2021-09-30)
 
 
