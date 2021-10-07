@@ -14,6 +14,9 @@ jest.mock('react-redux', () => ({
     useSelector: jest.fn()
 }));
 
+jest.mock('../../SmartComponents/PackageSystems/PackageSystems', () => () => <div></div>
+);
+
 const mockState = {
     ...storeListDefaults,
     data: packageDetailData,
@@ -54,15 +57,6 @@ afterEach(() => {
 describe('PackageDetail.js', () => {
     it('should match the snapshot', ()  => {
         expect(toJson(wrapper)).toMatchSnapshot();
-    });
-
-    it('shpuld clear notifications ans package detail store on unmount', () => {
-        const dispatchedActions = store.getActions();
-
-        expect(dispatchedActions.filter(
-            item => item.type === '@@INSIGHTS-CORE/NOTIFICATIONS/CLEAR_NOTIFICATIONS')).toHaveLength(1);
-        expect(dispatchedActions.filter(
-            item => item.type === 'CLEAR_PACKAGE_DETAILS')).toHaveLength(1);
     });
 
     it('should display Unavailable component on error', () => {
