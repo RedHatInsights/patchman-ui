@@ -1728,24 +1728,24 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                       errorInfo={
                                         Object {
                                           "componentStack": "
-    at LoadModule (/home/muslimjon/RedHat/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:21:3)
-    at BaseScalprumComponent (/home/muslimjon/RedHat/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:88:5)
+    at LoadModule (/git/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:21:3)
+    at BaseScalprumComponent (/git/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:88:5)
     at Suspense
-    at BaseInvTable (/home/muslimjon/RedHat/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Inventory/InventoryTable.js:35:48)
-    at PackageSystems (/home/muslimjon/RedHat/patchman-ui/src/SmartComponents/PackageSystems/PackageSystems.js:31:27)
+    at BaseInvTable (/git/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Inventory/InventoryTable.js:35:48)
+    at PackageSystems (/git/patchman-ui/src/SmartComponents/PackageSystems/PackageSystems.js:31:27)
     at div
-    at StackItem (/home/muslimjon/RedHat/patchman-ui/node_modules/@patternfly/react-core/src/layouts/Stack/StackItem.tsx:15:3)
+    at StackItem (/git/patchman-ui/node_modules/@patternfly/react-core/src/layouts/Stack/StackItem.tsx:15:3)
     at div
-    at Stack (/home/muslimjon/RedHat/patchman-ui/node_modules/@patternfly/react-core/src/layouts/Stack/Stack.tsx:17:3)
+    at Stack (/git/patchman-ui/node_modules/@patternfly/react-core/src/layouts/Stack/Stack.tsx:17:3)
     at section
-    at Main (/home/muslimjon/RedHat/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Main/Main.js:68:37)
-    at Connect(Main) (/home/muslimjon/RedHat/patchman-ui/node_modules/react-redux/lib/components/connectAdvanced.js:233:41)
-    at PackageDetail (/home/muslimjon/RedHat/patchman-ui/src/SmartComponents/PackageDetail/PackageDetail.js:19:26)
-    at withRouter(PackageDetail) (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router/modules/withRouter.js:14:13)
-    at Router (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router/cjs/react-router.js:99:30)
-    at BrowserRouter (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router-dom/cjs/react-router-dom.js:67:35)
-    at Provider (/home/muslimjon/RedHat/patchman-ui/node_modules/react-redux/lib/components/Provider.js:21:20)
-    at WrapperComponent (/home/muslimjon/RedHat/patchman-ui/node_modules/enzyme-adapter-utils/src/createMountWrapper.jsx:49:26)",
+    at Main (/git/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Main/Main.js:68:37)
+    at Connect(Main) (/git/patchman-ui/node_modules/react-redux/lib/components/connectAdvanced.js:233:41)
+    at PackageDetail (/git/patchman-ui/src/SmartComponents/PackageDetail/PackageDetail.js:19:26)
+    at withRouter(PackageDetail) (/git/patchman-ui/node_modules/react-router/modules/withRouter.js:14:13)
+    at Router (/git/patchman-ui/node_modules/react-router/cjs/react-router.js:99:30)
+    at BrowserRouter (/git/patchman-ui/node_modules/react-router-dom/cjs/react-router-dom.js:67:35)
+    at Provider (/git/patchman-ui/node_modules/react-redux/lib/components/Provider.js:21:20)
+    at WrapperComponent (/git/patchman-ui/node_modules/enzyme-adapter-utils/src/createMountWrapper.jsx:49:26)",
                                         }
                                       }
                                       exportConfig={

@@ -359,15 +359,15 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                     errorInfo={
                       Object {
                         "componentStack": "
-    at LoadModule (/home/muslimjon/RedHat/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:21:3)
-    at BaseScalprumComponent (/home/muslimjon/RedHat/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:88:5)
+    at LoadModule (/git/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:21:3)
+    at BaseScalprumComponent (/git/patchman-ui/node_modules/@scalprum/react-core/src/scalprum-component.tsx:88:5)
     at Suspense
-    at BaseDetailWrapper (/home/muslimjon/RedHat/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Inventory/DetailWrapper.js:35:48)
-    at InventoryDetail (/home/muslimjon/RedHat/patchman-ui/src/SmartComponents/SystemDetail/InventoryDetail.js:17:28)
-    at Router (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router/cjs/react-router.js:99:30)
-    at BrowserRouter (/home/muslimjon/RedHat/patchman-ui/node_modules/react-router-dom/cjs/react-router-dom.js:67:35)
-    at Provider (/home/muslimjon/RedHat/patchman-ui/node_modules/react-redux/lib/components/Provider.js:21:20)
-    at WrapperComponent (/home/muslimjon/RedHat/patchman-ui/node_modules/enzyme-adapter-utils/src/createMountWrapper.jsx:49:26)",
+    at BaseDetailWrapper (/git/patchman-ui/node_modules/@redhat-cloud-services/frontend-components/Inventory/DetailWrapper.js:35:48)
+    at InventoryDetail (/git/patchman-ui/src/SmartComponents/SystemDetail/InventoryDetail.js:17:28)
+    at Router (/git/patchman-ui/node_modules/react-router/cjs/react-router.js:99:30)
+    at BrowserRouter (/git/patchman-ui/node_modules/react-router-dom/cjs/react-router-dom.js:67:35)
+    at Provider (/git/patchman-ui/node_modules/react-redux/lib/components/Provider.js:21:20)
+    at WrapperComponent (/git/patchman-ui/node_modules/enzyme-adapter-utils/src/createMountWrapper.jsx:49:26)",
                       }
                     }
                     fallback={
