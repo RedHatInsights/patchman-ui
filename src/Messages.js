@@ -131,6 +131,16 @@ export default defineMessages({
         description: 'search filter placeholder for packages pages',
         defaultMessage: 'Filter by CVE ID'
     },
+    labelsFiltersOsVersion: {
+        id: 'labelsFiltersOsVersion',
+        description: 'filter for systems pages',
+        defaultMessage: 'Operating system'
+    },
+    labelsFiltersOsVersionPlaceholder: {
+        id: 'labelsFiltersOsVersionPlaceholder',
+        description: 'filter for systems pages',
+        defaultMessage: 'Filter by operating system'
+    },
     labelsFiltersPackageVersionPlaceholder: {
         id: 'labelFiltersPackageVersionPlaceholder',
         description: 'Label for version fitler placeholder',

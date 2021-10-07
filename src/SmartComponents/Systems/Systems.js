@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import staleFilter from '../../PresentationalComponents/Filters/SystemStaleFilter';
+import osVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import systemsUpdatableFilter from '../../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
@@ -97,7 +98,8 @@ const Systems = () => {
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
             ),
             staleFilter(apply, filter),
-            systemsUpdatableFilter(apply, filter)
+            systemsUpdatableFilter(apply, filter),
+            osVersionFilter(filter, apply)
         ]
     };
 
