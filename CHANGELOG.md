@@ -1,3 +1,11 @@
+## [1.34.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.34.2...v1.34.3) (2021-10-13)
+
+
+### Bug Fixes
+
+* **advisory_type:** SPM-1199 fix advisory type in frontend ([38edb0a](https://github.com/RedHatInsights/patchman-ui/commit/38edb0a6e18db24dea1d45811f13355955ff149c))
+* **sorting:** fix use advisory_type_name for sorting ([b60b1f0](https://github.com/RedHatInsights/patchman-ui/commit/b60b1f0a8281d73a585322772e6ce32d39b2900c))
+
 ## [1.34.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.34.1...v1.34.2) (2021-10-07)
 
 
