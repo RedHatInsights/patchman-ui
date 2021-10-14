@@ -378,3 +378,5 @@ export const exportNotifications = (format) => ({
         variant: 'danger'
     }
 });
+
+export const multiValueFilters = ['installed_evra', 'os'];

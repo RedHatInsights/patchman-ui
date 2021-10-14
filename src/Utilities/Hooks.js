@@ -10,6 +10,7 @@ import {
     getOffsetFromPageLimit, encodeURLParams
 } from './Helpers';
 import { intl } from './IntlProvider';
+import { multiValueFilters } from '../Utilities/constants';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -67,7 +68,8 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
         let newParams = { filter: {} };
         selected.forEach(selectedItem => {
             let { id: categoryId, chips } = selectedItem;
-            if (categoryId !== 'search' && categoryId !== 'installed_evra') {
+
+            if (categoryId !== 'search' && !multiValueFilters.includes(categoryId)) {
                 let activeFilter = filters[categoryId];
                 const toRemove = chips.map(item => item.id.toString());
                 if (Array.isArray(activeFilter)) {
@@ -77,13 +79,13 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
                 } else {
                     newParams.filter[categoryId] = undefined;
                 }
-            } else if (categoryId === 'installed_evra') {
-                const versions = filters[categoryId] &&
+            } else if (multiValueFilters.includes(categoryId)) {
+                const filterValues = filters[categoryId] &&
                     (typeof(filters[categoryId]) === 'string' && filters[categoryId].split(',')
                         || filters[categoryId]) || [];
 
-                newParams.filter[categoryId] = (versions.length !== 1) && versions
-                .filter(version => !chips.find(chip => chip.value === version)).join(',') || undefined;
+                newParams.filter[categoryId] = (filterValues.length !== 1)
+                    && filterValues.filter(filterValue => !chips.find(chip => chip.value === filterValue)).join(',') || undefined;
             }
             else {
                 newParams.search = '';

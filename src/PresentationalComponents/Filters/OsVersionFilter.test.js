@@ -1,12 +1,17 @@
 import osVersionFilter from './OsVersionFilter';
+import { osFilterTypes } from '../../Utilities/constants';
 
 const apply = jest.fn();
-const currentFilter = { os: 'filter' };
+const currentFilter = { os: '' };
 
 jest.mock('react', () => ({
     ...jest.requireActual('react'),
-    useState: jest.fn().mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([4, () => { }])
+    useState: jest.fn()
+    .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([4, () => { }])
     .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([8, () => { }])
+    .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([4, () => { }])
+    .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([4, () => { }])
+    .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([4, () => { }])
 }));
 
 describe('OsVersionFilter', () => {
@@ -23,5 +28,30 @@ describe('OsVersionFilter', () => {
         response.filterValues.children.props.onSelect('event', 'testValue');
         expect(apply).toHaveBeenCalledWith({ filter: { os: 'testValue' } });
     });
+
+    it('should call apply when onSelect is fired and append previously selected versions into new selection', () => {
+        const response = osVersionFilter({ os: osFilterTypes[0].value }, apply);
+        response.filterValues.children.props.onSelect(null, osFilterTypes[1].value);
+
+        expect(apply).toHaveBeenCalledWith({ filter: { os: `${osFilterTypes[0].value},${osFilterTypes[1].value}` } });
+    });
+
+    it('should send empty string when previously selected version and new version are the same', () => {
+        const response = osVersionFilter({ os: osFilterTypes[0].value }, apply);
+        response.filterValues.children.props.onSelect(null, osFilterTypes[0].value);
+
+        expect(apply).toHaveBeenCalledWith({ filter: { os: '' } });
+    });
+
+    it('should call apply when onSelect is fired and deselect only current version', () => {
+        const response = osVersionFilter({ os: `${osFilterTypes[0].value},${osFilterTypes[1].value}` }, apply);
+        response.filterValues.children.props.onSelect(null, osFilterTypes[0].value);
+
+        expect(apply).toHaveBeenCalledWith({
+            filter:
+                { os: `${osFilterTypes[1].value}` }
+        });
+    });
+
 });
 

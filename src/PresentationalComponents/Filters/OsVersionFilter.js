@@ -9,12 +9,24 @@ const osVersionFilter = (currentFilter = {}, apply) => {
 
     const [isOpen, setOpen] = React.useState(false);
     const [numOptions, setNumOptions] = React.useState(10);
-    const versionFromNewestToOldest = osFilterTypes.reverse();
+    const versionFromNewestToOldest = osFilterTypes.slice().reverse();;
 
     let { os: currentValue } = currentFilter;
+    const currentOsVersionsArray = typeof currentValue === 'string' && currentValue.split(',') || [];
 
     const filterByOsType = (_, value) => {
-        apply({ filter: { os: value } });
+        const config = { filter: {} };
+
+        if (currentValue && !currentValue.includes(value)) {
+            config.filter = { os: `${currentOsVersionsArray.join(',')},${value}` };
+        }
+        else if (currentValue && currentValue.includes(value)) {
+            config.filter = { os: `${currentOsVersionsArray.filter(os => os !==  value).join(',')}` };
+        } else {
+            config.filter = { os: value };
+        }
+
+        apply(config);
     };
 
     const onToggle = (isOpen) => {
@@ -33,11 +45,11 @@ const osVersionFilter = (currentFilter = {}, apply) => {
             filterValues: {
                 children: (
                     <Select
-                        variant={versionFromNewestToOldest.length > 0 && SelectVariant.checkbox || SelectVariant.typeaheadMulti}
+                        variant={SelectVariant.checkbox}
                         typeAheadAriaLabel={intl.formatMessage(messages.labelsFiltersOsVersionPlaceholder)}
                         onToggle={onToggle}
                         onSelect={filterByOsType}
-                        selections={currentValue}
+                        selections={currentOsVersionsArray}
                         isOpen={isOpen}
                         aria-labelledby={'patch-os-version-filter'}
                         placeholderText={intl.formatMessage(messages.labelsFiltersOsVersionPlaceholder)}
@@ -47,10 +59,8 @@ const osVersionFilter = (currentFilter = {}, apply) => {
                     >
                         {versionFromNewestToOldest.slice(0, numOptions).map((option, index) => (
                             <SelectOption
-                                isDisabled={option.disabled}
                                 key={index}
                                 value={option.value}
-                                {...(option.description && { description: option.description })}
                             />
                         ))}
                     </Select>
