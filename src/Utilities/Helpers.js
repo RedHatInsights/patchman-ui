@@ -16,7 +16,8 @@ import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAss
 import {
     advisorySeverities,
     compoundSortValues,
-    filterCategories
+    filterCategories,
+    multiValueFilters
 } from './constants';
 import { intl } from './IntlProvider';
 
@@ -241,7 +242,7 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
             Object.entries(filter).forEach(item => {
                 let [key, value] = item;
                 value = shouldTranslateKeys && getFilterValue(key, value).apiValue || value;
-                const operator = ([].concat(value).length > 1 || key === 'installed_evra') ? 'in:' : '';
+                const operator = ([].concat(value).length > 1 || multiValueFilters.includes(key)) ? 'in:' : '';
                 result = {
                     ...result,
                     [`filter[${key}]`]: `${operator}${value.toString()}`
@@ -318,13 +319,13 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
 
     let filterConfig = [];
     const buildChips = (filters, category) => {
-        if (category === 'installed_evra') {
-            const versions = filters[category] && (typeof(filters[category]) === 'string' && filters[category].split(',')
+        if (multiValueFilters.includes(category)) {
+            const filterValues = filters[category] && (typeof(filters[category]) === 'string' && filters[category].split(',')
                 || filters[category]) || [];
-            return versions.map(version => ({
-                name: version,
+            return filterValues.map(value => ({
+                name: value,
                 id: category,
-                value: version
+                value
             }));
         } else {
             const { values } = filterCategories[category];
