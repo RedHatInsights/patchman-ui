@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.34.3...v1.35.0) (2021-10-14)
+
+
+### Features
+
+* **OSfilter:** SPM-1193 add os filter ([cbcbfc2](https://github.com/RedHatInsights/patchman-ui/commit/cbcbfc2658b3ca40e9427d9b4347e316f61c184e))
+
 ## [1.34.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.34.2...v1.34.3) (2021-10-13)
 
 
