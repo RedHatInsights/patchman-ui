@@ -800,46 +800,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                               onClick={[Function]}
                               sendRef={[Function]}
                               setViewMoreNextIndex={[Function]}
-                              value="RHEL 9.0"
-                            />
-                            <SelectOption
-                              className=""
-                              component="button"
-                              index={0}
-                              inputId=""
-                              isChecked={false}
-                              isDisabled={false}
-                              isFavorite={null}
-                              isLastOptionBeforeFooter={[Function]}
-                              isLoad={false}
-                              isLoading={false}
-                              isNoResultsOption={false}
-                              isPlaceholder={false}
-                              isSelected={false}
-                              keyHandler={[Function]}
-                              onClick={[Function]}
-                              sendRef={[Function]}
-                              setViewMoreNextIndex={[Function]}
-                              value="RHEL 8.6"
-                            />
-                            <SelectOption
-                              className=""
-                              component="button"
-                              index={0}
-                              inputId=""
-                              isChecked={false}
-                              isDisabled={false}
-                              isFavorite={null}
-                              isLastOptionBeforeFooter={[Function]}
-                              isLoad={false}
-                              isLoading={false}
-                              isNoResultsOption={false}
-                              isPlaceholder={false}
-                              isSelected={false}
-                              keyHandler={[Function]}
-                              onClick={[Function]}
-                              sendRef={[Function]}
-                              setViewMoreNextIndex={[Function]}
                               value="RHEL 8.5"
                             />
                             <SelectOption
@@ -981,6 +941,46 @@ exports[`Systems.js should match the snapshot 1`] = `
                               sendRef={[Function]}
                               setViewMoreNextIndex={[Function]}
                               value="RHEL 7.8"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 7.7"
+                            />
+                            <SelectOption
+                              className=""
+                              component="button"
+                              index={0}
+                              inputId=""
+                              isChecked={false}
+                              isDisabled={false}
+                              isFavorite={null}
+                              isLastOptionBeforeFooter={[Function]}
+                              isLoad={false}
+                              isLoading={false}
+                              isNoResultsOption={false}
+                              isPlaceholder={false}
+                              isSelected={false}
+                              keyHandler={[Function]}
+                              onClick={[Function]}
+                              sendRef={[Function]}
+                              setViewMoreNextIndex={[Function]}
+                              value="RHEL 7.6"
                             />
                           </Select>,
                         },

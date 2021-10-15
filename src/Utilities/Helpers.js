@@ -24,7 +24,6 @@ import { intl } from './IntlProvider';
 export const removeUndefinedObjectItems = (originalObject) => {
     const newObject = JSON.parse(JSON.stringify(originalObject));
     Object.keys(newObject).forEach(key => newObject[key] === undefined && delete newObject[key]);
-
     return newObject;
 };
 

@@ -36,11 +36,11 @@ describe('OsVersionFilter', () => {
         expect(apply).toHaveBeenCalledWith({ filter: { os: `${osFilterTypes[0].value},${osFilterTypes[1].value}` } });
     });
 
-    it('should send empty string when previously selected version and new version are the same', () => {
+    it('should send undefined when previously selected version and new version are the same', () => {
         const response = osVersionFilter({ os: osFilterTypes[0].value }, apply);
         response.filterValues.children.props.onSelect(null, osFilterTypes[0].value);
 
-        expect(apply).toHaveBeenCalledWith({ filter: { os: '' } });
+        expect(apply).toHaveBeenCalledWith({ filter: { os: undefined } });
     });
 
     it('should call apply when onSelect is fired and deselect only current version', () => {
