@@ -15,18 +15,16 @@ const osVersionFilter = (currentFilter = {}, apply) => {
     const currentOsVersionsArray = typeof currentValue === 'string' && currentValue.split(',') || [];
 
     const filterByOsType = (_, value) => {
-        const config = { filter: {} };
-
         if (currentValue && !currentValue.includes(value)) {
-            config.filter = { os: `${currentOsVersionsArray.join(',')},${value}` };
+            apply({ filter: { os: `${currentOsVersionsArray.join(',')},${value}` } });
         }
         else if (currentValue && currentValue.includes(value)) {
-            config.filter = { os: `${currentOsVersionsArray.filter(os => os !==  value).join(',')}` };
-        } else {
-            config.filter = { os: value };
-        }
+            const remainingOs = currentOsVersionsArray.filter(os => os !== value);
 
-        apply(config);
+            apply({ filter: { os: remainingOs.length > 0 && `${remainingOs.join(',')}` || undefined } });
+        } else {
+            apply({ filter: { os: value !== '' && value || undefined  } });
+        }
     };
 
     const onToggle = (isOpen) => {

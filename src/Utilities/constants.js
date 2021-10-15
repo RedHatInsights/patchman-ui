@@ -258,7 +258,7 @@ export const osFilterTypes = [
     },
     {
         label: 'RHEL 7.4',
-        value: 'RHEL 7.3'
+        value: 'RHEL 7.4'
     },
     {
         label: 'RHEL 7.5',
@@ -303,14 +303,6 @@ export const osFilterTypes = [
     {
         label: 'RHEL 8.5',
         value: 'RHEL 8.5'
-    },
-    {
-        label: 'RHEL 8.6',
-        value: 'RHEL 8.6'
-    },
-    {
-        label: 'RHEL 9.0',
-        value: 'RHEL 9.0'
     }
 ];
 

@@ -17,7 +17,6 @@ export const AdvisorySystemsStore = (state = initialState, action) => {
     switch (action.type) {
 
         case ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS:
-            delete action.payload?.filter;
             newState.queryParams = changeListParams(newState.queryParams, action.payload);
             return newState;
 

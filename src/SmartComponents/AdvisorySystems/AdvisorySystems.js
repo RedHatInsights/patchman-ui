@@ -64,7 +64,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         dispatch(changeAffectedSystemsParams(params));
     }
 
-    const [deleteFilters] = useRemoveFilter({ search }, apply);
+    const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply);
 
     const filterConfig = {
         items: [
