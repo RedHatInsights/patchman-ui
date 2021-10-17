@@ -12,7 +12,7 @@ const packagesListStatusFilter = (apply, currentFilter = {}) => {
     };
 
     return {
-        label: intl.formatMessage(messages.labelsFiltersStatus),
+        label: intl.formatMessage(messages.labelsFiltersUpdatable),
         type: conditionalFilterType.checkbox,
         filterValues: {
             onChange: (event, value) => {
@@ -20,7 +20,7 @@ const packagesListStatusFilter = (apply, currentFilter = {}) => {
             },
             items: packagesListUpdatableTypes,
             value: currentValue,
-            placeholder: intl.formatMessage(messages.labelsColumnsStatusPlaceholder)
+            placeholder: intl.formatMessage(messages.labelsFiltersUpdatablePlaceholder)
         }
     };
 };

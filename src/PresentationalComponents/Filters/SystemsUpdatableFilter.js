@@ -12,7 +12,7 @@ const systemsUpdatableFilter = (apply, currentFilter = {}) => {
     };
 
     return {
-        label: intl.formatMessage(messages.labelsFiltersSystemsUpdatable),
+        label: intl.formatMessage(messages.labelsFiltersUpdatable),
         type: conditionalFilterType.radio,
         filterValues: {
             onChange: (event, value) => {
@@ -20,7 +20,7 @@ const systemsUpdatableFilter = (apply, currentFilter = {}) => {
             },
             items: packagesListUpdatableTypes,
             value: currentValue,
-            placeholder: intl.formatMessage(messages.labelsFiltersSystemsUpdatablePlaceholder)
+            placeholder: intl.formatMessage(messages.labelsFiltersUpdatablePlaceholder)
         }
     };
 };

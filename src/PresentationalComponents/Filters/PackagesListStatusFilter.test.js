@@ -7,7 +7,7 @@ describe('PackageListStatusFilter', () => {
     it('Should set currentValue to zero and init', () => {
         const response = packageListStatusFilter(apply, currentFilter);
         expect(response.filterValues.value).toEqual('filter');
-        expect(response.label).toEqual('Status');
+        expect(response.label).toEqual('Patch status');
         expect(response.type).toEqual('checkbox');
     });
 

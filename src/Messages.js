@@ -226,16 +226,6 @@ export default defineMessages({
         description: 'search filter placeholder for systems pages',
         defaultMessage: 'System'
     },
-    labelsFiltersSystemsUpdatable: {
-        id: 'labelsFiltersSystemsUpdatable',
-        description: 'search filter placeholder for systems pages',
-        defaultMessage: 'Patch status'
-    },
-    labelsFiltersSystemsUpdatablePlaceholder: {
-        id: 'labelsFiltersSystemsUpdatablePlaceholder',
-        description: 'search filter placeholder for systems updatable pages',
-        defaultMessage: 'Filter by patch status'
-    },
     labelsFiltersType: {
         id: 'labelsFiltersType',
         description: 'Label for type fitler',
@@ -245,6 +235,16 @@ export default defineMessages({
         id: 'labelsFiltersType',
         description: 'Label for type fitler placeholder',
         defaultMessage: 'Filter by type'
+    },
+    labelsFiltersUpdatable: {
+        id: 'labelsFiltersUpdatable',
+        description: 'search filter placeholder for systems pages',
+        defaultMessage: 'Patch status'
+    },
+    labelsFiltersUpdatablePlaceholder: {
+        id: 'labelsFiltersUpdatablePlaceholder',
+        description: 'search filter placeholder for systems updatable pages',
+        defaultMessage: 'Filter by patch status'
     },
     labelsModifiedDate: {
         id: 'labelsModifiedDate',
