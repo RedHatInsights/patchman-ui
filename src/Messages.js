@@ -124,7 +124,7 @@ export default defineMessages({
     labelsFiltersClear: {
         id: 'labelsFiltersClear',
         description: 'label for remove filter chips',
-        defaultMessage: 'Clear filters'
+        defaultMessage: 'Reset filters'
     },
     labelsFiltersCvesSearchPlaceHolder: {
         id: 'labelsFiltersCvesSearch',

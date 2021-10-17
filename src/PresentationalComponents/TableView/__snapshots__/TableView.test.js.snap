@@ -19,7 +19,7 @@ exports[`TableView TableView 1`] = `
     }
     activeFiltersConfig={
       Object {
-        "deleteTitle": "Clear filters",
+        "deleteTitle": "Reset filters",
         "filters": Array [],
         "onDelete": [Function],
       }
@@ -140,7 +140,7 @@ exports[`TableView TableView 2`] = `
     }
     activeFiltersConfig={
       Object {
-        "deleteTitle": "Clear filters",
+        "deleteTitle": "Reset filters",
         "filters": Array [],
         "onDelete": [Function],
       }
@@ -261,7 +261,7 @@ exports[`TableView test table props TableView 1`] = `
     }
     activeFiltersConfig={
       Object {
-        "deleteTitle": "Clear filters",
+        "deleteTitle": "Reset filters",
         "filters": Array [],
         "onDelete": [Function],
       }

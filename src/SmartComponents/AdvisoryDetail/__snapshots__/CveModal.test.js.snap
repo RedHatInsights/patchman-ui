@@ -1426,7 +1426,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   }
                                   activeFiltersConfig={
                                     Object {
-                                      "deleteTitle": "Clear filters",
+                                      "deleteTitle": "Reset filters",
                                       "filters": Array [],
                                       "onDelete": [Function],
                                     }
