@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import messages from '../../Messages';
 import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';
 import CvesModal from '../../SmartComponents/AdvisoryDetail/CvesModal';
-import { getSeverityById, isRHAdvisory, preserveNewlines } from '../../Utilities/Helpers';
+import { getSeverityById, isRHAdvisory, truncateDescription } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import RebootRequired from '../Snippets/RebootRequired';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
@@ -16,6 +16,7 @@ import ExternalLink from '../Snippets/ExternalLink';
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const [CvesInfoModal, setCvesModal] = useState(() => () => null);
+    const [wordLength, setWordLength] = useState(1000);
     const severityObject = getSeverityById(attributes.severity);
     const cves = attributes.cves;
 
@@ -35,7 +36,7 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                         <StackItem />
                         <StackItem style={{ whiteSpace: 'pre-line' }}>
                             {
-                                preserveNewlines(attributes.description)
+                                attributes.description && truncateDescription(attributes.description, wordLength, setWordLength)
                             }
                         </StackItem>
                         <StackItem>
