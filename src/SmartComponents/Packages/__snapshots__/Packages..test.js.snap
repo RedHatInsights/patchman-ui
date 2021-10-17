@@ -163,10 +163,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                             },
                           ],
                           "onChange": [Function],
-                          "placeholder": "Filter by status",
+                          "placeholder": "Filter by patch status",
                           "value": undefined,
                         },
-                        "label": "Status",
+                        "label": "Patch status",
                         "type": "checkbox",
                       },
                     ],
@@ -271,10 +271,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                               },
                             ],
                             "onChange": [Function],
-                            "placeholder": "Filter by status",
+                            "placeholder": "Filter by patch status",
                             "value": undefined,
                           },
-                          "label": "Status",
+                          "label": "Patch status",
                           "type": "checkbox",
                         },
                       ],
@@ -361,10 +361,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                 ],
                                                 "onChange": [Function],
-                                                "placeholder": "Filter by status",
+                                                "placeholder": "Filter by patch status",
                                                 "value": undefined,
                                               },
-                                              "label": "Status",
+                                              "label": "Patch status",
                                               "type": "checkbox",
                                             },
                                           ]
@@ -398,9 +398,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         component="button"
                                                         isHovered={false}
                                                         onClick={[Function]}
-                                                        ouiaId="Status"
+                                                        ouiaId="Patch status"
                                                       >
-                                                        Status
+                                                        Patch status
                                                       </DropdownItem>,
                                                     ]
                                                   }
@@ -445,9 +445,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           component="button"
                                                           isHovered={false}
                                                           onClick={[Function]}
-                                                          ouiaId="Status"
+                                                          ouiaId="Patch status"
                                                         >
-                                                          Status
+                                                          Patch status
                                                         </DropdownItem>,
                                                       ]
                                                     }
