@@ -127,6 +127,13 @@ export function truncate(str, max, end) {
     ) : str;
 }
 
+export const truncateDescription = (description, wordLength, setWordLength) => (
+    truncate(preserveNewlines(description), wordLength,
+        <a onClick={() => setWordLength(description.length)}>
+            {intl.formatMessage(messages.linksReadMore)}
+        </a>)
+);
+
 export function createAdvisoriesIcons([rhea, rhba, rhsa, other]) {
     return (
         <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>

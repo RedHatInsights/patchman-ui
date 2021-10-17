@@ -1,10 +1,12 @@
 import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
-import { preserveNewlines } from '../../Utilities/Helpers';
+import { truncateDescription } from '../../Utilities/Helpers';
 import WithLoader, { WithLoaderVariants } from '../WithLoader/WithLoader';
 
 const PackageHeader = ({ attributes, isLoading }) => {
+    const [wordLength, setWordLength] = React.useState(1000);
+
     return (
         <Grid hasGutter style={{ minHeight: 50 }}>
             <GridItem md={8} sm={12}>
@@ -17,7 +19,7 @@ const PackageHeader = ({ attributes, isLoading }) => {
                         <StackItem />
                         <StackItem style={{ whiteSpace: 'pre-line' }}>
                             {
-                                preserveNewlines(attributes.description)
+                                attributes.description && truncateDescription(attributes.description, wordLength, setWordLength)
                             }
                         </StackItem>
                     </Stack>
