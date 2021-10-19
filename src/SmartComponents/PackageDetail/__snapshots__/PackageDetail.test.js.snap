@@ -225,70 +225,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                     }
                   }
                   isLoading={false}
-                >
-                  <Grid
-                    hasGutter={true}
-                    style={
-                      Object {
-                        "minHeight": 50,
-                      }
-                    }
-                  >
-                    <div
-                      className="pf-l-grid pf-m-gutter"
-                      style={
-                        Object {
-                          "minHeight": 50,
-                        }
-                      }
-                    >
-                      <GridItem
-                        md={8}
-                        sm={12}
-                      >
-                        <div
-                          className="pf-l-grid__item pf-m-12-col-on-sm pf-m-8-col-on-md"
-                        >
-                          <WithLoader
-                            centered={true}
-                            loading={false}
-                            variant="spinner"
-                          >
-                            <Stack
-                              hasGutter={true}
-                            >
-                              <div
-                                className="pf-l-stack pf-m-gutter"
-                              >
-                                <StackItem>
-                                  <div
-                                    className="pf-l-stack__item"
-                                  />
-                                </StackItem>
-                                <StackItem
-                                  style={
-                                    Object {
-                                      "whiteSpace": "pre-line",
-                                    }
-                                  }
-                                >
-                                  <div
-                                    className="pf-l-stack__item"
-                                    style={
-                                      Object {
-                                        "whiteSpace": "pre-line",
-                                      }
-                                    }
-                                  />
-                                </StackItem>
-                              </div>
-                            </Stack>
-                          </WithLoader>
-                        </div>
-                      </GridItem>
-                    </div>
-                  </Grid>
-                </PackageHeader>
+                />
               </section>
             </PageHeader>
           </Header>
