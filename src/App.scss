@@ -17,6 +17,10 @@ table.patchCompactInventory {
             font-size: var(--pf-global--FontSize--sm);
         }
     }
+
+    .ins-c-primary-toolbar__filter {
+        margin-right: 16px;
+    }
 }
 
 .ins-c-primary-toolbar {
