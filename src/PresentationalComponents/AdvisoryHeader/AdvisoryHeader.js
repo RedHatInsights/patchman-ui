@@ -1,6 +1,6 @@
 import {
     Button, Grid, GridItem, Stack, StackItem, Text, TextContent,
-    FlexItem, TextVariants, Flex
+    FlexItem, TextVariants, Flex, Split, SplitItem, Title
 } from '@patternfly/react-core';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
@@ -13,6 +13,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import RebootRequired from '../Snippets/RebootRequired';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
 import ExternalLink from '../Snippets/ExternalLink';
+import AdvisoryType from '../AdvisoryType/AdvisoryType';
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const [CvesInfoModal, setCvesModal] = useState(() => () => null);
@@ -71,11 +72,29 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
             </GridItem>
             <GridItem md={4} sm={12}>
                 <Flex flex={{ default: 'column' }}>
+                    {attributes.advisory_type_name && (<FlexItem>
+                        <Split className='infobox' hasGutter>
+                            <SplitItem isFilled>
+                                <Flex flex={{ default: 'column' }}>
+                                    <FlexItem spacer={{ default: 'spacerNone' }}>
+                                        <Title headingLevel='h5'>
+                                            {intl.formatMessage(messages.titlesAdvisoryType)}
+                                        </Title>
+                                    </FlexItem>
+                                    <FlexItem spacer={{ default: 'spacerSm' }}>
+                                        <AdvisoryType
+                                            type={attributes.advisory_type_name}
+                                        />
+                                    </FlexItem>
+                                </Flex>
+                            </SplitItem>
+                        </Split>
+                    </FlexItem>
+                    )}
                     {severityObject.value !== 0 && (<FlexItem>
                         <AdvisorySeverityInfo severity={severityObject}/>
                     </FlexItem>
                     )}
-
                     {attributes.reboot_required && (<FlexItem spacer={{ default: 'spacerMd' }}>
                         <RebootRequired />
                     </FlexItem>)}
