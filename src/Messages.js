@@ -406,6 +406,11 @@ export default defineMessages({
         description: 'page title with capital letter',
         defaultMessage: 'Advisories'
     },
+    titlesAdvisoryType: {
+        id: 'titlesAdvisoryType',
+        description: 'title with capital letter',
+        defaultMessage: 'Advisory type'
+    },
     titlesAffectedSystems: {
         id: 'affectedSystems',
         description: 'page title with capital letter',

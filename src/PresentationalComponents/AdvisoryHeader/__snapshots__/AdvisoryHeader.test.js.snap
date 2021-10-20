@@ -51,6 +51,49 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
       }
     >
       <FlexItem>
+        <Split
+          className="infobox"
+          hasGutter={true}
+        >
+          <SplitItem
+            isFilled={true}
+          >
+            <Flex
+              flex={
+                Object {
+                  "default": "column",
+                }
+              }
+            >
+              <FlexItem
+                spacer={
+                  Object {
+                    "default": "spacerNone",
+                  }
+                }
+              >
+                <Title
+                  headingLevel="h5"
+                >
+                  Advisory type
+                </Title>
+              </FlexItem>
+              <FlexItem
+                spacer={
+                  Object {
+                    "default": "spacerSm",
+                  }
+                }
+              >
+                <AdvisoryType
+                  type="security"
+                />
+              </FlexItem>
+            </Flex>
+          </SplitItem>
+        </Split>
+      </FlexItem>
+      <FlexItem>
         <AdvisorySeverityInfo
           severity={
             Object {
@@ -118,6 +161,49 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
         }
       }
     >
+      <FlexItem>
+        <Split
+          className="infobox"
+          hasGutter={true}
+        >
+          <SplitItem
+            isFilled={true}
+          >
+            <Flex
+              flex={
+                Object {
+                  "default": "column",
+                }
+              }
+            >
+              <FlexItem
+                spacer={
+                  Object {
+                    "default": "spacerNone",
+                  }
+                }
+              >
+                <Title
+                  headingLevel="h5"
+                >
+                  Advisory type
+                </Title>
+              </FlexItem>
+              <FlexItem
+                spacer={
+                  Object {
+                    "default": "spacerSm",
+                  }
+                }
+              >
+                <AdvisoryType
+                  type="security"
+                />
+              </FlexItem>
+            </Flex>
+          </SplitItem>
+        </Split>
+      </FlexItem>
       <FlexItem>
         <AdvisorySeverityInfo
           severity={
