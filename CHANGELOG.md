@@ -1,3 +1,10 @@
+## [1.35.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.35.0...v1.35.1) (2021-10-20)
+
+
+### Bug Fixes
+
+* **PackageHeader:** SPM-1210 fix title bottom space ([91122f0](https://github.com/RedHatInsights/patchman-ui/commit/91122f0120ee46ef5fce539a3847713d353a8486))
+
 # [1.35.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.34.3...v1.35.0) (2021-10-14)
 
 
