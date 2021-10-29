@@ -71,7 +71,8 @@ const initStore = () => {
 
 let wrapper;
 let store = initStore();
-// eslint-disable-next-line no-unused-vars
+let primaryToolbarProps;
+
 const rejectedState = { entities: { ...mockState, status: 'rejected', error: { detail: 'test' } },
     AdvisorySystemsStore: mockState.AdvisorySystemsStore };
 beforeEach(() => {
@@ -89,6 +90,8 @@ beforeEach(() => {
     wrapper = mount(<Provider store={store}>
         <Router> <AdvisorySystems advisoryName={'RHSA-2020:2755'} /></Router>
     </Provider>);
+
+    primaryToolbarProps = wrapper.find('.testInventroyComponentChild').parent().props().children.props;
 });
 
 afterEach(() => {
@@ -129,7 +132,7 @@ describe('AdvisorySystems.js', () => {
             await act(async() => {
                 wrapper.update();
             });
-            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props().children.props;
 
             bulkSelect.items[0].onClick();
             const dispatchedActions = testStore.getActions();
@@ -138,23 +141,10 @@ describe('AdvisorySystems.js', () => {
         });
 
         it('Should select a page', async () => {
-            const testStore = initStore(mockState);
-            let wrapper;
-            await act(async() => {
-                wrapper = mount(
-                    <Provider store={testStore}>
-                        <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
-                    </Provider>
-                );
-            });
-            await act(async() => {
-                wrapper.update();
-            });
-
-            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { bulkSelect } = primaryToolbarProps;
 
             bulkSelect.items[1].onClick();
-            const dispatchedActions = testStore.getActions();
+            const dispatchedActions = store.getActions();
 
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[1].title).toEqual('Select page (1)');
@@ -178,7 +168,7 @@ describe('AdvisorySystems.js', () => {
                 wrapper.update();
             });
 
-            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { bulkSelect } = primaryToolbarProps;
 
             bulkSelect.items[2].onClick();
             expect(fetchAdvisorySystems).toHaveBeenCalled();
@@ -203,7 +193,7 @@ describe('AdvisorySystems.js', () => {
                 wrapper.update();
             });
 
-            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props().children.props;
 
             bulkSelect.onSelect();
             const dispatchedActions = testStore.getActions();
@@ -219,7 +209,7 @@ describe('AdvisorySystems.js', () => {
     });
 
     it('Should open remediation modal', async () => {
-        const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
+        const { dedicatedAction } = primaryToolbarProps;
         act(() => dedicatedAction.props.onClick(null, null, {
             id: 'patch-advisory:RHBA-2020:4282'
         }));
