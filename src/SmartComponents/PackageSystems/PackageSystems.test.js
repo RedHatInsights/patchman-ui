@@ -81,6 +81,7 @@ const initStore = (state) => {
 
 let wrapper;
 let store = initStore(mockState);
+let primaryToolbarProps;
 
 beforeEach(() => {
     console.error = () => { };
@@ -91,6 +92,8 @@ beforeEach(() => {
     wrapper = mount(<Provider store={store}>
         <Router><PackageSystems packageName='testName'/></Router>
     </Provider>);
+
+    primaryToolbarProps = wrapper.find('.testInventroyComponentChild').parent().props().children.props;
 });
 
 afterEach(() => {
@@ -104,10 +107,8 @@ describe('PackageSystems.js', () => {
         expect(dispatchedActions.filter(item => item.type === 'CHANGE_PACKAGE_SYSTEMS_PARAMS')).toHaveLength(1);
     });
 
-
     it('Should open remediation modal', () => {
-
-        const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
+        const { dedicatedAction } = primaryToolbarProps;
         act(() => dedicatedAction.props.onClick(null, null, {
             id: "patch-advisory:RHBA-2020:4282"
         }));
@@ -120,13 +121,13 @@ describe('PackageSystems.js', () => {
         global.fetch = jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)));
 
         it('Should download csv file', () => {
-            const { exportConfig } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { exportConfig } = primaryToolbarProps;
             exportConfig.onSelect(null, 'csv');
             expect(exportPackageSystemsCSV).toHaveBeenCalledWith({}, 'testName');
         });
 
         it('Should download json file', () => {
-            const { exportConfig } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { exportConfig } = primaryToolbarProps;
             exportConfig.onSelect(null, 'json');
             expect(exportPackageSystemsJSON).toHaveBeenCalledWith({}, 'testName');
         });
@@ -134,7 +135,7 @@ describe('PackageSystems.js', () => {
 
     describe('test entity selecting', () => {
         it('Should unselect all', () => {
-            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { bulkSelect } = primaryToolbarProps;
 
             bulkSelect.items[0].onClick();
             const dispatchedActions = store.getActions();
@@ -145,7 +146,7 @@ describe('PackageSystems.js', () => {
 
         it('Should select a page', async () => {
 
-            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { bulkSelect } = primaryToolbarProps;
 
             bulkSelect.items[1].onClick();
             const dispatchedActions = store.getActions();
@@ -155,7 +156,7 @@ describe('PackageSystems.js', () => {
 
         it('Should select all', async () => {
 
-            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+            const { bulkSelect } = primaryToolbarProps;
 
             bulkSelect.items[2].onClick();
             expect(fetchPackageSystems).toHaveBeenCalled();
