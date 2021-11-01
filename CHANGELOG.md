@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.35.1...v1.36.0) (2021-11-01)
+
+
+### Features
+
+* **AdvisoryType:** SPM-1197 add advisory type name ([0c4f0a2](https://github.com/RedHatInsights/patchman-ui/commit/0c4f0a20cbb590713891778ff80d125e240dd6a0))
+
 ## [1.35.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.35.0...v1.35.1) (2021-10-20)
 
 
