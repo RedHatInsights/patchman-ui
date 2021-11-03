@@ -22,7 +22,8 @@ export const systemAdvisoryRows = [{
         description: 'Kernel-based Virtual.',
         public_date: '2020-06-30T13:38:53Z',
         severity: 3,
-        synopsis: 'Important'
+        synopsis: 'Important',
+        reboot_required: true
     },
     id: 'RHSA-2020:2774',
     type: 'advisory'

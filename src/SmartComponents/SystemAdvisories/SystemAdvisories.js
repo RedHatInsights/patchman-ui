@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
+import rebootFilter from '../../PresentationalComponents/Filters/RebootFilter';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
@@ -139,7 +140,8 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
                             intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder)
                         ),
                         typeFilter(apply, queryParams.filter),
-                        publishDateFilter(apply, queryParams.filter)
+                        publishDateFilter(apply, queryParams.filter),
+                        rebootFilter(apply, queryParams.filter)
                     ]
                 }}
                 errorState={errorState}

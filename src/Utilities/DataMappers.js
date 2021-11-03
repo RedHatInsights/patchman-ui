@@ -97,6 +97,11 @@ export const createSystemAdvisoriesRows = (
                                 />
                             )
                         },
+                        {
+                            title: row.attributes.reboot_required &&
+                                intl.formatMessage(messages.labelsRebootRequired)
+                                || intl.formatMessage(messages.labelsRebootNotRequired)
+                        },
                         { title: processDate(row.attributes.public_date) }
                     ]
                 },

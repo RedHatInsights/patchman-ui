@@ -45,7 +45,7 @@ export const systemAdvisoriesColumns = [
     },
     {
         title: 'Synopsis',
-        transforms: [sortable, cellWidth(45)],
+        transforms: [sortable, cellWidth(35)],
         key: 'synopsis'
     },
     {
@@ -54,8 +54,13 @@ export const systemAdvisoriesColumns = [
         key: 'advisory_type_name'
     },
     {
+        title: intl.formatMessage(messages.labelsColumnsReboot),
+        transforms: [sortable, cellWidth(20)],
+        key: 'reboot_required'
+    },
+    {
         title: intl.formatMessage(messages.labelsColumnsPublishDate),
-        transforms: [sortable, cellWidth(25)],
+        transforms: [sortable, cellWidth(30)],
         key: 'public_date'
     }
 ];

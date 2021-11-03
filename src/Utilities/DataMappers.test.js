@@ -34,13 +34,15 @@ describe('DataMappers', () => {
 
     it('Should create System Advisories Rows', () => {
         const [firstRow, secondRow] = createSystemAdvisoriesRows(systemAdvisoryRows, [], []);
+        console.log(firstRow);
         expect(firstRow.id).toEqual(systemAdvisoryRows[0].id);
         expect(firstRow.isOpen).toEqual(false);
         expect(firstRow.selected).toEqual(false);
-        expect(firstRow.cells[0].title).toEqual(handlePatchLink('advisories', systemAdvisoryRows[0].id));
-        expect(firstRow.cells[3].title).toEqual(processDate(systemAdvisoryRows[0].attributes.public_date));
+        expect(firstRow.cells[4].title).toEqual(processDate(systemAdvisoryRows[0].attributes.public_date));
+        expect(firstRow.cells[3].title).toEqual('Required');
         expect(firstRow.cells[2].title.props.type).toEqual(systemAdvisoryRows[0].attributes.advisory_type_name);
         expect(firstRow.cells[1]).toBeTruthy();
+        expect(firstRow.cells[0].title).toEqual(handlePatchLink('advisories', systemAdvisoryRows[0].id));
         const portalAdvisoryLink = secondRow.cells[0].title;
         expect(portalAdvisoryLink.props.row).toEqual(systemAdvisoryRows[0]);
     });
