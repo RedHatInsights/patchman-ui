@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.36.0...v1.37.0) (2021-11-08)
+
+
+### Features
+
+* **Reboot:** SPM-1228 add reboot req into system detail ([d3fe3d9](https://github.com/RedHatInsights/patchman-ui/commit/d3fe3d9b438f426d21696f59574e451082a13435))
+
 # [1.36.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.35.1...v1.36.0) (2021-11-01)
 
 
