@@ -40,7 +40,7 @@ exports[`TableView TableView 1`] = `
           },
           Object {
             "onClick": [Function],
-            "title": "Select all ()",
+            "title": "Select all ({count})",
           },
         ],
         "onSelect": [Function],
@@ -99,6 +99,7 @@ exports[`TableView TableView 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isHeaderSelectDisabled={false}
     isNested={false}
     isStickyHeader={true}
     isTreeTable={false}
@@ -161,7 +162,7 @@ exports[`TableView TableView 2`] = `
           },
           Object {
             "onClick": [Function],
-            "title": "Select all ()",
+            "title": "Select all ({count})",
           },
         ],
         "onSelect": [Function],
@@ -220,6 +221,7 @@ exports[`TableView TableView 2`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isHeaderSelectDisabled={false}
     isNested={false}
     isStickyHeader={true}
     isTreeTable={false}
@@ -341,6 +343,7 @@ exports[`TableView test table props TableView 1`] = `
     dropdownPosition="right"
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
+    isHeaderSelectDisabled={false}
     isNested={false}
     isStickyHeader={true}
     isTreeTable={false}

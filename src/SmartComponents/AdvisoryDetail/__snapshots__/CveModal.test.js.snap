@@ -147,34 +147,32 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                     <div
                                       class="pf-l-split__item pf-m-fill"
                                     >
-                                      <div>
-                                        <input
-                                          aria-invalid="false"
-                                          aria-label="search-field"
-                                          class="pf-c-form-control ins-c-conditional-filter "
-                                          data-ouia-component-id="ConditionalFilter"
-                                          data-ouia-component-type="PF4/TextInput"
-                                          data-ouia-safe="true"
-                                          placeholder="Filter by CVE ID"
-                                          type="text"
-                                          value=""
-                                          widget-type="InsightsInput"
+                                      <input
+                                        aria-invalid="false"
+                                        aria-label="search-field"
+                                        class="pf-c-form-control ins-c-conditional-filter "
+                                        data-ouia-component-id="ConditionalFilter"
+                                        data-ouia-component-type="PF4/TextInput"
+                                        data-ouia-safe="true"
+                                        placeholder="Filter by CVE ID"
+                                        type="text"
+                                        value=""
+                                        widget-type="InsightsInput"
+                                      />
+                                      <svg
+                                        aria-hidden="true"
+                                        class="ins-c-search-icon"
+                                        fill="currentColor"
+                                        height="1em"
+                                        role="img"
+                                        style="vertical-align: -0.125em;"
+                                        viewBox="0 0 512 512"
+                                        width="1em"
+                                      >
+                                        <path
+                                          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
                                         />
-                                        <svg
-                                          aria-hidden="true"
-                                          class="ins-c-search-icon"
-                                          fill="currentColor"
-                                          height="1em"
-                                          role="img"
-                                          style="vertical-align: -0.125em;"
-                                          viewBox="0 0 512 512"
-                                          width="1em"
-                                        >
-                                          <path
-                                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                                          />
-                                        </svg>
-                                      </div>
+                                      </svg>
                                     </div>
                                   </div>
                                 </div>
@@ -1538,99 +1536,93 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                               <div
                                                                 className="pf-l-split__item pf-m-fill"
                                                               >
-                                                                <div>
-                                                                  <Text
+                                                                <Text
+                                                                  aria-label="search-field"
+                                                                  isDisabled={false}
+                                                                  onChange={[Function]}
+                                                                  onSubmit={[Function]}
+                                                                  placeholder="Filter by CVE ID"
+                                                                  value=""
+                                                                >
+                                                                  <TextInput
                                                                     aria-label="search-field"
-                                                                    containerRef={null}
+                                                                    className="ins-c-conditional-filter "
+                                                                    data-ouia-component-type="PF4/TextInput"
                                                                     isDisabled={false}
                                                                     onChange={[Function]}
-                                                                    onSubmit={[Function]}
+                                                                    onKeyDown={[Function]}
+                                                                    ouiaId="ConditionalFilter"
                                                                     placeholder="Filter by CVE ID"
                                                                     value=""
+                                                                    widget-type="InsightsInput"
                                                                   >
-                                                                    <TextInput
+                                                                    <TextInputBase
                                                                       aria-label="search-field"
                                                                       className="ins-c-conditional-filter "
-                                                                      containerRef={null}
                                                                       data-ouia-component-type="PF4/TextInput"
+                                                                      innerRef={null}
                                                                       isDisabled={false}
+                                                                      isLeftTruncated={false}
+                                                                      isReadOnly={false}
+                                                                      isRequired={false}
                                                                       onChange={[Function]}
                                                                       onKeyDown={[Function]}
                                                                       ouiaId="ConditionalFilter"
+                                                                      ouiaSafe={true}
                                                                       placeholder="Filter by CVE ID"
+                                                                      type="text"
+                                                                      validated="default"
                                                                       value=""
                                                                       widget-type="InsightsInput"
                                                                     >
-                                                                      <TextInputBase
+                                                                      <input
+                                                                        aria-invalid={false}
                                                                         aria-label="search-field"
-                                                                        className="ins-c-conditional-filter "
-                                                                        containerRef={null}
+                                                                        className="pf-c-form-control ins-c-conditional-filter "
+                                                                        data-ouia-component-id="ConditionalFilter"
                                                                         data-ouia-component-type="PF4/TextInput"
-                                                                        innerRef={null}
-                                                                        isDisabled={false}
-                                                                        isLeftTruncated={false}
-                                                                        isReadOnly={false}
-                                                                        isRequired={false}
+                                                                        data-ouia-safe={true}
+                                                                        disabled={false}
+                                                                        onBlur={[Function]}
                                                                         onChange={[Function]}
+                                                                        onFocus={[Function]}
                                                                         onKeyDown={[Function]}
-                                                                        ouiaId="ConditionalFilter"
-                                                                        ouiaSafe={true}
                                                                         placeholder="Filter by CVE ID"
+                                                                        readOnly={false}
+                                                                        required={false}
                                                                         type="text"
-                                                                        validated="default"
                                                                         value=""
                                                                         widget-type="InsightsInput"
-                                                                      >
-                                                                        <input
-                                                                          aria-invalid={false}
-                                                                          aria-label="search-field"
-                                                                          className="pf-c-form-control ins-c-conditional-filter "
-                                                                          containerRef={null}
-                                                                          data-ouia-component-id="ConditionalFilter"
-                                                                          data-ouia-component-type="PF4/TextInput"
-                                                                          data-ouia-safe={true}
-                                                                          disabled={false}
-                                                                          onBlur={[Function]}
-                                                                          onChange={[Function]}
-                                                                          onFocus={[Function]}
-                                                                          onKeyDown={[Function]}
-                                                                          placeholder="Filter by CVE ID"
-                                                                          readOnly={false}
-                                                                          required={false}
-                                                                          type="text"
-                                                                          value=""
-                                                                          widget-type="InsightsInput"
-                                                                        />
-                                                                      </TextInputBase>
-                                                                    </TextInput>
-                                                                    <SearchIcon
+                                                                      />
+                                                                    </TextInputBase>
+                                                                  </TextInput>
+                                                                  <SearchIcon
+                                                                    className="ins-c-search-icon"
+                                                                    color="currentColor"
+                                                                    noVerticalAlign={false}
+                                                                    size="sm"
+                                                                  >
+                                                                    <svg
+                                                                      aria-hidden={true}
+                                                                      aria-labelledby={null}
                                                                       className="ins-c-search-icon"
-                                                                      color="currentColor"
-                                                                      noVerticalAlign={false}
-                                                                      size="sm"
-                                                                    >
-                                                                      <svg
-                                                                        aria-hidden={true}
-                                                                        aria-labelledby={null}
-                                                                        className="ins-c-search-icon"
-                                                                        fill="currentColor"
-                                                                        height="1em"
-                                                                        role="img"
-                                                                        style={
-                                                                          Object {
-                                                                            "verticalAlign": "-0.125em",
-                                                                          }
+                                                                      fill="currentColor"
+                                                                      height="1em"
+                                                                      role="img"
+                                                                      style={
+                                                                        Object {
+                                                                          "verticalAlign": "-0.125em",
                                                                         }
-                                                                        viewBox="0 0 512 512"
-                                                                        width="1em"
-                                                                      >
-                                                                        <path
-                                                                          d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                                                                        />
-                                                                      </svg>
-                                                                    </SearchIcon>
-                                                                  </Text>
-                                                                </div>
+                                                                      }
+                                                                      viewBox="0 0 512 512"
+                                                                      width="1em"
+                                                                    >
+                                                                      <path
+                                                                        d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                                                                      />
+                                                                    </svg>
+                                                                  </SearchIcon>
+                                                                </Text>
                                                               </div>
                                                             </SplitItem>
                                                           </div>
@@ -2631,6 +2623,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   dropdownPosition="right"
                                   expandId="expandable-toggle"
                                   gridBreakPoint="grid-md"
+                                  isHeaderSelectDisabled={false}
                                   isNested={false}
                                   isStickyHeader={true}
                                   isTreeTable={false}
@@ -2841,6 +2834,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "dropdownPosition": "right",
                                             "expandId": "expandable-toggle",
                                             "firstUserColumnIndex": 0,
+                                            "isHeaderSelectDisabled": false,
                                             "onCollapse": undefined,
                                             "onExpand": undefined,
                                             "onFavorite": undefined,
@@ -2893,6 +2887,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "dropdownPosition": "right",
                                             "expandId": "expandable-toggle",
                                             "firstUserColumnIndex": 0,
+                                            "isHeaderSelectDisabled": false,
                                             "onCollapse": undefined,
                                             "onExpand": undefined,
                                             "onFavorite": undefined,
@@ -2946,6 +2941,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "dropdownPosition": "right",
                                             "expandId": "expandable-toggle",
                                             "firstUserColumnIndex": 0,
+                                            "isHeaderSelectDisabled": false,
                                             "onCollapse": undefined,
                                             "onExpand": undefined,
                                             "onFavorite": undefined,
@@ -3069,6 +3065,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "dropdownPosition": "right",
                                                           "expandId": "expandable-toggle",
                                                           "firstUserColumnIndex": 0,
+                                                          "isHeaderSelectDisabled": false,
                                                           "onCollapse": undefined,
                                                           "onExpand": undefined,
                                                           "onFavorite": undefined,
@@ -3121,6 +3118,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "dropdownPosition": "right",
                                                           "expandId": "expandable-toggle",
                                                           "firstUserColumnIndex": 0,
+                                                          "isHeaderSelectDisabled": false,
                                                           "onCollapse": undefined,
                                                           "onExpand": undefined,
                                                           "onFavorite": undefined,
@@ -3174,6 +3172,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "dropdownPosition": "right",
                                                           "expandId": "expandable-toggle",
                                                           "firstUserColumnIndex": 0,
+                                                          "isHeaderSelectDisabled": false,
                                                           "onCollapse": undefined,
                                                           "onExpand": undefined,
                                                           "onFavorite": undefined,
@@ -3282,6 +3281,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "dropdownPosition": "right",
                                                                   "expandId": "expandable-toggle",
                                                                   "firstUserColumnIndex": 0,
+                                                                  "isHeaderSelectDisabled": false,
                                                                   "onCollapse": undefined,
                                                                   "onExpand": undefined,
                                                                   "onFavorite": undefined,
@@ -3334,6 +3334,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "dropdownPosition": "right",
                                                                   "expandId": "expandable-toggle",
                                                                   "firstUserColumnIndex": 0,
+                                                                  "isHeaderSelectDisabled": false,
                                                                   "onCollapse": undefined,
                                                                   "onExpand": undefined,
                                                                   "onFavorite": undefined,
@@ -3387,6 +3388,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "dropdownPosition": "right",
                                                                   "expandId": "expandable-toggle",
                                                                   "firstUserColumnIndex": 0,
+                                                                  "isHeaderSelectDisabled": false,
                                                                   "onCollapse": undefined,
                                                                   "onExpand": undefined,
                                                                   "onFavorite": undefined,
@@ -3762,6 +3764,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "dropdownPosition": "right",
                                                       "expandId": "expandable-toggle",
                                                       "firstUserColumnIndex": 0,
+                                                      "isHeaderSelectDisabled": false,
                                                       "onCollapse": undefined,
                                                       "onExpand": undefined,
                                                       "onFavorite": undefined,
@@ -3814,6 +3817,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "dropdownPosition": "right",
                                                       "expandId": "expandable-toggle",
                                                       "firstUserColumnIndex": 0,
+                                                      "isHeaderSelectDisabled": false,
                                                       "onCollapse": undefined,
                                                       "onExpand": undefined,
                                                       "onFavorite": undefined,
@@ -3867,6 +3871,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "dropdownPosition": "right",
                                                       "expandId": "expandable-toggle",
                                                       "firstUserColumnIndex": 0,
+                                                      "isHeaderSelectDisabled": false,
                                                       "onCollapse": undefined,
                                                       "onExpand": undefined,
                                                       "onFavorite": undefined,
@@ -4989,6 +4994,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "dropdownPosition": "right",
                                                           "expandId": "expandable-toggle",
                                                           "firstUserColumnIndex": 0,
+                                                          "isHeaderSelectDisabled": false,
                                                           "onCollapse": undefined,
                                                           "onExpand": undefined,
                                                           "onFavorite": undefined,
@@ -5041,6 +5047,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "dropdownPosition": "right",
                                                           "expandId": "expandable-toggle",
                                                           "firstUserColumnIndex": 0,
+                                                          "isHeaderSelectDisabled": false,
                                                           "onCollapse": undefined,
                                                           "onExpand": undefined,
                                                           "onFavorite": undefined,
@@ -5094,6 +5101,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "dropdownPosition": "right",
                                                           "expandId": "expandable-toggle",
                                                           "firstUserColumnIndex": 0,
+                                                          "isHeaderSelectDisabled": false,
                                                           "onCollapse": undefined,
                                                           "onExpand": undefined,
                                                           "onFavorite": undefined,
@@ -6527,6 +6535,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -6579,6 +6588,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -6632,6 +6642,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -6938,6 +6949,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -6990,6 +7002,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -7043,6 +7056,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -7349,6 +7363,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -7401,6 +7416,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -7454,6 +7470,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -7760,6 +7777,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -7812,6 +7830,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -7865,6 +7884,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -8171,6 +8191,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -8223,6 +8244,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -8276,6 +8298,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -8582,6 +8605,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -8634,6 +8658,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -8687,6 +8712,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -8993,6 +9019,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -9045,6 +9072,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -9098,6 +9126,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -9404,6 +9433,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -9456,6 +9486,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -9509,6 +9540,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -9815,6 +9847,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -9867,6 +9900,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -9920,6 +9954,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -10226,6 +10261,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -10278,6 +10314,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,
@@ -10331,6 +10368,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "dropdownPosition": "right",
                                                                     "expandId": "expandable-toggle",
                                                                     "firstUserColumnIndex": 0,
+                                                                    "isHeaderSelectDisabled": false,
                                                                     "onCollapse": undefined,
                                                                     "onExpand": undefined,
                                                                     "onFavorite": undefined,

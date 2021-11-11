@@ -106,7 +106,7 @@ describe('Systems.js', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it('Should dispatch FETCH_SYSTEMS action once only', () => {
+    it('Should dispatch CHANGE_SYSTEMS_PARAMS action once only', () => {
         const dispatchedActions = store.getActions();
         expect(dispatchedActions.filter(item => item.type === 'CHANGE_SYSTEMS_PARAMS')).toHaveLength(1);
     });
