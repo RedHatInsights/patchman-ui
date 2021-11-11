@@ -1,6 +1,6 @@
 import { fetchAdvisoryDetailsApi, fetchApplicableAdvisoriesApi,
     fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchPackageDetailsApi,
-    fetchPackagesList, fetchPackageSystems, fetchSystems, fetchCvesInfo, fetchSystemDetails } from '../../Utilities/api';
+    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({
@@ -29,13 +29,6 @@ export const fetchPackageDetails = params => ({
     type: ActionTypes.FETCH_PACKAGE_DETAILS,
     payload: new Promise(resolve => {
         resolve(fetchPackageDetailsApi(params));
-    }).then(result => result)
-});
-
-export const fetchSystemsAction = params => ({
-    type: ActionTypes.FETCH_SYSTEMS,
-    payload: new Promise(resolve => {
-        resolve(fetchSystems(params));
     }).then(result => result)
 });
 
