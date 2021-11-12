@@ -1,3 +1,10 @@
+## [1.37.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.37.0...v1.37.1) (2021-11-12)
+
+
+### Bug Fixes
+
+* **deps:** fix deps for running proxy ([95cf509](https://github.com/RedHatInsights/patchman-ui/commit/95cf5095507dcee8bc91c7ef0b26fbcc29c89449))
+
 # [1.37.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.36.0...v1.37.0) (2021-11-08)
 
 
