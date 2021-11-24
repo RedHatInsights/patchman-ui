@@ -49,21 +49,26 @@ export const packageSystemsColumns = [
         title: 'Name',
         composed: ['facts.os_release', 'display_name'],
         props: {
-            width: 50
+            width: 40
         }
+    },
+    {
+        key: 'tags',
+        title: 'Tags',
+        props: { width: 10, isStatic: true }
     },
     {
         key: 'installed_evra',
         title: 'Installed version',
         props: {
-            width: 10
+            width: 15
         }
     },
     {
         key: 'available_evra',
         title: 'Latest version',
         props: {
-            width: 10
+            width: 15
         }
     },
     {

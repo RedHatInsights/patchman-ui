@@ -145,11 +145,13 @@ const PackageSystems = ({ packageName }) => {
             <RemediationModalCmp/>
             {status.hasError && <ErrorHandler code={status.code} /> || (
                 <InventoryTable
-                    disableDefaultColumns
+                    disableDefaultColumns={['system_profile', 'updated']}
                     isFullView
                     autoRefresh
                     initialLoading
-                    hideFilters={{ all: true }}
+                    hideFilters={{ all: true, tags: false }}
+                    columns={packageSystemsColumns}
+                    showTags
                     getEntities={getEntites}
                     customFilters={{
                         patchParams: {
@@ -170,7 +172,7 @@ const PackageSystems = ({ packageName }) => {
                     }}
                     tableProps={{
                         canSelectAll: false,
-                        onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
                     filterConfig={filterConfig}
                     activeFiltersConfig={activeFiltersConfig}

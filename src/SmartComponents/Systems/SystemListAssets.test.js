@@ -22,7 +22,7 @@ describe('SystemListAssets.js', () => {
     });
 
     it('Should call createUpgradableColumn on Status renderFunc with correct params', () => {
-        packageSystemsColumns[3].renderFunc('testValue');
+        packageSystemsColumns[4].renderFunc('testValue');
         expect(createUpgradableColumn).toHaveBeenCalledWith('testValue');
     });
 
