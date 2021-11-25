@@ -110,6 +110,7 @@ const AdvisorySystems = ({ advisoryName }) => {
             <RemediationModalCmp />
             {status.hasError && <ErrorHandler code={status.code} /> ||
                 <InventoryTable
+                    disableDefaultColumns={['system_profile']}
                     isFullView
                     autoRefresh
                     initialLoading

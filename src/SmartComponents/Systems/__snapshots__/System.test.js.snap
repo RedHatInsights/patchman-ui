@@ -713,6 +713,11 @@ exports[`Systems.js should match the snapshot 1`] = `
                     ouia="toolbar-remediation-button"
                   />
                 }
+                disableDefaultColumns={
+                  Array [
+                    "system_profile",
+                  ]
+                }
                 exportConfig={
                   Object {
                     "isDisabled": true,

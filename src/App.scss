@@ -21,6 +21,18 @@ table.patchCompactInventory {
     .ins-c-primary-toolbar__filter {
         margin-right: 16px;
     }
+
+    .ins-c-inventory__list-tags {
+        display: block !important;
+    }
+
+    .ins-c-tag-count{
+        padding-top: 2px;
+        padding-bottom: 0;
+        padding-left: 2px;
+        display: contents;
+        height: 20px;
+    }
 }
 
 .ins-c-primary-toolbar {
