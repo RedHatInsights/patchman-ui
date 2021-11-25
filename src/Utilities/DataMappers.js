@@ -185,7 +185,8 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                 disableCheckbox: !row.updatable,
                 updatable: row.updatable,
                 upgradable: row.updatable,
-                selected: selectedRows[row.id] !== undefined
+                selected: selectedRows[row.id] !== undefined,
+                tags: row.tags
             };
         });
     return data || [];

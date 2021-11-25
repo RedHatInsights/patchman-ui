@@ -154,6 +154,11 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
               Remediate
             </PatchRemediationButton>
           }
+          disableDefaultColumns={
+            Array [
+              "system_profile",
+            ]
+          }
           exportConfig={
             Object {
               "isDisabled": true,
