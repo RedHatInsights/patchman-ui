@@ -1,3 +1,11 @@
+# [1.38.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.37.1...v1.38.0) (2021-11-29)
+
+
+### Features
+
+* **PackageSystems:** SPM-1178 add tag filter and column ([aa0c1a1](https://github.com/RedHatInsights/patchman-ui/commit/aa0c1a126539dece1bf72d2589ad0011da5f6e20))
+* **Tags:** SPM-1178 add tags column, tag filter ([3653e2b](https://github.com/RedHatInsights/patchman-ui/commit/3653e2bcfec6a8b10766053b1964eb92ab950fbf))
+
 ## [1.37.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.37.0...v1.37.1) (2021-11-12)
 
 
