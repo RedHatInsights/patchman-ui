@@ -82,52 +82,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
               },
             }
           }
-          columns={
-            Array [
-              Object {
-                "composed": Array [
-                  "facts.os_release",
-                  "display_name",
-                ],
-                "key": "display_name",
-                "props": Object {
-                  "width": 50,
-                },
-                "title": "Name",
-              },
-              Object {
-                "key": "tags",
-                "props": Object {
-                  "isStatic": true,
-                  "width": 10,
-                },
-                "title": "Tags",
-              },
-              Object {
-                "key": "operating_system",
-                "props": Object {
-                  "width": 10,
-                },
-                "renderFunc": [Function],
-                "title": "OS",
-              },
-              Object {
-                "key": "packages_installed",
-                "props": Object {
-                  "width": 10,
-                },
-                "title": "Packages",
-              },
-              Object {
-                "key": "applicable_advisories",
-                "props": Object {
-                  "width": 15,
-                },
-                "renderFunc": [Function],
-                "title": "Applicable advisories",
-              },
-            ]
-          }
+          columns={[Function]}
           customFilters={
             Object {
               "patchParams": Object {
@@ -153,11 +108,6 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                
               Remediate
             </PatchRemediationButton>
-          }
-          disableDefaultColumns={
-            Array [
-              "system_profile",
-            ]
           }
           exportConfig={
             Object {

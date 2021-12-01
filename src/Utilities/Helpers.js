@@ -14,7 +14,7 @@ import LinesEllipsis from 'react-lines-ellipsis';
 import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
-import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
+import { systemsListColumns, packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 import {
     advisorySeverities,
     compoundSortValues,
@@ -553,4 +553,13 @@ export const mapGlobalFilters = (tags, SIDs, SAP) => {
 
     return globalFilterConfig;
 
+};
+
+export const systemsColumnsMerger = defaultColumns => {
+    let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
+    lastSeen = [{ ...lastSeen[0], key: 'last_upload' }];
+
+    let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
+
+    return [...nameAndTag, ...systemsListColumns, lastSeen[0]];
 };

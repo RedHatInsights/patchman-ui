@@ -22,7 +22,7 @@ import { remediationIdentifiers, systemsListDefaultFilters } from '../../Utiliti
 import {
     arrayFromObj, buildFilterChips,
     decodeQueryparams, filterRemediatableSystems, persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys,
-    transformPairs
+    transformPairs, systemsColumnsMerger
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
@@ -152,12 +152,12 @@ const Systems = () => {
                 {status.hasError && <ErrorHandler code={status.code} /> ||
                     (
                         <InventoryTable
-                            disableDefaultColumns={['system_profile']}
+
                             isFullView
                             autoRefresh
                             initialLoading
                             hideFilters={{ all: true, tags: false }}
-                            columns={systemsListColumns}
+                            columns={systemsColumnsMerger}
                             showTags
                             customFilters={{
                                 patchParams: {
