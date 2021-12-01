@@ -33,7 +33,7 @@ describe('InventoryEntitiesReducer tests', () => {
         expect(res).toEqual({ 
             ...initialState, 
             loaded: true, 
-            columns: [{ key: 'updated' }, { key: 'last_upload' }], 
+            columns: [{ key: 'testCol' }],
             rows: expect.any(Object),
             status: {
                 hasError: false,

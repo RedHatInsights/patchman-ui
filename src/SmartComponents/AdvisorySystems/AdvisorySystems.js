@@ -16,7 +16,7 @@ import { exportAdvisorySystemsCSV, exportAdvisorySystemsJSON, fetchAdvisorySyste
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatableSystems,
-    persistantParams, remediationProvider, removeUndefinedObjectKeys
+    persistantParams, remediationProvider, removeUndefinedObjectKeys, systemsColumnsMerger
 } from '../../Utilities/Helpers';
 import {
     useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter
@@ -110,13 +110,12 @@ const AdvisorySystems = ({ advisoryName }) => {
             <RemediationModalCmp />
             {status.hasError && <ErrorHandler code={status.code} /> ||
                 <InventoryTable
-                    disableDefaultColumns={['system_profile']}
                     isFullView
                     autoRefresh
                     initialLoading
                     ignoreRefresh
                     hideFilters={{ all: true, tags: false }}
-                    columns={systemsListColumns}
+                    columns={systemsColumnsMerger}
                     showTags
                     customFilters={{
                         patchParams: {

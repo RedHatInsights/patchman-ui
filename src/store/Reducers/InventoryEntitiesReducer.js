@@ -21,16 +21,9 @@ const initialState = {
 
 export const modifyInventory = (columns, state) => {
     if (state.loaded) {
-        let lastSeenColumn = state.columns.filter(({ key }) => key === 'updated');
-        lastSeenColumn = [{ ...lastSeenColumn[0], key: 'last_upload' }];
-
         return {
             ...state,
             status: { isLoading: false, hasError: false },
-            columns: [
-                ...columns || [],
-                ...lastSeenColumn || []
-            ],
             rows: createSystemsRows(state.rows, state.selectedRows)
         };
     }

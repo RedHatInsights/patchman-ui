@@ -6,19 +6,6 @@ import './SystemsListAssets.scss';
 
 export const systemsListColumns = [
     {
-        key: 'display_name',
-        title: 'Name',
-        composed: ['facts.os_release', 'display_name'],
-        props: {
-            width: 50
-        }
-    },
-    {
-        key: 'tags',
-        title: 'Tags',
-        props: { width: 10, isStatic: true }
-    },
-    {
         key: 'operating_system',
         title: 'OS',
         renderFunc: value => createOSColumn(value),
