@@ -1,3 +1,10 @@
+## [1.38.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.38.0...v1.38.1) (2021-12-02)
+
+
+### Bug Fixes
+
+* **Last Seen:** fix invalid date in last seen column ([46a28c8](https://github.com/RedHatInsights/patchman-ui/commit/46a28c8a95c0be86fcf229f9e32fe87a93d6dd3c))
+
 # [1.38.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.37.1...v1.38.0) (2021-11-29)
 
 
