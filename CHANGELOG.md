@@ -1,3 +1,10 @@
+## [1.38.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.38.1...v1.38.2) (2021-12-08)
+
+
+### Bug Fixes
+
+* **modules:** unique module names introduced, should fix caching issues ([3219c16](https://github.com/RedHatInsights/patchman-ui/commit/3219c169090f9a56051a4ecc62c8e4818e7f627e))
+
 ## [1.38.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.38.0...v1.38.1) (2021-12-02)
 
 
