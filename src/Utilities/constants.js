@@ -146,7 +146,7 @@ export const advisoryTypes = [
         icon: <EnhancementIcon />
     },
     {
-        value: 'other',
+        value: 'unspecified',
         label: 'Other',
         icon: <FlagIcon />
     }

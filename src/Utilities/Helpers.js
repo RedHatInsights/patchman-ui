@@ -338,6 +338,7 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
         } else {
             const { values } = filterCategories[category];
             return [].concat(filters[category]).map(filterValue => {
+                console.log(filterValue, category, filters[category]);
                 const match = values.find(
                     item =>
                         item.value.toString() === filterValue.toString()
