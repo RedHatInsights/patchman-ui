@@ -1,3 +1,10 @@
+## [1.38.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.38.2...v1.38.3) (2022-01-06)
+
+
+### Bug Fixes
+
+* **CVE:** SPM-1247 fix CVE-2021-3918 ([cc889f4](https://github.com/RedHatInsights/patchman-ui/commit/cc889f451a1984ebe2e0fcb403edfde436c0f833))
+
 ## [1.38.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.38.1...v1.38.2) (2021-12-08)
 
 
