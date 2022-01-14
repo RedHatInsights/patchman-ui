@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import './App.scss';
 import { paths, Routes } from './Routes';
-import { changeTags, changeWorkloads, changeSids, globalFilter } from './store/Actions/Actions';
+import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
 
 const App = () => {
@@ -57,9 +57,8 @@ const App = () => {
                 if (!isEqual(config, globalFilterConfig)) {
                     dispatch(globalFilter(globalFilterConfig));
                     setConfig(globalFilterConfig);
-                    changeTags(TAGs);
-                    changeWorkloads(SAP);
-                    changeSids(SIDs);
+                    dispatch(changeGlobalTags(globalFilterConfig.selectedTags));
+                    dispatch(changeProfile(globalFilterConfig.systemProfile));
                 }
 
             });

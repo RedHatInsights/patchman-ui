@@ -116,18 +116,18 @@ export const globalFilter = params => ({
     payload: params
 });
 
+export const changeGlobalTags = params => ({
+    type: ActionTypes.CHANGE_GLOBAL_TAGS,
+    payload: params
+});
+
 export const changeTags = params => ({
     type: ActionTypes.CHANGE_TAGS,
     payload: params
 });
 
-export const changeWorkloads = params => ({
-    type: ActionTypes.CHANGE_WORKLOADS,
-    payload: params
-});
-
-export const changeSids = params => ({
-    type: ActionTypes.CHANGE_SIDS,
+export const changeProfile = params => ({
+    type: ActionTypes.CHANGE_PROFILE,
     payload: params
 });
 

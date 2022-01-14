@@ -1,23 +1,29 @@
 import * as ActionTypes from '../ActionTypes';
 
-export const GlobalFilterStore = (state = {}, action) => {
+const initialState = {
+    selectedGlobalTags: [],
+    selectedTags: [],
+    systemProfile: undefined
+};
+
+export const GlobalFilterStore = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.CHANGE_TAGS:
             return {
                 ...state,
-                tagsFilter: action.payload
+                selectedTags: action.payload
             };
 
-        case ActionTypes.CHANGE_WORKLOADS: console.log('workloads', action.payload);
+        case ActionTypes.CHANGE_GLOBAL_TAGS:
             return {
                 ...state,
-                workloadsFilter: action.payload
+                selectedGlobalTags: action.payload
             };
 
-        case ActionTypes.CHANGE_SIDS:
+        case ActionTypes.CHANGE_PROFILE:
             return {
                 ...state,
-                sidsFilter: action.payload
+                systemProfile: action.payload
             };
 
         default:

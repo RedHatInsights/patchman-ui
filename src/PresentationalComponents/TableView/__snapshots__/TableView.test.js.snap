@@ -40,7 +40,7 @@ exports[`TableView TableView 1`] = `
           },
           Object {
             "onClick": [Function],
-            "title": "Select all ({count})",
+            "title": "Select all ()",
           },
         ],
         "onSelect": [Function],
@@ -162,7 +162,7 @@ exports[`TableView TableView 2`] = `
           },
           Object {
             "onClick": [Function],
-            "title": "Select all ({count})",
+            "title": "Select all ()",
           },
         ],
         "onSelect": [Function],

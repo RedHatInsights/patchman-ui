@@ -64,6 +64,7 @@ const mockState = {
         error: {},
         status: 'resolved'
     },
+    GlobalFilterStore: {},
     SystemsStore: {
         queryParams: {}
     }
@@ -150,6 +151,7 @@ describe('Systems.js', () => {
         useSelector.mockImplementation(callback => {
             return callback({
                 SystemsListStore: notFoundState,
+                GlobalFilterStore: {},
                 entities: { columns: [{ id: 'entity' }] }
             });
         });
