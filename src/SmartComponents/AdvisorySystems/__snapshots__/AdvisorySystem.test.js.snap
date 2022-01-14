@@ -152,6 +152,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                       isCreateSelectOptionObject={false}
                       isDisabled={false}
                       isGrouped={false}
+                      isInputFilterPersisted={false}
                       isInputValuePersisted={false}
                       isOpen={false}
                       isPlain={false}

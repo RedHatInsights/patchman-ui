@@ -1890,7 +1890,6 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "toPreviousPage": "Go to previous page",
                                                     }
                                                   }
-                                                  toggleTemplate={[Function]}
                                                   variant="top"
                                                   widgetId="pagination-options-menu"
                                                 >
@@ -1936,6 +1935,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       itemsTitle=""
                                                       lastIndex={10}
                                                       lastPage={2}
+                                                      ofWord="of"
                                                       onPerPageSelect={[Function]}
                                                       optionsToggle="Items per page"
                                                       page={1}
@@ -2032,6 +2032,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             itemsPerPageTitle="Items per page"
                                                             itemsTitle=""
                                                             lastIndex={10}
+                                                            ofWord="of"
                                                             onToggle={[Function]}
                                                             optionsToggle="Items per page"
                                                             parentRef={null}
@@ -2059,6 +2060,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             itemsTitle=""
                                                             key=".0"
                                                             lastIndex={10}
+                                                            ofWord="of"
                                                             onEnter={[Function]}
                                                             onToggle={[Function]}
                                                             optionsToggle="Items per page"
@@ -2136,6 +2138,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   itemCount={12}
                                                                   itemsTitle=""
                                                                   lastIndex={10}
+                                                                  ofWord="of"
                                                                 >
                                                                   <b>
                                                                     1
@@ -2295,6 +2298,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                       </div>,
                                                                     }
                                                                   }
+                                                                  toggleVariant="default"
                                                                 >
                                                                   <button
                                                                     aria-expanded={false}
@@ -2351,6 +2355,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       firstPage={1}
                                                       isCompact={true}
                                                       isDisabled={false}
+                                                      itemCount={12}
                                                       lastPage={2}
                                                       ofWord="of"
                                                       onFirstClick={[Function]}
@@ -10747,7 +10752,6 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                 "toPreviousPage": "Go to previous page",
                                               }
                                             }
-                                            toggleTemplate={[Function]}
                                             variant="bottom"
                                             widgetId="pagination-options-menu-bottom"
                                           >
@@ -10769,6 +10773,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                 itemsTitle=""
                                                 lastIndex={10}
                                                 lastPage={2}
+                                                ofWord="of"
                                                 onPerPageSelect={[Function]}
                                                 optionsToggle="Items per page"
                                                 page={1}
@@ -10865,6 +10870,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       itemsPerPageTitle="Items per page"
                                                       itemsTitle=""
                                                       lastIndex={10}
+                                                      ofWord="of"
                                                       onToggle={[Function]}
                                                       optionsToggle="Items per page"
                                                       parentRef={null}
@@ -10892,6 +10898,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       itemsTitle=""
                                                       key=".0"
                                                       lastIndex={10}
+                                                      ofWord="of"
                                                       onEnter={[Function]}
                                                       onToggle={[Function]}
                                                       optionsToggle="Items per page"
@@ -10969,6 +10976,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             itemCount={12}
                                                             itemsTitle=""
                                                             lastIndex={10}
+                                                            ofWord="of"
                                                           >
                                                             <b>
                                                               1
@@ -11128,6 +11136,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                 </div>,
                                                               }
                                                             }
+                                                            toggleVariant="default"
                                                           >
                                                             <button
                                                               aria-expanded={false}
@@ -11184,6 +11193,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                 firstPage={1}
                                                 isCompact={false}
                                                 isDisabled={false}
+                                                itemCount={12}
                                                 lastPage={2}
                                                 ofWord="of"
                                                 onFirstClick={[Function]}

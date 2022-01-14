@@ -77,7 +77,7 @@ exports[`Systems.js should match the snapshot 1`] = `
         <Component />
         <SystemsStatusreport
           apply={[Function]}
-          metadata={Object {}}
+          queryParams={Object {}}
         >
           <Connect(Main)
             style={
@@ -749,6 +749,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                             isCreateSelectOptionObject={false}
                             isDisabled={false}
                             isGrouped={false}
+                            isInputFilterPersisted={false}
                             isInputValuePersisted={false}
                             isOpen={false}
                             isPlain={false}

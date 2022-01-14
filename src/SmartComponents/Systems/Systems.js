@@ -12,7 +12,7 @@ import systemsUpdatableFilter from '../../PresentationalComponents/Filters/Syste
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changeSystemsParams, clearInventoryReducer, changeSystemsMetadata } from '../../store/Actions/Actions';
+import { changeSystemsParams, clearInventoryReducer, changeSystemsMetadata, changeTags } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
@@ -62,9 +62,6 @@ const Systems = () => {
     const queryParams = useSelector(
         ({ SystemsStore }) => SystemsStore?.queryParams || {}
     );
-    const metadata = useSelector(
-        ({ SystemsStore }) => SystemsStore?.metadata || {}
-    );
 
     const { systemProfile, selectedTags,
         filter, search, page, perPage, sort } = queryParams;
@@ -73,6 +70,7 @@ const Systems = () => {
         apply(decodedParams);
         return () => dispatch(clearInventoryReducer());
     }, []);
+
     async function showRemediationModal(data) {
         setRemediationLoading(true);
         const resolvedData = await data;
@@ -86,6 +84,10 @@ const Systems = () => {
 
     const applyMetadata = (metadata) => {
         dispatch(changeSystemsMetadata(metadata));
+    };
+
+    const applyGlobalFilter = (tags) => {
+        dispatch(changeTags(tags));
     };
 
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
@@ -141,13 +143,13 @@ const Systems = () => {
             ));
     };
 
-    const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata);
+    const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
 
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <RemediationModalCmp />
-            <SystemsStatusReport metadata={metadata} apply={apply}/>
+            <SystemsStatusReport apply={apply} queryParams={queryParams}/>
             <Main>
                 {status.hasError && <ErrorHandler code={status.code} /> ||
                     (

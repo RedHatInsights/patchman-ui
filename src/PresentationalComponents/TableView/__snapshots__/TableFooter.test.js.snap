@@ -84,7 +84,6 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 "toPreviousPage": "Go to previous page",
               }
             }
-            toggleTemplate={[Function]}
             variant="bottom"
             widgetId="pagination-options-menu-bottom"
           >
@@ -106,6 +105,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 itemsTitle=""
                 lastIndex={10}
                 lastPage={1}
+                ofWord="of"
                 onPerPageSelect={[MockFunction]}
                 optionsToggle="Items per page"
                 page={1}
@@ -202,6 +202,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       itemsPerPageTitle="Items per page"
                       itemsTitle=""
                       lastIndex={10}
+                      ofWord="of"
                       onToggle={[Function]}
                       optionsToggle="Items per page"
                       parentRef={null}
@@ -229,6 +230,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       itemsTitle=""
                       key=".0"
                       lastIndex={10}
+                      ofWord="of"
                       onEnter={[Function]}
                       onToggle={[Function]}
                       optionsToggle="Items per page"
@@ -306,6 +308,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                             itemCount={10}
                             itemsTitle=""
                             lastIndex={10}
+                            ofWord="of"
                           >
                             <b>
                               1
@@ -465,6 +468,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                 </div>,
                               }
                             }
+                            toggleVariant="default"
                           >
                             <button
                               aria-expanded={false}
@@ -521,6 +525,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 firstPage={1}
                 isCompact={false}
                 isDisabled={false}
+                itemCount={10}
                 lastPage={1}
                 ofWord="of"
                 onFirstClick={[Function]}
