@@ -5,7 +5,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import { fetchApplicableAdvisoriesApi } from '../../Utilities/api';
 import messages from '../../Messages';
 import {
-    CardTitle, Card, Grid, GridItem, CardBody, Flex, FlexItem, Title
+    CardTitle, Card, Grid, GridItem, CardBody, Title, Split, SplitItem
 } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { handlePatchLink, handleLongSynopsis } from '../../Utilities/Helpers';
@@ -21,39 +21,46 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
             </CardTitle>
             <CardBody className='fonst-size-sm'>
                 <Grid>
-                    <GridItem span={6}>
+                    <GridItem>
                         <Grid>
-                            <GridItem>
-                                <AdvisoryType
-                                    type={attributes.advisory_type_name}
-                                />
+                            <GridItem lg={6} md={12} sm={6}>
+                                <Grid>
+                                    <GridItem>
+                                        <AdvisoryType
+                                            type={attributes.advisory_type_name}
+                                        />
+                                    </GridItem>
+                                    <GridItem>
+                                        {processDate(attributes.public_date)}
+                                    </GridItem>
+                                    {attributes.os_name && (<GridItem>
+                                        {attributes.os_name}
+                                    </GridItem>)}
+                                </Grid>
                             </GridItem>
-                            <GridItem>
-                                {processDate(attributes.public_date)}
+                            <GridItem lg={6} className='adjustableElement' sm={6}>
+                                <Grid>
+                                    {attributes.severity && (<GridItem>
+                                        <Split hasGutter>
+                                            <GridItem >
+                                                <SecurityIcon size="sm" color={advisorySeverities[attributes.severity].color} />
+                                            </GridItem>
+                                            <GridItem isFilled>{advisorySeverities[attributes.severity].label}</GridItem>
+                                        </Split>
+                                    </GridItem>)}
+                                {attributes.reboot_required && (
+                                    <GridItem>
+                                        <Split hasGutter>
+                                            <SplitItem><PowerOffIcon color='var(--pf-global--palette--red-100)' /></SplitItem>
+                                            <SplitItem isFilled style={{ flexWrap: 'nowrap' }}>{intl.formatMessage(messages.textRebootIsRequired)}</SplitItem>
+                                        </Split>
+                                    </GridItem>
+                                )} 
+                                </Grid>
                             </GridItem>
-                            {attributes.os_name && (<GridItem>
-                                {attributes.os_name}
-                            </GridItem>)}
                         </Grid>
-                    </GridItem>
-                    <GridItem span={6}>
-                        <Grid>
-                            {attributes.severity && (<GridItem>
-                                <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
-                                    <FlexItem>
-                                        <SecurityIcon size="sm" color={advisorySeverities[attributes.severity].color} />
-                                    </FlexItem>
-                                    <FlexItem isFilled>{advisorySeverities[attributes.severity].label}</FlexItem>
-                                </Flex>
-                            </GridItem>)}
-                            {attributes.reboot_required && (<GridItem>
-                                <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
-                                    <FlexItem><PowerOffIcon color='var(--pf-global--palette--red-100)' /></FlexItem>
-                                    <FlexItem isFilled>{intl.formatMessage(messages.textRebootIsRequired)}</FlexItem>
-                                </Flex>
-                            </GridItem>)}
-                        </Grid>
-                    </GridItem>
+                    </GridItem>               
+                    
                     <GridItem>
                         {handlePatchLink(
                             entityTypes.advisories,
@@ -87,9 +94,9 @@ const AdvisoriesStatusBar = () => {
                 {intl.formatMessage(messages.titlesMostImpactfulAdvisories)}
             </Title>
 
-            <Grid hasGutter span={3}>
+            <Grid hasGutter>
                 {advisories.data.map(advisory =>
-                    (<GridItem key={advisory.id}>
+                    (<GridItem key={advisory.id} lg={3} md={3} sm={12}>
                         <StatusCard
                             advisory={advisory}
                         />
