@@ -4,29 +4,15 @@ exports[`AdvisoryType Should match the snapshots 1`] = `
 <AdvisoryType
   type="security"
 >
-  <Flex
-    flex={
-      Object {
-        "default": "inlineFlex",
-      }
-    }
-    style={
-      Object {
-        "flexWrap": "nowrap",
-      }
-    }
+  <Split
+    hasGutter={true}
   >
     <div
-      className="pf-l-flex pf-m-inline-flex"
-      style={
-        Object {
-          "flexWrap": "nowrap",
-        }
-      }
+      className="pf-l-split pf-m-gutter"
     >
-      <FlexItem>
+      <SplitItem>
         <div
-          className=""
+          className="pf-l-split__item"
         >
           <SecurityIcon
             color="currentColor"
@@ -53,18 +39,17 @@ exports[`AdvisoryType Should match the snapshots 1`] = `
             </svg>
           </SecurityIcon>
         </div>
-      </FlexItem>
-      <FlexItem
+      </SplitItem>
+      <SplitItem
         isFilled={true}
       >
         <div
-          className=""
-          isFilled={true}
+          className="pf-l-split__item pf-m-fill"
         >
           Security
         </div>
-      </FlexItem>
+      </SplitItem>
     </div>
-  </Flex>
+  </Split>
 </AdvisoryType>
 `;
