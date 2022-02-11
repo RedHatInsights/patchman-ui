@@ -11,6 +11,7 @@ import {
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
+import { assignSystemPatchSet } from './api';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -300,4 +301,22 @@ export const useOnExport = (prefix, queryParams, formatHandlers, dispatch) => {
         }).catch(() => dispatch(addNotification(exportNotifications().error)));
     });
     return onExport;
+};
+
+export const usePatchSetApi = (wizardState, setWizardState) => {
+    const onSubmit = React.useCallback((formValues) => {
+        const { name, description, toDate } = formValues.existing_patch_set || formValues;
+        const { systems } = formValues;
+        const config = {
+            onUploadProgress: progressEvent => {
+                const percent = (progressEvent.loaded / progressEvent.total) * 100;
+                setWizardState({ ...wizardState, submitted: true, percent });
+            }
+        };
+
+        assignSystemPatchSet({ name, description, toDate, systems }, config).catch(() => {
+            setWizardState({ ...wizardState, submitted: true, failed: true });
+        });
+    });
+    return onSubmit;
 };

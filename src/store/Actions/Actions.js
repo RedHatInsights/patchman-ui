@@ -1,6 +1,6 @@
 import { fetchAdvisoryDetailsApi, fetchApplicableAdvisoriesApi,
     fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchPackageDetailsApi,
-    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails } from '../../Utilities/api';
+    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails, fetchPatchSets } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({
@@ -206,4 +206,11 @@ export const clearAdvisorySystemsReducer = () => ({
 export const changeSystemsMetadata = (params) => ({
     type: ActionTypes.CHANGE_SYSTEMS_METADATA,
     payload: params
+});
+
+export const fetchPatchSetsAction = params => ({
+    type: ActionTypes.FETCH_ALL_PATCH_SETS,
+    payload: new Promise(resolve => {
+        resolve(fetchPatchSets(params));
+    }).then(result => result)
 });

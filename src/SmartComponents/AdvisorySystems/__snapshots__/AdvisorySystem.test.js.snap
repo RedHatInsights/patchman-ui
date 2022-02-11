@@ -48,6 +48,14 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                 "onClick": [Function],
                 "title": "Apply all applicable advisories",
               },
+              Object {
+                "onClick": [Function],
+                "title": "Assign to patch set",
+              },
+              Object {
+                "onClick": [Function],
+                "title": "Remove from patch set",
+              },
             ]
           }
           activeFiltersConfig={
@@ -147,6 +155,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                       hasInlineFilter={false}
                       hasPlaceholderStyle={false}
                       inlineFilterPlaceholderText={null}
+                      inputAutoComplete="off"
                       inputIdPrefix=""
                       isCreatable={false}
                       isCreateSelectOptionObject={false}

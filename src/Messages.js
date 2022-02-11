@@ -336,6 +336,37 @@ export default defineMessages({
         description: 'A link label to access.redhat.com ',
         defaultMessage: 'View packages and errata at access.redhat.com'
     },
+    patchSetDescription: {
+        id: 'patchSetDescription',
+        description: 'description of the patch set wizard',
+        defaultMessage: 'Schedule patch set'
+    },
+    patchSetNewSet: {
+        id: 'patchSetNewSet',
+        description: 'step name of the patch set wizard',
+        defaultMessage: 'New patch set'
+    },
+    patchSetNoSystemSelected: {
+        id: 'patchSetNoSystemSelected',
+        description: 'validation text of the patch set wizard',
+        defaultMessage: 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.'
+    },
+    patchSetReviewSet: {
+        id: 'patchSetReviewSet',
+        description: 'step name of the patch set wizard',
+        defaultMessage: 'Review patch set'
+    },
+    patchSetSelectSystems: {
+        id: 'patchSetSelectSystems',
+        description: 'step name of the patch set wizard',
+        defaultMessage: 'Select systems'
+    },
+    patchSetTitle: {
+        id: 'patchSetTitle',
+        description: 'title of the patch set wizard',
+        defaultMessage: 'Create patch set'
+    },
+
     statesError: {
         id: 'statesError',
         description: 'Label',
@@ -365,6 +396,11 @@ export default defineMessages({
         id: 'statesNoMatchingPackages',
         description: 'Label',
         defaultMessage: 'No matching packages found'
+    },
+    statesNoMatchingSystems: {
+        id: 'statesNoMatchingSystems',
+        description: 'Label',
+        defaultMessage: 'No matching systems found'
     },
     statesRequiresPatchPermissions: {
         id: 'statesRequiresPatchPermissions',

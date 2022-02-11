@@ -34,7 +34,7 @@ describe('DataMappers', () => {
 
     it('Should create System Advisories Rows', () => {
         const [firstRow, secondRow] = createSystemAdvisoriesRows(systemAdvisoryRows, [], []);
-        console.log(firstRow);
+
         expect(firstRow.id).toEqual(systemAdvisoryRows[0].id);
         expect(firstRow.isOpen).toEqual(false);
         expect(firstRow.selected).toEqual(false);

@@ -44,3 +44,14 @@ export const EmptyCvesList = () => (
         </EmptyStateBody>
     </EmptyState>
 );
+
+export const EmptySystemsList = () => (
+    <EmptyState variant={EmptyStateVariant.full}>
+        <Title headingLevel="h5" size="lg">
+            {intl.formatMessage(messages.statesNoMatchingSystems)}
+        </Title>
+        <EmptyStateBody>
+            {intl.formatMessage(messages.textEmptyStateBody)}
+        </EmptyStateBody>
+    </EmptyState>
+);
