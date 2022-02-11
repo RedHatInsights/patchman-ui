@@ -1,7 +1,7 @@
+import React from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
@@ -33,6 +33,7 @@ import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
+import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -46,6 +47,10 @@ const Systems = () => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
+    const [patchSetState, setBaselineState] = React.useState({
+        isOpen: false,
+        systemsIDs: []
+    });
 
     const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
@@ -76,6 +81,10 @@ const Systems = () => {
         const resolvedData = await data;
         setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
         setRemediationLoading(false);
+    }
+
+    async function showBaselineModal(rowData) {
+        setBaselineState({ isOpen: true, systemsIDs: [rowData.id] });
     }
 
     function apply(queryParams) {
@@ -150,6 +159,8 @@ const Systems = () => {
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <RemediationModalCmp />
             <SystemsStatusReport apply={apply} queryParams={queryParams}/>
+            {patchSetState.isOpen &&
+                <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState}/>}
             <Main>
                 {status.hasError && <ErrorHandler code={status.code} /> ||
                     (
@@ -178,7 +189,7 @@ const Systems = () => {
                                 });
                             }}
                             getEntities={getEntities}
-                            actions={systemsRowActions(showRemediationModal)}
+                            actions={systemsRowActions(showRemediationModal, showBaselineModal)}
                             tableProps={{
                                 areActionsDisabled,
                                 canSelectAll: false,
@@ -207,7 +218,6 @@ const Systems = () => {
                                 />
                             )}
                         />
-
                     )
                 }
             </Main>
