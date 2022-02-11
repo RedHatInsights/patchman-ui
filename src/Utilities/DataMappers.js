@@ -6,7 +6,8 @@ import React from 'react';
 import messages from '../Messages';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
-import { EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList } from '../PresentationalComponents/Snippets/EmptyStates';
+import { EmptyAdvisoryList, EmptyCvesList,
+    EmptyPackagesList, EmptySystemsList } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
@@ -293,6 +294,40 @@ export const createCvesRows = (rows) => {
                     {
                         props: { colSpan: 4 },
                         title: <EmptyCvesList />
+                    }
+                ]
+            }
+        ];
+    }
+};
+
+export const createSystemsRowsReview = (rows, selectedRows) => {
+    if (rows.length !== 0) {
+        return rows.map(system => {
+            const { attributes, id } = system;
+
+            return {
+                id,
+                key: id,
+                selected: selectedRows[system.id] !== undefined,
+                cells: [
+                    {
+                        title: attributes.display_name
+                    },
+                    {
+                        title: attributes.os
+                    }
+                ]
+            };
+        });
+    } else {
+        return [
+            {
+                heightAuto: true,
+                cells: [
+                    {
+                        props: { colSpan: 4 },
+                        title: <EmptySystemsList />
                     }
                 ]
             }

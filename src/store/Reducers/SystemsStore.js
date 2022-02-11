@@ -13,8 +13,8 @@ const initialState = {
         }
     }
 };
-// Reducer
 
+// Reducer
 export const SystemsStore = (state = initialState, action) => {
     let newState = { ...state };
     switch (action.type) {

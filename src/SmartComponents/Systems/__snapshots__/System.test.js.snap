@@ -614,6 +614,14 @@ exports[`Systems.js should match the snapshot 1`] = `
                       "onClick": [Function],
                       "title": "Apply all applicable advisories",
                     },
+                    Object {
+                      "onClick": [Function],
+                      "title": "Assign to patch set",
+                    },
+                    Object {
+                      "onClick": [Function],
+                      "title": "Remove from patch set",
+                    },
                   ]
                 }
                 activeFiltersConfig={
@@ -744,6 +752,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                             hasInlineFilter={false}
                             hasPlaceholderStyle={false}
                             inlineFilterPlaceholderText={null}
+                            inputAutoComplete="off"
                             inputIdPrefix=""
                             isCreatable={false}
                             isCreateSelectOptionObject={false}

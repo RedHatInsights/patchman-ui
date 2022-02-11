@@ -6,7 +6,8 @@ export function createApiCall(
     endpoint,
     method,
     parameters = undefined,
-    data = undefined
+    data = undefined,
+    requestConfig = undefined
 ) {
     if (parameters && method === 'get') {
         endpoint = endpoint.concat(encodeApiParams(parameters));
@@ -19,7 +20,8 @@ export function createApiCall(
             method,
             url: '/api/patch/v1' + endpoint,
             withCredentials: true,
-            data
+            data,
+            ...requestConfig
         })
     );
 
@@ -69,6 +71,10 @@ export const fetchPackageSystems = params => {
 export const fetchPackageVersions = params => {
     const { package_name, ...args } = params;
     return createApiCall(`/packages/${package_name}/versions`, 'get', args);
+};
+
+export const fetchPatchSets = params => {
+    return createApiCall(`/baselines`, 'get');
 };
 
 export const fetchPackagesList = params => {
@@ -191,4 +197,8 @@ export const exportPackageSystemsCSV = (params, packageName) => {
 export const exportPackageSystemsJSON = (params, packageName) => {
     let endpoint = `/export/packages/${packageName}/systems`;
     return fetchFile(params, endpoint, 'application/json');
+};
+
+export const assignSystemPatchSet = (payload, requestConfig) => {
+    return createApiCall(`/baselines`, 'put', null, payload, requestConfig);
 };
