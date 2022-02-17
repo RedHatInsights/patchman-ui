@@ -15,7 +15,7 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 
 const StatusCard = ({ advisory: { attributes, id } }) =>
     (
-        <Card>
+        <Card isFullHeight>
             <CardTitle>
                 {handlePatchLink(entityTypes.advisories, id)}
             </CardTitle>
