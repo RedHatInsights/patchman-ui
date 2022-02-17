@@ -13,7 +13,7 @@ import { fetchSystems } from '../../Utilities/api';
 
 const StatusCard = ({ title, color, Icon, value, filter, apply }) => {
     return (
-        <Card isCompact style={{ marginRight: 'var(--pf-global--spacer--sm)' }}>
+        <Card isCompact isFullHeight>
             <CardTitle style={{ marginTop: '0px' }}>{title}</CardTitle>
             <CardBody className='fonst-size-sm'>
                 <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
@@ -72,8 +72,8 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
 
     return (
         <Main style={{ paddingBottom: 0 }}>
-            <Grid hasGutter span={3}>
-                <GridItem>
+            <Grid hasGutter span={12} >
+                <GridItem span={12} md={3}>
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsUpToDate)}
                         Icon={CheckCircleIcon}
@@ -83,7 +83,7 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
                         filter={{ filter: { packages_updatable: 'eq:0' } }}
                     />
                 </GridItem>
-                <GridItem>
+                <GridItem span={12} md={3}>
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsWithPatchesAvailable)}
                         Icon={PackageIcon}
@@ -93,7 +93,7 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
                         filter={{ filter: { packages_updatable: 'gt:0' } }}
                     />
                 </GridItem>
-                <GridItem>
+                <GridItem span={12} md={3}>
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusStaleSystems)}
                         Icon={ExclamationTriangleIcon}
