@@ -55,3 +55,27 @@ export const EmptySystemsList = () => (
         </EmptyStateBody>
     </EmptyState>
 );
+
+export const EmptyPatchSetList = () => (
+    <EmptyState variant={EmptyStateVariant.full}>
+        <EmptyStateIcon icon={SearchIcon} />
+        <Title headingLevel="h5" size="lg">
+            {intl.formatMessage(messages.statesNoMatchingPatchSet)}
+        </Title>
+        <EmptyStateBody>
+            {intl.formatMessage(messages.textEmptyStateBody)}
+        </EmptyStateBody>
+    </EmptyState>
+);
+
+export const NoPatchSetList = () => (
+    <EmptyState variant={EmptyStateVariant.full}>
+        <EmptyStateIcon icon={SearchIcon} />
+        <Title headingLevel="h5" size="lg">
+            {intl.formatMessage(messages.statesNoPatchSet)}
+        </Title>
+        <EmptyStateBody>
+            {intl.formatMessage(messages.statesNoPatchSetBody)}
+        </EmptyStateBody>
+    </EmptyState>
+);

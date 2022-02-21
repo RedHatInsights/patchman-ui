@@ -31,6 +31,16 @@ export default defineMessages({
         description: 'bulk select option',
         defaultMessage: 'Select page ({count})'
     },
+    labelsButtonCreatePatchSet: {
+        id: 'labelsButtonCreatePatchSet',
+        description: 'button label',
+        defaultMessage: 'Create patch set'
+    },
+    labelsButtonEditPatchSet: {
+        id: 'labelsButtonEditPatchSet',
+        description: 'button label',
+        defaultMessage: 'Edit patch set'
+    },
     labelsColumnsApplicableSystems: {
         id: 'labelsColumnsApplicableSystems',
         description: 'shared label',
@@ -200,6 +210,16 @@ export default defineMessages({
         id: 'labelsFiltersSearchAdvisoriesTitle',
         description: 'Label for search fitler placeholder',
         defaultMessage: 'Advisory'
+    },
+    labelsFiltersSearchPatchSetPlaceholder: {
+        id: 'labelsFiltersSearchPatchSetPlaceholder',
+        description: 'Label for search fitler placeholder',
+        defaultMessage: 'Filter patch set'
+    },
+    labelsFiltersSearchPatchSetTitle: {
+        id: 'labelsFiltersSearchPatchSetTitle',
+        description: 'Label for search fitler placeholder',
+        defaultMessage: 'Patch set'
     },
     labelsFiltersStale: {
         id: 'labelsFiltersStale',
@@ -397,10 +417,25 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'No matching packages found'
     },
+    statesNoMatchingPatchSet: {
+        id: 'statesNoMatchingPatchSet',
+        description: 'Label',
+        defaultMessage: 'No matching patch set found'
+    },
     statesNoMatchingSystems: {
         id: 'statesNoMatchingSystems',
         description: 'Label',
         defaultMessage: 'No matching systems found'
+    },
+    statesNoPatchSet: {
+        id: 'statesNoPatchSet',
+        description: 'Label',
+        defaultMessage: 'No patch set'
+    },
+    statesNoPatchSetBody: {
+        id: 'statesNoPatchSetBody',
+        description: 'Label',
+        defaultMessage: 'You have not created any patch sets'
     },
     statesRequiresPatchPermissions: {
         id: 'statesRequiresPatchPermissions',
@@ -471,6 +506,11 @@ export default defineMessages({
         id: 'titlesPatchPackages',
         description: 'title for Packages page',
         defaultMessage: 'Patch packages'
+    },
+    titlesPatchSet: {
+        id: 'titlesPatchSet',
+        description: 'page title with capital letter',
+        defaultMessage: 'Patch set'
     },
     titlesPatchSystems: {
         id: 'titlesPatchSystems',
