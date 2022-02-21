@@ -11,6 +11,7 @@ import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import TableFooter from './TableFooter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
+import { ToolbarItem } from '@patternfly/react-core';
 
 const TableView = ({
     columns,
@@ -38,7 +39,10 @@ const TableView = ({
     errorState,
     emptyState,
     defaultFilters,
-    searchChipLabel
+    searchChipLabel,
+    CreatePatchSet,
+    EditPatchSet,
+    actionsConfig
 }) => {
     const [
         RemediationModalCmp,
@@ -105,8 +109,14 @@ const TableView = ({
                         }}
                         bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse)}
 
-                    />
-
+                    >
+                        { CreatePatchSet && <ToolbarItem>
+                            <CreatePatchSet />
+                        </ToolbarItem>}
+                        { EditPatchSet && <ToolbarItem>
+                            <EditPatchSet />
+                        </ToolbarItem>}
+                    </PrimaryToolbar>
                     {isLoading && <SkeletonTable colSize={5} rowSize={20} />
                         || hasError && <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState}/>
                         || <React.Fragment>
@@ -122,6 +132,7 @@ const TableView = ({
                                 sortBy={metadata.total_items && sortBy}
                                 isStickyHeader
                                 variant={compact && TableVariant.compact}
+                                actions={actionsConfig}
                             >
                                 <TableHeader />
                                 <TableBody />
@@ -163,7 +174,10 @@ TableView.propTypes = {
     errorState: PropTypes.element,
     emptyState: PropTypes.element,
     defaultFilters: PropTypes.object,
-    searchChipLabel: PropTypes.string
+    searchChipLabel: PropTypes.string,
+    CreatePatchSet: PropTypes.element,
+    EditPatchSet: PropTypes.element,
+    actionsConfig: PropTypes.array
 };
 
 export default TableView;

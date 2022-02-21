@@ -73,10 +73,6 @@ export const fetchPackageVersions = params => {
     return createApiCall(`/packages/${package_name}/versions`, 'get', args);
 };
 
-export const fetchPatchSets = params => {
-    return createApiCall(`/baselines`, 'get');
-};
-
 export const fetchPackagesList = params => {
     const { systems_updatable } = params.filter;
 
@@ -201,4 +197,8 @@ export const exportPackageSystemsJSON = (params, packageName) => {
 
 export const assignSystemPatchSet = (payload, requestConfig) => {
     return createApiCall(`/baselines`, 'put', null, payload, requestConfig);
+};
+
+export const fetchPatchSets = params => {
+    return createApiCall(`/baselines`, 'get', params);
 };

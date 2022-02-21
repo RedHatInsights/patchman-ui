@@ -46,6 +46,12 @@ const NoAccess = lazy(() =>
         /* webpackChunkName: "NoAccess" */ './PresentationalComponents/NoAccessPage/NoAccess'
     )
 );
+
+const PatchSet = lazy(() =>
+    import(
+        /* webpackChunkName: "PackageDetail" */ './SmartComponents/PatchSet/PatchSet'
+    )
+);
 export const paths = {
     advisories: {
         title: 'Applicable advisories',
@@ -82,6 +88,10 @@ export const paths = {
     packageDetailSystem: {
         title: '',
         to: '/packages/:packageName/:inventoryId'
+    },
+    patchSet: {
+        title: 'Patch set',
+        to: '/patch-set'
     }
 };
 
@@ -147,6 +157,11 @@ export const Routes = (props) => {
                     exact
                     path={paths.packageDetail.to}
                     component={PackageDetail}
+                />
+                <Route
+                    exact
+                    path={paths.patchSet.to}
+                    component={PatchSet}
                 />
 
                 <Route

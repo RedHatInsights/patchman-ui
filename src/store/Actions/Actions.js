@@ -214,3 +214,13 @@ export const fetchPatchSetsAction = params => ({
         resolve(fetchPatchSets(params));
     }).then(result => result)
 });
+
+export const changePatchSetParams = (params) => ({
+    type: ActionTypes.CHANGE_PATCH_SET_PARAMS,
+    payload: params
+});
+
+export const selectPatchSetRow = rowState => ({
+    type: ActionTypes.SELECT_PATCH_SET_ROW,
+    payload: rowState
+});
