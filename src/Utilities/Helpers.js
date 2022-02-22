@@ -22,6 +22,7 @@ import {
     multiValueFilters
 } from './constants';
 import { intl } from './IntlProvider';
+import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 
 export const removeUndefinedObjectItems = (originalObject) => {
     const newObject = JSON.parse(JSON.stringify(originalObject));
@@ -244,6 +245,16 @@ export const getFilterValue = (category, key) => {
 };
 
 export const encodeParams = (parameters, shouldTranslateKeys) => {
+    const calculateWorkloads = (systemProfile) => {
+        let result = '';
+        Object.entries(generateFilter({ system_profile: systemProfile })).forEach(entry => {
+            const [key, value] = entry;
+            result = result + '&' + `${key}=${value}`;
+        });
+
+        return result;
+    };
+
     const flattenFilters = filter => {
         let result = {};
         filter &&
@@ -259,7 +270,8 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
         return result;
     };
 
-    let { filter, ...allParams } = parameters;
+    let { filter, systemProfile = {}, ...allParams } = parameters;
+
     allParams = { ...allParams, ...flattenFilters(filter) };
     let params = [];
     Object.keys(allParams).forEach(key => {
@@ -271,13 +283,14 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
                 params.push(argKey.concat('=').concat(argValue));
             } else if (key === 'selectedTags') {
                 params.push.apply(params, allParams[key]);
-            } else {
-                params.push(allParams[key]);
             }
         }
     });
 
-    return '?'.concat(params.join('&'));
+    const workloadsFilter = (Object.keys(systemProfile).length > 0)
+        && calculateWorkloads(systemProfile) || '';
+
+    return '?'.concat(params.join('&')).concat(workloadsFilter);
 };
 
 export const encodeApiParams = parameters => {
@@ -525,7 +538,7 @@ export const buildTagString = (tag) => {
     return `${tag.category}/${tag.values?.tagKey}=${tag.value?.tagValue}`;
 };
 
-export const mapGlobalFilters = (tags, SIDs, SAP) => {
+export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
     let tagsInUrlFormat = [];
     tags && tags.forEach((tag, index) => {
         let tagGruop = tag;
@@ -539,17 +552,18 @@ export const mapGlobalFilters = (tags, SIDs, SAP) => {
 
     });
 
-    const globalFilterConfig = { selectedTags: [], systemProfile: undefined };
+    const globalFilterConfig = { selectedTags: [], systemProfile: {} };
 
-    (SAP && SAP.isSelected)
-        ? (globalFilterConfig.systemProfile = `filter[system_profile][sap_system]=${SAP.isSelected}&`)
-        : globalFilterConfig.systemProfile = undefined;
+    globalFilterConfig.systemProfile = {
+        ...workloads?.SAP?.isSelected && { sap_system: true },
+        ...workloads?.['Ansible Automation Platform']?.isSelected
+        && { ansible: { controller_version: 'not_nil' } },
+        ...workloads?.['Microsoft SQL']?.isSelected
+        && { mssql: { version: 'not_nil' } },
+        ...SIDs?.length > 0 && { sap_sids: `in:${SIDs.join(',')}` }
+    };
+
     tagsInUrlFormat && (globalFilterConfig.selectedTags = tagsInUrlFormat);
-
-    if (SIDs && SIDs?.length !== 0) {
-        const SID_filter = SIDs.map(item => `filter[system_profile][sap_sids][in]=${item}`).join('&');
-        globalFilterConfig.systemProfile = globalFilterConfig.systemProfile?.concat(SID_filter) || SID_filter;
-    }
 
     return globalFilterConfig;
 
