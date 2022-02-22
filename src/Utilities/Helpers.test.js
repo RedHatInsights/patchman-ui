@@ -2,7 +2,10 @@
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import toJson from 'enzyme-to-json';
 import { publicDateOptions, remediationIdentifiers } from '../Utilities/constants';
-import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams, getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, getSeverityById, handlePatchLink, remediationProvider } from './Helpers';
+import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, 
+    createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams,
+    getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, 
+    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters } from './Helpers';
 
 const TestHook = ({ callback }) => {
     callback();
@@ -284,4 +287,19 @@ describe('Helpers tests', () => {
         expect(getNewSelectedItems(selectedItems, currentItems)).toEqual(result);
     });
 });
+
+describe('Test global filters', () => {
+
+    it.each`
+    tags                               | SIDs               | workloads                                                                 | result
+    ${[]}                              | ${[]}              | ${{ 'Ansible Automation Platform': { isSelected: true } }}                | ${{ selectedTags: [], systemProfile: { ansible: { controller_version: 'not_nil' } } }}
+    ${[]}                              | ${[]}              | ${{ 'Microsoft SQL': { isSelected: true } }}                              | ${{ selectedTags: [], systemProfile: { mssql: { version: 'not_nil' } }  }}
+    ${[]}                              | ${[]}              | ${{ SAP: { isSelected: true } }}                                          | ${{ selectedTags: [], systemProfile: { sap_system: true } }}
+    ${[]}                              | ${['abc']}         | ${{ SAP: { isSelected: true } }}                                          | ${{ selectedTags: [], systemProfile: { sap_sids: 'in:abc', sap_system: true } }}
+    ${[]}                              | ${['abc', 'bca']}  | ${{ SAP: { isSelected: true }, 'Microsoft SQL': { isSelected: true } }}   | ${{ selectedTags: [], systemProfile: { sap_sids: 'in:abc,bca', sap_system: true, mssql: { version: 'not_nil' } } }}
+    ${['null/key.BnZPeP=tag.MNGmxQ']}  | ${['abc', 'bca']}  | ${{ SAP: { isSelected: true } }}                                              | ${{ selectedTags: ["tags=null%2Fkey.BnZPeP%3Dtag.MNGmxQ"], systemProfile: { sap_sids: 'in:abc,bca', sap_system: true } }}
+     `('mapGlobalFilters: Should build correct global filters, $tags, $SIDs, $workloads ', ({ tags, SIDs, workloads, result }) => {
+         expect(mapGlobalFilters(tags, SIDs, workloads,)).toEqual(result);
+    });
+})
 /* eslint-enable */

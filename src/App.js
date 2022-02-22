@@ -48,11 +48,10 @@ const App = () => {
         if (insights.chrome?.globalFilterScope) {
             insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
                 const SIDs = insights.chrome?.mapGlobalFilter?.(data, false, true)[1];
-                const SAP = data?.Workloads?.SAP;
                 const TAGs = insights.chrome?.mapGlobalFilter?.(data)
                 ?.filter(item => !item.includes('Workloads'));
 
-                const globalFilterConfig = mapGlobalFilters(TAGs, SIDs, SAP);
+                const globalFilterConfig = mapGlobalFilters(TAGs, SIDs, data?.Workloads);
 
                 if (!isEqual(config, globalFilterConfig)) {
                     dispatch(globalFilter(globalFilterConfig));
