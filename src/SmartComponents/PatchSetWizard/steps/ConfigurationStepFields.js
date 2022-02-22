@@ -24,10 +24,10 @@ const ConfigurationStepFields = ({ systemsIDs, ...props }) => {
     const [shouldCreateNew, setShouldCreateNew] = useState(true);
     const [selectedPatchSet, setSelectedPatchSet] = useState([]);
 
-    const { patchSets, loading } = useSelector(({ PatchSetsStore }) => PatchSetsStore, shallowEqual);
+    const { rows, loading } = useSelector(({ PatchSetsStore }) => PatchSetsStore, shallowEqual);
 
     useEffect(() => {
-        (!loading && !patchSets?.length) && dispatch(fetchPatchSetsAction());
+        (!loading && !rows?.length) && dispatch(fetchPatchSetsAction());
     }, []);
 
     const handleRadioChange = () => {
@@ -56,7 +56,7 @@ const ConfigurationStepFields = ({ systemsIDs, ...props }) => {
                     </StackItem>
                     <StackItem>
                         {shouldApplyExisting ? <SelectExistingSets
-                            patchSets={patchSets}
+                            patchSets={rows}
                             setSelectedPatchSet={setSelectedPatchSet}
                             selectedSets={selectedPatchSet}
                             systems={systemsIDs}
