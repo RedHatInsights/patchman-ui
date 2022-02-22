@@ -1,3 +1,11 @@
+# [1.39.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.38.3...v1.39.0) (2022-02-22)
+
+
+### Features
+
+* **SPM-1306:** create patch set wizard ([a24ccfb](https://github.com/RedHatInsights/patchman-ui/commit/a24ccfb9f1dd7c329fe75bd1c74ea467505283fd))
+* **SPM-1308:** assign system to a patch set ([66498d7](https://github.com/RedHatInsights/patchman-ui/commit/66498d70526b112528fa8b435735ee617d8be40d))
+
 ## [1.38.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.38.2...v1.38.3) (2022-01-06)
 
 
