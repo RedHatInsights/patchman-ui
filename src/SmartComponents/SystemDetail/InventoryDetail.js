@@ -59,7 +59,9 @@ const InventoryDetail = ({ match }) => {
             >
                 <InventoryDetailHead hideBack>
                     { hasThirdPartyRepo &&
-                        (<Alert variant="info" title={intl.formatMessage(messages.textThirdPartyInfo)}></Alert>)
+                        (<Alert className='pf-u-mt-md' isInline variant="info"
+                            title={intl.formatMessage(messages.textThirdPartyInfo)}>
+                        </Alert>)
                     }
                 </InventoryDetailHead>
             </Header>
