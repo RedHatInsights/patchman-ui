@@ -1,3 +1,17 @@
+# [1.40.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.39.0...v1.40.0) (2022-03-01)
+
+
+### Bug Fixes
+
+* **AdvisoriesStatusReport:** SPM-1358 fixed responsiblity ([aa5aca9](https://github.com/RedHatInsights/patchman-ui/commit/aa5aca94247af313c18fdd96ff365088423a557a))
+* **SystemsStatusReport:** SPM-1358 fixed responsibility ([774f57d](https://github.com/RedHatInsights/patchman-ui/commit/774f57d26dede8e66d72502de5ffb5343ae09227))
+* **Travis:** update node version ([c70c540](https://github.com/RedHatInsights/patchman-ui/commit/c70c540080667b1e6211b53fcb277580285742b9))
+
+
+### Features
+
+* **SPM-1305:** create patch set table ([b0a411d](https://github.com/RedHatInsights/patchman-ui/commit/b0a411d5fa91ef5cbc15106ed0f213536f7e172c))
+
 # [1.39.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.38.3...v1.39.0) (2022-02-22)
 
 
