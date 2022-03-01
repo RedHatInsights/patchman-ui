@@ -57,7 +57,7 @@ const TableView = ({
 
     async function showRemediationModal(data) {
         setRemediationLoading(true);
-        const resolvedData = await data;
+        const resolvedData = await data.catch(() => { });
         setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
         setRemediationLoading(false);
     }

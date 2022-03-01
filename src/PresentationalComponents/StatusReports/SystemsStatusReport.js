@@ -55,7 +55,7 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
         selectedTags: [...selectedTags, ...selectedGlobalTags],
         systemProfile,
         limit: 1
-        });
+        }).catch(() => { });
 
         return result;
     }, [

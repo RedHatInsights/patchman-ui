@@ -58,7 +58,11 @@ const PackageSystems = ({ packageName }) => {
 
     React.useEffect(async () => {
         apply(decodedParams);
-        setPackageVersions(await fetchPackageVersions({ package_name: packageName }));
+        try {
+            setPackageVersions(await fetchPackageVersions({ package_name: packageName }));
+        } catch {
+            console.log('there were error');
+        }
     }, []);
 
     React.useEffect(() => {
