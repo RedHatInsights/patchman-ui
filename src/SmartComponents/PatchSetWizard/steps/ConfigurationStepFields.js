@@ -15,10 +15,11 @@ import SelectExistingSets from '../InputFields/SelectExistingSets';
 import ConfigurationFields from '../InputFields/ConfigurationFields';
 import { fetchPatchSetsAction } from '../../../store/Actions/Actions';
 
-const ConfigurationStepFields = ({ systemsIDs, ...props }) => {
+const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
     const dispatch = useDispatch();
     const formOptions = useFormApi();
     const { input } = useFieldApi(props);
+    const shouldEditPatchSet = patchSetID || false;
 
     const [shouldApplyExisting, setShouldApplyExisting] = useState(false);
     const [shouldCreateNew, setShouldCreateNew] = useState(true);
@@ -27,13 +28,23 @@ const ConfigurationStepFields = ({ systemsIDs, ...props }) => {
     const { rows, loading } = useSelector(({ PatchSetsStore }) => PatchSetsStore, shallowEqual);
 
     useEffect(() => {
-        (!loading && !rows?.length) && dispatch(fetchPatchSetsAction());
+        (!loading && !rows?.length) && dispatch(fetchPatchSetsAction({ filter: { id: shouldEditPatchSet && patchSetID } }));
     }, []);
 
     const handleRadioChange = () => {
         setShouldCreateNew(!shouldCreateNew);
         setShouldApplyExisting(!shouldApplyExisting);
     };
+
+    useEffect(() => {
+        if (shouldEditPatchSet) {
+            const [{ name, description, toDate }] = rows.filter(row => row.id === patchSetID);
+
+            formOptions.change('name', name);
+            formOptions.change('description', description);
+            formOptions.change('toDate', toDate);
+        }
+    }, [rows]);
 
     return (
         <Stack hasGutter>
@@ -47,6 +58,7 @@ const ConfigurationStepFields = ({ systemsIDs, ...props }) => {
                     <StackItem>
                         <Radio
                             isChecked={shouldApplyExisting}
+                            isDisabled={shouldEditPatchSet}
                             name="radio"
                             onChange={handleRadioChange}
                             label="Add to existing patch set"
@@ -85,6 +97,7 @@ const ConfigurationStepFields = ({ systemsIDs, ...props }) => {
 };
 
 ConfigurationStepFields.propTypes = {
-    systemsIDs: propTypes.array
+    systemsIDs: propTypes.array,
+    patchSetID: propTypes.string
 };
 export default ConfigurationStepFields;

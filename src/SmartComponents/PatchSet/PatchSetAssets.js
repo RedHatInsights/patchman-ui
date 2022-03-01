@@ -3,17 +3,10 @@ import { Button } from '@patternfly/react-core';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
-export const CreatePatchSet = () => {
-    return (<Button>
+export const useCreatePatchSetButton = (setWizardState) => () =>
+    (<Button key='createButton' onClick={() => setWizardState({ isOpen: true })}>
         {intl.formatMessage(messages.labelsButtonCreatePatchSet)}
     </Button>);
-};
-
-export const EditPatchSet = () =>{
-    return (< Button variant="secondary" >
-        {intl.formatMessage(messages.labelsButtonEditPatchSet)}
-    </Button >);
-};
 
 export const patchSetColumns = [
     {
@@ -32,26 +25,17 @@ export const patchSetColumns = [
     }
 ];
 
-export const patchSetRowActions = [
+export const usePatchSetRowActions = (showBaselineModal, handlePatchSetDelete) => [
     {
         title: 'Edit patch set',
-        // eslint-disable-next-line no-unused-vars
-        onClick: (_event, _rowId, _rowData) => {
-            console.log('edit');
-        }
-    },
-    {
-        title: 'Assign patch set',
-        // eslint-disable-next-line no-unused-vars
-        onClick: (_event, _rowId, _rowData) => {
-            console.log('assign');
+        onClick: (_event, _rowId, rowData) => {
+            showBaselineModal(rowData);
         }
     },
     {
         title: 'Remove patch set',
-        // eslint-disable-next-line no-unused-vars
-        onClick: (_event, _rowId, _rowData) => {
-            console.log('remove');
+        onClick: (_event, _rowId, rowData) => {
+            handlePatchSetDelete(rowData);
         }
     }
 ];

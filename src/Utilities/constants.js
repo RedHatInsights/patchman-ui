@@ -371,4 +371,15 @@ export const exportNotifications = (format) => ({
     }
 });
 
+export const patchSetDeleteNotifications = ({
+    success: {
+        title: `Patch set has been deleted.`,
+        variant: 'success'
+    },
+    error: {
+        title: 'Couldn’t delete patch set.',
+        variant: 'danger'
+    }
+});
+
 export const multiValueFilters = ['installed_evra', 'os'];

@@ -8,23 +8,32 @@ import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { fetchPatchSetsAction, changePatchSetParams, selectPatchSetRow } from '../../store/Actions/Actions';
-import { fetchPatchSets } from '../../Utilities/api';
+import { fetchPatchSets, deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 import {
     setPageTitle, useDeepCompareEffect, useOnSelect, usePerPageSelect, useSetPage, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { patchSetColumns, CreatePatchSet, EditPatchSet, patchSetRowActions } from './PatchSetAssets';
+import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { patchSetColumns, useCreatePatchSetButton, usePatchSetRowActions } from './PatchSetAssets';
+import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
+import { patchSetDeleteNotifications } from '../../Utilities/constants';
 
 const PatchSet = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
+
+    const IS_SELECTION_ENABLED = false;
 
     setPageTitle(pageTitle);
 
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = React.useState(true);
+    const [patchSetState, setBaselineState] = React.useState({
+        isOpen: false,
+        patchSetID: undefined,
+        systemsIDs: []
+    });
 
     const patchSet = useSelector(
         ({ PatchSetsStore }) => PatchSetsStore.rows
@@ -88,9 +97,31 @@ const PatchSet = ({ history }) => {
         dispatch(changePatchSetParams(params));
     }
 
+    async function showBaselineModal(rowData) {
+        setBaselineState({ isOpen: true, patchSetID: rowData.id });
+    }
+
+    const handlePatchSetDelete = (rowData) => {
+        deletePatchSet(rowData.id).then(() => {
+            dispatch(addNotification(patchSetDeleteNotifications.success));
+            apply({ page: 1, offset: 0 });
+        }).catch(() => {
+            dispatch(addNotification(patchSetDeleteNotifications.error));
+        });;
+    };
+
+    const CreatePatchSet = useCreatePatchSetButton(setBaselineState);
+    const patchSetRowActions = usePatchSetRowActions(showBaselineModal, handlePatchSetDelete);
+
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSet)} headerOUIA={'advisories'} />
+            {patchSetState.isOpen &&
+                <PatchSetWizard
+                    systemsIDs={patchSetState.systemsIDs}
+                    setBaselineState={setBaselineState}
+                    patchSetID={patchSetState.patchSetID}
+                />}
             <Main>
                 <TableView
                     columns={patchSetColumns}
@@ -98,8 +129,8 @@ const PatchSet = ({ history }) => {
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}
                     onSort={onSort}
-                    selectedRows={selectedRows}
-                    onSelect={onSelect}
+                    selectedRows={IS_SELECTION_ENABLED && selectedRows}
+                    onSelect={IS_SELECTION_ENABLED && onSelect}
                     sortBy={sortBy}
                     apply={apply}
                     tableOUIA={'patch-set-table'}
@@ -116,7 +147,6 @@ const PatchSet = ({ history }) => {
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchPatchSetTitle)}
                     CreatePatchSet={CreatePatchSet}
-                    EditPatchSet={EditPatchSet}
                 />
             </Main>
         </React.Fragment>

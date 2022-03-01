@@ -15,7 +15,8 @@ import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 const ReviewPatchSet = () => {
     const formOptions = useFormApi();
     const { values } = formOptions.getState();
-    const { name, description, toDate, systems } = values.existing_patch_set || values;
+    const { name, description, toDate } = values.existing_patch_set || values;
+    const { systems } = values;
 
     return (
         <Stack hasGutter>
