@@ -10,8 +10,6 @@ node_js:
 install:
   - npm ci
 jobs:
-  allow_failures:
-    - node_js: 16
   include:
     - stage: Lint
       script: npm run lint
@@ -23,6 +21,7 @@ jobs:
       script: rm -rf dist ; npm run build:components ; npm run semantic-release
 env:
   global:
+    - NODE_OPTIONS=--unhandled-rejections=warn
     - REPO="git@github.com:RedHatInsights/patchman-ui-build"
     - REPO_DIR="patchman-ui-build"
     - BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
