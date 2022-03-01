@@ -207,3 +207,7 @@ export const fetchPatchSets = params => {
 export const updatePatchSets = (payload, requestConfig, id) => {
     return createApiCall(`/baselines/${id}`, 'put', null, payload, requestConfig);
 };
+
+export const deletePatchSet = patchSetID => {
+    return createApiCall(`/baselines/${patchSetID}`, 'delete');
+};

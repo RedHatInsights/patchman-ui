@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     FormGroup,
     DatePicker,
@@ -14,6 +14,10 @@ const ToDateField = (props) => {
     const values = formOptions.getState()?.values;
 
     const [toDate, setToDate] = useState(values?.toDate);
+
+    useEffect(() => {
+        setToDate(values.toDate);
+    }, [values.toDate]);
 
     return (
         <FormGroup fieldId="toDate" label="Patch set date" isRequired>

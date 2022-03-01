@@ -21,7 +21,7 @@ import { usePatchSetApi } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
-export const PatchSetWizard = ({ systemsIDs, setBaselineState }) => {
+export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
     const [wizardState, setWizardState] = useState({
         submitted: false,
         formValues: {},
@@ -32,12 +32,12 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState }) => {
     const onSubmit = usePatchSetApi(wizardState, setWizardState);
 
     const handleWizardClose = () => {
-        setBaselineState({ isOpen: false, systemsIDs: [] });
+        setBaselineState({ isOpen: false, systemsIDs: [], patchSetID: undefined });
         setWizardState({ formValues: {}, submitted: false });
     };
 
     const handleWizardOpen = (formValues) => {
-        setBaselineState({ isOpen: true, systemsIDs });
+        setBaselineState({ isOpen: true, systemsIDs, patchSetID });
         setWizardState({ formValues, submitted: false });
     };
 
@@ -53,7 +53,8 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState }) => {
         },
         'configuration-step': {
             component: ConfigurationStepFields,
-            systemsIDs: systemsIDs || []
+            systemsIDs: systemsIDs || [],
+            patchSetID
         },
         'review-systems': {
             component: ReviewSystems,
@@ -124,7 +125,8 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState }) => {
 
 PatchSetWizard.propTypes = {
     setBaselineState: propTypes.func,
-    systemsIDs: propTypes.array
+    systemsIDs: propTypes.array,
+    patchSetID: propTypes.string
 };
 
 export default memo(PatchSetWizard, (prevProps, nextProps) => {

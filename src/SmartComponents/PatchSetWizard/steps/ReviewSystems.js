@@ -41,7 +41,8 @@ export const ReviewSystems = ({ systemsIDs, ...props }) => {
 
     useEffect(() => {
         fetchSystems({
-            ...queryParams, filter: { ...queryParams.filter, id: `in:${systemsIDs.join(',')}` }
+            ...queryParams, filter: { ...queryParams.filter,
+                id: systemsIDs.length > 0 && `in:${systemsIDs.join(',')}` || undefined }
         }).then(result => {
             setSystems(createSystemsRowsReview(result.data, selectedRows));
             setMetada(result.meta);

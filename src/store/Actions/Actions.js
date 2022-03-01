@@ -1,6 +1,7 @@
 import { fetchAdvisoryDetailsApi, fetchApplicableAdvisoriesApi,
     fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchPackageDetailsApi,
-    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails, fetchPatchSets } from '../../Utilities/api';
+    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails, fetchPatchSets
+} from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = params => ({

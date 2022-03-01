@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     FormGroup,
     TextInput
@@ -12,6 +12,11 @@ const NameField = (props) => {
     const values = formOptions.getState()?.values;
 
     const [name, setName] = useState(values?.name);
+
+    useEffect(() => {
+        setName(values.name);
+    }, [values.name]);
+
     return (
         <FormGroup fieldId="name" label="Name" isRequired>
             <TextInput
