@@ -20,7 +20,10 @@ const SelectExistingSets = ({ patchSets, setSelectedPatchSet, selectedSets, syst
         setSelectedPatchSet(selected);
 
         const selectedSet = patchSets.filter(set => set.name === selected);
-        formOptions.change('existing_patch_set', { name: selectedSet[0].name, systems });
+        if (selectedSet.length === 1) {
+            formOptions.change('existing_patch_set', { name: selectedSet[0]?.name, systems, id: selectedSet[0]?.id });
+        }
+
     };
 
     return (
