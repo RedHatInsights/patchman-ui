@@ -11,7 +11,7 @@ import {
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
-import { assignSystemPatchSet } from './api';
+import { assignSystemPatchSet, updatePatchSets } from './api';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -303,9 +303,9 @@ export const useOnExport = (prefix, queryParams, formatHandlers, dispatch) => {
     return onExport;
 };
 
-export const usePatchSetApi = (wizardState, setWizardState) => {
+export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
     const onSubmit = React.useCallback((formValues) => {
-        const { name, description, toDate } = formValues.existing_patch_set || formValues;
+        const { name, description, toDate, id } = formValues.existing_patch_set || formValues;
         const { systems } = formValues;
         const config = {
             onUploadProgress: progressEvent => {
@@ -314,9 +314,22 @@ export const usePatchSetApi = (wizardState, setWizardState) => {
             }
         };
 
-        assignSystemPatchSet({ name, description, toDate, systems }, config).catch(() => {
-            setWizardState({ ...wizardState, submitted: true, failed: true });
-        });
+        if (patchSetID || id) {
+            const systemsPairs = systems.reduce((object, system) => {
+                object[system] = true;
+                return object;
+            }, {});
+
+            updatePatchSets({ name, description, toDate, inventory_ids: systemsPairs }, config, patchSetID || id)
+            .catch(() => {
+                setWizardState({ ...wizardState, submitted: true, failed: true });
+            });
+        } else {
+            assignSystemPatchSet({ name, description, toDate, inventory_ids: systems }, config).catch(() => {
+                setWizardState({ ...wizardState, submitted: true, failed: true });
+            });
+        }
+
     });
     return onSubmit;
 };

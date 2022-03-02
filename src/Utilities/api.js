@@ -202,3 +202,7 @@ export const assignSystemPatchSet = (payload, requestConfig) => {
 export const fetchPatchSets = params => {
     return createApiCall(`/baselines`, 'get', params);
 };
+
+export const updatePatchSets = (payload, requestConfig, id) => {
+    return createApiCall(`/baselines/${id}`, 'put', null, payload, requestConfig);
+};
