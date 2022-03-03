@@ -174,7 +174,7 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
                     selectRows(createSelectedRow(data));
                 };
 
-                fetchAllData().then(fetchCallback);
+                fetchAllData().then(fetchCallback).catch(err => err);
 
                 break;
             }

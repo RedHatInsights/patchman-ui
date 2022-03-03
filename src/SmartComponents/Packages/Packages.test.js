@@ -18,7 +18,8 @@ jest.mock('react-router-dom', () => ({
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportPackagesCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
-    exportPackagesJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
+    exportPackagesJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
+    fetchPackagesList: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
 }));
 
 jest.mock('react-redux', () => ({

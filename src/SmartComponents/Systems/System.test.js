@@ -37,6 +37,8 @@ jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     exportSystemsJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
+    fetchSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
+    fetchViewAdvisoriesSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchApplicableSystemAdvisoriesApi: jest.fn(() => Promise.resolve({
         data: [{
             attributes: {
