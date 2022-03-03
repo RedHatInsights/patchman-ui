@@ -7,7 +7,7 @@ import {
 } from './api';
 
 /* eslint-disable */
-window.insights = { chrome: { auth: { getUser: jest.fn(() => Promise.resolve({}).catch(() => { }) )} } };
+window.insights = { chrome: { auth: { getUser: jest.fn(() => Promise.resolve({})) } } };
 
 describe('api', () => {
     describe('test createApiCall function: ', () => {
@@ -15,7 +15,7 @@ describe('api', () => {
             global.fetch = jest.fn(() => Promise.resolve({
                 ok: true,
                 json: () => Promise.resolve({ success: true }),
-            }).catch(() =>{})
+            })
             );
             const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' });
             response.then((res) => expect(res.success).toBeTruthy()).catch((err) => console.log(err));
@@ -27,9 +27,9 @@ describe('api', () => {
                 status: 400,
                 statusText: 'testStatusText',
                 headers: { get: (type) => [] }
-            }).catch(() => { })
+            })
             );
-            const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' }).catch(() =>{});
+            const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' });
             response.then((res) => console.log(res)).catch((err) => expect(res).toEqual({
                 title: 'There was an error getting data',
                 detail: 'testStatusTextsssss',
@@ -43,9 +43,9 @@ describe('api', () => {
                 status: 400,
                 statusText: 'testStatusText',
                 headers: { get: (type) => ['json'] }
-            }).catch(() => { })
+            })
             );
-            const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' }).catch(() => { });
+            const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' });
             response.then((res) => expect(res).toEqual({
                 title: 'There was an error getting data',
                 detail: 'testStatusTextsssss',
@@ -60,7 +60,7 @@ describe('api', () => {
         global.fetch = jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)));
 
         it('Should export advisory cvs', () => {
-            const result = exportAdvisoriesCSV('testParams').catch(() => { });
+            const result = exportAdvisoriesCSV('testParams');
             expect(result).toBeTruthy();
             expect(global.fetch).toHaveBeenCalledWith(
                 '/api/patch/v1/export/advisories?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
@@ -71,7 +71,7 @@ describe('api', () => {
         });
 
         it('Should export advisory json', () => {
-            const result = exportAdvisoriesJSON('testParams').catch(() => { });
+            const result = exportAdvisoriesJSON('testParams');
             expect(result).toBeTruthy();
             expect(global.fetch).toHaveBeenCalledWith(
                 '/api/patch/v1/export/advisories?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
@@ -81,7 +81,7 @@ describe('api', () => {
         });
 
         it('Should export system cves', () => {
-            const result = exportSystemsCSV('testParams').catch(() => { });
+            const result = exportSystemsCSV('testParams');
             expect(result).toBeTruthy();
             expect(global.fetch).toHaveBeenCalledWith(
                 '/api/patch/v1/export/systems?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
@@ -91,7 +91,7 @@ describe('api', () => {
         });
 
         it('Should export system json', () => {
-            const result = exportSystemsJSON('testParams').catch(() => { });
+            const result = exportSystemsJSON('testParams');
             expect(result).toBeTruthy();
             expect(global.fetch).toHaveBeenCalledWith(
                 '/api/patch/v1/export/systems?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',

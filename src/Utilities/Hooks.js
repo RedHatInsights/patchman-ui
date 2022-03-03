@@ -262,7 +262,7 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, 
             sort,
             ...id && { id } || {},
             ...packageName && { package_name: packageName } || {}
-        }).catch(() => { });
+        });
 
         apply({
             page,

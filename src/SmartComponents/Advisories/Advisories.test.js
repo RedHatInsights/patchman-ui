@@ -139,16 +139,13 @@ describe('Advisories.js', () => {
     
     it('should clear notifications store on unmount', async () => {
         let tempWrapper;
-        try{
-             await act(async () => {
-                tempWrapper = mount(
-                    <Provider store={store}>
-                        <Router><Advisories /></Router>
-                    </Provider>
-                );
-            });
-        } catch { console.log(err); }
-
+        await act(async () => {
+            tempWrapper = mount(
+                <Provider store={store}>
+                    <Router><Advisories /></Router>
+                </Provider>
+            );
+        });
         act(() => {
             tempWrapper.unmount();
         });
@@ -156,15 +153,11 @@ describe('Advisories.js', () => {
         expect(dispatchedActions.filter(item => item.type === '@@INSIGHTS-CORE/NOTIFICATIONS/CLEAR_NOTIFICATIONS')).toHaveLength(1);
     });
 
-    // it('should fetch all the data using limit=-1', () => {
-    //     const onSelect = wrapper.find('TableView').props().onSelect;
-    //     try {
-    //         onSelect('all');
-    //     } catch {
-
-    //     }
-    //     expect(fetchApplicableAdvisoriesApi).toHaveBeenCalledWith({ page: 1, page_size: 20, limit: -1 });
-    // });
+    it('should fetch all the data using limit=-1', () => {
+        const onSelect = wrapper.find('TableView').props().onSelect;
+        onSelect('all');
+        expect(fetchApplicableAdvisoriesApi).toHaveBeenCalledWith({ page: 1, page_size: 20, limit: -1 });
+    });
 
     it('should select rows', () => {
         const onSelect = wrapper.find('TableView').props().onSelect;
@@ -179,7 +172,7 @@ describe('Advisories.js', () => {
 
     it('should handle remediation', () => {
         const remediationProvider = wrapper.find('TableView').props().remediationProvider;
-        remediationProvider().catch(() => {});
+        remediationProvider();
         expect(fetchSystems).toHaveBeenCalledWith({ limit: -1 });
         //expect(fetchViewAdvisoriesSystems).toHaveBeenCalledWith('');
     });
