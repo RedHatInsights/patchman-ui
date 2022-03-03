@@ -49,13 +49,20 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
     const res = useMemo(async () =>{
         setSubtotals({});
 
-        const result = await fetchSystems({ filter: {
-            os: queryParams?.filter?.os
-        },
-        selectedTags: [...selectedTags, ...selectedGlobalTags],
-        systemProfile,
-        limit: 1
-        });
+        let result;
+
+        try {
+            result = await fetchSystems({ filter: {
+                os: queryParams?.filter?.os
+            },
+            selectedTags: [...selectedTags, ...selectedGlobalTags],
+            systemProfile,
+            limit: 1
+            });
+        }
+        catch {
+            result = [];
+        }
 
         return result;
     }, [
