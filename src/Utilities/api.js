@@ -21,7 +21,7 @@ export function createApiCall(
             withCredentials: true,
             data
         })
-    );
+    ).catch((err) => err);
 
     return result;
 }
@@ -95,7 +95,7 @@ export const fetchCvesInfo = async ({ cveIds }) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ cve_list: cveIds })
-    }).then(res => res.json()).then(data => data);
+    }).then(res => res.json()).then(data => data).catch(err => err);
 
     return result;
 };
@@ -109,7 +109,7 @@ export const fetchViewAdvisoriesSystems = async (input) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(input)
-    }).then(res => res.json()).then(data => data);
+    }).then(res => res.json()).then(data => data).catch(err => err);
 
     return result;
 };
@@ -120,7 +120,7 @@ const fetchFile = (params, endpoint, type) => {
         method: 'get',
         credentials: 'include',
         headers: { accept: type }
-    }).then(res => res.text());
+    }).then(res => res.text()).catch(err => err);
 };
 
 export const exportAdvisoriesCSV = params => {

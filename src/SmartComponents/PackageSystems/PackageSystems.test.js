@@ -6,8 +6,7 @@ import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import PackageSystems from './PackageSystems';
 
-/* eslint-disable */
-initMocks()
+initMocks();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
@@ -24,7 +23,6 @@ jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => 
     downloadFile: jest.fn()
 }));
 
-
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
     ...jest.requireActual('@redhat-cloud-services/frontend-components/Inventory'),
     InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
@@ -34,18 +32,19 @@ jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportPackageSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     exportPackageSystemsJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
+    fetchPackageVersions: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchPackageSystems: jest.fn(() => Promise.resolve({
         data: [{
             attributes: {
                 advisory_type: 2,
-                description: "The tzdata penhancements.",
-                public_date: "2020-10-19T15:02:38Z",
-                synopsis: "tzdata enhancement update"
+                description: 'The tzdata penhancements.',
+                public_date: '2020-10-19T15:02:38Z',
+                synopsis: 'tzdata enhancement update'
             },
-            id: "RHBA-2020:4282",
-            type: "advisory"
+            id: 'RHBA-2020:4282',
+            type: 'advisory'
         }]
-    }).catch((err) => console.log(err))),
+    }).catch((err) => console.log(err)))
 }));
 
 const mockState = {
@@ -59,29 +58,31 @@ const mockState = {
         expandedRows: {},
         selectedRows: { 'RHSA-2020:2774': true },
         error: {},
-        status: 'resolved',
+        status: 'resolved'
     },
     PackageSystemsStore: {
-        queryParams: {},
+        queryParams: {}
     }
 };
 
-const initStore = (state) => {
+const initStore = () => {
     const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
             return callback(mockState);
         });
         next(action);
     };
+
     const mockStore = configureStore([customMiddleWare]);
     return mockStore(mockState);
-}
+};
 
 let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
     console.error = () => { };
+
     store.clearActions();
     useSelector.mockImplementation(callback => {
         return callback(mockState);
@@ -101,7 +102,6 @@ describe('PackageSystems.js', () => {
         const dispatchedActions = store.getActions();
         expect(dispatchedActions.filter(item => item.type === 'CHANGE_PACKAGE_SYSTEMS_PARAMS')).toHaveLength(1);
     });
-
 
     it('Should open remediation modal', () => {
         const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
@@ -133,7 +133,7 @@ describe('PackageSystems.js', () => {
             bulkSelect.items[0].onClick();
             const dispatchedActions = store.getActions();
 
-            expect(dispatchedActions[3].type).toEqual('SELECT_ENTITY');
+            expect(dispatchedActions[0].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
         });
 
@@ -159,4 +159,4 @@ describe('PackageSystems.js', () => {
     });
 
 });
-/* eslint-enable */
+

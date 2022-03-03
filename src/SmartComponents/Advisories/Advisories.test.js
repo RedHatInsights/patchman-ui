@@ -1,6 +1,4 @@
-
-/* eslint-disable */
-
+/* eslint-disable no-unused-vars */
 import Advisories from './Advisories';
 import { Provider, useSelector } from 'react-redux';
 import { advisoryRows } from '../../Utilities/RawDataForTesting';
@@ -21,16 +19,16 @@ jest.mock('react-redux', () => ({
 
 jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => ({
     ...jest.requireActual('@redhat-cloud-services/frontend-components-utilities/helpers'),
-    downloadFile: jest.fn(),
+    downloadFile: jest.fn()
 }));
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    exportAdvisoriesJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))), 
+    exportAdvisoriesJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     exportAdvisoriesCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchApplicableAdvisoriesApi: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchSystems: jest.fn(() => Promise.resolve({ data: { id: 'testId' } }).catch((err) => console.log(err))),
-    fetchViewAdvisoriesSystems:  jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
+    fetchViewAdvisoriesSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
 }));
 
 jest.mock('../../Utilities/constants', () => ({
@@ -43,15 +41,14 @@ jest.mock('../../Utilities/constants', () => ({
     }]
 }));
 
-
-const mockState = { ...storeListDefaults, 
-    rows:  advisoryRows, 
+const mockState = { ...storeListDefaults,
+    rows: advisoryRows,
     status: { isLoading: false, code: 200, hasError: false },
     metadata: {
         limit: 25,
         offset: 0,
         total_items: 10
-    },
+    }
 };
 
 const initStore = (state) => {
@@ -61,22 +58,24 @@ const initStore = (state) => {
         });
         next(action);
     };
+
     const mockStore = configureStore([customMiddleWare]);
     return mockStore({  AdvisoryListStore: state });
-}
+};
 
 let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
     console.error = () => { };
+
     store.clearActions();
     useSelector.mockImplementation(callback => {
         return callback({ AdvisoryListStore: mockState });
     });
     // wrapper = mount(<Provider store={store}>
     //         <Router><Advisories/></Router>
-    //     </Provider>); 
+    //     </Provider>);
 });
 
 afterEach(() => {
@@ -86,12 +85,12 @@ afterEach(() => {
 describe('Advisories.js', () => {
     it('tests are disabled for now', () => {
         expect(true).toBeTruthy();
-    })
+    });
     // it('Should dispatch CHANGE_ADVISORY_LIST_PARAMS only once on load', () => {
     //     const dispatchedActions = store.getActions();
-    //     expect(dispatchedActions.filter(item => item.type === 'CHANGE_ADVISORY_LIST_PARAMS')).toHaveLength(1);       
+    //     expect(dispatchedActions.filter(item => item.type === 'CHANGE_ADVISORY_LIST_PARAMS')).toHaveLength(1);
     // });
-    
+
     // it('Should display error page when status is rejected', () => {
     //     const rejectedState = { ...mockState, status: 'rejected', error: { detail: 'test' } };
     //     useSelector.mockImplementation(callback => {
@@ -108,7 +107,7 @@ describe('Advisories.js', () => {
     //     wrapper.find('TableView').props().onCollapse(null, 0, 'testValue');
 
     //     const dispatchedActions = store.getActions();
-    //     expect(dispatchedActions.filter(item => item.type === 'EXPAND_ADVISORY_ROW')).toHaveLength(1);       
+    //     expect(dispatchedActions.filter(item => item.type === 'EXPAND_ADVISORY_ROW')).toHaveLength(1);
     // });
 
     // describe('test exports',  ()  => {
@@ -138,7 +137,7 @@ describe('Advisories.js', () => {
     //         );
     //     });
     // });
-    
+
     // it('should clear notifications store on unmount', async () => {
     //     let tempWrapper;
     //     try{
@@ -155,7 +154,8 @@ describe('Advisories.js', () => {
     //         tempWrapper.unmount();
     //     });
     //     const dispatchedActions = store.getActions();
-    //     expect(dispatchedActions.filter(item => item.type === '@@INSIGHTS-CORE/NOTIFICATIONS/CLEAR_NOTIFICATIONS')).toHaveLength(1);
+    //     expect(
+    //    dispatchedActions.filter(item => item.type === '@@INSIGHTS-CORE/NOTIFICATIONS/CLEAR_NOTIFICATIONS')).toHaveLength(1);
     // });
 
     // // it('should fetch all the data using limit=-1', () => {
@@ -186,4 +186,4 @@ describe('Advisories.js', () => {
     //     //expect(fetchViewAdvisoriesSystems).toHaveBeenCalledWith('');
     // });
 });
-/* eslint-enable */
+
