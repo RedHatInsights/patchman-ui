@@ -8,7 +8,7 @@ const axiosInstance = axios.create();
 
 export async function  accessCheckInterceptor (config)  {
 
-    const userPermissions = await insights.chrome.getUserPermissions().catch(() => { });
+    const userPermissions = await insights.chrome.getUserPermissions();
     const inventoryPermissionList = ['inventory:*:*', 'inventory:*:read', 'inventory:hosts:read'];
 
     const hasInventoryAccess = userPermissions.some((access) => inventoryPermissionList.includes(access?.permission));

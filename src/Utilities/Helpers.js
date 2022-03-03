@@ -220,9 +220,9 @@ export const remediationProvider = (issues, systems, remediationIdentifier) => {
 
 export async function remediationProviderWithPairs(issues, createPairs, transformFunc, remediationIdentifier) {
     if (issues) {
-        const pairsCreated = await createPairs(issues).catch(() => { });
+        const pairsCreated = await createPairs(issues);
         const res = transformFunc(pairsCreated, remediationIdentifier);
-        return await res.catch(() => { });
+        return await res;
     }
     else {
         return false;

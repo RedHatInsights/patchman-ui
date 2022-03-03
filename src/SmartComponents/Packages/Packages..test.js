@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Packages from './Packages';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -48,47 +47,47 @@ const initStore = (state) => {
 let wrapper;
 let store = initStore(mockState);
 
-// beforeEach(() => {
-//     console.error = () => { };
+beforeEach(() => {
+    console.error = () => { };
 
-//     store.clearActions();
-//     useSelector.mockImplementation(callback => {
-//         return callback({ PackagesListStore: mockState });
-//     });
-//     wrapper = mount(<Provider store={store}>
-//         <Router><Packages /></Router>
-//     </Provider>);
-// });
+    store.clearActions();
+    useSelector.mockImplementation(callback => {
+        return callback({ PackagesListStore: mockState });
+    });
+    wrapper = mount(<Provider store={store}>
+        <Router><Packages /></Router>
+    </Provider>);
+});
 
-// afterEach(() => {
-//     useSelector.mockClear();
-// });
+afterEach(() => {
+    useSelector.mockClear();
+});
 
 describe('Packages.js', () => {
     it('should match the snapshot', () => {
-        expect(true).toBeTruthy();
+        expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    // it('should fetch packages only once on load', () => {
-    //     const dispatchedActions = store.getActions();
-    //     expect(dispatchedActions.filter(item => item.type === 'CHANGE_PACKAGES_LIST_PARAMS')).toHaveLength(1);
-    //     expect(dispatchedActions.filter(item => item.type === 'FETCH_PACKAGES_LIST')).toHaveLength(1);
-    // });
+    it('should fetch packages only once on load', () => {
+        const dispatchedActions = store.getActions();
+        expect(dispatchedActions.filter(item => item.type === 'CHANGE_PACKAGES_LIST_PARAMS')).toHaveLength(1);
+        expect(dispatchedActions.filter(item => item.type === 'FETCH_PACKAGES_LIST')).toHaveLength(1);
+    });
 
-    // describe('test exports', () => {
+    describe('test exports', () => {
 
-    //     global.Headers = jest.fn();
-    //     global.fetch = jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)));
+        global.Headers = jest.fn();
+        global.fetch = jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)));
 
-    //     it('Should download csv file', () => {
-    //         wrapper.find('TableView').props().onExport(null, 'json').catch(() => {});
-    //         expect(exportPackagesJSON).toHaveBeenCalledWith({ page: 1, page_size: 20 }, 'packages');
-    //     });
+        it('Should download csv file', () => {
+            wrapper.find('TableView').props().onExport(null, 'json');
+            expect(exportPackagesJSON).toHaveBeenCalledWith({ page: 1, page_size: 20 }, 'packages');
+        });
 
-    //     it('Should download json file', () => {
-    //         wrapper.find('TableView').props().onExport(null, 'csv').catch(() => { });
+        it('Should download json file', () => {
+            wrapper.find('TableView').props().onExport(null, 'csv');
 
-    //         expect(exportPackagesCSV).toHaveBeenCalledWith({ page: 1, page_size: 20 }, 'packages');
-    //     });
-    // });
+            expect(exportPackagesCSV).toHaveBeenCalledWith({ page: 1, page_size: 20 }, 'packages');
+        });
+    });
 });

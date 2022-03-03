@@ -97,7 +97,7 @@ export const fetchCvesInfo = async ({ cveIds }) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ cve_list: cveIds })
-    }).then(res => res.json()).then(data => data).catch(() => { });
+    }).then(res => res.json()).then(data => data);
 
     return result;
 };
@@ -111,7 +111,7 @@ export const fetchViewAdvisoriesSystems = async (input) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(input)
-    }).then(res => res.json()).then(data => data).catch(() => { });
+    }).then(res => res.json()).then(data => data);
 
     return result;
 };

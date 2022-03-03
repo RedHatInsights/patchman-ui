@@ -13,20 +13,17 @@ export const initMocks = () => {
             isBeta: () => true,
             auth: {
                 getUser: () =>
-                    new Promise((resolve, reject) =>{
+                    new Promise((resolve) =>
                         resolve({
                             identity: {
                                 user: {}
                             }
-                        });
-                        reject('error');
-                    })
+                        })
+                    )
             },
-            getUserPermissions: () => Promise.resolve([]).catch(err => {
-                console.log('this is user permissions error:', err);
-            })
+            getUserPermissions: () => Promise.resolve([])
         },
-        loadInventory: () => new Promise((resolve, reject) =>  {
+        loadInventory: () => new Promise((resolve) =>  {
             resolve(({
                 inventoryConnector: () => {
                     const InventoryTable = ({ children }) => <div>A mock passed! {children} </div>;
@@ -39,21 +36,13 @@ export const initMocks = () => {
                 mergeWithEntities: () => {},
                 mergeWithDetail: () => {}
             }));
-            reject('error');
-        }).catch(err => {
-            console.log('this is user permissions error:', err);
         }),
-        loadRemediations: () => new Promise((resolve, reject) =>  {
+        loadRemediations: () => new Promise((resolve) =>  {
             resolve({
                 openWizard: () => new Promise((resolve) =>  {
                     resolve(true);
-                }).catch(err => {
-                    console.log('this is openWizard error:', err);
                 })
             });
-            reject('error');
-        }).catch(err => {
-            console.log('this is user permissions error:', err);
         })
     };
 
