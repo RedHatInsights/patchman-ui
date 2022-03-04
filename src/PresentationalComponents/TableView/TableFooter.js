@@ -15,6 +15,7 @@ const TableFooter = ({ page, perPage, onSetPage, totalItems, onPerPageSelect, pa
                 widgetId={`pagination-options-menu-bottom`}
                 variant={PaginationVariant.bottom}
                 ouiaId={paginationOUIA}
+                isDisabled={totalItems === 0}
             />
         </TableToolbar>
     );
