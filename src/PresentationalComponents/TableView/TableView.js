@@ -78,7 +78,8 @@ const TableView = ({
                             isCompact: true,
                             onSetPage,
                             onPerPageSelect,
-                            ouiaId: `top-${paginationOUIA}`
+                            ouiaId: `top-${paginationOUIA}`,
+                            isDisabled: metadata.total_items === 0
                         }}
                         filterConfig={filterConfig}
                         activeFiltersConfig={{

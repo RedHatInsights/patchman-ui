@@ -1457,6 +1457,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   pagination={
                                     Object {
                                       "isCompact": true,
+                                      "isDisabled": false,
                                       "itemCount": 12,
                                       "onPerPageSelect": [Function],
                                       "onSetPage": [Function],

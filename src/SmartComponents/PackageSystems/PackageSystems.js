@@ -165,6 +165,9 @@ const PackageSystems = ({ packageName }) => {
                             selectedTags
                         }
                     }}
+                    paginationProps={{
+                        isDisabled: totalItems === 0
+                    }}
                     onLoad={({ mergeWithEntities }) => {
                         register({
                             ...mergeWithEntities(

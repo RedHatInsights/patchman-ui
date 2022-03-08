@@ -78,6 +78,7 @@ exports[`TableView TableView 1`] = `
     pagination={
       Object {
         "isCompact": true,
+        "isDisabled": false,
         "itemCount": undefined,
         "onPerPageSelect": [MockFunction],
         "onSetPage": [MockFunction],
