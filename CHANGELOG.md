@@ -1,3 +1,11 @@
+## [1.40.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.0...v1.40.1) (2022-03-08)
+
+
+### Bug Fixes
+
+* **InventoryDetail:** Changed Alert to inline ([05d9389](https://github.com/RedHatInsights/patchman-ui/commit/05d938997c4a5d50436e6ebd5526fe7ac39e8a4d))
+* **SPM-1381:** Pagination dropdown disabled when table empty ([#740](https://github.com/RedHatInsights/patchman-ui/issues/740)) ([2d126f7](https://github.com/RedHatInsights/patchman-ui/commit/2d126f7559d616ffc4a64fae82dea9908731ffa4))
+
 # [1.40.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.39.0...v1.40.0) (2022-03-01)
 
 
