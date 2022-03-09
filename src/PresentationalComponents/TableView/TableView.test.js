@@ -74,10 +74,7 @@ describe('TableView', () => {
     it('Should open remediation modal', () => {
         const wrapper = shallow(<TableView {...testObj} />);
         const { actionsConfig: { actions }}  = wrapper.find('PrimaryToolbar').props();
-        const remediation = actions[0].props.children;
-        remediation[0].props.onClick();
-        wrapper.update();
-        expect(remediation[1]).toBeTruthy();
+        expect(actions[0].props.children).toMatchSnapshot();
     });
 
     it('Should unselect', () => {
