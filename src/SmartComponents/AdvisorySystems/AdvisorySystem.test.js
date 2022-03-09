@@ -75,8 +75,6 @@ let store = initStore();
 const rejectedState = { entities: { ...mockState, status: 'rejected', error: { detail: 'test' } },
     AdvisorySystemsStore: mockState.AdvisorySystemsStore };
 beforeEach(() => {
-    console.error = () => { };
-
     useSelector.mockImplementation(callback => {
         return callback(mockState);
     });

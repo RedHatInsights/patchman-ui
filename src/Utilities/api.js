@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import axios from './axiosInterceptors';
 import { encodeApiParams, prepareEntitiesParams } from './Helpers';
+
 export function createApiCall(
     endpoint,
     method,
@@ -21,7 +22,7 @@ export function createApiCall(
             withCredentials: true,
             data
         })
-    ).catch((err) => err);
+    ).catch(err => console.log(err));
 
     return result;
 }
