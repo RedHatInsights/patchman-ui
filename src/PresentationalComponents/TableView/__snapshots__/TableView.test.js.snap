@@ -6,14 +6,10 @@ exports[`TableView TableView 1`] = `
     actionsConfig={
       Object {
         "actions": Array [
-          <React.Fragment>
-            <PatchRemediationButton
-              isDisabled={true}
-              isLoading={false}
-              onClick={[Function]}
-            />
-            <Unknown />
-          </React.Fragment>,
+          <RemediationModal
+            isDisabled={true}
+            remediationProvider={[MockFunction]}
+          />,
         ],
       }
     }

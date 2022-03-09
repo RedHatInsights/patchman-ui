@@ -1,68 +1,37 @@
-import {
-    cellWidth,
-    expandable, sortable,
-    SortByDirection, Table as PfTable,
-    TableBody,
-    TableGridBreakpoint, TableHeader,
-    TableVariant
-} from '@patternfly/react-table';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
+import { Spinner } from '@patternfly/react-core';
+import { spinnerSize } from '@patternfly/react-core/dist/js/components/Spinner/Spinner';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
-function getLoader() {
-    return (
-        (insights.experimental && insights.experimental.loadRemediations) ||
-        insights.loadRemediations
-    );
-}
-
-const RemediationModal = ({ data }) => {
+const RemediationModal = ({ remediationProvider, isDisabled }) => {
     const dispatch = useDispatch();
-    const [remediations, setRemediations] = React.useState(false);
-    React.useEffect(() => {
-        getLoader()({
-            pfReactTable: {
-                Table: PfTable,
-                TableBody,
-                TableHeader,
-                TableGridBreakpoint,
-                cellWidth,
-                TableVariant,
-                sortable,
-                expandable,
-                SortByDirection
-            }
-        }).then(remediations => setRemediations(remediations));
-        return () => setRemediations(false);
-    }, []);
 
     const handleRemediationSuccess = res => {
         dispatch(addNotification(res.getNotification()));
     };
 
-    React.useEffect(() => {
-        remediations &&
-            remediations
-            .openWizard({ ...data, onRemediationCreated: handleRemediationSuccess });
-    }, [remediations]);
-
     return (
-        <React.Fragment>
-            {remediations.RemediationWizard && (
-                <remediations.RemediationWizard />
-            )}
-        </React.Fragment>
+        <AsyncComponent
+            appName="remediations"
+            module="./RemediationButton"
+            fallback={<Spinner size={spinnerSize.lg} />}
+            dataProvider={remediationProvider}
+            onRemediationCreated={handleRemediationSuccess}
+            isDisabled={isDisabled}
+        >
+            {intl.formatMessage(messages.labelsRemediate)}
+        </AsyncComponent>
     );
 };
 
 RemediationModal.propTypes = {
-    data: propTypes.object
-};
-
-RemediationModal.defaultProps = {
-    onRemediationCreated: f => f
+    remediationProvider: propTypes.func,
+    isDisabled: propTypes.bool
 };
 
 export default RemediationModal;

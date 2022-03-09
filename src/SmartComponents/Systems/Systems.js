@@ -29,7 +29,6 @@ import {
     useOnSelect, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
@@ -42,11 +41,7 @@ const Systems = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
-    const [
-        RemediationModalCmp,
-        setRemediationModalCmp
-    ] = React.useState(() => () => null);
+    const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [patchSetState, setBaselineState] = React.useState({
         isOpen: false,
         systemsIDs: []
@@ -76,11 +71,9 @@ const Systems = () => {
         return () => dispatch(clearInventoryReducer());
     }, []);
 
-    async function showRemediationModal(data) {
-        setRemediationLoading(true);
-        const resolvedData = await data;
-        setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
-        setRemediationLoading(false);
+    function showRemediationModal(isOpen) {
+        setRemediationOpen(!isOpen);
+
     }
 
     async function showBaselineModal(rowData) {
@@ -157,7 +150,6 @@ const Systems = () => {
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
-            <RemediationModalCmp />
             <SystemsStatusReport apply={apply} queryParams={queryParams}/>
             {patchSetState.isOpen &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState}/>}
@@ -206,18 +198,13 @@ const Systems = () => {
                             filterConfig={filterConfig}
                             activeFiltersConfig={activeFiltersConfig}
                             dedicatedAction={(
-                                <PatchRemediationButton
-                                    onClick={() =>
-                                        showRemediationModal(
-                                            remediationProviderWithPairs(
-                                                removeUndefinedObjectKeys(selectedRows),
-                                                prepareRemediationPairs,
-                                                transformPairs,
-                                                remediationIdentifiers.advisory)
-                                        )}
-                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                                    isLoading={isRemediationLoading}
-                                    ouia={'toolbar-remediation-button'}
+                                <RemediationModal
+                                    isOpen={isRemediationOpen}
+                                    remediationProvider={() => remediationProviderWithPairs(
+                                        removeUndefinedObjectKeys(selectedRows),
+                                        prepareRemediationPairs,
+                                        transformPairs,
+                                        remediationIdentifiers.advisory)}
                                 />
                             )}
                         />

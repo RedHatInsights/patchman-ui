@@ -102,20 +102,10 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
             }
           }
           dedicatedAction={
-            <PatchRemediationButton
+            <RemediationModal
               isDisabled={false}
-              isLoading={false}
-              onClick={[Function]}
-              ouia="toolbar-remediation-button"
-            >
-              <AnsibeTowerIcon
-                color="currentColor"
-                noVerticalAlign={false}
-                size="sm"
-              />
-               
-              Remediate
-            </PatchRemediationButton>
+              remediationProvider={[Function]}
+            />
           }
           exportConfig={
             Object {
