@@ -76,6 +76,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 "ofWord": "of",
                 "optionsToggle": "Items per page",
                 "page": "",
+                "pages": "",
                 "paginationTitle": "Pagination",
                 "perPageSuffix": "per page",
                 "toFirstPage": "Go to first page",
@@ -190,6 +191,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                   isGrouped={false}
                   isOpen={false}
                   isPlain={true}
+                  isText={false}
                   menuAppendTo="inline"
                   onSelect={[Function]}
                   position="left"
@@ -225,6 +227,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       isDisabled={false}
                       isOpen={false}
                       isPlain={true}
+                      isText={false}
                       itemCount={10}
                       itemsPerPageTitle="Items per page"
                       itemsTitle=""
@@ -407,6 +410,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                             isPlain={false}
                             isPrimary={false}
                             isSplitButton={false}
+                            isText={false}
                             onEnter={[Function]}
                             onToggle={[Function]}
                             parentRef={
@@ -536,6 +540,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 onSetPage={[MockFunction]}
                 page={1}
                 pagesTitle=""
+                pagesTitlePlural=""
                 paginationTitle="Pagination"
                 perPage={10}
                 toFirstPage="Go to first page"
@@ -830,6 +835,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
             collapseListedFiltersBreakpoint="lg"
             isExpanded={false}
             numberOfFilters={0}
+            numberOfFiltersText={[Function]}
             showClearFiltersButton={false}
           >
             <div

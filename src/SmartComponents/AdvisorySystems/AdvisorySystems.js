@@ -1,4 +1,3 @@
-import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
@@ -22,7 +21,6 @@ import {
     useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 
@@ -148,24 +146,16 @@ const AdvisorySystems = ({ advisoryName }) => {
                     bulkSelect={
                         onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)
                     }
-                    dedicatedAction={(<PatchRemediationButton
+                    dedicatedAction={(
+                        <RemediationModal remediationProvider={() => remediationProvider(
+                            advisoryName,
+                            removeUndefinedObjectKeys(selectedRows),
+                            remediationIdentifiers.advisory
+                        )}
                         isDisabled={
                             arrayFromObj(selectedRows).length === 0
                         }
-                        onClick={() =>
-                            showRemediationModal(
-                                remediationProvider(
-                                    advisoryName,
-                                    removeUndefinedObjectKeys(selectedRows),
-                                    remediationIdentifiers.advisory
-                                )
-                            )
-                        }
-                        ouia={'toolbar-remediation-button'}
-                        isLoading={false}
-                    >
-                        <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                    </PatchRemediationButton>
+                        />
                     )}
 
                 />
