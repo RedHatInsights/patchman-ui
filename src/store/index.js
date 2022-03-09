@@ -50,6 +50,7 @@ registry.register({
 });
 
 export const getStore = () => registry.getStore();
+
 export const register = newReducers => {
     registry.register(newReducers);
 };
