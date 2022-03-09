@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PackageSystems.js Should open remediation modal 1`] = `
+<RemediationModal
+  isDisabled={false}
+  remediationProvider={[Function]}
+/>
+`;

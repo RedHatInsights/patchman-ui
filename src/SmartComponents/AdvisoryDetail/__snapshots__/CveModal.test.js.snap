@@ -84,7 +84,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                         aria-disabled="false"
                         aria-label="Close"
                         class="pf-c-button pf-m-plain"
-                        data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                        data-ouia-component-id="OUIA-Generated-Modal-small-1-ModalBoxCloseButton"
                         data-ouia-component-type="PF4/Button"
                         data-ouia-safe="true"
                         type="button"
@@ -305,7 +305,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                         aria-label="Go to previous page"
                                         class="pf-c-button pf-m-plain pf-m-disabled"
                                         data-action="previous"
-                                        data-ouia-component-id="OUIA-Generated-Button-plain-2"
+                                        data-ouia-component-id="OUIA-Generated-Button-plain-1"
                                         data-ouia-component-type="PF4/Button"
                                         data-ouia-safe="true"
                                         disabled=""
@@ -334,7 +334,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                         aria-label="Go to next page"
                                         class="pf-c-button pf-m-plain"
                                         data-action="next"
-                                        data-ouia-component-id="OUIA-Generated-Button-plain-3"
+                                        data-ouia-component-id="OUIA-Generated-Button-plain-2"
                                         data-ouia-component-type="PF4/Button"
                                         data-ouia-safe="true"
                                         type="button"
@@ -880,7 +880,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   aria-label="Go to first page"
                                   class="pf-c-button pf-m-plain pf-m-disabled"
                                   data-action="first"
-                                  data-ouia-component-id="OUIA-Generated-Button-plain-4"
+                                  data-ouia-component-id="OUIA-Generated-Button-plain-3"
                                   data-ouia-component-type="PF4/Button"
                                   data-ouia-safe="true"
                                   disabled=""
@@ -909,7 +909,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   aria-label="Go to previous page"
                                   class="pf-c-button pf-m-plain pf-m-disabled"
                                   data-action="previous"
-                                  data-ouia-component-id="OUIA-Generated-Button-plain-5"
+                                  data-ouia-component-id="OUIA-Generated-Button-plain-4"
                                   data-ouia-component-type="PF4/Button"
                                   data-ouia-safe="true"
                                   disabled=""
@@ -957,7 +957,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   aria-label="Go to next page"
                                   class="pf-c-button pf-m-plain"
                                   data-action="next"
-                                  data-ouia-component-id="OUIA-Generated-Button-plain-6"
+                                  data-ouia-component-id="OUIA-Generated-Button-plain-5"
                                   data-ouia-component-type="PF4/Button"
                                   data-ouia-safe="true"
                                   type="button"
@@ -985,7 +985,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   aria-label="Go to last page"
                                   class="pf-c-button pf-m-plain"
                                   data-action="last"
-                                  data-ouia-component-id="OUIA-Generated-Button-plain-7"
+                                  data-ouia-component-id="OUIA-Generated-Button-plain-6"
                                   data-ouia-component-type="PF4/Button"
                                   data-ouia-safe="true"
                                   type="button"
@@ -1088,11 +1088,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                         >
                           <ModalBoxCloseButton
                             onClose={[Function]}
+                            ouiaId="OUIA-Generated-Modal-small-1"
                           >
                             <Button
                               aria-label="Close"
                               className=""
                               onClick={[Function]}
+                              ouiaId="OUIA-Generated-Modal-small-1-ModalBoxCloseButton"
                               variant="plain"
                             >
                               <ButtonBase
@@ -1100,13 +1102,14 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                 className=""
                                 innerRef={null}
                                 onClick={[Function]}
+                                ouiaId="OUIA-Generated-Modal-small-1-ModalBoxCloseButton"
                                 variant="plain"
                               >
                                 <button
                                   aria-disabled={false}
                                   aria-label="Close"
                                   className="pf-c-button pf-m-plain"
-                                  data-ouia-component-id="OUIA-Generated-Button-plain-1"
+                                  data-ouia-component-id="OUIA-Generated-Modal-small-1-ModalBoxCloseButton"
                                   data-ouia-component-type="PF4/Button"
                                   data-ouia-safe={true}
                                   disabled={false}
@@ -1675,6 +1678,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       isGrouped={false}
                                                       isOpen={false}
                                                       isPlain={true}
+                                                      isText={false}
                                                       menuAppendTo="inline"
                                                       onSelect={[Function]}
                                                       position="left"
@@ -1696,6 +1700,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           id="pf-dropdown-toggle-id-0"
                                                           isOpen={false}
                                                           isPlain={true}
+                                                          isText={false}
                                                           key=".0"
                                                           onEnter={[Function]}
                                                           onToggle={[Function]}
@@ -1746,6 +1751,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             isPlain={true}
                                                             isPrimary={false}
                                                             isSplitButton={false}
+                                                            isText={false}
                                                             onEnter={[Function]}
                                                             onToggle={[Function]}
                                                             parentRef={
@@ -1882,6 +1888,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "ofWord": "of",
                                                       "optionsToggle": "Items per page",
                                                       "page": "",
+                                                      "pages": "",
                                                       "paginationTitle": "Pagination",
                                                       "perPageSuffix": "per page",
                                                       "toFirstPage": "Go to first page",
@@ -2020,6 +2027,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                         isGrouped={false}
                                                         isOpen={false}
                                                         isPlain={true}
+                                                        isText={false}
                                                         menuAppendTo="inline"
                                                         onSelect={[Function]}
                                                         position="left"
@@ -2055,6 +2063,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             isDisabled={false}
                                                             isOpen={false}
                                                             isPlain={true}
+                                                            isText={false}
                                                             itemCount={12}
                                                             itemsPerPageTitle="Items per page"
                                                             itemsTitle=""
@@ -2237,6 +2246,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   isPlain={false}
                                                                   isPrimary={false}
                                                                   isSplitButton={false}
+                                                                  isText={false}
                                                                   onEnter={[Function]}
                                                                   onToggle={[Function]}
                                                                   parentRef={
@@ -2366,6 +2376,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       onSetPage={[Function]}
                                                       page={1}
                                                       pagesTitle=""
+                                                      pagesTitlePlural=""
                                                       paginationTitle="Pagination"
                                                       perPage={10}
                                                       toFirstPage="Go to first page"
@@ -2400,7 +2411,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                 aria-label="Go to previous page"
                                                                 className="pf-c-button pf-m-plain pf-m-disabled"
                                                                 data-action="previous"
-                                                                data-ouia-component-id="OUIA-Generated-Button-plain-2"
+                                                                data-ouia-component-id="OUIA-Generated-Button-plain-1"
                                                                 data-ouia-component-type="PF4/Button"
                                                                 data-ouia-safe={true}
                                                                 disabled={true}
@@ -2460,7 +2471,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                 aria-label="Go to next page"
                                                                 className="pf-c-button pf-m-plain"
                                                                 data-action="next"
-                                                                data-ouia-component-id="OUIA-Generated-Button-plain-3"
+                                                                data-ouia-component-id="OUIA-Generated-Button-plain-2"
                                                                 data-ouia-component-type="PF4/Button"
                                                                 data-ouia-safe={true}
                                                                 disabled={false}
@@ -2560,6 +2571,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                         collapseListedFiltersBreakpoint="lg"
                                         isExpanded={false}
                                         numberOfFilters={0}
+                                        numberOfFiltersText={[Function]}
                                         showClearFiltersButton={false}
                                       >
                                         <div
@@ -2586,6 +2598,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                 <Table
                                   aria-label="Patch table view"
                                   borders={true}
+                                  canCollapseAll={true}
                                   canSelectAll={false}
                                   canSortFavorites={true}
                                   cells={
@@ -2623,6 +2636,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                     ]
                                   }
                                   className=""
+                                  collapseAllAriaLabel=""
                                   contentId="expanded-content"
                                   dropdownDirection="down"
                                   dropdownPosition="right"
@@ -2830,10 +2844,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
+                                            "allRowsExpanded": false,
                                             "allRowsSelected": false,
                                             "areActionsDisabled": undefined,
+                                            "canCollapseAll": true,
                                             "canSelectAll": false,
                                             "canSortFavorites": true,
+                                            "collapseAllAriaLabel": "",
                                             "contentId": "expanded-content",
                                             "dropdownDirection": "down",
                                             "dropdownPosition": "right",
@@ -2883,10 +2900,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
+                                            "allRowsExpanded": false,
                                             "allRowsSelected": false,
                                             "areActionsDisabled": undefined,
+                                            "canCollapseAll": true,
                                             "canSelectAll": false,
                                             "canSortFavorites": true,
+                                            "collapseAllAriaLabel": "",
                                             "contentId": "expanded-content",
                                             "dropdownDirection": "down",
                                             "dropdownPosition": "right",
@@ -2937,10 +2957,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
+                                            "allRowsExpanded": false,
                                             "allRowsSelected": false,
                                             "areActionsDisabled": undefined,
+                                            "canCollapseAll": true,
                                             "canSelectAll": false,
                                             "canSortFavorites": true,
+                                            "collapseAllAriaLabel": "",
                                             "contentId": "expanded-content",
                                             "dropdownDirection": "down",
                                             "dropdownPosition": "right",
@@ -3061,10 +3084,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "actionResolver": undefined,
                                                           "actions": undefined,
                                                           "actionsToggle": undefined,
+                                                          "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
+                                                          "canCollapseAll": true,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
+                                                          "collapseAllAriaLabel": "",
                                                           "contentId": "expanded-content",
                                                           "dropdownDirection": "down",
                                                           "dropdownPosition": "right",
@@ -3114,10 +3140,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "actionResolver": undefined,
                                                           "actions": undefined,
                                                           "actionsToggle": undefined,
+                                                          "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
+                                                          "canCollapseAll": true,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
+                                                          "collapseAllAriaLabel": "",
                                                           "contentId": "expanded-content",
                                                           "dropdownDirection": "down",
                                                           "dropdownPosition": "right",
@@ -3168,10 +3197,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "actionResolver": undefined,
                                                           "actions": undefined,
                                                           "actionsToggle": undefined,
+                                                          "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
+                                                          "canCollapseAll": true,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
+                                                          "collapseAllAriaLabel": "",
                                                           "contentId": "expanded-content",
                                                           "dropdownDirection": "down",
                                                           "dropdownPosition": "right",
@@ -3277,10 +3309,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "actionResolver": undefined,
                                                                   "actions": undefined,
                                                                   "actionsToggle": undefined,
+                                                                  "allRowsExpanded": false,
                                                                   "allRowsSelected": false,
                                                                   "areActionsDisabled": undefined,
+                                                                  "canCollapseAll": true,
                                                                   "canSelectAll": false,
                                                                   "canSortFavorites": true,
+                                                                  "collapseAllAriaLabel": "",
                                                                   "contentId": "expanded-content",
                                                                   "dropdownDirection": "down",
                                                                   "dropdownPosition": "right",
@@ -3330,10 +3365,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "actionResolver": undefined,
                                                                   "actions": undefined,
                                                                   "actionsToggle": undefined,
+                                                                  "allRowsExpanded": false,
                                                                   "allRowsSelected": false,
                                                                   "areActionsDisabled": undefined,
+                                                                  "canCollapseAll": true,
                                                                   "canSelectAll": false,
                                                                   "canSortFavorites": true,
+                                                                  "collapseAllAriaLabel": "",
                                                                   "contentId": "expanded-content",
                                                                   "dropdownDirection": "down",
                                                                   "dropdownPosition": "right",
@@ -3384,10 +3422,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "actionResolver": undefined,
                                                                   "actions": undefined,
                                                                   "actionsToggle": undefined,
+                                                                  "allRowsExpanded": false,
                                                                   "allRowsSelected": false,
                                                                   "areActionsDisabled": undefined,
+                                                                  "canCollapseAll": true,
                                                                   "canSelectAll": false,
                                                                   "canSortFavorites": true,
+                                                                  "collapseAllAriaLabel": "",
                                                                   "contentId": "expanded-content",
                                                                   "dropdownDirection": "down",
                                                                   "dropdownPosition": "right",
@@ -3760,10 +3801,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "actionResolver": undefined,
                                                       "actions": undefined,
                                                       "actionsToggle": undefined,
+                                                      "allRowsExpanded": false,
                                                       "allRowsSelected": false,
                                                       "areActionsDisabled": undefined,
+                                                      "canCollapseAll": true,
                                                       "canSelectAll": false,
                                                       "canSortFavorites": true,
+                                                      "collapseAllAriaLabel": "",
                                                       "contentId": "expanded-content",
                                                       "dropdownDirection": "down",
                                                       "dropdownPosition": "right",
@@ -3813,10 +3857,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "actionResolver": undefined,
                                                       "actions": undefined,
                                                       "actionsToggle": undefined,
+                                                      "allRowsExpanded": false,
                                                       "allRowsSelected": false,
                                                       "areActionsDisabled": undefined,
+                                                      "canCollapseAll": true,
                                                       "canSelectAll": false,
                                                       "canSortFavorites": true,
+                                                      "collapseAllAriaLabel": "",
                                                       "contentId": "expanded-content",
                                                       "dropdownDirection": "down",
                                                       "dropdownPosition": "right",
@@ -3867,10 +3914,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "actionResolver": undefined,
                                                       "actions": undefined,
                                                       "actionsToggle": undefined,
+                                                      "allRowsExpanded": false,
                                                       "allRowsSelected": false,
                                                       "areActionsDisabled": undefined,
+                                                      "canCollapseAll": true,
                                                       "canSelectAll": false,
                                                       "canSortFavorites": true,
+                                                      "collapseAllAriaLabel": "",
                                                       "contentId": "expanded-content",
                                                       "dropdownDirection": "down",
                                                       "dropdownPosition": "right",
@@ -4990,10 +5040,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "actionResolver": undefined,
                                                           "actions": undefined,
                                                           "actionsToggle": undefined,
+                                                          "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
+                                                          "canCollapseAll": true,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
+                                                          "collapseAllAriaLabel": "",
                                                           "contentId": "expanded-content",
                                                           "dropdownDirection": "down",
                                                           "dropdownPosition": "right",
@@ -5043,10 +5096,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "actionResolver": undefined,
                                                           "actions": undefined,
                                                           "actionsToggle": undefined,
+                                                          "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
+                                                          "canCollapseAll": true,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
+                                                          "collapseAllAriaLabel": "",
                                                           "contentId": "expanded-content",
                                                           "dropdownDirection": "down",
                                                           "dropdownPosition": "right",
@@ -5097,10 +5153,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "actionResolver": undefined,
                                                           "actions": undefined,
                                                           "actionsToggle": undefined,
+                                                          "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
+                                                          "canCollapseAll": true,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
+                                                          "collapseAllAriaLabel": "",
                                                           "contentId": "expanded-content",
                                                           "dropdownDirection": "down",
                                                           "dropdownPosition": "right",
@@ -6531,10 +6590,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -6584,10 +6646,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -6638,10 +6703,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -6945,10 +7013,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -6998,10 +7069,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -7052,10 +7126,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -7359,10 +7436,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -7412,10 +7492,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -7466,10 +7549,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -7773,10 +7859,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -7826,10 +7915,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -7880,10 +7972,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -8187,10 +8282,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -8240,10 +8338,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -8294,10 +8395,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -8601,10 +8705,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -8654,10 +8761,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -8708,10 +8818,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9015,10 +9128,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9068,10 +9184,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9122,10 +9241,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9429,10 +9551,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9482,10 +9607,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9536,10 +9664,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9843,10 +9974,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9896,10 +10030,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -9950,10 +10087,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -10257,10 +10397,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -10310,10 +10453,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -10364,10 +10510,13 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "actionResolver": undefined,
                                                                     "actions": undefined,
                                                                     "actionsToggle": undefined,
+                                                                    "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
+                                                                    "canCollapseAll": true,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
+                                                                    "collapseAllAriaLabel": "",
                                                                     "contentId": "expanded-content",
                                                                     "dropdownDirection": "down",
                                                                     "dropdownPosition": "right",
@@ -10744,6 +10893,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                 "ofWord": "of",
                                                 "optionsToggle": "Items per page",
                                                 "page": "",
+                                                "pages": "",
                                                 "paginationTitle": "Pagination",
                                                 "perPageSuffix": "per page",
                                                 "toFirstPage": "Go to first page",
@@ -10858,6 +11008,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                   isGrouped={false}
                                                   isOpen={false}
                                                   isPlain={true}
+                                                  isText={false}
                                                   menuAppendTo="inline"
                                                   onSelect={[Function]}
                                                   position="left"
@@ -10893,6 +11044,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       isDisabled={false}
                                                       isOpen={false}
                                                       isPlain={true}
+                                                      isText={false}
                                                       itemCount={12}
                                                       itemsPerPageTitle="Items per page"
                                                       itemsTitle=""
@@ -11075,6 +11227,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             isPlain={false}
                                                             isPrimary={false}
                                                             isSplitButton={false}
+                                                            isText={false}
                                                             onEnter={[Function]}
                                                             onToggle={[Function]}
                                                             parentRef={
@@ -11204,6 +11357,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                 onSetPage={[Function]}
                                                 page={1}
                                                 pagesTitle=""
+                                                pagesTitlePlural=""
                                                 paginationTitle="Pagination"
                                                 perPage={10}
                                                 toFirstPage="Go to first page"
@@ -11238,7 +11392,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           aria-label="Go to first page"
                                                           className="pf-c-button pf-m-plain pf-m-disabled"
                                                           data-action="first"
-                                                          data-ouia-component-id="OUIA-Generated-Button-plain-4"
+                                                          data-ouia-component-id="OUIA-Generated-Button-plain-3"
                                                           data-ouia-component-type="PF4/Button"
                                                           data-ouia-safe={true}
                                                           disabled={true}
@@ -11298,7 +11452,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           aria-label="Go to previous page"
                                                           className="pf-c-button pf-m-plain pf-m-disabled"
                                                           data-action="previous"
-                                                          data-ouia-component-id="OUIA-Generated-Button-plain-5"
+                                                          data-ouia-component-id="OUIA-Generated-Button-plain-4"
                                                           data-ouia-component-type="PF4/Button"
                                                           data-ouia-safe={true}
                                                           disabled={true}
@@ -11380,7 +11534,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           aria-label="Go to next page"
                                                           className="pf-c-button pf-m-plain"
                                                           data-action="next"
-                                                          data-ouia-component-id="OUIA-Generated-Button-plain-6"
+                                                          data-ouia-component-id="OUIA-Generated-Button-plain-5"
                                                           data-ouia-component-type="PF4/Button"
                                                           data-ouia-safe={true}
                                                           disabled={false}
@@ -11439,7 +11593,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           aria-label="Go to last page"
                                                           className="pf-c-button pf-m-plain"
                                                           data-action="last"
-                                                          data-ouia-component-id="OUIA-Generated-Button-plain-7"
+                                                          data-ouia-component-id="OUIA-Generated-Button-plain-6"
                                                           data-ouia-component-type="PF4/Button"
                                                           data-ouia-safe={true}
                                                           disabled={false}
@@ -11496,6 +11650,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             collapseListedFiltersBreakpoint="lg"
                                             isExpanded={false}
                                             numberOfFilters={0}
+                                            numberOfFiltersText={[Function]}
                                             showClearFiltersButton={false}
                                           >
                                             <div
