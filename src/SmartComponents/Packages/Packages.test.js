@@ -49,8 +49,6 @@ let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
-    console.error = () => { };
-
     store.clearActions();
     useSelector.mockImplementation(callback => {
         return callback({ PackagesListStore: mockState });
