@@ -40,7 +40,6 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
       <AdvisorySystems
         advisoryName="RHSA-2020:2755"
       >
-        <Component />
         <mockConstructor
           actions={
             Array [
@@ -102,20 +101,10 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
             }
           }
           dedicatedAction={
-            <PatchRemediationButton
+            <AsyncRemediationButton
               isDisabled={false}
-              isLoading={false}
-              onClick={[Function]}
-              ouia="toolbar-remediation-button"
-            >
-              <AnsibeTowerIcon
-                color="currentColor"
-                noVerticalAlign={false}
-                size="sm"
-              />
-               
-              Remediate
-            </PatchRemediationButton>
+              remediationProvider={[Function]}
+            />
           }
           exportConfig={
             Object {
@@ -445,4 +434,11 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
     </Router>
   </BrowserRouter>
 </Provider>
+`;
+
+exports[`AdvisorySystems.js Should open remediation modal 1`] = `
+<AsyncRemediationButton
+  isDisabled={false}
+  remediationProvider={[Function]}
+/>
 `;

@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
@@ -131,10 +130,7 @@ describe('Systems.js', () => {
     it('Should open remediation modal', () => {
 
         const { actions } = wrapper.find('.testInventroyComponentChild').parent().props();
-        act(() => actions[0].onClick(null, null, {
-            id: 'patch-advisory:RHBA-2020:4282'
-        }));
-        expect(wrapper.update().find('RemediationModal')).toBeTruthy();
+        expect(actions[0]).toMatchSnapshot();
     });
 
     it('Should display ErrorMessage component when status="rejected"', () => {

@@ -24,17 +24,12 @@ import {
 } from '../../Utilities/Helpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import PatchRemediationButton from '../Remediation/PatchRemediationButton';
-import RemediationModal from '../Remediation/RemediationModal';
+import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [
-        RemediationModalCmp,
-        setRemediationModalCmp
-    ] = React.useState(() => () => null);
     const [packageVersions, setPackageVersions] = React.useState([]);
 
     const decodedParams = decodeQueryparams(history.location.search);
@@ -52,7 +47,6 @@ const PackageSystems = ({ packageName }) => {
         ({ PackageSystemsStore }) => PackageSystemsStore?.queryParams || {}
     );
 
-    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
     const { systemProfile, selectedTags,
         filter, search, sort, page, perPage } = queryParams;
 
@@ -89,15 +83,6 @@ const PackageSystems = ({ packageName }) => {
         filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
         onDelete: deleteFilters
     };
-
-    async function showRemediationModal(data) {
-        setRemediationLoading(true);
-        const resolvedData = await data;
-        setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
-        setRemediationLoading(false);
-    }
-
-    ;
 
     const constructFilename = (system) => {
         return `${packageName}-${system.available_evra}`;
@@ -140,9 +125,16 @@ const PackageSystems = ({ packageName }) => {
     };
 
     const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, history);
+
+    const remediationDataProvider = () => remediationProviderWithPairs(
+        removeUndefinedObjectKeys(selectedRows),
+        prepareRemediationPairs,
+        transformPairs,
+        remediationIdentifiers.package
+    );
+
     return (
         <React.Fragment>
-            <RemediationModalCmp/>
             {status.hasError && <ErrorHandler code={status.code} /> || (
                 <InventoryTable
                     disableDefaultColumns={['system_profile', 'updated']}
@@ -185,20 +177,11 @@ const PackageSystems = ({ packageName }) => {
                         onSelect: onExport
                     }}
                     dedicatedAction={(
-                        <PatchRemediationButton
-                            onClick={() =>
-                                showRemediationModal(
-                                    remediationProviderWithPairs(
-                                        removeUndefinedObjectKeys(selectedRows),
-                                        prepareRemediationPairs,
-                                        transformPairs,
-                                        remediationIdentifiers.package)
-
-                                )}
-                            isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                            isLoading={isRemediationLoading}
-                            ouia={'toolbar-remediation-button'}
-                        />)}
+                        <AsyncRemediationButton
+                            remediationProvider={remediationDataProvider}
+                            isDisabled={arrayFromObj(selectedRows).length === 0}
+                        />
+                    )}
                 />
             )}
         </React.Fragment>

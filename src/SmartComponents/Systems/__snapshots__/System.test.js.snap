@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Systems.js Should open remediation modal 1`] = `
+Object {
+  "onClick": [Function],
+  "title": "Apply all applicable advisories",
+}
+`;
+
 exports[`Systems.js should match the snapshot 1`] = `
 <Provider
   store={
@@ -74,7 +81,6 @@ exports[`Systems.js should match the snapshot 1`] = `
             </section>
           </PageHeader>
         </Header>
-        <Component />
         <SystemsStatusreport
           apply={[Function]}
           queryParams={Object {}}
@@ -656,7 +662,9 @@ exports[`Systems.js should match the snapshot 1`] = `
                     isLoading={false}
                     onClick={[Function]}
                     ouia="toolbar-remediation-button"
-                  />
+                  >
+                    Remediate
+                  </PatchRemediationButton>
                 }
                 exportConfig={
                   Object {
@@ -996,6 +1004,11 @@ exports[`Systems.js should match the snapshot 1`] = `
                 initialLoading={true}
                 isFullView={true}
                 onLoad={[Function]}
+                paginationProps={
+                  Object {
+                    "isDisabled": true,
+                  }
+                }
                 showTags={true}
                 tableProps={
                   Object {

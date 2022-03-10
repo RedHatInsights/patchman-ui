@@ -218,10 +218,7 @@ describe('AdvisorySystems.js', () => {
 
     it('Should open remediation modal', async () => {
         const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
-        act(() => dedicatedAction.props.onClick(null, null, {
-            id: 'patch-advisory:RHBA-2020:4282'
-        }));
-        expect(wrapper.update().find('RemediationModal')).toBeTruthy();
+        expect(dedicatedAction).toMatchSnapshot();
     });
 
     it('Should clear store on unmount', async () => {

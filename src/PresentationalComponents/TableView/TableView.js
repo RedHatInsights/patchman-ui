@@ -4,8 +4,7 @@ import { SkeletonTable } from '@redhat-cloud-services/frontend-components/Skelet
 import PropTypes from 'prop-types';
 import React from 'react';
 import messages from '../../Messages';
-import PatchRemediationButton from '../../SmartComponents/Remediation/PatchRemediationButton';
-import RemediationModal from '../../SmartComponents/Remediation/RemediationModal';
+import AsyncRemediationButton from '../../SmartComponents/Remediation/AsyncRemediationButton';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -33,7 +32,6 @@ const TableView = ({
     selectedRows,
     compact,
     apply,
-    remediationButtonOUIA,
     tableOUIA,
     paginationOUIA,
     errorState,
@@ -44,23 +42,11 @@ const TableView = ({
     EditPatchSet,
     actionsConfig
 }) => {
-    const [
-        RemediationModalCmp,
-        setRemediationModalCmp
-    ] = React.useState(() => () => null);
+
     const [page, perPage] = React.useMemo(
         () => convertLimitOffset(metadata.limit, metadata.offset),
         [metadata.limit, metadata.offset]
     );
-
-    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
-
-    async function showRemediationModal(data) {
-        setRemediationLoading(true);
-        const resolvedData = await data;
-        setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
-        setRemediationLoading(false);
-    }
 
     const [deleteFilters] = useRemoveFilter(filter, apply, defaultFilters);
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
@@ -90,18 +76,11 @@ const TableView = ({
                         }}
                         actionsConfig={{
                             actions: [remediationProvider && (
-                                <React.Fragment>
-                                    <PatchRemediationButton
-                                        isDisabled={selectedCount === 0 || isRemediationLoading}
-                                        onClick={() =>
-                                            showRemediationModal(remediationProvider())
-                                        }
-                                        ouia={remediationButtonOUIA}
-                                        isLoading={isRemediationLoading}
-                                    />
-
-                                    <RemediationModalCmp />
-                                </React.Fragment>
+                                <AsyncRemediationButton
+                                    remediationProvider={remediationProvider}
+                                    isDisabled={
+                                        Object.values(selectedRows).filter(isSelected => isSelected).length === 0
+                                    } />
                             )]
                         }}
                         exportConfig={{
@@ -169,7 +148,6 @@ TableView.propTypes = {
     filterConfig: PropTypes.object,
     store: PropTypes.object,
     compact: PropTypes.bool,
-    remediationButtonOUIA: PropTypes.string,
     tableOUIA: PropTypes.string,
     paginationOUIA: PropTypes.string,
     errorState: PropTypes.element,

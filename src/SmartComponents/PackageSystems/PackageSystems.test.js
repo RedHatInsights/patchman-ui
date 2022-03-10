@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
@@ -103,12 +102,8 @@ describe('PackageSystems.js', () => {
     });
 
     it('Should open remediation modal', () => {
-
         const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
-        act(() => dedicatedAction.props.onClick(null, null, {
-            id: 'patch-advisory:RHBA-2020:4282'
-        }));
-        expect(wrapper.update().find('RemediationModal')).toBeTruthy();
+        expect(dedicatedAction).toMatchSnapshot();
     });
 
     describe('test exports', () => {
@@ -136,7 +131,7 @@ describe('PackageSystems.js', () => {
             bulkSelect.items[0].onClick();
             const dispatchedActions = store.getActions();
 
-            expect(dispatchedActions[0].type).toEqual('SELECT_ENTITY');
+            expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
         });
 
@@ -146,7 +141,7 @@ describe('PackageSystems.js', () => {
 
             bulkSelect.items[1].onClick();
             const dispatchedActions = store.getActions();
-            expect(dispatchedActions[2].type).toEqual('SELECT_ENTITY');
+            expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[1].title).toEqual('Select page (1)');
         });
 

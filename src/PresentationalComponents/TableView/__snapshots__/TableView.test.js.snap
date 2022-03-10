@@ -1,19 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TableView Should open remediation modal 1`] = `
+<AsyncRemediationButton
+  isDisabled={true}
+  remediationProvider={[MockFunction]}
+/>
+`;
+
 exports[`TableView TableView 1`] = `
 <Fragment>
   <PrimaryToolbar
     actionsConfig={
       Object {
         "actions": Array [
-          <React.Fragment>
-            <PatchRemediationButton
-              isDisabled={true}
-              isLoading={false}
-              onClick={[Function]}
-            />
-            <Unknown />
-          </React.Fragment>,
+          <AsyncRemediationButton
+            isDisabled={true}
+            remediationProvider={[MockFunction]}
+          />,
         ],
       }
     }
@@ -91,12 +94,10 @@ exports[`TableView TableView 1`] = `
   <Table
     aria-label="Patch table view"
     borders={true}
-    canCollapseAll={true}
     canSelectAll={false}
     canSortFavorites={true}
     cells={Array []}
     className=""
-    collapseAllAriaLabel=""
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"
@@ -131,14 +132,10 @@ exports[`TableView TableView 2`] = `
     actionsConfig={
       Object {
         "actions": Array [
-          <React.Fragment>
-            <PatchRemediationButton
-              isDisabled={true}
-              isLoading={false}
-              onClick={[Function]}
-            />
-            <Unknown />
-          </React.Fragment>,
+          <AsyncRemediationButton
+            isDisabled={true}
+            remediationProvider={[MockFunction]}
+          />,
         ],
       }
     }
@@ -203,6 +200,7 @@ exports[`TableView TableView 2`] = `
     pagination={
       Object {
         "isCompact": true,
+        "isDisabled": false,
         "itemCount": undefined,
         "onPerPageSelect": [MockFunction],
         "onSetPage": [MockFunction],
@@ -215,12 +213,10 @@ exports[`TableView TableView 2`] = `
   <Table
     aria-label="Patch table view"
     borders={true}
-    canCollapseAll={true}
     canSelectAll={false}
     canSortFavorites={true}
     cells={Array []}
     className=""
-    collapseAllAriaLabel=""
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"
@@ -255,14 +251,10 @@ exports[`TableView test table props TableView 1`] = `
     actionsConfig={
       Object {
         "actions": Array [
-          <React.Fragment>
-            <PatchRemediationButton
-              isDisabled={true}
-              isLoading={false}
-              onClick={[Function]}
-            />
-            <Unknown />
-          </React.Fragment>,
+          <AsyncRemediationButton
+            isDisabled={true}
+            remediationProvider={[MockFunction]}
+          />,
         ],
       }
     }
@@ -327,6 +319,7 @@ exports[`TableView test table props TableView 1`] = `
     pagination={
       Object {
         "isCompact": true,
+        "isDisabled": false,
         "itemCount": 10,
         "onPerPageSelect": [MockFunction],
         "onSetPage": [MockFunction],
@@ -339,12 +332,10 @@ exports[`TableView test table props TableView 1`] = `
   <Table
     aria-label="Patch table view"
     borders={true}
-    canCollapseAll={true}
     canSelectAll={false}
     canSortFavorites={true}
     cells={Array []}
     className=""
-    collapseAllAriaLabel=""
     contentId="expanded-content"
     dropdownDirection="down"
     dropdownPosition="right"

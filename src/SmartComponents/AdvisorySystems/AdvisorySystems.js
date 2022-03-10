@@ -1,4 +1,3 @@
-import { AnsibeTowerIcon } from '@patternfly/react-icons';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
@@ -22,12 +21,13 @@ import {
     useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import PatchRemediationButton from '../Remediation/PatchRemediationButton';
-import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
+import RemediationWizard from '../Remediation/RemediationWizard';
+import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
+    const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [
         RemediationModalCmp,
         setRemediationModalCmp
@@ -81,9 +81,15 @@ const AdvisorySystems = ({ advisoryName }) => {
         onDelete: deleteFilters
     };
 
-    const showRemediationModal = data => {
-        setRemediationModalCmp(() => () => <RemediationModal data={data} />);
-    };
+    async function showRemediationModal(data) {
+        const resolvedData = await data;
+        setRemediationModalCmp(() =>
+            () => <RemediationWizard
+                data={resolvedData}
+                isRemediationOpen
+                setRemediationOpen={setRemediationOpen} />);
+        setRemediationOpen(!isRemediationOpen);
+    }
 
     const selectRows = (toSelect) => {
         dispatch(
@@ -105,9 +111,15 @@ const AdvisorySystems = ({ advisoryName }) => {
         json: exportAdvisorySystemsJSON
     }, dispatch);
 
+    const remediationDataProvider = () => remediationProvider(
+        advisoryName,
+        removeUndefinedObjectKeys(selectedRows),
+        remediationIdentifiers.advisory
+    );
+
     return (
         <React.Fragment>
-            <RemediationModalCmp />
+            {isRemediationOpen && <RemediationModalCmp /> || null}
             {status.hasError && <ErrorHandler code={status.code} /> ||
                 <InventoryTable
                     isFullView
@@ -151,24 +163,13 @@ const AdvisorySystems = ({ advisoryName }) => {
                     bulkSelect={
                         onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)
                     }
-                    dedicatedAction={(<PatchRemediationButton
-                        isDisabled={
-                            arrayFromObj(selectedRows).length === 0
-                        }
-                        onClick={() =>
-                            showRemediationModal(
-                                remediationProvider(
-                                    advisoryName,
-                                    removeUndefinedObjectKeys(selectedRows),
-                                    remediationIdentifiers.advisory
-                                )
-                            )
-                        }
-                        ouia={'toolbar-remediation-button'}
-                        isLoading={false}
-                    >
-                        <AnsibeTowerIcon />&nbsp;{intl.formatMessage(messages.labelsRemediate)}
-                    </PatchRemediationButton>
+                    dedicatedAction={(
+                        <AsyncRemediationButton
+                            remediationProvider={remediationDataProvider}
+                            isDisabled={
+                                arrayFromObj(selectedRows).length === 0
+                            }
+                        />
                     )}
 
                 />
