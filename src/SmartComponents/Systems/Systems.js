@@ -29,11 +29,11 @@ import {
     useOnSelect, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import PatchRemediationButton from '../Remediation/PatchRemediationButton';
-import RemediationModal from '../Remediation/RemediationModal';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
+import RemediationWizard from '../Remediation/RemediationWizard';
+import PatchRemediationButton from '../Remediation/PatchRemediationButton';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -42,6 +42,7 @@ const Systems = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
     const [
         RemediationModalCmp,
@@ -79,7 +80,12 @@ const Systems = () => {
     async function showRemediationModal(data) {
         setRemediationLoading(true);
         const resolvedData = await data;
-        setRemediationModalCmp(() => () => <RemediationModal data={resolvedData} />);
+        setRemediationModalCmp(() =>
+            () => <RemediationWizard
+                data={resolvedData}
+                isRemediationOpen
+                setRemediationOpen={setRemediationOpen} />);
+        setRemediationOpen(!isRemediationOpen);
         setRemediationLoading(false);
     }
 
@@ -154,13 +160,20 @@ const Systems = () => {
 
     const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
 
+    const remediationDataProvider = () => remediationProviderWithPairs(
+        removeUndefinedObjectKeys(selectedRows),
+        prepareRemediationPairs,
+        transformPairs,
+        remediationIdentifiers.advisory
+    );
+
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
-            <RemediationModalCmp />
             <SystemsStatusReport apply={apply} queryParams={queryParams}/>
             {patchSetState.isOpen &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState}/>}
+            {isRemediationOpen && <RemediationModalCmp /> || null}
             <Main>
                 {status.hasError && <ErrorHandler code={status.code} /> ||
                     (
@@ -207,18 +220,17 @@ const Systems = () => {
                             activeFiltersConfig={activeFiltersConfig}
                             dedicatedAction={(
                                 <PatchRemediationButton
+                                    isDisabled={
+                                        arrayFromObj(selectedRows).length === 0
+                                    }
                                     onClick={() =>
-                                        showRemediationModal(
-                                            remediationProviderWithPairs(
-                                                removeUndefinedObjectKeys(selectedRows),
-                                                prepareRemediationPairs,
-                                                transformPairs,
-                                                remediationIdentifiers.advisory)
-                                        )}
-                                    isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-                                    isLoading={isRemediationLoading}
+                                        showRemediationModal(remediationDataProvider())
+                                    }
                                     ouia={'toolbar-remediation-button'}
-                                />
+                                    isLoading={isRemediationLoading}
+                                >
+                                    {intl.formatMessage(messages.labelsRemediate)}
+                                </PatchRemediationButton>
                             )}
                         />
                     )
