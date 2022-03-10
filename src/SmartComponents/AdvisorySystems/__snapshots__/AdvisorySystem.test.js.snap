@@ -40,7 +40,6 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
       <AdvisorySystems
         advisoryName="RHSA-2020:2755"
       >
-        <Component />
         <mockConstructor
           actions={
             Array [

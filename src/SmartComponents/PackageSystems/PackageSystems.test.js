@@ -131,7 +131,7 @@ describe('PackageSystems.js', () => {
             bulkSelect.items[0].onClick();
             const dispatchedActions = store.getActions();
 
-            expect(dispatchedActions[0].type).toEqual('SELECT_ENTITY');
+            expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
         });
 
@@ -141,7 +141,8 @@ describe('PackageSystems.js', () => {
 
             bulkSelect.items[1].onClick();
             const dispatchedActions = store.getActions();
-            expect(dispatchedActions[3].type).toEqual('SELECT_ENTITY');
+            console.log(dispatchedActions);
+            expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[1].title).toEqual('Select page (1)');
         });
 
