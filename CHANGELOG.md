@@ -1,3 +1,15 @@
+## [1.40.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.1...v1.40.2) (2022-03-10)
+
+
+### Bug Fixes
+
+* **tests:** failing tests are resolved with some cleanup ([d92953d](https://github.com/RedHatInsights/patchman-ui/commit/d92953d504a6515175f6bdffd5539eebfa90167f))
+
+
+### Reverts
+
+* Revert "chore(Travis): fix errors" ([92ea7e1](https://github.com/RedHatInsights/patchman-ui/commit/92ea7e18fad8b66960809f8742b01711a18f26c6))
+
 ## [1.40.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.0...v1.40.1) (2022-03-08)
 
 
