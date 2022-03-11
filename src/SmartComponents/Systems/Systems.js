@@ -19,7 +19,7 @@ import {
     exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
     fetchSystems, fetchViewAdvisoriesSystems
 } from '../../Utilities/api';
-import { remediationIdentifiers, systemsListDefaultFilters } from '../../Utilities/constants';
+import { remediationIdentifiers, systemsListDefaultFilters, featureFlags } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips,
     decodeQueryparams, filterRemediatableSystems, persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys,
@@ -27,7 +27,7 @@ import {
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
-    useOnSelect, useRemoveFilter
+    useOnSelect, useRemoveFilter, useFeatureFlag
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
@@ -54,6 +54,8 @@ const Systems = () => {
         shouldRefresh: false,
         systemsIDs: []
     });
+
+    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
 
     const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
@@ -179,7 +181,7 @@ const Systems = () => {
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <SystemsStatusReport apply={apply} queryParams={queryParams}/>
-            {patchSetState.isOpen &&
+            {(patchSetState.isOpen && isPatchSetEnabled) &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState}/>}
             {isRemediationOpen && <RemediationModalCmp /> || null}
             <Main>
@@ -190,7 +192,7 @@ const Systems = () => {
                             autoRefresh
                             initialLoading
                             hideFilters={{ all: true, tags: false }}
-                            columns={systemsColumnsMerger}
+                            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, isPatchSetEnabled)}
                             showTags
                             customFilters={{
                                 patchParams: {
@@ -207,13 +209,13 @@ const Systems = () => {
                             onLoad={({ mergeWithEntities }) => {
                                 register({
                                     ...mergeWithEntities(
-                                        inventoryEntitiesReducer(systemsListColumns, modifyInventory),
+                                        inventoryEntitiesReducer(systemsListColumns(isPatchSetEnabled), modifyInventory),
                                         persistantParams({ page, perPage, sort, search }, decodedParams)
                                     )
                                 });
                             }}
                             getEntities={getEntities}
-                            actions={systemsRowActions(showRemediationModal, showBaselineModal)}
+                            actions={systemsRowActions(showRemediationModal, showBaselineModal, isPatchSetEnabled)}
                             tableProps={{
                                 areActionsDisabled,
                                 canSelectAll: false,
@@ -224,7 +226,7 @@ const Systems = () => {
                                 isDisabled: totalItems === 0,
                                 onSelect: onExport
                             }}
-                            actionsConfig={{
+                            actionsConfig={isPatchSetEnabled && {
                                 actions: [
                                     <Button onClick={assignMultipleSystems}
                                         key='assign-multiple-systems'

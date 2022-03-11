@@ -6,6 +6,7 @@ import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import Systems from './Systems';
 import toJson from 'enzyme-to-json';
+import { useFeatureFlag } from '../../Utilities/Hooks';
 
 initMocks();
 
@@ -50,6 +51,11 @@ jest.mock('../../Utilities/api', () => ({
             type: 'advisory'
         }]
     }).catch((err) => console.log(err)))
+}));
+
+jest.mock('../../Utilities/Hooks', () => ({
+    ...jest.requireActual('../../Utilities/Hooks'),
+    useFeatureFlag: jest.fn()
 }));
 
 const mockState = {
@@ -158,5 +164,29 @@ describe('Systems.js', () => {
         </Provider>);
 
         expect(tempWrapper.find('EmptyState')).toBeTruthy();
+    });
+
+    describe('test patch-set: ', () => {
+        it('Should show table row actions for patch-set when flag is enabled', () => {
+            useFeatureFlag.mockReturnValue(true);
+
+            const tempWrapper = mount(<Provider store={store}>
+                <Router><Systems /></Router>
+            </Provider>);
+
+            const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+            expect(actions.length).toEqual(2);
+        });
+
+        it('Should hide table row actions for patch-set when flag is disabled', () => {
+            useFeatureFlag.mockReturnValue(false);
+
+            const tempWrapper = mount(<Provider store={store}>
+                <Router><Systems /></Router>
+            </Provider>);
+
+            const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+            expect(actions.length).toEqual(1);
+        });
     });
 });

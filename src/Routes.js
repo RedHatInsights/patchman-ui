@@ -4,6 +4,8 @@ import React, { Fragment, lazy, Suspense, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { fetchSystems } from './Utilities/api';
 import { useHistory } from 'react-router-dom';
+import { useFeatureFlag } from './Utilities/Hooks';
+import { featureFlags } from './Utilities/constants';
 
 const Advisories = lazy(() =>
     import(
@@ -116,6 +118,8 @@ export const Routes = (props) => {
 
     const path = props.childProps.location.pathname;
 
+    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
+
     return (
         // I recommend discussing with UX some nice loading placeholder
         <Suspense fallback={Fragment}>
@@ -158,15 +162,15 @@ export const Routes = (props) => {
                     path={paths.packageDetail.to}
                     component={PackageDetail}
                 />
-                <Route
+                {isPatchSetEnabled && <Route
                     exact
                     path={paths.patchSet.to}
                     component={PatchSet}
-                />
+                />}
 
                 <Route
                     render={() =>
-                        some(paths, p => p.to === path) || (
+                        (!isPatchSetEnabled || !some(paths, p => p.to === path)) && (
                             <Redirect to={paths.advisories.to} />
                         )
                     }
