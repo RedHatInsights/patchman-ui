@@ -283,6 +283,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                   pagination={
                     Object {
                       "isCompact": true,
+                      "isDisabled": true,
                       "itemCount": 0,
                       "onPerPageSelect": [Function],
                       "onSetPage": [Function],
@@ -1295,7 +1296,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   defaultToFullPage={false}
                                   firstPage={1}
                                   isCompact={true}
-                                  isDisabled={false}
+                                  isDisabled={true}
                                   isSticky={false}
                                   itemCount={0}
                                   itemsEnd={null}
@@ -1388,7 +1389,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       defaultToFullPage={false}
                                       dropDirection="down"
                                       firstIndex={0}
-                                      isDisabled={false}
+                                      isDisabled={true}
                                       itemCount={0}
                                       itemsPerPageTitle="Items per page"
                                       itemsTitle=""
@@ -1477,7 +1478,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         toggle={
                                           <OptionsToggle
                                             firstIndex={0}
-                                            isDisabled={false}
+                                            isDisabled={true}
                                             isOpen={false}
                                             itemCount={0}
                                             itemsPerPageTitle="Items per page"
@@ -1503,7 +1504,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             firstIndex={0}
                                             getMenuRef={[Function]}
                                             id="pf-dropdown-toggle-id-8"
-                                            isDisabled={false}
+                                            isDisabled={true}
                                             isOpen={false}
                                             isPlain={true}
                                             isText={false}
@@ -1524,7 +1525,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   data-ouia-safe="true"
                                                 >
                                                   <div
-                                                    class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                                    class="pf-c-options-menu__toggle pf-m-disabled pf-m-plain pf-m-text"
                                                   >
                                                     <span
                                                       class="pf-c-options-menu__toggle-text"
@@ -1550,6 +1551,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
                                                       data-ouia-component-type="PF4/DropdownToggle"
                                                       data-ouia-safe="true"
+                                                      disabled=""
                                                       id="pagination-options-menu-toggle-2"
                                                       type="button"
                                                     >
@@ -1580,7 +1582,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             widgetId="pagination-options-menu"
                                           >
                                             <div
-                                              className="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                              className="pf-c-options-menu__toggle pf-m-disabled pf-m-plain pf-m-text"
                                             >
                                               <span
                                                 className="pf-c-options-menu__toggle-text"
@@ -1610,7 +1612,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 aria-label="Items per page"
                                                 className="pf-c-options-menu__toggle-button"
                                                 id="pagination-options-menu-toggle-2"
-                                                isDisabled={0}
+                                                isDisabled={true}
                                                 isOpen={false}
                                                 onEnter={[Function]}
                                                 onToggle={[Function]}
@@ -1622,7 +1624,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       data-ouia-safe="true"
                                                     >
                                                       <div
-                                                        class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                                        class="pf-c-options-menu__toggle pf-m-disabled pf-m-plain pf-m-text"
                                                       >
                                                         <span
                                                           class="pf-c-options-menu__toggle-text"
@@ -1648,6 +1650,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
                                                           data-ouia-component-type="PF4/DropdownToggle"
                                                           data-ouia-safe="true"
+                                                          disabled=""
                                                           id="pagination-options-menu-toggle-2"
                                                           type="button"
                                                         >
@@ -1684,7 +1687,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   getMenuRef={null}
                                                   id="pagination-options-menu-toggle-2"
                                                   isActive={false}
-                                                  isDisabled={0}
+                                                  isDisabled={true}
                                                   isOpen={false}
                                                   isPlain={false}
                                                   isPrimary={false}
@@ -1700,7 +1703,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         data-ouia-safe="true"
                                                       >
                                                         <div
-                                                          class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                                          class="pf-c-options-menu__toggle pf-m-disabled pf-m-plain pf-m-text"
                                                         >
                                                           <span
                                                             class="pf-c-options-menu__toggle-text"
@@ -1726,6 +1729,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                             data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
                                                             data-ouia-component-type="PF4/DropdownToggle"
                                                             data-ouia-safe="true"
+                                                            disabled=""
                                                             id="pagination-options-menu-toggle-2"
                                                             type="button"
                                                           >
@@ -1760,7 +1764,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
                                                     data-ouia-component-type="PF4/DropdownToggle"
                                                     data-ouia-safe={true}
-                                                    disabled={0}
+                                                    disabled={true}
                                                     id="pagination-options-menu-toggle-2"
                                                     onClick={[Function]}
                                                     onKeyDown={[Function]}
@@ -1807,7 +1811,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       currPage="Current page"
                                       firstPage={1}
                                       isCompact={true}
-                                      isDisabled={false}
+                                      isDisabled={true}
                                       itemCount={0}
                                       lastPage={0}
                                       ofWord="of"
@@ -4771,7 +4775,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                             defaultToFullPage={false}
                             firstPage={1}
                             isCompact={false}
-                            isDisabled={false}
+                            isDisabled={true}
                             isSticky={false}
                             itemCount={0}
                             itemsEnd={null}
@@ -4840,7 +4844,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 defaultToFullPage={false}
                                 dropDirection="up"
                                 firstIndex={0}
-                                isDisabled={false}
+                                isDisabled={true}
                                 itemCount={0}
                                 itemsPerPageTitle="Items per page"
                                 itemsTitle=""
@@ -4929,7 +4933,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   toggle={
                                     <OptionsToggle
                                       firstIndex={0}
-                                      isDisabled={false}
+                                      isDisabled={true}
                                       isOpen={false}
                                       itemCount={0}
                                       itemsPerPageTitle="Items per page"
@@ -4955,7 +4959,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       firstIndex={0}
                                       getMenuRef={[Function]}
                                       id="pf-dropdown-toggle-id-9"
-                                      isDisabled={false}
+                                      isDisabled={true}
                                       isOpen={false}
                                       isPlain={true}
                                       isText={false}
@@ -4976,7 +4980,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             data-ouia-safe="true"
                                           >
                                             <div
-                                              class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                              class="pf-c-options-menu__toggle pf-m-disabled pf-m-plain pf-m-text"
                                             >
                                               <span
                                                 class="pf-c-options-menu__toggle-text"
@@ -5002,6 +5006,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
                                                 data-ouia-component-type="PF4/DropdownToggle"
                                                 data-ouia-safe="true"
+                                                disabled=""
                                                 id="pagination-options-menu-bottom-toggle-3"
                                                 type="button"
                                               >
@@ -5032,7 +5037,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       widgetId="pagination-options-menu-bottom"
                                     >
                                       <div
-                                        className="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                        className="pf-c-options-menu__toggle pf-m-disabled pf-m-plain pf-m-text"
                                       >
                                         <span
                                           className="pf-c-options-menu__toggle-text"
@@ -5062,7 +5067,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           aria-label="Items per page"
                                           className="pf-c-options-menu__toggle-button"
                                           id="pagination-options-menu-bottom-toggle-3"
-                                          isDisabled={0}
+                                          isDisabled={true}
                                           isOpen={false}
                                           onEnter={[Function]}
                                           onToggle={[Function]}
@@ -5074,7 +5079,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 data-ouia-safe="true"
                                               >
                                                 <div
-                                                  class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                                  class="pf-c-options-menu__toggle pf-m-disabled pf-m-plain pf-m-text"
                                                 >
                                                   <span
                                                     class="pf-c-options-menu__toggle-text"
@@ -5100,6 +5105,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
                                                     data-ouia-component-type="PF4/DropdownToggle"
                                                     data-ouia-safe="true"
+                                                    disabled=""
                                                     id="pagination-options-menu-bottom-toggle-3"
                                                     type="button"
                                                   >
@@ -5136,7 +5142,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             getMenuRef={null}
                                             id="pagination-options-menu-bottom-toggle-3"
                                             isActive={false}
-                                            isDisabled={0}
+                                            isDisabled={true}
                                             isOpen={false}
                                             isPlain={false}
                                             isPrimary={false}
@@ -5152,7 +5158,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   data-ouia-safe="true"
                                                 >
                                                   <div
-                                                    class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
+                                                    class="pf-c-options-menu__toggle pf-m-disabled pf-m-plain pf-m-text"
                                                   >
                                                     <span
                                                       class="pf-c-options-menu__toggle-text"
@@ -5178,6 +5184,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
                                                       data-ouia-component-type="PF4/DropdownToggle"
                                                       data-ouia-safe="true"
+                                                      disabled=""
                                                       id="pagination-options-menu-bottom-toggle-3"
                                                       type="button"
                                                     >
@@ -5212,7 +5219,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                               data-ouia-component-id="OUIA-Generated-DropdownToggle-2"
                                               data-ouia-component-type="PF4/DropdownToggle"
                                               data-ouia-safe={true}
-                                              disabled={0}
+                                              disabled={true}
                                               id="pagination-options-menu-bottom-toggle-3"
                                               onClick={[Function]}
                                               onKeyDown={[Function]}
@@ -5259,7 +5266,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 currPage="Current page"
                                 firstPage={1}
                                 isCompact={false}
-                                isDisabled={false}
+                                isDisabled={true}
                                 itemCount={0}
                                 lastPage={0}
                                 ofWord="of"

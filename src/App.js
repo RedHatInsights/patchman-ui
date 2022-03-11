@@ -7,7 +7,7 @@ import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import './App.scss';
 import { paths, Routes } from './Routes';
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
-import { mapGlobalFilters } from './Utilities/Helpers';
+import { mapGlobalFilters, activateFeatureFlags } from './Utilities/Helpers';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -17,6 +17,8 @@ const App = () => {
     });
     const location = useLocation();
     const history = useHistory();
+
+    activateFeatureFlags(location);
 
     const listenNavigation = () => {
         return  insights.chrome.on('APP_NAVIGATION', event => {

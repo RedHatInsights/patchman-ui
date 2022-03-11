@@ -22,7 +22,7 @@ import { remediationIdentifiers, systemsListDefaultFilters } from '../../Utiliti
 import {
     arrayFromObj, buildFilterChips,
     decodeQueryparams, filterRemediatableSystems, persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys,
-    transformPairs, systemsColumnsMerger
+    transformPairs, systemsColumnsMerger, checkEnabledFeature
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
@@ -51,6 +51,8 @@ const Systems = () => {
         isOpen: false,
         systemsIDs: []
     });
+
+    const isPatchSetEnabled = checkEnabledFeature('patchSet');
 
     const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
@@ -159,7 +161,7 @@ const Systems = () => {
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <RemediationModalCmp />
             <SystemsStatusReport apply={apply} queryParams={queryParams}/>
-            {patchSetState.isOpen &&
+            {(patchSetState.isOpen && isPatchSetEnabled) &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState}/>}
             <Main>
                 {status.hasError && <ErrorHandler code={status.code} /> ||
@@ -192,7 +194,7 @@ const Systems = () => {
                                 });
                             }}
                             getEntities={getEntities}
-                            actions={systemsRowActions(showRemediationModal, showBaselineModal)}
+                            actions={systemsRowActions(showRemediationModal, showBaselineModal, isPatchSetEnabled)}
                             tableProps={{
                                 areActionsDisabled,
                                 canSelectAll: false,

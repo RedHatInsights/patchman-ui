@@ -69,7 +69,7 @@ export const packageSystemsColumns = [
     }
 ];
 
-export const systemsRowActions = (showRemediationModal, showBaselineModal) => {
+export const systemsRowActions = (showRemediationModal, showBaselineModal, isPatchSetEnabled) => {
     return [
         {
             title: 'Apply all applicable advisories',
@@ -88,7 +88,7 @@ export const systemsRowActions = (showRemediationModal, showBaselineModal) => {
                 );
             }
         },
-        {
+        ...(isPatchSetEnabled && [{
             title: 'Assign to patch set',
             onClick: (event, rowId, rowData) => {
                 showBaselineModal(rowData);
@@ -99,6 +99,6 @@ export const systemsRowActions = (showRemediationModal, showBaselineModal) => {
             onClick: (event, rowId, rowData) => {
                 console.log(event, rowId, rowData);
             }
-        }
+        }] || [])
     ];
 };

@@ -6,8 +6,7 @@ import {
     SecurityIcon
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
-import findIndex from 'lodash/findIndex';
-import flatten from 'lodash/findIndex';
+import { findIndex, flatten } from 'lodash';
 import qs from 'query-string';
 import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
@@ -19,7 +18,9 @@ import {
     advisorySeverities,
     compoundSortValues,
     filterCategories,
-    multiValueFilters
+    multiValueFilters,
+    featureFlags,
+    environments
 } from './constants';
 import { intl } from './IntlProvider';
 
@@ -562,4 +563,30 @@ export const systemsColumnsMerger = defaultColumns => {
     let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
 
     return [...nameAndTag, ...systemsListColumns, lastSeen[0]];
+};
+
+export const activateFeatureFlags = (location) => {
+    let environment = {};
+
+    environments.forEach(env => {
+        if (window.location.href.includes(env.key)) {
+            environment.name = env.name;
+        }
+    });
+
+    const enabledFeatures = featureFlags.filter(flag => {
+        return location.search.includes(flag.urlKey) || environment.name === 'dev' || 'stage';
+    });
+
+    localStorage.setItem('enabledFeatures', JSON.stringify(enabledFeatures));
+};
+
+export const checkEnabledFeature = (featureName) => {
+    const enabledFeatures = localStorage.getItem('enabledFeatures') ;
+
+    if (enabledFeatures && JSON.parse(enabledFeatures).find(feat => feat.name === featureName)) {
+        return true;
+    }
+
+    return false;
 };

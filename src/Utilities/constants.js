@@ -372,3 +372,25 @@ export const exportNotifications = (format) => ({
 });
 
 export const multiValueFilters = ['installed_evra', 'os'];
+
+export const environments = [
+    {
+        name: 'dev',
+        key: 'foo.redhat.com'
+    },
+    {
+        name: 'stage',
+        key: 'console.stage.redhat.com'
+    },
+    {
+        name: 'prod',
+        key: 'console.redhat.com'
+    }
+];
+
+export const featureFlags = [
+    {
+        name: 'patchSet',
+        urlKey: 'patch_set=enabled'
+    }
+];
