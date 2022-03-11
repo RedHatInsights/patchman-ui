@@ -4,15 +4,15 @@ import { createAdvisoriesIcons, createUpgradableColumn,
     remediationProvider, createOSColumn, createPatchSetColumn } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 
-export const systemsListColumns = [
-    {
+export const systemsListColumns = (isPatchSetEnabled = false) => [
+    ...(isPatchSetEnabled ? [{
         key: 'baseline_name',
         title: 'Patch set',
         renderFunc: value => createPatchSetColumn(value),
         props: {
             width: 5
         }
-    },
+    }] : []),
     {
         key: 'operating_system',
         title: 'OS',
@@ -77,7 +77,7 @@ export const packageSystemsColumns = [
     }
 ];
 
-export const systemsRowActions = (showRemediationModal, showBaselineModal) => {
+export const systemsRowActions = (showRemediationModal, showBaselineModal, isPatchSetEnabled) => {
     return [
         {
             title: 'Apply all applicable advisories',
@@ -96,11 +96,11 @@ export const systemsRowActions = (showRemediationModal, showBaselineModal) => {
                 );
             }
         },
-        ...showBaselineModal ? [{
+        ...(isPatchSetEnabled && showBaselineModal ? [{
             title: 'Assign to patch set',
             onClick: (event, rowId, rowData) => {
                 showBaselineModal(rowData);
             }
-        }] : []
+        }] : [])
     ];
 };

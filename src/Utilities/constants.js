@@ -383,3 +383,8 @@ export const patchSetDeleteNotifications = ({
 });
 
 export const multiValueFilters = ['installed_evra', 'os'];
+
+export const featureFlags = {
+    patch_set: 'patch.patch_set'
+};
+

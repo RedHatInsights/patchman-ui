@@ -6,8 +6,7 @@ import {
     SecurityIcon, PficonTemplateIcon
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
-import findIndex from 'lodash/findIndex';
-import flatten from 'lodash/findIndex';
+import { findIndex, flatten } from 'lodash';
 import qs from 'query-string';
 import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
@@ -569,13 +568,13 @@ export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
 
 };
 
-export const systemsColumnsMerger = defaultColumns => {
+export const systemsColumnsMerger = (defaultColumns, isPatchSetEnabled) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     lastSeen = [{ ...lastSeen[0], key: 'last_upload' }];
 
     let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
 
-    return [...nameAndTag, ...systemsListColumns, lastSeen[0]];
+    return [...nameAndTag, ...systemsListColumns(isPatchSetEnabled), lastSeen[0]];
 };
 
 export const convertDateToISO = (dateString)  => {

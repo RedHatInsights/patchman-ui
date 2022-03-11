@@ -12,6 +12,7 @@ import {
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
 import { assignSystemPatchSet, updatePatchSets } from './api';
+import { useFlag, useFlagsStatus } from '@unleash/proxy-client-react';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -334,4 +335,10 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
         handleApiResponse(response);
     });
     return onSubmit;
+};
+
+export const useFeatureFlag = (flag) => {
+    const { flagsReady } = useFlagsStatus();
+    const flagStatus = useFlag(flag);
+    return flagsReady ? flagStatus : false;
 };

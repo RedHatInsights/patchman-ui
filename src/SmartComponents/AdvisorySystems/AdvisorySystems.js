@@ -127,7 +127,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     initialLoading
                     ignoreRefresh
                     hideFilters={{ all: true, tags: false }}
-                    columns={systemsColumnsMerger}
+                    columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, false)}
                     showTags
                     customFilters={{
                         patchParams: {
@@ -143,7 +143,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     onLoad={({ mergeWithEntities }) => {
                         register({
                             ...mergeWithEntities(
-                                inventoryEntitiesReducer(systemsListColumns, modifyInventory),
+                                inventoryEntitiesReducer(systemsListColumns(false), modifyInventory),
                                 persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
                         });
