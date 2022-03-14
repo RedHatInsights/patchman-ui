@@ -1,3 +1,10 @@
+## [1.40.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.2...v1.40.3) (2022-03-14)
+
+
+### Bug Fixes
+
+* **Remediation:** apply new loading approach ([260119f](https://github.com/RedHatInsights/patchman-ui/commit/260119f56d62859306dc41211d3853abf44ce036))
+
 ## [1.40.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.1...v1.40.2) (2022-03-10)
 
 
