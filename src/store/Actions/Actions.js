@@ -1,6 +1,6 @@
 import { fetchAdvisoryDetailsApi, fetchApplicableAdvisoriesApi,
     fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchPackageDetailsApi,
-    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails, fetchPatchSets
+    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails, fetchPatchSets, fetchPatchSet
 } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
@@ -224,4 +224,16 @@ export const changePatchSetParams = (params) => ({
 export const selectPatchSetRow = rowState => ({
     type: ActionTypes.SELECT_PATCH_SET_ROW,
     payload: rowState
+});
+
+export const fetchPatchSetAction = (id) => ({
+    type: ActionTypes.FETCH_PATCH_SET,
+    payload: new Promise(resolve => {
+        resolve(fetchPatchSet(id));
+    }).then(result => result)
+});
+
+export const clearPatchSetAction = () => ({
+    type: ActionTypes.CLEAR_PATCH_SET,
+    payload: []
 });

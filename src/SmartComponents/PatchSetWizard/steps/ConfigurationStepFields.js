@@ -25,10 +25,14 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
     const [shouldCreateNew, setShouldCreateNew] = useState(true);
     const [selectedPatchSet, setSelectedPatchSet] = useState([]);
 
+    //The first reducer for collection of patch sets, while the second for only specific set for updating
     const { rows, loading } = useSelector(({ PatchSetsStore }) => PatchSetsStore, shallowEqual);
+    const { patchSet } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
 
     useEffect(() => {
-        (!loading && !rows?.length) && dispatch(fetchPatchSetsAction({ filter: { id: shouldEditPatchSet && patchSetID } }));
+        if (!loading && !rows?.length) {
+            dispatch(fetchPatchSetsAction());
+        }
     }, []);
 
     const handleRadioChange = () => {
@@ -38,13 +42,13 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
 
     useEffect(() => {
         if (shouldEditPatchSet) {
-            const [{ name, description, toDate }] = rows.filter(row => row.id === patchSetID);
+            const { name, description, toDate } = patchSet;
 
             formOptions.change('name', name);
             formOptions.change('description', description);
             formOptions.change('toDate', toDate);
         }
-    }, [rows]);
+    }, [patchSet]);
 
     return (
         <Stack hasGutter>
@@ -79,7 +83,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
                             isChecked={shouldCreateNew}
                             name="radio"
                             onChange={handleRadioChange}
-                            label="Create new patch set"
+                            label={shouldEditPatchSet && 'Edit this patch set' || 'Create new patch set'}
                             id="new-set"
                             value=""
                         />
