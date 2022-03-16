@@ -1,5 +1,5 @@
 
-import React, { Fragment, useState, memo } from 'react';
+import React, { Fragment, useState, memo, useEffect } from 'react';
 import propTypes from 'prop-types';
 import FormRenderer from '@data-driven-forms/react-form-renderer/form-renderer';
 import Pf4FormTemplate from '@data-driven-forms/pf4-component-mapper/form-template';
@@ -8,6 +8,7 @@ import WizardMapper from '@data-driven-forms/pf4-component-mapper/wizard';
 import TextField from '@data-driven-forms/pf4-component-mapper/text-field';
 import DatePicker from '@data-driven-forms/pf4-component-mapper/date-picker';
 import { Modal, Wizard } from '@patternfly/react-core';
+import { useDispatch } from 'react-redux';
 
 import ConfigurationStepFields from './steps/ConfigurationStepFields';
 import NameField from './InputFields/NameField';
@@ -20,6 +21,7 @@ import RequestProgress from './steps/RequestProgress';
 import { usePatchSetApi } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import { fetchPatchSetAction, clearPatchSetAction } from '../../store/Actions/Actions';
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
     const [wizardState, setWizardState] = useState({
@@ -29,7 +31,17 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         failed: false
     });
 
-    const onSubmit = usePatchSetApi(wizardState, setWizardState);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (patchSetID) {
+            dispatch(fetchPatchSetAction(patchSetID));
+        }
+
+        return () => dispatch(clearPatchSetAction());
+    }, []);
+
+    const onSubmit = usePatchSetApi(wizardState, setWizardState, patchSetID);
 
     const handleWizardClose = () => {
         setBaselineState({ isOpen: false, systemsIDs: [], patchSetID: undefined });
