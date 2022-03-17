@@ -28,7 +28,8 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         submitted: false,
         formValues: {},
         percent: 0,
-        failed: false
+        failed: false,
+        shouldRefresh: false
     });
 
     const dispatch = useDispatch();
@@ -44,13 +45,10 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
     const onSubmit = usePatchSetApi(wizardState, setWizardState, patchSetID);
 
     const handleWizardClose = () => {
-        setBaselineState({ isOpen: false, systemsIDs: [], patchSetID: undefined });
-        setWizardState({ formValues: {}, submitted: false });
-    };
+        const shouldRefresh = !wizardState.failed && wizardState.submitted;
 
-    const handleWizardOpen = (formValues) => {
-        setBaselineState({ isOpen: true, systemsIDs, patchSetID });
-        setWizardState({ formValues, submitted: false });
+        setBaselineState({ isOpen: false, systemsIDs: [], patchSetID: undefined, shouldRefresh });
+        setWizardState({ formValues: {}, submitted: false });
     };
 
     const mapperExtensions = {
@@ -120,7 +118,6 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
                                 component: (
                                     <RequestProgress
                                         onClose={handleWizardClose}
-                                        setWizardOpen={handleWizardOpen}
                                         state={wizardState}
                                     />
                                 ),
