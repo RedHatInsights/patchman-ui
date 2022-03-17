@@ -7,7 +7,7 @@ import messages from '../Messages';
 import { compoundSortValues, exportNotifications } from './constants';
 import {
     convertLimitOffset, createSystemsSortBy, getLimitFromPageSize,
-    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters
+    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
@@ -306,6 +306,8 @@ export const useOnExport = (prefix, queryParams, formatHandlers, dispatch) => {
 export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
     const onSubmit = React.useCallback((formValues) => {
         const { name, description, toDate, id } = formValues.existing_patch_set || formValues;
+        const fomattedDate = convertDateToISO(toDate);
+
         const { systems } = formValues;
         const config = {
             onUploadProgress: progressEvent => {
@@ -325,11 +327,15 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
                 setWizardState({ ...wizardState, submitted: true, failed: true });
             });
         } else {
-            assignSystemPatchSet({ name, description, toDate, inventory_ids: systems }, config).catch(() => {
+            assignSystemPatchSet({
+                name,
+                description,
+                config: { to_time: fomattedDate },
+                inventory_ids: systems }, config)
+            .catch(() => {
                 setWizardState({ ...wizardState, submitted: true, failed: true });
             });
         }
-
     });
     return onSubmit;
 };

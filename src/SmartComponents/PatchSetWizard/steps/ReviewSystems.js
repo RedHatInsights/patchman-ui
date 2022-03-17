@@ -36,7 +36,9 @@ export const ReviewSystems = ({ systemsIDs, ...props }) => {
     const [queryParams, setQueryParams] = useState({
         page: 1,
         perPage: 20,
-        filter: {}
+        filter: {
+            stale: [true, false]
+        }
     });
 
     useEffect(() => {

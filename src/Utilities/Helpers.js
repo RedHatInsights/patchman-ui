@@ -577,3 +577,20 @@ export const systemsColumnsMerger = defaultColumns => {
 
     return [...nameAndTag, ...systemsListColumns, lastSeen[0]];
 };
+
+export const convertDateToISO = (dateString)  => {
+    const parsedDate = Date.parse(dateString);
+
+    if (isNaN(parsedDate) === false) {
+        let dateObject = new Date(parsedDate);
+        return dateObject.toISOString();
+    }
+
+    return dateString;
+};
+
+export const convertIsoToDate = (isoDate) => {
+    const dateObject = new Date(isoDate);
+    return `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}` +
+        `-${dateObject.getDate().toString().padStart(2, '0')}`;
+};

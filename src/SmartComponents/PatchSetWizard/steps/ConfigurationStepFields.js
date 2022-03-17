@@ -14,6 +14,7 @@ import {
 import SelectExistingSets from '../InputFields/SelectExistingSets';
 import ConfigurationFields from '../InputFields/ConfigurationFields';
 import { fetchPatchSetsAction } from '../../../store/Actions/Actions';
+import { convertIsoToDate } from '../../../Utilities/Helpers';
 
 const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
     const dispatch = useDispatch();
@@ -42,11 +43,11 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
 
     useEffect(() => {
         if (shouldEditPatchSet) {
-            const { name, description, toDate } = patchSet;
+            const { name, description, config: { to_time: toDate } } = patchSet;
 
             formOptions.change('name', name);
             formOptions.change('description', description);
-            formOptions.change('toDate', toDate);
+            formOptions.change('toDate', convertIsoToDate(toDate));
         }
     }, [patchSet]);
 
