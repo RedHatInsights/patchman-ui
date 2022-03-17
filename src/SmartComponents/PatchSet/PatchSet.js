@@ -29,8 +29,9 @@ const PatchSet = ({ history }) => {
 
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = React.useState(true);
-    const [patchSetState, setBaselineState] = React.useState({
+    const [wizardState, setWizardState] = React.useState({
         isOpen: false,
+        shouldRefresh: false,
         patchSetID: undefined,
         systemsIDs: []
     });
@@ -57,11 +58,23 @@ const PatchSet = ({ history }) => {
         [patchSet, selectedRows]
     );
 
+    function apply(params) {
+        dispatch(changePatchSetParams(params));
+    }
+
+    const refreshTable = () => {
+        dispatch(fetchPatchSetsAction({ ...queryParams, page: 1, offset: 0 }));
+    };
+
     React.useEffect(() => {
+        if (wizardState.shouldRefresh === true) {
+            refreshTable();
+        }
+
         return () => {
             dispatch(clearNotifications());
         };
-    }, []);
+    }, [wizardState.shouldRefresh]);
 
     useDeepCompareEffect(() => {
         if (firstMount) {
@@ -93,34 +106,30 @@ const PatchSet = ({ history }) => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    function apply(params) {
-        dispatch(changePatchSetParams(params));
-    }
-
     async function showBaselineModal(rowData) {
-        setBaselineState({ isOpen: true, patchSetID: rowData.id });
+        setWizardState({ isOpen: true, patchSetID: rowData.id });
     }
 
     const handlePatchSetDelete = (rowData) => {
         deletePatchSet(rowData.id).then(() => {
             dispatch(addNotification(patchSetDeleteNotifications.success));
-            apply({ page: 1, offset: 0 });
+            refreshTable();
         }).catch(() => {
             dispatch(addNotification(patchSetDeleteNotifications.error));
         });;
     };
 
-    const CreatePatchSet = useCreatePatchSetButton(setBaselineState);
+    const CreatePatchSet = useCreatePatchSetButton(setWizardState);
     const patchSetRowActions = usePatchSetRowActions(showBaselineModal, handlePatchSetDelete);
 
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSet)} headerOUIA={'advisories'} />
-            {patchSetState.isOpen &&
+            {wizardState.isOpen &&
                 <PatchSetWizard
-                    systemsIDs={patchSetState.systemsIDs}
-                    setBaselineState={setBaselineState}
-                    patchSetID={patchSetState.patchSetID}
+                    systemsIDs={wizardState.systemsIDs}
+                    setBaselineState={setWizardState}
+                    patchSetID={wizardState.patchSetID}
                 />}
             <Main>
                 <TableView

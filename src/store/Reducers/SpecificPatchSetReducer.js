@@ -6,7 +6,9 @@ import {
 
 // Initial State. It should not include page and perPage to persist them dynamically
 export const initialState = {
-    patchSet: {},
+    patchSet: {
+        config: {}
+    },
     status: {},
     error: {}
 };
@@ -14,10 +16,11 @@ export const initialState = {
 export const SpecificPatchSetReducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.FETCH_PATCH_SET + '_FULFILLED': {
-            const { attributes, id } = action.payload.data;
+            const { attributes: { config, name, description }, id } = action?.payload?.data || { config: {} };
+
             return {
                 ...state,
-                patchSet: { ...attributes, id },
+                patchSet: { name, description, config: config || {}, id },
                 error: {},
                 status: { code: action.payload.status, isLoading: false, hasError: false }
             };

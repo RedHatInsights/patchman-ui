@@ -590,6 +590,10 @@ export const convertDateToISO = (dateString)  => {
 };
 
 export const convertIsoToDate = (isoDate) => {
+    if (!isoDate) {
+        return '';
+    }
+
     const dateObject = new Date(isoDate);
     return `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}` +
         `-${dateObject.getDate().toString().padStart(2, '0')}`;
