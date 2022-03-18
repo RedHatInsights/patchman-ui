@@ -4,8 +4,9 @@ import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import searchFilter from '../../../PresentationalComponents/Filters/SearchFilter';
 import osVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
 import { Text, TextContent, Stack, StackItem, TextVariants } from '@patternfly/react-core';
+import { useSelector, shallowEqual } from 'react-redux';
 
-import { createSortBy } from '../../../Utilities/Helpers';
+import { createSortBy, buildSelectedSystemsObj } from '../../../Utilities/Helpers';
 import { createSystemsRowsReview } from '../../../Utilities/DataMappers';
 import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../../Utilities/Hooks';
 import TableView from '../../../PresentationalComponents/TableView/TableView';
@@ -19,14 +20,7 @@ export const ReviewSystems = ({ systemsIDs, ...props }) => {
     const [isLoading, setLoading] = useState(true);
     const [rawData, setRawData] = useState([]);
     const [systems, setSystems] = useState([]);
-    const [selectedRows, setSelectedRows] = useState(() => {
-        const assignedSystemsObject = systemsIDs.reduce((object, system) => {
-            object[system] = true;
-            return object;
-        }, {});
-
-        return assignedSystemsObject;
-    });
+    const [selectedRows, setSelectedRows] = useState(buildSelectedSystemsObj(systemsIDs));
     const [metadata, setMetada] = useState({
         limit: 20,
         offset: 0,
@@ -36,10 +30,10 @@ export const ReviewSystems = ({ systemsIDs, ...props }) => {
     const [queryParams, setQueryParams] = useState({
         page: 1,
         perPage: 20,
-        filter: {
-            stale: [true, false]
-        }
+        filter: {}
     });
+
+    const { assignedSystems } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
 
     useEffect(() => {
         fetchSystems({
@@ -61,6 +55,10 @@ export const ReviewSystems = ({ systemsIDs, ...props }) => {
             createSystemsRowsReview(rawData, selectedRows)
         );
     }, [selectedRows]);
+
+    useEffect(() => {
+        setSelectedRows({ ...selectedRows, ...buildSelectedSystemsObj(assignedSystems) });
+    }, [assignedSystems]);
 
     const apply = (params) => {
         setLoading(true);

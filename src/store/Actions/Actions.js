@@ -1,6 +1,8 @@
-import { fetchAdvisoryDetailsApi, fetchApplicableAdvisoriesApi,
+import {
+    fetchAdvisoryDetailsApi, fetchApplicableAdvisoriesApi,
     fetchApplicablePackagesApi, fetchApplicableSystemAdvisoriesApi, fetchPackageDetailsApi,
-    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails, fetchPatchSets, fetchPatchSet
+    fetchPackagesList, fetchPackageSystems, fetchCvesInfo, fetchSystemDetails, fetchPatchSets, fetchPatchSet,
+    fetchPatchSetSystems
 } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
@@ -236,4 +238,11 @@ export const fetchPatchSetAction = (id) => ({
 export const clearPatchSetAction = () => ({
     type: ActionTypes.CLEAR_PATCH_SET,
     payload: []
+});
+
+export const fetchPatchSetSystemsAction = (id, params) => ({
+    type: ActionTypes.FETCH_PATCH_SET_SYSTEMS,
+    payload: new Promise(resolve => {
+        resolve(fetchPatchSetSystems(id, params));
+    }).then(result => result)
 });

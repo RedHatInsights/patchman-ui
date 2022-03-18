@@ -21,7 +21,7 @@ import RequestProgress from './steps/RequestProgress';
 import { usePatchSetApi } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { fetchPatchSetAction, clearPatchSetAction } from '../../store/Actions/Actions';
+import { fetchPatchSetAction, clearPatchSetAction, fetchPatchSetSystemsAction } from '../../store/Actions/Actions';
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
     const [wizardState, setWizardState] = useState({
@@ -37,6 +37,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
     useEffect(() => {
         if (patchSetID) {
             dispatch(fetchPatchSetAction(patchSetID));
+            dispatch(fetchPatchSetSystemsAction(patchSetID, { limit: -1 }));
         }
 
         return () => dispatch(clearPatchSetAction());

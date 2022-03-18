@@ -215,3 +215,7 @@ export const deletePatchSet = patchSetID => {
 export const fetchPatchSet = id => {
     return createApiCall(`/baselines/${id}`, 'get');
 };
+
+export const fetchPatchSetSystems = (id, params) => {
+    return createApiCall(`/baselines/${id}/systems`, 'get', params);
+};
