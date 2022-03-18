@@ -68,14 +68,14 @@ Note: You will need to set up the Insights environment if you want to develop wi
 
 ### How it works
 
-- any push to the `{REPO}` `master` branch will deploy to a `{REPO}-build` `ci-beta` branch
-- any push to the `{REPO}` `ci-stable` branch will deploy to a `{REPO}-build` `ci-stable` branch
-- any push to the `{REPO}` `qa-beta` branch will deploy to a `{REPO}-build` `qa-beta` branch
-- any push to the `{REPO}` `qa-stable` branch will deploy to a `{REPO}-build` `qa-stable` branch
-- any push to the `{REPO}` `prod-beta` branch will deploy to a `{REPO}-build` `prod-beta` branch
-- any push to the `{REPO}` `prod-stable` branch will deploy to a `{REPO}-build` `prod-stable` branch
-- Pull requests (based on master) will not be pushed to `{REPO}-build` `master` branch
-  - If the PR is accepted and merged, master will be rebuilt and will deploy to `{REPO}-build` `ci-beta` branch
+Any push to the following branches will trigger a build in [patchman-ui-build repository](https://github.com/RedHatInsights/patchman-ui-build) which will deploy to corresponding environment.
+
+| Push to branch in this repo  | Updated branch in build repo  | Environment       | Available at
+| :--------------------------- | :---------------------------- | :---------------- | :-----------
+| master                       | stage-beta                    | stage beta        | https://console.stage.redhat.com/beta
+| stage-stable                 | stage-stable                  | stage stable      | https://console.stage.redhat.com
+| prod-beta                    | prod-beta                     | production beta   | https://console.redhat.com/beta 
+| prod-stable                  | prod-stable                   | production stable | https://console.redhat.com
 
 ## Patternfly
 
