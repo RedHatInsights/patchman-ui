@@ -1,3 +1,10 @@
+## [1.40.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.3...v1.40.4) (2022-03-18)
+
+
+### Bug Fixes
+
+* **PatchSetWizard:** separate request to update and create set ([83aa7ab](https://github.com/RedHatInsights/patchman-ui/commit/83aa7aba6e4548e78d8a069186f0cecb4017d625))
+
 ## [1.40.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.2...v1.40.3) (2022-03-14)
 
 
