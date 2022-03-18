@@ -81,7 +81,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         <Fragment>
             {!wizardState.submitted &&  (
                 <FormRenderer
-                    schema={schema}
+                    schema={schema(patchSetID)}
                     subscription={{ values: true }}
                     FormTemplate={(props) => (
                         <Pf4FormTemplate {...props} showFormControls={false} />
