@@ -20,18 +20,17 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
     const dispatch = useDispatch();
     const formOptions = useFormApi();
     const { input } = useFieldApi(props);
-    const shouldEditPatchSet = patchSetID || false;
+    const shouldShowRadioButtons = (!patchSetID && systemsIDs.length !== 0) || false;
 
     const [shouldApplyExisting, setShouldApplyExisting] = useState(false);
     const [shouldCreateNew, setShouldCreateNew] = useState(true);
     const [selectedPatchSet, setSelectedPatchSet] = useState([]);
 
-    //The first reducer for collection of patch sets, while the second for only specific set for updating
     const { rows, loading } = useSelector(({ PatchSetsStore }) => PatchSetsStore, shallowEqual);
     const { patchSet } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
 
     useEffect(() => {
-        if (!loading && !rows?.length) {
+        if (!loading && !patchSetID) {
             dispatch(fetchPatchSetsAction());
         }
     }, []);
@@ -42,7 +41,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
     };
 
     useEffect(() => {
-        if (shouldEditPatchSet) {
+        if (patchSetID) {
             const { name, description, config: { to_time: toDate } } = patchSet;
 
             formOptions.change('name', name);
@@ -53,17 +52,16 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
 
     return (
         <Stack hasGutter>
-            <TextContent style={{ marginTop: '-15px' }}>
+            {shouldShowRadioButtons && <TextContent style={{ marginTop: '-15px' }}>
                 <Text component={TextVariants.p}>
                     You selected <b>{systemsIDs.length} systems</b>
                 </Text>
-            </TextContent>
+            </TextContent>}
             <StackItem>
                 <Stack hasGutter>
-                    <StackItem>
+                    {shouldShowRadioButtons && (<><StackItem>
                         <Radio
                             isChecked={shouldApplyExisting}
-                            isDisabled={shouldEditPatchSet}
                             name="radio"
                             onChange={handleRadioChange}
                             label="Add to existing patch set"
@@ -84,11 +82,11 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
                             isChecked={shouldCreateNew}
                             name="radio"
                             onChange={handleRadioChange}
-                            label={shouldEditPatchSet && 'Edit this patch set' || 'Create new patch set'}
+                            label={'Create new patch set'}
                             id="new-set"
                             value=""
                         />
-                    </StackItem>
+                    </StackItem></>) || null}
                     <StackItem>
                         {shouldCreateNew ? <ConfigurationFields
                             input={input}

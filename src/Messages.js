@@ -361,6 +361,11 @@ export default defineMessages({
         description: 'description of the patch set wizard',
         defaultMessage: 'Schedule patch set'
     },
+    patchSetEditSet: {
+        id: 'patchSetEditSet',
+        description: 'step name of the patch set wizard',
+        defaultMessage: 'Edit patch set'
+    },
     patchSetNewSet: {
         id: 'patchSetNewSet',
         description: 'step name of the patch set wizard',

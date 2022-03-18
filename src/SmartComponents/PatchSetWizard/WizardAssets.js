@@ -48,7 +48,7 @@ export const toDateComponent = [{
     validate: [{ type: validatorTypes.REQUIRED }]
 }];
 
-export const schema = {
+export const schema = (patchSetID) => ({
     fields: [
         {
             component: componentTypes.WIZARD,
@@ -61,7 +61,7 @@ export const schema = {
             fields: [
                 {
                     name: 'patch-set-config',
-                    title: intl.formatMessage(messages.patchSetNewSet),
+                    title: intl.formatMessage(patchSetID && messages.patchSetEditSet || messages.patchSetNewSet),
                     fields: configurationFields,
                     nextStep: 'systems'
                 },
@@ -92,7 +92,7 @@ export const schema = {
 
         }
     ]
-};
+});
 
 export const validatorMapper = {
     'validate-systems': () => (system) => {
