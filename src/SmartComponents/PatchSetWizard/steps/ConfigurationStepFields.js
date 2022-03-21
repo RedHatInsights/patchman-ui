@@ -20,7 +20,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
     const dispatch = useDispatch();
     const formOptions = useFormApi();
     const { input } = useFieldApi(props);
-    const shouldShowRadioButtons = (!patchSetID && systemsIDs.length !== 0) || false;
+    const shouldShowRadioButtons = (!patchSetID && systemsIDs?.length !== 0) || false;
 
     const [shouldApplyExisting, setShouldApplyExisting] = useState(false);
     const [shouldCreateNew, setShouldCreateNew] = useState(true);
@@ -30,7 +30,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
     const { patchSet } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
 
     useEffect(() => {
-        if (!loading && !patchSetID) {
+        if (!loading && !patchSetID && systemsIDs?.length !== 0) {
             dispatch(fetchPatchSetsAction());
         }
     }, []);
