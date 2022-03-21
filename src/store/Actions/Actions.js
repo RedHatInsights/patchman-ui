@@ -218,7 +218,7 @@ export const fetchPatchSetsAction = params => ({
     }).then(result => result)
 });
 
-export const changePatchSetParams = (params) => ({
+export const changePatchSetsParams = (params) => ({
     type: ActionTypes.CHANGE_PATCH_SET_PARAMS,
     payload: params
 });
@@ -245,4 +245,8 @@ export const fetchPatchSetSystemsAction = (id, params) => ({
     payload: new Promise(resolve => {
         resolve(fetchPatchSetSystems(id, params));
     }).then(result => result)
+});
+export const clearPatchSetsAction = () => ({
+    type: ActionTypes.CLEAR_PATCH_SETS,
+    payload: []
 });

@@ -1,15 +1,32 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import propTypes from 'prop-types';
-import { Select, SelectOption, SelectVariant, FormGroup } from '@patternfly/react-core';
+import { useDispatch, useSelector } from 'react-redux';
+import { Select, SelectOption, SelectVariant, FormGroup, Spinner } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
+import { fetchPatchSetsAction, changePatchSetsParams, clearPatchSetsAction } from '../../../store/Actions/Actions';
 
 const SelectExistingSets = ({ patchSets, setSelectedPatchSet, selectedSets, systems }) => {
+    const dispatch = useDispatch();
     const formOptions = useFormApi();
     const [isOpen, setOpen] = useState(true);
 
-    const patchOptions = useMemo(() =>
-        patchSets.map(set => <SelectOption key={set.id} value={set.name} />),
-    [patchSets]);
+    const rows = useSelector(({ PatchSetsStore }) => PatchSetsStore.rows);
+    const queryParams = useSelector(({ PatchSetsStore }) => PatchSetsStore.queryParams);
+    const status = useSelector(({ PatchSetsStore }) => PatchSetsStore.status);
+
+    useEffect(() => {
+        dispatch(fetchPatchSetsAction({ ...queryParams, limit: 10 }));
+
+        return () => dispatch(clearPatchSetsAction());
+    }, [queryParams.page]);
+
+    const patchOptions = useMemo(() =>{
+        if (status.isLoading) {
+            return [<SelectOption key='loading'><Spinner size="md"/></SelectOption>];
+        }
+
+        return rows.map(set => <SelectOption key={set.id} value={set.name} />);
+    }, [rows, status.isLoading]);
 
     const handleOpen = () => {
         setOpen(!isOpen);
@@ -26,6 +43,11 @@ const SelectExistingSets = ({ patchSets, setSelectedPatchSet, selectedSets, syst
 
     };
 
+    const onViewMoreClick = () => {
+        console.log('view more', queryParams, { ...queryParams, page: queryParams.page + 1 });
+        dispatch(changePatchSetsParams({ ...queryParams, page: queryParams.page + 1 }));
+    };
+
     return (
         <FormGroup fieldId="existing_patch_set" label="Choose a Patch set" isRequired>
             <Select
@@ -37,6 +59,10 @@ const SelectExistingSets = ({ patchSets, setSelectedPatchSet, selectedSets, syst
                 onToggle={handleOpen}
                 isOpen={isOpen}
                 isDisabled={false}
+                loadingVariant={{
+                    text: 'View more',
+                    onClick: onViewMoreClick
+                }}
             >
                 {patchOptions}
             </Select>
