@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import {
@@ -13,11 +13,11 @@ import {
 } from '@patternfly/react-core';
 import SelectExistingSets from '../InputFields/SelectExistingSets';
 import ConfigurationFields from '../InputFields/ConfigurationFields';
-import { fetchPatchSetsAction } from '../../../store/Actions/Actions';
+
 import { convertIsoToDate } from '../../../Utilities/Helpers';
 
 const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
-    const dispatch = useDispatch();
+
     const formOptions = useFormApi();
     const { input } = useFieldApi(props);
     const shouldShowRadioButtons = (!patchSetID && systemsIDs?.length !== 0) || false;
@@ -26,14 +26,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
     const [shouldCreateNew, setShouldCreateNew] = useState(true);
     const [selectedPatchSet, setSelectedPatchSet] = useState([]);
 
-    const { rows, loading } = useSelector(({ PatchSetsStore }) => PatchSetsStore, shallowEqual);
     const { patchSet } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
-
-    useEffect(() => {
-        if (!loading && !patchSetID && systemsIDs?.length !== 0) {
-            dispatch(fetchPatchSetsAction());
-        }
-    }, []);
 
     const handleRadioChange = () => {
         setShouldCreateNew(!shouldCreateNew);
@@ -71,7 +64,6 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
                     </StackItem>
                     <StackItem>
                         {shouldApplyExisting ? <SelectExistingSets
-                            patchSets={rows}
                             setSelectedPatchSet={setSelectedPatchSet}
                             selectedSets={selectedPatchSet}
                             systems={systemsIDs}

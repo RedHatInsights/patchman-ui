@@ -42,6 +42,7 @@ export const PatchSetsReducer = (state = initialState, action) => {
             return fetchRejected(state, action);
 
         case ActionTypes.CHANGE_PATCH_SET_PARAMS:
+            console.log('changepara', action);
             return changeFilters(state, action);
 
         case ActionTypes.SELECT_PATCH_SET_ROW:

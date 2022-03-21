@@ -7,7 +7,7 @@ import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import TableView from '../../PresentationalComponents/TableView/TableView';
-import { fetchPatchSetsAction, changePatchSetParams, selectPatchSetRow } from '../../store/Actions/Actions';
+import { fetchPatchSetsAction, changePatchSetsParams, selectPatchSetRow } from '../../store/Actions/Actions';
 import { fetchPatchSets, deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
@@ -59,7 +59,7 @@ const PatchSet = ({ history }) => {
     );
 
     function apply(params) {
-        dispatch(changePatchSetParams(params));
+        dispatch(changePatchSetsParams(params));
     }
 
     const refreshTable = () => {
