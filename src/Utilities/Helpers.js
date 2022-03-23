@@ -249,7 +249,7 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
         let result = '';
         Object.entries(generateFilter({ system_profile: systemProfile })).forEach(entry => {
             const [key, value] = entry;
-            result = result + '&' + `${key}=${value}`;
+            result = `${result}&${key}=${value}`;
         });
 
         return result;
