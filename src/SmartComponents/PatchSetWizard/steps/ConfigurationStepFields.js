@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
-import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import {
     Text,
     TextContent,
@@ -16,17 +15,16 @@ import ConfigurationFields from '../InputFields/ConfigurationFields';
 
 import { convertIsoToDate } from '../../../Utilities/Helpers';
 
-const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
+const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
 
     const formOptions = useFormApi();
-    const { input } = useFieldApi(props);
     const shouldShowRadioButtons = (!patchSetID && systemsIDs?.length !== 0) || false;
 
     const [shouldApplyExisting, setShouldApplyExisting] = useState(false);
     const [shouldCreateNew, setShouldCreateNew] = useState(true);
     const [selectedPatchSet, setSelectedPatchSet] = useState([]);
 
-    const { patchSet } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
+    const { patchSet, status } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
 
     const handleRadioChange = () => {
         setShouldCreateNew(!shouldCreateNew);
@@ -81,8 +79,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, ...props }) => {
                     </StackItem></>) || null}
                     <StackItem>
                         {shouldCreateNew ? <ConfigurationFields
-                            input={input}
-                            formOptions={formOptions}
+                            isLoading={status.isLoading}
                         /> : null}
                     </StackItem>
                 </Stack>
