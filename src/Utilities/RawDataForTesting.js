@@ -360,3 +360,31 @@ export const packageVersions = {
         next: null, previous: null },
     meta: { limit: 20, offset: 0, sort: ['evra'], filter: {}, total_items: 2 }
 };
+
+export const patchSets = [
+    {
+        name: 'test-set-1',
+        systems: 1,
+        id: 1
+    },
+    {
+        name: 'test-set-2',
+        systems: 0,
+        id: 2
+    },
+    {
+        name: 'test-set-3',
+        systems: 0,
+        id: 3
+    },
+    {
+        name: 'test-set-4',
+        systems: 0,
+        id: 4
+    },
+    {
+        name: 'test-set-5',
+        systems: 0,
+        id: 5
+    }
+];

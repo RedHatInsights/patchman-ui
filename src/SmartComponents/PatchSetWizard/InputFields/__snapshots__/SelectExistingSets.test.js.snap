@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectExistingSets Should calculate Select options after patch-sets are loaded 1`] = `ReactWrapper {}`;

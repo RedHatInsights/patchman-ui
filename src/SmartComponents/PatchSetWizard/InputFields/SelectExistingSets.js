@@ -5,7 +5,7 @@ import { Select, SelectOption, SelectVariant, FormGroup, Spinner } from '@patter
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { fetchPatchSetsAction, changePatchSetsParams, clearPatchSetsAction } from '../../../store/Actions/Actions';
 
-const SelectExistingSets = ({ patchSets, setSelectedPatchSet, selectedSets, systems }) => {
+const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems }) => {
     const dispatch = useDispatch();
     const formOptions = useFormApi();
     const [isOpen, setOpen] = useState(true);
@@ -36,7 +36,7 @@ const SelectExistingSets = ({ patchSets, setSelectedPatchSet, selectedSets, syst
         setOpen(false);
         setSelectedPatchSet(selected);
 
-        const selectedSet = patchSets.filter(set => set.name === selected);
+        const selectedSet = rows.filter(set => set.name === selected);
         if (selectedSet.length === 1) {
             formOptions.change('existing_patch_set', { name: selectedSet[0]?.name, systems, id: selectedSet[0]?.id });
         }
@@ -44,7 +44,6 @@ const SelectExistingSets = ({ patchSets, setSelectedPatchSet, selectedSets, syst
     };
 
     const onViewMoreClick = () => {
-        console.log('view more', queryParams, { ...queryParams, page: queryParams.page + 1 });
         dispatch(changePatchSetsParams({ ...queryParams, page: queryParams.page + 1 }));
     };
 
@@ -71,7 +70,6 @@ const SelectExistingSets = ({ patchSets, setSelectedPatchSet, selectedSets, syst
 };
 
 SelectExistingSets.propTypes = {
-    patchSets: propTypes.array,
     setSelectedPatchSet: propTypes.func,
     selectedSets: propTypes.array,
     systems: propTypes.array
