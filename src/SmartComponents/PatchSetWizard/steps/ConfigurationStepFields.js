@@ -79,7 +79,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
                     </StackItem></>) || null}
                     <StackItem>
                         {shouldCreateNew ? <ConfigurationFields
-                            isLoading={status.isLoading}
+                            isLoading={patchSetID && status.isLoading}
                         /> : null}
                     </StackItem>
                 </Stack>
