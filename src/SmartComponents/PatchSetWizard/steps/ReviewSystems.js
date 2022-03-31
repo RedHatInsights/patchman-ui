@@ -15,7 +15,7 @@ import { reviewSystemColumns } from '../WizardAssets';
 import messages from '../../../Messages';
 import { intl } from '../../../Utilities/IntlProvider';
 
-export const ReviewSystems = ({ systemsIDs, ...props }) => {
+export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     const { input } = useFieldApi(props);
     const [isLoading, setLoading] = useState(true);
     const [rawData, setRawData] = useState([]);
@@ -38,7 +38,7 @@ export const ReviewSystems = ({ systemsIDs, ...props }) => {
     useEffect(() => {
         fetchSystems({
             ...queryParams, filter: { ...queryParams.filter,
-                id: systemsIDs.length > 0 && `in:${systemsIDs.join(',')}` || undefined }
+                id: systemsIDs.length > 0 ? `in:${systemsIDs.join(',')}` : undefined }
         }).then(result => {
             setSystems(createSystemsRowsReview(result.data, selectedRows));
             setMetada(result.meta);
@@ -80,10 +80,15 @@ export const ReviewSystems = ({ systemsIDs, ...props }) => {
             filter: { ...queryParams.filter, id: `in:${systemsIDs.join(',')}` }, limit: -1 });
 
     const selectRows = (toSelect) => {
-        setSelectedRows({ ...selectedRows, [toSelect[0].id]: toSelect[0].selected || undefined });
+        const newSelections = toSelect.reduce((object, system) => {
+            object[system.id] = system.selected || undefined;
+            return object;
+        }, {});
+
+        setSelectedRows({ ...selectedRows, ...newSelections });
     };
 
-    const onSelect = useOnSelect(systems, selectedRows, fetchAllData, selectRows, (system) => system.id);
+    const onSelect = useOnSelect(systems, selectedRows, fetchAllData, selectRows);
 
     return (
         <Stack hasGutter>
