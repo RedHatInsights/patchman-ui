@@ -600,7 +600,7 @@ export const convertIsoToDate = (isoDate) => {
 };
 
 export const buildSelectedSystemsObj = (systemsIDs) => {
-    const assignedSystemsObject = systemsIDs.reduce((object, system) => {
+    const assignedSystemsObject = systemsIDs?.reduce((object, system) => {
         object[system] = true;
         return object;
     }, {});
