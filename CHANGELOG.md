@@ -1,3 +1,10 @@
+# [1.41.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.4...v1.41.0) (2022-04-01)
+
+
+### Features
+
+* **RHIF-22:** enable AAP & MSSQL fitlers ([efa5df4](https://github.com/RedHatInsights/patchman-ui/commit/efa5df4cbaf8caac2805f417f526b2d53c36617d))
+
 ## [1.40.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.3...v1.40.4) (2022-03-18)
 
 
