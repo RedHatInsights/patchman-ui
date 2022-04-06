@@ -129,7 +129,7 @@ const Systems = () => {
         deleteTitle: intl.formatMessage(messages.labelsFiltersReset)
     };
 
-    const fetchAllData = (queryParams) =>
+    const fetchAllData = () =>
         fetchSystems({ ...queryParams, limit: -1 }).then(filterRemediatableSystems);
 
     const selectRows = (toSelect) => {
