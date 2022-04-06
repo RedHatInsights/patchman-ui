@@ -21,17 +21,9 @@ jest.mock('react-redux', () => ({
     useSelector: jest.fn()
 }));
 
-jest.mock('../../store', () => ({
-    ...jest.requireActual('../../store'),
-    getStore: jest.fn(()=>({
-        getState: () => ({ SystemsListStore: { rows: [] } })
-    })),
-    register: jest.fn()
-}));
-
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    fetchAdvisorySystems: jest.fn()
+    fetchAdvisorySystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
 }));
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
@@ -48,9 +40,10 @@ const mockState = {
             total_items: 10
         },
         expandedRows: {},
-        selectedRows: { 'RHSA-2020:2774': true },
+        selectedRows: { 'test-system-1': true },
         error: {},
-        status: 'resolved'
+        status: 'resolved',
+        total: 2
     },
     AdvisorySystemsStore: {
         queryParams: {}
@@ -115,100 +108,46 @@ describe('AdvisorySystems.js', () => {
 
     describe('test entity selecting', () => {
         it('Should unselect all', async() => {
-            const testStore = initStore(mockState);
-            let wrapper;
-            await act(async() => {
-                wrapper = mount(
-                    <Provider store={testStore}>
-                        <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
-                    </Provider>
-                );
-            });
-            await act(async() => {
-                wrapper.update();
-            });
             const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[0].onClick();
-            const dispatchedActions = testStore.getActions();
+            const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
+            expect(dispatchedActions[1].payload).toEqual([{ id: 'test-system-1', selected: false }]);
         });
 
         it('Should select a page', async () => {
-            const testStore = initStore(mockState);
-            let wrapper;
-            await act(async() => {
-                wrapper = mount(
-                    <Provider store={testStore}>
-                        <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
-                    </Provider>
-                );
-            });
-            await act(async() => {
-                wrapper.update();
-            });
-
             const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[1].onClick();
-            const dispatchedActions = testStore.getActions();
+            const dispatchedActions = store.getActions();
 
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
-            expect(bulkSelect.items[1].title).toEqual('Select page (1)');
+            expect(bulkSelect.items[1].title).toEqual('Select page (2)');
+            expect(dispatchedActions[1].payload).toEqual([
+                { id: 'test-system-id-1', selected: 'test-system-id-1' },
+                { id: 'test-system-id-2', selected: 'test-system-id-2' }
+            ]);
         });
 
         it('Should select all', async () => {
-            fetchAdvisorySystems.mockReturnValue(new Promise((resolve) =>  {
-                resolve({ data: systemRows });
-            }));
-            const testStore = initStore(rejectedState);
-
-            let wrapper;
-            await act(async() => {
-                wrapper = mount(
-                    <Provider store={testStore}>
-                        <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
-                    </Provider>
-                );
-            });
-            await act(async() => {
-                wrapper.update();
-            });
-
             const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[2].onClick();
-            expect(fetchAdvisorySystems).toHaveBeenCalled();
-            expect(bulkSelect.items[2].title).toEqual('Select all (0)');
+            expect(fetchAdvisorySystems).toHaveBeenCalledWith({ id: 'RHSA-2020:2755', limit: -1 });
+            expect(bulkSelect.items[2].title).toEqual('Select all (2)');
         });
 
         it('Should handle onSelect', async () => {
-            fetchAdvisorySystems.mockReturnValue(new Promise((resolve) =>  {
-                resolve({ data: systemRows });
-            }));
-            const testStore = initStore(rejectedState);
-
-            let wrapper;
-            await act(async() => {
-                wrapper = mount(
-                    <Provider store={testStore}>
-                        <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
-                    </Provider>
-                );
-            });
-            await act(async() => {
-                wrapper.update();
-            });
-
             const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.onSelect();
-            const dispatchedActions = testStore.getActions();
+            const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(dispatchedActions[1].payload).toEqual([
                 {
-                    id: 'RHSA-2020:2774',
+                    id: 'test-system-1',
                     selected: false
                 }
             ]
@@ -221,8 +160,8 @@ describe('AdvisorySystems.js', () => {
         expect(dedicatedAction).toMatchSnapshot();
     });
 
-    it('Should clear store on unmount', async () => {
-        await act(() => {
+    it('Should clear store on unmount', () => {
+        act(() => {
             wrapper.unmount();
         });
         const dispatchedActions = store.getActions();

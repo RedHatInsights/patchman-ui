@@ -56,9 +56,10 @@ const mockState = {
             total_items: 10
         },
         expandedRows: {},
-        selectedRows: { 'RHSA-2020:2774': true },
+        selectedRows: { 'test-system-1': true },
         error: {},
-        status: 'resolved'
+        status: 'resolved',
+        total: 2
     },
     PackageSystemsStore: {
         queryParams: {}
@@ -133,6 +134,7 @@ describe('PackageSystems.js', () => {
 
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
+            expect(dispatchedActions[1].payload).toEqual([{ id: 'test-system-1', selected: false }]);
         });
 
         it('Should select a page', async () => {
@@ -142,7 +144,7 @@ describe('PackageSystems.js', () => {
             bulkSelect.items[1].onClick();
             const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
-            expect(bulkSelect.items[1].title).toEqual('Select page (1)');
+            expect(bulkSelect.items[1].title).toEqual('Select page (2)');
         });
 
         it('Should select all', async () => {
@@ -150,10 +152,9 @@ describe('PackageSystems.js', () => {
             const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[2].onClick();
-            expect(fetchPackageSystems).toHaveBeenCalled();
-            expect(bulkSelect.items[2].title).toEqual('Select all (0)');
+            expect(fetchPackageSystems).toHaveBeenCalledWith({ limit: -1, package_name: 'testName' });
+            expect(bulkSelect.items[2].title).toEqual('Select all (2)');
         });
-
     });
 
 });

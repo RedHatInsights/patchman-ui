@@ -68,11 +68,11 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                 },
                 Object {
                   "onClick": [Function],
-                  "title": "Select page (1)",
+                  "title": "Select page (2)",
                 },
                 Object {
                   "onClick": [Function],
-                  "title": "Select all (0)",
+                  "title": "Select all (2)",
                 },
               ],
               "onSelect": [Function],
@@ -100,7 +100,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           }
           exportConfig={
             Object {
-              "isDisabled": true,
+              "isDisabled": false,
               "onSelect": [Function],
             }
           }
@@ -401,7 +401,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           onLoad={[Function]}
           paginationProps={
             Object {
-              "isDisabled": true,
+              "isDisabled": false,
             }
           }
           showTags={true}
