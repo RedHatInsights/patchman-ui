@@ -1,7 +1,7 @@
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
-import { exportSystemsCSV, exportSystemsJSON } from '../../Utilities/api';
+import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import Systems from './Systems';
@@ -9,14 +9,6 @@ import toJson from 'enzyme-to-json';
 import { useFeatureFlag } from '../../Utilities/Hooks';
 
 initMocks();
-
-jest.mock('../../store', () => ({
-    ...jest.requireActual('../../store'),
-    getStore: jest.fn(() => ({
-        getState: () => ({ SystemsListStore: { rows: [] } })
-    })),
-    register: jest.fn()
-}));
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -67,8 +59,9 @@ const mockState = {
             total_items: 10
         },
         expandedRows: {},
-        selectedRows: { 'RHSA-2020:2774': true },
+        selectedRows: { 'test-system-id-1': true },
         error: {},
+        total: systemRows.length,
         status: 'resolved'
     },
     GlobalFilterStore: {},
@@ -187,6 +180,68 @@ describe('Systems.js', () => {
 
             const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
             expect(actions.length).toEqual(1);
+        });
+    });
+
+    describe('test entity selecting', () => {
+        it('Should unselect all', () => {
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+
+            bulkSelect.items[0].onClick();
+            const dispatchedActions = store.getActions();
+
+            expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
+            expect(dispatchedActions[1].payload).toEqual([{ id: 'test-system-id-1', selected: false }]);
+            expect(bulkSelect.items[0].title).toEqual('Select none (0)');
+        });
+
+        it('Should select a page', async () => {
+
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+
+            bulkSelect.items[1].onClick();
+            const dispatchedActions = store.getActions();
+
+            expect(dispatchedActions[1].payload).toEqual([
+                { id: 'test-system-id-1', selected: 'test-system-id-1' },
+                { id: 'test-system-id-2', selected: 'test-system-id-2' }
+            ]);
+            expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
+            expect(bulkSelect.items[1].title).toEqual('Select page (2)');
+        });
+
+        it('Should select all with limit=-1', async () => {
+
+            const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
+
+            bulkSelect.items[2].onClick();
+
+            expect(fetchSystems).toHaveBeenCalledWith({ limit: -1 });
+            expect(bulkSelect.items[2].title).toEqual('Select all (2)');
+        });
+
+        it('Should select all filtered systems', async () => {
+            const testState = {
+                ...mockState,
+                entities: { ...mockState.entities, rows: systemRows[0], total: 1 },
+                SystemsStore: { queryParams: { search: 'test-system-1' } }
+            };
+
+            useSelector.mockImplementation(callback => {
+                return callback(testState);
+            });
+
+            const tempStore = initStore(testState);
+            const tempWrapper = mount(<Provider store={tempStore}>
+                <Router><Systems /></Router>
+            </Provider>);
+
+            const { bulkSelect } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+
+            bulkSelect.items[2].onClick();
+
+            expect(fetchSystems).toHaveBeenCalledWith({ limit: -1, search: 'test-system-1' });
+            expect(bulkSelect.items[2].title).toEqual('Select all (1)');
         });
     });
 });
