@@ -244,14 +244,16 @@ export const getFilterValue = (category, key) => {
 };
 
 export const encodeParams = (parameters, shouldTranslateKeys) => {
-    const calculateWorkloads = (systemProfile) => {
+    const calculateWorkloads = ({ sap_sids, ...restOfProfile }) => {
         let result = '';
-        Object.entries(generateFilter({ system_profile: systemProfile })).forEach(entry => {
+        Object.entries(generateFilter({ system_profile: restOfProfile })).forEach(entry => {
             const [key, value] = entry;
             result = `${result}&${key}=${value}`;
         });
 
-        return result;
+        const SIDsFilter = sap_sids?.map(sid => `filter[system_profile][sap_sids][in]=${sid}`).join('&');
+
+        return result.concat(sap_sids ? `&${SIDsFilter}#SIDs=${sap_sids.join(',') }` : '');
     };
 
     const flattenFilters = filter => {
@@ -559,7 +561,7 @@ export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
         && { ansible: { controller_version: 'not_nil' } },
         ...workloads?.['Microsoft SQL']?.isSelected
         && { mssql: { version: 'not_nil' } },
-        ...SIDs?.length > 0 && { sap_sids: `in:${SIDs.join(',')}` }
+        ...SIDs?.length > 0 && { sap_sids: SIDs }
     };
 
     tagsInUrlFormat && (globalFilterConfig.selectedTags = tagsInUrlFormat);
