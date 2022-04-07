@@ -295,9 +295,9 @@ describe('Test global filters', () => {
     ${[]}                              | ${[]}              | ${{ 'Ansible Automation Platform': { isSelected: true } }}                | ${{ selectedTags: [], systemProfile: { ansible: { controller_version: 'not_nil' } } }}
     ${[]}                              | ${[]}              | ${{ 'Microsoft SQL': { isSelected: true } }}                              | ${{ selectedTags: [], systemProfile: { mssql: { version: 'not_nil' } }  }}
     ${[]}                              | ${[]}              | ${{ SAP: { isSelected: true } }}                                          | ${{ selectedTags: [], systemProfile: { sap_system: true } }}
-    ${[]}                              | ${['abc']}         | ${{ SAP: { isSelected: true } }}                                          | ${{ selectedTags: [], systemProfile: { sap_sids: 'in:abc', sap_system: true } }}
-    ${[]}                              | ${['abc', 'bca']}  | ${{ SAP: { isSelected: true }, 'Microsoft SQL': { isSelected: true } }}   | ${{ selectedTags: [], systemProfile: { sap_sids: 'in:abc,bca', sap_system: true, mssql: { version: 'not_nil' } } }}
-    ${['null/key.BnZPeP=tag.MNGmxQ']}  | ${['abc', 'bca']}  | ${{ SAP: { isSelected: true } }}                                              | ${{ selectedTags: ["tags=null%2Fkey.BnZPeP%3Dtag.MNGmxQ"], systemProfile: { sap_sids: 'in:abc,bca', sap_system: true } }}
+    ${[]}                              | ${['abc']}         | ${{ SAP: { isSelected: true } }}                                          | ${{ selectedTags: [], systemProfile: { sap_sids: ['abc'], sap_system: true } }}
+    ${[]}                              | ${['abc', 'bca']}  | ${{ SAP: { isSelected: true }, 'Microsoft SQL': { isSelected: true } }}   | ${{ selectedTags: [], systemProfile: { sap_sids: ['abc', 'bca'], sap_system: true, mssql: { version: 'not_nil' } } }}
+    ${['null/key.BnZPeP=tag.MNGmxQ']}  | ${['abc', 'bca']}  | ${{ SAP: { isSelected: true } }}                                              | ${{ selectedTags: ["tags=null%2Fkey.BnZPeP%3Dtag.MNGmxQ"], systemProfile: { sap_sids: ['abc', 'bca'], sap_system: true } }}
      `('mapGlobalFilters: Should build correct global filters, $tags, $SIDs, $workloads ', ({ tags, SIDs, workloads, result }) => {
          expect(mapGlobalFilters(tags, SIDs, workloads,)).toEqual(result);
     });
