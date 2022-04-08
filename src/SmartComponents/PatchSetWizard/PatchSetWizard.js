@@ -27,7 +27,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
     const [wizardState, setWizardState] = useState({
         submitted: false,
         formValues: {},
-        percent: 0,
+        requestPending: true,
         failed: false,
         shouldRefresh: false
     });

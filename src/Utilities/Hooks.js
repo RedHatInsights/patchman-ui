@@ -304,17 +304,19 @@ export const useOnExport = (prefix, queryParams, formatHandlers, dispatch) => {
 };
 
 export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
+    const handleApiResponse = (response) => response
+    .then(() => {
+        setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: false });
+    })
+    .catch(() => {
+        setWizardState({ ...wizardState, submitted: true, failed: true, requestPending: false });
+    });
+
     const onSubmit = React.useCallback((formValues) => {
         const { name, description, toDate, id } = formValues.existing_patch_set || formValues;
         const fomattedDate = convertDateToISO(toDate);
 
         const { systems } = formValues;
-        const config = {
-            onUploadProgress: progressEvent => {
-                const percent = (progressEvent.loaded / progressEvent.total) * 100;
-                setWizardState({ ...wizardState, submitted: true, percent });
-            }
-        };
 
         const requestConfig = {
             name,
@@ -323,18 +325,13 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
             config: { to_time: fomattedDate }
         };
 
-        if (patchSetID || id) {
+        setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: true });
 
-            updatePatchSets(requestConfig, config, patchSetID || id)
-            .catch(() => {
-                setWizardState({ ...wizardState, submitted: true, failed: true });
-            });
-        } else {
-            assignSystemPatchSet(requestConfig, config)
-            .catch(() => {
-                setWizardState({ ...wizardState, submitted: true, failed: true });
-            });
-        }
+        const response = (patchSetID || id)
+            ? updatePatchSets(requestConfig, patchSetID || id)
+            : assignSystemPatchSet(requestConfig);
+
+        handleApiResponse(response);
     });
     return onSubmit;
 };
