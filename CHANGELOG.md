@@ -1,3 +1,10 @@
+# [1.43.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.42.0...v1.43.0) (2022-04-08)
+
+
+### Features
+
+* **Systems:** patch-set column added ([83d3492](https://github.com/RedHatInsights/patchman-ui/commit/83d34923f9043e20fd03ad342efa50aec0cb38cf))
+
 # [1.42.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.41.0...v1.42.0) (2022-04-08)
 
 
