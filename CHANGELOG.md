@@ -1,3 +1,16 @@
+# [1.42.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.41.0...v1.42.0) (2022-04-08)
+
+
+### Bug Fixes
+
+* **PatchSet:** to_date field is moved into config object ([bba02fb](https://github.com/RedHatInsights/patchman-ui/commit/bba02fb0deced1bcb4da08fbed1889abe9e26336))
+* **PatchSetWizard:** fetchPatchSetsAction is called only assigning a system ([a78d7df](https://github.com/RedHatInsights/patchman-ui/commit/a78d7dfe5269e021b436c58c61b3170185870e41))
+
+
+### Features
+
+* **SPM-1380:** integrate patch set table with patch set actions ([8158aad](https://github.com/RedHatInsights/patchman-ui/commit/8158aadff5d657842949b34c2492e1896d84572e))
+
 # [1.41.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.40.4...v1.41.0) (2022-04-01)
 
 
