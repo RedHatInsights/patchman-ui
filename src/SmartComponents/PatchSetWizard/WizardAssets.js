@@ -99,7 +99,7 @@ export const validatorMapper = {
         if (system === undefined) {
             return;
         }
-        else if (system.length > 0) {
+        else if (Object.keys(system).length > 0) {
             return;
         } else {
             return intl.formatMessage(messages.patchSetNoSystemSelected);

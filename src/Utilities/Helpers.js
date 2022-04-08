@@ -582,8 +582,20 @@ export const convertDateToISO = (dateString)  => {
     const parsedDate = Date.parse(dateString);
 
     if (isNaN(parsedDate) === false) {
-        let dateObject = new Date(parsedDate);
-        return dateObject.toISOString();
+        let date = new Date(parsedDate);
+
+        const tzOffset = -date.getTimezoneOffset();
+        const diff = tzOffset >= 0 ? '+' : '-';
+        const pad = n => `${Math.floor(Math.abs(n))}`.padStart(2, '0');
+
+        return date.getFullYear() +
+                '-' + pad(date.getMonth() + 1) +
+                '-' + pad(date.getDate()) +
+                'T' + pad(date.getHours()) +
+                ':' + pad(date.getMinutes()) +
+                ':' + pad(date.getSeconds()) +
+                diff + pad(tzOffset / 60) +
+                ':' + pad(tzOffset % 60);
     }
 
     return dateString;
@@ -607,3 +619,9 @@ export const buildSelectedSystemsObj = (systemsIDs) => {
 
     return assignedSystemsObject;
 };
+
+export const objUndefinedToFalse = (object) =>
+    Object.keys(object).reduce((modifiedObject, key) => {
+        modifiedObject[key] =  object[key] === undefined ? false : object[key];
+        return modifiedObject;
+    }, {});
