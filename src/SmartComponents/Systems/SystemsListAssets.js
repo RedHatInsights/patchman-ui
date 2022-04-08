@@ -1,16 +1,24 @@
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesIcons, createUpgradableColumn,
-    remediationProvider, createOSColumn } from '../../Utilities/Helpers';
+    remediationProvider, createOSColumn, createPatchSetColumn } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 
 export const systemsListColumns = [
+    {
+        key: 'baseline_name',
+        title: 'Patch set',
+        renderFunc: value => createPatchSetColumn(value),
+        props: {
+            width: 5
+        }
+    },
     {
         key: 'operating_system',
         title: 'OS',
         renderFunc: value => createOSColumn(value),
         props: {
-            width: 10
+            width: 5
         }
     },
     {
