@@ -24,7 +24,7 @@ export function createApiCall(
             data,
             ...requestConfig
         })
-    ).catch(err => console.log(err));
+    ).catch(err => err);
 
     return result;
 }
@@ -196,16 +196,16 @@ export const exportPackageSystemsJSON = (params, packageName) => {
     return fetchFile(params, endpoint, 'application/json');
 };
 
-export const assignSystemPatchSet = (payload, requestConfig) => {
-    return createApiCall(`/baselines`, 'put', null, payload, requestConfig);
+export const assignSystemPatchSet = (payload) => {
+    return createApiCall(`/baselines`, 'put', null, payload);
 };
 
 export const fetchPatchSets = params => {
     return createApiCall(`/baselines`, 'get', params);
 };
 
-export const updatePatchSets = (payload, requestConfig, id) => {
-    return createApiCall(`/baselines/${id}`, 'put', null, payload, requestConfig);
+export const updatePatchSets = (payload, id) => {
+    return createApiCall(`/baselines/${id}`, 'put', null, payload);
 };
 
 export const deletePatchSet = patchSetID => {

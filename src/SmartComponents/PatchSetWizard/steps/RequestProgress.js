@@ -17,10 +17,9 @@ import {
     ExclamationCircleIcon,
     InProgressIcon
 } from '@patternfly/react-icons';
-import ProgressBar from '../../../PresentationalComponents/Snippets/ProgressBar';
 
 const RequestProgress = ({ onClose, state }) => {
-    const { percent, failed } = state;
+    const { requestPending, failed } = state;
 
     return (
         <EmptyState
@@ -31,35 +30,32 @@ const RequestProgress = ({ onClose, state }) => {
                 color={
                     failed
                         ? 'var(--pf-global--danger-color--100)'
-                        : percent === 100
+                        : !requestPending
                             ? 'var(--pf-global--success-color--100)'
                             : undefined
                 }
                 icon={
                     failed
                         ? ExclamationCircleIcon
-                        : percent === 100
-                            ? CheckCircleIcon
-                            : InProgressIcon
+                        : requestPending
+                            ? InProgressIcon
+                            : CheckCircleIcon
                 }
             />
             <Title headingLevel="h1" size="lg">
                 {failed
-                    ? 'Error: Unable to create a patch set'
-                    : percent === 100
-                        ? 'Patch Set creation successfull'
-                        : 'Patch Set creation in progress'}
+                    ? 'Something went wrong'
+                    : requestPending
+                        ? 'Configuration in progress'
+                        : 'Patch set configuration successful'}
             </Title>
             <EmptyStateBody>
                 <Grid hasGutter>
-                    <GridItem>
-                        <ProgressBar percent={percent} failed={failed} />
-                    </GridItem>
-                    {(percent !== 100 && !failed) && (
+                    {(requestPending) && (
                         <><GridItem>
                             <HelperText>
                                 <HelperTextItem variant="indeterminate">
-                                    It may take a few minutes to set up a patch set.
+                                    Please allow a few minutes to set up a patch set.
                                     You will receive a notification when finished</HelperTextItem>
                             </HelperText>
                         </GridItem><GridItem>
@@ -68,12 +64,18 @@ const RequestProgress = ({ onClose, state }) => {
                             </Button>{' '}
                         </GridItem></>
                     )}
-                    {(percent === 100 && !failed) && (
+                    {(!requestPending && !failed) && (
+                        <GridItem>
+                            <Button variant="primary" onClick={onClose}>Return to application</Button>
+                        </GridItem>
+                    )}
+                    {(!requestPending && failed) && (
                         <><GridItem>
                             <HelperText>
                                 <HelperTextItem variant="indeterminate">
-                                    It may take a few minutes to set up a patch set.
-                                    You will receive a notification when finished</HelperTextItem>
+                                    There was a problem processing the patch set. Please try again. If the problem
+                                    persists, contact <a href='https://www.redhat.com/en/services/support'>Red Hat support</a>
+                                </HelperTextItem>
                             </HelperText>
                         </GridItem><GridItem>
                             <Button variant="primary" onClick={onClose}>Return to application</Button>
