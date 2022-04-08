@@ -40,7 +40,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
             ...queryParams, filter: { ...queryParams.filter,
                 id: systemsIDs.length > 0 ? `in:${systemsIDs.join(',')}` : undefined }
         }).then(result => {
-            setSystems(createSystemsRowsReview(result.data, selectedRows));
+            setSystems(createSystemsRowsReview(result.data, buildSelectedSystemsObj([...assignedSystems, ...systemsIDs])));
             setMetada(result.meta);
             setRawData(result.data);
             setLoading(false);
@@ -48,8 +48,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     }, [queryParams.filter, queryParams]);
 
     useEffect(() => {
-        const systemIDs = Object.keys(selectedRows).filter((key) => selectedRows[key]);
-        input.onChange(systemIDs);
+        input.onChange(selectedRows);
 
         setSystems(
             createSystemsRowsReview(rawData, selectedRows)
@@ -77,11 +76,11 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
 
     const fetchAllData = () =>
         fetchSystems({ ...queryParams,
-            filter: { ...queryParams.filter, id: `in:${systemsIDs.join(',')}` }, limit: -1 });
+            filter: { ...queryParams.filter, ...systemsIDs.length > 0 && { id: `in:${systemsIDs.join(',')}` } }, limit: -1 });
 
     const selectRows = (toSelect) => {
         const newSelections = toSelect.reduce((object, system) => {
-            object[system.id] = system.selected || undefined;
+            object[system.id] = system.selected ? true : undefined;
             return object;
         }, {});
 

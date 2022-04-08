@@ -7,7 +7,7 @@ import messages from '../Messages';
 import { compoundSortValues, exportNotifications } from './constants';
 import {
     convertLimitOffset, createSystemsSortBy, getLimitFromPageSize,
-    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO
+    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO, objUndefinedToFalse
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
@@ -316,22 +316,21 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
             }
         };
 
-        if (patchSetID || id) {
-            const systemsPairs = systems.reduce((object, system) => {
-                object[system] = true;
-                return object;
-            }, {});
+        const requestConfig = {
+            name,
+            description,
+            inventory_ids: (patchSetID || id) ? objUndefinedToFalse(systems) : Object.keys(systems),
+            config: { to_time: fomattedDate }
+        };
 
-            updatePatchSets({ name, description, toDate, inventory_ids: systemsPairs }, config, patchSetID || id)
+        if (patchSetID || id) {
+
+            updatePatchSets(requestConfig, config, patchSetID || id)
             .catch(() => {
                 setWizardState({ ...wizardState, submitted: true, failed: true });
             });
         } else {
-            assignSystemPatchSet({
-                name,
-                description,
-                config: { to_time: fomattedDate },
-                inventory_ids: systems }, config)
+            assignSystemPatchSet(requestConfig, config)
             .catch(() => {
                 setWizardState({ ...wizardState, submitted: true, failed: true });
             });

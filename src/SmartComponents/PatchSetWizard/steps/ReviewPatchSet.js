@@ -37,7 +37,9 @@ const ReviewPatchSet = () => {
                         <TextListItem component={TextListItemVariants.dt}>Date:</TextListItem>
                         <TextListItem component={TextListItemVariants.dd}>{toDate}</TextListItem>
                         <TextListItem component={TextListItemVariants.dt}>Selected systems:</TextListItem>
-                        <TextListItem component={TextListItemVariants.dd}>{systems?.length}</TextListItem>
+                        <TextListItem component={TextListItemVariants.dd}>
+                            {systems && Object.values(systems).filter(system => system).length}
+                        </TextListItem>
                     </TextList>
                 </TextContent>
             </StackItem>
