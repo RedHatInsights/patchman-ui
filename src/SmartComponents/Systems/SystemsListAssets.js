@@ -96,17 +96,11 @@ export const systemsRowActions = (showRemediationModal, showBaselineModal) => {
                 );
             }
         },
-        {
+        ...showBaselineModal ? [{
             title: 'Assign to patch set',
             onClick: (event, rowId, rowData) => {
                 showBaselineModal(rowData);
             }
-        },
-        {
-            title: 'Remove from patch set',
-            onClick: (event, rowId, rowData) => {
-                console.log(event, rowId, rowData);
-            }
-        }
+        }] : []
     ];
 };

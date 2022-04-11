@@ -88,16 +88,6 @@ describe('SelectExistingSets', () => {
         expect(selectOptions).toMatchSnapshot();
     });
 
-    it('Should dispatch  changePatchSetsParams action with page=2 on View more button click', () => {
-        wrapper.find(Select).props().loadingVariant.onClick();
-        const actions = store.getActions();
-
-        expect(actions[1]).toEqual({
-            type: 'CHANGE_PATCH_SET_PARAMS',
-            payload: { page: 2, perPage: 20, filter: {} }
-        });
-    });
-
     it('Should handle patch-set selection', () => {
         act(() => wrapper.find(Select).props().onSelect(null, 'test-set-1'));
         expect(mockChage).toHaveBeenCalledWith(
