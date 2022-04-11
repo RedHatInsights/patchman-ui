@@ -1,3 +1,10 @@
+# [1.44.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.43.0...v1.44.0) (2022-04-11)
+
+
+### Features
+
+* **PatchSet:** assign multiple systems, existing patch-set selection filterable, paginated ([6dded43](https://github.com/RedHatInsights/patchman-ui/commit/6dded43c05b51863a841f492500b7a15856a72f8))
+
 # [1.43.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.42.0...v1.43.0) (2022-04-08)
 
 
