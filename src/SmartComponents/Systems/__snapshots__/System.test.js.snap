@@ -606,11 +606,19 @@ exports[`Systems.js should match the snapshot 1`] = `
                       "onClick": [Function],
                       "title": "Assign to patch set",
                     },
-                    Object {
-                      "onClick": [Function],
-                      "title": "Remove from patch set",
-                    },
                   ]
+                }
+                actionsConfig={
+                  Object {
+                    "actions": Array [
+                      <Button
+                        isDisabled={false}
+                        onClick={[Function]}
+                      >
+                        Assign to patch sets
+                      </Button>,
+                    ],
+                  }
                 }
                 activeFiltersConfig={
                   Object {
@@ -654,6 +662,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                       "selectedTags": undefined,
                       "systemProfile": undefined,
                     },
+                    "shouldRefresh": false,
                   }
                 }
                 dedicatedAction={

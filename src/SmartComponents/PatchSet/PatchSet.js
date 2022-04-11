@@ -1,13 +1,14 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import TableView from '../../PresentationalComponents/TableView/TableView';
-import { fetchPatchSetsAction, changePatchSetsParams, selectPatchSetRow } from '../../store/Actions/Actions';
+import { fetchPatchSetsAction, changePatchSetsParams,
+    selectPatchSetRow, clearPatchSetsAction } from '../../store/Actions/Actions';
 import { fetchPatchSets, deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
@@ -53,7 +54,7 @@ const PatchSet = ({ history }) => {
         ({ PatchSetsStore }) => PatchSetsStore.status
     );
 
-    const rows = React.useMemo(
+    const rows = useMemo(
         () => createPatchSetRows(patchSet, selectedRows, queryParams),
         [patchSet, selectedRows]
     );
@@ -66,14 +67,15 @@ const PatchSet = ({ history }) => {
         dispatch(fetchPatchSetsAction({ ...queryParams, page: 1, offset: 0 }));
     };
 
-    React.useEffect(() => {
+    useEffect(() => () => {
+        dispatch(clearPatchSetsAction());
+        dispatch(clearNotifications());
+    }, []);
+
+    useEffect(() => {
         if (wizardState.shouldRefresh === true) {
             refreshTable();
         }
-
-        return () => {
-            dispatch(clearNotifications());
-        };
     }, [wizardState.shouldRefresh]);
 
     useDeepCompareEffect(() => {

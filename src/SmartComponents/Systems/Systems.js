@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TableVariant } from '@patternfly/react-table';
+import { Button } from '@patternfly/react-core';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -50,6 +51,7 @@ const Systems = () => {
     ] = React.useState(() => () => null);
     const [patchSetState, setBaselineState] = React.useState({
         isOpen: false,
+        shouldRefresh: false,
         systemsIDs: []
     });
 
@@ -89,7 +91,7 @@ const Systems = () => {
         setRemediationLoading(false);
     }
 
-    async function showBaselineModal(rowData) {
+    function showBaselineModal(rowData) {
         setBaselineState({ isOpen: true, systemsIDs: [rowData.id] });
     }
 
@@ -167,6 +169,12 @@ const Systems = () => {
         remediationIdentifiers.advisory
     );
 
+    const assignMultipleSystems = () => {
+        setBaselineState({ isOpen: true, systemsIDs: Object.keys(selectedRows) });
+    };
+
+    useEffect(() => patchSetState.shouldRefresh && onSelect('none'), [patchSetState.shouldRefresh]);
+
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
@@ -178,7 +186,6 @@ const Systems = () => {
                 {status.hasError && <ErrorHandler code={status.code} /> ||
                     (
                         <InventoryTable
-
                             isFullView
                             autoRefresh
                             initialLoading
@@ -191,7 +198,8 @@ const Systems = () => {
                                     filter,
                                     systemProfile,
                                     selectedTags
-                                }
+                                },
+                                shouldRefresh: patchSetState.shouldRefresh === true
                             }}
                             paginationProps={{
                                 isDisabled: totalItems === 0
@@ -215,6 +223,14 @@ const Systems = () => {
                             exportConfig={{
                                 isDisabled: totalItems === 0,
                                 onSelect: onExport
+                            }}
+                            actionsConfig={{
+                                actions: [
+                                    <Button onClick={assignMultipleSystems}
+                                        key='assign-multiple-systems'
+                                        isDisabled={selectedCount === 0}>
+                                        {intl.formatMessage(messages.titlesPatchSetAssignMultipleButton)}
+                                    </Button>]
                             }}
                             filterConfig={filterConfig}
                             activeFiltersConfig={activeFiltersConfig}

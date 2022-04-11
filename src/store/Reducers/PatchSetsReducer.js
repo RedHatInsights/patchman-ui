@@ -13,11 +13,12 @@ export const initialState = {
     queryParams: {
         page: 1,
         perPage: 20,
+        offset: 0,
         filter: {}
     },
     status: {},
     metadata: {
-        limit: 25,
+        limit: 20,
         offset: 0,
         total_items: 0
     },
@@ -29,7 +30,7 @@ export const PatchSetsReducer = (state = initialState, action) => {
         case ActionTypes.FETCH_ALL_PATCH_SETS + '_FULFILLED':
             return {
                 ...state,
-                rows: action.payload.data.map(set => ({ ...set.attributes, id: set.id })),
+                rows: action.payload.data?.map(set => ({ ...set.attributes, id: set.id })),
                 metadata: action.payload.meta || {},
                 error: {},
                 status: { code: action.payload.status, isLoading: false, hasError: false }
@@ -46,6 +47,9 @@ export const PatchSetsReducer = (state = initialState, action) => {
 
         case ActionTypes.SELECT_PATCH_SET_ROW:
             return selectRows(state, action);
+
+        case ActionTypes.CLEAR_PATCH_SETS:
+            return initialState;
 
         default:
             return state;

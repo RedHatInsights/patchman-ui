@@ -517,6 +517,11 @@ export default defineMessages({
         description: 'page title with capital letter',
         defaultMessage: 'Patch set'
     },
+    titlesPatchSetAssignMultipleButton: {
+        id: 'titlesPatchSetAssignMultipleButton',
+        description: 'title with capital letters',
+        defaultMessage: 'Assign to patch sets'
+    },
     titlesPatchSystems: {
         id: 'titlesPatchSystems',
         description: 'title for Systems page',
