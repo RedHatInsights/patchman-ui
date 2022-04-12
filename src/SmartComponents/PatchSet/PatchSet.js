@@ -37,7 +37,7 @@ const PatchSet = ({ history }) => {
         systemsIDs: []
     });
 
-    const patchSet = useSelector(
+    const patchSets = useSelector(
         ({ PatchSetsStore }) => PatchSetsStore.rows
     );
 
@@ -55,8 +55,8 @@ const PatchSet = ({ history }) => {
     );
 
     const rows = useMemo(
-        () => createPatchSetRows(patchSet, selectedRows, queryParams),
-        [patchSet, selectedRows]
+        () => createPatchSetRows(patchSets, selectedRows, queryParams),
+        [patchSets, selectedRows]
     );
 
     function apply(params) {
@@ -99,9 +99,9 @@ const PatchSet = ({ history }) => {
 
     const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows, (patchSet) => patchSet.id);
 
-    const onSort = useSortColumn(patchSetColumns, apply, 2);
+    const onSort = useSortColumn(patchSetColumns, apply, 0);
     const sortBy = React.useMemo(
-        () => createSortBy(patchSetColumns, metadata.sort, 2),
+        () => createSortBy(patchSetColumns, metadata.sort, 0),
         [metadata.sort]
     );
 
@@ -147,7 +147,7 @@ const PatchSet = ({ history }) => {
                     tableOUIA={'patch-set-table'}
                     paginationOUIA={'patch-set-pagination'}
                     store={{ rows, metadata, status, queryParams }}
-                    actionsConfig={patchSetRowActions}
+                    actionsConfig={(patchSets?.length > 0) && patchSetRowActions}
                     filterConfig={{
                         items: [
                             searchFilter(apply, queryParams.search,

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from '@patternfly/react-core';
+import { sortable } from '@patternfly/react-table/dist/js';
+
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
@@ -12,6 +14,7 @@ export const patchSetColumns = [
     {
         key: 'name',
         title: 'Name',
+        transforms: [sortable],
         props: {
             width: 50
         }
@@ -19,6 +22,7 @@ export const patchSetColumns = [
     {
         key: 'systems',
         title: 'Systems',
+        transforms: [sortable],
         props: {
             width: 50
         }
