@@ -1,3 +1,15 @@
+# [1.45.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.44.1...v1.45.0) (2022-04-12)
+
+
+### Bug Fixes
+
+* **ConfigurationFields:** validate toDate filed with regex ([cf42568](https://github.com/RedHatInsights/patchman-ui/commit/cf42568690d38d06702a416e62447abf182c345b))
+
+
+### Features
+
+* **PatchSet:** put patch set work under feature flag ([70703c9](https://github.com/RedHatInsights/patchman-ui/commit/70703c90d6e8e062dce98da036a4aa3f0b9f184c))
+
 ## [1.44.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.44.0...v1.44.1) (2022-04-12)
 
 
