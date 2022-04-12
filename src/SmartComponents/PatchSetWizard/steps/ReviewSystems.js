@@ -5,6 +5,7 @@ import searchFilter from '../../../PresentationalComponents/Filters/SearchFilter
 import osVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
 import { Text, TextContent, Stack, StackItem, TextVariants } from '@patternfly/react-core';
 import { useSelector, shallowEqual } from 'react-redux';
+import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 
 import { createSortBy, buildSelectedSystemsObj } from '../../../Utilities/Helpers';
 import { createSystemsRowsReview } from '../../../Utilities/DataMappers';
@@ -17,10 +18,14 @@ import { intl } from '../../../Utilities/IntlProvider';
 
 export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     const { input } = useFieldApi(props);
+    const formOptions = useFormApi();
+    const { values } = formOptions.getState();
+    const defaultSelectedSystems = buildSelectedSystemsObj([...systemsIDs, ...Object.keys(values?.systems || {})]);
+
     const [isLoading, setLoading] = useState(true);
     const [rawData, setRawData] = useState([]);
     const [systems, setSystems] = useState([]);
-    const [selectedRows, setSelectedRows] = useState(buildSelectedSystemsObj(systemsIDs));
+    const [selectedRows, setSelectedRows] = useState(defaultSelectedSystems);
     const [metadata, setMetada] = useState({
         limit: 20,
         offset: 0,
@@ -40,7 +45,12 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
             ...queryParams, filter: { ...queryParams.filter,
                 id: systemsIDs.length > 0 ? `in:${systemsIDs.join(',')}` : undefined }
         }).then(result => {
-            setSystems(createSystemsRowsReview(result.data, buildSelectedSystemsObj([...assignedSystems, ...systemsIDs])));
+            setSystems(
+                createSystemsRowsReview(
+                    result.data,
+                    { ...buildSelectedSystemsObj([...assignedSystems, ...systemsIDs]), ...selectedRows }
+                )
+            );
             setMetada(result.meta);
             setRawData(result.data);
             setLoading(false);
