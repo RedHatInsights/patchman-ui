@@ -45,7 +45,12 @@ export const descriptionComponent = [{
 export const toDateComponent = [{
     name: 'toDate',
     component: 'toDateField',
-    validate: [{ type: validatorTypes.REQUIRED }]
+    validate: [
+        { type: validatorTypes.REQUIRED },
+        { type: validatorTypes.PATTERN,
+            pattern: /^(\d{4})-(\d{2})-(\d{2})$/
+        }
+    ]
 }];
 
 export const schema = (patchSetID) => ({
