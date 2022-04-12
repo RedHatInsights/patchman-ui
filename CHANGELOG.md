@@ -1,3 +1,11 @@
+## [1.44.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.44.0...v1.44.1) (2022-04-12)
+
+
+### Bug Fixes
+
+* **PatchSetTable:** make columns sortable, remove kebab menu on empty table ([f78946e](https://github.com/RedHatInsights/patchman-ui/commit/f78946e66d9fa2178b4955bf49ed0d83499fd1c8))
+* **ReviewSystems:** persist system selection across page and step change ([ab19432](https://github.com/RedHatInsights/patchman-ui/commit/ab19432c5316e1662df09affdfdb8011067decf1))
+
 # [1.44.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.43.0...v1.44.0) (2022-04-11)
 
 
