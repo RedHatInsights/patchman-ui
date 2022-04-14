@@ -1,3 +1,10 @@
+## [1.45.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.45.0...v1.45.1) (2022-04-14)
+
+
+### Bug Fixes
+
+* **Systems:** SPM-1394 fetch filtered data for selection when search param exists ([5be60fb](https://github.com/RedHatInsights/patchman-ui/commit/5be60fb26cbb6c072132936f6242c1ff65784180))
+
 # [1.45.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.44.1...v1.45.0) (2022-04-12)
 
 
