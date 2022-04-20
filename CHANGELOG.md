@@ -1,3 +1,10 @@
+# [1.46.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.45.1...v1.46.0) (2022-04-20)
+
+
+### Features
+
+* **SPM-1311:** assign systems to a patch-set in System details page ([68af2b3](https://github.com/RedHatInsights/patchman-ui/commit/68af2b33d10cf5ac9cc84cfb5712914e24bc781d))
+
 ## [1.45.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.45.0...v1.45.1) (2022-04-14)
 
 
