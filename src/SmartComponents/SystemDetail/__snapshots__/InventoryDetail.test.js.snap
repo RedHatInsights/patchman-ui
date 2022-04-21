@@ -197,6 +197,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                     </PageHeaderTitle>
                     <mockConstructor
                       hideBack={true}
+                      showTags={true}
                     >
                       <div
                         className="testInventoryDetailHead"

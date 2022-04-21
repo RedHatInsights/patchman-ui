@@ -11,10 +11,13 @@ import { createSortBy, buildSelectedSystemsObj } from '../../../Utilities/Helper
 import { createSystemsRowsReview } from '../../../Utilities/DataMappers';
 import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../../Utilities/Hooks';
 import TableView from '../../../PresentationalComponents/TableView/TableView';
+import staleFilter from '../../../PresentationalComponents/Filters/SystemStaleFilter';
+import systemsUpdatableFilter from '../../../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import { fetchSystems } from '../../../Utilities/api';
 import { reviewSystemColumns } from '../WizardAssets';
 import messages from '../../../Messages';
 import { intl } from '../../../Utilities/IntlProvider';
+import { systemsListDefaultFilters } from '../../../Utilities/constants';
 
 export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     const { input } = useFieldApi(props);
@@ -35,7 +38,9 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     const [queryParams, setQueryParams] = useState({
         page: 1,
         perPage: 20,
-        filter: {}
+        filter: {
+            stale: [true, false]
+        }
     });
 
     const { assignedSystems } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
@@ -71,7 +76,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
 
     const apply = (params) => {
         setLoading(true);
-        setQueryParams({ ...queryParams, ...params });
+        setQueryParams((prevQueryParams) => ({ ...prevQueryParams, ...params }));
     };
 
     const onSort = useSortColumn(reviewSystemColumns, apply, 1);
@@ -129,10 +134,13 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
                                 intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
                                 intl.formatMessage(messages.labelsFiltersSearch)
                             ),
+                            staleFilter(apply, queryParams.filter),
+                            systemsUpdatableFilter(apply, queryParams.filter),
                             osVersionFilter(queryParams.filter, apply)
                         ]
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)}
+                    defaultFilters={systemsListDefaultFilters}
                 />
             </StackItem>
         </Stack>
