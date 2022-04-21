@@ -1,14 +1,13 @@
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesIcons, createUpgradableColumn,
-    remediationProvider, createOSColumn, createPatchSetColumn } from '../../Utilities/Helpers';
+    remediationProvider, createOSColumn } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 
 export const systemsListColumns = (isPatchSetEnabled = false) => [
     ...(isPatchSetEnabled ? [{
         key: 'baseline_name',
         title: 'Patch set',
-        renderFunc: value => createPatchSetColumn(value),
         props: {
             width: 5
         }

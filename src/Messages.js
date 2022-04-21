@@ -71,6 +71,11 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Name'
     },
+    labelsColumnsPatchSet: {
+        id: 'labelsColumnsPatchSet',
+        description: 'Label for patch set column',
+        defaultMessage: 'Patch set'
+    },
     labelsColumnsPublishDate: {
         id: 'labelsColumnsPublishDate',
         description: 'shared label',

@@ -10,7 +10,7 @@ import { EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList,
     EmptyPatchSetList, NoPatchSetList, EmptySystemsList } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
-import { createUpgradableColumn, handleLongSynopsis, handlePatchLink, createPatchSetColumnWizard } from './Helpers';
+import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -318,7 +318,7 @@ export const createSystemsRowsReview = (rows, selectedRows) => {
                         title: attributes.os
                     },
                     {
-                        title: createPatchSetColumnWizard(attributes.baseline_name)
+                        title: attributes.baseline_name
                     }
                 ]
             };
