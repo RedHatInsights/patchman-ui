@@ -1508,9 +1508,6 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       className="pf-c-toolbar__item ins-c-primary-toolbar__filter"
                                                     >
                                                       <ConditionalFilter
-                                                        hideLabel={false}
-                                                        id="default-input"
-                                                        isDisabled={false}
                                                         items={
                                                           Array [
                                                             Object {
@@ -1525,8 +1522,6 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             },
                                                           ]
                                                         }
-                                                        useMobileLayout={false}
-                                                        value=""
                                                       >
                                                         <Split
                                                           className="ins-c-conditional-filter"
@@ -1540,13 +1535,10 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                               <div
                                                                 className="pf-l-split__item pf-m-fill"
                                                               >
-                                                                <Text
+                                                                <TextFilter
                                                                   aria-label="search-field"
-                                                                  isDisabled={false}
                                                                   onChange={[Function]}
-                                                                  onSubmit={[Function]}
                                                                   placeholder="Filter by CVE ID"
-                                                                  value=""
                                                                 >
                                                                   <TextInput
                                                                     aria-label="search-field"
@@ -1566,6 +1558,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                       data-ouia-component-type="PF4/TextInput"
                                                                       innerRef={null}
                                                                       isDisabled={false}
+                                                                      isIconSprite={false}
                                                                       isLeftTruncated={false}
                                                                       isReadOnly={false}
                                                                       isRequired={false}
@@ -1626,7 +1619,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                       />
                                                                     </svg>
                                                                   </SearchIcon>
-                                                                </Text>
+                                                                </TextFilter>
                                                               </div>
                                                             </SplitItem>
                                                           </div>
@@ -1643,14 +1636,12 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                   undefined,
                                                 ]
                                               }
-                                              dropdownProps={Object {}}
                                               exportConfig={
                                                 Object {
                                                   "isDisabled": false,
                                                   "onSelect": undefined,
                                                 }
                                               }
-                                              onSelect={[Function]}
                                               overflowActions={Array []}
                                             >
                                               <ToolbarItem
@@ -2599,7 +2590,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                 <Table
                                   aria-label="Patch table view"
                                   borders={true}
-                                  canCollapseAll={true}
+                                  canCollapseAll={false}
                                   canSelectAll={false}
                                   canSortFavorites={true}
                                   cells={
@@ -2848,7 +2839,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "allRowsExpanded": false,
                                             "allRowsSelected": false,
                                             "areActionsDisabled": undefined,
-                                            "canCollapseAll": true,
+                                            "canCollapseAll": false,
                                             "canSelectAll": false,
                                             "canSortFavorites": true,
                                             "collapseAllAriaLabel": "",
@@ -2904,7 +2895,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "allRowsExpanded": false,
                                             "allRowsSelected": false,
                                             "areActionsDisabled": undefined,
-                                            "canCollapseAll": true,
+                                            "canCollapseAll": false,
                                             "canSelectAll": false,
                                             "canSortFavorites": true,
                                             "collapseAllAriaLabel": "",
@@ -2961,7 +2952,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                             "allRowsExpanded": false,
                                             "allRowsSelected": false,
                                             "areActionsDisabled": undefined,
-                                            "canCollapseAll": true,
+                                            "canCollapseAll": false,
                                             "canSelectAll": false,
                                             "canSortFavorites": true,
                                             "collapseAllAriaLabel": "",
@@ -3088,7 +3079,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
-                                                          "canCollapseAll": true,
+                                                          "canCollapseAll": false,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
                                                           "collapseAllAriaLabel": "",
@@ -3144,7 +3135,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
-                                                          "canCollapseAll": true,
+                                                          "canCollapseAll": false,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
                                                           "collapseAllAriaLabel": "",
@@ -3201,7 +3192,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
-                                                          "canCollapseAll": true,
+                                                          "canCollapseAll": false,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
                                                           "collapseAllAriaLabel": "",
@@ -3313,7 +3304,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "allRowsExpanded": false,
                                                                   "allRowsSelected": false,
                                                                   "areActionsDisabled": undefined,
-                                                                  "canCollapseAll": true,
+                                                                  "canCollapseAll": false,
                                                                   "canSelectAll": false,
                                                                   "canSortFavorites": true,
                                                                   "collapseAllAriaLabel": "",
@@ -3369,7 +3360,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "allRowsExpanded": false,
                                                                   "allRowsSelected": false,
                                                                   "areActionsDisabled": undefined,
-                                                                  "canCollapseAll": true,
+                                                                  "canCollapseAll": false,
                                                                   "canSelectAll": false,
                                                                   "canSortFavorites": true,
                                                                   "collapseAllAriaLabel": "",
@@ -3426,7 +3417,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                   "allRowsExpanded": false,
                                                                   "allRowsSelected": false,
                                                                   "areActionsDisabled": undefined,
-                                                                  "canCollapseAll": true,
+                                                                  "canCollapseAll": false,
                                                                   "canSelectAll": false,
                                                                   "canSortFavorites": true,
                                                                   "collapseAllAriaLabel": "",
@@ -3805,7 +3796,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "allRowsExpanded": false,
                                                       "allRowsSelected": false,
                                                       "areActionsDisabled": undefined,
-                                                      "canCollapseAll": true,
+                                                      "canCollapseAll": false,
                                                       "canSelectAll": false,
                                                       "canSortFavorites": true,
                                                       "collapseAllAriaLabel": "",
@@ -3861,7 +3852,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "allRowsExpanded": false,
                                                       "allRowsSelected": false,
                                                       "areActionsDisabled": undefined,
-                                                      "canCollapseAll": true,
+                                                      "canCollapseAll": false,
                                                       "canSelectAll": false,
                                                       "canSortFavorites": true,
                                                       "collapseAllAriaLabel": "",
@@ -3918,7 +3909,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                       "allRowsExpanded": false,
                                                       "allRowsSelected": false,
                                                       "areActionsDisabled": undefined,
-                                                      "canCollapseAll": true,
+                                                      "canCollapseAll": false,
                                                       "canSelectAll": false,
                                                       "canSortFavorites": true,
                                                       "collapseAllAriaLabel": "",
@@ -5044,7 +5035,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
-                                                          "canCollapseAll": true,
+                                                          "canCollapseAll": false,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
                                                           "collapseAllAriaLabel": "",
@@ -5100,7 +5091,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
-                                                          "canCollapseAll": true,
+                                                          "canCollapseAll": false,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
                                                           "collapseAllAriaLabel": "",
@@ -5157,7 +5148,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                           "allRowsExpanded": false,
                                                           "allRowsSelected": false,
                                                           "areActionsDisabled": undefined,
-                                                          "canCollapseAll": true,
+                                                          "canCollapseAll": false,
                                                           "canSelectAll": false,
                                                           "canSortFavorites": true,
                                                           "collapseAllAriaLabel": "",
@@ -6594,7 +6585,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -6650,7 +6641,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -6707,7 +6698,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7017,7 +7008,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7073,7 +7064,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7130,7 +7121,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7440,7 +7431,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7496,7 +7487,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7553,7 +7544,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7863,7 +7854,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7919,7 +7910,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -7976,7 +7967,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -8286,7 +8277,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -8342,7 +8333,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -8399,7 +8390,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -8709,7 +8700,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -8765,7 +8756,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -8822,7 +8813,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -9132,7 +9123,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -9188,7 +9179,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -9245,7 +9236,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -9555,7 +9546,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -9611,7 +9602,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -9668,7 +9659,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -9978,7 +9969,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -10034,7 +10025,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -10091,7 +10082,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -10401,7 +10392,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -10457,7 +10448,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -10514,7 +10505,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                                     "allRowsExpanded": false,
                                                                     "allRowsSelected": false,
                                                                     "areActionsDisabled": undefined,
-                                                                    "canCollapseAll": true,
+                                                                    "canCollapseAll": false,
                                                                     "canSelectAll": false,
                                                                     "canSortFavorites": true,
                                                                     "collapseAllAriaLabel": "",
@@ -10825,9 +10816,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                   perPage={10}
                                   totalItems={12}
                                 >
-                                  <TableToolbar
-                                    isFooter={false}
-                                  >
+                                  <TableToolbar>
                                     <Toolbar
                                       className="ins-c-table__toolbar"
                                       data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"

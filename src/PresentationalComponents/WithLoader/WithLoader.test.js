@@ -19,7 +19,6 @@ describe('WithLoader', () => {
         const skeleton = wrapper.find('Skeleton');
         expect(skeleton).toBeTruthy();
         expect(wrapper.find('Skeleton').props()).toEqual({
-            size: 'md',
             isDark: true
         });
     });

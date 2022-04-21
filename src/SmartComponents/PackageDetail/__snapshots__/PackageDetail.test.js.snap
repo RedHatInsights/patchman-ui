@@ -212,10 +212,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                       data-ouia-component-type="PF4/Title"
                       data-ouia-safe={true}
                       widget-type="InsightsPageHeaderTitle"
-                    >
-                       
-                       
-                    </h1>
+                    />
                   </Title>
                 </PageHeaderTitle>
                 <PackageHeader
@@ -229,8 +226,8 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
               </section>
             </PageHeader>
           </Header>
-          <Connect(Main)>
-            <Main>
+          <Connect(InternalMain)>
+            <InternalMain>
               <section
                 className="pf-l-page__main-section pf-c-page__main-section"
                 page-type=""
@@ -278,8 +275,8 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                   </div>
                 </Stack>
               </section>
-            </Main>
-          </Connect(Main)>
+            </InternalMain>
+          </Connect(InternalMain)>
         </PackageDetail>
       </withRouter(PackageDetail)>
     </Router>

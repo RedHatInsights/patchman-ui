@@ -72,9 +72,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                     data-ouia-safe={true}
                     widget-type="InsightsPageHeaderTitle"
                   >
-                     
                     Patch systems
-                     
                   </h1>
                 </Title>
               </PageHeaderTitle>
@@ -85,14 +83,14 @@ exports[`Systems.js should match the snapshot 1`] = `
           apply={[Function]}
           queryParams={Object {}}
         >
-          <Connect(Main)
+          <Connect(InternalMain)
             style={
               Object {
                 "paddingBottom": 0,
               }
             }
           >
-            <Main
+            <InternalMain
               style={
                 Object {
                   "paddingBottom": 0,
@@ -586,11 +584,11 @@ exports[`Systems.js should match the snapshot 1`] = `
                   </div>
                 </Grid>
               </section>
-            </Main>
-          </Connect(Main)>
+            </InternalMain>
+          </Connect(InternalMain)>
         </SystemsStatusreport>
-        <Connect(Main)>
-          <Main>
+        <Connect(InternalMain)>
+          <InternalMain>
             <section
               className="pf-l-page__main-section pf-c-page__main-section"
               page-type=""
@@ -764,6 +762,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                             position="left"
                             removeSelectionAriaLabel="Remove"
                             selections={Array []}
+                            shouldResetOnSelect={true}
                             style={
                               Object {
                                 "maxHeight": "400px",
@@ -1022,8 +1021,8 @@ exports[`Systems.js should match the snapshot 1`] = `
                 </div>
               </mockConstructor>
             </section>
-          </Main>
-        </Connect(Main)>
+          </InternalMain>
+        </Connect(InternalMain)>
       </Systems>
     </Router>
   </BrowserRouter>

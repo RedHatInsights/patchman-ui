@@ -1,15 +1,11 @@
 /* eslint-disable */
 import toJson from 'enzyme-to-json';
 import React from 'react';
-import { StaticRouter } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './Header';
 
 const withLink = Component => {
-    return mount(
-        <StaticRouter location={'/'} context={{}}>
-            {Component}
-        </StaticRouter>
-    );
+    return mount(<Router>{Component}</Router>);
 };
 describe('Header component', () => {
     it('should render with header as empty string', () => {
