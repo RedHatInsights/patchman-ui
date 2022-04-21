@@ -10,6 +10,7 @@ export const SystemDetailStore = (state = initialState, { type, payload }) => {
     switch (type) {
         case 'FETCH_SYSTEM_DETAIL_FULFILLED':
             state.hasThirdPartyRepo = payload.data?.attributes.third_party;
+            state.patchSetName = payload.data?.attributes.baseline_name;
             return state;
         case 'LOAD_ENTITY_FULFILLED':
             return {

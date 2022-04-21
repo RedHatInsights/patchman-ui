@@ -3,7 +3,7 @@ import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import {
     BugIcon, CheckIcon, FlagIcon,
     EnhancementIcon, InfoCircleIcon, LongArrowAltUpIcon,
-    SecurityIcon, PficonTemplateIcon
+    SecurityIcon
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import { findIndex, flatten } from 'lodash';
@@ -627,20 +627,3 @@ export const objUndefinedToFalse = (object) =>
         return modifiedObject;
     }, {});
 
-export const createPatchSetColumn = (value) => value && (
-    <Tooltip content={value} position='right'>
-        <PficonTemplateIcon size="sm" color={'var(--pf-global--info-color--100)'} />
-    </Tooltip>
-);
-
-export const createPatchSetColumnWizard = (value) => value && (
-    <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
-        <FlexItem spacer={{ default: 'spacerSm' }}>
-            <PficonTemplateIcon size="sm" color={'var(--pf-global--info-color--100)'} />
-        </FlexItem>
-        <FlexItem spacer={{ default: 'spacerSm' }}>
-            {value}
-        </FlexItem>
-    </Flex>
-
-);

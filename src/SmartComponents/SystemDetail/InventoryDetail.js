@@ -9,7 +9,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { setPageTitle, useFeatureFlag } from '../../Utilities/Hooks';
 import { InventoryDetailHead, AppInfo, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
-import { Alert } from '@patternfly/react-core';
+import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import propTypes from 'prop-types';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -30,8 +30,8 @@ const InventoryDetail = ({ match }) => {
         ({ entityDetails }) => entityDetails && entityDetails.entity
     );
 
-    const hasThirdPartyRepo = useSelector(
-        ({ entityDetails }) => entityDetails && entityDetails.hasThirdPartyRepo
+    const { hasThirdPartyRepo, patchSetName } = useSelector(
+        ({ entityDetails }) => entityDetails ?? {}
     );
     const entityId = match.params?.inventoryId;
     useEffect(() => {
@@ -73,18 +73,31 @@ const InventoryDetail = ({ match }) => {
                     }
                 ]}
             >
-                <InventoryDetailHead hideBack actions={isPatchSetEnabled && [
-                    {
-                        title: intl.formatMessage(messages.titlesPatchSetAssignMultipleButton),
-                        key: 'assign-to-patch-set',
-                        onClick: showBaselineModal
-                    }]}
+                <InventoryDetailHead hideBack
+                    showTags
+                    actions={isPatchSetEnabled && [
+                        {
+                            title: intl.formatMessage(messages.titlesPatchSetAssignMultipleButton),
+                            key: 'assign-to-patch-set',
+                            onClick: showBaselineModal
+                        }]}
                 >
-                    { hasThirdPartyRepo &&
-                        (<Alert className='pf-u-mt-md' isInline variant="info"
-                            title={intl.formatMessage(messages.textThirdPartyInfo)}>
-                        </Alert>)
-                    }
+                    <Grid>
+                        <GridItem>
+                            <TextContent>
+                                <Text>
+                                    {`${intl.formatMessage(messages.labelsColumnsPatchSet)}: ${patchSetName}`}
+                                </Text>
+                            </TextContent>
+                        </GridItem>
+                        <GridItem>
+                            {hasThirdPartyRepo &&
+                                (<Alert className='pf-u-mt-md' isInline variant="info"
+                                    title={intl.formatMessage(messages.textThirdPartyInfo)}>
+                                </Alert>)
+                            }
+                        </GridItem>
+                    </Grid>
                 </InventoryDetailHead>
             </Header>
             <Main>
