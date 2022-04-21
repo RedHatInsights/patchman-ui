@@ -7,14 +7,21 @@ export const reviewSystemColumns = [{
     key: 'display_name',
     title: 'Name',
     props: {
-        width: 40
+        width: 50
     }
 },
 {
     title: 'OS',
     key: 'os',
     props: {
-        width: 60
+        width: 25
+    }
+},
+{
+    key: 'baseline_name',
+    title: 'Patch set',
+    props: {
+        width: 25
     }
 }
 ];
