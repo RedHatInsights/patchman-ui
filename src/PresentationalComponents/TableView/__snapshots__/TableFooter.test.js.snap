@@ -8,9 +8,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
   perPage={10}
   totalItems={10}
 >
-  <TableToolbar
-    isFooter={false}
-  >
+  <TableToolbar>
     <Toolbar
       className="ins-c-table__toolbar"
       data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"

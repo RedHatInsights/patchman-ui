@@ -212,10 +212,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                       data-ouia-component-type="PF4/Title"
                       data-ouia-safe={true}
                       widget-type="InsightsPageHeaderTitle"
-                    >
-                       
-                       
-                    </h1>
+                    />
                   </Title>
                 </PageHeaderTitle>
                 <Component
@@ -247,8 +244,8 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
               </section>
             </PageHeader>
           </Header>
-          <Connect(Main)>
-            <Main>
+          <Connect(InternalMain)>
+            <InternalMain>
               <section
                 className="pf-l-page__main-section pf-c-page__main-section"
                 page-type=""
@@ -298,8 +295,8 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                   </div>
                 </Stack>
               </section>
-            </Main>
-          </Connect(Main)>
+            </InternalMain>
+          </Connect(InternalMain)>
         </AdvisoryDetail>
       </withRouter(AdvisoryDetail)>
     </Router>

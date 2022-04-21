@@ -94,7 +94,7 @@ exports[`TableView TableView 1`] = `
   <Table
     aria-label="Patch table view"
     borders={true}
-    canCollapseAll={true}
+    canCollapseAll={false}
     canSelectAll={false}
     canSortFavorites={true}
     cells={Array []}
@@ -215,7 +215,7 @@ exports[`TableView TableView 2`] = `
   <Table
     aria-label="Patch table view"
     borders={true}
-    canCollapseAll={true}
+    canCollapseAll={false}
     canSelectAll={false}
     canSortFavorites={true}
     cells={Array []}
@@ -336,7 +336,7 @@ exports[`TableView test table props TableView 1`] = `
   <Table
     aria-label="Patch table view"
     borders={true}
-    canCollapseAll={true}
+    canCollapseAll={false}
     canSelectAll={false}
     canSortFavorites={true}
     cells={Array []}

@@ -165,6 +165,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                       position="left"
                       removeSelectionAriaLabel="Remove"
                       selections={Array []}
+                      shouldResetOnSelect={true}
                       style={
                         Object {
                           "maxHeight": "400px",

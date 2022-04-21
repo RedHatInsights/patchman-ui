@@ -1,10 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component should render with 1 breadcrumb item and last is active 1`] = `
-<StaticRouter
-  context={Object {}}
-  location="/"
->
+<BrowserRouter>
   <Router
     history={
       Object {
@@ -14,6 +11,7 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
@@ -25,7 +23,6 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
         "replace": [Function],
       }
     }
-    staticContext={Object {}}
   >
     <Header
       breadcrumbs={
@@ -119,24 +116,18 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
                 data-ouia-component-type="PF4/Title"
                 data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
-              >
-                 
-                 
-              </h1>
+              />
             </Title>
           </PageHeaderTitle>
         </section>
       </PageHeader>
     </Header>
   </Router>
-</StaticRouter>
+</BrowserRouter>
 `;
 
 exports[`Header component should render with 2 breadcrumb items and last is active 1`] = `
-<StaticRouter
-  context={Object {}}
-  location="/"
->
+<BrowserRouter>
   <Router
     history={
       Object {
@@ -146,6 +137,7 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
@@ -157,7 +149,6 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
         "replace": [Function],
       }
     }
-    staticContext={Object {}}
   >
     <Header
       breadcrumbs={
@@ -320,24 +311,18 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                 data-ouia-component-type="PF4/Title"
                 data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
-              >
-                 
-                 
-              </h1>
+              />
             </Title>
           </PageHeaderTitle>
         </section>
       </PageHeader>
     </Header>
   </Router>
-</StaticRouter>
+</BrowserRouter>
 `;
 
 exports[`Header component should render with 3 breadcrumb items and last is active 1`] = `
-<StaticRouter
-  context={Object {}}
-  location="/"
->
+<BrowserRouter>
   <Router
     history={
       Object {
@@ -347,6 +332,7 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
@@ -358,7 +344,6 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
         "replace": [Function],
       }
     }
-    staticContext={Object {}}
   >
     <Header
       breadcrumbs={
@@ -591,24 +576,18 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                 data-ouia-component-type="PF4/Title"
                 data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
-              >
-                 
-                 
-              </h1>
+              />
             </Title>
           </PageHeaderTitle>
         </section>
       </PageHeader>
     </Header>
   </Router>
-</StaticRouter>
+</BrowserRouter>
 `;
 
 exports[`Header component should render with empty breadcrumb 1`] = `
-<StaticRouter
-  context={Object {}}
-  location="/"
->
+<BrowserRouter>
   <Router
     history={
       Object {
@@ -618,6 +597,7 @@ exports[`Header component should render with empty breadcrumb 1`] = `
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
@@ -629,7 +609,6 @@ exports[`Header component should render with empty breadcrumb 1`] = `
         "replace": [Function],
       }
     }
-    staticContext={Object {}}
   >
     <Header
       breadcrumbs={Array []}
@@ -675,24 +654,18 @@ exports[`Header component should render with empty breadcrumb 1`] = `
                 data-ouia-component-type="PF4/Title"
                 data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
-              >
-                 
-                 
-              </h1>
+              />
             </Title>
           </PageHeaderTitle>
         </section>
       </PageHeader>
     </Header>
   </Router>
-</StaticRouter>
+</BrowserRouter>
 `;
 
 exports[`Header component should render with header Hello world 1`] = `
-<StaticRouter
-  context={Object {}}
-  location="/"
->
+<BrowserRouter>
   <Router
     history={
       Object {
@@ -702,6 +675,7 @@ exports[`Header component should render with header Hello world 1`] = `
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
@@ -713,7 +687,6 @@ exports[`Header component should render with header Hello world 1`] = `
         "replace": [Function],
       }
     }
-    staticContext={Object {}}
   >
     <Header
       title="Hello world"
@@ -742,9 +715,7 @@ exports[`Header component should render with header Hello world 1`] = `
                 data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
               >
-                 
                 Hello world
-                 
               </h1>
             </Title>
           </PageHeaderTitle>
@@ -752,14 +723,11 @@ exports[`Header component should render with header Hello world 1`] = `
       </PageHeader>
     </Header>
   </Router>
-</StaticRouter>
+</BrowserRouter>
 `;
 
 exports[`Header component should render with header as empty string 1`] = `
-<StaticRouter
-  context={Object {}}
-  location="/"
->
+<BrowserRouter>
   <Router
     history={
       Object {
@@ -769,6 +737,7 @@ exports[`Header component should render with header as empty string 1`] = `
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
@@ -780,7 +749,6 @@ exports[`Header component should render with header as empty string 1`] = `
         "replace": [Function],
       }
     }
-    staticContext={Object {}}
   >
     <Header
       title=""
@@ -808,24 +776,18 @@ exports[`Header component should render with header as empty string 1`] = `
                 data-ouia-component-type="PF4/Title"
                 data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
-              >
-                 
-                 
-              </h1>
+              />
             </Title>
           </PageHeaderTitle>
         </section>
       </PageHeader>
     </Header>
   </Router>
-</StaticRouter>
+</BrowserRouter>
 `;
 
 exports[`Header component should render without to attribute 1`] = `
-<StaticRouter
-  context={Object {}}
-  location="/"
->
+<BrowserRouter>
   <Router
     history={
       Object {
@@ -835,6 +797,7 @@ exports[`Header component should render without to attribute 1`] = `
         "go": [Function],
         "goBack": [Function],
         "goForward": [Function],
+        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
@@ -846,7 +809,6 @@ exports[`Header component should render without to attribute 1`] = `
         "replace": [Function],
       }
     }
-    staticContext={Object {}}
   >
     <Header
       breadcrumbs={
@@ -918,15 +880,12 @@ exports[`Header component should render without to attribute 1`] = `
                 data-ouia-component-type="PF4/Title"
                 data-ouia-safe={true}
                 widget-type="InsightsPageHeaderTitle"
-              >
-                 
-                 
-              </h1>
+              />
             </Title>
           </PageHeaderTitle>
         </section>
       </PageHeader>
     </Header>
   </Router>
-</StaticRouter>
+</BrowserRouter>
 `;

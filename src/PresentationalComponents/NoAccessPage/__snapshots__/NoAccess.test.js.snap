@@ -5,8 +5,8 @@ exports[`RegisterPage Should match the snapshot 1`] = `
   <Header
     title="Patch"
   />
-  <Connect(Main)>
+  <Connect(InternalMain)>
     <ErrorHandler />
-  </Connect(Main)>
+  </Connect(InternalMain)>
 </Fragment>
 `;

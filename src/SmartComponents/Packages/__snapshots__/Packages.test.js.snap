@@ -65,17 +65,15 @@ exports[`Packages.js should match the snapshot 1`] = `
                     data-ouia-safe={true}
                     widget-type="InsightsPageHeaderTitle"
                   >
-                     
                     Patch packages
-                     
                   </h1>
                 </Title>
               </PageHeaderTitle>
             </section>
           </PageHeader>
         </Header>
-        <Connect(Main)>
-          <Main>
+        <Connect(InternalMain)>
+          <InternalMain>
             <section
               className="pf-l-page__main-section pf-c-page__main-section"
               page-type=""
@@ -334,9 +332,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       className="pf-c-toolbar__item ins-c-primary-toolbar__filter"
                                     >
                                       <ConditionalFilter
-                                        hideLabel={false}
-                                        id="default-input"
-                                        isDisabled={false}
                                         items={
                                           Array [
                                             Object {
@@ -370,8 +365,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             },
                                           ]
                                         }
-                                        useMobileLayout={false}
-                                        value=""
                                       >
                                         <Split
                                           className="ins-c-conditional-filter"
@@ -410,6 +403,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   ouiaId="ConditionalFilter"
                                                   toggle={
                                                     <DropdownToggle
+                                                      aria-label="Conditional filter"
                                                       className=""
                                                       isDisabled={false}
                                                       onToggle={[Function]}
@@ -461,6 +455,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     position="left"
                                                     toggle={
                                                       <DropdownToggle
+                                                        aria-label="Conditional filter"
                                                         className=""
                                                         isDisabled={false}
                                                         onToggle={[Function]}
@@ -487,6 +482,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     >
                                                       <DropdownToggle
                                                         aria-haspopup={true}
+                                                        aria-label="Conditional filter"
                                                         className=""
                                                         getMenuRef={[Function]}
                                                         id="pf-dropdown-toggle-id-5"
@@ -509,6 +505,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                               <button
                                                                 aria-expanded="false"
                                                                 aria-haspopup="true"
+                                                                aria-label="Conditional filter"
                                                                 class="pf-c-dropdown__toggle"
                                                                 data-ouia-component-id="ConditionalFilter"
                                                                 data-ouia-component-type="PF4/DropdownToggle"
@@ -562,6 +559,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       >
                                                         <Toggle
                                                           aria-haspopup={true}
+                                                          aria-label="Conditional filter"
                                                           bubbleEvent={false}
                                                           className=""
                                                           data-ouia-component-id="ConditionalFilter"
@@ -589,6 +587,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                                 <button
                                                                   aria-expanded="false"
                                                                   aria-haspopup="true"
+                                                                  aria-label="Conditional filter"
                                                                   class="pf-c-dropdown__toggle"
                                                                   data-ouia-component-id="ConditionalFilter"
                                                                   data-ouia-component-type="PF4/DropdownToggle"
@@ -644,6 +643,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           <button
                                                             aria-expanded={false}
                                                             aria-haspopup={true}
+                                                            aria-label="Conditional filter"
                                                             className="pf-c-dropdown__toggle"
                                                             data-ouia-component-id="ConditionalFilter"
                                                             data-ouia-component-type="PF4/DropdownToggle"
@@ -729,13 +729,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                               <div
                                                 className="pf-l-split__item pf-m-fill"
                                               >
-                                                <Text
+                                                <TextFilter
                                                   aria-label="search-field"
-                                                  isDisabled={false}
                                                   onChange={[Function]}
-                                                  onSubmit={[Function]}
                                                   placeholder="Filter by name or summary"
-                                                  value=""
                                                 >
                                                   <TextInput
                                                     aria-label="search-field"
@@ -755,6 +752,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       data-ouia-component-type="PF4/TextInput"
                                                       innerRef={null}
                                                       isDisabled={false}
+                                                      isIconSprite={false}
                                                       isLeftTruncated={false}
                                                       isReadOnly={false}
                                                       isRequired={false}
@@ -815,7 +813,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       />
                                                     </svg>
                                                   </SearchIcon>
-                                                </Text>
+                                                </TextFilter>
                                               </div>
                                             </SplitItem>
                                           </div>
@@ -832,14 +830,12 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   undefined,
                                 ]
                               }
-                              dropdownProps={Object {}}
                               exportConfig={
                                 Object {
                                   "isDisabled": true,
                                   "onSelect": [Function],
                                 }
                               }
-                              onSelect={[Function]}
                               overflowActions={Array []}
                             >
                               <ToolbarItem
@@ -849,7 +845,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   className="pf-c-toolbar__item pf-m-spacer-sm"
                                 >
                                   <DownloadButton
-                                    extraItems={Array []}
                                     isDisabled={true}
                                     onSelect={[Function]}
                                   >
@@ -880,6 +875,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       ouiaId="Export"
                                       toggle={
                                         <DropdownToggle
+                                          aria-label="Export"
                                           isDisabled={true}
                                           onToggle={[Function]}
                                           ouiaId="Export"
@@ -926,6 +922,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         position="left"
                                         toggle={
                                           <DropdownToggle
+                                            aria-label="Export"
                                             isDisabled={true}
                                             onToggle={[Function]}
                                             ouiaId="Export"
@@ -947,6 +944,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         >
                                           <DropdownToggle
                                             aria-haspopup={true}
+                                            aria-label="Export"
                                             getMenuRef={[Function]}
                                             id="pf-dropdown-toggle-id-6"
                                             isDisabled={true}
@@ -968,6 +966,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   <button
                                                     aria-expanded="false"
                                                     aria-haspopup="true"
+                                                    aria-label="Export"
                                                     class="pf-c-dropdown__toggle pf-m-plain"
                                                     data-ouia-component-id="Export"
                                                     data-ouia-component-type="PF4/DropdownToggle"
@@ -999,6 +998,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           >
                                             <Toggle
                                               aria-haspopup={true}
+                                              aria-label="Export"
                                               bubbleEvent={false}
                                               className=""
                                               data-ouia-component-id="Export"
@@ -1026,6 +1026,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     <button
                                                       aria-expanded="false"
                                                       aria-haspopup="true"
+                                                      aria-label="Export"
                                                       class="pf-c-dropdown__toggle pf-m-plain"
                                                       data-ouia-component-id="Export"
                                                       data-ouia-component-type="PF4/DropdownToggle"
@@ -1058,6 +1059,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                               <button
                                                 aria-expanded={false}
                                                 aria-haspopup={true}
+                                                aria-label="Export"
                                                 className="pf-c-dropdown__toggle pf-m-plain"
                                                 data-ouia-component-id="Export"
                                                 data-ouia-component-type="PF4/DropdownToggle"
@@ -2046,7 +2048,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                 <Table
                   aria-label="Patch table view"
                   borders={true}
-                  canCollapseAll={true}
+                  canCollapseAll={false}
                   canSelectAll={false}
                   canSortFavorites={true}
                   cells={
@@ -2165,7 +2167,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                             "allRowsExpanded": false,
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
-                            "canCollapseAll": true,
+                            "canCollapseAll": false,
                             "canSelectAll": false,
                             "canSortFavorites": true,
                             "collapseAllAriaLabel": "",
@@ -2218,7 +2220,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                             "allRowsExpanded": false,
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
-                            "canCollapseAll": true,
+                            "canCollapseAll": false,
                             "canSelectAll": false,
                             "canSortFavorites": true,
                             "collapseAllAriaLabel": "",
@@ -2272,7 +2274,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                             "allRowsExpanded": false,
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
-                            "canCollapseAll": true,
+                            "canCollapseAll": false,
                             "canSelectAll": false,
                             "canSortFavorites": true,
                             "collapseAllAriaLabel": "",
@@ -2326,7 +2328,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                             "allRowsExpanded": false,
                             "allRowsSelected": false,
                             "areActionsDisabled": undefined,
-                            "canCollapseAll": true,
+                            "canCollapseAll": false,
                             "canSelectAll": false,
                             "canSortFavorites": true,
                             "collapseAllAriaLabel": "",
@@ -2450,7 +2452,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "allRowsExpanded": false,
                                           "allRowsSelected": false,
                                           "areActionsDisabled": undefined,
-                                          "canCollapseAll": true,
+                                          "canCollapseAll": false,
                                           "canSelectAll": false,
                                           "canSortFavorites": true,
                                           "collapseAllAriaLabel": "",
@@ -2503,7 +2505,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "allRowsExpanded": false,
                                           "allRowsSelected": false,
                                           "areActionsDisabled": undefined,
-                                          "canCollapseAll": true,
+                                          "canCollapseAll": false,
                                           "canSelectAll": false,
                                           "canSortFavorites": true,
                                           "collapseAllAriaLabel": "",
@@ -2557,7 +2559,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "allRowsExpanded": false,
                                           "allRowsSelected": false,
                                           "areActionsDisabled": undefined,
-                                          "canCollapseAll": true,
+                                          "canCollapseAll": false,
                                           "canSelectAll": false,
                                           "canSortFavorites": true,
                                           "collapseAllAriaLabel": "",
@@ -2611,7 +2613,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "allRowsExpanded": false,
                                           "allRowsSelected": false,
                                           "areActionsDisabled": undefined,
-                                          "canCollapseAll": true,
+                                          "canCollapseAll": false,
                                           "canSelectAll": false,
                                           "canSortFavorites": true,
                                           "collapseAllAriaLabel": "",
@@ -2720,7 +2722,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   "allRowsExpanded": false,
                                                   "allRowsSelected": false,
                                                   "areActionsDisabled": undefined,
-                                                  "canCollapseAll": true,
+                                                  "canCollapseAll": false,
                                                   "canSelectAll": false,
                                                   "canSortFavorites": true,
                                                   "collapseAllAriaLabel": "",
@@ -2773,7 +2775,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   "allRowsExpanded": false,
                                                   "allRowsSelected": false,
                                                   "areActionsDisabled": undefined,
-                                                  "canCollapseAll": true,
+                                                  "canCollapseAll": false,
                                                   "canSelectAll": false,
                                                   "canSortFavorites": true,
                                                   "collapseAllAriaLabel": "",
@@ -2827,7 +2829,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   "allRowsExpanded": false,
                                                   "allRowsSelected": false,
                                                   "areActionsDisabled": undefined,
-                                                  "canCollapseAll": true,
+                                                  "canCollapseAll": false,
                                                   "canSelectAll": false,
                                                   "canSortFavorites": true,
                                                   "collapseAllAriaLabel": "",
@@ -2881,7 +2883,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   "allRowsExpanded": false,
                                                   "allRowsSelected": false,
                                                   "areActionsDisabled": undefined,
-                                                  "canCollapseAll": true,
+                                                  "canCollapseAll": false,
                                                   "canSelectAll": false,
                                                   "canSortFavorites": true,
                                                   "collapseAllAriaLabel": "",
@@ -3355,7 +3357,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       "allRowsExpanded": false,
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
-                                      "canCollapseAll": true,
+                                      "canCollapseAll": false,
                                       "canSelectAll": false,
                                       "canSortFavorites": true,
                                       "collapseAllAriaLabel": "",
@@ -3408,7 +3410,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       "allRowsExpanded": false,
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
-                                      "canCollapseAll": true,
+                                      "canCollapseAll": false,
                                       "canSelectAll": false,
                                       "canSortFavorites": true,
                                       "collapseAllAriaLabel": "",
@@ -3462,7 +3464,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       "allRowsExpanded": false,
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
-                                      "canCollapseAll": true,
+                                      "canCollapseAll": false,
                                       "canSelectAll": false,
                                       "canSortFavorites": true,
                                       "collapseAllAriaLabel": "",
@@ -3516,7 +3518,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       "allRowsExpanded": false,
                                       "allRowsSelected": false,
                                       "areActionsDisabled": undefined,
-                                      "canCollapseAll": true,
+                                      "canCollapseAll": false,
                                       "canSelectAll": false,
                                       "canSortFavorites": true,
                                       "collapseAllAriaLabel": "",
@@ -3743,7 +3745,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "allRowsExpanded": false,
                                           "allRowsSelected": false,
                                           "areActionsDisabled": undefined,
-                                          "canCollapseAll": true,
+                                          "canCollapseAll": false,
                                           "canSelectAll": false,
                                           "canSortFavorites": true,
                                           "collapseAllAriaLabel": "",
@@ -3796,7 +3798,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "allRowsExpanded": false,
                                           "allRowsSelected": false,
                                           "areActionsDisabled": undefined,
-                                          "canCollapseAll": true,
+                                          "canCollapseAll": false,
                                           "canSelectAll": false,
                                           "canSortFavorites": true,
                                           "collapseAllAriaLabel": "",
@@ -3850,7 +3852,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "allRowsExpanded": false,
                                           "allRowsSelected": false,
                                           "areActionsDisabled": undefined,
-                                          "canCollapseAll": true,
+                                          "canCollapseAll": false,
                                           "canSelectAll": false,
                                           "canSortFavorites": true,
                                           "collapseAllAriaLabel": "",
@@ -3904,7 +3906,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "allRowsExpanded": false,
                                           "allRowsSelected": false,
                                           "areActionsDisabled": undefined,
-                                          "canCollapseAll": true,
+                                          "canCollapseAll": false,
                                           "canSelectAll": false,
                                           "canSortFavorites": true,
                                           "collapseAllAriaLabel": "",
@@ -4201,7 +4203,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     "allRowsExpanded": false,
                                                     "allRowsSelected": false,
                                                     "areActionsDisabled": undefined,
-                                                    "canCollapseAll": true,
+                                                    "canCollapseAll": false,
                                                     "canSelectAll": false,
                                                     "canSortFavorites": true,
                                                     "collapseAllAriaLabel": "",
@@ -4254,7 +4256,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     "allRowsExpanded": false,
                                                     "allRowsSelected": false,
                                                     "areActionsDisabled": undefined,
-                                                    "canCollapseAll": true,
+                                                    "canCollapseAll": false,
                                                     "canSelectAll": false,
                                                     "canSortFavorites": true,
                                                     "collapseAllAriaLabel": "",
@@ -4308,7 +4310,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     "allRowsExpanded": false,
                                                     "allRowsSelected": false,
                                                     "areActionsDisabled": undefined,
-                                                    "canCollapseAll": true,
+                                                    "canCollapseAll": false,
                                                     "canSelectAll": false,
                                                     "canSortFavorites": true,
                                                     "collapseAllAriaLabel": "",
@@ -4362,7 +4364,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     "allRowsExpanded": false,
                                                     "allRowsSelected": false,
                                                     "areActionsDisabled": undefined,
-                                                    "canCollapseAll": true,
+                                                    "canCollapseAll": false,
                                                     "canSelectAll": false,
                                                     "canSortFavorites": true,
                                                     "collapseAllAriaLabel": "",
@@ -4751,9 +4753,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                   perPage={25}
                   totalItems={0}
                 >
-                  <TableToolbar
-                    isFooter={false}
-                  >
+                  <TableToolbar>
                     <Toolbar
                       className="ins-c-table__toolbar"
                       data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
@@ -5601,8 +5601,8 @@ exports[`Packages.js should match the snapshot 1`] = `
                 </TableFooter>
               </TableView>
             </section>
-          </Main>
-        </Connect(Main)>
+          </InternalMain>
+        </Connect(InternalMain)>
       </Packages>
     </Router>
   </BrowserRouter>
