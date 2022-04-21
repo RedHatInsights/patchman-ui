@@ -632,3 +632,15 @@ export const createPatchSetColumn = (value) => value && (
         <PficonTemplateIcon size="sm" color={'var(--pf-global--info-color--100)'} />
     </Tooltip>
 );
+
+export const createPatchSetColumnWizard = (value) => value && (
+    <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
+        <FlexItem spacer={{ default: 'spacerSm' }}>
+            <PficonTemplateIcon size="sm" color={'var(--pf-global--info-color--100)'} />
+        </FlexItem>
+        <FlexItem spacer={{ default: 'spacerSm' }}>
+            {value}
+        </FlexItem>
+    </Flex>
+
+);
