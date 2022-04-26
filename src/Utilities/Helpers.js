@@ -351,6 +351,11 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
             }));
         } else {
             const { values } = filterCategories[category];
+
+            if (!filters[category]) {
+                return [];
+            }
+
             return [].concat(filters[category]).map(filterValue => {
                 const match = values.find(
                     item =>
