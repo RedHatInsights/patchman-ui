@@ -76,7 +76,11 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
 
     const apply = (params) => {
         setLoading(true);
-        setQueryParams((prevQueryParams) => ({ ...prevQueryParams, ...params }));
+        setQueryParams((prevQueryParams) => ({
+            ...prevQueryParams,
+            ...params,
+            filter: { ...prevQueryParams.filter, ...params.filter }
+        }));
     };
 
     const onSort = useSortColumn(reviewSystemColumns, apply, 1);
