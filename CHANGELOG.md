@@ -1,3 +1,15 @@
+# [1.47.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.46.0...v1.47.0) (2022-04-26)
+
+
+### Bug Fixes
+
+* **SystemDetail:** show tags and baseline info ([00a2266](https://github.com/RedHatInsights/patchman-ui/commit/00a2266aa1bbde7dac6d7124d8256db544550964))
+
+
+### Features
+
+* **ReviewSystems:** add patch-set column ([64cc3e0](https://github.com/RedHatInsights/patchman-ui/commit/64cc3e0e1c5441203e3163f524055a86645f978b))
+
 # [1.46.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.45.1...v1.46.0) (2022-04-20)
 
 
