@@ -6,7 +6,6 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useFeatureFlag } from '../../Utilities/Hooks';
 
 initMocks();
 
