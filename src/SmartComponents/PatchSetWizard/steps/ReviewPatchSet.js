@@ -23,7 +23,7 @@ const ReviewPatchSet = () => {
             <StackItem>
                 <TextContent style={{ marginTop: '-15px' }}>
                     <Text component={TextVariants.p}>
-                        Review the information below and click <b>Finish</b> to complete patch set creation
+                        Review the information below and click <b>Submit</b> to complete patch set creation
                     </Text>
                 </TextContent>
             </StackItem>
