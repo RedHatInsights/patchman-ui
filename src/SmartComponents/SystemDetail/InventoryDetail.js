@@ -7,17 +7,15 @@ import { register } from '../../store';
 import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { setPageTitle, useFeatureFlag } from '../../Utilities/Hooks';
+import { setPageTitle } from '../../Utilities/Hooks';
 import { InventoryDetailHead, AppInfo, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import propTypes from 'prop-types';
-import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { featureFlags } from '../../Utilities/constants';
+import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 
 const InventoryDetail = ({ match }) => {
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
 
     const [patchSetState, setBaselineState] = React.useState({
         isOpen: false,
@@ -56,7 +54,7 @@ const InventoryDetail = ({ match }) => {
                 });
             }}
         >
-            {(patchSetState.isOpen && isPatchSetEnabled) &&
+            {(patchSetState.isOpen) &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState} />}
             <Header
                 title=""
@@ -75,7 +73,7 @@ const InventoryDetail = ({ match }) => {
             >
                 <InventoryDetailHead hideBack
                     showTags
-                    actions={isPatchSetEnabled && [
+                    actions={[
                         {
                             title: intl.formatMessage(messages.titlesPatchSetAssignMultipleButton),
                             key: 'assign-to-patch-set',
@@ -84,11 +82,12 @@ const InventoryDetail = ({ match }) => {
                 >
                     <Grid>
                         <GridItem>
-                            <TextContent>
+                            {patchSetName && <TextContent>
                                 <Text>
                                     {`${intl.formatMessage(messages.labelsColumnsPatchSet)}: ${patchSetName}`}
                                 </Text>
                             </TextContent>
+                            }
                         </GridItem>
                         <GridItem>
                             {hasThirdPartyRepo &&

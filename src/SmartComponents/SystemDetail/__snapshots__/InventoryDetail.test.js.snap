@@ -196,6 +196,15 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                       </Title>
                     </PageHeaderTitle>
                     <mockConstructor
+                      actions={
+                        Array [
+                          Object {
+                            "key": "assign-to-patch-set",
+                            "onClick": [Function],
+                            "title": "Assign to patch sets",
+                          },
+                        ]
+                      }
                       hideBack={true}
                       showTags={true}
                     >
