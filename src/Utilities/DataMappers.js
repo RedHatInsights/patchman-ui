@@ -194,7 +194,7 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
 };
 
 export const createSystemPackagesRows = (rows, selectedRows = {}) => {
-    if (rows.length !== 0) {
+    if (rows && rows.length !== 0) {
         return rows.map(pkg => {
             const pkgNEVRA = `${pkg.name}-${pkg.evra}`;
             const pkgUpdates = pkg.updates || [];

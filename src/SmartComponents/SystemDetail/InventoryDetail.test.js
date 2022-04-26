@@ -65,34 +65,5 @@ describe('InventoryPage.js', () => {
     it('Should match the snapshots', () => {
         expect(toJson(wrapper.update())).toMatchSnapshot();
     });
-
-    describe('test patch-set: ', () => {
-        it('Should hide actions dropdown for patch-set when flag is disabled', () => {
-            useFeatureFlag.mockReturnValue(false);
-
-            const tempWrapper = mount(<Provider store={store}>
-                <Router><InventoryDetail match={{ params: { inventoryId: 'test' } }} /></Router>
-            </Provider>);
-
-            const { actions } = tempWrapper.find('.testInventoryDetailHead').parent().props();
-
-            expect(actions).toBeFalsy();
-            expect(tempWrapper.update().find('.patch-set').length).toBe(0);
-        });
-
-        it('Should show actions dropdown for patch-set when flag is enabled', () => {
-            useFeatureFlag.mockReturnValue(true);
-
-            const tempWrapper = mount(<Provider store={store}>
-                <Router><InventoryDetail match={{ params: { inventoryId: 'test' } }} /></Router>
-            </Provider>);
-
-            const { actions } = tempWrapper.find('.testInventoryDetailHead').parent().props();
-            actions[0].onClick();
-
-            expect(actions.length).toEqual(1);
-            expect(tempWrapper.update().find('.patch-set').length).toBe(2);
-        });
-    });
 });
 
