@@ -33,6 +33,7 @@ const ToDateField = (props) => {
                             input.onChange(val);
                             setToDate(val);
                         }}
+                        popoverProps={{ position: 'right' }}
                         aria-label="toDate"
                     />
                 </FlexItem>
