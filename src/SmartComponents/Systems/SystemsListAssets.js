@@ -76,7 +76,7 @@ export const packageSystemsColumns = [
     }
 ];
 
-export const systemsRowActions = (showRemediationModal, showBaselineModal, isPatchSetEnabled) => {
+export const systemsRowActions = (showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal) => {
     return [
         {
             title: 'Apply all applicable advisories',
@@ -100,6 +100,13 @@ export const systemsRowActions = (showRemediationModal, showBaselineModal, isPat
             onClick: (event, rowId, rowData) => {
                 showBaselineModal(rowData);
             }
-        }] : [])
+        },
+        {
+            title: 'Remove from patch set',
+            onClick: (event, rowId, rowData) => {
+                openUnassignSystemsModal([rowData.id]);
+            }
+        }
+        ] : [])
     ];
 };

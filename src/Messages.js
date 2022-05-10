@@ -41,6 +41,11 @@ export default defineMessages({
         description: 'button label',
         defaultMessage: 'Edit patch set'
     },
+    labelsCancel: {
+        id: 'labelsCancel',
+        description: 'Button label',
+        defaultMessage: 'Cancel'
+    },
     labelsColumnsApplicableSystems: {
         id: 'labelsColumnsApplicableSystems',
         description: 'shared label',
@@ -306,6 +311,11 @@ export default defineMessages({
         description: 'Button label',
         defaultMessage: 'Remediate'
     },
+    labelsRemove: {
+        id: 'labelsRemove',
+        description: 'Button label',
+        defaultMessage: 'Remove'
+    },
     labelsReturnToLandingPage: {
         id: 'returnToLandingPage',
         description: 'Return to landing page label for general usage',
@@ -491,6 +501,11 @@ export default defineMessages({
         description: 'text about the third paty managed hosts',
         defaultMessage: 'This system has content that is managed by repositories other than the Red Hat CDN'
     },
+    textUnassignSystemsStatement: {
+        id: 'textUnassignSystemsStatement',
+        description: 'text about systems being removed',
+        defaultMessage: 'Do you want to remove the {systemIDs} selected systems from this Patch set'
+    },
     titlesAdvisories: {
         id: 'titlesAdvisories',
         description: 'page title with capital letter',
@@ -535,6 +550,11 @@ export default defineMessages({
         id: 'titlesPatchSetAssign',
         description: 'title with capital letters',
         defaultMessage: 'Assign to a patch set'
+    },
+    titlesPatchSetRemoveMultipleButton: {
+        id: 'titlesPatchSetAssignMultipleButton',
+        description: 'title with capital letters',
+        defaultMessage: 'Remove from patch sets'
     },
     titlesPatchSystems: {
         id: 'titlesPatchSystems',

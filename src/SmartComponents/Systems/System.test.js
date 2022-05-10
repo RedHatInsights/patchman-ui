@@ -1,4 +1,5 @@
 import { Provider, useSelector } from 'react-redux';
+import { act } from 'react-dom/test-utils';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api';
@@ -8,6 +9,7 @@ import Systems from './Systems';
 import toJson from 'enzyme-to-json';
 import { useFeatureFlag } from '../../Utilities/Hooks';
 
+import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 initMocks();
 
 jest.mock('react-redux', () => ({
@@ -168,7 +170,7 @@ describe('Systems.js', () => {
             </Provider>);
 
             const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
-            expect(actions.length).toEqual(2);
+            expect(actions.length).toEqual(3);
         });
 
         it('Should hide table row actions for patch-set when flag is disabled', () => {
@@ -181,6 +183,45 @@ describe('Systems.js', () => {
             const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
             expect(actions.length).toEqual(1);
         });
+
+        describe('Unassign systems from patch sets', () => {
+
+            it('should table row actions open UnassignSystemsModal with row id', () => {
+                useFeatureFlag.mockReturnValue(true);
+
+                const tempWrapper = mount(<Provider store={store}>
+                    <Router><Systems /></Router>
+                </Provider>);
+
+                const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+
+                act(() => actions[2].onClick(undefined, undefined, { testRow: { id: 'test-id' } }));
+
+                tempWrapper.update();
+
+                expect(
+                    tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState.isUnassignSystemsModalOpen
+                ).toBeTruthy();
+            });
+
+            it('should table toolbar button open UnassignSystemsModal', () => {
+                useFeatureFlag.mockReturnValue(true);
+
+                const tempWrapper = mount(<Provider store={store}>
+                    <Router><Systems /></Router>
+                </Provider>);
+
+                const { actionsConfig } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+                act(() => actionsConfig.actions[1].onClick());
+
+                tempWrapper.update();
+
+                expect(
+                    tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState.isUnassignSystemsModalOpen
+                ).toBeTruthy();
+            });
+        });
+
     });
 
     describe('test entity selecting', () => {
@@ -244,4 +285,5 @@ describe('Systems.js', () => {
             expect(bulkSelect.items[2].title).toEqual('Select all (1)');
         });
     });
+
 });

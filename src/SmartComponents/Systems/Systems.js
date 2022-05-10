@@ -23,7 +23,7 @@ import { remediationIdentifiers, systemsListDefaultFilters, featureFlags } from 
 import {
     arrayFromObj, buildFilterChips,
     decodeQueryparams, filterRemediatableSystems, persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys,
-    transformPairs, systemsColumnsMerger
+    transformPairs, systemsColumnsMerger, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
@@ -35,6 +35,7 @@ import SystemsStatusReport from '../../PresentationalComponents/StatusReports/Sy
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import PatchRemediationButton from '../Remediation/PatchRemediationButton';
+import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 
 const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
@@ -45,6 +46,10 @@ const Systems = () => {
     const dispatch = useDispatch();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
+    const [unassignSystemsModalState, setUnassignSystemsModalState] = React.useState({
+        isUnassignSystemsModalOpen: false,
+        systemsIDs: []
+    });
     const [
         RemediationModalCmp,
         setRemediationModalCmp
@@ -177,10 +182,22 @@ const Systems = () => {
 
     useEffect(() => patchSetState.shouldRefresh && onSelect('none'), [patchSetState.shouldRefresh]);
 
+    const openUnassignSystemsModal = (systemsIDs) => {
+        setUnassignSystemsModalState({
+            isUnassignSystemsModalOpen: true,
+            systemsIDs
+        });
+    };
+
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <SystemsStatusReport apply={apply} queryParams={queryParams}/>
+            <UnassignSystemsModal
+                unassignSystemsModalState={unassignSystemsModalState}
+                setUnassignSystemsModalOpen={setUnassignSystemsModalState}
+                systemsIDs={unassignSystemsModalState.systemsIDs}
+            />
             {(patchSetState.isOpen && isPatchSetEnabled) &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState}/>}
             {isRemediationOpen && <RemediationModalCmp /> || null}
@@ -215,7 +232,9 @@ const Systems = () => {
                                 });
                             }}
                             getEntities={getEntities}
-                            actions={systemsRowActions(showRemediationModal, showBaselineModal, isPatchSetEnabled)}
+                            actions={systemsRowActions(
+                                showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal
+                            )}
                             tableProps={{
                                 areActionsDisabled,
                                 canSelectAll: false,
@@ -226,14 +245,21 @@ const Systems = () => {
                                 isDisabled: totalItems === 0,
                                 onSelect: onExport
                             }}
-                            actionsConfig={isPatchSetEnabled && {
+                            actionsConfig={{
                                 actions: [
                                     <Button onClick={assignMultipleSystems}
                                         key='assign-multiple-systems'
                                         isDisabled={selectedCount === 0}>
                                         {intl.formatMessage(messages.titlesPatchSetAssign)}
-                                    </Button>]
-                            }}
+                                    </Button>,
+                                    {
+                                        key: 'remove-multiple-systems',
+                                        label: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
+                                        onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
+                                        props: { isDisabled: selectedCount === 0 }
+                                    }
+                                ] }
+                            }
                             filterConfig={filterConfig}
                             activeFiltersConfig={activeFiltersConfig}
                             dedicatedAction={(
