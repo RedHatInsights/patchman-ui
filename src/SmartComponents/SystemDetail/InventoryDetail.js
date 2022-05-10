@@ -14,9 +14,13 @@ import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import propTypes from 'prop-types';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
+import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 
 const InventoryDetail = ({ match }) => {
-
+    const [unassignSystemsModalState, setUnassignSystemsModalState] = React.useState({
+        isUnassignSystemsModalOpen: false,
+        systemsIDs: []
+    });
     const [patchSetState, setBaselineState] = React.useState({
         isOpen: false,
         shouldRefresh: false,
@@ -46,6 +50,13 @@ const InventoryDetail = ({ match }) => {
         setBaselineState({ isOpen: true, systemsIDs: [entityId] });
     };
 
+    const openUnassignSystemsModal = (systemsIDs) => {
+        setUnassignSystemsModalState({
+            isUnassignSystemsModalOpen: true,
+            systemsIDs
+        });
+    };
+
     return (
         <DetailWrapper
             onLoad={({ mergeWithDetail }) => {
@@ -54,6 +65,11 @@ const InventoryDetail = ({ match }) => {
                 });
             }}
         >
+            <UnassignSystemsModal
+                unassignSystemsModalState={unassignSystemsModalState}
+                setUnassignSystemsModalOpen={setUnassignSystemsModalState}
+                systemsIDs={unassignSystemsModalState.systemsIDs}
+            />
             {(patchSetState.isOpen) &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState} />}
             <Header
@@ -78,6 +94,11 @@ const InventoryDetail = ({ match }) => {
                             title: intl.formatMessage(messages.titlesPatchSetAssign),
                             key: 'assign-to-patch-set',
                             onClick: showBaselineModal
+                        },
+                        {
+                            title: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
+                            key: 'assign-to-patch-set',
+                            onClick: () => openUnassignSystemsModal(entityId)
                         }]}
                 >
                     <Grid>

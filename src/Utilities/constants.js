@@ -388,3 +388,10 @@ export const featureFlags = {
     patch_set: 'patch.patch_set'
 };
 
+export const patchSetUnassignSystemsNotifications = (systemsCount) => ({
+    success: {
+        title: `Systems succesfully removed from this Patch set.`,
+        description: `${systemsCount} ${systemsCount > 1 ? 'systems' : 'system'} removed from Patch set(s)`,
+        variant: 'success'
+    }
+});
