@@ -231,7 +231,7 @@ const Systems = () => {
                                     <Button onClick={assignMultipleSystems}
                                         key='assign-multiple-systems'
                                         isDisabled={selectedCount === 0}>
-                                        {intl.formatMessage(messages.titlesPatchSetAssignMultipleButton)}
+                                        {intl.formatMessage(messages.titlesPatchSetAssign)}
                                     </Button>]
                             }}
                             filterConfig={filterConfig}

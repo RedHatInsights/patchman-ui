@@ -394,7 +394,7 @@ export default defineMessages({
     patchSetTitleAssignSystem: {
         id: 'patchSetTitle',
         description: 'title of the patch set wizard',
-        defaultMessage: 'Assign system(s) to patch set'
+        defaultMessage: 'Assign system(s) to a patch set'
     },
     patchSetTitleCreate: {
         id: 'patchSetTitle',
@@ -531,10 +531,10 @@ export default defineMessages({
         description: 'page title with capital letter',
         defaultMessage: 'Patch set'
     },
-    titlesPatchSetAssignMultipleButton: {
-        id: 'titlesPatchSetAssignMultipleButton',
+    titlesPatchSetAssign: {
+        id: 'titlesPatchSetAssign',
         description: 'title with capital letters',
-        defaultMessage: 'Assign to patch sets'
+        defaultMessage: 'Assign to a patch set'
     },
     titlesPatchSystems: {
         id: 'titlesPatchSystems',

@@ -75,7 +75,7 @@ const InventoryDetail = ({ match }) => {
                     showTags
                     actions={[
                         {
-                            title: intl.formatMessage(messages.titlesPatchSetAssignMultipleButton),
+                            title: intl.formatMessage(messages.titlesPatchSetAssign),
                             key: 'assign-to-patch-set',
                             onClick: showBaselineModal
                         }]}
