@@ -23,7 +23,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const { values } = formOptions.getState();
-    const defaultSelectedSystems = buildSelectedSystemsObj([...systemsIDs, ...Object.keys(values?.systems || {})]);
+    const defaultSelectedSystems = buildSelectedSystemsObj(systemsIDs, values?.systems);
 
     const [isLoading, setLoading] = useState(true);
     const [rawData, setRawData] = useState([]);
