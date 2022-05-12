@@ -96,7 +96,7 @@ export const systemsRowActions = (showRemediationModal, showBaselineModal, isPat
             }
         },
         ...(isPatchSetEnabled && showBaselineModal ? [{
-            title: 'Assign to patch set',
+            title: 'Assign to a patch set',
             onClick: (event, rowId, rowData) => {
                 showBaselineModal(rowData);
             }
