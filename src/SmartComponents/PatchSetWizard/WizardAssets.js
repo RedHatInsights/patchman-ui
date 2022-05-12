@@ -61,51 +61,66 @@ export const toDateComponent = [{
     ]
 }];
 
-export const schema = (patchSetID) => ({
-    fields: [
-        {
-            component: componentTypes.WIZARD,
-            name: 'patch-set-wizard',
-            isDynamic: true,
-            inModal: true,
-            showTitles: true,
-            title: intl.formatMessage(messages.patchSetTitle),
-            description: intl.formatMessage(messages.patchSetDescription),
-            fields: [
-                {
-                    name: 'patch-set-config',
-                    title: intl.formatMessage(patchSetID && messages.patchSetEditSet || messages.patchSetNewSet),
-                    fields: configurationFields,
-                    nextStep: 'systems'
-                },
-                {
-                    name: 'systems',
-                    title: intl.formatMessage(messages.patchSetSelectSystems),
-                    fields: [
-                        {
-                            name: 'systems',
-                            component: 'review-systems',
-                            validate: [{ type: 'validate-systems' }]
-                        }
-                    ],
-                    nextStep: 'review'
-                },
-                {
-                    name: 'review',
-                    title: intl.formatMessage(messages.patchSetReviewSet),
-                    fields: [
-                        {
-                            name: 'review',
-                            component: 'review-patch-set'
-                        }
-                    ]
-                }
+export const schema = (wizardType) =>{
+    let wizardTitle = '';
 
-            ]
+    switch (wizardType) {
+        case 'assign':
+            wizardTitle = intl.formatMessage(messages.patchSetTitleAssignSystem);
+            break;
+        case 'edit':
+            wizardTitle = intl.formatMessage(messages.patchSetTitleEdit);
+            break;
+        default:
+            wizardTitle = intl.formatMessage(messages.patchSetTitleCreate);
+    }
 
-        }
-    ]
-});
+    return ({
+        fields: [
+            {
+                component: componentTypes.WIZARD,
+                name: 'patch-set-wizard',
+                isDynamic: true,
+                inModal: true,
+                showTitles: true,
+                title: wizardTitle,
+                description: intl.formatMessage(messages.patchSetDescription),
+                fields: [
+                    {
+                        name: 'patch-set-config',
+                        title: intl.formatMessage(wizardType === 'edit' ? messages.patchSetEditSet : messages.patchSetNewSet),
+                        fields: configurationFields,
+                        nextStep: 'systems'
+                    },
+                    {
+                        name: 'systems',
+                        title: intl.formatMessage(messages.patchSetSelectSystems),
+                        fields: [
+                            {
+                                name: 'systems',
+                                component: 'review-systems',
+                                validate: [{ type: 'validate-systems' }]
+                            }
+                        ],
+                        nextStep: 'review'
+                    },
+                    {
+                        name: 'review',
+                        title: intl.formatMessage(messages.patchSetReviewSet),
+                        fields: [
+                            {
+                                name: 'review',
+                                component: 'review-patch-set'
+                            }
+                        ]
+                    }
+
+                ]
+
+            }
+        ]
+    });
+};
 
 export const validatorMapper = {
     'validate-systems': () => (formValueSystems) => {
