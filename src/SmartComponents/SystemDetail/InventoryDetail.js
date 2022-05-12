@@ -37,7 +37,7 @@ const InventoryDetail = ({ match }) => {
         return () => {
             dispatch(clearNotifications());
         };
-    }, []);
+    }, [patchSetState.shouldRefresh]);
 
     const pageTitle = entityDetails && `${entityDetails.display_name} - ${intl.formatMessage(messages.titlesSystems)}`;
     setPageTitle(pageTitle);
