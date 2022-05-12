@@ -22,7 +22,7 @@ import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 
 const PatchSet = ({ history }) => {
-    const pageTitle = intl.formatMessage(messages.titlesAdvisories);
+    const pageTitle = intl.formatMessage(messages.titlesPatchSet);
 
     const IS_SELECTION_ENABLED = false;
 
