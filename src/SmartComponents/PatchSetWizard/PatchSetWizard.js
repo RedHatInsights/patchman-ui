@@ -24,6 +24,8 @@ import messages from '../../Messages';
 import { fetchPatchSetAction, clearPatchSetAction, fetchPatchSetSystemsAction } from '../../store/Actions/Actions';
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
+    //if system ids exist, those are being assigned. Likewise if patchSetID exists, it is being edited
+    const wizardType = systemsIDs ? 'assign' : (patchSetID ? 'edit' : 'create');
     const [wizardState, setWizardState] = useState({
         submitted: false,
         formValues: {},
@@ -81,7 +83,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         <Fragment>
             {!wizardState.submitted &&  (
                 <FormRenderer
-                    schema={schema(patchSetID)}
+                    schema={schema(wizardType)}
                     subscription={{ values: true }}
                     FormTemplate={(props) => (
                         <Pf4FormTemplate {...props} showFormControls={false} />

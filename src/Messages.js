@@ -391,12 +391,21 @@ export default defineMessages({
         description: 'step name of the patch set wizard',
         defaultMessage: 'Select systems'
     },
-    patchSetTitle: {
+    patchSetTitleAssignSystem: {
+        id: 'patchSetTitle',
+        description: 'title of the patch set wizard',
+        defaultMessage: 'Assign system(s) to patch set'
+    },
+    patchSetTitleCreate: {
         id: 'patchSetTitle',
         description: 'title of the patch set wizard',
         defaultMessage: 'Create patch set'
     },
-
+    patchSetTitleEdit: {
+        id: 'patchSetTitle',
+        description: 'title of the patch set wizard',
+        defaultMessage: 'Edit patch set'
+    },
     statesError: {
         id: 'statesError',
         description: 'Label',
