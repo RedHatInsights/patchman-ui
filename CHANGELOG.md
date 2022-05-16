@@ -1,3 +1,11 @@
+## [1.47.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.0...v1.47.1) (2022-05-16)
+
+
+### Bug Fixes
+
+* **1494:** fix selected systems across steps ([e218910](https://github.com/RedHatInsights/patchman-ui/commit/e21891011306e747dc7f903f6706c51f8fbae129))
+* **SPM-1458:** change patch set page title ([91fae8c](https://github.com/RedHatInsights/patchman-ui/commit/91fae8ce5b84be1302cf5c37441cb4b750e36a59))
+
 # [1.47.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.46.0...v1.47.0) (2022-04-26)
 
 
