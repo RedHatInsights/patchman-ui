@@ -1,3 +1,11 @@
+## [1.47.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.2...v1.47.3) (2022-05-17)
+
+
+### Bug Fixes
+
+* **SPM-1489:** rename assign action title ([85ef085](https://github.com/RedHatInsights/patchman-ui/commit/85ef085e4d507d35ed91bba33332b3e68381ef61))
+* **SPM-1490, SPM-1493:** wizard titles made dynamic ([86d2212](https://github.com/RedHatInsights/patchman-ui/commit/86d2212eb161bc040e6649c62dc2e384f7863c80))
+
 ## [1.47.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.1...v1.47.2) (2022-05-17)
 
 
