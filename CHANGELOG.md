@@ -1,3 +1,10 @@
+## [1.47.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.1...v1.47.2) (2022-05-17)
+
+
+### Bug Fixes
+
+* **SPM-1492:** system details page refreshs after patch-set change ([a19f15d](https://github.com/RedHatInsights/patchman-ui/commit/a19f15dd1183815fc4f467ba7838adb1a964ccd1))
+
 ## [1.47.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.0...v1.47.1) (2022-05-16)
 
 
