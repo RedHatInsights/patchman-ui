@@ -98,8 +98,9 @@ export const schema = (wizardType) =>{
                         fields: [
                             {
                                 name: 'systems',
-                                component: 'review-systems',
-                                validate: [{ type: 'validate-systems' }]
+                                component: 'review-systems'
+                                //We can use this later in case UX wantes to prevent patch sets without zero systems
+                                //validate: [{ type: 'validate-systems' }]
                             }
                         ],
                         nextStep: 'review'
