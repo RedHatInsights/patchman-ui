@@ -394,7 +394,7 @@ export default defineMessages({
     patchSetTitle: {
         id: 'patchSetTitle',
         description: 'title of the patch set wizard',
-        defaultMessage: 'Patch set'
+        defaultMessage: 'Create patch set'
     },
     patchSetTitleAssignSystem: {
         id: 'patchSetTitle',
