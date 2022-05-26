@@ -397,17 +397,17 @@ export default defineMessages({
         defaultMessage: 'Create patch set'
     },
     patchSetTitleAssignSystem: {
-        id: 'patchSetTitle',
+        id: 'patchSetTitleAssignSystem',
         description: 'title of the patch set wizard',
         defaultMessage: 'Assign system(s) to a patch set'
     },
     patchSetTitleCreate: {
-        id: 'patchSetTitle',
+        id: 'patchSetTitleCreate',
         description: 'title of the patch set wizard',
         defaultMessage: 'Create patch set'
     },
     patchSetTitleEdit: {
-        id: 'patchSetTitle',
+        id: 'patchSetTitleEdit',
         description: 'title of the patch set wizard',
         defaultMessage: 'Edit patch set'
     },
