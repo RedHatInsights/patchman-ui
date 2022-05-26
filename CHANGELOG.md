@@ -1,3 +1,10 @@
+## [1.47.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.3...v1.47.4) (2022-05-26)
+
+
+### Bug Fixes
+
+* **SPM-1487:** let users create patch sets with zero systems assigned ([2b40e07](https://github.com/RedHatInsights/patchman-ui/commit/2b40e07edfc0584c648fa5df9644ce79249312c3))
+
 ## [1.47.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.2...v1.47.3) (2022-05-17)
 
 
