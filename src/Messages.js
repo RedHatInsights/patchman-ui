@@ -391,6 +391,11 @@ export default defineMessages({
         description: 'step name of the patch set wizard',
         defaultMessage: 'Select systems'
     },
+    patchSetTitle: {
+        id: 'patchSetTitle',
+        description: 'title of the patch set wizard',
+        defaultMessage: 'Patch set'
+    },
     patchSetTitleAssignSystem: {
         id: 'patchSetTitle',
         description: 'title of the patch set wizard',
