@@ -1,3 +1,10 @@
+## [1.47.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.4...v1.47.5) (2022-05-31)
+
+
+### Bug Fixes
+
+* **SPM-1488:** remove systems from patch sets ([110ee38](https://github.com/RedHatInsights/patchman-ui/commit/110ee38619e0ecfbcf4357524fafb8ce254bc416))
+
 ## [1.47.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.3...v1.47.4) (2022-05-26)
 
 
