@@ -696,7 +696,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                       </Button>,
                       Object {
                         "key": "remove-multiple-systems",
-                        "label": "Remove from patch sets",
+                        "label": "Remove from patch set",
                         "onClick": [Function],
                         "props": Object {
                           "isDisabled": false,

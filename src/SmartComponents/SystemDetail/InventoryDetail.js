@@ -19,7 +19,8 @@ import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 const InventoryDetail = ({ match }) => {
     const [unassignSystemsModalState, setUnassignSystemsModalState] = React.useState({
         isUnassignSystemsModalOpen: false,
-        systemsIDs: []
+        systemsIDs: [],
+        shouldRefresh: false
     });
     const [patchSetState, setBaselineState] = React.useState({
         isOpen: false,
@@ -41,7 +42,7 @@ const InventoryDetail = ({ match }) => {
         return () => {
             dispatch(clearNotifications());
         };
-    }, [patchSetState.shouldRefresh]);
+    }, [patchSetState.shouldRefresh, unassignSystemsModalState.shouldRefresh]);
 
     const pageTitle = entityDetails && `${entityDetails.display_name} - ${intl.formatMessage(messages.titlesSystems)}`;
     setPageTitle(pageTitle);
@@ -97,8 +98,9 @@ const InventoryDetail = ({ match }) => {
                         },
                         {
                             title: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
-                            key: 'assign-to-patch-set',
-                            onClick: () => openUnassignSystemsModal(entityId)
+                            key: 'remove-from-patch-set',
+                            isDisabled: !patchSetName,
+                            onClick: () => openUnassignSystemsModal([entityId])
                         }]}
                 >
                     <Grid>

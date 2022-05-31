@@ -559,7 +559,7 @@ export default defineMessages({
     titlesPatchSetRemoveMultipleButton: {
         id: 'titlesPatchSetAssignMultipleButton',
         description: 'title with capital letters',
-        defaultMessage: 'Remove from patch sets'
+        defaultMessage: 'Remove from patch set'
     },
     titlesPatchSystems: {
         id: 'titlesPatchSystems',

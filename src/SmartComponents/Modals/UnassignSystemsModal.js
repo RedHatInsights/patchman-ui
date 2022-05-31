@@ -14,19 +14,20 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
 
     const { systemsIDs, isUnassignSystemsModalOpen } = unassignSystemsModalState;
 
-    const handleModalOpen = () => {
+    const handleModalOpen = (shouldRefresh) => {
         setUnassignSystemsModalOpen({
             isUnassignSystemsModalOpen: !isUnassignSystemsModalOpen,
-            systemsIDs: []
+            systemsIDs: [],
+            shouldRefresh
         });
     };
 
     const handleUnassignment = async () => {
-        const result = await removePatchSetApi(systemsIDs);
+        const result = await removePatchSetApi({ inventory_ids: systemsIDs });
 
         //TODO: mockups do not have error notifications designed, add them if UX designes.
         if (result.status === 200) {
-            handleModalOpen();
+            handleModalOpen(true);
             dispatch(addNotification(patchSetUnassignSystemsNotifications(systemsIDs?.length || 0).success));
         }
     };

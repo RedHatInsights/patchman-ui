@@ -220,6 +220,6 @@ export const fetchPatchSetSystems = (id, params) => {
     return createApiCall(`/baselines/${id}/systems`, 'get', params);
 };
 
-export const removePatchSetApi = (systemIDs) => {
-    return createApiCall('/api/patch/v1/baselines/systems/remove', 'post', null, systemIDs);
+export const removePatchSetApi = (payload) => {
+    return createApiCall('/baselines/systems/remove', 'post', null, payload);
 };
