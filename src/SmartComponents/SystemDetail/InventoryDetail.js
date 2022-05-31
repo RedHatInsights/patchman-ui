@@ -66,11 +66,11 @@ const InventoryDetail = ({ match }) => {
                 });
             }}
         >
-            <UnassignSystemsModal
+            {(unassignSystemsModalState.isUnassignSystemsModalOpen) && <UnassignSystemsModal
                 unassignSystemsModalState={unassignSystemsModalState}
                 setUnassignSystemsModalOpen={setUnassignSystemsModalState}
                 systemsIDs={unassignSystemsModalState.systemsIDs}
-            />
+            />}
             {(patchSetState.isOpen) &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState} />}
             <Header

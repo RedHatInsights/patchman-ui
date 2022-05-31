@@ -4,12 +4,16 @@ import { Modal } from '@patternfly/react-core';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 import UnassignSystemsModal from './UnassignSystemsModal';
-import { removePatchSetApi } from '../../Utilities/api';
+import { removePatchSetApi, fetchSystems } from '../../Utilities/api';
 import { patchSetUnassignSystemsNotifications } from '../../Utilities/constants';
+import { mountWithIntl, initMocks } from '../../Utilities/unitTestingUtilities';
+
+initMocks();
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    removePatchSetApi: jest.fn()
+    removePatchSetApi: jest.fn(),
+    fetchSystems: jest.fn()
 }));
 
 jest.mock('react-redux', () => ({
@@ -20,6 +24,8 @@ jest.mock('@redhat-cloud-services/frontend-components-notifications/redux', () =
     addNotification: jest.fn(() => {})
 }));
 
+fetchSystems.mockResolvedValue({ data: [{ id: 'test_1' }] });
+
 describe('UnassignSystemsModal', () => {
     let unassignSystemsModalState = {
         isUnassignSystemsModalOpen: true,
@@ -29,7 +35,7 @@ describe('UnassignSystemsModal', () => {
         unassignSystemsModalState = modalState;
     };
 
-    const wrapper = mount(<UnassignSystemsModal
+    const wrapper = mountWithIntl(<UnassignSystemsModal
         unassignSystemsModalState={unassignSystemsModalState}
         setUnassignSystemsModalOpen={setUnassignSystemsModalOpen}
     />
@@ -44,15 +50,15 @@ describe('UnassignSystemsModal', () => {
         removePatchSetApi.mockReturnValueOnce(
             new Promise((resolve) => {
                 resolve({ status: 200 });
-            }
-            )
+            })
         );
-        await wrapper.find(Modal).props().actions[0].props.onClick();
+
+        await wrapper.update().find(Modal).props().actions[0].props.onClick();
         expect(addNotification).toHaveBeenCalledWith(
-            patchSetUnassignSystemsNotifications(3).success
+            patchSetUnassignSystemsNotifications(1).success
         );
         expect(unassignSystemsModalState).toEqual({ isUnassignSystemsModalOpen: false, shouldRefresh: true, systemsIDs: [] });
-        expect(removePatchSetApi).toHaveBeenCalledWith({ inventory_ids: ['test_1', 'test_2', 'test_3'] });
+        expect(removePatchSetApi).toHaveBeenCalledWith({ inventory_ids: ['test_1'] });
     });
 
     it('should close the modal', () => {
@@ -66,9 +72,11 @@ describe('UnassignSystemsModal', () => {
     });
 
     it('should hide the modal when isUnassignSystemsModalOpen=false', () => {
-        const wrapper = mount(<UnassignSystemsModal
-            systemsIDs={unassignSystemsModalState.systemsIDs}
-            isUnassignSystemsModalOpen={false}
+        const wrapper = mountWithIntl(<UnassignSystemsModal
+            unassignSystemsModalState={{
+                isUnassignSystemsModalOpen: false,
+                systemsIDs: ['test_1', 'test_2', 'test_3']
+            }}
             setUnassignSystemsModalOpen={setUnassignSystemsModalOpen}
         />
         );

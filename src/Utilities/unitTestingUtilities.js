@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux';
+import { IntlProvider } from '@redhat-cloud-services/frontend-components-translations';
 export const initMocks = () => {
     window.insights = {
         chrome: {
@@ -60,4 +61,14 @@ export const mockStore = (initialState, mutatedState) => {
     const configuredMockStore = configureStore([customMiddleWare]);
 
     return configuredMockStore(initialState);
+};
+
+export const mountWithIntl = (Component) => {
+    const wrapper = mount(Component, {
+        wrappingComponent: IntlProvider
+    });
+    const provider = wrapper.getWrappingComponent();
+    provider.setProps({ locale: 'en' });
+
+    return wrapper;
 };

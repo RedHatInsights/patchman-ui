@@ -48,7 +48,8 @@ const Systems = () => {
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
     const [unassignSystemsModalState, setUnassignSystemsModalState] = React.useState({
         isUnassignSystemsModalOpen: false,
-        systemsIDs: []
+        systemsIDs: [],
+        shouldRefresh: false
     });
     const [
         RemediationModalCmp,
@@ -192,11 +193,11 @@ const Systems = () => {
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <SystemsStatusReport apply={apply} queryParams={queryParams}/>
-            <UnassignSystemsModal
+            {(unassignSystemsModalState.isUnassignSystemsModalOpen && isPatchSetEnabled) && <UnassignSystemsModal
                 unassignSystemsModalState={unassignSystemsModalState}
                 setUnassignSystemsModalOpen={setUnassignSystemsModalState}
                 systemsIDs={unassignSystemsModalState.systemsIDs}
-            />
+            />}
             {(patchSetState.isOpen && isPatchSetEnabled) &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState}/>}
             {isRemediationOpen && <RemediationModalCmp /> || null}
@@ -218,6 +219,7 @@ const Systems = () => {
                                     selectedTags
                                 },
                                 shouldRefresh: patchSetState.shouldRefresh === true
+                                    || unassignSystemsModalState.shouldRefresh === true
                             }}
                             paginationProps={{
                                 isDisabled: totalItems === 0
