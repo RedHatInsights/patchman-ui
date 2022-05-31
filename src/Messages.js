@@ -509,7 +509,17 @@ export default defineMessages({
     textUnassignSystemsStatement: {
         id: 'textUnassignSystemsStatement',
         description: 'text about systems being removed',
-        defaultMessage: 'Do you want to remove the {systemIDs} selected systems from this Patch set'
+        defaultMessage: 'Do you want to remove the {systemsCount, plural, one {<b> # </b> selected system } other {<b> # </b> selected systems }} from assigned Patch sets?'
+    },
+    textUnassignSystemsTitle: {
+        id: 'textUnassignSystemsTitle',
+        description: 'text about systems being removed',
+        defaultMessage: 'Remove systems from patch set'
+    },
+    textUnassignSystemsWarning: {
+        id: 'textUnassignSystemsWarning',
+        description: 'warning about systems without patch set assigned',
+        defaultMessage: 'There {systemsCount, plural, one {is <b> # </b>  system } other { are <b> # </b>  systems }} you are trying to remove that {systemsCount, plural, one {is} other {are}} not assigned to any existing Patch Set. This action will not affect {systemsCount, plural, one {it} other {them}}.'
     },
     titlesAdvisories: {
         id: 'titlesAdvisories',

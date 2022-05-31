@@ -3,7 +3,7 @@ import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 import { entityDetail } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
-import { initMocks } from '../../Utilities/unitTestingUtilities.js';
+import { initMocks, mountWithIntl } from '../../Utilities/unitTestingUtilities.js';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { InventoryDetailHead } from '@redhat-cloud-services/frontend-components/Inventory';
@@ -53,7 +53,7 @@ beforeEach(() => {
     useSelector.mockImplementation(callback => {
         return callback({ entityDetails: mockState });
     });
-    wrapper = mount(<Provider store={store}>
+    wrapper = mountWithIntl(<Provider store={store}>
         <Router><InventoryDetail match = {{ params: { inventoryId: 'test' } }}/></Router>
     </Provider>);
 });
@@ -100,7 +100,7 @@ describe('InventoryPage.js', () => {
         useSelector.mockImplementation(callback => {
             return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
         });
-        const tempWrapper = mount(<Provider store={store}>
+        const tempWrapper = mountWithIntl(<Provider store={store}>
             <Router><InventoryDetail match={{ params: { inventoryId: testID } }} /></Router>
         </Provider>);
         const { actions } = tempWrapper.find(InventoryDetailHead).props();
@@ -113,6 +113,9 @@ describe('InventoryPage.js', () => {
     });
 
     it('Should refresh the page after successful system removal from patch set', () => {
+        const { actions } = wrapper.find(InventoryDetailHead).props();
+        actions.find(action => action.key === 'remove-from-patch-set')?.onClick();
+
         const setUnassignSystemsModalOpen = wrapper.update().find(UnassignSystemsModal).props().setUnassignSystemsModalOpen;
         setUnassignSystemsModalOpen({
             isUnassignSystemsModalOpen: false,

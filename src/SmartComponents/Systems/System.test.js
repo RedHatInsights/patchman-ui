@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api';
 import { systemRows } from '../../Utilities/RawDataForTesting';
-import { initMocks } from '../../Utilities/unitTestingUtilities.js';
+import { initMocks, mountWithIntl } from '../../Utilities/unitTestingUtilities.js';
 import Systems from './Systems';
 import toJson from 'enzyme-to-json';
 import { useFeatureFlag } from '../../Utilities/Hooks';
@@ -31,7 +31,7 @@ jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     exportSystemsJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
-    fetchSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
+    fetchSystems: jest.fn(() => Promise.resolve({ success: true, data: ['test-system-id'] }).catch((err) => console.log(err))),
     fetchViewAdvisoriesSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchApplicableSystemAdvisoriesApi: jest.fn(() => Promise.resolve({
         data: [{
@@ -186,28 +186,27 @@ describe('Systems.js', () => {
 
         describe('Unassign systems from patch sets', () => {
 
-            it('should table row actions open UnassignSystemsModal with row id', () => {
+            it('should table row actions open UnassignSystemsModal with row id', async () => {
                 useFeatureFlag.mockReturnValue(true);
 
-                const tempWrapper = mount(<Provider store={store}>
+                const tempWrapper = mountWithIntl(<Provider store={store}>
                     <Router><Systems /></Router>
                 </Provider>);
 
                 const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
 
-                act(() => actions[2].onClick(undefined, undefined, { testRow: { id: 'test-id' } }));
+                await act(async () => actions[2].onClick(undefined, undefined, { id: 'test-id' }));
 
                 tempWrapper.update();
 
-                expect(
-                    tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState.isUnassignSystemsModalOpen
-                ).toBeTruthy();
+                expect(tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState)
+                .toEqual({ isUnassignSystemsModalOpen: true, systemsIDs: ['test-id'] });
             });
 
-            it('should table toolbar button open UnassignSystemsModal', () => {
+            it('should table toolbar button open UnassignSystemsModal with selected system IDs', () => {
                 useFeatureFlag.mockReturnValue(true);
 
-                const tempWrapper = mount(<Provider store={store}>
+                const tempWrapper = mountWithIntl(<Provider store={store}>
                     <Router><Systems /></Router>
                 </Provider>);
 
@@ -216,9 +215,18 @@ describe('Systems.js', () => {
 
                 tempWrapper.update();
 
-                expect(
-                    tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState.isUnassignSystemsModalOpen
-                ).toBeTruthy();
+                expect(tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState)
+                .toEqual({ isUnassignSystemsModalOpen: true, systemsIDs: ['test-system-id-1'] });
+            });
+
+            it('should UnassignSystemsModal be hidden by default', () => {
+                useFeatureFlag.mockReturnValue(true);
+
+                const tempWrapper = mountWithIntl(<Provider store={store}>
+                    <Router><Systems /></Router>
+                </Provider>);
+
+                expect(tempWrapper.find(UnassignSystemsModal)).toHaveLength(0);
             });
         });
 
