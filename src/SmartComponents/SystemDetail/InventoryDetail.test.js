@@ -6,6 +6,8 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { InventoryDetailHead } from '@redhat-cloud-services/frontend-components/Inventory';
+import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 
 initMocks();
 
@@ -63,6 +65,62 @@ afterEach(() => {
 describe('InventoryPage.js', () => {
     it('Should match the snapshots', () => {
         expect(toJson(wrapper.update())).toMatchSnapshot();
+    });
+
+    it('Should display "Remove from patch set" action in disabled state', () => {
+        const { actions } = wrapper.find(InventoryDetailHead).props();
+
+        expect(actions).toContainEqual({
+            title: 'Remove from patch set',
+            key: 'remove-from-patch-set',
+            isDisabled: true,
+            onClick: expect.any(Function)
+        });
+    });
+
+    it('Should display "Remove from patch set" action in enabled state', () => {
+        useSelector.mockImplementation(callback => {
+            return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
+        });
+        const tempWrapper = mount(<Provider store={store}>
+            <Router><InventoryDetail match={{ params: { inventoryId: 'test' } }} /></Router>
+        </Provider>);
+        const { actions } = tempWrapper.find(InventoryDetailHead).props();
+
+        expect(actions).toContainEqual({
+            title: 'Remove from patch set',
+            key: 'remove-from-patch-set',
+            isDisabled: false,
+            onClick: expect.any(Function)
+        });
+    });
+
+    it('Should open UnassignSystemsModal when "Remove from patch set" action is called', () => {
+        const testID = 'test-system-id';
+        useSelector.mockImplementation(callback => {
+            return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
+        });
+        const tempWrapper = mount(<Provider store={store}>
+            <Router><InventoryDetail match={{ params: { inventoryId: testID } }} /></Router>
+        </Provider>);
+        const { actions } = tempWrapper.find(InventoryDetailHead).props();
+        actions.find(action => action.key === 'remove-from-patch-set')?.onClick();
+
+        const unassignSystemsModalState = tempWrapper.update().find(UnassignSystemsModal).props().unassignSystemsModalState;
+        expect(unassignSystemsModalState).toEqual({
+            systemsIDs: [testID], isUnassignSystemsModalOpen: true
+        });
+    });
+
+    it('Should refresh the page after successful system removal from patch set', () => {
+        const setUnassignSystemsModalOpen = wrapper.update().find(UnassignSystemsModal).props().setUnassignSystemsModalOpen;
+        setUnassignSystemsModalOpen({
+            isUnassignSystemsModalOpen: false,
+            systemsIDs: [],
+            shouldRefresh: true
+        });
+
+        expect(store.getActions().filter(action => action.type === 'FETCH_SYSTEM_DETAIL').length).toEqual(2);
     });
 });
 

@@ -51,7 +51,8 @@ describe('UnassignSystemsModal', () => {
         expect(addNotification).toHaveBeenCalledWith(
             patchSetUnassignSystemsNotifications(3).success
         );
-        expect(unassignSystemsModalState.isUnassignSystemsModalOpen).toBeFalsy();
+        expect(unassignSystemsModalState).toEqual({ isUnassignSystemsModalOpen: false, shouldRefresh: true, systemsIDs: [] });
+        expect(removePatchSetApi).toHaveBeenCalledWith({ inventory_ids: ['test_1', 'test_2', 'test_3'] });
     });
 
     it('should close the modal', () => {

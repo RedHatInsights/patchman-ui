@@ -58,6 +58,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                 unassignSystemsModalState={
                   Object {
                     "isUnassignSystemsModalOpen": false,
+                    "shouldRefresh": false,
                     "systemsIDs": Array [],
                   }
                 }
@@ -287,9 +288,10 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                             "title": "Assign to a patch set",
                           },
                           Object {
-                            "key": "assign-to-patch-set",
+                            "isDisabled": true,
+                            "key": "remove-from-patch-set",
                             "onClick": [Function],
-                            "title": "Remove from patch sets",
+                            "title": "Remove from patch set",
                           },
                         ]
                       }
