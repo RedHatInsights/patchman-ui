@@ -33,8 +33,12 @@ export const convertLimitOffset = (limit, offset) => {
     return [offset / limit + 1, limit];
 };
 
-// eslint-disable-next-line no-unused-vars
 export const transformPairs = (input, remediationIdentifier) => {
+    //displays NoDataModal when there is no patch updates available
+    if (!Object.keys(input?.data || {}).length) {
+        return false;
+    }
+
     return {
         issues: Object.keys(input.data).map(advisory => {
             return {

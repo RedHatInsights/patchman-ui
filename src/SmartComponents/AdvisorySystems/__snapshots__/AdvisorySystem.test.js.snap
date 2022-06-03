@@ -44,6 +44,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           actions={
             Array [
               Object {
+                "isDisabled": undefined,
                 "onClick": [Function],
                 "title": "Apply all applicable advisories",
               },

@@ -34,7 +34,7 @@ import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import RemediationWizard from '../Remediation/RemediationWizard';
-import PatchRemediationButton from '../Remediation/PatchRemediationButton';
+import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 
 const Systems = () => {
@@ -45,7 +45,6 @@ const Systems = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
-    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
     const [unassignSystemsModalState, setUnassignSystemsModalState] = React.useState({
         isUnassignSystemsModalOpen: false,
         systemsIDs: []
@@ -87,7 +86,6 @@ const Systems = () => {
     }, []);
 
     async function showRemediationModal(data) {
-        setRemediationLoading(true);
         const resolvedData = await data;
         setRemediationModalCmp(() =>
             () => <RemediationWizard
@@ -95,7 +93,6 @@ const Systems = () => {
                 isRemediationOpen
                 setRemediationOpen={setRemediationOpen} />);
         setRemediationOpen(!isRemediationOpen);
-        setRemediationLoading(false);
     }
 
     function showBaselineModal(rowData) {
@@ -151,11 +148,6 @@ const Systems = () => {
         csv: exportSystemsCSV,
         json: exportSystemsJSON
     }, dispatch);
-
-    const areActionsDisabled = (rowData) => {
-        const { applicable_advisories: applicableAdvisories } = rowData;
-        return applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0);
-    };
 
     const prepareRemediationPairs = (systems) => {
         return fetchApplicableAdvisoriesApi({ limit: -1 }).then(
@@ -236,7 +228,9 @@ const Systems = () => {
                                 showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal
                             )}
                             tableProps={{
-                                areActionsDisabled,
+                                actionResolver: (row) => systemsRowActions(
+                                    showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal, row
+                                ),
                                 canSelectAll: false,
                                 variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                             }}
@@ -263,18 +257,12 @@ const Systems = () => {
                             filterConfig={filterConfig}
                             activeFiltersConfig={activeFiltersConfig}
                             dedicatedAction={(
-                                <PatchRemediationButton
+                                <AsyncRemediationButton
+                                    remediationProvider={remediationDataProvider}
                                     isDisabled={
                                         arrayFromObj(selectedRows).length === 0
                                     }
-                                    onClick={() =>
-                                        showRemediationModal(remediationDataProvider())
-                                    }
-                                    ouia={'toolbar-remediation-button'}
-                                    isLoading={isRemediationLoading}
-                                >
-                                    {intl.formatMessage(messages.labelsRemediate)}
-                                </PatchRemediationButton>
+                                />
                             )}
                         />
                     )

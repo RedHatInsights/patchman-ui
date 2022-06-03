@@ -138,7 +138,6 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
         rows.map(({ id, ...rest }) => {
             const {
                 packages_installed: installedPckg,
-                packages_updatable: updatablePckg,
                 rhba_count: rhba,
                 rhsa_count: rhsa,
                 rhea_count: rhea,
@@ -154,7 +153,6 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 ...rest,
                 key: Math.random().toString() + id,
                 packages_installed: installedPckg,
-                disableCheckbox: updatablePckg === 0 || [installedPckg, rhba, rhsa, rhea].every(count => count === 0),
                 applicable_advisories: [
                     rhea || 0,
                     rhba || 0,

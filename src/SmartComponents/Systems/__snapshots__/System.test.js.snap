@@ -2,6 +2,7 @@
 
 exports[`Systems.js Should open remediation modal 1`] = `
 Object {
+  "isDisabled": undefined,
   "onClick": [Function],
   "title": "Apply all applicable advisories",
 }
@@ -680,6 +681,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                 actions={
                   Array [
                     Object {
+                      "isDisabled": undefined,
                       "onClick": [Function],
                       "title": "Apply all applicable advisories",
                     },
@@ -751,14 +753,10 @@ exports[`Systems.js should match the snapshot 1`] = `
                   }
                 }
                 dedicatedAction={
-                  <PatchRemediationButton
+                  <AsyncRemediationButton
                     isDisabled={false}
-                    isLoading={false}
-                    onClick={[Function]}
-                    ouia="toolbar-remediation-button"
-                  >
-                    Remediate
-                  </PatchRemediationButton>
+                    remediationProvider={[Function]}
+                  />
                 }
                 exportConfig={
                   Object {
@@ -1107,7 +1105,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                 showTags={true}
                 tableProps={
                   Object {
-                    "areActionsDisabled": [Function],
+                    "actionResolver": [Function],
                     "canSelectAll": false,
                     "className": "patchCompactInventory",
                     "isStickyHeader": true,
