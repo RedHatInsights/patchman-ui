@@ -76,10 +76,16 @@ export const packageSystemsColumns = [
     }
 ];
 
-export const systemsRowActions = (showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal) => {
+const areActionsDisabled = (row) => {
+    const { applicable_advisories: applicableAdvisories } = row || {};
+    return applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0);
+};
+
+export const systemsRowActions = (showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal, row) => {
     return [
         {
             title: 'Apply all applicable advisories',
+            isDisabled: areActionsDisabled(row),
             onClick: (event, rowId, rowData) => {
                 fetchApplicableSystemAdvisoriesApi({
                     id: rowData.id,

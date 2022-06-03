@@ -2,7 +2,7 @@ import { systemsListColumns, packageSystemsColumns, systemsRowActions } from './
 import { createAdvisoriesIcons, createUpgradableColumn, remediationProvider } from '../../Utilities/Helpers';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
-/* eslint-disable */
+
 jest.mock('../../Utilities/Helpers', () => ({
     ...jest.requireActual('../../Utilities/Helpers'),
     createAdvisoriesIcons: jest.fn(),
@@ -11,7 +11,8 @@ jest.mock('../../Utilities/Helpers', () => ({
 }));
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    fetchApplicableSystemAdvisoriesApi: jest.fn(() => Promise.resolve({ data: [ { id: 'testDataID' } ] }).catch((err) => console.log(err)))
+    fetchApplicableSystemAdvisoriesApi:
+        jest.fn(() => Promise.resolve({ data: [{ id: 'testDataID' }] }).catch((err) => console.log(err)))
 }));
 
 describe('SystemListAssets.js', () => {
@@ -34,7 +35,7 @@ describe('SystemListAssets.js', () => {
             expect(fetchApplicableSystemAdvisoriesApi).toHaveBeenCalledWith({
                 id: 'testId',
                 limit: 10000
-            })
+            });
         });
         it('Should call remediationProvider and testShowRemediationModal', () => {
             expect(testShowRemediationModal).toHaveBeenCalled();
@@ -42,8 +43,15 @@ describe('SystemListAssets.js', () => {
                 ['testDataID'],
                 'testId',
                 remediationIdentifiers.advisory
-            )
+            );
+        });
+        it('Should disable "Apply all applicable advisories" action when there is no applicable advisories ', () => {
+            const testRow = { applicable_advisories: [0, 0, 0, 0] };
+            const actions = systemsRowActions(null, null, null, null, testRow);
+            expect(actions).toEqual(
+                [{ isDisabled: true, onClick: expect.any(Function), title: 'Apply all applicable advisories' }]
+            );
         });
     });
 });
-/* eslint-enable */
+

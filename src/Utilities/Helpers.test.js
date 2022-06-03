@@ -5,7 +5,7 @@ import { publicDateOptions, remediationIdentifiers } from '../Utilities/constant
 import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, 
     createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams,
     getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, 
-    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters } from './Helpers';
+    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs } from './Helpers';
 
 const TestHook = ({ callback }) => {
     callback();
@@ -285,6 +285,23 @@ describe('Helpers tests', () => {
     ${{id: "a", selected: true}}  | ${{c: true, d: false}} | ${{"a": true, "c": true, "d": false}}
      `('getNewSelectedItems: Should return new set of selected items', ({selectedItems, currentItems,result}) => {
         expect(getNewSelectedItems(selectedItems, currentItems)).toEqual(result);
+    });
+
+    it('Should return "false" when there is no issues available', () => {
+        const resultWhenParams = transformPairs({ data: {} });
+        expect(resultWhenParams).toBeFalsy();
+        
+        const resultWhenNoParams = transformPairs();
+        expect(resultWhenNoParams).toBeFalsy();
+    });
+    it('Should return transformed issues', () => {
+        const resultWhenParams = transformPairs({ data: { testAdvisory1: ['test-system-1'], testAdvisory2: ['test-system-2'] } }, 'test-identifier');
+        expect(resultWhenParams).toEqual({ 
+            issues: [
+                { description: 'testAdvisory1', id: 'test-identifier:testAdvisory1', systems: ['test-system-1'] }, 
+                { description: 'testAdvisory2', id: 'test-identifier:testAdvisory2', systems: ['test-system-2'] }
+            ]
+        });
     });
 });
 
