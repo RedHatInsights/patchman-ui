@@ -1,3 +1,10 @@
+# [1.48.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.5...v1.48.0) (2022-06-06)
+
+
+### Features
+
+* **SPM-1311:** enable patch set removal on System details page ([744a37b](https://github.com/RedHatInsights/patchman-ui/commit/744a37be1b7cb93003973c301901b37f9aaa4c4a))
+
 ## [1.47.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.4...v1.47.5) (2022-05-31)
 
 
