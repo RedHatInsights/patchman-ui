@@ -45,6 +45,7 @@ const Systems = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
+    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
     const [unassignSystemsModalState, setUnassignSystemsModalState] = React.useState({
         isUnassignSystemsModalOpen: false,
         systemsIDs: []
@@ -161,12 +162,18 @@ const Systems = () => {
 
     const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
 
-    const remediationDataProvider = () => remediationProviderWithPairs(
-        removeUndefinedObjectKeys(selectedRows),
-        prepareRemediationPairs,
-        transformPairs,
-        remediationIdentifiers.advisory
-    );
+    const remediationDataProvider = () => {
+        setRemediationLoading(true);
+        return remediationProviderWithPairs(
+            removeUndefinedObjectKeys(selectedRows),
+            prepareRemediationPairs,
+            transformPairs,
+            remediationIdentifiers.advisory
+        ).then(result => {
+            setRemediationLoading(false);
+            return result;
+        });
+    };
 
     const assignMultipleSystems = () => {
         setBaselineState({ isOpen: true, systemsIDs: Object.keys(selectedRows) });
@@ -262,6 +269,7 @@ const Systems = () => {
                                     isDisabled={
                                         arrayFromObj(selectedRows).length === 0
                                     }
+                                    isLoading={isRemediationLoading}
                                 />
                             )}
                         />
