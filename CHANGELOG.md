@@ -1,3 +1,10 @@
+## [1.48.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.0...v1.48.1) (2022-06-07)
+
+
+### Bug Fixes
+
+* **SPM-1457:** enable up-to-date systems to be operated on ([e368dca](https://github.com/RedHatInsights/patchman-ui/commit/e368dca3d1d15f9b351197b3787a5c4a83bbea7e))
+
 # [1.48.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.47.5...v1.48.0) (2022-06-06)
 
 
