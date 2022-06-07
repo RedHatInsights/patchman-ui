@@ -755,6 +755,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                 dedicatedAction={
                   <AsyncRemediationButton
                     isDisabled={false}
+                    isLoading={false}
                     remediationProvider={[Function]}
                   />
                 }
