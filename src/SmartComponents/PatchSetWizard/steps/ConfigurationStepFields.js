@@ -57,7 +57,6 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
                             onChange={handleRadioChange}
                             label="Add to existing patch set"
                             id="existing-set"
-                            value=""
                         />
                     </StackItem>
                     <StackItem>
@@ -74,7 +73,6 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
                             onChange={handleRadioChange}
                             label={'Create new patch set'}
                             id="new-set"
-                            value=""
                         />
                     </StackItem></>) || null}
                     <StackItem>

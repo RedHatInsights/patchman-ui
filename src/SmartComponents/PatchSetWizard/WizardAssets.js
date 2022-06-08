@@ -29,8 +29,8 @@ export const reviewSystemColumns = [{
 
 export const configurationFields = [
     {
-        name: 'configuration-step',
-        component: 'configuration-step'
+        name: 'configurationStep',
+        component: 'configurationStep'
     },
     {
         name: 'existing_patch_set',
@@ -98,7 +98,7 @@ export const schema = (wizardType) =>{
                         fields: [
                             {
                                 name: 'systems',
-                                component: 'review-systems'
+                                component: 'reviewSystems'
                                 //We can use this later in case UX wantes to prevent patch sets without zero systems
                                 //validate: [{ type: 'validate-systems' }]
                             }
@@ -111,7 +111,7 @@ export const schema = (wizardType) =>{
                         fields: [
                             {
                                 name: 'review',
-                                component: 'review-patch-set'
+                                component: 'reviewPatchSet'
                             }
                         ]
                     }

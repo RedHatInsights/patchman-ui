@@ -64,16 +64,16 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         toDateField: {
             component: ToDateField
         },
-        'configuration-step': {
+        configurationStep: {
             component: ConfigurationStepFields,
             systemsIDs: systemsIDs || [],
             patchSetID
         },
-        'review-systems': {
+        reviewSystems: {
             component: ReviewSystems,
             systemsIDs: systemsIDs || []
         },
-        'review-patch-set': {
+        reviewPatchSet: {
             component: ReviewPatchSet,
             systemsIDs: systemsIDs || []
         }

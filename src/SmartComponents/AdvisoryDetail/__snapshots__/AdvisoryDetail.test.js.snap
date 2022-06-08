@@ -236,6 +236,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                       "topic": "An update .",
                     }
                   }
+                  isLoading={true}
                 >
                   <div>
                      hello 
@@ -284,13 +285,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                     <StackItem>
                       <div
                         className="pf-l-stack__item"
-                      >
-                        <Component>
-                          <div>
-                             hello 
-                          </div>
-                        </Component>
-                      </div>
+                      />
                     </StackItem>
                   </div>
                 </Stack>

@@ -121,7 +121,7 @@ const PatchSet = ({ history }) => {
         });;
     };
 
-    const CreatePatchSet = useCreatePatchSetButton(setWizardState);
+    const CreatePatchSetButton = useCreatePatchSetButton(setWizardState);
     const patchSetRowActions = usePatchSetRowActions(showBaselineModal, handlePatchSetDelete);
 
     return (
@@ -157,7 +157,7 @@ const PatchSet = ({ history }) => {
                         ]
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchPatchSetTitle)}
-                    CreatePatchSet={CreatePatchSet}
+                    CreatePatchSetButton={CreatePatchSetButton}
                 />
             </Main>
         </React.Fragment>

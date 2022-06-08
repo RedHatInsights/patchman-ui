@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { Grid, GridItem, Spinner } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { nameComponent, descriptionComponent, toDateComponent } from '../WizardAssets';
+
 const  ConfigurationFields = ({ isLoading }) =>{
     const { renderForm } = useFormApi();
 
