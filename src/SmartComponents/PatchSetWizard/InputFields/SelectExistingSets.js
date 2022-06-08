@@ -44,10 +44,13 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems }) => {
         dispatch(clearPatchSetsAction());
     }, []);
 
+    const { search } = queryParams || {};
+    const searchDependency = typeof search === 'string' && search !== '' ? search : Boolean(search);
+
     useEffect(() => {
         dispatch(fetchPatchSetsAction({ ...queryParams, offset:
             queryParams.offset + ((queryParams.page - 1) * queryParams.perPage) }));
-    }, [queryParams.page, queryParams.search]);
+    }, [queryParams.page, searchDependency]);
 
     const patchOptions = useMemo(() =>{
         if (status.isLoading) {
