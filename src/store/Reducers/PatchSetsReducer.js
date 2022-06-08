@@ -16,7 +16,7 @@ export const initialState = {
         offset: 0,
         filter: {}
     },
-    status: {},
+    status: { isLoading: true },
     metadata: {
         limit: 20,
         offset: 0,

@@ -24,7 +24,7 @@ describe('SystemPackageListStore tests', () => {
     state                | action                                                               | result
     ${storeListDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}            | ${{ ...storeListDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: { code: undefined, isLoading: false, hasError: false }, error: {} }}
     ${storeListDefaults} | ${{ type: action_pending, payload: {} }}                             | ${{ ...storeListDefaults, status: { code: undefined, isLoading: true, hasError: false }, error: {} }}
-    ${storeListDefaults} | ${{ type: CLEAR_SYSTEM_PACKAGES, payload: {} }}                             | ${{ ...storeListDefaults, status: {}, error: {}, queryParams: { filter: { updatable: ['true']} } }}
+    ${storeListDefaults} | ${{ type: CLEAR_SYSTEM_PACKAGES, payload: {} }}                             | ${{ ...storeListDefaults, status: { isLoading: true }, error: {}, queryParams: { filter: { updatable: ['true']} } }}
     ${ storeListDefaults} | ${{ type: action_rejected, payload: error }}                        | ${{ ...storeListDefaults, status: { isLoading: false, hasError: true, code: undefined }, error, metadata: {} }}
     ${storeListDefaults} | ${{ type: action_rejected, payload: error }}                         | ${{ ...storeListDefaults, status: { isLoading: false, hasError: true, code: undefined  }, error, metadata: {} } }
 

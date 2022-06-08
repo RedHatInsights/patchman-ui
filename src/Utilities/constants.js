@@ -24,7 +24,7 @@ export const compoundSortValues = {
 export const ENABLE_PACKAGES = window?.insights?.chrome?.isBeta && insights?.chrome?.isBeta();
 export const storeListDefaults = {
     rows: [],
-    status: {},
+    status: { isLoading: true },
     metadata: {
         limit: 25,
         offset: 0,

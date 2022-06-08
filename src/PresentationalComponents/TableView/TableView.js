@@ -38,8 +38,7 @@ const TableView = ({
     emptyState,
     defaultFilters,
     searchChipLabel,
-    CreatePatchSet,
-    EditPatchSet,
+    CreatePatchSetButton,
     actionsConfig
 }) => {
 
@@ -56,8 +55,8 @@ const TableView = ({
         <React.Fragment>
             {
                 (<React.Fragment>
-                    { hasError && <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} />
-                        || <React.Fragment>
+                    { hasError ? <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} />
+                        : <React.Fragment>
                             <PrimaryToolbar
                                 pagination={{
                                     itemCount: metadata.total_items,
@@ -74,7 +73,7 @@ const TableView = ({
                                     filters: buildFilterChips(filter, search, searchChipLabel),
                                     onDelete: deleteFilters,
                                     deleteTitle: intl.formatMessage(defaultFilters
-                                && messages.labelsFiltersReset || messages.labelsFiltersClear)
+                                        && messages.labelsFiltersReset || messages.labelsFiltersClear)
                                 }}
                                 actionsConfig={{
                                     actions: [remediationProvider && (
@@ -92,11 +91,8 @@ const TableView = ({
                                 bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse)}
 
                             >
-                                { CreatePatchSet && <ToolbarItem>
-                                    <CreatePatchSet />
-                                </ToolbarItem>}
-                                { EditPatchSet && <ToolbarItem>
-                                    <EditPatchSet />
+                                {CreatePatchSetButton && <ToolbarItem>
+                                    <CreatePatchSetButton />
                                 </ToolbarItem>}
                             </PrimaryToolbar>
                             {isLoading ? <SkeletonTable colSize={5} rowSize={20} /> :
@@ -153,8 +149,7 @@ TableView.propTypes = {
     emptyState: PropTypes.element,
     defaultFilters: PropTypes.object,
     searchChipLabel: PropTypes.string,
-    CreatePatchSet: PropTypes.element,
-    EditPatchSet: PropTypes.element,
+    CreatePatchSetButton: PropTypes.element,
     actionsConfig: PropTypes.array
 };
 
