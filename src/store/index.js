@@ -18,36 +18,22 @@ import { GlobalFilterStore } from './Reducers/GlobalFilterStore';
 import { PatchSetsReducer } from './Reducers/PatchSetsReducer';
 import { SpecificPatchSetReducer } from './Reducers/SpecificPatchSetReducer';
 
-const persistenceMiddleware = store => next => action => {
-    if (action.type === 'LOAD_ENTITIES_FULFILLED') {
-        action = { ...action, store };
-    }
-
-    next(action);
-    if (!action.type.endsWith('_REJECTED')) {
-        const storeContent = store.getState();
-        sessionStorage.setItem('PatchStore', JSON.stringify(storeContent));
-    }
-};
-
-const storage = JSON.parse(sessionStorage.getItem('PatchStore')) || {};
-
-const registry = getRegistry({}, [promiseMiddleware, notificationsMiddleware(), persistenceMiddleware]);
+const registry = getRegistry({}, [promiseMiddleware, notificationsMiddleware()]);
 registry.register({
-    AdvisoryListStore: (state = storage.AdvisoryListStore, action) => AdvisoryListStore(state, action),
-    SystemDetailStore: (state = storage.SystemDetailStore, action) => SystemDetailStore(state, action),
-    SystemAdvisoryListStore: (state = storage.SystemAdvisoryListStore, action) => SystemAdvisoryListStore(state, action),
-    AdvisoryDetailStore: (state = storage.AdvisoryDetailStore, action) => AdvisoryDetailStore(state, action),
-    SystemPackageListStore: (state = storage.SystemPackageListStore, action) => SystemPackageListStore(state, action),
-    PackagesListStore: (state = storage.PackagesListStore, action) => PackagesListStore(state, action),
-    PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
-    CvesListStore: (state = storage.CvesListStore, action) => CvesListStore(state, action),
-    SystemsStore: (state = storage.SystemsStore, action) => SystemsStore(state, action),
-    PackageSystemsStore: (state = storage.PackageSystemsStore, action) => PackageSystemsStore(state, action),
-    AdvisorySystemsStore: (state = storage.AdvisorySystemsStore, action) => AdvisorySystemsStore(state, action),
-    GlobalFilterStore: (state = storage.GlobalFilterStore, action) => GlobalFilterStore(state, action),
-    PatchSetsStore: (state = storage.PatchSetsStore, action) => PatchSetsReducer(state, action),
-    SpecificPatchSetReducer: (state = storage.SpecificPatchSetReducer, action) => SpecificPatchSetReducer(state, action),
+    AdvisoryListStore,
+    SystemDetailStore,
+    SystemAdvisoryListStore,
+    AdvisoryDetailStore,
+    SystemPackageListStore,
+    PackagesListStore,
+    PackageDetailStore,
+    CvesListStore,
+    SystemsStore,
+    PackageSystemsStore,
+    AdvisorySystemsStore,
+    GlobalFilterStore,
+    PatchSetsStore: PatchSetsReducer,
+    SpecificPatchSetReducer,
     notifications: notificationsReducer
 });
 
