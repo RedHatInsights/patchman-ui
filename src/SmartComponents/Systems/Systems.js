@@ -246,7 +246,7 @@ const Systems = () => {
                                 isDisabled: totalItems === 0,
                                 onSelect: onExport
                             }}
-                            actionsConfig={{
+                            actionsConfig={isPatchSetEnabled && {
                                 actions: [
                                     <Button onClick={assignMultipleSystems}
                                         key='assign-multiple-systems'
