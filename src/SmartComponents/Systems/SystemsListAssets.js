@@ -76,16 +76,21 @@ export const packageSystemsColumns = [
     }
 ];
 
-const areActionsDisabled = (row) => {
+const isRemediationDisabled = (row) => {
     const { applicable_advisories: applicableAdvisories } = row || {};
     return applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0);
+};
+
+const isPatchSetRemovalDisabled = (row) => {
+    const { baseline_name: baselineName } = row || {};
+    return !baselineName || (typeof baselineName === 'string' && baselineName === '');
 };
 
 export const systemsRowActions = (showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal, row) => {
     return [
         {
             title: 'Apply all applicable advisories',
-            isDisabled: areActionsDisabled(row),
+            isDisabled: isRemediationDisabled(row),
             onClick: (event, rowId, rowData) => {
                 fetchApplicableSystemAdvisoriesApi({
                     id: rowData.id,
@@ -109,6 +114,7 @@ export const systemsRowActions = (showRemediationModal, showBaselineModal, isPat
         },
         {
             title: 'Remove from patch set',
+            isDisabled: isPatchSetRemovalDisabled(row),
             onClick: (event, rowId, rowData) => {
                 openUnassignSystemsModal([rowData.id]);
             }
