@@ -646,7 +646,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                       "selectedTags": undefined,
                       "systemProfile": undefined,
                     },
-                    "shouldRefresh": false,
                   }
                 }
                 dedicatedAction={

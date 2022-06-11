@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { Button } from '@patternfly/react-core';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
@@ -38,6 +38,7 @@ import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 
 const Systems = () => {
+    const inventory = useRef(null);
     const pageTitle = intl.formatMessage(messages.titlesSystems);
 
     setPageTitle(pageTitle);
@@ -46,17 +47,13 @@ const Systems = () => {
     const dispatch = useDispatch();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
-    const [unassignSystemsModalState, setUnassignSystemsModalState] = React.useState({
-        isUnassignSystemsModalOpen: false,
-        systemsIDs: [],
-        shouldRefresh: false
-    });
     const [
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-    const [patchSetState, setBaselineState] = React.useState({
-        isOpen: false,
+    const [patchSetState, setPatchSetState] = React.useState({
+        isPatchSetWizardOpen: false,
+        isUnassignSystemsModalOpen: false,
         shouldRefresh: false,
         systemsIDs: []
     });
@@ -98,7 +95,7 @@ const Systems = () => {
     }
 
     function showBaselineModal(rowData) {
-        setBaselineState({ isOpen: true, systemsIDs: [rowData.id] });
+        setPatchSetState({ isPatchSetWizardOpen: true, systemsIDs: [rowData.id] });
     }
 
     function apply(queryParams) {
@@ -177,15 +174,25 @@ const Systems = () => {
     };
 
     const assignMultipleSystems = () => {
-        setBaselineState({ isOpen: true, systemsIDs: Object.keys(selectedRows) });
+        setPatchSetState({
+            isPatchSetWizardOpen: true,
+            systemsIDs: filterSelectedActiveSystemIDs(selectedRows),
+            shouldRefresh: false }
+        );
     };
 
-    useEffect(() => patchSetState.shouldRefresh && onSelect('none'), [patchSetState.shouldRefresh]);
+    useEffect(() => {
+        if (patchSetState.shouldRefresh) {
+            onSelect('none');
+            inventory?.current?.onRefreshData();
+        }
+    }, [patchSetState.shouldRefresh]);
 
     const openUnassignSystemsModal = (systemsIDs) => {
-        setUnassignSystemsModalState({
+        setPatchSetState({
             isUnassignSystemsModalOpen: true,
-            systemsIDs
+            systemsIDs,
+            shouldRefresh: false
         });
     };
 
@@ -193,18 +200,19 @@ const Systems = () => {
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             <SystemsStatusReport apply={apply} queryParams={queryParams}/>
-            {(unassignSystemsModalState.isUnassignSystemsModalOpen && isPatchSetEnabled) && <UnassignSystemsModal
-                unassignSystemsModalState={unassignSystemsModalState}
-                setUnassignSystemsModalOpen={setUnassignSystemsModalState}
-                systemsIDs={unassignSystemsModalState.systemsIDs}
+            {(patchSetState.isUnassignSystemsModalOpen && isPatchSetEnabled) && <UnassignSystemsModal
+                unassignSystemsModalState={patchSetState}
+                setUnassignSystemsModalOpen={setPatchSetState}
+                systemsIDs={patchSetState.systemsIDs}
             />}
-            {(patchSetState.isOpen && isPatchSetEnabled) &&
-                <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState}/>}
+            {(patchSetState.isPatchSetWizardOpen && isPatchSetEnabled) &&
+                <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setPatchSetState}/>}
             {isRemediationOpen && <RemediationModalCmp /> || null}
             <Main>
                 {status.hasError && <ErrorHandler code={status.code} /> ||
                     (
                         <InventoryTable
+                            ref={inventory}
                             isFullView
                             autoRefresh
                             initialLoading
@@ -217,9 +225,7 @@ const Systems = () => {
                                     filter,
                                     systemProfile,
                                     selectedTags
-                                },
-                                shouldRefresh: patchSetState.shouldRefresh === true
-                                    || unassignSystemsModalState.shouldRefresh === true
+                                }
                             }}
                             paginationProps={{
                                 isDisabled: totalItems === 0

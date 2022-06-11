@@ -200,7 +200,7 @@ describe('Systems.js', () => {
                 tempWrapper.update();
 
                 expect(tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState)
-                .toEqual({ isUnassignSystemsModalOpen: true, systemsIDs: ['test-id'] });
+                .toEqual({ isUnassignSystemsModalOpen: true, systemsIDs: ['test-id'], shouldRefresh: false });
             });
 
             it('should table toolbar button open UnassignSystemsModal with selected system IDs', () => {
@@ -216,7 +216,7 @@ describe('Systems.js', () => {
                 tempWrapper.update();
 
                 expect(tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState)
-                .toEqual({ isUnassignSystemsModalOpen: true, systemsIDs: ['test-system-id-1'] });
+                .toEqual({ isUnassignSystemsModalOpen: true, systemsIDs: ['test-system-id-1'], shouldRefresh: false });
             });
 
             it('should UnassignSystemsModal be hidden by default', () => {
