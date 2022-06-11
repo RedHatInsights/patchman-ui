@@ -50,7 +50,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
     const handleWizardClose = () => {
         const shouldRefresh = !wizardState.failed && wizardState.submitted;
 
-        setBaselineState({ isOpen: false, systemsIDs: [], patchSetID: undefined, shouldRefresh });
+        setBaselineState({ isPatchSetWizardOpen: false, systemsIDs: [], patchSetID: undefined, shouldRefresh });
         setWizardState({ formValues: {}, submitted: false });
     };
 

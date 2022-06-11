@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { Modal, Button, GridItem, Grid, Skeleton } from '@patternfly/react-core';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { Modal, Button, Grid, Skeleton } from '@patternfly/react-core';
 import { injectIntl } from 'react-intl';
 
 import messages from '../../Messages';
-import { removePatchSetApi, fetchSystems } from '../../Utilities/api';
-import { patchSetUnassignSystemsNotifications } from '../../Utilities/constants';
+import { useUnassignSystemsHook } from './useUnassignSystemsHook';
+import { renderUnassignModalMessages, filterSystemsWithoutSets } from './Helpers';
 
 const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSystemsModalOpen, intl }) => {
-    const dispatch = useDispatch();
-
     const { systemsIDs, isUnassignSystemsModalOpen } = unassignSystemsModalState;
     const [systemsWithPatchSet, setSystemWithPatchSet] = useState([]);
     const [systemsLoading, setSystemsLoading] = useState(true);
 
-    const handleModalOpen = (shouldRefresh) => {
+    const handleModalToggle = (shouldRefresh) => {
         setUnassignSystemsModalOpen({
             isUnassignSystemsModalOpen: !isUnassignSystemsModalOpen,
             systemsIDs: [],
@@ -24,50 +20,33 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
         });
     };
 
-    const handleUnassignment = async () => {
-        const result = await removePatchSetApi({ inventory_ids: systemsWithPatchSet });
-
-        //TODO: mockups do not have error notifications designed, add them if UX designes.
-        if (result.status === 200) {
-            handleModalOpen(true);
-            dispatch(addNotification(patchSetUnassignSystemsNotifications(systemsWithPatchSet?.length || 0).success));
-        }
+    const handleModalClose = () => {
+        handleModalToggle(false);
     };
 
-    useEffect(() => {
-        //filters out systems without patch sets assigned
-        fetchSystems({ limit: -1, 'filter[baseline_name]': 'neq:' }).then((allSystemsWithPatchSet) => {
-            setSystemWithPatchSet(
-                systemsIDs.filter(systemID =>
-                    allSystemsWithPatchSet?.data.some(system => system.id === systemID)
-                )
-            );
+    const handleUnassignment = useUnassignSystemsHook(handleModalToggle, systemsWithPatchSet);
 
+    useEffect(() => {
+        filterSystemsWithoutSets(systemsIDs).then(result => {
+            setSystemWithPatchSet(result);
             setSystemsLoading(false);
         });
     }, [systemsIDs]);
 
     const systemsWithoutPatchSetCount = systemsIDs.length - systemsWithPatchSet.length;
 
-    const modalMessage = (bodyMessage, systemsCount) => (<GridItem>
-        {intl.formatMessage(
-            messages[bodyMessage],
-            { systemsCount, b: (...chunks) => <b>{chunks}</b> }
-        )}
-    </GridItem>);
-
     return (
         <Modal
             variant={'small'}
             isOpen={unassignSystemsModalState.isUnassignSystemsModalOpen}
             title={intl.formatMessage(messages.textUnassignSystemsTitle)}
-            onClose={handleModalOpen}
+            onClose={handleModalClose}
             titleIconVariant="warning"
             actions={[
                 <Button key="confirm" variant="danger" onClick={handleUnassignment} isDisabled={systemsWithPatchSet.length === 0}>
                     {intl.formatMessage(messages.labelsRemove)}
                 </Button>,
-                <Button key="cancel" variant="link" onClick={handleModalOpen}>
+                <Button key="cancel" variant="link" onClick={handleModalClose}>
                     {intl.formatMessage(messages.labelsCancel)}
                 </Button>
             ]}
@@ -75,10 +54,10 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
             <Grid container hasGutter>
                 {systemsLoading && <Skeleton />}
                 {(!systemsLoading && systemsWithPatchSet.length !== 0) &&
-                    modalMessage('textUnassignSystemsStatement', systemsWithPatchSet.length)
+                    renderUnassignModalMessages('textUnassignSystemsStatement', systemsWithPatchSet.length, intl)
                 }
                 {(!systemsLoading && systemsWithoutPatchSetCount > 0) &&
-                    modalMessage('textUnassignSystemsWarning', systemsWithoutPatchSetCount)
+                    renderUnassignModalMessages('textUnassignSystemsWarning', systemsWithoutPatchSetCount, intl)
                 }
             </Grid>
         </Modal>
