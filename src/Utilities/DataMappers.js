@@ -352,7 +352,7 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
             };
         });
 
-    return data.length > 0 ? data :
+    return data?.length > 0 ? data :
         [
             {
                 heightAuto: true,

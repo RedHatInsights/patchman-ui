@@ -6,24 +6,18 @@ import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
-import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
-import staleFilter from '../../PresentationalComponents/Filters/SystemStaleFilter';
-import osVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
-import systemsUpdatableFilter from '../../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
 import { changeSystemsParams, clearInventoryReducer, changeSystemsMetadata, changeTags } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
-    exportSystemsCSV, exportSystemsJSON, fetchApplicableAdvisoriesApi,
-    fetchSystems, fetchViewAdvisoriesSystems
+    exportSystemsCSV, exportSystemsJSON, fetchSystems
 } from '../../Utilities/api';
-import { remediationIdentifiers, systemsListDefaultFilters, featureFlags } from '../../Utilities/constants';
+import { systemsListDefaultFilters, featureFlags } from '../../Utilities/constants';
 import {
-    arrayFromObj, buildFilterChips,
-    decodeQueryparams, filterRemediatableSystems, persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys,
-    transformPairs, systemsColumnsMerger, filterSelectedActiveSystemIDs
+    arrayFromObj, decodeQueryparams, persistantParams,
+    systemsColumnsMerger, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
@@ -36,6 +30,8 @@ import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
+import { fetchAllSystemsCallback, buildFilterConfig, buildActiveFiltersConfig } from './SystemsHelpers';
+import useRemediationProvier from './useRemediationDataProvider';
 
 const Systems = () => {
     const inventory = useRef(null);
@@ -112,26 +108,9 @@ const Systems = () => {
 
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
 
-    const filterConfig = {
-        items: [
-            searchFilter(apply, search,
-                intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-                intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
-            ),
-            staleFilter(apply, filter),
-            systemsUpdatableFilter(apply, filter),
-            osVersionFilter(filter, apply)
-        ]
-    };
+    const filterConfig = buildFilterConfig(search, filter, apply);
 
-    const activeFiltersConfig = {
-        filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
-        onDelete: deleteFilters,
-        deleteTitle: intl.formatMessage(messages.labelsFiltersReset)
-    };
-
-    const fetchAllData = () =>
-        fetchSystems({ ...queryParams, limit: -1 }).then(filterRemediatableSystems);
+    const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 
     const selectRows = (toSelect) => {
         dispatch(
@@ -139,7 +118,7 @@ const Systems = () => {
         );
     };
 
-    const onSelect = useOnSelect(systems, selectedRows, fetchAllData, selectRows);
+    const onSelect = useOnSelect(systems, selectedRows, fetchAllSystemsCallback(queryParams), selectRows);
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
@@ -148,30 +127,7 @@ const Systems = () => {
         json: exportSystemsJSON
     }, dispatch);
 
-    const prepareRemediationPairs = (systems) => {
-        return fetchApplicableAdvisoriesApi({ limit: -1 }).then(
-            ({ data }) => fetchViewAdvisoriesSystems(
-                {
-                    advisories: data.map(advisory => advisory.id),
-                    systems
-                }
-            ));
-    };
-
     const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
-
-    const remediationDataProvider = () => {
-        setRemediationLoading(true);
-        return remediationProviderWithPairs(
-            removeUndefinedObjectKeys(selectedRows),
-            prepareRemediationPairs,
-            transformPairs,
-            remediationIdentifiers.advisory
-        ).then(result => {
-            setRemediationLoading(false);
-            return result;
-        });
-    };
 
     const assignMultipleSystems = () => {
         setPatchSetState({
@@ -195,6 +151,8 @@ const Systems = () => {
             shouldRefresh: false
         });
     };
+
+    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading);
 
     return (
         <React.Fragment>
@@ -238,9 +196,6 @@ const Systems = () => {
                             });
                         }}
                         getEntities={getEntities}
-                        actions={systemsRowActions(
-                            showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal
-                        )}
                         tableProps={{
                             actionResolver: (row) => systemsRowActions(
                                 showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal, row
@@ -266,8 +221,7 @@ const Systems = () => {
                                     onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
                                     props: { isDisabled: selectedCount === 0 }
                                 }
-                            ]
-                        }
+                            ] }
                         }
                         filterConfig={filterConfig}
                         activeFiltersConfig={activeFiltersConfig}
