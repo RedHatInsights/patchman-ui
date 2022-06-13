@@ -1,3 +1,10 @@
+## [1.48.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.1...v1.48.2) (2022-06-13)
+
+
+### Bug Fixes
+
+* **SPM-1488:** filter out selected systems without patch sets ([9cb3f2d](https://github.com/RedHatInsights/patchman-ui/commit/9cb3f2db48ba5ba9ee05c467e5d46771647e15df))
+
 ## [1.48.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.0...v1.48.1) (2022-06-07)
 
 
