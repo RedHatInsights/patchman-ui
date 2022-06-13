@@ -129,8 +129,8 @@ describe('Systems.js', () => {
     });
 
     it('Should open remediation modal', () => {
-
-        const { actions } = wrapper.find('.testInventroyComponentChild').parent().props();
+        const { tableProps: { actionResolver } } = wrapper.find('.testInventroyComponentChild').parent().props();
+        const actions = actionResolver(systemRows[0]);
         expect(actions[0]).toMatchSnapshot();
     });
 
@@ -169,7 +169,8 @@ describe('Systems.js', () => {
                 <Router><Systems /></Router>
             </Provider>);
 
-            const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+            const { tableProps: { actionResolver } } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+            const actions = actionResolver(systemRows[0]);
             expect(actions.length).toEqual(3);
         });
 
@@ -180,7 +181,8 @@ describe('Systems.js', () => {
                 <Router><Systems /></Router>
             </Provider>);
 
-            const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+            const { tableProps: { actionResolver } } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+            const actions = actionResolver(systemRows[0]);
             expect(actions.length).toEqual(1);
         });
 
@@ -193,7 +195,8 @@ describe('Systems.js', () => {
                     <Router><Systems /></Router>
                 </Provider>);
 
-                const { actions } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+                const { tableProps: { actionResolver } } = tempWrapper.find('.testInventroyComponentChild').parent().props();
+                const actions = actionResolver(systemRows[0]);
 
                 await act(async () => actions[2].onClick(undefined, undefined, { id: 'test-id' }));
 

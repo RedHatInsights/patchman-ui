@@ -17,7 +17,7 @@ import {
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { patchSetColumns, useCreatePatchSetButton, usePatchSetRowActions } from './PatchSetAssets';
+import { patchSetColumns, createPatchSetButton, patchSetRowActions } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 
@@ -121,8 +121,8 @@ const PatchSet = ({ history }) => {
         });;
     };
 
-    const CreatePatchSetButton = useCreatePatchSetButton(setWizardState);
-    const patchSetRowActions = usePatchSetRowActions(showBaselineModal, handlePatchSetDelete);
+    const CreatePatchSetButton = createPatchSetButton(setWizardState);
+    const actionsConfig = patchSetRowActions(showBaselineModal, handlePatchSetDelete);
 
     return (
         <React.Fragment>
@@ -147,7 +147,7 @@ const PatchSet = ({ history }) => {
                     tableOUIA={'patch-set-table'}
                     paginationOUIA={'patch-set-pagination'}
                     store={{ rows, metadata, status, queryParams }}
-                    actionsConfig={(patchSets?.length > 0) && patchSetRowActions}
+                    actionsConfig={(patchSets?.length > 0) && actionsConfig}
                     filterConfig={{
                         items: [
                             searchFilter(apply, queryParams.search,
