@@ -32,10 +32,14 @@ const ReviewPatchSet = () => {
                     <TextList component={TextListVariants.dl}>
                         <TextListItem component={TextListItemVariants.dt}>Name:</TextListItem>
                         <TextListItem component={TextListItemVariants.dd}>{name}</TextListItem>
-                        <TextListItem component={TextListItemVariants.dt}>Description:</TextListItem>
-                        <TextListItem component={TextListItemVariants.dd}>{description}</TextListItem>
-                        <TextListItem component={TextListItemVariants.dt}>Date:</TextListItem>
-                        <TextListItem component={TextListItemVariants.dd}>{toDate}</TextListItem>
+                        {description && (<>
+                            <TextListItem component={TextListItemVariants.dt}>Description:</TextListItem>
+                            <TextListItem component={TextListItemVariants.dd}>{description}</TextListItem>
+                        </>)}
+                        {toDate && (<>
+                            <TextListItem component={TextListItemVariants.dt}>Date:</TextListItem>
+                            <TextListItem component={TextListItemVariants.dd}>{toDate}</TextListItem>
+                        </>)}
                         <TextListItem component={TextListItemVariants.dt}>Selected systems:</TextListItem>
                         <TextListItem component={TextListItemVariants.dd}>
                             {systems && Object.values(systems).filter(system => system).length}
