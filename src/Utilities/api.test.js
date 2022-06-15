@@ -5,36 +5,28 @@ import {
     exportSystemsCSV,
     exportSystemsJSON
 } from './api';
+import { initMocks } from '../Utilities/unitTestingUtilities';
 
-/* eslint-disable */
-window.insights = { chrome: { auth: { getUser: jest.fn(() => Promise.resolve({})) } } };
+initMocks();
 
 describe('api', () => {
     describe('test createApiCall function: ', () => {
-        it('Should "get" method in  createApiCall return response as json', () => {
-            global.fetch = jest.fn(() => Promise.resolve({
-                ok: true,
-                json: () => Promise.resolve({ success: true }),
-            })
-            );
-            const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' });
-            response.then((res) => expect(res.success).toBeTruthy()).catch((err) => console.log(err));
-        });
-
         it('Should "get" method in  createApiCall return error from backend', () => {
             global.fetch = jest.fn(() => Promise.resolve({
                 ok: false,
                 status: 400,
                 statusText: 'testStatusText',
-                headers: { get: (type) => [] }
+                headers: { get: () => [] }
             })
             );
             const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' });
-            response.then((res) => console.log(res)).catch((err) => expect(res).toEqual({
-                title: 'There was an error getting data',
-                detail: 'testStatusTextsssss',
-                status: 400
-            }));
+            response.catch((err) => {
+                expect(err).toEqual({
+                    title: 'There was an error getting data',
+                    detail: 'testStatusTextsssss',
+                    status: 400
+                });
+            });
         });
 
         it('Should "get" method in  createApiCall return network error', () => {
@@ -42,15 +34,15 @@ describe('api', () => {
                 ok: false,
                 status: 400,
                 statusText: 'testStatusText',
-                headers: { get: (type) => ['json'] }
+                headers: { get: () => ['json'] }
             })
             );
             const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' });
-            response.then((res) => expect(res).toEqual({
+            response.catch((res) => expect(res).toEqual({
                 title: 'There was an error getting data',
                 detail: 'testStatusTextsssss',
                 status: 400
-            })).catch(err => { });
+            }));
         });
     });
 
@@ -99,7 +91,6 @@ describe('api', () => {
             );
             global.fetch.mockClear();
         });
-    })
+    });
 
 });
-/* eslint-enable */

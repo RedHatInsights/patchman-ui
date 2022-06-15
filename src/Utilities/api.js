@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-unused-vars */
 import axios from './axiosInterceptors';
 import { encodeApiParams, prepareEntitiesParams } from './Helpers';
 
@@ -14,17 +12,13 @@ export function createApiCall(
         endpoint = endpoint.concat(encodeApiParams(parameters));
     }
 
-    let result = window.insights.chrome.auth
-    .getUser()
-    .then(() =>
-        axios({
-            method,
-            url: '/api/patch/v1' + endpoint,
-            withCredentials: true,
-            data,
-            ...requestConfig
-        })
-    ).catch(err => err);
+    let result = axios({
+        method,
+        url: '/api/patch/v1' + endpoint,
+        withCredentials: true,
+        data,
+        ...requestConfig
+    });
 
     return result;
 }
@@ -65,20 +59,20 @@ export const fetchAdvisorySystems = params => {
 };
 
 export const fetchPackageSystems = params => {
-    const { package_name, ...args } = params;
-    return createApiCall(`/packages/${package_name}/systems`, 'get', prepareEntitiesParams(args));
+    const { package_name: packageName, ...args } = params;
+    return createApiCall(`/packages/${packageName}/systems`, 'get', prepareEntitiesParams(args));
 };
 
 export const fetchPackageVersions = params => {
-    const { package_name, ...args } = params;
-    return createApiCall(`/packages/${package_name}/versions`, 'get', args);
+    const { package_name: packageName, ...args } = params;
+    return createApiCall(`/packages/${packageName}/versions`, 'get', args);
 };
 
 export const fetchPackagesList = params => {
-    const { systems_updatable } = params.filter;
+    const { systems_updatable: systemsUpdatable } = params.filter;
 
     // we have to reset systems_updatable filter to include all filters when we want to show all the data
-    if (Array.isArray(systems_updatable) && systems_updatable.length === 2) {
+    if (Array.isArray(systemsUpdatable) && systemsUpdatable.length === 2) {
         const paramsWithoutSystemsUpdatable = JSON.parse(JSON.stringify(params));
         delete paramsWithoutSystemsUpdatable.filter.systems_updatable;
 
