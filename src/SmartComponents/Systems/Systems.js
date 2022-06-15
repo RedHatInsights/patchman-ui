@@ -69,7 +69,7 @@ const Systems = () => {
     const selectedRows = useSelector(
         ({ entities }) => entities?.selectedRows || []
     );
-    const status = useSelector(
+    const { hasError, code } = useSelector(
         ({ entities }) => entities?.status || {}
     );
     const queryParams = useSelector(
@@ -199,91 +199,90 @@ const Systems = () => {
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
-            <SystemsStatusReport apply={apply} queryParams={queryParams}/>
-            {(patchSetState.isUnassignSystemsModalOpen && isPatchSetEnabled) && <UnassignSystemsModal
-                unassignSystemsModalState={patchSetState}
-                setUnassignSystemsModalOpen={setPatchSetState}
-                systemsIDs={patchSetState.systemsIDs}
-            />}
-            {(patchSetState.isPatchSetWizardOpen && isPatchSetEnabled) &&
-                <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setPatchSetState}/>}
-            {isRemediationOpen && <RemediationModalCmp /> || null}
-            <Main>
-                {status.hasError && <ErrorHandler code={status.code} /> ||
-                    (
-                        <InventoryTable
-                            ref={inventory}
-                            isFullView
-                            autoRefresh
-                            initialLoading
-                            hideFilters={{ all: true, tags: false }}
-                            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, true)}
-                            showTags
-                            customFilters={{
-                                patchParams: {
-                                    search,
-                                    filter,
-                                    systemProfile,
-                                    selectedTags
-                                }
-                            }}
-                            paginationProps={{
-                                isDisabled: totalItems === 0
-                            }}
-                            onLoad={({ mergeWithEntities }) => {
-                                register({
-                                    ...mergeWithEntities(
-                                        inventoryEntitiesReducer(systemsListColumns(isPatchSetEnabled), modifyInventory),
-                                        persistantParams({ page, perPage, sort, search }, decodedParams)
-                                    )
-                                });
-                            }}
-                            getEntities={getEntities}
-                            actions={systemsRowActions(
-                                showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal
-                            )}
-                            tableProps={{
-                                actionResolver: (row) => systemsRowActions(
-                                    showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal, row
-                                ),
-                                canSelectAll: false,
-                                variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
-                            }}
-                            bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
-                            exportConfig={{
-                                isDisabled: totalItems === 0,
-                                onSelect: onExport
-                            }}
-                            actionsConfig={isPatchSetEnabled && {
-                                actions: [
-                                    <Button onClick={assignMultipleSystems}
-                                        key='assign-multiple-systems'
-                                        isDisabled={selectedCount === 0}>
-                                        {intl.formatMessage(messages.titlesPatchSetAssign)}
-                                    </Button>,
-                                    {
-                                        key: 'remove-multiple-systems',
-                                        label: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
-                                        onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
-                                        props: { isDisabled: selectedCount === 0 }
-                                    }
-                                ] }
+            {hasError && <ErrorHandler code={code} /> || <React.Fragment>
+                <SystemsStatusReport apply={apply} queryParams={queryParams} />
+                {(patchSetState.isUnassignSystemsModalOpen && isPatchSetEnabled) && <UnassignSystemsModal
+                    unassignSystemsModalState={patchSetState}
+                    setUnassignSystemsModalOpen={setPatchSetState}
+                    systemsIDs={patchSetState.systemsIDs}
+                />}
+                {(patchSetState.isPatchSetWizardOpen && isPatchSetEnabled) &&
+                    <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setPatchSetState} />}
+                {isRemediationOpen && <RemediationModalCmp /> || null}
+                <Main>
+                    <InventoryTable
+                        ref={inventory}
+                        isFullView
+                        autoRefresh
+                        initialLoading
+                        hideFilters={{ all: true, tags: false }}
+                        columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, true)}
+                        showTags
+                        customFilters={{
+                            patchParams: {
+                                search,
+                                filter,
+                                systemProfile,
+                                selectedTags
                             }
-                            filterConfig={filterConfig}
-                            activeFiltersConfig={activeFiltersConfig}
-                            dedicatedAction={(
-                                <AsyncRemediationButton
-                                    remediationProvider={remediationDataProvider}
-                                    isDisabled={
-                                        arrayFromObj(selectedRows).length === 0
-                                    }
-                                    isLoading={isRemediationLoading}
-                                />
-                            )}
-                        />
-                    )
-                }
-            </Main>
+                        }}
+                        paginationProps={{
+                            isDisabled: totalItems === 0
+                        }}
+                        onLoad={({ mergeWithEntities }) => {
+                            register({
+                                ...mergeWithEntities(
+                                    inventoryEntitiesReducer(systemsListColumns(isPatchSetEnabled), modifyInventory),
+                                    persistantParams({ page, perPage, sort, search }, decodedParams)
+                                )
+                            });
+                        }}
+                        getEntities={getEntities}
+                        actions={systemsRowActions(
+                            showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal
+                        )}
+                        tableProps={{
+                            actionResolver: (row) => systemsRowActions(
+                                showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal, row
+                            ),
+                            canSelectAll: false,
+                            variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                        }}
+                        bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                        exportConfig={{
+                            isDisabled: totalItems === 0,
+                            onSelect: onExport
+                        }}
+                        actionsConfig={isPatchSetEnabled && {
+                            actions: [
+                                <Button onClick={assignMultipleSystems}
+                                    key='assign-multiple-systems'
+                                    isDisabled={selectedCount === 0}>
+                                    {intl.formatMessage(messages.titlesPatchSetAssign)}
+                                </Button>,
+                                {
+                                    key: 'remove-multiple-systems',
+                                    label: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
+                                    onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
+                                    props: { isDisabled: selectedCount === 0 }
+                                }
+                            ]
+                        }
+                        }
+                        filterConfig={filterConfig}
+                        activeFiltersConfig={activeFiltersConfig}
+                        dedicatedAction={(
+                            <AsyncRemediationButton
+                                remediationProvider={remediationDataProvider}
+                                isDisabled={
+                                    arrayFromObj(selectedRows).length === 0
+                                }
+                                isLoading={isRemediationLoading}
+                            />
+                        )}
+                    />
+                </Main>
+            </React.Fragment>}
         </React.Fragment>
     );
 };

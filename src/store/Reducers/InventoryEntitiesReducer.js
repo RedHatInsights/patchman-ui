@@ -1,6 +1,6 @@
 import { createSystemsRows } from '../../Utilities/DataMappers';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
-import { selectRows } from './HelperReducers';
+import { selectRows, fetchRejected } from './HelperReducers';
 import * as ActionTypes from '../ActionTypes';
 
 // Initial State. It should not include page and perPage to persist them dynamically
@@ -54,8 +54,7 @@ export const inventoryEntitiesReducer = (columns, inventoryModifier) => (state =
             return newState;
 
         case 'LOAD_ENTITIES_REJECTED':
-            newState.status = { isLoading: true, hasError: true };
-            return newState;
+            return fetchRejected(newState, action);
 
         case 'SELECT_ENTITY': {
             const stateAfterSelection = selectRows(newState, action);
