@@ -7,8 +7,8 @@ describe('InventoryEntitiesReducer tests', () => {
     it.each`
     columns                 |  state                                                                | action                                                | result
     ${[]}                   |  ${{ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }} | ${{ type: 'LOAD_ENTITIES_FULFILLED', payload: {} }}   | ${{ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }}
-    ${[]}                   |  ${{ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }} | ${{ type: 'LOAD_ENTITIES_PENDING', payload: {} }}   | ${{ ...initialState, loaded: false, status: { isLoading: true, hasError: false }, columns: [{ key: 'testCol' }] }}
-    ${[]}                   |  ${{ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }} | ${{ type: 'LOAD_ENTITIES_REJECTED', payload: {} }}   | ${{ ...initialState, loaded: false, status: { isLoading: true, hasError: true }, columns: [{ key: 'testCol' }] }}
+    ${[]}                   |  ${{ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }} | ${{ type: 'LOAD_ENTITIES_PENDING', payload: {} }}   | ${{ ...initialState, loaded: false, status: { isLoading: true, hasError: false,  }, columns: [{ key: 'testCol' }] }}
+    ${[]}                   |  ${{ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }} | ${{ type: 'LOAD_ENTITIES_REJECTED', payload: { status: 400 } }}   | ${{ ...initialState, loaded: false, status: { isLoading: false, code: 400, hasError: true }, error: { status: 400 }, metadata: {}, columns: [{ key: 'testCol' }] }}
     ${[]}                   |  ${{ ...initialState, loaded: false, columns: [{ key: 'testCol' }] }} | ${{ type: 'SELECT_ENTITY', payload: [{ id: '83e97cde-74b4-4752-819d-704687bbc286' }] }}}   | ${{ ...initialState, loaded: false, columns: [{ key: 'testCol' }], selectedRows: { "83e97cde-74b4-4752-819d-704687bbc286": undefined } }}
 
     `('$action', ({ columns, state, action: { type, payload }, result }) => {

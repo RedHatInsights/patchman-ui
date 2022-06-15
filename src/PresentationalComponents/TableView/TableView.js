@@ -56,50 +56,50 @@ const TableView = ({
         <React.Fragment>
             {
                 (<React.Fragment>
-                    <PrimaryToolbar
-                        pagination={{
-                            itemCount: metadata.total_items,
-                            page,
-                            perPage,
-                            isCompact: true,
-                            onSetPage,
-                            onPerPageSelect,
-                            ouiaId: `top-${paginationOUIA}`,
-                            isDisabled: metadata.total_items === 0
-                        }}
-                        filterConfig={filterConfig}
-                        activeFiltersConfig={{
-                            filters: buildFilterChips(filter, search, searchChipLabel),
-                            onDelete: deleteFilters,
-                            deleteTitle: intl.formatMessage(defaultFilters
-                                && messages.labelsFiltersReset || messages.labelsFiltersClear)
-                        }}
-                        actionsConfig={{
-                            actions: [remediationProvider && (
-                                <AsyncRemediationButton
-                                    remediationProvider={remediationProvider}
-                                    isDisabled={
-                                        Object.values(selectedRows).filter(isSelected => isSelected).length === 0
-                                    } />
-                            )]
-                        }}
-                        exportConfig={{
-                            isDisabled: metadata.total_items === 0,
-                            onSelect: onExport
-                        }}
-                        bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse)}
-
-                    >
-                        { CreatePatchSet && <ToolbarItem>
-                            <CreatePatchSet />
-                        </ToolbarItem>}
-                        { EditPatchSet && <ToolbarItem>
-                            <EditPatchSet />
-                        </ToolbarItem>}
-                    </PrimaryToolbar>
                     {isLoading && <SkeletonTable colSize={5} rowSize={20} />
-                        || hasError && <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState}/>
+                        || hasError && <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} />
                         || <React.Fragment>
+                            <PrimaryToolbar
+                                pagination={{
+                                    itemCount: metadata.total_items,
+                                    page,
+                                    perPage,
+                                    isCompact: true,
+                                    onSetPage,
+                                    onPerPageSelect,
+                                    ouiaId: `top-${paginationOUIA}`,
+                                    isDisabled: metadata.total_items === 0
+                                }}
+                                filterConfig={filterConfig}
+                                activeFiltersConfig={{
+                                    filters: buildFilterChips(filter, search, searchChipLabel),
+                                    onDelete: deleteFilters,
+                                    deleteTitle: intl.formatMessage(defaultFilters
+                                && messages.labelsFiltersReset || messages.labelsFiltersClear)
+                                }}
+                                actionsConfig={{
+                                    actions: [remediationProvider && (
+                                        <AsyncRemediationButton
+                                            remediationProvider={remediationProvider}
+                                            isDisabled={
+                                                Object.values(selectedRows).filter(isSelected => isSelected).length === 0
+                                            } />
+                                    )]
+                                }}
+                                exportConfig={{
+                                    isDisabled: metadata.total_items === 0,
+                                    onSelect: onExport
+                                }}
+                                bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse)}
+
+                            >
+                                { CreatePatchSet && <ToolbarItem>
+                                    <CreatePatchSet />
+                                </ToolbarItem>}
+                                { EditPatchSet && <ToolbarItem>
+                                    <EditPatchSet />
+                                </ToolbarItem>}
+                            </PrimaryToolbar>
                             <Table
                                 aria-label="Patch table view"
                                 cells={columns}
