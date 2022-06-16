@@ -1,3 +1,10 @@
+## [1.48.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.2...v1.48.3) (2022-06-16)
+
+
+### Bug Fixes
+
+* **api:** errors from api response are passed down to components ([7cc8c59](https://github.com/RedHatInsights/patchman-ui/commit/7cc8c59b8f84094bbd426c2bfeb52664bf220bae))
+
 ## [1.48.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.1...v1.48.2) (2022-06-13)
 
 
