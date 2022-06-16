@@ -1,4 +1,5 @@
 import InventoryDetail from './InventoryDetail';
+import { act } from 'react-dom/test-utils';
 import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 import { entityDetail } from '../../Utilities/RawDataForTesting';
@@ -105,19 +106,21 @@ describe('InventoryPage.js', () => {
 
         const unassignSystemsModalState = tempWrapper.update().find(UnassignSystemsModal).props().unassignSystemsModalState;
         expect(unassignSystemsModalState).toEqual({
-            systemsIDs: [testID], isUnassignSystemsModalOpen: true
+            systemsIDs: [testID], isUnassignSystemsModalOpen: true, shouldRefresh: false
         });
     });
 
-    it('Should refresh the page after successful system removal from patch set', () => {
+    it('Should refresh the page after successful system removal from patch set', async () => {
         const { actions } = wrapper.find(InventoryDetailHead).props();
         actions.find(action => action.key === 'remove-from-patch-set')?.onClick();
 
         const setUnassignSystemsModalOpen = wrapper.update().find(UnassignSystemsModal).props().setUnassignSystemsModalOpen;
-        setUnassignSystemsModalOpen({
-            isUnassignSystemsModalOpen: false,
-            systemsIDs: [],
-            shouldRefresh: true
+        await act(async () => {
+            setUnassignSystemsModalOpen({
+                isUnassignSystemsModalOpen: false,
+                systemsIDs: [],
+                shouldRefresh: true
+            });
         });
 
         expect(store.getActions().filter(action => action.type === 'FETCH_SYSTEM_DETAIL').length).toEqual(2);

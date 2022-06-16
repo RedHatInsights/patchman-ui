@@ -20,6 +20,7 @@ import { clearNotifications, addNotification } from '@redhat-cloud-services/fron
 import { patchSetColumns, createPatchSetButton, patchSetRowActions } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
+import usePatchSetState from '../../Utilities/usePatchSetState';
 
 const PatchSet = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesPatchSet);
@@ -30,12 +31,6 @@ const PatchSet = ({ history }) => {
 
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = React.useState(true);
-    const [wizardState, setWizardState] = React.useState({
-        isOpen: false,
-        shouldRefresh: false,
-        patchSetID: undefined,
-        systemsIDs: []
-    });
 
     const patchSets = useSelector(
         ({ PatchSetsStore }) => PatchSetsStore.rows
@@ -72,11 +67,13 @@ const PatchSet = ({ history }) => {
         dispatch(clearNotifications());
     }, []);
 
+    const { patchSetState, setPatchSetState, openPatchSetEditModal } = usePatchSetState(selectedRows);
+
     useEffect(() => {
-        if (wizardState.shouldRefresh === true) {
+        if (patchSetState.shouldRefresh === true) {
             refreshTable();
         }
-    }, [wizardState.shouldRefresh]);
+    }, [patchSetState.shouldRefresh]);
 
     useDeepCompareEffect(() => {
         if (firstMount) {
@@ -108,10 +105,6 @@ const PatchSet = ({ history }) => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    async function showBaselineModal(rowData) {
-        setWizardState({ isOpen: true, patchSetID: rowData.id });
-    }
-
     const handlePatchSetDelete = (rowData) => {
         deletePatchSet(rowData.id).then(() => {
             dispatch(addNotification(patchSetDeleteNotifications.success));
@@ -121,17 +114,17 @@ const PatchSet = ({ history }) => {
         });;
     };
 
-    const CreatePatchSetButton = createPatchSetButton(setWizardState);
-    const actionsConfig = patchSetRowActions(showBaselineModal, handlePatchSetDelete);
+    const CreatePatchSetButton = createPatchSetButton(setPatchSetState);
+    const actionsConfig = patchSetRowActions(openPatchSetEditModal, handlePatchSetDelete);
 
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSet)} headerOUIA={'advisories'} />
-            {wizardState.isOpen &&
+            {patchSetState.isPatchSetWizardOpen &&
                 <PatchSetWizard
-                    systemsIDs={wizardState.systemsIDs}
-                    setBaselineState={setWizardState}
-                    patchSetID={wizardState.patchSetID}
+                    systemsIDs={patchSetState.systemsIDs}
+                    setBaselineState={setPatchSetState}
+                    patchSetID={patchSetState.patchSetID}
                 />}
             <Main>
                 <TableView

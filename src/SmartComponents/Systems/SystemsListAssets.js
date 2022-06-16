@@ -86,7 +86,7 @@ const isPatchSetRemovalDisabled = (row) => {
     return !baselineName || (typeof baselineName === 'string' && baselineName === '');
 };
 
-export const systemsRowActions = (showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal, row) => {
+export const systemsRowActions = (showRemediationModal, showPatchSetModal, isPatchSetEnabled, openUnassignSystemsModal, row) => {
     return [
         {
             title: 'Apply all applicable advisories',
@@ -106,10 +106,10 @@ export const systemsRowActions = (showRemediationModal, showBaselineModal, isPat
                 );
             }
         },
-        ...(isPatchSetEnabled && showBaselineModal ? [{
+        ...(isPatchSetEnabled && showPatchSetModal ? [{
             title: 'Assign to a patch set',
             onClick: (event, rowId, rowData) => {
-                showBaselineModal(rowData);
+                showPatchSetModal(rowData?.id);
             }
         },
         {

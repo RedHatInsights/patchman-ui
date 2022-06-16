@@ -5,8 +5,8 @@ import { sortable } from '@patternfly/react-table/dist/js';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
-export const createPatchSetButton = (setWizardState) => () =>
-    (<Button key='createButton' onClick={() => setWizardState({ isOpen: true })}>
+export const createPatchSetButton = (setPatchSetState) => () =>
+    (<Button key='createButton' onClick={() => setPatchSetState({ isPatchSetWizardOpen: true })}>
         {intl.formatMessage(messages.labelsButtonCreatePatchSet)}
     </Button>);
 
@@ -29,11 +29,11 @@ export const patchSetColumns = [
     }
 ];
 
-export const patchSetRowActions = (showBaselineModal, handlePatchSetDelete) => [
+export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) => [
     {
         title: 'Edit patch set',
         onClick: (_event, _rowId, rowData) => {
-            showBaselineModal(rowData);
+            openPatchSetEditModal(rowData?.id);
         }
     },
     {
