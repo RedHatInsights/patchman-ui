@@ -52,6 +52,17 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
             className="testDetailWrapper"
           >
             <div>
+              <PatchSetWrapper
+                patchSetState={
+                  Object {
+                    "isPatchSetWizardOpen": false,
+                    "isUnassignSystemsModalOpen": false,
+                    "shouldRefresh": false,
+                    "systemsIDs": Array [],
+                  }
+                }
+                setPatchSetState={[Function]}
+              />
               <Header
                 breadcrumbs={
                   Array [

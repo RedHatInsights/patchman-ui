@@ -26,12 +26,12 @@ import {
 import { intl } from '../../Utilities/IntlProvider';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
-import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
-import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 import { fetchAllSystemsCallback, buildFilterConfig, buildActiveFiltersConfig } from './SystemsHelpers';
 import useRemediationProvier from './useRemediationDataProvider';
+import usePatchSetState from '../../Utilities/usePatchSetState';
+import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 
 const Systems = () => {
     const inventory = useRef(null);
@@ -47,12 +47,6 @@ const Systems = () => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-    const [patchSetState, setPatchSetState] = React.useState({
-        isPatchSetWizardOpen: false,
-        isUnassignSystemsModalOpen: false,
-        shouldRefresh: false,
-        systemsIDs: []
-    });
 
     const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
 
@@ -90,10 +84,6 @@ const Systems = () => {
         setRemediationOpen(!isRemediationOpen);
     }
 
-    function showBaselineModal(rowData) {
-        setPatchSetState({ isPatchSetWizardOpen: true, systemsIDs: [rowData.id] });
-    }
-
     function apply(queryParams) {
         dispatch(changeSystemsParams(queryParams));
     }
@@ -129,13 +119,9 @@ const Systems = () => {
 
     const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
 
-    const assignMultipleSystems = () => {
-        setPatchSetState({
-            isPatchSetWizardOpen: true,
-            systemsIDs: filterSelectedActiveSystemIDs(selectedRows),
-            shouldRefresh: false }
-        );
-    };
+    const {
+        patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal
+    } = usePatchSetState(selectedRows);
 
     useEffect(() => {
         if (patchSetState.shouldRefresh) {
@@ -144,14 +130,6 @@ const Systems = () => {
         }
     }, [patchSetState.shouldRefresh]);
 
-    const openUnassignSystemsModal = (systemsIDs) => {
-        setPatchSetState({
-            isUnassignSystemsModalOpen: true,
-            systemsIDs,
-            shouldRefresh: false
-        });
-    };
-
     const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading);
 
     return (
@@ -159,13 +137,7 @@ const Systems = () => {
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             {hasError && <ErrorHandler code={code} /> || <React.Fragment>
                 <SystemsStatusReport apply={apply} queryParams={queryParams} />
-                {(patchSetState.isUnassignSystemsModalOpen && isPatchSetEnabled) && <UnassignSystemsModal
-                    unassignSystemsModalState={patchSetState}
-                    setUnassignSystemsModalOpen={setPatchSetState}
-                    systemsIDs={patchSetState.systemsIDs}
-                />}
-                {(patchSetState.isPatchSetWizardOpen && isPatchSetEnabled) &&
-                    <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setPatchSetState} />}
+                {isPatchSetEnabled && <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />}
                 {isRemediationOpen && <RemediationModalCmp /> || null}
                 <Main>
                     <InventoryTable
@@ -197,9 +169,11 @@ const Systems = () => {
                         }}
                         getEntities={getEntities}
                         tableProps={{
-                            actionResolver: (row) => systemsRowActions(
-                                showRemediationModal, showBaselineModal, isPatchSetEnabled, openUnassignSystemsModal, row
-                            ),
+                            actionResolver: (row) =>
+                                systemsRowActions(
+                                    showRemediationModal, openPatchSetAssignWizard,
+                                    isPatchSetEnabled, openUnassignSystemsModal, row
+                                ),
                             canSelectAll: false,
                             variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                         }}
@@ -210,7 +184,7 @@ const Systems = () => {
                         }}
                         actionsConfig={isPatchSetEnabled && {
                             actions: [
-                                <Button onClick={assignMultipleSystems}
+                                <Button onClick={openPatchSetAssignWizard}
                                     key='assign-multiple-systems'
                                     isDisabled={selectedCount === 0}>
                                     {intl.formatMessage(messages.titlesPatchSetAssign)}
