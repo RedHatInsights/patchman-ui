@@ -121,7 +121,8 @@ export const entityDetail = {
     loaded: true,
     activeApps: [],
     entity: {
-        account: '60'
+        account: '60',
+        insights_id: 'test-insights-id'
     }
 };
 

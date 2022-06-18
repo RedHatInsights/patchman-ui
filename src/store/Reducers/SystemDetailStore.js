@@ -12,6 +12,18 @@ export const SystemDetailStore = (state = initialState, { type, payload }) => {
             state.hasThirdPartyRepo = payload.data?.attributes.third_party;
             state.patchSetName = payload.data?.attributes.baseline_name;
             return state;
+        case 'LOAD_ENTITY_PENDING':
+            return {
+                ...state,
+                loaded: false,
+                activeApps: [
+                    {
+                        title: 'Patch',
+                        name: 'patch',
+                        component: () => <SystemDetail />
+                    }
+                ]
+            };
         case 'LOAD_ENTITY_FULFILLED':
             return {
                 ...state,
