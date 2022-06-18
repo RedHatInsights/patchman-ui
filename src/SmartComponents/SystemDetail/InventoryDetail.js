@@ -15,6 +15,7 @@ import propTypes from 'prop-types';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const InventoryDetail = ({ match }) => {
     const [unassignSystemsModalState, setUnassignSystemsModalState] = React.useState({
@@ -29,12 +30,12 @@ const InventoryDetail = ({ match }) => {
     });
 
     const dispatch = useDispatch();
-    const entityDetails = useSelector(
-        ({ entityDetails }) => entityDetails && entityDetails.entity
+    const { loaded } = useSelector(
+        ({ entityDetails }) => entityDetails && entityDetails || {}
     );
 
-    const { hasThirdPartyRepo, patchSetName } = useSelector(
-        ({ entityDetails }) => entityDetails ?? {}
+    const { hasThirdPartyRepo, patchSetName, display_name: displayName, insights_id: insightsID } = useSelector(
+        ({ entityDetails }) => entityDetails?.entity ?? {}
     );
     const entityId = match.params?.inventoryId;
     useEffect(() => {
@@ -44,7 +45,7 @@ const InventoryDetail = ({ match }) => {
         };
     }, [patchSetState.shouldRefresh, unassignSystemsModalState.shouldRefresh]);
 
-    const pageTitle = entityDetails && `${entityDetails.display_name} - ${intl.formatMessage(messages.titlesSystems)}`;
+    const pageTitle = displayName && `${displayName} - ${intl.formatMessage(messages.titlesSystems)}`;
     setPageTitle(pageTitle);
 
     const showBaselineModal = () => {
@@ -58,75 +59,75 @@ const InventoryDetail = ({ match }) => {
         });
     };
 
-    return (
-        <DetailWrapper
-            onLoad={({ mergeWithDetail }) => {
-                register({
-                    ...mergeWithDetail(SystemDetailStore)
-                });
-            }}
-        >
-            {(unassignSystemsModalState.isUnassignSystemsModalOpen) && <UnassignSystemsModal
-                unassignSystemsModalState={unassignSystemsModalState}
-                setUnassignSystemsModalOpen={setUnassignSystemsModalState}
-                systemsIDs={unassignSystemsModalState.systemsIDs}
-            />}
-            {(patchSetState.isOpen) &&
+    return (<DetailWrapper
+        onLoad={({ mergeWithDetail }) => {
+            register({
+                ...mergeWithDetail(SystemDetailStore)
+            });
+        }}
+    >
+        {(unassignSystemsModalState.isUnassignSystemsModalOpen) && <UnassignSystemsModal
+            unassignSystemsModalState={unassignSystemsModalState}
+            setUnassignSystemsModalOpen={setUnassignSystemsModalState}
+            systemsIDs={unassignSystemsModalState.systemsIDs}
+        />}
+        {(patchSetState.isOpen) &&
                 <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setBaselineState} />}
-            <Header
-                title=""
-                headerOUIA={'inventory-details'}
-                breadcrumbs={[
+        <Header
+            title=""
+            headerOUIA={'inventory-details'}
+            breadcrumbs={[
+                {
+                    title: intl.formatMessage(messages.titlesPatchSystems),
+                    to: paths.systems.to,
+                    isActive: false
+                },
+                displayName && {
+                    title: displayName,
+                    isActive: true
+                }
+            ]}
+        >
+            {(!loaded || insightsID) && <InventoryDetailHead hideBack
+                showTags
+                actions={[
                     {
-                        title: intl.formatMessage(messages.titlesPatchSystems),
-                        to: paths.systems.to,
-                        isActive: false
+                        title: intl.formatMessage(messages.titlesPatchSetAssign),
+                        key: 'assign-to-patch-set',
+                        onClick: showBaselineModal
                     },
-                    entityDetails && {
-                        title: entityDetails.display_name,
-                        isActive: true
-                    }
-                ]}
+                    {
+                        title: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
+                        key: 'remove-from-patch-set',
+                        isDisabled: !patchSetName,
+                        onClick: () => openUnassignSystemsModal([entityId])
+                    }]}
             >
-                <InventoryDetailHead hideBack
-                    showTags
-                    actions={[
-                        {
-                            title: intl.formatMessage(messages.titlesPatchSetAssign),
-                            key: 'assign-to-patch-set',
-                            onClick: showBaselineModal
-                        },
-                        {
-                            title: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
-                            key: 'remove-from-patch-set',
-                            isDisabled: !patchSetName,
-                            onClick: () => openUnassignSystemsModal([entityId])
-                        }]}
-                >
-                    <Grid>
-                        <GridItem>
-                            {patchSetName && <TextContent>
-                                <Text>
-                                    {`${intl.formatMessage(messages.labelsColumnsPatchSet)}: ${patchSetName}`}
-                                </Text>
-                            </TextContent>
-                            }
-                        </GridItem>
-                        <GridItem>
-                            {hasThirdPartyRepo &&
+                <Grid>
+                    <GridItem>
+                        {patchSetName && <TextContent>
+                            <Text>
+                                {`${intl.formatMessage(messages.labelsColumnsPatchSet)}: ${patchSetName}`}
+                            </Text>
+                        </TextContent>
+                        }
+                    </GridItem>
+                    <GridItem>
+                        {hasThirdPartyRepo &&
                                 (<Alert className='pf-u-mt-md' isInline variant="info"
                                     title={intl.formatMessage(messages.textThirdPartyInfo)}>
                                 </Alert>)
-                            }
-                        </GridItem>
-                    </Grid>
-                </InventoryDetailHead>
-            </Header>
-            <Main>
-                <AppInfo />
-            </Main>
-        </DetailWrapper>
-    );
+                        }
+                    </GridItem>
+                </Grid>
+            </InventoryDetailHead>}
+        </Header>
+        {(!insightsID && loaded)
+            ? <ErrorHandler code={204} />
+            : (<Main>
+                <AppInfo/>
+            </Main>)}
+    </DetailWrapper>);
 };
 
 InventoryDetail.propTypes = {

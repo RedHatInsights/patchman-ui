@@ -70,29 +70,26 @@ describe('InventoryPage.js', () => {
     it('Should display "Remove from patch set" action in disabled state', () => {
         const { actions } = wrapper.find(InventoryDetailHead).props();
 
-        expect(actions).toContainEqual({
-            title: 'Remove from patch set',
-            key: 'remove-from-patch-set',
-            isDisabled: true,
-            onClick: expect.any(Function)
-        });
+        expect(actions).toEqual(
+            [
+                { key: 'assign-to-patch-set', onClick: expect.any(Function), title: 'Assign to a patch set' },
+                { isDisabled: true, key: 'remove-from-patch-set', onClick: expect.any(Function), title: 'Remove from patch set' }
+            ]);
     });
 
     it('Should display "Remove from patch set" action in enabled state', () => {
         useSelector.mockImplementation(callback => {
-            return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
+            return callback({ entityDetails: { ...mockState, entity: { ...mockState.entity, patchSetName: 'test-name' } } });
         });
         const tempWrapper = mount(<Provider store={store}>
             <Router><InventoryDetail match={{ params: { inventoryId: 'test' } }} /></Router>
         </Provider>);
         const { actions } = tempWrapper.find(InventoryDetailHead).props();
 
-        expect(actions).toContainEqual({
-            title: 'Remove from patch set',
-            key: 'remove-from-patch-set',
-            isDisabled: false,
-            onClick: expect.any(Function)
-        });
+        expect(actions).toEqual([
+            { key: 'assign-to-patch-set', onClick: expect.any(Function), title: 'Assign to a patch set' },
+            { isDisabled: false, key: 'remove-from-patch-set', onClick: expect.any(Function), title: 'Remove from patch set' }
+        ]);
     });
 
     it('Should open UnassignSystemsModal when "Remove from patch set" action is called', () => {
