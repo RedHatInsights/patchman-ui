@@ -113,7 +113,7 @@
     "commit": "./node_modules/cz-customizable/standalone.js",
     "build": "webpack --config config/prod.webpack.config.js --mode production",
     "analyze": "NODE_ENV=production webpack --config config/prod.webpack.config.js --env analyze=true --mode production",
-    "test": "jest --verbose",
+    "test": "TZ=UTC jest --verbose --no-cache",
     "test:update": "jest --updateSnapshot --passWithNoTests",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint config src",
