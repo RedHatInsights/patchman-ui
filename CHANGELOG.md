@@ -1,3 +1,11 @@
+## [1.48.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.3...v1.48.4) (2022-06-21)
+
+
+### Bug Fixes
+
+* **ErrorHandler:** wrap table toolbar with ErrorHandler ([1cb5632](https://github.com/RedHatInsights/patchman-ui/commit/1cb563208b280cc7b1f2c9be2a2270eea951d03e))
+* **InventoryDetail:** ESSNTL-2698 handle disconnected systems ([18c490e](https://github.com/RedHatInsights/patchman-ui/commit/18c490ee495e89577c222f70ea387f00a2478e16))
+
 ## [1.48.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.2...v1.48.3) (2022-06-16)
 
 
