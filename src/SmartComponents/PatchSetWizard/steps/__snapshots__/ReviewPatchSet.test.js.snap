@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ReviewPatchSet.js Should display all Patch set configuration 1`] = `
+exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] = `
 <ReviewPatchSet>
   <Stack
     hasGutter={true}
@@ -41,7 +41,7 @@ exports[`ReviewPatchSet.js Should display all Patch set configuration 1`] = `
                   <b>
                     Submit
                   </b>
-                   to complete patch set creation
+                   to complete patch template creation
                 </p>
               </Text>
             </div>
@@ -195,7 +195,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   <b>
                     Submit
                   </b>
-                   to complete patch set creation
+                   to complete patch template creation
                 </p>
               </Text>
             </div>

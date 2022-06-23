@@ -99,7 +99,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
       onClose={[Function]}
       ouiaSafe={true}
       showClose={true}
-      title="Remove systems from patch set"
+      title="Remove systems from patch template "
       titleIconVariant="warning"
       titleLabel=""
       variant="small"
@@ -179,7 +179,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                       <span
                         class="pf-c-modal-box__title-text"
                       >
-                        Remove systems from patch set
+                        Remove systems from patch template 
                       </span>
                     </h1>
                   </header>
@@ -197,7 +197,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                         <b>
                            1 
                         </b>
-                         selected system  from assigned Patch sets?
+                         selected system  from assigned Patch templates?
                       </div>
                       <div
                         class="pf-l-grid__item"
@@ -206,7 +206,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                         <b>
                            2 
                         </b>
-                          systems  you are trying to remove that are not assigned to any existing Patch Set. This action will not affect them.
+                          systems  you are trying to remove that are not assigned to any existing Patch template. This action will not affect them.
                       </div>
                     </div>
                   </div>
@@ -271,7 +271,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
           ouiaId="OUIA-Generated-Modal-small-1"
           ouiaSafe={true}
           showClose={true}
-          title="Remove systems from patch set"
+          title="Remove systems from patch template "
           titleIconVariant="warning"
           titleLabel=""
           variant="small"
@@ -389,7 +389,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                         >
                           <ModalBoxTitle
                             id="pf-modal-part-1"
-                            title="Remove systems from patch set"
+                            title="Remove systems from patch template "
                             titleIconVariant="warning"
                             titleLabel=""
                           >
@@ -433,7 +433,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                               <span
                                 className="pf-c-modal-box__title-text"
                               >
-                                Remove systems from patch set
+                                Remove systems from patch template 
                               </span>
                             </h1>
                           </ModalBoxTitle>

@@ -23,7 +23,7 @@ import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 
 const PatchSet = ({ history }) => {
-    const pageTitle = intl.formatMessage(messages.titlesPatchSet);
+    const pageTitle = intl.formatMessage(messages.titlesTemplate);
 
     const IS_SELECTION_ENABLED = false;
 
@@ -119,7 +119,7 @@ const PatchSet = ({ history }) => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.titlesPatchSet)} headerOUIA={'advisories'} />
+            <Header title={intl.formatMessage(messages.titlesTemplate)} headerOUIA={'advisories'} />
             {patchSetState.isPatchSetWizardOpen &&
                 <PatchSetWizard
                     systemsIDs={patchSetState.systemsIDs}
@@ -144,12 +144,12 @@ const PatchSet = ({ history }) => {
                     filterConfig={{
                         items: [
                             searchFilter(apply, queryParams.search,
-                                intl.formatMessage(messages.labelsFiltersSearchPatchSetTitle),
-                                intl.formatMessage(messages.labelsFiltersSearchPatchSetPlaceholder)
+                                intl.formatMessage(messages.labelsFiltersSearchTemplateTitle),
+                                intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)
                             )
                         ]
                     }}
-                    searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchPatchSetTitle)}
+                    searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
                     CreatePatchSetButton={CreatePatchSetButton}
                 />
             </Main>

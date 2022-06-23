@@ -10,6 +10,8 @@ import {
     Radio,
     TextVariants
 } from '@patternfly/react-core';
+import { intl } from '../../../Utilities/IntlProvider';
+import messages from '../../../Messages';
 import SelectExistingSets from '../InputFields/SelectExistingSets';
 import ConfigurationFields from '../InputFields/ConfigurationFields';
 
@@ -45,7 +47,10 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
         <Stack hasGutter>
             {shouldShowRadioButtons && <TextContent style={{ marginTop: '-15px' }}>
                 <Text component={TextVariants.p}>
-                    You selected <b>{systemsIDs.length} systems</b>
+                    {intl.formatMessage(
+                        messages.textTemplateSelectedSystems,
+                        { systemsCount: systemsIDs.length, b: (...chunks) => <b>{chunks}</b> }
+                    )}
                 </Text>
             </TextContent>}
             <StackItem>
@@ -55,8 +60,8 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
                             isChecked={shouldApplyExisting}
                             name="radio"
                             onChange={handleRadioChange}
-                            label="Add to existing patch set"
-                            id="existing-set"
+                            label={intl.formatMessage(messages.textTemplateAddToExisting)}
+                            id="existing-template"
                         />
                     </StackItem>
                     <StackItem>
@@ -71,8 +76,8 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
                             isChecked={shouldCreateNew}
                             name="radio"
                             onChange={handleRadioChange}
-                            label={'Create new patch set'}
-                            id="new-set"
+                            label={intl.formatMessage(messages.textTemplateCreateNew)}
+                            id="new-template"
                         />
                     </StackItem></>) || null}
                     <StackItem>

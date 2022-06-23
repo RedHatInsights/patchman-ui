@@ -47,7 +47,7 @@ const RequestProgress = ({ onClose, state }) => {
                     ? 'Something went wrong'
                     : requestPending
                         ? 'Configuration in progress'
-                        : 'Patch set configuration successful'}
+                        : 'Patch template configuration successful'}
             </Title>
             <EmptyStateBody>
                 <Grid hasGutter>
@@ -55,7 +55,7 @@ const RequestProgress = ({ onClose, state }) => {
                         <><GridItem>
                             <HelperText>
                                 <HelperTextItem variant="indeterminate">
-                                    Please allow a few minutes to set up a patch set.
+                                    Please allow a few minutes to set up a patch template.
                                     You will receive a notification when finished</HelperTextItem>
                             </HelperText>
                         </GridItem><GridItem>
@@ -73,7 +73,7 @@ const RequestProgress = ({ onClose, state }) => {
                         <><GridItem>
                             <HelperText>
                                 <HelperTextItem variant="indeterminate">
-                                    There was a problem processing the patch set. Please try again. If the problem
+                                    There was a problem processing the patch template. Please try again. If the problem
                                     persists, contact <a href='https://www.redhat.com/en/services/support'>Red Hat support</a>
                                 </HelperTextItem>
                             </HelperText>

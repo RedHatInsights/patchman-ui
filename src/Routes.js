@@ -47,7 +47,7 @@ const NoAccess = lazy(() =>
     )
 );
 
-const PatchSet = lazy(() =>
+const Templates = lazy(() =>
     import(
         /* webpackChunkName: "PackageDetail" */ './SmartComponents/PatchSet/PatchSet'
     )
@@ -89,8 +89,9 @@ export const paths = {
         title: '',
         to: '/packages/:packageName/:inventoryId'
     },
-    patchSet: {
-        title: 'Patch set',
+    templates: {
+        title: 'Templates',
+        //TODO: update the path after cloud-services-config renaming
         to: '/patch-set'
     }
 };
@@ -160,8 +161,8 @@ export const Routes = (props) => {
                 />
                 <Route
                     exact
-                    path={paths.patchSet.to}
-                    component={PatchSet}
+                    path={paths.templates.to}
+                    component={Templates}
                 />
 
                 <Route

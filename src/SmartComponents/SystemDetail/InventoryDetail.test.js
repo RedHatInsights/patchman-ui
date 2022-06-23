@@ -68,17 +68,17 @@ describe('InventoryPage.js', () => {
         expect(toJson(wrapper.update())).toMatchSnapshot();
     });
 
-    it('Should display "Remove from patch set" action in disabled state', () => {
+    it('Should display "Remove from a template" action in disabled state', () => {
         const { actions } = wrapper.find(InventoryDetailHead).props();
 
         expect(actions).toEqual(
             [
-                { key: 'assign-to-patch-set', onClick: expect.any(Function), title: 'Assign to a patch set' },
-                { isDisabled: true, key: 'remove-from-patch-set', onClick: expect.any(Function), title: 'Remove from patch set' }
+                { key: 'assign-to-template', onClick: expect.any(Function), title: 'Assign to a template' },
+                { isDisabled: true, key: 'remove-from-template', onClick: expect.any(Function), title: 'Remove from a template' }
             ]);
     });
 
-    it('Should display "Remove from patch set" action in enabled state', () => {
+    it('Should display "Remove from a template" action in enabled state', () => {
         useSelector.mockImplementation(callback => {
             return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
         });
@@ -88,12 +88,12 @@ describe('InventoryPage.js', () => {
         const { actions } = tempWrapper.find(InventoryDetailHead).props();
 
         expect(actions).toEqual([
-            { key: 'assign-to-patch-set', onClick: expect.any(Function), title: 'Assign to a patch set' },
-            { isDisabled: false, key: 'remove-from-patch-set', onClick: expect.any(Function), title: 'Remove from patch set' }
+            { key: 'assign-to-template', onClick: expect.any(Function), title: 'Assign to a template' },
+            { isDisabled: false, key: 'remove-from-template', onClick: expect.any(Function), title: 'Remove from a template' }
         ]);
     });
 
-    it('Should open UnassignSystemsModal when "Remove from patch set" action is called', () => {
+    it('Should open UnassignSystemsModal when "Remove from a template" action is called', () => {
         const testID = 'test-system-id';
         useSelector.mockImplementation(callback => {
             return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
@@ -102,7 +102,7 @@ describe('InventoryPage.js', () => {
             <Router><InventoryDetail match={{ params: { inventoryId: testID } }} /></Router>
         </Provider>);
         const { actions } = tempWrapper.find(InventoryDetailHead).props();
-        actions.find(action => action.key === 'remove-from-patch-set')?.onClick();
+        actions.find(action => action.key === 'remove-from-template')?.onClick();
 
         const unassignSystemsModalState = tempWrapper.update().find(UnassignSystemsModal).props().unassignSystemsModalState;
         expect(unassignSystemsModalState).toEqual({
@@ -110,9 +110,9 @@ describe('InventoryPage.js', () => {
         });
     });
 
-    it('Should refresh the page after successful system removal from patch set', async () => {
+    it('Should refresh the page after successful system removal from a template', async () => {
         const { actions } = wrapper.find(InventoryDetailHead).props();
-        actions.find(action => action.key === 'remove-from-patch-set')?.onClick();
+        actions.find(action => action.key === 'remove-from-template')?.onClick();
 
         const setUnassignSystemsModalOpen = wrapper.update().find(UnassignSystemsModal).props().setUnassignSystemsModalOpen;
         await act(async () => {

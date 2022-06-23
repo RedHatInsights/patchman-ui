@@ -113,8 +113,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
             <StackItem>
                 <TextContent style={{ marginTop: '-15px' }}>
                     <Text component={TextVariants.p}>
-                        You will be able to adjust your selection anytime. A system can have only one patch set,
-                        therefore if you assign a new Patch set to the system, it will be overwritten.
+                        {intl.formatMessage(messages.textTemplateReviewSystems)}
                     </Text>
                 </TextContent>
             </StackItem>

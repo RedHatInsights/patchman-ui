@@ -7,7 +7,7 @@ import './SystemsListAssets.scss';
 export const systemsListColumns = (isPatchSetEnabled = false) => [
     ...(isPatchSetEnabled ? [{
         key: 'baseline_name',
-        title: 'Patch set',
+        title: 'Patch template',
         props: {
             width: 5
         }
@@ -107,13 +107,13 @@ export const systemsRowActions = (showRemediationModal, showPatchSetModal, isPat
             }
         },
         ...(isPatchSetEnabled && showPatchSetModal ? [{
-            title: 'Assign to a patch set',
+            title: 'Assign to a template',
             onClick: (event, rowId, rowData) => {
                 showPatchSetModal(rowData?.id);
             }
         },
         {
-            title: 'Remove from patch set',
+            title: 'Remove from a template',
             isDisabled: isPatchSetRemovalDisabled(row),
             onClick: (event, rowId, rowData) => {
                 openUnassignSystemsModal([rowData.id]);

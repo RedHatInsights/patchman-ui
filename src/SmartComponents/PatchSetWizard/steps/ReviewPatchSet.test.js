@@ -10,7 +10,7 @@ jest.mock('@data-driven-forms/react-form-renderer/use-form-api',
 );
 
 describe('ReviewPatchSet.js', () => {
-    it('Should display all Patch set configuration', () => {
+    it('Should display all Patch Template configuration', () => {
         useFormApi.mockReturnValue(({
             getState: () => ({
                 values: {
