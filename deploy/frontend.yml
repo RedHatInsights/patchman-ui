@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: patchman-ui
+objects:
+  - apiVersion: cloud.redhat.com/v1alpha1
+    kind: Frontend
+    metadata:
+      name: patch
+    spec:
+      envName: ${ENV_NAME}
+      title: Patch
+      deploymentRepo: https://github.com/RedHatInsights/patchman-ui
+      API:
+        versions:
+          - v1
+      frontend:
+        paths:
+          - /insights/patch
+      image: ${IMAGE}:${IMAGE_TAG}
+      navItems:
+        - appId: "patch"
+          title: "Patch"
+          href: "/insights/patch"
+          product: "Red Hat Insights"
+      module:
+        manifestLocation: "/apps/patch/fed-mods.json"
+        modules:
+          - id: "patch"
+            module: "./RootApp"
+            routes:
+              - pathname: /insights/patch
+
+parameters:
+  - name: ENV_NAME
+    required: true
+  - name: IMAGE_TAG
+    required: true
+  - name: IMAGE
+    value: quay.io/cloudservices/patchman-ui
