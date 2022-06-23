@@ -16,13 +16,27 @@ objects:
           - v1
       frontend:
         paths:
-          - /insights/patch
+          - /apps/patch
       image: ${IMAGE}:${IMAGE_TAG}
       navItems:
         - appId: "patch"
           title: "Patch"
           href: "/insights/patch"
           product: "Red Hat Insights"
+          expandable: true
+          routes:
+            - appId: 'patch'
+              title: 'Advisories'
+              href: '/insights/patch/advisories'
+            - appId: 'patch'
+              title: 'Systems'
+              href: '/insights/patch/systems'
+            - appId: 'patch'
+              title: 'Packages'
+              href: '/insights/patch/packages'
+            - appId: 'patch'
+              title: 'Patch Template'
+              href: '/insights/patch/patch-template'
       module:
         manifestLocation: "/apps/patch/fed-mods.json"
         modules:
