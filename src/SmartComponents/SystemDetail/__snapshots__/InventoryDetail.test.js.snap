@@ -166,15 +166,15 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                       actions={
                         Array [
                           Object {
-                            "key": "assign-to-patch-set",
+                            "key": "assign-to-template",
                             "onClick": [Function],
-                            "title": "Assign to a patch set",
+                            "title": "Assign to a template",
                           },
                           Object {
                             "isDisabled": true,
-                            "key": "remove-from-patch-set",
+                            "key": "remove-from-template",
                             "onClick": [Function],
-                            "title": "Remove from patch set",
+                            "title": "Remove from a template",
                           },
                         ]
                       }

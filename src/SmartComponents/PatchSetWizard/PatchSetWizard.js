@@ -113,8 +113,8 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
                 >
                     <Wizard
                         className="patch-set"
-                        title={intl.formatMessage(messages.patchSetTitle)}
-                        description={intl.formatMessage(messages.patchSetDescription)}
+                        title={intl.formatMessage(messages.templateTitle)}
+                        description={intl.formatMessage(messages.templateDescription)}
                         steps={[
                             {
                                 name: 'progress',

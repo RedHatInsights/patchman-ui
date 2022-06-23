@@ -186,7 +186,7 @@ describe('Systems.js', () => {
             expect(actions.length).toEqual(1);
         });
 
-        describe('Unassign systems from patch sets', () => {
+        describe('Unassign systems from patch templates', () => {
 
             it('should table row actions open UnassignSystemsModal with row id', async () => {
                 useFeatureFlag.mockReturnValue(true);

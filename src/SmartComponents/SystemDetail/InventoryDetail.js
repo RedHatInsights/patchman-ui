@@ -72,13 +72,13 @@ const InventoryDetail = ({ match }) => {
                     showTags
                     actions={[
                         {
-                            title: intl.formatMessage(messages.titlesPatchSetAssign),
-                            key: 'assign-to-patch-set',
+                            title: intl.formatMessage(messages.titlesTemplateAssign),
+                            key: 'assign-to-template',
                             onClick: openPatchSetWizard
                         },
                         {
-                            title: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
-                            key: 'remove-from-patch-set',
+                            title: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
+                            key: 'remove-from-template',
                             isDisabled: !patchSetName,
                             onClick: () => openUnassignSystemsModal([entityId])
                         }]}
@@ -87,7 +87,7 @@ const InventoryDetail = ({ match }) => {
                         <GridItem>
                             {patchSetName && <TextContent>
                                 <Text>
-                                    {`${intl.formatMessage(messages.labelsColumnsPatchSet)}: ${patchSetName}`}
+                                    {`${intl.formatMessage(messages.labelsColumnsTemplate)}: ${patchSetName}`}
                                 </Text>
                             </TextContent>
                             }

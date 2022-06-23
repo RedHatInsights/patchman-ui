@@ -20,7 +20,7 @@ export const reviewSystemColumns = [{
 },
 {
     key: 'baseline_name',
-    title: 'Patch set',
+    title: 'Patch template',
     props: {
         width: 25
     }
@@ -66,13 +66,13 @@ export const schema = (wizardType) =>{
 
     switch (wizardType) {
         case 'assign':
-            wizardTitle = intl.formatMessage(messages.patchSetTitleAssignSystem);
+            wizardTitle = intl.formatMessage(messages.templateTitleAssignSystem);
             break;
         case 'edit':
-            wizardTitle = intl.formatMessage(messages.patchSetTitleEdit);
+            wizardTitle = intl.formatMessage(messages.templateEdit);
             break;
         default:
-            wizardTitle = intl.formatMessage(messages.patchSetTitleCreate);
+            wizardTitle = intl.formatMessage(messages.templateTitle);
     }
 
     return ({
@@ -84,22 +84,22 @@ export const schema = (wizardType) =>{
                 inModal: true,
                 showTitles: true,
                 title: wizardTitle,
-                description: intl.formatMessage(messages.patchSetDescription),
+                description: intl.formatMessage(messages.templateDescription),
                 fields: [
                     {
                         name: 'patch-set-config',
-                        title: intl.formatMessage(wizardType === 'edit' ? messages.patchSetEditSet : messages.patchSetNewSet),
+                        title: intl.formatMessage(wizardType === 'edit' ? messages.templateEdit : messages.templateNew),
                         fields: configurationFields,
                         nextStep: 'systems'
                     },
                     {
                         name: 'systems',
-                        title: intl.formatMessage(messages.patchSetSelectSystems),
+                        title: intl.formatMessage(messages.templateSelectSystems),
                         fields: [
                             {
                                 name: 'systems',
                                 component: 'reviewSystems'
-                                //We can use this later in case UX wantes to prevent patch sets without zero systems
+                                //We can use this later in case UX wantes to prevent patch template s without zero systems
                                 //validate: [{ type: 'validate-systems' }]
                             }
                         ],
@@ -107,7 +107,7 @@ export const schema = (wizardType) =>{
                     },
                     {
                         name: 'review',
-                        title: intl.formatMessage(messages.patchSetReviewSet),
+                        title: intl.formatMessage(messages.templateReview),
                         fields: [
                             {
                                 name: 'review',
@@ -133,7 +133,7 @@ export const validatorMapper = {
         else if (systems.length > 0) {
             return;
         } else {
-            return intl.formatMessage(messages.patchSetNoSystemSelected);
+            return intl.formatMessage(messages.templateNoSystemSelected);
         }
     }
 };

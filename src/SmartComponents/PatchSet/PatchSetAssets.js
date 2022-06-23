@@ -7,7 +7,7 @@ import messages from '../../Messages';
 
 export const createPatchSetButton = (setPatchSetState) => () =>
     (<Button key='createButton' onClick={() => setPatchSetState({ isPatchSetWizardOpen: true })}>
-        {intl.formatMessage(messages.labelsButtonCreatePatchSet)}
+        {intl.formatMessage(messages.labelsButtonCreateTemplate)}
     </Button>);
 
 export const patchSetColumns = [
@@ -37,7 +37,7 @@ export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) 
         }
     },
     {
-        title: 'Remove patch set',
+        title: 'Remove template',
         onClick: (_event, _rowId, rowData) => {
             handlePatchSetDelete(rowData);
         }

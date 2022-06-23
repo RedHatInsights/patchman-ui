@@ -187,11 +187,11 @@ const Systems = () => {
                                 <Button onClick={openPatchSetAssignWizard}
                                     key='assign-multiple-systems'
                                     isDisabled={selectedCount === 0}>
-                                    {intl.formatMessage(messages.titlesPatchSetAssign)}
+                                    {intl.formatMessage(messages.titlesTemplateAssign)}
                                 </Button>,
                                 {
                                     key: 'remove-multiple-systems',
-                                    label: intl.formatMessage(messages.titlesPatchSetRemoveMultipleButton),
+                                    label: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
                                     onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
                                     props: { isDisabled: selectedCount === 0 }
                                 }

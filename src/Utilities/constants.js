@@ -373,11 +373,11 @@ export const exportNotifications = (format) => ({
 
 export const patchSetDeleteNotifications = ({
     success: {
-        title: `Patch set has been deleted.`,
+        title: `Patch template has been deleted.`,
         variant: 'success'
     },
     error: {
-        title: 'Couldn’t delete patch set.',
+        title: 'Couldn’t delete patch template.',
         variant: 'danger'
     }
 });
@@ -390,8 +390,8 @@ export const featureFlags = {
 
 export const patchSetUnassignSystemsNotifications = (systemsCount) => ({
     success: {
-        title: `Systems succesfully removed from this Patch set.`,
-        description: `${systemsCount} ${systemsCount > 1 ? 'systems' : 'system'} removed from Patch set(s)`,
+        title: `Systems succesfully removed from this Patch template.`,
+        description: `${systemsCount} ${systemsCount > 1 ? 'systems' : 'system'} removed from Patch template(s)`,
         variant: 'success'
     }
 });

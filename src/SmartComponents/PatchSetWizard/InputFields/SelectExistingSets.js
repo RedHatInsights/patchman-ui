@@ -7,6 +7,8 @@ import { AngleLeftIcon, AngleRightIcon } from '@patternfly/react-icons';
 import { Select, SelectOption, SelectVariant, FormGroup, Spinner, Flex, FlexItem, Button } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { fetchPatchSetsAction, changePatchSetsParams, clearPatchSetsAction } from '../../../store/Actions/Actions';
+import { intl } from '../../../Utilities/IntlProvider';
+import messages from '../../../Messages';
 
 const SelectPagination = ({ changePage, page, perPage, totalItems }) =>{
     const openNextPage = () => changePage(page + 1);
@@ -92,13 +94,13 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems }) => {
     };
 
     return (
-        <FormGroup fieldId='existing_patch_set' label='Choose a Patch set' isRequired>
+        <FormGroup fieldId='existing_patch_set' label={intl.formatMessage(messages.textTemplateChoose)} isRequired>
             <Select
                 variant={SelectVariant.single}
-                aria-label='Filter by patch set'
+                aria-label={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
                 onSelect={handleSelect}
-                placeholderText='Filter by patch set'
-                inlineFilterPlaceholderText='Filter by patch set'
+                placeholderText={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
+                inlineFilterPlaceholderText={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
                 selections={selectedSets}
                 onToggle={handleOpen}
                 isOpen={isOpen}

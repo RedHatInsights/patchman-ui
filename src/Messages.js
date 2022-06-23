@@ -31,15 +31,15 @@ export default defineMessages({
         description: 'bulk select option',
         defaultMessage: 'Select page ({count})'
     },
-    labelsButtonCreatePatchSet: {
-        id: 'labelsButtonCreatePatchSet',
+    labelsButtonCreateTemplate: {
+        id: 'labelsButtonCreateTemplate',
         description: 'button label',
-        defaultMessage: 'Create patch set'
+        defaultMessage: 'Create template'
     },
-    labelsButtonEditPatchSet: {
-        id: 'labelsButtonEditPatchSet',
+    labelsButtonEditTemplate: {
+        id: 'labelsButtonEditTemplate',
         description: 'button label',
-        defaultMessage: 'Edit patch set'
+        defaultMessage: 'Edit template'
     },
     labelsCancel: {
         id: 'labelsCancel',
@@ -76,11 +76,6 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Name'
     },
-    labelsColumnsPatchSet: {
-        id: 'labelsColumnsPatchSet',
-        description: 'Label for patch set column',
-        defaultMessage: 'Patch set'
-    },
     labelsColumnsPublishDate: {
         id: 'labelsColumnsPublishDate',
         description: 'shared label',
@@ -115,6 +110,11 @@ export default defineMessages({
         id: 'labelsColumnsSynopsis',
         description: 'shared label',
         defaultMessage: 'Synopsis'
+    },
+    labelsColumnsTemplate: {
+        id: 'labelsColumnsTemplate',
+        description: 'Label for patch template column',
+        defaultMessage: 'Patch template'
     },
     labelsColumnsType: {
         id: 'labelsColumnsType',
@@ -221,15 +221,15 @@ export default defineMessages({
         description: 'Label for search fitler placeholder',
         defaultMessage: 'Advisory'
     },
-    labelsFiltersSearchPatchSetPlaceholder: {
-        id: 'labelsFiltersSearchPatchSetPlaceholder',
+    labelsFiltersSearchTemplatePlaceholder: {
+        id: 'labelsFiltersSearchTemplatePlaceholder',
         description: 'Label for search fitler placeholder',
-        defaultMessage: 'Filter patch set'
+        defaultMessage: 'Filter by patch template '
     },
-    labelsFiltersSearchPatchSetTitle: {
-        id: 'labelsFiltersSearchPatchSetTitle',
+    labelsFiltersSearchTemplateTitle: {
+        id: 'labelsFiltersSearchTemplateTitle',
         description: 'Label for search fitler placeholder',
-        defaultMessage: 'Patch set'
+        defaultMessage: 'Patch template'
     },
     labelsFiltersStale: {
         id: 'labelsFiltersStale',
@@ -371,56 +371,6 @@ export default defineMessages({
         description: 'A link label to access.redhat.com ',
         defaultMessage: 'View packages and errata at access.redhat.com'
     },
-    patchSetDescription: {
-        id: 'patchSetDescription',
-        description: 'description of the patch set wizard',
-        defaultMessage: 'Schedule patch set'
-    },
-    patchSetEditSet: {
-        id: 'patchSetEditSet',
-        description: 'step name of the patch set wizard',
-        defaultMessage: 'Edit patch set'
-    },
-    patchSetNewSet: {
-        id: 'patchSetNewSet',
-        description: 'step name of the patch set wizard',
-        defaultMessage: 'New patch set'
-    },
-    patchSetNoSystemSelected: {
-        id: 'patchSetNoSystemSelected',
-        description: 'validation text of the patch set wizard',
-        defaultMessage: 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.'
-    },
-    patchSetReviewSet: {
-        id: 'patchSetReviewSet',
-        description: 'step name of the patch set wizard',
-        defaultMessage: 'Review patch set'
-    },
-    patchSetSelectSystems: {
-        id: 'patchSetSelectSystems',
-        description: 'step name of the patch set wizard',
-        defaultMessage: 'Select systems'
-    },
-    patchSetTitle: {
-        id: 'patchSetTitle',
-        description: 'title of the patch set wizard',
-        defaultMessage: 'Create patch set'
-    },
-    patchSetTitleAssignSystem: {
-        id: 'patchSetTitleAssignSystem',
-        description: 'title of the patch set wizard',
-        defaultMessage: 'Assign system(s) to a patch set'
-    },
-    patchSetTitleCreate: {
-        id: 'patchSetTitleCreate',
-        description: 'title of the patch set wizard',
-        defaultMessage: 'Create patch set'
-    },
-    patchSetTitleEdit: {
-        id: 'patchSetTitleEdit',
-        description: 'title of the patch set wizard',
-        defaultMessage: 'Edit patch set'
-    },
     statesError: {
         id: 'statesError',
         description: 'Label',
@@ -451,25 +401,25 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'No matching packages found'
     },
-    statesNoMatchingPatchSet: {
-        id: 'statesNoMatchingPatchSet',
-        description: 'Label',
-        defaultMessage: 'No matching patch set found'
-    },
     statesNoMatchingSystems: {
         id: 'statesNoMatchingSystems',
         description: 'Label',
         defaultMessage: 'No matching systems found'
     },
-    statesNoPatchSet: {
-        id: 'statesNoPatchSet',
+    statesNoMatchingTemplate: {
+        id: 'statesNoMatchingTemplate',
         description: 'Label',
-        defaultMessage: 'No patch set'
+        defaultMessage: 'No matching patch template found'
     },
-    statesNoPatchSetBody: {
-        id: 'statesNoPatchSetBody',
+    statesNoTemplate: {
+        id: 'statesNoTemplate',
         description: 'Label',
-        defaultMessage: 'You have not created any patch sets'
+        defaultMessage: 'No patch template '
+    },
+    statesNoTemplateBody: {
+        id: 'statesNoTemplateBody',
+        description: 'Label',
+        defaultMessage: 'You have not created any patch templates'
     },
     statesRequiresPatchPermissions: {
         id: 'statesRequiresPatchPermissions',
@@ -480,6 +430,46 @@ export default defineMessages({
         id: 'statesSystemUpToDate',
         description: 'system up to date page body',
         defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
+    },
+    templateDescription: {
+        id: 'templateDescription',
+        description: 'description of the patch template wizard',
+        defaultMessage: 'Schedule patch template '
+    },
+    templateEdit: {
+        id: 'templateEdit',
+        description: 'step name of the patch template wizard',
+        defaultMessage: 'Edit patch template '
+    },
+    templateNew: {
+        id: 'templateNew',
+        description: 'step name of the patch template wizard',
+        defaultMessage: 'New patch template '
+    },
+    templateNoSystemSelected: {
+        id: 'templateNoSystemSelected',
+        description: 'validation text of the patch template wizard',
+        defaultMessage: 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.'
+    },
+    templateReview: {
+        id: 'templateReview',
+        description: 'step name of the patch template wizard',
+        defaultMessage: 'Review patch template '
+    },
+    templateSelectSystems: {
+        id: 'templateSelectSystems',
+        description: 'step name of the patch template wizard',
+        defaultMessage: 'Select systems'
+    },
+    templateTitle: {
+        id: 'templateTitle',
+        description: 'title of the patch template wizard',
+        defaultMessage: 'Create patch template '
+    },
+    templateTitleAssignSystem: {
+        id: 'templateTitleAssignSystem',
+        description: 'title of the patch template wizard',
+        defaultMessage: 'Assign system(s) to a patch template '
     },
     textEmptyStateBody: {
         id: 'textEmptyStateBody',
@@ -501,6 +491,31 @@ export default defineMessages({
         description: 'Advisories table cell text',
         defaultMessage: 'Reboot is required'
     },
+    textTemplateAddToExisting: {
+        id: 'textTemplateAddToExisting',
+        description: 'text for patch template wizard',
+        defaultMessage: 'Add to existing patch template '
+    },
+    textTemplateChoose: {
+        id: 'textTemplateChoose',
+        description: 'text for patch template wizard',
+        defaultMessage: 'Choose a patch template '
+    },
+    textTemplateCreateNew: {
+        id: 'textTemplateCreateNew',
+        description: 'text for patch template wizard',
+        defaultMessage: 'Create new patch template '
+    },
+    textTemplateReviewSystems: {
+        id: 'textTemplateReviewSystems',
+        description: 'text for patch template wizard',
+        defaultMessage: 'You will be able to adjust your selection anytime. A system can have only one patch template, \n therefore if you assign a new patch template to the system, it will be overwritten. '
+    },
+    textTemplateSelectedSystems: {
+        id: 'textTemplateSelectedSystems',
+        description: 'text for patch template wizard',
+        defaultMessage: 'You selected {systemsCount, plural, one {<b> # </b> system } other {<b> # </b> systems }}'
+    },
     textThirdPartyInfo: {
         id: 'textThirdPartyInfo',
         description: 'text about the third paty managed hosts',
@@ -509,17 +524,17 @@ export default defineMessages({
     textUnassignSystemsStatement: {
         id: 'textUnassignSystemsStatement',
         description: 'text about systems being removed',
-        defaultMessage: 'Do you want to remove the {systemsCount, plural, one {<b> # </b> selected system } other {<b> # </b> selected systems }} from assigned Patch sets?'
+        defaultMessage: 'Do you want to remove the {systemsCount, plural, one {<b> # </b> selected system } other {<b> # </b> selected systems }} from assigned Patch templates?'
     },
     textUnassignSystemsTitle: {
         id: 'textUnassignSystemsTitle',
         description: 'text about systems being removed',
-        defaultMessage: 'Remove systems from patch set'
+        defaultMessage: 'Remove systems from patch template '
     },
     textUnassignSystemsWarning: {
         id: 'textUnassignSystemsWarning',
-        description: 'warning about systems without patch set assigned',
-        defaultMessage: 'There {systemsCount, plural, one {is <b> # </b>  system } other { are <b> # </b>  systems }} you are trying to remove that {systemsCount, plural, one {is} other {are}} not assigned to any existing Patch Set. This action will not affect {systemsCount, plural, one {it} other {them}}.'
+        description: 'warning about systems without patch template assigned',
+        defaultMessage: 'There {systemsCount, plural, one {is <b> # </b>  system } other { are <b> # </b>  systems }} you are trying to remove that {systemsCount, plural, one {is} other {are}} not assigned to any existing Patch template. This action will not affect {systemsCount, plural, one {it} other {them}}.'
     },
     titlesAdvisories: {
         id: 'titlesAdvisories',
@@ -556,21 +571,6 @@ export default defineMessages({
         description: 'title for Packages page',
         defaultMessage: 'Patch packages'
     },
-    titlesPatchSet: {
-        id: 'titlesPatchSet',
-        description: 'page title with capital letter',
-        defaultMessage: 'Patch set'
-    },
-    titlesPatchSetAssign: {
-        id: 'titlesPatchSetAssign',
-        description: 'title with capital letters',
-        defaultMessage: 'Assign to a patch set'
-    },
-    titlesPatchSetRemoveMultipleButton: {
-        id: 'titlesPatchSetAssignMultipleButton',
-        description: 'title with capital letters',
-        defaultMessage: 'Remove from patch set'
-    },
     titlesPatchSystems: {
         id: 'titlesPatchSystems',
         description: 'title for Systems page',
@@ -580,5 +580,20 @@ export default defineMessages({
         id: 'titlesSystems',
         description: 'title with capital letters',
         defaultMessage: 'Systems'
+    },
+    titlesTemplate: {
+        id: 'titlesTemplate',
+        description: 'page title with capital letter',
+        defaultMessage: 'Patch template'
+    },
+    titlesTemplateAssign: {
+        id: 'titlesTemplateAssign',
+        description: 'title with capital letters',
+        defaultMessage: 'Assign to a template'
+    },
+    titlesTemplateRemoveMultipleButton: {
+        id: 'titlesTemplateRemoveMultipleButton',
+        description: 'title with capital letters',
+        defaultMessage: 'Remove from a template'
     }
 });

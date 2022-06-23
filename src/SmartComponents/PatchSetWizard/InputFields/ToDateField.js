@@ -20,7 +20,7 @@ const ToDateField = (props) => {
     }, [values.toDate]);
 
     return (
-        <FormGroup fieldId="toDate" label="Patch set date" isRequired>
+        <FormGroup fieldId="toDate" label="Patch template date" isRequired>
             <Flex>
                 <FlexItem lg={2} md={2}>
                     Upto
