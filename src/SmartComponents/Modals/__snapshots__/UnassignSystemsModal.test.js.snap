@@ -286,6 +286,9 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                 focusTrapOptions={
                   Object {
                     "clickOutsideDeactivates": true,
+                    "tabbableOptions": Object {
+                      "displayCheck": "none",
+                    },
                   }
                 }
                 paused={false}

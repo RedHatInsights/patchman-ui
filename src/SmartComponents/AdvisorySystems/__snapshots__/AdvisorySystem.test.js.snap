@@ -142,6 +142,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                       isCreatable={false}
                       isCreateSelectOptionObject={false}
                       isDisabled={false}
+                      isFlipEnabled={false}
                       isGrouped={false}
                       isInputFilterPersisted={false}
                       isInputValuePersisted={false}
@@ -176,6 +177,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                       toggleAriaLabel="Options menu"
                       toggleIcon={null}
                       toggleId={null}
+                      typeAheadAriaDescribedby=""
                       typeAheadAriaLabel="Filter by operating system"
                       validated="default"
                       variant="checkbox"

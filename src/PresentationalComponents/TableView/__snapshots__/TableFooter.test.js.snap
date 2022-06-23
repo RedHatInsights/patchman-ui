@@ -46,6 +46,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
             ouiaSafe={true}
             page={1}
             perPage={10}
+            perPageComponent="div"
             perPageOptions={
               Array [
                 Object {
@@ -72,7 +73,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 "items": "",
                 "itemsPerPage": "Items per page",
                 "ofWord": "of",
-                "optionsToggle": "Items per page",
+                "optionsToggle": "",
                 "page": "",
                 "pages": "",
                 "paginationTitle": "Pagination",
@@ -106,9 +107,10 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 lastPage={1}
                 ofWord="of"
                 onPerPageSelect={[MockFunction]}
-                optionsToggle="Items per page"
+                optionsToggle=""
                 page={1}
                 perPage={10}
+                perPageComponent="div"
                 perPageOptions={
                   Array [
                     Object {
@@ -186,6 +188,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       </DropdownItem>,
                     ]
                   }
+                  isFlipEnabled={false}
                   isGrouped={false}
                   isOpen={false}
                   isPlain={true}
@@ -204,8 +207,9 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       lastIndex={10}
                       ofWord="of"
                       onToggle={[Function]}
-                      optionsToggle="Items per page"
+                      optionsToggle=""
                       parentRef={null}
+                      perPageComponent="div"
                       showToggle={true}
                       toggleTemplate={[Function]}
                       widgetId="pagination-options-menu-bottom"
@@ -234,7 +238,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       ofWord="of"
                       onEnter={[Function]}
                       onToggle={[Function]}
-                      optionsToggle="Items per page"
+                      optionsToggle=""
                       parentRef={
                         Object {
                           "current": <div
@@ -264,6 +268,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                               </span>
                               <button
                                 aria-expanded="false"
+                                aria-haspopup="listbox"
                                 aria-label="Items per page"
                                 class="  pf-c-options-menu__toggle-button"
                                 data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
@@ -294,6 +299,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                           </div>,
                         }
                       }
+                      perPageComponent="div"
                       showToggle={true}
                       toggleTemplate={[Function]}
                       widgetId="pagination-options-menu-bottom"
@@ -326,6 +332,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                           </ToggleTemplate>
                         </span>
                         <DropdownToggle
+                          aria-haspopup="listbox"
                           aria-label="Items per page"
                           className="pf-c-options-menu__toggle-button"
                           id="pagination-options-menu-bottom-toggle-0"
@@ -362,6 +369,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                   </span>
                                   <button
                                     aria-expanded="false"
+                                    aria-haspopup="listbox"
                                     aria-label="Items per page"
                                     class="  pf-c-options-menu__toggle-button"
                                     data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
@@ -394,6 +402,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                           }
                         >
                           <Toggle
+                            aria-haspopup="listbox"
                             aria-label="Items per page"
                             bubbleEvent={false}
                             className="pf-c-options-menu__toggle-button"
@@ -440,6 +449,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                     </span>
                                     <button
                                       aria-expanded="false"
+                                      aria-haspopup="listbox"
                                       aria-label="Items per page"
                                       class="  pf-c-options-menu__toggle-button"
                                       data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
@@ -474,6 +484,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                           >
                             <button
                               aria-expanded={false}
+                              aria-haspopup="listbox"
                               aria-label="Items per page"
                               className="  pf-c-options-menu__toggle-button"
                               data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
