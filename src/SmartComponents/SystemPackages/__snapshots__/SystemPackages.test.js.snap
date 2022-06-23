@@ -312,6 +312,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
               className=" ins-c-primary-toolbar"
               id="ins-primary-data-toolbar"
               ouiaId="PrimaryToolbar"
+              toggleIsExpanded={[Function]}
             >
               <div
                 className="pf-c-toolbar  ins-c-primary-toolbar"
@@ -461,6 +462,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           </DropdownItem>,
                                         ]
                                       }
+                                      isFlipEnabled={false}
                                       isGrouped={false}
                                       isOpen={false}
                                       isPlain={false}
@@ -878,6 +880,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   </DropdownItem>,
                                                 ]
                                               }
+                                              isFlipEnabled={false}
                                               isGrouped={false}
                                               isOpen={false}
                                               isPlain={false}
@@ -1362,6 +1365,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       </DropdownItem>,
                                     ]
                                   }
+                                  isFlipEnabled={false}
                                   isGrouped={false}
                                   isOpen={false}
                                   isPlain={true}
@@ -1597,6 +1601,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                     />,
                                   ]
                                 }
+                                isFlipEnabled={false}
                                 isGrouped={false}
                                 isOpen={false}
                                 isPlain={true}
@@ -1782,6 +1787,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                             ouiaSafe={true}
                             page={1}
                             perPage={25}
+                            perPageComponent="div"
                             perPageOptions={
                               Array [
                                 Object {
@@ -1808,7 +1814,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 "items": "",
                                 "itemsPerPage": "Items per page",
                                 "ofWord": "of",
-                                "optionsToggle": "Items per page",
+                                "optionsToggle": "",
                                 "page": "",
                                 "pages": "",
                                 "paginationTitle": "Pagination",
@@ -1866,9 +1872,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 lastPage={0}
                                 ofWord="of"
                                 onPerPageSelect={[Function]}
-                                optionsToggle="Items per page"
+                                optionsToggle=""
                                 page={0}
                                 perPage={25}
+                                perPageComponent="div"
                                 perPageOptions={
                                   Array [
                                     Object {
@@ -1937,6 +1944,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       </DropdownItem>,
                                     ]
                                   }
+                                  isFlipEnabled={false}
                                   isGrouped={false}
                                   isOpen={false}
                                   isPlain={true}
@@ -1955,8 +1963,9 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       lastIndex={0}
                                       ofWord="of"
                                       onToggle={[Function]}
-                                      optionsToggle="Items per page"
+                                      optionsToggle=""
                                       parentRef={null}
+                                      perPageComponent="div"
                                       showToggle={true}
                                       toggleTemplate={[Function]}
                                       widgetId="pagination-options-menu"
@@ -1985,7 +1994,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       ofWord="of"
                                       onEnter={[Function]}
                                       onToggle={[Function]}
-                                      optionsToggle="Items per page"
+                                      optionsToggle=""
                                       parentRef={
                                         Object {
                                           "current": <div
@@ -2015,6 +2024,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                               </span>
                                               <button
                                                 aria-expanded="false"
+                                                aria-haspopup="listbox"
                                                 aria-label="Items per page"
                                                 class="  pf-c-options-menu__toggle-button"
                                                 data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
@@ -2046,6 +2056,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           </div>,
                                         }
                                       }
+                                      perPageComponent="div"
                                       showToggle={true}
                                       toggleTemplate={[Function]}
                                       widgetId="pagination-options-menu"
@@ -2078,6 +2089,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           </ToggleTemplate>
                                         </span>
                                         <DropdownToggle
+                                          aria-haspopup="listbox"
                                           aria-label="Items per page"
                                           className="pf-c-options-menu__toggle-button"
                                           id="pagination-options-menu-toggle-2"
@@ -2114,6 +2126,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   </span>
                                                   <button
                                                     aria-expanded="false"
+                                                    aria-haspopup="listbox"
                                                     aria-label="Items per page"
                                                     class="  pf-c-options-menu__toggle-button"
                                                     data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
@@ -2147,6 +2160,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           }
                                         >
                                           <Toggle
+                                            aria-haspopup="listbox"
                                             aria-label="Items per page"
                                             bubbleEvent={false}
                                             className="pf-c-options-menu__toggle-button"
@@ -2193,6 +2207,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                     </span>
                                                     <button
                                                       aria-expanded="false"
+                                                      aria-haspopup="listbox"
                                                       aria-label="Items per page"
                                                       class="  pf-c-options-menu__toggle-button"
                                                       data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
@@ -2228,6 +2243,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           >
                                             <button
                                               aria-expanded={false}
+                                              aria-haspopup="listbox"
                                               aria-label="Items per page"
                                               className="  pf-c-options-menu__toggle-button"
                                               data-ouia-component-id="OUIA-Generated-DropdownToggle-3"
@@ -2486,7 +2502,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   }
                   clearFiltersButtonText="Clear all filters"
                   collapseListedFiltersBreakpoint="lg"
-                  isExpanded={false}
                   numberOfFilters={0}
                   numberOfFiltersText={[Function]}
                   showClearFiltersButton={false}
@@ -6121,6 +6136,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                       ouiaSafe={true}
                       page={1}
                       perPage={25}
+                      perPageComponent="div"
                       perPageOptions={
                         Array [
                           Object {
@@ -6147,7 +6163,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                           "items": "",
                           "itemsPerPage": "Items per page",
                           "ofWord": "of",
-                          "optionsToggle": "Items per page",
+                          "optionsToggle": "",
                           "page": "",
                           "pages": "",
                           "paginationTitle": "Pagination",
@@ -6181,9 +6197,10 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                           lastPage={0}
                           ofWord="of"
                           onPerPageSelect={[Function]}
-                          optionsToggle="Items per page"
+                          optionsToggle=""
                           page={0}
                           perPage={25}
+                          perPageComponent="div"
                           perPageOptions={
                             Array [
                               Object {
@@ -6252,6 +6269,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 </DropdownItem>,
                               ]
                             }
+                            isFlipEnabled={false}
                             isGrouped={false}
                             isOpen={false}
                             isPlain={true}
@@ -6270,8 +6288,9 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 lastIndex={0}
                                 ofWord="of"
                                 onToggle={[Function]}
-                                optionsToggle="Items per page"
+                                optionsToggle=""
                                 parentRef={null}
+                                perPageComponent="div"
                                 showToggle={true}
                                 toggleTemplate={[Function]}
                                 widgetId="pagination-options-menu-bottom"
@@ -6300,7 +6319,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 ofWord="of"
                                 onEnter={[Function]}
                                 onToggle={[Function]}
-                                optionsToggle="Items per page"
+                                optionsToggle=""
                                 parentRef={
                                   Object {
                                     "current": <div
@@ -6330,6 +6349,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                         </span>
                                         <button
                                           aria-expanded="false"
+                                          aria-haspopup="listbox"
                                           aria-label="Items per page"
                                           class="  pf-c-options-menu__toggle-button"
                                           data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
@@ -6361,6 +6381,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                     </div>,
                                   }
                                 }
+                                perPageComponent="div"
                                 showToggle={true}
                                 toggleTemplate={[Function]}
                                 widgetId="pagination-options-menu-bottom"
@@ -6393,6 +6414,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                     </ToggleTemplate>
                                   </span>
                                   <DropdownToggle
+                                    aria-haspopup="listbox"
                                     aria-label="Items per page"
                                     className="pf-c-options-menu__toggle-button"
                                     id="pagination-options-menu-bottom-toggle-3"
@@ -6429,6 +6451,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                             </span>
                                             <button
                                               aria-expanded="false"
+                                              aria-haspopup="listbox"
                                               aria-label="Items per page"
                                               class="  pf-c-options-menu__toggle-button"
                                               data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
@@ -6462,6 +6485,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                     }
                                   >
                                     <Toggle
+                                      aria-haspopup="listbox"
                                       aria-label="Items per page"
                                       bubbleEvent={false}
                                       className="pf-c-options-menu__toggle-button"
@@ -6508,6 +6532,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                               </span>
                                               <button
                                                 aria-expanded="false"
+                                                aria-haspopup="listbox"
                                                 aria-label="Items per page"
                                                 class="  pf-c-options-menu__toggle-button"
                                                 data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
@@ -6543,6 +6568,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                     >
                                       <button
                                         aria-expanded={false}
+                                        aria-haspopup="listbox"
                                         aria-label="Items per page"
                                         className="  pf-c-options-menu__toggle-button"
                                         data-ouia-component-id="OUIA-Generated-DropdownToggle-4"
