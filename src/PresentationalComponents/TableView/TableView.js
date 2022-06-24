@@ -56,8 +56,7 @@ const TableView = ({
         <React.Fragment>
             {
                 (<React.Fragment>
-                    {isLoading && <SkeletonTable colSize={5} rowSize={20} />
-                        || hasError && <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} />
+                    { hasError && <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} />
                         || <React.Fragment>
                             <PrimaryToolbar
                                 pagination={{
@@ -100,31 +99,31 @@ const TableView = ({
                                     <EditPatchSet />
                                 </ToolbarItem>}
                             </PrimaryToolbar>
-                            <Table
-                                aria-label="Patch table view"
-                                cells={columns}
-                                onSelect={metadata.total_items && onSelect}
-                                rows={rows}
-                                onCollapse={metadata.total_items && onCollapse}
-                                canSelectAll={false}
-                                onSort={metadata.total_items && onSort}
-                                ouiaId={tableOUIA}
-                                sortBy={metadata.total_items && sortBy}
-                                isStickyHeader
-                                variant={compact && TableVariant.compact}
-                                actions={actionsConfig}
-                            >
-                                <TableHeader />
-                                <TableBody />
-                            </Table>
-                            <TableFooter
-                                totalItems={metadata.total_items}
-                                perPage={perPage}
-                                page={page}
-                                onSetPage={onSetPage}
-                                onPerPageSelect={onPerPageSelect}
-                                paginationOUIA={`bottom-${paginationOUIA}`}
-                            />
+                            {isLoading ? <SkeletonTable colSize={5} rowSize={20} /> :
+                                <><Table
+                                    aria-label="Patch table view"
+                                    cells={columns}
+                                    onSelect={metadata.total_items && onSelect}
+                                    rows={rows}
+                                    onCollapse={metadata.total_items && onCollapse}
+                                    canSelectAll={false}
+                                    onSort={metadata.total_items && onSort}
+                                    ouiaId={tableOUIA}
+                                    sortBy={metadata.total_items && sortBy}
+                                    isStickyHeader
+                                    variant={compact && TableVariant.compact}
+                                    actions={actionsConfig}
+                                >
+                                    <TableHeader />
+                                    <TableBody />
+                                </Table><TableFooter
+                                    totalItems={metadata.total_items}
+                                    perPage={perPage}
+                                    page={page}
+                                    onSetPage={onSetPage}
+                                    onPerPageSelect={onPerPageSelect}
+                                    paginationOUIA={`bottom-${paginationOUIA}`} />
+                                </>}
                         </React.Fragment>
                     }
                 </React.Fragment>)
