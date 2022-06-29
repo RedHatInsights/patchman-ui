@@ -19,11 +19,11 @@ import usePatchSetState from '../../Utilities/usePatchSetState';
 
 const InventoryDetail = ({ match }) => {
     const dispatch = useDispatch();
-    const { loaded } = useSelector(
+    const { loaded, hasThirdPartyRepo, patchSetName } = useSelector(
         ({ entityDetails }) => entityDetails && entityDetails || {}
     );
 
-    const { hasThirdPartyRepo, patchSetName, display_name: displayName, insights_id: insightsID } = useSelector(
+    const { display_name: displayName, insights_id: insightsID } = useSelector(
         ({ entityDetails }) => entityDetails?.entity ?? {}
     );
     const entityId = match.params?.inventoryId;
