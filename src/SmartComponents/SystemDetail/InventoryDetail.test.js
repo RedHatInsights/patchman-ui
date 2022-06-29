@@ -80,7 +80,7 @@ describe('InventoryPage.js', () => {
 
     it('Should display "Remove from patch set" action in enabled state', () => {
         useSelector.mockImplementation(callback => {
-            return callback({ entityDetails: { ...mockState, entity: { ...mockState.entity, patchSetName: 'test-name' } } });
+            return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
         });
         const tempWrapper = mount(<Provider store={store}>
             <Router><InventoryDetail match={{ params: { inventoryId: 'test' } }} /></Router>
