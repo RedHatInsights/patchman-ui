@@ -1,3 +1,10 @@
+## [1.48.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.4...v1.48.5) (2022-06-30)
+
+
+### Bug Fixes
+
+* **PatchTemplate:** rename patch set to patch template ([c07a02e](https://github.com/RedHatInsights/patchman-ui/commit/c07a02ed27ef349f010057afa537179e02155e8c))
+
 ## [1.48.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.3...v1.48.4) (2022-06-21)
 
 
