@@ -91,8 +91,7 @@ export const paths = {
     },
     templates: {
         title: 'Templates',
-        //TODO: update the path after cloud-services-config renaming
-        to: '/patch-set'
+        to: '/templates'
     }
 };
 
