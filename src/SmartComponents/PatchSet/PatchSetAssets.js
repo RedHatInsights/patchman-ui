@@ -31,7 +31,7 @@ export const patchSetColumns = [
 
 export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) => [
     {
-        title: 'Edit patch set',
+        title: 'Edit template',
         onClick: (_event, _rowId, rowData) => {
             openPatchSetEditModal(rowData?.id);
         }
