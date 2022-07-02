@@ -17,6 +17,8 @@ import {
     ExclamationCircleIcon,
     InProgressIcon
 } from '@patternfly/react-icons';
+import { intl } from '../../../Utilities/IntlProvider';
+import messages from '../../../Messages';
 
 const RequestProgress = ({ onClose, state }) => {
     const { requestPending, failed } = state;
@@ -44,10 +46,10 @@ const RequestProgress = ({ onClose, state }) => {
             />
             <Title headingLevel="h1" size="lg">
                 {failed
-                    ? 'Something went wrong'
+                    ? intl.formatMessage(messages.textErrorSomethingWrong)
                     : requestPending
-                        ? 'Configuration in progress'
-                        : 'Patch template configuration successful'}
+                        ? intl.formatMessage(messages.textConfigurationInProgress)
+                        : intl.formatMessage(messages.textPatchTemplateSuccessfuly)}
             </Title>
             <EmptyStateBody>
                 <Grid hasGutter>
@@ -55,30 +57,33 @@ const RequestProgress = ({ onClose, state }) => {
                         <><GridItem>
                             <HelperText>
                                 <HelperTextItem variant="indeterminate">
-                                    Please allow a few minutes to set up a patch template.
-                                    You will receive a notification when finished</HelperTextItem>
+                                    {intl.formatMessage(messages.textPatchTemplatePending)}
+                                </HelperTextItem>
                             </HelperText>
                         </GridItem><GridItem>
                             <Button variant="link" isInline onClick={onClose}>
-                                    Cancel
+                                {intl.formatMessage(messages.labelsCancel)}
                             </Button>{' '}
                         </GridItem></>
                     )}
                     {(!requestPending && !failed) && (
                         <GridItem>
-                            <Button variant="primary" onClick={onClose}>Return to application</Button>
+                            <Button variant="primary" onClick={onClose}>
+                                {intl.formatMessage(messages.textReturnToApp)}
+                            </Button>
                         </GridItem>
                     )}
                     {(!requestPending && failed) && (
                         <><GridItem>
                             <HelperText>
                                 <HelperTextItem variant="indeterminate">
-                                    There was a problem processing the patch template. Please try again. If the problem
-                                    persists, contact <a href='https://www.redhat.com/en/services/support'>Red Hat support</a>
+                                    {intl.formatMessage(messages.templateError, { a: (...chunks) => <a>{chunks}</a> })}
                                 </HelperTextItem>
                             </HelperText>
                         </GridItem><GridItem>
-                            <Button variant="primary" onClick={onClose}>Return to application</Button>
+                            <Button variant="primary" onClick={onClose}>
+                                {intl.formatMessage(messages.textReturnToApp)}
+                            </Button>
                         </GridItem></>
                     )}
                 </Grid>

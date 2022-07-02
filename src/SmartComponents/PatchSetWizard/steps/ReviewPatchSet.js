@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
     Text,
     TextContent,
@@ -11,6 +11,19 @@ import {
     TextListItemVariants
 } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
+import { intl } from '../../../Utilities/IntlProvider';
+import messages from '../../../Messages';
+
+const renderTextListItem = (label, text) => (
+    <Fragment>
+        <TextListItem component={TextListItemVariants.dt}>
+            {intl.formatMessage(messages[label])}:
+        </TextListItem>
+        <TextListItem component={TextListItemVariants.dd}>
+            {text}
+        </TextListItem>
+    </Fragment>
+);
 
 const ReviewPatchSet = () => {
     const formOptions = useFormApi();
@@ -23,27 +36,22 @@ const ReviewPatchSet = () => {
             <StackItem>
                 <TextContent style={{ marginTop: '-15px' }}>
                     <Text component={TextVariants.p}>
-                        Review the information below and click <b>Submit</b> to complete patch template creation
+                        {intl.formatMessage(
+                            messages.textPatchTemplateReview,
+                            { b: (...chunks) => <b>{chunks}</b> })}
                     </Text>
                 </TextContent>
             </StackItem>
             <StackItem>
                 <TextContent>
                     <TextList component={TextListVariants.dl}>
-                        <TextListItem component={TextListItemVariants.dt}>Name:</TextListItem>
-                        <TextListItem component={TextListItemVariants.dd}>{name}</TextListItem>
-                        {description && (<>
-                            <TextListItem component={TextListItemVariants.dt}>Description:</TextListItem>
-                            <TextListItem component={TextListItemVariants.dd}>{description}</TextListItem>
-                        </>)}
-                        {toDate && (<>
-                            <TextListItem component={TextListItemVariants.dt}>Date:</TextListItem>
-                            <TextListItem component={TextListItemVariants.dd}>{toDate}</TextListItem>
-                        </>)}
-                        <TextListItem component={TextListItemVariants.dt}>Selected systems:</TextListItem>
-                        <TextListItem component={TextListItemVariants.dd}>
-                            {systems && Object.values(systems).filter(system => system).length}
-                        </TextListItem>
+                        {renderTextListItem('labelsColumnsName', name)}
+                        {description && renderTextListItem('labelsDescription', description)}
+                        {toDate && renderTextListItem('labelsDate', toDate)}
+                        {renderTextListItem(
+                            'labelsSelectedSystems',
+                            systems && Object.values(systems).filter(system => system).length
+                        )}
                     </TextList>
                 </TextContent>
             </StackItem>

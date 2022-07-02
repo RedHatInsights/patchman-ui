@@ -31,13 +31,13 @@ export const patchSetColumns = [
 
 export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) => [
     {
-        title: 'Edit template',
+        title: intl.formatMessage(messages.labelsButtonEditTemplate),
         onClick: (_event, _rowId, rowData) => {
             openPatchSetEditModal(rowData?.id);
         }
     },
     {
-        title: 'Remove template',
+        title: intl.formatMessage(messages.labelsButtonRemoveTemplate),
         onClick: (_event, _rowId, rowData) => {
             handlePatchSetDelete(rowData);
         }
