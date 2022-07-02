@@ -38,7 +38,9 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   data-pf-content={true}
                 >
                   Review the information below and click 
-                  <b>
+                  <b
+                    key=".1"
+                  >
                     Submit
                   </b>
                    to complete patch template creation
@@ -70,7 +72,8 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                       className=""
                       data-pf-content={true}
                     >
-                      Name:
+                      Name
+                      :
                     </dt>
                   </TextListItem>
                   <TextListItem
@@ -90,7 +93,8 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                       className=""
                       data-pf-content={true}
                     >
-                      Description:
+                      Description
+                      :
                     </dt>
                   </TextListItem>
                   <TextListItem
@@ -110,7 +114,8 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                       className=""
                       data-pf-content={true}
                     >
-                      Date:
+                      Date
+                      :
                     </dt>
                   </TextListItem>
                   <TextListItem
@@ -130,7 +135,8 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                       className=""
                       data-pf-content={true}
                     >
-                      Selected systems:
+                      Selected systems
+                      :
                     </dt>
                   </TextListItem>
                   <TextListItem
@@ -192,7 +198,9 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   data-pf-content={true}
                 >
                   Review the information below and click 
-                  <b>
+                  <b
+                    key=".1"
+                  >
                     Submit
                   </b>
                    to complete patch template creation
@@ -224,7 +232,8 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                       className=""
                       data-pf-content={true}
                     >
-                      Name:
+                      Name
+                      :
                     </dt>
                   </TextListItem>
                   <TextListItem
@@ -244,7 +253,8 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                       className=""
                       data-pf-content={true}
                     >
-                      Selected systems:
+                      Selected systems
+                      :
                     </dt>
                   </TextListItem>
                   <TextListItem

@@ -23,10 +23,10 @@ const ToDateField = (props) => {
     }, [values.toDate]);
 
     return (
-        <FormGroup fieldId="toDate" label="Patch template date" isRequired>
+        <FormGroup fieldId="toDate" label={intl.formatMessage(messages.templateDateField)} isRequired>
             <Flex>
                 <FlexItem lg={2} md={2}>
-                    Upto
+                    {intl.formatMessage(messages.templateDateUpto)}
                 </FlexItem>
                 <FlexItem lg={10} md={10}>
                     <DatePicker

@@ -41,6 +41,11 @@ export default defineMessages({
         description: 'button label',
         defaultMessage: 'Edit template'
     },
+    labelsButtonRemoveTemplate: {
+        id: 'labelsButtonRemoveTemplate',
+        description: 'button label',
+        defaultMessage: 'Remove template'
+    },
     labelsCancel: {
         id: 'labelsCancel',
         description: 'Button label',
@@ -135,6 +140,11 @@ export default defineMessages({
         id: 'labelsCvesButton',
         description: 'label for cves button',
         defaultMessage: '{cvesCount, plural, one {# CVE} other {# CVEs}} associated with this patch'
+    },
+    labelsDate: {
+        id: 'labelsDate',
+        description: 'Label',
+        defaultMessage: 'Date'
     },
     labelsDescription: {
         id: 'labelsDescription',
@@ -336,6 +346,11 @@ export default defineMessages({
         description: 'Return to previous page label for general usage',
         defaultMessage: 'Return to previous page'
     },
+    labelsSelectedSystems: {
+        id: 'labelsSelectedSystems',
+        description: 'label',
+        defaultMessage: 'Selected systems'
+    },
     labelsSeverity: {
         id: 'labelsSeverity',
         description: 'label for cves info',
@@ -441,6 +456,16 @@ export default defineMessages({
         description: 'system up to date page body',
         defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
     },
+    templateDateField: {
+        id: 'templateDateField',
+        description: 'Field name of the patch template wizard',
+        defaultMessage: 'Patch template date'
+    },
+    templateDateUpto: {
+        id: 'templateDateUpto',
+        description: 'Field text of the patch template wizard',
+        defaultMessage: 'Upto'
+    },
     templateDescription: {
         id: 'templateDescription',
         description: 'description of the patch template wizard',
@@ -450,6 +475,11 @@ export default defineMessages({
         id: 'templateEdit',
         description: 'step name of the patch template wizard',
         defaultMessage: 'Edit patch template '
+    },
+    templateError: {
+        id: 'templateError',
+        description: 'error text for the patch template wizard',
+        defaultMessage: 'There was a problem processing the patch template. Please try again. If the problem persists, contact <a href = "https://www.redhat.com/en/services/support">Red Hat support</a>'
     },
     templateNew: {
         id: 'templateNew',
@@ -481,10 +511,20 @@ export default defineMessages({
         description: 'title of the patch template wizard',
         defaultMessage: 'Assign system(s) to a patch template '
     },
+    textConfigurationInProgress: {
+        id: 'textConfigurationInProgress',
+        description: 'text for the patch template',
+        defaultMessage: 'Configuration in progress'
+    },
     textEmptyStateBody: {
         id: 'textEmptyStateBody',
         description: 'text for the Empty state body',
         defaultMessage: 'To continue, edit your filter settings and search again.'
+    },
+    textErrorSomethingWrong: {
+        id: 'textErrorSomethingWrong',
+        description: 'text for the error state body',
+        defaultMessage: 'Something went wrong'
     },
     textLockVersionTooltip: {
         id: 'textLockVersionTooltip',
@@ -496,10 +536,30 @@ export default defineMessages({
         description: 'text to notify there is not available version',
         defaultMessage: 'No version is available'
     },
+    textPatchTemplatePending: {
+        id: 'textPatchTemplatePending',
+        description: 'text for the patch template',
+        defaultMessage: 'Please allow a few minutes to set up a patch template. You will receive a notification when finished.'
+    },
+    textPatchTemplateReview: {
+        id: 'textPatchTemplateReview',
+        description: 'text for the patch template',
+        defaultMessage: 'Review the information below and click <b>Submit</b> to complete patch template creation'
+    },
+    textPatchTemplateSuccessfuly: {
+        id: 'textPatchTemplateSuccessfuly',
+        description: 'text for the patch template',
+        defaultMessage: 'Patch template configuration successful'
+    },
     textRebootIsRequired: {
         id: 'textRebootIsRequired',
         description: 'Advisories table cell text',
         defaultMessage: 'Reboot is required'
+    },
+    textReturnToApp: {
+        id: 'textReturnToApp',
+        description: 'text for wizards',
+        defaultMessage: 'Return to application'
     },
     textTemplateAddToExisting: {
         id: 'textTemplateAddToExisting',
