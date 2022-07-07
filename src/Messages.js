@@ -141,6 +141,16 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'Description'
     },
+    labelsErrorDateLimit: {
+        id: 'labelsErrorDateLimit',
+        description: 'Label',
+        defaultMessage: 'Date is before the allowable range.'
+    },
+    labelsErrorInvalidDate: {
+        id: 'labelsErrorInvalidDate',
+        description: 'Label',
+        defaultMessage: 'The date should be valid of a type YYYY-MM-DD'
+    },
     labelsFiltersClear: {
         id: 'labelsFiltersClear',
         description: 'label for remove filter chips',
