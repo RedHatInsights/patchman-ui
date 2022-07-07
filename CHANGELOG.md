@@ -1,3 +1,10 @@
+## [1.48.6](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.5...v1.48.6) (2022-07-07)
+
+
+### Bug Fixes
+
+* **Date:** improve validation, introduce date start limit ([a6329c3](https://github.com/RedHatInsights/patchman-ui/commit/a6329c3aca145f3600f99fcf1fcb67e3bd769eb6))
+
 ## [1.48.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.4...v1.48.5) (2022-06-30)
 
 
