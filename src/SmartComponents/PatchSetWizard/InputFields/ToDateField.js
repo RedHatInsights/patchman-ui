@@ -7,6 +7,9 @@ import {
 } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
+import dateValidator from '../../../Utilities/dateValidator';
+import { intl } from '../../../Utilities/IntlProvider';
+import messages from '../../../Messages';
 
 const ToDateField = (props) => {
     const { input } = useFieldApi(props);
@@ -35,6 +38,8 @@ const ToDateField = (props) => {
                         }}
                         popoverProps={{ position: 'right' }}
                         aria-label="toDate"
+                        validators={[dateValidator]}
+                        invalidFormatText={intl.formatMessage(messages.labelsErrorInvalidDate)}
                     />
                 </FlexItem>
             </Flex>

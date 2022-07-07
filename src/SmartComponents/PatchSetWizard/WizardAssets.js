@@ -3,6 +3,7 @@ import validatorTypes from '@data-driven-forms/react-form-renderer/validator-typ
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { filterSelectedActiveSystemIDs } from '../../Utilities/Helpers';
+import dateValidator from '../../Utilities/dateValidator';
 
 export const reviewSystemColumns = [{
     key: 'display_name',
@@ -55,9 +56,7 @@ export const toDateComponent = [{
     component: 'toDateField',
     validate: [
         { type: validatorTypes.REQUIRED },
-        { type: validatorTypes.PATTERN,
-            pattern: /^(\d{4})-(\d{2})-(\d{2})$/
-        }
+        { type: 'validate-date' }
     ]
 }];
 
@@ -135,5 +134,6 @@ export const validatorMapper = {
         } else {
             return intl.formatMessage(messages.templateNoSystemSelected);
         }
-    }
+    },
+    'validate-date': () => dateValidator
 };
