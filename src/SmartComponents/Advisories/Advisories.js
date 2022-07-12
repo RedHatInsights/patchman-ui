@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -139,6 +140,13 @@ const Advisories = ({ history }) => {
                     onSelect={onSelect}
                     sortBy={sortBy}
                     remediationProvider={remediationDataProvider}
+                    // remediationProvider={() =>
+                    //     remediationProviderWithPairs(
+                    //         arrayFromObj(selectedRows),
+                    //         prepareRemediationPairs,
+                    //         transformPairs,
+                    //         remediationIdentifiers.advisory)
+                    // }
                     apply={apply}
                     remediationButtonOUIA={'toolbar-remediation-button'}
                     tableOUIA={'advisories-table'}

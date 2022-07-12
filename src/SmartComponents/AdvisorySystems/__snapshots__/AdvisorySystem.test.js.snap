@@ -94,7 +94,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
             }
           }
           dedicatedAction={
-            <AsyncRemediationButton
+            <UNDEFINED
               isDisabled={false}
               remediationProvider={[Function]}
             />
@@ -433,7 +433,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
 `;
 
 exports[`AdvisorySystems.js Should open remediation modal 1`] = `
-<AsyncRemediationButton
+<UNDEFINED
   isDisabled={false}
   remediationProvider={[Function]}
 />

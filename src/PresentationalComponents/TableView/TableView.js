@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
@@ -78,17 +79,17 @@ const TableView = ({
                                     deleteTitle: intl.formatMessage(defaultFilters
                                         && messages.labelsFiltersReset || messages.labelsFiltersClear)
                                 }}
-                                actionsConfig={{
-                                    actions: [remediationProvider && (
-                                        <AsyncRemediationButton
-                                            remediationProvider={remediationProvider}
-                                            isDisabled={
-                                                Object.values(selectedRows).filter(isSelected => isSelected).length === 0
-                                            }
-                                            isLoading={isRemediationLoading}
-                                        />
-                                    )]
-                                }}
+                                // actionsConfig={{
+                                //     actions: [remediationProvider && (
+                                //         <AsyncRemediationButton
+                                //             remediationProvider={remediationProvider}
+                                //             isDisabled={
+                                //                 Object.values(selectedRows).filter(isSelected => isSelected).length === 0
+                                //             }
+                                //             isLoading={isRemediationLoading}
+                                //         />
+                                //     )]
+                                // }}
                                 exportConfig={{
                                     isDisabled: metadata.total_items === 0,
                                     onSelect: onExport

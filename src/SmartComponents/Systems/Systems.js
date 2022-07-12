@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { Button } from '@patternfly/react-core';
@@ -206,15 +207,15 @@ const Systems = () => {
                         }
                         filterConfig={filterConfig}
                         activeFiltersConfig={activeFiltersConfig}
-                        dedicatedAction={(
-                            <AsyncRemediationButton
-                                remediationProvider={remediationDataProvider}
-                                isDisabled={
-                                    arrayFromObj(selectedRows).length === 0
-                                }
-                                isLoading={isRemediationLoading}
-                            />
-                        )}
+                        // dedicatedAction={(
+                        //     <AsyncRemediationButton
+                        //         remediationProvider={remediationDataProvider}
+                        //         isDisabled={
+                        //             arrayFromObj(selectedRows).length === 0
+                        //         }
+                        //         isLoading={isRemediationLoading}
+                        //     />
+                        // )}
                     />
                 </Main>
             </React.Fragment>}

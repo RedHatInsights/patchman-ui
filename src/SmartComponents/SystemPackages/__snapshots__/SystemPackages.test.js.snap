@@ -214,16 +214,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
           tableOUIA="system-packages-table"
         >
           <PrimaryToolbar
-            actionsConfig={
-              Object {
-                "actions": Array [
-                  <Unknown
-                    isDisabled={true}
-                    remediationProvider={[Function]}
-                  />,
-                ],
-              }
-            }
             activeFiltersConfig={
               Object {
                 "deleteTitle": "Reset filters",
@@ -513,7 +503,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           aria-haspopup={true}
                                           data-ouia-component-type="bulk-select-toggle-button"
                                           getMenuRef={[Function]}
-                                          id="pf-dropdown-toggle-id-5"
+                                          id="pf-dropdown-toggle-id-4"
                                           isDisabled={true}
                                           isOpen={false}
                                           isPlain={false}
@@ -557,7 +547,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                     data-ouia-component-type="PF4/DropdownToggle"
                                                     data-ouia-safe="true"
                                                     disabled=""
-                                                    id="pf-dropdown-toggle-id-5"
+                                                    id="pf-dropdown-toggle-id-4"
                                                     type="button"
                                                   >
                                                     <span
@@ -646,7 +636,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                               data-ouia-component-type="PF4/DropdownToggle"
                                               data-ouia-safe={true}
                                               getMenuRef={[Function]}
-                                              id="pf-dropdown-toggle-id-5"
+                                              id="pf-dropdown-toggle-id-4"
                                               isActive={false}
                                               isDisabled={true}
                                               isOpen={false}
@@ -691,7 +681,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                         data-ouia-component-type="PF4/DropdownToggle"
                                                         data-ouia-safe="true"
                                                         disabled=""
-                                                        id="pf-dropdown-toggle-id-5"
+                                                        id="pf-dropdown-toggle-id-4"
                                                         type="button"
                                                       >
                                                         <span
@@ -732,7 +722,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                 data-ouia-component-type="PF4/DropdownToggle"
                                                 data-ouia-safe={true}
                                                 disabled={true}
-                                                id="pf-dropdown-toggle-id-5"
+                                                id="pf-dropdown-toggle-id-4"
                                                 onClick={[Function]}
                                                 onKeyDown={[Function]}
                                                 type="button"
@@ -941,7 +931,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   aria-label="Conditional filter"
                                                   className=""
                                                   getMenuRef={[Function]}
-                                                  id="pf-dropdown-toggle-id-6"
+                                                  id="pf-dropdown-toggle-id-5"
                                                   isDisabled={false}
                                                   isOpen={false}
                                                   isPlain={false}
@@ -966,7 +956,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                           data-ouia-component-id="ConditionalFilter"
                                                           data-ouia-component-type="PF4/DropdownToggle"
                                                           data-ouia-safe="true"
-                                                          id="pf-dropdown-toggle-id-6"
+                                                          id="pf-dropdown-toggle-id-5"
                                                           type="button"
                                                         >
                                                           <span
@@ -1022,7 +1012,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                     data-ouia-component-type="PF4/DropdownToggle"
                                                     data-ouia-safe={true}
                                                     getMenuRef={[Function]}
-                                                    id="pf-dropdown-toggle-id-6"
+                                                    id="pf-dropdown-toggle-id-5"
                                                     isActive={false}
                                                     isDisabled={false}
                                                     isOpen={false}
@@ -1048,7 +1038,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                             data-ouia-component-id="ConditionalFilter"
                                                             data-ouia-component-type="PF4/DropdownToggle"
                                                             data-ouia-safe="true"
-                                                            id="pf-dropdown-toggle-id-6"
+                                                            id="pf-dropdown-toggle-id-5"
                                                             type="button"
                                                           >
                                                             <span
@@ -1105,7 +1095,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                       data-ouia-component-type="PF4/DropdownToggle"
                                                       data-ouia-safe={true}
                                                       disabled={false}
-                                                      id="pf-dropdown-toggle-id-6"
+                                                      id="pf-dropdown-toggle-id-5"
                                                       onClick={[Function]}
                                                       onKeyDown={[Function]}
                                                       type="button"
@@ -1281,14 +1271,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                         </ToolbarGroupWithRef>
                       </ForwardRef>
                       <Actions
-                        actions={
-                          Array [
-                            <Unknown
-                              isDisabled={true}
-                              remediationProvider={[Function]}
-                            />,
-                          ]
-                        }
                         exportConfig={
                           Object {
                             "isDisabled": true,
@@ -1297,20 +1279,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                         }
                         overflowActions={Array []}
                       >
-                        <ToolbarItem
-                          className="ins-c-primary-toolbar__first-action pf-m-spacer-sm"
-                        >
-                          <div
-                            className="pf-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
-                          >
-                            <Component
-                              isDisabled={true}
-                              remediationProvider={[Function]}
-                            >
-                              <div />
-                            </Component>
-                          </div>
-                        </ToolbarItem>
                         <ToolbarItem
                           className="pf-m-spacer-sm"
                         >
@@ -1420,7 +1388,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       aria-haspopup={true}
                                       aria-label="Export"
                                       getMenuRef={[Function]}
-                                      id="pf-dropdown-toggle-id-7"
+                                      id="pf-dropdown-toggle-id-6"
                                       isDisabled={true}
                                       isOpen={false}
                                       isPlain={true}
@@ -1446,7 +1414,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                               data-ouia-component-type="PF4/DropdownToggle"
                                               data-ouia-safe="true"
                                               disabled=""
-                                              id="pf-dropdown-toggle-id-7"
+                                              id="pf-dropdown-toggle-id-6"
                                               type="button"
                                             >
                                               <span>
@@ -1479,7 +1447,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                         data-ouia-component-type="PF4/DropdownToggle"
                                         data-ouia-safe={true}
                                         getMenuRef={[Function]}
-                                        id="pf-dropdown-toggle-id-7"
+                                        id="pf-dropdown-toggle-id-6"
                                         isActive={false}
                                         isDisabled={true}
                                         isOpen={false}
@@ -1506,7 +1474,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                 data-ouia-component-type="PF4/DropdownToggle"
                                                 data-ouia-safe="true"
                                                 disabled=""
-                                                id="pf-dropdown-toggle-id-7"
+                                                id="pf-dropdown-toggle-id-6"
                                                 type="button"
                                               >
                                                 <span>
@@ -1539,7 +1507,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           data-ouia-component-type="PF4/DropdownToggle"
                                           data-ouia-safe={true}
                                           disabled={true}
-                                          id="pf-dropdown-toggle-id-7"
+                                          id="pf-dropdown-toggle-id-6"
                                           onClick={[Function]}
                                           onKeyDown={[Function]}
                                           type="button"
@@ -1579,204 +1547,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 </DropdownWithContext>
                               </Dropdown>
                             </DownloadButton>
-                          </div>
-                        </ToolbarItem>
-                        <ToolbarItem
-                          className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
-                        >
-                          <div
-                            className="pf-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
-                          >
-                            <Dropdown
-                              dropdownItems={
-                                Array [
-                                  <DropdownItem
-                                    className="ins-c-primary-toolbar__first-action"
-                                    component="div"
-                                    isDisabled={true}
-                                    remediationProvider={[Function]}
-                                  />,
-                                ]
-                              }
-                              isOpen={false}
-                              isPlain={true}
-                              onSelect={[Function]}
-                              ouiaId="Actions"
-                              toggle={
-                                <KebabToggle
-                                  onToggle={[Function]}
-                                />
-                              }
-                            >
-                              <DropdownWithContext
-                                autoFocus={true}
-                                className=""
-                                direction="down"
-                                dropdownItems={
-                                  Array [
-                                    <DropdownItem
-                                      className="ins-c-primary-toolbar__first-action"
-                                      component="div"
-                                      isDisabled={true}
-                                      remediationProvider={[Function]}
-                                    />,
-                                  ]
-                                }
-                                isFlipEnabled={false}
-                                isGrouped={false}
-                                isOpen={false}
-                                isPlain={true}
-                                isText={false}
-                                menuAppendTo="inline"
-                                onSelect={[Function]}
-                                position="left"
-                                toggle={
-                                  <KebabToggle
-                                    onToggle={[Function]}
-                                  />
-                                }
-                              >
-                                <div
-                                  className="pf-c-dropdown"
-                                  data-ouia-component-id="Actions"
-                                  data-ouia-component-type="PF4/Dropdown"
-                                  data-ouia-safe={true}
-                                >
-                                  <KebabToggle
-                                    aria-haspopup={true}
-                                    getMenuRef={[Function]}
-                                    id="pf-dropdown-toggle-id-8"
-                                    isOpen={false}
-                                    isPlain={true}
-                                    isText={false}
-                                    key=".0"
-                                    onEnter={[Function]}
-                                    onToggle={[Function]}
-                                    parentRef={
-                                      Object {
-                                        "current": <div
-                                          class="pf-c-dropdown"
-                                          data-ouia-component-id="Actions"
-                                          data-ouia-component-type="PF4/Dropdown"
-                                          data-ouia-safe="true"
-                                        >
-                                          <button
-                                            aria-expanded="false"
-                                            aria-haspopup="true"
-                                            aria-label="Actions"
-                                            class="pf-c-dropdown__toggle pf-m-plain"
-                                            id="pf-dropdown-toggle-id-8"
-                                            type="button"
-                                          >
-                                            <svg
-                                              aria-hidden="true"
-                                              fill="currentColor"
-                                              height="1em"
-                                              role="img"
-                                              style="vertical-align: -0.125em;"
-                                              viewBox="0 0 192 512"
-                                              width="1em"
-                                            >
-                                              <path
-                                                d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                                              />
-                                            </svg>
-                                          </button>
-                                        </div>,
-                                      }
-                                    }
-                                  >
-                                    <Toggle
-                                      aria-haspopup={true}
-                                      aria-label="Actions"
-                                      bubbleEvent={false}
-                                      className=""
-                                      getMenuRef={[Function]}
-                                      id="pf-dropdown-toggle-id-8"
-                                      isActive={false}
-                                      isDisabled={false}
-                                      isOpen={false}
-                                      isPlain={true}
-                                      isPrimary={false}
-                                      isSplitButton={false}
-                                      isText={false}
-                                      onEnter={[Function]}
-                                      onToggle={[Function]}
-                                      parentRef={
-                                        Object {
-                                          "current": <div
-                                            class="pf-c-dropdown"
-                                            data-ouia-component-id="Actions"
-                                            data-ouia-component-type="PF4/Dropdown"
-                                            data-ouia-safe="true"
-                                          >
-                                            <button
-                                              aria-expanded="false"
-                                              aria-haspopup="true"
-                                              aria-label="Actions"
-                                              class="pf-c-dropdown__toggle pf-m-plain"
-                                              id="pf-dropdown-toggle-id-8"
-                                              type="button"
-                                            >
-                                              <svg
-                                                aria-hidden="true"
-                                                fill="currentColor"
-                                                height="1em"
-                                                role="img"
-                                                style="vertical-align: -0.125em;"
-                                                viewBox="0 0 192 512"
-                                                width="1em"
-                                              >
-                                                <path
-                                                  d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                                                />
-                                              </svg>
-                                            </button>
-                                          </div>,
-                                        }
-                                      }
-                                    >
-                                      <button
-                                        aria-expanded={false}
-                                        aria-haspopup={true}
-                                        aria-label="Actions"
-                                        className="pf-c-dropdown__toggle pf-m-plain"
-                                        disabled={false}
-                                        id="pf-dropdown-toggle-id-8"
-                                        onClick={[Function]}
-                                        onKeyDown={[Function]}
-                                        type="button"
-                                      >
-                                        <EllipsisVIcon
-                                          color="currentColor"
-                                          noVerticalAlign={false}
-                                          size="sm"
-                                        >
-                                          <svg
-                                            aria-hidden={true}
-                                            aria-labelledby={null}
-                                            fill="currentColor"
-                                            height="1em"
-                                            role="img"
-                                            style={
-                                              Object {
-                                                "verticalAlign": "-0.125em",
-                                              }
-                                            }
-                                            viewBox="0 0 192 512"
-                                            width="1em"
-                                          >
-                                            <path
-                                              d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                                            />
-                                          </svg>
-                                        </EllipsisVIcon>
-                                      </button>
-                                    </Toggle>
-                                  </KebabToggle>
-                                </div>
-                              </DropdownWithContext>
-                            </Dropdown>
                           </div>
                         </ToolbarItem>
                       </Actions>
@@ -2002,7 +1772,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       aria-haspopup={true}
                                       firstIndex={0}
                                       getMenuRef={[Function]}
-                                      id="pf-dropdown-toggle-id-9"
+                                      id="pf-dropdown-toggle-id-7"
                                       isDisabled={true}
                                       isOpen={false}
                                       isPlain={true}

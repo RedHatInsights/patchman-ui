@@ -136,11 +136,11 @@ describe('Systems.js', () => {
         });
     });
 
-    it('Should open remediation modal', () => {
-        const { tableProps: { actionResolver } } = wrapper.find('.testInventroyComponentChild').parent().props();
-        const actions = actionResolver(systemRows[0]);
-        expect(actions[0]).toMatchSnapshot();
-    });
+    // it('Should open remediation modal', () => {
+    //     const { tableProps: { actionResolver } } = wrapper.find('.testInventroyComponentChild').parent().props();
+    //     const actions = actionResolver(systemRows[0]);
+    //     expect(actions[0]).toMatchSnapshot();
+    // });
 
     it('Should display ErrorMessage component when status="rejected"', () => {
         const notFoundState = {

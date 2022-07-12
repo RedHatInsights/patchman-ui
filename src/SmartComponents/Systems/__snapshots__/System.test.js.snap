@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Systems.js Should open remediation modal 1`] = `
-Object {
-  "isDisabled": undefined,
-  "onClick": [Function],
-  "title": "Apply all applicable advisories",
-}
-`;
-
 exports[`Systems.js should match the snapshot 1`] = `
 <Provider
   store={
@@ -632,13 +624,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                       "systemProfile": undefined,
                     },
                   }
-                }
-                dedicatedAction={
-                  <AsyncRemediationButton
-                    isDisabled={false}
-                    isLoading={false}
-                    remediationProvider={[Function]}
-                  />
                 }
                 exportConfig={
                   Object {

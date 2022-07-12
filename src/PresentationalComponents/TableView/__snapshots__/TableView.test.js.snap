@@ -1,25 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TableView Should open remediation modal 1`] = `
-<AsyncRemediationButton
-  isDisabled={true}
-  remediationProvider={[MockFunction]}
-/>
-`;
-
 exports[`TableView TableView 1`] = `
 <Fragment>
   <PrimaryToolbar
-    actionsConfig={
-      Object {
-        "actions": Array [
-          <AsyncRemediationButton
-            isDisabled={true}
-            remediationProvider={[MockFunction]}
-          />,
-        ],
-      }
-    }
     activeFiltersConfig={
       Object {
         "deleteTitle": "Reset filters",
@@ -131,16 +114,6 @@ exports[`TableView TableView 1`] = `
 exports[`TableView TableView 2`] = `
 <Fragment>
   <PrimaryToolbar
-    actionsConfig={
-      Object {
-        "actions": Array [
-          <AsyncRemediationButton
-            isDisabled={true}
-            remediationProvider={[MockFunction]}
-          />,
-        ],
-      }
-    }
     activeFiltersConfig={
       Object {
         "deleteTitle": "Reset filters",
@@ -252,16 +225,6 @@ exports[`TableView TableView 2`] = `
 exports[`TableView test table props TableView 1`] = `
 <Fragment>
   <PrimaryToolbar
-    actionsConfig={
-      Object {
-        "actions": Array [
-          <AsyncRemediationButton
-            isDisabled={true}
-            remediationProvider={[MockFunction]}
-          />,
-        ],
-      }
-    }
     activeFiltersConfig={
       Object {
         "deleteTitle": "Reset filters",

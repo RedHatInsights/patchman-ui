@@ -70,11 +70,11 @@ describe('TableView', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it('Should open remediation modal', () => {
-        const wrapper = shallow(<TableView {...testObj} />);
-        const { actionsConfig: { actions } }  = wrapper.find('PrimaryToolbar').props();
-        expect(actions[0]).toMatchSnapshot();
-    });
+    // it('Should open remediation modal', () => {
+    //     const wrapper = shallow(<TableView {...testObj} />);
+    //     const { actionsConfig: { actions }}  = wrapper.find('PrimaryToolbar').props();
+    //     expect(actions[0]).toMatchSnapshot();
+    // });
 
     it('Should unselect', () => {
         const wrapper = shallow(<TableView {...testObj} />);

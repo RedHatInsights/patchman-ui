@@ -178,39 +178,6 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                 </div>
                               </div>
                               <div
-                                class="pf-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
-                              >
-                                <div
-                                  class="pf-c-dropdown"
-                                  data-ouia-component-id="Actions"
-                                  data-ouia-component-type="PF4/Dropdown"
-                                  data-ouia-safe="true"
-                                >
-                                  <button
-                                    aria-expanded="false"
-                                    aria-haspopup="false"
-                                    aria-label="Actions"
-                                    class="pf-c-dropdown__toggle pf-m-plain"
-                                    id="pf-dropdown-toggle-id-0"
-                                    type="button"
-                                  >
-                                    <svg
-                                      aria-hidden="true"
-                                      fill="currentColor"
-                                      height="1em"
-                                      role="img"
-                                      style="vertical-align: -0.125em;"
-                                      viewBox="0 0 192 512"
-                                      width="1em"
-                                    >
-                                      <path
-                                        d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                                      />
-                                    </svg>
-                                  </button>
-                                </div>
-                              </div>
-                              <div
                                 class="pf-c-toolbar__item ins-c-primary-toolbar__pagination"
                               >
                                 <div
@@ -2319,13 +2286,6 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                 tableOUIA="cves-table"
                               >
                                 <PrimaryToolbar
-                                  actionsConfig={
-                                    Object {
-                                      "actions": Array [
-                                        undefined,
-                                      ],
-                                    }
-                                  }
                                   activeFiltersConfig={
                                     Object {
                                       "deleteTitle": "Reset filters",
@@ -2533,11 +2493,6 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                               </ToolbarGroupWithRef>
                                             </ForwardRef>
                                             <Actions
-                                              actions={
-                                                Array [
-                                                  undefined,
-                                                ]
-                                              }
                                               exportConfig={
                                                 Object {
                                                   "isDisabled": false,
@@ -2545,188 +2500,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                 }
                                               }
                                               overflowActions={Array []}
-                                            >
-                                              <ToolbarItem
-                                                className="ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
-                                              >
-                                                <div
-                                                  className="pf-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
-                                                >
-                                                  <Dropdown
-                                                    dropdownItems={Array []}
-                                                    isOpen={false}
-                                                    isPlain={true}
-                                                    onSelect={[Function]}
-                                                    ouiaId="Actions"
-                                                    toggle={
-                                                      <KebabToggle
-                                                        onToggle={[Function]}
-                                                      />
-                                                    }
-                                                  >
-                                                    <DropdownWithContext
-                                                      autoFocus={true}
-                                                      className=""
-                                                      direction="down"
-                                                      dropdownItems={Array []}
-                                                      isFlipEnabled={false}
-                                                      isGrouped={false}
-                                                      isOpen={false}
-                                                      isPlain={true}
-                                                      isText={false}
-                                                      menuAppendTo="inline"
-                                                      onSelect={[Function]}
-                                                      position="left"
-                                                      toggle={
-                                                        <KebabToggle
-                                                          onToggle={[Function]}
-                                                        />
-                                                      }
-                                                    >
-                                                      <div
-                                                        className="pf-c-dropdown"
-                                                        data-ouia-component-id="Actions"
-                                                        data-ouia-component-type="PF4/Dropdown"
-                                                        data-ouia-safe={true}
-                                                      >
-                                                        <KebabToggle
-                                                          aria-haspopup={false}
-                                                          getMenuRef={[Function]}
-                                                          id="pf-dropdown-toggle-id-0"
-                                                          isOpen={false}
-                                                          isPlain={true}
-                                                          isText={false}
-                                                          key=".0"
-                                                          onEnter={[Function]}
-                                                          onToggle={[Function]}
-                                                          parentRef={
-                                                            Object {
-                                                              "current": <div
-                                                                class="pf-c-dropdown"
-                                                                data-ouia-component-id="Actions"
-                                                                data-ouia-component-type="PF4/Dropdown"
-                                                                data-ouia-safe="true"
-                                                              >
-                                                                <button
-                                                                  aria-expanded="false"
-                                                                  aria-haspopup="false"
-                                                                  aria-label="Actions"
-                                                                  class="pf-c-dropdown__toggle pf-m-plain"
-                                                                  id="pf-dropdown-toggle-id-0"
-                                                                  type="button"
-                                                                >
-                                                                  <svg
-                                                                    aria-hidden="true"
-                                                                    fill="currentColor"
-                                                                    height="1em"
-                                                                    role="img"
-                                                                    style="vertical-align: -0.125em;"
-                                                                    viewBox="0 0 192 512"
-                                                                    width="1em"
-                                                                  >
-                                                                    <path
-                                                                      d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                                                                    />
-                                                                  </svg>
-                                                                </button>
-                                                              </div>,
-                                                            }
-                                                          }
-                                                        >
-                                                          <Toggle
-                                                            aria-haspopup={false}
-                                                            aria-label="Actions"
-                                                            bubbleEvent={false}
-                                                            className=""
-                                                            getMenuRef={[Function]}
-                                                            id="pf-dropdown-toggle-id-0"
-                                                            isActive={false}
-                                                            isDisabled={false}
-                                                            isOpen={false}
-                                                            isPlain={true}
-                                                            isPrimary={false}
-                                                            isSplitButton={false}
-                                                            isText={false}
-                                                            onEnter={[Function]}
-                                                            onToggle={[Function]}
-                                                            parentRef={
-                                                              Object {
-                                                                "current": <div
-                                                                  class="pf-c-dropdown"
-                                                                  data-ouia-component-id="Actions"
-                                                                  data-ouia-component-type="PF4/Dropdown"
-                                                                  data-ouia-safe="true"
-                                                                >
-                                                                  <button
-                                                                    aria-expanded="false"
-                                                                    aria-haspopup="false"
-                                                                    aria-label="Actions"
-                                                                    class="pf-c-dropdown__toggle pf-m-plain"
-                                                                    id="pf-dropdown-toggle-id-0"
-                                                                    type="button"
-                                                                  >
-                                                                    <svg
-                                                                      aria-hidden="true"
-                                                                      fill="currentColor"
-                                                                      height="1em"
-                                                                      role="img"
-                                                                      style="vertical-align: -0.125em;"
-                                                                      viewBox="0 0 192 512"
-                                                                      width="1em"
-                                                                    >
-                                                                      <path
-                                                                        d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                                                                      />
-                                                                    </svg>
-                                                                  </button>
-                                                                </div>,
-                                                              }
-                                                            }
-                                                          >
-                                                            <button
-                                                              aria-expanded={false}
-                                                              aria-haspopup={false}
-                                                              aria-label="Actions"
-                                                              className="pf-c-dropdown__toggle pf-m-plain"
-                                                              disabled={false}
-                                                              id="pf-dropdown-toggle-id-0"
-                                                              onClick={[Function]}
-                                                              onKeyDown={[Function]}
-                                                              type="button"
-                                                            >
-                                                              <EllipsisVIcon
-                                                                color="currentColor"
-                                                                noVerticalAlign={false}
-                                                                size="sm"
-                                                              >
-                                                                <svg
-                                                                  aria-hidden={true}
-                                                                  aria-labelledby={null}
-                                                                  fill="currentColor"
-                                                                  height="1em"
-                                                                  role="img"
-                                                                  style={
-                                                                    Object {
-                                                                      "verticalAlign": "-0.125em",
-                                                                    }
-                                                                  }
-                                                                  viewBox="0 0 192 512"
-                                                                  width="1em"
-                                                                >
-                                                                  <path
-                                                                    d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
-                                                                  />
-                                                                </svg>
-                                                              </EllipsisVIcon>
-                                                            </button>
-                                                          </Toggle>
-                                                        </KebabToggle>
-                                                      </div>
-                                                    </DropdownWithContext>
-                                                  </Dropdown>
-                                                </div>
-                                              </ToolbarItem>
-                                            </Actions>
+                                            />
                                             <ToolbarItem
                                               className="ins-c-primary-toolbar__pagination"
                                             >
@@ -2958,7 +2732,7 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                             aria-haspopup={true}
                                                             firstIndex={1}
                                                             getMenuRef={[Function]}
-                                                            id="pf-dropdown-toggle-id-1"
+                                                            id="pf-dropdown-toggle-id-0"
                                                             isDisabled={false}
                                                             isOpen={false}
                                                             isPlain={true}
