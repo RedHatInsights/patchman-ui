@@ -9,12 +9,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { InventoryDetailHead } from '@redhat-cloud-services/frontend-components/Inventory';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
+import { useFeatureFlag } from '../../Utilities/Hooks';
 
 initMocks();
 
 jest.mock('../../Utilities/Hooks', () => ({
     ...jest.requireActual('../../Utilities/Hooks'),
-    useFeatureFlag: jest.fn()
+    useFeatureFlag: jest.fn(() => true)
 }));
 
 jest.mock('react-redux', () => ({
@@ -124,6 +125,16 @@ describe('InventoryPage.js', () => {
         });
 
         expect(store.getActions().filter(action => action.type === 'FETCH_SYSTEM_DETAIL').length).toEqual(2);
+    });
+
+    it('Should hide all dropdown actions when patch template flag is disabled', () => {
+        useFeatureFlag.mockReturnValueOnce(false);
+        const tempWrapper = mountWithIntl(<Provider store={store}>
+            <Router><InventoryDetail match={{ params: { inventoryId: 'test' } }} /></Router>
+        </Provider>);
+
+        const { actions } = tempWrapper.find(InventoryDetailHead).props();
+        expect(actions.length).toEqual(undefined);
     });
 });
 

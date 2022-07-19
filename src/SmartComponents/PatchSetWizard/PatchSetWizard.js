@@ -16,7 +16,7 @@ import ToDateField from './InputFields/ToDateField';
 import DescriptionField from './InputFields/DescriptionField';
 import ReviewSystems from './steps/ReviewSystems';
 import ReviewPatchSet from './steps/ReviewPatchSet';
-import { schema, validatorMapper } from './WizardAssets';
+import { schema, validatorMapper, getWizardTitle } from './WizardAssets';
 import RequestProgress from './steps/RequestProgress';
 import { usePatchSetApi } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -113,7 +113,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
                 >
                     <Wizard
                         className="patch-set"
-                        title={intl.formatMessage(messages.templateTitle)}
+                        title={getWizardTitle(wizardType)}
                         description={intl.formatMessage(messages.templateDescription)}
                         steps={[
                             {

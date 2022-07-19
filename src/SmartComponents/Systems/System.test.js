@@ -8,8 +8,9 @@ import { initMocks, mountWithIntl } from '../../Utilities/unitTestingUtilities.j
 import Systems from './Systems';
 import toJson from 'enzyme-to-json';
 import { useFeatureFlag } from '../../Utilities/Hooks';
-
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
+import { systemsColumnsMerger } from '../../Utilities/Helpers';
+
 initMocks();
 
 jest.mock('react-redux', () => ({
@@ -50,6 +51,11 @@ jest.mock('../../Utilities/api', () => ({
 jest.mock('../../Utilities/Hooks', () => ({
     ...jest.requireActual('../../Utilities/Hooks'),
     useFeatureFlag: jest.fn()
+}));
+
+jest.mock('../../Utilities/Helpers', () => ({
+    ...jest.requireActual('../../Utilities/Helpers'),
+    systemsColumnsMerger: jest.fn()
 }));
 
 const mockState = {
@@ -230,6 +236,18 @@ describe('Systems.js', () => {
                 </Provider>);
 
                 expect(tempWrapper.find(UnassignSystemsModal)).toHaveLength(0);
+            });
+
+            it('should Patch template column be hidden when flag is not enabled', () => {
+                useFeatureFlag.mockReturnValue(false);
+                systemsColumnsMerger.mockImplementation(() => {});
+
+                const tempWrapper = mountWithIntl(<Provider store={store}>
+                    <Router><Systems /></Router>
+                </Provider>);
+
+                tempWrapper.find('.testInventroyComponentChild').parent().props().columns(['test-column']);
+                expect(systemsColumnsMerger).toHaveBeenCalledWith(['test-column'], false);
             });
         });
 
