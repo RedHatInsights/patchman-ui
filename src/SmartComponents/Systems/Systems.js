@@ -146,7 +146,7 @@ const Systems = () => {
                         autoRefresh
                         initialLoading
                         hideFilters={{ all: true, tags: false }}
-                        columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, true)}
+                        columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, isPatchSetEnabled)}
                         showTags
                         customFilters={{
                             patchParams: {

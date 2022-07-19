@@ -60,7 +60,7 @@ export const toDateComponent = [{
     ]
 }];
 
-export const schema = (wizardType) =>{
+export const getWizardTitle = (wizardType) => {
     let wizardTitle = '';
 
     switch (wizardType) {
@@ -74,6 +74,10 @@ export const schema = (wizardType) =>{
             wizardTitle = intl.formatMessage(messages.templateTitle);
     }
 
+    return wizardTitle;
+};
+
+export const schema = (wizardType) =>{
     return ({
         fields: [
             {
@@ -82,7 +86,7 @@ export const schema = (wizardType) =>{
                 isDynamic: true,
                 inModal: true,
                 showTitles: true,
-                title: wizardTitle,
+                title: getWizardTitle(wizardType),
                 description: intl.formatMessage(messages.templateDescription),
                 fields: [
                     {

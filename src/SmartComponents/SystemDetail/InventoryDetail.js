@@ -7,7 +7,7 @@ import { register } from '../../store';
 import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { setPageTitle } from '../../Utilities/Hooks';
+import { setPageTitle, useFeatureFlag } from '../../Utilities/Hooks';
 import { InventoryDetailHead, AppInfo, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
@@ -16,6 +16,7 @@ import { clearNotifications } from '@redhat-cloud-services/frontend-components-n
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import usePatchSetState from '../../Utilities/usePatchSetState';
+import { featureFlags } from '../../Utilities/constants';
 
 const InventoryDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -44,6 +45,8 @@ const InventoryDetail = ({ match }) => {
         openPatchSetAssignWizard(entityId);
     };
 
+    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
+
     return (
         <DetailWrapper
             onLoad={({ mergeWithDetail }) => {
@@ -70,7 +73,7 @@ const InventoryDetail = ({ match }) => {
             >
                 {(!loaded || insightsID) && <InventoryDetailHead hideBack
                     showTags
-                    actions={[
+                    actions={isPatchSetEnabled && [
                         {
                             title: intl.formatMessage(messages.titlesTemplateAssign),
                             key: 'assign-to-template',

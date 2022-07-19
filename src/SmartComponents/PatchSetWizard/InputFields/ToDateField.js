@@ -30,7 +30,6 @@ const ToDateField = (props) => {
                 </FlexItem>
                 <FlexItem lg={10} md={10}>
                     <DatePicker
-                        isRequired
                         value={toDate}
                         onChange={(val) => {
                             input.onChange(val);
