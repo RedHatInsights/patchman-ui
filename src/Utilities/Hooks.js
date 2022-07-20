@@ -309,8 +309,8 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
     .then(() => {
         setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: false });
     })
-    .catch(() => {
-        setWizardState({ ...wizardState, submitted: true, failed: true, requestPending: false });
+    .catch((error) => {
+        setWizardState({ ...wizardState, submitted: true, failed: true, requestPending: false, error });
     });
 
     const onSubmit = React.useCallback((formValues) => {

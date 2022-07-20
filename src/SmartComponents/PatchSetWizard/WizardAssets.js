@@ -137,3 +137,9 @@ export const validatorMapper = {
     },
     'validate-date': () => dateValidator
 };
+
+export const apiFailedNotification = (description) => ({
+    title: 'There was an error while processing your request',
+    description,
+    variant: 'danger'
+});
