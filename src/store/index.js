@@ -1,4 +1,3 @@
-/* eslint new-cap: 0 */
 import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
 import { notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';

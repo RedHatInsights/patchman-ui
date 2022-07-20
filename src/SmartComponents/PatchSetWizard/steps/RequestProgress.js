@@ -19,9 +19,21 @@ import {
 } from '@patternfly/react-icons';
 import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
+import { useDispatch } from 'react-redux';
+import { apiFailedNotification } from '../WizardAssets';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 const RequestProgress = ({ onClose, state }) => {
-    const { requestPending, failed } = state;
+    const { requestPending, failed, error } = state;
+    const dispatch = useDispatch();
+
+    if (failed) {
+        dispatch(
+            addNotification(
+                apiFailedNotification(error.detail)
+            )
+        );
+    }
 
     return (
         <EmptyState
