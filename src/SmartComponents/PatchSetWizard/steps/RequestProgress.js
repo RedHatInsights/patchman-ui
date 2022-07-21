@@ -77,7 +77,9 @@ const RequestProgress = ({ onClose, state }) => {
                         <><GridItem>
                             <HelperText>
                                 <HelperTextItem variant="indeterminate">
-                                    {intl.formatMessage(messages.templateError, { a: (...chunks) => <a>{chunks}</a> })}
+                                    {intl.formatMessage(
+                                        messages.templateError,
+                                        { a: (chunks) => <a href="https://www.redhat.com/en/services/support">{chunks}</a> })}
                                 </HelperTextItem>
                             </HelperText>
                         </GridItem><GridItem>

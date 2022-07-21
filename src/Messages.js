@@ -479,7 +479,7 @@ export default defineMessages({
     templateError: {
         id: 'templateError',
         description: 'error text for the patch template wizard',
-        defaultMessage: 'There was a problem processing the patch template. Please try again. If the problem persists, contact <a href = "https://www.redhat.com/en/services/support">Red Hat support</a>'
+        defaultMessage: 'There was a problem processing the patch template. Please try again. If the problem persists, contact <a>Red Hat support</a>'
     },
     templateNew: {
         id: 'templateNew',
