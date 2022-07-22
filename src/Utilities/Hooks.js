@@ -12,6 +12,7 @@ import {
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
 import { assignSystemPatchSet, updatePatchSets } from './api';
+// eslint-disable-next-line no-unused-vars
 import { useFlag, useFlagsStatus } from '@unleash/proxy-client-react';
 
 export const useSetPage = (limit, callback) => {
@@ -337,8 +338,12 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
     return onSubmit;
 };
 
+// eslint-disable-next-line no-unused-vars
 export const useFeatureFlag = (flag) => {
-    const { flagsReady } = useFlagsStatus();
-    const flagStatus = useFlag(flag);
-    return flagsReady ? flagStatus : false;
+
+    //Unleash flag provider has no full implementation yet. Use when it is ready
+    // const { flagsReady } = useFlagsStatus();
+    // const flagStatus = useFlag(flag);
+
+    return insights.chrome.isBeta();
 };
