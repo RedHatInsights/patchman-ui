@@ -167,7 +167,7 @@ const PackageSystems = ({ packageName }) => {
                     }}
                     tableProps={{
                         canSelectAll: false,
-                        variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                        onSelect, variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
                     filterConfig={filterConfig}
                     activeFiltersConfig={activeFiltersConfig}
