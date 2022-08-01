@@ -39,7 +39,8 @@ const TableView = ({
     defaultFilters,
     searchChipLabel,
     CreatePatchSetButton,
-    actionsConfig
+    actionsConfig,
+    isRemediationLoading
 }) => {
 
     const [page, perPage] = React.useMemo(
@@ -81,7 +82,9 @@ const TableView = ({
                                             remediationProvider={remediationProvider}
                                             isDisabled={
                                                 Object.values(selectedRows).filter(isSelected => isSelected).length === 0
-                                            } />
+                                            }
+                                            isLoading={isRemediationLoading}
+                                        />
                                     )]
                                 }}
                                 exportConfig={{
@@ -89,7 +92,6 @@ const TableView = ({
                                     onSelect: onExport
                                 }}
                                 bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse)}
-
                             >
                                 {CreatePatchSetButton && <ToolbarItem>
                                     <CreatePatchSetButton />
@@ -150,7 +152,8 @@ TableView.propTypes = {
     defaultFilters: PropTypes.object,
     searchChipLabel: PropTypes.string,
     CreatePatchSetButton: PropTypes.element,
-    actionsConfig: PropTypes.array
+    actionsConfig: PropTypes.array,
+    isRemediationLoading: PropTypes.bool
 };
 
 export default TableView;

@@ -16,14 +16,12 @@ import {
     fetchApplicableAdvisories, selectAdvisoryRow
 } from '../../store/Actions/Actions';
 import {
-    exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi,
-    fetchSystems, fetchViewAdvisoriesSystems
+    exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi
 } from '../../Utilities/api';
-import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
-    arrayFromObj, createSortBy, decodeQueryparams,
-    encodeURLParams, getRowIdByIndexExpandable, remediationProviderWithPairs, transformPairs
+    createSortBy, decodeQueryparams,
+    encodeURLParams, getRowIdByIndexExpandable
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useDeepCompareEffect, useOnExport,
@@ -32,6 +30,8 @@ import {
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
+import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
+import { prepareRemediationPairs } from './AdvisoriesHelper';
 
 const Advisories = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
@@ -64,6 +64,8 @@ const Advisories = ({ history }) => {
         () => createAdvisoriesRows(advisories, expandedRows, selectedRows),
         [advisories, expandedRows, selectedRows]
     );
+
+    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
 
     React.useEffect(() => {
         return () => {
@@ -119,15 +121,7 @@ const Advisories = ({ history }) => {
         dispatch(changeAdvisoryListParams(params));
     }
 
-    const prepareRemediationPairs = (issues) => {
-        return fetchSystems({ limit: -1 }).then(
-            ({ data }) => fetchViewAdvisoriesSystems(
-                {
-                    advisories: issues,
-                    systems: data.map(system => system.id)
-                }
-            ));
-    };
+    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, prepareRemediationPairs);
 
     return (
         <React.Fragment>
@@ -145,13 +139,7 @@ const Advisories = ({ history }) => {
                     selectedRows={selectedRows}
                     onSelect={onSelect}
                     sortBy={sortBy}
-                    remediationProvider={() =>
-                        remediationProviderWithPairs(
-                            arrayFromObj(selectedRows),
-                            prepareRemediationPairs,
-                            transformPairs,
-                            remediationIdentifiers.advisory)
-                    }
+                    remediationProvider={remediationDataProvider}
                     apply={apply}
                     remediationButtonOUIA={'toolbar-remediation-button'}
                     tableOUIA={'advisories-table'}
@@ -169,6 +157,7 @@ const Advisories = ({ history }) => {
                         ]
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
+                    isRemediationLoading={isRemediationLoading}
                 />
             </Main>
         </React.Fragment>

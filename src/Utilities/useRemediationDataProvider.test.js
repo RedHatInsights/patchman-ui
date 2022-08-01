@@ -6,11 +6,11 @@ import useRemediationDataProvider from './useRemediationDataProvider';
 import {
     remediationProviderWithPairs,
     transformPairs
-} from '../../Utilities/Helpers';
-import { prepareRemediationPairs } from './SystemsHelpers';
+} from './Helpers';
+import { prepareRemediationPairs } from '../SmartComponents/Systems/SystemsHelpers';
 
-jest.mock('../../Utilities/Helpers', () => ({
-    ...jest.requireActual('../../Utilities/Helpers'),
+jest.mock('./Helpers', () => ({
+    ...jest.requireActual('./Helpers'),
     remediationProviderWithPairs: jest.fn(() => Promise.resolve({
         data: [{
             id: 'RHBA-2020:4282',
@@ -27,7 +27,7 @@ describe('useRemediationDataProvider', () => {
             'test-system-id-2': true
         };
 
-        const remediationProvider =  useRemediationDataProvider(testSystems, setRemediationLoading);
+        const remediationProvider =  useRemediationDataProvider(testSystems, setRemediationLoading, prepareRemediationPairs);
         await act(() => remediationProvider());
 
         expect(remediationProviderWithPairs)

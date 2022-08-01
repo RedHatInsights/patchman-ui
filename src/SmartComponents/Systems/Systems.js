@@ -28,8 +28,8 @@ import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
-import { fetchAllSystemsCallback, buildFilterConfig, buildActiveFiltersConfig } from './SystemsHelpers';
-import useRemediationProvier from './useRemediationDataProvider';
+import { fetchAllSystemsCallback, buildFilterConfig, buildActiveFiltersConfig, prepareRemediationPairs } from './SystemsHelpers';
+import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 
@@ -130,7 +130,7 @@ const Systems = () => {
         }
     }, [patchSetState.shouldRefresh]);
 
-    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading);
+    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, prepareRemediationPairs);
 
     return (
         <React.Fragment>

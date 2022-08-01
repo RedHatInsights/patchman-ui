@@ -1,17 +1,17 @@
-import { remediationIdentifiers } from '../../Utilities/constants';
+import { remediationIdentifiers } from './constants';
 import {
     remediationProviderWithPairs,
     removeUndefinedObjectKeys,
     transformPairs
-} from '../../Utilities/Helpers';
-import { prepareRemediationPairs } from './SystemsHelpers';
+} from './Helpers';
+
 /**
 * Provides remediation data, systems with all of their corresponding issues.
 * @param {Function} [setRemediationLoading] function to toggle remediation loading state
 * @param {Array} [selectedRows] array of systems to calculate
 * @returns {handleSystemsRemoval}
 */
-const useRemediationDataProvider = (selectedRows, setRemediationLoading) => {
+const useRemediationDataProvider = (selectedRows, setRemediationLoading, prepareRemediationPairs) => {
     const remediationDataProvider = () => {
         setRemediationLoading(true);
         return remediationProviderWithPairs(
