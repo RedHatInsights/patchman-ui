@@ -1,3 +1,10 @@
+## [1.48.7](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.6...v1.48.7) (2022-08-01)
+
+
+### Bug Fixes
+
+* **select:** SPM-1418 Fix selection on PackageSystems ([e8e83a6](https://github.com/RedHatInsights/patchman-ui/commit/e8e83a692d9d7db8c8e23912ef463dfe595cf8f6))
+
 ## [1.48.6](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.5...v1.48.6) (2022-07-07)
 
 
