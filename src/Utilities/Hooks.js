@@ -14,6 +14,7 @@ import { multiValueFilters } from '../Utilities/constants';
 import { assignSystemPatchSet, updatePatchSets } from './api';
 // eslint-disable-next-line no-unused-vars
 import { useFlag, useFlagsStatus } from '@unleash/proxy-client-react';
+import { Spinner } from '@patternfly/react-core';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -133,7 +134,7 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
         }
     };
 
-    const onSelect = React.useCallback((event, selected, rowId) => {
+    const onSelect = React.useCallback((event, selected, rowId, setBulkLoading) => {
         const createSelectedRow = (rawData, toSelect = []) => {
             rawData.forEach((row) => {
                 toSelect.push(
@@ -174,6 +175,7 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
             case 'all': {
                 const fetchCallback = ({ data }) => {
                     selectRows(createSelectedRow(data));
+                    setBulkLoading(false);
                 };
 
                 fetchAllData().then(fetchCallback).catch(err => err);
@@ -213,36 +215,46 @@ export const useDeepCompareEffect = (effect, deps) => {
     React.useEffect(effect, ref.current);
 };
 
-export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onCollapse) => ({
-    count: selectedCount,
-    items: [{
-        title: intl.formatMessage(messages.labelsBulkSelectNone),
-        onClick: () => {
-            onSelect('none');
-        }
-    }, {
-        title: intl.formatMessage(messages.labelsBulkSelectPage,
-            { count: onCollapse && rows.length / 2 || rows.length }
-        ),
-        onClick: () => {
-            onSelect('page');
-        }
-    },
-    {
-        title: intl.formatMessage(messages.labelsBulkSelectAll, { count: metadata.total_items }),
-        onClick: () => {
-            onSelect('all');
-        }
-    }],
-    onSelect: () => {
-        selectedCount === 0 ? onSelect('all') : onSelect('none');
-    },
-    toggleProps: {
-        'data-ouia-component-type': 'bulk-select-toggle-button'
-    },
-    checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
-    isDisabled: metadata.total_items === 0 && selectedCount === 0
-});
+export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onCollapse) => {
+    const [isBulkLoading, setBulkLoading] = React.useState(false);
+
+    return ({
+        items: [{
+            title: intl.formatMessage(messages.labelsBulkSelectNone),
+            onClick: () => {
+                onSelect('none');
+            }
+        }, {
+            title: intl.formatMessage(messages.labelsBulkSelectPage,
+                { count: onCollapse && rows.length / 2 || rows.length }
+            ),
+            onClick: () => {
+                onSelect('page');
+            }
+        },
+        {
+            title: intl.formatMessage(messages.labelsBulkSelectAll, { count: metadata.total_items }),
+            onClick: () => {
+                setBulkLoading(true);
+                onSelect('all', null, null, setBulkLoading);
+            }
+        }],
+        onSelect: () => {
+            selectedCount === 0 ? onSelect('all') : onSelect('none');
+        },
+        toggleProps: {
+            'data-ouia-component-type': 'bulk-select-toggle-button',
+            children: isBulkLoading ? [
+                <React.Fragment key='sd'>
+                    <Spinner size="sm" />
+                    {`     ${selectedCount} selected`}
+                </React.Fragment>
+            ] : `     ${selectedCount} selected`
+        },
+        checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
+        isDisabled: metadata.total_items === 0 && selectedCount === 0
+    });
+};
 
 export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, applyGlobalFilter) => {
     const { id, packageName } = config || {};

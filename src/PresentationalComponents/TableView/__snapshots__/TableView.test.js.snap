@@ -30,7 +30,6 @@ exports[`TableView TableView 1`] = `
     bulkSelect={
       Object {
         "checked": false,
-        "count": 0,
         "isDisabled": false,
         "items": Array [
           Object {
@@ -48,6 +47,7 @@ exports[`TableView TableView 1`] = `
         ],
         "onSelect": [Function],
         "toggleProps": Object {
+          "children": "     0 selected",
           "data-ouia-component-type": "bulk-select-toggle-button",
         },
       }
@@ -151,7 +151,6 @@ exports[`TableView TableView 2`] = `
     bulkSelect={
       Object {
         "checked": false,
-        "count": 0,
         "isDisabled": false,
         "items": Array [
           Object {
@@ -169,6 +168,7 @@ exports[`TableView TableView 2`] = `
         ],
         "onSelect": [Function],
         "toggleProps": Object {
+          "children": "     0 selected",
           "data-ouia-component-type": "bulk-select-toggle-button",
         },
       }
@@ -272,7 +272,6 @@ exports[`TableView test table props TableView 1`] = `
     bulkSelect={
       Object {
         "checked": false,
-        "count": 0,
         "isDisabled": false,
         "items": Array [
           Object {
@@ -290,6 +289,7 @@ exports[`TableView test table props TableView 1`] = `
         ],
         "onSelect": [Function],
         "toggleProps": Object {
+          "children": "     0 selected",
           "data-ouia-component-type": "bulk-select-toggle-button",
         },
       }
