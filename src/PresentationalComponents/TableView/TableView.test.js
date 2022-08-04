@@ -95,7 +95,7 @@ describe('TableView', () => {
         const wrapper = shallow(<TableView {...testObj} />);
         const { bulkSelect: { items }}  = wrapper.find('PrimaryToolbar').props();
         items[2].onClick();
-        expect(testObj.onSelect).toHaveBeenCalledWith('all');
+        expect(testObj.onSelect).toHaveBeenCalledWith('all', null, null, expect.any(Function));
     });
 
     it('Should unselect all ', () => {

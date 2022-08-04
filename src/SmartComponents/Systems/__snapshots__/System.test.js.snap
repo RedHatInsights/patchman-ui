@@ -606,7 +606,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                 bulkSelect={
                   Object {
                     "checked": null,
-                    "count": 1,
                     "isDisabled": false,
                     "items": Array [
                       Object {
@@ -624,6 +623,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                     ],
                     "onSelect": [Function],
                     "toggleProps": Object {
+                      "children": "     1 selected",
                       "data-ouia-component-type": "bulk-select-toggle-button",
                     },
                   }

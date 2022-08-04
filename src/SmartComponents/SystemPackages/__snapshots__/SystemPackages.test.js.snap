@@ -234,7 +234,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
             bulkSelect={
               Object {
                 "checked": false,
-                "count": 0,
                 "isDisabled": true,
                 "items": Array [
                   Object {
@@ -252,6 +251,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                 ],
                 "onSelect": [Function],
                 "toggleProps": Object {
+                  "children": "     0 selected",
                   "data-ouia-component-type": "bulk-select-toggle-button",
                 },
               }
@@ -351,7 +351,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                               >
                                 <BulkSelect
                                   checked={false}
-                                  count={0}
                                   isDisabled={true}
                                   items={
                                     Array [
@@ -373,6 +372,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                   ouiaId="BulkSelect"
                                   toggleProps={
                                     Object {
+                                      "children": "     0 selected",
                                       "data-ouia-component-type": "bulk-select-toggle-button",
                                     }
                                   }
@@ -432,7 +432,9 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                             </React.Fragment>,
                                           ]
                                         }
-                                      />
+                                      >
+                                             0 selected
+                                      </DropdownToggle>
                                     }
                                   >
                                     <DropdownWithContext
@@ -496,7 +498,9 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                               </React.Fragment>,
                                             ]
                                           }
-                                        />
+                                        >
+                                               0 selected
+                                        </DropdownToggle>
                                       }
                                     >
                                       <div
@@ -556,6 +560,11 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                     id="pf-dropdown-toggle-id-5"
                                                     type="button"
                                                   >
+                                                    <span
+                                                      class="pf-c-dropdown__toggle-text"
+                                                    >
+                                                           0 selected
+                                                    </span>
                                                     <span
                                                       class=""
                                                     >
@@ -686,6 +695,11 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                         type="button"
                                                       >
                                                         <span
+                                                          class="pf-c-dropdown__toggle-text"
+                                                        >
+                                                               0 selected
+                                                        </span>
+                                                        <span
                                                           class=""
                                                         >
                                                           <svg
@@ -723,6 +737,11 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                 onKeyDown={[Function]}
                                                 type="button"
                                               >
+                                                <span
+                                                  className="pf-c-dropdown__toggle-text"
+                                                >
+                                                       0 selected
+                                                </span>
                                                 <span
                                                   className=""
                                                 >
