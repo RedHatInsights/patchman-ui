@@ -222,18 +222,9 @@ export const remediationProvider = (issues, systems, remediationIdentifier) => {
         : false;
 };
 
-export async function remediationProviderWithPairs(issues, createPairs, transformFunc, remediationIdentifier) {
-    if (issues) {
-        const pairsCreated = await createPairs(issues);
-        const res = transformFunc(pairsCreated, remediationIdentifier);
-        return await res;
-    }
-    else {
-        return false;
-    }
-}
-
-;
+export const remediationProviderWithPairs = (issuePairs, transformFunc, remediationIdentifier) => {
+    return issuePairs ? transformFunc(issuePairs, remediationIdentifier) : false;
+};
 
 export const getFilterValue = (category, key) => {
     const filterCategory = filterCategories[category];

@@ -8,7 +8,7 @@ import { storeListDefaults } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {
     exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi,
-    fetchSystems } from '../../Utilities/api';
+    fetchViewAdvisoriesSystems } from '../../Utilities/api';
 import { act } from 'react-dom/test-utils';
 
 initMocks();
@@ -182,7 +182,7 @@ describe('Advisories.js', () => {
     it('should handle remediation', () => {
         const remediationProvider = wrapper.find('TableView').props().remediationProvider;
         remediationProvider().catch((err) => console.log(err));
-        expect(fetchSystems).toHaveBeenCalledWith({ limit: -1 });
+        expect(fetchViewAdvisoriesSystems).toHaveBeenCalled();
     });
 });
 
