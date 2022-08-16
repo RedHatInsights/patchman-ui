@@ -4,6 +4,13 @@ import {
     removeUndefinedObjectKeys,
     transformPairs
 } from './Helpers';
+import {
+    fetchViewAdvisoriesSystems
+} from './api';
+
+export const prepareRemediationPairs = ({ advisories, systems } = {}) => {
+    return fetchViewAdvisoriesSystems({ advisories, systems });
+};
 
 /**
 * Provides remediation data, systems with all of their corresponding issues.
@@ -11,18 +18,21 @@ import {
 * @param {Array} [selectedRows] array of systems to calculate
 * @returns {handleSystemsRemoval}
 */
-const useRemediationDataProvider = (selectedRows, setRemediationLoading, prepareRemediationPairs) => {
-    const remediationDataProvider = () => {
+const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType) => {
+    const remediationDataProvider = async () => {
         setRemediationLoading(true);
+
+        const remediationPairs = await prepareRemediationPairs({
+            [remediationType]: removeUndefinedObjectKeys(selectedRows)
+        });
+
+        setRemediationLoading(false);
+
         return remediationProviderWithPairs(
-            removeUndefinedObjectKeys(selectedRows),
-            prepareRemediationPairs,
+            remediationPairs,
             transformPairs,
             remediationIdentifiers.advisory
-        ).then(result => {
-            setRemediationLoading(false);
-            return result;
-        }).catch(err => err);
+        );
     };
 
     return remediationDataProvider;

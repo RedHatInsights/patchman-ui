@@ -7,7 +7,6 @@ import {
     remediationProviderWithPairs,
     transformPairs
 } from './Helpers';
-import { prepareRemediationPairs } from '../SmartComponents/Systems/SystemsHelpers';
 
 jest.mock('./Helpers', () => ({
     ...jest.requireActual('./Helpers'),
@@ -21,19 +20,24 @@ jest.mock('./Helpers', () => ({
 
 const setRemediationLoading = jest.fn();
 describe('useRemediationDataProvider', () => {
+
+    global.Headers = jest.fn();
+    global.fetch = jest.fn(() => Promise.resolve({
+        json: () => ({ testPair: 'advisor-system-pair-issue' })
+    }).catch((err) => console.log(err)));
+
     it('Should return remediation data pairs', async () => {
         const testSystems = {
             'test-system-id-1': true,
             'test-system-id-2': true
         };
 
-        const remediationProvider =  useRemediationDataProvider(testSystems, setRemediationLoading, prepareRemediationPairs);
+        const remediationProvider =  useRemediationDataProvider(testSystems, setRemediationLoading, 'advisories');
         await act(() => remediationProvider());
 
         expect(remediationProviderWithPairs)
         .toHaveBeenCalledWith(
-            ['test-system-id-1', 'test-system-id-2'],
-            prepareRemediationPairs,
+            { testPair: 'advisor-system-pair-issue' },
             transformPairs,
             'patch-advisory'
         );

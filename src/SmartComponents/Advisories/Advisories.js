@@ -31,7 +31,6 @@ import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
-import { prepareRemediationPairs } from './AdvisoriesHelper';
 
 const Advisories = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
@@ -121,7 +120,7 @@ const Advisories = ({ history }) => {
         dispatch(changeAdvisoryListParams(params));
     }
 
-    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, prepareRemediationPairs);
+    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'advisories');
 
     return (
         <React.Fragment>
