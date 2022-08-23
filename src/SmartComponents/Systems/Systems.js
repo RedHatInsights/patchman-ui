@@ -62,6 +62,9 @@ const Systems = () => {
     const { hasError, code } = useSelector(
         ({ entities }) => entities?.status || {}
     );
+    const metadata = useSelector(
+        ({ SystemsStore }) => SystemsStore?.metadata || {}
+    );
     const queryParams = useSelector(
         ({ SystemsStore }) => SystemsStore?.queryParams || {}
     );
@@ -135,10 +138,13 @@ const Systems = () => {
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
-            {hasError && <ErrorHandler code={code} /> || <React.Fragment>
+            {(hasError || metadata?.has_systems === false)
+            && <ErrorHandler code={code} metadata={metadata}/>
+            || <React.Fragment>
                 <SystemsStatusReport apply={apply} queryParams={queryParams} />
                 {isPatchSetEnabled && <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />}
                 {isRemediationOpen && <RemediationModalCmp /> || null}
+
                 <Main>
                     <InventoryTable
                         ref={inventory}

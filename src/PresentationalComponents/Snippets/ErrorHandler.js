@@ -9,8 +9,11 @@ import { LockIcon } from '@patternfly/react-icons';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
-const ErrorHandler = ({ code, ErrorState, EmptyState }) => {
+//TODO: use the shared component from platform
+import NoRegisteredSystems from './NoRegisteredSystems';
+//import { NoRegisteredSystems } from '@redhat-cloud-services/frontend-components/NoRegisteredSystems';
 
+const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
     switch (code) {
         case 204:
             return <NotConnected />;
@@ -47,6 +50,7 @@ const ErrorHandler = ({ code, ErrorState, EmptyState }) => {
         default:
             return ErrorState && <ErrorState />
                 || EmptyState && <EmptyState />
+                || !metadata.has_systems && <NoRegisteredSystems />
                 || <SkeletonTable colSize={5} rowSize={20} /> ;
     }
 };
@@ -54,7 +58,8 @@ const ErrorHandler = ({ code, ErrorState, EmptyState }) => {
 ErrorHandler.propTypes = {
     code: propTypes.number,
     ErrorState: propTypes.element,
-    EmptyState: propTypes.element
+    EmptyState: propTypes.element,
+    metadata: propTypes.object
 };
 
 export default ErrorHandler;

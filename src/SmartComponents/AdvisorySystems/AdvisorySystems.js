@@ -48,6 +48,9 @@ const AdvisorySystems = ({ advisoryName }) => {
     const selectedRows = useSelector(
         ({ entities }) => entities?.selectedRows || []
     );
+    const metadata = useSelector(
+        ({ AdvisorySystemsStore }) => AdvisorySystemsStore?.metadata || {}
+    );
 
     const { systemProfile, selectedTags,
         filter, search, page, perPage, sort } = queryParams;
@@ -120,8 +123,9 @@ const AdvisorySystems = ({ advisoryName }) => {
     return (
         <React.Fragment>
             {isRemediationOpen && <RemediationModalCmp /> || null}
-            {status.hasError && <ErrorHandler code={status.code} /> ||
-                <InventoryTable
+            {(status.hasError || metadata?.has_systems === false)
+                && <ErrorHandler code={status.code} metadata={metadata} />
+                || <InventoryTable
                     isFullView
                     autoRefresh
                     initialLoading
