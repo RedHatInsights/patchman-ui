@@ -10,6 +10,7 @@ import toJson from 'enzyme-to-json';
 import { useFeatureFlag } from '../../Utilities/Hooks';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 import { systemsColumnsMerger } from '../../Utilities/Helpers';
+import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
 
 initMocks();
 
@@ -64,7 +65,8 @@ const mockState = {
         metadata: {
             limit: 25,
             offset: 0,
-            total_items: 10
+            total_items: 10,
+            has_systems: true
         },
         expandedRows: {},
         selectedRows: { 'test-system-id-1': true },
@@ -165,6 +167,36 @@ describe('Systems.js', () => {
         </Provider>);
 
         expect(tempWrapper.find('EmptyState')).toBeTruthy();
+    });
+
+    it('Should display NoRegisteredSystems compnent if there are no systems registered', () => {
+        const notFoundState = {
+            ...mockState,
+            status: 'rejected',
+            error: {
+                status: 403,
+                title: 'testTitle',
+                detail: 'testDescription'
+            }
+        };
+
+        useSelector.mockImplementation(callback => {
+            return callback({
+                ...mockState,
+                GlobalFilterStore: {},
+                entities: {
+                    ...mockState.entities,
+                    metadata: { has_systems: false }
+                }
+            });
+        });
+
+        const tempStore = initStore(notFoundState);
+        const tempWrapper = mount(<Provider store={tempStore}>
+            <Router><Systems /></Router>
+        </Provider>);
+
+        expect(tempWrapper.find(NoRegisteredSystems)).toBeTruthy();
     });
 
     describe('test patch-set: ', () => {

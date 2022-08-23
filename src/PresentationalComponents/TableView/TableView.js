@@ -56,7 +56,8 @@ const TableView = ({
         <React.Fragment>
             {
                 (<React.Fragment>
-                    { hasError ? <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} />
+                    {(hasError || metadata.has_systems === false)
+                        ? <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState}  metadata={metadata} />
                         : <React.Fragment>
                             <PrimaryToolbar
                                 pagination={{

@@ -8,6 +8,7 @@ import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
 import { BrowserRouter as Router } from 'react-router-dom';
+import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
 
 initMocks();
 
@@ -168,5 +169,35 @@ describe('AdvisorySystems.js', () => {
 
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_INVENTORY_REDUCER')).toHaveLength(1);
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_ADVISORY_SYSTEMS_REDUCER')).toHaveLength(1);
+    });
+
+    it('Should display NoRegisteredSystems compnent if there are no systems registered', () => {
+        const notFoundState = {
+            ...mockState,
+            status: 'rejected',
+            error: {
+                status: 403,
+                title: 'testTitle',
+                detail: 'testDescription'
+            }
+        };
+
+        useSelector.mockImplementation(callback => {
+            return callback({
+                ...mockState,
+                GlobalFilterStore: {},
+                entities: {
+                    ...mockState.entities,
+                    metadata: { has_systems: false }
+                }
+            });
+        });
+
+        const tempStore = initStore(notFoundState);
+        const tempWrapper = mount(<Provider store={tempStore}>
+            <Router><AdvisorySystems /></Router>
+        </Provider>);
+
+        expect(tempWrapper.find(NoRegisteredSystems)).toBeTruthy();
     });
 });

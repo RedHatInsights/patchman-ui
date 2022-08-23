@@ -10,7 +10,7 @@ const NoAccess = ({ code }) => (
     <React.Fragment>
         <Header title={intl.formatMessage(messages.generalAppName)}/>
         <Main>
-            <ErrorHandler code={code} />
+            <ErrorHandler code={code}  />
         </Main>
     </React.Fragment>
 );

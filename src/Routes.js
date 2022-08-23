@@ -1,9 +1,7 @@
 import some from 'lodash/some';
 import PropTypes from 'prop-types';
-import React, { Fragment, lazy, Suspense, useState } from 'react';
+import React, { Fragment, lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { fetchSystems } from './Utilities/api';
-import { useHistory } from 'react-router-dom';
 import { useFeatureFlag } from './Utilities/Hooks';
 import { featureFlags } from './Utilities/constants';
 
@@ -43,12 +41,6 @@ const PackageDetail = lazy(() =>
     )
 );
 
-const NoAccess = lazy(() =>
-    import(
-        /* webpackChunkName: "NoAccess" */ './PresentationalComponents/NoAccessPage/NoAccess'
-    )
-);
-
 const Templates = lazy(() =>
     import(
         /* webpackChunkName: "PackageDetail" */ './SmartComponents/PatchSet/PatchSet'
@@ -75,10 +67,6 @@ export const paths = {
         title: '',
         to: '/advisories/:advisoryId/:inventoryId'
     },
-    noaccess: {
-        title: '',
-        to: '/noaccess'
-    },
     packages: {
         title: 'Packages',
         to: '/packages'
@@ -98,30 +86,12 @@ export const paths = {
 };
 
 export const Routes = (props) => {
-    const [responseCode, setResponseCode] = useState();
-    const history = useHistory();
-
-    const redirectToNoAccess = (statusCode) => {
-        setResponseCode(statusCode);
-        history.replace(paths.noaccess.to);
-    };
-
-    React.useEffect(() => {
-        const systems = fetchSystems({ limit: 1 });
-        systems.then((res) => {
-            if (!res.meta) {
-                redirectToNoAccess(res.status);
-            }
-
-        }).catch(err => redirectToNoAccess(err.status));
-    }, []);
 
     const path = props.childProps.location.pathname;
 
     const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
 
     return (
-        // I recommend discussing with UX some nice loading placeholder
         <Suspense fallback={Fragment}>
             <Switch>
                 <Redirect
@@ -151,11 +121,6 @@ export const Routes = (props) => {
                     exact
                     path={paths.packages.to}
                     component={PackagsPage}
-                />
-                <Route
-                    exact
-                    path={paths.noaccess.to}
-                    render={() => <NoAccess code={responseCode}/>}
                 />
                 <Route
                     exact
