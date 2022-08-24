@@ -1,3 +1,10 @@
+# [1.49.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.7...v1.49.0) (2022-08-24)
+
+
+### Features
+
+* **RHIF-87:** get rid of extra calls while loading remediation ([b4ebb36](https://github.com/RedHatInsights/patchman-ui/commit/b4ebb369e8beedcbd825d0973eb016fb02156ac6))
+
 ## [1.48.7](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.6...v1.48.7) (2022-08-01)
 
 
