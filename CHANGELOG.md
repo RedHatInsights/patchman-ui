@@ -1,3 +1,10 @@
+## [1.49.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.49.0...v1.49.1) (2022-09-02)
+
+
+### Bug Fixes
+
+* **BulkSelect:** enable loading state when all entities selected ([7867910](https://github.com/RedHatInsights/patchman-ui/commit/786791015f0f6bc899a5ddd9ac8ef8400fa26ef7))
+
 # [1.49.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.48.7...v1.49.0) (2022-08-24)
 
 
