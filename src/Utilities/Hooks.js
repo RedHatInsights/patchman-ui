@@ -75,7 +75,7 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
 
             if (categoryId !== 'search' && !multiValueFilters.includes(categoryId)) {
                 let activeFilter = filters[categoryId];
-                const toRemove = chips.map(item => item.id.toString());
+                const toRemove = chips.map(item => item.id?.toString());
                 if (Array.isArray(activeFilter)) {
                     newParams.filter[categoryId] = activeFilter.filter(
                         item => !toRemove.includes(item.toString())

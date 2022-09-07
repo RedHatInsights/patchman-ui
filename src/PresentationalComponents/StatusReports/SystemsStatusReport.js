@@ -23,7 +23,7 @@ const StatusCard = ({ title, color, Icon, value, filter, apply }) => {
                     >
                         <Icon color={color} size='md'/>
                     </FlexItem>
-                    <FlexItem isFilled spacer={{ default: 'spacerNone' }}>
+                    <FlexItem spacer={{ default: 'spacerNone' }}>
                         {
                             typeof(value) === 'undefined'
                             &&  <Skeleton width="24px" />
@@ -118,7 +118,7 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
 StatusCard.propTypes = {
     title: propTypes.string,
     Icon: propTypes.elementType,
-    value: propTypes.string,
+    value: propTypes.number,
     color: propTypes.string,
     apply: propTypes.func,
     filter: propTypes.object

@@ -16,7 +16,7 @@ const AdvisoriesIcon = ({ count, tooltipText, Icon }) =>(
 );
 
 AdvisoriesIcon.propTypes = {
-    Icon: propTypes.element,
+    Icon: propTypes.func,
     count: propTypes.any,
     tooltipText: propTypes.string
 };
