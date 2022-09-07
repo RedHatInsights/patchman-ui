@@ -59,7 +59,7 @@ ErrorHandler.propTypes = {
     code: propTypes.number,
     ErrorState: propTypes.element,
     EmptyState: propTypes.element,
-    metadata: propTypes.object
+    metadata: propTypes.object.isRequired
 };
 
 export default ErrorHandler;
