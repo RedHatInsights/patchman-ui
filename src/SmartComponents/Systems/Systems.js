@@ -144,7 +144,6 @@ const Systems = () => {
                 <SystemsStatusReport apply={apply} queryParams={queryParams} />
                 {isPatchSetEnabled && <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />}
                 {isRemediationOpen && <RemediationModalCmp /> || null}
-
                 <Main>
                     <InventoryTable
                         ref={inventory}
