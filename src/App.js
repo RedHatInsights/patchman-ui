@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation, withRouter } from 'react-router-dom';
 import './App.scss';
-import { paths, Routes } from './Routes';
+import { Routes } from './Routes';
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
 
@@ -25,21 +25,6 @@ const App = () => {
             }
         });
     };
-
-    useEffect(() => {
-        history.listen((newLocation) => {
-            const { pathname } = newLocation;
-            const currentRoute = Object.values(paths).filter(element => pathname !== '/' && pathname.includes(element.to));
-
-            if (pathname === '/') {
-                insights.chrome.appNavClick({ id: 'advisories' }, false);
-            }
-            else if (currentRoute) {
-                const navId =  pathname.split('/').filter(element => element.length > 0)[0];
-                navId && insights.chrome.appNavClick({ id: navId });
-            }
-        });
-    }, [location.pathname]);
 
     useEffect(() => {
         insights.chrome.init();

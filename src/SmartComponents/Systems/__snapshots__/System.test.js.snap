@@ -231,7 +231,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                                         </div>
                                       </FlexItem>
                                       <FlexItem
-                                        isFilled={true}
                                         spacer={
                                           Object {
                                             "default": "spacerNone",
@@ -240,7 +239,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                                       >
                                         <div
                                           className="pf-m-spacer-none"
-                                          isFilled={true}
                                         >
                                           <Skeleton
                                             width="24px"
@@ -387,7 +385,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                                         </div>
                                       </FlexItem>
                                       <FlexItem
-                                        isFilled={true}
                                         spacer={
                                           Object {
                                             "default": "spacerNone",
@@ -396,7 +393,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                                       >
                                         <div
                                           className="pf-m-spacer-none"
-                                          isFilled={true}
                                         >
                                           <Skeleton
                                             width="24px"
@@ -543,7 +539,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                                         </div>
                                       </FlexItem>
                                       <FlexItem
-                                        isFilled={true}
                                         spacer={
                                           Object {
                                             "default": "spacerNone",
@@ -552,7 +547,6 @@ exports[`Systems.js should match the snapshot 1`] = `
                                       >
                                         <div
                                           className="pf-m-spacer-none"
-                                          isFilled={true}
                                         >
                                           <Skeleton
                                             width="24px"
