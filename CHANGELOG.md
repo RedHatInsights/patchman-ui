@@ -1,3 +1,10 @@
+# [1.50.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.49.1...v1.50.0) (2022-09-07)
+
+
+### Features
+
+* **RegisteredSystems:** use metadata.has_systems instead of separate api request ([0159901](https://github.com/RedHatInsights/patchman-ui/commit/01599015f2755443f1b68b27c37ddda756ef9fe7))
+
 ## [1.49.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.49.0...v1.49.1) (2022-09-02)
 
 
