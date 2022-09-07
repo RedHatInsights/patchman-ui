@@ -8,7 +8,6 @@ updates:
     timezone: EST
   open-pull-requests-limit: 10
   reviewers:
-  - jiridostal
   - mkholjuraev
   allow:
   - dependency-name: "@redhat-cloud-services/frontend*"
