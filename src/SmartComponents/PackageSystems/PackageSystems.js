@@ -133,6 +133,8 @@ const PackageSystems = ({ packageName }) => {
         remediationIdentifiers.package
     );
 
+    const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
+
     return (
         <React.Fragment>
             {status.hasError && <ErrorHandler code={status.code} /> || (
@@ -171,7 +173,7 @@ const PackageSystems = ({ packageName }) => {
                     }}
                     filterConfig={filterConfig}
                     activeFiltersConfig={activeFiltersConfig}
-                    bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                    bulkSelect={onSelect && bulkSelectConfig}
                     exportConfig={{
                         isDisabled: totalItems === 0,
                         onSelect: onExport

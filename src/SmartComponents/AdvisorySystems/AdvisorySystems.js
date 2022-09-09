@@ -120,6 +120,8 @@ const AdvisorySystems = ({ advisoryName }) => {
         remediationIdentifiers.advisory
     );
 
+    const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
+
     return (
         <React.Fragment>
             {isRemediationOpen && <RemediationModalCmp /> || null}
@@ -164,9 +166,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                         isDisabled: totalItems === 0,
                         onSelect: onExport
                     }}
-                    bulkSelect={
-                        onSelect && useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)
-                    }
+                    bulkSelect={onSelect && bulkSelectConfig}
                     dedicatedAction={(
                         <AsyncRemediationButton
                             remediationProvider={remediationDataProvider}

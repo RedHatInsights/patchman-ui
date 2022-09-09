@@ -135,6 +135,8 @@ const Systems = () => {
 
     const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'systems');
 
+    const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
+
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
@@ -182,7 +184,7 @@ const Systems = () => {
                             canSelectAll: false,
                             variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                         }}
-                        bulkSelect={useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems)}
+                        bulkSelect={bulkSelectConfig}
                         exportConfig={{
                             isDisabled: totalItems === 0,
                             onSelect: onExport

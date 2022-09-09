@@ -51,6 +51,7 @@ const TableView = ({
     const [deleteFilters] = useRemoveFilter(filter, apply, defaultFilters);
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
     const { code, hasError, isLoading } = status;
+    const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse);
 
     return (
         <React.Fragment>
@@ -92,7 +93,7 @@ const TableView = ({
                                     isDisabled: metadata.total_items === 0,
                                     onSelect: onExport
                                 }}
-                                bulkSelect={onSelect && useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse)}
+                                bulkSelect={onSelect && bulkSelectConfig}
                             >
                                 {CreatePatchSetButton && <ToolbarItem>
                                     <CreatePatchSetButton />
