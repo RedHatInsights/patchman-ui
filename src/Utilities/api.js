@@ -1,5 +1,8 @@
-import axios from './axiosInterceptors';
+import { SystemProfileApi } from '@redhat-cloud-services/host-inventory-client';
+import axios, { axiosInstance } from './axiosInterceptors';
 import { encodeApiParams, prepareEntitiesParams } from './Helpers';
+
+const INVENTORY_API_BASE = '/api/inventory/v1';
 
 export function createApiCall(
     endpoint,
@@ -22,6 +25,8 @@ export function createApiCall(
 
     return result;
 }
+
+const systemProfile = new SystemProfileApi(undefined, INVENTORY_API_BASE, axiosInstance);
 
 export const fetchApplicableAdvisoriesApi = params => {
     return createApiCall('/advisories', 'get', params);
@@ -216,4 +221,8 @@ export const fetchPatchSetSystems = (id, params) => {
 
 export const removePatchSetApi = (payload) => {
     return createApiCall('/baselines/systems/remove', 'post', null, payload);
+};
+
+export const getOperatingSystems = () => {
+    return systemProfile.apiSystemProfileGetOperatingSystem();
 };
