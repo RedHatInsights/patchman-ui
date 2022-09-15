@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import searchFilter from '../../../PresentationalComponents/Filters/SearchFilter';
-import osVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
 import { Text, TextContent, Stack, StackItem, TextVariants } from '@patternfly/react-core';
 import { useSelector, shallowEqual } from 'react-redux';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
@@ -18,6 +17,7 @@ import { reviewSystemColumns } from '../WizardAssets';
 import messages from '../../../Messages';
 import { intl } from '../../../Utilities/IntlProvider';
 import { systemsListDefaultFilters } from '../../../Utilities/constants';
+import useOsVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
 
 export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     const { input } = useFieldApi(props);
@@ -83,6 +83,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
         }));
     };
 
+    const osFilterConfig = useOsVersionFilter(queryParams.filter.os, apply);
     const onSort = useSortColumn(reviewSystemColumns, apply, 1);
     const sortBy = React.useMemo(
         () => createSortBy(reviewSystemColumns, metadata.sort, 1),
@@ -139,7 +140,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
                             ),
                             staleFilter(apply, queryParams.filter),
                             systemsUpdatableFilter(apply, queryParams.filter),
-                            osVersionFilter(queryParams.filter, apply)
+                            ...osFilterConfig
                         ]
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)}

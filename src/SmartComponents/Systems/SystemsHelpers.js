@@ -1,6 +1,5 @@
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import staleFilter from '../../PresentationalComponents/Filters/SystemStaleFilter';
-import osVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import systemsUpdatableFilter from '../../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import { fetchSystems } from '../../Utilities/api';
 import {
@@ -15,13 +14,16 @@ export const fetchAllSystemsCallback = (queryParams) => () =>
 
 export const buildFilterConfig = (search, filter, apply) => ({
     items: [
-        searchFilter(apply, search,
+        searchFilter(
+            apply,
+            search,
             intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-            intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
+            intl.formatMessage(
+                messages.labelsFiltersSystemsSearchPlaceholder
+            )
         ),
         staleFilter(apply, filter),
-        systemsUpdatableFilter(apply, filter),
-        osVersionFilter(filter, apply)
+        systemsUpdatableFilter(apply, filter)
     ]
 });
 

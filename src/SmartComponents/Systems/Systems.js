@@ -32,6 +32,7 @@ import { fetchAllSystemsCallback, buildFilterConfig, buildActiveFiltersConfig } 
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
+import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 
 const Systems = () => {
     const inventory = useRef(null);
@@ -102,6 +103,8 @@ const Systems = () => {
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
 
     const filterConfig = buildFilterConfig(search, filter, apply);
+    const osFilterConfig = useOsVersionFilter(filter?.os, apply);
+    filterConfig.items = [...filterConfig.items, ...osFilterConfig];
 
     const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 
