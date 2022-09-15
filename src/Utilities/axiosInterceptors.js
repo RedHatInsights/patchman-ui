@@ -4,7 +4,7 @@ import {
 import axios from 'axios';
 import { ReadOnlyNotification } from './constants';
 
-const axiosInstance = axios.create();
+export const axiosInstance = axios.create();
 
 export async function  accessCheckInterceptor (config)  {
 
