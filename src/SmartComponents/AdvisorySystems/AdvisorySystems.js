@@ -6,7 +6,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
-import osVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
+import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
 import { changeAffectedSystemsParams, clearAdvisorySystemsReducer, clearInventoryReducer } from '../../store/Actions/Actions';
@@ -69,13 +69,14 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply);
 
+    const osFilterConfig = useOsVersionFilter(filter?.os, apply);
     const filterConfig = {
         items: [
             searchFilter(apply, search,
                 intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
             ),
-            osVersionFilter(filter, apply)
+            ...osFilterConfig
         ]
     };
 

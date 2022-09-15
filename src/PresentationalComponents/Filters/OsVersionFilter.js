@@ -1,71 +1,65 @@
-import React from 'react';
-import { osFilterTypes } from '../../Utilities/constants';
-import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
-import { Select, SelectOption, SelectVariant } from '@patternfly/react-core';
-import { intl } from '../../Utilities/IntlProvider';
-import messages from '../../Messages';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useLoadModule } from '@scalprum/react-core';
+import { getOperatingSystems } from '../../Utilities/api';
 
-const osVersionFilter = (currentFilter = {}, apply) => {
+const useOsVersionFilter = (currentFilter = '', apply) => {
+    const versions = useSelector(({ entities }) => entities?.operatingSystems);
+    const versionsLoaded = useSelector(({ entities }) => entities?.operatingSystemsLoaded);
 
-    const [isOpen, setOpen] = React.useState(false);
-    const [numOptions, setNumOptions] = React.useState(10);
-    const versionFromNewestToOldest = osFilterTypes.slice().reverse();;
-
-    let { os: currentValue } = currentFilter;
-    const currentOsVersionsArray = typeof currentValue === 'string' && currentValue.split(',') || [];
-
-    const filterByOsType = (_, value) => {
-        if (currentValue && !currentValue.includes(value)) {
-            apply({ filter: { os: `${currentOsVersionsArray.join(',')},${value}` } });
-        }
-        else if (currentValue && currentValue.includes(value)) {
-            const remainingOs = currentOsVersionsArray.filter(os => os !== value);
-
-            apply({ filter: { os: remainingOs.length > 0 && `${remainingOs.join(',')}` || undefined } });
-        } else {
-            apply({ filter: { os: value !== '' && value || undefined  } });
-        }
-    };
-
-    const onToggle = (isOpen) => {
-        setOpen(isOpen);
-    };
-
-    const onViewMoreClick = () => {
-        setNumOptions(versionFromNewestToOldest.length);
-    };
-
-    return (
+    const [operatingSystems, setOperatingSystems] = useState([]);
+    const [{ toGroupSelectionValue, buildOSFilterConfig } = {}] = useLoadModule(
         {
-            type: conditionalFilterType.custom,
-            label: intl.formatMessage(messages.labelsFiltersOsVersion),
-            value: 'custom',
-            filterValues: {
-                children: (
-                    <Select
-                        variant={SelectVariant.checkbox}
-                        typeAheadAriaLabel={intl.formatMessage(messages.labelsFiltersOsVersionPlaceholder)}
-                        onToggle={onToggle}
-                        onSelect={filterByOsType}
-                        selections={currentOsVersionsArray}
-                        isOpen={isOpen}
-                        aria-labelledby={'patch-os-version-filter'}
-                        placeholderText={intl.formatMessage(messages.labelsFiltersOsVersionPlaceholder)}
-                        {...(numOptions < versionFromNewestToOldest.length
-                            && { loadingVariant: { text: 'View more', onClick: onViewMoreClick } })}
-                        style={{ maxHeight: '400px', overflow: 'auto' }}
-                    >
-                        {versionFromNewestToOldest.slice(0, numOptions).map((option, index) => (
-                            <SelectOption
-                                key={index}
-                                value={option.value}
-                            />
-                        ))}
-                    </Select>
-                )
-            }
+            appName: 'inventory',
+            scope: 'inventory',
+            module: './OsFilterHelpers'
         }
     );
+
+    useEffect(() => {
+        if (versions === undefined || versionsLoaded === undefined) {
+            /* explicitly request OS versions from API */
+            getOperatingSystems().then(({ results }) => {
+                setOperatingSystems((results || []).map(entry => {
+                    const { name, major, minor } = entry.value;
+                    const versionStringified = `${major}.${minor}`;
+                    return { label: `${name} ${versionStringified}`, value: `${versionStringified}` };
+                }));
+            });
+        }
+    }, []);
+
+    useEffect(() => {
+        if (versionsLoaded === true) {
+            setOperatingSystems(versions);
+        }
+    }, [versionsLoaded]);
+
+    const osVersionValue = (currentFilter === '' ? [] : currentFilter.split(','))
+    // patchman uses "RHEL " prefix in values; need to remove
+    .map((version) => version.substring(5));
+
+    return [
+        ...(buildOSFilterConfig
+            ? [
+                buildOSFilterConfig(
+                    {
+                        id: 'rhel_version',
+                        value: toGroupSelectionValue(osVersionValue),
+                        onChange: (event, value) => {
+                            /* `versions` must be of type string, e.g., "8.9,9.0" */
+                            const versions = Object.values(value)
+                            .flatMap((versions) => Object.keys(versions))
+                            .map((version) => `RHEL ${version}`)
+                            .toString();
+                            apply({ filter: { os: versions } });
+                        }
+                    },
+                    operatingSystems
+                )
+            ]
+            : [])
+    ];
 };
 
-export default osVersionFilter;
+export default useOsVersionFilter;

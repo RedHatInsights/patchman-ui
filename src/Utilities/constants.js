@@ -196,116 +196,6 @@ export const rebootRequired = [
     }
 ];
 
-export const osFilterTypes = [
-    {
-        label: 'RHEL 6.0',
-        value: 'RHEL 6.0'
-    },
-    {
-        label: 'RHEL 6.1',
-        value: 'RHEL 6.1'
-    },
-    {
-        label: 'RHEL 6.2',
-        value: 'RHEL 6.2'
-    },    {
-        label: 'RHEL 6.3',
-        value: 'RHEL 6.3'
-    },
-    {
-        label: 'RHEL 6.4',
-        value: 'RHEL 6.4'
-    },
-    {
-        label: 'RHEL 6.5',
-        value: 'RHEL 6.5'
-    },
-    {
-        label: 'RHEL 6.6',
-        value: 'RHEL 6.6'
-    },
-    {
-        label: 'RHEL 6.7',
-        value: 'RHEL 6.7'
-    },
-    {
-        label: 'RHEL 6.8',
-        value: 'RHEL 6.8'
-    },
-    {
-        label: 'RHEL 6.9',
-        value: 'RHEL 6.9'
-    },
-    {
-        label: 'RHEL 6.10',
-        value: 'RHEL 6.10'
-    },
-    {
-        label: 'RHEL 7.0',
-        value: 'RHEL 7.0'
-    },
-    {
-        label: 'RHEL 7.1',
-        value: 'RHEL 7.1'
-    },
-    {
-        label: 'RHEL 7.2',
-        value: 'RHEL 7.2'
-    },
-    {
-        label: 'RHEL 7.3',
-        value: 'RHEL 7.3'
-    },
-    {
-        label: 'RHEL 7.4',
-        value: 'RHEL 7.4'
-    },
-    {
-        label: 'RHEL 7.5',
-        value: 'RHEL 7.5'
-    },
-    {
-        label: 'RHEL 7.6',
-        value: 'RHEL 7.6'
-    },
-    {
-        label: 'RHEL 7.7',
-        value: 'RHEL 7.7'
-    },
-    {
-        label: 'RHEL 7.8',
-        value: 'RHEL 7.8'
-    },
-    {
-        label: 'RHEL 7.9',
-        value: 'RHEL 7.9'
-    },
-    {
-        label: 'RHEL 8.0',
-        value: 'RHEL 8.0'
-    },
-    {
-        label: 'RHEL 8.1',
-        value: 'RHEL 8.1'
-    },
-    {
-        label: 'RHEL 8.2',
-        value: 'RHEL 8.2'
-    },
-    {
-        label: 'RHEL 8.3',
-        value: 'RHEL 8.3'
-    },
-    {
-        label: 'RHEL 8.4',
-        value: 'RHEL 8.4'
-    },
-    {
-        label: 'RHEL 8.5',
-        value: 'RHEL 8.5'
-    }
-];
-
 export const filterCategories = {
     advisory_type_name: {
         label: 'Advisory type',
@@ -336,8 +226,7 @@ export const filterCategories = {
         values: rebootRequired
     },
     os: {
-        label: 'Operating system',
-        values: osFilterTypes
+        label: 'Operating system'
     }
 };
 

@@ -1,5 +1,5 @@
 import { SystemProfileApi } from '@redhat-cloud-services/host-inventory-client';
-import axios, { axiosInstance } from './axiosInterceptors';
+import axios from './axiosInterceptors';
 import { encodeApiParams, prepareEntitiesParams } from './Helpers';
 
 const INVENTORY_API_BASE = '/api/inventory/v1';
@@ -26,7 +26,7 @@ export function createApiCall(
     return result;
 }
 
-const systemProfile = new SystemProfileApi(undefined, INVENTORY_API_BASE, axiosInstance);
+const systemProfile = new SystemProfileApi(undefined, INVENTORY_API_BASE, axios);
 
 export const fetchApplicableAdvisoriesApi = params => {
     return createApiCall('/advisories', 'get', params);

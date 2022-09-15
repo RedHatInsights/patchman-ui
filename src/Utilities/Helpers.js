@@ -127,7 +127,7 @@ export const getLimitFromPageSize = limit => {
 export function truncate(str, max, end) {
     return str.length > max ? (
         <React.Fragment>
-            {str.substr(0, max - 1)}
+            {str.substring(0, max - 1)}
             ...&nbsp;{end}
         </React.Fragment>
     ) : str;
@@ -229,9 +229,8 @@ export const remediationProviderWithPairs = (issuePairs, transformFunc, remediat
 export const getFilterValue = (category, key) => {
     const filterCategory = filterCategories[category];
     if (filterCategory) {
-        const filterOption = filterCategory.values.find(
-            item => item.value === key
-        );
+        const filterOption = /* some filters don't have constant values */
+        (filterCategory?.values || []).find((item) => item.value === key);
         return filterOption || { apiValue: key };
     } else {
         return { apiValue: key };
@@ -414,7 +413,12 @@ export const changeListParams = (oldParams, newParams) => {
         newState.filter = { ...oldParams.filter, ...newParams.filter };
 
         //we need explicitly remove 'undefined' filters for safety
-        Object.keys(newState.filter).forEach(key => newState.filter[key] === undefined && delete newState.filter[key]);
+        Object.keys(newState.filter).forEach(
+            (key) =>
+                (newState.filter[key] === undefined ||
+                    newState.filter[key] === '') &&
+                delete newState.filter[key]
+        );
     }
 
     if (newState.hasOwnProperty('tags')) {

@@ -59,6 +59,10 @@ jest.mock('../../Utilities/Helpers', () => ({
     systemsColumnsMerger: jest.fn()
 }));
 
+jest.mock(
+    '../../PresentationalComponents/Filters/OsVersionFilter'
+);
+
 const mockState = {
     entities: {
         rows: systemRows,

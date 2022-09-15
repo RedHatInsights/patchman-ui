@@ -32,6 +32,10 @@ jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
     InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
 }));
 
+jest.mock(
+    '../../PresentationalComponents/Filters/OsVersionFilter'
+);
+
 const mockState = {
     entities: {
         rows: systemRows,
