@@ -146,7 +146,8 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 os_minor: osMinor,
                 other_count: other,
                 rhsm,
-                tags
+                tags,
+                last_upload: lastUpload
             } = rest;
             return {
                 id,
@@ -165,7 +166,8 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                     rhsm
                 },
                 selected: selectedRows[id] !== undefined,
-                tags
+                tags,
+                updated: lastUpload
             };
         });
     return data || [];
