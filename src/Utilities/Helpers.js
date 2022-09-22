@@ -576,7 +576,7 @@ export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
 
 export const systemsColumnsMerger = (defaultColumns, isPatchSetEnabled) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
-    lastSeen = [{ ...lastSeen[0], key: 'last_upload' }];
+    lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
 
     let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
 
