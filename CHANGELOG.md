@@ -1,3 +1,10 @@
+# [1.51.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.50.0...v1.51.0) (2022-09-26)
+
+
+### Features
+
+* **Filter:** Show only relevant OS filter options ([69cdc19](https://github.com/RedHatInsights/patchman-ui/commit/69cdc190e0ad7b26230d9804530928092948eeb6))
+
 # [1.50.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.49.1...v1.50.0) (2022-09-07)
 
 
