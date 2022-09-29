@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { Button } from '@patternfly/react-core';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
@@ -35,7 +35,7 @@ import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/Patc
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 
 const Systems = () => {
-    const inventory = useRef(null);
+    const inventory = React.createRef();
     const pageTitle = intl.formatMessage(messages.titlesSystems);
 
     setPageTitle(pageTitle);
@@ -157,7 +157,7 @@ const Systems = () => {
                         initialLoading
                         hideFilters={{ all: true, tags: false }}
                         columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, isPatchSetEnabled)}
-                        showTags
+                        showTagModal
                         customFilters={{
                             patchParams: {
                                 search,
