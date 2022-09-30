@@ -17,7 +17,7 @@ export function createApiCall(
 
     let result = axios({
         method,
-        url: '/api/patch/v1' + endpoint,
+        url: '/api/patch/v2' + endpoint,
         withCredentials: true,
         data,
         ...requestConfig
