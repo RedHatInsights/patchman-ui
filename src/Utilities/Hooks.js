@@ -388,7 +388,7 @@ export const usePushUrlParams = (queryParams) => {
     const location = useLocation();
 
     const historyPusher = useCallback(() => {
-        history.push({ pathname: `${location.pathname}${encodeURLParams(queryParams)}`, state: location.state });
+        history.push({ pathname: location.pathname, search: encodeURLParams(queryParams), state: location.state });
     }, [JSON.stringify(queryParams), location.state, location.pathname]);
 
     return historyPusher;
