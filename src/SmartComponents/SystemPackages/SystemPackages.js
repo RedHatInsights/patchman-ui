@@ -1,6 +1,6 @@
+import React, { useMemo, useEffect } from 'react';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import propTypes from 'prop-types';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
@@ -40,17 +40,17 @@ const SystemPackages = ({ handleNoSystemData }) => {
     const error = useSelector(
         ({ SystemPackageListStore }) => SystemPackageListStore.error
     );
-    const rows = React.useMemo(
+    const rows = useMemo(
         () =>
             createSystemPackagesRows(packages, selectedRows),
         [packages,  selectedRows]
     );
 
-    React.useEffect(() => {
+    useEffect(() => {
         return () => dispatch(clearSystemPackagesStore());
     }, []);
 
-    React.useEffect(()=> {
+    useEffect(()=> {
         dispatch(fetchApplicableSystemPackages({ id: entity.id, ...queryParams }));
     }, [queryParams]);
 
@@ -78,7 +78,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
     }
 
     const onSort = useSortColumn(systemPackagesColumns, apply, 1);
-    const sortBy = React.useMemo(
+    const sortBy = useMemo(
         () => createSortBy(systemPackagesColumns, metadata.sort, 1),
         [metadata.sort]
     );

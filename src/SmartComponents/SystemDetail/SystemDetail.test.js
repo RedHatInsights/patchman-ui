@@ -1,33 +1,26 @@
 import SystemDetail from './SystemDetail';
-import toJson from 'enzyme-to-json';
-import { initMocks } from '../../Utilities/unitTestingUtilities.js';
-
-/* eslint-disable */
-initMocks()
+import { useLocation } from 'react-router-dom';
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
-    useSelector: () => ({ entity: {}})
+    useSelector: () => ({ id: 'entity-id' })
 }));
 
-beforeEach(() => {  
-   console.error = () => {};
-});
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useLocation: jest.fn(() => ({ state: 'advisories' }))
+}));
 
 describe('SystemDetail.js', () => {
     it('Should match the snapshots', () => {
-        const wrapper = shallow(<SystemDetail entity = {{entity: { id: 1 }}} />); 
-        expect(toJson(wrapper.update())).toMatchSnapshot();
+        const wrapper = shallow(<SystemDetail />);
+        expect(wrapper.debug()).toMatchSnapshot();
     });
 
-    // was not able to mock the store. 
-    //Let's push this as hot fix and implement the test later
-
-    // it('Should change the tab', () => {
-    //     const wrapper = shallow(<SystemDetail />);
-    //     const onSelect = wrapper.find('Tabs').props().onSelect;
-    //     act(() => onSelect());
-    //     expect(wrapper.find('SystemPackages')).toBeTruthy();
-    // });
+    it('Should match the snapshot when Package tab is active by default', () => {
+        useLocation.mockImplementation(() => ({ state: { tab: 'packages' } }));
+        const wrapper = shallow(<SystemDetail />);
+        expect(wrapper.debug()).toMatchSnapshot();
+    });
 });
-/* eslint-enable */
+
