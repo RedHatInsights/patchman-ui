@@ -212,6 +212,15 @@ export function getSeverityById(id) {
     );
 }
 
+export const createPackagesColumn = (packageCount, systemID) => (
+    <Link to={{
+        pathname: `/systems/${systemID}`,
+        state: { tab: 'packages' }
+    }}>
+        {packageCount}
+    </Link>
+);
+
 export function handlePatchLink(type, name, body) {
     if (location.href.indexOf('inventory') === -1) {
         return (

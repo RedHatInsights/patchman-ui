@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { useMemo, useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
@@ -16,15 +16,15 @@ import { fetchApplicableSystemAdvisoriesApi,
 } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, createSortBy, decodeQueryparams, encodeURLParams,
+import { arrayFromObj, createSortBy, decodeQueryparams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect, useOnExport } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect, useOnExport, usePushUrlParams } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const SystemAdvisories = ({ history, handleNoSystemData }) => {
     const dispatch = useDispatch();
-    const [firstMount, setFirstMount] = React.useState(true);
+    const [firstMount, setFirstMount] = useState(true);
     const advisories = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.rows
     );
@@ -46,35 +46,37 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
     const status = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.status
     );
-    const rows = React.useMemo(
+    const rows = useMemo(
         () =>
             createSystemAdvisoriesRows(advisories, expandedRows, selectedRows, metadata),
         [advisories, expandedRows, selectedRows]
     );
 
-    React.useEffect(() => {
+    const historyPusher = usePushUrlParams(queryParams);
+
+    useEffect(() => {
         return () => dispatch(clearSystemAdvisoriesStore());
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (firstMount) {
             apply(decodeQueryparams(history.location.search));
             setFirstMount(false);
         } else {
-            history.push(encodeURLParams(queryParams));
+            historyPusher();
             dispatch(
                 fetchApplicableSystemAdvisories({ id: entity.id, ...queryParams })
             );
         }
     }, [queryParams]);
 
-    const onCollapse = React.useCallback((_, rowId, value) =>
+    const onCollapse = useCallback((_, rowId, value) =>
         dispatch(
             expandSystemAdvisoryRow({
                 rowId: getRowIdByIndexExpandable(advisories, rowId),
                 value
             })
-        )
+        ), [JSON.stringify(advisories)]
     );
 
     const selectRows = (toSelect) => {
