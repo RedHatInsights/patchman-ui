@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
@@ -375,4 +376,20 @@ export const useFeatureFlag = (flag) => {
     // const flagStatus = useFlag(flag);
 
     return insights.chrome.isBeta();
+};
+
+/***
+ * Pushes new URL params together location state into the history
+ * @param {object} [queryParams] query params to build the URL params
+ * @returns {historyPusher} function to trigger the push
+ */
+export const usePushUrlParams = (queryParams) => {
+    const history = useHistory();
+    const location = useLocation();
+
+    const historyPusher = useCallback(() => {
+        history.push({ pathname: `${location.pathname}${encodeURLParams(queryParams)}`, state: location.state });
+    }, [JSON.stringify(queryParams), location.state, location.pathname]);
+
+    return historyPusher;
 };

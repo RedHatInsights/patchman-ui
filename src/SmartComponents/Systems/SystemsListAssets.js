@@ -1,7 +1,7 @@
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesIcons, createUpgradableColumn,
-    remediationProvider, createOSColumn } from '../../Utilities/Helpers';
+    remediationProvider, createOSColumn, createPackagesColumn } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 
 export const systemsListColumns = (isPatchSetEnabled = false) => [
@@ -23,6 +23,7 @@ export const systemsListColumns = (isPatchSetEnabled = false) => [
     {
         key: 'packages_installed',
         title: 'Packages',
+        renderFunc: (packageCount, systemID) => createPackagesColumn(packageCount, systemID),
         props: {
             width: 10
         }

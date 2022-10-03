@@ -1,5 +1,6 @@
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Tab, Tabs, TabTitleText } from '@patternfly/react-core';
-import React from 'react';
 import SystemAdvisories from '../SystemAdvisories/SystemAdvisories';
 import { useSelector } from 'react-redux';
 import SystemPackages from '../SystemPackages/SystemPackages';
@@ -10,8 +11,12 @@ import { NotConnected } from '@redhat-cloud-services/frontend-components/NotConn
 import propTypes from 'prop-types';
 
 const SystemDetail = ({ isInventoryApp }) => {
-    const [activeTabKey, setActiveTabKey] = React.useState(0);
-    const [areTabsHidden, setTabsHidden] = React.useState(false);
+    const { state } = useLocation();
+
+    const [activeTabKey, setActiveTabKey] = useState(
+        (state?.tab === 'packages') ? 1 : 0
+    );
+    const [areTabsHidden, setTabsHidden] = useState(false);
 
     const entity = useSelector(({ entityDetails }) => entityDetails.entity || {});
     const onTabSelect = (event, id) => {
