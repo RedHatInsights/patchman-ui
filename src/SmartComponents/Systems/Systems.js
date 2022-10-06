@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { Button } from '@patternfly/react-core';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
@@ -8,13 +8,13 @@ import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { register } from '../../store';
+// import { register } from '../../store';
 import { changeSystemsParams, clearInventoryReducer, changeSystemsMetadata, changeTags } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchSystems
 } from '../../Utilities/api';
-import { systemsListDefaultFilters, featureFlags } from '../../Utilities/constants';
+import { systemsListDefaultFilters, featureFlags, useGetRegistry } from '../../Utilities/constants';
 import {
     arrayFromObj, decodeQueryparams, persistantParams,
     systemsColumnsMerger, filterSelectedActiveSystemIDs
@@ -35,8 +35,9 @@ import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/Patc
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 
 const Systems = () => {
-    const inventory = React.createRef();
+    const inventory = useRef(null);
     const pageTitle = intl.formatMessage(messages.titlesSystems);
+    const getRegistry = useGetRegistry();
 
     setPageTitle(pageTitle);
 
@@ -157,7 +158,7 @@ const Systems = () => {
                         initialLoading
                         hideFilters={{ all: true, tags: false }}
                         columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, isPatchSetEnabled)}
-                        showTagModal
+                        showTags
                         customFilters={{
                             patchParams: {
                                 search,
@@ -170,12 +171,18 @@ const Systems = () => {
                             isDisabled: totalItems === 0
                         }}
                         onLoad={({ mergeWithEntities }) => {
-                            register({
+                            getRegistry().register({
                                 ...mergeWithEntities(
-                                    inventoryEntitiesReducer(systemsListColumns(isPatchSetEnabled), modifyInventory),
-                                    persistantParams({ page, perPage, sort, search }, decodedParams)
-                                )
+                                    inventoryEntitiesReducer(systemsListColumns(isPatchSetEnabled),
+                                        modifyInventory),
+                                    persistantParams({ page, perPage, sort, search }, decodedParams))
                             });
+                            // register({
+                            //     ...mergeWithEntities(
+                            //         inventoryEntitiesReducer(systemsListColumns(isPatchSetEnabled), modifyInventory),
+                            //         persistantParams({ page, perPage, sort, search }, decodedParams)
+                            //     )
+                            // });
                         }}
                         getEntities={getEntities}
                         tableProps={{

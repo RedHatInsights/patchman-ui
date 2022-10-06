@@ -2,8 +2,9 @@ import BugIcon from '@patternfly/react-icons/dist/js/icons/bug-icon';
 import EnhancementIcon from '@patternfly/react-icons/dist/js/icons/enhancement-icon';
 import SecurityIcon from '@patternfly/react-icons/dist/js/icons/security-icon';
 import FlagIcon from '@patternfly/react-icons/dist/js/icons/flag-icon';
-import React from 'react';
+import { React, useContext } from 'react';
 import { subtractDate } from './Helpers';
+import { RegistryContext } from '../store';
 
 export const STATUS_REJECTED = 'rejected';
 export const STATUS_LOADING = 'loading';
@@ -284,3 +285,9 @@ export const patchSetUnassignSystemsNotifications = (systemsCount) => ({
         variant: 'success'
     }
 });
+
+export const useGetRegistry = () => {
+    const { getRegistry } = useContext(RegistryContext);
+
+    return getRegistry;
+};
