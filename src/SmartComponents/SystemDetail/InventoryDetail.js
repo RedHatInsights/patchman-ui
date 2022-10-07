@@ -72,7 +72,6 @@ const InventoryDetail = ({ match }) => {
                 ]}
             >
                 {(!loaded || insightsID) && <InventoryDetailHead hideBack
-                    showTags
                     actions={isPatchSetEnabled && [
                         {
                             title: intl.formatMessage(messages.titlesTemplateAssign),

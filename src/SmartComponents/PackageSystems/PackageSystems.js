@@ -145,7 +145,6 @@ const PackageSystems = ({ packageName }) => {
                     initialLoading
                     hideFilters={{ all: true, tags: false }}
                     columns={packageSystemsColumns}
-                    showTags
                     getEntities={getEntites}
                     customFilters={{
                         patchParams: {

@@ -135,7 +135,6 @@ const AdvisorySystems = ({ advisoryName }) => {
                     ignoreRefresh
                     hideFilters={{ all: true, tags: false }}
                     columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, false)}
-                    showTags
                     customFilters={{
                         patchParams: {
                             search,

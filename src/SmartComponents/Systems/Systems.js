@@ -139,7 +139,6 @@ const Systems = () => {
     const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'systems');
 
     const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
-
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
@@ -157,7 +156,6 @@ const Systems = () => {
                         initialLoading
                         hideFilters={{ all: true, tags: false }}
                         columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, isPatchSetEnabled)}
-                        showTags
                         customFilters={{
                             patchParams: {
                                 search,
