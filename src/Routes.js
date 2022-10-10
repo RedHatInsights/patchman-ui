@@ -106,7 +106,9 @@ export const Routes = (props) => {
                     path={paths.inventoryDetail.to}
                     component={InventoryDetail}
                 />
-                <Route exact path={paths.systems.to} component={Systems} />
+                <Route exact path={paths.systems.to}>
+                    <Systems/>
+                </Route>
                 <Route
                     exact
                     path={paths.advisoryDetail.to}
