@@ -1,3 +1,10 @@
+# [1.52.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.51.0...v1.52.0) (2022-10-11)
+
+
+### Features
+
+* **SPM-1584:** use api version 2 ([d4da1f5](https://github.com/RedHatInsights/patchman-ui/commit/d4da1f5f8c294d99784309d25af475f25c39e887))
+
 # [1.51.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.50.0...v1.51.0) (2022-09-26)
 
 
