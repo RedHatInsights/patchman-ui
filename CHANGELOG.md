@@ -1,3 +1,10 @@
+## [1.52.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.52.0...v1.52.1) (2022-10-11)
+
+
+### Bug Fixes
+
+* **Systems:** fixes sorting last seen column ([0e502ad](https://github.com/RedHatInsights/patchman-ui/commit/0e502ad9dd141d2a450e216c84f45c32795ffa73))
+
 # [1.52.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.51.0...v1.52.0) (2022-10-11)
 
 
