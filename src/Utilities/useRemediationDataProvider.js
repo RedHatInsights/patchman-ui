@@ -2,14 +2,17 @@ import { remediationIdentifiers } from './constants';
 import {
     remediationProviderWithPairs,
     removeUndefinedObjectKeys,
-    transformPairs
+    transformPairs,
+    transformSystemsPairs
 } from './Helpers';
 import {
-    fetchViewAdvisoriesSystems
+    fetchViewAdvisoriesSystems,
+    fetchViewSystemsAdvisories
 } from './api';
 
-export const prepareRemediationPairs = ({ advisories, systems } = {}) => {
-    return fetchViewAdvisoriesSystems({ advisories, systems });
+export const prepareRemediationPairs = (payload = {}, remediationType) => {
+    return remediationType === 'systems' ? fetchViewSystemsAdvisories(payload)
+        : fetchViewAdvisoriesSystems(payload);
 };
 
 /**
@@ -22,15 +25,16 @@ const useRemediationDataProvider = (selectedRows, setRemediationLoading, remedia
     const remediationDataProvider = async () => {
         setRemediationLoading(true);
 
-        const remediationPairs = await prepareRemediationPairs({
-            [remediationType]: removeUndefinedObjectKeys(selectedRows)
-        });
+        const remediationPairs = await prepareRemediationPairs(
+            { [remediationType]: removeUndefinedObjectKeys(selectedRows) },
+            remediationType
+        );
 
         setRemediationLoading(false);
 
         return remediationProviderWithPairs(
             remediationPairs,
-            transformPairs,
+            remediationType === 'systems' ? transformSystemsPairs : transformPairs,
             remediationIdentifiers.advisory
         );
     };
