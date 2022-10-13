@@ -61,13 +61,14 @@ export const transformSystemsPairs = (input, remediationIdentifier) => {
     Object.entries(input.data).map(
         ([systemID, advisories]) => {
             advisories.map(advisory => {
-                const index = pairs.findIndex(pair => pair.id === advisory);
+                const pairID = `${remediationIdentifier}:${advisory}`;
+                const index = pairs.findIndex(pair => pair.id === pairID);
                 if (index >= 0) {
                     pairs[index].systems.push(systemID);
                 } else {
                     pairs.push(
                         {
-                            id: `${remediationIdentifier}:${advisory}`,
+                            id: pairID,
                             description: advisory,
                             systems: [systemID]
                         }
