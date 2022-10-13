@@ -51,6 +51,34 @@ export const transformPairs = (input, remediationIdentifier) => {
     };
 };
 
+export const transformSystemsPairs = (input, remediationIdentifier) => {
+    //displays NoDataModal when there is no patch updates available
+    if (!Object.keys(input?.data || {}).length) {
+        return false;
+    }
+
+    const pairs = [];
+    Object.entries(input.data).map(
+        ([systemID, advisories]) => {
+            advisories.map(advisory => {
+                const index = pairs.findIndex(pair => pair.id === advisory);
+                if (index >= 0) {
+                    pairs[index].systems.push(systemID);
+                } else {
+                    pairs.push(
+                        {
+                            id: `${remediationIdentifier}:${advisory}`,
+                            description: advisory,
+                            systems: [systemID]
+                        }
+                    );
+                }
+            });
+        });
+
+    return { issues: pairs };
+};
+
 export const createSortBy = (header, values, offset) => {
     if (values) {
         let [column] = values;
