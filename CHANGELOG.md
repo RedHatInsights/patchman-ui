@@ -1,3 +1,11 @@
+## [1.52.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.52.1...v1.52.2) (2022-10-13)
+
+
+### Bug Fixes
+
+* **Remediations:** fix pair creation condition ([c7c2b9a](https://github.com/RedHatInsights/patchman-ui/commit/c7c2b9aeecaa055b4660a7a8231110d6bb9c456b))
+* **Remediations:** remediation pairs are taken from /view/systems/advisories ([e00874c](https://github.com/RedHatInsights/patchman-ui/commit/e00874c11b0cfb671a3cd00464d398dcfe8f4b1a))
+
 ## [1.52.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.52.0...v1.52.1) (2022-10-11)
 
 
