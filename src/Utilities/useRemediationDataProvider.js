@@ -1,3 +1,4 @@
+import { chunk } from 'lodash';
 import { remediationIdentifiers } from './constants';
 import {
     remediationProviderWithPairs,
@@ -10,9 +11,25 @@ import {
     fetchViewSystemsAdvisories
 } from './api';
 
-export const prepareRemediationPairs = (payload = {}, remediationType) => {
-    return remediationType === 'systems' ? fetchViewSystemsAdvisories(payload)
-        : fetchViewAdvisoriesSystems(payload);
+const PAIRS_CHUNK_SIZE = 100;
+
+export const prepareRemediationPairs = (payload = [], remediationType) => {
+    const fetchFunction = remediationType === 'systems' ? fetchViewSystemsAdvisories : fetchViewAdvisoriesSystems;
+    const payloadChunks = chunk(payload, PAIRS_CHUNK_SIZE);
+
+    const fetchPromises = [];
+    for (let i = 0; i < payloadChunks.length; i++) {
+        fetchPromises.push(fetchFunction({ [remediationType]: payloadChunks[i] }));
+    }
+
+    const result = Promise.all(fetchPromises).then(result =>
+        result.reduce(
+            (prev, current) => ({ data: { ...prev.data, ...current.data } }),
+            { data: {} }
+        )
+    );
+
+    return result;
 };
 
 /**
@@ -26,7 +43,7 @@ const useRemediationDataProvider = (selectedRows, setRemediationLoading, remedia
         setRemediationLoading(true);
 
         const remediationPairs = await prepareRemediationPairs(
-            { [remediationType]: removeUndefinedObjectKeys(selectedRows) },
+            removeUndefinedObjectKeys(selectedRows),
             remediationType
         );
 
