@@ -180,8 +180,16 @@ describe('Advisories.js', () => {
     });
 
     it('should handle remediation', () => {
-        const remediationProvider = wrapper.find('TableView').props().remediationProvider;
-        remediationProvider().catch((err) => console.log(err));
+        const rejectedState = { ...mockState, selectedRows: { 'RHEA-2020:2743': true } };
+        useSelector.mockImplementation(callback => {
+            return callback({ AdvisoryListStore: rejectedState });
+        });
+        const tempStore = initStore(rejectedState);
+        const tempWrapper = mount(<Provider store={tempStore}>
+            <Router><Advisories /></Router>
+        </Provider>);
+        const remediationProvider = tempWrapper.find('TableView').props().remediationProvider;
+        act(() => remediationProvider(['RHEA-2020:2743'], () => {}, 'advisories'));
         expect(fetchViewAdvisoriesSystems).toHaveBeenCalled();
     });
 });
