@@ -1,4 +1,4 @@
-import { chunk } from 'lodash';
+import chunk from 'lodash/chunk';
 import { remediationIdentifiers } from './constants';
 import {
     remediationProviderWithPairs,
@@ -22,14 +22,12 @@ export const prepareRemediationPairs = (payload = [], remediationType) => {
         fetchPromises.push(fetchFunction({ [remediationType]: payloadChunks[i] }));
     }
 
-    const result = Promise.all(fetchPromises).then(result =>
+    return Promise.all(fetchPromises).then(result =>
         result.reduce(
             (prev, current) => ({ data: { ...prev.data, ...current.data } }),
             { data: {} }
         )
     );
-
-    return result;
 };
 
 /**
