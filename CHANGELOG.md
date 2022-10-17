@@ -1,3 +1,10 @@
+# [1.53.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.52.2...v1.53.0) (2022-10-17)
+
+
+### Features
+
+* **SPM-1707:** paginate remediation pair fetching ([c6ddb7e](https://github.com/RedHatInsights/patchman-ui/commit/c6ddb7ebd51cf9f520cf6387959b40ddaab79400))
+
 ## [1.52.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.52.1...v1.52.2) (2022-10-13)
 
 
