@@ -250,3 +250,7 @@ export const clearPatchSetsAction = () => ({
     type: ActionTypes.CLEAR_PATCH_SETS,
     payload: []
 });
+export const toggleAllSelectedAction = (state) => ({
+    type: ActionTypes.TOGGLE_ALL_SELECTED,
+    payload: state
+});

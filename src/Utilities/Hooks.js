@@ -1,8 +1,10 @@
+import React from 'react';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import isDeepEqualReact from 'fast-deep-equal/react';
-import React from 'react';
+import { Spinner } from '@patternfly/react-core';
+import { useDispatch } from 'react-redux';
 import messages from '../Messages';
 import { compoundSortValues, exportNotifications } from './constants';
 import {
@@ -14,7 +16,8 @@ import { multiValueFilters } from '../Utilities/constants';
 import { assignSystemPatchSet, updatePatchSets } from './api';
 // eslint-disable-next-line no-unused-vars
 import { useFlag, useFlagsStatus } from '@unleash/proxy-client-react';
-import { Spinner } from '@patternfly/react-core';
+
+import { toggleAllSelectedAction } from '../store/Actions/Actions';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -125,6 +128,12 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
 
 export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
     constructFilename = undefined, transformKey = undefined) => {
+    const dispatch = useDispatch();
+
+    const toggleAllSystemsSelected = (flagState) => {
+        dispatch(toggleAllSelectedAction(flagState));
+    };
+
     const constructKey = (row) => {
         if (transformKey) {
             return transformKey(row);
@@ -160,6 +169,7 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
                     );
                 });
                 selectRows(toSelect);
+                toggleAllSystemsSelected(false);
                 break;
             }
 
@@ -175,6 +185,7 @@ export const useOnSelect = (rawData, selectedRows, fetchAllData, selectRows,
             case 'all': {
                 const fetchCallback = ({ data }) => {
                     selectRows(createSelectedRow(data));
+                    toggleAllSystemsSelected(true);
                     setBulkLoading(false);
                 };
 

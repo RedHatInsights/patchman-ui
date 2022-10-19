@@ -58,6 +58,9 @@ const Advisories = ({ history }) => {
     const status = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.status
     );
+    const areAllSelected = useSelector(
+        ({ SystemsStore }) => SystemsStore?.areAllSelected
+    );
 
     const rows = React.useMemo(
         () => createAdvisoriesRows(advisories, expandedRows, selectedRows),
@@ -120,7 +123,7 @@ const Advisories = ({ history }) => {
         dispatch(changeAdvisoryListParams(params));
     }
 
-    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'advisories');
+    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'advisories', areAllSelected);
 
     return (
         <React.Fragment>

@@ -1,7 +1,4 @@
-import chunk from 'lodash/chunk';
-import { remediationIdentifiers } from './constants';
 import {
-    remediationProviderWithPairs,
     removeUndefinedObjectKeys,
     transformPairs,
     transformSystemsPairs
@@ -10,24 +7,26 @@ import {
     fetchViewAdvisoriesSystems,
     fetchViewSystemsAdvisories
 } from './api';
+import usePaginatedRequest from './usePaginatedRequest';
 
-const PAIRS_CHUNK_SIZE = 100;
+export const prepareRemediationPairs = async (payload = [], remediationType, areAllSelected) => {
+    const shouldMapSystems = remediationType === 'systems' && !areAllSelected;
+    const fetchFunction = shouldMapSystems ? fetchViewSystemsAdvisories : fetchViewAdvisoriesSystems;
+    const transformerFunction = shouldMapSystems ? transformSystemsPairs : transformPairs;
 
-export const prepareRemediationPairs = (payload = [], remediationType) => {
-    const fetchFunction = remediationType === 'systems' ? fetchViewSystemsAdvisories : fetchViewAdvisoriesSystems;
-    const payloadChunks = chunk(payload, PAIRS_CHUNK_SIZE);
+    const paginatedRequest = usePaginatedRequest(payload, fetchFunction, transformerFunction);
 
-    const fetchPromises = [];
-    for (let i = 0; i < payloadChunks.length; i++) {
-        fetchPromises.push(fetchFunction({ [remediationType]: payloadChunks[i] }));
-    }
-
-    return Promise.all(fetchPromises).then(result =>
-        result.reduce(
-            (prev, current) => ({ data: { ...prev.data, ...current.data } }),
-            { data: {} }
-        )
+    const fetchedData = await paginatedRequest(
+        (payload) => (!areAllSelected || remediationType === 'systems') ? { [remediationType]: payload } : {}
     );
+
+    const response = fetchedData.reduce(
+        (prev, current) => {
+            return ({ issues: [...prev?.issues || [], ...current?.issues || []] });
+        }, {});
+
+    //displays NoDataModal when there is no patch updates available
+    return response?.issues?.length ? response : false;
 };
 
 /**
@@ -36,22 +35,20 @@ export const prepareRemediationPairs = (payload = [], remediationType) => {
 * @param {Array} [selectedRows] array of systems to calculate
 * @returns {handleSystemsRemoval}
 */
-const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType) => {
+const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType, areAllSelected) => {
+
     const remediationDataProvider = async () => {
         setRemediationLoading(true);
 
         const remediationPairs = await prepareRemediationPairs(
             removeUndefinedObjectKeys(selectedRows),
-            remediationType
+            remediationType,
+            areAllSelected
         );
 
         setRemediationLoading(false);
 
-        return remediationProviderWithPairs(
-            remediationPairs,
-            remediationType === 'systems' ? transformSystemsPairs : transformPairs,
-            remediationIdentifiers.advisory
-        );
+        return remediationPairs;
     };
 
     return remediationDataProvider;

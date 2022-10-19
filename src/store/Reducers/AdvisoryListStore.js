@@ -33,6 +33,10 @@ export const AdvisoryListStore = (state = storeListDefaults, action) => {
         case ActionTypes.TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);
 
+        case ActionTypes.TOGGLE_ALL_SELECTED:
+            newState.areAllSelected = action.payload;
+            return newState;
+
         default:
             return state;
     }

@@ -4,28 +4,20 @@
 import { act } from 'react-dom/test-utils';
 import useRemediationDataProvider from './useRemediationDataProvider';
 import {
-    remediationProviderWithPairs,
-    transformPairs
 } from './Helpers';
 import {
     fetchViewAdvisoriesSystems,
     fetchViewSystemsAdvisories
 } from './api';
 
-jest.mock('./Helpers', () => ({
-    ...jest.requireActual('./Helpers'),
-    remediationProviderWithPairs: jest.fn(() => Promise.resolve({
-        data: [{
-            id: 'RHBA-2020:4282',
-            type: 'advisory'
-        }]
-    }).catch((err) => console.log(err)))
-}));
-
 jest.mock('./api', () => ({
     ...jest.requireActual('./api'),
-    fetchViewAdvisoriesSystems: jest.fn().mockReturnValue({ data: { testPair: 'advisor-system-pair-issue' } }),
-    fetchViewSystemsAdvisories: jest.fn().mockReturnValue({ data: { testPair: 'advisor-system-pair-issue' } })
+    fetchViewAdvisoriesSystems: jest.fn().mockReturnValue(new Promise((resolve) => {
+        resolve({ data: { testAdvisory: ['test-system'] } });
+    })),
+    fetchViewSystemsAdvisories: jest.fn().mockReturnValue(new Promise((resolve) => {
+        resolve({ data: { testAdvisory: ['test-system'] } });
+    }))
 }));
 
 const setRemediationLoading = jest.fn();
@@ -37,13 +29,17 @@ describe('useRemediationDataProvider', () => {
         };
 
         const remediationProvider =  useRemediationDataProvider(testSystems, setRemediationLoading, 'advisories');
-        await act(() => remediationProvider());
+        const res = await remediationProvider();
 
-        expect(remediationProviderWithPairs)
-        .toHaveBeenCalledWith(
-            { data: { testPair: 'advisor-system-pair-issue' } },
-            transformPairs,
-            'patch-advisory'
+        expect(res).toEqual({
+            issues: [
+                {
+                    id: 'patch-advisory:testAdvisory',
+                    description: 'testAdvisory',
+                    systems: ['test-system']
+                }
+            ]
+        }
         );
         expect(setRemediationLoading).toHaveBeenCalledTimes(2);
         expect(setRemediationLoading).toHaveBeenCalledWith(true);
@@ -91,17 +87,30 @@ describe('prepareRemedationPairs', () => {
     });
 
     it('Should merge chunked API responses', async () => {
-        fetchViewAdvisoriesSystems.mockReturnValueOnce({ data: { testPair1: 'advisor-system-pair-issue' } })
-        .mockReturnValueOnce({ data: { testPair2: 'advisor-system-pair-issue' } });
+        fetchViewAdvisoriesSystems.mockReturnValueOnce(new Promise((resolve) => {
+            resolve({ data: { testPair1: 'advisor-system-pair-issue' } });
+        }))
+        .mockReturnValueOnce(new Promise((resolve) => {
+            resolve({ data: { testPair2: 'advisor-system-pair-issue' } });
+        }));
 
         const advisoryRemediationProvider = useRemediationDataProvider(manySystems, setRemediationLoading, 'advisories');
-        await act(() => advisoryRemediationProvider());
+        const response = await advisoryRemediationProvider();
 
-        expect(remediationProviderWithPairs)
-        .toHaveBeenCalledWith(
-            { data: { testPair1: 'advisor-system-pair-issue', testPair2: 'advisor-system-pair-issue' } },
-            transformPairs,
-            'patch-advisory'
-        );
+        expect(response)
+        .toEqual({
+            issues: [
+                {
+                    description: 'testPair1',
+                    id: 'patch-advisory:testPair1',
+                    systems: 'advisor-system-pair-issue'
+                },
+                {
+                    description: 'testPair2',
+                    id: 'patch-advisory:testPair2',
+                    systems: 'advisor-system-pair-issue'
+                }
+            ]
+        });
     });
 });
