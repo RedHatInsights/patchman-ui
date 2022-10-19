@@ -179,8 +179,11 @@ describe('Advisories.js', () => {
         });
     });
 
-    it('should handle remediation', () => {
+    it('should handle remediation', async() => {
         const rejectedState = { ...mockState, selectedRows: { 'RHEA-2020:2743': true } };
+        fetchViewAdvisoriesSystems.mockReturnValue(new Promise((resolve) => {
+            resolve({ data: { testAdvisory: ['test-system'] } });
+        }));
         useSelector.mockImplementation(callback => {
             return callback({ AdvisoryListStore: rejectedState });
         });
@@ -189,8 +192,17 @@ describe('Advisories.js', () => {
             <Router><Advisories /></Router>
         </Provider>);
         const remediationProvider = tempWrapper.find('TableView').props().remediationProvider;
-        act(() => remediationProvider(['RHEA-2020:2743'], () => {}, 'advisories'));
-        expect(fetchViewAdvisoriesSystems).toHaveBeenCalled();
+        const res = await remediationProvider(['RHEA-2020:2743'], () => {}, 'advisories');
+
+        expect(res).toEqual({
+            issues: [
+                {
+                    id: 'patch-advisory:testAdvisory',
+                    description: 'testAdvisory',
+                    systems: ['test-system']
+                }
+            ]
+        });
     });
 });
 

@@ -289,10 +289,10 @@ describe('Helpers tests', () => {
 
     it('Should return "false" when there is no issues available', () => {
         const resultWhenParams = transformPairs({ data: {} });
-        expect(resultWhenParams).toBeFalsy();
+        expect(resultWhenParams).toEqual({ "issues": [] });
         
         const resultWhenNoParams = transformPairs();
-        expect(resultWhenNoParams).toBeFalsy();
+        expect(resultWhenNoParams).toEqual({ "issues": [] });
     });
     it('Should return transformed issues', () => {
         const resultWhenParams = transformPairs({ data: { testAdvisory1: ['test-system-1'], testAdvisory2: ['test-system-2'] } }, 'test-identifier');

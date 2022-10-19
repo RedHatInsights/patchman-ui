@@ -34,13 +34,8 @@ export const convertLimitOffset = (limit, offset) => {
 };
 
 export const transformPairs = (input, remediationIdentifier) => {
-    //displays NoDataModal when there is no patch updates available
-    if (!Object.keys(input?.data || {}).length) {
-        return false;
-    }
-
     return {
-        issues: Object.keys(input.data).map(advisory => {
+        issues: Object.keys(input?.data || {}).map(advisory => {
             return {
                 id: `${remediationIdentifier}:${advisory}`,
                 description: advisory,
@@ -52,11 +47,6 @@ export const transformPairs = (input, remediationIdentifier) => {
 };
 
 export const transformSystemsPairs = (input, remediationIdentifier) => {
-    //displays NoDataModal when there is no patch updates available
-    if (!Object.keys(input?.data || {}).length) {
-        return false;
-    }
-
     const pairs = [];
     Object.entries(input.data).map(
         ([systemID, advisories]) => {
