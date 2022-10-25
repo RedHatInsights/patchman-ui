@@ -1,29 +1,45 @@
+import { useDispatch } from 'react-redux';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import {
-    removeUndefinedObjectKeys,
-    transformPairs,
-    transformSystemsPairs
+    removeUndefinedObjectKeys
 } from './Helpers';
-import {
-    fetchViewAdvisoriesSystems,
-    fetchViewSystemsAdvisories
-} from './api';
-import usePaginatedRequest from './usePaginatedRequest';
 
-export const prepareRemediationPairs = async (payload = [], remediationType, areAllSelected) => {
-    const shouldMapSystems = remediationType === 'systems' && !areAllSelected;
-    const fetchFunction = shouldMapSystems ? fetchViewSystemsAdvisories : fetchViewAdvisoriesSystems;
-    const transformerFunction = shouldMapSystems ? transformSystemsPairs : transformPairs;
+const initializeWorker = () => {
+    const worker = new Worker(new URL('./RemediationPairs.js', import.meta.url));
+    return [worker, () => worker.terminate()];
+};
 
-    const paginatedRequest = usePaginatedRequest(payload, fetchFunction, transformerFunction);
+const deligateWorkerTask = (worker, task) => {
+    worker.postMessage(task);
 
-    const fetchedData = await paginatedRequest(
-        (payload) => (!areAllSelected || remediationType === 'systems') ? { [remediationType]: payload } : {}
-    );
+    //waits web worker response
+    return new Promise((resolve, reject) => {
+        worker.onmessage = ({ data: { status, error, result } } = {}) => {
+            if (status === 'resolved')  {
+                resolve(result);
+            }
 
-    const response = fetchedData.reduce(
-        (prev, current) => {
-            return ({ issues: [...prev?.issues || [], ...current?.issues || []] });
-        }, {});
+            reject(error);
+        };
+    });
+};
+
+export const prepareRemediationPairs = async (task, dispatch) => {
+    const [worker, terminateWorker] = initializeWorker();
+    const deligatedTask = deligateWorkerTask(worker, task);
+
+    const response = await deligatedTask.catch(err =>
+        dispatch(
+            addNotification(
+                {
+                    title: `There was an error while processing.`,
+                    description: err,
+                    variant: 'danger'
+                }
+            )
+        ));
+
+    terminateWorker();
 
     //displays NoDataModal when there is no patch updates available
     return response?.issues?.length ? response : false;
@@ -36,14 +52,17 @@ export const prepareRemediationPairs = async (payload = [], remediationType, are
 * @returns {handleSystemsRemoval}
 */
 const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType, areAllSelected) => {
-
+    const dispatch = useDispatch();
     const remediationDataProvider = async () => {
         setRemediationLoading(true);
 
         const remediationPairs = await prepareRemediationPairs(
-            removeUndefinedObjectKeys(selectedRows),
-            remediationType,
-            areAllSelected
+            {
+                payload: removeUndefinedObjectKeys(selectedRows),
+                remediationType,
+                areAllSelected
+            },
+            dispatch
         );
 
         setRemediationLoading(false);

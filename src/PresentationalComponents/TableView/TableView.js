@@ -85,6 +85,7 @@ const TableView = ({
                                             remediationProvider={remediationProvider}
                                             isDisabled={
                                                 Object.values(selectedRows).filter(isSelected => isSelected).length === 0
+                                                || isRemediationLoading
                                             }
                                             isLoading={isRemediationLoading}
                                         />

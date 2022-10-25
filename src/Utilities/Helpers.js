@@ -50,30 +50,6 @@ export const transformPairs = (input, remediationIdentifier) => {
     return { issues };
 };
 
-export const transformSystemsPairs = (input, remediationIdentifier) => {
-    const pairs = [];
-    Object.entries(input.data).map(
-        ([systemID, advisories]) => {
-            advisories.map(advisory => {
-                const pairID = `${remediationIdentifier}:${advisory}`;
-                const index = pairs.findIndex(pair => pair.id === pairID);
-                if (index >= 0) {
-                    pairs[index].systems.push(systemID);
-                } else {
-                    pairs.push(
-                        {
-                            id: pairID,
-                            description: advisory,
-                            systems: [systemID]
-                        }
-                    );
-                }
-            });
-        });
-
-    return { issues: pairs };
-};
-
 export const createSortBy = (header, values, offset) => {
     if (values) {
         let [column] = values;

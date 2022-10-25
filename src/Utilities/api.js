@@ -102,20 +102,6 @@ export const fetchCvesInfo = async ({ cveIds }) => {
     return result;
 };
 
-export const fetchViewAdvisoriesSystems = async (input) => {
-    const result = await fetch(`/api/patch/v1/views/advisories/systems`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(input)
-    }).then(res => res.json()).then(data => data).catch(err => err);
-
-    return result;
-};
-
 const fetchFile = (params, endpoint, type) => {
     endpoint = endpoint.concat(encodeApiParams(params));
     return fetch('/api/patch/v1' + endpoint, {
@@ -225,20 +211,6 @@ export const removePatchSetApi = (payload) => {
 
 export const getOperatingSystems = () => {
     return systemProfile.apiSystemProfileGetOperatingSystem();
-};
-
-export const fetchViewSystemsAdvisories = async (input) => {
-    const result = await fetch(`/api/patch/v1/views/systems/advisories`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(input)
-    }).then(res => res.json()).then(data => data);
-
-    return result;
 };
 
 export const fetchIDs = (endpoint, queryParams) => {

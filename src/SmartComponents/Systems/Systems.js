@@ -223,7 +223,7 @@ const Systems = () => {
                             <AsyncRemediationButton
                                 remediationProvider={remediationDataProvider}
                                 isDisabled={
-                                    arrayFromObj(selectedRows).length === 0
+                                    arrayFromObj(selectedRows).length === 0 || isRemediationLoading
                                 }
                                 isLoading={isRemediationLoading}
                             />
