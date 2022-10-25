@@ -54,6 +54,8 @@ jest.mock('../../Utilities/Hooks', () => ({
     useFeatureFlag: jest.fn()
 }));
 
+jest.mock('../../Utilities/useRemediationDataProvider', () => () => jest.fn());
+
 jest.mock('../../Utilities/Helpers', () => ({
     ...jest.requireActual('../../Utilities/Helpers'),
     systemsColumnsMerger: jest.fn()

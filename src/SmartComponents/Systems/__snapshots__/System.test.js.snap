@@ -637,7 +637,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                   <AsyncRemediationButton
                     isDisabled={false}
                     isLoading={false}
-                    remediationProvider={[Function]}
+                    remediationProvider={[MockFunction]}
                   />
                 }
                 exportConfig={
