@@ -34,16 +34,20 @@ export const convertLimitOffset = (limit, offset) => {
 };
 
 export const transformPairs = (input, remediationIdentifier) => {
-    return {
-        issues: Object.keys(input?.data || {}).map(advisory => {
-            return {
-                id: `${remediationIdentifier}:${advisory}`,
-                description: advisory,
-                systems: input.data[advisory]
-            };
+    let issues = [];
+
+    const advisoriesNames = Object.keys(input?.data || {});
+    for (let i = 0; i < advisoriesNames.length; i++) {
+        if (input.data[advisoriesNames[i]][0] !== '') {
+            issues.push({
+                id: `${remediationIdentifier}:${advisoriesNames[i]}`,
+                description: advisoriesNames[i],
+                systems: input.data[advisoriesNames[i]]
+            });
         }
-        )
-    };
+    }
+
+    return { issues };
 };
 
 export const transformSystemsPairs = (input, remediationIdentifier) => {

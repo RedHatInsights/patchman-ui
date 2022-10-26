@@ -21,7 +21,7 @@ const usePaginatedRequest = (payload, fetchFunction, transformerFunction) => {
         const groupChunks = payloadChunks.splice(0, 5);
         for (let i = 0; i < groupChunks.length; i++) {
             const res = await fetchFunction({
-                ...payloadModifier(groupChunks[i]),
+                ...payloadModifier(payload),
                 limit: REQUEST_CHUNK_SIZE,
                 offset: ((batchIndex * BATCH_REQUEST_SIZE) + i) * 100
             }).then(result => transformerFunction(result, remediationIdentifiers.advisory));
