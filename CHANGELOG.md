@@ -1,3 +1,10 @@
+# [1.54.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.53.0...v1.54.0) (2022-10-26)
+
+
+### Features
+
+* **Remediation:** paginated remediation pairs fetching in batches ([80c7029](https://github.com/RedHatInsights/patchman-ui/commit/80c702910bff97985c45599ec0d6d9c188e040fc))
+
 # [1.53.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.52.2...v1.53.0) (2022-10-17)
 
 
