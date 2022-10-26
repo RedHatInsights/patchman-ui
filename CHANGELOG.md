@@ -1,3 +1,10 @@
+## [1.54.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.54.0...v1.54.1) (2022-10-26)
+
+
+### Bug Fixes
+
+* **SPM-1789:** pass all selected items into request payload ([e34bb91](https://github.com/RedHatInsights/patchman-ui/commit/e34bb9109c6f2ccbde6ab2e38e4383de3bc4272d))
+
 # [1.54.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.53.0...v1.54.0) (2022-10-26)
 
 
