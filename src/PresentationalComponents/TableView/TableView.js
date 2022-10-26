@@ -40,7 +40,8 @@ const TableView = ({
     searchChipLabel,
     CreatePatchSetButton,
     actionsConfig,
-    isRemediationLoading
+    isRemediationLoading,
+    actionsToggle
 }) => {
 
     const [page, perPage] = React.useMemo(
@@ -113,6 +114,7 @@ const TableView = ({
                                     isStickyHeader
                                     variant={compact && TableVariant.compact}
                                     actions={actionsConfig}
+                                    actionsToggle={actionsToggle}
                                 >
                                     <TableHeader />
                                     <TableBody />
@@ -155,7 +157,8 @@ TableView.propTypes = {
     searchChipLabel: PropTypes.string,
     CreatePatchSetButton: PropTypes.element,
     actionsConfig: PropTypes.array,
-    isRemediationLoading: PropTypes.bool
+    isRemediationLoading: PropTypes.bool,
+    actionsToggle: PropTypes.func
 };
 
 export default TableView;

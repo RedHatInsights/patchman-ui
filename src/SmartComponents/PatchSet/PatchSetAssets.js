@@ -1,14 +1,23 @@
 import React from 'react';
-import { Button } from '@patternfly/react-core';
+import { Button, Tooltip } from '@patternfly/react-core';
 import { sortable } from '@patternfly/react-table/dist/js';
-
+import {
+    EllipsisVIcon
+} from '@patternfly/react-icons';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
-export const createPatchSetButton = (setPatchSetState) => () =>
-    (<Button key='createButton' onClick={() => setPatchSetState({ isPatchSetWizardOpen: true })}>
-        {intl.formatMessage(messages.labelsButtonCreateTemplate)}
-    </Button>);
+export const createPatchSetButton = (setPatchSetState, hasAccess) => () =>
+    !hasAccess ?
+        <Tooltip content='For editing access, contact your administrator.'>
+            <Button key='createButton' isAriaDisabled >
+                {intl.formatMessage(messages.labelsButtonCreateTemplate)}
+            </Button>
+        </Tooltip>
+        :
+        (<Button key='createButton' onClick={() => setPatchSetState({ isPatchSetWizardOpen: true })}>
+            {intl.formatMessage(messages.labelsButtonCreateTemplate)}
+        </Button>);
 
 export const patchSetColumns = [
     {
@@ -42,4 +51,15 @@ export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) 
             handlePatchSetDelete(rowData);
         }
     }
+
 ];
+
+export const customActionsToggle = () => <Tooltip content='For editing access, contact your administrator.'>
+    <Button
+        isAriaDisabled
+        variant="plain"
+        aria-label="plain kebab"
+    >
+        <EllipsisVIcon />
+    </Button>
+</Tooltip>;

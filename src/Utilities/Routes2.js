@@ -1,8 +1,12 @@
+// import some from 'lodash/some';
 import PropTypes from 'prop-types';
 import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+// import { useFeatureFlag } from './Utilities/Hooks';
+// import { featureFlags } from './Utilities/constants';
 import WithPermission from './PresentationalComponents/WithPermission/WithPermission';
 import { Bullseye, Spinner } from '@patternfly/react-core';
+// import PropTypes from 'prop-types';
 
 const PermissionRouter = (route) => {
     const {
@@ -74,59 +78,61 @@ const Templates = lazy(() =>
     )
 );
 
+// viewer = patch*:*
+//admin = patch::
 export const paths = [
     {
         path: '/advisories',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: Advisories
     },
     {
         path: '/systems/',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: Systems
     },
     {
         path: '/systems/:inventoryId',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: InventoryDetail
     },
     {
         path: '/advisories/:advisoryId',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: AdvisoryPage
     },
     {
         path: '/advisories/:advisoryId/:inventoryId',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: InventoryDetail
     },
     {
         path: '/packages',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: PackagsPage
     },
     {
         path: '/packages/:packageName',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: PackageDetail
     },
     {
         path: '/packages/:packageName/:inventoryId',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: InventoryDetail
     },
     {
         path: '/templates',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: ['patch:*:*'],
         component: Templates
     }
 ];
@@ -158,4 +164,3 @@ Routes.propTypes = {
         history: PropTypes.any
     })
 };
-
