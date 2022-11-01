@@ -62,7 +62,9 @@
     "@babel/preset-flow": "^7.12.1",
     "@babel/preset-react": "^7.12.10",
     "@babel/runtime": "^7.12.5",
+    "@cypress/react": "^6.2.0",
     "@formatjs/cli": "^3.0.5",
+    "@patternfly/patternfly": "^4.217.1",
     "@redhat-cloud-services/frontend-components-config": "^4.6.18",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-image": "^2.0.6",
@@ -80,12 +82,14 @@
     "babel-plugin-transform-imports": "^2.0.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "css-loader": "^5.0.1",
+    "cypress": "^10.11.0",
     "cz-customizable": "^6.3.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.1",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-loader": "^4.0.2",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-react": "^7.22.0",
     "glob": "^7.1.6",
     "identity-obj-proxy": "^3.0.0",
@@ -139,8 +143,10 @@
     "semantic-release-local": "semantic-release --prepare --debug=false",
     "translations": "npm-run-all translations:*",
     "translations:extract": "npx formatjs extract ./src/*.js --out-file ./build/messages/src/Messages.json --extract-from-format-message-call",
-    "translations:compile": "npx formatjs compile ./build/messages/src/Messages.json --out-file ./locales/en.json"
-  },
+    "translations:compile": "npx formatjs compile ./build/messages/src/Messages.json --out-file ./locales/en.json",
+    "test:ct": "cypress run --component",
+    "test:openct": "cypress open --component"
+},
   "release": {
     "analyzeCommits": {
       "preset": "angular",
