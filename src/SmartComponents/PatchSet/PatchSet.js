@@ -21,7 +21,7 @@ import { patchSetColumns, createPatchSetButton, patchSetRowActions, customAction
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import usePatchSetState from '../../Utilities/usePatchSetState';
-import { usePermissions } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
+import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 
 const PatchSet = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
@@ -115,7 +115,7 @@ const PatchSet = ({ history }) => {
         });;
     };
 
-    const { hasAccess } = usePermissions('patch', [
+    const { hasAccess } = usePermissionsWithContext([
         'patch:*:*'
     ]);
     const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);

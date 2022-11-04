@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { useSelector, useDispatch } from 'react-redux';
 import Header from '../../PresentationalComponents/Header/Header';
-import { paths } from '../../Routes';
 import { register } from '../../store';
 import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
@@ -11,14 +10,17 @@ import { setPageTitle, useFeatureFlag } from '../../Utilities/Hooks';
 import { InventoryDetailHead, AppInfo, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
-import propTypes from 'prop-types';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { featureFlags } from '../../Utilities/constants';
+import { paths } from '../../Routes';
+import { useParams } from 'react-router-dom';
 
-const InventoryDetail = ({ match }) => {
+const InventoryDetail = () => {
+    const {  inventoryId } = useParams();
+
     const dispatch = useDispatch();
     const { loaded, hasThirdPartyRepo, patchSetName } = useSelector(
         ({ entityDetails }) => entityDetails && entityDetails || {}
@@ -27,7 +29,7 @@ const InventoryDetail = ({ match }) => {
     const { display_name: displayName, insights_id: insightsID } = useSelector(
         ({ entityDetails }) => entityDetails?.entity ?? {}
     );
-    const entityId = match.params?.inventoryId;
+    const entityId = inventoryId;
 
     const { patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal } = usePatchSetState();
 
@@ -62,7 +64,7 @@ const InventoryDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchSystems),
-                        to: '/systems/',
+                        to: paths.path,
                         isActive: false
                     },
                     displayName && {
@@ -111,10 +113,6 @@ const InventoryDetail = ({ match }) => {
                     <AppInfo/>
                 </Main>)}
         </DetailWrapper>);
-};
-
-InventoryDetail.propTypes = {
-    match: propTypes.object
 };
 
 export default InventoryDetail;

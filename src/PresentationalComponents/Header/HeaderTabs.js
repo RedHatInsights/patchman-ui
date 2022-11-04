@@ -2,7 +2,6 @@ import { Tab, Tabs } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { paths } from '../../Routes';
 import './Header.scss';
 
 const HeaderTabs = ({ history, headerOUIA }) => {

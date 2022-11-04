@@ -8,6 +8,7 @@ import './App.scss';
 import { Routes } from './Routes';
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
+import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACProvider';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -55,7 +56,9 @@ const App = () => {
     return (
         <React.Fragment>
             <NotificationPortal />
-            <Routes childProps={{ location, history }} />
+            <RBACProvider appName="patch">
+                <Routes childProps={{ location, history }} />
+            </RBACProvider>
         </React.Fragment>
     );
 };

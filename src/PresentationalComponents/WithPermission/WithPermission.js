@@ -1,11 +1,10 @@
-import React from 'react';
+import React  from 'react';
 import propTypes from 'prop-types';
-import { usePermissions } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { NotAuthorized } from '@redhat-cloud-services/frontend-components/NotAuthorized';
+import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 
 const WithPermission = ({ children, requiredPermissions = [] }) => {
-    const { hasAccess, isLoading } = usePermissions('patch', requiredPermissions);
-
+    const { hasAccess, isLoading } = usePermissionsWithContext(requiredPermissions);
     if (!isLoading) {
         return hasAccess ? children : <NotAuthorized serviceName="patch" />;
     } else {

@@ -8,13 +8,13 @@ import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import PackageHeader from '../../PresentationalComponents/PackageHeader/PackageHeader';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
-import { paths } from '../../Routes';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
+import { paths } from '../../Routes';
 
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const PackageDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchPackages),
-                        to: '/packages',
+                        to: paths.path,
                         isActive: false
                     },
                     {
