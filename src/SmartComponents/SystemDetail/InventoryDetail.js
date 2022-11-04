@@ -62,7 +62,7 @@ const InventoryDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchSystems),
-                        to: paths.systems.to,
+                        to: '/systems/',
                         isActive: false
                     },
                     displayName && {

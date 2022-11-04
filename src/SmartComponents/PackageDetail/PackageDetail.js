@@ -49,7 +49,7 @@ const PackageDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchPackages),
-                        to: paths.packages.to,
+                        to: '/packages',
                         isActive: false
                     },
                     {

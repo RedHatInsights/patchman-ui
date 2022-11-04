@@ -17,16 +17,16 @@ const HeaderTabs = ({ history, headerOUIA }) => {
             className={'patchman-tabs'}
         >
             <Tab
-                eventKey={paths.advisories.to}
-                title={paths.advisories.title}
+                eventKey={'/advisories'}
+                title={'Applicable advisories'}
                 data-ouia-component-type={`${headerOUIA}-tab`}
-                data-ouia-component-id={`${headerOUIA}-tab-${paths.advisories.title}`}
+                data-ouia-component-id={`${headerOUIA}-tab-Applicable advisories'`}
             />
             <Tab
-                eventKey={paths.systems.to}
-                title={paths.systems.title}
+                eventKey={'/systems/'}
+                title={'Systems'}
                 data-ouia-component-type={`${headerOUIA}-tab`}
-                data-ouia-component-id={`${headerOUIA}-tab-${paths.systems.title}`}
+                data-ouia-component-id={`${headerOUIA}-tab-Systems`}
             />
         </Tabs>
     );

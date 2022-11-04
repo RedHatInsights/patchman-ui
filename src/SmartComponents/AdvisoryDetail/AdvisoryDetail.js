@@ -51,7 +51,7 @@ const AdvisoryDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchAdvisories),
-                        to: paths.advisories.to,
+                        to: '/advisories',
                         isActive: false
                     },
                     {
