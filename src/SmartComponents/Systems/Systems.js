@@ -9,7 +9,8 @@ import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changeSystemsParams, clearInventoryReducer, changeSystemsMetadata, changeTags } from '../../store/Actions/Actions';
+import { changeSystemsParams, clearInventoryReducer,
+    changeSystemsMetadata, changeTags, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchSystems
@@ -21,18 +22,19 @@ import {
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
-    useOnSelect, useRemoveFilter, useFeatureFlag
+    useRemoveFilter, useFeatureFlag
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
-import { fetchAllSystemsCallback, buildFilterConfig, buildActiveFiltersConfig } from './SystemsHelpers';
+import { buildFilterConfig, buildActiveFiltersConfig } from './SystemsHelpers';
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
+import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const Systems = () => {
     const inventory = useRef(null);
@@ -111,13 +113,15 @@ const Systems = () => {
 
     const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 
-    const selectRows = (toSelect) => {
-        dispatch(
-            { type: 'SELECT_ENTITY', payload: toSelect }
-        );
-    };
-
-    const onSelect = useOnSelect(systems, selectedRows, fetchAllSystemsCallback(queryParams), selectRows);
+    const onSelect = useOnSelect(
+        systems,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.systems,
+            queryParams,
+            selectionDispatcher: systemSelectAction
+        }
+    );
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 

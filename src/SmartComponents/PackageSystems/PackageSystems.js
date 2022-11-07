@@ -10,7 +10,8 @@ import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import versionFilter from '../../PresentationalComponents/Filters/VersionFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changePackageSystemsParams, clearInventoryReducer, clearPackageSystemsReducer } from '../../store/Actions/Actions';
+import { changePackageSystemsParams, clearInventoryReducer,
+    clearPackageSystemsReducer, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportPackageSystemsCSV,
@@ -22,10 +23,11 @@ import {
     arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatablePackageSystems,
     persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
-import { useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter } from '../../Utilities/Hooks';
+import { useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
+import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -88,21 +90,17 @@ const PackageSystems = ({ packageName }) => {
         return `${packageName}-${system.available_evra}`;
     };
 
-    const fetchAllData = () => {
-        return fetchPackageSystems({
-            ...queryParams,
-            package_name: packageName,
-            limit: -1
-        })
-        .then(filterRemediatablePackageSystems);
-    };
-
-    const selectRows = (toSelect) => {
-        dispatch({ type: 'SELECT_ENTITY', payload: toSelect });
-    };
-
-    const onSelect = useOnSelect(systems, selectedRows,
-        fetchAllData, selectRows, constructFilename);
+    const onSelect = useOnSelect(
+        systems,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.packageSystems(packageName),
+            queryParams,
+            selectionDispatcher: systemSelectAction,
+            constructFilename,
+            apiResponseTransformer: filterRemediatablePackageSystems
+        }
+    );
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 

@@ -8,7 +8,7 @@ import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 
 import { createSortBy, buildSelectedSystemsObj } from '../../../Utilities/Helpers';
 import { createSystemsRowsReview } from '../../../Utilities/DataMappers';
-import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn } from '../../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn } from '../../../Utilities/Hooks';
 import TableView from '../../../PresentationalComponents/TableView/TableView';
 import staleFilter from '../../../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../../../PresentationalComponents/Filters/SystemsUpdatableFilter';
@@ -18,6 +18,7 @@ import messages from '../../../Messages';
 import { intl } from '../../../Utilities/IntlProvider';
 import { systemsListDefaultFilters } from '../../../Utilities/constants';
 import useOsVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
+import { useOnSelect, ID_API_ENDPOINTS } from '../../../Utilities/useOnSelect';
 
 export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     const { input } = useFieldApi(props);
@@ -94,10 +95,6 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
 
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const fetchAllData = () =>
-        fetchSystems({ ...queryParams,
-            filter: { ...queryParams.filter, ...systemsIDs.length > 0 && { id: `in:${systemsIDs.join(',')}` } }, limit: -1 });
-
     const selectRows = (toSelect) => {
         const newSelections = toSelect.reduce((object, system) => {
             object[system.id] = system.selected ? true : undefined;
@@ -107,8 +104,18 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
         setSelectedRows({ ...selectedRows, ...newSelections });
     };
 
-    const onSelect = useOnSelect(systems, selectedRows, fetchAllData, selectRows);
-
+    const onSelect = useOnSelect(
+        systems,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.systems,
+            queryParams: {
+                ...queryParams,
+                filter: { ...queryParams.filter, ...systemsIDs.length > 0 && { id: `in:${systemsIDs.join(',')}` } }
+            },
+            customSelector: selectRows
+        }
+    );
     return (
         <Stack hasGutter>
             <StackItem>

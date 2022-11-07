@@ -9,11 +9,11 @@ import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { fetchPatchSetsAction, changePatchSetsParams,
     selectPatchSetRow, clearPatchSetsAction } from '../../store/Actions/Actions';
-import { fetchPatchSets, deletePatchSet } from '../../Utilities/api';
+import { deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 import {
-    setPageTitle, useDeepCompareEffect, useOnSelect, usePerPageSelect, useSetPage, useSortColumn
+    setPageTitle, useDeepCompareEffect, usePerPageSelect, useSetPage, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -23,6 +23,7 @@ import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
+import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const PatchSet = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
@@ -87,16 +88,15 @@ const PatchSet = ({ history }) => {
         }
     }, [queryParams, firstMount]);
 
-    const fetchAllData = () =>
-        fetchPatchSets({ ...queryParams, limit: -1 });
-
-    const selectRows = (toSelect) => {
-        dispatch(
-            selectPatchSetRow(toSelect)
-        );
-    };
-
-    const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows, (patchSet) => patchSet.id);
+    const onSelect = useOnSelect(
+        rows,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.templates,
+            queryParams,
+            selectionDispatcher: selectPatchSetRow
+        }
+    );
 
     const onSort = useSortColumn(patchSetColumns, apply, 0);
     const sortBy = React.useMemo(

@@ -9,21 +9,23 @@ import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { register } from '../../store';
-import { changeAffectedSystemsParams, clearAdvisorySystemsReducer, clearInventoryReducer } from '../../store/Actions/Actions';
+import { changeAffectedSystemsParams, clearAdvisorySystemsReducer,
+    clearInventoryReducer, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import { exportAdvisorySystemsCSV, exportAdvisorySystemsJSON, fetchAdvisorySystems } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
-    arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatableSystems,
-    persistantParams, remediationProvider, removeUndefinedObjectKeys, systemsColumnsMerger
+    arrayFromObj, buildFilterChips, decodeQueryparams, persistantParams,
+    remediationProvider, removeUndefinedObjectKeys, systemsColumnsMerger
 } from '../../Utilities/Helpers';
 import {
-    useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter
+    useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
+import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -95,16 +97,15 @@ const AdvisorySystems = ({ advisoryName }) => {
         setRemediationOpen(!isRemediationOpen);
     }
 
-    const selectRows = (toSelect) => {
-        dispatch(
-            { type: 'SELECT_ENTITY', payload: toSelect }
-        );
-    };
-
-    const fetchAllData = () =>
-        fetchAdvisorySystems({ ...queryParams, id: advisoryName, limit: -1 }).then(filterRemediatableSystems);
-
-    const onSelect = useOnSelect(systems, selectedRows, fetchAllData, selectRows);
+    const onSelect = useOnSelect(
+        systems,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.advisorySystems(advisoryName),
+            queryParams,
+            selectionDispatcher: systemSelectAction
+        }
+    );
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
