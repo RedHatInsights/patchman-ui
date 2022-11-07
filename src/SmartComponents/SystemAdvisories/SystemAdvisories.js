@@ -11,16 +11,15 @@ import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
     fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
-import { fetchApplicableSystemAdvisoriesApi,
-    exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON
-} from '../../Utilities/api';
+import { exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect, useOnExport, usePushUrlParams } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnExport, usePushUrlParams } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const SystemAdvisories = ({ history, handleNoSystemData }) => {
     const dispatch = useDispatch();
@@ -79,16 +78,15 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
         ), [JSON.stringify(advisories)]
     );
 
-    const selectRows = (toSelect) => {
-        dispatch(
-            selectSystemAdvisoryRow(toSelect)
-        );
-    };
-
-    const fetchAllData = () =>
-        fetchApplicableSystemAdvisoriesApi({ id: entity.id, ...queryParams, limit: -1 });
-
-    const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows, (advisory) => advisory.id);
+    const onSelect = useOnSelect(
+        rows,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.systemAdvisories(entity.id),
+            queryParams,
+            selectionDispatcher: selectSystemAdvisoryRow
+        }
+    );
 
     const onSort = useSortColumn(systemAdvisoriesColumns, apply, 2);
     const sortBy = React.useMemo(

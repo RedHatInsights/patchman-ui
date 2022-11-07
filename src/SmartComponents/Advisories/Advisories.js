@@ -15,9 +15,7 @@ import {
     changeAdvisoryListParams, expandAdvisoryRow,
     fetchApplicableAdvisories, selectAdvisoryRow
 } from '../../store/Actions/Actions';
-import {
-    exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi
-} from '../../Utilities/api';
+import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
     createSortBy, decodeQueryparams,
@@ -25,12 +23,13 @@ import {
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useDeepCompareEffect, useOnExport,
-    useOnSelect, usePerPageSelect, useSetPage, useSortColumn
+    usePerPageSelect, useSetPage, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
+import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const Advisories = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
@@ -94,16 +93,15 @@ const Advisories = ({ history }) => {
         )
     );
 
-    const fetchAllData = () =>
-        fetchApplicableAdvisoriesApi({ ...queryParams, limit: -1 });
-
-    const selectRows = (toSelect) => {
-        dispatch(
-            selectAdvisoryRow(toSelect)
-        );
-    };
-
-    const onSelect = useOnSelect(rows, selectedRows, fetchAllData, selectRows, (advisory) => advisory.id);
+    const onSelect = useOnSelect(
+        rows,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.advisories,
+            queryParams,
+            selectionDispatcher: selectAdvisoryRow
+        }
+    );
 
     const onSort = useSortColumn(advisoriesColumns, apply, 2);
     const sortBy = React.useMemo(

@@ -12,12 +12,13 @@ import {
     changeSystemPackagesParams, clearSystemPackagesStore,
     fetchApplicableSystemPackages, selectSystemPackagesRow
 } from '../../store/Actions/Actions';
-import { fetchApplicablePackagesApi, exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utilities/api';
+import { exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utilities/api';
 import { remediationIdentifiers, systemPackagesDefaultFilters } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { useOnSelect, usePerPageSelect, useSetPage, useSortColumn, useOnExport } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnExport } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
+import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const SystemPackages = ({ handleNoSystemData }) => {
     const dispatch = useDispatch();
@@ -64,14 +65,17 @@ const SystemPackages = ({ handleNoSystemData }) => {
         return `${row.name}-${row.evra}`;
     };
 
-    const fetchAllData = () =>
-        fetchApplicablePackagesApi({ id: entity.id, ...queryParams, limit: -1 });
-
-    const selectRows = (toSelect) => {
-        dispatch(selectSystemPackagesRow(toSelect));
-    };
-
-    const onSelect = useOnSelect(packages, selectedRows, fetchAllData, selectRows, constructFilename, transformKey);
+    const onSelect = useOnSelect(
+        packages,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.systemPackages(entity.id),
+            queryParams,
+            selectionDispatcher: selectSystemPackagesRow,
+            constructFilename,
+            transformKey
+        }
+    );
 
     function apply(params) {
         dispatch(changeSystemPackagesParams({ id: entity.id, ...params }));

@@ -254,3 +254,5 @@ export const toggleAllSelectedAction = (state) => ({
     type: ActionTypes.TOGGLE_ALL_SELECTED,
     payload: state
 });
+
+export const systemSelectAction = (toSelect) => ({ type: 'SELECT_ENTITY', payload: toSelect });
