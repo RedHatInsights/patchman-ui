@@ -5,7 +5,6 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import isDeepEqualReact from 'fast-deep-equal/react';
 import { Spinner } from '@patternfly/react-core';
-import { useDispatch } from 'react-redux';
 import messages from '../Messages';
 import { compoundSortValues, exportNotifications } from './constants';
 import {
@@ -17,8 +16,6 @@ import { multiValueFilters } from '../Utilities/constants';
 import { assignSystemPatchSet, updatePatchSets } from './api';
 // eslint-disable-next-line no-unused-vars
 import { useFlag, useFlagsStatus } from '@unleash/proxy-client-react';
-
-import { toggleAllSelectedAction } from '../store/Actions/Actions';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>

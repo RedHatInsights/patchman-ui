@@ -7,7 +7,7 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { storeListDefaults } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {
-    exportAdvisoriesCSV, exportAdvisoriesJSON, fetchApplicableAdvisoriesApi,
+    exportAdvisoriesCSV, exportAdvisoriesJSON, fetchIDs,
     fetchViewAdvisoriesSystems } from '../../Utilities/api';
 import { act } from 'react-dom/test-utils';
 
@@ -27,9 +27,9 @@ jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportAdvisoriesJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     exportAdvisoriesCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
-    fetchApplicableAdvisoriesApi: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchSystems: jest.fn(() => Promise.resolve({ data: { id: 'testId' } }).catch((err) => console.log(err))),
-    fetchViewAdvisoriesSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
+    fetchViewAdvisoriesSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
+    fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err)))
 }));
 
 jest.mock('../../Utilities/constants', () => ({
@@ -165,7 +165,10 @@ describe('Advisories.js', () => {
             console.log('Advisories select failed');
         }
 
-        expect(fetchApplicableAdvisoriesApi).toHaveBeenCalledWith({ page: 1, page_size: 20, limit: -1 });
+        expect(fetchIDs).toHaveBeenCalledWith(
+            '/ids/advisories',
+            { limit: -1, page: 1, page_size: 20 }
+        );
     });
 
     it('should select rows', () => {
@@ -180,17 +183,24 @@ describe('Advisories.js', () => {
     });
 
     it('should handle remediation', async() => {
-        const rejectedState = { ...mockState, selectedRows: { 'RHEA-2020:2743': true } };
-        fetchViewAdvisoriesSystems.mockReturnValue(new Promise((resolve) => {
-            resolve({ data: { testAdvisory: ['test-system'] } });
-        }));
+        const stateWithSelection = { ...mockState, selectedRows: { 'RHEA-2020:2743': true } };
+        fetchViewAdvisoriesSystems.mockReturnValue(
+            new Promise((resolve) => {
+                resolve({ data: { testAdvisory: ['test-system'] } });
+            })
+        );
         useSelector.mockImplementation(callback => {
-            return callback({ AdvisoryListStore: rejectedState });
+            return callback({ AdvisoryListStore: stateWithSelection });
         });
-        const tempStore = initStore(rejectedState);
-        const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><Advisories /></Router>
-        </Provider>);
+
+        const tempStore = initStore(stateWithSelection);
+        const tempWrapper = mount(
+            <Provider store={tempStore}>
+                <Router>
+                    <Advisories />
+                </Router>
+            </Provider>
+        );
         const remediationProvider = tempWrapper.find('TableView').props().remediationProvider;
         const res = await remediationProvider(['RHEA-2020:2743'], () => {}, 'advisories');
 

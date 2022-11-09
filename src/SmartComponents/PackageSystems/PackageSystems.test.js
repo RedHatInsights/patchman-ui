@@ -1,7 +1,7 @@
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
-import { exportPackageSystemsCSV, exportPackageSystemsJSON, fetchPackageSystems } from '../../Utilities/api';
+import { exportPackageSystemsCSV, exportPackageSystemsJSON, fetchIDs } from '../../Utilities/api';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import PackageSystems from './PackageSystems';
@@ -33,7 +33,7 @@ jest.mock('../../Utilities/api', () => ({
     exportPackageSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     exportPackageSystemsJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchPackageVersions: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
-    fetchPackageSystems: jest.fn(() => Promise.resolve({
+    fetchIDs: jest.fn(() => Promise.resolve({
         data: [{
             attributes: {
                 advisory_type: 2,
@@ -162,7 +162,7 @@ describe('PackageSystems.js', () => {
             const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[2].onClick();
-            expect(fetchPackageSystems).toHaveBeenCalledWith({ limit: -1, package_name: 'testName' });
+            expect(fetchIDs).toHaveBeenCalledWith('/packages/testName/systems', { limit: -1 });
             expect(bulkSelect.items[2].title).toEqual('Select all (2)');
         });
     });

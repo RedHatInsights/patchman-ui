@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { systemAdvisoryRows } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
-import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
+import { fetchIDs } from '../../Utilities/api';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { remediationProvider } from '../../Utilities/Helpers';
@@ -23,7 +23,7 @@ jest.mock('../../Utilities/Helpers', () => ({
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    fetchApplicableSystemAdvisoriesApi: jest.fn()
+    fetchIDs: jest.fn()
 }));
 jest.mock('../Remediation/AsyncRemediationButton', () => () => <div></div>);
 
@@ -125,7 +125,7 @@ describe('SystemAdvisories.js', () => {
         });
 
         it('Should select all', () => {
-            fetchApplicableSystemAdvisoriesApi.mockReturnValue(new Promise((resolve, reject) =>  {
+            fetchIDs.mockReturnValue(new Promise((resolve, reject) =>  {
                 resolve({ data: systemAdvisoryRows });
                 reject('System Advisores failed to fetch');
             }));
@@ -133,7 +133,7 @@ describe('SystemAdvisories.js', () => {
             const { bulkSelect } = wrapper.find('PrimaryToolbar').props();
 
             bulkSelect.items[2].onClick();
-            expect(fetchApplicableSystemAdvisoriesApi).toHaveBeenCalled();
+            expect(fetchIDs).toHaveBeenCalled();
             expect(bulkSelect.items[2].title).toEqual('Select all (10)');
         });
 
@@ -143,11 +143,11 @@ describe('SystemAdvisories.js', () => {
             onSelect('single', 'test', 0);
             const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');
-            expect(dispatchedActions[1].payload).toEqual([{ id: 'RHSA-2020:2774', selected: 'RHSA-2020:2774' }]);
+            expect(dispatchedActions[1].payload).toEqual([{ id: 'RHSA-2020:2774', selected: true }]);
         });
 
         it('Should handle onSelect', () => {
-            fetchApplicableSystemAdvisoriesApi.mockReturnValue(new Promise((resolve, reject) =>  {
+            fetchIDs.mockReturnValue(new Promise((resolve, reject) =>  {
                 resolve({ data: systemAdvisoryRows });
                 reject('System Advisores failed to fetch');
             }));

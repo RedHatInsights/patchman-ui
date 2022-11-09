@@ -7,7 +7,7 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { storeListDefaults, remediationIdentifiers } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { fetchApplicablePackagesApi } from '../../Utilities/api';
+import { fetchIDs } from '../../Utilities/api';
 import { remediationProvider } from '../../Utilities/Helpers';
 import { NotConnected } from '@redhat-cloud-services/frontend-components/NotConnected';
 
@@ -20,11 +20,23 @@ jest.mock('react-redux', () => ({
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    fetchApplicablePackagesApi: jest.fn()
+    fetchIDs: jest.fn(() => Promise.resolve({
+        data: [{
+            attributes: {
+                advisory_type: 2,
+                description: 'The tzdata penhancements.',
+                public_date: '2020-10-19T15:02:38Z',
+                synopsis: 'tzdata enhancement update'
+            },
+            id: 'RHBA-2020:4282',
+            type: 'advisory'
+        }]
+    }).catch((err) => console.log(err)))
 }));
 
 jest.mock('../../Utilities/Helpers', () => ({
     ...jest.requireActual('../../Utilities/Helpers'),
+    encodeApiParams: jest.fn(),
     remediationProvider: jest.fn()
 }));
 jest.mock('../Remediation/AsyncRemediationButton', () => () => <div></div>);
@@ -61,9 +73,6 @@ afterEach(() => {
 });
 
 describe('SystemPackages.js', () => {
-    it('tests are disabled for now', () => {
-        expect(true).toBeTruthy();
-    });
     it('Should match the snapshots', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -100,24 +109,18 @@ describe('SystemPackages.js', () => {
     });
 
     it('Should use onSelect', () => {
-
         const { onSelect } = wrapper.update().find('TableView').props();
         onSelect(null, {}, 0);
         const dispatchedActions = store.getActions();
 
         expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_PACKAGES_ROW');
-        expect(dispatchedActions[1].payload).toEqual([{ id: 'acl-2.2.*', selected: true }]);
+        expect(dispatchedActions[1].payload).toEqual([{ id: 'test-package-id', selected: true }]);
     });
 
-    it('Should fetch fetchApplicablePackagesApi on selecting all rows', () => {
-        fetchApplicablePackagesApi.mockReturnValue(new Promise((resolve, reject) =>  {
-            resolve({ data: systemPackages });
-            reject('Applicable packages fetch failed');
-        }));
-
+    it('Should select all with limit=-1', () => {
         const { onSelect } = wrapper.update().find('TableView').props();
-        onSelect('all', {}, 0);
-        expect(fetchApplicablePackagesApi).toHaveBeenCalled();
+        onSelect('all');
+        expect(fetchIDs).toHaveBeenCalledWith('/systems/entity/packages', { limit: -1, page: 1, page_size: 20 });
     });
 
     it('Should provide correct remediation data', () => {

@@ -2,7 +2,7 @@ import { Provider, useSelector } from 'react-redux';
 import { act } from 'react-dom/test-utils';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
-import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api';
+import { exportSystemsCSV, exportSystemsJSON, fetchIDs } from '../../Utilities/api';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks, mountWithIntl } from '../../Utilities/unitTestingUtilities.js';
 import Systems from './Systems';
@@ -33,7 +33,7 @@ jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     exportSystemsJSON: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
-    fetchSystems: jest.fn(() => Promise.resolve({ success: true, data: ['test-system-id'] }).catch((err) => console.log(err))),
+    fetchIDs: jest.fn(() => Promise.resolve({ success: true, data: ['test-system-id'] }).catch((err) => console.log(err))),
     fetchViewAdvisoriesSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchApplicableSystemAdvisoriesApi: jest.fn(() => Promise.resolve({
         data: [{
@@ -322,7 +322,7 @@ describe('Systems.js', () => {
 
             bulkSelect.items[2].onClick();
 
-            expect(fetchSystems).toHaveBeenCalledWith({ limit: -1 });
+            expect(fetchIDs).toHaveBeenCalledWith('/ids/systems', { limit: -1 });
             expect(bulkSelect.items[2].title).toEqual('Select all (2)');
         });
 
@@ -346,7 +346,10 @@ describe('Systems.js', () => {
 
             bulkSelect.items[2].onClick();
 
-            expect(fetchSystems).toHaveBeenCalledWith({ limit: -1, search: 'test-system-1' });
+            expect(fetchIDs).toHaveBeenCalledWith(
+                '/ids/systems',
+                { limit: -1, search: 'test-system-1' }
+            );
             expect(bulkSelect.items[2].title).toEqual('Select all (1)');
         });
     });
