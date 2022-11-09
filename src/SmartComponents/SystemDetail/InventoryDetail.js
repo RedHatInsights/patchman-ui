@@ -29,12 +29,11 @@ const InventoryDetail = () => {
     const { display_name: displayName, insights_id: insightsID } = useSelector(
         ({ entityDetails }) => entityDetails?.entity ?? {}
     );
-    const entityId = inventoryId;
 
     const { patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal } = usePatchSetState();
 
     useEffect(() => {
-        dispatch(fetchSystemDetailsAction(entityId));
+        dispatch(fetchSystemDetailsAction(inventoryId));
         return () => {
             dispatch(clearNotifications());
         };
@@ -44,7 +43,7 @@ const InventoryDetail = () => {
     setPageTitle(pageTitle);
 
     const openPatchSetWizard = () => {
-        openPatchSetAssignWizard(entityId);
+        openPatchSetAssignWizard(inventoryId);
     };
 
     const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
@@ -85,7 +84,7 @@ const InventoryDetail = () => {
                             title: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
                             key: 'remove-from-template',
                             isDisabled: !patchSetName,
-                            onClick: () => openUnassignSystemsModal([entityId])
+                            onClick: () => openUnassignSystemsModal([inventoryId])
                         }]}
                 >
                     <Grid>

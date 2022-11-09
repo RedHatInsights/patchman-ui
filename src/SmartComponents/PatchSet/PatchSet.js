@@ -17,7 +17,8 @@ import {
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { patchSetColumns, createPatchSetButton, patchSetRowActions, customActionsToggle } from './PatchSetAssets';
+import { patchSetColumns, CreatePatchSetButton as createPatchSetButton,
+    patchSetRowActions, CustomActionsToggle } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import usePatchSetState from '../../Utilities/usePatchSetState';
@@ -120,7 +121,6 @@ const PatchSet = ({ history }) => {
     ]);
     const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);
     const actionsConfig = patchSetRowActions(openPatchSetEditModal, handlePatchSetDelete);
-    const customActionsConfig = customActionsToggle;
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesTemplate)} headerOUIA={'advisories'} />
@@ -155,7 +155,7 @@ const PatchSet = ({ history }) => {
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
                     CreatePatchSetButton={CreatePatchSetButton}
-                    actionsToggle={!hasAccess ? customActionsConfig : null}
+                    actionsToggle={!hasAccess ? CustomActionsToggle : null}
                 />
             </Main>
         </React.Fragment>
