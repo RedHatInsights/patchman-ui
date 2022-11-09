@@ -3,7 +3,7 @@ import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { fetchAdvisorySystems } from '../../Utilities/api';
+import { fetchIDs } from '../../Utilities/api';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
@@ -24,7 +24,7 @@ jest.mock('react-redux', () => ({
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    fetchAdvisorySystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
+    fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err)))
 }));
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
@@ -140,7 +140,7 @@ describe('AdvisorySystems.js', () => {
             const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[2].onClick();
-            expect(fetchAdvisorySystems).toHaveBeenCalledWith({ id: 'RHSA-2020:2755', limit: -1 });
+            expect(fetchIDs).toHaveBeenCalledWith('/ids/advisories/RHSA-2020:2755/systems', { limit: -1 });
             expect(bulkSelect.items[2].title).toEqual('Select all (2)');
         });
 

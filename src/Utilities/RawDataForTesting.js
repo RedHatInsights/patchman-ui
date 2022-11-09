@@ -114,7 +114,8 @@ export const systemPackages = [{
     evra: '2.2.*',
     name: 'acl',
     summary: 'Access control list utilities',
-    updates: null
+    updates: null,
+    id: 'test-package-id'
 }];
 
 export const entityDetail = {

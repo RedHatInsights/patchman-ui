@@ -243,4 +243,4 @@ export const fetchViewSystemsAdvisories = async (input) => {
 
 export const fetchIDs = (endpoint, queryParams) => {
     return createApiCall(endpoint, 'get', queryParams);
-}
+};

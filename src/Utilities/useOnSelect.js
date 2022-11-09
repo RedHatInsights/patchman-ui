@@ -15,10 +15,9 @@ export const ID_API_ENDPOINTS = {
 
 const useFetchAllIDs = (
     endpoint,
-    queryParams,
     apiResponseTransformer
 ) =>
-    useCallback(() =>
+    useCallback((queryParams) =>
         fetchIDs(endpoint, { ...queryParams, limit: -1 })
         .then(response =>
             apiResponseTransformer ? apiResponseTransformer(response) : response
@@ -73,8 +72,8 @@ const createSelectors = (
         dispatchSelection(createSelectedRow({ data: pageRows }));
     };
 
-    const selectAll = (fetchIDs) => {
-        return fetchIDs().then(response => {
+    const selectAll = (fetchIDs, queryParams) => {
+        return fetchIDs(queryParams).then(response => {
             dispatchSelection(createSelectedRow(response));
             toggleAllSystemsSelected(true);
         });
@@ -96,7 +95,7 @@ export const useOnSelect = (rawData, selectedRows, config) => {
     } = config;
 
     const dispatch = useDispatch();
-    const fetchIDs = useFetchAllIDs(endpoint, queryParams, apiResponseTransformer);
+    const fetchIDs = useFetchAllIDs(endpoint, apiResponseTransformer);
     const createSelectedRow = useCreateSelectedRow(transformKey, constructFilename);
 
     const toggleAllSystemsSelected = (flagState) => {
@@ -118,7 +117,7 @@ export const useOnSelect = (rawData, selectedRows, config) => {
     );
 
     const onSelect = useCallback(
-        async (event, selected, rowId, setBulkLoading) => {
+        async (event, selected, rowId, setBulkLoading = () => {}) => {
             switch (event) {
                 case 'none': {
                     selectNone(selectedRows);
@@ -131,7 +130,8 @@ export const useOnSelect = (rawData, selectedRows, config) => {
                 }
 
                 case 'all': {
-                    selectAll(fetchIDs).then(() => setBulkLoading(false));
+                    selectAll(fetchIDs, queryParams)
+                    .then(() => setBulkLoading(false));
                     break;
                 }
 
