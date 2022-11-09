@@ -7,7 +7,7 @@ import {
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
-export const createPatchSetButton = (setPatchSetState, hasAccess) => () =>
+export const CreatePatchSetButton = (setPatchSetState, hasAccess) => () =>
     !hasAccess ?
         <Tooltip content='For editing access, contact your administrator.'>
             <Button key='createButton' isAriaDisabled >
@@ -54,7 +54,7 @@ export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) 
 
 ];
 
-export const customActionsToggle = () => <Tooltip content='For editing access, contact your administrator.'>
+export const CustomActionsToggle = () => <Tooltip content='For editing access, contact your administrator.'>
     <Button
         isAriaDisabled
         variant="plain"
