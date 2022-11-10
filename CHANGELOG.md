@@ -1,3 +1,10 @@
+## [1.55.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.55.0...v1.55.1) (2022-11-10)
+
+
+### Bug Fixes
+
+* **SPM-1802:** fix remediation provider for package systems ([8942cf5](https://github.com/RedHatInsights/patchman-ui/commit/8942cf5bd28ae3b6be72b3ccb4185e6f222068ed))
+
 # [1.55.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.54.1...v1.55.0) (2022-11-10)
 
 
