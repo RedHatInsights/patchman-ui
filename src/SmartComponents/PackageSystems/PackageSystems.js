@@ -20,7 +20,7 @@ import {
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatablePackageSystems,
-    persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys, transformPairs
+    persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport, useOnSelect, useRemoveFilter } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -111,17 +111,24 @@ const PackageSystems = ({ packageName }) => {
         json: exportPackageSystemsJSON
     }, dispatch);
 
-    const prepareRemediationPairs = () => {
-        let pairs = {};
-        removeUndefinedObjectKeys(selectedRows).forEach(system => {
-            if (pairs[selectedRows[system]]) {
-                pairs[selectedRows[system]].push(system);
-            }
-            else {
-                pairs[selectedRows[system]] = [system];
+    const prepareRemediationPairs = (systemIDs) => {
+        const pairs = [];
+        systemIDs.forEach(id => {
+            const packageEvra = selectedRows[id];
+            const index = pairs.findIndex(pair => pair.id === packageEvra);
+
+            if (index !== -1) {
+                pairs[index].systems.push(id);
+            } else if (packageEvra) {
+                pairs.push({
+                    id: packageEvra,
+                    description: packageEvra,
+                    systems: [id]
+                });
             }
         });
-        return { data: pairs };
+
+        return pairs.length ? { issues: pairs } : false;
     };
 
     const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, history);
@@ -129,7 +136,6 @@ const PackageSystems = ({ packageName }) => {
     const remediationDataProvider = () => remediationProviderWithPairs(
         removeUndefinedObjectKeys(selectedRows),
         prepareRemediationPairs,
-        transformPairs,
         remediationIdentifiers.package
     );
 
