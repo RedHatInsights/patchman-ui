@@ -1,6 +1,6 @@
 {
   "name": "@redhat-cloud-services/frontend-components-inventory-patchman",
-  "version": "1.54.1",
+  "version": "1.55.0",
   "browser": "dist/index.js",
   "private": false,
   "dependencies": {
@@ -146,7 +146,7 @@
     "translations:compile": "npx formatjs compile ./build/messages/src/Messages.json --out-file ./locales/en.json",
     "test:ct": "cypress run --component",
     "test:openct": "cypress open --component"
-},
+  },
   "release": {
     "analyzeCommits": {
       "preset": "angular",

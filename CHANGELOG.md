@@ -1,3 +1,10 @@
+# [1.55.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.54.1...v1.55.0) (2022-11-10)
+
+
+### Features
+
+* **SPM-624:** open packages tab directly from systes page. ([54f86ad](https://github.com/RedHatInsights/patchman-ui/commit/54f86ad5b82babf7d32b83603297b6ad36830dab))
+
 ## [1.54.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.54.0...v1.54.1) (2022-10-26)
 
 
