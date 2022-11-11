@@ -113,15 +113,17 @@ const PackageSystems = ({ packageName }) => {
 
     const prepareRemediationPairs = (systemIDs) => {
         const pairs = [];
+
         systemIDs.forEach(id => {
             const packageEvra = selectedRows[id];
-            const index = pairs.findIndex(pair => pair.id === packageEvra);
+            const issueID = `patch-package:${packageEvra}`;
+            const index = pairs.findIndex(pair => pair.id === issueID);
 
             if (index !== -1) {
                 pairs[index].systems.push(id);
             } else if (packageEvra) {
                 pairs.push({
-                    id: packageEvra,
+                    id: issueID,
                     description: packageEvra,
                     systems: [id]
                 });
