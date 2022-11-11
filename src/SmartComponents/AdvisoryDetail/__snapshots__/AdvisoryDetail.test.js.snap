@@ -81,7 +81,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                 Object {
                   "isActive": false,
                   "title": "Patch advisories",
-                  "to": undefined,
+                  "to": "/advisories",
                 },
                 Object {
                   "isActive": true,
@@ -106,7 +106,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                       Object {
                         "isActive": false,
                         "title": "Patch advisories",
-                        "to": undefined,
+                        "to": "/advisories",
                       },
                       Object {
                         "isActive": true,
@@ -134,7 +134,27 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                           <li
                             className="pf-c-breadcrumb__item"
                           >
-                            Patch advisories
+                            <Link
+                              data-ouia-component-id="breadcrumb-to-Patch advisories"
+                              data-ouia-component-type="advisory-details-breadcrumb"
+                              to="/advisories"
+                            >
+                              <LinkAnchor
+                                data-ouia-component-id="breadcrumb-to-Patch advisories"
+                                data-ouia-component-type="advisory-details-breadcrumb"
+                                href="/advisories"
+                                navigate={[Function]}
+                              >
+                                <a
+                                  data-ouia-component-id="breadcrumb-to-Patch advisories"
+                                  data-ouia-component-type="advisory-details-breadcrumb"
+                                  href="/advisories"
+                                  onClick={[Function]}
+                                >
+                                  Patch advisories
+                                </a>
+                              </LinkAnchor>
+                            </Link>
                           </li>
                         </BreadcrumbItem>
                         <BreadcrumbItem

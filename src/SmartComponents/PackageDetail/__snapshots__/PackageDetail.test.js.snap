@@ -81,7 +81,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                 Object {
                   "isActive": false,
                   "title": "Patch packages",
-                  "to": undefined,
+                  "to": "/packages",
                 },
                 Object {
                   "isActive": true,
@@ -106,7 +106,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                       Object {
                         "isActive": false,
                         "title": "Patch packages",
-                        "to": undefined,
+                        "to": "/packages",
                       },
                       Object {
                         "isActive": true,
@@ -134,7 +134,27 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                           <li
                             className="pf-c-breadcrumb__item"
                           >
-                            Patch packages
+                            <Link
+                              data-ouia-component-id="breadcrumb-to-Patch packages"
+                              data-ouia-component-type="package-details-breadcrumb"
+                              to="/packages"
+                            >
+                              <LinkAnchor
+                                data-ouia-component-id="breadcrumb-to-Patch packages"
+                                data-ouia-component-type="package-details-breadcrumb"
+                                href="/packages"
+                                navigate={[Function]}
+                              >
+                                <a
+                                  data-ouia-component-id="breadcrumb-to-Patch packages"
+                                  data-ouia-component-type="package-details-breadcrumb"
+                                  href="/packages"
+                                  onClick={[Function]}
+                                >
+                                  Patch packages
+                                </a>
+                              </LinkAnchor>
+                            </Link>
                           </li>
                         </BreadcrumbItem>
                         <BreadcrumbItem

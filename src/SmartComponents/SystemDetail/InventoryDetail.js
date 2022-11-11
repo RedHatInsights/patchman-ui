@@ -15,7 +15,6 @@ import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { featureFlags } from '../../Utilities/constants';
-import { paths } from '../../Routes';
 import { useParams } from 'react-router-dom';
 
 const InventoryDetail = () => {
@@ -63,7 +62,7 @@ const InventoryDetail = () => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchSystems),
-                        to: paths.path,
+                        to: '/systems',
                         isActive: false
                     },
                     displayName && {

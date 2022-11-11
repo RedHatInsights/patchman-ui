@@ -14,7 +14,6 @@ import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { paths } from '../../Routes';
 
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -49,7 +48,7 @@ const PackageDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchPackages),
-                        to: paths.path,
+                        to: '/packages',
                         isActive: false
                     },
                     {

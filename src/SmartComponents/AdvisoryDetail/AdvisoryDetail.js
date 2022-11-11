@@ -14,7 +14,6 @@ import { intl } from '../../Utilities/IntlProvider';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { paths } from '../../Routes';
 
 const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
@@ -51,7 +50,7 @@ const AdvisoryDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchAdvisories),
-                        to: paths.path,
+                        to: '/advisories',
                         isActive: false
                     },
                     {
