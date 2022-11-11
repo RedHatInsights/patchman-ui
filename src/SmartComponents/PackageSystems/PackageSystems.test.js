@@ -56,7 +56,7 @@ const mockState = {
             total_items: 10
         },
         expandedRows: {},
-        selectedRows: { 'test-system-1': true },
+        selectedRows: { 'test-system-1': 'packageEvra' },
         error: {},
         status: 'resolved',
         total: 2
@@ -104,6 +104,16 @@ describe('PackageSystems.js', () => {
 
     it('Should open remediation modal', () => {
         const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
+        const remediationPairs = dedicatedAction.props.remediationProvider('test-system-1');
+        expect(remediationPairs).toEqual({
+            issues: [
+                {
+                    id: 'patch-package:packageEvra',
+                    description: 'packageEvra',
+                    systems: ['test-system-1']
+                }
+            ]
+        });
         expect(dedicatedAction).toMatchSnapshot();
     });
 
