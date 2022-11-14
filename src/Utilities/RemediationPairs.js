@@ -76,7 +76,7 @@ const batchRequest = async (
             );
         }
 
-        return await Promise.all(requests);;
+        return requests;
     };
 
     const batchRequests = [];
