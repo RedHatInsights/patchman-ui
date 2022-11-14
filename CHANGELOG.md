@@ -1,3 +1,10 @@
+## [1.55.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.55.1...v1.55.2) (2022-11-14)
+
+
+### Bug Fixes
+
+* **SPM-1802:** pass correct remediation issue ID ([1be41ed](https://github.com/RedHatInsights/patchman-ui/commit/1be41ed298a59540c651c386bf4f2261293a0d15))
+
 ## [1.55.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.55.0...v1.55.1) (2022-11-10)
 
 
