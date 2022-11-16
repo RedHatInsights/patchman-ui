@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
