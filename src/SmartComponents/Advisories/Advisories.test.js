@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Advisories from './Advisories';
 import { Provider, useSelector } from 'react-redux';
 import { advisoryRows } from '../../Utilities/RawDataForTesting';
@@ -10,6 +9,7 @@ import {
     exportAdvisoriesCSV, exportAdvisoriesJSON, fetchIDs,
     fetchViewAdvisoriesSystems } from '../../Utilities/api';
 import { act } from 'react-dom/test-utils';
+import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 
 initMocks();
 
@@ -184,30 +184,25 @@ describe('Advisories.js', () => {
         });
     });
 
-    // it('should handle remediation', async() => {
-    //     const rejectedState = { ...mockState, selectedRows: { 'RHEA-2020:2743': true } };
-    //     fetchViewAdvisoriesSystems.mockReturnValue(new Promise((resolve) => {
-    //         resolve({ data: { testAdvisory: ['test-system'] } });
-    //     }));
-    //     useSelector.mockImplementation(callback => {
-    //         return callback({ AdvisoryListStore: rejectedState });
-    //     });
-    //     const tempStore = initStore(rejectedState);
-    //     const tempWrapper = mount(<Provider store={tempStore}>
-    //         <Router><Advisories /></Router>
-    //     </Provider>);
-    //     const remediationProvider = tempWrapper.find('TableView').props().remediationProvider;
-    //     const res = await remediationProvider(['RHEA-2020:2743'], () => {}, 'advisories');
-
-    //     expect(res).toEqual({
-    //         issues: [
-    //             {
-    //                 id: 'patch-advisory:testAdvisory',
-    //                 description: 'testAdvisory',
-    //                 systems: ['test-system']
-    //             }
-    //         ]
-    //     });
-    // });
+    it('should handle remediation', async() => {
+        const rejectedState = { ...mockState, selectedRows: { 'RHEA-2020:2743': true } };
+        fetchViewAdvisoriesSystems.mockReturnValue(new Promise((resolve) => {
+            resolve({ data: { testAdvisory: ['test-system'] } });
+        }));
+        useSelector.mockImplementation(callback => {
+            return callback({ AdvisoryListStore: rejectedState });
+        });
+        const tempStore = initStore(rejectedState);
+        const tempWrapper = mount(<Provider store={tempStore}>
+            <Router><Advisories /></Router>
+        </Provider>);
+        const remediationProvider = tempWrapper.find('TableView').props().remediationProvider;
+        expect(tempWrapper.find(AsyncRemediationButton)).toHaveLength(1);
+        expect(tempWrapper.find(AsyncRemediationButton).props()).toEqual({
+            isDisabled: false,
+            isLoading: false,
+            remediationProvider
+        });
+    });
 });
 
