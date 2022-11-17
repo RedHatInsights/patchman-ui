@@ -1,3 +1,10 @@
+# [1.56.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.55.2...v1.56.0) (2022-11-17)
+
+
+### Features
+
+* **RBAC:** Setup RBAC permissions| Template Page access ([b19d316](https://github.com/RedHatInsights/patchman-ui/commit/b19d316c7735380b1ef18bd05dbf4fd693677e49))
+
 ## [1.55.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.55.1...v1.55.2) (2022-11-14)
 
 
