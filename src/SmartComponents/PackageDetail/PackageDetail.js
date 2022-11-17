@@ -8,7 +8,6 @@ import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import PackageHeader from '../../PresentationalComponents/PackageHeader/PackageHeader';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
-import { paths } from '../../Routes';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
 import { setPageTitle } from '../../Utilities/Hooks';
@@ -49,7 +48,7 @@ const PackageDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchPackages),
-                        to: paths.packages.to,
+                        to: '/packages',
                         isActive: false
                     },
                     {

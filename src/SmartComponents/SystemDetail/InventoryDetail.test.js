@@ -13,6 +13,14 @@ import { useFeatureFlag } from '../../Utilities/Hooks';
 
 initMocks();
 
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useParams: () => ({
+        inventoryId: 'test-system-id'
+    }),
+    useRouteMatch: () => ({ url: '/systems/test-system-id' })
+}));
+
 jest.mock('../../Utilities/Hooks', () => ({
     ...jest.requireActual('../../Utilities/Hooks'),
     useFeatureFlag: jest.fn(() => true)
@@ -56,7 +64,7 @@ beforeEach(() => {
         return callback({ entityDetails: mockState });
     });
     wrapper = mountWithIntl(<Provider store={store}>
-        <Router><InventoryDetail match = {{ params: { inventoryId: 'test' } }}/></Router>
+        <Router><InventoryDetail /></Router>
     </Provider>);
 });
 
@@ -84,7 +92,7 @@ describe('InventoryPage.js', () => {
             return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
         });
         const tempWrapper = mount(<Provider store={store}>
-            <Router><InventoryDetail match={{ params: { inventoryId: 'test' } }} /></Router>
+            <Router><InventoryDetail /></Router>
         </Provider>);
         const { actions } = tempWrapper.find(InventoryDetailHead).props();
 
@@ -100,7 +108,7 @@ describe('InventoryPage.js', () => {
             return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
         });
         const tempWrapper = mountWithIntl(<Provider store={store}>
-            <Router><InventoryDetail match={{ params: { inventoryId: testID } }} /></Router>
+            <Router><InventoryDetail  /></Router>
         </Provider>);
         const { actions } = tempWrapper.find(InventoryDetailHead).props();
         actions.find(action => action.key === 'remove-from-template')?.onClick();
@@ -130,7 +138,7 @@ describe('InventoryPage.js', () => {
     it('Should hide all dropdown actions when patch template flag is disabled', () => {
         useFeatureFlag.mockReturnValueOnce(false);
         const tempWrapper = mountWithIntl(<Provider store={store}>
-            <Router><InventoryDetail match={{ params: { inventoryId: 'test' } }} /></Router>
+            <Router><InventoryDetail  /></Router>
         </Provider>);
 
         const { actions } = tempWrapper.find(InventoryDetailHead).props();

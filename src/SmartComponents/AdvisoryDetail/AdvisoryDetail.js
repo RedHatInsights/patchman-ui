@@ -8,7 +8,6 @@ import messages from '../../Messages';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
-import { paths } from '../../Routes';
 import { clearAdvisoryDetailStore, clearEntitiesStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
 import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -51,7 +50,7 @@ const AdvisoryDetail = ({ match }) => {
                 breadcrumbs={[
                     {
                         title: intl.formatMessage(messages.titlesPatchAdvisories),
-                        to: paths.advisories.to,
+                        to: '/advisories',
                         isActive: false
                     },
                     {

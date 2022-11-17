@@ -14,6 +14,11 @@ jest.mock('react-redux', () => ({
     useSelector: jest.fn()
 }));
 
+jest.mock('../../Utilities/Hooks', () => ({
+    ...jest.requireActual('../../Utilities/Hooks'),
+    useFeatureFlag: jest.fn(() => true)
+}));
+
 jest.mock('../../SmartComponents/PackageSystems/PackageSystems', () => () => <div></div>
 );
 

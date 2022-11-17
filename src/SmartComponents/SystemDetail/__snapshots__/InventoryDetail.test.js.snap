@@ -36,15 +36,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
         }
       }
     >
-      <InventoryDetail
-        match={
-          Object {
-            "params": Object {
-              "inventoryId": "test",
-            },
-          }
-        }
-      >
+      <InventoryDetail>
         <mockConstructor
           onLoad={[Function]}
         >
@@ -69,7 +61,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                     Object {
                       "isActive": false,
                       "title": "Patch systems",
-                      "to": "/systems/",
+                      "to": "/systems",
                     },
                     undefined,
                   ]
@@ -92,7 +84,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                           Object {
                             "isActive": false,
                             "title": "Patch systems",
-                            "to": "/systems/",
+                            "to": "/systems",
                           },
                           undefined,
                         ]
@@ -120,18 +112,18 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                                 <Link
                                   data-ouia-component-id="breadcrumb-to-Patch systems"
                                   data-ouia-component-type="inventory-details-breadcrumb"
-                                  to="/systems/"
+                                  to="/systems"
                                 >
                                   <LinkAnchor
                                     data-ouia-component-id="breadcrumb-to-Patch systems"
                                     data-ouia-component-type="inventory-details-breadcrumb"
-                                    href="/systems/"
+                                    href="/systems"
                                     navigate={[Function]}
                                   >
                                     <a
                                       data-ouia-component-id="breadcrumb-to-Patch systems"
                                       data-ouia-component-type="inventory-details-breadcrumb"
-                                      href="/systems/"
+                                      href="/systems"
                                       onClick={[Function]}
                                     >
                                       Patch systems

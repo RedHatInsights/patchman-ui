@@ -1,9 +1,45 @@
-import some from 'lodash/some';
 import PropTypes from 'prop-types';
-import React, { Fragment, lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import WithPermission from './PresentationalComponents/WithPermission/WithPermission';
+import { Bullseye, Spinner } from '@patternfly/react-core';
 import { useFeatureFlag } from './Utilities/Hooks';
 import { featureFlags } from './Utilities/constants';
+import some from 'lodash/some';
+
+const PermissionRouter = (route) => {
+    const {
+        component: Component,
+        isExact,
+        path,
+        props = {},
+        requiredPermissions
+    } = route;
+    const routeProps = {
+        isExact,
+        path
+    };
+
+    const componentProps = {
+        ...props,
+        route: { ...route }
+    };
+
+    return (
+        <Route {...routeProps}>
+            <WithPermission requiredPermissions={requiredPermissions}>
+                <Component {...componentProps} />
+            </WithPermission>
+        </Route>
+    );
+};
+
+PermissionRouter.propTypes = {
+    component: PropTypes.node,
+    isExact: PropTypes.bool,
+    path: PropTypes.string,
+    props: PropTypes.object
+};
 
 const Advisories = lazy(() =>
     import(
@@ -46,101 +82,94 @@ const Templates = lazy(() =>
         /* webpackChunkName: "PackageDetail" */ './SmartComponents/PatchSet/PatchSet'
     )
 );
-export const paths = {
-    advisories: {
-        title: 'Applicable advisories',
-        to: '/advisories'
+
+const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
+
+export const paths = [
+    {
+        path: '/advisories/:advisoryId/:inventoryId',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: InventoryDetail
     },
-    systems: {
-        title: 'Systems',
-        to: '/systems/'
+    {
+        path: '/advisories/:advisoryId',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: AdvisoryPage
     },
-    inventoryDetail: {
-        title: 'Inventory detail',
-        to: '/systems/:inventoryId'
+    {
+        path: '/advisories',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: Advisories
     },
-    advisoryDetail: {
-        title: 'Advisory detail',
-        to: '/advisories/:advisoryId'
+    {
+        path: '/systems/:inventoryId',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: InventoryDetail
     },
-    advisoryDetailSystem: {
-        title: '',
-        to: '/advisories/:advisoryId/:inventoryId'
+    {
+        path: '/systems',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: Systems
     },
-    packages: {
-        title: 'Packages',
-        to: '/packages'
+    {
+        path: '/packages/:packageName/:inventoryId',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: InventoryDetail
     },
-    packageDetail: {
-        title: 'Package detail',
-        to: '/packages/:packageName'
+    {
+        path: '/packages/:packageName',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: PackageDetail
     },
-    packageDetailSystem: {
-        title: '',
-        to: '/packages/:packageName/:inventoryId'
+    {
+        path: '/packages',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: PackagsPage
     },
-    templates: {
-        title: 'Templates',
-        to: '/templates'
-    }
-};
+    ...(isPatchSetEnabled ? [{
+        path: '/templates',
+        isExact: true,
+        requiredPermissions: ['patch:*:read'],
+        component: Templates
+    }] : [])
+
+];
 
 export const Routes = (props) => {
-
     const path = props.childProps.location.pathname;
-
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
-
     return (
-        <Suspense fallback={Fragment}>
+        <Suspense
+            fallback={
+                <Bullseye>
+                    <Spinner />
+                </Bullseye>
+            }
+        >
             <Switch>
+                {paths.map(PermissionRouter)}
                 <Redirect
-                    from={paths.advisoryDetailSystem.to}
-                    to={paths.inventoryDetail.to}
+                    from='/advisories/:advisoryId/:inventoryId'
+                    to='/systems/:inventoryId'
                 />
                 <Redirect
-                    from={paths.packageDetailSystem.to}
-                    to={paths.inventoryDetail.to}
+                    from='/packages/:packageName/:inventoryId'
+                    to='/systems/:inventoryId'
                 />
-                <Route
-                    path={paths.inventoryDetail.to}
-                    component={InventoryDetail}
-                />
-                <Route exact path={paths.systems.to} component={Systems} />
-                <Route
-                    exact
-                    path={paths.advisoryDetail.to}
-                    component={AdvisoryPage}
-                />
-                <Route
-                    exact
-                    path={paths.advisories.to}
-                    component={Advisories}
-                />
-                <Route
-                    exact
-                    path={paths.packages.to}
-                    component={PackagsPage}
-                />
-                <Route
-                    exact
-                    path={paths.packageDetail.to}
-                    component={PackageDetail}
-                />
-                {isPatchSetEnabled && <Route
-                    exact
-                    path={paths.templates.to}
-                    component={Templates}
-                />}
-
-                <Route
-                    render={() =>
-                        (
-                            (!isPatchSetEnabled || !some(paths, p => p.to === path)) && (
-                                <Redirect to={paths.advisories.to} />
-                            )
+                <Route render={() =>
+                    (
+                        (!isPatchSetEnabled || !some(paths, p => p.to === path)) && (
+                            <Redirect to={'/advisories'} />
                         )
-                    }
+                    )
+                }
                 />
             </Switch>
         </Suspense>
@@ -155,3 +184,4 @@ Routes.propTypes = {
         history: PropTypes.any
     })
 };
+
