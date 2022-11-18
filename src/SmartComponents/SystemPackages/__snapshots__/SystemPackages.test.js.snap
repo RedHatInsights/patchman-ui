@@ -474,6 +474,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       menuAppendTo="inline"
                                       onSelect={[Function]}
                                       position="left"
+                                      removeFindDomNode={false}
                                       toggle={
                                         <DropdownToggle
                                           data-ouia-component-type="bulk-select-toggle-button"
@@ -909,6 +910,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                               menuAppendTo="inline"
                                               onSelect={[Function]}
                                               position="left"
+                                              removeFindDomNode={false}
                                               toggle={
                                                 <DropdownToggle
                                                   aria-label="Conditional filter"
@@ -1235,7 +1237,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                   onFocus={[Function]}
                                                   onKeyDown={[Function]}
                                                   placeholder="Filter by name or summary"
-                                                  readOnly={false}
                                                   required={false}
                                                   type="text"
                                                   value=""
@@ -1394,6 +1395,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                   menuAppendTo="inline"
                                   onSelect={[Function]}
                                   position="left"
+                                  removeFindDomNode={false}
                                   toggle={
                                     <DropdownToggle
                                       aria-label="Export"
@@ -1630,6 +1632,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                 menuAppendTo="inline"
                                 onSelect={[Function]}
                                 position="left"
+                                removeFindDomNode={false}
                                 toggle={
                                   <KebabToggle
                                     onToggle={[Function]}

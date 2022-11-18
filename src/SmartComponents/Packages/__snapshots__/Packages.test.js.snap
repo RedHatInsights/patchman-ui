@@ -455,6 +455,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     menuAppendTo="inline"
                                                     onSelect={[Function]}
                                                     position="left"
+                                                    removeFindDomNode={false}
                                                     toggle={
                                                       <DropdownToggle
                                                         aria-label="Conditional filter"
@@ -781,7 +782,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         onFocus={[Function]}
                                                         onKeyDown={[Function]}
                                                         placeholder="Filter by name or summary"
-                                                        readOnly={false}
                                                         required={false}
                                                         type="text"
                                                         value=""
@@ -923,6 +923,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         menuAppendTo="inline"
                                         onSelect={[Function]}
                                         position="left"
+                                        removeFindDomNode={false}
                                         toggle={
                                           <DropdownToggle
                                             aria-label="Export"
@@ -1141,6 +1142,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       menuAppendTo="inline"
                                       onSelect={[Function]}
                                       position="left"
+                                      removeFindDomNode={false}
                                       toggle={
                                         <KebabToggle
                                           onToggle={[Function]}
