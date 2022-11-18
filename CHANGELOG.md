@@ -1,3 +1,10 @@
+# [1.57.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.56.0...v1.57.0) (2022-11-18)
+
+
+### Features
+
+* **SPM-1783:** use new endpoints to fetch only ids for selection ([37dcca9](https://github.com/RedHatInsights/patchman-ui/commit/37dcca9d469f3a235440a421d3cdfd86f0a29b05))
+
 # [1.56.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.55.2...v1.56.0) (2022-11-17)
 
 
