@@ -7,7 +7,7 @@ Please include a summary of the change, what this fixes/creates/improves.
 
 # How to test the PR
 
-Please inlcude steps to test your PR.
+Please include steps to test your PR.
 
 # Before the change
 
