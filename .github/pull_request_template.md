@@ -15,10 +15,14 @@ Please include steps to test your PR.
 # After the change
 
 
+# Dependent work link
+
+
 # Checklist:
 
 - [ ] The commit message has the Jira ticket linked
 - [ ] PR has a short description
 - [ ] Screenshots before and after the change are added
 - [ ] Tests for the changes have been added
-- [ ] Read.me is updated if necessary
+- [ ] README.md is updated if necessary
+- [ ] Needs additional dependent work
