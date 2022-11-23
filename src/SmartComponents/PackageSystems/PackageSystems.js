@@ -2,14 +2,14 @@ import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import versionFilter from '../../PresentationalComponents/Filters/VersionFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { register } from '../../store';
+import { defaultReducers } from '../../store';
 import { changePackageSystemsParams, clearInventoryReducer,
     clearPackageSystemsReducer, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyPackageSystems } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -28,9 +28,11 @@ import { intl } from '../../Utilities/IntlProvider';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
+import { combineReducers } from 'redux';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
+    const store = useStore();
     const history = useHistory();
     const [packageVersions, setPackageVersions] = React.useState([]);
 
@@ -165,12 +167,13 @@ const PackageSystems = ({ packageName }) => {
                         isDisabled: totalItems === 0
                     }}
                     onLoad={({ mergeWithEntities }) => {
-                        register({
+                        store.replaceReducer(combineReducers({
+                            ...defaultReducers,
                             ...mergeWithEntities(
                                 inventoryEntitiesReducer(packageSystemsColumns, modifyPackageSystems),
                                 persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
-                        });
+                        }));
 
                     }}
                     tableProps={{
