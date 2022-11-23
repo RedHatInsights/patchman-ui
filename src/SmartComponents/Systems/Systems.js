@@ -3,12 +3,12 @@ import { TableVariant } from '@patternfly/react-table';
 import { Button } from '@patternfly/react-core';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { register } from '../../store';
+import { defaultReducers } from '../../store';
 import { changeSystemsParams, clearInventoryReducer,
     changeSystemsMetadata, changeTags, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -35,8 +35,10 @@ import usePatchSetState from '../../Utilities/usePatchSetState';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
+import { combineReducers } from 'redux';
 
 const Systems = () => {
+    const store = useStore();
     const inventory = useRef(null);
     const pageTitle = intl.formatMessage(messages.titlesSystems);
 
@@ -177,12 +179,13 @@ const Systems = () => {
                             isDisabled: totalItems === 0
                         }}
                         onLoad={({ mergeWithEntities }) => {
-                            register({
+                            store.replaceReducer(combineReducers({
+                                ...defaultReducers,
                                 ...mergeWithEntities(
                                     inventoryEntitiesReducer(systemsListColumns(isPatchSetEnabled), modifyInventory),
                                     persistantParams({ page, perPage, sort, search }, decodedParams)
                                 )
-                            });
+                            }));
                         }}
                         getEntities={getEntities}
                         tableProps={{

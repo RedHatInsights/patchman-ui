@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, useStore } from 'react-redux';
+import { combineReducers } from 'redux';
 import Header from '../../PresentationalComponents/Header/Header';
-import { register } from '../../store';
+import { defaultReducers } from '../../store';
 import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -19,6 +20,7 @@ import { useParams } from 'react-router-dom';
 
 const InventoryDetail = () => {
     const {  inventoryId } = useParams();
+    const store = useStore();
 
     const dispatch = useDispatch();
     const { loaded, hasThirdPartyRepo, patchSetName } = useSelector(
@@ -50,9 +52,10 @@ const InventoryDetail = () => {
     return (
         <DetailWrapper
             onLoad={({ mergeWithDetail }) => {
-                register({
+                store.replaceReducer(combineReducers({
+                    ...defaultReducers,
                     ...mergeWithDetail(SystemDetailStore)
-                });
+                }));
             }}
         >
             <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />

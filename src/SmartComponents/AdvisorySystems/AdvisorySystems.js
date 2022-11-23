@@ -2,13 +2,14 @@ import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
 import React from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
+import { combineReducers } from 'redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { register } from '../../store';
+import { defaultReducers } from '../../store';
 import { changeAffectedSystemsParams, clearAdvisorySystemsReducer,
     clearInventoryReducer, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -29,6 +30,7 @@ import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
+    const store = useStore();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [
         RemediationModalCmp,
@@ -149,12 +151,13 @@ const AdvisorySystems = ({ advisoryName }) => {
                         isDisabled: totalItems === 0
                     }}
                     onLoad={({ mergeWithEntities }) => {
-                        register({
+                        store.replaceReducer(combineReducers({
+                            ...defaultReducers,
                             ...mergeWithEntities(
                                 inventoryEntitiesReducer(systemsListColumns(false), modifyInventory),
                                 persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
-                        });
+                        }));
                     }}
                     getEntities={getEntites}
                     actions={systemsRowActions(showRemediationModal)}

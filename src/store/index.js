@@ -1,6 +1,5 @@
 import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
 import { notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { getRegistry } from '@redhat-cloud-services/frontend-components-utilities/Registry';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
 import { AdvisoryListStore } from './Reducers/AdvisoryListStore';
@@ -16,9 +15,9 @@ import { AdvisorySystemsStore } from './Reducers/AdvisorySystemsStore';
 import { GlobalFilterStore } from './Reducers/GlobalFilterStore';
 import { PatchSetsReducer } from './Reducers/PatchSetsReducer';
 import { SpecificPatchSetReducer } from './Reducers/SpecificPatchSetReducer';
+import { legacy_createStore as createStore, applyMiddleware, combineReducers } from 'redux';
 
-const registry = getRegistry({}, [promiseMiddleware, notificationsMiddleware()]);
-registry.register({
+export const defaultReducers = {
     AdvisoryListStore,
     SystemDetailStore,
     SystemAdvisoryListStore,
@@ -34,10 +33,6 @@ registry.register({
     PatchSetsStore: PatchSetsReducer,
     SpecificPatchSetReducer,
     notifications: notificationsReducer
-});
-
-export const getStore = () => registry.getStore();
-
-export const register = newReducers => {
-    registry.register(newReducers);
 };
+
+export const store = createStore(combineReducers(defaultReducers), applyMiddleware(promiseMiddleware, notificationsMiddleware()));
