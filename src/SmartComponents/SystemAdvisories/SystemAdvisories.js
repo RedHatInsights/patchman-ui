@@ -78,13 +78,15 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
         ), [JSON.stringify(advisories)]
     );
 
+    const constructFilename = (advisory) => advisory?.id || true;
     const onSelect = useOnSelect(
         rows,
         selectedRows,
         {
             endpoint: ID_API_ENDPOINTS.systemAdvisories(entity.id),
             queryParams,
-            selectionDispatcher: selectSystemAdvisoryRow
+            selectionDispatcher: selectSystemAdvisoryRow,
+            constructFilename
         }
     );
 

@@ -137,8 +137,8 @@ export const useOnSelect = (rawData, selectedRows, config) => {
 
                 default: {
                     dispatchSelection([{
-                        id: rawData[rowId].id,
-                        selected: selected && (constructFilename && constructFilename(rawData[rowId]) || true)
+                        id: transformKey ? transformKey(rawData[rowId]) : rawData[rowId].id,
+                        selected: selected && (constructFilename ? constructFilename(rawData[rowId]) : true)
                     }]);
                 }
             }

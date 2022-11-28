@@ -143,7 +143,7 @@ describe('SystemAdvisories.js', () => {
             onSelect('single', 'test', 0);
             const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');
-            expect(dispatchedActions[1].payload).toEqual([{ id: 'RHSA-2020:2774', selected: true }]);
+            expect(dispatchedActions[1].payload).toEqual([{ id: 'RHSA-2020:2774', selected: 'RHSA-2020:2774' }]);
         });
 
         it('Should handle onSelect', () => {

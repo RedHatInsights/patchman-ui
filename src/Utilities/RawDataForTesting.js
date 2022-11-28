@@ -111,11 +111,22 @@ export const advisoryDetailRows = {
 };
 export const systemPackages = [{
     description: 'This package contains testing data',
-    evra: '2.2.*',
-    name: 'acl',
+    evra: 'test-evra',
+    name: 'test-name',
     summary: 'Access control list utilities',
     updates: null,
-    id: 'test-package-id'
+    id: 'test-id-0'
+},
+{
+    description: 'This package contains testing data',
+    evra: 'test-evra-2',
+    name: 'test-name-2',
+    summary: 'Access control list utilities',
+    updates: [{
+        id: 'test-update',
+        evra: 'test-update-evra'
+    }],
+    id: 'test-id-1'
 }];
 
 export const entityDetail = {
