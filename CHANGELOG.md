@@ -1,3 +1,10 @@
+## [1.57.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.0...v1.57.1) (2022-11-28)
+
+
+### Bug Fixes
+
+* **SPM-1789:** refactor remediation requests into web worker ([eb04692](https://github.com/RedHatInsights/patchman-ui/commit/eb04692bc11f074ca60e2440f4c0bad491f8834e))
+
 # [1.57.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.56.0...v1.57.0) (2022-11-18)
 
 
