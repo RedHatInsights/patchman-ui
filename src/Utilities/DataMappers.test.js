@@ -105,18 +105,28 @@ describe('DataMappers', () => {
     it('Should create package list', () => {
         const packages = createSystemPackagesRows(systemPackages);
         expect(packages).toEqual([{
-            id: 'acl-2.2.*',
-            key: 'acl-2.2.*',
+            id: 'test-name-test-evra',
+            key: 'test-name-test-evra',
             selected: false,
             disableCheckbox: true,
             cells: [
                 { title: expect.anything() }, // FIXME!
-                { title: '2.2.*' },
-                { title: '2.2.*' },
+                { title: 'test-evra' },
+                { title: 'test-evra' },
                 { title: expect.anything() },
                 { title: 'Access control list utilities' }
             ]
+        },
+        {
+            id: 'test-name-2-test-evra-2',
+            key: 'test-name-2-test-evra-2',
+            selected: false,
+            disableCheckbox: false,
+            //tested using snapshots
+            cells: expect.anything()
         }]);
+
+        expect(packages[1]).toMatchSnapshot();
 
         const packagesWithCompleteData = createSystemPackagesRows([{
             ...systemPackages[0],
@@ -125,13 +135,13 @@ describe('DataMappers', () => {
         }]);
 
         expect(packagesWithCompleteData).toEqual([{
-            id: 'acl-2.2.*',
-            key: 'acl-2.2.*',
+            id: 'test-name-test-evra',
+            key: 'test-name-test-evra',
             selected: false,
             disableCheckbox: false,
             cells: [
                 { title: expect.anything()  }, // FIXME!
-                { title: '2.2.*' },
+                { title: 'test-evra' },
                 { title: 'testEvra' },
                 { title: expect.anything() },
                 { title: 'Access control list utilities' }

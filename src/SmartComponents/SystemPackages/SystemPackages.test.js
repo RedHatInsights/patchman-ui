@@ -110,11 +110,14 @@ describe('SystemPackages.js', () => {
 
     it('Should use onSelect', () => {
         const { onSelect } = wrapper.update().find('TableView').props();
-        onSelect(null, {}, 0);
+        onSelect(null, true, 1);
         const dispatchedActions = store.getActions();
 
         expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_PACKAGES_ROW');
-        expect(dispatchedActions[1].payload).toEqual([{ id: 'test-package-id', selected: true }]);
+        expect(dispatchedActions[1].payload).toEqual([{
+            id: 'test-name-2-test-evra-2',
+            selected: 'test-name-2-test-update-evra'
+        }]);
     });
 
     it('Should select all with limit=-1', () => {

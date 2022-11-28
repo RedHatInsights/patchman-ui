@@ -155,16 +155,16 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   "cells": Array [
                     Object {
                       "title": <Link
-                        to="/packages/acl"
+                        to="/packages/test-name"
                       >
-                        acl
+                        test-name
                       </Link>,
                     },
                     Object {
-                      "title": "2.2.*",
+                      "title": "test-evra",
                     },
                     Object {
-                      "title": "2.2.*",
+                      "title": "test-evra",
                     },
                     Object {
                       "title": <div
@@ -201,8 +201,62 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                     },
                   ],
                   "disableCheckbox": true,
-                  "id": "acl-2.2.*",
-                  "key": "acl-2.2.*",
+                  "id": "test-name-test-evra",
+                  "key": "test-name-test-evra",
+                  "selected": false,
+                },
+                Object {
+                  "cells": Array [
+                    Object {
+                      "title": <Link
+                        to="/packages/test-name-2"
+                      >
+                        test-name-2
+                      </Link>,
+                    },
+                    Object {
+                      "title": "test-evra-2",
+                    },
+                    Object {
+                      "title": "test-update-evra",
+                    },
+                    Object {
+                      "title": <div
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "display": "flex",
+                          }
+                        }
+                      >
+                        <CheckIcon
+                          color="currentColor"
+                          noVerticalAlign={false}
+                          size="sm"
+                          style={
+                            Object {
+                              "color": "var(--pf-global--success-color--100)",
+                            }
+                          }
+                        />
+                        <span
+                          style={
+                            Object {
+                              "marginLeft": "var(--pf-global--spacer--sm)",
+                            }
+                          }
+                        >
+                          Up-to-date
+                        </span>
+                      </div>,
+                    },
+                    Object {
+                      "title": "Access control list utilities",
+                    },
+                  ],
+                  "disableCheckbox": false,
+                  "id": "test-name-2-test-evra-2",
+                  "key": "test-name-2-test-evra-2",
                   "selected": false,
                 },
               ],
@@ -242,7 +296,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   },
                   Object {
                     "onClick": [Function],
-                    "title": "Select page (1)",
+                    "title": "Select page (2)",
                   },
                   Object {
                     "onClick": [Function],
@@ -360,7 +414,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                       },
                                       Object {
                                         "onClick": [Function],
-                                        "title": "Select page (1)",
+                                        "title": "Select page (2)",
                                       },
                                       Object {
                                         "onClick": [Function],
@@ -393,7 +447,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                           onClick={[Function]}
                                           ouiaId="BulkSelect-1"
                                         >
-                                          Select page (1)
+                                          Select page (2)
                                         </DropdownItem>,
                                         <DropdownItem
                                           component="button"
@@ -455,7 +509,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                             onClick={[Function]}
                                             ouiaId="BulkSelect-1"
                                           >
-                                            Select page (1)
+                                            Select page (2)
                                           </DropdownItem>,
                                           <DropdownItem
                                             component="button"
