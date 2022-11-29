@@ -117,7 +117,8 @@ const PatchSet = ({ history }) => {
     };
 
     const { hasAccess } = usePermissionsWithContext([
-        'patch:*:*'
+        'patch:*:*',
+        'patch:template:write'
     ]);
     const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);
     const actionsConfig = patchSetRowActions(openPatchSetEditModal, handlePatchSetDelete);
