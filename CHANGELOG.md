@@ -1,3 +1,10 @@
+## [1.57.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.1...v1.57.2) (2022-11-29)
+
+
+### Bug Fixes
+
+* **SPM-1768:** Adds custom role to templates page ([3a267d2](https://github.com/RedHatInsights/patchman-ui/commit/3a267d23f2410178885126305ca1cc51747faf7a))
+
 ## [1.57.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.0...v1.57.1) (2022-11-28)
 
 
