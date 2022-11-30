@@ -1,3 +1,10 @@
+## [1.57.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.3...v1.57.4) (2022-11-30)
+
+
+### Bug Fixes
+
+* **PackageSystem:** remove unneccessary onSelect prop ([79e6e7e](https://github.com/RedHatInsights/patchman-ui/commit/79e6e7e035d873e7e5286a732af1d56d54e10f12))
+
 ## [1.57.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.2...v1.57.3) (2022-11-30)
 
 
