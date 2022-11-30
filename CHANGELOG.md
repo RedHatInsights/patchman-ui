@@ -1,3 +1,10 @@
+## [1.57.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.2...v1.57.3) (2022-11-30)
+
+
+### Bug Fixes
+
+* **SPM-1812:** fix system package single row selection ([aa73d46](https://github.com/RedHatInsights/patchman-ui/commit/aa73d4619c06d026bd8780c286760bbad0b38d29))
+
 ## [1.57.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.1...v1.57.2) (2022-11-29)
 
 
