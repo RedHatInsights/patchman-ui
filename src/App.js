@@ -1,14 +1,14 @@
-import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
-import '@redhat-cloud-services/frontend-components-notifications/index.css';
-import { isEqual } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, useLocation, withRouter } from 'react-router-dom';
-import './App.scss';
-import { Routes } from './Routes';
+import { BrowserRouter as Router } from 'react-router-dom';
+import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
+import '@redhat-cloud-services/frontend-components-notifications/index.css';
+import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACProvider';
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
-import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACProvider';
+import getBaseName from './Utilities/getBaseName';
+import './App.scss';
+import { Routes } from './Routes';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -16,16 +16,6 @@ const App = () => {
         selectedTags: [],
         systemProfile: false
     });
-    const location = useLocation();
-    const history = useHistory();
-
-    const listenNavigation = () => {
-        return  insights.chrome.on('APP_NAVIGATION', event => {
-            if (event.domEvent) {
-                history.push(`/${event.navId}`);
-            }
-        });
-    };
 
     useEffect(() => {
         insights.chrome.init();
@@ -39,7 +29,7 @@ const App = () => {
 
                 const globalFilterConfig = mapGlobalFilters(TAGs, SIDs, data?.Workloads);
 
-                if (!isEqual(config, globalFilterConfig)) {
+                if (JSON.stringify(config) === JSON.stringify(globalFilterConfig)) {
                     dispatch(globalFilter(globalFilterConfig));
                     setConfig(globalFilterConfig);
                     dispatch(changeGlobalTags(globalFilterConfig.selectedTags));
@@ -48,19 +38,18 @@ const App = () => {
 
             });
         }
-
-        const unregister = listenNavigation();
-        return () => unregister();
     }, []);
 
     return (
         <React.Fragment>
             <NotificationPortal />
             <RBACProvider appName="patch">
-                <Routes childProps={{ location, history }} />
+                <Router basename={getBaseName(window.location.pathname)}>
+                    <Routes />
+                </Router>
             </RBACProvider>
         </React.Fragment>
     );
 };
 
-export default withRouter(App);
+export default App;
