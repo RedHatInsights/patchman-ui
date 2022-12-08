@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { Button } from '@patternfly/react-core';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
@@ -85,7 +85,7 @@ const Systems = () => {
         return () => dispatch(clearInventoryReducer());
     }, []);
 
-    async function showRemediationModal(data) {
+    const showRemediationModal = useCallback(async (data) => {
         const resolvedData = await data;
         setRemediationModalCmp(() =>
             () => <RemediationWizard
@@ -93,7 +93,7 @@ const Systems = () => {
                 isRemediationOpen
                 setRemediationOpen={setRemediationOpen} />);
         setRemediationOpen(!isRemediationOpen);
-    }
+    }, [isRemediationOpen]);
 
     function apply(queryParams) {
         dispatch(changeSystemsParams(queryParams));

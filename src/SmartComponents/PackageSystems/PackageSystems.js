@@ -1,7 +1,7 @@
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { useCallback, useMemo, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
@@ -54,21 +54,21 @@ const PackageSystems = ({ packageName }) => {
     const { systemProfile, selectedTags,
         filter, search, sort, page, perPage } = queryParams;
 
-    React.useEffect(async () => {
+    const apply = useCallback((params) => {
+        dispatch(changePackageSystemsParams(params));
+    }, []);
+
+    useEffect(async () => {
         apply(decodedParams);
         setPackageVersions(await fetchPackageVersions({ package_name: packageName }));
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         return () => {
             dispatch(clearInventoryReducer());
             dispatch(clearPackageSystemsReducer());
         };
     }, []);
-
-    function apply(params) {
-        dispatch(changePackageSystemsParams(params));
-    }
 
     const [deleteFilters] = useRemoveFilter({ ...filter, search }, apply);
 
@@ -83,10 +83,10 @@ const PackageSystems = ({ packageName }) => {
         ]
     };
 
-    const activeFiltersConfig = {
+    const activeFiltersConfig = useMemo(() => ({
         filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
         onDelete: deleteFilters
-    };
+    }), []);
 
     const constructFilename = (system) => {
         return `${packageName}-${system.available_evra}`;
@@ -111,7 +111,7 @@ const PackageSystems = ({ packageName }) => {
         json: exportPackageSystemsJSON
     }, dispatch);
 
-    const prepareRemediationPairs = (systemIDs) => {
+    const prepareRemediationPairs = useCallback((systemIDs) => {
         const pairs = [];
 
         systemIDs.forEach(id => {
@@ -131,7 +131,7 @@ const PackageSystems = ({ packageName }) => {
         });
 
         return pairs.length ? { issues: pairs } : false;
-    };
+    }, [selectedRows]);
 
     const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, history);
 

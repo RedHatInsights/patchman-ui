@@ -6,7 +6,7 @@ import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACProvider';
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
-import getBaseName from './Utilities/getBaseName';
+import { getBaseName } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import './App.scss';
 import { Routes } from './Routes';
 

@@ -1,6 +1,6 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
@@ -22,7 +22,7 @@ import {
     encodeURLParams, getRowIdByIndexExpandable
 } from '../../Utilities/Helpers';
 import {
-    setPageTitle, useDeepCompareEffect, useOnExport,
+    setPageTitle, useOnExport,
     usePerPageSelect, useSetPage, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -41,7 +41,6 @@ const Advisories = ({ history }) => {
     const advisories = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.rows
     );
-
     const expandedRows = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.expandedRows
     );
@@ -74,7 +73,7 @@ const Advisories = ({ history }) => {
         };
     }, []);
 
-    useDeepCompareEffect(() => {
+    useEffect(() => {
         if (firstMount) {
             apply(decodeQueryparams(history.location.search));
             setFirstMount(false);
@@ -82,7 +81,7 @@ const Advisories = ({ history }) => {
             history.push(encodeURLParams(queryParams));
             dispatch(fetchApplicableAdvisories(queryParams));
         }
-    }, [queryParams, firstMount]);
+    }, [JSON.stringify(queryParams), firstMount]);
 
     const onCollapse = React.useCallback((_, rowId, value) =>
         dispatch(

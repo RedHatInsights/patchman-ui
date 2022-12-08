@@ -7,7 +7,7 @@ import { useFeatureFlag } from './Utilities/Hooks';
 import { featureFlags } from './Utilities/constants';
 import some from 'lodash/some';
 
-const PermissionRouter = (route) => {
+const PermissionRouter = (route, index) => {
     const {
         component: Component,
         isExact,
@@ -25,8 +25,9 @@ const PermissionRouter = (route) => {
         route: { ...route }
     };
 
+    console.log(index);
     return (
-        <Route {...routeProps}>
+        <Route {...routeProps} key={index}>
             <WithPermission requiredPermissions={requiredPermissions}>
                 <Component {...componentProps} />
             </WithPermission>
