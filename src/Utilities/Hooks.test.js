@@ -1,7 +1,20 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table/dist/js';
-import { useHandleRefresh, usePagePerPage, usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from './Hooks';
+import { useEntitlements, useHandleRefresh, usePagePerPage, 
+    usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from './Hooks';
 import { packagesListDefaultFilters } from './constants';
+
+jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
+    ...jest.requireActual('@redhat-cloud-services/frontend-components/useChrome'),
+    useChrome: jest.fn(() => ({ 
+        auth: {
+            getUser: () => new Promise(
+                (resolve) => resolve({ entitlements: { 'test-entitelement': true } })
+            )
+        }
+    }))
+}));
+
 const TestHook = ({ callback }) => {
     callback();
     return null;
@@ -148,5 +161,13 @@ describe('Custom hooks tests', () => {
             expect(apply).not.toHaveBeenCalled();
         }
     });
+
+    it('useEntitlements, should return correct entitlements', async () => {
+        let res;
+        testHook(() => {
+            res = useEntitlements();
+        });
+        const result = await res();
+        expect(result).toEqual({ 'test-entitelement': true });
+    });
 });
-/* eslint-enable */

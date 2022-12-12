@@ -3,6 +3,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import isDeepEqualReact from 'fast-deep-equal/react';
 import { Spinner } from '@patternfly/react-core';
 import messages from '../Messages';
@@ -308,3 +309,18 @@ export const usePushUrlParams = (queryParams) => {
 
     return historyPusher;
 };
+
+/***
+ * Returns readly available user entitelments
+ * @returns {getEntitlements} function that returns entitlements
+ */
+export const useEntitlements = () => {
+    const chrome = useChrome();
+    const getEntitlements = useCallback(async () => {
+        const user = await chrome.auth.getUser();
+        return user.entitlements;
+    });
+
+    return getEntitlements;
+};
+
