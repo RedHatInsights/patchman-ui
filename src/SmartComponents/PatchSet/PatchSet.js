@@ -1,8 +1,7 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import propTypes from 'prop-types';
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
@@ -13,7 +12,7 @@ import { deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 import {
-    setPageTitle, useDeepCompareEffect, usePerPageSelect, useSetPage, useSortColumn
+    setPageTitle, useDeepCompareEffect, useEntitlements, usePerPageSelect, useSetPage, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -24,8 +23,9 @@ import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
+import { NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
 
-const PatchSet = ({ history }) => {
+const PatchSet = () => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
 
     const IS_SELECTION_ENABLED = false;
@@ -33,8 +33,9 @@ const PatchSet = ({ history }) => {
     setPageTitle(pageTitle);
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const [firstMount, setFirstMount] = React.useState(true);
-
+    const [hasSmartManagement, setSmartManagement] = React.useState(true);
     const patchSets = useSelector(
         ({ PatchSetsStore }) => PatchSetsStore.rows
     );
@@ -57,6 +58,8 @@ const PatchSet = ({ history }) => {
         [patchSets, selectedRows]
     );
 
+    const getEntitlements = useEntitlements();
+
     function apply(params) {
         dispatch(changePatchSetsParams(params));
     }
@@ -65,9 +68,17 @@ const PatchSet = ({ history }) => {
         dispatch(fetchPatchSetsAction({ ...queryParams, page: 1, offset: 0 }));
     };
 
-    useEffect(() => () => {
-        dispatch(clearPatchSetsAction());
-        dispatch(clearNotifications());
+    useEffect(() => {
+        getEntitlements().then((entitelements) => {
+            setSmartManagement(
+                entitelements?.smart_management?.is_entitled
+            );
+        });
+
+        return () => {
+            dispatch(clearPatchSetsAction());
+            dispatch(clearNotifications());
+        };
     }, []);
 
     const { patchSetState, setPatchSetState, openPatchSetEditModal } = usePatchSetState(selectedRows);
@@ -122,6 +133,17 @@ const PatchSet = ({ history }) => {
     ]);
     const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);
     const actionsConfig = patchSetRowActions(openPatchSetEditModal, handlePatchSetDelete);
+
+    //TODO: refactor search filter to be able to wrap this into useMemo
+    const filterConfig = {
+        items: [
+            searchFilter(apply, queryParams.search,
+                intl.formatMessage(messages.labelsFiltersSearchTemplateTitle),
+                intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)
+            )
+        ]
+    };
+
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesTemplate)} headerOUIA={'advisories'} />
@@ -132,7 +154,7 @@ const PatchSet = ({ history }) => {
                     patchSetID={patchSetState.patchSetID}
                 />}
             <Main>
-                <TableView
+                {hasSmartManagement ? <TableView
                     columns={patchSetColumns}
                     compact
                     onSetPage={onSetPage}
@@ -146,25 +168,14 @@ const PatchSet = ({ history }) => {
                     paginationOUIA={'patch-set-pagination'}
                     store={{ rows, metadata, status, queryParams }}
                     actionsConfig={(patchSets?.length > 0) && actionsConfig}
-                    filterConfig={{
-                        items: [
-                            searchFilter(apply, queryParams.search,
-                                intl.formatMessage(messages.labelsFiltersSearchTemplateTitle),
-                                intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)
-                            )
-                        ]
-                    }}
+                    filterConfig={filterConfig}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
                     CreatePatchSetButton={CreatePatchSetButton}
                     actionsToggle={!hasAccess ? CustomActionsToggle : null}
-                />
+                /> : <NoSmartManagement />}
             </Main>
         </React.Fragment>
     );
 };
 
-PatchSet.propTypes = {
-    history: propTypes.object
-};
-
-export default withRouter(PatchSet);
+export default PatchSet;

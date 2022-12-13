@@ -6,6 +6,7 @@ import {
     Title
 } from '@patternfly/react-core';
 import SearchIcon from '@patternfly/react-icons/dist/js/icons/search-icon';
+import LockIcon from '@patternfly/react-icons/dist/js/icons/lock-icon';
 import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -76,6 +77,21 @@ export const NoPatchSetList = () => (
         </Title>
         <EmptyStateBody>
             {intl.formatMessage(messages.statesNoTemplateBody)}
+        </EmptyStateBody>
+    </EmptyState>
+);
+
+export const NoSmartManagement = () => (
+    <EmptyState variant={EmptyStateVariant.large}>
+        <EmptyStateIcon icon={LockIcon} />
+        <Title headingLevel="h5" size="lg">
+            {intl.formatMessage(messages.statesNoSmartManagementHeader)}
+        </Title>
+        <EmptyStateBody>
+            {intl.formatMessage(
+                messages.statesNoSmartManagementBody,
+                { br: <br></br> }
+            )}
         </EmptyStateBody>
     </EmptyState>
 );
