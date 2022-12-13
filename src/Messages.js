@@ -445,7 +445,7 @@ export default defineMessages({
         and time from the console.  
         {br}
         {br}
-        Creating content templates from console.redhat.com is a premium feature only available with Red Hat Smart Management`
+        Creating content templates from console.redhat.com is a premium feature only available with Red Hat Smart Management.`
     },
     statesNoSmartManagementHeader: {
         id: 'statesNoSmartManagement',
