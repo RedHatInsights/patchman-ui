@@ -86,7 +86,7 @@ const PackageSystems = ({ packageName }) => {
     const activeFiltersConfig = useMemo(() => ({
         filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
         onDelete: deleteFilters
-    }), []);
+    }), [filter, search]);
 
     const constructFilename = (system) => {
         return `${packageName}-${system.available_evra}`;
