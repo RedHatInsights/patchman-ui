@@ -1,11 +1,12 @@
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import debounce from 'lodash/debounce';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const searchFilter = (apply, search, title, placeholder) => {
-    const [searchValue, setSearchValue] = useState();
-    const [searchAdvisory] = useState(() =>
-        debounce(value => apply({ search: value }), 400)
+    const [searchValue, setSearchValue] = useState(search);
+    const debouncedRequest = useCallback(
+        debounce(value => apply({ search: value }), 400),
+        []
     );
 
     useEffect(() => setSearchValue(search), [search]);
@@ -17,7 +18,7 @@ const searchFilter = (apply, search, title, placeholder) => {
             'aria-label': 'search-field',
             onChange: (event, value) => {
                 setSearchValue(value);
-                searchAdvisory(value);
+                debouncedRequest(value);
             },
             placeholder,
             value: searchValue
