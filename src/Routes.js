@@ -25,7 +25,6 @@ const PermissionRouter = (route, index) => {
         route: { ...route }
     };
 
-    console.log(index);
     return (
         <Route {...routeProps} key={index}>
             <WithPermission requiredPermissions={requiredPermissions}>
