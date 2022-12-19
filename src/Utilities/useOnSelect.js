@@ -32,13 +32,16 @@ const useCreateSelectedRow = (transformKey, constructFilename) =>
         const items = shouldUseOnlyIDs ? ids : data;
 
         items.forEach((item) => {
+            //expanded rows does not have ID and should be disabled for selection
             const id = shouldUseOnlyIDs ? item : item.id;
-            toSelect.push(
-                {
-                    id: transformKey ? transformKey(item) : id,
-                    selected: constructFilename ? constructFilename(item) : id
-                }
-            );
+            if (id) {
+                toSelect.push(
+                    {
+                        id: transformKey ? transformKey(item) : id,
+                        selected: constructFilename ? constructFilename(item) : id
+                    }
+                );
+            }
         });
 
         return toSelect;

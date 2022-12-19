@@ -78,7 +78,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
         ), [JSON.stringify(advisories)]
     );
 
-    const constructFilename = (advisory) => advisory?.id || true;
+    const constructFilename = (advisory) => advisory?.id || advisory;
     const onSelect = useOnSelect(
         rows,
         selectedRows,
