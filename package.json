@@ -65,7 +65,7 @@
     "@cypress/react": "^6.2.0",
     "@formatjs/cli": "^3.0.5",
     "@patternfly/patternfly": "^4.217.1",
-    "@redhat-cloud-services/frontend-components-config": "^4.6.31",
+    "@redhat-cloud-services/frontend-components-config": "^4.6.34",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-image": "^2.0.6",
     "@rollup/plugin-json": "^4.1.0",
