@@ -1,14 +1,15 @@
 import searchFilter from './SearchFilter';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const apply = jest.fn();
+const mockSetState = jest.fn();
 const currentFilter = { search: 'filter' };
 
 jest.mock('react', () => ({
     ...jest.requireActual('react'),
-    useState: jest.fn().mockReturnValueOnce(['testSearch', () => {}]).mockReturnValueOnce([() => 'testSearch', () => { }])
-    .mockReturnValueOnce(['testSearch', () => { }]).mockReturnValueOnce([() => 'testSearch', () => { }]),
-    useEffect: jest.fn()
+    useState: jest.fn().mockReturnValueOnce(['testSearch', () => {}]),
+    useEffect: jest.fn(),
+    useCallback: jest.fn()
 }));
 
 describe('SearchFilter', () => {
@@ -21,8 +22,12 @@ describe('SearchFilter', () => {
     });
 
     it('Should call apply with a date', () => {
+        useCallback.mockReturnValue(() => apply('testValue'));
+        useState.mockClear().mockReturnValue([null, mockSetState]);
+
         const response = searchFilter(apply, currentFilter, 'title', 'placeholder');
         response.filterValues.onChange('event', 'testValue');
-        expect(useState).toHaveBeenCalledWith(expect.any(Function));
+        expect(mockSetState).toHaveBeenCalledWith('testValue');
+        expect(apply).toHaveBeenCalledWith('testValue');
     });
 });

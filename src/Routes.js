@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import React, { lazy, Suspense } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React, { lazy, Suspense, useCallback, useEffect } from 'react';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import WithPermission from './PresentationalComponents/WithPermission/WithPermission';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import { useFeatureFlag } from './Utilities/Hooks';
 import { featureFlags } from './Utilities/constants';
 import some from 'lodash/some';
 
-const PermissionRouter = (route) => {
+const PermissionRouter = (route, index) => {
     const {
         component: Component,
         isExact,
@@ -26,7 +26,7 @@ const PermissionRouter = (route) => {
     };
 
     return (
-        <Route {...routeProps}>
+        <Route {...routeProps} key={index}>
             <WithPermission requiredPermissions={requiredPermissions}>
                 <Component {...componentProps} />
             </WithPermission>
@@ -143,8 +143,22 @@ export const paths = [
 
 ];
 
-export const Routes = (props) => {
-    const path = props.childProps.location.pathname;
+export const Routes = () => {
+    const history = useHistory();
+
+    const listenNavigation = useCallback(() => {
+        return insights.chrome.on('APP_NAVIGATION', event => {
+            if (event.domEvent) {
+                history.push(`/${event.navId}`);
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        const unregister = listenNavigation();
+        return () => unregister();
+    }, []);
+
     return (
         <Suspense
             fallback={
@@ -165,7 +179,7 @@ export const Routes = (props) => {
                 />
                 <Route render={() =>
                     (
-                        (!isPatchSetEnabled || !some(paths, p => p.to === path)) && (
+                        (!isPatchSetEnabled || !some(paths, p => p.to === history.location.pathname)) && (
                             <Redirect to={'/advisories'} />
                         )
                     )
@@ -175,13 +189,3 @@ export const Routes = (props) => {
         </Suspense>
     );
 };
-
-Routes.propTypes = {
-    childProps: PropTypes.shape({
-        location: PropTypes.shape({
-            pathname: PropTypes.string
-        }),
-        history: PropTypes.any
-    })
-};
-

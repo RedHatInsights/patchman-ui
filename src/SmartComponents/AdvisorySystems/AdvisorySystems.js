@@ -1,7 +1,7 @@
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { combineReducers } from 'redux';
 import { useHistory } from 'react-router-dom';
@@ -89,7 +89,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         onDelete: deleteFilters
     };
 
-    async function showRemediationModal(data) {
+    const showRemediationModal = useCallback(async (data) => {
         const resolvedData = await data;
         setRemediationModalCmp(() =>
             () => <RemediationWizard
@@ -97,7 +97,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                 isRemediationOpen
                 setRemediationOpen={setRemediationOpen} />);
         setRemediationOpen(!isRemediationOpen);
-    }
+    }, [isRemediationOpen]);
 
     const onSelect = useOnSelect(
         systems,
