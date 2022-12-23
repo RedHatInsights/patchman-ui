@@ -6,7 +6,9 @@ import {
     SecurityIcon
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
-import { findIndex, flatten } from 'lodash';
+import flatten from 'lodash/flatten';
+import findIndex from 'lodash/findIndex';
+import pickBy from 'lodash/pickBy';
 import qs from 'query-string';
 import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
@@ -104,10 +106,12 @@ export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
 
 export const getNewSelectedItems = (selectedItems, currentItems) => {
     let payload = [].concat(selectedItems).map(item => ({ rowId: item.id, value: item.selected }));
-    return addOrRemoveItemFromSet(
+    const mergedSelection = addOrRemoveItemFromSet(
         currentItems,
         payload
     );
+
+    return pickBy(mergedSelection, v => !!v);
 };
 
 // for expandable rows only

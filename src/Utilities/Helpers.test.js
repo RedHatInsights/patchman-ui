@@ -281,8 +281,10 @@ describe('Helpers tests', () => {
     });
 
     it.each`
-    selectedItems                | currentItems | result
-    ${{id: "a", selected: true}}  | ${{c: true, d: false}} | ${{"a": true, "c": true, "d": false}}
+    selectedItems                   | currentItems                  | result
+    ${{ id: "a", selected: true}}   | ${{c: true, d: false}}        | ${{"a": true, "c": true}}
+    ${{ id: "a", selected: true }}  | ${{ c: undefined, d: true }}  | ${{ "a": true, "d": true }}
+    ${{ id: "a", selected: true }}  | ${{ c: '', d: true }}         | ${{ "a": true, "d": true }}
      `('getNewSelectedItems: Should return new set of selected items', ({selectedItems, currentItems,result}) => {
         expect(getNewSelectedItems(selectedItems, currentItems)).toEqual(result);
     });
