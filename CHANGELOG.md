@@ -1,3 +1,21 @@
+# [1.58.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.4...v1.58.0) (2022-12-23)
+
+
+### Bug Fixes
+
+* **semantic-release:** gh token is added ([#936](https://github.com/RedHatInsights/patchman-ui/issues/936)) ([c9941a4](https://github.com/RedHatInsights/patchman-ui/commit/c9941a4cfbc0692f38b6dabe2b0778f9d691f7b2))
+* **SPM-1838:** remove unselected items completely, ignore expanded rows ([#934](https://github.com/RedHatInsights/patchman-ui/issues/934)) ([8c64441](https://github.com/RedHatInsights/patchman-ui/commit/8c64441591290a2a75626c3ec1b6c6e02eec45f6))
+
+
+### Features
+
+* **SPM-1770:** introduce smart management check for Templates page ([#931](https://github.com/RedHatInsights/patchman-ui/issues/931)) ([a8aaa0b](https://github.com/RedHatInsights/patchman-ui/commit/a8aaa0b27b2f5be243b5fd64468351bc89ca3fee))
+
+
+### Performance Improvements
+
+* **1834:** small optimization, more hooks, lesser bunle size ([60e86bb](https://github.com/RedHatInsights/patchman-ui/commit/60e86bb555fdcd83d4941cef85540ab914278189))
+
 ## [1.57.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.3...v1.57.4) (2022-11-30)
 
 
