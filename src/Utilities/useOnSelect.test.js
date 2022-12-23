@@ -146,7 +146,9 @@ describe('useOnSelect', () => {
                 selected: true
             },
             {
-                key: 'not-valid-row'
+                id: 'is-expanded-row',
+                isExpandedRow: true
+
             },
             {
                 id: 'valid-2',

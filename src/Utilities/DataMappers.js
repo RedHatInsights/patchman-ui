@@ -54,7 +54,8 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                             title: <DescriptionWithLink row={row} />
                         }
                     ],
-                    parent: index * 2
+                    parent: index * 2,
+                    isExpandedRow: true
                 }
             ];
         });
@@ -112,7 +113,8 @@ export const createSystemAdvisoriesRows = (
                             title: <DescriptionWithLink row={row} />
                         }
                     ],
-                    parent: index * 2
+                    parent: index * 2,
+                    isExpandedRow: true
                 }
             ];
         });

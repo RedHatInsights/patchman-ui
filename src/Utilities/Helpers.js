@@ -658,3 +658,7 @@ export const objUndefinedToFalse = (object) =>
         modifiedObject[key] =  object[key] === undefined ? false : object[key];
         return modifiedObject;
     }, {});
+
+export const isObject = (variable) => {
+    return (typeof variable === 'object' && variable !== null) ? true : false;
+};

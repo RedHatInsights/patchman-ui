@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchIDs } from './api';
 import { toggleAllSelectedAction } from '../store/Actions/Actions';
+import { isObject } from './Helpers';
 
 export const ID_API_ENDPOINTS = {
     advisories: '/ids/advisories',
@@ -32,9 +33,10 @@ const useCreateSelectedRow = (transformKey, constructFilename) =>
         const items = shouldUseOnlyIDs ? ids : data;
 
         items.forEach((item) => {
-            //expanded rows does not have ID and should be disabled for selection
             const id = shouldUseOnlyIDs ? item : item.id;
-            if (id) {
+
+            //expanded rows does not have ID and should be disabled for selection
+            if (!(isObject(item) && item.isExpandedRow)) {
                 toSelect.push(
                     {
                         id: transformKey ? transformKey(item) : id,
@@ -106,6 +108,7 @@ export const useOnSelect = (rawData, selectedRows, config) => {
     };
 
     const dispatchSelection = (toSelect) => {
+        console.log(toSelect, 'toSelect');
         if (customSelector) {
             customSelector(toSelect);
         } else {
