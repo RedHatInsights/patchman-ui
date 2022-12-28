@@ -31,7 +31,7 @@
     "toposort": "^2.0.2"
   },
   "jest": {
-    "coverageDirectory": "./coverage/",
+    "coverageDirectory": "./codecov-jest/",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.js",
@@ -62,6 +62,7 @@
     "@babel/preset-flow": "^7.12.1",
     "@babel/preset-react": "^7.12.10",
     "@babel/runtime": "^7.12.5",
+    "@cypress/code-coverage": "^3.10.0",
     "@cypress/react": "^6.2.0",
     "@formatjs/cli": "^3.0.5",
     "@patternfly/patternfly": "^4.217.1",
@@ -79,6 +80,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.6.3",
     "babel-plugin-dual-import": "^1.2.1",
+    "babel-plugin-istanbul": "^6.1.1",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-transform-imports": "^2.0.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
@@ -145,8 +147,9 @@
     "translations": "npm-run-all translations:*",
     "translations:extract": "npx formatjs extract ./src/*.js --out-file ./build/messages/src/Messages.json --extract-from-format-message-call",
     "translations:compile": "npx formatjs compile ./build/messages/src/Messages.json --out-file ./locales/en.json",
-    "test:ct": "cypress run --component",
-    "test:openct": "cypress open --component"
+    "test:ct": "BABEL_ENV=componentTest cypress run --component",
+    "test:openct": "cypress open --component",
+    "coverage": "bash coverage.sh"
   },
   "release": {
     "analyzeCommits": {
@@ -195,5 +198,14 @@
   ],
   "insights": {
     "appname": "patch"
+  },
+  "nyc": {
+    "report-dir": "codecov-cypress",
+    "include": [
+      "src/**/*"
+    ],
+    "exclude": [
+      "src/**/*.test.js"
+    ]
   }
 }

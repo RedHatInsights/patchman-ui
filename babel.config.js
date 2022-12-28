@@ -147,6 +147,11 @@ module.exports = {
                 patternflyTransformImports('js'),
                 fecTransformImports('cjs')
             ]
+        },
+        componentTest: {
+            plugins: [
+                'istanbul'
+            ]
         }
     }
 };
