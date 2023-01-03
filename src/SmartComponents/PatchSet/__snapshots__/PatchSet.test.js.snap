@@ -488,7 +488,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                       className=""
                                       direction="down"
                                       dropdownItems={Array []}
-                                      isFlipEnabled={false}
+                                      isFlipEnabled={true}
                                       isGrouped={false}
                                       isOpen={false}
                                       isPlain={true}
@@ -502,6 +502,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                           onToggle={[Function]}
                                         />
                                       }
+                                      zIndex={9999}
                                     >
                                       <div
                                         className="pf-c-dropdown"
@@ -512,7 +513,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                         <KebabToggle
                                           aria-haspopup={false}
                                           getMenuRef={[Function]}
-                                          id="pf-dropdown-toggle-id-3"
+                                          id="pf-dropdown-toggle-id-8"
                                           isOpen={false}
                                           isPlain={true}
                                           isText={false}
@@ -531,7 +532,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                             bubbleEvent={false}
                                             className=""
                                             getMenuRef={[Function]}
-                                            id="pf-dropdown-toggle-id-3"
+                                            id="pf-dropdown-toggle-id-8"
                                             isActive={false}
                                             isDisabled={false}
                                             isOpen={false}
@@ -553,7 +554,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                               aria-label="Actions"
                                               className="pf-c-dropdown__toggle pf-m-plain"
                                               disabled={false}
-                                              id="pf-dropdown-toggle-id-3"
+                                              id="pf-dropdown-toggle-id-8"
                                               onClick={[Function]}
                                               onKeyDown={[Function]}
                                               type="button"
@@ -776,14 +777,14 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                     }
                                   }
                                   variant="top"
-                                  widgetId="pagination-options-menu"
+                                  widgetId="options-menu"
                                 >
                                   <div
                                     className="pf-c-pagination pf-m-compact"
                                     data-ouia-component-id="top-patch-set-pagination"
                                     data-ouia-component-type="PF4/Pagination"
                                     data-ouia-safe={true}
-                                    id="pagination-options-menu-2"
+                                    id="options-menu-top-pagination"
                                   >
                                     <div
                                       className="pf-c-pagination__total-items"
@@ -848,7 +849,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                       }
                                       perPageSuffix="per page"
                                       toggleTemplate={[Function]}
-                                      widgetId="pagination-options-menu"
+                                      widgetId="options-menu-top"
                                     >
                                       <DropdownWithContext
                                         autoFocus={true}
@@ -894,7 +895,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                             </DropdownItem>,
                                           ]
                                         }
-                                        isFlipEnabled={false}
+                                        isFlipEnabled={true}
                                         isGrouped={false}
                                         isOpen={false}
                                         isPlain={true}
@@ -918,7 +919,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                             perPageComponent="div"
                                             showToggle={true}
                                             toggleTemplate={[Function]}
-                                            widgetId="pagination-options-menu"
+                                            widgetId="options-menu-top"
                                           />
                                         }
                                       >
@@ -931,7 +932,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                             aria-haspopup={true}
                                             firstIndex={1}
                                             getMenuRef={[Function]}
-                                            id="pf-dropdown-toggle-id-4"
+                                            id="pf-dropdown-toggle-id-9"
                                             isDisabled={false}
                                             isOpen={false}
                                             isPlain={true}
@@ -953,7 +954,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                             perPageComponent="div"
                                             showToggle={true}
                                             toggleTemplate={[Function]}
-                                            widgetId="pagination-options-menu"
+                                            widgetId="options-menu-top"
                                           >
                                             <div
                                               className="pf-c-options-menu__toggle pf-m-plain pf-m-text"
@@ -986,7 +987,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                 aria-haspopup="listbox"
                                                 aria-label="Items per page"
                                                 className="pf-c-options-menu__toggle-button"
-                                                id="pagination-options-menu-toggle-2"
+                                                id="options-menu-top-toggle"
                                                 isDisabled={false}
                                                 isOpen={false}
                                                 onEnter={[Function]}
@@ -1006,7 +1007,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                   data-ouia-component-type="PF4/DropdownToggle"
                                                   data-ouia-safe={true}
                                                   getMenuRef={null}
-                                                  id="pagination-options-menu-toggle-2"
+                                                  id="options-menu-top-toggle"
                                                   isActive={false}
                                                   isDisabled={false}
                                                   isOpen={false}
@@ -1032,7 +1033,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                     data-ouia-component-type="PF4/DropdownToggle"
                                                     data-ouia-safe={true}
                                                     disabled={false}
-                                                    id="pagination-options-menu-toggle-2"
+                                                    id="options-menu-top-toggle"
                                                     onClick={[Function]}
                                                     onKeyDown={[Function]}
                                                     type="button"
@@ -4396,7 +4397,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                 >
                                                                   <div
                                                                     className="pf-c-dropdown pf-m-align-right"
-                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-1"
+                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-2"
                                                                     data-ouia-component-type="PF4/Dropdown"
                                                                     data-ouia-safe={true}
                                                                   >
@@ -4404,7 +4405,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                       aria-haspopup={true}
                                                                       content="For editing access, contact your administrator."
                                                                       getMenuRef={[Function]}
-                                                                      id="pf-dropdown-toggle-id-5"
+                                                                      id="pf-dropdown-toggle-id-10"
                                                                       isOpen={false}
                                                                       isPlain={true}
                                                                       isText={false}
@@ -4448,7 +4449,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                             aria-live="off"
                                                                             className="pf-c-tooltip"
                                                                             getMenuRef={[Function]}
-                                                                            id="pf-dropdown-toggle-id-5"
+                                                                            id="pf-dropdown-toggle-id-10"
                                                                             isOpen={false}
                                                                             isPlain={true}
                                                                             isText={false}
@@ -5220,7 +5221,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                 >
                                                                   <div
                                                                     className="pf-c-dropdown pf-m-align-right"
-                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-2"
+                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-3"
                                                                     data-ouia-component-type="PF4/Dropdown"
                                                                     data-ouia-safe={true}
                                                                   >
@@ -5228,7 +5229,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                       aria-haspopup={true}
                                                                       content="For editing access, contact your administrator."
                                                                       getMenuRef={[Function]}
-                                                                      id="pf-dropdown-toggle-id-6"
+                                                                      id="pf-dropdown-toggle-id-11"
                                                                       isOpen={false}
                                                                       isPlain={true}
                                                                       isText={false}
@@ -5272,7 +5273,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                             aria-live="off"
                                                                             className="pf-c-tooltip"
                                                                             getMenuRef={[Function]}
-                                                                            id="pf-dropdown-toggle-id-6"
+                                                                            id="pf-dropdown-toggle-id-11"
                                                                             isOpen={false}
                                                                             isPlain={true}
                                                                             isText={false}
@@ -6044,7 +6045,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                 >
                                                                   <div
                                                                     className="pf-c-dropdown pf-m-align-right"
-                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-3"
+                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-4"
                                                                     data-ouia-component-type="PF4/Dropdown"
                                                                     data-ouia-safe={true}
                                                                   >
@@ -6052,7 +6053,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                       aria-haspopup={true}
                                                                       content="For editing access, contact your administrator."
                                                                       getMenuRef={[Function]}
-                                                                      id="pf-dropdown-toggle-id-7"
+                                                                      id="pf-dropdown-toggle-id-12"
                                                                       isOpen={false}
                                                                       isPlain={true}
                                                                       isText={false}
@@ -6096,7 +6097,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                             aria-live="off"
                                                                             className="pf-c-tooltip"
                                                                             getMenuRef={[Function]}
-                                                                            id="pf-dropdown-toggle-id-7"
+                                                                            id="pf-dropdown-toggle-id-12"
                                                                             isOpen={false}
                                                                             isPlain={true}
                                                                             isText={false}
@@ -6868,7 +6869,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                 >
                                                                   <div
                                                                     className="pf-c-dropdown pf-m-align-right"
-                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-4"
+                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-5"
                                                                     data-ouia-component-type="PF4/Dropdown"
                                                                     data-ouia-safe={true}
                                                                   >
@@ -6876,7 +6877,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                       aria-haspopup={true}
                                                                       content="For editing access, contact your administrator."
                                                                       getMenuRef={[Function]}
-                                                                      id="pf-dropdown-toggle-id-8"
+                                                                      id="pf-dropdown-toggle-id-13"
                                                                       isOpen={false}
                                                                       isPlain={true}
                                                                       isText={false}
@@ -6920,7 +6921,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                             aria-live="off"
                                                                             className="pf-c-tooltip"
                                                                             getMenuRef={[Function]}
-                                                                            id="pf-dropdown-toggle-id-8"
+                                                                            id="pf-dropdown-toggle-id-13"
                                                                             isOpen={false}
                                                                             isPlain={true}
                                                                             isText={false}
@@ -7692,7 +7693,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                 >
                                                                   <div
                                                                     className="pf-c-dropdown pf-m-align-right"
-                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-5"
+                                                                    data-ouia-component-id="OUIA-Generated-Dropdown-6"
                                                                     data-ouia-component-type="PF4/Dropdown"
                                                                     data-ouia-safe={true}
                                                                   >
@@ -7700,7 +7701,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                       aria-haspopup={true}
                                                                       content="For editing access, contact your administrator."
                                                                       getMenuRef={[Function]}
-                                                                      id="pf-dropdown-toggle-id-9"
+                                                                      id="pf-dropdown-toggle-id-14"
                                                                       isOpen={false}
                                                                       isPlain={true}
                                                                       isText={false}
@@ -7744,7 +7745,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                                             aria-live="off"
                                                                             className="pf-c-tooltip"
                                                                             getMenuRef={[Function]}
-                                                                            id="pf-dropdown-toggle-id-9"
+                                                                            id="pf-dropdown-toggle-id-14"
                                                                             isOpen={false}
                                                                             isPlain={true}
                                                                             isText={false}
@@ -7981,7 +7982,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                               data-ouia-component-id="bottom-patch-set-pagination"
                               data-ouia-component-type="PF4/Pagination"
                               data-ouia-safe={true}
-                              id="pagination-options-menu-bottom-3"
+                              id="pagination-options-menu-bottom-bottom-pagination"
                             >
                               <PaginationOptionsMenu
                                 className=""
@@ -8022,7 +8023,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                 }
                                 perPageSuffix="per page"
                                 toggleTemplate={[Function]}
-                                widgetId="pagination-options-menu-bottom"
+                                widgetId="pagination-options-menu-bottom-bottom"
                               >
                                 <DropdownWithContext
                                   autoFocus={true}
@@ -8068,7 +8069,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                       </DropdownItem>,
                                     ]
                                   }
-                                  isFlipEnabled={false}
+                                  isFlipEnabled={true}
                                   isGrouped={false}
                                   isOpen={false}
                                   isPlain={true}
@@ -8092,7 +8093,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                       perPageComponent="div"
                                       showToggle={true}
                                       toggleTemplate={[Function]}
-                                      widgetId="pagination-options-menu-bottom"
+                                      widgetId="pagination-options-menu-bottom-bottom"
                                     />
                                   }
                                 >
@@ -8105,7 +8106,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                       aria-haspopup={true}
                                       firstIndex={1}
                                       getMenuRef={[Function]}
-                                      id="pf-dropdown-toggle-id-5"
+                                      id="pf-dropdown-toggle-id-15"
                                       isDisabled={false}
                                       isOpen={false}
                                       isPlain={true}
@@ -8127,7 +8128,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                       perPageComponent="div"
                                       showToggle={true}
                                       toggleTemplate={[Function]}
-                                      widgetId="pagination-options-menu-bottom"
+                                      widgetId="pagination-options-menu-bottom-bottom"
                                     >
                                       <div
                                         className="pf-c-options-menu__toggle pf-m-plain pf-m-text"
@@ -8160,7 +8161,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                           aria-haspopup="listbox"
                                           aria-label="Items per page"
                                           className="pf-c-options-menu__toggle-button"
-                                          id="pagination-options-menu-bottom-toggle-3"
+                                          id="pagination-options-menu-bottom-bottom-toggle"
                                           isDisabled={false}
                                           isOpen={false}
                                           onEnter={[Function]}
@@ -8180,7 +8181,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                             data-ouia-component-type="PF4/DropdownToggle"
                                             data-ouia-safe={true}
                                             getMenuRef={null}
-                                            id="pagination-options-menu-bottom-toggle-3"
+                                            id="pagination-options-menu-bottom-bottom-toggle"
                                             isActive={false}
                                             isDisabled={false}
                                             isOpen={false}
@@ -8206,7 +8207,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                               data-ouia-component-type="PF4/DropdownToggle"
                                               data-ouia-safe={true}
                                               disabled={false}
-                                              id="pagination-options-menu-bottom-toggle-3"
+                                              id="pagination-options-menu-bottom-bottom-toggle"
                                               onClick={[Function]}
                                               onKeyDown={[Function]}
                                               type="button"

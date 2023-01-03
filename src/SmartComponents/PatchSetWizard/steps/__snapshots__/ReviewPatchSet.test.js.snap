@@ -63,14 +63,12 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
               >
                 <dl
                   className=""
-                  data-pf-content={true}
                 >
                   <TextListItem
                     component="dt"
                   >
                     <dt
                       className=""
-                      data-pf-content={true}
                     >
                       Name
                       :
@@ -81,7 +79,6 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   >
                     <dd
                       className=""
-                      data-pf-content={true}
                     >
                       test-name
                     </dd>
@@ -91,7 +88,6 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   >
                     <dt
                       className=""
-                      data-pf-content={true}
                     >
                       Description
                       :
@@ -102,7 +98,6 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   >
                     <dd
                       className=""
-                      data-pf-content={true}
                     >
                       test-description
                     </dd>
@@ -112,7 +107,6 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   >
                     <dt
                       className=""
-                      data-pf-content={true}
                     >
                       Date
                       :
@@ -123,7 +117,6 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   >
                     <dd
                       className=""
-                      data-pf-content={true}
                     >
                       2022-06-14
                     </dd>
@@ -133,7 +126,6 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   >
                     <dt
                       className=""
-                      data-pf-content={true}
                     >
                       Selected systems
                       :
@@ -144,7 +136,6 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   >
                     <dd
                       className=""
-                      data-pf-content={true}
                     >
                       2
                     </dd>
@@ -223,14 +214,12 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
               >
                 <dl
                   className=""
-                  data-pf-content={true}
                 >
                   <TextListItem
                     component="dt"
                   >
                     <dt
                       className=""
-                      data-pf-content={true}
                     >
                       Name
                       :
@@ -241,7 +230,6 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   >
                     <dd
                       className=""
-                      data-pf-content={true}
                     >
                       test-name
                     </dd>
@@ -251,7 +239,6 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   >
                     <dt
                       className=""
-                      data-pf-content={true}
                     >
                       Selected systems
                       :
@@ -262,7 +249,6 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   >
                     <dd
                       className=""
-                      data-pf-content={true}
                     >
                       2
                     </dd>
