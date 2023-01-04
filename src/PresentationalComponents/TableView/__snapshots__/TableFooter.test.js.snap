@@ -92,7 +92,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
               data-ouia-component-id="OUIA-Generated-Pagination-bottom-1"
               data-ouia-component-type="PF4/Pagination"
               data-ouia-safe={true}
-              id="pagination-options-menu-bottom-0"
+              id="pagination-options-menu-bottom-bottom-pagination"
             >
               <PaginationOptionsMenu
                 className=""
@@ -133,7 +133,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                 }
                 perPageSuffix="per page"
                 toggleTemplate={[Function]}
-                widgetId="pagination-options-menu-bottom"
+                widgetId="pagination-options-menu-bottom-bottom"
               >
                 <DropdownWithContext
                   autoFocus={true}
@@ -188,7 +188,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       </DropdownItem>,
                     ]
                   }
-                  isFlipEnabled={false}
+                  isFlipEnabled={true}
                   isGrouped={false}
                   isOpen={false}
                   isPlain={true}
@@ -212,7 +212,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       perPageComponent="div"
                       showToggle={true}
                       toggleTemplate={[Function]}
-                      widgetId="pagination-options-menu-bottom"
+                      widgetId="pagination-options-menu-bottom-bottom"
                     />
                   }
                 >
@@ -274,7 +274,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                 data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
                                 data-ouia-component-type="PF4/DropdownToggle"
                                 data-ouia-safe="true"
-                                id="pagination-options-menu-bottom-toggle-0"
+                                id="pagination-options-menu-bottom-bottom-toggle"
                                 type="button"
                               >
                                 <span
@@ -302,7 +302,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       perPageComponent="div"
                       showToggle={true}
                       toggleTemplate={[Function]}
-                      widgetId="pagination-options-menu-bottom"
+                      widgetId="pagination-options-menu-bottom-bottom"
                     >
                       <div
                         className="pf-c-options-menu__toggle pf-m-plain pf-m-text"
@@ -335,7 +335,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                           aria-haspopup="listbox"
                           aria-label="Items per page"
                           className="pf-c-options-menu__toggle-button"
-                          id="pagination-options-menu-bottom-toggle-0"
+                          id="pagination-options-menu-bottom-bottom-toggle"
                           isDisabled={false}
                           isOpen={false}
                           onEnter={[Function]}
@@ -375,7 +375,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                     data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
                                     data-ouia-component-type="PF4/DropdownToggle"
                                     data-ouia-safe="true"
-                                    id="pagination-options-menu-bottom-toggle-0"
+                                    id="pagination-options-menu-bottom-bottom-toggle"
                                     type="button"
                                   >
                                     <span
@@ -410,7 +410,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                             data-ouia-component-type="PF4/DropdownToggle"
                             data-ouia-safe={true}
                             getMenuRef={null}
-                            id="pagination-options-menu-bottom-toggle-0"
+                            id="pagination-options-menu-bottom-bottom-toggle"
                             isActive={false}
                             isDisabled={false}
                             isOpen={false}
@@ -455,7 +455,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                       data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
                                       data-ouia-component-type="PF4/DropdownToggle"
                                       data-ouia-safe="true"
-                                      id="pagination-options-menu-bottom-toggle-0"
+                                      id="pagination-options-menu-bottom-bottom-toggle"
                                       type="button"
                                     >
                                       <span
@@ -491,7 +491,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                               data-ouia-component-type="PF4/DropdownToggle"
                               data-ouia-safe={true}
                               disabled={false}
-                              id="pagination-options-menu-bottom-toggle-0"
+                              id="pagination-options-menu-bottom-bottom-toggle"
                               onClick={[Function]}
                               onKeyDown={[Function]}
                               type="button"
