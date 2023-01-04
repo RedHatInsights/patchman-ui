@@ -15,7 +15,6 @@ import LinesEllipsis from 'react-lines-ellipsis';
 import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
-import { systemsListColumns, packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 import {
     advisorySeverities,
     compoundSortValues,
@@ -77,22 +76,6 @@ export const createSortBy = (header, values, offset) => {
     }
 
     return {};
-};
-
-export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
-    orderBy = (orderBy === 'updated' && !hasLastUpload) && 'last_upload' ||
-        (orderBy === 'updated' && hasLastUpload) && packageSystemsColumns[0].key || orderBy;
-
-    let sort = `${orderDirection === 'ASC' ? '' : '-'}${orderBy}`;
-
-    //if orderBy is for a compound column reset sort value to relative compound sort value
-    Object.keys(compoundSortValues).forEach(col => {
-        if (col === orderBy) {
-            sort = compoundSortValues[col][orderDirection.toLowerCase()];
-        }
-    });
-
-    return sort;
 };
 
 export const addOrRemoveItemFromSet = (targetObj, inputArr) => {
@@ -584,15 +567,6 @@ export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
 
     return globalFilterConfig;
 
-};
-
-export const systemsColumnsMerger = (defaultColumns, isPatchSetEnabled) => {
-    let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
-    lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
-
-    let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
-
-    return [...nameAndTag, ...systemsListColumns(isPatchSetEnabled), lastSeen[0]];
 };
 
 export const convertDateToISO = (dateString)  => {

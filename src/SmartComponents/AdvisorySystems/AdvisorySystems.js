@@ -16,8 +16,8 @@ import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/
 import { exportAdvisorySystemsCSV, exportAdvisorySystemsJSON, fetchAdvisorySystems } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
-    arrayFromObj, buildFilterChips, decodeQueryparams, persistantParams,
-    remediationProvider, removeUndefinedObjectKeys, systemsColumnsMerger
+    arrayFromObj, decodeQueryparams, persistantParams,
+    remediationProvider, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
 import {
     useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter
@@ -27,6 +27,7 @@ import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAss
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
+import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -84,10 +85,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         ]
     };
 
-    const activeFiltersConfig = {
-        filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
-        onDelete: deleteFilters
-    };
+    const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 
     const showRemediationModal = useCallback(async (data) => {
         const resolvedData = await data;

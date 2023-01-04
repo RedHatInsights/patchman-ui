@@ -9,7 +9,7 @@ import Systems from './Systems';
 import toJson from 'enzyme-to-json';
 import { useFeatureFlag } from '../../Utilities/Hooks';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
-import { systemsColumnsMerger } from '../../Utilities/Helpers';
+import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
 
 initMocks();

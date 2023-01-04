@@ -17,8 +17,7 @@ import {
 } from '../../Utilities/api';
 import { systemsListDefaultFilters, featureFlags } from '../../Utilities/constants';
 import {
-    arrayFromObj, decodeQueryparams, persistantParams,
-    systemsColumnsMerger, filterSelectedActiveSystemIDs
+    arrayFromObj, decodeQueryparams, persistantParams, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
@@ -29,13 +28,14 @@ import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
-import { buildFilterConfig, buildActiveFiltersConfig } from './SystemsHelpers';
+import { buildFilterConfig, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
+import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 
 const Systems = () => {
     const store = useStore();
@@ -109,9 +109,8 @@ const Systems = () => {
 
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
 
-    const filterConfig = buildFilterConfig(search, filter, apply);
     const osFilterConfig = useOsVersionFilter(filter?.os, apply);
-    filterConfig.items = [...filterConfig.items, ...osFilterConfig];
+    const filterConfig = buildFilterConfig(search, filter, apply, osFilterConfig);
 
     const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 
