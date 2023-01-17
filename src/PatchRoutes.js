@@ -1,44 +1,37 @@
 import PropTypes from 'prop-types';
 import React, { lazy, Suspense, useCallback, useEffect } from 'react';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { Redirect, Route, Routes, Switch, useNavigate } from 'react-router-dom';
 import WithPermission from './PresentationalComponents/WithPermission/WithPermission';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import { useFeatureFlag } from './Utilities/Hooks';
 import { featureFlags } from './Utilities/constants';
 import some from 'lodash/some';
+import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
 
-const PermissionRouter = (route, index) => {
+const PermissionRouter = ({ route }) => {
     const {
         component: Component,
-        isExact,
-        path,
         props = {},
         requiredPermissions
     } = route;
-    const routeProps = {
-        isExact,
-        path
-    };
 
     const componentProps = {
         ...props,
         route: { ...route }
     };
-
     return (
-        <Route {...routeProps} key={index}>
-            <WithPermission requiredPermissions={requiredPermissions}>
-                <Component {...componentProps} />
-            </WithPermission>
-        </Route>
+        <WithPermission requiredPermissions={requiredPermissions}>
+            <Component {...componentProps} />
+        </WithPermission>
     );
 };
 
 PermissionRouter.propTypes = {
-    component: PropTypes.node,
-    isExact: PropTypes.bool,
-    path: PropTypes.string,
-    props: PropTypes.object
+    route: PropTypes.shape({
+        component: PropTypes.object,
+        requiredPermissions: PropTypes.array,
+        props: PropTypes.any
+    })
 };
 
 const Advisories = lazy(() =>
@@ -99,7 +92,7 @@ export const paths = [
         component: AdvisoryPage
     },
     {
-        path: '/advisories',
+        path: 'advisories*',
         isExact: true,
         requiredPermissions: ['patch:*:read'],
         component: Advisories
@@ -143,13 +136,13 @@ export const paths = [
 
 ];
 
-export const Routes = () => {
-    const history = useHistory();
-
+export const PatchRoutes = () => {
+    const navigate = useNavigate();
+    const chrome = useChrome();
     const listenNavigation = useCallback(() => {
-        return insights.chrome.on('APP_NAVIGATION', event => {
+        return chrome.on('APP_NAVIGATION', event => {
             if (event.domEvent) {
-                history.push(`/${event.navId}`);
+                navigate(`/${event.navId}`);
             }
         });
     }, []);
@@ -167,25 +160,13 @@ export const Routes = () => {
                 </Bullseye>
             }
         >
-            <Switch>
-                {paths.map(PermissionRouter)}
-                <Redirect
-                    from='/advisories/:advisoryId/:inventoryId'
-                    to='/systems/:inventoryId'
-                />
-                <Redirect
-                    from='/packages/:packageName/:inventoryId'
-                    to='/systems/:inventoryId'
-                />
-                <Route render={() =>
-                    (
-                        (!isPatchSetEnabled || !some(paths, p => p.to === history.location.pathname)) && (
-                            <Redirect to={'/advisories'} />
-                        )
-                    )
+            <Routes>
+                {paths.map((route, index) =>
+                    <Route path={route.path} key={index} element={<PermissionRouter route={route}/>}/>
+                    //TODO: ADD ALLL REMAINING ROUTES!!!
+                )
                 }
-                />
-            </Switch>
+            </Routes>
         </Suspense>
     );
 };

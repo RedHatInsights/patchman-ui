@@ -5,6 +5,7 @@ import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-compo
 
 const WithPermission = ({ children, requiredPermissions = [] }) => {
     const { hasAccess, isLoading } = usePermissionsWithContext(requiredPermissions);
+    //console.log(children);
     if (!isLoading) {
         return hasAccess ? children : <NotAuthorized serviceName="patch" />;
     } else {

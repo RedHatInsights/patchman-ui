@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, useNavigate } from 'react-router-dom';
 import { SortByDirection } from '@patternfly/react-table/dist/js';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
@@ -190,8 +190,9 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
     });
 };
 
-export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, applyGlobalFilter) => {
+export const useGetEntities = (fetchApi, apply, config, applyMetadata, applyGlobalFilter) => {
     const { id, packageName } = config || {};
+    const navigate = useNavigate();
     const getEntities = async (
         _items,
         { orderBy, orderDirection, page, per_page: perPage, patchParams, filters }
@@ -222,7 +223,7 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, 
         applyMetadata && applyMetadata(items.meta);
         applyGlobalFilter && applyGlobalFilter(selectedTags);
 
-        history.push(encodeURLParams({
+        navigate(encodeURLParams({
             page,
             perPage,
             sort,

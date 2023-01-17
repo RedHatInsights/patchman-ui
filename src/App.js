@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
 import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
 import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACProvider';
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
-import { getBaseName } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import './App.scss';
-import { Routes } from './Routes';
+import { PatchRoutes } from './PatchRoutes';
+import useChrome from '@redhat-cloud-services/frontend-components/useChrome';
 
 const App = () => {
     const dispatch = useDispatch();
+    const chrome = useChrome();
     const [config, setConfig] = useState({
         selectedTags: [],
         systemProfile: false
     });
 
     useEffect(() => {
-        insights.chrome.init();
-        insights.chrome.identifyApp('patch');
-
-        if (insights.chrome?.globalFilterScope) {
-            insights.chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
-                const SIDs = insights.chrome?.mapGlobalFilter?.(data, false, true)[1];
-                const TAGs = insights.chrome?.mapGlobalFilter?.(data)
+        if (chrome.globalFilterScope) {
+            chrome.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
+                const SIDs = chrome?.mapGlobalFilter?.(data, false, true)[1];
+                const TAGs = chrome?.mapGlobalFilter?.(data)
                 ?.filter(item => !item.includes('Workloads'));
 
                 const globalFilterConfig = mapGlobalFilters(TAGs, SIDs, data?.Workloads);
@@ -44,9 +41,7 @@ const App = () => {
         <React.Fragment>
             <NotificationPortal />
             <RBACProvider appName="patch">
-                <Router basename={getBaseName(window.location.pathname)}>
-                    <Routes />
-                </Router>
+                <PatchRoutes />
             </RBACProvider>
         </React.Fragment>
     );

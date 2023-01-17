@@ -1,7 +1,6 @@
 import propTypes from 'prop-types';
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
@@ -157,4 +156,4 @@ SystemAdvisories.propTypes = {
     history: propTypes.object,
     handleNoSystemData: propTypes.func
 };
-export default withRouter(SystemAdvisories);
+export default SystemAdvisories;

@@ -1,7 +1,6 @@
 import { Tab, Tabs } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import './Header.scss';
 
 const HeaderTabs = ({ history, headerOUIA }) => {
@@ -36,4 +35,4 @@ HeaderTabs.propTypes = {
     headerOUIA: propTypes.string
 };
 
-export default withRouter(HeaderTabs);
+export default HeaderTabs;

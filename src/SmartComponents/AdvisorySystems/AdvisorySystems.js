@@ -4,7 +4,6 @@ import propTypes from 'prop-types';
 import React, { useCallback } from 'react';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { combineReducers } from 'redux';
-import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
@@ -36,9 +35,8 @@ const AdvisorySystems = ({ advisoryName }) => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-    const history = useHistory();
 
-    const decodedParams = decodeQueryparams(history.location.search);
+    const decodedParams = decodeQueryparams(location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -111,7 +109,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
-    const getEntites = useGetEntities(fetchAdvisorySystems, apply, { id: advisoryName }, history);
+    const getEntites = useGetEntities(fetchAdvisorySystems, apply, { id: advisoryName });
 
     const onExport = useOnExport(advisoryName, queryParams, {
         csv: exportAdvisorySystemsCSV,

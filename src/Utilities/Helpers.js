@@ -202,19 +202,12 @@ export const createPackagesColumn = (packageCount, systemID) => (
 );
 
 export function handlePatchLink(type, name, body) {
-    if (location.href.indexOf('inventory') === -1) {
-        return (
-            <Link to={`/${type}/${name}`}>
-                {body === undefined ? name : body}
-            </Link>
-        );
-    } else {
-        return (
-            <a href={`${document.baseURI}insights/patch/${type}/${name}`}>
-                {body || name}
-            </a>
-        );
-    }
+    return (
+        <Link to={`/insights/patch/${type}/${name}`}>
+            {body || name}
+        </Link>
+    );
+
 }
 
 export const arrayFromObj = items =>

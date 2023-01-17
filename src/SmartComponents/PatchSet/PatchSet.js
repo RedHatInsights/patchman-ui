@@ -1,7 +1,7 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
@@ -33,7 +33,7 @@ const PatchSet = () => {
     setPageTitle(pageTitle);
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [firstMount, setFirstMount] = React.useState(true);
     const [hasSmartManagement, setSmartManagement] = React.useState(true);
     const patchSets = useSelector(
@@ -91,10 +91,10 @@ const PatchSet = () => {
 
     useDeepCompareEffect(() => {
         if (firstMount) {
-            apply(decodeQueryparams(history.location.search));
+            apply(decodeQueryparams(location.search));
             setFirstMount(false);
         } else {
-            history.push(encodeURLParams(queryParams));
+            navigate(encodeURLParams(queryParams), { replace: true });
             dispatch(fetchPatchSetsAction(queryParams));
         }
     }, [queryParams, firstMount]);

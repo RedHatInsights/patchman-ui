@@ -3,7 +3,6 @@ import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
@@ -14,10 +13,11 @@ import { intl } from '../../Utilities/IntlProvider';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useParams } from 'react-router-dom';
 
-const AdvisoryDetail = ({ match }) => {
+const AdvisoryDetail = () => {
     const dispatch = useDispatch();
-    const [advisoryName] = React.useState(match.params.advisoryId);
+    const { advisoryId: advisoryName } = useParams();
 
     const pageTitle = `${advisoryName} - ${intl.formatMessage(messages.titlesAdvisories)}`;
     setPageTitle(pageTitle);
@@ -82,8 +82,4 @@ const AdvisoryDetail = ({ match }) => {
     );
 };
 
-AdvisoryDetail.propTypes = {
-    match: propTypes.any
-};
-
-export default withRouter(AdvisoryDetail);
+export default AdvisoryDetail;

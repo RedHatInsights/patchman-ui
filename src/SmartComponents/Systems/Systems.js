@@ -4,7 +4,6 @@ import { Button } from '@patternfly/react-core';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
@@ -43,8 +42,6 @@ const Systems = () => {
     const pageTitle = intl.formatMessage(messages.titlesSystems);
 
     setPageTitle(pageTitle);
-
-    const history = useHistory();
     const dispatch = useDispatch();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
@@ -55,7 +52,7 @@ const Systems = () => {
 
     const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
 
-    const decodedParams = decodeQueryparams(history.location.search);
+    const decodedParams = decodeQueryparams(location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const totalItems = useSelector(
         ({ entities }) => entities?.total || 0
@@ -132,7 +129,7 @@ const Systems = () => {
         json: exportSystemsJSON
     }, dispatch);
 
-    const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
+    const getEntities = useGetEntities(fetchSystems, apply, {}, applyMetadata, applyGlobalFilter);
 
     const {
         patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal
