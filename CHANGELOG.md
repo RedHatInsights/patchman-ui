@@ -1,3 +1,10 @@
+## [1.58.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.58.0...v1.58.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* **SPM-1852:** remove read permission check ([#947](https://github.com/RedHatInsights/patchman-ui/issues/947)) ([1a5ba25](https://github.com/RedHatInsights/patchman-ui/commit/1a5ba259313824476dea36de5658fd0ee64904ef))
+
 # [1.58.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.57.4...v1.58.0) (2022-12-23)
 
 
