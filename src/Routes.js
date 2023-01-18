@@ -84,60 +84,61 @@ const Templates = lazy(() =>
 );
 
 const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
+const generalPermissions = ['patch:*:*', 'patch:*:read'];
 
 export const paths = [
     {
         path: '/advisories/:advisoryId/:inventoryId',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: InventoryDetail
     },
     {
         path: '/advisories/:advisoryId',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: AdvisoryPage
     },
     {
         path: '/advisories',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: Advisories
     },
     {
         path: '/systems/:inventoryId',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: InventoryDetail
     },
     {
         path: '/systems',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: Systems
     },
     {
         path: '/packages/:packageName/:inventoryId',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: InventoryDetail
     },
     {
         path: '/packages/:packageName',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: PackageDetail
     },
     {
         path: '/packages',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: PackagsPage
     },
     ...(isPatchSetEnabled ? [{
         path: '/templates',
         isExact: true,
-        requiredPermissions: ['patch:*:read'],
+        requiredPermissions: generalPermissions,
         component: Templates
     }] : [])
 
