@@ -74,7 +74,7 @@ const AdvisoryDetail = ({ match }) => {
                     <StackItem>
                         {status.hasError
                             && < ErrorHandler />
-                            || (!status.isLoading && <AdvisorySystems advisoryName={advisoryName} />)}
+                            || <AdvisorySystems advisoryName={advisoryName} />}
                     </StackItem>
                 </Stack>
             </Main>
