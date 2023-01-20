@@ -4,16 +4,21 @@ import {
 } from '@patternfly/react-core';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense, Fragment } from 'react';
 import messages from '../../Messages';
 import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';
-import CvesModal from '../../SmartComponents/AdvisoryDetail/CvesModal';
 import { getSeverityById, isRHAdvisory, truncateDescription } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import RebootRequired from '../Snippets/RebootRequired';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
 import ExternalLink from '../Snippets/ExternalLink';
 import AdvisoryType from '../AdvisoryType/AdvisoryType';
+
+const CvesModal = lazy(() =>
+    import(
+        /* webpackChunkName: "CvesModal" */ '../../SmartComponents/AdvisoryDetail/CvesModal'
+    )
+);
 
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const [CvesInfoModal, setCvesModal] = useState(() => () => null);
@@ -112,7 +117,9 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                     </TextContent>
                 </GridItem>
             )}
-            <CvesInfoModal />
+            <Suspense fallback={<Fragment/>}>
+                <CvesInfoModal />
+            </Suspense>
         </Grid>
     );
 };
