@@ -56,8 +56,8 @@ jest.mock('../../Utilities/Hooks', () => ({
 
 jest.mock('../../Utilities/useRemediationDataProvider', () => () => jest.fn());
 
-jest.mock('../../Utilities/Helpers', () => ({
-    ...jest.requireActual('../../Utilities/Helpers'),
+jest.mock('../../Utilities/SystemsHelpers', () => ({
+    ...jest.requireActual('../../Utilities/SystemsHelpers'),
     systemsColumnsMerger: jest.fn()
 }));
 
