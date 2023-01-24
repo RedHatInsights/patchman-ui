@@ -107,7 +107,11 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
       </FlexItem>
     </Flex>
   </GridItem>
-  <Component />
+  <Suspense
+    fallback={<React.Fragment />}
+  >
+    <Component />
+  </Suspense>
 </Grid>
 `;
 
@@ -218,6 +222,10 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
       </FlexItem>
     </Flex>
   </GridItem>
-  <Component />
+  <Suspense
+    fallback={<React.Fragment />}
+  >
+    <Component />
+  </Suspense>
 </Grid>
 `;
