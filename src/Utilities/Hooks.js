@@ -126,11 +126,9 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
 };
 
 export const setPageTitle = (title) => {
-    React.useEffect(() => {
-        if (title) {
-            document.title = `${title} - Patch | Red Hat Insights`;
-        }
-    }, [title]);
+    if (title) {
+        document.title = `${title} - Patch | Red Hat Insights`;
+    }
 };
 
 export const useDeepCompareEffect = (effect, deps) => {
