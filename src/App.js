@@ -29,7 +29,7 @@ const App = () => {
 
                 const globalFilterConfig = mapGlobalFilters(TAGs, SIDs, data?.Workloads);
 
-                if (JSON.stringify(config) === JSON.stringify(globalFilterConfig)) {
+                if (JSON.stringify(config) !== JSON.stringify(globalFilterConfig)) {
                     dispatch(globalFilter(globalFilterConfig));
                     setConfig(globalFilterConfig);
                     dispatch(changeGlobalTags(globalFilterConfig.selectedTags));
