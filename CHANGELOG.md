@@ -1,3 +1,11 @@
+## [1.58.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.58.1...v1.58.2) (2023-01-25)
+
+
+### Bug Fixes
+
+* **SPM-1857:** change global comparision to not equal sign ([#950](https://github.com/RedHatInsights/patchman-ui/issues/950)) ([a080fad](https://github.com/RedHatInsights/patchman-ui/commit/a080fad8a7d9fc21147bb6464c815bcab2f70650))
+* **SPM-1872:** page titles stays the same now ([#951](https://github.com/RedHatInsights/patchman-ui/issues/951)) ([ac4bf5a](https://github.com/RedHatInsights/patchman-ui/commit/ac4bf5a3060add97e0adcd4e654d1363c1cab6b2))
+
 ## [1.58.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.58.0...v1.58.1) (2023-01-18)
 
 
