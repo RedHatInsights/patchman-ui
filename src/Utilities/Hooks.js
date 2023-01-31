@@ -9,12 +9,13 @@ import { Spinner } from '@patternfly/react-core';
 import messages from '../Messages';
 import { compoundSortValues, exportNotifications } from './constants';
 import {
-    convertLimitOffset, createSystemsSortBy, getLimitFromPageSize,
+    convertLimitOffset, getLimitFromPageSize,
     getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO, objUndefinedToFalse
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
 import { assignSystemPatchSet, updatePatchSets } from './api';
+import { createSystemsSortBy } from './SystemsHelpers';
 // eslint-disable-next-line no-unused-vars
 import { useFlag, useFlagsStatus } from '@unleash/proxy-client-react';
 

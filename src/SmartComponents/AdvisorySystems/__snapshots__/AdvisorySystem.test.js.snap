@@ -52,6 +52,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           }
           activeFiltersConfig={
             Object {
+              "deleteTitle": "Reset filters",
               "filters": Array [],
               "onDelete": [Function],
             }
