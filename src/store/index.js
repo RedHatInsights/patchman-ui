@@ -15,7 +15,9 @@ import { AdvisorySystemsStore } from './Reducers/AdvisorySystemsStore';
 import { GlobalFilterStore } from './Reducers/GlobalFilterStore';
 import { PatchSetsReducer } from './Reducers/PatchSetsReducer';
 import { SpecificPatchSetReducer } from './Reducers/SpecificPatchSetReducer';
-import { legacy_createStore as createStore, applyMiddleware, combineReducers } from 'redux';
+import { legacy_createStore as createStore, applyMiddleware, combineReducers, compose } from 'redux';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const defaultReducers = {
     AdvisoryListStore,
@@ -35,4 +37,7 @@ export const defaultReducers = {
     notifications: notificationsReducer
 };
 
-export const store = createStore(combineReducers(defaultReducers), applyMiddleware(promiseMiddleware, notificationsMiddleware()));
+export const store = createStore(
+    combineReducers(defaultReducers),
+    composeEnhancers(applyMiddleware(promiseMiddleware, notificationsMiddleware()))
+);

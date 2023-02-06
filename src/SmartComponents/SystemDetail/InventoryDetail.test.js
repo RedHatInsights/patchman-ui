@@ -132,7 +132,7 @@ describe('InventoryPage.js', () => {
             });
         });
 
-        expect(store.getActions().filter(action => action.type === 'FETCH_SYSTEM_DETAIL').length).toEqual(2);
+        expect(store.getActions().filter(action => action.type === 'LOAD_ENTITY_FULFILLED').length).toEqual(2);
     });
 
     it('Should hide all dropdown actions when patch template flag is disabled', () => {

@@ -8,7 +8,7 @@ import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { setPageTitle, useFeatureFlag } from '../../Utilities/Hooks';
-import { InventoryDetailHead, AppInfo, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
+import { InventoryDetailHead, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
@@ -17,6 +17,7 @@ import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/Patc
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { featureFlags } from '../../Utilities/constants';
 import { useParams } from 'react-router-dom';
+import SystemDetail from './SystemDetail';
 
 const InventoryDetail = () => {
     const {  inventoryId } = useParams();
@@ -51,12 +52,6 @@ const InventoryDetail = () => {
 
     return (
         <DetailWrapper
-            onLoad={({ mergeWithDetail }) => {
-                store.replaceReducer(combineReducers({
-                    ...defaultReducers,
-                    ...mergeWithDetail(SystemDetailStore)
-                }));
-            }}
         >
             <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
             <Header
@@ -74,8 +69,10 @@ const InventoryDetail = () => {
                     }
                 ]}
             >
-                {(!loaded || insightsID) && <InventoryDetailHead hideBack
+                <InventoryDetailHead
+                    hideBack
                     showTags
+                    inventoryId={inventoryId}
                     actions={isPatchSetEnabled && [
                         {
                             title: intl.formatMessage(messages.titlesTemplateAssign),
@@ -88,6 +85,14 @@ const InventoryDetail = () => {
                             isDisabled: !patchSetName,
                             onClick: () => openUnassignSystemsModal([inventoryId])
                         }]}
+                    onLoad={({ mergeWithDetail }) => {
+                        store.replaceReducer(combineReducers({
+                            ...defaultReducers,
+                            ...mergeWithDetail(SystemDetailStore)
+                        }));
+                    }}
+                    //FIXME: remove this prop after inventory detail gets rid of activeApps in redux
+                    appList={[]}
                 >
                     <Grid>
                         <GridItem>
@@ -100,18 +105,18 @@ const InventoryDetail = () => {
                         </GridItem>
                         <GridItem>
                             {hasThirdPartyRepo &&
-                                (<Alert className='pf-u-mt-md' isInline variant="info"
-                                    title={intl.formatMessage(messages.textThirdPartyInfo)}>
-                                </Alert>)
+                    (<Alert className='pf-u-mt-md' isInline variant="info"
+                        title={intl.formatMessage(messages.textThirdPartyInfo)}>
+                    </Alert>)
                             }
                         </GridItem>
                     </Grid>
-                </InventoryDetailHead>}
+                </InventoryDetailHead>
             </Header>
             {(!insightsID && loaded)
                 ? <ErrorHandler code={204} />
                 : (<Main>
-                    <AppInfo/>
+                    <SystemDetail />
                 </Main>)}
         </DetailWrapper>);
 };

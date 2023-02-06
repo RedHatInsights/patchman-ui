@@ -18,7 +18,7 @@ const SystemDetail = ({ isInventoryApp }) => {
     );
     const [areTabsHidden, setTabsHidden] = useState(false);
 
-    const entity = useSelector(({ entityDetails }) => entityDetails.entity || {});
+    const entity = useSelector(({ entityDetails }) => entityDetails?.entity || {});
     const onTabSelect = (event, id) => {
         setActiveTabKey(id);
     };
