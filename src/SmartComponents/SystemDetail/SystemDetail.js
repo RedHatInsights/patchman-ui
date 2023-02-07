@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Tab, Tabs, TabTitleText } from '@patternfly/react-core';
 import SystemAdvisories from '../SystemAdvisories/SystemAdvisories';
-import { useSelector } from 'react-redux';
 import SystemPackages from '../SystemPackages/SystemPackages';
 import './SystemDetail.scss';
 import { intl } from '../../Utilities/IntlProvider';
@@ -18,7 +17,6 @@ const SystemDetail = ({ isInventoryApp }) => {
     );
     const [areTabsHidden, setTabsHidden] = useState(false);
 
-    const entity = useSelector(({ entityDetails }) => entityDetails?.entity || {});
     const onTabSelect = (event, id) => {
         setActiveTabKey(id);
     };
@@ -28,7 +26,7 @@ const SystemDetail = ({ isInventoryApp }) => {
         return isInventoryApp && null || <NotConnected />;
     };
 
-    return !entity.id ? null : (!areTabsHidden && (
+    return (!areTabsHidden && (
         <Tabs activeKey={activeTabKey} onSelect={onTabSelect} className={'patchTabSelect'} isHidden>
             <Tab eventKey={0} title={<TabTitleText>{intl.formatMessage(messages.titlesAdvisories)}</TabTitleText>}
                 data-ouia-component-type={`system-advisories-tab`}

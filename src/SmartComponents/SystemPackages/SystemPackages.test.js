@@ -18,6 +18,11 @@ jest.mock('react-redux', () => ({
     useSelector: jest.fn()
 }));
 
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useParams: jest.fn(() => ({ inventoryId: 'entity' }))
+}));
+
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     fetchIDs: jest.fn(() => Promise.resolve({
