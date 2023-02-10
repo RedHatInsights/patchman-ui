@@ -12,7 +12,6 @@ import { InventoryDetailHead, DetailWrapper } from '@redhat-cloud-services/front
 import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
-import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { featureFlags } from '../../Utilities/constants';
@@ -24,11 +23,11 @@ const InventoryDetail = () => {
     const store = useStore();
 
     const dispatch = useDispatch();
-    const { loaded, hasThirdPartyRepo, patchSetName } = useSelector(
+    const { hasThirdPartyRepo, patchSetName } = useSelector(
         ({ entityDetails }) => entityDetails && entityDetails || {}
     );
 
-    const { display_name: displayName, insights_id: insightsID } = useSelector(
+    const { display_name: displayName } = useSelector(
         ({ entityDetails }) => entityDetails?.entity ?? {}
     );
 
@@ -52,6 +51,13 @@ const InventoryDetail = () => {
 
     return (
         <DetailWrapper
+            onLoad={({ mergeWithDetail }) => {
+                store.replaceReducer(combineReducers({
+                    ...defaultReducers,
+                    ...mergeWithDetail(SystemDetailStore)
+                }));
+            }}
+            inventoryId={inventoryId}
         >
             <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
             <Header
@@ -85,12 +91,6 @@ const InventoryDetail = () => {
                             isDisabled: !patchSetName,
                             onClick: () => openUnassignSystemsModal([inventoryId])
                         }]}
-                    onLoad={({ mergeWithDetail }) => {
-                        store.replaceReducer(combineReducers({
-                            ...defaultReducers,
-                            ...mergeWithDetail(SystemDetailStore)
-                        }));
-                    }}
                     //FIXME: remove this prop after inventory detail gets rid of activeApps in redux
                     appList={[]}
                 >
@@ -113,11 +113,9 @@ const InventoryDetail = () => {
                     </Grid>
                 </InventoryDetailHead>
             </Header>
-            {(!insightsID && loaded)
-                ? <ErrorHandler code={204} />
-                : (<Main>
-                    <SystemDetail inventoryId={inventoryId}/>
-                </Main>)}
+            <Main>
+                <SystemDetail inventoryId={inventoryId}/>
+            </Main>
         </DetailWrapper>);
 };
 
