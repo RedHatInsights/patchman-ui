@@ -36,7 +36,9 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
         }
       }
     >
-      <SystemPackages>
+      <SystemPackages
+        inventoryId="entity"
+      >
         <TableView
           apply={[Function]}
           columns={

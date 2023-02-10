@@ -191,7 +191,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                     className="pf-l-page__main-section pf-c-page__main-section"
                     page-type=""
                   >
-                    <Component>
+                    <Component
+                      inventoryId="test-system-id"
+                    >
                       <div>
                         This is system detail
                       </div>

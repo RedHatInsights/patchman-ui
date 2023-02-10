@@ -116,7 +116,7 @@ const InventoryDetail = () => {
             {(!insightsID && loaded)
                 ? <ErrorHandler code={204} />
                 : (<Main>
-                    <SystemDetail />
+                    <SystemDetail inventoryId={inventoryId}/>
                 </Main>)}
         </DetailWrapper>);
 };
