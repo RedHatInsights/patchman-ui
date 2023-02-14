@@ -26,10 +26,12 @@ export const initialState = {
 };
 
 export const PatchSetsReducer = (state = initialState, action) => {
+    let newState = { ...state };
+
     switch (action.type) {
         case ActionTypes.FETCH_ALL_PATCH_SETS + '_FULFILLED':
             return {
-                ...state,
+                ...newState,
                 rows: action.payload.data?.map(set => ({ ...set.attributes, id: set.id })),
                 metadata: action.payload.meta || {},
                 error: {},
@@ -37,21 +39,21 @@ export const PatchSetsReducer = (state = initialState, action) => {
             };
 
         case ActionTypes.FETCH_ALL_PATCH_SETS + '_PENDING':
-            return fetchPending(state);
+            return fetchPending(newState);
 
         case ActionTypes.FETCH_ALL_PATCH_SETS + '_REJECTED':
-            return fetchRejected(state, action);
+            return fetchRejected(newState, action);
 
         case ActionTypes.CHANGE_PATCH_SET_PARAMS:
-            return changeFilters(state, action);
+            return changeFilters(newState, action);
 
         case ActionTypes.SELECT_PATCH_SET_ROW:
-            return selectRows(state, action);
+            return selectRows(newState, action);
 
         case ActionTypes.CLEAR_PATCH_SETS:
             return initialState;
 
         default:
-            return state;
+            return newState;
     }
 };

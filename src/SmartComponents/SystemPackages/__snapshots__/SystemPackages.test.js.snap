@@ -2612,6 +2612,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
           <SkeletonTable
             colSize={5}
             rowSize={20}
+            variant="compact"
           >
             <Table
               aria-label="Loading"
@@ -3372,7 +3373,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                 ]
               }
               selectVariant="checkbox"
-              variant={null}
+              variant="compact"
             >
               <Provider
                 aria-label="Loading"
@@ -3670,7 +3671,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   }
                 }
                 role="grid"
-                variant={null}
+                variant="compact"
               >
                 <TableComposable
                   aria-label="Loading"
@@ -3682,7 +3683,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   isTreeTable={false}
                   ouiaSafe={true}
                   role="grid"
-                  variant={null}
+                  variant="compact"
                 >
                   <TableComposableBase
                     aria-label="Loading"
@@ -3695,11 +3696,11 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                     isTreeTable={false}
                     ouiaSafe={true}
                     role="grid"
-                    variant={null}
+                    variant="compact"
                   >
                     <table
                       aria-label="Loading"
-                      className="pf-c-table pf-m-grid-md"
+                      className="pf-c-table pf-m-grid-md pf-m-compact"
                       data-ouia-component-id="OUIA-Generated-Table-2"
                       data-ouia-component-type="PF4/Table"
                       data-ouia-safe={true}
