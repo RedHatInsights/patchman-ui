@@ -1,74 +1,522 @@
 {
-  "advisories": {
-    "defaultMessage": "Advisories",
-    "description": "page title with capital letter"
-  },
   "affectedSystems": {
     "defaultMessage": "Affected systems",
     "description": "page title with capital letter"
   },
-  "appName": {
+  "generalAppName": {
     "defaultMessage": "Patch",
     "description": "regsiter page title"
   },
-  "cancel": {
+  "labelFiltersPackageVersionPlaceholder": {
+    "defaultMessage": "Filter by version",
+    "description": "Label for version fitler placeholder"
+  },
+  "labelsApplicableSystemsCount": {
+    "defaultMessage": "{systemsCount} applicable systems",
+    "description": "applicable systems number label"
+  },
+  "labelsBulkSelectAll": {
+    "defaultMessage": "Select all ({count})",
+    "description": "bulk select option"
+  },
+  "labelsBulkSelectNone": {
+    "defaultMessage": "Select none (0)",
+    "description": "bulk select option"
+  },
+  "labelsBulkSelectPage": {
+    "defaultMessage": "Select page ({count})",
+    "description": "bulk select option"
+  },
+  "labelsButtonCreateTemplate": {
+    "defaultMessage": "Create template",
+    "description": "button label"
+  },
+  "labelsButtonEditTemplate": {
+    "defaultMessage": "Edit template",
+    "description": "button label"
+  },
+  "labelsButtonRemoveTemplate": {
+    "defaultMessage": "Remove template",
+    "description": "button label"
+  },
+  "labelsCancel": {
     "defaultMessage": "Cancel",
-    "description": "Cancel label for general usage"
+    "description": "Button label"
   },
-  "count": {
-    "defaultMessage": "Num. systems",
-    "description": "Label for the number of systems"
+  "labelsColumnsApplicableSystems": {
+    "defaultMessage": "Applicable systems",
+    "description": "shared label"
   },
-  "delete": {
-    "defaultMessage": "Delete",
-    "description": "Delete label for general usage"
+  "labelsColumnsCVSS": {
+    "defaultMessage": "CVSS",
+    "description": "shared label"
   },
-  "edit": {
-    "defaultMessage": "Edit",
-    "description": "Edit label for general usage"
+  "labelsColumnsCveID": {
+    "defaultMessage": "CVE ID",
+    "description": "shared label"
   },
-  "loading": {
-    "defaultMessage": "Loading...",
-    "description": "Loading label for general usage"
+  "labelsColumnsInstalledVersion": {
+    "defaultMessage": "Installed version",
+    "description": "shared label"
   },
-  "no": {
-    "defaultMessage": "No",
-    "description": "No general label"
+  "labelsColumnsLatestVersion": {
+    "defaultMessage": "Latest version",
+    "description": "shared label"
   },
-  "packageUpdates": {
-    "defaultMessage": "Package updates",
-    "description": "page title with capital letters"
+  "labelsColumnsName": {
+    "defaultMessage": "Name",
+    "description": "shared label"
   },
-  "packages": {
-    "defaultMessage": "Packages",
-    "description": "page title with capital letters"
+  "labelsColumnsPublishDate": {
+    "defaultMessage": "Publish date",
+    "description": "shared label"
   },
-  "remediate": {
+  "labelsColumnsRebootRequired": {
+    "defaultMessage": "Reboot required",
+    "description": "shared label"
+  },
+  "labelsColumnsSeverity": {
+    "defaultMessage": "Severity",
+    "description": "shared label"
+  },
+  "labelsColumnsStatus": {
+    "defaultMessage": "Filter by status",
+    "description": "Label for status fitler placeholder"
+  },
+  "labelsColumnsSummary": {
+    "defaultMessage": "Summary",
+    "description": "shared label"
+  },
+  "labelsColumnsSynopsis": {
+    "defaultMessage": "Synopsis",
+    "description": "shared label"
+  },
+  "labelsColumnsTemplate": {
+    "defaultMessage": "Patch template",
+    "description": "Label for patch template column"
+  },
+  "labelsColumnsType": {
+    "defaultMessage": "Type",
+    "description": "Label for type fitler placeholder"
+  },
+  "labelsColumnsUpgradable": {
+    "defaultMessage": "Upgradable",
+    "description": "shared label"
+  },
+  "labelsCves": {
+    "defaultMessage": "CVEs",
+    "description": "label for cves info link"
+  },
+  "labelsCvesButton": {
+    "defaultMessage": "{cvesCount, plural, one {# CVE} other {# CVEs}} associated with this patch",
+    "description": "label for cves button"
+  },
+  "labelsDate": {
+    "defaultMessage": "Date",
+    "description": "Label"
+  },
+  "labelsDescription": {
+    "defaultMessage": "Description",
+    "description": "Label"
+  },
+  "labelsErrorDateLimit": {
+    "defaultMessage": "Date is before the allowable range.",
+    "description": "Label"
+  },
+  "labelsErrorInvalidDate": {
+    "defaultMessage": "The date should be valid of a type YYYY-MM-DD",
+    "description": "Label"
+  },
+  "labelsFiltersClear": {
+    "defaultMessage": "Reset filters",
+    "description": "label for remove filter chips"
+  },
+  "labelsFiltersCvesSearch": {
+    "defaultMessage": "Filter by CVE ID",
+    "description": "search filter placeholder for packages pages"
+  },
+  "labelsFiltersOsVersion": {
+    "defaultMessage": "Operating system",
+    "description": "filter for systems pages"
+  },
+  "labelsFiltersOsVersionPlaceholder": {
+    "defaultMessage": "Filter by operating system",
+    "description": "filter for systems pages"
+  },
+  "labelsFiltersPackageVersionTitle": {
+    "defaultMessage": "Version",
+    "description": "Label for version fitler title"
+  },
+  "labelsFiltersPackagesSearchPlaceHolder": {
+    "defaultMessage": "Filter by name or summary",
+    "description": "search filter placeholder for packages pages"
+  },
+  "labelsFiltersPackagesSearchTitle": {
+    "defaultMessage": "Package",
+    "description": "search filter placeholder for packages pages"
+  },
+  "labelsFiltersPublishDate": {
+    "defaultMessage": "Filter by publish date",
+    "description": "shared placeholder label"
+  },
+  "labelsFiltersReboot": {
+    "defaultMessage": "Reboot required",
+    "description": "label for reboot filter chips"
+  },
+  "labelsFiltersRebootPlaceholder": {
+    "defaultMessage": "Filter by reboot required",
+    "description": "placeholder for reboot filter chips"
+  },
+  "labelsFiltersReset": {
+    "defaultMessage": "Reset filters",
+    "description": "label for remove filter chips"
+  },
+  "labelsFiltersSearch": {
+    "defaultMessage": "Search",
+    "description": "Label for search fitler placeholder"
+  },
+  "labelsFiltersSearchAdvisoriesPlaceholder": {
+    "defaultMessage": "Filter by name or synopsis",
+    "description": "Label for search fitler placeholder"
+  },
+  "labelsFiltersSearchAdvisoriesTitle": {
+    "defaultMessage": "Advisory",
+    "description": "Label for search fitler placeholder"
+  },
+  "labelsFiltersSearchTemplatePlaceholder": {
+    "defaultMessage": "Filter by patch template",
+    "description": "Label for search fitler placeholder"
+  },
+  "labelsFiltersSearchTemplateTitle": {
+    "defaultMessage": "Patch template",
+    "description": "Label for search fitler placeholder"
+  },
+  "labelsFiltersStale": {
+    "defaultMessage": "Status",
+    "description": "Label for stale fitler title"
+  },
+  "labelsFiltersStalePlaceholder": {
+    "defaultMessage": "Filter by status",
+    "description": "Label for stale fitler placeholder"
+  },
+  "labelsFiltersStatus": {
+    "defaultMessage": "Status",
+    "description": "Label for status fitler placeholder"
+  },
+  "labelsFiltersSystemsSearch": {
+    "defaultMessage": "Filter by name",
+    "description": "search filter placeholder for systems pages"
+  },
+  "labelsFiltersSystemsSearchTitle": {
+    "defaultMessage": "System",
+    "description": "search filter placeholder for systems pages"
+  },
+  "labelsFiltersType": {
+    "defaultMessage": "Filter by type",
+    "description": "Label for type fitler placeholder"
+  },
+  "labelsFiltersUpdatable": {
+    "defaultMessage": "Patch status",
+    "description": "search filter placeholder for systems pages"
+  },
+  "labelsFiltersUpdatablePlaceholder": {
+    "defaultMessage": "Filter by patch status",
+    "description": "search filter placeholder for systems updatable pages"
+  },
+  "labelsModifiedDate": {
+    "defaultMessage": "Modified {date}",
+    "description": "Modified date label"
+  },
+  "labelsPublicDate": {
+    "defaultMessage": "Issued {date}",
+    "description": "Public date label"
+  },
+  "labelsRemediate": {
     "defaultMessage": "Remediate",
     "description": "Button label"
   },
-  "save": {
-    "defaultMessage": "Save",
-    "description": "Save label for general usage"
+  "labelsRemove": {
+    "defaultMessage": "Remove",
+    "description": "Button label"
   },
-  "search": {
-    "defaultMessage": "Search",
-    "description": "Search label for general usage"
+  "labelsRequired": {
+    "defaultMessage": "Required",
+    "description": "shared label"
   },
-  "searchPackages": {
-    "defaultMessage": "Search packages",
-    "description": "search filter placeholder for affected systems page"
+  "labelsSelectedSystems": {
+    "defaultMessage": "Selected systems",
+    "description": "label"
   },
-  "searchSystems": {
-    "defaultMessage": "Search systems",
-    "description": "search filter placeholder for affected systems page"
+  "labelsSeverity": {
+    "defaultMessage": "Severity",
+    "description": "label for cves info"
   },
-  "systems": {
+  "labelsStatusStaleSystems": {
+    "defaultMessage": "Stale systems",
+    "description": "Label for status report"
+  },
+  "labelsSystemsUpToDate": {
+    "defaultMessage": "Systems up to date",
+    "description": "Label for status report"
+  },
+  "labelsSystemsWithPatchesAvailable": {
+    "defaultMessage": "Systems with patches available",
+    "description": "Label for status report"
+  },
+  "linksLearnAboutInsights": {
+    "defaultMessage": "Learn about the Insights client",
+    "description": "no system data page button label"
+  },
+  "linksLearnMore": {
+    "defaultMessage": "Learn more",
+    "description": "Learn more"
+  },
+  "linksReadMore": {
+    "defaultMessage": "Read more",
+    "description": "Label"
+  },
+  "linksSearchSecurityRatings": {
+    "defaultMessage": "Learn more about security ratings",
+    "description": "A link label to security ratings page"
+  },
+  "notAuthorizedDescription": {
+    "defaultMessage": "Contact your organization administrator(s) for more information.",
+    "description": "Description for component which shows up when user doesn't have permission to view content"
+  },
+  "notAuthorizedTitle": {
+    "defaultMessage": "You do not have permissions to view or manage Patch",
+    "description": "Title for component which shows up when user doesn't have permission to view content"
+  },
+  "returnPreviousPage": {
+    "defaultMessage": "Return to previous page",
+    "description": "Return to previous page label for general usage"
+  },
+  "returnToLandingPage": {
+    "defaultMessage": "Go to landing page",
+    "description": "Return to landing page label for general usage"
+  },
+  "statesError": {
+    "defaultMessage": "Error",
+    "description": "Label"
+  },
+  "statesMinimumPatchPermissionsRequired": {
+    "defaultMessage": "To view the content of this page, you must be granted a minimum of Patch permissions from your Organisation Administratior",
+    "description": "No access page body"
+  },
+  "statesNoApplicableAdvisories": {
+    "defaultMessage": "No applicable advisories",
+    "description": "system up to date page title"
+  },
+  "statesNoMatchingAdvisories": {
+    "defaultMessage": "No matching advisories found",
+    "description": "Label"
+  },
+  "statesNoMatchingCve": {
+    "defaultMessage": "No matching CVES found",
+    "description": "Label"
+  },
+  "statesNoMatchingPackages": {
+    "defaultMessage": "No matching packages found",
+    "description": "Label"
+  },
+  "statesNoMatchingSystems": {
+    "defaultMessage": "No matching systems found",
+    "description": "Label"
+  },
+  "statesNoMatchingTemplate": {
+    "defaultMessage": "No matching patch template found",
+    "description": "Label"
+  },
+  "statesNoSmartManagement": {
+    "defaultMessage": "Create a content with Red Hat Smart Management",
+    "description": "Label"
+  },
+  "statesNoSmartManagementBody": {
+    "defaultMessage": "Manage your infrastructure directly from console.redhat.com by controlling the scope of package and advisory updates to be installed on selected systems based on criteria you define, providing you with consistent content across environments and time from the console. {br} {br} Creating content templates from console.redhat.com is a premium feature only available with Red Hat Smart Management.",
+    "description": "Label"
+  },
+  "statesNoTemplate": {
+    "defaultMessage": "No patch template",
+    "description": "Label"
+  },
+  "statesNoTemplateBody": {
+    "defaultMessage": "You have not created any patch templates",
+    "description": "Label"
+  },
+  "statesRequiresPatchPermissions": {
+    "defaultMessage": "This application requires Patch permissions",
+    "description": "No access page title"
+  },
+  "statesSystemUpToDate": {
+    "defaultMessage": "This system is up to date, based on package information submitted at the most recent system check-in",
+    "description": "system up to date page body"
+  },
+  "templateDateField": {
+    "defaultMessage": "Patch template date",
+    "description": "Field name of the patch template wizard"
+  },
+  "templateDateUpto": {
+    "defaultMessage": "Upto",
+    "description": "Field text of the patch template wizard"
+  },
+  "templateDescription": {
+    "defaultMessage": "Schedule patch template",
+    "description": "description of the patch template wizard"
+  },
+  "templateEdit": {
+    "defaultMessage": "Edit patch template",
+    "description": "step name of the patch template wizard"
+  },
+  "templateError": {
+    "defaultMessage": "There was a problem processing the patch template. Please try again. If the problem persists, contact <a>Red Hat support</a>",
+    "description": "error text for the patch template wizard"
+  },
+  "templateNew": {
+    "defaultMessage": "New patch template",
+    "description": "step name of the patch template wizard"
+  },
+  "templateNoSystemSelected": {
+    "defaultMessage": "At least one system must be selected. Actions must be associated to a system to be added to a playbook.",
+    "description": "validation text of the patch template wizard"
+  },
+  "templateReview": {
+    "defaultMessage": "Review patch template",
+    "description": "step name of the patch template wizard"
+  },
+  "templateSelectSystems": {
+    "defaultMessage": "Select systems",
+    "description": "step name of the patch template wizard"
+  },
+  "templateTitle": {
+    "defaultMessage": "Create patch template",
+    "description": "title of the patch template wizard"
+  },
+  "templateTitleAssignSystem": {
+    "defaultMessage": "Assign system(s) to a patch template",
+    "description": "title of the patch template wizard"
+  },
+  "textConfigurationInProgress": {
+    "defaultMessage": "Configuration in progress",
+    "description": "text for the patch template"
+  },
+  "textEmptyStateBody": {
+    "defaultMessage": "To continue, edit your filter settings and search again.",
+    "description": "text for the Empty state body"
+  },
+  "textErrorSomethingWrong": {
+    "defaultMessage": "Something went wrong",
+    "description": "text for the error state body"
+  },
+  "textLockVersionTooltip": {
+    "defaultMessage": "Your RHEL version is locked at version {lockedVersion}",
+    "description": "Tooltip text for vesrion lock column"
+  },
+  "textNoVersionAvailable": {
+    "defaultMessage": "No version is available",
+    "description": "text to notify there is not available version"
+  },
+  "textPatchTemplatePending": {
+    "defaultMessage": "Please allow a few minutes to set up a patch template. You will receive a notification when finished.",
+    "description": "text for the patch template"
+  },
+  "textPatchTemplateReview": {
+    "defaultMessage": "Review the information below and click <b>Submit</b> to complete patch template creation",
+    "description": "text for the patch template"
+  },
+  "textPatchTemplateSuccessfuly": {
+    "defaultMessage": "Patch template configuration successful",
+    "description": "text for the patch template"
+  },
+  "textRebootIsRequired": {
+    "defaultMessage": "Reboot is required",
+    "description": "Advisories table cell text"
+  },
+  "textReturnToApp": {
+    "defaultMessage": "Return to application",
+    "description": "text for wizards"
+  },
+  "textTemplateAddToExisting": {
+    "defaultMessage": "Add to existing patch template",
+    "description": "text for patch template wizard"
+  },
+  "textTemplateChoose": {
+    "defaultMessage": "Choose a patch template",
+    "description": "text for patch template wizard"
+  },
+  "textTemplateCreateNew": {
+    "defaultMessage": "Create new patch template",
+    "description": "text for patch template wizard"
+  },
+  "textTemplateReviewSystems": {
+    "defaultMessage": "You will be able to adjust your selection anytime. A system can have only one patch template, therefore if you assign a new patch template to the system, it will be overwritten.",
+    "description": "text for patch template wizard"
+  },
+  "textTemplateSelectedSystems": {
+    "defaultMessage": "You selected {systemsCount, plural, one {<b> # </b> system } other {<b> # </b> systems }}",
+    "description": "text for patch template wizard"
+  },
+  "textThirdPartyInfo": {
+    "defaultMessage": "This system has content that is managed by repositories other than the Red Hat CDN",
+    "description": "text about the third paty managed hosts"
+  },
+  "textUnassignSystemsStatement": {
+    "defaultMessage": "Do you want to remove the {systemsCount, plural, one {<b> # </b> selected system } other {<b> # </b> selected systems }} from assigned Patch templates?",
+    "description": "text about systems being removed"
+  },
+  "textUnassignSystemsTitle": {
+    "defaultMessage": "Remove systems from patch template",
+    "description": "text about systems being removed"
+  },
+  "textUnassignSystemsWarning": {
+    "defaultMessage": "There {systemsCount, plural, one {is <b> # </b> system } other { are <b> # </b> systems }} you are trying to remove that {systemsCount, plural, one {is} other {are}} not assigned to any existing Patch template. This action will not affect {systemsCount, plural, one {it} other {them}}.",
+    "description": "warning about systems without patch template assigned"
+  },
+  "titlesAdvisories": {
+    "defaultMessage": "Advisories",
+    "description": "page title with capital letter"
+  },
+  "titlesAdvisoryType": {
+    "defaultMessage": "Advisory type",
+    "description": "title with capital letter"
+  },
+  "titlesMostImpactfulAdvisories": {
+    "defaultMessage": "Most impactful advisories",
+    "description": "page title with capital letter"
+  },
+  "titlesPackages": {
+    "defaultMessage": "Packages",
+    "description": "page title with capital letters"
+  },
+  "titlesPatchAdvisories": {
+    "defaultMessage": "Patch advisories",
+    "description": "title for Advisories page"
+  },
+  "titlesPatchPackages": {
+    "defaultMessage": "Patch packages",
+    "description": "title for Packages page"
+  },
+  "titlesPatchSystems": {
+    "defaultMessage": "Patch systems",
+    "description": "title for Systems page"
+  },
+  "titlesSystems": {
     "defaultMessage": "Systems",
     "description": "title with capital letters"
   },
-  "yes": {
-    "defaultMessage": "Yes",
-    "description": "Yes general label"
+  "titlesTemplate": {
+    "defaultMessage": "Patch template",
+    "description": "page title with capital letter"
+  },
+  "titlesTemplateAssign": {
+    "defaultMessage": "Assign to a template",
+    "description": "title with capital letters"
+  },
+  "titlesTemplateRemoveMultipleButton": {
+    "defaultMessage": "Remove from a template",
+    "description": "title with capital letters"
+  },
+  "viewPackagesAndErrata": {
+    "defaultMessage": "View packages and errata at access.redhat.com",
+    "description": "A link label to access.redhat.com "
   }
 }
