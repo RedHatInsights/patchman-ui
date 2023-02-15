@@ -6,8 +6,10 @@ import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import TableView from '../../PresentationalComponents/TableView/TableView';
-import { fetchPatchSetsAction, changePatchSetsParams,
-    selectPatchSetRow, clearPatchSetsAction } from '../../store/Actions/Actions';
+import {
+    fetchPatchSetsAction, changePatchSetsParams,
+    selectPatchSetRow, clearPatchSetsAction
+} from '../../store/Actions/Actions';
 import { deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
@@ -16,14 +18,18 @@ import {
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { patchSetColumns, CreatePatchSetButton as createPatchSetButton,
-    patchSetRowActions, CustomActionsToggle } from './PatchSetAssets';
+import {
+    patchSetColumns, CreatePatchSetButton as createPatchSetButton,
+    patchSetRowActions, CustomActionsToggle
+} from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
-import { patchSetDeleteNotifications } from '../../Utilities/constants';
+import { patchSetDeleteNotifications, TEMPLATES_DOCS_LINK } from '../../Utilities/constants';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
+import { ExternalLinkAltIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
+import { Popover } from '@patternfly/react-core';
 
 const PatchSet = () => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
@@ -146,7 +152,38 @@ const PatchSet = () => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.titlesTemplate)} headerOUIA={'advisories'} />
+            <Header
+                headerOUIA={'advisories'}
+                title={<span>
+                    {intl.formatMessage(messages.titlesTemplate)}
+                    <Popover
+                        id="template-header-title-popover"
+                        aria-describedby="template-header-title-popover"
+                        aria-labelledby="template-header-title-popover"
+                        hasAutoWidth
+                        maxWidth="320px"
+                        position="right"
+                        enableFlip
+                        headerContent={
+                            intl.formatMessage(messages.templatePopoverHeader)
+                        }
+                        bodyContent={
+                            intl.formatMessage(messages.templatePopoverBody)
+                        }
+                        footerContent={
+                            <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
+                                {intl.formatMessage(messages.linksReadMore)} <ExternalLinkAltIcon />
+                            </a>
+                        }
+                    >
+                        <OutlinedQuestionCircleIcon
+                            color="var(--pf-global--secondary-color--100)"
+                            className="pf-u-ml-sm"
+                            style={{ verticalAlign: '0', fontSize: 16, cursor: 'pointer' }}
+                        />
+                    </Popover>
+                </span>}
+            />
             {patchSetState.isPatchSetWizardOpen &&
                 <PatchSetWizard
                     systemsIDs={patchSetState.systemsIDs}

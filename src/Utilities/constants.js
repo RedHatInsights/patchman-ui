@@ -284,3 +284,6 @@ export const patchSetUnassignSystemsNotifications = (systemsCount) => ({
         variant: 'success'
     }
 });
+
+export const TEMPLATES_DOCS_LINK = 'https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/'
+    + 'system_patching_using_ansible_playbooks_via_remediations/index';
