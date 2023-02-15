@@ -1,3 +1,10 @@
+## [1.59.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.0...v1.59.1) (2023-02-15)
+
+
+### Bug Fixes
+
+* Pagination fixes (loading skeletons, margins) ([#959](https://github.com/RedHatInsights/patchman-ui/issues/959)) ([6dfc2d2](https://github.com/RedHatInsights/patchman-ui/commit/6dfc2d2cd94a78b512aed4acb211b5077c4f9a0f))
+
 # [1.59.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.58.2...v1.59.0) (2023-02-15)
 
 
