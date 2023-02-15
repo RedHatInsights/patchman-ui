@@ -46,7 +46,53 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
       >
         <Header
           headerOUIA="advisories"
-          title="Patch template"
+          title={
+            <span>
+              Templates
+              <Popover
+                aria-describedby="template-header-title-popover"
+                aria-labelledby="template-header-title-popover"
+                bodyContent="Templates allow you to control the scope of package and advisory updates to be installed on selected systems."
+                enableFlip={true}
+                footerContent={
+                  <a
+                    href="https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/system_patching_using_ansible_playbooks_via_remediations/index"
+                    rel="noopener noreferrer"
+                    target="__blank"
+                  >
+                    Read more
+                     
+                    <ExternalLinkAltIcon
+                      color="currentColor"
+                      noVerticalAlign={false}
+                      size="sm"
+                    />
+                  </a>
+                }
+                hasAutoWidth={true}
+                headerContent="About Templates"
+                id="template-header-title-popover"
+                maxWidth="320px"
+                position="right"
+              >
+                <span>
+                  <OutlinedQuestionCircleIcon
+                    className="pf-u-ml-sm pointer cves-header-questionmark"
+                    color="var(--pf-global--secondary-color--100)"
+                    noVerticalAlign={false}
+                    size="sm"
+                    style={
+                      Object {
+                        "cursor": "pointer",
+                        "fontSize": 16,
+                        "verticalAlign": "0",
+                      }
+                    }
+                  />
+                </span>
+              </Popover>
+            </span>
+          }
         >
           <PageHeader
             data-ouia-component-type="advisories-page-header"
@@ -57,7 +103,53 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
               widget-type="InsightsPageHeader"
             >
               <PageHeaderTitle
-                title="Patch template"
+                title={
+                  <span>
+                    Templates
+                    <Popover
+                      aria-describedby="template-header-title-popover"
+                      aria-labelledby="template-header-title-popover"
+                      bodyContent="Templates allow you to control the scope of package and advisory updates to be installed on selected systems."
+                      enableFlip={true}
+                      footerContent={
+                        <a
+                          href="https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/system_patching_using_ansible_playbooks_via_remediations/index"
+                          rel="noopener noreferrer"
+                          target="__blank"
+                        >
+                          Read more
+                           
+                          <ExternalLinkAltIcon
+                            color="currentColor"
+                            noVerticalAlign={false}
+                            size="sm"
+                          />
+                        </a>
+                      }
+                      hasAutoWidth={true}
+                      headerContent="About Templates"
+                      id="template-header-title-popover"
+                      maxWidth="320px"
+                      position="right"
+                    >
+                      <span>
+                        <OutlinedQuestionCircleIcon
+                          className="pf-u-ml-sm pointer cves-header-questionmark"
+                          color="var(--pf-global--secondary-color--100)"
+                          noVerticalAlign={false}
+                          size="sm"
+                          style={
+                            Object {
+                              "cursor": "pointer",
+                              "fontSize": 16,
+                              "verticalAlign": "0",
+                            }
+                          }
+                        />
+                      </span>
+                    </Popover>
+                  </span>
+                }
               >
                 <Title
                   className=""
@@ -72,7 +164,208 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                     data-ouia-safe={true}
                     widget-type="InsightsPageHeaderTitle"
                   >
-                    Patch template
+                    <span>
+                      Templates
+                      <Popover
+                        aria-describedby="template-header-title-popover"
+                        aria-labelledby="template-header-title-popover"
+                        bodyContent="Templates allow you to control the scope of package and advisory updates to be installed on selected systems."
+                        enableFlip={true}
+                        footerContent={
+                          <a
+                            href="https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/system_patching_using_ansible_playbooks_via_remediations/index"
+                            rel="noopener noreferrer"
+                            target="__blank"
+                          >
+                            Read more
+                             
+                            <ExternalLinkAltIcon
+                              color="currentColor"
+                              noVerticalAlign={false}
+                              size="sm"
+                            />
+                          </a>
+                        }
+                        hasAutoWidth={true}
+                        headerContent="About Templates"
+                        id="template-header-title-popover"
+                        maxWidth="320px"
+                        position="right"
+                      >
+                        <Popper
+                          appendTo={[Function]}
+                          distance={25}
+                          enableFlip={true}
+                          flipBehavior={
+                            Array [
+                              "top",
+                              "bottom",
+                              "left",
+                              "right",
+                              "top-start",
+                              "top-end",
+                              "bottom-start",
+                              "bottom-end",
+                              "left-start",
+                              "left-end",
+                              "right-start",
+                              "right-end",
+                            ]
+                          }
+                          isVisible={false}
+                          onDocumentClick={[Function]}
+                          onDocumentKeyDown={[Function]}
+                          onTriggerClick={[Function]}
+                          placement="right"
+                          popper={
+                            <ForwardRef
+                              active={false}
+                              aria-describedby="template-header-title-popover"
+                              aria-labelledby="template-header-title-popover"
+                              aria-modal="true"
+                              className="pf-c-popover pf-m-width-auto"
+                              focusTrapOptions={
+                                Object {
+                                  "clickOutsideDeactivates": true,
+                                  "fallbackFocus": [Function],
+                                  "returnFocusOnDeactivate": true,
+                                  "tabbableOptions": Object {
+                                    "displayCheck": "none",
+                                  },
+                                }
+                              }
+                              onMouseDown={[Function]}
+                              preventScrollOnDeactivate={true}
+                              role="dialog"
+                              style={
+                                Object {
+                                  "maxWidth": "320px",
+                                  "minWidth": null,
+                                  "opacity": 0,
+                                  "transition": "opacity 300ms cubic-bezier(.54, 1.5, .38, 1.11)",
+                                }
+                              }
+                            >
+                              <PopoverArrow />
+                              <PopoverContent>
+                                <PopoverCloseButton
+                                  aria-label="Close"
+                                  onClose={[Function]}
+                                />
+                                <PopoverHeader
+                                  alertSeverityScreenReaderText="undefined alert:"
+                                  icon={null}
+                                  id="popover-template-header-title-popover-header"
+                                  titleHeadingLevel="h6"
+                                >
+                                  About Templates
+                                </PopoverHeader>
+                                <PopoverBody
+                                  id="popover-template-header-title-popover-body"
+                                >
+                                  Templates allow you to control the scope of package and advisory updates to be installed on selected systems.
+                                </PopoverBody>
+                                <PopoverFooter
+                                  id="popover-template-header-title-popover-footer"
+                                >
+                                  <a
+                                    href="https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/system_patching_using_ansible_playbooks_via_remediations/index"
+                                    rel="noopener noreferrer"
+                                    target="__blank"
+                                  >
+                                    Read more
+                                     
+                                    <ExternalLinkAltIcon
+                                      color="currentColor"
+                                      noVerticalAlign={false}
+                                      size="sm"
+                                    />
+                                  </a>
+                                </PopoverFooter>
+                              </PopoverContent>
+                            </ForwardRef>
+                          }
+                          popperMatchesTriggerWidth={false}
+                          positionModifiers={
+                            Object {
+                              "bottom": "pf-m-bottom",
+                              "bottom-end": "pf-m-bottom-right",
+                              "bottom-start": "pf-m-bottom-left",
+                              "left": "pf-m-left",
+                              "left-end": "pf-m-left-bottom",
+                              "left-start": "pf-m-left-top",
+                              "right": "pf-m-right",
+                              "right-end": "pf-m-right-bottom",
+                              "right-start": "pf-m-right-top",
+                              "top": "pf-m-top",
+                              "top-end": "pf-m-top-right",
+                              "top-start": "pf-m-top-left",
+                            }
+                          }
+                          removeFindDomNode={false}
+                          trigger={
+                            <span>
+                              <OutlinedQuestionCircleIcon
+                                className="pf-u-ml-sm pointer cves-header-questionmark"
+                                color="var(--pf-global--secondary-color--100)"
+                                noVerticalAlign={false}
+                                size="sm"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "fontSize": 16,
+                                    "verticalAlign": "0",
+                                  }
+                                }
+                              />
+                            </span>
+                          }
+                          zIndex={9999}
+                        >
+                          <FindRefWrapper
+                            onFoundRef={[Function]}
+                          >
+                            <span>
+                              <OutlinedQuestionCircleIcon
+                                className="pf-u-ml-sm pointer cves-header-questionmark"
+                                color="var(--pf-global--secondary-color--100)"
+                                noVerticalAlign={false}
+                                size="sm"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "fontSize": 16,
+                                    "verticalAlign": "0",
+                                  }
+                                }
+                              >
+                                <svg
+                                  aria-hidden={true}
+                                  aria-labelledby={null}
+                                  className="pf-u-ml-sm pointer cves-header-questionmark"
+                                  fill="var(--pf-global--secondary-color--100)"
+                                  height="1em"
+                                  role="img"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "fontSize": 16,
+                                      "verticalAlign": "0",
+                                    }
+                                  }
+                                  viewBox="0 0 512 512"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 448c-110.532 0-200-89.431-200-200 0-110.495 89.472-200 200-200 110.491 0 200 89.471 200 200 0 110.53-89.431 200-200 200zm107.244-255.2c0 67.052-72.421 68.084-72.421 92.863V300c0 6.627-5.373 12-12 12h-45.647c-6.627 0-12-5.373-12-12v-8.659c0-35.745 27.1-50.034 47.579-61.516 17.561-9.845 28.324-16.541 28.324-29.579 0-17.246-21.999-28.693-39.784-28.693-23.189 0-33.894 10.977-48.942 29.969-4.057 5.12-11.46 6.071-16.666 2.124l-27.824-21.098c-5.107-3.872-6.251-11.066-2.644-16.363C184.846 131.491 214.94 112 261.794 112c49.071 0 101.45 38.304 101.45 88.8zM298 368c0 23.159-18.841 42-42 42s-42-18.841-42-42 18.841-42 42-42 42 18.841 42 42z"
+                                  />
+                                </svg>
+                              </OutlinedQuestionCircleIcon>
+                            </span>
+                          </FindRefWrapper>
+                        </Popper>
+                      </Popover>
+                    </span>
                   </h1>
                 </Title>
               </PageHeaderTitle>

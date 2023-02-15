@@ -507,6 +507,16 @@ export default defineMessages({
         description: 'validation text of the patch template wizard',
         defaultMessage: 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.'
     },
+    templatePopoverBody: {
+        id: 'templatePopoverBody',
+        description: 'Template page header popover body',
+        defaultMessage: 'Templates allow you to control the scope of package and advisory updates to be installed on selected systems.'
+    },
+    templatePopoverHeader: {
+        id: 'templatePopoverHeader',
+        description: 'Template page header popover title',
+        defaultMessage: 'About Templates'
+    },
     templateReview: {
         id: 'templateReview',
         description: 'step name of the patch template wizard',
@@ -670,7 +680,7 @@ export default defineMessages({
     titlesTemplate: {
         id: 'titlesTemplate',
         description: 'page title with capital letter',
-        defaultMessage: 'Patch template'
+        defaultMessage: 'Templates'
     },
     titlesTemplateAssign: {
         id: 'titlesTemplateAssign',

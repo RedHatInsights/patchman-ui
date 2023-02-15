@@ -35,8 +35,8 @@ objects:
               title: 'Packages'
               href: '/insights/patch/packages'
             - appId: 'patch'
-              title: 'Patch Template'
-              href: '/insights/patch/patch-template'
+              title: 'Templates'
+              href: '/insights/patch/templates'
       module:
         manifestLocation: "/apps/patch/fed-mods.json"
         modules:
