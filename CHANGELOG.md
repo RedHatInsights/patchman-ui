@@ -1,3 +1,15 @@
+# [1.59.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.58.2...v1.59.0) (2023-02-15)
+
+
+### Bug Fixes
+
+* Fix patch templates page not receiving redux updates ([#958](https://github.com/RedHatInsights/patchman-ui/issues/958)) ([41668f2](https://github.com/RedHatInsights/patchman-ui/commit/41668f27e9a0a506ad08fe24c2bde5487e428661))
+
+
+### Features
+
+* **Templates:** Update templates page header ([#960](https://github.com/RedHatInsights/patchman-ui/issues/960)) ([c11f4f9](https://github.com/RedHatInsights/patchman-ui/commit/c11f4f9a6514126cad57bb4069c39a9dc9504a2c))
+
 ## [1.58.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.58.1...v1.58.2) (2023-01-25)
 
 
