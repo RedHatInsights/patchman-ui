@@ -10,7 +10,7 @@ import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import TableFooter from './TableFooter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { ToolbarItem } from '@patternfly/react-core';
+import { Skeleton, ToolbarItem } from '@patternfly/react-core';
 
 const TableView = ({
     columns,
@@ -59,19 +59,21 @@ const TableView = ({
             {
                 (<React.Fragment>
                     {(hasError || metadata.has_systems === false)
-                        ? <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState}  metadata={metadata} />
+                        ? <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} metadata={metadata} />
                         : <React.Fragment>
                             <PrimaryToolbar
-                                pagination={{
-                                    itemCount: metadata.total_items,
-                                    page,
-                                    perPage,
-                                    isCompact: true,
-                                    onSetPage,
-                                    onPerPageSelect,
-                                    ouiaId: `top-${paginationOUIA}`,
-                                    isDisabled: metadata.total_items === 0
-                                }}
+                                pagination={isLoading
+                                    ? <Skeleton fontSize="xl" width="200px" style={{ margin: 10 }} />
+                                    : {
+                                        itemCount: metadata.total_items,
+                                        page,
+                                        perPage,
+                                        isCompact: true,
+                                        onSetPage,
+                                        onPerPageSelect,
+                                        ouiaId: `top-${paginationOUIA}`,
+                                        isDisabled: metadata.total_items === 0
+                                    }}
                                 filterConfig={filterConfig}
                                 activeFiltersConfig={{
                                     filters: buildFilterChips(filter, search, searchChipLabel),
@@ -102,7 +104,7 @@ const TableView = ({
                                 </ToolbarItem>}
                             </PrimaryToolbar>
                             {isLoading ? <SkeletonTable colSize={5} rowSize={20} variant={compact && TableVariant.compact}/> :
-                                <><Table
+                                <Table
                                     aria-label="Patch table view"
                                     cells={columns}
                                     onSelect={metadata.total_items && onSelect}
@@ -119,14 +121,17 @@ const TableView = ({
                                 >
                                     <TableHeader />
                                     <TableBody />
-                                </Table><TableFooter
-                                    totalItems={metadata.total_items}
-                                    perPage={perPage}
-                                    page={page}
-                                    onSetPage={onSetPage}
-                                    onPerPageSelect={onPerPageSelect}
-                                    paginationOUIA={`bottom-${paginationOUIA}`} />
-                                </>}
+                                </Table>
+                            }
+                            <TableFooter
+                                isLoading={isLoading}
+                                totalItems={metadata.total_items}
+                                perPage={perPage}
+                                page={page}
+                                onSetPage={onSetPage}
+                                onPerPageSelect={onPerPageSelect}
+                                paginationOUIA={`bottom-${paginationOUIA}`}
+                            />
                         </React.Fragment>
                     }
                 </React.Fragment>)
