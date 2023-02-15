@@ -27,9 +27,9 @@ import { patchSetDeleteNotifications, TEMPLATES_DOCS_LINK } from '../../Utilitie
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
-import { NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
 import { ExternalLinkAltIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
+import { NoPatchSetList, NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
 
 const PatchSet = () => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
@@ -191,25 +191,29 @@ const PatchSet = () => {
                     patchSetID={patchSetState.patchSetID}
                 />}
             <Main>
-                {hasSmartManagement ? <TableView
-                    columns={patchSetColumns}
-                    compact
-                    onSetPage={onSetPage}
-                    onPerPageSelect={onPerPageSelect}
-                    onSort={onSort}
-                    selectedRows={IS_SELECTION_ENABLED && selectedRows}
-                    onSelect={IS_SELECTION_ENABLED && onSelect}
-                    sortBy={sortBy}
-                    apply={apply}
-                    tableOUIA={'patch-set-table'}
-                    paginationOUIA={'patch-set-pagination'}
-                    store={{ rows, metadata, status, queryParams }}
-                    actionsConfig={(patchSets?.length > 0) && actionsConfig}
-                    filterConfig={filterConfig}
-                    searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
-                    CreatePatchSetButton={CreatePatchSetButton}
-                    actionsToggle={!hasAccess ? CustomActionsToggle : null}
-                /> : <NoSmartManagement />}
+                {hasSmartManagement
+                    ? rows.length === 0
+                        ? <NoPatchSetList Button={CreatePatchSetButton}/>
+                        : <TableView
+                            columns={patchSetColumns}
+                            compact
+                            onSetPage={onSetPage}
+                            onPerPageSelect={onPerPageSelect}
+                            onSort={onSort}
+                            selectedRows={IS_SELECTION_ENABLED && selectedRows}
+                            onSelect={IS_SELECTION_ENABLED && onSelect}
+                            sortBy={sortBy}
+                            apply={apply}
+                            tableOUIA={'patch-set-table'}
+                            paginationOUIA={'patch-set-pagination'}
+                            store={{ rows, metadata, status, queryParams }}
+                            actionsConfig={(patchSets?.length > 0) && actionsConfig}
+                            filterConfig={filterConfig}
+                            searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
+                            CreatePatchSetButton={CreatePatchSetButton}
+                            actionsToggle={!hasAccess ? CustomActionsToggle : null}
+                        />
+                    : <NoSmartManagement />}
             </Main>
         </React.Fragment>
     );

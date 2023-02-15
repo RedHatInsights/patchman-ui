@@ -955,7 +955,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                         <Button
                                           isAriaDisabled={true}
                                         >
-                                          Create template
+                                          Create a template
                                         </Button>
                                       }
                                       zIndex={9999}
@@ -985,7 +985,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                               tabIndex={null}
                                               type="button"
                                             >
-                                              Create template
+                                              Create a template
                                             </button>
                                           </ButtonBase>
                                         </Button>
