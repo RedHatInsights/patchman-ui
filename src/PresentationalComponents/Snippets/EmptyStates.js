@@ -5,8 +5,8 @@ import {
     EmptyStateVariant,
     Title
 } from '@patternfly/react-core';
-import SearchIcon from '@patternfly/react-icons/dist/js/icons/search-icon';
-import LockIcon from '@patternfly/react-icons/dist/js/icons/lock-icon';
+import { SearchIcon } from '@patternfly/react-icons';
+import { LockIcon } from '@patternfly/react-icons';
 import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';

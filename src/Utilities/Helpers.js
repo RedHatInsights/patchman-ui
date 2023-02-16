@@ -5,7 +5,7 @@ import {
     EnhancementIcon, InfoCircleIcon, LongArrowAltUpIcon,
     SecurityIcon
 } from '@patternfly/react-icons';
-import { SortByDirection } from '@patternfly/react-table/dist/js';
+import { SortByDirection } from '@patternfly/react-table';
 import flatten from 'lodash/flatten';
 import findIndex from 'lodash/findIndex';
 import pickBy from 'lodash/pickBy';

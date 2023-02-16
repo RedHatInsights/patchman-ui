@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import { SortByDirection } from '@patternfly/react-table/dist/js';
+import { SortByDirection } from '@patternfly/react-table';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';

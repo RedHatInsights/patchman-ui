@@ -138,7 +138,7 @@ module.exports = {
         },
         production: {
             plugins: [
-                patternflyTransformImports('js'),
+                patternflyTransformImports('esm'),
                 fecTransformImports('cjs')
             ]
         },

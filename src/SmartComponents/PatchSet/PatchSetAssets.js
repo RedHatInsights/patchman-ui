@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Tooltip } from '@patternfly/react-core';
-import { sortable } from '@patternfly/react-table/dist/js';
+import { sortable } from '@patternfly/react-table';
 import {
     EllipsisVIcon
 } from '@patternfly/react-icons';

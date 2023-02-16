@@ -1,5 +1,5 @@
 import { Flex, FlexItem } from '@patternfly/react-core';
-import ExternalLinkSquareAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-square-alt-icon';
+import { ExternalLinkSquareAltIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
 
