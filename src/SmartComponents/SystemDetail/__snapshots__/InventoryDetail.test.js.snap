@@ -37,7 +37,10 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
       }
     >
       <InventoryDetail>
-        <mockConstructor>
+        <mockConstructor
+          inventoryId="test-system-id"
+          onLoad={[Function]}
+        >
           <div
             className="testDetailWrapper"
           >
@@ -171,7 +174,6 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                       appList={Array []}
                       hideBack={true}
                       inventoryId="test-system-id"
-                      onLoad={[Function]}
                       showTags={true}
                     >
                       <div
