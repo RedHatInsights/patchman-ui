@@ -33,11 +33,10 @@ jest.mock('react-redux', () => ({
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
     ...jest.requireActual('@redhat-cloud-services/frontend-components/Inventory'),
-    InventoryTable: jest.fn(() => <div className='testInventroyComponent'><div>This is child</div></div>),
     InventoryDetailHead: jest.fn(() => <div className='testInventoryDetailHead'><div>This is child</div></div>),
-    AppInfo: jest.fn(() => <div className='testInventroyAppInfo'><div>This is child</div></div>),
     DetailWrapper: jest.fn(({ children }) => <div className='testDetailWrapper'><div>{children}</div></div>)
 }));
+jest.mock('./SystemDetail', () => () => <div>This is system detail</div>);
 
 const mockState = { ...entityDetail };
 

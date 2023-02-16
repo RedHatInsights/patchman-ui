@@ -46,13 +46,13 @@ const mockState = { ...storeListDefaults, rows: systemPackages };
 const initStore = (state) => {
     const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
-            return callback({  SystemPackageListStore: state, entityDetails: { entity: { id: 'entity' } } });
+            return callback({  SystemPackageListStore: state });
         });
         next(action);
     };
 
     const mockStore = configureStore([customMiddleWare]);
-    return mockStore({  SystemPackageListStore: state, entityDetails: { entity: { id: 'entity' } } });
+    return mockStore({  SystemPackageListStore: state });
 };
 
 let wrapper;
@@ -61,10 +61,10 @@ let store = initStore(mockState);
 beforeEach(() => {
     store.clearActions();
     useSelector.mockImplementation(callback => {
-        return callback({ SystemPackageListStore: mockState, entityDetails: { entity: { id: 'entity' } } });
+        return callback({ SystemPackageListStore: mockState });
     });
     wrapper = mount(<Provider store={store}>
-        <Router><SystemPackages/></Router>
+        <Router><SystemPackages inventoryId='entity'/></Router>
     </Provider>);
 });
 
@@ -89,11 +89,11 @@ describe('SystemPackages.js', () => {
             error: { detail: 'test' }
         };
         useSelector.mockImplementation(callback => {
-            return callback({ SystemPackageListStore: rejectedState, entityDetails: { entity: { id: 'entity' } } });
+            return callback({ SystemPackageListStore: rejectedState });
         });
         const tempStore = initStore(rejectedState);
         const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages/></Router>
+            <Router><SystemPackages inventoryId='entity' /></Router>
         </Provider>);
         expect(tempWrapper.find('Error')).toBeTruthy();
     });
@@ -151,7 +151,7 @@ describe('SystemPackages.js', () => {
 
         const tempStore = initStore(emptyState);
         const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages/></Router>
+            <Router><SystemPackages inventoryId='entity' /></Router>
         </Provider>);
 
         expect(tempWrapper.find('SystemUpToDate')).toBeTruthy();
@@ -174,7 +174,7 @@ describe('SystemPackages.js', () => {
 
         const tempStore = initStore(notFoundState);
         const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages handleNoSystemData={() => <NotConnected /> }/></Router>
+            <Router><SystemPackages handleNoSystemData={() => <NotConnected />} inventoryId='entity' /></Router>
         </Provider>);
         expect(tempWrapper.find('NotConnected')).toBeTruthy();
 
