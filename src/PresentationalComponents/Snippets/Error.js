@@ -1,5 +1,5 @@
 import { Card, EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateVariant, Title } from '@patternfly/react-core';
-import FrownOpenIcon from '@patternfly/react-icons/dist/js/icons/frown-open-icon';
+import { FrownOpenIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
