@@ -1,3 +1,10 @@
+## [1.59.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.1...v1.59.2) (2023-02-16)
+
+
+### Performance Improvements
+
+* **RHIF-171:** Get rid of activeApps in redux ([#956](https://github.com/RedHatInsights/patchman-ui/issues/956)) ([87f8c93](https://github.com/RedHatInsights/patchman-ui/commit/87f8c93862b2b2b9d9da07f9725aaf207ab15a42))
+
 ## [1.59.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.0...v1.59.1) (2023-02-15)
 
 
