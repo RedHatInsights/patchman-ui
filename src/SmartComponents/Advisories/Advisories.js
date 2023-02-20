@@ -125,7 +125,7 @@ const Advisories = ({ history }) => {
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchAdvisories)} headerOUIA={'advisories'} />
-            <AdvisoriesStatusReport/>
+            {metadata?.has_systems === true && <AdvisoriesStatusReport/>}
             <Main>
                 <TableView
                     columns={advisoriesColumns}

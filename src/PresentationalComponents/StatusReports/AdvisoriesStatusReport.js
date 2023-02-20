@@ -82,14 +82,14 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
     );
 
 const AdvisoriesStatusBar = () => {
-    const [advisories, setAdvisories] = React.useState({});
+    const [advisories, setAdvisories] = React.useState([]);
     React.useEffect(async () => {
         setAdvisories(
             await fetchApplicableAdvisoriesApi({ limit: 4, sort: '-advisory_type_name,-applicable_systems' })
         );
     }, []);
 
-    return advisories.data && advisories.data.length && (
+    return advisories.data && advisories.data.length  && (
         <Main style={{ paddingBottom: 0, paddingTop: 0 }}>
 
             <Title headingLevel="h3" className='pf-u-my-md'>
