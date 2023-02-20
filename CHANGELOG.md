@@ -1,3 +1,10 @@
+## [1.59.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.2...v1.59.3) (2023-02-20)
+
+
+### Reverts
+
+* Revert "chore: do not wait advisories to display most impactfull statistics (#946)" ([b0ceadc](https://github.com/RedHatInsights/patchman-ui/commit/b0ceadca7885babba8d6ca3ffbd800a724f64610)), closes [#946](https://github.com/RedHatInsights/patchman-ui/issues/946)
+
 ## [1.59.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.1...v1.59.2) (2023-02-16)
 
 
