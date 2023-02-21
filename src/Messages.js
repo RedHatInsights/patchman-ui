@@ -697,6 +697,21 @@ export default defineMessages({
         description: 'title with capital letters',
         defaultMessage: 'Assign to a template'
     },
+    titlesTemplateDeleteModalCheckbox: {
+        id: 'titlesTemplateDeleteModalCheckbox',
+        description: 'page title with capital letter',
+        defaultMessage: 'I understand that this action cannot be undone.'
+    },
+    titlesTemplateDeleteModalText: {
+        id: 'titlesTemplateDeleteModalText',
+        description: 'page title with capital letter',
+        defaultMessage: '<b>{templateName}</b> and all its data will be permanently deleted. Associated systems will be removed from the template but will not be deleted.'
+    },
+    titlesTemplateDeleteModalTitle: {
+        id: 'titlesTemplateDeleteModalTitle',
+        description: 'page title with capital letter',
+        defaultMessage: 'Delete template?'
+    },
     titlesTemplateRemoveMultipleButton: {
         id: 'titlesTemplateRemoveMultipleButton',
         description: 'title with capital letters',

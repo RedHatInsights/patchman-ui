@@ -1,5 +1,5 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +10,7 @@ import Header from '../../PresentationalComponents/Header/Header';
 //import { useEntitlements } from '../../Utilities/Hooks';
 import { fetchPatchSetAction } from '../../store/Actions/Actions';
 import { Dropdown, DropdownItem, KebabToggle, Skeleton } from '@patternfly/react-core';
+import DeleteSetModal from '../Modals/DeleteSetModal';
 
 const PatchSetDetail = () => {
     //const getEntitlements = useEntitlements();
@@ -19,9 +20,11 @@ const PatchSetDetail = () => {
 
     const patchSetId = history.location.pathname.split('/')[2];
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isHeaderDropdownOpen, setHeaderDropdownOpen] = useState(false);
 
     // const [hasSmartManagement, setSmartManagement] = React.useState(true);
+
+    const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = useState(false);
 
     const templateDetails = useSelector(
         ({ PatchSetDetailStore }) => PatchSetDetailStore
@@ -47,15 +50,21 @@ const PatchSetDetail = () => {
         <DropdownItem
             key="delete-patch-set"
             component="button"
+            onClick={() => setDeleteConfirmModalOpen(true)}
         >
             Delete
         </DropdownItem>
     ];
 
     return (
-        <React.Fragment>
+        <Fragment>
+            <DeleteSetModal
+                templateName={templateDetails.data.attributes.name}
+                isModalOpen={isDeleteConfirmModalOpen}
+                setModalOpen={setDeleteConfirmModalOpen}
+            />
             <Header
-                title={status.isLoading ? <Skeleton size={Skeleton.md} /> : templateDetails.data.attributes.name}
+                title={status.isLoading ? <Skeleton style={{ width: 300 }} /> : templateDetails.data.attributes.name}
                 headerOUIA={'template-details'}
                 breadcrumbs={[
                     {
@@ -71,43 +80,65 @@ const PatchSetDetail = () => {
                 actions={
                     <Dropdown
                         onSelect={() => {
-                            setIsOpen(false);
+                            setHeaderDropdownOpen(false);
                             document.getElementById('patch-set-detail-header-kebab').focus();
                         }}
                         toggle={
                             <KebabToggle
                                 id="patch-set-detail-header-kebab"
-                                onToggle={(isOpen) => setIsOpen(isOpen)}
-                                style={{ marginRight: '50px' }}
+                                onToggle={(isOpen) => setHeaderDropdownOpen(isOpen)}
+                                className="pf-u-mr-lg"
                             />
                         }
-                        isOpen={isOpen}
+                        isOpen={isHeaderDropdownOpen}
                         isPlain
                         dropdownItems={dropdownItems}
                     />
                 }
             >
                 <table border="0" style={{ marginTop: 8 }}>
-                    <tr>
-                        <td style={{ width: 250 }}>Template description:</td>
-                        <td>{templateDetails.data.attributes.description}</td>
-                    </tr>
-                    <tr>
-                        <td>Red Hat repositories up to:</td>
-                        <td>[[date]]</td>
-                    </tr>
-                    <tr>
-                        <td>Created by:</td>
-                        <td>[[user]]</td>
-                    </tr>
-                    <tr>
-                        <td>Published:</td>
-                        <td>[[date]]</td>
-                    </tr>
-                    <tr>
-                        <td>Last edited:</td>
-                        <td>[[date]]</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td style={{ width: 250 }}>Template description:</td>
+                            <td>
+                                {status.isLoading
+                                    ? <Skeleton style={{ width: 300 }} />
+                                    : templateDetails.data.attributes.description}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Red Hat repositories up to:</td>
+                            <td>
+                                {status.isLoading
+                                    ? <Skeleton style={{ width: 100 }} />
+                                    : '[[date]]'}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Created by:</td>
+                            <td>
+                                {status.isLoading
+                                    ? <Skeleton style={{ width: 100 }} />
+                                    : '[[user]]'}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Published:</td>
+                            <td>
+                                {status.isLoading
+                                    ? <Skeleton style={{ width: 100 }} />
+                                    : '[[date]]'}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Last edited:</td>
+                            <td>
+                                {status.isLoading
+                                    ? <Skeleton style={{ width: 100 }} />
+                                    : '[[date]]'}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </Header>
             <Main>
@@ -133,7 +164,7 @@ const PatchSetDetail = () => {
                 /> : <NoSmartManagement />}
                 */}
             </Main>
-        </React.Fragment >);
+        </Fragment >);
 };
 
 export default PatchSetDetail;
