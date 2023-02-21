@@ -12,7 +12,14 @@ plugins.push(
         exposes: {
             './RootApp': resolve(__dirname, '../src/AppEntry'),
             './SystemDetail': resolve(__dirname, '../src/index.js')
-        }
+        },
+        shared: [
+            {
+                '@patternfly/react-core': { singleton: true, import: false, requiredVersion: '^4.267.6' },
+                '@patternfly/react-icons': { singleton: true, import: false, requiredVersion: '^4.93.3' },
+                '@patternfly/react-table': { singleton: true, import: false, requiredVersion: '^4.112.6' }
+            }
+        ]
     })
 );
 
