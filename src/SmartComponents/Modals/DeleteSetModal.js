@@ -4,7 +4,7 @@ import { Button, Checkbox, Modal } from '@patternfly/react-core';
 import { injectIntl } from 'react-intl';
 import messages from '../../Messages';
 
-const DeleteSetModal = ({ intl, isModalOpen, setModalOpen, templateName }) => {
+const DeleteSetModal = ({ intl, isModalOpen, setModalOpen, templateName, onConfirm }) => {
     const [isCheckboxChecked, setCheckboxChecked] = useState(false);
 
     const onClose = () => {
@@ -20,7 +20,7 @@ const DeleteSetModal = ({ intl, isModalOpen, setModalOpen, templateName }) => {
             onClose={onClose}
             variant="small"
             actions={[
-                <Button key="confirm" variant="danger" onClick={onClose} isDisabled={!isCheckboxChecked}>
+                <Button key="confirm" variant="danger" onClick={() => {onClose(); onConfirm();}} isDisabled={!isCheckboxChecked}>
                     {intl.formatMessage(messages.labelsDelete)}
                 </Button>,
                 <Button key="cancel" variant="link" onClick={onClose}>
@@ -45,7 +45,8 @@ DeleteSetModal.propTypes = {
     intl: propTypes.any,
     isModalOpen: propTypes.bool,
     setModalOpen: propTypes.func,
-    templateName: propTypes.string
+    templateName: propTypes.string,
+    onConfirm: propTypes.func
 };
 
 export default injectIntl(DeleteSetModal);

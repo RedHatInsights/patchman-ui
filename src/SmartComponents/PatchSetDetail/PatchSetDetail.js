@@ -11,6 +11,9 @@ import Header from '../../PresentationalComponents/Header/Header';
 import { fetchPatchSetAction } from '../../store/Actions/Actions';
 import { Dropdown, DropdownItem, KebabToggle, Skeleton } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
+import { deletePatchSet } from '../../Utilities/api';
+import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { patchSetDeleteNotifications } from '../../Utilities/constants';
 
 const PatchSetDetail = () => {
     //const getEntitlements = useEntitlements();
@@ -46,6 +49,15 @@ const PatchSetDetail = () => {
         dispatch(fetchPatchSetAction(patchSetId));
     }, []);
 
+    const deleteSet = () => {
+        deletePatchSet(patchSetId).then(() => {
+            dispatch(addNotification(patchSetDeleteNotifications.success));
+            history.push('/templates');
+        }).catch(() => {
+            dispatch(addNotification(patchSetDeleteNotifications.error));
+        });
+    };
+
     const dropdownItems = [
         <DropdownItem
             key="delete-patch-set"
@@ -62,6 +74,7 @@ const PatchSetDetail = () => {
                 templateName={templateDetails.data.attributes.name}
                 isModalOpen={isDeleteConfirmModalOpen}
                 setModalOpen={setDeleteConfirmModalOpen}
+                onConfirm={deleteSet}
             />
             <Header
                 title={status.isLoading ? <Skeleton style={{ width: 300 }} /> : templateDetails.data.attributes.name}
