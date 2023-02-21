@@ -61,11 +61,11 @@ const InventoryDetail = lazy(() =>
 
 const AdvisoryPage = lazy(() =>
     import(
-        /* webpackChunkName: "AdvisoryyPage" */ './SmartComponents/AdvisoryDetail/AdvisoryDetail'
+        /* webpackChunkName: "AdvisoryPage" */ './SmartComponents/AdvisoryDetail/AdvisoryDetail'
     )
 );
 
-const PackagsPage = lazy(() =>
+const PackagesPage = lazy(() =>
     import(
         /* webpackChunkName: "Packages" */ './SmartComponents/Packages/Packages'
     )
@@ -79,7 +79,13 @@ const PackageDetail = lazy(() =>
 
 const Templates = lazy(() =>
     import(
-        /* webpackChunkName: "PackageDetail" */ './SmartComponents/PatchSet/PatchSet'
+        /* webpackChunkName: "Templates" */ './SmartComponents/PatchSet/PatchSet'
+    )
+);
+
+const TemplateDetail = lazy(() =>
+    import(
+        /* webpackChunkName: "TemplateDetail" */ './SmartComponents/PatchSetDetail/PatchSetDetail'
     )
 );
 
@@ -133,15 +139,20 @@ export const paths = [
         path: '/packages',
         isExact: true,
         requiredPermissions: generalPermissions,
-        component: PackagsPage
+        component: PackagesPage
     },
     ...(isPatchSetEnabled ? [{
+        path: '/templates/:templateName',
+        isExact: true,
+        requiredPermissions: generalPermissions,
+        component: TemplateDetail
+    },
+    {
         path: '/templates',
         isExact: true,
         requiredPermissions: generalPermissions,
         component: Templates
     }] : [])
-
 ];
 
 export const Routes = () => {

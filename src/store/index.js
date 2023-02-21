@@ -14,6 +14,7 @@ import { PackageSystemsStore } from './Reducers/PackageSystemsStore';
 import { AdvisorySystemsStore } from './Reducers/AdvisorySystemsStore';
 import { GlobalFilterStore } from './Reducers/GlobalFilterStore';
 import { PatchSetsReducer } from './Reducers/PatchSetsReducer';
+import { PatchSetDetailStore } from './Reducers/PatchSetDetailStore';
 import { SpecificPatchSetReducer } from './Reducers/SpecificPatchSetReducer';
 import { legacy_createStore as createStore, applyMiddleware, combineReducers } from 'redux';
 
@@ -31,6 +32,7 @@ export const defaultReducers = {
     AdvisorySystemsStore,
     GlobalFilterStore,
     PatchSetsStore: PatchSetsReducer,
+    PatchSetDetailStore,
     SpecificPatchSetReducer,
     notifications: notificationsReducer
 };

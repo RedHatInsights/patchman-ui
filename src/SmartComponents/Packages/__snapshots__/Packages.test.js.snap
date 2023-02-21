@@ -49,26 +49,50 @@ exports[`Packages.js should match the snapshot 1`] = `
               data-ouia-component-type="packages-page-header"
               widget-type="InsightsPageHeader"
             >
-              <PageHeaderTitle
-                title="Patch packages"
-              >
-                <Title
-                  className=""
-                  headingLevel="h1"
-                  size="2xl"
-                  widget-type="InsightsPageHeaderTitle"
+              <Split>
+                <div
+                  className="pf-l-split"
                 >
-                  <h1
-                    className="pf-c-title pf-m-2xl"
-                    data-ouia-component-id="OUIA-Generated-Title-1"
-                    data-ouia-component-type="PF4/Title"
-                    data-ouia-safe={true}
-                    widget-type="InsightsPageHeaderTitle"
+                  <SplitItem>
+                    <div
+                      className="pf-l-split__item"
+                    >
+                      <PageHeaderTitle
+                        title="Patch packages"
+                      >
+                        <Title
+                          className=""
+                          headingLevel="h1"
+                          size="2xl"
+                          widget-type="InsightsPageHeaderTitle"
+                        >
+                          <h1
+                            className="pf-c-title pf-m-2xl"
+                            data-ouia-component-id="OUIA-Generated-Title-1"
+                            data-ouia-component-type="PF4/Title"
+                            data-ouia-safe={true}
+                            widget-type="InsightsPageHeaderTitle"
+                          >
+                            Patch packages
+                          </h1>
+                        </Title>
+                      </PageHeaderTitle>
+                    </div>
+                  </SplitItem>
+                  <SplitItem
+                    isFilled={true}
                   >
-                    Patch packages
-                  </h1>
-                </Title>
-              </PageHeaderTitle>
+                    <div
+                      className="pf-l-split__item pf-m-fill"
+                    />
+                  </SplitItem>
+                  <SplitItem>
+                    <div
+                      className="pf-l-split__item"
+                    />
+                  </SplitItem>
+                </div>
+              </Split>
             </section>
           </PageHeader>
         </Header>

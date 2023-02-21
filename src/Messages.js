@@ -487,6 +487,11 @@ export default defineMessages({
         description: 'description of the patch template wizard',
         defaultMessage: 'Schedule patch template '
     },
+    templateDetailHeaderBreadcrumb: {
+        id: 'templateDetailHeaderBreadcrumb',
+        description: 'breadcrumb for template detail header',
+        defaultMessage: 'Content templates'
+    },
     templateEdit: {
         id: 'templateEdit',
         description: 'step name of the patch template wizard',
