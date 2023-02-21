@@ -70,20 +70,45 @@ const PatchSetDetail = () => {
                 ]}
                 actions={
                     <Dropdown
-                        onSelect={() => setIsOpen(false)}
-                        toggle={<KebabToggle id="toggle-kebab" onToggle={() => setIsOpen(true)} />}
+                        onSelect={() => {
+                            setIsOpen(false);
+                            document.getElementById('patch-set-detail-header-kebab').focus();
+                        }}
+                        toggle={
+                            <KebabToggle
+                                id="patch-set-detail-header-kebab"
+                                onToggle={(isOpen) => setIsOpen(isOpen)}
+                                style={{ marginRight: '50px' }}
+                            />
+                        }
                         isOpen={isOpen}
                         isPlain
                         dropdownItems={dropdownItems}
                     />
                 }
             >
-                <br />
-                Template description: [[description]] <br />
-                Red Hat repositories up to: [[date]] <br />
-                Created by: [[user]] <br />
-                Published: [[date]] <br />
-                Last edited: [[date]] <br />
+                <table border="0" style={{ marginTop: 8 }}>
+                    <tr>
+                        <td style={{ width: 250 }}>Template description:</td>
+                        <td>{templateDetails.data.attributes.description}</td>
+                    </tr>
+                    <tr>
+                        <td>Red Hat repositories up to:</td>
+                        <td>[[date]]</td>
+                    </tr>
+                    <tr>
+                        <td>Created by:</td>
+                        <td>[[user]]</td>
+                    </tr>
+                    <tr>
+                        <td>Published:</td>
+                        <td>[[date]]</td>
+                    </tr>
+                    <tr>
+                        <td>Last edited:</td>
+                        <td>[[date]]</td>
+                    </tr>
+                </table>
             </Header>
             <Main>
                 {/*

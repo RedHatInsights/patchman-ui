@@ -44,7 +44,7 @@ export default defineMessages({
     labelsButtonRemoveTemplate: {
         id: 'labelsButtonRemoveTemplate',
         description: 'button label',
-        defaultMessage: 'Remove template'
+        defaultMessage: 'Delete template'
     },
     labelsCancel: {
         id: 'labelsCancel',
@@ -145,6 +145,11 @@ export default defineMessages({
         id: 'labelsDate',
         description: 'Label',
         defaultMessage: 'Date'
+    },
+    labelsDelete: {
+        id: 'labelsDelete',
+        description: 'button label',
+        defaultMessage: 'Delete'
     },
     labelsDescription: {
         id: 'labelsDescription',
