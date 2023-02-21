@@ -124,12 +124,6 @@ module.exports = {
         '@babel/plugin-proposal-class-properties'
     ],
     env: {
-        cjs: {
-            plugins: [
-                patternflyTransformImports('js'),
-                fecTransformImports('cjs')
-            ]
-        },
         esm: {
             plugins: [
                 patternflyTransformImports('esm'),
@@ -139,13 +133,13 @@ module.exports = {
         production: {
             plugins: [
                 patternflyTransformImports('esm'),
-                fecTransformImports('cjs')
+                fecTransformImports('esm')
             ]
         },
         development: {
             plugins: [
-                patternflyTransformImports('js'),
-                fecTransformImports('cjs')
+                patternflyTransformImports('esm'),
+                fecTransformImports('esm')
             ]
         },
         componentTest: {
