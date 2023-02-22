@@ -359,7 +359,10 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
                             </Link>
                         )
                     },
-                    { title: row.systems }
+                    { title: row.systems },
+                    { title: processDate(row.last_edited) },
+                    { title: processDate(row.published) },
+                    { title: row.creator }
                 ]
             };
         });
