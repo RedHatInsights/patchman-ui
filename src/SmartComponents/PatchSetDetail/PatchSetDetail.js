@@ -37,6 +37,8 @@ const PatchSetDetail = () => {
         ({ PatchSetDetailStore }) => PatchSetDetailStore.status
     );
 
+    const patchSetName = templateDetails.data.attributes.name;
+
     useEffect(() => {
         /*
         getEntitlements().then((entitelements) => {
@@ -51,10 +53,10 @@ const PatchSetDetail = () => {
 
     const deleteSet = () => {
         deletePatchSet(patchSetId).then(() => {
-            dispatch(addNotification(patchSetDeleteNotifications.success));
+            dispatch(addNotification(patchSetDeleteNotifications(patchSetName).success));
             history.push('/templates');
         }).catch(() => {
-            dispatch(addNotification(patchSetDeleteNotifications.error));
+            dispatch(addNotification(patchSetDeleteNotifications(patchSetName).error));
         });
     };
 
@@ -71,13 +73,13 @@ const PatchSetDetail = () => {
     return (
         <Fragment>
             <DeleteSetModal
-                templateName={templateDetails.data.attributes.name}
+                templateName={patchSetName}
                 isModalOpen={isDeleteConfirmModalOpen}
                 setModalOpen={setDeleteConfirmModalOpen}
                 onConfirm={deleteSet}
             />
             <Header
-                title={status.isLoading ? <Skeleton style={{ width: 300 }} /> : templateDetails.data.attributes.name}
+                title={status.isLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
                 headerOUIA={'template-details'}
                 breadcrumbs={[
                     {
@@ -86,7 +88,7 @@ const PatchSetDetail = () => {
                         isActive: false
                     },
                     {
-                        title: templateDetails.data.attributes.name,
+                        title: patchSetName,
                         isActive: true
                     }
                 ]}

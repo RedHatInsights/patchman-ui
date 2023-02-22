@@ -126,11 +126,11 @@ const PatchSet = () => {
 
     const handlePatchSetDelete = (rowData) => {
         deletePatchSet(rowData.id).then(() => {
-            dispatch(addNotification(patchSetDeleteNotifications.success));
+            dispatch(addNotification(patchSetDeleteNotifications(rowData.displayName).success));
             refreshTable();
         }).catch(() => {
-            dispatch(addNotification(patchSetDeleteNotifications.error));
-        });;
+            dispatch(addNotification(patchSetDeleteNotifications(rowData.displayName).error));
+        });
     };
 
     const { hasAccess } = usePermissionsWithContext([

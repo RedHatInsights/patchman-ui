@@ -348,6 +348,7 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
         rows.map(row => {
             return {
                 id: row.id,
+                displayName: row.name,
                 key: row.id,
                 selected: selectedRows[row.id] !== undefined,
                 cells: [
