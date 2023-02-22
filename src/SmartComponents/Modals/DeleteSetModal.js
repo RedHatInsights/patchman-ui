@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import { Button, Checkbox, Modal } from '@patternfly/react-core';
-import { injectIntl } from 'react-intl';
 import messages from '../../Messages';
+import { intl } from '../../Utilities/IntlProvider';
 
-const DeleteSetModal = ({ intl, isModalOpen, setModalOpen, templateName, onConfirm }) => {
+const DeleteSetModal = ({ isModalOpen, setModalOpen, templateName, onConfirm }) => {
     const [isCheckboxChecked, setCheckboxChecked] = useState(false);
 
     const onClose = () => {
@@ -42,11 +42,10 @@ const DeleteSetModal = ({ intl, isModalOpen, setModalOpen, templateName, onConfi
 };
 
 DeleteSetModal.propTypes = {
-    intl: propTypes.any,
     isModalOpen: propTypes.bool,
     setModalOpen: propTypes.func,
     templateName: propTypes.string,
     onConfirm: propTypes.func
 };
 
-export default injectIntl(DeleteSetModal);
+export default DeleteSetModal;

@@ -44,6 +44,86 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
           }
         }
       >
+        <DeleteSetModal
+          isModalOpen={false}
+          onConfirm={[Function]}
+          setModalOpen={[Function]}
+        >
+          <Modal
+            actions={
+              Array [
+                <Button
+                  isDisabled={true}
+                  onClick={[Function]}
+                  variant="danger"
+                >
+                  Delete
+                </Button>,
+                <Button
+                  onClick={[Function]}
+                  variant="link"
+                >
+                  Cancel
+                </Button>,
+              ]
+            }
+            appendTo={[Function]}
+            aria-describedby=""
+            aria-label=""
+            aria-labelledby=""
+            className=""
+            hasNoBodyWrapper={false}
+            isOpen={false}
+            onClose={[Function]}
+            ouiaSafe={true}
+            showClose={true}
+            title="Delete template?"
+            titleIconVariant="warning"
+            titleLabel=""
+            variant="small"
+          >
+            <Portal
+              containerInfo={<div />}
+            >
+              <ModalContent
+                actions={
+                  Array [
+                    <Button
+                      isDisabled={true}
+                      onClick={[Function]}
+                      variant="danger"
+                    >
+                      Delete
+                    </Button>,
+                    <Button
+                      onClick={[Function]}
+                      variant="link"
+                    >
+                      Cancel
+                    </Button>,
+                  ]
+                }
+                aria-describedby=""
+                aria-label=""
+                aria-labelledby=""
+                boxId="pf-modal-part-0"
+                className=""
+                descriptorId="pf-modal-part-2"
+                hasNoBodyWrapper={false}
+                isOpen={false}
+                labelId="pf-modal-part-1"
+                onClose={[Function]}
+                ouiaId="OUIA-Generated-Modal-small-1"
+                ouiaSafe={true}
+                showClose={true}
+                title="Delete template?"
+                titleIconVariant="warning"
+                titleLabel=""
+                variant="small"
+              />
+            </Portal>
+          </Modal>
+        </DeleteSetModal>
         <Header
           headerOUIA="advisories"
           title={
