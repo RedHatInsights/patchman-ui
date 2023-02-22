@@ -9,7 +9,7 @@ import Header from '../../PresentationalComponents/Header/Header';
 //import TableView from '../../PresentationalComponents/TableView/TableView';
 //import { useEntitlements } from '../../Utilities/Hooks';
 import { fetchPatchSetAction } from '../../store/Actions/Actions';
-import { Dropdown, DropdownItem, KebabToggle, Skeleton } from '@patternfly/react-core';
+import { Dropdown, DropdownItem, DropdownPosition, DropdownToggle, Skeleton } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -70,7 +70,7 @@ const PatchSetDetail = () => {
             component="button"
             onClick={() => setDeleteConfirmModalOpen(true)}
         >
-            Delete
+            {intl.formatMessage(messages.labelsButtonRemoveTemplate)}
         </DropdownItem>
     ];
 
@@ -100,19 +100,22 @@ const PatchSetDetail = () => {
                     ]}
                     actions={
                         <Dropdown
+                            position={DropdownPosition.right}
                             onSelect={() => {
                                 setHeaderDropdownOpen(false);
                                 document.getElementById('patch-set-detail-header-kebab').focus();
                             }}
                             toggle={
-                                <KebabToggle
+                                <DropdownToggle
                                     id="patch-set-detail-header-kebab"
+                                    className="pf-u-mr-xl"
                                     onToggle={(isOpen) => setHeaderDropdownOpen(isOpen)}
-                                    className="pf-u-mr-lg"
-                                />
+                                    style={{ minWidth: 150 }}
+                                >
+                                    {intl.formatMessage(messages.labelsActions)}
+                                </DropdownToggle>
                             }
                             isOpen={isHeaderDropdownOpen}
-                            isPlain
                             dropdownItems={dropdownItems}
                         />
                     }
@@ -124,7 +127,8 @@ const PatchSetDetail = () => {
                                 <td>
                                     {isLoading
                                         ? <Skeleton style={{ width: 300 }} />
-                                        : templateDetails.data.attributes.description}
+                                        : templateDetails.data.attributes.description
+                                        || intl.formatMessage(messages.titlesTemplateNoDescription)}
                                 </td>
                             </tr>
                             <tr>

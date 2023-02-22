@@ -262,11 +262,11 @@ export const exportNotifications = (format) => ({
 
 export const patchSetDeleteNotifications = (templateName) => ({
     success: {
-        title: `${templateName} was deleted.`,
+        title: `Deleted “${templateName}”.`,
         variant: 'success'
     },
     error: {
-        title: `Failed to delete ${templateName}.`,
+        title: `Failed to delete “${templateName}”.`,
         variant: 'danger'
     }
 });

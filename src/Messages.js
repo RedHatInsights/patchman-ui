@@ -11,6 +11,11 @@ export default defineMessages({
         description: 'regsiter page title',
         defaultMessage: 'Patch'
     },
+    labelsActions: {
+        id: 'labelsActions',
+        description: 'dropdown with actions label',
+        defaultMessage: 'Actions'
+    },
     labelsApplicableSystemsCount: {
         id: 'labelsApplicableSystemsCount',
         description: 'applicable systems number label',
@@ -711,6 +716,11 @@ export default defineMessages({
         id: 'titlesTemplateDeleteModalTitle',
         description: 'page title with capital letter',
         defaultMessage: 'Delete template?'
+    },
+    titlesTemplateNoDescription: {
+        id: 'titlesTemplateNoDescription',
+        description: 'title with capital letters',
+        defaultMessage: 'No description available'
     },
     titlesTemplateRemoveMultipleButton: {
         id: 'titlesTemplateRemoveMultipleButton',
