@@ -19,7 +19,7 @@ describe('api', () => {
                 headers: { get: () => [] }
             })
             );
-            const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' });
+            const response = createApiCall('testEndpoint', 'v2', 'get', { testParam: 1 }, { data: 'testData' });
             response.catch((err) => {
                 expect(err).toEqual({
                     title: 'There was an error getting data',
@@ -37,7 +37,7 @@ describe('api', () => {
                 headers: { get: () => ['json'] }
             })
             );
-            const response = createApiCall('testEndpoint', 'get', { testParam: 1 }, { data: 'testData' });
+            const response = createApiCall('testEndpoint', 'v2', 'get', { testParam: 1 }, { data: 'testData' });
             response.catch((res) => expect(res).toEqual({
                 title: 'There was an error getting data',
                 detail: 'testStatusTextsssss',

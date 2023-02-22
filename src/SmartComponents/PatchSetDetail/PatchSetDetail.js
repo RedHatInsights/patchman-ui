@@ -15,6 +15,7 @@ import { deletePatchSet } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 
 const PatchSetDetail = () => {
     //const getEntitlements = useEntitlements();
@@ -131,7 +132,7 @@ const PatchSetDetail = () => {
                                 <td>
                                     {isLoading
                                         ? <Skeleton style={{ width: 100 }} />
-                                        : '[[date]]'}
+                                        : processDate(templateDetails.data.attributes.config.to_time)}
                                 </td>
                             </tr>
                             <tr>
@@ -139,7 +140,7 @@ const PatchSetDetail = () => {
                                 <td>
                                     {isLoading
                                         ? <Skeleton style={{ width: 100 }} />
-                                        : '[[user]]'}
+                                        : templateDetails.data.attributes.creator}
                                 </td>
                             </tr>
                             <tr>
@@ -147,7 +148,7 @@ const PatchSetDetail = () => {
                                 <td>
                                     {isLoading
                                         ? <Skeleton style={{ width: 100 }} />
-                                        : '[[date]]'}
+                                        : processDate(templateDetails.data.attributes.published)}
                                 </td>
                             </tr>
                             <tr>
@@ -155,7 +156,7 @@ const PatchSetDetail = () => {
                                 <td>
                                     {isLoading
                                         ? <Skeleton style={{ width: 100 }} />
-                                        : '[[date]]'}
+                                        : processDate(templateDetails.data.attributes.last_edited)}
                                 </td>
                             </tr>
                         </tbody>
