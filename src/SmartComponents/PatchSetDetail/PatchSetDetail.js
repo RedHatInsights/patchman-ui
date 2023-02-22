@@ -14,6 +14,7 @@ import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const PatchSetDetail = () => {
     //const getEntitlements = useEntitlements();
@@ -36,6 +37,8 @@ const PatchSetDetail = () => {
     const status = useSelector(
         ({ PatchSetDetailStore }) => PatchSetDetailStore.status
     );
+
+    const { hasError, metadata, isLoading, code } = status;
 
     const patchSetName = templateDetails.data.attributes.name;
 
@@ -71,93 +74,95 @@ const PatchSetDetail = () => {
     ];
 
     return (
-        <Fragment>
-            <DeleteSetModal
-                templateName={patchSetName}
-                isModalOpen={isDeleteConfirmModalOpen}
-                setModalOpen={setDeleteConfirmModalOpen}
-                onConfirm={deleteSet}
-            />
-            <Header
-                title={status.isLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
-                headerOUIA={'template-details'}
-                breadcrumbs={[
-                    {
-                        title: intl.formatMessage(messages.templateDetailHeaderBreadcrumb),
-                        to: '/templates',
-                        isActive: false
-                    },
-                    {
-                        title: patchSetName,
-                        isActive: true
-                    }
-                ]}
-                actions={
-                    <Dropdown
-                        onSelect={() => {
-                            setHeaderDropdownOpen(false);
-                            document.getElementById('patch-set-detail-header-kebab').focus();
-                        }}
-                        toggle={
-                            <KebabToggle
-                                id="patch-set-detail-header-kebab"
-                                onToggle={(isOpen) => setHeaderDropdownOpen(isOpen)}
-                                className="pf-u-mr-lg"
-                            />
+        (hasError || metadata?.has_systems === false)
+            ? <ErrorHandler code={code} metadata={metadata} />
+            : <Fragment>
+                <DeleteSetModal
+                    templateName={patchSetName}
+                    isModalOpen={isDeleteConfirmModalOpen}
+                    setModalOpen={setDeleteConfirmModalOpen}
+                    onConfirm={deleteSet}
+                />
+                <Header
+                    title={isLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
+                    headerOUIA={'template-details'}
+                    breadcrumbs={[
+                        {
+                            title: intl.formatMessage(messages.templateDetailHeaderBreadcrumb),
+                            to: '/templates',
+                            isActive: false
+                        },
+                        {
+                            title: patchSetName,
+                            isActive: true
                         }
-                        isOpen={isHeaderDropdownOpen}
-                        isPlain
-                        dropdownItems={dropdownItems}
-                    />
-                }
-            >
-                <table border="0" style={{ marginTop: 8 }}>
-                    <tbody>
-                        <tr>
-                            <td style={{ width: 250 }}>Template description:</td>
-                            <td>
-                                {status.isLoading
-                                    ? <Skeleton style={{ width: 300 }} />
-                                    : templateDetails.data.attributes.description}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Red Hat repositories up to:</td>
-                            <td>
-                                {status.isLoading
-                                    ? <Skeleton style={{ width: 100 }} />
-                                    : '[[date]]'}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Created by:</td>
-                            <td>
-                                {status.isLoading
-                                    ? <Skeleton style={{ width: 100 }} />
-                                    : '[[user]]'}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Published:</td>
-                            <td>
-                                {status.isLoading
-                                    ? <Skeleton style={{ width: 100 }} />
-                                    : '[[date]]'}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Last edited:</td>
-                            <td>
-                                {status.isLoading
-                                    ? <Skeleton style={{ width: 100 }} />
-                                    : '[[date]]'}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </Header>
-            <Main>
-                {/*
+                    ]}
+                    actions={
+                        <Dropdown
+                            onSelect={() => {
+                                setHeaderDropdownOpen(false);
+                                document.getElementById('patch-set-detail-header-kebab').focus();
+                            }}
+                            toggle={
+                                <KebabToggle
+                                    id="patch-set-detail-header-kebab"
+                                    onToggle={(isOpen) => setHeaderDropdownOpen(isOpen)}
+                                    className="pf-u-mr-lg"
+                                />
+                            }
+                            isOpen={isHeaderDropdownOpen}
+                            isPlain
+                            dropdownItems={dropdownItems}
+                        />
+                    }
+                >
+                    <table border="0" style={{ marginTop: 8 }}>
+                        <tbody>
+                            <tr>
+                                <td style={{ width: 250 }}>Template description:</td>
+                                <td>
+                                    {isLoading
+                                        ? <Skeleton style={{ width: 300 }} />
+                                        : templateDetails.data.attributes.description}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Red Hat repositories up to:</td>
+                                <td>
+                                    {isLoading
+                                        ? <Skeleton style={{ width: 100 }} />
+                                        : '[[date]]'}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Created by:</td>
+                                <td>
+                                    {isLoading
+                                        ? <Skeleton style={{ width: 100 }} />
+                                        : '[[user]]'}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Published:</td>
+                                <td>
+                                    {isLoading
+                                        ? <Skeleton style={{ width: 100 }} />
+                                        : '[[date]]'}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Last edited:</td>
+                                <td>
+                                    {isLoading
+                                        ? <Skeleton style={{ width: 100 }} />
+                                        : '[[date]]'}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </Header>
+                <Main>
+                    {/*
                 {hasSmartManagement ? <TableView
                     columns={patchSetColumns}
                     compact
@@ -178,8 +183,8 @@ const PatchSetDetail = () => {
                     actionsToggle={!hasAccess ? CustomActionsToggle : null}
                 /> : <NoSmartManagement />}
                 */}
-            </Main>
-        </Fragment >);
+                </Main>
+            </Fragment >);
 };
 
 export default PatchSetDetail;
