@@ -1,3 +1,10 @@
+## [1.59.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.3...v1.59.4) (2023-02-27)
+
+
+### Bug Fixes
+
+* Display 'No template' instead of blank cell in template column ([#963](https://github.com/RedHatInsights/patchman-ui/issues/963)) ([f59f68a](https://github.com/RedHatInsights/patchman-ui/commit/f59f68aa1210c7d3e59b7bd659e5eaa2284daa7b))
+
 ## [1.59.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.2...v1.59.3) (2023-02-20)
 
 
