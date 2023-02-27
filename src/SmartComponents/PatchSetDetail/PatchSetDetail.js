@@ -1,59 +1,118 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState, Fragment, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
-//import { NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
-//import TableView from '../../PresentationalComponents/TableView/TableView';
-//import { useEntitlements } from '../../Utilities/Hooks';
-import { fetchPatchSetAction } from '../../store/Actions/Actions';
-import { Dropdown, DropdownItem, DropdownPosition, DropdownToggle, Skeleton } from '@patternfly/react-core';
+import { NoAppliedSystems, NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
+import TableView from '../../PresentationalComponents/TableView/TableView';
+import { useDeepCompareEffect, useEntitlements, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import {
+    changePatchSetDetailsParams,
+    changePatchSetDetailsSystemsParams,
+    fetchPatchSetAction,
+    fetchPatchSetDetailSystemsAction
+} from '../../store/Actions/Actions';
+import { Dropdown, DropdownItem, DropdownPosition, DropdownToggle, Skeleton, Text, TextContent } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { patchSetDetailColumns } from './PatchSetDetailAssets';
+import { createPatchSetDetailRows } from '../../Utilities/DataMappers';
+import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 
 const PatchSetDetail = () => {
-    //const getEntitlements = useEntitlements();
+    const getEntitlements = useEntitlements();
     const intl = useIntl();
     const dispatch = useDispatch();
     const history = useHistory();
 
+    function apply(params) {
+        dispatch(changePatchSetDetailsParams(params));
+    }
+
     const patchSetId = history.location.pathname.split('/')[2];
 
+    const [firstMount, setFirstMount] = React.useState(true);
     const [isHeaderDropdownOpen, setHeaderDropdownOpen] = useState(false);
-
-    // const [hasSmartManagement, setSmartManagement] = React.useState(true);
-
+    const [hasSmartManagement, setSmartManagement] = React.useState(true);
     const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = useState(false);
 
     const templateDetails = useSelector(
         ({ PatchSetDetailStore }) => PatchSetDetailStore
     );
 
-    const status = useSelector(
-        ({ PatchSetDetailStore }) => PatchSetDetailStore.status
+    const isHeaderLoading = useSelector(
+        ({ PatchSetDetailStore }) => PatchSetDetailStore?.status?.isLoading ?? true
     );
 
-    const { hasError, metadata, isLoading, code } = status;
+    const status = useSelector(
+        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.status
+    );
+
+    const assignedSystems = useSelector(
+        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.rows
+    );
+
+    const metadata = useSelector(
+        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.metadata
+    );
+
+    const queryParams = useSelector(
+        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.queryParams
+    );
+
+    const rows = useMemo(
+        () => createPatchSetDetailRows(assignedSystems),
+        [assignedSystems]
+    );
+
+    const { hasError, code } = status;
 
     const patchSetName = templateDetails.data.attributes.name;
 
+    const onSetPage = useSetPage(metadata?.limit, apply);
+    const onPerPageSelect = usePerPageSelect(apply);
+
+    const onSort = useSortColumn(patchSetDetailColumns, apply, 0);
+    const sortBy = useMemo(
+        () => createSortBy(patchSetDetailColumns, metadata?.sort, 0),
+        [metadata?.sort]
+    );
+
+    // const handleSystemRemoval = useUnassignSystemsHook();
+
+    // const actionsConfig = patchSetDetailRowActions(handleSystemRemoval);
+
     useEffect(() => {
-        /*
         getEntitlements().then((entitelements) => {
             setSmartManagement(
                 entitelements?.smart_management?.is_entitled
             );
         });
-        */
 
-        dispatch(fetchPatchSetAction(patchSetId));
+        return () => {
+            dispatch(changePatchSetDetailsSystemsParams());
+        };
     }, []);
+
+    useDeepCompareEffect(() => {
+        if (firstMount) {
+            apply(decodeQueryparams(history.location.search));
+
+            dispatch(fetchPatchSetAction(patchSetId));
+
+            setFirstMount(false);
+        } else {
+            history.push(encodeURLParams(queryParams));
+
+            dispatch(fetchPatchSetDetailSystemsAction(patchSetId, queryParams));
+        }
+    }, [queryParams, firstMount]);
 
     const deleteSet = () => {
         deletePatchSet(patchSetId).then(() => {
@@ -76,7 +135,7 @@ const PatchSetDetail = () => {
 
     return (
         (hasError || metadata?.has_systems === false)
-            ? <ErrorHandler code={code} metadata={metadata} />
+            ? <ErrorHandler code={code} metadata={status.metadata} />
             : <Fragment>
                 <DeleteSetModal
                     templateName={patchSetName}
@@ -85,7 +144,7 @@ const PatchSetDetail = () => {
                     onConfirm={deleteSet}
                 />
                 <Header
-                    title={isLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
+                    title={isHeaderLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
                     headerOUIA={'template-details'}
                     breadcrumbs={[
                         {
@@ -94,7 +153,7 @@ const PatchSetDetail = () => {
                             isActive: false
                         },
                         {
-                            title: isLoading ? <Skeleton style={{ width: 150 }} /> : patchSetName,
+                            title: isHeaderLoading ? <Skeleton style={{ width: 150 }} /> : patchSetName,
                             isActive: true
                         }
                     ]}
@@ -125,7 +184,7 @@ const PatchSetDetail = () => {
                             <tr>
                                 <td style={{ width: 250 }}>Template description:</td>
                                 <td>
-                                    {isLoading
+                                    {isHeaderLoading
                                         ? <Skeleton style={{ width: 300 }} />
                                         : templateDetails.data.attributes.description
                                         || intl.formatMessage(messages.titlesTemplateNoDescription)}
@@ -134,7 +193,7 @@ const PatchSetDetail = () => {
                             <tr>
                                 <td>Red Hat repositories up to:</td>
                                 <td>
-                                    {isLoading
+                                    {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
                                         : processDate(templateDetails.data.attributes.config.to_time)}
                                 </td>
@@ -142,7 +201,7 @@ const PatchSetDetail = () => {
                             <tr>
                                 <td>Created by:</td>
                                 <td>
-                                    {isLoading
+                                    {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
                                         : templateDetails.data.attributes.creator}
                                 </td>
@@ -150,7 +209,7 @@ const PatchSetDetail = () => {
                             <tr>
                                 <td>Published:</td>
                                 <td>
-                                    {isLoading
+                                    {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
                                         : processDate(templateDetails.data.attributes.published)}
                                 </td>
@@ -158,7 +217,7 @@ const PatchSetDetail = () => {
                             <tr>
                                 <td>Last edited:</td>
                                 <td>
-                                    {isLoading
+                                    {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
                                         : processDate(templateDetails.data.attributes.last_edited)}
                                 </td>
@@ -167,27 +226,25 @@ const PatchSetDetail = () => {
                     </table>
                 </Header>
                 <Main>
-                    {/*
-                {hasSmartManagement ? <TableView
-                    columns={patchSetColumns}
-                    compact
-                    onSetPage={onSetPage}
-                    onPerPageSelect={onPerPageSelect}
-                    onSort={onSort}
-                    selectedRows={IS_SELECTION_ENABLED && selectedRows}
-                    onSelect={IS_SELECTION_ENABLED && onSelect}
-                    sortBy={sortBy}
-                    apply={apply}
-                    tableOUIA={'patch-set-table'}
-                    paginationOUIA={'patch-set-pagination'}
-                    store={{ rows, metadata, status, queryParams }}
-                    actionsConfig={(patchSets?.length > 0) && actionsConfig}
-                    filterConfig={filterConfig}
-                    searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
-                    CreatePatchSetButton={CreatePatchSetButton}
-                    actionsToggle={!hasAccess ? CustomActionsToggle : null}
-                /> : <NoSmartManagement />}
-                */}
+                    <TextContent>
+                        <Text component="h2" className="pf-u-mb-md">
+                            {intl.formatMessage(messages.templateDetailTableTitle)}
+                        </Text>
+                    </TextContent>
+                    {hasSmartManagement ? (rows.length === 0 && !status.isLoading) ? <NoAppliedSystems /> : <TableView
+                        columns={patchSetDetailColumns}
+                        compact
+                        onSetPage={onSetPage}
+                        onPerPageSelect={onPerPageSelect}
+                        onSort={onSort}
+                        sortBy={sortBy}
+                        apply={apply}
+                        tableOUIA={'patch-set-detail-table'}
+                        paginationOUIA={'patch-set-detail-pagination'}
+                        store={{ rows, metadata, status, queryParams }}
+                        /* actionsConfig={actionsConfig} */
+                        searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
+                    /> : <NoSmartManagement />}
                 </Main>
             </Fragment >);
 };

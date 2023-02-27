@@ -108,7 +108,6 @@ export const useOnSelect = (rawData, selectedRows, config) => {
     };
 
     const dispatchSelection = (toSelect) => {
-        console.log(toSelect, 'toSelect');
         if (customSelector) {
             customSelector(toSelect);
         } else {

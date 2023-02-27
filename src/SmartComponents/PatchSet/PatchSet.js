@@ -207,7 +207,7 @@ const PatchSet = () => {
                 />}
             <Main>
                 {hasSmartManagement
-                    ? rows.length === 0
+                    ? (rows.length === 0 && !status.isLoading)
                         ? <NoPatchSetList Button={CreatePatchSetButton}/>
                         : <TableView
                             columns={patchSetColumns}
@@ -225,7 +225,7 @@ const PatchSet = () => {
                             actionsConfig={(patchSets?.length > 0) && actionsConfig}
                             filterConfig={filterConfig}
                             searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
-                            CreatePatchSetButton={CreatePatchSetButton}
+                            ToolbarButton={CreatePatchSetButton}
                             actionsToggle={!hasAccess ? CustomActionsToggle : null}
                         />
                     : <NoSmartManagement />}

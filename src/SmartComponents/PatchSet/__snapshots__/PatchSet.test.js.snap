@@ -475,7 +475,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
               page-type=""
             >
               <TableView
-                CreatePatchSetButton={[Function]}
+                ToolbarButton={[Function]}
                 actionsConfig={
                   Array [
                     Object {

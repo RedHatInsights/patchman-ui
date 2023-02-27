@@ -1,4 +1,5 @@
 import {
+    Button,
     EmptyState,
     EmptyStateBody,
     EmptyStateIcon,
@@ -110,3 +111,21 @@ export const NoSmartManagement = () => (
         </EmptyStateBody>
     </EmptyState>
 );
+
+export const NoAppliedSystems = ({ onButtonClick }) => (
+    <EmptyState variant={EmptyStateVariant.full}>
+        <EmptyStateIcon icon={PlusCircleIcon} />
+        <Title headingLevel="h5" size="lg">
+            {intl.formatMessage(messages.templateNoAppliedSystemsTitle)}
+        </Title>
+        <EmptyStateBody>
+            <Button type="primary" onClick={onButtonClick}>
+                {intl.formatMessage(messages.templateNoAppliedSystemsButton)}
+            </Button>
+        </EmptyStateBody>
+    </EmptyState>
+);
+
+NoAppliedSystems.propTypes = {
+    onButtonClick: PropTypes.func
+};

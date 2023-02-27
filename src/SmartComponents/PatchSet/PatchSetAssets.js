@@ -60,6 +60,15 @@ export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) 
             handlePatchSetDelete(rowData);
         }
     }
+];
+
+export const patchSetDetailRowActions = (handleSystemUnassign) => [
+    {
+        title: intl.formatMessage(messages.textUnassignSystemsShortTitle),
+        onClick: (_event, _rowId, rowData) => {
+            handleSystemUnassign(rowData);
+        }
+    }
 
 ];
 
