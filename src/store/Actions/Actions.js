@@ -235,6 +235,23 @@ export const fetchPatchSetAction = (id) => ({
     }).then(result => result)
 });
 
+export const fetchPatchSetDetailSystemsAction = (id, params) => ({
+    type: ActionTypes.FETCH_PATCH_SET_DETAIL_SYSTEMS,
+    payload: new Promise(resolve => {
+        resolve(fetchPatchSetSystems(id, params));
+    }).then(result => result)
+});
+
+export const changePatchSetDetailsParams = (params) => ({
+    type: ActionTypes.CHANGE_PATCH_SET_DETAIL_SYSTEMS_PARAMS,
+    payload: params
+});
+
+export const changePatchSetDetailsSystemsParams = () => ({
+    type: ActionTypes.CLEAR_PATCH_SET_DETAIL_SYSTEMS,
+    payload: []
+});
+
 export const clearPatchSetAction = () => ({
     type: ActionTypes.CLEAR_PATCH_SET,
     payload: []

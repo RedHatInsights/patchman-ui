@@ -383,3 +383,36 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
                 }
             ] : [];
 };
+
+export const createPatchSetDetailRows = (rows) => {
+
+    const data =
+        rows &&
+        rows.map(row => {
+            return {
+                id: row.id,
+                displayName: row.display_name,
+                key: row.id,
+                cells: [
+                    {
+                        title: (
+                            <Link to={{ pathname: `/systems/${row.id}` }}>
+                                {row.attributes.display_name}
+                            </Link>
+                        )
+                    },
+                    {
+                        title: '<OS placeholder>'
+                    },
+                    {
+                        title: '<Tags placeholder>'
+                    },
+                    {
+                        title: '<Last seen placeholder>'
+                    }
+                ]
+            };
+        });
+
+    return data;
+};

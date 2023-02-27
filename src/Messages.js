@@ -507,6 +507,11 @@ export default defineMessages({
         description: 'breadcrumb for template detail header',
         defaultMessage: 'Content templates'
     },
+    templateDetailTableTitle: {
+        id: 'templateDetailTableTitle',
+        description: 'title of template assigned systems table',
+        defaultMessage: 'Applied systems'
+    },
     templateEdit: {
         id: 'templateEdit',
         description: 'step name of the patch template wizard',
@@ -521,6 +526,16 @@ export default defineMessages({
         id: 'templateNew',
         description: 'step name of the patch template wizard',
         defaultMessage: 'New patch template '
+    },
+    templateNoAppliedSystemsButton: {
+        id: 'templateNoAppliedSystemsButton',
+        description: 'button in the empty state in template assigned systems table',
+        defaultMessage: 'Apply to systems'
+    },
+    templateNoAppliedSystemsTitle: {
+        id: 'templateNoAppliedSystemsTitle',
+        description: 'title of the empty state in template assigned systems table',
+        defaultMessage: 'Not applied to any systems'
     },
     templateNoSystemSelected: {
         id: 'templateNoSystemSelected',
@@ -636,6 +651,11 @@ export default defineMessages({
         id: 'textThirdPartyInfo',
         description: 'text about the third paty managed hosts',
         defaultMessage: 'This system has content that is managed by repositories other than the Red Hat CDN'
+    },
+    textUnassignSystemsShortTitle: {
+        id: 'textUnassignSystemsShortTitle',
+        description: 'text about systems being removed',
+        defaultMessage: 'Remove system'
     },
     textUnassignSystemsStatement: {
         id: 'textUnassignSystemsStatement',

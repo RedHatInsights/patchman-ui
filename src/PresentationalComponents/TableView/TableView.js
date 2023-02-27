@@ -38,7 +38,7 @@ const TableView = ({
     emptyState,
     defaultFilters,
     searchChipLabel,
-    CreatePatchSetButton,
+    ToolbarButton,
     actionsConfig,
     isRemediationLoading,
     actionsToggle
@@ -99,8 +99,8 @@ const TableView = ({
                                 }}
                                 bulkSelect={onSelect && bulkSelectConfig}
                             >
-                                {CreatePatchSetButton && <ToolbarItem>
-                                    <CreatePatchSetButton />
+                                {ToolbarButton && <ToolbarItem>
+                                    <ToolbarButton />
                                 </ToolbarItem>}
                             </PrimaryToolbar>
                             {isLoading ? <SkeletonTable colSize={5} rowSize={20} variant={compact && TableVariant.compact}/> :
@@ -161,7 +161,7 @@ TableView.propTypes = {
     emptyState: PropTypes.element,
     defaultFilters: PropTypes.object,
     searchChipLabel: PropTypes.string,
-    CreatePatchSetButton: PropTypes.element,
+    ToolbarButton: PropTypes.node,
     actionsConfig: PropTypes.array,
     isRemediationLoading: PropTypes.bool,
     actionsToggle: PropTypes.func
