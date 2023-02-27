@@ -1,3 +1,10 @@
+# [1.60.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.4...v1.60.0) (2023-02-27)
+
+
+### Features
+
+* **Templates:** Update Template list page empty state ([#961](https://github.com/RedHatInsights/patchman-ui/issues/961)) ([9318995](https://github.com/RedHatInsights/patchman-ui/commit/9318995e9f7105810c0c938072a2a7658ba48ff6))
+
 ## [1.59.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.3...v1.59.4) (2023-02-27)
 
 
