@@ -94,7 +94,7 @@ const PatchSetDetail = () => {
                             isActive: false
                         },
                         {
-                            title: patchSetName,
+                            title: isLoading ? <Skeleton style={{ width: 150 }} /> : patchSetName,
                             isActive: true
                         }
                     ]}
