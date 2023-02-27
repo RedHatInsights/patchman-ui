@@ -319,7 +319,7 @@ export const createSystemsRowsReview = (rows, selectedRows) => {
                         title: attributes.display_name
                     },
                     {
-                        title: attributes.os
+                        title: attributes.os || 'N/A'
                     },
                     {
                         title: attributes.baseline_name || 'No template'
