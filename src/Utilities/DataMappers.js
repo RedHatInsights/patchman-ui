@@ -6,8 +6,10 @@ import React from 'react';
 import messages from '../Messages';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
-import { EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList,
-    EmptyPatchSetList, NoPatchSetList, EmptySystemsList } from '../PresentationalComponents/Snippets/EmptyStates';
+import {
+    EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList,
+    EmptyPatchSetList, EmptySystemsList
+} from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
@@ -357,17 +359,16 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
         });
 
     return data?.length > 0 ? data :
-        [
-            {
-                heightAuto: true,
-                cells: [
-                    {
-                        props: { colSpan: 6 },
-                        title: (filters.seach || Object.keys(filters.filter).length)
-                            && <EmptyPatchSetList/>
-                            || <NoPatchSetList/>
-                    }
-                ]
-            }
-        ];
+        (filters.search || Object.keys(filters.filter).length) ?
+            [
+                {
+                    heightAuto: true,
+                    cells: [
+                        {
+                            props: { colSpan: 6 },
+                            title: <EmptyPatchSetList />
+                        }
+                    ]
+                }
+            ] : [];
 };
