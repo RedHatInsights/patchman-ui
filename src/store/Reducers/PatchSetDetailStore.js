@@ -1,4 +1,4 @@
-import { CLEAR_PATCH_SET, FETCH_PATCH_SET } from '../ActionTypes';
+import { FETCH_TEMPLATE_DETAIL, CLEAR_TEMPLATE_DETAIL } from '../ActionTypes';
 import { fetchPending, fetchRejected } from './HelperReducers';
 
 export let initialState = {
@@ -10,7 +10,7 @@ export const PatchSetDetailStore = (state = initialState, action) => {
     let newState = { ...state };
 
     switch (action.type) {
-        case FETCH_PATCH_SET + '_FULFILLED':
+        case FETCH_TEMPLATE_DETAIL + '_FULFILLED':
             return {
                 ...state,
                 status: { isLoading: false },
@@ -18,13 +18,13 @@ export const PatchSetDetailStore = (state = initialState, action) => {
                 error: {}
             };
 
-        case FETCH_PATCH_SET + '_PENDING':
+        case FETCH_TEMPLATE_DETAIL + '_PENDING':
             return fetchPending(newState);
 
-        case FETCH_PATCH_SET + '_REJECTED':
+        case FETCH_TEMPLATE_DETAIL + '_REJECTED':
             return fetchRejected(newState, action);
 
-        case CLEAR_PATCH_SET:
+        case CLEAR_TEMPLATE_DETAIL:
             return initialState;
 
         default:

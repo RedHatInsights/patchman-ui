@@ -9,10 +9,10 @@ import { NoAppliedSystems, NoSmartManagement } from '../../PresentationalCompone
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { useDeepCompareEffect, useEntitlements, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 import {
-    changePatchSetDetailsParams,
     changePatchSetDetailsSystemsParams,
-    fetchPatchSetAction,
-    fetchPatchSetDetailSystemsAction
+    clearTemplateDetail,
+    fetchPatchSetDetailSystemsAction,
+    fetchTemplateDetail
 } from '../../store/Actions/Actions';
 import { Dropdown, DropdownItem, DropdownPosition, DropdownToggle, Skeleton, Text, TextContent } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
@@ -24,6 +24,7 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import { patchSetDetailColumns } from './PatchSetDetailAssets';
 import { createPatchSetDetailRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
+import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 
 const PatchSetDetail = () => {
     const getEntitlements = useEntitlements();
@@ -31,16 +32,17 @@ const PatchSetDetail = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    function apply(params) {
-        dispatch(changePatchSetDetailsParams(params));
-    }
-
     const patchSetId = history.location.pathname.split('/')[2];
 
     const [firstMount, setFirstMount] = React.useState(true);
     const [isHeaderDropdownOpen, setHeaderDropdownOpen] = useState(false);
     const [hasSmartManagement, setSmartManagement] = React.useState(true);
     const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = useState(false);
+    const [wizardState, setWizardState] = useState({
+        isPatchSetWizardOpen: false,
+        systemsIDs: [],
+        shouldRefresh: false
+    });
 
     const templateDetails = useSelector(
         ({ PatchSetDetailStore }) => PatchSetDetailStore
@@ -75,6 +77,10 @@ const PatchSetDetail = () => {
 
     const patchSetName = templateDetails.data.attributes.name;
 
+    const apply = (params) => {
+        dispatch(changePatchSetDetailsSystemsParams(params));
+    };
+
     const onSetPage = useSetPage(metadata?.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
@@ -83,6 +89,17 @@ const PatchSetDetail = () => {
         () => createSortBy(patchSetDetailColumns, metadata?.sort, 0),
         [metadata?.sort]
     );
+
+    const openPatchSetAssignWizard = () => {
+        setWizardState({
+            isPatchSetWizardOpen: true
+        });
+    };
+
+    const refreshTable = () => {
+        dispatch(fetchPatchSetDetailSystemsAction(patchSetId, { ...queryParams, page: 1, offset: 0 }));
+        dispatch(fetchTemplateDetail(patchSetId));
+    };
 
     // const handleSystemRemoval = useUnassignSystemsHook();
 
@@ -97,14 +114,21 @@ const PatchSetDetail = () => {
 
         return () => {
             dispatch(changePatchSetDetailsSystemsParams());
+            dispatch(clearTemplateDetail());
         };
     }, []);
+
+    useEffect(() => {
+        if (wizardState.shouldRefresh === true) {
+            refreshTable();
+        }
+    }, [wizardState.shouldRefresh]);
 
     useDeepCompareEffect(() => {
         if (firstMount) {
             apply(decodeQueryparams(history.location.search));
 
-            dispatch(fetchPatchSetAction(patchSetId));
+            dispatch(fetchTemplateDetail(patchSetId));
 
             setFirstMount(false);
         } else {
@@ -125,6 +149,13 @@ const PatchSetDetail = () => {
 
     const dropdownItems = [
         <DropdownItem
+            key="edit-patch-set"
+            component="button"
+            onClick={() => openPatchSetAssignWizard()}
+        >
+            {intl.formatMessage(messages.labelsButtonEditTemplate)}
+        </DropdownItem>,
+        <DropdownItem
             key="delete-patch-set"
             component="button"
             onClick={() => setDeleteConfirmModalOpen(true)}
@@ -143,6 +174,12 @@ const PatchSetDetail = () => {
                     setModalOpen={setDeleteConfirmModalOpen}
                     onConfirm={deleteSet}
                 />
+                {wizardState.isPatchSetWizardOpen &&
+                <PatchSetWizard
+                    systemsIDs={wizardState.systemsIDs}
+                    setBaselineState={setWizardState}
+                    patchSetID={patchSetId}
+                />}
                 <Header
                     title={isHeaderLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
                     headerOUIA={'template-details'}
