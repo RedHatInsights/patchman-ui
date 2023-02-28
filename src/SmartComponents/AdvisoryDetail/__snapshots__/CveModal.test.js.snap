@@ -214,148 +214,12 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                 class="pf-c-toolbar__item ins-c-primary-toolbar__pagination"
                               >
                                 <div
-                                  class="pf-c-pagination pf-m-compact"
-                                  data-ouia-component-id="top-cves-pagination"
-                                  data-ouia-component-type="PF4/Pagination"
-                                  data-ouia-safe="true"
-                                  id="options-menu-top-pagination"
-                                  style="--pf-c-pagination__nav-page-select--c-form-control--width-chars: 2;"
+                                  class="pf-c-skeleton pf-m-text-xl"
+                                  style="--pf-c-skeleton--Width: 200px; margin: 10px;"
                                 >
-                                  <div
-                                    class="pf-c-pagination__total-items"
-                                  >
-                                    <b>
-                                      1
-                                       - 
-                                      10
-                                    </b>
-                                     
-                                    of
-                                     
-                                    <b>
-                                      12
-                                    </b>
-                                     
-                                    
-                                  </div>
-                                  <div
-                                    class="pf-c-options-menu"
-                                    data-ouia-component-type="PF4/PaginationOptionsMenu"
-                                    data-ouia-safe="true"
-                                  >
-                                    <div
-                                      class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
-                                    >
-                                      <span
-                                        class="pf-c-options-menu__toggle-text"
-                                      >
-                                        <b>
-                                          1
-                                           - 
-                                          10
-                                        </b>
-                                         
-                                        of
-                                         
-                                        <b>
-                                          12
-                                        </b>
-                                         
-                                        
-                                      </span>
-                                      <button
-                                        aria-expanded="false"
-                                        aria-haspopup="listbox"
-                                        aria-label="Items per page"
-                                        class="  pf-c-options-menu__toggle-button"
-                                        data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
-                                        data-ouia-component-type="PF4/DropdownToggle"
-                                        data-ouia-safe="true"
-                                        id="options-menu-top-toggle"
-                                        type="button"
-                                      >
-                                        <span
-                                          class="pf-c-options-menu__toggle-button-icon"
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            fill="currentColor"
-                                            height="1em"
-                                            role="img"
-                                            style="vertical-align: -0.125em;"
-                                            viewBox="0 0 320 512"
-                                            width="1em"
-                                          >
-                                            <path
-                                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                                            />
-                                          </svg>
-                                        </span>
-                                      </button>
-                                    </div>
-                                  </div>
-                                  <nav
-                                    aria-label="Pagination"
-                                    class="pf-c-pagination__nav"
-                                  >
-                                    <div
-                                      class="pf-c-pagination__nav-control"
-                                    >
-                                      <button
-                                        aria-disabled="true"
-                                        aria-label="Go to previous page"
-                                        class="pf-c-button pf-m-plain pf-m-disabled"
-                                        data-action="previous"
-                                        data-ouia-component-id="OUIA-Generated-Button-plain-2"
-                                        data-ouia-component-type="PF4/Button"
-                                        data-ouia-safe="true"
-                                        disabled=""
-                                        type="button"
-                                      >
-                                        <svg
-                                          aria-hidden="true"
-                                          fill="currentColor"
-                                          height="1em"
-                                          role="img"
-                                          style="vertical-align: -0.125em;"
-                                          viewBox="0 0 256 512"
-                                          width="1em"
-                                        >
-                                          <path
-                                            d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                                          />
-                                        </svg>
-                                      </button>
-                                    </div>
-                                    <div
-                                      class="pf-c-pagination__nav-control"
-                                    >
-                                      <button
-                                        aria-disabled="false"
-                                        aria-label="Go to next page"
-                                        class="pf-c-button pf-m-plain"
-                                        data-action="next"
-                                        data-ouia-component-id="OUIA-Generated-Button-plain-3"
-                                        data-ouia-component-type="PF4/Button"
-                                        data-ouia-safe="true"
-                                        type="button"
-                                      >
-                                        <svg
-                                          aria-hidden="true"
-                                          fill="currentColor"
-                                          height="1em"
-                                          role="img"
-                                          style="vertical-align: -0.125em;"
-                                          viewBox="0 0 256 512"
-                                          width="1em"
-                                        >
-                                          <path
-                                            d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                                          />
-                                        </svg>
-                                      </button>
-                                    </div>
-                                  </nav>
+                                  <span
+                                    class="pf-u-screen-reader"
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -1912,6 +1776,18 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                             </tr>
                           </tbody>
                         </table>
+                        <div
+                          class="pf-c-pagination pf-m-bottom"
+                        >
+                          <div
+                            class="pf-c-skeleton pf-m-text-xl"
+                            style="--pf-c-skeleton--Width: 350px; margin: 10px;"
+                          >
+                            <span
+                              class="pf-u-screen-reader"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2369,16 +2245,15 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                       }
                                     }
                                     pagination={
-                                      Object {
-                                        "isCompact": true,
-                                        "isDisabled": false,
-                                        "itemCount": 12,
-                                        "onPerPageSelect": [Function],
-                                        "onSetPage": [Function],
-                                        "ouiaId": "top-cves-pagination",
-                                        "page": 1,
-                                        "perPage": 10,
-                                      }
+                                      <Skeleton
+                                        fontSize="xl"
+                                        style={
+                                          Object {
+                                            "margin": 10,
+                                          }
+                                        }
+                                        width="200px"
+                                      />
                                     }
                                   >
                                     <Toolbar
@@ -2747,690 +2622,30 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                                 <div
                                                   className="pf-c-toolbar__item ins-c-primary-toolbar__pagination"
                                                 >
-                                                  <Pagination
-                                                    className=""
-                                                    defaultToFullPage={false}
-                                                    firstPage={1}
-                                                    isCompact={true}
-                                                    isDisabled={false}
-                                                    isSticky={false}
-                                                    itemCount={12}
-                                                    itemsEnd={null}
-                                                    itemsStart={null}
-                                                    offset={0}
-                                                    onFirstClick={[Function]}
-                                                    onLastClick={[Function]}
-                                                    onNextClick={[Function]}
-                                                    onPageInput={[Function]}
-                                                    onPerPageSelect={[Function]}
-                                                    onPreviousClick={[Function]}
-                                                    onSetPage={[Function]}
-                                                    ouiaId="top-cves-pagination"
-                                                    ouiaSafe={true}
-                                                    page={1}
-                                                    perPage={10}
-                                                    perPageComponent="div"
-                                                    perPageOptions={
-                                                      Array [
-                                                        Object {
-                                                          "title": "10",
-                                                          "value": 10,
-                                                        },
-                                                        Object {
-                                                          "title": "20",
-                                                          "value": 20,
-                                                        },
-                                                        Object {
-                                                          "title": "50",
-                                                          "value": 50,
-                                                        },
-                                                        Object {
-                                                          "title": "100",
-                                                          "value": 100,
-                                                        },
-                                                      ]
-                                                    }
-                                                    titles={
+                                                  <Skeleton
+                                                    fontSize="xl"
+                                                    style={
                                                       Object {
-                                                        "currPage": "Current page",
-                                                        "items": "",
-                                                        "itemsPerPage": "Items per page",
-                                                        "ofWord": "of",
-                                                        "optionsToggle": "",
-                                                        "page": "",
-                                                        "pages": "",
-                                                        "paginationTitle": "Pagination",
-                                                        "perPageSuffix": "per page",
-                                                        "toFirstPage": "Go to first page",
-                                                        "toLastPage": "Go to last page",
-                                                        "toNextPage": "Go to next page",
-                                                        "toPreviousPage": "Go to previous page",
+                                                        "margin": 10,
                                                       }
                                                     }
-                                                    variant="top"
-                                                    widgetId="options-menu"
+                                                    width="200px"
                                                   >
                                                     <div
-                                                      className="pf-c-pagination pf-m-compact"
-                                                      data-ouia-component-id="top-cves-pagination"
-                                                      data-ouia-component-type="PF4/Pagination"
-                                                      data-ouia-safe={true}
-                                                      id="options-menu-top-pagination"
-                                                    >
-                                                      <div
-                                                        className="pf-c-pagination__total-items"
-                                                      >
-                                                        <ToggleTemplate
-                                                          firstIndex={1}
-                                                          itemCount={12}
-                                                          itemsTitle=""
-                                                          lastIndex={10}
-                                                          ofWord="of"
-                                                        >
-                                                          <b>
-                                                            1
-                                                             - 
-                                                            10
-                                                          </b>
-                                                           
-                                                          of
-                                                           
-                                                          <b>
-                                                            12
-                                                          </b>
-                                                           
-                                                        </ToggleTemplate>
-                                                      </div>
-                                                      <PaginationOptionsMenu
-                                                        className=""
-                                                        defaultToFullPage={false}
-                                                        dropDirection="down"
-                                                        firstIndex={1}
-                                                        isDisabled={false}
-                                                        itemCount={12}
-                                                        itemsPerPageTitle="Items per page"
-                                                        itemsTitle=""
-                                                        lastIndex={10}
-                                                        lastPage={2}
-                                                        ofWord="of"
-                                                        onPerPageSelect={[Function]}
-                                                        optionsToggle=""
-                                                        page={1}
-                                                        perPage={10}
-                                                        perPageComponent="div"
-                                                        perPageOptions={
-                                                          Array [
-                                                            Object {
-                                                              "title": "10",
-                                                              "value": 10,
-                                                            },
-                                                            Object {
-                                                              "title": "20",
-                                                              "value": 20,
-                                                            },
-                                                            Object {
-                                                              "title": "50",
-                                                              "value": 50,
-                                                            },
-                                                            Object {
-                                                              "title": "100",
-                                                              "value": 100,
-                                                            },
-                                                          ]
+                                                      className="pf-c-skeleton pf-m-text-xl"
+                                                      style={
+                                                        Object {
+                                                          "--pf-c-skeleton--Height": undefined,
+                                                          "--pf-c-skeleton--Width": "200px",
+                                                          "margin": 10,
                                                         }
-                                                        perPageSuffix="per page"
-                                                        toggleTemplate={[Function]}
-                                                        widgetId="options-menu-top"
-                                                      >
-                                                        <DropdownWithContext
-                                                          autoFocus={true}
-                                                          className=""
-                                                          direction="down"
-                                                          dropdownItems={
-                                                            Array [
-                                                              <DropdownItem
-                                                                className="pf-m-selected"
-                                                                component="button"
-                                                                data-action="per-page-10"
-                                                                onClick={[Function]}
-                                                              >
-                                                                10
-                                                                 per page
-                                                                <div
-                                                                  className="pf-c-options-menu__menu-item-icon"
-                                                                >
-                                                                  <CheckIcon
-                                                                    color="currentColor"
-                                                                    noVerticalAlign={false}
-                                                                    size="sm"
-                                                                  />
-                                                                </div>
-                                                              </DropdownItem>,
-                                                              <DropdownItem
-                                                                className=""
-                                                                component="button"
-                                                                data-action="per-page-20"
-                                                                onClick={[Function]}
-                                                              >
-                                                                20
-                                                                 per page
-                                                              </DropdownItem>,
-                                                              <DropdownItem
-                                                                className=""
-                                                                component="button"
-                                                                data-action="per-page-50"
-                                                                onClick={[Function]}
-                                                              >
-                                                                50
-                                                                 per page
-                                                              </DropdownItem>,
-                                                              <DropdownItem
-                                                                className=""
-                                                                component="button"
-                                                                data-action="per-page-100"
-                                                                onClick={[Function]}
-                                                              >
-                                                                100
-                                                                 per page
-                                                              </DropdownItem>,
-                                                            ]
-                                                          }
-                                                          isFlipEnabled={true}
-                                                          isGrouped={false}
-                                                          isOpen={false}
-                                                          isPlain={true}
-                                                          isText={false}
-                                                          menuAppendTo="inline"
-                                                          onSelect={[Function]}
-                                                          position="left"
-                                                          toggle={
-                                                            <OptionsToggle
-                                                              firstIndex={1}
-                                                              isDisabled={false}
-                                                              isOpen={false}
-                                                              itemCount={12}
-                                                              itemsPerPageTitle="Items per page"
-                                                              itemsTitle=""
-                                                              lastIndex={10}
-                                                              ofWord="of"
-                                                              onToggle={[Function]}
-                                                              optionsToggle=""
-                                                              parentRef={null}
-                                                              perPageComponent="div"
-                                                              showToggle={true}
-                                                              toggleTemplate={[Function]}
-                                                              widgetId="options-menu-top"
-                                                            />
-                                                          }
-                                                        >
-                                                          <div
-                                                            className="pf-c-options-menu"
-                                                            data-ouia-component-type="PF4/PaginationOptionsMenu"
-                                                            data-ouia-safe={true}
-                                                          >
-                                                            <OptionsToggle
-                                                              aria-haspopup={true}
-                                                              firstIndex={1}
-                                                              getMenuRef={[Function]}
-                                                              id="pf-dropdown-toggle-id-1"
-                                                              isDisabled={false}
-                                                              isOpen={false}
-                                                              isPlain={true}
-                                                              isText={false}
-                                                              itemCount={12}
-                                                              itemsPerPageTitle="Items per page"
-                                                              itemsTitle=""
-                                                              key=".0"
-                                                              lastIndex={10}
-                                                              ofWord="of"
-                                                              onEnter={[Function]}
-                                                              onToggle={[Function]}
-                                                              optionsToggle=""
-                                                              parentRef={
-                                                                Object {
-                                                                  "current": <div
-                                                                    class="pf-c-options-menu"
-                                                                    data-ouia-component-type="PF4/PaginationOptionsMenu"
-                                                                    data-ouia-safe="true"
-                                                                  >
-                                                                    <div
-                                                                      class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
-                                                                    >
-                                                                      <span
-                                                                        class="pf-c-options-menu__toggle-text"
-                                                                      >
-                                                                        <b>
-                                                                          1
-                                                                           - 
-                                                                          10
-                                                                        </b>
-                                                                         
-                                                                        of
-                                                                         
-                                                                        <b>
-                                                                          12
-                                                                        </b>
-                                                                         
-                                                                        
-                                                                      </span>
-                                                                      <button
-                                                                        aria-expanded="false"
-                                                                        aria-haspopup="listbox"
-                                                                        aria-label="Items per page"
-                                                                        class="  pf-c-options-menu__toggle-button"
-                                                                        data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
-                                                                        data-ouia-component-type="PF4/DropdownToggle"
-                                                                        data-ouia-safe="true"
-                                                                        id="options-menu-top-toggle"
-                                                                        type="button"
-                                                                      >
-                                                                        <span
-                                                                          class="pf-c-options-menu__toggle-button-icon"
-                                                                        >
-                                                                          <svg
-                                                                            aria-hidden="true"
-                                                                            fill="currentColor"
-                                                                            height="1em"
-                                                                            role="img"
-                                                                            style="vertical-align: -0.125em;"
-                                                                            viewBox="0 0 320 512"
-                                                                            width="1em"
-                                                                          >
-                                                                            <path
-                                                                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                                                                            />
-                                                                          </svg>
-                                                                        </span>
-                                                                      </button>
-                                                                    </div>
-                                                                  </div>,
-                                                                }
-                                                              }
-                                                              perPageComponent="div"
-                                                              showToggle={true}
-                                                              toggleTemplate={[Function]}
-                                                              widgetId="options-menu-top"
-                                                            >
-                                                              <div
-                                                                className="pf-c-options-menu__toggle pf-m-plain pf-m-text"
-                                                              >
-                                                                <span
-                                                                  className="pf-c-options-menu__toggle-text"
-                                                                >
-                                                                  <ToggleTemplate
-                                                                    firstIndex={1}
-                                                                    itemCount={12}
-                                                                    itemsTitle=""
-                                                                    lastIndex={10}
-                                                                    ofWord="of"
-                                                                  >
-                                                                    <b>
-                                                                      1
-                                                                       - 
-                                                                      10
-                                                                    </b>
-                                                                     
-                                                                    of
-                                                                     
-                                                                    <b>
-                                                                      12
-                                                                    </b>
-                                                                     
-                                                                  </ToggleTemplate>
-                                                                </span>
-                                                                <DropdownToggle
-                                                                  aria-haspopup="listbox"
-                                                                  aria-label="Items per page"
-                                                                  className="pf-c-options-menu__toggle-button"
-                                                                  id="options-menu-top-toggle"
-                                                                  isDisabled={false}
-                                                                  isOpen={false}
-                                                                  onEnter={[Function]}
-                                                                  onToggle={[Function]}
-                                                                  parentRef={
-                                                                    Object {
-                                                                      "current": <div
-                                                                        class="pf-c-options-menu"
-                                                                        data-ouia-component-type="PF4/PaginationOptionsMenu"
-                                                                        data-ouia-safe="true"
-                                                                      >
-                                                                        <div
-                                                                          class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
-                                                                        >
-                                                                          <span
-                                                                            class="pf-c-options-menu__toggle-text"
-                                                                          >
-                                                                            <b>
-                                                                              1
-                                                                               - 
-                                                                              10
-                                                                            </b>
-                                                                             
-                                                                            of
-                                                                             
-                                                                            <b>
-                                                                              12
-                                                                            </b>
-                                                                             
-                                                                            
-                                                                          </span>
-                                                                          <button
-                                                                            aria-expanded="false"
-                                                                            aria-haspopup="listbox"
-                                                                            aria-label="Items per page"
-                                                                            class="  pf-c-options-menu__toggle-button"
-                                                                            data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
-                                                                            data-ouia-component-type="PF4/DropdownToggle"
-                                                                            data-ouia-safe="true"
-                                                                            id="options-menu-top-toggle"
-                                                                            type="button"
-                                                                          >
-                                                                            <span
-                                                                              class="pf-c-options-menu__toggle-button-icon"
-                                                                            >
-                                                                              <svg
-                                                                                aria-hidden="true"
-                                                                                fill="currentColor"
-                                                                                height="1em"
-                                                                                role="img"
-                                                                                style="vertical-align: -0.125em;"
-                                                                                viewBox="0 0 320 512"
-                                                                                width="1em"
-                                                                              >
-                                                                                <path
-                                                                                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                                                                                />
-                                                                              </svg>
-                                                                            </span>
-                                                                          </button>
-                                                                        </div>
-                                                                      </div>,
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  <Toggle
-                                                                    aria-haspopup="listbox"
-                                                                    aria-label="Items per page"
-                                                                    bubbleEvent={false}
-                                                                    className="pf-c-options-menu__toggle-button"
-                                                                    data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
-                                                                    data-ouia-component-type="PF4/DropdownToggle"
-                                                                    data-ouia-safe={true}
-                                                                    getMenuRef={null}
-                                                                    id="options-menu-top-toggle"
-                                                                    isActive={false}
-                                                                    isDisabled={false}
-                                                                    isOpen={false}
-                                                                    isPlain={false}
-                                                                    isPrimary={false}
-                                                                    isSplitButton={false}
-                                                                    isText={false}
-                                                                    onEnter={[Function]}
-                                                                    onToggle={[Function]}
-                                                                    parentRef={
-                                                                      Object {
-                                                                        "current": <div
-                                                                          class="pf-c-options-menu"
-                                                                          data-ouia-component-type="PF4/PaginationOptionsMenu"
-                                                                          data-ouia-safe="true"
-                                                                        >
-                                                                          <div
-                                                                            class="pf-c-options-menu__toggle pf-m-plain pf-m-text"
-                                                                          >
-                                                                            <span
-                                                                              class="pf-c-options-menu__toggle-text"
-                                                                            >
-                                                                              <b>
-                                                                                1
-                                                                                 - 
-                                                                                10
-                                                                              </b>
-                                                                               
-                                                                              of
-                                                                               
-                                                                              <b>
-                                                                                12
-                                                                              </b>
-                                                                               
-                                                                              
-                                                                            </span>
-                                                                            <button
-                                                                              aria-expanded="false"
-                                                                              aria-haspopup="listbox"
-                                                                              aria-label="Items per page"
-                                                                              class="  pf-c-options-menu__toggle-button"
-                                                                              data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
-                                                                              data-ouia-component-type="PF4/DropdownToggle"
-                                                                              data-ouia-safe="true"
-                                                                              id="options-menu-top-toggle"
-                                                                              type="button"
-                                                                            >
-                                                                              <span
-                                                                                class="pf-c-options-menu__toggle-button-icon"
-                                                                              >
-                                                                                <svg
-                                                                                  aria-hidden="true"
-                                                                                  fill="currentColor"
-                                                                                  height="1em"
-                                                                                  role="img"
-                                                                                  style="vertical-align: -0.125em;"
-                                                                                  viewBox="0 0 320 512"
-                                                                                  width="1em"
-                                                                                >
-                                                                                  <path
-                                                                                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                                                                                  />
-                                                                                </svg>
-                                                                              </span>
-                                                                            </button>
-                                                                          </div>
-                                                                        </div>,
-                                                                      }
-                                                                    }
-                                                                    toggleVariant="default"
-                                                                  >
-                                                                    <button
-                                                                      aria-expanded={false}
-                                                                      aria-haspopup="listbox"
-                                                                      aria-label="Items per page"
-                                                                      className="  pf-c-options-menu__toggle-button"
-                                                                      data-ouia-component-id="OUIA-Generated-DropdownToggle-1"
-                                                                      data-ouia-component-type="PF4/DropdownToggle"
-                                                                      data-ouia-safe={true}
-                                                                      disabled={false}
-                                                                      id="options-menu-top-toggle"
-                                                                      onClick={[Function]}
-                                                                      onKeyDown={[Function]}
-                                                                      type="button"
-                                                                    >
-                                                                      <span
-                                                                        className="pf-c-options-menu__toggle-button-icon"
-                                                                      >
-                                                                        <CaretDownIcon
-                                                                          color="currentColor"
-                                                                          noVerticalAlign={false}
-                                                                          size="sm"
-                                                                        >
-                                                                          <svg
-                                                                            aria-hidden={true}
-                                                                            aria-labelledby={null}
-                                                                            fill="currentColor"
-                                                                            height="1em"
-                                                                            role="img"
-                                                                            style={
-                                                                              Object {
-                                                                                "verticalAlign": "-0.125em",
-                                                                              }
-                                                                            }
-                                                                            viewBox="0 0 320 512"
-                                                                            width="1em"
-                                                                          >
-                                                                            <path
-                                                                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                                                                            />
-                                                                          </svg>
-                                                                        </CaretDownIcon>
-                                                                      </span>
-                                                                    </button>
-                                                                  </Toggle>
-                                                                </DropdownToggle>
-                                                              </div>
-                                                            </OptionsToggle>
-                                                          </div>
-                                                        </DropdownWithContext>
-                                                      </PaginationOptionsMenu>
-                                                      <Navigation
-                                                        className=""
-                                                        currPage="Current page"
-                                                        firstPage={1}
-                                                        isCompact={true}
-                                                        isDisabled={false}
-                                                        itemCount={12}
-                                                        lastPage={2}
-                                                        ofWord="of"
-                                                        onFirstClick={[Function]}
-                                                        onLastClick={[Function]}
-                                                        onNextClick={[Function]}
-                                                        onPageInput={[Function]}
-                                                        onPreviousClick={[Function]}
-                                                        onSetPage={[Function]}
-                                                        page={1}
-                                                        pagesTitle=""
-                                                        pagesTitlePlural=""
-                                                        paginationTitle="Pagination"
-                                                        perPage={10}
-                                                        toFirstPage="Go to first page"
-                                                        toLastPage="Go to last page"
-                                                        toNextPage="Go to next page"
-                                                        toPreviousPage="Go to previous page"
-                                                      >
-                                                        <nav
-                                                          aria-label="Pagination"
-                                                          className="pf-c-pagination__nav"
-                                                        >
-                                                          <div
-                                                            className="pf-c-pagination__nav-control"
-                                                          >
-                                                            <Button
-                                                              aria-label="Go to previous page"
-                                                              data-action="previous"
-                                                              isDisabled={true}
-                                                              onClick={[Function]}
-                                                              variant="plain"
-                                                            >
-                                                              <ButtonBase
-                                                                aria-label="Go to previous page"
-                                                                data-action="previous"
-                                                                innerRef={null}
-                                                                isDisabled={true}
-                                                                onClick={[Function]}
-                                                                variant="plain"
-                                                              >
-                                                                <button
-                                                                  aria-disabled={true}
-                                                                  aria-label="Go to previous page"
-                                                                  className="pf-c-button pf-m-plain pf-m-disabled"
-                                                                  data-action="previous"
-                                                                  data-ouia-component-id="OUIA-Generated-Button-plain-2"
-                                                                  data-ouia-component-type="PF4/Button"
-                                                                  data-ouia-safe={true}
-                                                                  disabled={true}
-                                                                  onClick={[Function]}
-                                                                  role={null}
-                                                                  tabIndex={null}
-                                                                  type="button"
-                                                                >
-                                                                  <AngleLeftIcon
-                                                                    color="currentColor"
-                                                                    noVerticalAlign={false}
-                                                                    size="sm"
-                                                                  >
-                                                                    <svg
-                                                                      aria-hidden={true}
-                                                                      aria-labelledby={null}
-                                                                      fill="currentColor"
-                                                                      height="1em"
-                                                                      role="img"
-                                                                      style={
-                                                                        Object {
-                                                                          "verticalAlign": "-0.125em",
-                                                                        }
-                                                                      }
-                                                                      viewBox="0 0 256 512"
-                                                                      width="1em"
-                                                                    >
-                                                                      <path
-                                                                        d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                                                                      />
-                                                                    </svg>
-                                                                  </AngleLeftIcon>
-                                                                </button>
-                                                              </ButtonBase>
-                                                            </Button>
-                                                          </div>
-                                                          <div
-                                                            className="pf-c-pagination__nav-control"
-                                                          >
-                                                            <Button
-                                                              aria-label="Go to next page"
-                                                              data-action="next"
-                                                              isDisabled={false}
-                                                              onClick={[Function]}
-                                                              variant="plain"
-                                                            >
-                                                              <ButtonBase
-                                                                aria-label="Go to next page"
-                                                                data-action="next"
-                                                                innerRef={null}
-                                                                isDisabled={false}
-                                                                onClick={[Function]}
-                                                                variant="plain"
-                                                              >
-                                                                <button
-                                                                  aria-disabled={false}
-                                                                  aria-label="Go to next page"
-                                                                  className="pf-c-button pf-m-plain"
-                                                                  data-action="next"
-                                                                  data-ouia-component-id="OUIA-Generated-Button-plain-3"
-                                                                  data-ouia-component-type="PF4/Button"
-                                                                  data-ouia-safe={true}
-                                                                  disabled={false}
-                                                                  onClick={[Function]}
-                                                                  role={null}
-                                                                  type="button"
-                                                                >
-                                                                  <AngleRightIcon
-                                                                    color="currentColor"
-                                                                    noVerticalAlign={false}
-                                                                    size="sm"
-                                                                  >
-                                                                    <svg
-                                                                      aria-hidden={true}
-                                                                      aria-labelledby={null}
-                                                                      fill="currentColor"
-                                                                      height="1em"
-                                                                      role="img"
-                                                                      style={
-                                                                        Object {
-                                                                          "verticalAlign": "-0.125em",
-                                                                        }
-                                                                      }
-                                                                      viewBox="0 0 256 512"
-                                                                      width="1em"
-                                                                    >
-                                                                      <path
-                                                                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                                                                      />
-                                                                    </svg>
-                                                                  </AngleRightIcon>
-                                                                </button>
-                                                              </ButtonBase>
-                                                            </Button>
-                                                          </div>
-                                                        </nav>
-                                                      </Navigation>
+                                                      }
+                                                    >
+                                                      <span
+                                                        className="pf-u-screen-reader"
+                                                      />
                                                     </div>
-                                                  </Pagination>
+                                                  </Skeleton>
                                                 </div>
                                               </ToolbarItem>
                                             </div>
@@ -31178,6 +30393,44 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                       </Provider>
                                     </Table>
                                   </SkeletonTable>
+                                  <TableFooter
+                                    isLoading={true}
+                                    onPerPageSelect={[Function]}
+                                    onSetPage={[Function]}
+                                    page={1}
+                                    paginationOUIA="bottom-cves-pagination"
+                                    perPage={10}
+                                    totalItems={12}
+                                  >
+                                    <div
+                                      className="pf-c-pagination pf-m-bottom"
+                                    >
+                                      <Skeleton
+                                        fontSize="xl"
+                                        style={
+                                          Object {
+                                            "margin": 10,
+                                          }
+                                        }
+                                        width="350px"
+                                      >
+                                        <div
+                                          className="pf-c-skeleton pf-m-text-xl"
+                                          style={
+                                            Object {
+                                              "--pf-c-skeleton--Height": undefined,
+                                              "--pf-c-skeleton--Width": "350px",
+                                              "margin": 10,
+                                            }
+                                          }
+                                        >
+                                          <span
+                                            className="pf-u-screen-reader"
+                                          />
+                                        </div>
+                                      </Skeleton>
+                                    </div>
+                                  </TableFooter>
                                 </TableView>
                               </div>
                             </ModalBoxBody>

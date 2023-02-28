@@ -10,6 +10,9 @@ import LockIcon from '@patternfly/react-icons/dist/js/icons/lock-icon';
 import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import { ExternalLinkAltIcon, PlusCircleIcon } from '@patternfly/react-icons';
+import { TEMPLATES_DOCS_LINK } from '../../Utilities/constants';
+import PropTypes from 'prop-types';
 
 export const EmptyAdvisoryList = () => (
     <EmptyState variant={EmptyStateVariant.full}>
@@ -69,17 +72,29 @@ export const EmptyPatchSetList = () => (
     </EmptyState>
 );
 
-export const NoPatchSetList = () => (
-    <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateIcon icon={SearchIcon} />
+export const NoPatchSetList = ({ Button }) => (
+    <EmptyState variant={EmptyStateVariant.large}>
+        <EmptyStateIcon icon={PlusCircleIcon} />
         <Title headingLevel="h5" size="lg">
             {intl.formatMessage(messages.statesNoTemplate)}
         </Title>
         <EmptyStateBody>
             {intl.formatMessage(messages.statesNoTemplateBody)}
+            <br />
+            <br />
+            <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
+                {intl.formatMessage(messages.statesNoTemplateLink)} <ExternalLinkAltIcon />
+            </a>
+            <br />
+            <br />
+            <Button />
         </EmptyStateBody>
     </EmptyState>
 );
+
+NoPatchSetList.propTypes = {
+    Button: PropTypes.node
+};
 
 export const NoSmartManagement = () => (
     <EmptyState variant={EmptyStateVariant.large}>

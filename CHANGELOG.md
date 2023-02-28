@@ -1,3 +1,50 @@
+# [1.60.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.4...v1.60.0) (2023-02-27)
+
+
+### Features
+
+* **Templates:** Update Template list page empty state ([#961](https://github.com/RedHatInsights/patchman-ui/issues/961)) ([9318995](https://github.com/RedHatInsights/patchman-ui/commit/9318995e9f7105810c0c938072a2a7658ba48ff6))
+
+## [1.59.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.3...v1.59.4) (2023-02-27)
+
+
+### Bug Fixes
+
+* Display 'No template' instead of blank cell in template column ([#963](https://github.com/RedHatInsights/patchman-ui/issues/963)) ([f59f68a](https://github.com/RedHatInsights/patchman-ui/commit/f59f68aa1210c7d3e59b7bd659e5eaa2284daa7b))
+
+## [1.59.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.2...v1.59.3) (2023-02-20)
+
+
+### Reverts
+
+* Revert "chore: do not wait advisories to display most impactfull statistics (#946)" ([b0ceadc](https://github.com/RedHatInsights/patchman-ui/commit/b0ceadca7885babba8d6ca3ffbd800a724f64610)), closes [#946](https://github.com/RedHatInsights/patchman-ui/issues/946)
+
+## [1.59.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.1...v1.59.2) (2023-02-16)
+
+
+### Performance Improvements
+
+* **RHIF-171:** Get rid of activeApps in redux ([#956](https://github.com/RedHatInsights/patchman-ui/issues/956)) ([87f8c93](https://github.com/RedHatInsights/patchman-ui/commit/87f8c93862b2b2b9d9da07f9725aaf207ab15a42))
+
+## [1.59.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.0...v1.59.1) (2023-02-15)
+
+
+### Bug Fixes
+
+* Pagination fixes (loading skeletons, margins) ([#959](https://github.com/RedHatInsights/patchman-ui/issues/959)) ([6dfc2d2](https://github.com/RedHatInsights/patchman-ui/commit/6dfc2d2cd94a78b512aed4acb211b5077c4f9a0f))
+
+# [1.59.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.58.2...v1.59.0) (2023-02-15)
+
+
+### Bug Fixes
+
+* Fix patch templates page not receiving redux updates ([#958](https://github.com/RedHatInsights/patchman-ui/issues/958)) ([41668f2](https://github.com/RedHatInsights/patchman-ui/commit/41668f27e9a0a506ad08fe24c2bde5487e428661))
+
+
+### Features
+
+* **Templates:** Update templates page header ([#960](https://github.com/RedHatInsights/patchman-ui/issues/960)) ([c11f4f9](https://github.com/RedHatInsights/patchman-ui/commit/c11f4f9a6514126cad57bb4069c39a9dc9504a2c))
+
 ## [1.58.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.58.1...v1.58.2) (2023-01-25)
 
 

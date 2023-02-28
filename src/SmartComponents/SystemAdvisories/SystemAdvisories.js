@@ -21,14 +21,12 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
-const SystemAdvisories = ({ history, handleNoSystemData }) => {
+const SystemAdvisories = ({ history, handleNoSystemData, inventoryId }) => {
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = useState(true);
     const advisories = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.rows
     );
-
-    const entity = useSelector(({ entityDetails }) => entityDetails.entity);
 
     const expandedRows = useSelector(
         ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.expandedRows
@@ -64,7 +62,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
         } else {
             historyPusher();
             dispatch(
-                fetchApplicableSystemAdvisories({ id: entity.id, ...queryParams })
+                fetchApplicableSystemAdvisories({ id: inventoryId, ...queryParams })
             );
         }
     }, [queryParams]);
@@ -83,7 +81,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
         rows,
         selectedRows,
         {
-            endpoint: ID_API_ENDPOINTS.systemAdvisories(entity.id),
+            endpoint: ID_API_ENDPOINTS.systemAdvisories(inventoryId),
             queryParams,
             selectionDispatcher: selectSystemAdvisoryRow,
             constructFilename
@@ -99,12 +97,12 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
     const onPerPageSelect = usePerPageSelect(apply);
 
     function apply(params) {
-        dispatch(changeSystemAdvisoryListParams({ id: entity.id, ...params }));
+        dispatch(changeSystemAdvisoryListParams({ id: inventoryId, ...params }));
     }
 
     const errorState = status.code === 404 ? handleNoSystemData() : <Unavailable/>;
 
-    const onExport = useOnExport(entity.id, queryParams, {
+    const onExport = useOnExport(inventoryId, queryParams, {
         csv: exportSystemAdvisoriesCSV,
         json: exportSystemAdvisoriesJSON
     }, dispatch);
@@ -124,12 +122,12 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
                 remediationProvider={() =>
                     remediationProvider(
                         arrayFromObj(selectedRows),
-                        entity.id,
+                        inventoryId,
                         remediationIdentifiers.advisory
                     )
                 }
                 selectedRows={selectedRows}
-                systemId={entity.id}
+                systemId={inventoryId}
                 apply={apply}
                 store={{ rows, metadata, status, queryParams }}
                 remediationButtonOUIA={'toolbar-remediation-button'}
@@ -155,6 +153,7 @@ const SystemAdvisories = ({ history, handleNoSystemData }) => {
 
 SystemAdvisories.propTypes = {
     history: propTypes.object,
-    handleNoSystemData: propTypes.func
+    handleNoSystemData: propTypes.func,
+    inventoryId: propTypes.string.isRequired
 };
 export default withRouter(SystemAdvisories);

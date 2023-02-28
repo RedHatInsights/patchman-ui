@@ -1,6 +1,3 @@
-import React from 'react';
-import SystemDetail from '../../SmartComponents/SystemDetail/SystemDetail';
-
 let initialState = {
     loaded: false
 };
@@ -15,38 +12,17 @@ export const SystemDetailStore = (state = initialState, { type, payload }) => {
         case 'LOAD_ENTITY_PENDING':
             return {
                 ...state,
-                loaded: false,
-                activeApps: [
-                    {
-                        title: 'Patch',
-                        name: 'patch',
-                        component: () => <SystemDetail />
-                    }
-                ]
+                loaded: false
             };
         case 'LOAD_ENTITY_FULFILLED':
             return {
                 ...state,
-                loaded: true,
-                activeApps: [
-                    {
-                        title: 'Patch',
-                        name: 'patch',
-                        component: () => <SystemDetail />
-                    }
-                ]
+                loaded: true
             };
         case 'LOAD_ENTITY_REJECTED':
             return {
                 ...state,
-                loaded: true,
-                activeApps: [
-                    {
-                        title: 'Patch',
-                        name: 'patch',
-                        component: () => <SystemDetail />
-                    }
-                ]
+                loaded: true
             };
         default:
             return state;

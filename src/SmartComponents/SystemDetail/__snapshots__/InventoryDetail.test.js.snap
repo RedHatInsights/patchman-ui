@@ -38,6 +38,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
     >
       <InventoryDetail>
         <mockConstructor
+          inventoryId="test-system-id"
           onLoad={[Function]}
         >
           <div
@@ -194,7 +195,9 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                           },
                         ]
                       }
+                      appList={Array []}
                       hideBack={true}
+                      inventoryId="test-system-id"
                       showTags={true}
                     >
                       <div
@@ -214,15 +217,13 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                     className="pf-l-page__main-section pf-c-page__main-section"
                     page-type=""
                   >
-                    <mockConstructor>
-                      <div
-                        className="testInventroyAppInfo"
-                      >
-                        <div>
-                          This is child
-                        </div>
+                    <Component
+                      inventoryId="test-system-id"
+                    >
+                      <div>
+                        This is system detail
                       </div>
-                    </mockConstructor>
+                    </Component>
                   </section>
                 </InternalMain>
               </Connect(InternalMain)>

@@ -39,7 +39,7 @@ export default defineMessages({
     labelsButtonCreateTemplate: {
         id: 'labelsButtonCreateTemplate',
         description: 'button label',
-        defaultMessage: 'Create template'
+        defaultMessage: 'Create a template'
     },
     labelsButtonEditTemplate: {
         id: 'labelsButtonEditTemplate',
@@ -465,12 +465,17 @@ export default defineMessages({
     statesNoTemplate: {
         id: 'statesNoTemplate',
         description: 'Label',
-        defaultMessage: 'No patch template '
+        defaultMessage: 'No content template created yet'
     },
     statesNoTemplateBody: {
         id: 'statesNoTemplateBody',
         description: 'Label',
-        defaultMessage: 'You have not created any patch templates'
+        defaultMessage: 'Create a content template to control the scope of package and advisory updates to be installed on selected systems based on criteria you define, providing you with consistent content across your environments and time.'
+    },
+    statesNoTemplateLink: {
+        id: 'statesNoTemplateLink',
+        description: 'Label',
+        defaultMessage: 'Read more about Content templates in documentation'
     },
     statesRequiresPatchPermissions: {
         id: 'statesRequiresPatchPermissions',

@@ -20,9 +20,8 @@ import { usePerPageSelect, useSetPage, useSortColumn, useOnExport } from '../../
 import { intl } from '../../Utilities/IntlProvider';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
-const SystemPackages = ({ handleNoSystemData }) => {
+const SystemPackages = ({ handleNoSystemData, inventoryId }) => {
     const dispatch = useDispatch();
-    const entity = useSelector(({ entityDetails }) => entityDetails.entity);
     const packages = useSelector(
         ({ SystemPackageListStore }) => SystemPackageListStore.rows
     );
@@ -52,7 +51,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
     }, []);
 
     useEffect(()=> {
-        dispatch(fetchApplicableSystemPackages({ id: entity.id, ...queryParams }));
+        dispatch(fetchApplicableSystemPackages({ id: inventoryId, ...queryParams }));
     }, [queryParams]);
 
     const constructFilename = (pkg) => {
@@ -69,7 +68,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
         packages,
         selectedRows,
         {
-            endpoint: ID_API_ENDPOINTS.systemPackages(entity.id),
+            endpoint: ID_API_ENDPOINTS.systemPackages(inventoryId),
             queryParams,
             selectionDispatcher: selectSystemPackagesRow,
             constructFilename,
@@ -78,7 +77,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
     );
 
     function apply(params) {
-        dispatch(changeSystemPackagesParams({ id: entity.id, ...params }));
+        dispatch(changeSystemPackagesParams({ id: inventoryId, ...params }));
     }
 
     const onSort = useSortColumn(systemPackagesColumns, apply, 1);
@@ -92,7 +91,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
     const errorState = error.status === 404 ?  handleNoSystemData() : <Unavailable/>;
     const emptyState = (!status.isLoading && !status.hasError && metadata.total_items === 0
                             && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
-    const onExport = useOnExport(entity.id, queryParams, {
+    const onExport = useOnExport(inventoryId, queryParams, {
         csv: exportSystemPackagesCSV,
         json: exportSystemPackagesJSON
     }, dispatch);
@@ -113,7 +112,7 @@ const SystemPackages = ({ handleNoSystemData }) => {
                 remediationProvider={() =>
                     remediationProvider(
                         arrayFromObj(selectedRows),
-                        entity.id,
+                        inventoryId,
                         remediationIdentifiers.package
                     )
                 }
@@ -140,7 +139,8 @@ const SystemPackages = ({ handleNoSystemData }) => {
 };
 
 SystemPackages.propTypes = {
-    handleNoSystemData: propTypes.func
+    handleNoSystemData: propTypes.func,
+    inventoryId: propTypes.string.isRequired
 };
 export default SystemPackages;
 

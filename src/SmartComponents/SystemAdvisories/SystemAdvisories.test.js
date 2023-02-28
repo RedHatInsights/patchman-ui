@@ -15,12 +15,10 @@ jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
     useSelector: jest.fn()
 }));
-
 jest.mock('../../Utilities/Helpers', () => ({
     ...jest.requireActual('../../Utilities/Helpers'),
     remediationProvider: jest.fn()
 }));
-
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     fetchIDs: jest.fn()
@@ -44,13 +42,13 @@ const mockState = {
 const initStore = (state) => {
     const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
-            return callback({  SystemAdvisoryListStore: state, entityDetails: { entity: { id: 'test' } } });
+            return callback({  SystemAdvisoryListStore: state });
         });
         next(action);
     };
 
     const mockStore = configureStore([customMiddleWare]);
-    return mockStore({  SystemAdvisoryListStore: state, entityDetails: { entity: { id: 'test' } } });
+    return mockStore({  SystemAdvisoryListStore: state });
 };
 
 let wrapper;
@@ -59,10 +57,10 @@ let store = initStore(mockState);
 beforeEach(() => {
     store.clearActions();
     useSelector.mockImplementation(callback => {
-        return callback({ SystemAdvisoryListStore: mockState, entityDetails: { entity: { id: 'test' } } });
+        return callback({ SystemAdvisoryListStore: mockState });
     });
     wrapper = mount(<Provider store={store}>
-        <Router><SystemAdvisories/></Router>
+        <Router><SystemAdvisories inventoryId='test' /></Router>
     </Provider>);
 });
 
@@ -185,7 +183,7 @@ describe('SystemAdvisories.js', () => {
 
         const tempStore = initStore(mockState);
         const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemAdvisories/></Router>
+            <Router><SystemAdvisories inventoryId='test' /></Router>
         </Provider>);
 
         expect(tempWrapper.find('SystemUpToDate')).toBeTruthy();
