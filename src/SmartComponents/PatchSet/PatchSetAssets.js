@@ -23,18 +23,27 @@ export const patchSetColumns = [
     {
         key: 'name',
         title: 'Name',
-        transforms: [sortable],
-        props: {
-            width: 50
-        }
+        transforms: [sortable]
     },
     {
         key: 'systems',
-        title: 'Systems',
-        transforms: [sortable],
-        props: {
-            width: 50
-        }
+        title: 'Systems applied',
+        transforms: [sortable]
+    },
+    {
+        key: 'last_edited',
+        title: 'Last edited',
+        transforms: [sortable]
+    },
+    {
+        key: 'published',
+        title: 'Published',
+        transforms: [sortable]
+    },
+    {
+        key: 'creator',
+        title: 'Created by',
+        transforms: [sortable]
     }
 ];
 

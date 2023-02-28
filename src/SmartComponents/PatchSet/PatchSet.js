@@ -29,6 +29,7 @@ import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-compo
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { ExternalLinkAltIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
+import DeleteSetModal from '../Modals/DeleteSetModal';
 import { NoPatchSetList, NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
 
 const PatchSet = () => {
@@ -42,6 +43,9 @@ const PatchSet = () => {
     const history = useHistory();
     const [firstMount, setFirstMount] = React.useState(true);
     const [hasSmartManagement, setSmartManagement] = React.useState(true);
+    const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = React.useState(false);
+    const [patchSetToDelete, setPatchSetToDelete] = React.useState(null);
+
     const patchSets = useSelector(
         ({ PatchSetsStore }) => PatchSetsStore.rows
     );
@@ -124,13 +128,18 @@ const PatchSet = () => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const handlePatchSetDelete = (rowData) => {
-        deletePatchSet(rowData.id).then(() => {
-            dispatch(addNotification(patchSetDeleteNotifications.success));
+    const openPatchDeleteModal = (rowData) => {
+        setDeleteConfirmModalOpen(true);
+        setPatchSetToDelete(rowData);
+    };
+
+    const handlePatchSetDelete = () => {
+        deletePatchSet(patchSetToDelete.id).then(() => {
+            dispatch(addNotification(patchSetDeleteNotifications(patchSetToDelete.displayName).success));
             refreshTable();
         }).catch(() => {
-            dispatch(addNotification(patchSetDeleteNotifications.error));
-        });;
+            dispatch(addNotification(patchSetDeleteNotifications(patchSetToDelete.displayName).error));
+        });
     };
 
     const { hasAccess } = usePermissionsWithContext([
@@ -138,7 +147,7 @@ const PatchSet = () => {
         'patch:template:write'
     ]);
     const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);
-    const actionsConfig = patchSetRowActions(openPatchSetEditModal, handlePatchSetDelete);
+    const actionsConfig = patchSetRowActions(openPatchSetEditModal, openPatchDeleteModal);
 
     //TODO: refactor search filter to be able to wrap this into useMemo
     const filterConfig = {
@@ -152,6 +161,12 @@ const PatchSet = () => {
 
     return (
         <React.Fragment>
+            <DeleteSetModal
+                templateName={patchSetToDelete?.displayName}
+                isModalOpen={isDeleteConfirmModalOpen}
+                setModalOpen={setDeleteConfirmModalOpen}
+                onConfirm={handlePatchSetDelete}
+            />
             <Header
                 headerOUIA={'advisories'}
                 title={<span>

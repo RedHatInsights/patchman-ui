@@ -11,6 +11,11 @@ export default defineMessages({
         description: 'regsiter page title',
         defaultMessage: 'Patch'
     },
+    labelsActions: {
+        id: 'labelsActions',
+        description: 'dropdown with actions label',
+        defaultMessage: 'Actions'
+    },
     labelsApplicableSystemsCount: {
         id: 'labelsApplicableSystemsCount',
         description: 'applicable systems number label',
@@ -44,7 +49,7 @@ export default defineMessages({
     labelsButtonRemoveTemplate: {
         id: 'labelsButtonRemoveTemplate',
         description: 'button label',
-        defaultMessage: 'Remove template'
+        defaultMessage: 'Delete template'
     },
     labelsCancel: {
         id: 'labelsCancel',
@@ -145,6 +150,11 @@ export default defineMessages({
         id: 'labelsDate',
         description: 'Label',
         defaultMessage: 'Date'
+    },
+    labelsDelete: {
+        id: 'labelsDelete',
+        description: 'button label',
+        defaultMessage: 'Delete'
     },
     labelsDescription: {
         id: 'labelsDescription',
@@ -492,6 +502,11 @@ export default defineMessages({
         description: 'description of the patch template wizard',
         defaultMessage: 'Schedule patch template '
     },
+    templateDetailHeaderBreadcrumb: {
+        id: 'templateDetailHeaderBreadcrumb',
+        description: 'breadcrumb for template detail header',
+        defaultMessage: 'Content templates'
+    },
     templateEdit: {
         id: 'templateEdit',
         description: 'step name of the patch template wizard',
@@ -691,6 +706,26 @@ export default defineMessages({
         id: 'titlesTemplateAssign',
         description: 'title with capital letters',
         defaultMessage: 'Assign to a template'
+    },
+    titlesTemplateDeleteModalCheckbox: {
+        id: 'titlesTemplateDeleteModalCheckbox',
+        description: 'page title with capital letter',
+        defaultMessage: 'I understand that this action cannot be undone.'
+    },
+    titlesTemplateDeleteModalText: {
+        id: 'titlesTemplateDeleteModalText',
+        description: 'page title with capital letter',
+        defaultMessage: '<b>{templateName}</b> and all its data will be permanently deleted. Associated systems will be removed from the template but will not be deleted.'
+    },
+    titlesTemplateDeleteModalTitle: {
+        id: 'titlesTemplateDeleteModalTitle',
+        description: 'page title with capital letter',
+        defaultMessage: 'Delete template?'
+    },
+    titlesTemplateNoDescription: {
+        id: 'titlesTemplateNoDescription',
+        description: 'title with capital letters',
+        defaultMessage: 'No description available'
     },
     titlesTemplateRemoveMultipleButton: {
         id: 'titlesTemplateRemoveMultipleButton',

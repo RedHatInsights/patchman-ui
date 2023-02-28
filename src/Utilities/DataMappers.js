@@ -3,6 +3,7 @@ import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
@@ -349,11 +350,21 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
         rows.map(row => {
             return {
                 id: row.id,
+                displayName: row.name,
                 key: row.id,
                 selected: selectedRows[row.id] !== undefined,
                 cells: [
-                    { title: row.name },
-                    { title: row.systems }
+                    {
+                        title: (
+                            <Link to={{ pathname: `/templates/${row.id}` }}>
+                                {row.name}
+                            </Link>
+                        )
+                    },
+                    { title: row.systems },
+                    { title: processDate(row.last_edited) },
+                    { title: processDate(row.published) },
+                    { title: row.creator }
                 ]
             };
         });

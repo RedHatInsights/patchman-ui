@@ -260,13 +260,13 @@ export const exportNotifications = (format) => ({
     }
 });
 
-export const patchSetDeleteNotifications = ({
+export const patchSetDeleteNotifications = (templateName) => ({
     success: {
-        title: `Patch template has been deleted.`,
+        title: `Deleted “${templateName}”.`,
         variant: 'success'
     },
     error: {
-        title: 'Couldn’t delete patch template.',
+        title: `Failed to delete “${templateName}”.`,
         variant: 'danger'
     }
 });
