@@ -1,3 +1,10 @@
+# [1.61.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.60.0...v1.61.0) (2023-02-28)
+
+
+### Features
+
+* Template detail page ([2df70d2](https://github.com/RedHatInsights/patchman-ui/commit/2df70d2a7f8069f14625bd2aa6381433614b0c56))
+
 # [1.60.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.59.4...v1.60.0) (2023-02-27)
 
 
