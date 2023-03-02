@@ -1,3 +1,10 @@
+# [1.62.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.61.0...v1.62.0) (2023-03-02)
+
+
+### Features
+
+* Update template wizard review step ([f2ff37f](https://github.com/RedHatInsights/patchman-ui/commit/f2ff37f926297452e6d530c61721fe912139467d))
+
 # [1.61.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.60.0...v1.61.0) (2023-02-28)
 
 
