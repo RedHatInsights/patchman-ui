@@ -14,13 +14,13 @@ import { changeAffectedSystemsParams, clearAdvisorySystemsReducer,
     clearInventoryReducer, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import { exportAdvisorySystemsCSV, exportAdvisorySystemsJSON, fetchAdvisorySystems } from '../../Utilities/api';
-import { remediationIdentifiers } from '../../Utilities/constants';
+import { featureFlags, remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, decodeQueryparams, persistantParams,
     remediationProvider, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
 import {
-    useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter
+    useBulkSelectConfig, useFeatureFlag, useGetEntities, useOnExport, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
@@ -38,6 +38,8 @@ const AdvisorySystems = ({ advisoryName }) => {
         setRemediationModalCmp
     ] = React.useState(() => () => null);
     const history = useHistory();
+
+    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
 
     const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
@@ -135,7 +137,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     initialLoading
                     ignoreRefresh
                     hideFilters={{ all: true, tags: false }}
-                    columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, false)}
+                    columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, isPatchSetEnabled)}
                     showTags
                     customFilters={{
                         patchParams: {
