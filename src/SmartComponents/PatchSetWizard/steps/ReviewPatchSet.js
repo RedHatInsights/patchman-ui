@@ -13,11 +13,12 @@ import {
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 
 const renderTextListItem = (label, text) => (
     <Fragment>
-        <TextListItem component={TextListItemVariants.dt}>
-            {intl.formatMessage(messages[label])}:
+        <TextListItem component={TextListItemVariants.dt} style={{ minWidth: 220 }}>
+            {intl.formatMessage(messages[label])}
         </TextListItem>
         <TextListItem component={TextListItemVariants.dd}>
             {text}
@@ -44,13 +45,37 @@ const ReviewPatchSet = () => {
             </StackItem>
             <StackItem>
                 <TextContent>
+                    <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
+                        Template content
+                    </Text>
+                    <TextList component={TextListVariants.dl}>
+                        {renderTextListItem('labelsColumnsUpToDate', processDate(toDate))}
+                    </TextList>
+                </TextContent>
+            </StackItem>
+            <StackItem>
+                <TextContent>
+                    <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
+                        Template details
+                    </Text>
                     <TextList component={TextListVariants.dl}>
                         {renderTextListItem('labelsColumnsName', name)}
-                        {description && renderTextListItem('labelsDescription', description)}
-                        {toDate && renderTextListItem('labelsDate', toDate)}
+                        {renderTextListItem('labelsDescription', description
+                            || intl.formatMessage(messages.titlesTemplateNoDescription))}
+                    </TextList>
+                </TextContent>
+            </StackItem>
+            <StackItem>
+                <TextContent>
+                    <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
+                        Applied to systems
+                    </Text>
+                    <TextList component={TextListVariants.dl}>
                         {renderTextListItem(
                             'labelsSelectedSystems',
-                            systems && Object.values(systems).filter(system => system).length
+                            intl.formatMessage(messages.labelsSystem, {
+                                systemsCount: Object.values(systems).filter(system => system).length
+                            })
                         )}
                     </TextList>
                 </TextContent>

@@ -131,6 +131,11 @@ export default defineMessages({
         description: 'Label for type fitler placeholder',
         defaultMessage: 'Type'
     },
+    labelsColumnsUpToDate: {
+        id: 'labelsColumnsUpToDate',
+        description: 'shared label',
+        defaultMessage: 'Red Hat advisories up to date'
+    },
     labelsColumnsUpgradable: {
         id: 'labelsColumnsUpgradable',
         description: 'shared label',
@@ -160,6 +165,11 @@ export default defineMessages({
         id: 'labelsDescription',
         description: 'Label',
         defaultMessage: 'Description'
+    },
+    labelsDocumentation: {
+        id: 'labelsDocumentation',
+        description: 'Documentation link text',
+        defaultMessage: 'Documentation'
     },
     labelsErrorDateLimit: {
         id: 'labelsErrorDateLimit',
@@ -359,7 +369,7 @@ export default defineMessages({
     labelsSelectedSystems: {
         id: 'labelsSelectedSystems',
         description: 'label',
-        defaultMessage: 'Selected systems'
+        defaultMessage: 'Systems'
     },
     labelsSeverity: {
         id: 'labelsSeverity',
@@ -380,6 +390,16 @@ export default defineMessages({
         id: 'labelsSystemsWithPatchesAvailable',
         description: 'Label for status report',
         defaultMessage: 'Systems with patches available'
+    },
+    labelsSystem: {
+        id: 'labelsSystem',
+        description: 'Generic pluralized systems label',
+        defaultMessage: '{systemsCount, plural, one { # system } other { # systems }}'
+    },
+    labelsTemplateNoSystems: {
+        id: 'labelsTemplateNoSystems',
+        description: 'Template list table applied systems column fallback',
+        defaultMessage: 'No systems applied'
     },
     linksLearnAboutInsights: {
         id: 'linksLearnAboutInsights',
@@ -500,7 +520,7 @@ export default defineMessages({
     templateDescription: {
         id: 'templateDescription',
         description: 'description of the patch template wizard',
-        defaultMessage: 'Schedule patch template '
+        defaultMessage: 'Prepare for your next patching cycle with a content template.'
     },
     templateDetailHeaderBreadcrumb: {
         id: 'templateDetailHeaderBreadcrumb',
@@ -555,7 +575,7 @@ export default defineMessages({
     templateReview: {
         id: 'templateReview',
         description: 'step name of the patch template wizard',
-        defaultMessage: 'Review patch template '
+        defaultMessage: 'Review '
     },
     templateSelectSystems: {
         id: 'templateSelectSystems',
@@ -605,7 +625,7 @@ export default defineMessages({
     textPatchTemplateReview: {
         id: 'textPatchTemplateReview',
         description: 'text for the patch template',
-        defaultMessage: 'Review the information below and click <b>Submit</b> to complete patch template creation'
+        defaultMessage: 'Review the information and click <b>Finish</b> to create a template.'
     },
     textPatchTemplateSuccessfuly: {
         id: 'textPatchTemplateSuccessfuly',
