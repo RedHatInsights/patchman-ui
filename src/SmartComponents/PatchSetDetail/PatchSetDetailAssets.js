@@ -2,23 +2,20 @@ import { sortable } from '@patternfly/react-table/dist/js';
 
 export const patchSetDetailColumns = [
     {
-        key: 'name',
+        key: 'display_name',
         title: 'Name',
         transforms: [sortable]
     },
     {
         key: 'operating_system',
-        title: 'OS',
-        transforms: [sortable]
+        title: 'OS'
     },
     {
         key: 'tags',
-        title: 'Tags',
-        transforms: [sortable]
+        title: 'Tags'
     },
     {
         key: 'last_seen',
-        title: 'Last seen',
-        transforms: [sortable]
+        title: 'Last seen'
     }
 ];
