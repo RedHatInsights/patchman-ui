@@ -396,7 +396,7 @@ export const createPatchSetDetailRows = (rows) => {
                 cells: [
                     {
                         title: (
-                            <Link to={{ pathname: `/systems/${row.id}` }}>
+                            <Link to={{ pathname: `/systems/${row.inventory_id}` }}>
                                 {row.attributes.display_name}
                             </Link>
                         )
