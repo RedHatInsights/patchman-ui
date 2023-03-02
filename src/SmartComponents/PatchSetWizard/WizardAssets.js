@@ -4,27 +4,31 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { filterSelectedActiveSystemIDs } from '../../Utilities/Helpers';
 import dateValidator from '../../Utilities/dateValidator';
+import { sortable } from '@patternfly/react-table/dist/js';
 
 export const reviewSystemColumns = [{
     key: 'display_name',
     title: 'Name',
     props: {
         width: 50
-    }
+    },
+    transforms: [sortable]
 },
 {
     title: 'OS',
-    key: 'os',
+    key: 'operating_system',
     props: {
         width: 25
-    }
+    },
+    transforms: [sortable]
 },
 {
     key: 'baseline_name',
     title: 'Patch template',
     props: {
         width: 25
-    }
+    },
+    transforms: [sortable]
 }
 ];
 

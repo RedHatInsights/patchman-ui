@@ -103,8 +103,13 @@ const TableView = ({
                                     <CreatePatchSetButton />
                                 </ToolbarItem>}
                             </PrimaryToolbar>
-                            {isLoading ? <SkeletonTable colSize={5} rowSize={20} variant={compact && TableVariant.compact}/> :
-                                <Table
+                            {isLoading
+                                ? <SkeletonTable
+                                    colSize={columns?.length ?? 5}
+                                    rowSize={20}
+                                    variant={compact && TableVariant.compact}
+                                />
+                                : <Table
                                     aria-label="Patch table view"
                                     cells={columns}
                                     onSelect={metadata.total_items && onSelect}
