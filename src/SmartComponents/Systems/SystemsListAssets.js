@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesIcons, createUpgradableColumn,
@@ -8,7 +10,9 @@ export const systemsListColumns = (isPatchSetEnabled = false) => [
     ...(isPatchSetEnabled ? [{
         key: 'baseline_name',
         title: 'Template',
-        renderFunc: value => value || 'No template',
+        renderFunc: (value, _, row) => value
+            ? <Link to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</Link>
+            : 'No template',
         props: {
             width: 5
         }
