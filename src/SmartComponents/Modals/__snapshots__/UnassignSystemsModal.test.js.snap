@@ -460,12 +460,10 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                             id="pf-modal-part-2"
                           >
                             <Grid
-                              container={true}
                               hasGutter={true}
                             >
                               <div
                                 className="pf-l-grid pf-m-gutter"
-                                container={true}
                               >
                                 <Skeleton>
                                   <div

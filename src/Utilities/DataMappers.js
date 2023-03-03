@@ -390,9 +390,9 @@ export const createPatchSetDetailRows = (rows) => {
         rows &&
         rows.map(row => {
             return {
-                id: row.id,
+                id: row.inventory_id,
                 displayName: row.display_name,
-                key: row.id,
+                key: row.inventory_id,
                 cells: [
                     {
                         title: (

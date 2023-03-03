@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import { Modal, Button, Grid, Skeleton } from '@patternfly/react-core';
 import { injectIntl } from 'react-intl';
@@ -27,6 +27,8 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
     const handleUnassignment = useUnassignSystemsHook(handleModalToggle, systemsWithPatchSet);
 
     useEffect(() => {
+        setSystemsLoading(true);
+
         filterSystemsWithoutSets(systemsIDs).then(result => {
             setSystemWithPatchSet(result);
             setSystemsLoading(false);
@@ -43,7 +45,12 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
             onClose={handleModalClose}
             titleIconVariant="warning"
             actions={[
-                <Button key="confirm" variant="danger" onClick={handleUnassignment} isDisabled={systemsWithPatchSet.length === 0}>
+                <Button
+                    key="confirm"
+                    variant="danger"
+                    onClick={handleUnassignment}
+                    isDisabled={systemsLoading || systemsWithPatchSet.length === 0}
+                >
                     {intl.formatMessage(messages.labelsRemove)}
                 </Button>,
                 <Button key="cancel" variant="link" onClick={handleModalClose}>
@@ -51,13 +58,17 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
                 </Button>
             ]}
         >
-            <Grid container hasGutter>
-                {systemsLoading && <Skeleton />}
-                {(!systemsLoading && systemsWithPatchSet.length !== 0) &&
-                    renderUnassignModalMessages('textUnassignSystemsStatement', systemsWithPatchSet.length, intl)
-                }
-                {(!systemsLoading && systemsWithoutPatchSetCount > 0) &&
-                    renderUnassignModalMessages('textUnassignSystemsWarning', systemsWithoutPatchSetCount, intl)
+            <Grid hasGutter>
+                {systemsLoading
+                    ? <Skeleton />
+                    : <Fragment>
+                        {systemsWithPatchSet.length > 0 &&
+                            renderUnassignModalMessages('textUnassignSystemsStatement', systemsWithPatchSet.length, intl)
+                        }
+                        {systemsWithoutPatchSetCount > 0 &&
+                            renderUnassignModalMessages('textUnassignSystemsWarning', systemsWithoutPatchSetCount, intl)
+                        }
+                    </Fragment>
                 }
             </Grid>
         </Modal>
