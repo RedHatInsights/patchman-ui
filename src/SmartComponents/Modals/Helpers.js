@@ -5,7 +5,10 @@ import messages from '../../Messages';
 import { fetchSystems } from '../../Utilities/api';
 
 export const filterSystemsWithoutSets = (systemsIDs) =>  {
-    return fetchSystems({ limit: -1, 'filter[baseline_name]': 'neq:' }).then((allSystemsWithPatchSet) => {
+    return fetchSystems({
+        limit: -1, 'filter[baseline_name]': 'neq:',
+        filter: { stale: [true, false] }
+    }).then((allSystemsWithPatchSet) => {
         return systemsIDs.filter(systemID =>
             allSystemsWithPatchSet?.data.some(system => system.id === systemID)
         );

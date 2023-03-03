@@ -25,6 +25,9 @@ import { patchSetDetailColumns } from './PatchSetDetailAssets';
 import { createPatchSetDetailRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
+import { CustomActionsToggle, patchSetDetailRowActions } from '../PatchSet/PatchSetAssets';
+import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
+import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 
 const PatchSetDetail = () => {
     const getEntitlements = useEntitlements();
@@ -38,8 +41,9 @@ const PatchSetDetail = () => {
     const [isHeaderDropdownOpen, setHeaderDropdownOpen] = useState(false);
     const [hasSmartManagement, setSmartManagement] = React.useState(true);
     const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = useState(false);
-    const [wizardState, setWizardState] = useState({
+    const [patchSetState, setPatchSetState] = useState({
         isPatchSetWizardOpen: false,
+        isUnassignSystemsModalOpen: false,
         systemsIDs: [],
         shouldRefresh: false
     });
@@ -68,6 +72,11 @@ const PatchSetDetail = () => {
         ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.queryParams
     );
 
+    const { hasAccess } = usePermissionsWithContext([
+        'patch:*:*',
+        'patch:template:write'
+    ]);
+
     const rows = useMemo(
         () => createPatchSetDetailRows(assignedSystems),
         [assignedSystems]
@@ -91,7 +100,7 @@ const PatchSetDetail = () => {
     );
 
     const openPatchSetAssignWizard = () => {
-        setWizardState({
+        setPatchSetState({
             isPatchSetWizardOpen: true
         });
     };
@@ -119,10 +128,11 @@ const PatchSetDetail = () => {
     }, []);
 
     useEffect(() => {
-        if (wizardState.shouldRefresh === true) {
+        if (patchSetState.shouldRefresh === true) {
             refreshTable();
+            setPatchSetState({ ...patchSetState, shouldRefresh: false });
         }
-    }, [wizardState.shouldRefresh]);
+    }, [patchSetState.shouldRefresh]);
 
     useDeepCompareEffect(() => {
         if (firstMount) {
@@ -137,6 +147,12 @@ const PatchSetDetail = () => {
             dispatch(fetchPatchSetDetailSystemsAction(patchSetId, queryParams));
         }
     }, [queryParams, firstMount]);
+
+    const openSystemUnassignModal = (rowData) => {
+        setPatchSetState({ ...patchSetState, isUnassignSystemsModalOpen: true, systemsIDs: [rowData.id] });
+    };
+
+    const actionsConfig = patchSetDetailRowActions(openSystemUnassignModal);
 
     const deleteSet = () => {
         deletePatchSet(patchSetId).then(() => {
@@ -174,12 +190,16 @@ const PatchSetDetail = () => {
                     setModalOpen={setDeleteConfirmModalOpen}
                     onConfirm={deleteSet}
                 />
-                {wizardState.isPatchSetWizardOpen &&
+                {patchSetState.isPatchSetWizardOpen &&
                 <PatchSetWizard
-                    systemsIDs={wizardState.systemsIDs}
-                    setBaselineState={setWizardState}
+                    systemsIDs={patchSetState.systemsIDs}
+                    setBaselineState={setPatchSetState}
                     patchSetID={patchSetId}
                 />}
+                <UnassignSystemsModal
+                    unassignSystemsModalState={patchSetState}
+                    setUnassignSystemsModalOpen={setPatchSetState}
+                />
                 <Header
                     title={isHeaderLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
                     headerOUIA={'template-details'}
@@ -279,7 +299,8 @@ const PatchSetDetail = () => {
                         tableOUIA={'patch-set-detail-table'}
                         paginationOUIA={'patch-set-detail-pagination'}
                         store={{ rows, metadata, status, queryParams }}
-                        /* actionsConfig={actionsConfig} */
+                        actionsConfig={actionsConfig}
+                        actionsToggle={!hasAccess ? CustomActionsToggle : null}
                         searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
                     /> : <NoSmartManagement />}
                 </Main>
