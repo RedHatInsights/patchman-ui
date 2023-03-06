@@ -7,7 +7,7 @@ import './SystemsListAssets.scss';
 export const systemsListColumns = (isPatchSetEnabled = false) => [
     ...(isPatchSetEnabled ? [{
         key: 'baseline_name',
-        title: 'Patch template',
+        title: 'Template',
         renderFunc: value => value || 'No template',
         props: {
             width: 5

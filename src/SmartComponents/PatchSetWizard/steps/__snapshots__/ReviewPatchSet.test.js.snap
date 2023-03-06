@@ -37,13 +37,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   data-ouia-safe={true}
                   data-pf-content={true}
                 >
-                  Review the information and click 
-                  <b
-                    key=".1"
-                  >
-                    Finish
-                  </b>
-                   to create a template.
+                  Review the details of your template.
                 </p>
               </Text>
             </div>
@@ -69,7 +63,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   data-ouia-safe={true}
                   data-pf-content={true}
                 >
-                  Template content
+                  Content
                 </h2>
               </Text>
               <TextList
@@ -131,7 +125,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   data-ouia-safe={true}
                   data-pf-content={true}
                 >
-                  Template details
+                  Details
                 </h2>
               </Text>
               <TextList
@@ -221,7 +215,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   data-ouia-safe={true}
                   data-pf-content={true}
                 >
-                  Applied to systems
+                  Systems
                 </h2>
               </Text>
               <TextList
@@ -246,7 +240,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                         }
                       }
                     >
-                      Systems
+                      Template applied to
                     </dt>
                   </TextListItem>
                   <TextListItem
@@ -306,13 +300,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   data-ouia-safe={true}
                   data-pf-content={true}
                 >
-                  Review the information and click 
-                  <b
-                    key=".1"
-                  >
-                    Finish
-                  </b>
-                   to create a template.
+                  Review the details of your template.
                 </p>
               </Text>
             </div>
@@ -338,7 +326,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   data-ouia-safe={true}
                   data-pf-content={true}
                 >
-                  Template content
+                  Content
                 </h2>
               </Text>
               <TextList
@@ -400,7 +388,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   data-ouia-safe={true}
                   data-pf-content={true}
                 >
-                  Template details
+                  Details
                 </h2>
               </Text>
               <TextList
@@ -490,7 +478,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   data-ouia-safe={true}
                   data-pf-content={true}
                 >
-                  Applied to systems
+                  Systems
                 </h2>
               </Text>
               <TextList
@@ -515,7 +503,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                         }
                       }
                     >
-                      Systems
+                      Template applied to
                     </dt>
                   </TextListItem>
                   <TextListItem

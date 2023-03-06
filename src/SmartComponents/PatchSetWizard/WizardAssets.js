@@ -27,7 +27,7 @@ export const reviewSystemColumns = [{
 },
 {
     key: 'baseline_name',
-    title: 'Patch template',
+    title: 'Template',
     props: {
         width: 25
     },

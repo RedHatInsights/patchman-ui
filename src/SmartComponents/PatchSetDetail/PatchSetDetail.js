@@ -219,7 +219,7 @@ const PatchSetDetail = () => {
                     <table border="0" style={{ marginTop: 8 }}>
                         <tbody>
                             <tr>
-                                <td style={{ width: 250 }}>Template description:</td>
+                                <td style={{ width: 300 }}>Template description:</td>
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 300 }} />
@@ -228,7 +228,7 @@ const PatchSetDetail = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Red Hat repositories up to:</td>
+                                <td>Includes Red Hat repositories up to:</td>
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />

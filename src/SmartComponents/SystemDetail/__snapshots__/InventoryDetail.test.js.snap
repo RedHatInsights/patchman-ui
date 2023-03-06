@@ -61,7 +61,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                   Array [
                     Object {
                       "isActive": false,
-                      "title": "Patch systems",
+                      "title": "Systems",
                       "to": "/systems",
                     },
                     undefined,
@@ -84,7 +84,7 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                         Array [
                           Object {
                             "isActive": false,
-                            "title": "Patch systems",
+                            "title": "Systems",
                             "to": "/systems",
                           },
                           undefined,
@@ -104,30 +104,30 @@ exports[`InventoryPage.js Should match the snapshots 1`] = `
                           >
                             <BreadcrumbItem
                               isActive={false}
-                              key=".$Patch systems"
+                              key=".$Systems"
                               showDivider={false}
                             >
                               <li
                                 className="pf-c-breadcrumb__item"
                               >
                                 <Link
-                                  data-ouia-component-id="breadcrumb-to-Patch systems"
+                                  data-ouia-component-id="breadcrumb-to-Systems"
                                   data-ouia-component-type="inventory-details-breadcrumb"
                                   to="/systems"
                                 >
                                   <LinkAnchor
-                                    data-ouia-component-id="breadcrumb-to-Patch systems"
+                                    data-ouia-component-id="breadcrumb-to-Systems"
                                     data-ouia-component-type="inventory-details-breadcrumb"
                                     href="/systems"
                                     navigate={[Function]}
                                   >
                                     <a
-                                      data-ouia-component-id="breadcrumb-to-Patch systems"
+                                      data-ouia-component-id="breadcrumb-to-Systems"
                                       data-ouia-component-type="inventory-details-breadcrumb"
                                       href="/systems"
                                       onClick={[Function]}
                                     >
-                                      Patch systems
+                                      Systems
                                     </a>
                                   </LinkAnchor>
                                 </Link>
