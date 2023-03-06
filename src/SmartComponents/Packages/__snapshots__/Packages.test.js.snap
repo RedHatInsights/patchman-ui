@@ -39,7 +39,7 @@ exports[`Packages.js should match the snapshot 1`] = `
       <Packages>
         <Header
           headerOUIA="packages"
-          title="Patch packages"
+          title="Packages"
         >
           <PageHeader
             data-ouia-component-type="packages-page-header"
@@ -58,7 +58,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                       className="pf-l-split__item"
                     >
                       <PageHeaderTitle
-                        title="Patch packages"
+                        title="Packages"
                       >
                         <Title
                           className=""
@@ -73,7 +73,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                             data-ouia-safe={true}
                             widget-type="InsightsPageHeaderTitle"
                           >
-                            Patch packages
+                            Packages
                           </h1>
                         </Title>
                       </PageHeaderTitle>

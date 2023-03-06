@@ -37,16 +37,14 @@ const ReviewPatchSet = () => {
             <StackItem>
                 <TextContent style={{ marginTop: '-15px' }}>
                     <Text component={TextVariants.p}>
-                        {intl.formatMessage(
-                            messages.textPatchTemplateReview,
-                            { b: (...chunks) => <b>{chunks}</b> })}
+                        {intl.formatMessage(messages.textPatchTemplateReview)}
                     </Text>
                 </TextContent>
             </StackItem>
             <StackItem>
                 <TextContent>
                     <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
-                        Template content
+                        {intl.formatMessage(messages.textPatchTemplateContent)}
                     </Text>
                     <TextList component={TextListVariants.dl}>
                         {renderTextListItem('labelsColumnsUpToDate', processDate(toDate))}
@@ -56,7 +54,7 @@ const ReviewPatchSet = () => {
             <StackItem>
                 <TextContent>
                     <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
-                        Template details
+                        {intl.formatMessage(messages.textPatchTemplateDetails)}
                     </Text>
                     <TextList component={TextListVariants.dl}>
                         {renderTextListItem('labelsColumnsName', name)}
@@ -68,7 +66,7 @@ const ReviewPatchSet = () => {
             <StackItem>
                 <TextContent>
                     <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
-                        Applied to systems
+                        {intl.formatMessage(messages.textPatchTemplateSystems)}
                     </Text>
                     <TextList component={TextListVariants.dl}>
                         {renderTextListItem(

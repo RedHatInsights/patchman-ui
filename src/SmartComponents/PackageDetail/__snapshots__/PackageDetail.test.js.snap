@@ -80,7 +80,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
               Array [
                 Object {
                   "isActive": false,
-                  "title": "Patch packages",
+                  "title": "Packages",
                   "to": "/packages",
                 },
                 Object {
@@ -105,7 +105,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                     Array [
                       Object {
                         "isActive": false,
-                        "title": "Patch packages",
+                        "title": "Packages",
                         "to": "/packages",
                       },
                       Object {
@@ -128,30 +128,30 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                       >
                         <BreadcrumbItem
                           isActive={false}
-                          key=".$Patch packages"
+                          key=".$Packages"
                           showDivider={false}
                         >
                           <li
                             className="pf-c-breadcrumb__item"
                           >
                             <Link
-                              data-ouia-component-id="breadcrumb-to-Patch packages"
+                              data-ouia-component-id="breadcrumb-to-Packages"
                               data-ouia-component-type="package-details-breadcrumb"
                               to="/packages"
                             >
                               <LinkAnchor
-                                data-ouia-component-id="breadcrumb-to-Patch packages"
+                                data-ouia-component-id="breadcrumb-to-Packages"
                                 data-ouia-component-type="package-details-breadcrumb"
                                 href="/packages"
                                 navigate={[Function]}
                               >
                                 <a
-                                  data-ouia-component-id="breadcrumb-to-Patch packages"
+                                  data-ouia-component-id="breadcrumb-to-Packages"
                                   data-ouia-component-type="package-details-breadcrumb"
                                   href="/packages"
                                   onClick={[Function]}
                                 >
-                                  Patch packages
+                                  Packages
                                 </a>
                               </LinkAnchor>
                             </Link>
@@ -280,7 +280,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                 data-ouia-safe={true}
                                 data-pf-content={true}
                               >
-                                Affected systems
+                                Systems
                               </h2>
                             </Text>
                           </div>

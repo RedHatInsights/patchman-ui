@@ -1,5 +1,5 @@
 import { Flex, FlexItem } from '@patternfly/react-core';
-import ExternalLinkSquareAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-square-alt-icon';
+import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
 import propTypes from 'prop-types';
 import React from 'react';
 
@@ -11,10 +11,10 @@ const ExternalLink = ({ link, text }) => {
         >
             <Flex flex={{ default: 'inlineFlex' }}>
                 <FlexItem spacer={{ default: 'spacerSm' }}>
-                    <ExternalLinkSquareAltIcon />
+                    {text}
                 </FlexItem>
                 <FlexItem spacer={{ default: 'spacerSm' }}>
-                    {text}
+                    <ExternalLinkAltIcon />
                 </FlexItem>
             </Flex>
         </a>

@@ -124,7 +124,7 @@ export default defineMessages({
     labelsColumnsTemplate: {
         id: 'labelsColumnsTemplate',
         description: 'Label for patch template column',
-        defaultMessage: 'Patch template'
+        defaultMessage: 'Template'
     },
     labelsColumnsType: {
         id: 'labelsColumnsType',
@@ -264,12 +264,12 @@ export default defineMessages({
     labelsFiltersSearchTemplatePlaceholder: {
         id: 'labelsFiltersSearchTemplatePlaceholder',
         description: 'Label for search fitler placeholder',
-        defaultMessage: 'Filter by patch template '
+        defaultMessage: 'Filter by template name '
     },
     labelsFiltersSearchTemplateTitle: {
         id: 'labelsFiltersSearchTemplateTitle',
         description: 'Label for search fitler placeholder',
-        defaultMessage: 'Patch template'
+        defaultMessage: 'Template'
     },
     labelsFiltersStale: {
         id: 'labelsFiltersStale',
@@ -369,7 +369,7 @@ export default defineMessages({
     labelsSelectedSystems: {
         id: 'labelsSelectedSystems',
         description: 'label',
-        defaultMessage: 'Systems'
+        defaultMessage: 'Template applied to'
     },
     labelsSeverity: {
         id: 'labelsSeverity',
@@ -485,17 +485,17 @@ export default defineMessages({
     statesNoTemplate: {
         id: 'statesNoTemplate',
         description: 'Label',
-        defaultMessage: 'No content template created yet'
+        defaultMessage: 'No templates yet'
     },
     statesNoTemplateBody: {
         id: 'statesNoTemplateBody',
         description: 'Label',
-        defaultMessage: 'Create a content template to control the scope of package and advisory updates to be installed on selected systems based on criteria you define, providing you with consistent content across your environments and time.'
+        defaultMessage: 'Control the scope of package and advisory updates to be installed on selected systems with templates. To get started, create a template.'
     },
     statesNoTemplateLink: {
         id: 'statesNoTemplateLink',
         description: 'Label',
-        defaultMessage: 'Read more about Content templates in documentation'
+        defaultMessage: 'Learn more about templates'
     },
     statesRequiresPatchPermissions: {
         id: 'statesRequiresPatchPermissions',
@@ -525,12 +525,12 @@ export default defineMessages({
     templateDetailHeaderBreadcrumb: {
         id: 'templateDetailHeaderBreadcrumb',
         description: 'breadcrumb for template detail header',
-        defaultMessage: 'Content templates'
+        defaultMessage: 'Templates'
     },
     templateDetailTableTitle: {
         id: 'templateDetailTableTitle',
         description: 'title of template assigned systems table',
-        defaultMessage: 'Applied systems'
+        defaultMessage: 'Systems applied'
     },
     templateEdit: {
         id: 'templateEdit',
@@ -617,6 +617,16 @@ export default defineMessages({
         description: 'text to notify there is not available version',
         defaultMessage: 'No version is available'
     },
+    textPatchTemplateContent: {
+        id: 'textPatchTemplateContent',
+        description: 'text for the patch template',
+        defaultMessage: 'Content'
+    },
+    textPatchTemplateDetails: {
+        id: 'textPatchTemplateDetails',
+        description: 'text for the patch template',
+        defaultMessage: 'Details'
+    },
     textPatchTemplatePending: {
         id: 'textPatchTemplatePending',
         description: 'text for the patch template',
@@ -625,12 +635,17 @@ export default defineMessages({
     textPatchTemplateReview: {
         id: 'textPatchTemplateReview',
         description: 'text for the patch template',
-        defaultMessage: 'Review the information and click <b>Finish</b> to create a template.'
+        defaultMessage: 'Review the details of your template.'
     },
     textPatchTemplateSuccessfuly: {
         id: 'textPatchTemplateSuccessfuly',
         description: 'text for the patch template',
         defaultMessage: 'Patch template configuration successful'
+    },
+    textPatchTemplateSystems: {
+        id: 'textPatchTemplateSystems',
+        description: 'text for the patch template',
+        defaultMessage: 'Systems'
     },
     textRebootIsRequired: {
         id: 'textRebootIsRequired',
@@ -705,7 +720,7 @@ export default defineMessages({
     titlesAffectedSystems: {
         id: 'affectedSystems',
         description: 'page title with capital letter',
-        defaultMessage: 'Affected systems'
+        defaultMessage: 'Systems'
     },
     titlesMostImpactfulAdvisories: {
         id: 'titlesMostImpactfulAdvisories',
@@ -720,17 +735,17 @@ export default defineMessages({
     titlesPatchAdvisories: {
         id: 'titlesPatchAdvisories',
         description: 'title for Advisories page',
-        defaultMessage: 'Patch advisories'
+        defaultMessage: 'Advisories'
     },
     titlesPatchPackages: {
         id: 'titlesPatchPackages',
         description: 'title for Packages page',
-        defaultMessage: 'Patch packages'
+        defaultMessage: 'Packages'
     },
     titlesPatchSystems: {
         id: 'titlesPatchSystems',
         description: 'title for Systems page',
-        defaultMessage: 'Patch systems'
+        defaultMessage: 'Systems'
     },
     titlesSystems: {
         id: 'titlesSystems',

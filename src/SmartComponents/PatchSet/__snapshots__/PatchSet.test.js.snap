@@ -140,7 +140,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                     rel="noopener noreferrer"
                     target="__blank"
                   >
-                    Read more
+                    Learn more
                      
                     <ExternalLinkAltIcon
                       color="currentColor"
@@ -203,7 +203,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                   rel="noopener noreferrer"
                                   target="__blank"
                                 >
-                                  Read more
+                                  Learn more
                                    
                                   <ExternalLinkAltIcon
                                     color="currentColor"
@@ -261,7 +261,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                     rel="noopener noreferrer"
                                     target="__blank"
                                   >
-                                    Read more
+                                    Learn more
                                      
                                     <ExternalLinkAltIcon
                                       color="currentColor"
@@ -357,7 +357,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                             rel="noopener noreferrer"
                                             target="__blank"
                                           >
-                                            Read more
+                                            Learn more
                                              
                                             <ExternalLinkAltIcon
                                               color="currentColor"
@@ -537,10 +537,10 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                         "filterValues": Object {
                           "aria-label": "search-field",
                           "onChange": [Function],
-                          "placeholder": "Filter by patch template ",
+                          "placeholder": "Filter by template name ",
                           "value": undefined,
                         },
-                        "label": "Patch template",
+                        "label": "Template",
                         "type": "text",
                       },
                     ],
@@ -551,7 +551,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                 onSetPage={[Function]}
                 onSort={[Function]}
                 paginationOUIA="patch-set-pagination"
-                searchChipLabel="Patch template"
+                searchChipLabel="Template"
                 selectedRows={false}
                 sortBy={Object {}}
                 store={
@@ -750,10 +750,10 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                           "filterValues": Object {
                             "aria-label": "search-field",
                             "onChange": [Function],
-                            "placeholder": "Filter by patch template ",
+                            "placeholder": "Filter by template name ",
                             "value": undefined,
                           },
-                          "label": "Patch template",
+                          "label": "Template",
                           "type": "text",
                         },
                       ],
@@ -820,10 +820,10 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                               "filterValues": Object {
                                                 "aria-label": "search-field",
                                                 "onChange": [Function],
-                                                "placeholder": "Filter by patch template ",
+                                                "placeholder": "Filter by template name ",
                                                 "value": undefined,
                                               },
-                                              "label": "Patch template",
+                                              "label": "Template",
                                               "type": "text",
                                             },
                                           ]
@@ -844,7 +844,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                 <TextFilter
                                                   aria-label="search-field"
                                                   onChange={[Function]}
-                                                  placeholder="Filter by patch template "
+                                                  placeholder="Filter by template name "
                                                 >
                                                   <TextInput
                                                     aria-label="search-field"
@@ -854,7 +854,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                     onChange={[Function]}
                                                     onKeyDown={[Function]}
                                                     ouiaId="ConditionalFilter"
-                                                    placeholder="Filter by patch template "
+                                                    placeholder="Filter by template name "
                                                     value=""
                                                     widget-type="InsightsInput"
                                                   >
@@ -872,7 +872,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                       onKeyDown={[Function]}
                                                       ouiaId="ConditionalFilter"
                                                       ouiaSafe={true}
-                                                      placeholder="Filter by patch template "
+                                                      placeholder="Filter by template name "
                                                       type="text"
                                                       validated="default"
                                                       value=""
@@ -890,7 +890,7 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                                         onChange={[Function]}
                                                         onFocus={[Function]}
                                                         onKeyDown={[Function]}
-                                                        placeholder="Filter by patch template "
+                                                        placeholder="Filter by template name "
                                                         required={false}
                                                         type="text"
                                                         value=""

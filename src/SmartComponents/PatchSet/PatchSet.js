@@ -187,7 +187,7 @@ const PatchSet = () => {
                         }
                         footerContent={
                             <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
-                                {intl.formatMessage(messages.linksReadMore)} <ExternalLinkAltIcon />
+                                {intl.formatMessage(messages.linksLearnMore)} <ExternalLinkAltIcon />
                             </a>
                         }
                     >
