@@ -219,7 +219,7 @@ const PatchSetDetail = () => {
                     <table border="0" style={{ marginTop: 8 }}>
                         <tbody>
                             <tr>
-                                <td style={{ width: 300 }}>Template description:</td>
+                                <td style={{ width: 300 }}>{intl.formatMessage(messages.templateDetailTableDescription)}</td>
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 300 }} />
@@ -228,7 +228,7 @@ const PatchSetDetail = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Includes Red Hat repositories up to:</td>
+                                <td>{intl.formatMessage(messages.templateDetailTableUpToDate)}</td>
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
@@ -236,7 +236,7 @@ const PatchSetDetail = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Created by:</td>
+                                <td>{intl.formatMessage(messages.templateDetailTableCreatedBy)}</td>
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
@@ -244,7 +244,7 @@ const PatchSetDetail = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Published:</td>
+                                <td>{intl.formatMessage(messages.templateDetailTablePublished)}</td>
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
@@ -252,7 +252,7 @@ const PatchSetDetail = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Last edited:</td>
+                                <td>{intl.formatMessage(messages.templateDetailTableLastEdited)}</td>
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />

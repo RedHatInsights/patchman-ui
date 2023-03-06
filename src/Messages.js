@@ -527,10 +527,35 @@ export default defineMessages({
         description: 'breadcrumb for template detail header',
         defaultMessage: 'Templates'
     },
+    templateDetailTableCreatedBy: {
+        id: 'templateDetailTableCreatedBy',
+        description: 'label inside template detail header',
+        defaultMessage: 'Created by:'
+    },
+    templateDetailTableDescription: {
+        id: 'templateDetailTableDescription',
+        description: 'label inside template detail header',
+        defaultMessage: 'Template description:'
+    },
+    templateDetailTableLastEdited: {
+        id: 'templateDetailTableLastEdited',
+        description: 'title of template assigned systems table',
+        defaultMessage: 'Last edited:'
+    },
+    templateDetailTablePublished: {
+        id: 'templateDetailTablePublished',
+        description: 'title of template assigned systems table',
+        defaultMessage: 'Published:'
+    },
     templateDetailTableTitle: {
         id: 'templateDetailTableTitle',
         description: 'title of template assigned systems table',
         defaultMessage: 'Systems applied'
+    },
+    templateDetailTableUpToDate: {
+        id: 'templateDetailTableUpToDate',
+        description: 'label inside template detail header',
+        defaultMessage: 'Includes Red Hat repositories up to:'
     },
     templateEdit: {
         id: 'templateEdit',
