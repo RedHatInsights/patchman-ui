@@ -134,21 +134,6 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                 aria-labelledby="template-header-title-popover"
                 bodyContent="Templates allow you to control the scope of package and advisory updates to be installed on selected systems."
                 enableFlip={true}
-                footerContent={
-                  <a
-                    href="https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/system_patching_using_ansible_playbooks_via_remediations/index"
-                    rel="noopener noreferrer"
-                    target="__blank"
-                  >
-                    Learn more
-                     
-                    <ExternalLinkAltIcon
-                      color="currentColor"
-                      noVerticalAlign={false}
-                      size="sm"
-                    />
-                  </a>
-                }
                 hasAutoWidth={true}
                 headerContent="About Templates"
                 id="template-header-title-popover"
@@ -197,21 +182,6 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                               aria-labelledby="template-header-title-popover"
                               bodyContent="Templates allow you to control the scope of package and advisory updates to be installed on selected systems."
                               enableFlip={true}
-                              footerContent={
-                                <a
-                                  href="https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/system_patching_using_ansible_playbooks_via_remediations/index"
-                                  rel="noopener noreferrer"
-                                  target="__blank"
-                                >
-                                  Learn more
-                                   
-                                  <ExternalLinkAltIcon
-                                    color="currentColor"
-                                    noVerticalAlign={false}
-                                    size="sm"
-                                  />
-                                </a>
-                              }
                               hasAutoWidth={true}
                               headerContent="About Templates"
                               id="template-header-title-popover"
@@ -255,21 +225,6 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                 aria-labelledby="template-header-title-popover"
                                 bodyContent="Templates allow you to control the scope of package and advisory updates to be installed on selected systems."
                                 enableFlip={true}
-                                footerContent={
-                                  <a
-                                    href="https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/system_patching_using_ansible_playbooks_via_remediations/index"
-                                    rel="noopener noreferrer"
-                                    target="__blank"
-                                  >
-                                    Learn more
-                                     
-                                    <ExternalLinkAltIcon
-                                      color="currentColor"
-                                      noVerticalAlign={false}
-                                      size="sm"
-                                    />
-                                  </a>
-                                }
                                 hasAutoWidth={true}
                                 headerContent="About Templates"
                                 id="template-header-title-popover"
@@ -349,23 +304,6 @@ exports[`HeaderBreadcrumbs Should render correctly 1`] = `
                                         >
                                           Templates allow you to control the scope of package and advisory updates to be installed on selected systems.
                                         </PopoverBody>
-                                        <PopoverFooter
-                                          id="popover-template-header-title-popover-footer"
-                                        >
-                                          <a
-                                            href="https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/system_patching_using_ansible_playbooks_via_remediations/index"
-                                            rel="noopener noreferrer"
-                                            target="__blank"
-                                          >
-                                            Learn more
-                                             
-                                            <ExternalLinkAltIcon
-                                              color="currentColor"
-                                              noVerticalAlign={false}
-                                              size="sm"
-                                            />
-                                          </a>
-                                        </PopoverFooter>
                                       </PopoverContent>
                                     </ForwardRef>
                                   }

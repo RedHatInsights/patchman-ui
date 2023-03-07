@@ -6,8 +6,6 @@ import { filterSelectedActiveSystemIDs } from '../../Utilities/Helpers';
 import dateValidator from '../../Utilities/dateValidator';
 import { sortable } from '@patternfly/react-table/dist/js';
 import React, { Fragment } from 'react';
-import { ExternalLinkAltIcon } from '@patternfly/react-icons';
-import { TEMPLATES_DOCS_LINK } from '../../Utilities/constants';
 
 export const reviewSystemColumns = [{
     key: 'display_name',
@@ -96,10 +94,11 @@ export const schema = (wizardType) => {
                 title: getWizardTitle(wizardType),
                 description: <Fragment>
                     {intl.formatMessage(messages.templateDescription)}
+                    {/*
                     <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer" className="pf-u-ml-sm">
                         {intl.formatMessage(messages.labelsDocumentation)}
                         <ExternalLinkAltIcon className="pf-u-ml-xs"/>
-                    </a>
+                    </a>*/}
                 </Fragment>,
                 fields: [
                     {
