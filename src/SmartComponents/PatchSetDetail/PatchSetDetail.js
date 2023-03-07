@@ -101,6 +101,7 @@ const PatchSetDetail = () => {
 
     const openPatchSetAssignWizard = () => {
         setPatchSetState({
+            ...patchSetState,
             isPatchSetWizardOpen: true
         });
     };
