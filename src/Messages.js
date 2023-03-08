@@ -94,7 +94,7 @@ export default defineMessages({
     labelsColumnsReboot: {
         id: 'labelsColumnsRebootRequired',
         description: 'shared label',
-        defaultMessage: 'Reboot required'
+        defaultMessage: 'Reboot'
     },
     labelsColumnsSeverity: {
         id: 'labelsColumnsSeverity',
@@ -234,12 +234,12 @@ export default defineMessages({
     labelsFiltersReboot: {
         id: 'labelsFiltersReboot',
         description: 'label for reboot filter chips',
-        defaultMessage: 'Reboot required'
+        defaultMessage: 'Reboot'
     },
     labelsFiltersRebootPlaceholder: {
         id: 'labelsFiltersRebootPlaceholder',
         description: 'placeholder for reboot filter chips',
-        defaultMessage: 'Filter by reboot required'
+        defaultMessage: 'Filter by reboot'
     },
     labelsFiltersReset: {
         id: 'labelsFiltersReset',
