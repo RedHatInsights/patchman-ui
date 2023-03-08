@@ -222,7 +222,7 @@ export const filterCategories = {
         values: staleSystems
     },
     reboot_required: {
-        label: 'Reboot required',
+        label: 'Reboot',
         values: rebootRequired
     },
     os: {
