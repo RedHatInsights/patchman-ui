@@ -5,7 +5,7 @@ import { buildFilterChips } from './Helpers';
 import { intl } from './IntlProvider';
 import messages from '../Messages';
 import { systemsListColumns, packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
-import { compoundSortValues } from './constants';
+import { defaultCompoundSortValues } from './constants';
 
 export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
     items: [
@@ -45,9 +45,9 @@ export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
     let sort = `${orderDirection === 'ASC' ? '' : '-'}${orderBy}`;
 
     //if orderBy is for a compound column reset sort value to relative compound sort value
-    Object.keys(compoundSortValues).forEach(col => {
+    Object.keys(defaultCompoundSortValues).forEach(col => {
         if (col === orderBy) {
-            sort = compoundSortValues[col][orderDirection.toLowerCase()];
+            sort = defaultCompoundSortValues[col][orderDirection.toLowerCase()];
         }
     });
 

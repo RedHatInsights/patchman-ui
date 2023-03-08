@@ -18,7 +18,7 @@ import { Dropdown, DropdownItem, DropdownPosition, DropdownToggle, Skeleton, Tex
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { patchSetDeleteNotifications } from '../../Utilities/constants';
+import { patchSetDeleteNotifications, templateCompoundSortValues } from '../../Utilities/constants';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { patchSetDetailColumns } from './PatchSetDetailAssets';
@@ -93,9 +93,9 @@ const PatchSetDetail = () => {
     const onSetPage = useSetPage(metadata?.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const onSort = useSortColumn(patchSetDetailColumns, apply, 0);
+    const onSort = useSortColumn(patchSetDetailColumns, apply, 0, templateCompoundSortValues);
     const sortBy = useMemo(
-        () => createSortBy(patchSetDetailColumns, metadata?.sort, 0),
+        () => createSortBy(patchSetDetailColumns, metadata?.sort, 0, templateCompoundSortValues),
         [metadata?.sort]
     );
 

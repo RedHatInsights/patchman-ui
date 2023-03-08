@@ -13,7 +13,7 @@ import {
 } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
-import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
+import { createAdvisoriesIcons, createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -389,6 +389,8 @@ export const createPatchSetDetailRows = (rows) => {
     const data =
         rows &&
         rows.map(row => {
+            row = { ...row, ...row.attributes };
+
             return {
                 id: row.inventory_id,
                 displayName: row.display_name,
@@ -397,18 +399,31 @@ export const createPatchSetDetailRows = (rows) => {
                     {
                         title: (
                             <Link to={{ pathname: `/systems/${row.inventory_id}` }}>
-                                {row.attributes.display_name}
+                                {row.display_name}
                             </Link>
                         )
                     },
                     {
-                        title: '<OS placeholder>'
+                        title: row.os || 'N/A'
                     },
                     {
-                        title: '<Tags placeholder>'
+                        title: createAdvisoriesIcons([
+                            row.installable_rhea_count,
+                            row.installable_rhba_count,
+                            row.installable_rhsa_count,
+                            row.installable_other_count
+                        ])
                     },
                     {
-                        title: '<Last seen placeholder>'
+                        title: createAdvisoriesIcons([
+                            row.applicable_rhea_count,
+                            row.applicable_rhba_count,
+                            row.applicable_rhsa_count,
+                            row.applicable_other_count
+                        ], 'installable')
+                    },
+                    {
+                        title: processDate(row.last_upload)
                     }
                 ]
             };
