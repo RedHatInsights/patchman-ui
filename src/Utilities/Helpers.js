@@ -17,7 +17,7 @@ import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
 import {
     advisorySeverities,
-    compoundSortValues,
+    defaultCompoundSortValues,
     filterCategories,
     multiValueFilters
 } from './constants';
@@ -51,7 +51,7 @@ export const transformPairs = (input, remediationIdentifier) => {
     return { issues };
 };
 
-export const createSortBy = (header, values, offset) => {
+export const createSortBy = (header, values, offset, compoundSortValues = defaultCompoundSortValues) => {
     if (values) {
         let [column] = values;
         let multiple = values.join();
@@ -126,11 +126,11 @@ export const truncateDescription = (description, wordLength, setWordLength) => (
         </a>)
 );
 
-export function createAdvisoriesIcons([rhea, rhba, rhsa, other]) {
+export function createAdvisoriesIcons([rhea, rhba, rhsa, other], type = 'applicable') {
     return (
         <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
             {[rhea, rhba, rhsa].every(item => item === 0) &&
-                'No applicable advisories'}
+                `No ${type} advisories`}
             {rhsa !== 0 && (
                 <FlexItem spacer={{ default: 'spacerXs' }}>
                     <AdvisoriesIcon tooltipText={'Security advisories'} count={rhsa} Icon={SecurityIcon} />

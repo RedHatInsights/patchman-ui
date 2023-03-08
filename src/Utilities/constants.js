@@ -9,7 +9,7 @@ export const STATUS_REJECTED = 'rejected';
 export const STATUS_LOADING = 'loading';
 export const STATUS_RESOLVED = 'resolved';
 
-export const compoundSortValues = {
+export const defaultCompoundSortValues = {
     operating_system: {
         asc: 'osname,osmajor,osminor',
         desc: '-osname,-osmajor,-osminor'
@@ -17,6 +17,17 @@ export const compoundSortValues = {
     applicable_advisories: {
         asc: 'rhsa_count,rhba_count,rhea_count',
         desc: '-rhsa_count,-rhba_count,-rhea_count'
+    }
+};
+
+export const templateCompoundSortValues = {
+    applicable_advisories: {
+        asc: 'applicable_rhsa_count,applicable_rhba_count,applicable_rhea_count',
+        desc: '-applicable_rhsa_count,-applicable_rhba_count,-applicable_rhea_count'
+    },
+    installable_advisories: {
+        asc: 'installable_rhsa_count,installable_rhba_count,installable_rhea_count',
+        desc: '-installable_rhsa_count,-installable_rhba_count,-installable_rhea_count'
     }
 };
 

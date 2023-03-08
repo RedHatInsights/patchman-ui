@@ -7,7 +7,7 @@ import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome'
 import isDeepEqualReact from 'fast-deep-equal/react';
 import { Spinner } from '@patternfly/react-core';
 import messages from '../Messages';
-import { compoundSortValues, exportNotifications } from './constants';
+import { defaultCompoundSortValues, exportNotifications } from './constants';
 import {
     convertLimitOffset, getLimitFromPageSize,
     getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO, objUndefinedToFalse
@@ -54,7 +54,7 @@ export const usePerPageSelect = callback => {
     return onPerPageSelect;
 };
 
-export const useSortColumn = (columns, callback, offset = 0) => {
+export const useSortColumn = (columns, callback, offset = 0, compoundSortValues = defaultCompoundSortValues) => {
     const onSort = React.useCallback((_, index, direction) => {
         let columnName = columns[index - offset].key;
         const compoundKey = compoundSortValues[columnName];

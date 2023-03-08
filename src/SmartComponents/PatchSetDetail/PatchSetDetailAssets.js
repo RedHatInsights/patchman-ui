@@ -11,11 +11,18 @@ export const patchSetDetailColumns = [
         title: 'OS'
     },
     {
-        key: 'tags',
-        title: 'Tags'
+        key: 'installable_advisories',
+        title: 'Installable advisories',
+        transforms: [sortable]
     },
     {
-        key: 'last_seen',
-        title: 'Last seen'
+        key: 'applicable_advisories',
+        title: 'Applicable advisories',
+        transforms: [sortable]
+    },
+    {
+        key: 'last_upload',
+        title: 'Last seen',
+        transforms: [sortable]
     }
 ];
