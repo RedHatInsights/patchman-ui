@@ -1,3 +1,10 @@
+## [1.62.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.62.0...v1.62.1) (2023-03-09)
+
+
+### Bug Fixes
+
+* Fix template edit not working from template detail page ([4cc2db3](https://github.com/RedHatInsights/patchman-ui/commit/4cc2db3616ca425c68001c015c1dce5d73534a98))
+
 # [1.62.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.61.0...v1.62.0) (2023-03-02)
 
 
