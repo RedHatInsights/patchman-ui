@@ -700,7 +700,7 @@ export default defineMessages({
     textTemplateReviewSystems: {
         id: 'textTemplateReviewSystems',
         description: 'text for patch template wizard',
-        defaultMessage: 'You will be able to adjust your selection anytime. A system can have only one patch template, \n therefore if you assign a new patch template to the system, it will be overwritten. '
+        defaultMessage: 'Select systems to apply your new template to, or skip this step to apply the template later. Note that if you apply a template to a system that already has one, the old template will be overwritten.'
     },
     textTemplateSelectedSystems: {
         id: 'textTemplateSelectedSystems',
@@ -806,6 +806,11 @@ export default defineMessages({
         id: 'titlesTemplateNoDescription',
         description: 'title with capital letters',
         defaultMessage: 'No description available'
+    },
+    titlesTemplateNoDescriptionProvided: {
+        id: 'titlesTemplateNoDescriptionProvided',
+        description: 'title with capital letters',
+        defaultMessage: 'No description provided'
     },
     titlesTemplateRemoveMultipleButton: {
         id: 'titlesTemplateRemoveMultipleButton',

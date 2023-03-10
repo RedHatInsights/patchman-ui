@@ -69,7 +69,8 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         configurationStep: {
             component: ConfigurationStepFields,
             systemsIDs: systemsIDs || [],
-            patchSetID
+            patchSetID,
+            wizardType
         },
         reviewSystems: {
             component: ReviewSystems,

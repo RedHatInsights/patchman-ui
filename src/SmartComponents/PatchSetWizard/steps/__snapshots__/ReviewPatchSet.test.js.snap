@@ -12,6 +12,31 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
         <div
           className="pf-l-stack__item"
         >
+          <TextContent>
+            <div
+              className="pf-c-content"
+            >
+              <Text
+                component="h2"
+              >
+                <h2
+                  className=""
+                  data-ouia-component-id="OUIA-Generated-Text-1"
+                  data-ouia-component-type="PF4/Text"
+                  data-ouia-safe={true}
+                  data-pf-content={true}
+                >
+                  Review 
+                </h2>
+              </Text>
+            </div>
+          </TextContent>
+        </div>
+      </StackItem>
+      <StackItem>
+        <div
+          className="pf-l-stack__item"
+        >
           <TextContent
             style={
               Object {
@@ -32,7 +57,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
               >
                 <p
                   className=""
-                  data-ouia-component-id="OUIA-Generated-Text-1"
+                  data-ouia-component-id="OUIA-Generated-Text-2"
                   data-ouia-component-type="PF4/Text"
                   data-ouia-safe={true}
                   data-pf-content={true}
@@ -58,7 +83,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
               >
                 <h2
                   className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-2"
+                  data-ouia-component-id="OUIA-Generated-Text-3"
                   data-ouia-component-type="PF4/Text"
                   data-ouia-safe={true}
                   data-pf-content={true}
@@ -120,7 +145,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
               >
                 <h2
                   className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-3"
+                  data-ouia-component-id="OUIA-Generated-Text-4"
                   data-ouia-component-type="PF4/Text"
                   data-ouia-safe={true}
                   data-pf-content={true}
@@ -210,7 +235,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
               >
                 <h2
                   className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-4"
+                  data-ouia-component-id="OUIA-Generated-Text-5"
                   data-ouia-component-type="PF4/Text"
                   data-ouia-safe={true}
                   data-pf-content={true}
@@ -275,6 +300,31 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
         <div
           className="pf-l-stack__item"
         >
+          <TextContent>
+            <div
+              className="pf-c-content"
+            >
+              <Text
+                component="h2"
+              >
+                <h2
+                  className=""
+                  data-ouia-component-id="OUIA-Generated-Text-6"
+                  data-ouia-component-type="PF4/Text"
+                  data-ouia-safe={true}
+                  data-pf-content={true}
+                >
+                  Review 
+                </h2>
+              </Text>
+            </div>
+          </TextContent>
+        </div>
+      </StackItem>
+      <StackItem>
+        <div
+          className="pf-l-stack__item"
+        >
           <TextContent
             style={
               Object {
@@ -295,7 +345,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
               >
                 <p
                   className=""
-                  data-ouia-component-id="OUIA-Generated-Text-5"
+                  data-ouia-component-id="OUIA-Generated-Text-7"
                   data-ouia-component-type="PF4/Text"
                   data-ouia-safe={true}
                   data-pf-content={true}
@@ -321,7 +371,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
               >
                 <h2
                   className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-6"
+                  data-ouia-component-id="OUIA-Generated-Text-8"
                   data-ouia-component-type="PF4/Text"
                   data-ouia-safe={true}
                   data-pf-content={true}
@@ -383,7 +433,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
               >
                 <h2
                   className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-7"
+                  data-ouia-component-id="OUIA-Generated-Text-9"
                   data-ouia-component-type="PF4/Text"
                   data-ouia-safe={true}
                   data-pf-content={true}
@@ -450,7 +500,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                     <dd
                       className=""
                     >
-                      No description available
+                      No description provided
                     </dd>
                   </TextListItem>
                 </dl>
@@ -473,7 +523,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
               >
                 <h2
                   className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-8"
+                  data-ouia-component-id="OUIA-Generated-Text-10"
                   data-ouia-component-type="PF4/Text"
                   data-ouia-safe={true}
                   data-pf-content={true}
