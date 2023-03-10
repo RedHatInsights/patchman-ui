@@ -1,3 +1,10 @@
+## [1.62.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.62.1...v1.62.2) (2023-03-10)
+
+
+### Bug Fixes
+
+* **SPM-1885:** pass auth token to webworker ([#986](https://github.com/RedHatInsights/patchman-ui/issues/986)) ([5e83232](https://github.com/RedHatInsights/patchman-ui/commit/5e832323e5a829047688e0b824c1210b348fd377))
+
 ## [1.62.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.62.0...v1.62.1) (2023-03-09)
 
 
