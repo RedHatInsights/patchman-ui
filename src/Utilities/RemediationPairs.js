@@ -2,15 +2,16 @@ import chunk from 'lodash/chunk';
 
 const REQUEST_CHUNK_SIZE = 1000;
 const BATCH_REQUEST_SIZE = 5;
-const REQUEST_INTERVAL = 15000; //15 econds. AKAMAI allowed life for 5 API calls
+const REQUEST_INTERVAL = 15000; //15 seconds. AKAMAI allowed life for 5 API calls
 
-const fetchDataCallback  = (endpoint) => (input) =>
-    fetch(`/api/patch/v1/views${endpoint}`, {
+const fetchDataCallback = (endpoint, authToken) => (input) => {
+    return fetch(`/api/patch/v1/views${endpoint}`, {
         method: 'POST',
         credentials: 'include',
         headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + authToken
         },
         body: JSON.stringify(input)
     }).then(result =>
@@ -18,6 +19,7 @@ const fetchDataCallback  = (endpoint) => (input) =>
             ? result.json()
             : Promise.reject(result.statusText)
     );
+};
 
 export const transformPairs = (input) => {
     return {
@@ -110,7 +112,7 @@ const batchRequest = async (
 };
 
 onmessage = async ({ data = {} } = {}) => {
-    const { remediationType, areAllSelected, payload = [] } = data;
+    const { remediationType, areAllSelected, payload = [], authToken } = data;
     const shouldMapSystems = remediationType === 'systems' && !areAllSelected;
 
     const endpoint = shouldMapSystems ? '/systems/advisories' : '/advisories/systems';
@@ -121,7 +123,7 @@ onmessage = async ({ data = {} } = {}) => {
     const result = await batchRequest(
         payload,
         {
-            dataFetcher: fetchDataCallback(endpoint),
+            dataFetcher: fetchDataCallback(endpoint, authToken),
             payloadModifier,
             responseTransformer
         }
