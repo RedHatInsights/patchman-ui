@@ -29,7 +29,8 @@ jest.mock('../../Utilities/api', () => ({
     exportAdvisoriesCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchSystems: jest.fn(() => Promise.resolve({ data: { id: 'testId' } }).catch((err) => console.log(err))),
     fetchViewAdvisoriesSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
-    fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err)))
+    fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err))),
+    fetchApplicableAdvisoriesApi: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
 }));
 
 jest.mock('../../Utilities/constants', () => ({
