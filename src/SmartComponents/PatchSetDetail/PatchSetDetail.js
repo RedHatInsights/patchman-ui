@@ -111,10 +111,6 @@ const PatchSetDetail = () => {
         dispatch(fetchTemplateDetail(patchSetId));
     };
 
-    // const handleSystemRemoval = useUnassignSystemsHook();
-
-    // const actionsConfig = patchSetDetailRowActions(handleSystemRemoval);
-
     useEffect(() => {
         getEntitlements().then((entitelements) => {
             setSmartManagement(

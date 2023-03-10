@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
+import creatorFilter from '../../PresentationalComponents/Filters/CreatorFilter';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import {
     fetchPatchSetsAction, changePatchSetsParams,
@@ -155,7 +156,8 @@ const PatchSet = () => {
             searchFilter(apply, queryParams.search,
                 intl.formatMessage(messages.labelsFiltersSearchTemplateTitle),
                 intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)
-            )
+            ),
+            creatorFilter(apply, queryParams.filter, metadata.creators)
         ]
     };
 

@@ -103,12 +103,12 @@ export default defineMessages({
     },
     labelsColumnsStatus: {
         id: 'labelsColumnsStatus',
-        description: 'Label for status fitler',
+        description: 'Label for status filter',
         defaultMessage: 'Status'
     },
     labelsColumnsStatusPlaceholder: {
         id: 'labelsColumnsStatus',
-        description: 'Label for status fitler placeholder',
+        description: 'Label for status filter placeholder',
         defaultMessage: 'Filter by status'
     },
     labelsColumnsSummary: {
@@ -128,7 +128,7 @@ export default defineMessages({
     },
     labelsColumnsType: {
         id: 'labelsColumnsType',
-        description: 'Label for type fitler placeholder',
+        description: 'Label for type filter placeholder',
         defaultMessage: 'Type'
     },
     labelsColumnsUpToDate: {
@@ -186,6 +186,16 @@ export default defineMessages({
         description: 'label for remove filter chips',
         defaultMessage: 'Reset filters'
     },
+    labelsFiltersCreator: {
+        id: 'labelsFiltersCreator',
+        description: 'Label for creator filter',
+        defaultMessage: 'Creator'
+    },
+    labelsFiltersCreatorPlaceholder: {
+        id: 'labelsFiltersCreatorPlaceholder',
+        description: 'Label for creator filter',
+        defaultMessage: 'Filter by creator'
+    },
     labelsFiltersCvesSearchPlaceHolder: {
         id: 'labelsFiltersCvesSearch',
         description: 'search filter placeholder for packages pages',
@@ -203,12 +213,12 @@ export default defineMessages({
     },
     labelsFiltersPackageVersionPlaceholder: {
         id: 'labelFiltersPackageVersionPlaceholder',
-        description: 'Label for version fitler placeholder',
+        description: 'Label for version filter placeholder',
         defaultMessage: 'Filter by version'
     },
     labelsFiltersPackageVersionTitle: {
         id: 'labelsFiltersPackageVersionTitle',
-        description: 'Label for version fitler title',
+        description: 'Label for version filter title',
         defaultMessage: 'Version'
     },
     labelsFiltersPackagesSearchPlaceHolder: {
@@ -248,42 +258,42 @@ export default defineMessages({
     },
     labelsFiltersSearch: {
         id: 'labelsFiltersSearch',
-        description: 'Label for search fitler placeholder',
+        description: 'Label for search filter placeholder',
         defaultMessage: 'Search '
     },
     labelsFiltersSearchAdvisoriesPlaceholder: {
         id: 'labelsFiltersSearchAdvisoriesPlaceholder',
-        description: 'Label for search fitler placeholder',
+        description: 'Label for search filter placeholder',
         defaultMessage: 'Filter by name or synopsis'
     },
     labelsFiltersSearchAdvisoriesTitle: {
         id: 'labelsFiltersSearchAdvisoriesTitle',
-        description: 'Label for search fitler placeholder',
+        description: 'Label for search filter placeholder',
         defaultMessage: 'Advisory'
     },
     labelsFiltersSearchTemplatePlaceholder: {
         id: 'labelsFiltersSearchTemplatePlaceholder',
-        description: 'Label for search fitler placeholder',
+        description: 'Label for search filter placeholder',
         defaultMessage: 'Filter by template name '
     },
     labelsFiltersSearchTemplateTitle: {
         id: 'labelsFiltersSearchTemplateTitle',
-        description: 'Label for search fitler placeholder',
+        description: 'Label for search filter placeholder',
         defaultMessage: 'Template'
     },
     labelsFiltersStale: {
         id: 'labelsFiltersStale',
-        description: 'Label for stale fitler title',
+        description: 'Label for stale filter title',
         defaultMessage: 'Status'
     },
     labelsFiltersStalePlaceholder: {
         id: 'labelsFiltersStalePlaceholder',
-        description: 'Label for stale fitler placeholder',
+        description: 'Label for stale filter placeholder',
         defaultMessage: 'Filter by status'
     },
     labelsFiltersStatus: {
         id: 'labelsFiltersStatus',
-        description: 'Label for status fitler placeholder',
+        description: 'Label for status filter placeholder',
         defaultMessage: 'Status'
     },
     labelsFiltersSystemsSearchPlaceholder: {
@@ -298,12 +308,12 @@ export default defineMessages({
     },
     labelsFiltersType: {
         id: 'labelsFiltersType',
-        description: 'Label for type fitler',
+        description: 'Label for type filter',
         defaultMessage: 'Type'
     },
     labelsFiltersTypePlaceholder: {
         id: 'labelsFiltersType',
-        description: 'Label for type fitler placeholder',
+        description: 'Label for type filter placeholder',
         defaultMessage: 'Filter by type'
     },
     labelsFiltersUpdatable: {
