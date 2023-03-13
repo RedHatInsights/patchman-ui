@@ -17,7 +17,7 @@ import ConfigurationFields from '../InputFields/ConfigurationFields';
 
 import { convertIsoToDate } from '../../../Utilities/Helpers';
 
-const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
+const ConfigurationStepFields = ({ systemsIDs, patchSetID, wizardType }) => {
 
     const formOptions = useFormApi();
     const shouldShowRadioButtons = (!patchSetID && systemsIDs?.length !== 0) || false;
@@ -45,6 +45,13 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
 
     return (
         <Stack hasGutter>
+            <StackItem>
+                <TextContent>
+                    <Text component="h2">
+                        {intl.formatMessage(wizardType === 'edit' ? messages.templateEdit : messages.templateNew)}
+                    </Text>
+                </TextContent>
+            </StackItem>
             {shouldShowRadioButtons && <TextContent style={{ marginTop: '-15px' }}>
                 <Text component={TextVariants.p}>
                     {intl.formatMessage(
@@ -93,6 +100,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
 
 ConfigurationStepFields.propTypes = {
     systemsIDs: propTypes.array,
-    patchSetID: propTypes.string
+    patchSetID: propTypes.string,
+    wizardType: propTypes.string
 };
 export default ConfigurationStepFields;

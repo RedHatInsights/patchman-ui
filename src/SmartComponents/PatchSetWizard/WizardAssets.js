@@ -90,7 +90,6 @@ export const schema = (wizardType) => {
                 name: 'patch-set-wizard',
                 isDynamic: true,
                 inModal: true,
-                showTitles: true,
                 title: getWizardTitle(wizardType),
                 description: <Fragment>
                     {intl.formatMessage(messages.templateDescription)}
@@ -130,9 +129,7 @@ export const schema = (wizardType) => {
                             }
                         ]
                     }
-
                 ]
-
             }
         ]
     });

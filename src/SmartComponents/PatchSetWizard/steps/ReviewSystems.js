@@ -119,6 +119,13 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     return (
         <Stack hasGutter>
             <StackItem>
+                <TextContent>
+                    <Text component="h2">
+                        {intl.formatMessage(messages.templateSelectSystems)}
+                    </Text>
+                </TextContent>
+            </StackItem>
+            <StackItem>
                 <TextContent style={{ marginTop: '-15px' }}>
                     <Text component={TextVariants.p}>
                         {intl.formatMessage(messages.textTemplateReviewSystems)}

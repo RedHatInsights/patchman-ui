@@ -35,6 +35,13 @@ const ReviewPatchSet = () => {
     return (
         <Stack hasGutter>
             <StackItem>
+                <TextContent>
+                    <Text component="h2">
+                        {intl.formatMessage(messages.templateReview)}
+                    </Text>
+                </TextContent>
+            </StackItem>
+            <StackItem>
                 <TextContent style={{ marginTop: '-15px' }}>
                     <Text component={TextVariants.p}>
                         {intl.formatMessage(messages.textPatchTemplateReview)}
@@ -59,7 +66,7 @@ const ReviewPatchSet = () => {
                     <TextList component={TextListVariants.dl}>
                         {renderTextListItem('labelsColumnsName', name)}
                         {renderTextListItem('labelsDescription', description
-                            || intl.formatMessage(messages.titlesTemplateNoDescription))}
+                            || intl.formatMessage(messages.titlesTemplateNoDescriptionProvided))}
                     </TextList>
                 </TextContent>
             </StackItem>
