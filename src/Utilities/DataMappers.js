@@ -412,7 +412,7 @@ export const createPatchSetDetailRows = (rows) => {
                             row.installable_rhba_count,
                             row.installable_rhsa_count,
                             row.installable_other_count
-                        ])
+                        ], 'installable')
                     },
                     {
                         title: createAdvisoriesIcons([
@@ -420,7 +420,7 @@ export const createPatchSetDetailRows = (rows) => {
                             row.applicable_rhba_count,
                             row.applicable_rhsa_count,
                             row.applicable_other_count
-                        ], 'installable')
+                        ])
                     },
                     {
                         title: processDate(row.last_upload)
