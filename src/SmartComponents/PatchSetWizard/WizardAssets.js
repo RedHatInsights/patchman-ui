@@ -66,20 +66,9 @@ export const toDateComponent = [{
 }];
 
 export const getWizardTitle = (wizardType) => {
-    let wizardTitle = '';
-
-    switch (wizardType) {
-        case 'assign':
-            wizardTitle = intl.formatMessage(messages.templateTitleAssignSystem);
-            break;
-        case 'edit':
-            wizardTitle = intl.formatMessage(messages.templateEdit);
-            break;
-        default:
-            wizardTitle = intl.formatMessage(messages.templateTitle);
-    }
-
-    return wizardTitle;
+    return (wizardType === 'edit')
+        ? intl.formatMessage(messages.templateEdit)
+        : intl.formatMessage(messages.templateTitle);
 };
 
 export const schema = (wizardType) => {

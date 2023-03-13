@@ -188,11 +188,11 @@ const PatchSetDetail = () => {
                     onConfirm={deleteSet}
                 />
                 {patchSetState.isPatchSetWizardOpen &&
-                <PatchSetWizard
-                    systemsIDs={patchSetState.systemsIDs}
-                    setBaselineState={setPatchSetState}
-                    patchSetID={patchSetId}
-                />}
+                    <PatchSetWizard
+                        systemsIDs={patchSetState.systemsIDs}
+                        setBaselineState={setPatchSetState}
+                        patchSetID={patchSetId}
+                    />}
                 <UnassignSystemsModal
                     unassignSystemsModalState={patchSetState}
                     setUnassignSystemsModalOpen={setPatchSetState}
@@ -285,21 +285,25 @@ const PatchSetDetail = () => {
                             {intl.formatMessage(messages.templateDetailTableTitle)}
                         </Text>
                     </TextContent>
-                    {hasSmartManagement ? (rows.length === 0 && !status.isLoading) ? <NoAppliedSystems /> : <TableView
-                        columns={patchSetDetailColumns}
-                        compact
-                        onSetPage={onSetPage}
-                        onPerPageSelect={onPerPageSelect}
-                        onSort={onSort}
-                        sortBy={sortBy}
-                        apply={apply}
-                        tableOUIA={'patch-set-detail-table'}
-                        paginationOUIA={'patch-set-detail-pagination'}
-                        store={{ rows, metadata, status, queryParams }}
-                        actionsConfig={actionsConfig}
-                        actionsToggle={!hasAccess ? CustomActionsToggle : null}
-                        searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
-                    /> : <NoSmartManagement />}
+                    {hasSmartManagement
+                        ? (rows.length === 0 && !status.isLoading)
+                            ? <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />
+                            : <TableView
+                                columns={patchSetDetailColumns}
+                                compact
+                                onSetPage={onSetPage}
+                                onPerPageSelect={onPerPageSelect}
+                                onSort={onSort}
+                                sortBy={sortBy}
+                                apply={apply}
+                                tableOUIA={'patch-set-detail-table'}
+                                paginationOUIA={'patch-set-detail-pagination'}
+                                store={{ rows, metadata, status, queryParams }}
+                                actionsConfig={actionsConfig}
+                                actionsToggle={!hasAccess ? CustomActionsToggle : null}
+                                searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
+                            />
+                        : <NoSmartManagement />}
                 </Main>
             </Fragment >);
 };

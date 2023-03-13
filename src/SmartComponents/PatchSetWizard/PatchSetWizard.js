@@ -25,7 +25,7 @@ import { fetchPatchSetAction, clearPatchSetAction, fetchPatchSetSystemsAction } 
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
     //if system ids exist, those are being assigned. Likewise if patchSetID exists, it is being edited
-    const wizardType = systemsIDs ? 'assign' : (patchSetID ? 'edit' : 'create');
+    const wizardType = patchSetID ? 'edit' : 'create';
     const [wizardState, setWizardState] = useState({
         submitted: false,
         formValues: {},
