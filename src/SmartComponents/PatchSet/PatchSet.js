@@ -23,11 +23,11 @@ import {
     patchSetRowActions, CustomActionsToggle
 } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
-import { patchSetDeleteNotifications, TEMPLATES_DOCS_LINK } from '../../Utilities/constants';
+import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
-import { ExternalLinkAltIcon, OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
+import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { NoPatchSetList, NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
@@ -185,11 +185,13 @@ const PatchSet = () => {
                         bodyContent={
                             intl.formatMessage(messages.templatePopoverBody)
                         }
+                        /*
                         footerContent={
                             <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
                                 {intl.formatMessage(messages.linksLearnMore)} <ExternalLinkAltIcon />
                             </a>
                         }
+                        */
                     >
                         <OutlinedQuestionCircleIcon
                             color="var(--pf-global--secondary-color--100)"

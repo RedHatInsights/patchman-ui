@@ -11,8 +11,7 @@ import LockIcon from '@patternfly/react-icons/dist/js/icons/lock-icon';
 import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { ExternalLinkAltIcon, PlusCircleIcon } from '@patternfly/react-icons';
-import { TEMPLATES_DOCS_LINK } from '../../Utilities/constants';
+import { PlusCircleIcon } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 
 export const EmptyAdvisoryList = () => (
@@ -83,11 +82,13 @@ export const NoPatchSetList = ({ Button }) => (
             {intl.formatMessage(messages.statesNoTemplateBody)}
             <br />
             <br />
+            {/*
             <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
                 {intl.formatMessage(messages.statesNoTemplateLink)} <ExternalLinkAltIcon />
             </a>
             <br />
             <br />
+            */}
             <Button />
         </EmptyStateBody>
     </EmptyState>

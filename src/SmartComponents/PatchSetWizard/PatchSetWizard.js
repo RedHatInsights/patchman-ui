@@ -22,8 +22,6 @@ import { usePatchSetApi } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { fetchPatchSetAction, clearPatchSetAction, fetchPatchSetSystemsAction } from '../../store/Actions/Actions';
-import { ExternalLinkAltIcon } from '@patternfly/react-icons';
-import { TEMPLATES_DOCS_LINK } from '../../Utilities/constants';
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
     //if system ids exist, those are being assigned. Likewise if patchSetID exists, it is being edited
@@ -119,10 +117,11 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
                         description={
                             <Fragment>
                                 {intl.formatMessage(messages.templateDescription)}
-                                <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer" className="pf-u-ml-sm">
+                                {/*<a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer"
+                                    className="pf-u-ml-sm">
                                     {intl.formatMessage(messages.labelsDocumentation)}
                                     <ExternalLinkAltIcon className="pf-u-ml-xs"/>
-                                </a>
+                                </a>*/}
                             </Fragment>
                         }
                         steps={[
