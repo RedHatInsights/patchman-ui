@@ -238,6 +238,9 @@ export const filterCategories = {
     },
     os: {
         label: 'Operating system'
+    },
+    creator: {
+        label: 'Creator'
     }
 };
 
@@ -282,7 +285,7 @@ export const patchSetDeleteNotifications = (templateName) => ({
     }
 });
 
-export const multiValueFilters = ['installed_evra', 'os'];
+export const multiValueFilters = ['installed_evra', 'os', 'creator'];
 
 export const featureFlags = {
     patch_set: 'patch.patch_set'
