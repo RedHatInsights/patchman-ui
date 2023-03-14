@@ -16,7 +16,7 @@ plugins.push(
     })
 );
 
-module.exports = function(env) {
+module.exports = function (env) {
     if (env && env.analyze === 'true') {
         plugins.push(new BundleAnalyzerPlugin());
     }

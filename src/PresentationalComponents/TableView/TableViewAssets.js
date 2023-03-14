@@ -1,4 +1,4 @@
-import { cellWidth, expandable, sortable } from '@patternfly/react-table/dist/js';
+import { cellWidth, expandable, sortable } from '@patternfly/react-table';
 import messages from '../../Messages';
 import { intl } from '../../Utilities/IntlProvider';
 

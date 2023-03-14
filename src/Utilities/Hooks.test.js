@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { SortByDirection } from '@patternfly/react-table/dist/js';
+import { SortByDirection } from '@patternfly/react-table';
 import { useEntitlements, useHandleRefresh, usePagePerPage, 
     usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from './Hooks';
 import { packagesListDefaultFilters } from './constants';

@@ -15,7 +15,7 @@ const webpackProxy = {
     useProxy: true,
     proxyVerbose: true,
     useCloud: false, // until console pre-prod env is ready
-    // localChrome: '~/insights/insights-chrome/build/', // for local chrome builds
+    //localChrome: '/home/muslimjon/RedHat/insights-chrome/build', // for local chrome builds
     routes: {
         //   '/beta/config': { host: 'http://localhost:8003' }, // for local CSC config
     }
