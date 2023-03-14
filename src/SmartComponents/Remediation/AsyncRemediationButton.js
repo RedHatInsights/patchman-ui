@@ -4,7 +4,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 import { Spinner } from '@patternfly/react-core';
-// import { spinnerSize } from '@patternfly/react-core/dist/js/components/Spinner/Spinner';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
