@@ -38,18 +38,18 @@ jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
 }));
 jest.mock('./SystemDetail', () => () => <div>This is system detail</div>);
 
-const mockState = { ...entityDetail };
+const mockState = { ...entityDetail, SystemDetailStore: {} };
 
 const initStore = (state) => {
     const customMiddleWare = () => next => action => {
         useSelector.mockImplementation(callback => {
-            return callback({  entityDetails: state });
+            return callback({ entityDetails: state, SystemDetailStore: state  });
         });
         next(action);
     };
 
     const mockStore = configureStore([customMiddleWare]);
-    return mockStore({  entityDetails: state });
+    return mockStore({ entityDetails: state, SystemDetailStore: state });
 };
 
 let wrapper;
@@ -60,7 +60,7 @@ beforeEach(() => {
 
     store.clearActions();
     useSelector.mockImplementation(callback => {
-        return callback({ entityDetails: mockState });
+        return callback({ entityDetails: mockState, SystemDetailStore: {} });
     });
     wrapper = mountWithIntl(<Provider store={store}>
         <Router><InventoryDetail /></Router>
@@ -88,7 +88,10 @@ describe('InventoryPage.js', () => {
 
     it('Should display "Remove from a template" action in enabled state', () => {
         useSelector.mockImplementation(callback => {
-            return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
+            return callback({
+                entityDetails: { ...mockState, patchSetName: 'test-name' },
+                SystemDetailStore: { patchSetName: 'template-name' }
+            });
         });
         const tempWrapper = mount(<Provider store={store}>
             <Router><InventoryDetail /></Router>
@@ -104,7 +107,7 @@ describe('InventoryPage.js', () => {
     it('Should open UnassignSystemsModal when "Remove from a template" action is called', () => {
         const testID = 'test-system-id';
         useSelector.mockImplementation(callback => {
-            return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' } });
+            return callback({ entityDetails: { ...mockState, patchSetName: 'test-name' }, SystemDetailStore: {} });
         });
         const tempWrapper = mountWithIntl(<Provider store={store}>
             <Router><InventoryDetail  /></Router>
