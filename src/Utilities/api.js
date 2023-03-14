@@ -43,7 +43,7 @@ export const fetchSystems = params => {
 };
 
 export const fetchSystemDetails = id => {
-    return createApiCall(`/systems/${id}`, 'v2', 'get');
+    return createApiCall(`/systems/${id}`, 'v3', 'get');
 };
 
 export const fetchAdvisoryDetailsApi = params => {

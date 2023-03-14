@@ -15,16 +15,17 @@ import { clearNotifications } from '@redhat-cloud-services/frontend-components-n
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { featureFlags } from '../../Utilities/constants';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
 
 const InventoryDetail = () => {
-    const {  inventoryId } = useParams();
+    const { inventoryId } = useParams();
     const store = useStore();
 
     const dispatch = useDispatch();
-    const { hasThirdPartyRepo, patchSetName } = useSelector(
-        ({ entityDetails }) => entityDetails && entityDetails || {}
+
+    const { hasThirdPartyRepo, patchSetName, patchSetId } = useSelector(
+        ({ SystemDetailStore }) => SystemDetailStore
     );
 
     const { display_name: displayName } = useSelector(
@@ -95,26 +96,28 @@ const InventoryDetail = () => {
                     appList={[]}
                 >
                     <Grid>
-                        <GridItem>
-                            {patchSetName && <TextContent>
+                        {patchSetName && <GridItem>
+                            <TextContent>
                                 <Text>
-                                    {`${intl.formatMessage(messages.labelsColumnsTemplate)}: ${patchSetName}`}
+                                    {intl.formatMessage(messages.labelsColumnsTemplate)}:
+                                    <Link to={{ pathname: `/templates/${patchSetId}` }} className="pf-u-ml-xs">
+                                        {patchSetName}
+                                    </Link>
                                 </Text>
                             </TextContent>
-                            }
-                        </GridItem>
+                        </GridItem>}
                         <GridItem>
                             {hasThirdPartyRepo &&
-                    (<Alert className='pf-u-mt-md' isInline variant="info"
-                        title={intl.formatMessage(messages.textThirdPartyInfo)}>
-                    </Alert>)
+                                (<Alert className='pf-u-mt-md' isInline variant="info"
+                                    title={intl.formatMessage(messages.textThirdPartyInfo)}>
+                                </Alert>)
                             }
                         </GridItem>
                     </Grid>
                 </InventoryDetailHead>
             </Header>
             <Main>
-                <SystemDetail inventoryId={inventoryId}/>
+                <SystemDetail inventoryId={inventoryId} />
             </Main>
         </DetailWrapper>);
 };
