@@ -39,7 +39,7 @@ export const fetchApplicableSystemAdvisoriesApi = params => {
 };
 
 export const fetchSystems = params => {
-    return createApiCall('/systems', 'v2', 'get', prepareEntitiesParams(params));
+    return createApiCall('/systems', 'v3', 'get', prepareEntitiesParams(params));
 };
 
 export const fetchSystemDetails = id => {
