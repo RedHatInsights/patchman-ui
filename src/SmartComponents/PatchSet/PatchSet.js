@@ -219,14 +219,14 @@ const PatchSet = () => {
                             onSetPage={onSetPage}
                             onPerPageSelect={onPerPageSelect}
                             onSort={onSort}
-                            selectedRows={IS_SELECTION_ENABLED && selectedRows}
-                            onSelect={IS_SELECTION_ENABLED && onSelect}
+                            selectedRows={IS_SELECTION_ENABLED ? selectedRows : undefined}
+                            onSelect={IS_SELECTION_ENABLED ? onSelect : undefined}
                             sortBy={sortBy}
                             apply={apply}
                             tableOUIA={'patch-set-table'}
                             paginationOUIA={'patch-set-pagination'}
                             store={{ rows, metadata, status, queryParams }}
-                            actionsConfig={(patchSets?.length > 0) && actionsConfig}
+                            actionsConfig={actionsConfig}
                             filterConfig={filterConfig}
                             searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
                             ToolbarButton={CreatePatchSetButton}

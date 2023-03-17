@@ -32,7 +32,7 @@ const Header = ({ title, showTabs, breadcrumbs, children, headerOUIA, actions })
 };
 
 Header.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.node,
     showTabs: PropTypes.bool,
     breadcrumbs: PropTypes.array,
     children: PropTypes.any,
