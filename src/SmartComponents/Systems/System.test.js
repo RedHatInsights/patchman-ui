@@ -258,7 +258,7 @@ describe('Systems.js', () => {
                 </Provider>);
 
                 const { actionsConfig } = tempWrapper.find('.testInventroyComponentChild').parent().props();
-                act(() => actionsConfig.actions[1].onClick());
+                act(() => actionsConfig.actions[2].onClick());
 
                 tempWrapper.update();
 
@@ -285,7 +285,7 @@ describe('Systems.js', () => {
                 </Provider>);
 
                 tempWrapper.find('.testInventroyComponentChild').parent().props().columns(['test-column']);
-                expect(systemsColumnsMerger).toHaveBeenCalledWith(['test-column'], false);
+                expect(systemsColumnsMerger).toHaveBeenCalledWith(['test-column'], expect.any(Function), false);
             });
         });
 

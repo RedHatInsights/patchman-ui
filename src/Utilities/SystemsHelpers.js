@@ -4,7 +4,7 @@ import systemsUpdatableFilter from '../PresentationalComponents/Filters/SystemsU
 import { buildFilterChips } from './Helpers';
 import { intl } from './IntlProvider';
 import messages from '../Messages';
-import { systemsListColumns, packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
+import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 import { defaultCompoundSortValues } from './constants';
 
 export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
@@ -29,13 +29,13 @@ export const buildActiveFiltersConfig = (filter, search, deleteFilters) => ({
     deleteTitle: intl.formatMessage(messages.labelsFiltersReset)
 });
 
-export const systemsColumnsMerger = (defaultColumns, isPatchSetEnabled) => {
+export const systemsColumnsMerger = (defaultColumns, additionalColumns, isPatchSetEnabled) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
 
     let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
 
-    return [...nameAndTag, ...systemsListColumns(isPatchSetEnabled), lastSeen[0]];
+    return [...nameAndTag, ...additionalColumns(isPatchSetEnabled), lastSeen[0]];
 };
 
 export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
