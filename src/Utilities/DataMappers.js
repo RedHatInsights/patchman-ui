@@ -146,10 +146,8 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                 rhba_count: rhba,
                 rhsa_count: rhsa,
                 rhea_count: rhea,
-                os_name: osName,
-                os_major: osMajor,
-                os_minor: osMinor,
                 other_count: other,
+                os,
                 rhsm,
                 tags,
                 last_upload: lastUpload
@@ -166,8 +164,7 @@ export const createSystemsRows = (rows, selectedRows = {}) => {
                     other || 0
                 ],
                 operating_system: {
-                    osName: osName && `${rest.os_name} ${osMajor}.${osMinor}`
-                        || 'N/A',
+                    osName: os || 'N/A',
                     rhsm
                 },
                 selected: selectedRows[id] !== undefined,
