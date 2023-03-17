@@ -15,7 +15,7 @@ const AdvisoryType = ({ type }) => {
 };
 
 AdvisoryType.propTypes = {
-    type: PropTypes.number
+    type: PropTypes.string
 };
 
 export default AdvisoryType;

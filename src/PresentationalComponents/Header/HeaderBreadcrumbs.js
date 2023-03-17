@@ -11,11 +11,13 @@ const HeaderBreadcrumbs = ({ items, headerOUIA }) => {
         <Breadcrumb>
             {items.filter(Boolean).map(item => (
                 <BreadcrumbItem key={item.title} isActive={item.isActive}>
-                    {(item.to && <Link to={item.to}
-                        data-ouia-component-type={`${headerOUIA}-breadcrumb`}
-                        data-ouia-component-id={`breadcrumb-to-${item.title}`}
-                    >{item.title}</Link>) ||
-                        item.title}
+                    {item.to
+                        ? <Link to={item.to}
+                            data-ouia-component-type={`${headerOUIA}-breadcrumb`}
+                            data-ouia-component-id={`breadcrumb-to-${item.title}`}
+                        >{item.title}</Link>
+                        : item.title
+                    }
                 </BreadcrumbItem>
             ))}
         </Breadcrumb>
@@ -27,7 +29,7 @@ HeaderBreadcrumbs.propTypes = {
         PropTypes.shape({
             isActive: PropTypes.bool,
             to: PropTypes.string,
-            title: PropTypes.string
+            title: PropTypes.node
         })
     ),
     headerOUIA: PropTypes.string

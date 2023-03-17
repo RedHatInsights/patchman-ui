@@ -166,7 +166,7 @@ TableView.propTypes = {
     emptyState: PropTypes.element,
     defaultFilters: PropTypes.object,
     searchChipLabel: PropTypes.string,
-    ToolbarButton: PropTypes.node,
+    ToolbarButton: PropTypes.elementType,
     actionsConfig: PropTypes.array,
     isRemediationLoading: PropTypes.bool,
     actionsToggle: PropTypes.func
