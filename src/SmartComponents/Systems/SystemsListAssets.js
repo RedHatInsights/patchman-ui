@@ -7,6 +7,14 @@ import { createAdvisoriesIcons, createUpgradableColumn,
 import './SystemsListAssets.scss';
 
 export const systemsListColumns = (isPatchSetEnabled = false) => [
+    {
+        key: 'operating_system',
+        title: 'OS',
+        renderFunc: value => createOSColumn(value),
+        props: {
+            width: 5
+        }
+    },
     ...(isPatchSetEnabled ? [{
         key: 'baseline_name',
         title: 'Template',
@@ -18,6 +26,25 @@ export const systemsListColumns = (isPatchSetEnabled = false) => [
         }
     }] : []),
     {
+        key: 'applicable_advisories',
+        title: 'Installable advisories',
+        props: {
+            width: 15
+        },
+        renderFunc: value => createAdvisoriesIcons(value)
+    },
+    {
+        key: 'packages_installed',
+        title: 'Installed packages',
+        renderFunc: (packageCount, systemID) => createPackagesColumn(packageCount, systemID),
+        props: {
+            width: 10
+        }
+    }
+];
+
+export const advisorySystemsColumns = (isPatchSetEnabled = false) => [
+    {
         key: 'operating_system',
         title: 'OS',
         renderFunc: value => createOSColumn(value),
@@ -25,22 +52,16 @@ export const systemsListColumns = (isPatchSetEnabled = false) => [
             width: 5
         }
     },
-    {
-        key: 'packages_installed',
-        title: 'Packages',
-        renderFunc: (packageCount, systemID) => createPackagesColumn(packageCount, systemID),
+    ...(isPatchSetEnabled ? [{
+        key: 'baseline_name',
+        title: 'Template',
+        renderFunc: (value, _, row) => value
+            ? <Link to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</Link>
+            : 'No template',
         props: {
-            width: 10
+            width: 5
         }
-    },
-    {
-        key: 'applicable_advisories',
-        title: 'Applicable advisories',
-        props: {
-            width: 15
-        },
-        renderFunc: value => createAdvisoriesIcons(value)
-    }
+    }] : [])
 ];
 
 export const packageSystemsColumns = [

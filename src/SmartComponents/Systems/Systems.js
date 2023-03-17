@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { TableVariant } from '@patternfly/react-table';
-import { Button } from '@patternfly/react-core';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
@@ -164,7 +163,7 @@ const Systems = () => {
                         autoRefresh
                         initialLoading
                         hideFilters={{ all: true, tags: false }}
-                        columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, isPatchSetEnabled)}
+                        columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, systemsListColumns, isPatchSetEnabled)}
                         showTags
                         customFilters={{
                             patchParams: {
@@ -203,11 +202,20 @@ const Systems = () => {
                         }}
                         actionsConfig={isPatchSetEnabled && {
                             actions: [
-                                <Button onClick={openPatchSetAssignWizard}
-                                    key='assign-multiple-systems'
-                                    isDisabled={selectedCount === 0}>
-                                    {intl.formatMessage(messages.titlesTemplateAssign)}
-                                </Button>,
+                                <AsyncRemediationButton
+                                    key='remediate-multiple-systems'
+                                    remediationProvider={remediationDataProvider}
+                                    isDisabled={
+                                        arrayFromObj(selectedRows).length === 0 || isRemediationLoading
+                                    }
+                                    isLoading={isRemediationLoading}
+                                />,
+                                {
+                                    key: 'assign-multiple-systems',
+                                    label: intl.formatMessage(messages.titlesTemplateAssign),
+                                    onClick: openPatchSetAssignWizard,
+                                    props: { isDisabled: selectedCount === 0 }
+                                },
                                 {
                                     key: 'remove-multiple-systems',
                                     label: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
@@ -218,15 +226,6 @@ const Systems = () => {
                         }
                         filterConfig={filterConfig}
                         activeFiltersConfig={activeFiltersConfig}
-                        dedicatedAction={(
-                            <AsyncRemediationButton
-                                remediationProvider={remediationDataProvider}
-                                isDisabled={
-                                    arrayFromObj(selectedRows).length === 0 || isRemediationLoading
-                                }
-                                isLoading={isRemediationLoading}
-                            />
-                        )}
                     />
                 </Main>
             </React.Fragment>}

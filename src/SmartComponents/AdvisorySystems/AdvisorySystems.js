@@ -23,7 +23,7 @@ import {
     useBulkSelectConfig, useFeatureFlag, useGetEntities, useOnExport, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import { systemsListColumns, systemsRowActions } from '../Systems/SystemsListAssets';
+import { advisorySystemsColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
@@ -137,7 +137,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     initialLoading
                     ignoreRefresh
                     hideFilters={{ all: true, tags: false }}
-                    columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, isPatchSetEnabled)}
+                    columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, advisorySystemsColumns, isPatchSetEnabled)}
                     showTags
                     customFilters={{
                         patchParams: {
@@ -154,7 +154,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                         store.replaceReducer(combineReducers({
                             ...defaultReducers,
                             ...mergeWithEntities(
-                                inventoryEntitiesReducer(systemsListColumns(false), modifyInventory),
+                                inventoryEntitiesReducer(advisorySystemsColumns(false), modifyInventory),
                                 persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
                         }));
