@@ -6,6 +6,7 @@ import { Bullseye, Spinner } from '@patternfly/react-core';
 import { useFeatureFlag } from './Utilities/Hooks';
 import { featureFlags } from './Utilities/constants';
 import some from 'lodash/some';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const PermissionRouter = (route, index) => {
     const {
@@ -89,81 +90,84 @@ const TemplateDetail = lazy(() =>
     )
 );
 
-const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
-const generalPermissions = ['patch:*:*', 'patch:*:read'];
-
-export const paths = [
-    {
-        path: '/advisories/:advisoryId/:inventoryId',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: InventoryDetail
-    },
-    {
-        path: '/advisories/:advisoryId',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: AdvisoryPage
-    },
-    {
-        path: '/advisories',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: Advisories
-    },
-    {
-        path: '/systems/:inventoryId',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: InventoryDetail
-    },
-    {
-        path: '/systems',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: Systems
-    },
-    {
-        path: '/packages/:packageName/:inventoryId',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: InventoryDetail
-    },
-    {
-        path: '/packages/:packageName',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: PackageDetail
-    },
-    {
-        path: '/packages',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: PackagesPage
-    },
-    ...(isPatchSetEnabled ? [{
-        path: '/templates/:templateName',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: TemplateDetail
-    },
-    {
-        path: '/templates',
-        isExact: true,
-        requiredPermissions: generalPermissions,
-        component: Templates
-    }] : [])
-];
-
 export const Routes = () => {
     const history = useHistory();
+    const chrome = useChrome();
+
+    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
+    const generalPermissions = ['patch:*:*', 'patch:*:read'];
+
+    const paths = [
+        {
+            path: '/advisories/:advisoryId/:inventoryId',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: InventoryDetail
+        },
+        {
+            path: '/advisories/:advisoryId',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: AdvisoryPage
+        },
+        {
+            path: '/advisories',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: Advisories
+        },
+        {
+            path: '/systems/:inventoryId',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: InventoryDetail
+        },
+        {
+            path: '/systems',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: Systems
+        },
+        {
+            path: '/packages/:packageName/:inventoryId',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: InventoryDetail
+        },
+        {
+            path: '/packages/:packageName',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: PackageDetail
+        },
+        {
+            path: '/packages',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: PackagesPage
+        },
+        ...(isPatchSetEnabled ? [{
+            path: '/templates/:templateName',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: TemplateDetail
+        },
+        {
+            path: '/templates',
+            isExact: true,
+            requiredPermissions: generalPermissions,
+            component: Templates
+        }] : [])
+    ];
 
     const listenNavigation = useCallback(() => {
-        return insights.chrome.on('APP_NAVIGATION', event => {
-            if (event.domEvent) {
-                history.push(`/${event.navId}`);
-            }
-        });
+        if (chrome) {
+            return insights.chrome.on('APP_NAVIGATION', event => {
+                if (event.domEvent) {
+                    history.push(`/${event.navId}`);
+                }
+            });
+        }
     }, []);
 
     useEffect(() => {

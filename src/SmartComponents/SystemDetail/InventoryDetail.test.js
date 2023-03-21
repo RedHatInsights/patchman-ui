@@ -12,6 +12,7 @@ import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 import { useFeatureFlag } from '../../Utilities/Hooks';
 
 initMocks();
+jest.useFakeTimers();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),

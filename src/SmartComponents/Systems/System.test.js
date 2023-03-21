@@ -13,6 +13,7 @@ import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
 
 initMocks();
+jest.useFakeTimers();
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),

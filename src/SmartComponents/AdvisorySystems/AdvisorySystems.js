@@ -28,10 +28,12 @@ import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
     const store = useStore();
+    const chrome = useChrome();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [
         RemediationModalCmp,
@@ -39,7 +41,7 @@ const AdvisorySystems = ({ advisoryName }) => {
     ] = React.useState(() => () => null);
     const history = useHistory();
 
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
+    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
 
     const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
