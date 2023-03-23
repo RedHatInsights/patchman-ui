@@ -6,20 +6,6 @@ import { ReadOnlyNotification } from './constants';
 
 const axiosInstance = axios.create();
 
-export async function  accessCheckInterceptor (config)  {
-
-    const userPermissions = await insights.chrome.getUserPermissions();
-    const inventoryPermissionList = ['inventory:*:*', 'inventory:*:read', 'inventory:hosts:read'];
-
-    const hasInventoryAccess = userPermissions.some((access) => inventoryPermissionList.includes(access?.permission));
-
-    if (!hasInventoryAccess) {
-        throw new axios.Cancel('Operation canceled. User does not have access to Inventory');
-    }
-
-    return config;
-}
-
 export function errorInterceptor(err) {
 
     if (!axios.isCancel(err)) {
@@ -30,7 +16,7 @@ export function errorInterceptor(err) {
             const { status, statusText, data } = response;
 
             if (!status) {
-                throw err;
+                return err;
             } else {
                 const genericError = {
                     title:
@@ -43,8 +29,10 @@ export function errorInterceptor(err) {
             }
         }
 
-        throw err;
+        return err;
     }
+
+    return err;
 }
 
 export function readOnlyInterceptor(error) {
@@ -64,7 +52,6 @@ export function responseDataInterceptor(response) {
     return response;
 }
 
-axiosInstance.interceptors.request.use(accessCheckInterceptor);
 axiosInstance.interceptors.request.use(authInterceptor);
 axiosInstance.interceptors.response.use(responseDataInterceptor);
 axiosInstance.interceptors.response.use(null, readOnlyInterceptor);

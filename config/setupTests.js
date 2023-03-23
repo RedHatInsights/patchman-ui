@@ -4,6 +4,12 @@ import React from 'react';
 
 configure({ adapter: new Adapter() });
 
+jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
+    useChrome: () => ({
+        isBeta: jest.fn()
+    })
+}));
+
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;

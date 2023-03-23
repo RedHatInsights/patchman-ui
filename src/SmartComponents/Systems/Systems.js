@@ -35,9 +35,11 @@ import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersion
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const Systems = () => {
     const store = useStore();
+    const chrome = useChrome();
     const inventory = useRef(null);
     const pageTitle = intl.formatMessage(messages.titlesSystems);
 
@@ -52,7 +54,7 @@ const Systems = () => {
         setRemediationModalCmp
     ] = React.useState(() => () => null);
 
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
+    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
 
     const decodedParams = decodeQueryparams(history.location.search);
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);

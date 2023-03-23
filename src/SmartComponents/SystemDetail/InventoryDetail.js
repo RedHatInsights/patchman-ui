@@ -17,10 +17,12 @@ import usePatchSetState from '../../Utilities/usePatchSetState';
 import { featureFlags } from '../../Utilities/constants';
 import { Link, useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const InventoryDetail = () => {
     const { inventoryId } = useParams();
     const store = useStore();
+    const chrome = useChrome();
 
     const dispatch = useDispatch();
 
@@ -48,7 +50,7 @@ const InventoryDetail = () => {
         openPatchSetAssignWizard(inventoryId);
     };
 
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set);
+    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
 
     return (
         <DetailWrapper
