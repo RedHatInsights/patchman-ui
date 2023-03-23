@@ -613,6 +613,17 @@ exports[`Systems.js should match the snapshot 1`] = `
               page-type=""
             >
               <mockConstructor
+                actionsConfig={
+                  Object {
+                    "actions": Array [
+                      <AsyncRemediationButton
+                        isDisabled={false}
+                        isLoading={false}
+                        remediationProvider={[MockFunction]}
+                      />,
+                    ],
+                  }
+                }
                 activeFiltersConfig={
                   Object {
                     "deleteTitle": "Reset filters",
