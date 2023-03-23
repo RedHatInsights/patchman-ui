@@ -200,7 +200,7 @@ const Systems = () => {
                             isDisabled: totalItems === 0,
                             onSelect: onExport
                         }}
-                        actionsConfig={isPatchSetEnabled && {
+                        actionsConfig={{
                             actions: [
                                 <AsyncRemediationButton
                                     key='remediate-multiple-systems'
@@ -210,7 +210,7 @@ const Systems = () => {
                                     }
                                     isLoading={isRemediationLoading}
                                 />,
-                                {
+                                ...isPatchSetEnabled ? [{
                                     key: 'assign-multiple-systems',
                                     label: intl.formatMessage(messages.titlesTemplateAssign),
                                     onClick: openPatchSetAssignWizard,
@@ -221,9 +221,9 @@ const Systems = () => {
                                     label: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
                                     onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
                                     props: { isDisabled: selectedCount === 0 }
-                                }
-                            ] }
-                        }
+                                }] : []
+                            ]
+                        }}
                         filterConfig={filterConfig}
                         activeFiltersConfig={activeFiltersConfig}
                     />
