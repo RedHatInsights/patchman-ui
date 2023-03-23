@@ -12,7 +12,7 @@ export const filterSystemsWithoutSets = (systemsIDs) =>  {
         return systemsIDs.filter(systemID =>
             allSystemsWithPatchSet?.data.some(system => system.id === systemID)
         );
-    }).catch(err => console.log(err));
+    });
 };
 
 export const renderUnassignModalMessages = (bodyMessage, systemsCount, intl) => (<GridItem>

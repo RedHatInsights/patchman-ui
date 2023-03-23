@@ -16,7 +16,7 @@ export function errorInterceptor(err) {
             const { status, statusText, data } = response;
 
             if (!status) {
-                throw err;
+                return err;
             } else {
                 const genericError = {
                     title:
@@ -29,8 +29,10 @@ export function errorInterceptor(err) {
             }
         }
 
-        throw err;
+        return err;
     }
+
+    return err;
 }
 
 export function readOnlyInterceptor(error) {

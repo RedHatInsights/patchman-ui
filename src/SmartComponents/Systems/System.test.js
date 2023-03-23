@@ -13,7 +13,6 @@ import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
 
 initMocks();
-jest.useFakeTimers();
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -47,7 +46,8 @@ jest.mock('../../Utilities/api', () => ({
             id: 'RHBA-2020:4282',
             type: 'advisory'
         }]
-    }).catch((err) => console.log(err)))
+    }).catch((err) => console.log(err))),
+    fetchSystems: jest.fn(() => Promise.resolve({ success: true, data: ['test-system-id'] }).catch((err) => console.log(err)))
 }));
 
 jest.mock('../../Utilities/Hooks', () => ({
