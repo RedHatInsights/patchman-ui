@@ -30,9 +30,11 @@ import { clearNotifications } from '@redhat-cloud-services/frontend-components-n
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const Advisories = ({ history }) => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
+    const chrome = useChrome();
 
     setPageTitle(pageTitle);
 
@@ -120,7 +122,9 @@ const Advisories = ({ history }) => {
         dispatch(changeAdvisoryListParams(params));
     }
 
-    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'advisories', areAllSelected);
+    const remediationDataProvider = useRemediationProvier(
+        selectedRows, setRemediationLoading, 'advisories', areAllSelected, chrome
+    );
 
     return (
         <React.Fragment>

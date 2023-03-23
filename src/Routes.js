@@ -162,7 +162,7 @@ export const Routes = () => {
 
     const listenNavigation = useCallback(() => {
         if (chrome) {
-            return insights.chrome.on('APP_NAVIGATION', event => {
+            return chrome.on('APP_NAVIGATION', event => {
                 if (event.domEvent) {
                     history.push(`/${event.navId}`);
                 }
