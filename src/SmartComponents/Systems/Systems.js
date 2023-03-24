@@ -145,7 +145,7 @@ const Systems = () => {
         }
     }, [patchSetState.shouldRefresh]);
 
-    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'systems', areAllSelected, chrome);
+    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'systems', areAllSelected);
 
     const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
 

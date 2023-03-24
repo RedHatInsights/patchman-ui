@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import {
     removeUndefinedObjectKeys
 } from './Helpers';
@@ -51,8 +52,9 @@ export const prepareRemediationPairs = async (task, dispatch) => {
 * @param {Array} [selectedRows] array of systems to calculate
 * @returns {handleSystemsRemoval}
 */
-const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType, areAllSelected, chrome) => {
+const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType, areAllSelected) => {
     const dispatch = useDispatch();
+    const chrome = useChrome();
     const remediationDataProvider = async () => {
         setRemediationLoading(true);
 
