@@ -31,8 +31,6 @@ export const templateCompoundSortValues = {
     }
 };
 
-// messy check because of frontend-components tests
-export const ENABLE_PACKAGES = window?.insights?.chrome?.isBeta && insights?.chrome?.isBeta();
 export const storeListDefaults = {
     rows: [],
     status: { isLoading: true },

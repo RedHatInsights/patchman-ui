@@ -120,7 +120,9 @@ const Advisories = ({ history }) => {
         dispatch(changeAdvisoryListParams(params));
     }
 
-    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'advisories', areAllSelected);
+    const remediationDataProvider = useRemediationProvier(
+        selectedRows, setRemediationLoading, 'advisories', areAllSelected
+    );
 
     return (
         <React.Fragment>

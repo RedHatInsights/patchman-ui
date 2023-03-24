@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import {
     removeUndefinedObjectKeys
 } from './Helpers';
@@ -53,12 +54,13 @@ export const prepareRemediationPairs = async (task, dispatch) => {
 */
 const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType, areAllSelected) => {
     const dispatch = useDispatch();
+    const chrome = useChrome();
     const remediationDataProvider = async () => {
         setRemediationLoading(true);
 
         //Auth token must be added to webworker request as webworker does not have access
         //to default token by platform
-        const authToken = await window.insights.chrome.auth.getToken();
+        const authToken = await chrome.auth.getToken();
         const remediationPairs = await prepareRemediationPairs(
             {
                 payload: removeUndefinedObjectKeys(selectedRows),
