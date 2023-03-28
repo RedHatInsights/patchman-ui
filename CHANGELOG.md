@@ -1,3 +1,10 @@
+## [1.62.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.62.3...v1.62.4) (2023-03-28)
+
+
+### Bug Fixes
+
+* remaining insights.chrome references ([#999](https://github.com/RedHatInsights/patchman-ui/issues/999)) ([b347554](https://github.com/RedHatInsights/patchman-ui/commit/b347554aed055c93db14e9b4ebb43c4785f36404))
+
 ## [1.62.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.62.2...v1.62.3) (2023-03-10)
 
 
