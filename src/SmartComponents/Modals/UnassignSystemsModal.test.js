@@ -4,7 +4,7 @@ import { Modal } from '@patternfly/react-core';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 import UnassignSystemsModal from './UnassignSystemsModal';
-import { removePatchSetApi, fetchSystems } from '../../Utilities/api';
+import { unassignSystemFromPatchSet, fetchSystems } from '../../Utilities/api';
 import { patchSetUnassignSystemsNotifications } from '../../Utilities/constants';
 import { mountWithIntl, initMocks } from '../../Utilities/unitTestingUtilities';
 
@@ -12,7 +12,7 @@ initMocks();
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    removePatchSetApi: jest.fn(),
+    unassignSystemFromPatchSet: jest.fn(),
     fetchSystems: jest.fn()
 }));
 
@@ -47,7 +47,7 @@ describe('UnassignSystemsModal', () => {
 
     it('Should remove systems from a patch set and handle success notification', async ()  => {
         unassignSystemsModalState.isUnassignSystemsModalOpen = true;
-        removePatchSetApi.mockReturnValueOnce(
+        unassignSystemFromPatchSet.mockReturnValueOnce(
             new Promise((resolve) => {
                 resolve({ status: 200 });
             })
@@ -58,7 +58,7 @@ describe('UnassignSystemsModal', () => {
             patchSetUnassignSystemsNotifications(1).success
         );
         expect(unassignSystemsModalState).toEqual({ isUnassignSystemsModalOpen: false, shouldRefresh: true, systemsIDs: [] });
-        expect(removePatchSetApi).toHaveBeenCalledWith({ inventory_ids: ['test_1'] });
+        expect(unassignSystemFromPatchSet).toHaveBeenCalledWith({ inventory_ids: ['test_1'] });
     });
 
     it('should close the modal', () => {

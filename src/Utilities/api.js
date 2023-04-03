@@ -182,8 +182,8 @@ export const exportPackageSystemsJSON = (params, packageName) => {
     return fetchFile(params, endpoint, 'application/json');
 };
 
-export const assignSystemPatchSet = (payload) => {
-    return createApiCall(`/baselines`, 'v2', 'put', null, payload);
+export const assignSystemToPatchSet = (payload) => {
+    return createApiCall(`/baselines`, 'v3', 'put', null, payload);
 };
 
 export const fetchPatchSets = params => {
@@ -191,11 +191,11 @@ export const fetchPatchSets = params => {
 };
 
 export const updatePatchSets = (payload, id) => {
-    return createApiCall(`/baselines/${id}`, 'v2', 'put', null, payload);
+    return createApiCall(`/baselines/${id}`, 'v3', 'put', null, payload);
 };
 
 export const deletePatchSet = patchSetID => {
-    return createApiCall(`/baselines/${patchSetID}`, 'v2', 'delete');
+    return createApiCall(`/baselines/${patchSetID}`, 'v3', 'delete');
 };
 
 export const fetchPatchSet = id => {
@@ -206,8 +206,8 @@ export const fetchPatchSetSystems = (id, params) => {
     return createApiCall(`/baselines/${id}/systems`, 'v3', 'get', params);
 };
 
-export const removePatchSetApi = (payload) => {
-    return createApiCall('/baselines/systems/remove', 'v2', 'post', null, payload);
+export const unassignSystemFromPatchSet = (payload) => {
+    return createApiCall('/baselines/systems/remove', 'v3', 'post', null, payload);
 };
 
 export const getOperatingSystems = () => {
