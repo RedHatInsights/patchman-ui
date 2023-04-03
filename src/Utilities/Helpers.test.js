@@ -5,7 +5,7 @@ import { publicDateOptions, remediationIdentifiers } from '../Utilities/constant
 import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, 
     createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams,
     getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, 
-    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs } from './Helpers';
+    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs, templateDateFormat } from './Helpers';
 
 const TestHook = ({ callback }) => {
     callback();
@@ -304,6 +304,14 @@ describe('Helpers tests', () => {
                 { description: 'testAdvisory2', id: 'test-identifier:testAdvisory2', systems: ['test-system-2'] }
             ]
         });
+    });
+
+    test("templateDateFormat function should correctly parse dates", () => {
+        expect(templateDateFormat("2023-03-05")).toEqual("05 Mar 2023");
+        expect(templateDateFormat("2023-03-22T20:00:00-04:00")).toEqual("23 Mar 2023");
+        expect(templateDateFormat("2023-03-22T20:00:00-00:00")).toEqual("22 Mar 2023");
+        expect(templateDateFormat("2023-03-22T20:00:00+04:00")).toEqual("22 Mar 2023");
+        expect(templateDateFormat("2023-03-22T20:00:00Z")).toEqual("22 Mar 2023");
     });
 });
 
