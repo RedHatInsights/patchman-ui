@@ -20,7 +20,7 @@ export const advisoriesColumns = [
         key: 'advisory_type_name'
     },
     {
-        title: intl.formatMessage(messages.labelsColumnsApplicableSystems),
+        title: intl.formatMessage(messages.labelsColumnsAffectedSystems),
         transforms: [sortable, cellWidth(15)],
         key: 'applicable_systems'
     },

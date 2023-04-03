@@ -19,7 +19,7 @@ export default defineMessages({
     labelsApplicableSystemsCount: {
         id: 'labelsApplicableSystemsCount',
         description: 'applicable systems number label',
-        defaultMessage: '{systemsCount} applicable systems'
+        defaultMessage: '{systemsCount} affected systems'
     },
     labelsBulkSelectAll: {
         id: 'labelsBulkSelectAll',
@@ -55,6 +55,11 @@ export default defineMessages({
         id: 'labelsCancel',
         description: 'Button label',
         defaultMessage: 'Cancel'
+    },
+    labelsColumnsAffectedSystems: {
+        id: 'labelsColumnsAffectedSystems',
+        description: 'shared label',
+        defaultMessage: 'Affected systems'
     },
     labelsColumnsApplicableSystems: {
         id: 'labelsColumnsApplicableSystems',
