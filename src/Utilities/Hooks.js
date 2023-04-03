@@ -269,7 +269,7 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
             name,
             description,
             inventory_ids: (patchSetID || id) ? objUndefinedToFalse(systems) : Object.keys(systems),
-            config: { to_time: fomattedDate }
+            ...fomattedDate ? { config: { to_time: fomattedDate } } : {}
         };
 
         setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: true });
