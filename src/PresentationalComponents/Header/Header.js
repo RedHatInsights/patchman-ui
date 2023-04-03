@@ -15,7 +15,7 @@ const Header = ({ title, showTabs, breadcrumbs, children, headerOUIA, actions })
                 data-ouia-component-type={`${headerOUIA}-page-header`}
             >
                 {breadcrumbs && <HeaderBreadcrumbs items={breadcrumbs} headerOUIA={headerOUIA} />}
-                <Split>
+                <Split hasGutter>
                     <SplitItem>
                         <PageHeaderTitle title={title} />
                     </SplitItem>

@@ -13,7 +13,7 @@ import {
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
-import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { templateDateFormat } from '../../../Utilities/Helpers';
 
 const renderTextListItem = (label, text) => (
     <Fragment>
@@ -54,7 +54,7 @@ const ReviewPatchSet = () => {
                         {intl.formatMessage(messages.textPatchTemplateContent)}
                     </Text>
                     <TextList component={TextListVariants.dl}>
-                        {renderTextListItem('labelsColumnsUpToDate', processDate(toDate))}
+                        {renderTextListItem('labelsColumnsUpToDate', templateDateFormat(toDate))}
                     </TextList>
                 </TextContent>
             </StackItem>

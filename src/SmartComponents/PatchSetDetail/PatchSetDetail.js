@@ -23,7 +23,7 @@ import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { patchSetDetailColumns } from './PatchSetDetailAssets';
 import { createPatchSetDetailRows } from '../../Utilities/DataMappers';
-import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
+import { createSortBy, decodeQueryparams, encodeURLParams, templateDateFormat } from '../../Utilities/Helpers';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { CustomActionsToggle, patchSetDetailRowActions } from '../PatchSet/PatchSetAssets';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
@@ -249,7 +249,7 @@ const PatchSetDetail = () => {
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
-                                        : processDate(templateDetails.data.attributes.config.to_time)}
+                                        : templateDateFormat(templateDetails.data.attributes.config.to_time)}
                                 </td>
                             </tr>
                             <tr>

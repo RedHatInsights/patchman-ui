@@ -199,9 +199,11 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                     </nav>
                   </Breadcrumb>
                 </HeaderBreadcrumbs>
-                <Split>
+                <Split
+                  hasGutter={true}
+                >
                   <div
-                    className="pf-l-split"
+                    className="pf-l-split pf-m-gutter"
                   >
                     <SplitItem>
                       <div

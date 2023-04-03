@@ -602,6 +602,25 @@ export const convertIsoToDate = (isoDate) => {
         `-${dateObject.getDate().toString().padStart(2, '0')}`;
 };
 
+// 2023-03-05 -> 05 Mar 2023
+// 2023-03-22T20:00:00-04:00 (ISO format) -> 23 Mar 2023
+export const templateDateFormat = (dateString) => {
+    if (!dateString) {
+        return 'N/A';
+    }
+
+    // handle ISO format - convert timezone to GMT and slice off the time
+    if (dateString.includes('T')) {
+        const gmtTime = (new Date(dateString)).toISOString();
+        [dateString] = gmtTime.split('T');
+    }
+
+    const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    const [year, month, day] = dateString.split('-');
+
+    return `${day} ${MONTHS[parseInt(month) - 1]} ${year}`;
+};
+
 export const filterSelectedActiveSystemIDs = (selectedSystemsObject) => {
     const formValueSystemIDs = [];
     if (typeof selectedSystemsObject === 'object') {
