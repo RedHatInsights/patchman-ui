@@ -92,6 +92,7 @@ exports[`TableView TableView 1`] = `
     }
   />
   <Table
+    actionsMenuAppendTo="inline"
     aria-label="Patch table view"
     borders={true}
     canCollapseAll={false}
@@ -213,6 +214,7 @@ exports[`TableView TableView 2`] = `
     }
   />
   <Table
+    actionsMenuAppendTo="inline"
     aria-label="Patch table view"
     borders={true}
     canCollapseAll={false}
@@ -334,6 +336,7 @@ exports[`TableView test table props TableView 1`] = `
     }
   />
   <Table
+    actionsMenuAppendTo="inline"
     aria-label="Patch table view"
     borders={true}
     canCollapseAll={false}
