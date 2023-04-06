@@ -261,7 +261,7 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
 
     const onSubmit = React.useCallback((formValues) => {
         const { name, description, toDate, id } = formValues.existing_patch_set || formValues;
-        const fomattedDate = convertDateToISO(toDate);
+        const formattedDate = convertDateToISO(toDate);
 
         const { systems } = formValues;
 
@@ -269,7 +269,7 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
             name,
             description,
             inventory_ids: (patchSetID || id) ? objUndefinedToFalse(systems) : Object.keys(systems),
-            ...fomattedDate ? { config: { to_time: fomattedDate } } : {}
+            ...formattedDate && { config: { to_time: formattedDate } }
         };
 
         setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: true });
