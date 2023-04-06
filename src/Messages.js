@@ -16,8 +16,8 @@ export default defineMessages({
         description: 'dropdown with actions label',
         defaultMessage: 'Actions'
     },
-    labelsApplicableSystemsCount: {
-        id: 'labelsApplicableSystemsCount',
+    labelsAffectedSystemsCount: {
+        id: 'labelsAffectedSystemsCount',
         description: 'applicable systems number label',
         defaultMessage: '{systemsCount} affected systems'
     },
