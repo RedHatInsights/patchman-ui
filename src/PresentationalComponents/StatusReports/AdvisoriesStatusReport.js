@@ -68,7 +68,7 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
                             entityTypes.advisories,
                             id,
                             intl.formatMessage(
-                                messages.labelsApplicableSystemsCount,
+                                messages.labelsAffectedSystemsCount,
                                 { systemsCount: attributes.applicable_systems }
                             )
                         )}

@@ -30,7 +30,7 @@ export function createApiCall(
 const systemProfile = new SystemProfileApi(undefined, INVENTORY_API_BASE, axios);
 
 export const fetchApplicableAdvisoriesApi = params => {
-    return createApiCall('/advisories', 'v2', 'get', params);
+    return createApiCall('/advisories', 'v3', 'get', params);
 };
 
 export const fetchApplicableSystemAdvisoriesApi = params => {

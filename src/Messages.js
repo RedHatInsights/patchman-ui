@@ -16,10 +16,10 @@ export default defineMessages({
         description: 'dropdown with actions label',
         defaultMessage: 'Actions'
     },
-    labelsApplicableSystemsCount: {
-        id: 'labelsApplicableSystemsCount',
+    labelsAffectedSystemsCount: {
+        id: 'labelsAffectedSystemsCount',
         description: 'applicable systems number label',
-        defaultMessage: '{systemsCount} applicable systems'
+        defaultMessage: '{systemsCount} affected systems'
     },
     labelsBulkSelectAll: {
         id: 'labelsBulkSelectAll',
@@ -55,6 +55,11 @@ export default defineMessages({
         id: 'labelsCancel',
         description: 'Button label',
         defaultMessage: 'Cancel'
+    },
+    labelsColumnsAffectedSystems: {
+        id: 'labelsColumnsAffectedSystems',
+        description: 'shared label',
+        defaultMessage: 'Affected systems'
     },
     labelsColumnsApplicableSystems: {
         id: 'labelsColumnsApplicableSystems',
