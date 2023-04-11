@@ -35,7 +35,7 @@ export const fetchApplicableAdvisoriesApi = params => {
 
 export const fetchApplicableSystemAdvisoriesApi = params => {
     let { id, ...allParams } = params;
-    return createApiCall(`/systems/${id}/advisories`, 'v2', 'get', allParams);
+    return createApiCall(`/systems/${id}/advisories`, 'v3', 'get', allParams);
 };
 
 export const fetchSystems = params => {
@@ -47,16 +47,16 @@ export const fetchSystemDetails = id => {
 };
 
 export const fetchAdvisoryDetailsApi = params => {
-    return createApiCall(`/advisories/${params.advisoryName}`, 'v2', 'get');
+    return createApiCall(`/advisories/${params.advisoryName}`, 'v3', 'get');
 };
 
 export const fetchPackageDetailsApi = params => {
-    return createApiCall(`/packages/${params.packageName}`, 'v2', 'get');
+    return createApiCall(`/packages/${params.packageName}`, 'v3', 'get');
 };
 
 export const fetchApplicablePackagesApi = params => {
     let { id, ...allParams } = params;
-    return createApiCall(`/systems/${id}/packages`, 'v2', 'get', allParams);
+    return createApiCall(`/systems/${id}/packages`, 'v3', 'get', allParams);
 };
 
 export const fetchAdvisorySystems = params => {
@@ -66,12 +66,12 @@ export const fetchAdvisorySystems = params => {
 
 export const fetchPackageSystems = params => {
     const { package_name: packageName, ...args } = params;
-    return createApiCall(`/packages/${packageName}/systems`, 'v2', 'get', prepareEntitiesParams(args));
+    return createApiCall(`/packages/${packageName}/systems`, 'v3', 'get', prepareEntitiesParams(args));
 };
 
 export const fetchPackageVersions = params => {
     const { package_name: packageName, ...args } = params;
-    return createApiCall(`/packages/${packageName}/versions`, 'v2', 'get', args);
+    return createApiCall(`/packages/${packageName}/versions`, 'v3', 'get', args);
 };
 
 export const fetchPackagesList = params => {
@@ -82,10 +82,10 @@ export const fetchPackagesList = params => {
         const paramsWithoutSystemsUpdatable = JSON.parse(JSON.stringify(params));
         delete paramsWithoutSystemsUpdatable.filter.systems_updatable;
 
-        return createApiCall('/packages', 'v2', 'get', paramsWithoutSystemsUpdatable);
+        return createApiCall('/packages', 'v3', 'get', paramsWithoutSystemsUpdatable);
     }
 
-    return createApiCall('/packages', 'v2', 'get', params);
+    return createApiCall('/packages', 'v3', 'get', params);
 };
 
 export const fetchCvesInfo = async ({ cveIds }) => {
@@ -105,7 +105,7 @@ export const fetchCvesInfo = async ({ cveIds }) => {
 
 const fetchFile = (params, endpoint, type) => {
     endpoint = endpoint.concat(encodeApiParams(params));
-    return fetch('/api/patch/v1' + endpoint, {
+    return fetch('/api/patch/v3' + endpoint, {
         method: 'get',
         credentials: 'include',
         headers: { accept: type }
@@ -215,5 +215,5 @@ export const getOperatingSystems = () => {
 };
 
 export const fetchIDs = (endpoint, queryParams) => {
-    return createApiCall(endpoint, 'v2', 'get', queryParams);
+    return createApiCall(endpoint, 'v3', 'get', queryParams);
 };
