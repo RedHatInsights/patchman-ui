@@ -61,7 +61,15 @@ export const advisorySystemsColumns = (isPatchSetEnabled = false) => [
         props: {
             width: 5
         }
-    }] : [])
+    }] : []),
+    {
+        key: 'status',
+        title: 'Status',
+        props: {
+            width: 5,
+            isStatic: true
+        }
+    }
 ];
 
 export const packageSystemsColumns = [

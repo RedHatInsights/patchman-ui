@@ -185,11 +185,50 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                 display_name: row.display_name,
                 installed_evra: row.installed_evra,
                 available_evra: row.updatable && row.available_evra || row.installed_evra,
-                disableCheckbox: !row.updatable,
+                disableSelection: !row.updatable,
                 updatable: row.updatable,
                 upgradable: row.updatable,
                 selected: selectedRows[row.id] !== undefined,
                 tags: row.tags
+            };
+        });
+    return data || [];
+};
+
+export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
+    const data =
+        rows.map(({ id, ...rest }) => {
+            const {
+                packages_installed: installedPckg,
+                rhba_count: rhba,
+                rhsa_count: rhsa,
+                rhea_count: rhea,
+                other_count: other,
+                os,
+                rhsm,
+                tags,
+                last_upload: lastUpload,
+                status
+            } = rest;
+            return {
+                id,
+                ...rest,
+                key: Math.random().toString() + id,
+                packages_installed: installedPckg,
+                applicable_advisories: [
+                    rhea || 0,
+                    rhba || 0,
+                    rhsa || 0,
+                    other || 0
+                ],
+                operating_system: {
+                    osName: os || 'N/A',
+                    rhsm
+                },
+                selected: selectedRows[id] !== undefined,
+                tags,
+                updated: lastUpload,
+                disableSelection: status !== 'Installable'
             };
         });
     return data || [];
@@ -206,7 +245,7 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
                 id: pkgNEVRA,
                 key: pkgNEVRA,
                 selected: selectedRows[pkgNEVRA] !== undefined,
-                disableCheckbox: !latestUpdate,
+                disableSelection: !latestUpdate,
                 cells: [
                     { title: handlePatchLink(entityTypes.packages, pkg.name) },
                     { title: pkg.evra },

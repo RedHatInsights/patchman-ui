@@ -12,7 +12,7 @@ import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { defaultReducers } from '../../store';
 import { changeAffectedSystemsParams, clearAdvisorySystemsReducer,
     clearInventoryReducer, systemSelectAction } from '../../store/Actions/Actions';
-import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
+import { inventoryEntitiesReducer, modifyAdvisorySystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { exportAdvisorySystemsCSV, exportAdvisorySystemsJSON, fetchAdvisorySystems } from '../../Utilities/api';
 import { featureFlags, remediationIdentifiers } from '../../Utilities/constants';
 import {
@@ -156,7 +156,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                         store.replaceReducer(combineReducers({
                             ...defaultReducers,
                             ...mergeWithEntities(
-                                inventoryEntitiesReducer(advisorySystemsColumns(false), modifyInventory),
+                                inventoryEntitiesReducer(advisorySystemsColumns(false), modifyAdvisorySystems),
                                 persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
                         }));
