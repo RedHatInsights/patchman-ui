@@ -1,7 +1,7 @@
 import {
     EmptyAdvisoryList,
     EmptyPackagesList,
-    NoSmartManagement
+    NoSatellite
 } from './EmptyStates';
 import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
@@ -20,9 +20,9 @@ describe('EmptyPackagesList', () => {
     });
 });
 
-describe('NoSmartManagement', () => {
+describe('NoSatellite', () => {
     it('Should match the snapshot', () => {
-        const wrapper = shallow(<NoSmartManagement />);
+        const wrapper = shallow(<NoSatellite />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 });

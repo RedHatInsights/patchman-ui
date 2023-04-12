@@ -31,7 +31,7 @@ import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
-import { NoPatchSetList, NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
+import { NoPatchSetList, NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
 
 const PatchSet = () => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
@@ -43,7 +43,7 @@ const PatchSet = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [firstMount, setFirstMount] = React.useState(true);
-    const [hasSmartManagement, setSmartManagement] = React.useState(true);
+    const [hasSatellite, setSatellite] = React.useState(true);
     const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = React.useState(false);
     const [patchSetToDelete, setPatchSetToDelete] = React.useState(null);
 
@@ -81,7 +81,7 @@ const PatchSet = () => {
 
     useEffect(() => {
         getEntitlements().then((entitelements) => {
-            setSmartManagement(
+            setSatellite(
                 entitelements?.smart_management?.is_entitled
             );
         });
@@ -210,7 +210,7 @@ const PatchSet = () => {
                     patchSetID={patchSetState.patchSetID}
                 />}
             <Main>
-                {hasSmartManagement
+                {hasSatellite
                     ? (rows.length === 0 && !status.isLoading)
                         ? <NoPatchSetList Button={CreatePatchSetButton}/>
                         : <TableView
@@ -232,7 +232,7 @@ const PatchSet = () => {
                             ToolbarButton={CreatePatchSetButton}
                             actionsToggle={!hasAccess ? CustomActionsToggle : null}
                         />
-                    : <NoSmartManagement />}
+                    : <NoSatellite />}
             </Main>
         </React.Fragment>
     );

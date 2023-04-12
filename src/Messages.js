@@ -481,8 +481,8 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'No matching patch template found'
     },
-    statesNoSmartManagementBody: {
-        id: 'statesNoSmartManagementBody',
+    statesNoSatelliteBody: {
+        id: 'statesNoSatelliteBody',
         description: 'Label',
         defaultMessage: `Manage your infrastructure directly from console.redhat.com by controlling the
         scope of package and advisory updates to be installed on selected systems based on 
@@ -490,12 +490,12 @@ export default defineMessages({
         and time from the console.  
         {br}
         {br}
-        Creating content templates from console.redhat.com is a premium feature only available with Red Hat Smart Management.`
+        Creating content templates from console.redhat.com is a premium feature only available with Red Hat Satellite.`
     },
-    statesNoSmartManagementHeader: {
-        id: 'statesNoSmartManagement',
+    statesNoSatelliteHeader: {
+        id: 'statesNoSatellite',
         description: 'Label',
-        defaultMessage: 'Create a content with Red Hat Smart Management'
+        defaultMessage: 'Create a content with Red Hat Satellite'
     },
     statesNoTemplate: {
         id: 'statesNoTemplate',

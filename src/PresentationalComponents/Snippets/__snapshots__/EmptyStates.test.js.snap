@@ -35,7 +35,7 @@ exports[`EmptyPackagesList Should match the snapshot 1`] = `
 </EmptyState>
 `;
 
-exports[`NoSmartManagement Should match the snapshot 1`] = `
+exports[`NoSatellite Should match the snapshot 1`] = `
 <EmptyState
   variant="large"
 >
@@ -46,7 +46,7 @@ exports[`NoSmartManagement Should match the snapshot 1`] = `
     headingLevel="h5"
     size="lg"
   >
-    Create a content with Red Hat Smart Management
+    Create a content with Red Hat Satellite
   </Title>
   <EmptyStateBody>
     Manage your infrastructure directly from console.redhat.com by controlling the
@@ -63,7 +63,7 @@ exports[`NoSmartManagement Should match the snapshot 1`] = `
       key=".3"
     />
     
-        Creating content templates from console.redhat.com is a premium feature only available with Red Hat Smart Management.
+        Creating content templates from console.redhat.com is a premium feature only available with Red Hat Satellite.
   </EmptyStateBody>
 </EmptyState>
 `;

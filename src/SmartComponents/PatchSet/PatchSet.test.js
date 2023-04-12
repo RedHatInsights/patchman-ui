@@ -10,7 +10,7 @@ import { createPatchSetRows } from '../../Utilities/DataMappers';
 import patchSets from '../../../cypress/fixtures/api/patchSets.json';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import PatchSet from './PatchSet';
-import { NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
+import { NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -74,7 +74,7 @@ describe('HeaderBreadcrumbs', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it('Should render No Smart management state', () => {
+    it('Should not render Satellite state', () => {
         useChrome.mockImplementation(() => ({
             auth: {
                 getUser: () => new Promise(
@@ -89,6 +89,6 @@ describe('HeaderBreadcrumbs', () => {
 
         wrapper.update();
 
-        expect(wrapper.find(NoSmartManagement)).toHaveLength(1);
+        expect(wrapper.find(NoSatellite)).toHaveLength(1);
     });
 });
