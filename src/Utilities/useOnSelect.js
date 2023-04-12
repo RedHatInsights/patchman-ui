@@ -71,7 +71,7 @@ const createSelectors = (
 
     const selectPage = (pageRows) => {
         if (Array.isArray(pageRows)) {
-            pageRows = pageRows.filter(row => !row.disableCheckbox);
+            pageRows = pageRows.filter(row => !row.disableSelection);
         }
 
         dispatchSelection(createSelectedRow({ data: pageRows }));

@@ -108,7 +108,7 @@ describe('DataMappers', () => {
             id: 'test-name-test-evra',
             key: 'test-name-test-evra',
             selected: false,
-            disableCheckbox: true,
+            disableSelection: true,
             cells: [
                 { title: expect.anything() }, // FIXME!
                 { title: 'test-evra' },
@@ -121,7 +121,7 @@ describe('DataMappers', () => {
             id: 'test-name-2-test-evra-2',
             key: 'test-name-2-test-evra-2',
             selected: false,
-            disableCheckbox: false,
+            disableSelection: false,
             //tested using snapshots
             cells: expect.anything()
         }]);
@@ -138,7 +138,7 @@ describe('DataMappers', () => {
             id: 'test-name-test-evra',
             key: 'test-name-test-evra',
             selected: false,
-            disableCheckbox: false,
+            disableSelection: false,
             cells: [
                 { title: expect.anything()  }, // FIXME!
                 { title: 'test-evra' },

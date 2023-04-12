@@ -1,4 +1,4 @@
-import { createSystemsRows } from '../../Utilities/DataMappers';
+import { createAdvisorySystemsRows, createSystemsRows } from '../../Utilities/DataMappers';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { selectRows, fetchRejected } from './HelperReducers';
 import * as ActionTypes from '../ActionTypes';
@@ -37,6 +37,18 @@ export const modifyPackageSystems = (columns, state) => {
             ...state,
             columns,
             rows: createPackageSystemsRows(state.rows, state.selectedRows)
+        };
+    }
+
+    return state;
+};
+
+export const modifyAdvisorySystems = (columns, state) => {
+    if (state.loaded) {
+        return {
+            ...state,
+            status: { isLoading: false, hasError: false },
+            rows: createAdvisorySystemsRows(state.rows, state.selectedRows)
         };
     }
 
