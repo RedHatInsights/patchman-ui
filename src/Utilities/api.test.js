@@ -55,7 +55,7 @@ describe('api', () => {
             const result = exportAdvisoriesCSV('testParams');
             expect(result).toBeTruthy();
             expect(global.fetch).toHaveBeenCalledWith(
-                '/api/patch/v1/export/advisories?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
+                '/api/patch/v3/export/advisories?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
                 { credentials: 'include', headers: { accept: 'text/csv' }, method: 'get' }
             );
 
@@ -66,7 +66,7 @@ describe('api', () => {
             const result = exportAdvisoriesJSON('testParams');
             expect(result).toBeTruthy();
             expect(global.fetch).toHaveBeenCalledWith(
-                '/api/patch/v1/export/advisories?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
+                '/api/patch/v3/export/advisories?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
                 { credentials: 'include', headers: { accept: 'application/json' }, method: 'get' }
             );
             global.fetch.mockClear();
@@ -76,7 +76,7 @@ describe('api', () => {
             const result = exportSystemsCSV('testParams');
             expect(result).toBeTruthy();
             expect(global.fetch).toHaveBeenCalledWith(
-                '/api/patch/v1/export/systems?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
+                '/api/patch/v3/export/systems?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
                 { credentials: 'include', headers: { accept: 'text/csv' }, method: 'get' }
             );
             global.fetch.mockClear();
@@ -86,7 +86,7 @@ describe('api', () => {
             const result = exportSystemsJSON('testParams');
             expect(result).toBeTruthy();
             expect(global.fetch).toHaveBeenCalledWith(
-                '/api/patch/v1/export/systems?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
+                '/api/patch/v3/export/systems?0=t&1=e&2=s&3=t&4=P&5=a&6=r&7=a&8=m&9=s',
                 { credentials: 'include', headers: { accept: 'application/json' }, method: 'get' }
             );
             global.fetch.mockClear();
