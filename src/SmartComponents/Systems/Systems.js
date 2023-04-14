@@ -141,7 +141,9 @@ const Systems = () => {
     useEffect(() => {
         if (patchSetState.shouldRefresh) {
             onSelect('none');
-            inventory?.current?.onRefreshData();
+            // timestamp is used to force inventory to refresh
+            // if it wasn't there inventory might ignore request to refresh because parameters are the same
+            inventory?.current?.onRefreshData({ timestamp: Date.now() });
         }
     }, [patchSetState.shouldRefresh]);
 
