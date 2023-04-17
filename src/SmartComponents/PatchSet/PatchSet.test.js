@@ -74,7 +74,7 @@ describe('HeaderBreadcrumbs', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    it('Should not render Satellite state', () => {
+    it('Should render "No Satellite" empty state', () => {
         useChrome.mockImplementation(() => ({
             auth: {
                 getUser: () => new Promise(
