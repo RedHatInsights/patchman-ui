@@ -1,3 +1,10 @@
+# [1.63.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.62.4...v1.63.0) (2023-04-17)
+
+
+### Features
+
+* **ESSNTL-4496:** Replace SmartManager w/ satellite ([0e6998a](https://github.com/RedHatInsights/patchman-ui/commit/0e6998a6626d6ee565078661850cf1476da866c8))
+
 ## [1.62.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.62.3...v1.62.4) (2023-03-28)
 
 
