@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
-import { NoAppliedSystems, NoSmartManagement } from '../../PresentationalComponents/Snippets/EmptyStates';
+import { NoAppliedSystems, NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { useDeepCompareEffect, useEntitlements, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
 import {
@@ -39,7 +39,7 @@ const PatchSetDetail = () => {
 
     const [firstMount, setFirstMount] = React.useState(true);
     const [isHeaderDropdownOpen, setHeaderDropdownOpen] = useState(false);
-    const [hasSmartManagement, setSmartManagement] = React.useState(true);
+    const [hasSatellite, setSatellite] = React.useState(true);
     const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = useState(false);
     const [patchSetState, setPatchSetState] = useState({
         isPatchSetWizardOpen: false,
@@ -113,7 +113,7 @@ const PatchSetDetail = () => {
 
     useEffect(() => {
         getEntitlements().then((entitelements) => {
-            setSmartManagement(
+            setSatellite(
                 entitelements?.smart_management?.is_entitled
             );
         });
@@ -285,7 +285,7 @@ const PatchSetDetail = () => {
                             {intl.formatMessage(messages.templateDetailTableTitle)}
                         </Text>
                     </TextContent>
-                    {hasSmartManagement
+                    {hasSatellite
                         ? (rows.length === 0 && !status.isLoading)
                             ? <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />
                             : <TableView
@@ -303,7 +303,7 @@ const PatchSetDetail = () => {
                                 actionsToggle={!hasAccess ? CustomActionsToggle : null}
                                 searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
                             />
-                        : <NoSmartManagement />}
+                        : <NoSatellite />}
                 </Main>
             </Fragment >);
 };

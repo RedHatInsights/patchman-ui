@@ -98,15 +98,15 @@ NoPatchSetList.propTypes = {
     Button: PropTypes.node
 };
 
-export const NoSmartManagement = () => (
+export const NoSatellite = () => (
     <EmptyState variant={EmptyStateVariant.large}>
         <EmptyStateIcon icon={LockIcon} />
         <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.statesNoSmartManagementHeader)}
+            {intl.formatMessage(messages.statesNoSatelliteHeader)}
         </Title>
         <EmptyStateBody>
             {intl.formatMessage(
-                messages.statesNoSmartManagementBody,
+                messages.statesNoSatelliteBody,
                 { br: <br></br> }
             )}
         </EmptyStateBody>
