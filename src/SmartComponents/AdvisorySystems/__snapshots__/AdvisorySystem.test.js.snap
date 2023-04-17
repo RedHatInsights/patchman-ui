@@ -180,6 +180,25 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                   "type": "group",
                   "value": "os-filter",
                 },
+                Object {
+                  "filterValues": Object {
+                    "items": Array [
+                      Object {
+                        "label": "Installable",
+                        "value": "Installable",
+                      },
+                      Object {
+                        "label": "Applicable",
+                        "value": "Applicable",
+                      },
+                    ],
+                    "onChange": [Function],
+                    "placeholder": "Filter by status",
+                    "value": undefined,
+                  },
+                  "label": "Status",
+                  "type": "checkbox",
+                },
               ],
             }
           }

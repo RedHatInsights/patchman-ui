@@ -29,6 +29,7 @@ import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
@@ -85,7 +86,8 @@ const AdvisorySystems = ({ advisoryName }) => {
                 intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
             ),
-            ...osFilterConfig
+            ...osFilterConfig,
+            advisoryStatusFilter(apply, filter)
         ]
     };
 
