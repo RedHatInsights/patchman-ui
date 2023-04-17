@@ -7,7 +7,7 @@ const advisoryStatusFilter = (apply, currentFilter = {}) => {
     let { status: currentValue } = currentFilter;
 
     const filterByType = value => {
-        apply({ filter: { status: value } });
+        apply({ filter: { status: (value.length === 0 ? undefined : value) } });
     };
 
     return {

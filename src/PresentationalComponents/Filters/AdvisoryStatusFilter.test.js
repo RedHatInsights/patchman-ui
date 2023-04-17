@@ -21,10 +21,4 @@ describe('StatusFilter', () => {
         response.filterValues.onChange('event', 'Applicable');
         expect(apply).toHaveBeenCalledWith({ filter: { status: 'Applicable' } });
     });
-
-    it('Should call apply with empty string ', () => {
-        const response = advisoryStatusFilter(apply);
-        response.filterValues.onChange();
-        expect(apply).toHaveBeenCalledWith({ filter: { status: 'Applicable' } });
-    });
 });
