@@ -1,55 +1,36 @@
+import { changeListParams } from '../../Utilities/Helpers';
 import {
-    CLEAR_PATCH_SET_DETAIL_SYSTEMS,
-    FETCH_PATCH_SET_DETAIL_SYSTEMS,
-    CHANGE_PATCH_SET_DETAIL_SYSTEMS_PARAMS
+    CHANGE_PATCH_SET_DETAIL_SYSTEMS_PARAMS,
+    TRIGGER_GLOBAL_FILTER,
+    CHANGE_PATCH_SET_DETAIL_SYSTEMS_METADATA
 } from '../ActionTypes';
-import { fetchPending, fetchRejected, changeFilters } from './HelperReducers';
+import { changeFilters } from './HelperReducers';
 
-export let initialState = {
-    rows: [],
-    selectedRows: [],
+const initialState = {
+    selectedRows: {},
     queryParams: {
         page: 1,
-        perPage: 20,
-        offset: 0,
-        filter: {}
-    },
-    status: { isLoading: true },
-    metadata: {
-        limit: 20,
-        offset: 0,
-        total_items: 0
-    },
-    error: {},
-    data: null
+        perPage: 20
+    }
 };
 
 export const PatchSetDetailSystemsStore = (state = initialState, action) => {
     let newState = { ...state };
 
     switch (action.type) {
-        case FETCH_PATCH_SET_DETAIL_SYSTEMS + '_FULFILLED':
-            return {
-                ...newState,
-                rows: action.payload.data,
-                metadata: action.payload.meta || {},
-                error: {},
-                status: { code: action.payload.status, isLoading: false, hasError: false }
-            };
-
-        case FETCH_PATCH_SET_DETAIL_SYSTEMS + '_PENDING':
-            return fetchPending(newState);
-
-        case FETCH_PATCH_SET_DETAIL_SYSTEMS + '_REJECTED':
-            return fetchRejected(newState, action);
-
         case CHANGE_PATCH_SET_DETAIL_SYSTEMS_PARAMS:
+            newState.queryParams = changeListParams(newState.queryParams, action.payload);
+            return newState;
+
+        case TRIGGER_GLOBAL_FILTER:
             return changeFilters(newState, action);
 
-        case CLEAR_PATCH_SET_DETAIL_SYSTEMS:
-            return initialState;
+        case CHANGE_PATCH_SET_DETAIL_SYSTEMS_METADATA:
+            newState.metadata = action.payload;
+            return newState;
 
         default:
             return state;
     }
 };
+

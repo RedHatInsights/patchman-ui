@@ -1,28 +1,33 @@
 import { sortable } from '@patternfly/react-table/dist/js';
+import { createAdvisoriesIcons, createOSColumn } from '../../Utilities/Helpers';
 
 export const patchSetDetailColumns = [
     {
-        key: 'display_name',
-        title: 'Name',
+        key: 'os',
+        title: 'OS',
+        renderFunc: value => createOSColumn(value),
         transforms: [sortable]
     },
     {
-        key: 'operating_system',
-        title: 'OS'
-    },
-    {
-        key: 'installable_advisories',
+        key: 'installable_rhsa_count',
         title: 'Installable advisories',
+        renderFunc: (_a, _b, row) => createAdvisoriesIcons([
+            row.installable_rhea_count,
+            row.installable_rhba_count,
+            row.installable_rhsa_count,
+            row.installable_other_count
+        ], 'installable'),
         transforms: [sortable]
     },
     {
-        key: 'applicable_advisories',
+        key: 'applicable_rhsa_count',
         title: 'Applicable advisories',
-        transforms: [sortable]
-    },
-    {
-        key: 'last_upload',
-        title: 'Last seen',
-        transforms: [sortable]
+        transforms: [sortable],
+        renderFunc: (_a, _b, row) => createAdvisoriesIcons([
+            row.applicable_rhea_count,
+            row.applicable_rhba_count,
+            row.applicable_rhsa_count,
+            row.applicable_other_count
+        ])
     }
 ];

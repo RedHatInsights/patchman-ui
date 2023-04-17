@@ -202,7 +202,10 @@ export const fetchPatchSet = id => {
     return createApiCall(`/baselines/${id}`, 'v3', 'get');
 };
 
-export const fetchPatchSetSystems = (id, params) => {
+export const fetchPatchSetSystems = (params) => {
+    const id = params.id;
+    delete params.id;
+
     return createApiCall(`/baselines/${id}/systems`, 'v3', 'get', params);
 };
 

@@ -1,11 +1,14 @@
+import React from 'react';
 import searchFilter from '../PresentationalComponents/Filters/SearchFilter';
 import staleFilter from '../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../PresentationalComponents/Filters/SystemsUpdatableFilter';
-import { buildFilterChips } from './Helpers';
+import { buildFilterChips, templateDateFormat } from './Helpers';
 import { intl } from './IntlProvider';
 import messages from '../Messages';
 import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 import { defaultCompoundSortValues } from './constants';
+import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
+import { Link } from 'react-router-dom';
 
 export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
     items: [
@@ -36,6 +39,21 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns, isPatchS
     let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
 
     return [...nameAndTag, ...additionalColumns(isPatchSetEnabled), lastSeen[0]];
+};
+
+export const templateSystemsColumnsMerger = (defaultColumns) => {
+    let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
+    lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload', renderFunc: value => templateDateFormat(value) }];
+
+    let name = defaultColumns.filter(({ key }) => key === 'display_name');
+    let tag = defaultColumns.filter(({ key }) => key === 'tags');
+
+    name = [{
+        ...name[0],
+        renderFunc: (displayName, id) => <Link to={{ pathname: `/systems/${id}` }}>{displayName}</Link>
+    }];
+
+    return [...name, ...tag, ...patchSetDetailColumns, lastSeen[0]];
 };
 
 export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
