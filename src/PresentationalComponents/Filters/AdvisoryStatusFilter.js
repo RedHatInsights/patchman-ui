@@ -1,5 +1,4 @@
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
-import React from 'react';
 import { advisoryStatuses } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -7,14 +6,6 @@ import messages from '../../Messages';
 const advisoryStatusFilter = (apply, currentFilter = {}) => {
     let { status: currentValue } = currentFilter;
 
-    const statusTypesMap = React.useMemo(
-        () =>
-            advisoryStatuses.map(({ value, label }) => ({
-                label,
-                value: value.toString()
-            })),
-        []
-    );
     const filterByType = value => {
         apply({ filter: { status: value } });
     };
@@ -26,7 +17,7 @@ const advisoryStatusFilter = (apply, currentFilter = {}) => {
             onChange: (event, value) => {
                 filterByType(value);
             },
-            items: statusTypesMap,
+            items: advisoryStatuses,
             value: currentValue,
             placeholder: intl.formatMessage(messages.labelsColumnsStatusPlaceholder)
         }
