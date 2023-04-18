@@ -49,18 +49,23 @@ export const systemAdvisoriesColumns = [
         key: 'synopsis'
     },
     {
+        title: intl.formatMessage(messages.labelsColumnsStatus),
+        transforms: [sortable, cellWidth(10)],
+        key: 'status'
+    },
+    {
         title: intl.formatMessage(messages.labelsColumnsType),
-        transforms: [sortable, cellWidth(15)],
+        transforms: [sortable, cellWidth(10)],
         key: 'advisory_type_name'
     },
     {
         title: intl.formatMessage(messages.labelsColumnsReboot),
-        transforms: [sortable, cellWidth(20)],
+        transforms: [sortable, cellWidth(10)],
         key: 'reboot_required'
     },
     {
         title: intl.formatMessage(messages.labelsColumnsPublishDate),
-        transforms: [sortable, cellWidth(30)],
+        transforms: [sortable, cellWidth(10)],
         key: 'public_date'
     }
 ];

@@ -90,10 +90,14 @@ export const createSystemAdvisoriesRows = (
                     id: row.id,
                     isOpen: expandedRows[row.id] === true,
                     selected: selectedRows[row.id] !== undefined,
+                    disableSelection: row.attributes.status === 'Applicable',
                     cells: [
                         { title: handlePatchLink(entityTypes.advisories, row.id) },
                         {
                             title: handleLongSynopsis(row.attributes.synopsis)
+                        },
+                        {
+                            title: row.attributes.status
                         },
                         {
                             title: (
