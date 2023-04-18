@@ -5,6 +5,7 @@ import { remediationIdentifiers } from '../../Utilities/constants';
 import { createAdvisoriesIcons, createUpgradableColumn,
     remediationProvider, createOSColumn, createPackagesColumn } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
+import { sortable } from '@patternfly/react-table';
 
 export const systemsListColumns = (isPatchSetEnabled = false) => [
     {
@@ -68,7 +69,8 @@ export const advisorySystemsColumns = (isPatchSetEnabled = false) => [
         props: {
             width: 5,
             isStatic: true
-        }
+        },
+        transforms: [sortable]
     }
 ];
 
