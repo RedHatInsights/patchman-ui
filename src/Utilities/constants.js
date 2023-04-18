@@ -172,6 +172,17 @@ export const updatableTypes = [
     }
 ];
 
+export const advisoryStatuses = [
+    {
+        value: 'Installable',
+        label: 'Installable'
+    },
+    {
+        value: 'Applicable',
+        label: 'Applicable'
+    }
+];
+
 export const packagesListUpdatableTypes = [
     {
         value: 'eq:0',
@@ -239,6 +250,10 @@ export const filterCategories = {
     },
     creator: {
         label: 'Creator'
+    },
+    status: {
+        label: 'Status',
+        values: advisoryStatuses
     }
 };
 
@@ -283,7 +298,7 @@ export const patchSetDeleteNotifications = (templateName) => ({
     }
 });
 
-export const multiValueFilters = ['installed_evra', 'os', 'creator'];
+export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status'];
 
 export const featureFlags = {
     patch_set: 'patch.patch_set'

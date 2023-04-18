@@ -6,6 +6,7 @@ import publishDateFilter from '../../PresentationalComponents/Filters/PublishDat
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
 import rebootFilter from '../../PresentationalComponents/Filters/RebootFilter';
+import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
@@ -141,7 +142,8 @@ const SystemAdvisories = ({ history, handleNoSystemData, inventoryId }) => {
                         ),
                         typeFilter(apply, queryParams.filter),
                         publishDateFilter(apply, queryParams.filter),
-                        rebootFilter(apply, queryParams.filter)
+                        rebootFilter(apply, queryParams.filter),
+                        advisoryStatusFilter(apply, queryParams.filter)
                     ]
                 }}
                 errorState={errorState}
