@@ -86,8 +86,8 @@ const AdvisorySystems = ({ advisoryName }) => {
                 intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
             ),
-            ...osFilterConfig,
-            advisoryStatusFilter(apply, filter)
+            advisoryStatusFilter(apply, filter),
+            ...osFilterConfig
         ]
     };
 
