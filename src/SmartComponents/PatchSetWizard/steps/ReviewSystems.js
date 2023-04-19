@@ -80,7 +80,9 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
         setQueryParams((prevQueryParams) => ({
             ...prevQueryParams,
             ...params,
-            filter: { ...prevQueryParams.filter, ...params.filter }
+            filter: { ...prevQueryParams.filter, ...params.filter },
+            page: 1,
+            offset: 0
         }));
     };
 
