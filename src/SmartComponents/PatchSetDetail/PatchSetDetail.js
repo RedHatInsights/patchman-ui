@@ -84,8 +84,6 @@ const PatchSetDetail = () => {
         ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore?.queryParams || {}
     );
 
-    //console.log("aaaaaaaaaaaaaaaaa", a, totalItems);
-
     const { hasAccess } = usePermissionsWithContext([
         'patch:*:*',
         'patch:template:write'
@@ -140,8 +138,6 @@ const PatchSetDetail = () => {
             setFirstMount(false);
         } else {
             history.push(encodeURLParams(queryParams));
-
-            //dispatch(fetchPatchSetDetailSystemsAction(patchSetId, queryParams));
         }
     }, [queryParams, firstMount]);
 
