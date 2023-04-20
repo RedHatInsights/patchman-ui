@@ -72,9 +72,9 @@ Any push to the following branches will trigger a build in [patchman-ui-build re
 
 | Push to branch in this repo  | Updated branch in build repo  | Environment       | Available at
 | :--------------------------- | :---------------------------- | :---------------- | :-----------
-| master                       | stage-beta                    | stage beta        | https://console.stage.redhat.com/beta
+| master                       | stage-beta                    | stage beta        | https://console.stage.redhat.com/preview
 | stage-stable                 | stage-stable                  | stage stable      | https://console.stage.redhat.com
-| prod-beta                    | prod-beta                     | production beta   | https://console.redhat.com/beta 
+| prod-beta                    | prod-beta                     | production beta   | https://console.redhat.com/preview
 | prod-stable                  | prod-stable                   | production stable | https://console.redhat.com
 
 ## Patternfly

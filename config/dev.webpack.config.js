@@ -10,7 +10,7 @@ const insightsProxy = {
 
 const webpackProxy = {
     deployment: process.env.BETA ? 'beta/apps' : 'apps',
-    appUrl: process.env.BETA ? ['/beta/insights/patch'] : ['/insights/patch'],
+    appUrl: process.env.BETA ? ['/beta/insights/patch', '/preview/insights/patch'] : ['/insights/patch'],
     env: `stage-${process.env.BETA ? 'beta' : 'stable'}`,
     useProxy: true,
     proxyVerbose: true,
