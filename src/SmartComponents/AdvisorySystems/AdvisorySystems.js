@@ -59,7 +59,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         ({ entities }) => entities?.selectedRows || []
     );
     const metadata = useSelector(
-        ({ AdvisorySystemsStore }) => AdvisorySystemsStore?.metadata || {}
+        ({ AdvisoryListStore }) => AdvisoryListStore?.metadata || {}
     );
 
     const { systemProfile, selectedTags,

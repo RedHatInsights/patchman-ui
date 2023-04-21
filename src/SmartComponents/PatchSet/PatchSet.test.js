@@ -11,6 +11,7 @@ import patchSets from '../../../cypress/fixtures/api/patchSets.json';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import PatchSet from './PatchSet';
 import { NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
+import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -69,7 +70,7 @@ beforeEach(() => {
     </Provider>);
 });
 
-describe('HeaderBreadcrumbs', () => {
+describe('PatchSet', () => {
     it('Should render correctly', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -91,4 +92,22 @@ describe('HeaderBreadcrumbs', () => {
 
         expect(wrapper.find(NoSatellite)).toHaveLength(1);
     });
+
+    it('Should render account empty state on empty account', () => {
+        const emptyAccState = {
+            ...mockState,
+            metadata: {
+                has_systems: false
+            }
+        };
+        useSelector.mockImplementation(callback => {
+            return callback({ PatchSetsStore: emptyAccState });
+        });
+        wrapper = mount(<Provider store={store}>
+            <Router><PatchSet history={{ location: {}, push: () => {} }}/></Router>
+        </Provider>);
+
+        expect(wrapper.find(NoRegisteredSystems)).toHaveLength(1);
+    });
 });
+

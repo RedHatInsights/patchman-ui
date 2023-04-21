@@ -14,6 +14,10 @@ import NoRegisteredSystems from './NoRegisteredSystems';
 //import { NoRegisteredSystems } from '@redhat-cloud-services/frontend-components/NoRegisteredSystems';
 
 const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
+    if (metadata && metadata.has_systems === false) {
+        return <NoRegisteredSystems />;
+    }
+
     switch (code) {
         case 204:
             return <NotConnected />;
@@ -50,7 +54,6 @@ const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
         default:
             return ErrorState && <ErrorState />
                 || EmptyState && <EmptyState />
-                || !metadata.has_systems && <NoRegisteredSystems />
                 || <SkeletonTable colSize={5} rowSize={20} /> ;
     }
 };

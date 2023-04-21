@@ -51,6 +51,10 @@ const PackageSystems = ({ packageName }) => {
         ({ PackageSystemsStore }) => PackageSystemsStore?.queryParams || {}
     );
 
+    const metadata = useSelector(
+        ({ PackageSystemsStore }) => PackageSystemsStore?.metadata || {}
+    );
+
     const { systemProfile, selectedTags,
         filter, search, sort, page, perPage } = queryParams;
 
@@ -145,7 +149,9 @@ const PackageSystems = ({ packageName }) => {
 
     return (
         <React.Fragment>
-            {status.hasError && <ErrorHandler code={status.code} /> || (
+            {(status.hasError || metadata?.has_systems === false)
+            && <ErrorHandler code={status.code} metadata={metadata}/>
+            || (
                 <InventoryTable
                     disableDefaultColumns={['system_profile', 'updated']}
                     isFullView

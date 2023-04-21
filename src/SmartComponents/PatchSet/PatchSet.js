@@ -32,6 +32,7 @@ import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { NoPatchSetList, NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
+import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
 const PatchSet = () => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
@@ -210,7 +211,9 @@ const PatchSet = () => {
                     patchSetID={patchSetState.patchSetID}
                 />}
             <Main>
-                {hasSatellite
+                {(status.hasError || metadata?.has_systems === false)
+                && <ErrorHandler code={status.code} metadata={metadata}/>
+                || (hasSatellite
                     ? (rows.length === 0 && !status.isLoading)
                         ? <NoPatchSetList Button={CreatePatchSetButton}/>
                         : <TableView
@@ -232,7 +235,7 @@ const PatchSet = () => {
                             ToolbarButton={CreatePatchSetButton}
                             actionsToggle={!hasAccess ? CustomActionsToggle : null}
                         />
-                    : <NoSatellite />}
+                    : <NoSatellite />)}
             </Main>
         </React.Fragment>
     );
