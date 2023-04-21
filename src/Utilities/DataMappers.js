@@ -364,6 +364,9 @@ export const createSystemsRowsReview = (rows, selectedRows) => {
                     },
                     {
                         title: attributes.baseline_name || 'No template'
+                    },
+                    {
+                        title: processDate(attributes.last_upload)
                     }
                 ]
             };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import searchFilter from '../../../PresentationalComponents/Filters/SearchFilter';
-import { Text, TextContent, Stack, StackItem, TextVariants } from '@patternfly/react-core';
+import { Text, TextContent, Stack, StackItem, TextVariants, Alert } from '@patternfly/react-core';
 import { useSelector, shallowEqual } from 'react-redux';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 
@@ -132,6 +132,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
                     </Text>
                 </TextContent>
             </StackItem>
+            <Alert variant="warning" title={intl.formatMessage(messages.templateAlertSystems)} isInline />
             <StackItem>
                 <TableView
                     columns={reviewSystemColumns}

@@ -522,6 +522,11 @@ export default defineMessages({
         description: 'system up to date page body',
         defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
     },
+    templateAlertSystems: {
+        id: 'templateAlertSystems',
+        description: 'Template wizard alert',
+        defaultMessage: 'If you apply a template to a system that already has one, the old template will be overwritten.'
+    },
     templateDateField: {
         id: 'templateDateField',
         description: 'Field name of the patch template wizard',
@@ -715,7 +720,7 @@ export default defineMessages({
     textTemplateReviewSystems: {
         id: 'textTemplateReviewSystems',
         description: 'text for patch template wizard',
-        defaultMessage: 'Select systems to apply your new template to, or skip this step to apply the template later. Note that if you apply a template to a system that already has one, the old template will be overwritten.'
+        defaultMessage: 'Select systems to apply the new template to.'
     },
     textTemplateSelectedSystems: {
         id: 'textTemplateSelectedSystems',

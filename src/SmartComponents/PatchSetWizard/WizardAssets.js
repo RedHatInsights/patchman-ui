@@ -11,7 +11,7 @@ export const reviewSystemColumns = [{
     key: 'display_name',
     title: 'Name',
     props: {
-        width: 50
+        width: 40
     },
     transforms: [sortable]
 },
@@ -19,7 +19,7 @@ export const reviewSystemColumns = [{
     title: 'OS',
     key: 'operating_system',
     props: {
-        width: 25
+        width: 20
     },
     transforms: [sortable]
 },
@@ -27,7 +27,15 @@ export const reviewSystemColumns = [{
     key: 'baseline_name',
     title: 'Template',
     props: {
-        width: 25
+        width: 20
+    },
+    transforms: [sortable]
+},
+{
+    key: 'last_upload',
+    title: 'Last seen',
+    props: {
+        width: 20
     },
     transforms: [sortable]
 }
