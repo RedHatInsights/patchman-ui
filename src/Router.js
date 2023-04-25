@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import React, { lazy, Suspense, useCallback, useEffect } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import { Bullseye, Spinner } from '@patternfly/react-core';
-import { useFeatureFlag } from './Utilities/Hooks';
-import { featureFlags } from './Utilities/constants';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { NotAuthorized } from '@redhat-cloud-services/frontend-components/NotAuthorized';
+import axios from 'axios';
+import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 
 const PermissionRoute = ({ requiredPermissions = [] }) => {
     const { hasAccess, isLoading } = usePermissionsWithContext(requiredPermissions);
@@ -76,8 +76,9 @@ export const Router = () => {
     const navigate = useNavigate();
     const chrome = useChrome();
 
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
+    const [hasSystems, setHasSystems] = useState(true);
+    const INVENTORY_TOTAL_FETCH_URL = '/api/inventory/v1/hosts';
 
     const listenNavigation = useCallback(() => {
         if (chrome) {
@@ -94,6 +95,18 @@ export const Router = () => {
         return () => unregister();
     }, []);
 
+    useEffect(() => {
+        try {
+            axios
+            .get(`${INVENTORY_TOTAL_FETCH_URL}?page=1&per_page=1`)
+            .then(({ data }) => {
+                setHasSystems(data.total > 0);
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }, [hasSystems]);
+
     return (
         <Suspense
             fallback={
@@ -103,19 +116,34 @@ export const Router = () => {
             }
         >
             <Routes>
-                <Route element={<PermissionRoute requiredPermissions={generalPermissions} />}>
-                    <Route path='/advisories' element={<Advisories />} />
-                    <Route path='/advisories/:advisoryId' element={<AdvisoryPage />} />
-                    <Route path='/advisories/:advisoryId/:inventoryId' element={<Navigate to="../systems/:inventoryId" />} />
-                    <Route path='/systems' element={<Systems />} />
-                    <Route path='/systems/:inventoryId' element={<InventoryDetail />} />
-                    <Route path='/packages' element={<PackagesPage />} />
-                    <Route path='/packages/:packageName' element={<PackageDetail />} />
-                    <Route path='/packages/:packageName/:inventoryId' element={<Navigate to="../systems/:inventoryId" />} />
-                    <Route path='/templates' element={isPatchSetEnabled ? <Templates /> : null} />
-                    <Route path='/templates/:templateName' element={isPatchSetEnabled ? <TemplateDetail /> : null} />
-                    <Route path='*' element={<Navigate to="advisories" />} />
-                </Route>
+
+                {!hasSystems ? (
+
+                    <Route path='*' element={
+                        <AsyncComponent
+                            appId="content_management_zero_state"
+                            appName="dashboard"
+                            module="./AppZeroState"
+                            scope="dashboard"
+                            ErrorComponent={<div>Error state</div>}
+                            app="Content_management"
+                        />
+                    } />
+                ) : (
+                    <Route element={<PermissionRoute requiredPermissions={generalPermissions} />}>
+                        <Route path='/advisories' element={<Advisories />} />
+                        <Route path='/advisories/:advisoryId' element={<AdvisoryPage />} />
+                        <Route path='/advisories/:advisoryId/:inventoryId' element={<Navigate to="../systems/:inventoryId" />} />
+                        <Route path='/systems' element={<Systems />} />
+                        <Route path='/systems/:inventoryId' element={<InventoryDetail />} />
+                        <Route path='/packages' element={<PackagesPage />} />
+                        <Route path='/packages/:packageName' element={<PackageDetail />} />
+                        <Route path='/packages/:packageName/:inventoryId' element={<Navigate to="../systems/:inventoryId" />} />
+                        <Route path='/templates' element={<Templates />} />
+                        <Route path='/templates/:templateName' element={<TemplateDetail />} />
+                        <Route path='*' element={<Navigate to="advisories" />} />
+                    </Route>
+                )}
                 {/* <Route path="advisories">
                         <Route index element={<Advisories />} />
                         <Route path=':advisoryId'>

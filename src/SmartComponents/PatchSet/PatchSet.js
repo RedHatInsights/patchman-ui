@@ -32,6 +32,7 @@ import { Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { useSearchParams } from 'react-router-dom';
 import { NoPatchSetList } from '../../PresentationalComponents/Snippets/EmptyStates';
+import { useSearchParams } from 'react-router-dom';
 
 const PatchSet = () => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
