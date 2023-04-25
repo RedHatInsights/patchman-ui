@@ -1,39 +1,47 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { useEffect, useState, Fragment, useMemo } from 'react';
+import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import { NoAppliedSystems, NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
-import TableView from '../../PresentationalComponents/TableView/TableView';
-import { useDeepCompareEffect, useEntitlements, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/Hooks';
+import { useDeepCompareEffect, useEntitlements, useGetEntities } from '../../Utilities/Hooks';
 import {
+    changePatchSetDetailsSystemsMetadata,
     changePatchSetDetailsSystemsParams,
+    changeTags,
     clearTemplateDetail,
-    fetchPatchSetDetailSystemsAction,
     fetchTemplateDetail
 } from '../../store/Actions/Actions';
 import { Dropdown, DropdownItem, DropdownPosition, DropdownToggle, Skeleton, Text, TextContent } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
-import { deletePatchSet } from '../../Utilities/api';
+import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { patchSetDeleteNotifications, templateCompoundSortValues } from '../../Utilities/constants';
+import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
-import { patchSetDetailColumns } from './PatchSetDetailAssets';
-import { createPatchSetDetailRows } from '../../Utilities/DataMappers';
-import { createSortBy, decodeQueryparams, encodeURLParams, templateDateFormat } from '../../Utilities/Helpers';
+import { decodeQueryparams, encodeURLParams, persistantParams } from '../../Utilities/Helpers';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
-import { CustomActionsToggle, patchSetDetailRowActions } from '../PatchSet/PatchSetAssets';
+import { patchSetDetailRowActions } from '../PatchSet/PatchSetAssets';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
+import { TableVariant } from '@patternfly/react-table';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
+import { templateSystemsColumnsMerger } from '../../Utilities/SystemsHelpers';
+import { combineReducers } from 'redux';
+import { defaultReducers } from '../../store';
+import { inventoryEntitiesReducer, modifyTemplateDetailSystems } from '../../store/Reducers/InventoryEntitiesReducer';
+import { systemsListColumns } from '../Systems/SystemsListAssets';
+import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 
 const PatchSetDetail = () => {
     const getEntitlements = useEntitlements();
     const intl = useIntl();
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const store = useStore();
+    const inventory = useRef(null);
 
     const patchSetId = history.location.pathname.split('/')[2];
 
@@ -56,20 +64,24 @@ const PatchSetDetail = () => {
         ({ PatchSetDetailStore }) => PatchSetDetailStore?.status?.isLoading ?? true
     );
 
-    const status = useSelector(
-        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.status
+    const detailStatus = useSelector(
+        ({ PatchSetDetailStore }) => PatchSetDetailStore.status
     );
 
-    const assignedSystems = useSelector(
-        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.rows
+    const systemStatus = useSelector(
+        ({ entities }) => entities?.status || {}
     );
 
-    const metadata = useSelector(
-        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.metadata
+    const totalItems = useSelector(
+        ({ entities }) => entities?.total || 0
+    );
+
+    const loaded = useSelector(
+        ({ entities }) => entities?.loaded
     );
 
     const queryParams = useSelector(
-        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore.queryParams
+        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore?.queryParams || {}
     );
 
     const { hasAccess } = usePermissionsWithContext([
@@ -77,27 +89,11 @@ const PatchSetDetail = () => {
         'patch:template:write'
     ]);
 
-    const rows = useMemo(
-        () => createPatchSetDetailRows(assignedSystems),
-        [assignedSystems]
-    );
-
-    const { hasError, code } = status;
-
     const patchSetName = templateDetails.data.attributes.name;
 
     const apply = (params) => {
         dispatch(changePatchSetDetailsSystemsParams(params));
     };
-
-    const onSetPage = useSetPage(metadata?.limit, apply);
-    const onPerPageSelect = usePerPageSelect(apply);
-
-    const onSort = useSortColumn(patchSetDetailColumns, apply, 0, templateCompoundSortValues);
-    const sortBy = useMemo(
-        () => createSortBy(patchSetDetailColumns, metadata?.sort, 0, templateCompoundSortValues),
-        [metadata?.sort]
-    );
 
     const openPatchSetAssignWizard = () => {
         setPatchSetState({
@@ -107,7 +103,10 @@ const PatchSetDetail = () => {
     };
 
     const refreshTable = () => {
-        dispatch(fetchPatchSetDetailSystemsAction(patchSetId, { ...queryParams, page: 1, offset: 0 }));
+        // timestamp is used to force inventory to refresh
+        // if it wasn't there inventory might ignore request to refresh because parameters are the same
+        inventory?.current?.onRefreshData({ timestamp: Date.now() });
+
         dispatch(fetchTemplateDetail(patchSetId));
     };
 
@@ -119,7 +118,6 @@ const PatchSetDetail = () => {
         });
 
         return () => {
-            dispatch(changePatchSetDetailsSystemsParams());
             dispatch(clearTemplateDetail());
         };
     }, []);
@@ -140,16 +138,12 @@ const PatchSetDetail = () => {
             setFirstMount(false);
         } else {
             history.push(encodeURLParams(queryParams));
-
-            dispatch(fetchPatchSetDetailSystemsAction(patchSetId, queryParams));
         }
     }, [queryParams, firstMount]);
 
     const openSystemUnassignModal = (rowData) => {
         setPatchSetState({ ...patchSetState, isUnassignSystemsModalOpen: true, systemsIDs: [rowData.id] });
     };
-
-    const actionsConfig = patchSetDetailRowActions(openSystemUnassignModal);
 
     const deleteSet = () => {
         deletePatchSet(patchSetId).then(() => {
@@ -159,6 +153,23 @@ const PatchSetDetail = () => {
             dispatch(addNotification(patchSetDeleteNotifications(patchSetName).error));
         });
     };
+
+    const applyMetadata = (metadata) => {
+        dispatch(changePatchSetDetailsSystemsMetadata(metadata));
+    };
+
+    const applyGlobalFilter = (tags) => {
+        dispatch(changeTags(tags));
+    };
+
+    const getEntities = useGetEntities(
+        fetchPatchSetSystems,
+        apply,
+        { id: patchSetId },
+        history,
+        applyMetadata,
+        applyGlobalFilter
+    );
 
     const dropdownItems = [
         <DropdownItem
@@ -177,9 +188,13 @@ const PatchSetDetail = () => {
         </DropdownItem>
     ];
 
+    const decodedParams = decodeQueryparams(history.location.search);
+
+    const { systemProfile, selectedTags, filter, search, page, perPage, sort } = queryParams;
+
     return (
-        (hasError || metadata?.has_systems === false)
-            ? <ErrorHandler code={code} metadata={status.metadata} />
+        detailStatus?.hasError
+            ? <ErrorHandler code={detailStatus?.code} />
             : <Fragment>
                 <DeleteSetModal
                     templateName={patchSetName}
@@ -249,7 +264,7 @@ const PatchSetDetail = () => {
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
-                                        : templateDateFormat(templateDetails.data.attributes.config.to_time)}
+                                        : processDate(templateDetails.data.attributes.config.to_time)}
                                 </td>
                             </tr>
                             <tr>
@@ -286,26 +301,50 @@ const PatchSetDetail = () => {
                         </Text>
                     </TextContent>
                     {hasSatellite
-                        ? (rows.length === 0 && !status.isLoading)
+                        ? (totalItems === 0 && loaded)
                             ? <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />
-                            : <TableView
-                                columns={patchSetDetailColumns}
-                                compact
-                                onSetPage={onSetPage}
-                                onPerPageSelect={onPerPageSelect}
-                                onSort={onSort}
-                                sortBy={sortBy}
-                                apply={apply}
-                                tableOUIA={'patch-set-detail-table'}
-                                paginationOUIA={'patch-set-detail-pagination'}
-                                store={{ rows, metadata, status, queryParams }}
-                                actionsConfig={actionsConfig}
-                                actionsToggle={!hasAccess ? CustomActionsToggle : null}
-                                searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
-                            />
-                        : <NoSatellite />}
+                            : systemStatus.hasError
+                                ? <ErrorHandler code={systemStatus.code} />
+                                : <InventoryTable
+                                    ref={inventory}
+                                    isFullView
+                                    autoRefresh
+                                    initialLoading
+                                    hideFilters={{ all: true }}
+                                    columns={(defaultColumns) => templateSystemsColumnsMerger(defaultColumns)}
+                                    showTags
+                                    onLoad={({ mergeWithEntities }) => {
+                                        store.replaceReducer(combineReducers({
+                                            ...defaultReducers,
+                                            ...mergeWithEntities(
+                                                inventoryEntitiesReducer(systemsListColumns(true), modifyTemplateDetailSystems),
+                                                persistantParams({ page, perPage, sort, search }, decodedParams)
+                                            )
+                                        }));
+                                    }}
+                                    customFilters={{
+                                        patchParams: {
+                                            filter,
+                                            systemProfile,
+                                            selectedTags
+                                        }
+                                    }}
+                                    paginationProps={{
+                                        isDisabled: totalItems === 0
+                                    }}
+                                    getEntities={getEntities}
+                                    tableProps={{
+                                        canSelectAll: true,
+                                        variant: TableVariant.compact,
+                                        className: 'patchCompactInventory',
+                                        isStickyHeader: true,
+                                        actionResolver: () => hasAccess ? patchSetDetailRowActions(openSystemUnassignModal) : []
+                                    }}
+                                    hasCheckbox={false} /* TODO: Remove this when implementing bulk actions */
+                                /> : <NoSatellite />}
                 </Main>
-            </Fragment >);
+            </Fragment>
+    );
 };
 
 export default PatchSetDetail;

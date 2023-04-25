@@ -1,4 +1,4 @@
-import { createAdvisorySystemsRows, createSystemsRows } from '../../Utilities/DataMappers';
+import { createAdvisorySystemsRows, createSystemsRows, createPatchSetDetailRows } from '../../Utilities/DataMappers';
 import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { selectRows, fetchRejected } from './HelperReducers';
 import * as ActionTypes from '../ActionTypes';
@@ -43,6 +43,18 @@ export const modifyPackageSystems = (columns, state) => {
     return state;
 };
 
+export const modifyTemplateDetailSystems = (columns, state) => {
+    if (state.loaded) {
+        return {
+            ...state,
+            status: { isLoading: false, hasError: false },
+            rows: createPatchSetDetailRows(state.rows, state.selectedRows)
+        };
+    }
+
+    return state;
+};
+
 export const modifyAdvisorySystems = (columns, state) => {
     if (state.loaded) {
         return {
@@ -57,6 +69,7 @@ export const modifyAdvisorySystems = (columns, state) => {
 
 export const inventoryEntitiesReducer = (columns, inventoryModifier) => (state = initialState, action) => {
     let newState = { ...state };
+
     switch (action.type) {
         case 'LOAD_ENTITIES_FULFILLED':
             return inventoryModifier(columns, newState);

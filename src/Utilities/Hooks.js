@@ -229,7 +229,7 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, 
         }));
 
         return {
-            results: items.data.map(row => ({ ...row, ...row.attributes })),
+            results: items.data.map(row => ({ ...row, ...row.attributes, id: row.id ?? row.inventory_id })),
             total: items.meta?.total_items
         };
     };
