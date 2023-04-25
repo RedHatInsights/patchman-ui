@@ -396,7 +396,7 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
                 cells: [
                     {
                         title: (
-                            <Link to={{ pathname: `/templates/${row.id}` }}>
+                            <Link to={{ pathname: `../templates/${row.id}` }}>
                                 {row.name}
                             </Link>
                         )

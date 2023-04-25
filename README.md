@@ -226,17 +226,16 @@ Ex) [/src/api/System/getSystems.js](https://github.com/RedHatInsights/turbo-octo
 
 ### React-router-dom
 
-When setting up the routes, the page content is wrapped with a `.page__{pageName}` class, applied to the `#root` ID that is determined by the `rootClass` in the `Routes.js` which lets you easily reference the page in the styling.
+When setting up the routes, the page content is wrapped with a `.page__{pageName}` class, applied to the `#root` ID that is determined by the `rootClass` in the `Router.js` which lets you easily reference the page in the styling.
 
-- [BrowserRouter](https://reacttraining.com/react-router/web/api/BrowserRouter)
-  - A `<Router>` that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL
-- [Route](https://reacttraining.com/react-router/web/api/Route)
-- [Switch](https://reacttraining.com/react-router/web/api/Switch)
+- [Routes](https://reactrouter.com/en/main/components/routes)
+- [Route](https://reactrouter.com/en/main/route/route)
   - Renders the first child `<Route>` or `<Redirect>` that matches the location.
-- [Redirect](https://reacttraining.com/react-router/web/api/Redirect)
-  - navigate to a new location
-- [withRouter](https://reacttraining.com/react-router/web/api/withRouter)
-  - passes updated match, location, and history props to the wrapped component whenever it renders
+- [useNavigate](https://reactrouter.com/en/main/hooks/use-navigate)
+  - Hook for changing navigation
+- [Navigate](https://reactrouter.com/en/main/components/navigate)
+- [useParams](https://reactrouter.com/en/main/hooks/use-params)
+  - Hook for getting parameters from a page
 
 ## Running locally
 Have [insights-proxy](https://github.com/RedHatInsights/insights-proxy) installed under PROXY_PATH

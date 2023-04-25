@@ -165,7 +165,7 @@ describe('Helpers tests', () => {
             href: 'https://cloud.redhat.com/rhel/patch'
         };
         let advisoryName = 'ABCD';
-        const expected = `/advisories/${advisoryName}`;
+        const expected = `../advisories/${advisoryName}`;
         let result = handlePatchLink('advisories',advisoryName);
         let {
             props: { to, children }
@@ -180,7 +180,7 @@ describe('Helpers tests', () => {
             href: 'https://cloud.redhat.com/rhel/patch'
         };
         let advisoryName = 'ABCD';
-        const expected = `/advisories/${advisoryName}`;
+        const expected = `../advisories/${advisoryName}`;
         let result = handlePatchLink('advisories',advisoryName, 'custom text');
         let {
             props: { to, children }
@@ -243,7 +243,7 @@ describe('Helpers tests', () => {
     ${"search=trolo"}                                       | ${{search: "trolo"}}
     ${"filter%5Badvisory_type%5D=2"}                        | ${{filter: {advisory_type: 2}}}
     ${"param=text&filter%5Badvisory_type%5D=in%3A1%2C2"}    | ${{filter: {advisory_type: ["1","2"]}, param: "text"}}
-    `('decodeQueryparams: Should decodeQueryParams $parameters', ({parameters, result}) => {
+    `('decodeQueryparams: Should decodeQueryparams $parameters', ({parameters, result}) => {
         expect(decodeQueryparams(parameters)).toEqual(result);
     });
 

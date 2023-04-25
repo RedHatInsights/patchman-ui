@@ -15,21 +15,30 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
 >
   <BrowserRouter>
     <Router
-      history={
+      location={
+        Object {
+          "hash": "",
+          "key": "default",
+          "pathname": "/",
+          "search": "",
+          "state": null,
+        }
+      }
+      navigationType="POP"
+      navigator={
         Object {
           "action": "POP",
-          "block": [Function],
           "createHref": [Function],
+          "createURL": [Function],
+          "encodeLocation": [Function],
           "go": [Function],
-          "goBack": [Function],
-          "goForward": [Function],
-          "length": 1,
           "listen": [Function],
           "location": Object {
             "hash": "",
+            "key": "default",
             "pathname": "/",
             "search": "",
-            "state": undefined,
+            "state": null,
           },
           "push": [Function],
           "replace": [Function],
@@ -157,7 +166,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   "cells": Array [
                     Object {
                       "title": <Link
-                        to="/packages/test-name"
+                        to="../packages/test-name"
                       >
                         test-name
                       </Link>,
@@ -211,7 +220,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   "cells": Array [
                     Object {
                       "title": <Link
-                        to="/packages/test-name-2"
+                        to="../packages/test-name-2"
                       >
                         test-name-2
                       </Link>,

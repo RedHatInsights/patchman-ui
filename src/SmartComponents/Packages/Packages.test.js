@@ -64,7 +64,7 @@ afterEach(() => {
 
 describe('Packages.js', () => {
     it('should match the snapshot', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        expect(toJson(wrapper.find('Packages'))).toMatchSnapshot();
     });
 
     it('should fetch packages only once on load', () => {

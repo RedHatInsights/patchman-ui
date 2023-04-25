@@ -102,7 +102,7 @@ const InventoryDetail = () => {
                             <TextContent>
                                 <Text>
                                     {intl.formatMessage(messages.labelsColumnsTemplate)}:
-                                    <Link to={{ pathname: `/templates/${patchSetId}` }} className="pf-u-ml-xs">
+                                    <Link to={{ pathname: `../templates/${patchSetId}` }} className="pf-u-ml-xs">
                                         {patchSetName}
                                     </Link>
                                 </Text>

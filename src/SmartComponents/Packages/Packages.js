@@ -15,12 +15,12 @@ import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilitie
 import { setPageTitle, useOnExport, usePerPageSelect,
     useSetPage, useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import { useHistory } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const Packages = () => {
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = React.useState(true);
-    const history = useHistory();
+    const [searchParams, setSearchParams] = useSearchParams();
     const pageTitle = 'Packages';
     setPageTitle(pageTitle);
     const packageRows = useSelector(
@@ -40,10 +40,10 @@ const Packages = () => {
 
     useDeepCompareEffect(() => {
         if (firstMount) {
-            apply(decodeQueryparams(history.location.search));
+            apply(decodeQueryparams('?' + searchParams.toString()));
             setFirstMount(false);
         } else {
-            history.push(encodeURLParams(queryParams));
+            setSearchParams(encodeURLParams(queryParams));
             dispatch(fetchPackagesAction(queryParams));
         }
     }, [queryParams, firstMount]);

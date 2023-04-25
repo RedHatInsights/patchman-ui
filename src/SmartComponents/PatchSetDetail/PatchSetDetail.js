@@ -2,7 +2,6 @@ import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import { NoAppliedSystems, NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
@@ -33,17 +32,18 @@ import { defaultReducers } from '../../store';
 import { inventoryEntitiesReducer, modifyTemplateDetailSystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { systemsListColumns } from '../Systems/SystemsListAssets';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 const PatchSetDetail = () => {
     const getEntitlements = useEntitlements();
     const intl = useIntl();
     const dispatch = useDispatch();
-    const history = useHistory();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const { templateName: patchSetId } = useParams();
+    const navigate = useNavigate();
 
     const store = useStore();
     const inventory = useRef(null);
-
-    const patchSetId = history.location.pathname.split('/')[2];
 
     const [firstMount, setFirstMount] = React.useState(true);
     const [isHeaderDropdownOpen, setHeaderDropdownOpen] = useState(false);
@@ -131,13 +131,13 @@ const PatchSetDetail = () => {
 
     useDeepCompareEffect(() => {
         if (firstMount) {
-            apply(decodeQueryparams(history.location.search));
+            apply(decodeQueryparams('?' + searchParams.toString()));
 
             dispatch(fetchTemplateDetail(patchSetId));
 
             setFirstMount(false);
         } else {
-            history.push(encodeURLParams(queryParams));
+            setSearchParams(encodeURLParams(queryParams));
         }
     }, [queryParams, firstMount]);
 
@@ -148,7 +148,8 @@ const PatchSetDetail = () => {
     const deleteSet = () => {
         deletePatchSet(patchSetId).then(() => {
             dispatch(addNotification(patchSetDeleteNotifications(patchSetName).success));
-            history.push('/templates');
+            // history.push('/templates');
+            navigate('../templates');
         }).catch(() => {
             dispatch(addNotification(patchSetDeleteNotifications(patchSetName).error));
         });
@@ -166,7 +167,7 @@ const PatchSetDetail = () => {
         fetchPatchSetSystems,
         apply,
         { id: patchSetId },
-        history,
+        setSearchParams,
         applyMetadata,
         applyGlobalFilter
     );
@@ -188,7 +189,7 @@ const PatchSetDetail = () => {
         </DropdownItem>
     ];
 
-    const decodedParams = decodeQueryparams(history.location.search);
+    const decodedParams = decodeQueryparams('?' + searchParams.toString());
 
     const { systemProfile, selectedTags, filter, search, page, perPage, sort } = queryParams;
 

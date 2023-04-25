@@ -1,9 +1,8 @@
 import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import PackageHeader from '../../PresentationalComponents/PackageHeader/PackageHeader';
@@ -15,9 +14,9 @@ import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 
-const PackageDetail = ({ match }) => {
+const PackageDetail = () => {
     const dispatch = useDispatch();
-    const [packageName] = React.useState(match.params.packageName);
+    const { packageName } = useParams();
     const pageTitle = `${packageName} - ${intl.formatMessage(messages.titlesPackages)}`;
     setPageTitle(pageTitle);
     const packageDetails = useSelector(
@@ -81,8 +80,4 @@ const PackageDetail = ({ match }) => {
     );
 };
 
-PackageDetail.propTypes = {
-    match: propTypes.any
-};
-
-export default withRouter(PackageDetail);
+export default PackageDetail;

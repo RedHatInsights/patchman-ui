@@ -1,7 +1,6 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
@@ -32,16 +31,18 @@ import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { NoPatchSetList, NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
+import { useSearchParams } from 'react-router-dom';
 
 const PatchSet = () => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
 
     const IS_SELECTION_ENABLED = false;
 
+    const [searchParams, setSearchParams] = useSearchParams();
+
     setPageTitle(pageTitle);
 
     const dispatch = useDispatch();
-    const history = useHistory();
     const [firstMount, setFirstMount] = React.useState(true);
     const [hasSatellite, setSatellite] = React.useState(true);
     const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = React.useState(false);
@@ -102,10 +103,10 @@ const PatchSet = () => {
 
     useDeepCompareEffect(() => {
         if (firstMount) {
-            apply(decodeQueryparams(history.location.search));
+            apply(decodeQueryparams('?' + searchParams.toString()));
             setFirstMount(false);
         } else {
-            history.push(encodeURLParams(queryParams));
+            setSearchParams(encodeURLParams(queryParams));
             dispatch(fetchPatchSetsAction(queryParams));
         }
     }, [queryParams, firstMount]);

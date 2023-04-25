@@ -104,7 +104,9 @@ describe('AdvisorySystems.js', () => {
         const testStore = initStore(rejectedState);
         const wrapper = mount(
             <Provider store={testStore}>
-                <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
+                <Router>
+                    <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
+                </Router>
             </Provider>
         );
         expect(wrapper.find('Error')).toBeTruthy();

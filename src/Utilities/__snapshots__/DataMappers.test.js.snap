@@ -5,7 +5,7 @@ Object {
   "cells": Array [
     Object {
       "title": <Link
-        to="/packages/test-name-2"
+        to="../packages/test-name-2"
       >
         test-name-2
       </Link>,

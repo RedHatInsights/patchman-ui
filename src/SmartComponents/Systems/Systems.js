@@ -3,7 +3,6 @@ import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
@@ -36,6 +35,7 @@ import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import { useSearchParams } from 'react-router-dom';
 
 const Systems = () => {
     const store = useStore();
@@ -45,7 +45,8 @@ const Systems = () => {
 
     setPageTitle(pageTitle);
 
-    const history = useHistory();
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const dispatch = useDispatch();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
@@ -56,7 +57,7 @@ const Systems = () => {
 
     const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
 
-    const decodedParams = decodeQueryparams(history.location.search);
+    const decodedParams = decodeQueryparams('?' + searchParams.toString());
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const totalItems = useSelector(
         ({ entities }) => entities?.total || 0
@@ -132,7 +133,7 @@ const Systems = () => {
         json: exportSystemsJSON
     }, dispatch);
 
-    const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
+    const getEntities = useGetEntities(fetchSystems, apply, {}, setSearchParams, applyMetadata, applyGlobalFilter);
 
     const {
         patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal

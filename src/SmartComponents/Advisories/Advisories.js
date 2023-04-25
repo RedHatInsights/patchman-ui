@@ -1,8 +1,6 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import propTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
@@ -30,9 +28,12 @@ import { clearNotifications } from '@redhat-cloud-services/frontend-components-n
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-const Advisories = ({ history }) => {
+const Advisories = () => {
     const pageTitle = intl.formatMessage(messages.titlesAdvisories);
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     setPageTitle(pageTitle);
 
@@ -75,10 +76,10 @@ const Advisories = ({ history }) => {
 
     useEffect(() => {
         if (firstMount) {
-            apply(decodeQueryparams(history.location.search));
+            apply(decodeQueryparams('?' + searchParams.toString()));
             setFirstMount(false);
         } else {
-            history.push(encodeURLParams(queryParams));
+            navigate(encodeURLParams(queryParams));
             dispatch(fetchApplicableAdvisories(queryParams));
         }
     }, [JSON.stringify(queryParams), firstMount]);
@@ -165,8 +166,4 @@ const Advisories = ({ history }) => {
     );
 };
 
-Advisories.propTypes = {
-    history: propTypes.object
-};
-
-export default withRouter(Advisories);
+export default Advisories;

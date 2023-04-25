@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
 import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACProvider';
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
-import { getBaseName } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import './App.scss';
-import { Routes } from './Routes';
+import { Router } from './Router';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -45,9 +43,7 @@ const App = () => {
         <React.Fragment>
             <NotificationPortal />
             <RBACProvider appName="patch">
-                <Router basename={getBaseName(window.location.pathname)}>
-                    <Routes />
-                </Router>
+                <Router />
             </RBACProvider>
         </React.Fragment>
     );

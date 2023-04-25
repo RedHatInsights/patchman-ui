@@ -177,7 +177,7 @@ export function getSeverityById(id) {
 
 export const createPackagesColumn = (packageCount, systemID) => (
     <Link to={{
-        pathname: `/systems/${systemID}`,
+        pathname: `../systems/${systemID}`,
         state: { tab: 'packages' }
     }}>
         {packageCount}
@@ -187,7 +187,7 @@ export const createPackagesColumn = (packageCount, systemID) => (
 export function handlePatchLink(type, name, body) {
     if (location.href.indexOf('inventory') === -1) {
         return (
-            <Link to={`/${type}/${name}`}>
+            <Link to={`../${type}/${name}`}>
                 {body === undefined ? name : body}
             </Link>
         );

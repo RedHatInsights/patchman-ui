@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import typeFilter from '../../PresentationalComponents/Filters/TypeFilter';
@@ -22,7 +22,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
-const SystemAdvisories = ({ history, handleNoSystemData, inventoryId }) => {
+const SystemAdvisories = ({ handleNoSystemData, inventoryId }) => {
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = useState(true);
     const advisories = useSelector(
@@ -50,6 +50,8 @@ const SystemAdvisories = ({ history, handleNoSystemData, inventoryId }) => {
         [advisories, expandedRows, selectedRows]
     );
 
+    const [searchParams] = useSearchParams();
+
     const historyPusher = usePushUrlParams(queryParams);
 
     useEffect(() => {
@@ -58,7 +60,7 @@ const SystemAdvisories = ({ history, handleNoSystemData, inventoryId }) => {
 
     useEffect(() => {
         if (firstMount) {
-            apply(decodeQueryparams(history.location.search));
+            apply(decodeQueryparams('?' + searchParams.toString()));
             setFirstMount(false);
         } else {
             historyPusher();
@@ -154,8 +156,7 @@ const SystemAdvisories = ({ history, handleNoSystemData, inventoryId }) => {
 };
 
 SystemAdvisories.propTypes = {
-    history: propTypes.object,
     handleNoSystemData: propTypes.func,
     inventoryId: propTypes.string.isRequired
 };
-export default withRouter(SystemAdvisories);
+export default SystemAdvisories;
