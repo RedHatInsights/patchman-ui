@@ -17,8 +17,8 @@ const initialState = {
 // Reducer
 export const SystemsStore = (state = initialState, action) => {
     let newState = { ...state };
-    switch (action.type) {
 
+    switch (action.type) {
         case ActionTypes.CHANGE_SYSTEMS_PARAMS:
             newState.queryParams = changeListParams(newState.queryParams, action.payload);
             return newState;

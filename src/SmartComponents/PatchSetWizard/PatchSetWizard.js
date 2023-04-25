@@ -39,7 +39,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
     useEffect(() => {
         if (patchSetID) {
             dispatch(fetchPatchSetAction(patchSetID));
-            dispatch(fetchPatchSetSystemsAction(patchSetID, { limit: -1 }));
+            dispatch(fetchPatchSetSystemsAction({ id: patchSetID, limit: -1 }));
         }
 
         return () => dispatch(clearPatchSetAction());
