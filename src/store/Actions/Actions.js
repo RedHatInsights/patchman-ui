@@ -259,6 +259,11 @@ export const changePatchSetDetailsSystemsParams = (params) => ({
     payload: params
 });
 
+export const changePatchSetDetailsSystemsMetadata = (params) => ({
+    type: ActionTypes.CHANGE_PATCH_SET_DETAIL_SYSTEMS_METADATA,
+    payload: params
+});
+
 export const clearPatchSetDetailsSystems = () => ({
     type: ActionTypes.CLEAR_PATCH_SET_DETAIL_SYSTEMS,
     payload: []

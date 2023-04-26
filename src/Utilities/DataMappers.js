@@ -13,7 +13,7 @@ import {
 } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
-import { createAdvisoriesIcons, createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
+import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -428,47 +428,22 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
 };
 
 export const createPatchSetDetailRows = (rows) => {
-
     const data =
         rows &&
         rows.map(row => {
             row = { ...row, ...row.attributes };
 
             return {
+                ...row,
                 id: row.inventory_id,
-                displayName: row.display_name,
+                display_name: row.display_name,
                 key: row.inventory_id,
-                cells: [
-                    {
-                        title: (
-                            <Link to={{ pathname: `/systems/${row.inventory_id}` }}>
-                                {row.display_name}
-                            </Link>
-                        )
-                    },
-                    {
-                        title: row.os || 'N/A'
-                    },
-                    {
-                        title: createAdvisoriesIcons([
-                            row.installable_rhea_count,
-                            row.installable_rhba_count,
-                            row.installable_rhsa_count,
-                            row.installable_other_count
-                        ], 'installable')
-                    },
-                    {
-                        title: createAdvisoriesIcons([
-                            row.applicable_rhea_count,
-                            row.applicable_rhba_count,
-                            row.applicable_rhsa_count,
-                            row.applicable_other_count
-                        ])
-                    },
-                    {
-                        title: processDate(row.last_upload)
-                    }
-                ]
+                os: {
+                    osName: row.os,
+                    rhsm: row.rhsm
+                },
+                last_upload: row.last_upload,
+                tags: row.tags
             };
         });
 

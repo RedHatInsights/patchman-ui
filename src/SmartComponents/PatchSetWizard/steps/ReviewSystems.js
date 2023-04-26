@@ -80,7 +80,9 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
         setQueryParams((prevQueryParams) => ({
             ...prevQueryParams,
             ...params,
-            filter: { ...prevQueryParams.filter, ...params.filter }
+            filter: { ...prevQueryParams.filter, ...params.filter },
+            page: 1,
+            offset: 0
         }));
     };
 
@@ -121,7 +123,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
             <StackItem>
                 <TextContent>
                     <Text component="h2">
-                        {intl.formatMessage(messages.templateSelectSystems)}
+                        {intl.formatMessage(messages.templateApplySystems)}
                     </Text>
                 </TextContent>
             </StackItem>

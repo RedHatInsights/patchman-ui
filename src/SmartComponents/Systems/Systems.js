@@ -197,7 +197,9 @@ const Systems = () => {
                                     isPatchSetEnabled, openUnassignSystemsModal, row
                                 ),
                             canSelectAll: false,
-                            variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                            variant: TableVariant.compact,
+                            className: 'patchCompactInventory',
+                            isStickyHeader: true
                         }}
                         bulkSelect={bulkSelectConfig}
                         exportConfig={{
