@@ -11,6 +11,7 @@ import { Modal, Wizard } from '@patternfly/react-core';
 import { useDispatch } from 'react-redux';
 
 import ConfigurationStepFields from './steps/ConfigurationStepFields';
+import ContentStep from './steps/ContentStep';
 import NameField from './InputFields/NameField';
 import ToDateField from './InputFields/ToDateField';
 import DescriptionField from './InputFields/DescriptionField';
@@ -64,11 +65,14 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         toDateField: {
             component: ToDateField
         },
+        contentStep: {
+            component: ContentStep,
+            patchSetID
+        },
         configurationStep: {
             component: ConfigurationStepFields,
             systemsIDs: systemsIDs || [],
-            patchSetID,
-            wizardType
+            patchSetID
         },
         reviewSystems: {
             component: ReviewSystems,
