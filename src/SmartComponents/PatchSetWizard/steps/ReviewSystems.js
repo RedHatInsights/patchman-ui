@@ -123,7 +123,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
             <StackItem>
                 <TextContent>
                     <Text component="h2">
-                        {intl.formatMessage(messages.templateSelectSystems)}
+                        {intl.formatMessage(messages.templateApplySystems)}
                     </Text>
                 </TextContent>
             </StackItem>

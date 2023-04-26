@@ -15,10 +15,7 @@ import messages from '../../../Messages';
 import SelectExistingSets from '../InputFields/SelectExistingSets';
 import ConfigurationFields from '../InputFields/ConfigurationFields';
 
-import { convertIsoToDate } from '../../../Utilities/Helpers';
-
-const ConfigurationStepFields = ({ systemsIDs, patchSetID, wizardType }) => {
-
+const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
     const formOptions = useFormApi();
     const shouldShowRadioButtons = (!patchSetID && systemsIDs?.length !== 0) || false;
 
@@ -35,11 +32,10 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, wizardType }) => {
 
     useEffect(() => {
         if (patchSetID) {
-            const { name, description, config: { to_time: toDate } } = patchSet;
+            const { name, description } = patchSet;
 
             formOptions.change('name', name);
             formOptions.change('description', description);
-            formOptions.change('toDate', convertIsoToDate(toDate));
         }
     }, [patchSet]);
 
@@ -48,9 +44,12 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, wizardType }) => {
             <StackItem>
                 <TextContent>
                     <Text component="h2">
-                        {intl.formatMessage(wizardType === 'edit' ? messages.templateEdit : messages.templateNew)}
+                        {intl.formatMessage(messages.templateDetailStepTitle)}
                     </Text>
                 </TextContent>
+            </StackItem>
+            <StackItem>
+                {intl.formatMessage(messages.templateDetailStepText)}
             </StackItem>
             {shouldShowRadioButtons && <TextContent style={{ marginTop: '-15px' }}>
                 <Text component={TextVariants.p}>
@@ -100,7 +99,6 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID, wizardType }) => {
 
 ConfigurationStepFields.propTypes = {
     systemsIDs: propTypes.array,
-    patchSetID: propTypes.string,
-    wizardType: propTypes.string
+    patchSetID: propTypes.string
 };
 export default ConfigurationStepFields;
