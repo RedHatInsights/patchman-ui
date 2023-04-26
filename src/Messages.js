@@ -522,15 +522,45 @@ export default defineMessages({
         description: 'system up to date page body',
         defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
     },
+    templateApplySystems: {
+        id: 'templateApplySystems',
+        description: 'step name of the patch template wizard',
+        defaultMessage: 'Apply to systems (optional)'
+    },
+    templateContentStepExpandable: {
+        id: 'templateContentStepExpandable',
+        description: 'template wizard template expandable text',
+        defaultMessage: 'You have a system with 10 applicable RHEL advisories, the most recent of which was published today. You apply a template with a date of yesterday to that system. After re-evaluation, the advisory published today will not be considered installable on the system, but will be considered applicable.'
+    },
+    templateContentStepExpandableTitle: {
+        id: 'templateContentStepExpandableTitle',
+        description: 'template wizard template expandable title',
+        defaultMessage: 'What does it mean?'
+    },
+    templateContentStepSidebarName: {
+        id: 'templateContentStepSidebarName',
+        description: 'template wizard template left sidebar label',
+        defaultMessage: 'Content'
+    },
+    templateContentStepText: {
+        id: 'templateContentStepText',
+        description: 'template wizard template text',
+        defaultMessage: 'Templates provide you with consistent content across environments and time by allowing you to control the scope of package and advisory updates to be installed on selected systems.'
+    },
+    templateContentStepTitle: {
+        id: 'templateContentStepTitle',
+        description: 'template wizard template title',
+        defaultMessage: 'Define template content'
+    },
     templateDateField: {
         id: 'templateDateField',
         description: 'Field name of the patch template wizard',
-        defaultMessage: 'Patch template date'
+        defaultMessage: 'Select date of Red Hat repositiories'
     },
     templateDateUpto: {
         id: 'templateDateUpto',
         description: 'Field text of the patch template wizard',
-        defaultMessage: 'Upto'
+        defaultMessage: 'Include advisories up to this date'
     },
     templateDescription: {
         id: 'templateDescription',
@@ -541,6 +571,21 @@ export default defineMessages({
         id: 'templateDetailHeaderBreadcrumb',
         description: 'breadcrumb for template detail header',
         defaultMessage: 'Templates'
+    },
+    templateDetailStepSidebarName: {
+        id: 'templateDetailStepSidebarName',
+        description: 'template wizard template left sidebar label',
+        defaultMessage: 'Details'
+    },
+    templateDetailStepText: {
+        id: 'templateDetailStepText',
+        description: 'template wizard template detail step text',
+        defaultMessage: 'Enter a name and description for your template.'
+    },
+    templateDetailStepTitle: {
+        id: 'templateDetailStepTitle',
+        description: 'template wizard template detail step title',
+        defaultMessage: 'Enter template details'
     },
     templateDetailTableCreatedBy: {
         id: 'templateDetailTableCreatedBy',
@@ -575,7 +620,7 @@ export default defineMessages({
     templateEdit: {
         id: 'templateEdit',
         description: 'step name of the patch template wizard',
-        defaultMessage: 'Edit patch template '
+        defaultMessage: 'Edit content template '
     },
     templateError: {
         id: 'templateError',
@@ -617,15 +662,15 @@ export default defineMessages({
         description: 'step name of the patch template wizard',
         defaultMessage: 'Review '
     },
-    templateSelectSystems: {
-        id: 'templateSelectSystems',
+    templateStepSystems: {
+        id: 'templateStepSystems',
         description: 'step name of the patch template wizard',
-        defaultMessage: 'Select systems'
+        defaultMessage: 'Systems (optional)'
     },
     templateTitle: {
         id: 'templateTitle',
         description: 'title of the patch template wizard',
-        defaultMessage: 'Create patch template '
+        defaultMessage: 'Create content template '
     },
     templateTitleAssignSystem: {
         id: 'templateTitleAssignSystem',

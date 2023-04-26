@@ -45,6 +45,13 @@ export const configurationFields = [
     }
 ];
 
+export const contentStep = [
+    {
+        name: 'contentStep',
+        component: 'contentStep'
+    }
+];
+
 export const nameComponent = [{
     name: 'name',
     component: 'nameField',
@@ -90,14 +97,20 @@ export const schema = (wizardType) => {
                 </Fragment>,
                 fields: [
                     {
-                        name: 'patch-set-config',
-                        title: intl.formatMessage(wizardType === 'edit' ? messages.templateEdit : messages.templateNew),
-                        fields: configurationFields,
-                        nextStep: 'systems'
+                        name: 'template-content',
+                        title: intl.formatMessage(messages.templateContentStepSidebarName),
+                        fields: contentStep,
+                        nextStep: 'template-details'
                     },
                     {
-                        name: 'systems',
-                        title: intl.formatMessage(messages.templateSelectSystems),
+                        name: 'template-details',
+                        title: intl.formatMessage(messages.templateDetailStepSidebarName),
+                        fields: configurationFields,
+                        nextStep: 'template-systems'
+                    },
+                    {
+                        name: 'template-systems',
+                        title: intl.formatMessage(messages.templateStepSystems),
                         fields: [
                             {
                                 name: 'systems',
@@ -106,10 +119,10 @@ export const schema = (wizardType) => {
                                 //validate: [{ type: 'validate-systems' }]
                             }
                         ],
-                        nextStep: 'review'
+                        nextStep: 'template-review'
                     },
                     {
-                        name: 'review',
+                        name: 'template-review',
                         title: intl.formatMessage(messages.templateReview),
                         fields: [
                             {
