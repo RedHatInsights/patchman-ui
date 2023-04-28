@@ -226,7 +226,7 @@ const PatchSet = () => {
                             tableOUIA={'patch-set-table'}
                             paginationOUIA={'patch-set-pagination'}
                             store={{ rows, metadata, status, queryParams }}
-                            actionsConfig={actionsConfig}
+                            actionsConfig={patchSets?.length > 0 ? actionsConfig : []}
                             filterConfig={filterConfig}
                             searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
                             ToolbarButton={CreatePatchSetButton}
