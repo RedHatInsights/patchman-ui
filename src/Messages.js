@@ -481,22 +481,6 @@ export default defineMessages({
         description: 'Label',
         defaultMessage: 'No matching patch template found'
     },
-    statesNoSatelliteBody: {
-        id: 'statesNoSatelliteBody',
-        description: 'Label',
-        defaultMessage: `Manage your infrastructure directly from console.redhat.com by controlling the
-        scope of package and advisory updates to be installed on selected systems based on 
-        criteria you define, providing you with consistent content across environments
-        and time from the console.  
-        {br}
-        {br}
-        Creating content templates from console.redhat.com is a premium feature only available with Red Hat Satellite.`
-    },
-    statesNoSatelliteHeader: {
-        id: 'statesNoSatellite',
-        description: 'Label',
-        defaultMessage: 'Create a content with Red Hat Satellite'
-    },
     statesNoTemplate: {
         id: 'statesNoTemplate',
         description: 'Label',
