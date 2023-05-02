@@ -30,6 +30,7 @@ const ToDateField = (props) => {
                 </FlexItem>
                 <FlexItem lg={10} md={10}>
                     <DatePicker
+                        appendTo={document.body}
                         value={toDate}
                         onChange={(val) => {
                             input.onChange(val);

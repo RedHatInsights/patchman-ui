@@ -10,7 +10,9 @@ export const initialState = {
     },
     assignedSystems: [],
     status: {},
-    error: {}
+    error: {},
+    takenBaselineNames: [],
+    takenBaselineNamesLoading: true
 };
 
 export const SpecificPatchSetReducer = (state = initialState, action) => {
@@ -37,6 +39,29 @@ export const SpecificPatchSetReducer = (state = initialState, action) => {
             return {
                 ...state,
                 assignedSystems: systems.map(system => system?.inventory_id)
+            };
+        }
+
+        case ActionTypes.FETCH_ALL_PATCH_SETS_NAMES + '_PENDING': {
+            return {
+                ...state,
+                takenBaselineNamesLoading: true
+            };
+        }
+
+        case ActionTypes.FETCH_ALL_PATCH_SETS_NAMES + '_FULFILLED': {
+            return {
+                ...state,
+                takenBaselineNames: action.payload,
+                takenBaselineNamesLoading: false
+            };
+        }
+
+        case ActionTypes.FETCH_ALL_PATCH_SETS_NAMES + '_REJECTED': {
+            return {
+                ...state,
+                takenBaselineNames: [],
+                takenBaselineNamesLoading: false
             };
         }
 
