@@ -34,36 +34,3 @@ exports[`EmptyPackagesList Should match the snapshot 1`] = `
   </EmptyStateBody>
 </EmptyState>
 `;
-
-exports[`NoSatellite Should match the snapshot 1`] = `
-<EmptyState
-  variant="large"
->
-  <EmptyStateIcon
-    icon={[Function]}
-  />
-  <Title
-    headingLevel="h5"
-    size="lg"
-  >
-    Create a content with Red Hat Satellite
-  </Title>
-  <EmptyStateBody>
-    Manage your infrastructure directly from console.redhat.com by controlling the
-        scope of package and advisory updates to be installed on selected systems based on 
-        criteria you define, providing you with consistent content across environments
-        and time from the console.  
-        
-    <br
-      key=".1"
-    />
-    
-        
-    <br
-      key=".3"
-    />
-    
-        Creating content templates from console.redhat.com is a premium feature only available with Red Hat Satellite.
-  </EmptyStateBody>
-</EmptyState>
-`;
