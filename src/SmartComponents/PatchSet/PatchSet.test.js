@@ -3,14 +3,12 @@ import toJson from 'enzyme-to-json';
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 import { storeListDefaults } from '../../Utilities/constants';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import patchSets from '../../../cypress/fixtures/api/patchSets.json';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import PatchSet from './PatchSet';
-import { NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
@@ -72,23 +70,5 @@ beforeEach(() => {
 describe('HeaderBreadcrumbs', () => {
     it('Should render correctly', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
-    });
-
-    it('Should render "No Satellite" empty state', () => {
-        useChrome.mockImplementation(() => ({
-            auth: {
-                getUser: () => new Promise(
-                    (resolve) => resolve({
-                        entitlements: {
-                            smart_management: { is_entitled: false }
-                        }
-                    })
-                )
-            }
-        }));
-
-        wrapper.update();
-
-        expect(wrapper.find(NoSatellite)).toHaveLength(1);
     });
 });
