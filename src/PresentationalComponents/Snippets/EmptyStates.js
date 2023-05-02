@@ -7,7 +7,6 @@ import {
     Title
 } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
-import { LockIcon } from '@patternfly/react-icons';
 import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -97,21 +96,6 @@ export const NoPatchSetList = ({ Button }) => (
 NoPatchSetList.propTypes = {
     Button: PropTypes.node
 };
-
-export const NoSatellite = () => (
-    <EmptyState variant={EmptyStateVariant.large}>
-        <EmptyStateIcon icon={LockIcon} />
-        <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.statesNoSatelliteHeader)}
-        </Title>
-        <EmptyStateBody>
-            {intl.formatMessage(
-                messages.statesNoSatelliteBody,
-                { br: <br></br> }
-            )}
-        </EmptyStateBody>
-    </EmptyState>
-);
 
 export const NoAppliedSystems = ({ onButtonClick }) => (
     <EmptyState variant={EmptyStateVariant.full}>
