@@ -15,7 +15,7 @@ import { deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 import {
-    setPageTitle, useDeepCompareEffect, useEntitlements, usePerPageSelect, useSetPage, useSortColumn
+    setPageTitle, useDeepCompareEffect, usePerPageSelect, useSetPage, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -31,7 +31,7 @@ import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
-import { NoPatchSetList, NoSatellite } from '../../PresentationalComponents/Snippets/EmptyStates';
+import { NoPatchSetList } from '../../PresentationalComponents/Snippets/EmptyStates';
 
 const PatchSet = () => {
     const pageTitle = intl.formatMessage(messages.titlesTemplate);
@@ -43,7 +43,6 @@ const PatchSet = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [firstMount, setFirstMount] = React.useState(true);
-    const [hasSatellite, setSatellite] = React.useState(true);
     const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = React.useState(false);
     const [patchSetToDelete, setPatchSetToDelete] = React.useState(null);
 
@@ -69,8 +68,6 @@ const PatchSet = () => {
         [patchSets, selectedRows]
     );
 
-    const getEntitlements = useEntitlements();
-
     function apply(params) {
         dispatch(changePatchSetsParams(params));
     }
@@ -80,12 +77,6 @@ const PatchSet = () => {
     };
 
     useEffect(() => {
-        getEntitlements().then((entitelements) => {
-            setSatellite(
-                entitelements?.smart_management?.is_entitled
-            );
-        });
-
         return () => {
             dispatch(clearPatchSetsAction());
             dispatch(clearNotifications());
@@ -187,13 +178,13 @@ const PatchSet = () => {
                         bodyContent={
                             intl.formatMessage(messages.templatePopoverBody)
                         }
-                        /*
-                        footerContent={
-                            <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
-                                {intl.formatMessage(messages.linksLearnMore)} <ExternalLinkAltIcon />
-                            </a>
-                        }
-                        */
+                    /*
+                    footerContent={
+                        <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
+                            {intl.formatMessage(messages.linksLearnMore)} <ExternalLinkAltIcon />
+                        </a>
+                    }
+                    */
                     >
                         <OutlinedQuestionCircleIcon
                             color="var(--pf-global--secondary-color--100)"
@@ -210,29 +201,28 @@ const PatchSet = () => {
                     patchSetID={patchSetState.patchSetID}
                 />}
             <Main>
-                {hasSatellite
-                    ? (rows.length === 0 && !status.isLoading)
-                        ? <NoPatchSetList Button={CreatePatchSetButton}/>
-                        : <TableView
-                            columns={patchSetColumns}
-                            compact
-                            onSetPage={onSetPage}
-                            onPerPageSelect={onPerPageSelect}
-                            onSort={onSort}
-                            selectedRows={IS_SELECTION_ENABLED ? selectedRows : undefined}
-                            onSelect={IS_SELECTION_ENABLED ? onSelect : undefined}
-                            sortBy={sortBy}
-                            apply={apply}
-                            tableOUIA={'patch-set-table'}
-                            paginationOUIA={'patch-set-pagination'}
-                            store={{ rows, metadata, status, queryParams }}
-                            actionsConfig={patchSets?.length > 0 ? actionsConfig : []}
-                            filterConfig={filterConfig}
-                            searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
-                            ToolbarButton={CreatePatchSetButton}
-                            actionsToggle={!hasAccess ? CustomActionsToggle : null}
-                        />
-                    : <NoSatellite />}
+                {(rows.length === 0 && !status.isLoading)
+                    ? <NoPatchSetList Button={CreatePatchSetButton} />
+                    : <TableView
+                        columns={patchSetColumns}
+                        compact
+                        onSetPage={onSetPage}
+                        onPerPageSelect={onPerPageSelect}
+                        onSort={onSort}
+                        selectedRows={IS_SELECTION_ENABLED ? selectedRows : undefined}
+                        onSelect={IS_SELECTION_ENABLED ? onSelect : undefined}
+                        sortBy={sortBy}
+                        apply={apply}
+                        tableOUIA={'patch-set-table'}
+                        paginationOUIA={'patch-set-pagination'}
+                        store={{ rows, metadata, status, queryParams }}
+                        actionsConfig={patchSets?.length > 0 ? actionsConfig : []}
+                        filterConfig={filterConfig}
+                        searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
+                        ToolbarButton={CreatePatchSetButton}
+                        actionsToggle={!hasAccess ? CustomActionsToggle : null}
+                    />
+                }
             </Main>
         </React.Fragment>
     );
