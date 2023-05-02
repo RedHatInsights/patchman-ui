@@ -7,7 +7,7 @@ import dateValidator from '../../Utilities/dateValidator';
 import { sortable } from '@patternfly/react-table/dist/js';
 import React, { Fragment } from 'react';
 
-export const TEMPLATE_NAME_REGEX = /^[a-zA-Z0-9][a-zA-Z0-9_-]*$/;
+export const TEMPLATE_NAME_REGEX = /^[a-z0-9][a-z0-9_-]*$/;
 
 export const reviewSystemColumns = [{
     key: 'display_name',
