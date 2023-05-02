@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { lazy, Suspense, useCallback, useEffect } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import WithPermission from './PresentationalComponents/WithPermission/WithPermission';
 import { Bullseye, Spinner } from '@patternfly/react-core';
@@ -7,6 +7,8 @@ import { useFeatureFlag } from './Utilities/Hooks';
 import { featureFlags } from './Utilities/constants';
 import some from 'lodash/some';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import axios from 'axios';
+import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 
 const PermissionRouter = (route, index) => {
     const {
@@ -96,6 +98,8 @@ export const Routes = () => {
 
     const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
+    const [hasSystems, setHasSystems] = useState(true);
+    const INVENTORY_TOTAL_FETCH_URL = '/api/inventory/v1/hosts';
 
     const paths = [
         {
@@ -175,6 +179,18 @@ export const Routes = () => {
         return () => unregister();
     }, []);
 
+    useEffect(() => {
+        try {
+            axios
+            .get(`${INVENTORY_TOTAL_FETCH_URL}?page=1&per_page=1`)
+            .then(({ data }) => {
+                setHasSystems(data.total > 0);
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }, [hasSystems]);
+
     return (
         <Suspense
             fallback={
@@ -183,25 +199,35 @@ export const Routes = () => {
                 </Bullseye>
             }
         >
-            <Switch>
-                {paths.map(PermissionRouter)}
-                <Redirect
-                    from='/advisories/:advisoryId/:inventoryId'
-                    to='/systems/:inventoryId'
-                />
-                <Redirect
-                    from='/packages/:packageName/:inventoryId'
-                    to='/systems/:inventoryId'
-                />
-                <Route render={() =>
-                    (
-                        (!isPatchSetEnabled || !some(paths, p => p.to === history.location.pathname)) && (
-                            <Redirect to={'/advisories'} />
+            {!hasSystems ? (
+                <AsyncComponent
+                    appName="dashboard"
+                    module="./AppZeroState"
+                    scope="dashboard"
+                    ErrorComponent={<div>Error state</div>}
+                    app="Content_management"
+                />)
+                :
+                <Switch>
+                    {paths.map(PermissionRouter)}
+                    <Redirect
+                        from='/advisories/:advisoryId/:inventoryId'
+                        to='/systems/:inventoryId'
+                    />
+                    <Redirect
+                        from='/packages/:packageName/:inventoryId'
+                        to='/systems/:inventoryId'
+                    />
+                    <Route render={() =>
+                        (
+                            (!isPatchSetEnabled || !some(paths, p => p.to === history.location.pathname)) && (
+                                <Redirect to={'/advisories'} />
+                            )
                         )
-                    )
-                }
-                />
-            </Switch>
+                    }
+                    />
+                </Switch>
+            }
         </Suspense>
     );
 };
