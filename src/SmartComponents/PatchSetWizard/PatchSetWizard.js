@@ -22,7 +22,12 @@ import RequestProgress from './steps/RequestProgress';
 import { usePatchSetApi } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { fetchPatchSetAction, clearPatchSetAction, fetchPatchSetSystemsAction } from '../../store/Actions/Actions';
+import {
+    fetchPatchSetAction,
+    clearPatchSetAction,
+    fetchPatchSetSystemsAction,
+    fetchPatchSetsNamesAction
+} from '../../store/Actions/Actions';
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
     //if system ids exist, those are being assigned. Likewise if patchSetID exists, it is being edited
@@ -42,6 +47,8 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
             dispatch(fetchPatchSetAction(patchSetID));
             dispatch(fetchPatchSetSystemsAction({ id: patchSetID, limit: -1 }));
         }
+
+        dispatch(fetchPatchSetsNamesAction({ limit: -1 }));
 
         return () => dispatch(clearPatchSetAction());
     }, []);
