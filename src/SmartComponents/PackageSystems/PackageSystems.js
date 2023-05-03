@@ -89,7 +89,7 @@ const PackageSystems = ({ packageName }) => {
     }), [filter, search]);
 
     const constructFilename = (system) => {
-        return `${packageName}-${system.available_evra}`;
+        return `${system.available_evra}`;
     };
 
     const onSelect = useOnSelect(
@@ -115,7 +115,7 @@ const PackageSystems = ({ packageName }) => {
         const pairs = [];
 
         systemIDs.forEach(id => {
-            const packageEvra = selectedRows[id];
+            const packageEvra = packageName + '-' + selectedRows[id];
             const issueID = `patch-package:${packageEvra}`;
             const index = pairs.findIndex(pair => pair.id === issueID);
 

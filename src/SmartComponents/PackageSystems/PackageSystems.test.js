@@ -108,8 +108,8 @@ describe('PackageSystems.js', () => {
         expect(remediationPairs).toEqual({
             issues: [
                 {
-                    id: 'patch-package:packageEvra',
-                    description: 'packageEvra',
+                    id: 'patch-package:testName-packageEvra',
+                    description: 'testName-packageEvra',
                     systems: ['test-system-1']
                 }
             ]
