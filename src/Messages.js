@@ -666,6 +666,21 @@ export default defineMessages({
         description: 'title of the patch template wizard',
         defaultMessage: 'Assign system(s) to a patch template '
     },
+    templateWizardValidateLoading: {
+        id: 'templateWizardValidateLoading',
+        description: 'template wizard text when user input is not valid',
+        defaultMessage: 'Template details are loading.'
+    },
+    templateWizardValidateNameTaken: {
+        id: 'templateWizardValidateNameTaken',
+        description: 'template wizard text when user input is not valid',
+        defaultMessage: 'Template name already exists. Try a different name.'
+    },
+    templateWizardValidateRegex: {
+        id: 'templateWizardValidateRegex',
+        description: 'template wizard text when user input is not valid',
+        defaultMessage: 'Must start with a letter or number. Valid characters include lowercase letters from a to z, numbers from 0 to 9, hyphens ( - ), and underscores ( _ ).'
+    },
     textConfigurationInProgress: {
         id: 'textConfigurationInProgress',
         description: 'text for the patch template',

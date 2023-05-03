@@ -7,6 +7,8 @@ import dateValidator from '../../Utilities/dateValidator';
 import { sortable } from '@patternfly/react-table/dist/js';
 import React, { Fragment } from 'react';
 
+export const TEMPLATE_NAME_REGEX = /^[a-z0-9][a-z0-9_-]*$/;
+
 export const reviewSystemColumns = [{
     key: 'display_name',
     title: 'Name',
@@ -63,7 +65,10 @@ export const contentStep = [
 export const nameComponent = [{
     name: 'name',
     component: 'nameField',
-    validate: [{ type: validatorTypes.REQUIRED }]
+    validate: [
+        { type: validatorTypes.REQUIRED },
+        { type: 'validate-name' }
+    ]
 }];
 
 export const descriptionComponent = [{
@@ -158,7 +163,20 @@ export const validatorMapper = {
             return intl.formatMessage(messages.templateNoSystemSelected);
         }
     },
-    'validate-date': () => dateValidator
+    'validate-date': () => dateValidator,
+    'validate-name': () => (name, formValues) => {
+        if (formValues.takenBaselineNamesLoading || formValues.templateDetailLoading) {
+            return intl.formatMessage(messages.templateWizardValidateLoading);
+        }
+
+        if (formValues.previousName !== name && formValues.takenBaselineNames.includes(name)) {
+            return intl.formatMessage(messages.templateWizardValidateNameTaken);
+        }
+
+        if (!name.match(TEMPLATE_NAME_REGEX)) {
+            return intl.formatMessage(messages.templateWizardValidateRegex);
+        }
+    }
 };
 
 export const apiFailedNotification = (description) => ({

@@ -17,15 +17,17 @@ import { toDateComponent } from '../WizardAssets';
 const ContentStep = ({ patchSetID }) => {
     const formOptions = useFormApi();
 
-    const { patchSet } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
+    const { patchSet, status } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
 
     useEffect(() => {
         if (patchSetID) {
-            const { config: { to_time: toDate } } = patchSet;
+            const { config: { to_time: toDate }, name: previousName } = patchSet;
 
             formOptions.change('toDate', convertIsoToDate(toDate));
+            formOptions.change('previousName', previousName);
+            formOptions.change('templateDetailLoading', status.isLoading);
         }
-    }, [patchSet]);
+    }, [patchSet, status]);
 
     return (
         <Stack hasGutter>

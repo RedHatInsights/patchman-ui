@@ -218,6 +218,13 @@ export const fetchPatchSetsAction = params => ({
     }).then(result => result)
 });
 
+export const fetchPatchSetsNamesAction = params => ({
+    type: ActionTypes.FETCH_ALL_PATCH_SETS_NAMES,
+    payload: new Promise(resolve => {
+        resolve(fetchPatchSets(params));
+    }).then(payload => payload.data.map(item => item.attributes.name))
+});
+
 export const changePatchSetsParams = (params) => ({
     type: ActionTypes.CHANGE_PATCH_SET_PARAMS,
     payload: params
