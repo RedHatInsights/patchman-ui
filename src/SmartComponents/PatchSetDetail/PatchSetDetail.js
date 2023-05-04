@@ -11,9 +11,20 @@ import {
     changePatchSetDetailsSystemsParams,
     changeTags,
     clearTemplateDetail,
+    fetchPatchSetSystemsNoFiltersAction,
     fetchTemplateDetail
 } from '../../store/Actions/Actions';
-import { Dropdown, DropdownItem, DropdownPosition, DropdownToggle, Skeleton, Text, TextContent } from '@patternfly/react-core';
+import {
+    Bullseye,
+    Dropdown,
+    DropdownItem,
+    DropdownPosition,
+    DropdownToggle,
+    Skeleton,
+    Spinner,
+    Text,
+    TextContent
+} from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -74,12 +85,16 @@ const PatchSetDetail = () => {
         ({ entities }) => entities?.total || 0
     );
 
-    const loaded = useSelector(
-        ({ entities }) => entities?.loaded
-    );
-
     const queryParams = useSelector(
         ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore?.queryParams || {}
+    );
+
+    const templateHasSystemsLoading = useSelector(
+        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore?.templateHasSystemsLoading
+    );
+
+    const templateHasSystems = useSelector(
+        ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore?.templateHasSystems
     );
 
     const { hasAccess } = usePermissionsWithContext([
@@ -109,6 +124,8 @@ const PatchSetDetail = () => {
     };
 
     useEffect(() => {
+        dispatch(fetchPatchSetSystemsNoFiltersAction({ id: patchSetId, limit: 1 }));
+
         return () => {
             dispatch(clearTemplateDetail());
         };
@@ -293,47 +310,52 @@ const PatchSetDetail = () => {
                             {intl.formatMessage(messages.templateDetailTableTitle)}
                         </Text>
                     </TextContent>
-                    {(totalItems === 0 && loaded)
-                        ? <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />
-                        : systemStatus.hasError
-                            ? <ErrorHandler code={systemStatus.code} />
-                            : <InventoryTable
-                                ref={inventory}
-                                isFullView
-                                autoRefresh
-                                initialLoading
-                                hideFilters={{ all: true }}
-                                columns={(defaultColumns) => templateSystemsColumnsMerger(defaultColumns)}
-                                showTags
-                                onLoad={({ mergeWithEntities }) => {
-                                    store.replaceReducer(combineReducers({
-                                        ...defaultReducers,
-                                        ...mergeWithEntities(
-                                            inventoryEntitiesReducer(systemsListColumns(true), modifyTemplateDetailSystems),
-                                            persistantParams({ page, perPage, sort, search }, decodedParams)
-                                        )
-                                    }));
-                                }}
-                                customFilters={{
-                                    patchParams: {
-                                        filter,
-                                        systemProfile,
-                                        selectedTags
-                                    }
-                                }}
-                                paginationProps={{
-                                    isDisabled: totalItems === 0
-                                }}
-                                getEntities={getEntities}
-                                tableProps={{
-                                    canSelectAll: true,
-                                    variant: TableVariant.compact,
-                                    className: 'patchCompactInventory',
-                                    isStickyHeader: true,
-                                    actionResolver: () => hasAccess ? patchSetDetailRowActions(openSystemUnassignModal) : []
-                                }}
-                                hasCheckbox={false} /* TODO: Remove this when implementing bulk actions */
-                            />}
+                    {templateHasSystemsLoading
+                        ? (
+                            <Bullseye>
+                                <Spinner size="xl" />
+                            </Bullseye>
+                        ) : templateHasSystems
+                            ? systemStatus.hasError
+                                ? <ErrorHandler code={systemStatus.code} />
+                                : <InventoryTable
+                                    ref={inventory}
+                                    isFullView
+                                    autoRefresh
+                                    initialLoading
+                                    hideFilters={{ all: true }}
+                                    columns={(defaultColumns) => templateSystemsColumnsMerger(defaultColumns)}
+                                    showTags
+                                    onLoad={({ mergeWithEntities }) => {
+                                        store.replaceReducer(combineReducers({
+                                            ...defaultReducers,
+                                            ...mergeWithEntities(
+                                                inventoryEntitiesReducer(systemsListColumns(true), modifyTemplateDetailSystems),
+                                                persistantParams({ page, perPage, sort, search }, decodedParams)
+                                            )
+                                        }));
+                                    }}
+                                    customFilters={{
+                                        patchParams: {
+                                            filter,
+                                            systemProfile,
+                                            selectedTags
+                                        }
+                                    }}
+                                    paginationProps={{
+                                        isDisabled: totalItems === 0
+                                    }}
+                                    getEntities={getEntities}
+                                    tableProps={{
+                                        canSelectAll: true,
+                                        variant: TableVariant.compact,
+                                        className: 'patchCompactInventory',
+                                        isStickyHeader: true,
+                                        actionResolver: () => hasAccess ? patchSetDetailRowActions(openSystemUnassignModal) : []
+                                    }}
+                                    hasCheckbox={false} /* TODO: Remove this when implementing bulk actions */
+                                />
+                            : <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />}
                 </Main>
             </Fragment>
     );

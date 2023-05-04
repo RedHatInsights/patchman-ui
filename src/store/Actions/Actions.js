@@ -281,16 +281,25 @@ export const clearPatchSetAction = () => ({
     payload: []
 });
 
-export const fetchPatchSetSystemsAction = (id, params) => ({
+export const fetchPatchSetSystemsAction = (params) => ({
     type: ActionTypes.FETCH_PATCH_SET_SYSTEMS,
     payload: new Promise(resolve => {
-        resolve(fetchPatchSetSystems(id, params));
+        resolve(fetchPatchSetSystems(params));
     }).then(result => result)
 });
+
+export const fetchPatchSetSystemsNoFiltersAction = (params) => ({
+    type: ActionTypes.FETCH_PATCH_SET_SYSTEMS_NO_FILTERS,
+    payload: new Promise(resolve => {
+        resolve(fetchPatchSetSystems(params));
+    }).then(result => result)
+});
+
 export const clearPatchSetsAction = () => ({
     type: ActionTypes.CLEAR_PATCH_SETS,
     payload: []
 });
+
 export const toggleAllSelectedAction = (state) => ({
     type: ActionTypes.TOGGLE_ALL_SELECTED,
     payload: state
