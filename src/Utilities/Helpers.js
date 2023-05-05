@@ -652,6 +652,9 @@ export const objUndefinedToFalse = (object) =>
         return modifiedObject;
     }, {});
 
+export const objOnlyWithTrue = (object) =>
+    Object.keys(Object.fromEntries(Object.entries(object).filter(([, v]) => v === true)));
+
 export const isObject = (variable) => {
     return (typeof variable === 'object' && variable !== null) ? true : false;
 };

@@ -10,7 +10,7 @@ import messages from '../Messages';
 import { defaultCompoundSortValues, exportNotifications } from './constants';
 import {
     convertLimitOffset, getLimitFromPageSize,
-    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO, objUndefinedToFalse
+    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO, objUndefinedToFalse, objOnlyWithTrue
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
@@ -268,7 +268,7 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
         const requestConfig = {
             name,
             description,
-            inventory_ids: (patchSetID || id) ? objUndefinedToFalse(systems) : Object.keys(systems),
+            inventory_ids: (patchSetID || id) ? objUndefinedToFalse(systems) : objOnlyWithTrue(systems),
             ...formattedDate && { config: { to_time: formattedDate } }
         };
 

@@ -106,7 +106,7 @@ beforeEach(() => {
     useSelector.mockImplementation(callback => {
         return callback(mockState);
     });
-    wrapper = mount(<Provider store={store}>
+    wrapper = mountWithIntl(<Provider store={store}>
         <Router><Systems /></Router>
     </Provider>);
 });
@@ -210,7 +210,7 @@ describe('Systems.js', () => {
         it('Should show table row actions for patch-set when flag is enabled', () => {
             useFeatureFlag.mockReturnValue(true);
 
-            const tempWrapper = mount(<Provider store={store}>
+            const tempWrapper = mountWithIntl(<Provider store={store}>
                 <Router><Systems /></Router>
             </Provider>);
 

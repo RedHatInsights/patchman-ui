@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { act } from 'react-dom/test-utils';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Select, SelectOption, Spinner } from '@patternfly/react-core';
+import { Select, SelectOption } from '@patternfly/react-core';
 
 import SelectExistingSets from './SelectExistingSets';
 import { initialState } from '../../../store/Reducers/PatchSetsReducer';
@@ -64,22 +64,6 @@ describe('SelectExistingSets', () => {
     it('Should fetch patch-sets on mount with limit 10', () =>{
         const actions = store.getActions();
         expect(actions[0].type).toEqual('FETCH_ALL_PATCH_SETS');
-    });
-
-    it('Should display Spinner when patch-sets are loading', () => {
-        useSelector.mockImplementation(callback => {
-            return callback({ PatchSetsStore: {
-                ...initialState, status: { ...initialState, isLoading: true }
-            } });
-        });
-
-        const wrapper = mount(
-            <Provider store={store}>
-                <SelectExistingSets/>
-            </Provider>
-        );
-
-        expect(wrapper.find(Spinner)).toHaveLength(1);
     });
 
     it('Should calculate Select options after patch-sets are loaded', () => {

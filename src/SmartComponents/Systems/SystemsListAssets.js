@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
-import { createAdvisoriesIcons, createUpgradableColumn,
-    remediationProvider, createOSColumn, createPackagesColumn } from '../../Utilities/Helpers';
+import {
+    createAdvisoriesIcons, createUpgradableColumn,
+    remediationProvider, createOSColumn, createPackagesColumn
+} from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 import { sortable } from '@patternfly/react-table';
 
@@ -123,7 +125,13 @@ const isPatchSetRemovalDisabled = (row) => {
     return !baselineName || (typeof baselineName === 'string' && baselineName === '');
 };
 
-export const systemsRowActions = (showRemediationModal, showPatchSetModal, isPatchSetEnabled, openUnassignSystemsModal, row) => {
+export const systemsRowActions = (
+    showRemediationModal,
+    showTemplateAssignSystemsModal,
+    isPatchSetEnabled,
+    openUnassignSystemsModal,
+    row
+) => {
     return [
         {
             title: 'Apply all applicable advisories',
@@ -143,10 +151,10 @@ export const systemsRowActions = (showRemediationModal, showPatchSetModal, isPat
                 );
             }
         },
-        ...(isPatchSetEnabled && showPatchSetModal ? [{
+        ...(isPatchSetEnabled && showTemplateAssignSystemsModal ? [{
             title: 'Assign to a template',
             onClick: (event, rowId, rowData) => {
-                showPatchSetModal(rowData?.id);
+                showTemplateAssignSystemsModal({ [rowData.id]: true });
             }
         },
         {

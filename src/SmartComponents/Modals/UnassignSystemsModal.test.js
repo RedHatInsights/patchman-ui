@@ -5,8 +5,8 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 
 import UnassignSystemsModal from './UnassignSystemsModal';
 import { unassignSystemFromPatchSet, fetchSystems } from '../../Utilities/api';
-import { patchSetUnassignSystemsNotifications } from '../../Utilities/constants';
 import { mountWithIntl, initMocks } from '../../Utilities/unitTestingUtilities';
+import { patchSetUnassignSystemsNotifications } from '../PatchSet/PatchSetAssets';
 
 initMocks();
 
