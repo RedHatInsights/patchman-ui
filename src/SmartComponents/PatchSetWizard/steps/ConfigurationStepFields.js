@@ -17,7 +17,8 @@ import ConfigurationFields from '../InputFields/ConfigurationFields';
 
 const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
     const formOptions = useFormApi();
-    const shouldShowRadioButtons = (!patchSetID && systemsIDs?.length !== 0) || false;
+    // TODO: Cleanup this unused code later
+    const shouldShowRadioButtons = false;
 
     const [shouldApplyExisting, setShouldApplyExisting] = useState(false);
     const [shouldCreateNew, setShouldCreateNew] = useState(true);

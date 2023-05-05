@@ -135,7 +135,7 @@ const Systems = () => {
     const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
 
     const {
-        patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal
+        patchSetState, setPatchSetState, openUnassignSystemsModal, openAssignSystemsModal
     } = usePatchSetState(selectedRows);
 
     useEffect(() => {
@@ -193,7 +193,7 @@ const Systems = () => {
                         tableProps={{
                             actionResolver: (row) =>
                                 systemsRowActions(
-                                    showRemediationModal, openPatchSetAssignWizard,
+                                    showRemediationModal, openAssignSystemsModal,
                                     isPatchSetEnabled, openUnassignSystemsModal, row
                                 ),
                             canSelectAll: false,
@@ -219,7 +219,7 @@ const Systems = () => {
                                 ...isPatchSetEnabled ? [{
                                     key: 'assign-multiple-systems',
                                     label: intl.formatMessage(messages.titlesTemplateAssign),
-                                    onClick: openPatchSetAssignWizard,
+                                    onClick: () => openAssignSystemsModal(selectedRows),
                                     props: { isDisabled: selectedCount === 0 }
                                 },
                                 {

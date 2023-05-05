@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 
 import PatchSetWizard from '../../SmartComponents/PatchSetWizard/PatchSetWizard';
 import UnassignSystemsModal from '../../SmartComponents/Modals/UnassignSystemsModal';
+import AssignSystemsModal from '../../SmartComponents/Modals/AssignSystemsModal';
 
 const PatchSetWrapper = ({ patchSetState, setPatchSetState }) => {
     return (<>
@@ -11,6 +12,11 @@ const PatchSetWrapper = ({ patchSetState, setPatchSetState }) => {
             setUnassignSystemsModalOpen={setPatchSetState}
             systemsIDs={patchSetState.systemsIDs}
         />}
+        <AssignSystemsModal
+            patchSetState={patchSetState}
+            setPatchSetState={setPatchSetState}
+            systemsIDs={patchSetState.systemsIDs}
+        />
         {(patchSetState.isPatchSetWizardOpen) &&
         <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setPatchSetState} />}
     </>);
