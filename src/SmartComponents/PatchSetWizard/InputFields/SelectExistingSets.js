@@ -82,7 +82,7 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems, select
 
         if (selectedSet.length === 1) {
             selectCallback(selectedSet[0]);
-            formOptions?.change('existing_patch_set', { name: selectedSet[0]?.name, systems, id: selectedSet[0]?.id });
+            formOptions?.change?.('existing_patch_set', { name: selectedSet[0]?.name, systems, id: selectedSet[0]?.id });
         }
     };
 
