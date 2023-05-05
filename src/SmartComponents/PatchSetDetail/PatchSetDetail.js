@@ -135,6 +135,7 @@ const PatchSetDetail = () => {
         if (patchSetState.shouldRefresh === true) {
             refreshTable();
             setPatchSetState({ ...patchSetState, shouldRefresh: false });
+            dispatch(fetchPatchSetSystemsNoFiltersAction({ id: patchSetId, limit: 1 }));
         }
     }, [patchSetState.shouldRefresh]);
 
