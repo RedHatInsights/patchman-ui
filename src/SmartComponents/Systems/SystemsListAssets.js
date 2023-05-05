@@ -48,7 +48,7 @@ export const systemsListColumns = (isPatchSetEnabled = false) => [
 
 export const advisorySystemsColumns = (isPatchSetEnabled = false) => [
     {
-        key: 'operating_system',
+        key: 'os',
         title: 'OS',
         renderFunc: value => createOSColumn(value),
         props: {

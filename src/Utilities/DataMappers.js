@@ -225,7 +225,7 @@ export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
                     rhsa || 0,
                     other || 0
                 ],
-                operating_system: {
+                os: {
                     osName: os || 'N/A',
                     rhsm
                 },
