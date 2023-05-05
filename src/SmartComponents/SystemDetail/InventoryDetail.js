@@ -34,21 +34,20 @@ const InventoryDetail = () => {
         ({ entityDetails }) => entityDetails?.entity ?? {}
     );
 
-    const { patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal } = usePatchSetState();
+    const { patchSetState, setPatchSetState, openAssignSystemsModal, openUnassignSystemsModal } = usePatchSetState();
 
     useEffect(() => {
-        dispatch(fetchSystemDetailsAction(inventoryId));
         return () => {
             dispatch(clearNotifications());
         };
+    }, []);
+
+    useEffect(() => {
+        dispatch(fetchSystemDetailsAction(inventoryId));
     }, [patchSetState.shouldRefresh]);
 
     const pageTitle = displayName && `${displayName} - ${intl.formatMessage(messages.titlesSystems)}`;
     setPageTitle(pageTitle);
-
-    const openPatchSetWizard = () => {
-        openPatchSetAssignWizard(inventoryId);
-    };
 
     const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
 
@@ -86,7 +85,7 @@ const InventoryDetail = () => {
                         {
                             title: intl.formatMessage(messages.titlesTemplateAssign),
                             key: 'assign-to-template',
-                            onClick: openPatchSetWizard
+                            onClick: () => openAssignSystemsModal({ [inventoryId]: true })
                         },
                         {
                             title: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
