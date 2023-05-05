@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 
 import { unassignSystemFromPatchSet } from '../../Utilities/api';
-import { patchSetUnassignSystemsNotifications } from '../../Utilities/constants';
+import { patchSetUnassignSystemsNotifications } from '../PatchSet/PatchSetAssets';
 
 /**
 *Handles removing one or more systems from different patch sets.

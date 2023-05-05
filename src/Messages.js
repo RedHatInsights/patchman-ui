@@ -511,6 +511,11 @@ export default defineMessages({
         description: 'Template wizard alert',
         defaultMessage: 'If you apply a template to a system that already has one, the old template will be overwritten.'
     },
+    templateApply: {
+        id: 'templateApply',
+        description: 'title with capital letters',
+        defaultMessage: 'Apply template'
+    },
     templateApplySystems: {
         id: 'templateApplySystems',
         description: 'step name of the patch template wizard',
@@ -540,6 +545,11 @@ export default defineMessages({
         id: 'templateContentStepTitle',
         description: 'template wizard template title',
         defaultMessage: 'Define template content'
+    },
+    templateCreate: {
+        id: 'templateCreate',
+        description: 'title with capital letters',
+        defaultMessage: 'Create'
     },
     templateDateField: {
         id: 'templateDateField',
@@ -636,6 +646,11 @@ export default defineMessages({
         description: 'validation text of the patch template wizard',
         defaultMessage: 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.'
     },
+    templateOr: {
+        id: 'templateOr',
+        description: 'title with capital letters',
+        defaultMessage: 'Or'
+    },
     templatePopoverBody: {
         id: 'templatePopoverBody',
         description: 'Template page header popover body',
@@ -650,6 +665,16 @@ export default defineMessages({
         id: 'templateReview',
         description: 'step name of the patch template wizard',
         defaultMessage: 'Review '
+    },
+    templateSelect: {
+        id: 'templateSelect',
+        description: 'title with capital letters',
+        defaultMessage: 'Select a template to apply to the selected {systemCount, plural, one {# system} other {# systems}}.'
+    },
+    templateSelectExisting: {
+        id: 'templateSelectExisting',
+        description: 'title with capital letters',
+        defaultMessage: 'Select an existing template'
     },
     templateStepSystems: {
         id: 'templateStepSystems',
@@ -754,7 +779,7 @@ export default defineMessages({
     textTemplateChoose: {
         id: 'textTemplateChoose',
         description: 'text for patch template wizard',
-        defaultMessage: 'Choose a patch template '
+        defaultMessage: 'Template'
     },
     textTemplateCreateNew: {
         id: 'textTemplateCreateNew',

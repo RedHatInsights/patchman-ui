@@ -32,10 +32,10 @@ const SelectPagination = ({ changePage, page, perPage, totalItems }) =>{
     );
 };
 
-const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems }) => {
+const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems, selectCallback = () => {} }) => {
     const dispatch = useDispatch();
     const formOptions = useFormApi();
-    const [isOpen, setOpen] = useState(true);
+    const [isOpen, setOpen] = useState(false);
 
     const rows = useSelector(({ PatchSetsStore }) => PatchSetsStore.rows);
     const queryParams = useSelector(({ PatchSetsStore }) => PatchSetsStore.queryParams);
@@ -74,15 +74,16 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems }) => {
         setOpen(!isOpen);
     };
 
-    const handleSelect = (_, selected) =>{
+    const handleSelect = (_, selected) => {
         setOpen(false);
         setSelectedPatchSet(selected);
 
         const selectedSet = rows.filter(set => set.name === selected);
-        if (selectedSet.length === 1) {
-            formOptions.change('existing_patch_set', { name: selectedSet[0]?.name, systems, id: selectedSet[0]?.id });
-        }
 
+        if (selectedSet.length === 1) {
+            selectCallback(selectedSet[0]);
+            formOptions?.change('existing_patch_set', { name: selectedSet[0]?.name, systems, id: selectedSet[0]?.id });
+        }
     };
 
     const changePage = (page) => {
@@ -99,7 +100,7 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems }) => {
                 variant={SelectVariant.single}
                 aria-label={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
                 onSelect={handleSelect}
-                placeholderText={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
+                placeholderText={intl.formatMessage(messages.templateSelectExisting)}
                 inlineFilterPlaceholderText={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
                 selections={selectedSets}
                 onToggle={handleOpen}
@@ -116,10 +117,12 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems }) => {
                         totalItems={metadata.total_items}
                     />
                 }
+                menuAppendTo={document.body}
+                maxHeight={350}
             >
                 {patchOptions}
             </Select>
-        </FormGroup >
+        </FormGroup>
     );
 };
 
@@ -133,6 +136,7 @@ SelectPagination.propTypes = {
 SelectExistingSets.propTypes = {
     setSelectedPatchSet: propTypes.func,
     selectedSets: propTypes.array,
-    systems: propTypes.array
+    systems: propTypes.array,
+    selectCallback: propTypes.func
 };
 export default SelectExistingSets;

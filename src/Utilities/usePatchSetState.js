@@ -12,6 +12,7 @@ const usePatchSetState = (selectedRows) => {
     const [patchSetState, setPatchSetState] = useState({
         isPatchSetWizardOpen: false,
         isUnassignSystemsModalOpen: false,
+        isAssignSystemsModalOpen: false,
         shouldRefresh: false,
         systemsIDs: []
     });
@@ -35,11 +36,26 @@ const usePatchSetState = (selectedRows) => {
         });
     };
 
+    const openAssignSystemsModal = (systemsIDs) => {
+        setPatchSetState({
+            isAssignSystemsModalOpen: true,
+            systemsIDs,
+            shouldRefresh: false
+        });
+    };
+
     const openPatchSetEditModal = (patchSetID) => {
         setPatchSetState({ isPatchSetWizardOpen: true, patchSetID });
     };
 
-    return { patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal, openPatchSetEditModal };
+    return {
+        patchSetState,
+        setPatchSetState,
+        openPatchSetAssignWizard,
+        openUnassignSystemsModal,
+        openAssignSystemsModal,
+        openPatchSetEditModal
+    };
 };
 
 export default usePatchSetState;
