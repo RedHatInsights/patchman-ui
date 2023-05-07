@@ -4,10 +4,10 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const advisoryStatusFilter = (apply, currentFilter = {}) => {
-    let { status: currentValue } = currentFilter;
-
-    const filterByType = value => {
-        apply({ filter: { status: (value.length === 0 ? undefined : value) } });
+    const filterByStatus = value => {
+        value.length === 0
+            ? apply({ filter: { status: undefined } })
+            : apply({ filter: { status: value } });
     };
 
     return {
@@ -15,10 +15,12 @@ const advisoryStatusFilter = (apply, currentFilter = {}) => {
         type: conditionalFilterType.checkbox,
         filterValues: {
             onChange: (event, value) => {
-                filterByType(value);
+                filterByStatus(value);
             },
             items: advisoryStatuses,
-            value: currentValue,
+            value: !currentFilter.status || Array.isArray(currentFilter.status)
+                ? currentFilter.status
+                : [currentFilter.status],
             placeholder: intl.formatMessage(messages.labelsColumnsStatusPlaceholder)
         }
     };

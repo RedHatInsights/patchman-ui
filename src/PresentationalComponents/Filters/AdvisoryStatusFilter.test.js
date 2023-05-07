@@ -11,7 +11,7 @@ jest.mock('react', () => ({
 describe('StatusFilter', () => {
     it('Should set currentValue to zero and init', () => {
         const response = advisoryStatusFilter(apply, currentFilter);
-        expect(response.filterValues.value).toEqual('Installable');
+        expect(response.filterValues.value).toEqual(['Installable']);
         expect(response.label).toEqual('Status');
         expect(response.type).toEqual('checkbox');
     });
