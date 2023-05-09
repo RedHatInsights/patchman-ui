@@ -226,7 +226,7 @@ export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
                     other || 0
                 ],
                 os: {
-                    osName: os || 'N/A',
+                    osName: os.osName || os || 'N/A',
                     rhsm
                 },
                 selected: selectedRows[id] !== undefined,
