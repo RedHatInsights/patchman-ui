@@ -1,3 +1,10 @@
+## [1.63.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.0...v1.63.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* **AdvisoryDetails:** SPM-2058 - Add fallbacks for osName ([#1047](https://github.com/RedHatInsights/patchman-ui/issues/1047)) ([8d8b483](https://github.com/RedHatInsights/patchman-ui/commit/8d8b4837e4be3d252c168c76d2feba8a0505e853))
+
 # [1.63.0](https://github.com/RedHatInsights/patchman-ui/compare/v1.62.4...v1.63.0) (2023-04-17)
 
 
