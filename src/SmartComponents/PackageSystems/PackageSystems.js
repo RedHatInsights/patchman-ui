@@ -59,9 +59,9 @@ const PackageSystems = ({ packageName }) => {
         dispatch(changePackageSystemsParams(params));
     }, []);
 
-    useEffect(async () => {
+    useEffect(() => {
         apply(decodedParams);
-        setPackageVersions(await fetchPackageVersions({ package_name: packageName }));
+        fetchPackageVersions({ package_name: packageName }).then(setPackageVersions);
     }, []);
 
     useEffect(() => {
