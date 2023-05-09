@@ -201,6 +201,7 @@ export const Routes = () => {
         >
             {!hasSystems ? (
                 <AsyncComponent
+                    appId="content_management_zero_state"
                     appName="dashboard"
                     module="./AppZeroState"
                     scope="dashboard"
