@@ -32,13 +32,13 @@ export const buildActiveFiltersConfig = (filter, search, deleteFilters) => ({
     deleteTitle: intl.formatMessage(messages.labelsFiltersReset)
 });
 
-export const systemsColumnsMerger = (defaultColumns, additionalColumns, isPatchSetEnabled) => {
+export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
 
     let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
 
-    return [...nameAndTag, ...additionalColumns(isPatchSetEnabled), lastSeen[0]];
+    return [...nameAndTag, ...additionalColumns(), lastSeen[0]];
 };
 
 export const templateSystemsColumnsMerger = (defaultColumns) => {

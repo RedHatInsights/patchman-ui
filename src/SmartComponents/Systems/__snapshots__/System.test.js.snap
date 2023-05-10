@@ -608,6 +608,163 @@ exports[`Systems.js should match the snapshot 1`] = `
             </InternalMain>
           </Connect(InternalMain)>
         </SystemsStatusreport>
+        <PatchSetWrapper
+          patchSetState={
+            Object {
+              "isAssignSystemsModalOpen": false,
+              "isPatchSetWizardOpen": false,
+              "isUnassignSystemsModalOpen": false,
+              "shouldRefresh": false,
+              "systemsIDs": Array [],
+            }
+          }
+          setPatchSetState={[Function]}
+        >
+          <injectIntl(AssignSystemsModal)
+            patchSetState={
+              Object {
+                "isAssignSystemsModalOpen": false,
+                "isPatchSetWizardOpen": false,
+                "isUnassignSystemsModalOpen": false,
+                "shouldRefresh": false,
+                "systemsIDs": Array [],
+              }
+            }
+            setPatchSetState={[Function]}
+            systemsIDs={Array []}
+          >
+            <AssignSystemsModal
+              intl={
+                Object {
+                  "$t": [Function],
+                  "defaultFormats": Object {},
+                  "defaultLocale": "en",
+                  "defaultRichTextElements": undefined,
+                  "fallbackOnEmptyString": true,
+                  "formatDate": [Function],
+                  "formatDateTimeRange": [Function],
+                  "formatDateToParts": [Function],
+                  "formatDisplayName": [Function],
+                  "formatList": [Function],
+                  "formatListToParts": [Function],
+                  "formatMessage": [Function],
+                  "formatNumber": [Function],
+                  "formatNumberToParts": [Function],
+                  "formatPlural": [Function],
+                  "formatRelativeTime": [Function],
+                  "formatTime": [Function],
+                  "formatTimeToParts": [Function],
+                  "formats": Object {},
+                  "formatters": Object {
+                    "getDateTimeFormat": [Function],
+                    "getDisplayNames": [Function],
+                    "getListFormat": [Function],
+                    "getMessageFormat": [Function],
+                    "getNumberFormat": [Function],
+                    "getPluralRules": [Function],
+                    "getRelativeTimeFormat": [Function],
+                  },
+                  "locale": "en",
+                  "messages": Object {
+                    "default.cancel": "Cancel",
+                    "default.delete": "Delete",
+                    "default.remove": "Remove",
+                    "default.save": "Save",
+                  },
+                  "onError": [Function],
+                  "onWarn": [Function],
+                  "textComponent": Symbol(react.fragment),
+                  "timeZone": undefined,
+                  "wrapRichTextChunksInFragment": undefined,
+                }
+              }
+              patchSetState={
+                Object {
+                  "isAssignSystemsModalOpen": false,
+                  "isPatchSetWizardOpen": false,
+                  "isUnassignSystemsModalOpen": false,
+                  "shouldRefresh": false,
+                  "systemsIDs": Array [],
+                }
+              }
+              setPatchSetState={[Function]}
+              systemsIDs={Array []}
+            >
+              <Modal
+                actions={
+                  Array [
+                    <Button
+                      isDisabled={true}
+                      onClick={[Function]}
+                    >
+                      Apply template
+                    </Button>,
+                    <Button
+                      onClick={[Function]}
+                      variant="link"
+                    >
+                      Cancel
+                    </Button>,
+                  ]
+                }
+                appendTo={[Function]}
+                aria-describedby=""
+                aria-label=""
+                aria-labelledby=""
+                className=""
+                hasNoBodyWrapper={false}
+                isOpen={false}
+                onClose={[Function]}
+                ouiaSafe={true}
+                showClose={true}
+                title="Apply template"
+                titleIconVariant={null}
+                titleLabel=""
+                variant="small"
+              >
+                <Portal
+                  containerInfo={<div />}
+                >
+                  <ModalContent
+                    actions={
+                      Array [
+                        <Button
+                          isDisabled={true}
+                          onClick={[Function]}
+                        >
+                          Apply template
+                        </Button>,
+                        <Button
+                          onClick={[Function]}
+                          variant="link"
+                        >
+                          Cancel
+                        </Button>,
+                      ]
+                    }
+                    aria-describedby=""
+                    aria-label=""
+                    aria-labelledby=""
+                    boxId="pf-modal-part-0"
+                    className=""
+                    descriptorId="pf-modal-part-2"
+                    hasNoBodyWrapper={false}
+                    isOpen={false}
+                    labelId="pf-modal-part-1"
+                    onClose={[Function]}
+                    ouiaId="OUIA-Generated-Modal-small-1"
+                    ouiaSafe={true}
+                    showClose={true}
+                    title="Apply template"
+                    titleIconVariant={null}
+                    titleLabel=""
+                    variant="small"
+                  />
+                </Portal>
+              </Modal>
+            </AssignSystemsModal>
+          </injectIntl(AssignSystemsModal)>
+        </PatchSetWrapper>
         <Connect(InternalMain)>
           <InternalMain>
             <section
@@ -623,6 +780,22 @@ exports[`Systems.js should match the snapshot 1`] = `
                         isLoading={false}
                         remediationProvider={[MockFunction]}
                       />,
+                      Object {
+                        "key": "assign-multiple-systems",
+                        "label": "Assign to a template",
+                        "onClick": [Function],
+                        "props": Object {
+                          "isDisabled": false,
+                        },
+                      },
+                      Object {
+                        "key": "remove-multiple-systems",
+                        "label": "Remove from a template",
+                        "onClick": [Function],
+                        "props": Object {
+                          "isDisabled": false,
+                        },
+                      },
                     ],
                   }
                 }
