@@ -13,13 +13,13 @@ import { changeAffectedSystemsParams, clearAdvisorySystemsReducer,
     clearInventoryReducer, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyAdvisorySystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { exportAdvisorySystemsCSV, exportAdvisorySystemsJSON, fetchAdvisorySystems } from '../../Utilities/api';
-import { featureFlags, remediationIdentifiers } from '../../Utilities/constants';
+import { remediationIdentifiers } from '../../Utilities/constants';
 import {
     arrayFromObj, decodeQueryparams, persistantParams,
     remediationProvider, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
 import {
-    useBulkSelectConfig, useFeatureFlag, useGetEntities, useOnExport, useRemoveFilter
+    useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { advisorySystemsColumns, systemsRowActions } from '../Systems/SystemsListAssets';
@@ -27,22 +27,18 @@ import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
 import { useSearchParams } from 'react-router-dom';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
     const store = useStore();
-    const chrome = useChrome();
     const [searchParams, setSearchParams] = useSearchParams();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
 
     const decodedParams = decodeQueryparams('?' + searchParams.toString());
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
@@ -141,7 +137,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     initialLoading
                     ignoreRefresh
                     hideFilters={{ all: true, tags: false }}
-                    columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, advisorySystemsColumns, isPatchSetEnabled)}
+                    columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, advisorySystemsColumns)}
                     showTags
                     customFilters={{
                         patchParams: {

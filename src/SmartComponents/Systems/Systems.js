@@ -13,13 +13,13 @@ import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/
 import {
     exportSystemsCSV, exportSystemsJSON, fetchSystems
 } from '../../Utilities/api';
-import { systemsListDefaultFilters, featureFlags } from '../../Utilities/constants';
+import { systemsListDefaultFilters } from '../../Utilities/constants';
 import {
     arrayFromObj, decodeQueryparams, persistantParams, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
 import {
     setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
-    useRemoveFilter, useFeatureFlag
+    useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
@@ -34,12 +34,10 @@ import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersion
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { useSearchParams } from 'react-router-dom';
 
 const Systems = () => {
     const store = useStore();
-    const chrome = useChrome();
     const inventory = useRef(null);
     const pageTitle = intl.formatMessage(messages.titlesSystems);
 
@@ -54,8 +52,6 @@ const Systems = () => {
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
 
     const decodedParams = decodeQueryparams('?' + searchParams.toString());
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
@@ -159,7 +155,7 @@ const Systems = () => {
             && <ErrorHandler code={code} metadata={metadata}/>
             || <React.Fragment>
                 <SystemsStatusReport apply={apply} queryParams={queryParams} />
-                {isPatchSetEnabled && <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />}
+                <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
                 {isRemediationOpen && <RemediationModalCmp /> || null}
                 <Main>
                     <InventoryTable
@@ -168,7 +164,7 @@ const Systems = () => {
                         autoRefresh
                         initialLoading
                         hideFilters={{ all: true, tags: false }}
-                        columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, systemsListColumns, isPatchSetEnabled)}
+                        columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, systemsListColumns)}
                         showTags
                         customFilters={{
                             patchParams: {
@@ -185,7 +181,7 @@ const Systems = () => {
                             store.replaceReducer(combineReducers({
                                 ...defaultReducers,
                                 ...mergeWithEntities(
-                                    inventoryEntitiesReducer(systemsListColumns(isPatchSetEnabled), modifyInventory),
+                                    inventoryEntitiesReducer(systemsListColumns(), modifyInventory),
                                     persistantParams({ page, perPage, sort, search }, decodedParams)
                                 )
                             }));
@@ -194,8 +190,10 @@ const Systems = () => {
                         tableProps={{
                             actionResolver: (row) =>
                                 systemsRowActions(
-                                    showRemediationModal, openAssignSystemsModal,
-                                    isPatchSetEnabled, openUnassignSystemsModal, row
+                                    showRemediationModal,
+                                    openAssignSystemsModal,
+                                    openUnassignSystemsModal,
+                                    row
                                 ),
                             canSelectAll: false,
                             variant: TableVariant.compact,
@@ -217,7 +215,7 @@ const Systems = () => {
                                     }
                                     isLoading={isRemediationLoading}
                                 />,
-                                ...isPatchSetEnabled ? [{
+                                {
                                     key: 'assign-multiple-systems',
                                     label: intl.formatMessage(messages.titlesTemplateAssign),
                                     onClick: () => openAssignSystemsModal(selectedRows),
@@ -228,7 +226,7 @@ const Systems = () => {
                                     label: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
                                     onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
                                     props: { isDisabled: selectedCount === 0 }
-                                }] : []
+                                }
                             ]
                         }}
                         filterConfig={filterConfig}
