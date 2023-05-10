@@ -1,3 +1,11 @@
+## [1.63.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.1...v1.63.2) (2023-05-10)
+
+
+### Bug Fixes
+
+* further remove flags ([#1052](https://github.com/RedHatInsights/patchman-ui/issues/1052)) ([940307d](https://github.com/RedHatInsights/patchman-ui/commit/940307d60a175504eea5b37752760085d846ccb5))
+* ungate the templates route ([#1050](https://github.com/RedHatInsights/patchman-ui/issues/1050)) ([7e5344b](https://github.com/RedHatInsights/patchman-ui/commit/7e5344b1afd19e909b1a1623f1918b03aa39c0dc))
+
 ## [1.63.1](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.0...v1.63.1) (2023-05-09)
 
 
