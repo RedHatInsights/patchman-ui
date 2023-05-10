@@ -3,8 +3,6 @@ import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import WithPermission from './PresentationalComponents/WithPermission/WithPermission';
 import { Bullseye, Spinner } from '@patternfly/react-core';
-import { useFeatureFlag } from './Utilities/Hooks';
-import { featureFlags } from './Utilities/constants';
 import some from 'lodash/some';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import axios from 'axios';
@@ -96,7 +94,6 @@ export const Routes = () => {
     const history = useHistory();
     const chrome = useChrome();
 
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
     const [hasSystems, setHasSystems] = useState(true);
     const INVENTORY_TOTAL_FETCH_URL = '/api/inventory/v1/hosts';
@@ -150,7 +147,7 @@ export const Routes = () => {
             requiredPermissions: generalPermissions,
             component: PackagesPage
         },
-        ...(isPatchSetEnabled ? [{
+        {
             path: '/templates/:templateName',
             isExact: true,
             requiredPermissions: generalPermissions,
@@ -161,7 +158,7 @@ export const Routes = () => {
             isExact: true,
             requiredPermissions: generalPermissions,
             component: Templates
-        }] : [])
+        }
     ];
 
     const listenNavigation = useCallback(() => {
@@ -221,7 +218,7 @@ export const Routes = () => {
                     />
                     <Route render={() =>
                         (
-                            (!isPatchSetEnabled || !some(paths, p => p.to === history.location.pathname)) && (
+                            (!some(paths, p => p.to === history.location.pathname)) && (
                                 <Redirect to={'/advisories'} />
                             )
                         )
