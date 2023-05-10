@@ -7,23 +7,19 @@ import { defaultReducers } from '../../store';
 import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { setPageTitle, useFeatureFlag } from '../../Utilities/Hooks';
+import { setPageTitle } from '../../Utilities/Hooks';
 import { InventoryDetailHead, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import usePatchSetState from '../../Utilities/usePatchSetState';
-import { featureFlags } from '../../Utilities/constants';
 import { Link, useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const InventoryDetail = () => {
     const { inventoryId } = useParams();
     const store = useStore();
-    const chrome = useChrome();
-
     const dispatch = useDispatch();
 
     const { hasThirdPartyRepo, patchSetName, patchSetId } = useSelector(
@@ -48,8 +44,6 @@ const InventoryDetail = () => {
 
     const pageTitle = displayName && `${displayName} - ${intl.formatMessage(messages.titlesSystems)}`;
     setPageTitle(pageTitle);
-
-    const isPatchSetEnabled = useFeatureFlag(featureFlags.patch_set, chrome);
 
     return (
         <DetailWrapper
@@ -81,7 +75,7 @@ const InventoryDetail = () => {
                     hideBack
                     showTags
                     inventoryId={inventoryId}
-                    actions={isPatchSetEnabled && [
+                    actions={[
                         {
                             title: intl.formatMessage(messages.titlesTemplateAssign),
                             key: 'assign-to-template',

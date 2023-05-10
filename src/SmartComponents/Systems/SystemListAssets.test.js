@@ -18,7 +18,7 @@ jest.mock('../../Utilities/api', () => ({
 describe('SystemListAssets.js', () => {
 
     it('Should call systemsListColumns on Applicable advisories renderFunc with correct params', () => {
-        systemsListColumns(false)[1].renderFunc('testValue');
+        systemsListColumns()[2].renderFunc('testValue');
         expect(createAdvisoriesIcons).toHaveBeenCalledWith('testValue');
     });
 
@@ -47,7 +47,7 @@ describe('SystemListAssets.js', () => {
         });
         it('Should disable "Apply all applicable advisories" action when there is no applicable advisories ', () => {
             const testRow = { applicable_advisories: [0, 0, 0, 0] };
-            const actions = systemsRowActions(null, null, null, null, testRow);
+            const actions = systemsRowActions(null, null, null, testRow);
             expect(actions).toEqual(
                 [{ isDisabled: true, onClick: expect.any(Function), title: 'Apply all applicable advisories' }]
             );

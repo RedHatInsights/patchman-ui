@@ -9,7 +9,7 @@ import {
 import './SystemsListAssets.scss';
 import { sortable } from '@patternfly/react-table';
 
-export const systemsListColumns = (isPatchSetEnabled = false) => [
+export const systemsListColumns = () => [
     {
         key: 'operating_system',
         title: 'OS',
@@ -18,7 +18,7 @@ export const systemsListColumns = (isPatchSetEnabled = false) => [
             width: 5
         }
     },
-    ...(isPatchSetEnabled ? [{
+    {
         key: 'baseline_name',
         title: 'Template',
         renderFunc: (value, _, row) => value
@@ -27,7 +27,7 @@ export const systemsListColumns = (isPatchSetEnabled = false) => [
         props: {
             width: 5
         }
-    }] : []),
+    },
     {
         key: 'applicable_advisories',
         title: 'Installable advisories',
@@ -46,7 +46,7 @@ export const systemsListColumns = (isPatchSetEnabled = false) => [
     }
 ];
 
-export const advisorySystemsColumns = (isPatchSetEnabled = false) => [
+export const advisorySystemsColumns = () => [
     {
         key: 'os',
         title: 'OS',
@@ -55,7 +55,7 @@ export const advisorySystemsColumns = (isPatchSetEnabled = false) => [
             width: 5
         }
     },
-    ...(isPatchSetEnabled ? [{
+    {
         key: 'baseline_name',
         title: 'Template',
         renderFunc: (value, _, row) => value
@@ -64,7 +64,7 @@ export const advisorySystemsColumns = (isPatchSetEnabled = false) => [
         props: {
             width: 5
         }
-    }] : []),
+    },
     {
         key: 'status',
         title: 'Status',
@@ -128,7 +128,6 @@ const isPatchSetRemovalDisabled = (row) => {
 export const systemsRowActions = (
     showRemediationModal,
     showTemplateAssignSystemsModal,
-    isPatchSetEnabled,
     openUnassignSystemsModal,
     row
 ) => {
@@ -151,7 +150,7 @@ export const systemsRowActions = (
                 );
             }
         },
-        ...(isPatchSetEnabled && showTemplateAssignSystemsModal ? [{
+        ...(showTemplateAssignSystemsModal ? [{
             title: 'Assign to a template',
             onClick: (event, rowId, rowData) => {
                 showTemplateAssignSystemsModal({ [rowData.id]: true });

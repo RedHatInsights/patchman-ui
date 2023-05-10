@@ -7,9 +7,7 @@ import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks, mountWithIntl } from '../../Utilities/unitTestingUtilities.js';
 import Systems from './Systems';
 import toJson from 'enzyme-to-json';
-import { useFeatureFlag } from '../../Utilities/Hooks';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
-import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
 
 initMocks();
@@ -169,7 +167,7 @@ describe('Systems.js', () => {
         });
 
         const tempStore = initStore(notFoundState);
-        const tempWrapper = mount(<Provider store={tempStore}>
+        const tempWrapper = mountWithIntl(<Provider store={tempStore}>
             <Router><Systems /></Router>
         </Provider>);
 
@@ -199,7 +197,7 @@ describe('Systems.js', () => {
         });
 
         const tempStore = initStore(notFoundState);
-        const tempWrapper = mount(<Provider store={tempStore}>
+        const tempWrapper = mountWithIntl(<Provider store={tempStore}>
             <Router><Systems /></Router>
         </Provider>);
 
@@ -207,35 +205,9 @@ describe('Systems.js', () => {
     });
 
     describe('test patch-set: ', () => {
-        it('Should show table row actions for patch-set when flag is enabled', () => {
-            useFeatureFlag.mockReturnValue(true);
-
-            const tempWrapper = mountWithIntl(<Provider store={store}>
-                <Router><Systems /></Router>
-            </Provider>);
-
-            const { tableProps: { actionResolver } } = tempWrapper.find('.testInventroyComponentChild').parent().props();
-            const actions = actionResolver(systemRows[0]);
-            expect(actions.length).toEqual(3);
-        });
-
-        it('Should hide table row actions for patch-set when flag is disabled', () => {
-            useFeatureFlag.mockReturnValue(false);
-
-            const tempWrapper = mount(<Provider store={store}>
-                <Router><Systems /></Router>
-            </Provider>);
-
-            const { tableProps: { actionResolver } } = tempWrapper.find('.testInventroyComponentChild').parent().props();
-            const actions = actionResolver(systemRows[0]);
-            expect(actions.length).toEqual(1);
-        });
-
         describe('Unassign systems from patch templates', () => {
 
             it('should table row actions open UnassignSystemsModal with row id', async () => {
-                useFeatureFlag.mockReturnValue(true);
-
                 const tempWrapper = mountWithIntl(<Provider store={store}>
                     <Router><Systems /></Router>
                 </Provider>);
@@ -252,8 +224,6 @@ describe('Systems.js', () => {
             });
 
             it('should table toolbar button open UnassignSystemsModal with selected system IDs', () => {
-                useFeatureFlag.mockReturnValue(true);
-
                 const tempWrapper = mountWithIntl(<Provider store={store}>
                     <Router><Systems /></Router>
                 </Provider>);
@@ -265,28 +235,6 @@ describe('Systems.js', () => {
 
                 expect(tempWrapper.find(UnassignSystemsModal).props().unassignSystemsModalState)
                 .toEqual({ isUnassignSystemsModalOpen: true, systemsIDs: ['test-system-id-1'], shouldRefresh: false });
-            });
-
-            it('should UnassignSystemsModal be hidden by default', () => {
-                useFeatureFlag.mockReturnValue(true);
-
-                const tempWrapper = mountWithIntl(<Provider store={store}>
-                    <Router><Systems /></Router>
-                </Provider>);
-
-                expect(tempWrapper.find(UnassignSystemsModal)).toHaveLength(0);
-            });
-
-            it('should Patch template column be hidden when flag is not enabled', () => {
-                useFeatureFlag.mockReturnValue(false);
-                systemsColumnsMerger.mockImplementation(() => {});
-
-                const tempWrapper = mountWithIntl(<Provider store={store}>
-                    <Router><Systems /></Router>
-                </Provider>);
-
-                tempWrapper.find('.testInventroyComponentChild').parent().props().columns(['test-column']);
-                expect(systemsColumnsMerger).toHaveBeenCalledWith(['test-column'], expect.any(Function), false);
             });
         });
 
@@ -341,7 +289,7 @@ describe('Systems.js', () => {
             });
 
             const tempStore = initStore(testState);
-            const tempWrapper = mount(<Provider store={tempStore}>
+            const tempWrapper = mountWithIntl(<Provider store={tempStore}>
                 <Router><Systems /></Router>
             </Provider>);
 
