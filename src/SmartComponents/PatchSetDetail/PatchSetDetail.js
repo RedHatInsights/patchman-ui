@@ -11,6 +11,7 @@ import {
     changePatchSetDetailsSystemsMetadata,
     changePatchSetDetailsSystemsParams,
     changeTags,
+    clearInventoryReducer,
     clearTemplateDetail,
     fetchPatchSetSystemsNoFiltersAction,
     fetchTemplateDetail
@@ -128,6 +129,7 @@ const PatchSetDetail = () => {
 
         return () => {
             dispatch(clearTemplateDetail());
+            dispatch(clearInventoryReducer());
         };
     }, []);
 
