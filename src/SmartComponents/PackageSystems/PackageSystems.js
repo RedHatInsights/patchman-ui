@@ -147,7 +147,7 @@ const PackageSystems = ({ packageName }) => {
         <React.Fragment>
             {status.hasError && <ErrorHandler code={status.code} /> || (
                 <InventoryTable
-                    disableDefaultColumns={['system_profile', 'updated']}
+                    disableDefaultColumns={['system_profile', 'updated', 'groups']}
                     isFullView
                     autoRefresh
                     initialLoading
