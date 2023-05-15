@@ -75,14 +75,16 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
         setSelectedRows({ ...selectedRows, ...buildSelectedSystemsObj(assignedSystems) });
     }, [assignedSystems]);
 
-    const apply = (params) => {
+    const apply = (params, shouldReset = true) => {
         setLoading(true);
         setQueryParams((prevQueryParams) => ({
             ...prevQueryParams,
             ...params,
             filter: { ...prevQueryParams.filter, ...params.filter },
-            page: 1,
-            offset: 0
+            ...shouldReset && {
+                page: 1,
+                offset: 0
+            }
         }));
     };
 
@@ -93,7 +95,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
         [metadata.sort]
     );
 
-    const onSetPage = useSetPage(metadata.limit, apply);
+    const onSetPage = useSetPage(metadata.limit, params => apply(params, false));
 
     const onPerPageSelect = usePerPageSelect(apply);
 
