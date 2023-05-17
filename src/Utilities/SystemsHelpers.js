@@ -64,7 +64,7 @@ export const templateSystemsColumnsMerger = (defaultColumns) => {
 
     name = [{
         ...name[0],
-        renderFunc: (displayName, id) => <Link to={{ pathname: `/systems/${id}` }}>{displayName}</Link>
+        renderFunc: (displayName, id) => <Link to={{ pathname: `../systems/${id}` }}>{displayName}</Link>
     }];
 
     return [...name, ...tag, ...patchSetDetailColumns, lastSeen[0]];

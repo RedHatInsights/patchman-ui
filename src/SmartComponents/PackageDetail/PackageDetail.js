@@ -1,9 +1,8 @@
 import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import propTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import PackageHeader from '../../PresentationalComponents/PackageHeader/PackageHeader';
@@ -16,10 +15,11 @@ import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 
-const PackageDetail = ({ match }) => {
+const PackageDetail = () => {
     const dispatch = useDispatch();
-    const [packageName] = React.useState(match.params.packageName);
+    const { packageName } = useParams();
     const chrome = useChrome();
+
     useEffect(()=>{
         packageName && chrome.updateDocumentTitle(`${packageName} - ${intl.formatMessage(messages.titlesPackages)}
         ${DEFAULT_PATCH_TITLE}`);
@@ -86,8 +86,4 @@ const PackageDetail = ({ match }) => {
     );
 };
 
-PackageDetail.propTypes = {
-    match: propTypes.any
-};
-
-export default withRouter(PackageDetail);
+export default PackageDetail;

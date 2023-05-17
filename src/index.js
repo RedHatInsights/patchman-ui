@@ -1,5 +1,4 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import SystemDetail from './SmartComponents/SystemDetail/SystemDetail';
 import { SystemAdvisoryListStore } from './store/Reducers/SystemAdvisoryListStore';
 import { SystemPackageListStore } from './store/Reducers/SystemPackageListStore';
@@ -16,15 +15,13 @@ const WrappedSystemDetail = ({ getRegistry, ...props }) => {
 
         setWrapper(() => getRegistry ? Provider : Fragment);
     }, []);
-    return <Router>
-        {
-            Wrapper ? <Wrapper {...getRegistry && { store: getRegistry()?.getStore() }}>
-                <SystemDetail {...props} isInventoryApp />
-            </Wrapper> : <Bullseye>
-                <Spinner size="xl" />
-            </Bullseye>
-        }
-    </Router>;
+    return (
+        Wrapper ? <Wrapper {...getRegistry && { store: getRegistry()?.getStore() }}>
+            <SystemDetail {...props} isInventoryApp />
+        </Wrapper> : <Bullseye>
+            <Spinner size="xl" />
+        </Bullseye>
+    );
 };
 
 WrappedSystemDetail.propTypes = {

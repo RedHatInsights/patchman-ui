@@ -47,6 +47,6 @@ describe('HeaderBreadcrumbs', () => {
         .children()
         .eq(0)
         .find('a')
-        .should('have.attr', 'href', '/test');
+        .should('have.attr', 'href', '/..test');
     });
 });

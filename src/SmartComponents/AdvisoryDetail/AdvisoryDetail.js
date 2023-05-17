@@ -1,9 +1,8 @@
 import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import propTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import messages from '../../Messages';
 import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/AdvisoryHeader';
 import Header from '../../PresentationalComponents/Header/Header';
@@ -15,10 +14,11 @@ import { clearNotifications } from '@redhat-cloud-services/frontend-components-n
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 
-const AdvisoryDetail = ({ match }) => {
+const AdvisoryDetail = () => {
     const dispatch = useDispatch();
-    const [advisoryName] = React.useState(match.params.advisoryId);
     const chrome = useChrome();
+    const { advisoryId: advisoryName } = useParams();
+
     useEffect(()=>{
         advisoryName &&
         chrome.updateDocumentTitle(`${advisoryName}
@@ -45,6 +45,8 @@ const AdvisoryDetail = ({ match }) => {
     }, []);
 
     const { attributes } = advisoryDetails.data;
+    console.log('HELLO FROM MY PATCH');
+    console.log('HELLO');
     return (
         <React.Fragment>
             <Header
@@ -83,8 +85,4 @@ const AdvisoryDetail = ({ match }) => {
     );
 };
 
-AdvisoryDetail.propTypes = {
-    match: propTypes.any
-};
-
-export default withRouter(AdvisoryDetail);
+export default AdvisoryDetail;

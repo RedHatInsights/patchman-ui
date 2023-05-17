@@ -1,7 +1,7 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
@@ -41,7 +41,7 @@ const PatchSet = () => {
     }, [chrome]);
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    const [searchParams, setSearchParams] = useSearchParams();
     const [firstMount, setFirstMount] = React.useState(true);
     const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = React.useState(false);
     const [patchSetToDelete, setPatchSetToDelete] = React.useState(null);
@@ -93,10 +93,10 @@ const PatchSet = () => {
 
     useDeepCompareEffect(() => {
         if (firstMount) {
-            apply(decodeQueryparams(history.location.search));
+            apply(decodeQueryparams('?' + searchParams.toString()));
             setFirstMount(false);
         } else {
-            history.push(encodeURLParams(queryParams));
+            setSearchParams(encodeURLParams(queryParams));
             dispatch(fetchPatchSetsAction(queryParams));
         }
     }, [queryParams, firstMount]);

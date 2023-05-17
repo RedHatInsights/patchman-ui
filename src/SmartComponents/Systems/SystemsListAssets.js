@@ -22,7 +22,7 @@ export const systemsListColumns = () => [
         key: 'baseline_name',
         title: 'Template',
         renderFunc: (value, _, row) => value
-            ? <Link to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</Link>
+            ? <Link to={{ pathname: `../templates/${row.baseline_id}` }}>{value}</Link>
             : 'No template',
         props: {
             width: 5
@@ -59,7 +59,7 @@ export const advisorySystemsColumns = () => [
         key: 'baseline_name',
         title: 'Template',
         renderFunc: (value, _, row) => value
-            ? <Link to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</Link>
+            ? <Link to={{ pathname: `../templates/${row.baseline_id}` }}>{value}</Link>
             : 'No template',
         props: {
             width: 5

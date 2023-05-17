@@ -17,7 +17,12 @@ const webpackProxy = {
     useCloud: false, // until console pre-prod env is ready
     //localChrome: '/home/muslimjon/RedHat/insights-chrome/build', // for local chrome builds
     routes: {
-        //   '/beta/config': { host: 'http://localhost:8003' }, // for local CSC config
+        '/apps/inventory': {
+            host: 'http://localhost:8003'
+        },
+        '/beta/apps/inventory': {
+            host: 'http://localhost:8003'
+        }
     }
 };
 
@@ -34,7 +39,12 @@ plugins.push(
         exposes: {
             './RootApp': resolve(__dirname, '../src/AppEntry'),
             './SystemDetail': resolve(__dirname, '../src/index.js')
-        }
+        },
+        shared: [
+            {
+                'react-router-dom': { singleton: true, requiredVersion: '*' }
+            }
+        ]
     })
 );
 

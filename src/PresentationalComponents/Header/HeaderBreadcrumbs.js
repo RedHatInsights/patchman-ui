@@ -12,7 +12,7 @@ const HeaderBreadcrumbs = ({ items, headerOUIA }) => {
             {items.filter(Boolean).map(item => (
                 <BreadcrumbItem key={item.title} isActive={item.isActive}>
                     {item.to
-                        ? <Link to={item.to}
+                        ? <Link to={`..${item.to}`}
                             data-ouia-component-type={`${headerOUIA}-breadcrumb`}
                             data-ouia-component-id={`breadcrumb-to-${item.title}`}
                         >{item.title}</Link>

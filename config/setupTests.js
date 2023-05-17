@@ -10,6 +10,14 @@ jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
     })
 }));
 
+jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
+    InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
+}));
+
+jest.mock('@redhat-cloud-services/frontend-components/AsyncComponent', () => (
+    <div>AsyncComponent</div>
+));
+
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;

@@ -3,9 +3,10 @@ import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { storeListDefaults } from '../../Utilities/constants';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { MemoryRouter as Router } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 import { packageDetailData } from '../../Utilities/RawDataForTesting';
+import { mount } from 'enzyme';
 
 initMocks();
 
@@ -69,7 +70,9 @@ describe('PackageDetail.js', () => {
             return callback({ PackageDetailStore: rejectedState });
         });
         const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><PackageDetail /></Router>
+            <Router>
+                <PackageDetail />
+            </Router>
         </Provider>);
         expect(tempWrapper.find('Unavailable')).toBeTruthy();
     });
