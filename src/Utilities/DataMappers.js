@@ -439,7 +439,7 @@ export const createPatchSetDetailRows = (rows) => {
                 display_name: row.display_name,
                 key: row.inventory_id,
                 os: {
-                    osName: row.os,
+                    osName: row.os || 'N/A',
                     rhsm: row.rhsm
                 },
                 last_upload: row.last_upload,
