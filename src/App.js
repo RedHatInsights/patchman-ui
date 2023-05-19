@@ -21,6 +21,9 @@ const App = () => {
 
     useEffect(() => {
         chrome?.globalFilterScope?.('insights');
+        if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+            chrome?.enablePackagesDebug();
+        }
 
         if (chrome?.globalFilterScope) {
             chrome?.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
