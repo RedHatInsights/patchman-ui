@@ -11,7 +11,8 @@ export const ID_API_ENDPOINTS = {
     advisorySystems: (advisoryID) => `/ids/advisories/${advisoryID}/systems`,
     systemAdvisories: (systemID) => `/ids/systems/${systemID}/advisories`,
     packageSystems: (packageName) => `/packages/${packageName}/systems`,
-    systemPackages: (systemID) => `/systems/${systemID}/packages`
+    systemPackages: (systemID) => `/systems/${systemID}/packages`,
+    templateSystems: (templateId) => `/ids/baselines/${templateId}/systems`
 };
 
 const useFetchAllIDs = (

@@ -901,6 +901,11 @@ export default defineMessages({
         description: 'title with capital letters',
         defaultMessage: 'No description provided'
     },
+    titlesTemplateRemoveFromSystems: {
+        id: 'titlesTemplateRemoveMultipleButton',
+        description: 'title with capital letters',
+        defaultMessage: 'Remove from {systemsCount, plural, one {system} other {systems}}'
+    },
     titlesTemplateRemoveMultipleButton: {
         id: 'titlesTemplateRemoveMultipleButton',
         description: 'title with capital letters',

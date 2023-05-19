@@ -1,12 +1,12 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useIntl } from 'react-intl';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import { NoAppliedSystems } from '../../PresentationalComponents/Snippets/EmptyStates';
-import { useDeepCompareEffect, useGetEntities } from '../../Utilities/Hooks';
+import { useBulkSelectConfig, useDeepCompareEffect, useGetEntities } from '../../Utilities/Hooks';
 import {
     changePatchSetDetailsSystemsMetadata,
     changePatchSetDetailsSystemsParams,
@@ -32,7 +32,13 @@ import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { decodeQueryparams, encodeURLParams, persistantParams } from '../../Utilities/Helpers';
+import {
+    arrayFromObj,
+    decodeQueryparams,
+    encodeURLParams,
+    filterSelectedActiveSystemIDs,
+    persistantParams
+} from '../../Utilities/Helpers';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDetailRowActions } from '../PatchSet/PatchSetAssets';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
@@ -45,6 +51,8 @@ import { defaultReducers } from '../../store';
 import { inventoryEntitiesReducer, modifyTemplateDetailSystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { systemsListColumns } from '../Systems/SystemsListAssets';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/useOnSelect';
+import { systemSelectAction } from '../../store/Actions/Actions';
 
 const PatchSetDetail = () => {
     const intl = useIntl();
@@ -78,6 +86,14 @@ const PatchSetDetail = () => {
         ({ PatchSetDetailStore }) => PatchSetDetailStore.status
     );
 
+    const systems = useSelector(
+        ({ entities }) => entities?.rows || [], shallowEqual
+    );
+
+    const selectedRows = useSelector(
+        ({ entities }) => entities?.selectedRows || []
+    );
+
     const systemStatus = useSelector(
         ({ entities }) => entities?.status || {}
     );
@@ -105,6 +121,16 @@ const PatchSetDetail = () => {
 
     const patchSetName = templateDetails.data.attributes.name;
 
+    const onSelect = useOnSelect(
+        systems,
+        selectedRows,
+        {
+            endpoint: ID_API_ENDPOINTS.templateSystems(patchSetId),
+            queryParams,
+            selectionDispatcher: systemSelectAction
+        }
+    );
+
     const apply = (params) => {
         dispatch(changePatchSetDetailsSystemsParams(params));
     };
@@ -120,6 +146,8 @@ const PatchSetDetail = () => {
         // timestamp is used to force inventory to refresh
         // if it wasn't there inventory might ignore request to refresh because parameters are the same
         inventory?.current?.onRefreshData({ timestamp: Date.now() });
+
+        onSelect('none');
 
         dispatch(fetchTemplateDetail(patchSetId));
     };
@@ -153,8 +181,8 @@ const PatchSetDetail = () => {
         }
     }, [queryParams, firstMount]);
 
-    const openSystemUnassignModal = (rowData) => {
-        setPatchSetState({ ...patchSetState, isUnassignSystemsModalOpen: true, systemsIDs: [rowData.id] });
+    const openSystemUnassignModal = ids => {
+        setPatchSetState({ ...patchSetState, isUnassignSystemsModalOpen: true, systemsIDs: ids });
     };
 
     const deleteSet = () => {
@@ -203,6 +231,10 @@ const PatchSetDetail = () => {
     const decodedParams = decodeQueryparams(history.location.search);
 
     const { systemProfile, selectedTags, filter, search, page, perPage, sort } = queryParams;
+
+    const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
+
+    const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
 
     return (
         detailStatus?.hasError
@@ -348,14 +380,29 @@ const PatchSetDetail = () => {
                                         isDisabled: totalItems === 0
                                     }}
                                     getEntities={getEntities}
+                                    bulkSelect={bulkSelectConfig}
                                     tableProps={{
-                                        canSelectAll: true,
+                                        canSelectAll: false,
                                         variant: TableVariant.compact,
                                         className: 'patchCompactInventory',
                                         isStickyHeader: true,
                                         actionResolver: () => hasAccess ? patchSetDetailRowActions(openSystemUnassignModal) : []
                                     }}
-                                    hasCheckbox={false} /* TODO: Remove this when implementing bulk actions */
+                                    actionsConfig={{
+                                        actions: [
+                                            '', // intentionally empty, remediation button placeholder
+                                            {
+                                                key: 'remove-multiple-systems',
+                                                label: intl.formatMessage(
+                                                    messages.titlesTemplateRemoveFromSystems,
+                                                    { systemsCount: selectedCount }
+                                                ),
+                                                onClick: () =>
+                                                    openSystemUnassignModal(filterSelectedActiveSystemIDs(selectedRows)),
+                                                props: { isDisabled: selectedCount === 0 }
+                                            }
+                                        ]
+                                    }}
                                 />
                             : <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />}
                 </Main>
