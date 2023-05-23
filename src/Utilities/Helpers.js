@@ -457,7 +457,7 @@ export function sortCves(cves, index, direction) {
 
 }
 
-export const createOSColumn = ({ osName, rhsm }) => (rhsm === '' || rhsm === undefined) && osName || (
+export const createOSColumn = ({ osName, rhsm }) => !rhsm ? osName : (
     <Tooltip
         content={
             intl.formatMessage(messages.textLockVersionTooltip, { lockedVersion: rhsm })
