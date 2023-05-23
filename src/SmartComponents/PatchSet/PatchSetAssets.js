@@ -64,9 +64,9 @@ export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) 
 
 export const patchSetDetailRowActions = (handleSystemUnassign) => [
     {
-        title: intl.formatMessage(messages.textUnassignSystemsShortTitle),
+        title: intl.formatMessage(messages.titlesTemplateRemoveFromSystems, { systemsCount: 1 }),
         onClick: (_event, _rowId, rowData) => {
-            handleSystemUnassign(rowData);
+            handleSystemUnassign([rowData.id]);
         }
     }
 
