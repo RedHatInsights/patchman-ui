@@ -1,4 +1,3 @@
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useIntl } from 'react-intl';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
@@ -338,7 +337,7 @@ const PatchSetDetail = () => {
                         </tbody>
                     </table>
                 </Header>
-                <Main>
+                <section className="pf-l-page__main-section pf-c-page__main-section">
                     <TextContent>
                         <Text component="h2" className="pf-u-mb-md">
                             {intl.formatMessage(messages.templateDetailTableTitle)}
@@ -405,7 +404,7 @@ const PatchSetDetail = () => {
                                     }}
                                 />
                             : <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />}
-                </Main>
+                </section>
             </Fragment>
     );
 };

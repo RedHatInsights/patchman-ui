@@ -1,4 +1,3 @@
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -200,7 +199,7 @@ const PatchSet = () => {
                     setBaselineState={setPatchSetState}
                     patchSetID={patchSetState.patchSetID}
                 />}
-            <Main>
+            <section className="pf-l-page__main-section pf-c-page__main-section">
                 {(rows.length === 0 && !status.isLoading)
                     ? <NoPatchSetList Button={CreatePatchSetButton} />
                     : <TableView
@@ -223,7 +222,7 @@ const PatchSet = () => {
                         actionsToggle={!hasAccess ? CustomActionsToggle : null}
                     />
                 }
-            </Main>
+            </section>
         </React.Fragment>
     );
 };

@@ -1,4 +1,3 @@
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -128,7 +127,7 @@ const Advisories = ({ history }) => {
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchAdvisories)} headerOUIA={'advisories'} />
             <AdvisoriesStatusReport/>
-            <Main>
+            <section className="pf-l-page__main-section pf-c-page__main-section">
                 <TableView
                     columns={advisoriesColumns}
                     compact
@@ -160,7 +159,7 @@ const Advisories = ({ history }) => {
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
                     isRemediationLoading={isRemediationLoading}
                 />
-            </Main>
+            </section>
         </React.Fragment>
     );
 };

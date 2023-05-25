@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { useSelector, useDispatch, useStore } from 'react-redux';
 import { combineReducers } from 'redux';
 import Header from '../../PresentationalComponents/Header/Header';
@@ -111,9 +110,9 @@ const InventoryDetail = () => {
                     </Grid>
                 </InventoryDetailHead>
             </Header>
-            <Main>
+            <section className="pf-l-page__main-section pf-c-page__main-section">
                 <SystemDetail inventoryId={inventoryId} />
-            </Main>
+            </section>
         </DetailWrapper>);
 };
 

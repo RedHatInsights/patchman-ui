@@ -7,7 +7,6 @@ import messages from '../../Messages';
 import {
     CardTitle, Card, Grid, GridItem, CardBody, Title, Split, SplitItem
 } from '@patternfly/react-core';
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { handlePatchLink, handleLongSynopsis } from '../../Utilities/Helpers';
 import { entityTypes, advisorySeverities } from '../../Utilities/constants';
 import AdvisoryType from '../AdvisoryType/AdvisoryType';
@@ -88,7 +87,7 @@ const AdvisoriesStatusBar = () => {
     }, []);
 
     return advisories.data && advisories.data.length && (
-        <Main style={{ paddingBottom: 0, paddingTop: 0 }}>
+        <section className="pf-l-page__main-section pf-c-page__main-section" style={{ paddingBottom: 0, paddingTop: 0 }}>
 
             <Title headingLevel="h3" className='pf-u-my-md'>
                 {intl.formatMessage(messages.titlesMostImpactfulAdvisories)}
@@ -104,7 +103,7 @@ const AdvisoriesStatusBar = () => {
                 )
                 }
             </Grid>
-        </Main>
+        </section>
     ) || null;
 };
 

@@ -1,5 +1,4 @@
 import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -63,7 +62,7 @@ const AdvisoryDetail = ({ match }) => {
                         isLoading={status.isLoading}
                     />}
             </Header>
-            <Main>
+            <section className="pf-l-page__main-section pf-c-page__main-section">
                 <Stack hasGutter>
                     <StackItem>
                         <TextContent>
@@ -74,7 +73,7 @@ const AdvisoryDetail = ({ match }) => {
                         <AdvisorySystems advisoryName={advisoryName} />
                     </StackItem>
                 </Stack>
-            </Main>
+            </section>
         </React.Fragment>
     );
 };

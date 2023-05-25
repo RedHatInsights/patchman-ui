@@ -8,7 +8,6 @@ import {
     CardTitle, Button, Skeleton,
     Card, Grid, GridItem, CardBody, Flex, FlexItem
 } from '@patternfly/react-core';
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { fetchSystems } from '../../Utilities/api';
 
 const StatusCard = ({ title, color, Icon, value, filter, apply }) => {
@@ -80,7 +79,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
     });
 
     return (
-        <Main style={{ paddingBottom: 0 }}>
+        <section className="pf-l-page__main-section pf-c-page__main-section" style={{ paddingBottom: 0 }}>
             <Grid hasGutter span={12} >
                 <GridItem lg={3} md={4}>
                     <StatusCard
@@ -113,7 +112,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
                     />
                 </GridItem>
             </Grid>
-        </Main>
+        </section>
     );
 };
 

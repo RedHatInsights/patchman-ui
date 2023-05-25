@@ -1,4 +1,3 @@
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
@@ -68,7 +67,7 @@ const Packages = () => {
     return (
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchPackages)} headerOUIA={'packages'} />
-            <Main>
+            <section className="pf-l-page__main-section pf-c-page__main-section">
                 <TableView
                     columns={packagesColumns}
                     store={{ rows, metadata, status, queryParams }}
@@ -94,7 +93,7 @@ const Packages = () => {
                     defaultFilters={packagesListDefaultFilters}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
                 />
-            </Main>
+            </section>
         </React.Fragment>
     );
 };

@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
-import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
@@ -156,7 +155,7 @@ const Systems = () => {
                 <SystemsStatusReport apply={apply} queryParams={queryParams} />
                 <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
                 {isRemediationOpen && <RemediationModalCmp /> || null}
-                <Main>
+                <section className="pf-l-page__main-section pf-c-page__main-section">
                     <InventoryTable
                         ref={inventory}
                         isFullView
@@ -231,7 +230,7 @@ const Systems = () => {
                         filterConfig={filterConfig}
                         activeFiltersConfig={activeFiltersConfig}
                     />
-                </Main>
+                </section>
             </React.Fragment>}
         </React.Fragment>
     );

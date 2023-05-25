@@ -9,7 +9,7 @@
     "@patternfly/react-core": "^4.267.14",
     "@patternfly/react-icons": "^4.93.6",
     "@patternfly/react-table": "^4.113.0",
-    "@redhat-cloud-services/frontend-components": "3.9.27",
+    "@redhat-cloud-services/frontend-components": "3.9.35",
     "@redhat-cloud-services/frontend-components-notifications": "^3.2.14",
     "@redhat-cloud-services/frontend-components-remediations": "^3.2.10",
     "@redhat-cloud-services/frontend-components-translations": "^3.2.6",
@@ -51,6 +51,9 @@
       "<rootDir>/src/SmartComponents/AdvisorySystems/AdvisorySystems.test.js",
       "src/SmartComponents/SystemDetail/InventoryDetail.test.js",
       "src/SmartComponents/PatchSet/PatchSet.test.js"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(lodash-es|@redhat-cloud-services|@openshift|@scalprum))"
     ]
   },
   "devDependencies": {
