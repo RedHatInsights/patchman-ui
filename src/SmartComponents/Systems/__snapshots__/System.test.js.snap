@@ -106,7 +106,7 @@ exports[`Systems.js should match the snapshot 1`] = `
             </section>
           </PageHeader>
         </Header>
-        <SystemsStatusreport
+        <SystemsStatusReport
           apply={[Function]}
           queryParams={Object {}}
         >
@@ -141,11 +141,11 @@ exports[`Systems.js should match the snapshot 1`] = `
                     className="pf-l-grid pf-m-all-12-col pf-m-gutter"
                   >
                     <GridItem
-                      md={3}
-                      span={12}
+                      lg={3}
+                      md={4}
                     >
                       <div
-                        className="pf-l-grid__item pf-m-12-col pf-m-3-col-on-md"
+                        className="pf-l-grid__item pf-m-4-col-on-md pf-m-3-col-on-lg"
                       >
                         <StatusCard
                           Icon={[Function]}
@@ -295,11 +295,11 @@ exports[`Systems.js should match the snapshot 1`] = `
                       </div>
                     </GridItem>
                     <GridItem
-                      md={3}
-                      span={12}
+                      lg={3}
+                      md={4}
                     >
                       <div
-                        className="pf-l-grid__item pf-m-12-col pf-m-3-col-on-md"
+                        className="pf-l-grid__item pf-m-4-col-on-md pf-m-3-col-on-lg"
                       >
                         <StatusCard
                           Icon={[Function]}
@@ -449,11 +449,11 @@ exports[`Systems.js should match the snapshot 1`] = `
                       </div>
                     </GridItem>
                     <GridItem
-                      md={3}
-                      span={12}
+                      lg={3}
+                      md={4}
                     >
                       <div
-                        className="pf-l-grid__item pf-m-12-col pf-m-3-col-on-md"
+                        className="pf-l-grid__item pf-m-4-col-on-md pf-m-3-col-on-lg"
                       >
                         <StatusCard
                           Icon={[Function]}
@@ -607,7 +607,7 @@ exports[`Systems.js should match the snapshot 1`] = `
               </section>
             </InternalMain>
           </Connect(InternalMain)>
-        </SystemsStatusreport>
+        </SystemsStatusReport>
         <PatchSetWrapper
           patchSetState={
             Object {

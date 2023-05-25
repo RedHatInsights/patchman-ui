@@ -41,7 +41,7 @@ const StatusCard = ({ title, color, Icon, value, filter, apply }) => {
     );
 };
 
-const SystemsStatusreport = ({ apply, queryParams }) => {
+const SystemsStatusReport = ({ apply, queryParams }) => {
     const [subtotals, setSubtotals] = React.useState({});
 
     const { selectedTags, selectedGlobalTags, systemProfile } = useSelector(({ GlobalFilterStore }) => GlobalFilterStore);
@@ -52,12 +52,14 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
         let result;
 
         try {
-            result = await fetchSystems({ filter: {
-                os: queryParams?.filter?.os
-            },
-            selectedTags: [...selectedTags, ...selectedGlobalTags],
-            systemProfile,
-            limit: 1
+            result = await fetchSystems({
+                filter: {
+                    os: queryParams?.filter?.os
+                },
+                selectedTags: [...selectedTags, ...selectedGlobalTags],
+                systemProfile,
+                limit: 1,
+                'filter[stale]': 'in:true,false'
             });
         }
         catch {
@@ -80,7 +82,7 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
     return (
         <Main style={{ paddingBottom: 0 }}>
             <Grid hasGutter span={12} >
-                <GridItem span={12} md={3}>
+                <GridItem lg={3} md={4}>
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsUpToDate)}
                         Icon={CheckCircleIcon}
@@ -90,7 +92,7 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
                         filter={{ filter: { packages_updatable: 'eq:0' } }}
                     />
                 </GridItem>
-                <GridItem span={12} md={3}>
+                <GridItem lg={3} md={4}>
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsWithPatchesAvailable)}
                         Icon={PackageIcon}
@@ -100,7 +102,7 @@ const SystemsStatusreport = ({ apply, queryParams }) => {
                         filter={{ filter: { packages_updatable: 'gt:0' } }}
                     />
                 </GridItem>
-                <GridItem span={12} md={3}>
+                <GridItem lg={3} md={4}>
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusStaleSystems)}
                         Icon={ExclamationTriangleIcon}
@@ -124,9 +126,9 @@ StatusCard.propTypes = {
     filter: propTypes.object
 };
 
-SystemsStatusreport.propTypes = {
+SystemsStatusReport.propTypes = {
     apply: propTypes.func,
     queryParams: propTypes.object
 };
 
-export default SystemsStatusreport;
+export default SystemsStatusReport;
