@@ -5,7 +5,7 @@ const BATCH_REQUEST_SIZE = 5;
 const REQUEST_INTERVAL = 15000; //15 seconds. AKAMAI allowed life for 5 API calls
 
 const fetchDataCallback = (endpoint, authToken) => (input) => {
-    return fetch(`/api/patch/v1/views${endpoint}`, {
+    return fetch(`/api/patch/v3/views${endpoint}`, {
         method: 'POST',
         credentials: 'include',
         headers: {

@@ -34,7 +34,8 @@ describe('SystemListAssets.js', () => {
         it('Should call fetchApplicableSystemAdvisoriesApi with row id and limit: 10000', () => {
             expect(fetchApplicableSystemAdvisoriesApi).toHaveBeenCalledWith({
                 id: 'testId',
-                limit: 10000
+                limit: -1,
+                'filter[status]': 'in:Installable'
             });
         });
         it('Should call remediationProvider and testShowRemediationModal', () => {

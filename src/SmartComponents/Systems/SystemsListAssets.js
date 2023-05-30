@@ -138,7 +138,8 @@ export const systemsRowActions = (
             onClick: (event, rowId, rowData) => {
                 fetchApplicableSystemAdvisoriesApi({
                     id: rowData.id,
-                    limit: 10000
+                    limit: -1,
+                    'filter[status]': 'in:Installable'
                 }).then(res =>
                     showRemediationModal(
                         remediationProvider(
