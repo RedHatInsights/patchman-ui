@@ -69,9 +69,6 @@ const Systems = () => {
     const metadata = useSelector(
         ({ SystemsStore }) => SystemsStore?.metadata || {}
     );
-    const areAllSelected = useSelector(
-        ({ SystemsStore }) => SystemsStore?.areAllSelected
-    );
     const queryParams = useSelector(
         ({ SystemsStore }) => SystemsStore?.queryParams || {}
     );
@@ -146,7 +143,7 @@ const Systems = () => {
         }
     }, [patchSetState.shouldRefresh]);
 
-    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'systems', areAllSelected);
+    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'systems');
 
     const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
 

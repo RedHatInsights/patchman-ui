@@ -112,13 +112,13 @@ const batchRequest = async (
 };
 
 onmessage = async ({ data = {} } = {}) => {
-    const { remediationType, areAllSelected, payload = [], authToken } = data;
-    const shouldMapSystems = remediationType === 'systems' && !areAllSelected;
+    let { remediationType, payload = [], authToken } = data;
+    const shouldMapSystems = remediationType === 'systems';
 
     const endpoint = shouldMapSystems ? '/systems/advisories' : '/advisories/systems';
     const responseTransformer = shouldMapSystems ? transformSystemsPairs : transformPairs;
 
-    const payloadModifier = (payload) => (!areAllSelected ? { [remediationType]: payload } : {});
+    const payloadModifier = (payload) => ({ [remediationType]: payload });
 
     const result = await batchRequest(
         payload,

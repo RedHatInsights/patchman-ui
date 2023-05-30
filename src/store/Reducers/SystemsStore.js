@@ -30,10 +30,6 @@ export const SystemsStore = (state = initialState, action) => {
             newState.metadata = action.payload;
             return newState;
 
-        case ActionTypes.TOGGLE_ALL_SELECTED:
-            newState.areAllSelected = action.payload;
-            return newState;
-
         default:
             return state;
     }

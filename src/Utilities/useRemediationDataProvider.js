@@ -52,7 +52,7 @@ export const prepareRemediationPairs = async (task, dispatch) => {
 * @param {Array} [selectedRows] array of systems to calculate
 * @returns {handleSystemsRemoval}
 */
-const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType, areAllSelected) => {
+const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType) => {
     const dispatch = useDispatch();
     const chrome = useChrome();
     const remediationDataProvider = async () => {
@@ -65,7 +65,6 @@ const useRemediationDataProvider = (selectedRows, setRemediationLoading, remedia
             {
                 payload: removeUndefinedObjectKeys(selectedRows),
                 remediationType,
-                areAllSelected,
                 authToken
             },
             dispatch
