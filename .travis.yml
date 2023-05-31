@@ -26,4 +26,5 @@ env:
     - BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
     - NODE_OPTIONS="--max-old-space-size=4096 --max_old_space_size=4096"
     - GH_TOKEN=${GH_TOKEN}
+    - SENTRY_AUTH_KEY=${SENTRY_AUTH_KEY}
 
