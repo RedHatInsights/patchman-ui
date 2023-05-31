@@ -26,13 +26,14 @@ module.exports = function (env) {
         ...webpackConfig,
         devtool: 'hidden-source-map',
         plugins: plugins.map((plugin, index) => {
+            console.log(process.env);
             //Overrides SourceMapDevToolPlugin, instead we want to use 'hidden-source-map'
-            if (index === 0 && process.env.global.BRANCH === 'prod-beta') {
+            if (index === 0 && process.env.BRANCH === 'prod-beta') {
                 //uploads asset artifacts with sourcemaps onto sentry
                 return (sentryWebpackPlugin({
                     org: 'red-hat-it',
                     project: 'cpin-001-insights',
-                    authToken: process.env.global.SENTRY_AUTH_KEY
+                    authToken: process.env.SENTRY_AUTH_KEY
                 }));
             } else {
                 return plugin;
