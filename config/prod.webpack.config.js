@@ -26,7 +26,6 @@ module.exports = function (env) {
         ...webpackConfig,
         devtool: 'hidden-source-map',
         plugins: plugins.map((plugin, index) => {
-            console.log(process.env);
             //Overrides SourceMapDevToolPlugin, instead we want to use 'hidden-source-map'
             if (index === 0 && process.env.BRANCH === 'prod-beta') {
                 //uploads asset artifacts with sourcemaps onto sentry
