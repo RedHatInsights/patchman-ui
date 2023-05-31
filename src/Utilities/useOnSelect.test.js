@@ -136,7 +136,7 @@ describe('useOnSelect', () => {
             result.current('all', {});
         });
 
-        expect(fetchIDs).toHaveBeenCalledWith('/some/api/endpoint', { limit: -1, search: 'test-search' });
+        expect(fetchIDs).toHaveBeenCalledWith('/some/api/endpoint', { limit: -1, offset: 0, search: 'test-search' });
     });
 
     it('Should skip invalid rows while selection', () => {

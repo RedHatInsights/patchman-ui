@@ -124,7 +124,9 @@ const AdvisorySystems = ({ advisoryName }) => {
         remediationIdentifiers.advisory
     );
 
-    const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
+    const bulkSelectConfig = useBulkSelectConfig(
+        selectedCount, onSelect, { total_items: totalItems }, systems, null, queryParams
+    );
 
     return (
         <React.Fragment>

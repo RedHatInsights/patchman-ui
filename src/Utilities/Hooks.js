@@ -19,6 +19,470 @@ import { createSystemsSortBy } from './SystemsHelpers';
 // eslint-disable-next-line no-unused-vars
 import { useFlag, useFlagsStatus } from '@unleash/proxy-client-react';
 
+/*const mockedSystems1 = {
+    data: [
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Applicable',
+                tags: []
+            },
+            id: '1234',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Applicable',
+                tags: []
+            },
+            id: '5678',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '9101',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '2131',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '4151',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '6171',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '8192',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '0212',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '2232',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '4252',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '6272',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '8293',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '0313',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '2333',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '4353',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '6373',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '8394',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '0414',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '2434',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '4454',
+            type: 'system'
+        },
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '6474',
+            type: 'system'
+        }
+    ],
+    meta: {
+        filter: {
+            stale: {
+                op: 'eq',
+                values: ['false']
+            },
+            status: {
+                op: 'in',
+                values: ['Applicable', 'Installable']
+            }
+        },
+        has_systems: true,
+        limit: 20,
+        offset: 0,
+        sort: ['-last_upload'],
+        total_items: 21
+    },
+    status: 200
+};
+
+const mockedSystems2 = {
+    data: [
+        {
+            attributes: {
+                baseline_id: 0,
+                baseline_name: '',
+                created: '2023-05-31T18:34:25.073767Z',
+                culled_timestamp: '2023-06-15T23:34:24.83586Z',
+                display_name: 'rhel8-rhui-test.aig1lzmjp4mejkbwrqwbe45sre.cx.internal.cloudapp.net',
+                last_upload: '2023-05-31T18:34:25.228098Z',
+                os: 'RHEL 8.6',
+                rhsm: '',
+                stale: false,
+                stale_timestamp: '2023-06-01T23:34:24.83586Z',
+                stale_warning_timestamp: '2023-06-08T23:34:24.83586Z',
+                status: 'Installable',
+                tags: []
+            },
+            id: '6474',
+            type: 'system'
+        }
+    ],
+    meta: {
+        filter: {
+            stale: {
+                op: 'eq',
+                values: ['false']
+            },
+            status: {
+                op: 'in',
+                values: ['Applicable', 'Installable']
+            }
+        },
+        has_systems: true,
+        limit: 20,
+        offset: 1,
+        sort: ['-last_upload'],
+        total_items: 21
+    },
+    status: 200
+};*/
+
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
         callback({ offset: getOffsetFromPageLimit(page, limit) })
@@ -142,7 +606,7 @@ export const useDeepCompareEffect = (effect, deps) => {
     React.useEffect(effect, ref.current);
 };
 
-export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onCollapse) => {
+export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onCollapse, queryParams) => {
     const [isBulkLoading, setBulkLoading] = React.useState(false);
 
     return ({
@@ -185,7 +649,8 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
             ] : `     ${selectedCount} selected`
         },
         checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
-        isDisabled: metadata.total_items === 0 && selectedCount === 0
+        isDisabled: (metadata.total_items === 0 && selectedCount === 0)
+        || (queryParams?.filter?.status?.length === 1 && queryParams?.filter?.status?.[0] === 'Applicable')
     });
 };
 
@@ -210,6 +675,7 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, 
             ...id && { id } || {},
             ...packageName && { package_name: packageName } || {}
         });
+        //const items = page === 1 ? mockedSystems1 : mockedSystems2;
 
         apply({
             page,

@@ -123,7 +123,7 @@ describe('SystemPackages.js', () => {
     it('Should select all with limit=-1', () => {
         const { onSelect } = wrapper.update().find('TableView').props();
         onSelect('all');
-        expect(fetchIDs).toHaveBeenCalledWith('/systems/entity/packages', { limit: -1, page: 1, page_size: 20 });
+        expect(fetchIDs).toHaveBeenCalledWith('/systems/entity/packages', { limit: -1, offset: 0, page: 1, page_size: 20 });
     });
 
     it('Should provide correct remediation data', () => {
