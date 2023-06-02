@@ -139,7 +139,7 @@ describe('AdvisorySystems.js', () => {
             const { bulkSelect } = wrapper.find('.testInventroyComponentChild').parent().props();
 
             bulkSelect.items[2].onClick();
-            expect(fetchIDs).toHaveBeenCalledWith('/ids/advisories/RHSA-2020:2755/systems', { limit: -1 });
+            expect(fetchIDs).toHaveBeenCalledWith('/ids/advisories/RHSA-2020:2755/systems', { limit: -1, offset: 0 });
             expect(bulkSelect.items[2].title).toEqual('Select all (2)');
         });
 

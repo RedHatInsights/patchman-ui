@@ -79,9 +79,15 @@ const createSelectors = (
     };
 
     const selectAll = (fetchIDs, queryParams) => {
+        queryParams.offset = 0;
         return fetchIDs(queryParams).then(response => {
-            dispatchSelection(createSelectedRow(response));
-            toggleAllSystemsSelected(true);
+            if (Array.isArray(response.data)) {
+                let rowsToSelect = response.data.filter(row => row.status !== 'Applicable');
+                dispatchSelection(createSelectedRow({ data: rowsToSelect }));
+            } else {
+                dispatchSelection(createSelectedRow(response));
+                toggleAllSystemsSelected(true);
+            }
         });
     };
 

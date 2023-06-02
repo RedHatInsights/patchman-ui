@@ -273,7 +273,7 @@ describe('Systems.js', () => {
 
             bulkSelect.items[2].onClick();
 
-            expect(fetchIDs).toHaveBeenCalledWith('/ids/systems', { limit: -1 });
+            expect(fetchIDs).toHaveBeenCalledWith('/ids/systems', { limit: -1, offset: 0 });
             expect(bulkSelect.items[2].title).toEqual('Select all (2)');
         });
 
@@ -299,7 +299,7 @@ describe('Systems.js', () => {
 
             expect(fetchIDs).toHaveBeenCalledWith(
                 '/ids/systems',
-                { limit: -1, search: 'test-system-1' }
+                { limit: -1, search: 'test-system-1', offset: 0 }
             );
             expect(bulkSelect.items[2].title).toEqual('Select all (1)');
         });

@@ -170,7 +170,7 @@ describe('Advisories.js', () => {
 
         expect(fetchIDs).toHaveBeenCalledWith(
             '/ids/advisories',
-            { limit: -1, page: 1, page_size: 20 }
+            { limit: -1, offset: 0, page: 1, page_size: 20 }
         );
     });
 
