@@ -1,3 +1,10 @@
+## [1.63.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.2...v1.63.3) (2023-06-05)
+
+
+### Bug Fixes
+
+* **SPM-2055:** Select all on disabled advisories ([5268baf](https://github.com/RedHatInsights/patchman-ui/commit/5268bafd78e9102780633e8438d3d0870c2cc259))
+
 ## [1.63.2](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.1...v1.63.2) (2023-05-10)
 
 
