@@ -82,10 +82,10 @@ export const fetchPackagesList = params => {
         const paramsWithoutSystemsUpdatable = JSON.parse(JSON.stringify(params));
         delete paramsWithoutSystemsUpdatable.filter.systems_updatable;
 
-        return createApiCall('/packages', 'v3', 'get', paramsWithoutSystemsUpdatable);
+        return createApiCall('/packages', 'v2', 'get', paramsWithoutSystemsUpdatable);
     }
 
-    return createApiCall('/packages', 'v3', 'get', params);
+    return createApiCall('/packages', 'v2', 'get', params);
 };
 
 export const fetchCvesInfo = async ({ cveIds }) => {
