@@ -83,20 +83,26 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
                     <li
                       className="pf-c-breadcrumb__item"
                     >
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-First item"
                         data-ouia-component-type="undefined-breadcrumb"
-                        to="..#"
+                        to="#"
                       >
-                        <a
+                        <Link
                           data-ouia-component-id="breadcrumb-to-First item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          onClick={[Function]}
+                          to="#"
                         >
-                          First item
-                        </a>
-                      </Link>
+                          <a
+                            data-ouia-component-id="breadcrumb-to-First item"
+                            data-ouia-component-type="undefined-breadcrumb"
+                            href="/"
+                            onClick={[Function]}
+                          >
+                            First item
+                          </a>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                 </ol>
@@ -247,20 +253,26 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                     <li
                       className="pf-c-breadcrumb__item"
                     >
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-First item"
                         data-ouia-component-type="undefined-breadcrumb"
-                        to="..#"
+                        to="#"
                       >
-                        <a
+                        <Link
                           data-ouia-component-id="breadcrumb-to-First item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          onClick={[Function]}
+                          to="#"
                         >
-                          First item
-                        </a>
-                      </Link>
+                          <a
+                            data-ouia-component-id="breadcrumb-to-First item"
+                            data-ouia-component-type="undefined-breadcrumb"
+                            href="/"
+                            onClick={[Function]}
+                          >
+                            First item
+                          </a>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                   <BreadcrumbItem
@@ -299,20 +311,26 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                           </svg>
                         </AngleRightIcon>
                       </span>
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-Second item"
                         data-ouia-component-type="undefined-breadcrumb"
-                        to="..#"
+                        to="#"
                       >
-                        <a
+                        <Link
                           data-ouia-component-id="breadcrumb-to-Second item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          onClick={[Function]}
+                          to="#"
                         >
-                          Second item
-                        </a>
-                      </Link>
+                          <a
+                            data-ouia-component-id="breadcrumb-to-Second item"
+                            data-ouia-component-type="undefined-breadcrumb"
+                            href="/"
+                            onClick={[Function]}
+                          >
+                            Second item
+                          </a>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                 </ol>
@@ -474,20 +492,26 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                     <li
                       className="pf-c-breadcrumb__item"
                     >
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-First item"
                         data-ouia-component-type="undefined-breadcrumb"
-                        to="..#"
+                        to="#"
                       >
-                        <a
+                        <Link
                           data-ouia-component-id="breadcrumb-to-First item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          onClick={[Function]}
+                          to="#"
                         >
-                          First item
-                        </a>
-                      </Link>
+                          <a
+                            data-ouia-component-id="breadcrumb-to-First item"
+                            data-ouia-component-type="undefined-breadcrumb"
+                            href="/"
+                            onClick={[Function]}
+                          >
+                            First item
+                          </a>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                   <BreadcrumbItem
@@ -526,20 +550,26 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           </svg>
                         </AngleRightIcon>
                       </span>
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-Second item"
                         data-ouia-component-type="undefined-breadcrumb"
-                        to="..#"
+                        to="#"
                       >
-                        <a
+                        <Link
                           data-ouia-component-id="breadcrumb-to-Second item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          onClick={[Function]}
+                          to="#"
                         >
-                          Second item
-                        </a>
-                      </Link>
+                          <a
+                            data-ouia-component-id="breadcrumb-to-Second item"
+                            data-ouia-component-type="undefined-breadcrumb"
+                            href="/"
+                            onClick={[Function]}
+                          >
+                            Second item
+                          </a>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                   <BreadcrumbItem
@@ -578,20 +608,26 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           </svg>
                         </AngleRightIcon>
                       </span>
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-Third item"
                         data-ouia-component-type="undefined-breadcrumb"
-                        to="..#"
+                        to="#"
                       >
-                        <a
+                        <Link
                           data-ouia-component-id="breadcrumb-to-Third item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          onClick={[Function]}
+                          to="#"
                         >
-                          Third item
-                        </a>
-                      </Link>
+                          <a
+                            data-ouia-component-id="breadcrumb-to-Third item"
+                            data-ouia-component-type="undefined-breadcrumb"
+                            href="/"
+                            onClick={[Function]}
+                          >
+                            Third item
+                          </a>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                 </ol>

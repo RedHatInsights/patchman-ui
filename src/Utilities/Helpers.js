@@ -12,7 +12,6 @@ import pickBy from 'lodash/pickBy';
 import qs from 'query-string';
 import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
-import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
 import {
@@ -23,6 +22,7 @@ import {
 } from './constants';
 import { intl } from './IntlProvider';
 import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 export const removeUndefinedObjectItems = (originalObject) => {
     const newObject = JSON.parse(JSON.stringify(originalObject));
@@ -183,20 +183,20 @@ export function getSeverityById(id) {
 }
 
 export const createPackagesColumn = (packageCount, systemID) => (
-    <Link to={{
-        pathname: `../systems/${systemID}`,
+    <InsightsLink to={{
+        pathname: `/systems/${systemID}`,
         state: { tab: 'packages' }
     }}>
         {packageCount}
-    </Link>
+    </InsightsLink>
 );
 
 export function handlePatchLink(type, name, body) {
     if (location.href.indexOf('inventory') === -1) {
         return (
-            <Link to={`../${type}/${name}`}>
+            <InsightsLink to={`/${type}/${name}`}>
                 {body === undefined ? name : body}
-            </Link>
+            </InsightsLink>
         );
     } else {
         return (

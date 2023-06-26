@@ -165,7 +165,7 @@ describe('Helpers tests', () => {
             href: 'https://cloud.redhat.com/rhel/patch'
         };
         let advisoryName = 'ABCD';
-        const expected = `../advisories/${advisoryName}`;
+        const expected = `/advisories/${advisoryName}`;
         let result = handlePatchLink('advisories',advisoryName);
         let {
             props: { to, children }
@@ -180,7 +180,7 @@ describe('Helpers tests', () => {
             href: 'https://cloud.redhat.com/rhel/patch'
         };
         let advisoryName = 'ABCD';
-        const expected = `../advisories/${advisoryName}`;
+        const expected = `/advisories/${advisoryName}`;
         let result = handlePatchLink('advisories',advisoryName, 'custom text');
         let {
             props: { to, children }

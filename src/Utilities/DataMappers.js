@@ -3,7 +3,6 @@ import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
@@ -15,6 +14,7 @@ import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToD
 import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -405,9 +405,9 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
                 cells: [
                     {
                         title: (
-                            <Link to={{ pathname: `../templates/${row.id}` }}>
+                            <InsightsLink to={`/templates/${row.id}`}>
                                 {row.name}
-                            </Link>
+                            </InsightsLink>
                         )
                     },
                     { title: row.systems || intl.formatMessage(messages.labelsTemplateNoSystems) },

@@ -17,12 +17,7 @@ const webpackProxy = {
     useCloud: false, // until console pre-prod env is ready
     //localChrome: '/home/muslimjon/RedHat/insights-chrome/build', // for local chrome builds
     routes: {
-        '/apps/inventory': {
-            host: 'http://localhost:8003'
-        },
-        '/beta/apps/inventory': {
-            host: 'http://localhost:8003'
-        }
+        //   '/beta/config': { host: 'http://localhost:8003' }, // for local CSC config
     }
 };
 

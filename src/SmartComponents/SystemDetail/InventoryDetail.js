@@ -13,10 +13,11 @@ import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import usePatchSetState from '../../Utilities/usePatchSetState';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 const InventoryDetail = () => {
     const { inventoryId } = useParams();
@@ -99,9 +100,9 @@ const InventoryDetail = () => {
                             <TextContent>
                                 <Text>
                                     {intl.formatMessage(messages.labelsColumnsTemplate)}:
-                                    <Link to={{ pathname: `../templates/${patchSetId}` }} className="pf-u-ml-xs">
+                                    <InsightsLink to={`/templates/${patchSetId}`} className="pf-u-ml-xs">
                                         {patchSetName}
-                                    </Link>
+                                    </InsightsLink>
                                 </Text>
                             </TextContent>
                         </GridItem>}

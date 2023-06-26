@@ -45,8 +45,6 @@ const AdvisoryDetail = () => {
     }, []);
 
     const { attributes } = advisoryDetails.data;
-    console.log('HELLO FROM MY PATCH');
-    console.log('HELLO');
     return (
         <React.Fragment>
             <Header
