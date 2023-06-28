@@ -4,7 +4,8 @@ const { sentryWebpackPlugin } = require('@sentry/webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('@redhat-cloud-services/frontend-components-config');
 const { config: webpackConfig, plugins } = config({
-    rootFolder: resolve(__dirname, '../')
+    rootFolder: resolve(__dirname, '../'),
+    deployment: process.env.BETA === 'true' ? 'beta/apps' : 'apps'
 });
 
 plugins.push(
