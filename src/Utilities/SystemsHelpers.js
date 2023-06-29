@@ -64,7 +64,7 @@ export const templateSystemsColumnsMerger = (defaultColumns) => {
 
     name = [{
         ...name[0],
-        renderFunc: (displayName, id) => <InsightsLink to={`../systemsXDDDDDBRUUH/${id}`}>{displayName}</InsightsLink>
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
     }];
 
     return [...name, ...tag, ...patchSetDetailColumns, lastSeen[0]];
