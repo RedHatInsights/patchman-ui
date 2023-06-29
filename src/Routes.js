@@ -6,7 +6,7 @@ import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome'
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
-import { Navigate, Outlet, Route, Routes as Router, useNavigate } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { NavigateToSystem } from './Utilities/NavigateToSystem';
 
 const PermissionRoute = ({ requiredPermissions = [] }) => {
@@ -73,8 +73,7 @@ const TemplateDetail = lazy(() =>
     )
 );
 
-export const Routes = () => {
-    const navigate = useNavigate();
+const PatchRoutes = () => {
     const chrome = useChrome();
 
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
@@ -85,7 +84,7 @@ export const Routes = () => {
         if (chrome) {
             return chrome.on('APP_NAVIGATION', event => {
                 if (event.domEvent) {
-                    navigate(`/${event.navId}`);
+                    chrome.appNavClick(`/${event.navId}`);
                 }
             });
         }
@@ -116,7 +115,7 @@ export const Routes = () => {
                 </Bullseye>
             }
         >
-            <Router>
+            <Routes>
                 {!hasSystems ? (
                     <Route path='*' element={
                         <AsyncComponent
@@ -148,7 +147,9 @@ export const Routes = () => {
 
                     )
                 }
-            </Router>
+            </Routes>
         </Suspense>
     );
 };
+
+export default PatchRoutes;

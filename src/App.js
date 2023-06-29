@@ -7,7 +7,7 @@ import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACPro
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
 import './App.scss';
-import { Routes } from './Routes';
+import Routes from './Routes';
 
 const App = () => {
     const dispatch = useDispatch();
