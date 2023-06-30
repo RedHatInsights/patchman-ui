@@ -45,6 +45,7 @@ const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
         case 500:
         case 502:
         case 503:
+        case 504:
             return <Unavailable />;
 
         default:
