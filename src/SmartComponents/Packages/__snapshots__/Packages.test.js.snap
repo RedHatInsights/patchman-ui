@@ -121,6 +121,17 @@ exports[`Packages.js should match the snapshot 1`] = `
                       "props": Object {
                         "width": 10,
                       },
+                      "title": "Installed systems",
+                      "transforms": Array [
+                        [Function],
+                        [Function],
+                      ],
+                    },
+                    Object {
+                      "key": "systems_applicable",
+                      "props": Object {
+                        "width": 10,
+                      },
                       "title": "Applicable systems",
                       "transforms": Array [
                         [Function],
@@ -128,11 +139,11 @@ exports[`Packages.js should match the snapshot 1`] = `
                       ],
                     },
                     Object {
-                      "key": "systems_updatable",
+                      "key": "systems_installable",
                       "props": Object {
                         "width": 10,
                       },
-                      "title": "Upgradable",
+                      "title": "Installable systems",
                       "transforms": Array [
                         [Function],
                         [Function],
@@ -232,6 +243,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                             "title": undefined,
                           },
                           Object {
+                            "title": undefined,
+                          },
+                          Object {
                             "title": "Access control list utilities",
                           },
                         ],
@@ -246,6 +260,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                             >
                               test-name-2
                             </Link>,
+                          },
+                          Object {
+                            "title": undefined,
                           },
                           Object {
                             "title": undefined,
@@ -2134,6 +2151,17 @@ exports[`Packages.js should match the snapshot 1`] = `
                         "props": Object {
                           "width": 10,
                         },
+                        "title": "Installed systems",
+                        "transforms": Array [
+                          [Function],
+                          [Function],
+                        ],
+                      },
+                      Object {
+                        "key": "systems_applicable",
+                        "props": Object {
+                          "width": 10,
+                        },
                         "title": "Applicable systems",
                         "transforms": Array [
                           [Function],
@@ -2141,11 +2169,11 @@ exports[`Packages.js should match the snapshot 1`] = `
                         ],
                       },
                       Object {
-                        "key": "systems_updatable",
+                        "key": "systems_installable",
                         "props": Object {
                           "width": 10,
                         },
-                        "title": "Upgradable",
+                        "title": "Installable systems",
                         "transforms": Array [
                           [Function],
                           [Function],
@@ -2200,6 +2228,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                             "title": undefined,
                           },
                           Object {
+                            "title": undefined,
+                          },
+                          Object {
                             "title": "Access control list utilities",
                           },
                         ],
@@ -2214,6 +2245,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                             >
                               test-name-2
                             </Link>,
+                          },
+                          Object {
+                            "title": undefined,
                           },
                           Object {
                             "title": undefined,
@@ -2334,6 +2368,61 @@ exports[`Packages.js should match the snapshot 1`] = `
                           },
                           "header": Object {
                             "formatters": Array [],
+                            "label": "Installed systems",
+                            "transforms": Array [
+                              [Function],
+                              [Function],
+                              [Function],
+                              [Function],
+                            ],
+                          },
+                          "property": "installed-systems",
+                          "props": Object {
+                            "data-key": 1,
+                            "data-label": "Installed systems",
+                            "width": 10,
+                          },
+                        },
+                        Object {
+                          "cell": Object {
+                            "formatters": Array [
+                              [Function],
+                            ],
+                            "transforms": Array [
+                              [Function],
+                            ],
+                          },
+                          "data": undefined,
+                          "extraParams": Object {
+                            "actionResolver": undefined,
+                            "actions": undefined,
+                            "actionsToggle": undefined,
+                            "allRowsExpanded": false,
+                            "allRowsSelected": false,
+                            "areActionsDisabled": undefined,
+                            "canCollapseAll": false,
+                            "canSelectAll": false,
+                            "canSortFavorites": true,
+                            "collapseAllAriaLabel": "",
+                            "contentId": "expanded-content",
+                            "dropdownDirection": "down",
+                            "dropdownPosition": "right",
+                            "expandId": "expandable-toggle",
+                            "firstUserColumnIndex": 0,
+                            "isHeaderSelectDisabled": false,
+                            "menuAppendTo": "inline",
+                            "onCollapse": 0,
+                            "onExpand": undefined,
+                            "onFavorite": undefined,
+                            "onRowEdit": undefined,
+                            "onSelect": 0,
+                            "onSort": 0,
+                            "rowLabeledBy": "simple-node",
+                            "selectVariant": "checkbox",
+                            "sortBy": 0,
+                          },
+                          "header": Object {
+                            "formatters": Array [],
                             "label": "Applicable systems",
                             "transforms": Array [
                               [Function],
@@ -2344,7 +2433,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                           },
                           "property": "applicable-systems",
                           "props": Object {
-                            "data-key": 1,
+                            "data-key": 2,
                             "data-label": "Applicable systems",
                             "width": 10,
                           },
@@ -2389,7 +2478,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                           },
                           "header": Object {
                             "formatters": Array [],
-                            "label": "Upgradable",
+                            "label": "Installable systems",
                             "transforms": Array [
                               [Function],
                               [Function],
@@ -2397,10 +2486,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                               [Function],
                             ],
                           },
-                          "property": "upgradable",
+                          "property": "installable-systems",
                           "props": Object {
-                            "data-key": 2,
-                            "data-label": "Upgradable",
+                            "data-key": 3,
+                            "data-label": "Installable systems",
                             "width": 10,
                           },
                         },
@@ -2454,7 +2543,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                           },
                           "property": "summary",
                           "props": Object {
-                            "data-key": 3,
+                            "data-key": 4,
                             "data-label": "Summary",
                             "width": 30,
                           },
@@ -2623,6 +2712,61 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "header": Object {
                                           "formatters": Array [],
+                                          "label": "Installed systems",
+                                          "transforms": Array [
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                          ],
+                                        },
+                                        "property": "installed-systems",
+                                        "props": Object {
+                                          "data-key": 1,
+                                          "data-label": "Installed systems",
+                                          "width": 10,
+                                        },
+                                      },
+                                      Object {
+                                        "cell": Object {
+                                          "formatters": Array [
+                                            [Function],
+                                          ],
+                                          "transforms": Array [
+                                            [Function],
+                                          ],
+                                        },
+                                        "data": undefined,
+                                        "extraParams": Object {
+                                          "actionResolver": undefined,
+                                          "actions": undefined,
+                                          "actionsToggle": undefined,
+                                          "allRowsExpanded": false,
+                                          "allRowsSelected": false,
+                                          "areActionsDisabled": undefined,
+                                          "canCollapseAll": false,
+                                          "canSelectAll": false,
+                                          "canSortFavorites": true,
+                                          "collapseAllAriaLabel": "",
+                                          "contentId": "expanded-content",
+                                          "dropdownDirection": "down",
+                                          "dropdownPosition": "right",
+                                          "expandId": "expandable-toggle",
+                                          "firstUserColumnIndex": 0,
+                                          "isHeaderSelectDisabled": false,
+                                          "menuAppendTo": "inline",
+                                          "onCollapse": 0,
+                                          "onExpand": undefined,
+                                          "onFavorite": undefined,
+                                          "onRowEdit": undefined,
+                                          "onSelect": 0,
+                                          "onSort": 0,
+                                          "rowLabeledBy": "simple-node",
+                                          "selectVariant": "checkbox",
+                                          "sortBy": 0,
+                                        },
+                                        "header": Object {
+                                          "formatters": Array [],
                                           "label": "Applicable systems",
                                           "transforms": Array [
                                             [Function],
@@ -2633,7 +2777,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "property": "applicable-systems",
                                         "props": Object {
-                                          "data-key": 1,
+                                          "data-key": 2,
                                           "data-label": "Applicable systems",
                                           "width": 10,
                                         },
@@ -2678,7 +2822,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "header": Object {
                                           "formatters": Array [],
-                                          "label": "Upgradable",
+                                          "label": "Installable systems",
                                           "transforms": Array [
                                             [Function],
                                             [Function],
@@ -2686,10 +2830,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             [Function],
                                           ],
                                         },
-                                        "property": "upgradable",
+                                        "property": "installable-systems",
                                         "props": Object {
-                                          "data-key": 2,
-                                          "data-label": "Upgradable",
+                                          "data-key": 3,
+                                          "data-label": "Installable systems",
                                           "width": 10,
                                         },
                                       },
@@ -2743,7 +2887,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "property": "summary",
                                         "props": Object {
-                                          "data-key": 3,
+                                          "data-key": 4,
                                           "data-label": "Summary",
                                           "width": 30,
                                         },
@@ -2897,6 +3041,61 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 },
                                                 "header": Object {
                                                   "formatters": Array [],
+                                                  "label": "Installed systems",
+                                                  "transforms": Array [
+                                                    [Function],
+                                                    [Function],
+                                                    [Function],
+                                                    [Function],
+                                                  ],
+                                                },
+                                                "property": "installed-systems",
+                                                "props": Object {
+                                                  "data-key": 1,
+                                                  "data-label": "Installed systems",
+                                                  "width": 10,
+                                                },
+                                              },
+                                              Object {
+                                                "cell": Object {
+                                                  "formatters": Array [
+                                                    [Function],
+                                                  ],
+                                                  "transforms": Array [
+                                                    [Function],
+                                                  ],
+                                                },
+                                                "data": undefined,
+                                                "extraParams": Object {
+                                                  "actionResolver": undefined,
+                                                  "actions": undefined,
+                                                  "actionsToggle": undefined,
+                                                  "allRowsExpanded": false,
+                                                  "allRowsSelected": false,
+                                                  "areActionsDisabled": undefined,
+                                                  "canCollapseAll": false,
+                                                  "canSelectAll": false,
+                                                  "canSortFavorites": true,
+                                                  "collapseAllAriaLabel": "",
+                                                  "contentId": "expanded-content",
+                                                  "dropdownDirection": "down",
+                                                  "dropdownPosition": "right",
+                                                  "expandId": "expandable-toggle",
+                                                  "firstUserColumnIndex": 0,
+                                                  "isHeaderSelectDisabled": false,
+                                                  "menuAppendTo": "inline",
+                                                  "onCollapse": 0,
+                                                  "onExpand": undefined,
+                                                  "onFavorite": undefined,
+                                                  "onRowEdit": undefined,
+                                                  "onSelect": 0,
+                                                  "onSort": 0,
+                                                  "rowLabeledBy": "simple-node",
+                                                  "selectVariant": "checkbox",
+                                                  "sortBy": 0,
+                                                },
+                                                "header": Object {
+                                                  "formatters": Array [],
                                                   "label": "Applicable systems",
                                                   "transforms": Array [
                                                     [Function],
@@ -2907,7 +3106,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 },
                                                 "property": "applicable-systems",
                                                 "props": Object {
-                                                  "data-key": 1,
+                                                  "data-key": 2,
                                                   "data-label": "Applicable systems",
                                                   "width": 10,
                                                 },
@@ -2952,7 +3151,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 },
                                                 "header": Object {
                                                   "formatters": Array [],
-                                                  "label": "Upgradable",
+                                                  "label": "Installable systems",
                                                   "transforms": Array [
                                                     [Function],
                                                     [Function],
@@ -2960,10 +3159,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     [Function],
                                                   ],
                                                 },
-                                                "property": "upgradable",
+                                                "property": "installable-systems",
                                                 "props": Object {
-                                                  "data-key": 2,
-                                                  "data-label": "Upgradable",
+                                                  "data-key": 3,
+                                                  "data-label": "Installable systems",
                                                   "width": 10,
                                                 },
                                               },
@@ -3017,7 +3216,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 },
                                                 "property": "summary",
                                                 "props": Object {
-                                                  "data-key": 3,
+                                                  "data-key": 4,
                                                   "data-label": "Summary",
                                                   "width": 30,
                                                 },
@@ -3134,18 +3333,116 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 </HeaderCell>
                                                 <HeaderCell
                                                   aria-sort="none"
-                                                  className="pf-c-table__sort pf-m-width-15"
+                                                  className="pf-c-table__sort pf-m-width-10"
                                                   data-key={1}
-                                                  data-label="Applicable systems"
+                                                  data-label="Installed systems"
                                                   key="1-header"
                                                   scope="col"
                                                   width={10}
                                                 >
                                                   <Th
                                                     aria-sort="none"
-                                                    className="pf-c-table__sort pf-m-width-15"
+                                                    className="pf-c-table__sort pf-m-width-10"
                                                     component="th"
                                                     data-key={1}
+                                                    data-label="Installed systems"
+                                                    onMouseEnter={[Function]}
+                                                    scope="col"
+                                                    textCenter={false}
+                                                    tooltip=""
+                                                    width={10}
+                                                  >
+                                                    <ThBase
+                                                      aria-sort="none"
+                                                      className="pf-c-table__sort pf-m-width-10"
+                                                      component="th"
+                                                      data-key={1}
+                                                      data-label="Installed systems"
+                                                      innerRef={null}
+                                                      onMouseEnter={[Function]}
+                                                      scope="col"
+                                                      textCenter={false}
+                                                      tooltip=""
+                                                      width={10}
+                                                    >
+                                                      <th
+                                                        aria-sort="none"
+                                                        className="pf-c-table__sort pf-m-width-10 pf-m-width-10"
+                                                        data-key={1}
+                                                        data-label="Installed systems"
+                                                        onMouseEnter={[Function]}
+                                                        scope="col"
+                                                      >
+                                                        <SortColumn
+                                                          isSortedBy={0}
+                                                          onSort={[Function]}
+                                                          sortDirection=""
+                                                        >
+                                                          <button
+                                                            className="pf-c-table__button"
+                                                            onClick={[Function]}
+                                                            type="button"
+                                                          >
+                                                            <div
+                                                              className="pf-c-table__button-content"
+                                                            >
+                                                              <TableText>
+                                                                <span
+                                                                  className="pf-c-table__text"
+                                                                  onMouseEnter={[Function]}
+                                                                >
+                                                                  Installed systems
+                                                                </span>
+                                                              </TableText>
+                                                              <span
+                                                                className="pf-c-table__sort-indicator"
+                                                              >
+                                                                <ArrowsAltVIcon
+                                                                  color="currentColor"
+                                                                  noVerticalAlign={false}
+                                                                  size="sm"
+                                                                >
+                                                                  <svg
+                                                                    aria-hidden={true}
+                                                                    aria-labelledby={null}
+                                                                    fill="currentColor"
+                                                                    height="1em"
+                                                                    role="img"
+                                                                    style={
+                                                                      Object {
+                                                                        "verticalAlign": "-0.125em",
+                                                                      }
+                                                                    }
+                                                                    viewBox="0 0 256 512"
+                                                                    width="1em"
+                                                                  >
+                                                                    <path
+                                                                      d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
+                                                                    />
+                                                                  </svg>
+                                                                </ArrowsAltVIcon>
+                                                              </span>
+                                                            </div>
+                                                          </button>
+                                                        </SortColumn>
+                                                      </th>
+                                                    </ThBase>
+                                                  </Th>
+                                                </HeaderCell>
+                                                <HeaderCell
+                                                  aria-sort="none"
+                                                  className="pf-c-table__sort pf-m-width-10"
+                                                  data-key={2}
+                                                  data-label="Applicable systems"
+                                                  key="2-header"
+                                                  scope="col"
+                                                  width={10}
+                                                >
+                                                  <Th
+                                                    aria-sort="none"
+                                                    className="pf-c-table__sort pf-m-width-10"
+                                                    component="th"
+                                                    data-key={2}
                                                     data-label="Applicable systems"
                                                     onMouseEnter={[Function]}
                                                     scope="col"
@@ -3155,9 +3452,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   >
                                                     <ThBase
                                                       aria-sort="none"
-                                                      className="pf-c-table__sort pf-m-width-15"
+                                                      className="pf-c-table__sort pf-m-width-10"
                                                       component="th"
-                                                      data-key={1}
+                                                      data-key={2}
                                                       data-label="Applicable systems"
                                                       innerRef={null}
                                                       onMouseEnter={[Function]}
@@ -3168,8 +3465,8 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     >
                                                       <th
                                                         aria-sort="none"
-                                                        className="pf-c-table__sort pf-m-width-15 pf-m-width-10"
-                                                        data-key={1}
+                                                        className="pf-c-table__sort pf-m-width-10 pf-m-width-10"
+                                                        data-key={2}
                                                         data-label="Applicable systems"
                                                         onMouseEnter={[Function]}
                                                         scope="col"
@@ -3233,9 +3530,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 <HeaderCell
                                                   aria-sort="none"
                                                   className="pf-c-table__sort pf-m-width-10"
-                                                  data-key={2}
-                                                  data-label="Upgradable"
-                                                  key="2-header"
+                                                  data-key={3}
+                                                  data-label="Installable systems"
+                                                  key="3-header"
                                                   scope="col"
                                                   width={10}
                                                 >
@@ -3243,8 +3540,8 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     aria-sort="none"
                                                     className="pf-c-table__sort pf-m-width-10"
                                                     component="th"
-                                                    data-key={2}
-                                                    data-label="Upgradable"
+                                                    data-key={3}
+                                                    data-label="Installable systems"
                                                     onMouseEnter={[Function]}
                                                     scope="col"
                                                     textCenter={false}
@@ -3255,8 +3552,8 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       aria-sort="none"
                                                       className="pf-c-table__sort pf-m-width-10"
                                                       component="th"
-                                                      data-key={2}
-                                                      data-label="Upgradable"
+                                                      data-key={3}
+                                                      data-label="Installable systems"
                                                       innerRef={null}
                                                       onMouseEnter={[Function]}
                                                       scope="col"
@@ -3267,8 +3564,8 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       <th
                                                         aria-sort="none"
                                                         className="pf-c-table__sort pf-m-width-10 pf-m-width-10"
-                                                        data-key={2}
-                                                        data-label="Upgradable"
+                                                        data-key={3}
+                                                        data-label="Installable systems"
                                                         onMouseEnter={[Function]}
                                                         scope="col"
                                                       >
@@ -3290,7 +3587,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                                   className="pf-c-table__text"
                                                                   onMouseEnter={[Function]}
                                                                 >
-                                                                  Upgradable
+                                                                  Installable systems
                                                                 </span>
                                                               </TableText>
                                                               <span
@@ -3331,9 +3628,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 <HeaderCell
                                                   aria-sort="none"
                                                   className="pf-c-table__sort pf-m-width-40"
-                                                  data-key={3}
+                                                  data-key={4}
                                                   data-label="Summary"
-                                                  key="3-header"
+                                                  key="4-header"
                                                   scope="col"
                                                   width={30}
                                                 >
@@ -3341,7 +3638,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     aria-sort="none"
                                                     className="pf-c-table__sort pf-m-width-40"
                                                     component="th"
-                                                    data-key={3}
+                                                    data-key={4}
                                                     data-label="Summary"
                                                     onMouseEnter={[Function]}
                                                     scope="col"
@@ -3353,7 +3650,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       aria-sort="none"
                                                       className="pf-c-table__sort pf-m-width-40"
                                                       component="th"
-                                                      data-key={3}
+                                                      data-key={4}
                                                       data-label="Summary"
                                                       innerRef={null}
                                                       onMouseEnter={[Function]}
@@ -3365,7 +3662,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       <th
                                                         aria-sort="none"
                                                         className="pf-c-table__sort pf-m-width-40 pf-m-width-30"
-                                                        data-key={3}
+                                                        data-key={4}
                                                         data-label="Summary"
                                                         onMouseEnter={[Function]}
                                                         scope="col"
@@ -3536,6 +3833,61 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     },
                                     "header": Object {
                                       "formatters": Array [],
+                                      "label": "Installed systems",
+                                      "transforms": Array [
+                                        [Function],
+                                        [Function],
+                                        [Function],
+                                        [Function],
+                                      ],
+                                    },
+                                    "property": "installed-systems",
+                                    "props": Object {
+                                      "data-key": 1,
+                                      "data-label": "Installed systems",
+                                      "width": 10,
+                                    },
+                                  },
+                                  Object {
+                                    "cell": Object {
+                                      "formatters": Array [
+                                        [Function],
+                                      ],
+                                      "transforms": Array [
+                                        [Function],
+                                      ],
+                                    },
+                                    "data": undefined,
+                                    "extraParams": Object {
+                                      "actionResolver": undefined,
+                                      "actions": undefined,
+                                      "actionsToggle": undefined,
+                                      "allRowsExpanded": false,
+                                      "allRowsSelected": false,
+                                      "areActionsDisabled": undefined,
+                                      "canCollapseAll": false,
+                                      "canSelectAll": false,
+                                      "canSortFavorites": true,
+                                      "collapseAllAriaLabel": "",
+                                      "contentId": "expanded-content",
+                                      "dropdownDirection": "down",
+                                      "dropdownPosition": "right",
+                                      "expandId": "expandable-toggle",
+                                      "firstUserColumnIndex": 0,
+                                      "isHeaderSelectDisabled": false,
+                                      "menuAppendTo": "inline",
+                                      "onCollapse": 0,
+                                      "onExpand": undefined,
+                                      "onFavorite": undefined,
+                                      "onRowEdit": undefined,
+                                      "onSelect": 0,
+                                      "onSort": 0,
+                                      "rowLabeledBy": "simple-node",
+                                      "selectVariant": "checkbox",
+                                      "sortBy": 0,
+                                    },
+                                    "header": Object {
+                                      "formatters": Array [],
                                       "label": "Applicable systems",
                                       "transforms": Array [
                                         [Function],
@@ -3546,7 +3898,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     },
                                     "property": "applicable-systems",
                                     "props": Object {
-                                      "data-key": 1,
+                                      "data-key": 2,
                                       "data-label": "Applicable systems",
                                       "width": 10,
                                     },
@@ -3591,7 +3943,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     },
                                     "header": Object {
                                       "formatters": Array [],
-                                      "label": "Upgradable",
+                                      "label": "Installable systems",
                                       "transforms": Array [
                                         [Function],
                                         [Function],
@@ -3599,10 +3951,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         [Function],
                                       ],
                                     },
-                                    "property": "upgradable",
+                                    "property": "installable-systems",
                                     "props": Object {
-                                      "data-key": 2,
-                                      "data-label": "Upgradable",
+                                      "data-key": 3,
+                                      "data-label": "Installable systems",
                                       "width": 10,
                                     },
                                   },
@@ -3656,7 +4008,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     },
                                     "property": "summary",
                                     "props": Object {
-                                      "data-key": 3,
+                                      "data-key": 4,
                                       "data-label": "Summary",
                                       "width": 30,
                                     },
@@ -3685,6 +4037,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         "title": undefined,
                                       },
                                       Object {
+                                        "title": undefined,
+                                      },
+                                      Object {
                                         "title": "Access control list utilities",
                                       },
                                     ],
@@ -3699,6 +4054,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         >
                                           test-name-2
                                         </Link>,
+                                      },
+                                      Object {
+                                        "title": undefined,
                                       },
                                       Object {
                                         "title": undefined,
@@ -3744,10 +4102,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "title": undefined,
                                         },
                                         Object {
+                                          "title": undefined,
+                                        },
+                                        Object {
                                           "title": "Access control list utilities",
                                         },
                                       ],
                                       "id": "test-name",
+                                      "installable-systems": Object {
+                                        "formatters": Array [],
+                                        "props": Object {
+                                          "isVisible": true,
+                                        },
+                                        "title": undefined,
+                                      },
+                                      "installed-systems": Object {
+                                        "formatters": Array [],
+                                        "props": Object {
+                                          "isVisible": true,
+                                        },
+                                        "title": undefined,
+                                      },
                                       "isExpanded": undefined,
                                       "isFirst": true,
                                       "isFirstVisible": true,
@@ -3774,13 +4149,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "title": "Access control list utilities",
                                       },
-                                      "upgradable": Object {
-                                        "formatters": Array [],
-                                        "props": Object {
-                                          "isVisible": true,
-                                        },
-                                        "title": undefined,
-                                      },
                                     },
                                     Object {
                                       "applicable-systems": Object {
@@ -3805,10 +4173,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "title": undefined,
                                         },
                                         Object {
+                                          "title": undefined,
+                                        },
+                                        Object {
                                           "title": "Access control list utilities",
                                         },
                                       ],
                                       "id": "test-name-2",
+                                      "installable-systems": Object {
+                                        "formatters": Array [],
+                                        "props": Object {
+                                          "isVisible": true,
+                                        },
+                                        "title": undefined,
+                                      },
+                                      "installed-systems": Object {
+                                        "formatters": Array [],
+                                        "props": Object {
+                                          "isVisible": true,
+                                        },
+                                        "title": undefined,
+                                      },
                                       "isExpanded": undefined,
                                       "isFirst": false,
                                       "isFirstVisible": false,
@@ -3834,13 +4219,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "isVisible": true,
                                         },
                                         "title": "Access control list utilities",
-                                      },
-                                      "upgradable": Object {
-                                        "formatters": Array [],
-                                        "props": Object {
-                                          "isVisible": true,
-                                        },
-                                        "title": undefined,
                                       },
                                     },
                                   ]
@@ -3872,10 +4250,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "title": undefined,
                                         },
                                         Object {
+                                          "title": undefined,
+                                        },
+                                        Object {
                                           "title": "Access control list utilities",
                                         },
                                       ],
                                       "id": "test-name",
+                                      "installable-systems": Object {
+                                        "formatters": Array [],
+                                        "props": Object {
+                                          "isVisible": true,
+                                        },
+                                        "title": undefined,
+                                      },
+                                      "installed-systems": Object {
+                                        "formatters": Array [],
+                                        "props": Object {
+                                          "isVisible": true,
+                                        },
+                                        "title": undefined,
+                                      },
                                       "isExpanded": undefined,
                                       "isFirst": true,
                                       "isFirstVisible": true,
@@ -3902,13 +4297,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "title": "Access control list utilities",
                                       },
-                                      "upgradable": Object {
-                                        "formatters": Array [],
-                                        "props": Object {
-                                          "isVisible": true,
-                                        },
-                                        "title": undefined,
-                                      },
                                     },
                                     Object {
                                       "applicable-systems": Object {
@@ -3933,10 +4321,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "title": undefined,
                                         },
                                         Object {
+                                          "title": undefined,
+                                        },
+                                        Object {
                                           "title": "Access control list utilities",
                                         },
                                       ],
                                       "id": "test-name-2",
+                                      "installable-systems": Object {
+                                        "formatters": Array [],
+                                        "props": Object {
+                                          "isVisible": true,
+                                        },
+                                        "title": undefined,
+                                      },
+                                      "installed-systems": Object {
+                                        "formatters": Array [],
+                                        "props": Object {
+                                          "isVisible": true,
+                                        },
+                                        "title": undefined,
+                                      },
                                       "isExpanded": undefined,
                                       "isFirst": false,
                                       "isFirstVisible": false,
@@ -3962,13 +4367,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "isVisible": true,
                                         },
                                         "title": "Access control list utilities",
-                                      },
-                                      "upgradable": Object {
-                                        "formatters": Array [],
-                                        "props": Object {
-                                          "isVisible": true,
-                                        },
-                                        "title": undefined,
                                       },
                                     },
                                   ]
@@ -4072,6 +4470,61 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "header": Object {
                                           "formatters": Array [],
+                                          "label": "Installed systems",
+                                          "transforms": Array [
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                            [Function],
+                                          ],
+                                        },
+                                        "property": "installed-systems",
+                                        "props": Object {
+                                          "data-key": 1,
+                                          "data-label": "Installed systems",
+                                          "width": 10,
+                                        },
+                                      },
+                                      Object {
+                                        "cell": Object {
+                                          "formatters": Array [
+                                            [Function],
+                                          ],
+                                          "transforms": Array [
+                                            [Function],
+                                          ],
+                                        },
+                                        "data": undefined,
+                                        "extraParams": Object {
+                                          "actionResolver": undefined,
+                                          "actions": undefined,
+                                          "actionsToggle": undefined,
+                                          "allRowsExpanded": false,
+                                          "allRowsSelected": false,
+                                          "areActionsDisabled": undefined,
+                                          "canCollapseAll": false,
+                                          "canSelectAll": false,
+                                          "canSortFavorites": true,
+                                          "collapseAllAriaLabel": "",
+                                          "contentId": "expanded-content",
+                                          "dropdownDirection": "down",
+                                          "dropdownPosition": "right",
+                                          "expandId": "expandable-toggle",
+                                          "firstUserColumnIndex": 0,
+                                          "isHeaderSelectDisabled": false,
+                                          "menuAppendTo": "inline",
+                                          "onCollapse": 0,
+                                          "onExpand": undefined,
+                                          "onFavorite": undefined,
+                                          "onRowEdit": undefined,
+                                          "onSelect": 0,
+                                          "onSort": 0,
+                                          "rowLabeledBy": "simple-node",
+                                          "selectVariant": "checkbox",
+                                          "sortBy": 0,
+                                        },
+                                        "header": Object {
+                                          "formatters": Array [],
                                           "label": "Applicable systems",
                                           "transforms": Array [
                                             [Function],
@@ -4082,7 +4535,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "property": "applicable-systems",
                                         "props": Object {
-                                          "data-key": 1,
+                                          "data-key": 2,
                                           "data-label": "Applicable systems",
                                           "width": 10,
                                         },
@@ -4127,7 +4580,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "header": Object {
                                           "formatters": Array [],
-                                          "label": "Upgradable",
+                                          "label": "Installable systems",
                                           "transforms": Array [
                                             [Function],
                                             [Function],
@@ -4135,10 +4588,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             [Function],
                                           ],
                                         },
-                                        "property": "upgradable",
+                                        "property": "installable-systems",
                                         "props": Object {
-                                          "data-key": 2,
-                                          "data-label": "Upgradable",
+                                          "data-key": 3,
+                                          "data-label": "Installable systems",
                                           "width": 10,
                                         },
                                       },
@@ -4192,7 +4645,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         },
                                         "property": "summary",
                                         "props": Object {
-                                          "data-key": 3,
+                                          "data-key": 4,
                                           "data-label": "Summary",
                                           "width": 30,
                                         },
@@ -4225,10 +4678,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "title": undefined,
                                           },
                                           Object {
+                                            "title": undefined,
+                                          },
+                                          Object {
                                             "title": "Access control list utilities",
                                           },
                                         ],
                                         "id": "test-name",
+                                        "installable-systems": Object {
+                                          "formatters": Array [],
+                                          "props": Object {
+                                            "isVisible": true,
+                                          },
+                                          "title": undefined,
+                                        },
+                                        "installed-systems": Object {
+                                          "formatters": Array [],
+                                          "props": Object {
+                                            "isVisible": true,
+                                          },
+                                          "title": undefined,
+                                        },
                                         "isExpanded": undefined,
                                         "isFirst": true,
                                         "isFirstVisible": true,
@@ -4255,13 +4725,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           },
                                           "title": "Access control list utilities",
                                         },
-                                        "upgradable": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
-                                            "isVisible": true,
-                                          },
-                                          "title": undefined,
-                                        },
                                       },
                                       Object {
                                         "applicable-systems": Object {
@@ -4286,10 +4749,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "title": undefined,
                                           },
                                           Object {
+                                            "title": undefined,
+                                          },
+                                          Object {
                                             "title": "Access control list utilities",
                                           },
                                         ],
                                         "id": "test-name-2",
+                                        "installable-systems": Object {
+                                          "formatters": Array [],
+                                          "props": Object {
+                                            "isVisible": true,
+                                          },
+                                          "title": undefined,
+                                        },
+                                        "installed-systems": Object {
+                                          "formatters": Array [],
+                                          "props": Object {
+                                            "isVisible": true,
+                                          },
+                                          "title": undefined,
+                                        },
                                         "isExpanded": undefined,
                                         "isFirst": false,
                                         "isFirstVisible": false,
@@ -4315,13 +4795,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "isVisible": true,
                                           },
                                           "title": "Access control list utilities",
-                                        },
-                                        "upgradable": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
-                                            "isVisible": true,
-                                          },
-                                          "title": undefined,
                                         },
                                       },
                                     ]
@@ -4377,10 +4850,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "title": undefined,
                                           },
                                           Object {
+                                            "title": undefined,
+                                          },
+                                          Object {
                                             "title": "Access control list utilities",
                                           },
                                         ],
                                         "id": "test-name",
+                                        "installable-systems": Object {
+                                          "formatters": Array [],
+                                          "props": Object {
+                                            "isVisible": true,
+                                          },
+                                          "title": undefined,
+                                        },
+                                        "installed-systems": Object {
+                                          "formatters": Array [],
+                                          "props": Object {
+                                            "isVisible": true,
+                                          },
+                                          "title": undefined,
+                                        },
                                         "isExpanded": undefined,
                                         "isFirst": true,
                                         "isFirstVisible": true,
@@ -4407,13 +4897,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           },
                                           "title": "Access control list utilities",
                                         },
-                                        "upgradable": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
-                                            "isVisible": true,
-                                          },
-                                          "title": undefined,
-                                        },
                                       },
                                       Object {
                                         "applicable-systems": Object {
@@ -4438,10 +4921,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "title": undefined,
                                           },
                                           Object {
+                                            "title": undefined,
+                                          },
+                                          Object {
                                             "title": "Access control list utilities",
                                           },
                                         ],
                                         "id": "test-name-2",
+                                        "installable-systems": Object {
+                                          "formatters": Array [],
+                                          "props": Object {
+                                            "isVisible": true,
+                                          },
+                                          "title": undefined,
+                                        },
+                                        "installed-systems": Object {
+                                          "formatters": Array [],
+                                          "props": Object {
+                                            "isVisible": true,
+                                          },
+                                          "title": undefined,
+                                        },
                                         "isExpanded": undefined,
                                         "isFirst": false,
                                         "isFirstVisible": false,
@@ -4467,13 +4967,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "isVisible": true,
                                           },
                                           "title": "Access control list utilities",
-                                        },
-                                        "upgradable": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
-                                            "isVisible": true,
-                                          },
-                                          "title": undefined,
                                         },
                                       },
                                     ]
@@ -4507,10 +5000,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                               "title": undefined,
                                             },
                                             Object {
+                                              "title": undefined,
+                                            },
+                                            Object {
                                               "title": "Access control list utilities",
                                             },
                                           ],
                                           "id": "test-name",
+                                          "installable-systems": Object {
+                                            "formatters": Array [],
+                                            "props": Object {
+                                              "isVisible": true,
+                                            },
+                                            "title": undefined,
+                                          },
+                                          "installed-systems": Object {
+                                            "formatters": Array [],
+                                            "props": Object {
+                                              "isVisible": true,
+                                            },
+                                            "title": undefined,
+                                          },
                                           "isExpanded": undefined,
                                           "isFirst": true,
                                           "isFirstVisible": true,
@@ -4537,13 +5047,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             },
                                             "title": "Access control list utilities",
                                           },
-                                          "upgradable": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
-                                              "isVisible": true,
-                                            },
-                                            "title": undefined,
-                                          },
                                         },
                                         Object {
                                           "applicable-systems": Object {
@@ -4568,10 +5071,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                               "title": undefined,
                                             },
                                             Object {
+                                              "title": undefined,
+                                            },
+                                            Object {
                                               "title": "Access control list utilities",
                                             },
                                           ],
                                           "id": "test-name-2",
+                                          "installable-systems": Object {
+                                            "formatters": Array [],
+                                            "props": Object {
+                                              "isVisible": true,
+                                            },
+                                            "title": undefined,
+                                          },
+                                          "installed-systems": Object {
+                                            "formatters": Array [],
+                                            "props": Object {
+                                              "isVisible": true,
+                                            },
+                                            "title": undefined,
+                                          },
                                           "isExpanded": undefined,
                                           "isFirst": false,
                                           "isFirstVisible": false,
@@ -4597,13 +5117,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                               "isVisible": true,
                                             },
                                             "title": "Access control list utilities",
-                                          },
-                                          "upgradable": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
-                                              "isVisible": true,
-                                            },
-                                            "title": undefined,
                                           },
                                         },
                                       ]
@@ -4717,6 +5230,61 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                   "header": Object {
                                                     "formatters": Array [],
+                                                    "label": "Installed systems",
+                                                    "transforms": Array [
+                                                      [Function],
+                                                      [Function],
+                                                      [Function],
+                                                      [Function],
+                                                    ],
+                                                  },
+                                                  "property": "installed-systems",
+                                                  "props": Object {
+                                                    "data-key": 1,
+                                                    "data-label": "Installed systems",
+                                                    "width": 10,
+                                                  },
+                                                },
+                                                Object {
+                                                  "cell": Object {
+                                                    "formatters": Array [
+                                                      [Function],
+                                                    ],
+                                                    "transforms": Array [
+                                                      [Function],
+                                                    ],
+                                                  },
+                                                  "data": undefined,
+                                                  "extraParams": Object {
+                                                    "actionResolver": undefined,
+                                                    "actions": undefined,
+                                                    "actionsToggle": undefined,
+                                                    "allRowsExpanded": false,
+                                                    "allRowsSelected": false,
+                                                    "areActionsDisabled": undefined,
+                                                    "canCollapseAll": false,
+                                                    "canSelectAll": false,
+                                                    "canSortFavorites": true,
+                                                    "collapseAllAriaLabel": "",
+                                                    "contentId": "expanded-content",
+                                                    "dropdownDirection": "down",
+                                                    "dropdownPosition": "right",
+                                                    "expandId": "expandable-toggle",
+                                                    "firstUserColumnIndex": 0,
+                                                    "isHeaderSelectDisabled": false,
+                                                    "menuAppendTo": "inline",
+                                                    "onCollapse": 0,
+                                                    "onExpand": undefined,
+                                                    "onFavorite": undefined,
+                                                    "onRowEdit": undefined,
+                                                    "onSelect": 0,
+                                                    "onSort": 0,
+                                                    "rowLabeledBy": "simple-node",
+                                                    "selectVariant": "checkbox",
+                                                    "sortBy": 0,
+                                                  },
+                                                  "header": Object {
+                                                    "formatters": Array [],
                                                     "label": "Applicable systems",
                                                     "transforms": Array [
                                                       [Function],
@@ -4727,7 +5295,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                   "property": "applicable-systems",
                                                   "props": Object {
-                                                    "data-key": 1,
+                                                    "data-key": 2,
                                                     "data-label": "Applicable systems",
                                                     "width": 10,
                                                   },
@@ -4772,7 +5340,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                   "header": Object {
                                                     "formatters": Array [],
-                                                    "label": "Upgradable",
+                                                    "label": "Installable systems",
                                                     "transforms": Array [
                                                       [Function],
                                                       [Function],
@@ -4780,10 +5348,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       [Function],
                                                     ],
                                                   },
-                                                  "property": "upgradable",
+                                                  "property": "installable-systems",
                                                   "props": Object {
-                                                    "data-key": 2,
-                                                    "data-label": "Upgradable",
+                                                    "data-key": 3,
+                                                    "data-label": "Installable systems",
                                                     "width": 10,
                                                   },
                                                 },
@@ -4837,7 +5405,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                   "property": "summary",
                                                   "props": Object {
-                                                    "data-key": 3,
+                                                    "data-key": 4,
                                                     "data-label": "Summary",
                                                     "width": 30,
                                                   },
@@ -4877,10 +5445,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     "title": undefined,
                                                   },
                                                   Object {
+                                                    "title": undefined,
+                                                  },
+                                                  Object {
                                                     "title": "Access control list utilities",
                                                   },
                                                 ],
                                                 "id": "test-name",
+                                                "installable-systems": Object {
+                                                  "formatters": Array [],
+                                                  "props": Object {
+                                                    "isVisible": true,
+                                                  },
+                                                  "title": undefined,
+                                                },
+                                                "installed-systems": Object {
+                                                  "formatters": Array [],
+                                                  "props": Object {
+                                                    "isVisible": true,
+                                                  },
+                                                  "title": undefined,
+                                                },
                                                 "isExpanded": undefined,
                                                 "isFirst": true,
                                                 "isFirstVisible": true,
@@ -4906,13 +5491,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     "isVisible": true,
                                                   },
                                                   "title": "Access control list utilities",
-                                                },
-                                                "upgradable": Object {
-                                                  "formatters": Array [],
-                                                  "props": Object {
-                                                    "isVisible": true,
-                                                  },
-                                                  "title": undefined,
                                                 },
                                               }
                                             }
@@ -4947,10 +5525,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       "title": undefined,
                                                     },
                                                     Object {
+                                                      "title": undefined,
+                                                    },
+                                                    Object {
                                                       "title": "Access control list utilities",
                                                     },
                                                   ],
                                                   "id": "test-name",
+                                                  "installable-systems": Object {
+                                                    "formatters": Array [],
+                                                    "props": Object {
+                                                      "isVisible": true,
+                                                    },
+                                                    "title": undefined,
+                                                  },
+                                                  "installed-systems": Object {
+                                                    "formatters": Array [],
+                                                    "props": Object {
+                                                      "isVisible": true,
+                                                    },
+                                                    "title": undefined,
+                                                  },
                                                   "isExpanded": undefined,
                                                   "isFirst": true,
                                                   "isFirstVisible": true,
@@ -4976,13 +5571,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       "isVisible": true,
                                                     },
                                                     "title": "Access control list utilities",
-                                                  },
-                                                  "upgradable": Object {
-                                                    "formatters": Array [],
-                                                    "props": Object {
-                                                      "isVisible": true,
-                                                    },
-                                                    "title": undefined,
                                                   },
                                                 }
                                               }
@@ -5063,7 +5651,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     </BodyCell>
                                                     <BodyCell
                                                       data-key={1}
-                                                      data-label="Applicable systems"
+                                                      data-label="Installed systems"
                                                       isVisible={true}
                                                       key="col-1-row-0"
                                                       width={10}
@@ -5072,7 +5660,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         className=""
                                                         component="td"
                                                         data-key={1}
-                                                        dataLabel="Applicable systems"
+                                                        dataLabel="Installed systems"
                                                         onMouseEnter={[Function]}
                                                         textCenter={false}
                                                         width={10}
@@ -5081,7 +5669,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           className=""
                                                           component="td"
                                                           data-key={1}
-                                                          dataLabel="Applicable systems"
+                                                          dataLabel="Installed systems"
                                                           innerRef={null}
                                                           onMouseEnter={[Function]}
                                                           textCenter={false}
@@ -5090,7 +5678,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           <td
                                                             className="pf-m-width-10"
                                                             data-key={1}
-                                                            data-label="Applicable systems"
+                                                            data-label="Installed systems"
                                                             onMouseEnter={[Function]}
                                                           />
                                                         </TdBase>
@@ -5098,7 +5686,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     </BodyCell>
                                                     <BodyCell
                                                       data-key={2}
-                                                      data-label="Upgradable"
+                                                      data-label="Applicable systems"
                                                       isVisible={true}
                                                       key="col-2-row-0"
                                                       width={10}
@@ -5107,7 +5695,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         className=""
                                                         component="td"
                                                         data-key={2}
-                                                        dataLabel="Upgradable"
+                                                        dataLabel="Applicable systems"
                                                         onMouseEnter={[Function]}
                                                         textCenter={false}
                                                         width={10}
@@ -5116,7 +5704,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           className=""
                                                           component="td"
                                                           data-key={2}
-                                                          dataLabel="Upgradable"
+                                                          dataLabel="Applicable systems"
                                                           innerRef={null}
                                                           onMouseEnter={[Function]}
                                                           textCenter={false}
@@ -5125,7 +5713,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           <td
                                                             className="pf-m-width-10"
                                                             data-key={2}
-                                                            data-label="Upgradable"
+                                                            data-label="Applicable systems"
                                                             onMouseEnter={[Function]}
                                                           />
                                                         </TdBase>
@@ -5133,15 +5721,50 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     </BodyCell>
                                                     <BodyCell
                                                       data-key={3}
-                                                      data-label="Summary"
+                                                      data-label="Installable systems"
                                                       isVisible={true}
                                                       key="col-3-row-0"
-                                                      width={30}
+                                                      width={10}
                                                     >
                                                       <Td
                                                         className=""
                                                         component="td"
                                                         data-key={3}
+                                                        dataLabel="Installable systems"
+                                                        onMouseEnter={[Function]}
+                                                        textCenter={false}
+                                                        width={10}
+                                                      >
+                                                        <TdBase
+                                                          className=""
+                                                          component="td"
+                                                          data-key={3}
+                                                          dataLabel="Installable systems"
+                                                          innerRef={null}
+                                                          onMouseEnter={[Function]}
+                                                          textCenter={false}
+                                                          width={10}
+                                                        >
+                                                          <td
+                                                            className="pf-m-width-10"
+                                                            data-key={3}
+                                                            data-label="Installable systems"
+                                                            onMouseEnter={[Function]}
+                                                          />
+                                                        </TdBase>
+                                                      </Td>
+                                                    </BodyCell>
+                                                    <BodyCell
+                                                      data-key={4}
+                                                      data-label="Summary"
+                                                      isVisible={true}
+                                                      key="col-4-row-0"
+                                                      width={30}
+                                                    >
+                                                      <Td
+                                                        className=""
+                                                        component="td"
+                                                        data-key={4}
                                                         dataLabel="Summary"
                                                         onMouseEnter={[Function]}
                                                         textCenter={false}
@@ -5150,7 +5773,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         <TdBase
                                                           className=""
                                                           component="td"
-                                                          data-key={3}
+                                                          data-key={4}
                                                           dataLabel="Summary"
                                                           innerRef={null}
                                                           onMouseEnter={[Function]}
@@ -5159,7 +5782,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         >
                                                           <td
                                                             className="pf-m-width-30"
-                                                            data-key={3}
+                                                            data-key={4}
                                                             data-label="Summary"
                                                             onMouseEnter={[Function]}
                                                           >
@@ -5270,6 +5893,61 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                   "header": Object {
                                                     "formatters": Array [],
+                                                    "label": "Installed systems",
+                                                    "transforms": Array [
+                                                      [Function],
+                                                      [Function],
+                                                      [Function],
+                                                      [Function],
+                                                    ],
+                                                  },
+                                                  "property": "installed-systems",
+                                                  "props": Object {
+                                                    "data-key": 1,
+                                                    "data-label": "Installed systems",
+                                                    "width": 10,
+                                                  },
+                                                },
+                                                Object {
+                                                  "cell": Object {
+                                                    "formatters": Array [
+                                                      [Function],
+                                                    ],
+                                                    "transforms": Array [
+                                                      [Function],
+                                                    ],
+                                                  },
+                                                  "data": undefined,
+                                                  "extraParams": Object {
+                                                    "actionResolver": undefined,
+                                                    "actions": undefined,
+                                                    "actionsToggle": undefined,
+                                                    "allRowsExpanded": false,
+                                                    "allRowsSelected": false,
+                                                    "areActionsDisabled": undefined,
+                                                    "canCollapseAll": false,
+                                                    "canSelectAll": false,
+                                                    "canSortFavorites": true,
+                                                    "collapseAllAriaLabel": "",
+                                                    "contentId": "expanded-content",
+                                                    "dropdownDirection": "down",
+                                                    "dropdownPosition": "right",
+                                                    "expandId": "expandable-toggle",
+                                                    "firstUserColumnIndex": 0,
+                                                    "isHeaderSelectDisabled": false,
+                                                    "menuAppendTo": "inline",
+                                                    "onCollapse": 0,
+                                                    "onExpand": undefined,
+                                                    "onFavorite": undefined,
+                                                    "onRowEdit": undefined,
+                                                    "onSelect": 0,
+                                                    "onSort": 0,
+                                                    "rowLabeledBy": "simple-node",
+                                                    "selectVariant": "checkbox",
+                                                    "sortBy": 0,
+                                                  },
+                                                  "header": Object {
+                                                    "formatters": Array [],
                                                     "label": "Applicable systems",
                                                     "transforms": Array [
                                                       [Function],
@@ -5280,7 +5958,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                   "property": "applicable-systems",
                                                   "props": Object {
-                                                    "data-key": 1,
+                                                    "data-key": 2,
                                                     "data-label": "Applicable systems",
                                                     "width": 10,
                                                   },
@@ -5325,7 +6003,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                   "header": Object {
                                                     "formatters": Array [],
-                                                    "label": "Upgradable",
+                                                    "label": "Installable systems",
                                                     "transforms": Array [
                                                       [Function],
                                                       [Function],
@@ -5333,10 +6011,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       [Function],
                                                     ],
                                                   },
-                                                  "property": "upgradable",
+                                                  "property": "installable-systems",
                                                   "props": Object {
-                                                    "data-key": 2,
-                                                    "data-label": "Upgradable",
+                                                    "data-key": 3,
+                                                    "data-label": "Installable systems",
                                                     "width": 10,
                                                   },
                                                 },
@@ -5390,7 +6068,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   },
                                                   "property": "summary",
                                                   "props": Object {
-                                                    "data-key": 3,
+                                                    "data-key": 4,
                                                     "data-label": "Summary",
                                                     "width": 30,
                                                   },
@@ -5430,10 +6108,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     "title": undefined,
                                                   },
                                                   Object {
+                                                    "title": undefined,
+                                                  },
+                                                  Object {
                                                     "title": "Access control list utilities",
                                                   },
                                                 ],
                                                 "id": "test-name-2",
+                                                "installable-systems": Object {
+                                                  "formatters": Array [],
+                                                  "props": Object {
+                                                    "isVisible": true,
+                                                  },
+                                                  "title": undefined,
+                                                },
+                                                "installed-systems": Object {
+                                                  "formatters": Array [],
+                                                  "props": Object {
+                                                    "isVisible": true,
+                                                  },
+                                                  "title": undefined,
+                                                },
                                                 "isExpanded": undefined,
                                                 "isFirst": false,
                                                 "isFirstVisible": false,
@@ -5459,13 +6154,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     "isVisible": true,
                                                   },
                                                   "title": "Access control list utilities",
-                                                },
-                                                "upgradable": Object {
-                                                  "formatters": Array [],
-                                                  "props": Object {
-                                                    "isVisible": true,
-                                                  },
-                                                  "title": undefined,
                                                 },
                                               }
                                             }
@@ -5500,10 +6188,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       "title": undefined,
                                                     },
                                                     Object {
+                                                      "title": undefined,
+                                                    },
+                                                    Object {
                                                       "title": "Access control list utilities",
                                                     },
                                                   ],
                                                   "id": "test-name-2",
+                                                  "installable-systems": Object {
+                                                    "formatters": Array [],
+                                                    "props": Object {
+                                                      "isVisible": true,
+                                                    },
+                                                    "title": undefined,
+                                                  },
+                                                  "installed-systems": Object {
+                                                    "formatters": Array [],
+                                                    "props": Object {
+                                                      "isVisible": true,
+                                                    },
+                                                    "title": undefined,
+                                                  },
                                                   "isExpanded": undefined,
                                                   "isFirst": false,
                                                   "isFirstVisible": false,
@@ -5529,13 +6234,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       "isVisible": true,
                                                     },
                                                     "title": "Access control list utilities",
-                                                  },
-                                                  "upgradable": Object {
-                                                    "formatters": Array [],
-                                                    "props": Object {
-                                                      "isVisible": true,
-                                                    },
-                                                    "title": undefined,
                                                   },
                                                 }
                                               }
@@ -5616,7 +6314,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     </BodyCell>
                                                     <BodyCell
                                                       data-key={1}
-                                                      data-label="Applicable systems"
+                                                      data-label="Installed systems"
                                                       isVisible={true}
                                                       key="col-1-row-1"
                                                       width={10}
@@ -5625,7 +6323,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         className=""
                                                         component="td"
                                                         data-key={1}
-                                                        dataLabel="Applicable systems"
+                                                        dataLabel="Installed systems"
                                                         onMouseEnter={[Function]}
                                                         textCenter={false}
                                                         width={10}
@@ -5634,7 +6332,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           className=""
                                                           component="td"
                                                           data-key={1}
-                                                          dataLabel="Applicable systems"
+                                                          dataLabel="Installed systems"
                                                           innerRef={null}
                                                           onMouseEnter={[Function]}
                                                           textCenter={false}
@@ -5643,7 +6341,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           <td
                                                             className="pf-m-width-10"
                                                             data-key={1}
-                                                            data-label="Applicable systems"
+                                                            data-label="Installed systems"
                                                             onMouseEnter={[Function]}
                                                           />
                                                         </TdBase>
@@ -5651,7 +6349,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     </BodyCell>
                                                     <BodyCell
                                                       data-key={2}
-                                                      data-label="Upgradable"
+                                                      data-label="Applicable systems"
                                                       isVisible={true}
                                                       key="col-2-row-1"
                                                       width={10}
@@ -5660,7 +6358,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         className=""
                                                         component="td"
                                                         data-key={2}
-                                                        dataLabel="Upgradable"
+                                                        dataLabel="Applicable systems"
                                                         onMouseEnter={[Function]}
                                                         textCenter={false}
                                                         width={10}
@@ -5669,7 +6367,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           className=""
                                                           component="td"
                                                           data-key={2}
-                                                          dataLabel="Upgradable"
+                                                          dataLabel="Applicable systems"
                                                           innerRef={null}
                                                           onMouseEnter={[Function]}
                                                           textCenter={false}
@@ -5678,7 +6376,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           <td
                                                             className="pf-m-width-10"
                                                             data-key={2}
-                                                            data-label="Upgradable"
+                                                            data-label="Applicable systems"
                                                             onMouseEnter={[Function]}
                                                           />
                                                         </TdBase>
@@ -5686,15 +6384,50 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     </BodyCell>
                                                     <BodyCell
                                                       data-key={3}
-                                                      data-label="Summary"
+                                                      data-label="Installable systems"
                                                       isVisible={true}
                                                       key="col-3-row-1"
-                                                      width={30}
+                                                      width={10}
                                                     >
                                                       <Td
                                                         className=""
                                                         component="td"
                                                         data-key={3}
+                                                        dataLabel="Installable systems"
+                                                        onMouseEnter={[Function]}
+                                                        textCenter={false}
+                                                        width={10}
+                                                      >
+                                                        <TdBase
+                                                          className=""
+                                                          component="td"
+                                                          data-key={3}
+                                                          dataLabel="Installable systems"
+                                                          innerRef={null}
+                                                          onMouseEnter={[Function]}
+                                                          textCenter={false}
+                                                          width={10}
+                                                        >
+                                                          <td
+                                                            className="pf-m-width-10"
+                                                            data-key={3}
+                                                            data-label="Installable systems"
+                                                            onMouseEnter={[Function]}
+                                                          />
+                                                        </TdBase>
+                                                      </Td>
+                                                    </BodyCell>
+                                                    <BodyCell
+                                                      data-key={4}
+                                                      data-label="Summary"
+                                                      isVisible={true}
+                                                      key="col-4-row-1"
+                                                      width={30}
+                                                    >
+                                                      <Td
+                                                        className=""
+                                                        component="td"
+                                                        data-key={4}
                                                         dataLabel="Summary"
                                                         onMouseEnter={[Function]}
                                                         textCenter={false}
@@ -5703,7 +6436,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         <TdBase
                                                           className=""
                                                           component="td"
-                                                          data-key={3}
+                                                          data-key={4}
                                                           dataLabel="Summary"
                                                           innerRef={null}
                                                           onMouseEnter={[Function]}
@@ -5712,7 +6445,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                         >
                                                           <td
                                                             className="pf-m-width-30"
-                                                            data-key={3}
+                                                            data-key={4}
                                                             data-label="Summary"
                                                             onMouseEnter={[Function]}
                                                           >

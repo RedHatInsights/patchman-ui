@@ -106,15 +106,23 @@ export const packagesColumns = [
     },
     {
         key: 'systems_installed',
-        title: intl.formatMessage(messages.labelsColumnsApplicableSystems),
-        transforms: [sortable, cellWidth(15)],
+        title: intl.formatMessage(messages.labelsColumnsInstalledSystems),
+        transforms: [sortable, cellWidth(10)],
         props: {
             width: 10
         }
     },
     {
-        key: 'systems_updatable',
-        title: intl.formatMessage(messages.labelsColumnsUpgradable),
+        key: 'systems_applicable',
+        title: intl.formatMessage(messages.labelsColumnsApplicableSystems),
+        transforms: [sortable, cellWidth(10)],
+        props: {
+            width: 10
+        }
+    },
+    {
+        key: 'systems_installable',
+        title: intl.formatMessage(messages.labelsColumnsInstallableSystems),
         transforms: [sortable, cellWidth(10)],
         props: {
             width: 10

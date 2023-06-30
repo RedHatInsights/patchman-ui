@@ -283,7 +283,8 @@ export const createPackagesRows = (rows) => {
                 cells: [
                     { title: handlePatchLink(entityTypes.packages, pkg.name) },
                     { title: pkg.systems_installed },
-                    { title: pkg.systems_updatable },
+                    { title: pkg.systems_applicable },
+                    { title: pkg.systems_installable },
                     { title: pkg.summary }
                 ]
             };
