@@ -191,7 +191,6 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                 available_evra: row.updatable && row.available_evra || row.installed_evra,
                 disableSelection: !row.updatable,
                 updatable: row.updatable,
-                upgradable: row.updatable,
                 selected: selectedRows[row.id] !== undefined,
                 tags: row.tags
             };

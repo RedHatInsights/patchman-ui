@@ -88,7 +88,7 @@ export const systemPackagesColumns = [
     },
     {
         title: intl.formatMessage(messages.labelsColumnsStatus),
-        transforms: [cellWidth(10)],
+        transforms: [sortable, cellWidth(10)],
         key: 'updatable'
     },
     {
