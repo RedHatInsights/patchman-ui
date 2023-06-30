@@ -50,9 +50,15 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
 
-    let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
+    let name = defaultColumns.filter(({ key }) => key === 'display_name');
+    let tag = defaultColumns.filter(({ key }) => key === 'tags');
 
-    return [...nameAndTag, ...additionalColumns(), lastSeen[0]];
+    name = [{
+        ...name[0],
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+    }];
+
+    return [...name, ...tag, ...additionalColumns(), lastSeen[0]];
 };
 
 export const templateSystemsColumnsMerger = (defaultColumns) => {
