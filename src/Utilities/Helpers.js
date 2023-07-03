@@ -119,8 +119,15 @@ export function truncate(str, max, end) {
     ) : str;
 }
 
+const findBullets = (description) => {
+    let substringIndex = description.search(/:/);
+    // + 2 accounts for the 2 new lines to separate the sentence from the start of the bullets
+    return substringIndex > 0
+        ? description.slice(0, substringIndex + 2) + preserveNewlines(description.substring(substringIndex + 2)) : description;
+};
+
 export const truncateDescription = (description, wordLength, setWordLength) => (
-    truncate(preserveNewlines(description), wordLength,
+    truncate(findBullets(description), wordLength,
         <a onClick={() => setWordLength(description.length)}>
             {intl.formatMessage(messages.linksReadMore)}
         </a>)
@@ -431,8 +438,8 @@ export function subtractDate(days) {
 
 export function preserveNewlines(input) {
     return input && input.replace(
-        new RegExp('\\n(?=[^\\n])', 'g'),
-        ''
+        new RegExp('\\n\\n(?=.*[\\n\\n])', 'g'),
+        '\n'
     );
 }
 
