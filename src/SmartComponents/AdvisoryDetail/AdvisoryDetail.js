@@ -1,7 +1,7 @@
 import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
@@ -9,17 +9,21 @@ import AdvisoryHeader from '../../PresentationalComponents/AdvisoryHeader/Adviso
 import Header from '../../PresentationalComponents/Header/Header';
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import { clearAdvisoryDetailStore, clearEntitiesStore, fetchAvisoryDetails } from '../../store/Actions/Actions';
-import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 
 const AdvisoryDetail = ({ match }) => {
     const dispatch = useDispatch();
     const [advisoryName] = React.useState(match.params.advisoryId);
-
-    const pageTitle = `${advisoryName} - ${intl.formatMessage(messages.titlesAdvisories)}`;
-    setPageTitle(pageTitle);
+    const chrome = useChrome();
+    useEffect(()=>{
+        advisoryName &&
+        chrome.updateDocumentTitle(`${advisoryName}
+         - ${intl.formatMessage(messages.titlesAdvisories)} ${DEFAULT_PATCH_TITLE}`);
+    }, [chrome, advisoryName]);
 
     const advisoryDetails = useSelector(
         ({ AdvisoryDetailStore }) => AdvisoryDetailStore

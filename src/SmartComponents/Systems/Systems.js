@@ -14,12 +14,11 @@ import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/
 import {
     exportSystemsCSV, exportSystemsJSON, fetchSystems
 } from '../../Utilities/api';
-import { systemsListDefaultFilters } from '../../Utilities/constants';
+import { DEFAULT_PATCH_TITLE, systemsListDefaultFilters } from '../../Utilities/constants';
 import {
     arrayFromObj, decodeQueryparams, persistantParams, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
-import {
-    setPageTitle, useBulkSelectConfig, useGetEntities, useOnExport,
+import { useBulkSelectConfig, useGetEntities, useOnExport,
     useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -35,13 +34,16 @@ import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersion
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const Systems = () => {
     const store = useStore();
     const inventory = useRef(null);
-    const pageTitle = intl.formatMessage(messages.titlesSystems);
 
-    setPageTitle(pageTitle);
+    const chrome = useChrome();
+    useEffect(()=>{
+        chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesSystems)}${DEFAULT_PATCH_TITLE}`);
+    }, [chrome, intl]);
 
     const history = useHistory();
     const dispatch = useDispatch();

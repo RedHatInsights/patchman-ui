@@ -7,7 +7,6 @@ import { defaultReducers } from '../../store';
 import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { setPageTitle } from '../../Utilities/Hooks';
 import { InventoryDetailHead, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
@@ -16,6 +15,8 @@ import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/Patc
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { Link, useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 
 const InventoryDetail = () => {
     const { inventoryId } = useParams();
@@ -42,8 +43,11 @@ const InventoryDetail = () => {
         dispatch(fetchSystemDetailsAction(inventoryId));
     }, [patchSetState.shouldRefresh]);
 
-    const pageTitle = displayName && `${displayName} - ${intl.formatMessage(messages.titlesSystems)}`;
-    setPageTitle(pageTitle);
+    const chrome = useChrome();
+    useEffect(()=>{
+        displayName &&  chrome.updateDocumentTitle(`${displayName} - ${intl.formatMessage(messages.titlesSystems)}
+        ${DEFAULT_PATCH_TITLE}`);
+    }, [chrome, intl, displayName]);
 
     return (
         <DetailWrapper

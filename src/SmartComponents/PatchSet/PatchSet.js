@@ -14,8 +14,7 @@ import {
 import { deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
-import {
-    setPageTitle, useDeepCompareEffect, usePerPageSelect, useSetPage, useSortColumn
+import { useDeepCompareEffect, usePerPageSelect, useSetPage, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -24,7 +23,7 @@ import {
     patchSetRowActions, CustomActionsToggle
 } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
-import { patchSetDeleteNotifications } from '../../Utilities/constants';
+import { DEFAULT_PATCH_TITLE, patchSetDeleteNotifications } from '../../Utilities/constants';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
@@ -32,13 +31,14 @@ import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { NoPatchSetList } from '../../PresentationalComponents/Snippets/EmptyStates';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const PatchSet = () => {
-    const pageTitle = intl.formatMessage(messages.titlesTemplate);
-
     const IS_SELECTION_ENABLED = false;
-
-    setPageTitle(pageTitle);
+    const chrome = useChrome();
+    useEffect(()=>{
+        chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesTemplate)} ${DEFAULT_PATCH_TITLE}`);
+    }, [chrome, intl]);
 
     const dispatch = useDispatch();
     const history = useHistory();
