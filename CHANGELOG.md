@@ -1,3 +1,10 @@
+## [1.63.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.3...v1.63.4) (2023-07-03)
+
+
+### Bug Fixes
+
+* **RHINENG-391:** Create func for various newline scenarios ([458c256](https://github.com/RedHatInsights/patchman-ui/commit/458c256c845c62542c38f19ecf4c6bcd0b72bd3c))
+
 ## [1.63.3](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.2...v1.63.3) (2023-06-05)
 
 
