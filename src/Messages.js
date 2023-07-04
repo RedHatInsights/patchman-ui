@@ -76,6 +76,16 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'CVE ID'
     },
+    labelsColumnsInstallableSystems: {
+        id: 'labelsColumnsApplicableSystems',
+        description: 'shared label',
+        defaultMessage: 'Installable systems'
+    },
+    labelsColumnsInstalledSystems: {
+        id: 'labelsColumnsApplicableSystems',
+        description: 'shared label',
+        defaultMessage: 'Installed systems'
+    },
     labelsColumnsInstalledVersion: {
         id: 'labelsColumnsInstalledVersion',
         description: 'shared label',
