@@ -1,3 +1,10 @@
+## [1.63.5](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.4...v1.63.5) (2023-07-07)
+
+
+### Bug Fixes
+
+* **SPM-1840:** upgrade packages for qs package ([#1078](https://github.com/RedHatInsights/patchman-ui/issues/1078)) ([2b7c017](https://github.com/RedHatInsights/patchman-ui/commit/2b7c0175f54b60c71507c647b26cd5767b3826ff))
+
 ## [1.63.4](https://github.com/RedHatInsights/patchman-ui/compare/v1.63.3...v1.63.4) (2023-07-03)
 
 
