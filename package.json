@@ -157,6 +157,7 @@
     "prepare": "husky install"
   },
   "release": {
+    "branches": "master",
     "analyzeCommits": {
       "preset": "angular",
       "releaseRules": [
@@ -173,29 +174,18 @@
           "release": "patch"
         },
         {
-          "type": "perf",
+          "type": "docs",
+          "release": "patch"
+        },
+        {
+          "type": "test",
           "release": "patch"
         }
       ]
     },
-    "getLastRelease": "last-release-git",
+    "prepare": [],
     "publish": [
-      "@semantic-release/github",
-      "@semantic-release/npm"
-    ],
-    "verifyConditions": [
       "@semantic-release/github"
-    ],
-    "fail": "",
-    "prepare": [
-      "@semantic-release/npm",
-      "@semantic-release/changelog",
-      [
-        "@semantic-release/git",
-        {
-          "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
-        }
-      ]
     ]
   },
   "files": [
