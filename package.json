@@ -138,7 +138,7 @@
     "start:beta": "NODE_ENV=development BETA=true webpack serve --config config/dev.webpack.config.js",
     "start:proxy": "PROXY=true npm run start",
     "start:proxy:beta": "BETA=true npm run start:proxy",
-    "build:prod": "NODE_ENV=production webpack --config config/prod.webpack.config.js",
+    "build:prod": "NODE_ENV=production webpack --config config/prod.webpack.config.js --mode production",
     "build:components": "npm run build:components:js && npm run build:components:esm && npm run build:components:umd",
     "build:components:js": "BABEL_ENV=cjs rollup -c ./config/rollup.config.js --format=cjs --environment NODE_ENV:production,FORMAT:cjs",
     "build:components:esm": "BABEL_ENV=esm rollup -c ./config/rollup.config.js --environment NODE_ENV:production,FORMAT:esm",
