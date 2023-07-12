@@ -38,7 +38,7 @@ const PatchSet = () => {
     const chrome = useChrome();
     useEffect(()=>{
         chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesTemplate)} ${DEFAULT_PATCH_TITLE}`);
-    }, [chrome, intl]);
+    }, [chrome]);
 
     const dispatch = useDispatch();
     const history = useHistory();

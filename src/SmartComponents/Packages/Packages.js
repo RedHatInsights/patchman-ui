@@ -24,7 +24,7 @@ const Packages = () => {
     const history = useHistory();
     const chrome = useChrome();
     useEffect(()=>{
-        chrome.updateDocumentTitle(`Packages ${DEFAULT_PATCH_TITLE}`);
+        chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesPackages)} ${DEFAULT_PATCH_TITLE}`);
     }, [chrome]);
 
     const packageRows = useSelector(

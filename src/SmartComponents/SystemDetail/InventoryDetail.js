@@ -47,7 +47,7 @@ const InventoryDetail = () => {
     useEffect(()=>{
         displayName &&  chrome.updateDocumentTitle(`${displayName} - ${intl.formatMessage(messages.titlesSystems)}
         ${DEFAULT_PATCH_TITLE}`);
-    }, [chrome, intl, displayName]);
+    }, [chrome, displayName]);
 
     return (
         <DetailWrapper
