@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { CheckCircleIcon, PackageIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
@@ -46,13 +46,13 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
 
     const { selectedTags, selectedGlobalTags, systemProfile } = useSelector(({ GlobalFilterStore }) => GlobalFilterStore);
 
-    const res = useMemo(async () =>{
+    const fetchResource = () => {
         setSubtotals({});
 
         let result;
 
         try {
-            result = await fetchSystems({
+            result = fetchSystems({
                 filter: {
                     os: queryParams?.filter?.os
                 },
@@ -60,6 +60,8 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
                 systemProfile,
                 limit: 1,
                 'filter[stale]': 'in:true,false'
+            }).then((result)=> {
+                setSubtotals(result.meta?.subtotals);
             });
         }
         catch {
@@ -67,17 +69,11 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
         }
 
         return result;
-    }, [
-        queryParams?.filter?.os?.length, queryParams?.filter?.os !== undefined,
-        selectedTags?.length, selectedTags !== undefined,
-        selectedGlobalTags?.length, selectedGlobalTags !== undefined,
-        systemProfile,
-        queryParams?.subtotals !== undefined
-    ]);
+    };
 
-    res.then((result)=> {
-        setSubtotals(result.meta?.subtotals);
-    });
+    React.useEffect(() => {
+        fetchResource();
+    }, []);
 
     return (
         <Main style={{ paddingBottom: 0 }}>
