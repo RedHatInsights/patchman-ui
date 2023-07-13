@@ -73,7 +73,13 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
 
     React.useEffect(() => {
         fetchResource();
-    }, []);
+    }, [
+        queryParams?.filter?.os?.length, queryParams?.filter?.os !== undefined,
+        selectedTags?.length, selectedTags !== undefined,
+        selectedGlobalTags?.length, selectedGlobalTags !== undefined,
+        systemProfile,
+        queryParams?.subtotals !== undefined
+    ]);
 
     return (
         <Main style={{ paddingBottom: 0 }}>
