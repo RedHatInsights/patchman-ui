@@ -71,6 +71,7 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                 "title": "Status",
                 "transforms": Array [
                   [Function],
+                  [Function],
                 ],
               },
               Object {

@@ -105,11 +105,10 @@ export const packageSystemsColumns = [
         }
     },
     {
-        key: 'upgradable',
+        key: 'updatable',
         title: 'Status',
         props: {
-            width: 20,
-            isStatic: true
+            width: 20
         },
         renderFunc: value => createUpgradableColumn(value)
     }
