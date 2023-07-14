@@ -5,9 +5,6 @@ set -x
 # map master branch to stage-beta environment
 if [[ "${TRAVIS_BRANCH}" = "master" ]]; then
     echo "PUSHING stage-beta"
-
-    ls -la ./dist
-
     rm -rf ./dist/.git
     .travis/release.sh "stage-beta"
 fi
