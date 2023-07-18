@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import { NoAppliedSystems } from '../../PresentationalComponents/Snippets/EmptyStates';
-import { useBulkSelectConfig, useDeepCompareEffect, useGetEntities } from '../../Utilities/Hooks';
+import { useBulkSelectConfig, useDeepCompareEffect, useGetEntities, useRemoveFilter } from '../../Utilities/Hooks';
 import {
     changePatchSetDetailsSystemsMetadata,
     changePatchSetDetailsSystemsParams,
@@ -45,7 +45,11 @@ import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-compo
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
-import { templateSystemsColumnsMerger } from '../../Utilities/SystemsHelpers';
+import {
+    buildActiveFiltersConfig,
+    buildTemplateFilterConfig,
+    templateSystemsColumnsMerger
+} from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
 import { defaultReducers } from '../../store';
 import { inventoryEntitiesReducer, modifyTemplateDetailSystems } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -53,6 +57,7 @@ import { systemsListColumns } from '../Systems/SystemsListAssets';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/useOnSelect';
 import { systemSelectAction } from '../../store/Actions/Actions';
+import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 
 const PatchSetDetail = () => {
     const intl = useIntl();
@@ -236,6 +241,13 @@ const PatchSetDetail = () => {
 
     const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
 
+    const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply);
+
+    const osFilterConfig = useOsVersionFilter(filter?.os, apply);
+    const filterConfig = buildTemplateFilterConfig(search, apply, osFilterConfig);
+
+    const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
+
     return (
         detailStatus?.hasError
             ? <ErrorHandler code={detailStatus?.code} />
@@ -357,7 +369,7 @@ const PatchSetDetail = () => {
                                     isFullView
                                     autoRefresh
                                     initialLoading
-                                    hideFilters={{ all: true }}
+                                    hideFilters={{ all: true, tags: false }}
                                     columns={(defaultColumns) => templateSystemsColumnsMerger(defaultColumns)}
                                     showTags
                                     onLoad={({ mergeWithEntities }) => {
@@ -371,6 +383,7 @@ const PatchSetDetail = () => {
                                     }}
                                     customFilters={{
                                         patchParams: {
+                                            search,
                                             filter,
                                             systemProfile,
                                             selectedTags
@@ -403,6 +416,8 @@ const PatchSetDetail = () => {
                                             }
                                         ]
                                     }}
+                                    filterConfig={filterConfig}
+                                    activeFiltersConfig={activeFiltersConfig}
                                 />
                             : <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />}
                 </Main>

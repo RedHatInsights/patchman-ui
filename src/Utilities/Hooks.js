@@ -680,8 +680,7 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, 
         apply({
             page,
             perPage,
-            sort,
-            metadata: items.meta
+            sort
         });
 
         applyMetadata && applyMetadata(items.meta);

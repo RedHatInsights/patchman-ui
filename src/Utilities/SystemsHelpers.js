@@ -26,6 +26,20 @@ export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
     ]
 });
 
+export const buildTemplateFilterConfig = (search, apply, osFilterConfig) => ({
+    items: [
+        searchFilter(
+            apply,
+            search,
+            intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+            intl.formatMessage(
+                messages.labelsFiltersSystemsSearchPlaceholder
+            )
+        ),
+        ...osFilterConfig
+    ]
+});
+
 export const buildActiveFiltersConfig = (filter, search, deleteFilters) => ({
     filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
     onDelete: deleteFilters,
