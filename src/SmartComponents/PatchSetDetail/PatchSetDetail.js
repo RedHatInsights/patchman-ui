@@ -30,7 +30,7 @@ import {
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { patchSetDeleteNotifications } from '../../Utilities/constants';
+import { DEFAULT_PATCH_TITLE, patchSetDeleteNotifications } from '../../Utilities/constants';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import {
     arrayFromObj,
@@ -58,11 +58,13 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/useOnSelect';
 import { systemSelectAction } from '../../store/Actions/Actions';
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const PatchSetDetail = () => {
     const intl = useIntl();
     const dispatch = useDispatch();
     const history = useHistory();
+    const chrome = useChrome();
 
     const store = useStore();
     const inventory = useRef(null);
@@ -125,6 +127,11 @@ const PatchSetDetail = () => {
     ]);
 
     const patchSetName = templateDetails.data.attributes.name;
+
+    useEffect(()=>{
+        patchSetName && chrome.updateDocumentTitle(`${patchSetName} - ${intl.formatMessage(messages.titlesTemplate)}
+        ${DEFAULT_PATCH_TITLE}`);
+    }, [chrome, patchSetName]);
 
     const onSelect = useOnSelect(
         systems,
