@@ -590,12 +590,6 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
     return [deleteFilters, deleteFilterGroup];
 };
 
-export const setPageTitle = (title) => {
-    if (title) {
-        document.title = `${title} - Patch | Red Hat Insights`;
-    }
-};
-
 export const useDeepCompareEffect = (effect, deps) => {
     const ref = React.useRef(undefined);
 

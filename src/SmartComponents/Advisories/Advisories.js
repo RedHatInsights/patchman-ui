@@ -21,8 +21,7 @@ import {
     createSortBy, decodeQueryparams,
     encodeURLParams, getRowIdByIndexExpandable
 } from '../../Utilities/Helpers';
-import {
-    setPageTitle, useOnExport,
+import { useOnExport,
     usePerPageSelect, useSetPage, useSortColumn
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -30,11 +29,14 @@ import { clearNotifications } from '@redhat-cloud-services/frontend-components-n
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 
 const Advisories = ({ history }) => {
-    const pageTitle = intl.formatMessage(messages.titlesAdvisories);
-
-    setPageTitle(pageTitle);
+    const chrome = useChrome();
+    useEffect(()=>{
+        chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesAdvisories)}${DEFAULT_PATCH_TITLE}`);
+    }, [chrome]);
 
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = React.useState(true);

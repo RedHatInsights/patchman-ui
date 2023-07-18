@@ -1,5 +1,5 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import packagesListStatusFilter from '../../PresentationalComponents/Filters/PackagesListStatusFilter';
@@ -9,20 +9,24 @@ import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
 import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api';
-import { packagesListDefaultFilters } from '../../Utilities/constants';
+import { DEFAULT_PATCH_TITLE, packagesListDefaultFilters } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
-import { setPageTitle, useOnExport, usePerPageSelect,
+import { useOnExport, usePerPageSelect,
     useSetPage, useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { useHistory } from 'react-router-dom';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const Packages = () => {
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = React.useState(true);
     const history = useHistory();
-    const pageTitle = 'Packages';
-    setPageTitle(pageTitle);
+    const chrome = useChrome();
+    useEffect(()=>{
+        chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesPackages)} ${DEFAULT_PATCH_TITLE}`);
+    }, [chrome]);
+
     const packageRows = useSelector(
         ({ PackagesListStore }) => PackagesListStore.rows
     );

@@ -1,7 +1,7 @@
 import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import propTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import messages from '../../Messages';
@@ -10,16 +10,21 @@ import PackageHeader from '../../PresentationalComponents/PackageHeader/PackageH
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
-import { setPageTitle } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
+import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 
 const PackageDetail = ({ match }) => {
     const dispatch = useDispatch();
     const [packageName] = React.useState(match.params.packageName);
-    const pageTitle = `${packageName} - ${intl.formatMessage(messages.titlesPackages)}`;
-    setPageTitle(pageTitle);
+    const chrome = useChrome();
+    useEffect(()=>{
+        packageName && chrome.updateDocumentTitle(`${packageName} - ${intl.formatMessage(messages.titlesPackages)}
+        ${DEFAULT_PATCH_TITLE}`);
+    }, [chrome, packageName]);
+
     const packageDetails = useSelector(
         ({ PackageDetailStore }) => PackageDetailStore
     );
