@@ -164,7 +164,7 @@ const Systems = () => {
                         isFullView
                         autoRefresh
                         initialLoading
-                        hideFilters={{ all: true, tags: false }}
+                        hideFilters={{ all: true, tags: false, hostGroupFilter: false }}
                         columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, systemsListColumns)}
                         showTags
                         customFilters={{

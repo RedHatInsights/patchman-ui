@@ -9,6 +9,7 @@ import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAss
 import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
 import { Link } from 'react-router-dom';
+import isEmpty from 'lodash/isEmpty';
 
 export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
     items: [
@@ -50,9 +51,23 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
 
-    let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
+    const nameColumn = defaultColumns.filter(({ key }) => key === 'display_name');
+    const groupColumn = defaultColumns.filter(({ key }) => key === 'groups');
+    const tagsColumn = defaultColumns.filter(({ key }) => key === 'tags');
 
-    return [...nameAndTag, ...additionalColumns(), lastSeen[0]];
+    groupColumn[0].renderFunc = (value) =>
+        isEmpty(value.groups) ? (
+            'N/A'
+        ) : (
+            //change this link to a InsightsLink after router upgrade
+            <a href={`./insights/inventory/groups/${value.groups[0].id}`}>
+                {
+                    value.groups[0].name // currently, one group at maximum is supported
+                }
+            </a>
+        );
+
+    return [...nameColumn, ...groupColumn, ...tagsColumn, ...additionalColumns(), lastSeen[0]];
 };
 
 export const templateSystemsColumnsMerger = (defaultColumns) => {
