@@ -50,7 +50,6 @@ export const buildActiveFiltersConfig = (filter, search, deleteFilters) => ({
 export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
-
     const nameColumn = defaultColumns.filter(({ key }) => key === 'display_name');
     const groupColumn = defaultColumns.filter(({ key }) => key === 'groups');
     const tagsColumn = defaultColumns.filter(({ key }) => key === 'tags');
