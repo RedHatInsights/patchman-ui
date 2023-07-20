@@ -192,7 +192,13 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                 disableSelection: !row.updatable,
                 updatable: row.updatable,
                 selected: selectedRows[row.id] !== undefined,
-                tags: row.tags
+                tags: row.tags,
+                os: {
+                    osName: row.os?.osName || row.os || 'N/A',
+                    rhsm: row.rhsm
+                },
+                baseline_name: row.baseline_name,
+                baseline_id: row.baseline_id
             };
         });
     return data || [];
