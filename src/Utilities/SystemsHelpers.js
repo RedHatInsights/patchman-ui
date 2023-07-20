@@ -54,17 +54,18 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     const groupColumn = defaultColumns.filter(({ key }) => key === 'groups');
     const tagsColumn = defaultColumns.filter(({ key }) => key === 'tags');
 
-    groupColumn[0]?.renderFunc ? groupColumn[0].renderFunc = (value) =>
-        isEmpty(value?.groups) ? (
+    groupColumn[0]?.renderFunc ? groupColumn[0].renderFunc = (data, ...value) => {
+        const groups = value[1].attributes?.groups;
+        return isEmpty(groups) ? (
             'N/A'
         ) : (
             //change this link to a InsightsLink after router upgrade
-            <a href={`./insights/inventory/groups/${value?.groups[0].id}`}>
+            <a href={`./insights/inventory/groups/${groups[0].id}`}>
                 {
-                    value?.groups[0].name // currently, one group at maximum is supported
+                    groups[0].name // currently, one group at maximum is supported
                 }
             </a>
-        ) : [];
+        );} : [];
 
     return [...nameColumn, ...groupColumn, ...tagsColumn, ...additionalColumns(), lastSeen[0]];
 };
