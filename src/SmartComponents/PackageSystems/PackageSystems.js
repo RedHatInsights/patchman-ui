@@ -29,6 +29,7 @@ import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
+import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
@@ -71,6 +72,7 @@ const PackageSystems = ({ packageName }) => {
     }, []);
 
     const [deleteFilters] = useRemoveFilter({ ...filter, search }, apply);
+    const osFilterConfig = useOsVersionFilter(filter?.os, apply);
 
     const filterConfig = {
         items: [
@@ -79,7 +81,8 @@ const PackageSystems = ({ packageName }) => {
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
             ),
             statusFilter(apply, filter),
-            versionFilter(apply, filter, packageVersions)
+            versionFilter(apply, filter, packageVersions),
+            ...osFilterConfig
         ]
     };
 
