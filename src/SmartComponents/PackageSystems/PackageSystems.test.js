@@ -28,6 +28,10 @@ jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
     InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
 }));
 
+jest.mock(
+    '../../PresentationalComponents/Filters/OsVersionFilter'
+);
+
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportPackageSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),

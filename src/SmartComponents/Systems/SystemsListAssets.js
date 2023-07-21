@@ -91,6 +91,24 @@ export const packageSystemsColumns = [
         props: { width: 10, isStatic: true }
     },
     {
+        key: 'os',
+        title: 'OS',
+        renderFunc: value => createOSColumn(value),
+        props: {
+            width: 5
+        }
+    },
+    {
+        key: 'baseline_name',
+        title: 'Template',
+        renderFunc: (value, _, row) => value
+            ? <Link to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</Link>
+            : 'No template',
+        props: {
+            width: 5
+        }
+    },
+    {
         key: 'installed_evra',
         title: 'Installed version',
         props: {
