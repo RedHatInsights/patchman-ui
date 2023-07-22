@@ -248,18 +248,20 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
         return rows.map(pkg => {
             const pkgNEVRA = `${pkg.name}-${pkg.evra}`;
             const pkgUpdates = pkg.updates || [];
-            const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
+            const latestApplicable = pkgUpdates[pkgUpdates.length - 1];
+            const latestInstallable = pkgUpdates.filter(version => version.status === 'Installable').pop();
 
             return {
                 id: pkgNEVRA,
                 key: pkgNEVRA,
                 selected: selectedRows[pkgNEVRA] !== undefined,
-                disableSelection: !latestUpdate,
+                disableSelection: !pkg.updatable,
                 cells: [
                     { title: handlePatchLink(entityTypes.packages, pkg.name) },
                     { title: pkg.evra },
-                    { title: (latestUpdate && latestUpdate.evra) || pkg.evra },
-                    { title: createUpgradableColumn(pkg.updatable) },
+                    { title: latestInstallable?.evra ?? pkg.evra },
+                    { title: latestApplicable?.evra ?? pkg.evra },
+                    { title: createUpgradableColumn(pkg.update_status) },
                     { title: pkg.summary }
                 ]
             };

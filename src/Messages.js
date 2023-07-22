@@ -91,10 +91,15 @@ export default defineMessages({
         description: 'shared label',
         defaultMessage: 'Installed version'
     },
-    labelsColumnsLatestVersion: {
-        id: 'labelsColumnsLatestVersion',
+    labelsColumnsLatestApplicableVersion: {
+        id: 'labelsColumnsLatestApplicableVersion',
         description: 'shared label',
-        defaultMessage: 'Latest version'
+        defaultMessage: 'Latest applicable version'
+    },
+    labelsColumnsLatestInstallableVersion: {
+        id: 'labelsColumnsLatestInstallableVersion',
+        description: 'shared label',
+        defaultMessage: 'Installable version'
     },
     labelsColumnsName: {
         id: 'labelsColumnsName',
@@ -146,10 +151,20 @@ export default defineMessages({
         description: 'Label for type filter placeholder',
         defaultMessage: 'Type'
     },
+    labelsColumnsUpToApplicable: {
+        id: 'labelsColumnsUpToApplicable',
+        description: 'shared label',
+        defaultMessage: 'Up to applicable version'
+    },
     labelsColumnsUpToDate: {
         id: 'labelsColumnsUpToDate',
         description: 'shared label',
         defaultMessage: 'Red Hat advisories up to date'
+    },
+    labelsColumnsUpToInstallable: {
+        id: 'labelsColumnsUpToInstallable',
+        description: 'shared label',
+        defaultMessage: 'Up to latest installable version'
     },
     labelsColumnsUpgradable: {
         id: 'labelsColumnsUpgradable',

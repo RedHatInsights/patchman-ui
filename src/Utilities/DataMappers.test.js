@@ -114,6 +114,7 @@ describe('DataMappers', () => {
                 { title: 'test-evra' },
                 { title: 'test-evra' },
                 { title: expect.anything() },
+                { title: expect.anything() },
                 { title: 'Access control list utilities' }
             ]
         },
@@ -130,8 +131,9 @@ describe('DataMappers', () => {
 
         const packagesWithCompleteData = createSystemPackagesRows([{
             ...systemPackages[0],
-            updates: [{ evra: 'testEvra' }],
-            updatable: true
+            updates: [{ evra: 'testEvra', status: 'Installable' }],
+            updatable: true,
+            update_status: 'Installable'
         }]);
 
         expect(packagesWithCompleteData).toEqual([{
@@ -143,6 +145,7 @@ describe('DataMappers', () => {
                 { title: expect.anything()  }, // FIXME!
                 { title: 'test-evra' },
                 { title: 'testEvra' },
+                { title: expect.anything() },
                 { title: expect.anything() },
                 { title: 'Access control list utilities' }
             ]
