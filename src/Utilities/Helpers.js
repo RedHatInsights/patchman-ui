@@ -1,9 +1,7 @@
 /* eslint-disable camelcase */
 import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import {
-    BugIcon, CheckIcon, FlagIcon,
-    EnhancementIcon, InfoCircleIcon, LongArrowAltUpIcon,
-    SecurityIcon
+    BugIcon, FlagIcon, EnhancementIcon, InfoCircleIcon, SecurityIcon
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import flatten from 'lodash/flatten';
@@ -158,21 +156,15 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa, other], type = 'applica
     );
 }
 
-export function createUpgradableColumn(value) {
-    return <div style={{
-        display: 'flex',
-        alignItems: 'center'
-    }}>
-        {
-            value && <LongArrowAltUpIcon style={{ color: 'var(--pf-global--palette--blue-400)' }} />
-            || <CheckIcon style={{ color: 'var(--pf-global--success-color--100)' }} />
-        }
-        {<span style={{ marginLeft: 'var(--pf-global--spacer--sm)' }}>
-            {
-                value && 'Upgradable' || 'Up-to-date'
-            }
-        </span>}
-    </div>;
+export function createUpgradableColumn(updatableStatus) {
+    switch (updatableStatus) {
+        case 'None':
+            return intl.formatMessage(messages.labelsColumnsUpToApplicable);
+        case 'Applicable':
+            return intl.formatMessage(messages.labelsColumnsUpToInstallable);
+        case 'Installable':
+            return intl.formatMessage(messages.labelsColumnsUpgradable);
+    }
 }
 
 export function getSeverityById(id) {
