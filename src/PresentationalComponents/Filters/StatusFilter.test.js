@@ -1,7 +1,7 @@
 import statusFilter from './StatusFilter';
 
 const apply = jest.fn();
-const currentFilter = { updatable: 'filter' };
+const currentFilter = { update_status: 'filter' };
 
 jest.mock('react', () => ({
     ...jest.requireActual('react'),
@@ -19,12 +19,12 @@ describe('StatusFilter', () => {
     it('Should call apply with a date', () => {
         const response = statusFilter(apply, currentFilter);
         response.filterValues.onChange('event', 'testValue');
-        expect(apply).toHaveBeenCalledWith({ filter: { updatable: 'testValue' } });
+        expect(apply).toHaveBeenCalledWith({ filter: { update_status: 'testValue' } });
     });
 
     it('Should call apply with empty string ', () => {
         const response = statusFilter(apply);
         response.filterValues.onChange();
-        expect(apply).toHaveBeenCalledWith({ filter: { updatable: 'testValue' } });
+        expect(apply).toHaveBeenCalledWith({ filter: { update_status: 'testValue' } });
     });
 });

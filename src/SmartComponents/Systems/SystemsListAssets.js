@@ -123,7 +123,7 @@ export const packageSystemsColumns = [
         }
     },
     {
-        key: 'updatable',
+        key: 'update_status',
         title: 'Status',
         props: {
             width: 20

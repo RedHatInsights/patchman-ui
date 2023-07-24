@@ -90,7 +90,7 @@ export const createSystemAdvisoriesRows = (
                     id: row.id,
                     isOpen: expandedRows[row.id] === true,
                     selected: selectedRows[row.id] !== undefined,
-                    disableSelection: row.attributes.status === 'Applicable',
+                    disableSelection: row.attributes.status !== 'Installable',
                     cells: [
                         { title: handlePatchLink(entityTypes.advisories, row.id) },
                         {
@@ -188,9 +188,10 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                 key: Math.random().toString() + row.id,
                 display_name: row.display_name,
                 installed_evra: row.installed_evra,
-                available_evra: row.updatable && row.available_evra || row.installed_evra,
+                available_evra: row.updatable ? row.available_evra : row.installed_evra,
                 disableSelection: !row.updatable,
                 updatable: row.updatable,
+                update_status: row.update_status,
                 selected: selectedRows[row.id] !== undefined,
                 tags: row.tags,
                 os: {

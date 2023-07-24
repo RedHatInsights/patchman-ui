@@ -95,8 +95,8 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
           defaultFilters={
             Object {
               "filter": Object {
-                "updatable": Array [
-                  "true",
+                "update_status": Array [
+                  "Installable",
                 ],
               },
             }
@@ -120,12 +120,16 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                   "filterValues": Object {
                     "items": Array [
                       Object {
-                        "label": "Up-to-date ",
-                        "value": "false",
+                        "label": "Up to date",
+                        "value": "None",
                       },
                       Object {
-                        "label": "Upgradable",
-                        "value": "true",
+                        "label": "Installable",
+                        "value": "Installable",
+                      },
+                      Object {
+                        "label": "Applicable",
+                        "value": "Applicable",
                       },
                     ],
                     "onChange": [Function],
@@ -295,12 +299,16 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                     "filterValues": Object {
                       "items": Array [
                         Object {
-                          "label": "Up-to-date ",
-                          "value": "false",
+                          "label": "Up to date",
+                          "value": "None",
                         },
                         Object {
-                          "label": "Upgradable",
-                          "value": "true",
+                          "label": "Installable",
+                          "value": "Installable",
+                        },
+                        Object {
+                          "label": "Applicable",
+                          "value": "Applicable",
                         },
                       ],
                       "onChange": [Function],
@@ -820,12 +828,16 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                         "filterValues": Object {
                                           "items": Array [
                                             Object {
-                                              "label": "Up-to-date ",
-                                              "value": "false",
+                                              "label": "Up to date",
+                                              "value": "None",
                                             },
                                             Object {
-                                              "label": "Upgradable",
-                                              "value": "true",
+                                              "label": "Installable",
+                                              "value": "Installable",
+                                            },
+                                            Object {
+                                              "label": "Applicable",
+                                              "value": "Applicable",
                                             },
                                           ],
                                           "onChange": [Function],

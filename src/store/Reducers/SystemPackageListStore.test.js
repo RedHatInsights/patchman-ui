@@ -24,7 +24,7 @@ describe('SystemPackageListStore tests', () => {
     state                | action                                                               | result
     ${storeListDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}            | ${{ ...storeListDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: { code: undefined, isLoading: false, hasError: false }, error: {} }}
     ${storeListDefaults} | ${{ type: action_pending, payload: {} }}                             | ${{ ...storeListDefaults, status: { code: undefined, isLoading: true, hasError: false }, error: {} }}
-    ${storeListDefaults} | ${{ type: CLEAR_SYSTEM_PACKAGES, payload: {} }}                             | ${{ ...storeListDefaults, status: { isLoading: true }, error: {}, queryParams: { filter: { updatable: ['true']} } }}
+    ${storeListDefaults} | ${{ type: CLEAR_SYSTEM_PACKAGES, payload: {} }}                             | ${{ ...storeListDefaults, status: { isLoading: true }, error: {}, queryParams: { filter: { update_status: ['Installable']} } }}
     ${ storeListDefaults} | ${{ type: action_rejected, payload: error }}                        | ${{ ...storeListDefaults, status: { isLoading: false, hasError: true, code: undefined }, error, metadata: {} }}
     ${storeListDefaults} | ${{ type: action_rejected, payload: error }}                         | ${{ ...storeListDefaults, status: { isLoading: false, hasError: true, code: undefined  }, error, metadata: {} } }
 
@@ -32,7 +32,7 @@ describe('SystemPackageListStore tests', () => {
     ${storeListDefaults} | ${{ type: TRIGGER_GLOBAL_FILTER, payload: { limit: 10 } }}           | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0, page: 1, page_size: 20 } }}
     ${storeListDefaults} | ${{ type: SELECT_SYSTEM_PACKAGES_ROW, payload: { id: 1, selected: true } }} | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
     ${storeListDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                 | ${storeListDefaults}
-    ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                 | ${{ ...storeListDefaults, queryParams: { filter: { updatable: ['true'] } } }}
+    ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                 | ${{ ...storeListDefaults, queryParams: { filter: { update_status: ['Installable'] } } }}
     `('$action', ({ state, action: { type, payload }, result }) => {
         const res = SystemPackageListStore(state, { type, payload });
         expect(res).toEqual(result);
