@@ -6,7 +6,7 @@ import messages from '../../Messages';
 
 const statusFilter = (apply, currentFilter = {}) => {
 
-    let { updatable: currentValue } = currentFilter;
+    let { update_status: currentValue } = currentFilter;
 
     const updatableTypesMap = React.useMemo(
         () =>
@@ -17,7 +17,7 @@ const statusFilter = (apply, currentFilter = {}) => {
         []
     );
     const filterByType = value => {
-        apply({ filter: { updatable: value } });
+        apply({ filter: { update_status: value } });
     };
 
     return {
