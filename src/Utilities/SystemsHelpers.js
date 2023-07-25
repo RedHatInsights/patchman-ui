@@ -59,7 +59,7 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
         return isEmpty(groups) ? (
             'N/A'
         ) : (
-            //change this link to a InsightsLink after router upgrade
+            // TODO: change this link to a InsightsLink after router upgrade
             <a href={`./insights/inventory/groups/${groups[0].id}`}>
                 {
                     groups[0].name // currently, one group at maximum is supported

@@ -75,6 +75,18 @@ const Systems = () => {
     const queryParams = useSelector(
         ({ SystemsStore }) => SystemsStore?.queryParams || {}
     );
+    const group_name = useSelector(({ entities }) => entities?.activeFilters?.[0]?.hostGroupFilter);
+    const groupFilterConstructor = (params = []) => {
+        let filterString = `?filter[group_name][in]=`;
+        params.forEach((group, index) => {
+            index === 0 && filterString === `?filter[group_name][in]=` ?
+                (filterString += group) :
+                (filterString += `,${group}`);
+        });
+        return filterString;
+    };
+
+    const group = groupFilterConstructor(group_name);
 
     const { systemProfile, selectedTags,
         filter, search, page, perPage, sort } = queryParams;
@@ -172,7 +184,8 @@ const Systems = () => {
                                 search,
                                 filter,
                                 systemProfile,
-                                selectedTags
+                                selectedTags,
+                                group
                             }
                         }}
                         paginationProps={{

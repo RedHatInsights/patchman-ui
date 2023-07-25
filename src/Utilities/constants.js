@@ -299,7 +299,7 @@ export const patchSetDeleteNotifications = (templateName) => ({
     }
 });
 
-export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status'];
+export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status', 'group-host-filter'];
 
 export const featureFlags = {
     patch_set: 'patch.patch_set'
