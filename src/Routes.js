@@ -2,10 +2,9 @@ import { Bullseye, Spinner } from '@patternfly/react-core';
 import { NotAuthorized } from '@redhat-cloud-services/frontend-components/NotAuthorized';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { NavigateToSystem } from './Utilities/NavigateToSystem';
 
@@ -74,26 +73,9 @@ const TemplateDetail = lazy(() =>
 );
 
 const PatchRoutes = () => {
-    const chrome = useChrome();
-
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
     const [hasSystems, setHasSystems] = useState(true);
     const INVENTORY_TOTAL_FETCH_URL = '/api/inventory/v1/hosts';
-
-    const listenNavigation = useCallback(() => {
-        if (chrome) {
-            return chrome.on('APP_NAVIGATION', event => {
-                if (event.domEvent) {
-                    chrome.appNavClick(`/${event.navId}`);
-                }
-            });
-        }
-    }, []);
-
-    useEffect(() => {
-        const unregister = listenNavigation();
-        return () => unregister();
-    }, []);
 
     useEffect(() => {
         try {
