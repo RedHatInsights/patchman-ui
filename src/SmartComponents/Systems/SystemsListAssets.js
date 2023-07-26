@@ -102,7 +102,7 @@ export const packageSystemsColumns = [
         key: 'baseline_name',
         title: 'Template',
         renderFunc: (value, _, row) => value
-            ? <Link to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</Link>
+            ? <InsightsLink to={`/templates/${row.baseline_id}`}>{value}</InsightsLink>
             : 'No template',
         props: {
             width: 5
