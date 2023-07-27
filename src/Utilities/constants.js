@@ -298,8 +298,8 @@ export const patchSetDeleteNotifications = (templateName) => ({
         variant: 'danger'
     }
 });
-
-export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status', 'group-host-filter'];
+//should be the same as filter key
+export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status', 'hostGroupFilter'];
 
 export const featureFlags = {
     patch_set: 'patch.patch_set'

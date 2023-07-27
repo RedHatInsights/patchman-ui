@@ -248,7 +248,16 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
         });
 
         const SIDsFilter = sap_sids?.map(sid => `filter[system_profile][sap_sids][in]=${sid}`).join('&');
-
+        //TODO: THIS IS AN EXAMPLE CONSTRUCTOR FOR GROUPNAMEFILTER
+        /*  const groupFilterConstructor = (params = []) => {
+            let filterString = `?filter[group_name][in]=`;
+            params.forEach((group, index) => {
+                index === 0 && filterString === `filter[group_name][in]=` ?
+                    (filterString += group) :
+                    (filterString += `,${group}`);
+            });
+            return filterString;
+        }; */
         return result.concat(sap_sids ? `&${SIDsFilter}#SIDs=${sap_sids.join(',') }` : '');
     };
 
@@ -267,6 +276,7 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
         return result;
     };
 
+    //TODO: THIS IS WHERE I NEED TO PROCESS THIS STRING AND SOMEHOW ADD IT!!!!
     let { filter, systemProfile = {}, ...allParams } = parameters;
 
     allParams = { ...allParams, ...flattenFilters(filter) };

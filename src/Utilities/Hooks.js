@@ -190,9 +190,6 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, 
         _items,
         { orderBy, orderDirection, page, per_page: perPage, patchParams, filters }
     ) => {
-        console.log(config, 'config');
-        console.log(patchParams, 'patchParams');
-        console.log(filters?.hostGroupFilter, 'filters');
         const { selectedTags: activeTags = [] } = patchParams;
         const { selectedTags } = mapGlobalFilters(filters.tagFilters);
         const sort = createSystemsSortBy(orderBy, orderDirection, packageName);
@@ -204,7 +201,8 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, 
             selectedTags: [...activeTags, ...selectedTags],
             sort,
             ...id && { id } || {},
-            ...packageName && { package_name: packageName } || {}
+            ...packageName && { package_name: packageName } || {},
+            hostGroupFilter: filters?.hostGroupFilter || []
         });
 
         apply({
