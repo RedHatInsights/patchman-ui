@@ -1,28 +1,31 @@
 import { Tab, Tabs } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import './Header.scss';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const HeaderTabs = ({ history, headerOUIA }) => {
+const HeaderTabs = ({ headerOUIA }) => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const handleRedirect = (event, tabString) => {
-        history.push(tabString);
+        navigate(tabString);
     };
 
     return (
         <Tabs
             onSelect={handleRedirect}
-            activeKey={history.location.pathname}
+            activeKey={location.pathname}
             className={'patchman-tabs'}
         >
             <Tab
-                eventKey={'/advisories'}
+                eventKey={'advisories'}
                 title={'Applicable advisories'}
                 data-ouia-component-type={`${headerOUIA}-tab`}
                 data-ouia-component-id={`${headerOUIA}-tab-Applicable advisories'`}
             />
             <Tab
-                eventKey={'/systems/'}
+                eventKey={'systems'}
                 title={'Systems'}
                 data-ouia-component-type={`${headerOUIA}-tab`}
                 data-ouia-component-id={`${headerOUIA}-tab-Systems`}
@@ -32,8 +35,7 @@ const HeaderTabs = ({ history, headerOUIA }) => {
 };
 
 HeaderTabs.propTypes = {
-    history: propTypes.object,
     headerOUIA: propTypes.string
 };
 
-export default withRouter(HeaderTabs);
+export default HeaderTabs;

@@ -20,7 +20,6 @@ jest.mock('react-router-dom', () => ({
 }));
 
 jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
-    ...jest.requireActual('@redhat-cloud-services/frontend-components/useChrome'),
     useChrome: jest.fn(() => ({
         auth: {
             getUser: () => new Promise(

@@ -3,7 +3,7 @@ import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inven
 import propTypes from 'prop-types';
 import React, { useCallback, useMemo, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
@@ -34,10 +34,10 @@ import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersion
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
     const store = useStore();
-    const history = useHistory();
     const [packageVersions, setPackageVersions] = React.useState([]);
 
-    const decodedParams = decodeQueryparams(history.location.search);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const decodedParams = decodeQueryparams('?' + searchParams.toString());
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -136,7 +136,7 @@ const PackageSystems = ({ packageName }) => {
         return pairs.length ? { issues: pairs } : false;
     }, [selectedRows]);
 
-    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, history);
+    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, setSearchParams);
 
     const remediationDataProvider = () => remediationProviderWithPairs(
         removeUndefinedObjectKeys(selectedRows),

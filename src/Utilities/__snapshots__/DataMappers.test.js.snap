@@ -4,11 +4,11 @@ exports[`DataMappers Should create package list 1`] = `
 Object {
   "cells": Array [
     Object {
-      "title": <Link
+      "title": <InsightsLink
         to="/packages/test-name-2"
       >
         test-name-2
-      </Link>,
+      </InsightsLink>,
     },
     Object {
       "title": "test-evra-2",

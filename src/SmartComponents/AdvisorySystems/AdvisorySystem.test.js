@@ -26,11 +26,6 @@ jest.mock('../../Utilities/api', () => ({
     fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err)))
 }));
 
-jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
-    ...jest.requireActual('@redhat-cloud-services/frontend-components/Inventory'),
-    InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
-}));
-
 jest.mock(
     '../../PresentationalComponents/Filters/OsVersionFilter'
 );
@@ -104,7 +99,9 @@ describe('AdvisorySystems.js', () => {
         const testStore = initStore(rejectedState);
         const wrapper = mount(
             <Provider store={testStore}>
-                <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
+                <Router>
+                    <AdvisorySystems advisoryName = {'RHSA-2020:2755'} />
+                </Router>
             </Provider>
         );
         expect(wrapper.find('Error')).toBeTruthy();

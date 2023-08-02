@@ -8,7 +8,7 @@ import messages from '../Messages';
 import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
-import { Link } from 'react-router-dom';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
     items: [
@@ -50,9 +50,15 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
 
-    let nameAndTag = defaultColumns.filter(({ key }) => key === 'display_name' || key === 'tags');
+    let name = defaultColumns.filter(({ key }) => key === 'display_name');
+    let tag = defaultColumns.filter(({ key }) => key === 'tags');
 
-    return [...nameAndTag, ...additionalColumns(), lastSeen[0]];
+    name = [{
+        ...name[0],
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+    }];
+
+    return [...name, ...tag, ...additionalColumns(), lastSeen[0]];
 };
 
 export const templateSystemsColumnsMerger = (defaultColumns) => {
@@ -64,7 +70,7 @@ export const templateSystemsColumnsMerger = (defaultColumns) => {
 
     name = [{
         ...name[0],
-        renderFunc: (displayName, id) => <Link to={{ pathname: `/systems/${id}` }}>{displayName}</Link>
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
     }];
 
     return [...name, ...tag, ...patchSetDetailColumns, lastSeen[0]];

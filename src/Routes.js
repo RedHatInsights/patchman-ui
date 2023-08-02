@@ -1,45 +1,27 @@
-import PropTypes from 'prop-types';
-import React, { lazy, Suspense, useCallback, useEffect, useState } from 'react';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
-import WithPermission from './PresentationalComponents/WithPermission/WithPermission';
 import { Bullseye, Spinner } from '@patternfly/react-core';
-import some from 'lodash/some';
-import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import axios from 'axios';
+import { NotAuthorized } from '@redhat-cloud-services/frontend-components/NotAuthorized';
+import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { NavigateToSystem } from './Utilities/NavigateToSystem';
 
-const PermissionRouter = (route, index) => {
-    const {
-        component: Component,
-        isExact,
-        path,
-        props = {},
-        requiredPermissions
-    } = route;
-    const routeProps = {
-        isExact,
-        path
-    };
-
-    const componentProps = {
-        ...props,
-        route: { ...route }
-    };
-
-    return (
-        <Route {...routeProps} key={index}>
-            <WithPermission requiredPermissions={requiredPermissions}>
-                <Component {...componentProps} />
-            </WithPermission>
-        </Route>
-    );
+const PermissionRoute = ({ requiredPermissions = [] }) => {
+    const { hasAccess, isLoading } = usePermissionsWithContext(requiredPermissions);
+    if (!isLoading) {
+        return hasAccess ? <Outlet /> : <NotAuthorized serviceName="patch" />;
+    } else {
+        return '';
+    }
 };
 
-PermissionRouter.propTypes = {
-    component: PropTypes.node,
-    isExact: PropTypes.bool,
-    path: PropTypes.string,
-    props: PropTypes.object
+PermissionRoute.propTypes = {
+    requiredPermissions: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.string
+    ])
 };
 
 const Advisories = lazy(() =>
@@ -90,91 +72,10 @@ const TemplateDetail = lazy(() =>
     )
 );
 
-export const Routes = () => {
-    const history = useHistory();
-    const chrome = useChrome();
-
+const PatchRoutes = () => {
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
     const [hasSystems, setHasSystems] = useState(true);
     const INVENTORY_TOTAL_FETCH_URL = '/api/inventory/v1/hosts';
-
-    const paths = [
-        {
-            path: '/advisories/:advisoryId/:inventoryId',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: InventoryDetail
-        },
-        {
-            path: '/advisories/:advisoryId',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: AdvisoryPage
-        },
-        {
-            path: '/advisories',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: Advisories
-        },
-        {
-            path: '/systems/:inventoryId',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: InventoryDetail
-        },
-        {
-            path: '/systems',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: Systems
-        },
-        {
-            path: '/packages/:packageName/:inventoryId',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: InventoryDetail
-        },
-        {
-            path: '/packages/:packageName',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: PackageDetail
-        },
-        {
-            path: '/packages',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: PackagesPage
-        },
-        {
-            path: '/templates/:templateName',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: TemplateDetail
-        },
-        {
-            path: '/templates',
-            isExact: true,
-            requiredPermissions: generalPermissions,
-            component: Templates
-        }
-    ];
-
-    const listenNavigation = useCallback(() => {
-        if (chrome) {
-            return chrome.on('APP_NAVIGATION', event => {
-                if (event.domEvent) {
-                    history.push(`/${event.navId}`);
-                }
-            });
-        }
-    }, []);
-
-    useEffect(() => {
-        const unregister = listenNavigation();
-        return () => unregister();
-    }, []);
 
     useEffect(() => {
         try {
@@ -196,36 +97,41 @@ export const Routes = () => {
                 </Bullseye>
             }
         >
-            {!hasSystems ? (
-                <AsyncComponent
-                    appId="content_management_zero_state"
-                    appName="dashboard"
-                    module="./AppZeroState"
-                    scope="dashboard"
-                    ErrorComponent={<div>Error state</div>}
-                    app="Content_management"
-                />)
-                :
-                <Switch>
-                    {paths.map(PermissionRouter)}
-                    <Redirect
-                        from='/advisories/:advisoryId/:inventoryId'
-                        to='/systems/:inventoryId'
-                    />
-                    <Redirect
-                        from='/packages/:packageName/:inventoryId'
-                        to='/systems/:inventoryId'
-                    />
-                    <Route render={() =>
-                        (
-                            (!some(paths, p => p.to === history.location.pathname)) && (
-                                <Redirect to={'/advisories'} />
-                            )
-                        )
-                    }
-                    />
-                </Switch>
-            }
+            <Routes>
+                {!hasSystems ? (
+                    <Route path='*' element={
+                        <AsyncComponent
+                            appId="content_management_zero_state"
+                            appName="dashboard"
+                            module="./AppZeroState"
+                            scope="dashboard"
+                            ErrorComponent={<div>Error state</div>}
+                            app="Content_management"
+                        />
+                    } />
+                )
+                    : (
+                        <Route element={<PermissionRoute requiredPermissions={generalPermissions} />}>
+                            <Route path='/advisories' element={<Advisories />} />
+                            <Route path='/advisories/:advisoryId/:inventoryId'
+                                element={<NavigateToSystem />} />
+                            <Route path='/advisories/:advisoryId' element={<AdvisoryPage />} />
+                            <Route path='/systems' element={<Systems />} />
+                            <Route path='/systems/:inventoryId' element={<InventoryDetail />} />
+                            <Route path='/packages' element={<PackagesPage />} />
+                            <Route path='/packages/:packageName' element={<PackageDetail />} />
+                            <Route path='/packages/:packageName/:inventoryId'
+                                element={<NavigateToSystem />} />
+                            <Route path='/templates' element={<Templates />} />
+                            <Route path='/templates/:templateName' element={<TemplateDetail />} />
+                            <Route path='*' element={<Navigate to="advisories" />} />
+                        </Route>
+
+                    )
+                }
+            </Routes>
         </Suspense>
     );
 };
+
+export default PatchRoutes;
