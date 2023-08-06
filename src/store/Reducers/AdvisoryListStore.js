@@ -9,7 +9,10 @@ import {
     fetchFulfilled
 } from './HelperReducers';
 
-export const AdvisoryListStore = (state = storeListDefaults, action) => {
+// eslint-disable-next-line
+const { queryParams: _queryParams, ...storeListDefaultsModified } = storeListDefaults;
+
+export const AdvisoryListStore = (state = storeListDefaultsModified, action) => {
     let newState = { ...state };
     switch (action.type) {
         case ActionTypes.FETCH_APPLICABLE_ADVISORIES + '_FULFILLED':
