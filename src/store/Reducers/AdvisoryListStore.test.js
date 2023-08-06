@@ -16,18 +16,21 @@ const fulfilled_payload = {
     }
 };
 
+// eslint-disable-next-line
+const { queryParams: _queryParams, ...advisoryListStoreDefaults } = storeListDefaults;
+
 const error = 'Error';
 
 describe('AdvisoryListStore tests', () => {
     it.each`
     state                | action                                                               | result
-    ${storeListDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}            | ${{ ...storeListDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: { code: undefined, isLoading: false, hasError: false }, error: {} }}
-    ${storeListDefaults} | ${{ type: action_pending, payload: {} }}                             | ${{ ...storeListDefaults, status: { code: undefined, isLoading: true, hasError: false }, error: {} }}
-    ${storeListDefaults} | ${{ type: EXPAND_ADVISORY_ROW, payload: { rowId: 1, value: true } }} | ${{ ...storeListDefaults, expandedRows: { 1: true } }}
-    ${storeListDefaults} | ${{ type: CHANGE_ADVISORY_LIST_PARAMS, payload: { limit: 10 } }}     | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0, page: 1, page_size: 20 } }}
-    ${storeListDefaults} | ${{ type: SELECT_ADVISORY_ROW, payload: { id: 1, selected: true } }} | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
-    ${storeListDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                 | ${storeListDefaults}
-    ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                 | ${storeListDefaults}
+    ${advisoryListStoreDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}            | ${{ ...advisoryListStoreDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: { code: undefined, isLoading: false, hasError: false }, error: {} }}
+    ${advisoryListStoreDefaults} | ${{ type: action_pending, payload: {} }}                             | ${{ ...advisoryListStoreDefaults, status: { code: undefined, isLoading: true, hasError: false }, error: {} }}
+    ${advisoryListStoreDefaults} | ${{ type: EXPAND_ADVISORY_ROW, payload: { rowId: 1, value: true } }} | ${{ ...advisoryListStoreDefaults, expandedRows: { 1: true } }}
+    ${advisoryListStoreDefaults} | ${{ type: CHANGE_ADVISORY_LIST_PARAMS, payload: { limit: 10 } }}     | ${{ ...advisoryListStoreDefaults, queryParams: { limit: 10, offset: 0 } }}
+    ${advisoryListStoreDefaults} | ${{ type: SELECT_ADVISORY_ROW, payload: { id: 1, selected: true } }} | ${{ ...advisoryListStoreDefaults, selectedRows: { 1: true } }}
+    ${advisoryListStoreDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                 | ${advisoryListStoreDefaults}
+    ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                 | ${advisoryListStoreDefaults}
     `('$action', ({ state, action: { type, payload }, result }) => {
     const res = AdvisoryListStore(state, { type, payload });
     expect(res).toEqual(result);
