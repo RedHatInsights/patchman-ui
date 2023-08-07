@@ -2,7 +2,7 @@
 
 exports[`Systems.js Should open remediation modal 1`] = `
 Object {
-  "isDisabled": undefined,
+  "isDisabled": false,
   "onClick": [Function],
   "title": "Apply all applicable advisories",
 }

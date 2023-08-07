@@ -133,8 +133,10 @@ export const packageSystemsColumns = [
 ];
 
 const isRemediationDisabled = (row) => {
+    const { status } = row?.attributes || {};
     const { applicable_advisories: applicableAdvisories } = row || {};
-    return applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0);
+
+    return (applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0)) || (status === 'Applicable');
 };
 
 const isPatchSetRemovalDisabled = (row) => {

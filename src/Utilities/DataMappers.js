@@ -210,10 +210,6 @@ export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
         rows.map(({ id, ...rest }) => {
             const {
                 packages_installed: installedPckg,
-                rhba_count: rhba,
-                rhsa_count: rhsa,
-                rhea_count: rhea,
-                other_count: other,
                 os,
                 rhsm,
                 tags,
@@ -225,12 +221,6 @@ export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
                 ...rest,
                 key: Math.random().toString() + id,
                 packages_installed: installedPckg,
-                applicable_advisories: [
-                    rhea || 0,
-                    rhba || 0,
-                    rhsa || 0,
-                    other || 0
-                ],
                 os: {
                     osName: os.osName || os || 'N/A',
                     rhsm

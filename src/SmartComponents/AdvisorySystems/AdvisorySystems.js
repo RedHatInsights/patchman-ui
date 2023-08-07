@@ -162,8 +162,8 @@ const AdvisorySystems = ({ advisoryName }) => {
                         }));
                     }}
                     getEntities={getEntites}
-                    actions={systemsRowActions(showRemediationModal)}
                     tableProps={{
+                        actionResolver: (row) => systemsRowActions(showRemediationModal, undefined, undefined, row),
                         canSelectAll: false,
                         variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}
