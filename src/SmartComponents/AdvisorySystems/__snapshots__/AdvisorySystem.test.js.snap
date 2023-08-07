@@ -50,15 +50,6 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
         advisoryName="RHSA-2020:2755"
       >
         <mockConstructor
-          actions={
-            Array [
-              Object {
-                "isDisabled": undefined,
-                "onClick": [Function],
-                "title": "Apply all applicable advisories",
-              },
-            ]
-          }
           activeFiltersConfig={
             Object {
               "deleteTitle": "Reset filters",
@@ -230,6 +221,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           showTags={true}
           tableProps={
             Object {
+              "actionResolver": [Function],
               "canSelectAll": false,
               "className": "patchCompactInventory",
               "isStickyHeader": true,
