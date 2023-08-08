@@ -32,7 +32,7 @@ const ToDateField = (props) => {
                     <DatePicker
                         appendTo={document.body}
                         value={toDate}
-                        onChange={(val) => {
+                        onChange={(e, val) => {
                             input.onChange(val);
                             setToDate(val);
                         }}
