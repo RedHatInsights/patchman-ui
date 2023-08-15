@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
@@ -8,6 +7,7 @@ import {
 } from '../../Utilities/Helpers';
 import './SystemsListAssets.scss';
 import { sortable } from '@patternfly/react-table';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 export const systemsListColumns = () => [
     {
@@ -22,7 +22,7 @@ export const systemsListColumns = () => [
         key: 'baseline_name',
         title: 'Template',
         renderFunc: (value, _, row) => value
-            ? <Link to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</Link>
+            ? <InsightsLink to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</InsightsLink>
             : 'No template',
         props: {
             width: 5
@@ -59,7 +59,7 @@ export const advisorySystemsColumns = () => [
         key: 'baseline_name',
         title: 'Template',
         renderFunc: (value, _, row) => value
-            ? <Link to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</Link>
+            ? <InsightsLink to={`/templates/${row.baseline_id}`}>{value}</InsightsLink>
             : 'No template',
         props: {
             width: 5
@@ -91,6 +91,24 @@ export const packageSystemsColumns = [
         props: { width: 10, isStatic: true }
     },
     {
+        key: 'os',
+        title: 'OS',
+        renderFunc: value => createOSColumn(value),
+        props: {
+            width: 5
+        }
+    },
+    {
+        key: 'baseline_name',
+        title: 'Template',
+        renderFunc: (value, _, row) => value
+            ? <InsightsLink to={`/templates/${row.baseline_id}`}>{value}</InsightsLink>
+            : 'No template',
+        props: {
+            width: 5
+        }
+    },
+    {
         key: 'installed_evra',
         title: 'Installed version',
         props: {
@@ -105,7 +123,7 @@ export const packageSystemsColumns = [
         }
     },
     {
-        key: 'updatable',
+        key: 'update_status',
         title: 'Status',
         props: {
             width: 20
@@ -115,8 +133,10 @@ export const packageSystemsColumns = [
 ];
 
 const isRemediationDisabled = (row) => {
+    const { status } = row?.attributes || {};
     const { applicable_advisories: applicableAdvisories } = row || {};
-    return applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0);
+
+    return (applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0)) || (status === 'Applicable');
 };
 
 const isPatchSetRemovalDisabled = (row) => {

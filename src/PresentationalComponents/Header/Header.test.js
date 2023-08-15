@@ -106,7 +106,7 @@ describe('Header component', () => {
 
     it('should render with tabs only, click a tab', () => {
         const wrapper = withLink(<Header showTabs title="Title" />);
-        let history = wrapper.find('Router').props().history;
+        let history = wrapper.find('Router').props().navigator;
         const spy = jest.spyOn(history, 'push');
         wrapper
             .find('Tabs.patchman-tabs')

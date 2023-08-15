@@ -1,9 +1,7 @@
 /* eslint-disable camelcase */
 import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import {
-    BugIcon, CheckIcon, FlagIcon,
-    EnhancementIcon, InfoCircleIcon, LongArrowAltUpIcon,
-    SecurityIcon
+    BugIcon, FlagIcon, EnhancementIcon, InfoCircleIcon, SecurityIcon
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
 import flatten from 'lodash/flatten';
@@ -12,7 +10,6 @@ import pickBy from 'lodash/pickBy';
 import qs from 'query-string';
 import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
-import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
 import {
@@ -23,6 +20,7 @@ import {
 } from './constants';
 import { intl } from './IntlProvider';
 import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 export const removeUndefinedObjectItems = (originalObject) => {
     const newObject = JSON.parse(JSON.stringify(originalObject));
@@ -158,21 +156,15 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa, other], type = 'applica
     );
 }
 
-export function createUpgradableColumn(value) {
-    return <div style={{
-        display: 'flex',
-        alignItems: 'center'
-    }}>
-        {
-            value && <LongArrowAltUpIcon style={{ color: 'var(--pf-global--palette--blue-400)' }} />
-            || <CheckIcon style={{ color: 'var(--pf-global--success-color--100)' }} />
-        }
-        {<span style={{ marginLeft: 'var(--pf-global--spacer--sm)' }}>
-            {
-                value && 'Upgradable' || 'Up-to-date'
-            }
-        </span>}
-    </div>;
+export function createUpgradableColumn(updatableStatus) {
+    switch (updatableStatus) {
+        case 'None':
+            return intl.formatMessage(messages.labelsColumnsUpToApplicable);
+        case 'Applicable':
+            return intl.formatMessage(messages.labelsColumnsUpToInstallable);
+        case 'Installable':
+            return intl.formatMessage(messages.labelsColumnsUpgradable);
+    }
 }
 
 export function getSeverityById(id) {
@@ -183,20 +175,20 @@ export function getSeverityById(id) {
 }
 
 export const createPackagesColumn = (packageCount, systemID) => (
-    <Link to={{
+    <InsightsLink to={{
         pathname: `/systems/${systemID}`,
         state: { tab: 'packages' }
     }}>
         {packageCount}
-    </Link>
+    </InsightsLink>
 );
 
 export function handlePatchLink(type, name, body) {
     if (location.href.indexOf('inventory') === -1) {
         return (
-            <Link to={`/${type}/${name}`}>
+            <InsightsLink to={`/${type}/${name}`}>
                 {body === undefined ? name : body}
-            </Link>
+            </InsightsLink>
         );
     } else {
         return (

@@ -3,7 +3,7 @@ import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inven
 import propTypes from 'prop-types';
 import React, { useCallback, useMemo, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
@@ -29,14 +29,15 @@ import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
+import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 
 const PackageSystems = ({ packageName }) => {
     const dispatch = useDispatch();
     const store = useStore();
-    const history = useHistory();
     const [packageVersions, setPackageVersions] = React.useState([]);
 
-    const decodedParams = decodeQueryparams(history.location.search);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const decodedParams = decodeQueryparams('?' + searchParams.toString());
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -71,6 +72,7 @@ const PackageSystems = ({ packageName }) => {
     }, []);
 
     const [deleteFilters] = useRemoveFilter({ ...filter, search }, apply);
+    const osFilterConfig = useOsVersionFilter(filter?.os, apply);
 
     const filterConfig = {
         items: [
@@ -79,7 +81,8 @@ const PackageSystems = ({ packageName }) => {
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
             ),
             statusFilter(apply, filter),
-            versionFilter(apply, filter, packageVersions)
+            versionFilter(apply, filter, packageVersions),
+            ...osFilterConfig
         ]
     };
 
@@ -133,7 +136,7 @@ const PackageSystems = ({ packageName }) => {
         return pairs.length ? { issues: pairs } : false;
     }, [selectedRows]);
 
-    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, history);
+    const getEntites = useGetEntities(fetchPackageSystems, apply, { packageName }, setSearchParams);
 
     const remediationDataProvider = () => remediationProviderWithPairs(
         removeUndefinedObjectKeys(selectedRows),

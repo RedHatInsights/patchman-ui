@@ -22,11 +22,6 @@ jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => 
     downloadFile: jest.fn()
 }));
 
-jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
-    ...jest.requireActual('@redhat-cloud-services/frontend-components/Inventory'),
-    InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
-}));
-
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     exportSystemsCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),

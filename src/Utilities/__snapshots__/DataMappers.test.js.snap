@@ -4,11 +4,14 @@ exports[`DataMappers Should create package list 1`] = `
 Object {
   "cells": Array [
     Object {
-      "title": <Link
+      "title": <InsightsLink
         to="/packages/test-name-2"
       >
         test-name-2
-      </Link>,
+      </InsightsLink>,
+    },
+    Object {
+      "title": "test-evra-2",
     },
     Object {
       "title": "test-evra-2",
@@ -17,34 +20,7 @@ Object {
       "title": "test-update-evra",
     },
     Object {
-      "title": <div
-        style={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-          }
-        }
-      >
-        <CheckIcon
-          color="currentColor"
-          noVerticalAlign={false}
-          size="sm"
-          style={
-            Object {
-              "color": "var(--pf-global--success-color--100)",
-            }
-          }
-        />
-        <span
-          style={
-            Object {
-              "marginLeft": "var(--pf-global--spacer--sm)",
-            }
-          }
-        >
-          Up-to-date
-        </span>
-      </div>,
+      "title": "Upgradable",
     },
     Object {
       "title": "Access control list utilities",

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { SortByDirection } from '@patternfly/react-table';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
@@ -184,7 +184,7 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
     });
 };
 
-export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, applyGlobalFilter) => {
+export const useGetEntities = (fetchApi, apply, config, setSearchParams, applyMetadata, applyGlobalFilter) => {
     const { id, packageName } = config || {};
     const getEntities = async (
         _items,
@@ -214,12 +214,12 @@ export const useGetEntities = (fetchApi, apply, config, history, applyMetadata, 
         applyMetadata && applyMetadata(items.meta);
         applyGlobalFilter && applyGlobalFilter(selectedTags);
 
-        history.search = encodeURLParams({
+        setSearchParams(encodeURLParams({
             page,
             perPage,
             sort,
             ...patchParams
-        });
+        }));
 
         return {
             results: items.data.map(row => ({ ...row, ...row.attributes, id: row.id ?? row.inventory_id })),
@@ -291,11 +291,11 @@ export const useFeatureFlag = (flag, chrome) => {
  * @returns {historyPusher} function to trigger the push
  */
 export const usePushUrlParams = (queryParams) => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation();
 
     const historyPusher = useCallback(() => {
-        history.push({ pathname: location.pathname, search: encodeURLParams(queryParams), state: location.state });
+        navigate(`${location.pathname}${encodeURLParams(queryParams)}`, { state: location.state });
     }, [JSON.stringify(queryParams), location.state, location.pathname]);
 
     return historyPusher;

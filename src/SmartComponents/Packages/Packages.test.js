@@ -55,7 +55,7 @@ beforeEach(() => {
     });
     wrapper = mount(<Provider store={store}>
         <Router><Packages /></Router>
-    </Provider>);
+    </Provider>).find('Packages');
 });
 
 afterEach(() => {

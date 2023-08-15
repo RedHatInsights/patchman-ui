@@ -4,7 +4,6 @@ import propTypes from 'prop-types';
 import React, { useCallback } from 'react';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { combineReducers } from 'redux';
-import { useHistory } from 'react-router-dom';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
@@ -29,18 +28,20 @@ import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
+import { useSearchParams } from 'react-router-dom';
 
 const AdvisorySystems = ({ advisoryName }) => {
     const dispatch = useDispatch();
     const store = useStore();
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [
         RemediationModalCmp,
         setRemediationModalCmp
     ] = React.useState(() => () => null);
-    const history = useHistory();
 
-    const decodedParams = decodeQueryparams(history.location.search);
+    const decodedParams = decodeQueryparams('?' + searchParams.toString());
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
@@ -111,7 +112,7 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
 
-    const getEntites = useGetEntities(fetchAdvisorySystems, apply, { id: advisoryName }, history);
+    const getEntites = useGetEntities(fetchAdvisorySystems, apply, { id: advisoryName }, setSearchParams);
 
     const onExport = useOnExport(advisoryName, queryParams, {
         csv: exportAdvisorySystemsCSV,
@@ -162,8 +163,8 @@ const AdvisorySystems = ({ advisoryName }) => {
                         }));
                     }}
                     getEntities={getEntites}
-                    actions={systemsRowActions(showRemediationModal)}
                     tableProps={{
+                        actionResolver: (row) => systemsRowActions(showRemediationModal, undefined, undefined, row),
                         canSelectAll: false,
                         variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
                     }}

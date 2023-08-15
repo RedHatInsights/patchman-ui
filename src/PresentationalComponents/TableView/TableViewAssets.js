@@ -82,14 +82,19 @@ export const systemPackagesColumns = [
         key: 'evra'
     },
     {
-        title: intl.formatMessage(messages.labelsColumnsLatestVersion),
+        title: intl.formatMessage(messages.labelsColumnsLatestInstallableVersion),
         transforms: [cellWidth(15)],
-        key: 'latest_update'
+        key: 'latest_installable_version'
+    },
+    {
+        title: intl.formatMessage(messages.labelsColumnsLatestApplicableVersion),
+        transforms: [cellWidth(15)],
+        key: 'latest_applicable_version'
     },
     {
         title: intl.formatMessage(messages.labelsColumnsStatus),
         transforms: [sortable, cellWidth(10)],
-        key: 'updatable'
+        key: 'update_status'
     },
     {
         title: intl.formatMessage(messages.labelsColumnsSummary),

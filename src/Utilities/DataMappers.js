@@ -3,7 +3,6 @@ import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import messages from '../Messages';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
@@ -15,6 +14,7 @@ import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToD
 import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -90,7 +90,7 @@ export const createSystemAdvisoriesRows = (
                     id: row.id,
                     isOpen: expandedRows[row.id] === true,
                     selected: selectedRows[row.id] !== undefined,
-                    disableSelection: row.attributes.status === 'Applicable',
+                    disableSelection: row.attributes.status !== 'Installable',
                     cells: [
                         { title: handlePatchLink(entityTypes.advisories, row.id) },
                         {
@@ -188,11 +188,18 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                 key: Math.random().toString() + row.id,
                 display_name: row.display_name,
                 installed_evra: row.installed_evra,
-                available_evra: row.updatable && row.available_evra || row.installed_evra,
+                available_evra: row.updatable ? row.available_evra : row.installed_evra,
                 disableSelection: !row.updatable,
                 updatable: row.updatable,
+                update_status: row.update_status,
                 selected: selectedRows[row.id] !== undefined,
-                tags: row.tags
+                tags: row.tags,
+                os: {
+                    osName: row.os?.osName || row.os || 'N/A',
+                    rhsm: row.rhsm
+                },
+                baseline_name: row.baseline_name,
+                baseline_id: row.baseline_id
             };
         });
     return data || [];
@@ -203,10 +210,6 @@ export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
         rows.map(({ id, ...rest }) => {
             const {
                 packages_installed: installedPckg,
-                rhba_count: rhba,
-                rhsa_count: rhsa,
-                rhea_count: rhea,
-                other_count: other,
                 os,
                 rhsm,
                 tags,
@@ -218,12 +221,6 @@ export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
                 ...rest,
                 key: Math.random().toString() + id,
                 packages_installed: installedPckg,
-                applicable_advisories: [
-                    rhea || 0,
-                    rhba || 0,
-                    rhsa || 0,
-                    other || 0
-                ],
                 os: {
                     osName: os.osName || os || 'N/A',
                     rhsm
@@ -242,18 +239,20 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
         return rows.map(pkg => {
             const pkgNEVRA = `${pkg.name}-${pkg.evra}`;
             const pkgUpdates = pkg.updates || [];
-            const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
+            const latestApplicable = pkgUpdates[pkgUpdates.length - 1];
+            const latestInstallable = pkgUpdates.filter(version => version.status === 'Installable').pop();
 
             return {
                 id: pkgNEVRA,
                 key: pkgNEVRA,
                 selected: selectedRows[pkgNEVRA] !== undefined,
-                disableSelection: !latestUpdate,
+                disableSelection: !pkg.updatable,
                 cells: [
                     { title: handlePatchLink(entityTypes.packages, pkg.name) },
                     { title: pkg.evra },
-                    { title: (latestUpdate && latestUpdate.evra) || pkg.evra },
-                    { title: createUpgradableColumn(pkg.updatable) },
+                    { title: latestInstallable?.evra ?? pkg.evra },
+                    { title: latestApplicable?.evra ?? pkg.evra },
+                    { title: createUpgradableColumn(pkg.update_status) },
                     { title: pkg.summary }
                 ]
             };
@@ -399,9 +398,9 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
                 cells: [
                     {
                         title: (
-                            <Link to={{ pathname: `/templates/${row.id}` }}>
+                            <InsightsLink to={`/templates/${row.id}`}>
                                 {row.name}
-                            </Link>
+                            </InsightsLink>
                         )
                     },
                     { title: row.systems || intl.formatMessage(messages.labelsTemplateNoSystems) },

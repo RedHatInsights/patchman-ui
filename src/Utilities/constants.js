@@ -50,7 +50,7 @@ export const storeListDefaults = {
 };
 
 export const systemPackagesDefaultFilters = {
-    filter: { updatable: ['true'] }
+    filter: { update_status: ['Installable'] }
 };
 
 export const packagesListDefaultFilters = {
@@ -164,12 +164,16 @@ export const advisoryTypes = [
 
 export const updatableTypes = [
     {
-        value: false,
-        label: 'Up-to-date '
+        value: 'None',
+        label: 'Up to date'
     },
     {
-        value: true,
-        label: 'Upgradable'
+        value: 'Installable',
+        label: 'Installable'
+    },
+    {
+        value: 'Applicable',
+        label: 'Applicable'
     }
 ];
 
@@ -226,7 +230,7 @@ export const filterCategories = {
         label: 'Public date',
         values: publicDateOptions
     },
-    updatable: {
+    update_status: {
         label: 'Status',
         values: updatableTypes
     },

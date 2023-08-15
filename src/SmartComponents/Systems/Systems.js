@@ -3,7 +3,7 @@ import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
@@ -45,7 +45,7 @@ const Systems = () => {
         chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesSystems)}${DEFAULT_PATCH_TITLE}`);
     }, [chrome, intl]);
 
-    const history = useHistory();
+    const [searchParams, setSearchParams] = useSearchParams();
     const dispatch = useDispatch();
     const [isRemediationOpen, setRemediationOpen] = React.useState(false);
     const [isRemediationLoading, setRemediationLoading] = React.useState(false);
@@ -54,7 +54,7 @@ const Systems = () => {
         setRemediationModalCmp
     ] = React.useState(() => () => null);
 
-    const decodedParams = decodeQueryparams(history.location.search);
+    const decodedParams = decodeQueryparams('?' + searchParams.toString());
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const totalItems = useSelector(
         ({ entities }) => entities?.total || 0
@@ -84,6 +84,7 @@ const Systems = () => {
     }, []);
 
     const showRemediationModal = useCallback(async (data) => {
+        console.log('RESOLVED DATA', data);
         const resolvedData = await data;
         setRemediationModalCmp(() =>
             () => <RemediationWizard
@@ -129,7 +130,7 @@ const Systems = () => {
         json: exportSystemsJSON
     }, dispatch);
 
-    const getEntities = useGetEntities(fetchSystems, apply, {}, history, applyMetadata, applyGlobalFilter);
+    const getEntities = useGetEntities(fetchSystems, apply, {}, setSearchParams, applyMetadata, applyGlobalFilter);
 
     const {
         patchSetState, setPatchSetState, openUnassignSystemsModal, openAssignSystemsModal

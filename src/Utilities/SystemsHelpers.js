@@ -8,7 +8,7 @@ import messages from '../Messages';
 import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAssets';
 import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
-import { Link } from 'react-router-dom';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import isEmpty from 'lodash/isEmpty';
 
 export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
@@ -79,7 +79,7 @@ export const templateSystemsColumnsMerger = (defaultColumns) => {
 
     name = [{
         ...name[0],
-        renderFunc: (displayName, id) => <Link to={{ pathname: `/systems/${id}` }}>{displayName}</Link>
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
     }];
 
     return [...name, ...tag, ...patchSetDetailColumns, lastSeen[0]];

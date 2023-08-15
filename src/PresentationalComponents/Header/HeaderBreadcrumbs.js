@@ -4,7 +4,7 @@ import {
 } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 const HeaderBreadcrumbs = ({ items, headerOUIA }) => {
     return (
@@ -12,10 +12,10 @@ const HeaderBreadcrumbs = ({ items, headerOUIA }) => {
             {items.filter(Boolean).map(item => (
                 <BreadcrumbItem key={item.title} isActive={item.isActive}>
                     {item.to
-                        ? <Link to={item.to}
+                        ? <InsightsLink to={`${item.to}`}
                             data-ouia-component-type={`${headerOUIA}-breadcrumb`}
                             data-ouia-component-id={`breadcrumb-to-${item.title}`}
-                        >{item.title}</Link>
+                        >{item.title}</InsightsLink>
                         : item.title
                     }
                 </BreadcrumbItem>

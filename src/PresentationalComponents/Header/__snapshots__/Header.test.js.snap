@@ -3,21 +3,30 @@
 exports[`Header component should render with 1 breadcrumb item and last is active 1`] = `
 <BrowserRouter>
   <Router
-    history={
+    location={
+      Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      }
+    }
+    navigationType="POP"
+    navigator={
       Object {
         "action": "POP",
-        "block": [Function],
         "createHref": [Function],
+        "createURL": [Function],
+        "encodeLocation": [Function],
         "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "default",
           "pathname": "/",
           "search": "",
-          "state": undefined,
+          "state": null,
         },
         "push": [Function],
         "replace": [Function],
@@ -74,16 +83,15 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
                     <li
                       className="pf-c-breadcrumb__item"
                     >
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-First item"
                         data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
-                        <LinkAnchor
+                        <Link
                           data-ouia-component-id="breadcrumb-to-First item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          navigate={[Function]}
+                          to="#"
                         >
                           <a
                             data-ouia-component-id="breadcrumb-to-First item"
@@ -93,8 +101,8 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
                           >
                             First item
                           </a>
-                        </LinkAnchor>
-                      </Link>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                 </ol>
@@ -155,21 +163,30 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
 exports[`Header component should render with 2 breadcrumb items and last is active 1`] = `
 <BrowserRouter>
   <Router
-    history={
+    location={
+      Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      }
+    }
+    navigationType="POP"
+    navigator={
       Object {
         "action": "POP",
-        "block": [Function],
         "createHref": [Function],
+        "createURL": [Function],
+        "encodeLocation": [Function],
         "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "default",
           "pathname": "/",
           "search": "",
-          "state": undefined,
+          "state": null,
         },
         "push": [Function],
         "replace": [Function],
@@ -236,16 +253,15 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                     <li
                       className="pf-c-breadcrumb__item"
                     >
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-First item"
                         data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
-                        <LinkAnchor
+                        <Link
                           data-ouia-component-id="breadcrumb-to-First item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          navigate={[Function]}
+                          to="#"
                         >
                           <a
                             data-ouia-component-id="breadcrumb-to-First item"
@@ -255,8 +271,8 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                           >
                             First item
                           </a>
-                        </LinkAnchor>
-                      </Link>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                   <BreadcrumbItem
@@ -295,16 +311,15 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                           </svg>
                         </AngleRightIcon>
                       </span>
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-Second item"
                         data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
-                        <LinkAnchor
+                        <Link
                           data-ouia-component-id="breadcrumb-to-Second item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          navigate={[Function]}
+                          to="#"
                         >
                           <a
                             data-ouia-component-id="breadcrumb-to-Second item"
@@ -314,8 +329,8 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
                           >
                             Second item
                           </a>
-                        </LinkAnchor>
-                      </Link>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                 </ol>
@@ -376,21 +391,30 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
 exports[`Header component should render with 3 breadcrumb items and last is active 1`] = `
 <BrowserRouter>
   <Router
-    history={
+    location={
+      Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      }
+    }
+    navigationType="POP"
+    navigator={
       Object {
         "action": "POP",
-        "block": [Function],
         "createHref": [Function],
+        "createURL": [Function],
+        "encodeLocation": [Function],
         "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "default",
           "pathname": "/",
           "search": "",
-          "state": undefined,
+          "state": null,
         },
         "push": [Function],
         "replace": [Function],
@@ -468,16 +492,15 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                     <li
                       className="pf-c-breadcrumb__item"
                     >
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-First item"
                         data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
-                        <LinkAnchor
+                        <Link
                           data-ouia-component-id="breadcrumb-to-First item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          navigate={[Function]}
+                          to="#"
                         >
                           <a
                             data-ouia-component-id="breadcrumb-to-First item"
@@ -487,8 +510,8 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           >
                             First item
                           </a>
-                        </LinkAnchor>
-                      </Link>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                   <BreadcrumbItem
@@ -527,16 +550,15 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           </svg>
                         </AngleRightIcon>
                       </span>
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-Second item"
                         data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
-                        <LinkAnchor
+                        <Link
                           data-ouia-component-id="breadcrumb-to-Second item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          navigate={[Function]}
+                          to="#"
                         >
                           <a
                             data-ouia-component-id="breadcrumb-to-Second item"
@@ -546,8 +568,8 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           >
                             Second item
                           </a>
-                        </LinkAnchor>
-                      </Link>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                   <BreadcrumbItem
@@ -586,16 +608,15 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           </svg>
                         </AngleRightIcon>
                       </span>
-                      <Link
+                      <InsightsLink
                         data-ouia-component-id="breadcrumb-to-Third item"
                         data-ouia-component-type="undefined-breadcrumb"
                         to="#"
                       >
-                        <LinkAnchor
+                        <Link
                           data-ouia-component-id="breadcrumb-to-Third item"
                           data-ouia-component-type="undefined-breadcrumb"
-                          href="/"
-                          navigate={[Function]}
+                          to="#"
                         >
                           <a
                             data-ouia-component-id="breadcrumb-to-Third item"
@@ -605,8 +626,8 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
                           >
                             Third item
                           </a>
-                        </LinkAnchor>
-                      </Link>
+                        </Link>
+                      </InsightsLink>
                     </li>
                   </BreadcrumbItem>
                 </ol>
@@ -667,21 +688,30 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
 exports[`Header component should render with empty breadcrumb 1`] = `
 <BrowserRouter>
   <Router
-    history={
+    location={
+      Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      }
+    }
+    navigationType="POP"
+    navigator={
       Object {
         "action": "POP",
-        "block": [Function],
         "createHref": [Function],
+        "createURL": [Function],
+        "encodeLocation": [Function],
         "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "default",
           "pathname": "/",
           "search": "",
-          "state": undefined,
+          "state": null,
         },
         "push": [Function],
         "replace": [Function],
@@ -771,21 +801,30 @@ exports[`Header component should render with empty breadcrumb 1`] = `
 exports[`Header component should render with header Hello world 1`] = `
 <BrowserRouter>
   <Router
-    history={
+    location={
+      Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      }
+    }
+    navigationType="POP"
+    navigator={
       Object {
         "action": "POP",
-        "block": [Function],
         "createHref": [Function],
+        "createURL": [Function],
+        "encodeLocation": [Function],
         "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "default",
           "pathname": "/",
           "search": "",
-          "state": undefined,
+          "state": null,
         },
         "push": [Function],
         "replace": [Function],
@@ -859,21 +898,30 @@ exports[`Header component should render with header Hello world 1`] = `
 exports[`Header component should render with header as empty string 1`] = `
 <BrowserRouter>
   <Router
-    history={
+    location={
+      Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      }
+    }
+    navigationType="POP"
+    navigator={
       Object {
         "action": "POP",
-        "block": [Function],
         "createHref": [Function],
+        "createURL": [Function],
+        "encodeLocation": [Function],
         "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "default",
           "pathname": "/",
           "search": "",
-          "state": undefined,
+          "state": null,
         },
         "push": [Function],
         "replace": [Function],
@@ -945,21 +993,30 @@ exports[`Header component should render with header as empty string 1`] = `
 exports[`Header component should render without to attribute 1`] = `
 <BrowserRouter>
   <Router
-    history={
+    location={
+      Object {
+        "hash": "",
+        "key": "default",
+        "pathname": "/",
+        "search": "",
+        "state": null,
+      }
+    }
+    navigationType="POP"
+    navigator={
       Object {
         "action": "POP",
-        "block": [Function],
         "createHref": [Function],
+        "createURL": [Function],
+        "encodeLocation": [Function],
         "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
         "listen": [Function],
         "location": Object {
           "hash": "",
+          "key": "default",
           "pathname": "/",
           "search": "",
-          "state": undefined,
+          "state": null,
         },
         "push": [Function],
         "replace": [Function],
