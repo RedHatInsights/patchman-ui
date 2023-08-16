@@ -60,11 +60,11 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
             'N/A'
         ) : (
             // TODO: change this link to a InsightsLink after router upgrade
-            <a href={`./insights/inventory/groups/${groups[0].id}`}>
+            <span>
                 {
                     groups[0].name // currently, one group at maximum is supported
                 }
-            </a>
+            </span>
         );} : [];
 
     return [...nameColumn, ...groupColumn, ...tagsColumn, ...additionalColumns(), lastSeen[0]];

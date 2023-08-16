@@ -95,6 +95,7 @@ const Systems = () => {
     }, [isRemediationOpen]);
 
     function apply(queryParams) {
+        console.log(queryParams, 'queryParams');
         dispatch(changeSystemsParams(queryParams));
     }
 

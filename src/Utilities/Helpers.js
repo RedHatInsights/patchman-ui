@@ -240,16 +240,6 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
         });
 
         const SIDsFilter = sap_sids?.map(sid => `filter[system_profile][sap_sids][in]=${sid}`).join('&');
-        //TODO: THIS IS AN EXAMPLE CONSTRUCTOR FOR GROUPNAMEFILTER
-        /*  const groupFilterConstructor = (params = []) => {
-            let filterString = `?filter[group_name][in]=`;
-            params.forEach((group, index) => {
-                index === 0 && filterString === `filter[group_name][in]=` ?
-                    (filterString += group) :
-                    (filterString += `,${group}`);
-            });
-            return filterString;
-        }; */
         return result.concat(sap_sids ? `&${SIDsFilter}#SIDs=${sap_sids.join(',') }` : '');
     };
 
@@ -268,23 +258,26 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
         return result;
     };
 
-    //TODO: THIS IS WHERE I NEED TO PROCESS THIS STRING AND SOMEHOW ADD IT!!!!
     let { filter, systemProfile = {}, ...allParams } = parameters;
+    console.log(parameters, 'parameters');
 
     allParams = { ...allParams, ...flattenFilters(filter) };
     let params = [];
     Object.keys(allParams).forEach(key => {
         const argKey = encodeURIComponent(key);
         const argValue = encodeURIComponent(allParams[key]);
+        console.log(argKey, 'argKey');
+        console.log(argValue, 'argValue');
 
         if (!['', undefined, null].some(value => [argValue, key].includes(value))) {
-            if (!['selectedTags', 'systemProfile'].includes(key)) {
+            if (!['selectedTags', 'systemProfile', 'group_name'].includes(key)) {
                 params.push(argKey.concat('=').concat(argValue));
             } else if (key === 'selectedTags') {
                 params.push.apply(params, allParams[key]);
             }
         }
     });
+    console.log(params, 'params');
 
     const workloadsFilter = (Object.keys(systemProfile).length > 0)
         && calculateWorkloads(systemProfile) || '';
@@ -296,10 +289,25 @@ export const encodeApiParams = parameters => {
     return encodeParams(parameters, true);
 };
 
+export const groupFilterConstructor = (params = []) => {
+
+    let filterString = `filter[group_name][in]=`;
+    params.forEach((group) => {
+        filterString === `filter[group_name][in]=` ?
+            (filterString += group) :
+            (filterString += `,${group}`);
+    });
+    return filterString;
+};
+
 export const encodeURLParams = parameters => {
+    const groupNameFilter = parameters?.group_name;
     delete parameters.id;
-    let urlParams = { ...parameters };
+    let urlParams = { ...parameters, group_name: groupFilterConstructor(groupNameFilter) };
+    console.log(urlParams, 'urlParams');
     delete urlParams.selectedTags;
+    const x = encodeParams(removeUndefinedObjectItems(urlParams), false)
+    console.log(x, 'check')
     return encodeParams(removeUndefinedObjectItems(urlParams), false);
 };
 
@@ -373,6 +381,7 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
             item =>
                 filters[item] !== '' && [].concat(filters[item]).length !== 0
         );
+        console.log(categories, 'categories');
         filterConfig = filterConfig.concat(
             categories.map(category => {
                 const label = category === 'installed_evra' && 'Package version' || filterCategories[category].label;

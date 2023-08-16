@@ -303,7 +303,7 @@ export const patchSetDeleteNotifications = (templateName) => ({
     }
 });
 //should be the same as filter key
-export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status', 'hostGroupFilter'];
+export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status', 'group_name'];
 
 export const featureFlags = {
     patch_set: 'patch.patch_set'
