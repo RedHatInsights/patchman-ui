@@ -291,9 +291,9 @@ export const encodeApiParams = parameters => {
 
 export const groupFilterConstructor = (params = []) => {
 
-    let filterString = `filter[group_name][in]=`;
+    let filterString = '';
     params.forEach((group) => {
-        filterString === `filter[group_name][in]=` ?
+        filterString === '' ?
             (filterString += group) :
             (filterString += `,${group}`);
     });
@@ -302,12 +302,17 @@ export const groupFilterConstructor = (params = []) => {
 
 export const encodeURLParams = parameters => {
     const groupNameFilter = parameters?.group_name;
+    if (groupNameFilter) {
+        Object.assign(parameters.filter,  { group_name: [groupFilterConstructor(groupNameFilter)] });
+    }
+
     delete parameters.id;
-    let urlParams = { ...parameters, group_name: groupFilterConstructor(groupNameFilter) };
+
+    let urlParams = { ...parameters };
     console.log(urlParams, 'urlParams');
     delete urlParams.selectedTags;
-    const x = encodeParams(removeUndefinedObjectItems(urlParams), false)
-    console.log(x, 'check')
+    const x = encodeParams(removeUndefinedObjectItems(urlParams), false);
+    console.log(x, 'check');
     return encodeParams(removeUndefinedObjectItems(urlParams), false);
 };
 
@@ -381,10 +386,14 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
             item =>
                 filters[item] !== '' && [].concat(filters[item]).length !== 0
         );
+        //TODO: this is the place that should be rewritten
+        //OR WE SHOULD REMOVE group chips that are passed from inventory table
         console.log(categories, 'categories');
         filterConfig = filterConfig.concat(
             categories.map(category => {
-                const label = category === 'installed_evra' && 'Package version' || filterCategories[category].label;
+                const label = category ===
+                'installed_evra' && 'Package version'
+                || filterCategories[category].label;
                 return {
                     category: label,
                     id: category,
@@ -411,6 +420,8 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
 
     filters && processFilters();
     search && processSearch();
+    console.log(filterConfig, 'filterConfig');
+    console.log(filters, 'filters');
 
     return filterConfig;
 };
