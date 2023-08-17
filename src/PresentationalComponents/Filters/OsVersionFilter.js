@@ -35,7 +35,7 @@ const useOsVersionFilter = (currentFilter = '', apply) => {
         }
     }, [versionsLoaded]);
 
-    const osVersionValue = (currentFilter === '' ? [] : currentFilter.split(','))
+    const osVersionValue = (currentFilter === '' ? [] : Array.isArray(currentFilter) ? currentFilter : currentFilter.split(','))
     // patchman uses "RHEL " prefix in values; need to remove
     .map((version) => version.substring(5));
 
