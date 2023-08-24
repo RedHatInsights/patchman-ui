@@ -20,7 +20,7 @@ import { usePerPageSelect, useSetPage, useSortColumn, useOnExport } from '../../
 import { intl } from '../../Utilities/IntlProvider';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
-const SystemPackages = ({ handleNoSystemData, inventoryId }) => {
+const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
     const dispatch = useDispatch();
     const packages = useSelector(
         ({ SystemPackageListStore }) => SystemPackageListStore.rows
@@ -53,6 +53,12 @@ const SystemPackages = ({ handleNoSystemData, inventoryId }) => {
     useEffect(()=> {
         dispatch(fetchApplicableSystemPackages({ id: inventoryId, ...queryParams }));
     }, [queryParams]);
+
+    useEffect(() => {
+        if (shouldRefresh) {
+            dispatch(fetchApplicableSystemPackages({ id: inventoryId, ...queryParams }));
+        }
+    }, [shouldRefresh]);
 
     const constructFilename = (pkg) => {
         const pkgUpdates = pkg.updates || [];
@@ -140,7 +146,8 @@ const SystemPackages = ({ handleNoSystemData, inventoryId }) => {
 
 SystemPackages.propTypes = {
     handleNoSystemData: propTypes.func,
-    inventoryId: propTypes.string.isRequired
+    inventoryId: propTypes.string.isRequired,
+    shouldRefresh: propTypes.bool
 };
 export default SystemPackages;
 

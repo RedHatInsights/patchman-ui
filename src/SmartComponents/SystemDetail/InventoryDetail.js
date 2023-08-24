@@ -35,13 +35,17 @@ const InventoryDetail = () => {
     const { patchSetState, setPatchSetState, openAssignSystemsModal, openUnassignSystemsModal } = usePatchSetState();
 
     useEffect(() => {
+        dispatch(fetchSystemDetailsAction(inventoryId));
+
         return () => {
             dispatch(clearNotifications());
         };
     }, []);
 
     useEffect(() => {
-        dispatch(fetchSystemDetailsAction(inventoryId));
+        if (patchSetState.shouldRefresh) {
+            dispatch(fetchSystemDetailsAction(inventoryId));
+        }
     }, [patchSetState.shouldRefresh]);
 
     const chrome = useChrome();
@@ -117,7 +121,10 @@ const InventoryDetail = () => {
                 </InventoryDetailHead>
             </Header>
             <Main>
-                <SystemDetail inventoryId={inventoryId} />
+                <SystemDetail
+                    inventoryId={inventoryId}
+                    shouldRefresh={patchSetState.shouldRefresh}
+                />
             </Main>
         </DetailWrapper>);
 };
