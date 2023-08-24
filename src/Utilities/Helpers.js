@@ -303,16 +303,14 @@ export const groupFilterConstructor = (params = []) => {
 export const encodeURLParams = parameters => {
     const groupNameFilter = parameters?.group_name;
     if (groupNameFilter) {
-        Object.assign(parameters.filter,  { group_name: [groupFilterConstructor(groupNameFilter)] });
+        Object.assign(parameters.filter,  { group_name: groupFilterConstructor(groupNameFilter) });
     }
 
     delete parameters.id;
-
     let urlParams = { ...parameters };
     console.log(urlParams, 'urlParams');
     delete urlParams.selectedTags;
-    const x = encodeParams(removeUndefinedObjectItems(urlParams), false);
-    console.log(x, 'check');
+
     return encodeParams(removeUndefinedObjectItems(urlParams), false);
 };
 
@@ -349,7 +347,7 @@ export const decodeQueryparams = queryString => {
 };
 
 export const buildFilterChips = (filters, search, searchChipLabel = 'Search') => {
-
+    console.log(filters, 'filters in builder')
     let filterConfig = [];
     const buildChips = (filters, category) => {
         if (multiValueFilters.includes(category)) {
@@ -387,7 +385,7 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
                 filters[item] !== '' && [].concat(filters[item]).length !== 0
         );
         //TODO: this is the place that should be rewritten
-        //OR WE SHOULD REMOVE group chips that are passed from inventory table
+        //TODO: OR WE SHOULD REMOVE group chips that are passed from inventory table
         console.log(categories, 'categories');
         filterConfig = filterConfig.concat(
             categories.map(category => {

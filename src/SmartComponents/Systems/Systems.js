@@ -77,6 +77,8 @@ const Systems = () => {
     );
     const { systemProfile, selectedTags,
         filter, search, page, perPage, sort } = queryParams;
+    console.log(queryParams, 'queryparams in systems js');
+    console.log(filter, 'filter in systems js');
 
     React.useEffect(() => {
         apply(decodedParams);

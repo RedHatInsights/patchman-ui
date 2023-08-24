@@ -59,7 +59,6 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
         return isEmpty(groups) ? (
             'N/A'
         ) : (
-            // TODO: change this link to a InsightsLink after router upgrade
             <span>
                 {
                     groups[0].name // currently, one group at maximum is supported

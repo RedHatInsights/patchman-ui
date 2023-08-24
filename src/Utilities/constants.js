@@ -259,6 +259,9 @@ export const filterCategories = {
     status: {
         label: 'Status',
         values: advisoryStatuses
+    },
+    group_name: {
+        label: 'Group'
     }
 };
 
