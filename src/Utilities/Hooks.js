@@ -10,7 +10,7 @@ import messages from '../Messages';
 import { defaultCompoundSortValues, exportNotifications } from './constants';
 import {
     convertLimitOffset, getLimitFromPageSize,
-    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO, objUndefinedToFalse, objOnlyWithTrue
+    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, objUndefinedToFalse, objOnlyWithTrue
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
@@ -255,7 +255,7 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
 
     const onSubmit = React.useCallback((formValues) => {
         const { name, description, toDate, id } = formValues.existing_patch_set || formValues;
-        const formattedDate = convertDateToISO(toDate);
+        const formattedDate = toDate + 'T00:00:00Z';
 
         const { systems } = formValues;
 

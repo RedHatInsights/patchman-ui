@@ -328,7 +328,7 @@ const PatchSetDetail = () => {
                                 <td>
                                     {isHeaderLoading
                                         ? <Skeleton style={{ width: 100 }} />
-                                        : processDate(templateDetails.data.attributes.config.to_time)}
+                                        : processDate(templateDetails.data.attributes.config.to_time.split('T')[0])}
                                 </td>
                             </tr>
                             <tr>

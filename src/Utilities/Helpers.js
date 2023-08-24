@@ -568,29 +568,6 @@ export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
 
 };
 
-export const convertDateToISO = (dateString)  => {
-    const parsedDate = Date.parse(dateString);
-
-    if (isNaN(parsedDate) === false) {
-        let date = new Date(parsedDate);
-
-        const tzOffset = -date.getTimezoneOffset();
-        const diff = tzOffset >= 0 ? '+' : '-';
-        const pad = n => `${Math.floor(Math.abs(n))}`.padStart(2, '0');
-
-        return date.getFullYear() +
-                '-' + pad(date.getMonth() + 1) +
-                '-' + pad(date.getDate()) +
-                'T' + pad(date.getHours()) +
-                ':' + pad(date.getMinutes()) +
-                ':' + pad(date.getSeconds()) +
-                diff + pad(tzOffset / 60) +
-                ':' + pad(tzOffset % 60);
-    }
-
-    return dateString;
-};
-
 export const convertIsoToDate = (isoDate) => {
     if (!isoDate) {
         return '';
