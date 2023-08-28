@@ -9,8 +9,9 @@ import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAss
 import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
+import isEmpty from 'lodash/isEmpty';
 
-export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
+export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsFilterConfig) => ({
     items: [
         searchFilter(
             apply,
@@ -22,7 +23,8 @@ export const buildFilterConfig = (search, filter, apply, osFilterConfig) => ({
         ),
         staleFilter(apply, filter),
         systemsUpdatableFilter(apply, filter),
-        ...osFilterConfig
+        ...osFilterConfig,
+        groupsFilterConfig
     ]
 });
 
@@ -49,16 +51,23 @@ export const buildActiveFiltersConfig = (filter, search, deleteFilters) => ({
 export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
+    const nameColumn = defaultColumns.filter(({ key }) => key === 'display_name');
+    const groupColumn = defaultColumns.filter(({ key }) => key === 'groups');
+    const tagsColumn = defaultColumns.filter(({ key }) => key === 'tags');
 
-    let name = defaultColumns.filter(({ key }) => key === 'display_name');
-    let tag = defaultColumns.filter(({ key }) => key === 'tags');
+    groupColumn[0]?.renderFunc ? groupColumn[0].renderFunc = (data, ...value) => {
+        const groups = value[1].attributes?.groups;
+        return isEmpty(groups) ? (
+            'N/A'
+        ) : (
+            <span>
+                {
+                    groups[0].name
+                }
+            </span>
+        );} : [];
 
-    name = [{
-        ...name[0],
-        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
-    }];
-
-    return [...name, ...tag, ...additionalColumns(), lastSeen[0]];
+    return [...nameColumn, ...groupColumn, ...tagsColumn, ...additionalColumns(), lastSeen[0]];
 };
 
 export const templateSystemsColumnsMerger = (defaultColumns) => {

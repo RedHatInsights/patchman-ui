@@ -35,6 +35,7 @@ import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import useGroupsFilter from '../../PresentationalComponents/Filters/GroupsFilter';
 
 const Systems = () => {
     const store = useStore();
@@ -110,7 +111,8 @@ const Systems = () => {
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
 
     const osFilterConfig = useOsVersionFilter(filter?.os, apply);
-    const filterConfig = buildFilterConfig(search, filter, apply, osFilterConfig);
+    const groupsFilterConfig = useGroupsFilter(filter?.group_name, apply);
+    const filterConfig = buildFilterConfig(search, filter, apply, osFilterConfig, groupsFilterConfig);
 
     const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 

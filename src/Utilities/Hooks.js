@@ -188,9 +188,9 @@ export const useGetEntities = (fetchApi, apply, config, setSearchParams, applyMe
     const { id, packageName } = config || {};
     const getEntities = async (
         _items,
-        { orderBy, orderDirection, page, per_page: perPage, patchParams, filters }
+        activeFilters
     ) => {
-
+        const { orderBy, orderDirection, page, per_page: perPage, patchParams, filters } = activeFilters;
         const { selectedTags: activeTags = [] } = patchParams;
         const { selectedTags } = mapGlobalFilters(filters.tagFilters);
 
