@@ -34,7 +34,7 @@ export const systemsListColumns = () => [
         props: {
             width: 15
         },
-        renderFunc: value => createAdvisoriesIcons(value)
+        renderFunc: value => createAdvisoriesIcons(value, 'installable')
     },
     {
         key: 'packages_installed',

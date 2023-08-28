@@ -19,7 +19,7 @@ describe('SystemListAssets.js', () => {
 
     it('Should call systemsListColumns on Applicable advisories renderFunc with correct params', () => {
         systemsListColumns()[2].renderFunc('testValue');
-        expect(createAdvisoriesIcons).toHaveBeenCalledWith('testValue');
+        expect(createAdvisoriesIcons).toHaveBeenCalledWith('testValue', 'installable');
     });
 
     it('Should call createUpgradableColumn on Status renderFunc with correct params', () => {
