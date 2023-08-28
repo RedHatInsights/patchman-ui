@@ -3,10 +3,10 @@
 exports[`SystemDetail.js Should match the snapshot when Package tab is active by default 1`] = `
 "<Tabs activeKey={1} onSelect={[Function: onTabSelect]} className=\\"patchTabSelect\\" isHidden={true} isFilled={false} isSecondary={false} isVertical={false} isBox={false} hasBorderBottom={true} leftScrollAriaLabel=\\"Scroll left\\" rightScrollAriaLabel=\\"Scroll right\\" component=\\"div\\" mountOnEnter={false} unmountOnExit={false} ouiaSafe={true} variant=\\"default\\" onToggle={[Function: onToggle]}>
   <Tab eventKey={0} title={{...}} data-ouia-component-type=\\"system-advisories-tab\\" data-ouia-component-id=\\"system-advisories-tab\\">
-    <SystemAdvisories handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} />
+    <SystemAdvisories handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} shouldRefresh={[undefined]} />
   </Tab>
   <Tab eventKey={1} title={{...}} data-ouia-component-type=\\"system-packages-tab\\" data-ouia-component-id=\\"system-packages-tab\\">
-    <SystemPackages handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} />
+    <SystemPackages handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} shouldRefresh={[undefined]} />
   </Tab>
 </Tabs>"
 `;
@@ -14,10 +14,10 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
 exports[`SystemDetail.js Should match the snapshots 1`] = `
 "<Tabs activeKey={0} onSelect={[Function: onTabSelect]} className=\\"patchTabSelect\\" isHidden={true} isFilled={false} isSecondary={false} isVertical={false} isBox={false} hasBorderBottom={true} leftScrollAriaLabel=\\"Scroll left\\" rightScrollAriaLabel=\\"Scroll right\\" component=\\"div\\" mountOnEnter={false} unmountOnExit={false} ouiaSafe={true} variant=\\"default\\" onToggle={[Function: onToggle]}>
   <Tab eventKey={0} title={{...}} data-ouia-component-type=\\"system-advisories-tab\\" data-ouia-component-id=\\"system-advisories-tab\\">
-    <SystemAdvisories handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} />
+    <SystemAdvisories handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} shouldRefresh={[undefined]} />
   </Tab>
   <Tab eventKey={1} title={{...}} data-ouia-component-type=\\"system-packages-tab\\" data-ouia-component-id=\\"system-packages-tab\\">
-    <SystemPackages handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} />
+    <SystemPackages handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} shouldRefresh={[undefined]} />
   </Tab>
 </Tabs>"
 `;

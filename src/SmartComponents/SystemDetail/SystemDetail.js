@@ -9,7 +9,7 @@ import messages from '../../Messages';
 import { NotConnected } from '@redhat-cloud-services/frontend-components/NotConnected';
 import propTypes from 'prop-types';
 
-const SystemDetail = ({ isInventoryApp, inventoryId }) => {
+const SystemDetail = ({ isInventoryApp, inventoryId, shouldRefresh }) => {
     const { state } = useLocation();
 
     const [activeTabKey, setActiveTabKey] = useState(
@@ -35,6 +35,7 @@ const SystemDetail = ({ isInventoryApp, inventoryId }) => {
                 <SystemAdvisories
                     handleNoSystemData={handleNoSystemData}
                     inventoryId={inventoryId}
+                    shouldRefresh={shouldRefresh}
                 />
             </Tab>
             <Tab
@@ -46,6 +47,7 @@ const SystemDetail = ({ isInventoryApp, inventoryId }) => {
                 <SystemPackages
                     handleNoSystemData={handleNoSystemData}
                     inventoryId={inventoryId}
+                    shouldRefresh={shouldRefresh}
                 />
             </Tab>
         </Tabs>
@@ -54,6 +56,7 @@ const SystemDetail = ({ isInventoryApp, inventoryId }) => {
 
 SystemDetail.propTypes = {
     isInventoryApp: propTypes.bool,
-    inventoryId: propTypes.string.isRequired
+    inventoryId: propTypes.string.isRequired,
+    shouldRefresh: propTypes.bool
 };
 export default SystemDetail;

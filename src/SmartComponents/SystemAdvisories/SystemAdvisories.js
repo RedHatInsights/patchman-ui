@@ -22,7 +22,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
-const SystemAdvisories = ({ handleNoSystemData, inventoryId }) => {
+const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
     const dispatch = useDispatch();
     const [firstMount, setFirstMount] = useState(true);
     const advisories = useSelector(
@@ -69,6 +69,12 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId }) => {
             );
         }
     }, [queryParams]);
+
+    useEffect(() => {
+        if (shouldRefresh) {
+            dispatch(fetchApplicableSystemAdvisories({ id: inventoryId, ...queryParams }));
+        }
+    }, [shouldRefresh]);
 
     const onCollapse = useCallback((_, rowId, value) =>
         dispatch(
@@ -157,6 +163,7 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId }) => {
 
 SystemAdvisories.propTypes = {
     handleNoSystemData: propTypes.func,
-    inventoryId: propTypes.string.isRequired
+    inventoryId: propTypes.string.isRequired,
+    shouldRefresh: propTypes.bool
 };
 export default SystemAdvisories;
