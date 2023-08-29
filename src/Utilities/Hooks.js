@@ -277,15 +277,6 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
     return onSubmit;
 };
 
-// eslint-disable-next-line no-unused-vars
-export const useFeatureFlag = (flag, chrome) => {
-
-    //Unleash flag provider has no full implementation yet. Use when it is ready
-    // const { flagsReady } = useFlagsStatus();
-    // const flagStatus = useFlag(flag);
-    return chrome.isBeta();
-};
-
 /***
  * Pushes new URL params together location state into the history
  * @param {object} [queryParams] query params to build the URL params

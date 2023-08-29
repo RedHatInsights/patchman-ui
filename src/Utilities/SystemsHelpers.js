@@ -11,7 +11,7 @@ import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSe
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import isEmpty from 'lodash/isEmpty';
 
-export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsFilterConfig) => ({
+export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsFilterConfig, featureFlag) => ({
     items: [
         searchFilter(
             apply,
@@ -24,7 +24,7 @@ export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsF
         staleFilter(apply, filter),
         systemsUpdatableFilter(apply, filter),
         ...osFilterConfig,
-        groupsFilterConfig
+        ...(featureFlag ? [groupsFilterConfig] : [])
     ]
 });
 

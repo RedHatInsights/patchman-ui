@@ -43,10 +43,7 @@ jest.mock('../../Utilities/api', () => ({
     fetchSystems: jest.fn(() => Promise.resolve({ success: true, data: ['test-system-id'] }).catch((err) => console.log(err)))
 }));
 
-jest.mock('../../Utilities/Hooks', () => ({
-    ...jest.requireActual('../../Utilities/Hooks'),
-    useFeatureFlag: jest.fn()
-}));
+jest.mock('../../Utilities/useFeatureFlag');
 
 jest.mock('../../Utilities/useRemediationDataProvider', () => () => jest.fn());
 
