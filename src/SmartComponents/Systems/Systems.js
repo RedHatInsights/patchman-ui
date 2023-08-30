@@ -88,7 +88,6 @@ const Systems = () => {
     const groupsEnabled = useFeatureFlag('hbi.ui.inventory-groups');
 
     const showRemediationModal = useCallback(async (data) => {
-        console.log('RESOLVED DATA', data);
         const resolvedData = await data;
         setRemediationModalCmp(() =>
             () => <RemediationWizard
@@ -113,7 +112,7 @@ const Systems = () => {
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
 
     const osFilterConfig = useOsVersionFilter(filter?.os, apply);
-    const groupsFilterConfig = useGroupsFilter(filter?.group_name, apply);
+    const groupsFilterConfig = useGroupsFilter(filter?.group_name, apply, groupsEnabled);
     const filterConfig = buildFilterConfig(search, filter, apply, osFilterConfig, groupsFilterConfig, groupsEnabled);
 
     const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);

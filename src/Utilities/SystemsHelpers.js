@@ -9,24 +9,26 @@ import { packageSystemsColumns } from '../SmartComponents/Systems/SystemsListAss
 import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
-import isEmpty from 'lodash/isEmpty';
 
-export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsFilterConfig, featureFlag) => ({
-    items: [
-        searchFilter(
-            apply,
-            search,
-            intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-            intl.formatMessage(
-                messages.labelsFiltersSystemsSearchPlaceholder
-            )
-        ),
-        staleFilter(apply, filter),
-        systemsUpdatableFilter(apply, filter),
-        ...osFilterConfig,
-        ...(featureFlag ? [groupsFilterConfig] : [])
-    ]
-});
+export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsFilterConfig, isGroupsEnabled) => {
+    console.log(groupsFilterConfig, 'groupsFilterConfig');
+    return {
+        items: [
+            searchFilter(
+                apply,
+                search,
+                intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+                intl.formatMessage(
+                    messages.labelsFiltersSystemsSearchPlaceholder
+                )
+            ),
+            staleFilter(apply, filter),
+            systemsUpdatableFilter(apply, filter),
+            ...osFilterConfig,
+            ...(isGroupsEnabled  ? [groupsFilterConfig] : [])
+        ]
+    };
+};
 
 export const buildTemplateFilterConfig = (search, apply, osFilterConfig) => ({
     items: [
@@ -42,11 +44,16 @@ export const buildTemplateFilterConfig = (search, apply, osFilterConfig) => ({
     ]
 });
 
-export const buildActiveFiltersConfig = (filter, search, deleteFilters) => ({
-    filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
-    onDelete: deleteFilters,
-    deleteTitle: intl.formatMessage(messages.labelsFiltersReset)
-});
+export const buildActiveFiltersConfig = (filter, search, deleteFilters) => {
+    if (filter?.group_name?.length === 0) {
+        delete filter.group_name;
+    }
+
+    return {
+        filters: buildFilterChips(filter, search, intl.formatMessage(messages.labelsFiltersSystemsSearchTitle)),
+        onDelete: deleteFilters,
+        deleteTitle: intl.formatMessage(messages.labelsFiltersReset)
+    };};
 
 export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
@@ -54,18 +61,6 @@ export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     const nameColumn = defaultColumns.filter(({ key }) => key === 'display_name');
     const groupColumn = defaultColumns.filter(({ key }) => key === 'groups');
     const tagsColumn = defaultColumns.filter(({ key }) => key === 'tags');
-
-    groupColumn[0]?.renderFunc ? groupColumn[0].renderFunc = (data, ...value) => {
-        const groups = value[1].attributes?.groups;
-        return isEmpty(groups) ? (
-            'N/A'
-        ) : (
-            <span>
-                {
-                    groups[0].name
-                }
-            </span>
-        );} : [];
 
     return [...nameColumn, ...groupColumn, ...tagsColumn, ...additionalColumns(), lastSeen[0]];
 };

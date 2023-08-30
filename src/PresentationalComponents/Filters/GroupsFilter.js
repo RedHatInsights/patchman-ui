@@ -2,20 +2,21 @@
 import { useEffect, useState } from 'react';
 import { getSystemsGroups } from '../../Utilities/api';
 
-const useGroupsFilter = (currentFilter = '', apply) => {
+const useGroupsFilter = (currentFilter = '', apply, featureFlag = false) => {
     const [groups, setSystemsGroups] = useState([]);
 
     useEffect(() => {
-        /* explicitly request OS versions from API */
-        getSystemsGroups().then(({ results }) => {
-            setSystemsGroups((results || []).map(entry => {
-                const { id, name } = entry;
-                return { label: `${name}`, value: `${id}` };
-            }));
-        });
+        if (featureFlag) {
+            getSystemsGroups().then(({ results }) => {
+                setSystemsGroups((results || []).map(entry => {
+                    const { id, name } = entry;
+                    return { label: `${name}`, value: `${id}` };
+                }));
+            });
 
-    }, []);
-    const currentValue = (currentFilter === '' ? [] : Array.isArray(currentFilter) ? currentFilter : currentFilter.split(','));
+        }}, []);
+    const currentValue = (currentFilter === '' ? []
+        : Array.isArray(currentFilter) ? currentFilter : currentFilter.split(','));
 
     const filterByGroup = value => {
         apply({ filter: { group_name: value } });
@@ -30,11 +31,7 @@ const useGroupsFilter = (currentFilter = '', apply) => {
                 filterByGroup(value);
             },
             value: currentValue,
-            //TODO: replace with map?
-            items: groups.reduce((acc, { label }) => {
-                acc.push({ label, value: label });
-                return acc;
-            }, [])
+            items: groups.map(({ label }) => ({ label, value: label }))
         }
     };
 };
