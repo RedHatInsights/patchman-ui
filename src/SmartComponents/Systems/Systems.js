@@ -35,6 +35,8 @@ import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import useGroupsFilter from '../../PresentationalComponents/Filters/GroupsFilter';
+import useFeatureFlag from '../../Utilities/useFeatureFlag';
 
 const Systems = () => {
     const store = useStore();
@@ -83,9 +85,9 @@ const Systems = () => {
         apply(decodedParams);
         return () => dispatch(clearInventoryReducer());
     }, []);
+    const groupsEnabled = useFeatureFlag('hbi.ui.inventory-groups');
 
     const showRemediationModal = useCallback(async (data) => {
-        console.log('RESOLVED DATA', data);
         const resolvedData = await data;
         setRemediationModalCmp(() =>
             () => <RemediationWizard
@@ -110,7 +112,8 @@ const Systems = () => {
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
 
     const osFilterConfig = useOsVersionFilter(filter?.os, apply);
-    const filterConfig = buildFilterConfig(search, filter, apply, osFilterConfig);
+    const groupsFilterConfig = useGroupsFilter(filter?.group_name, apply, groupsEnabled);
+    const filterConfig = buildFilterConfig(search, filter, apply, osFilterConfig, groupsFilterConfig, groupsEnabled);
 
     const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 

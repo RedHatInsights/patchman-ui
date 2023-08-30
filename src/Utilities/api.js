@@ -1,4 +1,4 @@
-import { SystemProfileApi } from '@redhat-cloud-services/host-inventory-client';
+import { SystemProfileApi, GroupsApi } from '@redhat-cloud-services/host-inventory-client';
 import axios from './axiosInterceptors';
 import { encodeApiParams, prepareEntitiesParams } from './Helpers';
 
@@ -28,6 +28,7 @@ export function createApiCall(
 }
 
 const systemProfile = new SystemProfileApi(undefined, INVENTORY_API_BASE, axios);
+const groupsProfile = new GroupsApi(undefined, INVENTORY_API_BASE, axios);
 
 export const fetchApplicableAdvisoriesApi = params => {
     return createApiCall('/advisories', 'v3', 'get', params);
@@ -215,6 +216,10 @@ export const unassignSystemFromPatchSet = (payload) => {
 
 export const getOperatingSystems = () => {
     return systemProfile.apiSystemProfileGetOperatingSystem();
+};
+
+export const getSystemsGroups = () => {
+    return groupsProfile.apiGroupGetGroupList();
 };
 
 export const fetchIDs = (endpoint, queryParams) => {

@@ -190,7 +190,6 @@ export const useGetEntities = (fetchApi, apply, config, setSearchParams, applyMe
         _items,
         { orderBy, orderDirection, page, per_page: perPage, patchParams, filters }
     ) => {
-
         const { selectedTags: activeTags = [] } = patchParams;
         const { selectedTags } = mapGlobalFilters(filters.tagFilters);
 
@@ -275,15 +274,6 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
         handleApiResponse(response);
     });
     return onSubmit;
-};
-
-// eslint-disable-next-line no-unused-vars
-export const useFeatureFlag = (flag, chrome) => {
-
-    //Unleash flag provider has no full implementation yet. Use when it is ready
-    // const { flagsReady } = useFlagsStatus();
-    // const flagStatus = useFlag(flag);
-    return chrome.isBeta();
 };
 
 /***

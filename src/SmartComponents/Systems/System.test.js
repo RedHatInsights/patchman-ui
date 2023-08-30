@@ -40,12 +40,16 @@ jest.mock('../../Utilities/api', () => ({
             type: 'advisory'
         }]
     }).catch((err) => console.log(err))),
-    fetchSystems: jest.fn(() => Promise.resolve({ success: true, data: ['test-system-id'] }).catch((err) => console.log(err)))
+    fetchSystems: jest.fn(() => Promise.resolve({ success: true, data: ['test-system-id'] }).catch((err) => console.log(err))),
+    getSystemsGroups: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
 }));
 
-jest.mock('../../Utilities/Hooks', () => ({
-    ...jest.requireActual('../../Utilities/Hooks'),
-    useFeatureFlag: jest.fn()
+jest.mock('../../Utilities/useFeatureFlag.js', () => jest.fn());
+
+jest.mock('@unleash/proxy-client-react', () => ({
+    ...jest.requireActual('@unleash/proxy-client-react'),
+    useFlagsStatus: jest.fn(),
+    useFlag: jest.fn()
 }));
 
 jest.mock('../../Utilities/useRemediationDataProvider', () => () => jest.fn());
