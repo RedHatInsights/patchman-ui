@@ -11,7 +11,6 @@ import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSe
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsFilterConfig, isGroupsEnabled) => {
-    console.log(groupsFilterConfig, 'groupsFilterConfig');
     return {
         items: [
             searchFilter(
