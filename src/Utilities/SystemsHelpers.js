@@ -56,10 +56,16 @@ export const buildActiveFiltersConfig = (filter, search, deleteFilters) => {
 
 export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
-    lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
-    const nameColumn = defaultColumns.filter(({ key }) => key === 'display_name');
+    let nameColumn = defaultColumns.filter(({ key }) => key === 'display_name');
     const groupColumn = defaultColumns.filter(({ key }) => key === 'groups');
     const tagsColumn = defaultColumns.filter(({ key }) => key === 'tags');
+
+    lastSeen = [{ ...lastSeen[0], key: 'last_upload', sortKey: 'last_upload' }];
+
+    nameColumn = [{
+        ...nameColumn[0],
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+    }];
 
     return [...nameColumn, ...groupColumn, ...tagsColumn, ...additionalColumns(), lastSeen[0]];
 };
