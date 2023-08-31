@@ -966,6 +966,7 @@ exports[`Systems.js should match the snapshot 1`] = `
               hideFilters={
                 Object {
                   "all": true,
+                  "hostGroupFilter": false,
                   "tags": false,
                 }
               }

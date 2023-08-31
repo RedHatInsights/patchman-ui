@@ -199,6 +199,11 @@ export const useGetEntities = (fetchApi, apply, config, setSearchParams, applyMe
             page,
             perPage,
             ...patchParams,
+            filter: {
+                ...patchParams.filter,
+                ...(Array.isArray(filters.hostGroupFilter) && filters.hostGroupFilter.length > 0
+                    ? { group_name: filters.hostGroupFilter }
+                    : {}) },
             selectedTags: [...activeTags, ...selectedTags],
             sort,
             ...id && { id } || {},
