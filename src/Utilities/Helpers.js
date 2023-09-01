@@ -259,9 +259,9 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
         return result;
     };
 
-    let { filter, systemProfile = {}, ...allParams } = parameters;
+    let { filter, systemProfile = {}, group_name, ...allParams } = parameters;
 
-    allParams = { ...allParams, ...flattenFilters(filter) };
+    allParams = { ...allParams, ...flattenFilters({ ...filter, ...(group_name ? { group_name } : {}) }) };
     let params = [];
     Object.keys(allParams).forEach(key => {
         const argKey = encodeURIComponent(key);

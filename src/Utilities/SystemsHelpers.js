@@ -10,7 +10,7 @@ import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
-export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsFilterConfig, isGroupsEnabled) => {
+export const buildFilterConfig = (search, filter, apply, osFilterConfig) => {
     return {
         items: [
             searchFilter(
@@ -23,8 +23,7 @@ export const buildFilterConfig = (search, filter, apply, osFilterConfig, groupsF
             ),
             staleFilter(apply, filter),
             systemsUpdatableFilter(apply, filter),
-            ...osFilterConfig,
-            ...(isGroupsEnabled  ? [groupsFilterConfig] : [])
+            ...osFilterConfig
         ]
     };
 };
