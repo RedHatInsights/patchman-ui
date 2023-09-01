@@ -247,7 +247,6 @@ exports[`TableFooter Should match the snapshots 1`] = `
                           10
                         </b>
                          
-                        
                       </span>
                       <button
                         aria-expanded="false"
@@ -348,7 +347,6 @@ exports[`TableFooter Should match the snapshots 1`] = `
                               10
                             </b>
                              
-                            
                           </span>
                           <button
                             aria-expanded="false"
@@ -428,7 +426,6 @@ exports[`TableFooter Should match the snapshots 1`] = `
                                 10
                               </b>
                                
-                              
                             </span>
                             <button
                               aria-expanded="false"

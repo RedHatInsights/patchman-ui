@@ -580,7 +580,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                       id="toggle-checkbox"
                                                       type="checkbox"
                                                     />
-                                                    
                                                   </label>
                                                   <button
                                                     aria-expanded="false"
@@ -714,7 +713,6 @@ exports[`SystemPackages.js Should match the snapshots 1`] = `
                                                           id="toggle-checkbox"
                                                           type="checkbox"
                                                         />
-                                                        
                                                       </label>
                                                       <button
                                                         aria-expanded="false"

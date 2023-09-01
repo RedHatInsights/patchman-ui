@@ -1585,7 +1585,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 0
                                               </b>
                                                
-                                              
                                             </span>
                                             <button
                                               aria-expanded="false"
@@ -1687,7 +1686,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                     0
                                                   </b>
                                                    
-                                                  
                                                 </span>
                                                 <button
                                                   aria-expanded="false"
@@ -1768,7 +1766,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                       0
                                                     </b>
                                                      
-                                                    
                                                   </span>
                                                   <button
                                                     aria-expanded="false"
@@ -6673,7 +6670,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   0
                                 </b>
                                  
-                                
                               </span>
                               <button
                                 aria-expanded="false"
@@ -6775,7 +6771,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       0
                                     </b>
                                      
-                                    
                                   </span>
                                   <button
                                     aria-expanded="false"
@@ -6856,7 +6851,6 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         0
                                       </b>
                                        
-                                      
                                     </span>
                                     <button
                                       aria-expanded="false"

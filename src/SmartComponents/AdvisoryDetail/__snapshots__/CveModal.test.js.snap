@@ -119,7 +119,6 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                           class="pf-c-modal-box__title"
                           id="pf-modal-part-1"
                         >
-                          
                           <span
                             class="pf-c-modal-box__title-text"
                           >
