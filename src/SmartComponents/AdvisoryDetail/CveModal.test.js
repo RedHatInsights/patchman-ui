@@ -41,9 +41,12 @@ const initStore = (state) => {
 };
 
 let wrapper;
+let tempWrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
+    wrapper = undefined;
+    tempWrapper = undefined;
     store.clearActions();
     useSelector.mockImplementation(callback => {
         return callback({ CvesListStore: mockState });
@@ -53,21 +56,30 @@ beforeEach(() => {
     wrapper = mount(<Provider store={store}>
         <Router><CvesModal cveIds={['testCveID']}  /></Router>
     </Provider>);
+    tempWrapper = mount(
+        <Provider store={store}>
+            <Router><CvesModal /></Router>
+        </Provider>
+    );
 });
 
 afterEach(() => {
     useSelector.mockClear();
+    wrapper.unmount();
+    tempWrapper.unmount();
 });
 
 describe('CveModal.js', () => {
     it('Should match the snapshots', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount();
     });
 
     it('should handle search filter', () => {
         const handleFilter = wrapper.find('TableView').props().apply;
         handleFilter({ search: 'CVE-2021-29922' });
         expect(createCvesRows.mock.calls[2][0]).toEqual([cveRows[1]]);
+        wrapper.unmount();
     });
 
     it('should set rows to undefined to close the modal', () => {
@@ -75,15 +87,10 @@ describe('CveModal.js', () => {
         handleClose();
         wrapper.update();
         expect(wrapper.find('TableView').exists()).toBeFalsy();
+        wrapper.unmount();
     });
 
     it('should handle page change', () => {
-        let tempWrapper;
-        tempWrapper = mount(
-            <Provider store={store}>
-                <Router><CvesModal /></Router>
-            </Provider>
-        );
 
         const handlePageChange = tempWrapper.find('TableView').props().onSetPage;
         act(() => handlePageChange('', 2));
@@ -94,28 +101,19 @@ describe('CveModal.js', () => {
             { cells: [{ title: '[Object] ' }, { title: '[Object]', value: 'Moderate' },
                 { title: '7.3' }], id: 'CVE-2021-29932', key: 'CVE-2021-29932' }]
         );
+        tempWrapper.unmount();
     });
 
     it('should handle perPage change', () => {
-        let tempWrapper;
-        tempWrapper = mount(
-            <Provider store={store}>
-                <Router><CvesModal /></Router>
-            </Provider>
-        );
 
         const handlePerPageChange = tempWrapper.find('TableView').props().onPerPageSelect;
         act(() => handlePerPageChange('', 20));
         act(() => tempWrapper.update());
         expect(tempWrapper.find('TableView').props().store.rows).toEqual(readyCveRows);
+        tempWrapper.unmount();
     });
 
     it('should handle sorting', () => {
-        let tempWrapper;
-        tempWrapper = mount(
-            <Provider store={store}>
-                <Router><CvesModal /></Router>
-            </Provider>);
 
         const handleSort = tempWrapper.find('TableView').props().onSort;
         act(() => handleSort('', 0, 'desc'));
@@ -125,5 +123,6 @@ describe('CveModal.js', () => {
         toEqual(readyCveRows.slice(0, 10).sort(({ id: aId }, { id: bId }) =>  {
             return !aId.localeCompare(bId);
         }));
+        tempWrapper.unmount();
     });
 });

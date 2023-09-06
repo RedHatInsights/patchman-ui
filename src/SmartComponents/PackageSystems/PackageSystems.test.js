@@ -92,6 +92,7 @@ beforeEach(() => {
 
 afterEach(() => {
     useSelector.mockClear();
+    wrapper.unmount();
 });
 
 describe('PackageSystems.js', () => {
@@ -99,6 +100,7 @@ describe('PackageSystems.js', () => {
     it('Should dispatch change package systems params  action once only', () => {
         const dispatchedActions = store.getActions();
         expect(dispatchedActions.filter(item => item.type === 'CHANGE_PACKAGE_SYSTEMS_PARAMS')).toHaveLength(1);
+        wrapper.unmount();
     });
 
     it('Should open remediation modal', () => {
@@ -114,6 +116,7 @@ describe('PackageSystems.js', () => {
             ]
         });
         expect(dedicatedAction).toMatchSnapshot();
+        wrapper.unmount();
     });
 
     describe('test exports', () => {
@@ -125,12 +128,14 @@ describe('PackageSystems.js', () => {
             const { exportConfig } = wrapper.find('.testInventroyComponentChild').parent().props();
             exportConfig.onSelect(null, 'csv');
             expect(exportPackageSystemsCSV).toHaveBeenCalledWith({}, 'testName');
+            wrapper.unmount();
         });
 
         it('Should download json file', () => {
             const { exportConfig } = wrapper.find('.testInventroyComponentChild').parent().props();
             exportConfig.onSelect(null, 'json');
             expect(exportPackageSystemsJSON).toHaveBeenCalledWith({}, 'testName');
+            wrapper.unmount();
         });
     });
 
@@ -144,6 +149,7 @@ describe('PackageSystems.js', () => {
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
             expect(dispatchedActions[1].payload).toEqual([{ id: 'test-system-1', selected: false }]);
+            wrapper.unmount();
         });
 
         it('Should select a page', async () => {
@@ -154,6 +160,7 @@ describe('PackageSystems.js', () => {
             const dispatchedActions = store.getActions();
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[1].title).toEqual('Select page (2)');
+            wrapper.unmount();
         });
 
         it('Should select all', async () => {
@@ -163,6 +170,7 @@ describe('PackageSystems.js', () => {
             bulkSelect.items[2].onClick();
             expect(fetchIDs).toHaveBeenCalledWith('/packages/testName/systems', { limit: -1, offset: 0 });
             expect(bulkSelect.items[2].title).toEqual('Select all (2)');
+            wrapper.unmount();
         });
     });
 

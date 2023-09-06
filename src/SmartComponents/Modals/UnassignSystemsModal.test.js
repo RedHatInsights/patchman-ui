@@ -43,6 +43,7 @@ describe('UnassignSystemsModal', () => {
 
     it('should match the snapshots', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount();
     });
 
     it('Should remove systems from a patch set and handle success notification', async ()  => {
@@ -59,6 +60,7 @@ describe('UnassignSystemsModal', () => {
         );
         expect(unassignSystemsModalState).toEqual({ isUnassignSystemsModalOpen: false, shouldRefresh: true, systemsIDs: [] });
         expect(unassignSystemFromPatchSet).toHaveBeenCalledWith({ inventory_ids: ['test_1'] });
+        wrapper.unmount();
     });
 
     it('should close the modal', () => {
@@ -69,6 +71,7 @@ describe('UnassignSystemsModal', () => {
 
         wrapper.update();
         expect(unassignSystemsModalState.isUnassignSystemsModalOpen).toBeFalsy();
+        wrapper.unmount();
     });
 
     it('should hide the modal when isUnassignSystemsModalOpen=false', () => {
@@ -82,5 +85,6 @@ describe('UnassignSystemsModal', () => {
         );
 
         expect(wrapper.find(Modal).props().isOpen).toBeFalsy();
+        wrapper.unmount();
     });
 });

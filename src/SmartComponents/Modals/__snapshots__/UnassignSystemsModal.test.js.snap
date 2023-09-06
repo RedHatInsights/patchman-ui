@@ -191,22 +191,11 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                       class="pf-l-grid pf-m-gutter"
                     >
                       <div
-                        class="pf-l-grid__item"
+                        class="pf-c-skeleton"
                       >
-                        Do you want to remove the 
-                        <b>
-                           1 
-                        </b>
-                         selected system  from assigned Patch templates?
-                      </div>
-                      <div
-                        class="pf-l-grid__item"
-                      >
-                        There  are 
-                        <b>
-                           2 
-                        </b>
-                          systems  you are trying to remove that are not assigned to any existing Patch template. This action will not affect them.
+                        <span
+                          class="pf-u-screen-reader"
+                        />
                       </div>
                     </div>
                   </div>
@@ -214,11 +203,12 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                     class="pf-c-modal-box__footer"
                   >
                     <button
-                      aria-disabled="false"
-                      class="pf-c-button pf-m-danger"
+                      aria-disabled="true"
+                      class="pf-c-button pf-m-danger pf-m-disabled"
                       data-ouia-component-id="OUIA-Generated-Button-danger-1"
                       data-ouia-component-type="PF4/Button"
                       data-ouia-safe="true"
+                      disabled=""
                       type="button"
                     >
                       Remove

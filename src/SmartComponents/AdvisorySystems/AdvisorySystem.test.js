@@ -84,12 +84,14 @@ beforeEach(() => {
 afterEach(() => {
     useSelector.mockClear();
     store.clearActions();
+    wrapper.unmount();
 });
 
 describe('AdvisorySystems.js', () => {
 
     it('Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount();
     });
 
     it('Should display error page when status is rejected', () => {
@@ -105,6 +107,7 @@ describe('AdvisorySystems.js', () => {
             </Provider>
         );
         expect(wrapper.find('Error')).toBeTruthy();
+        wrapper.unmount();
     });
 
     describe('test entity selecting', () => {
@@ -116,6 +119,7 @@ describe('AdvisorySystems.js', () => {
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
             expect(dispatchedActions[1].payload).toEqual([{ id: 'test-system-1', selected: false }]);
+            wrapper.unmount();
         });
 
         it('Should select a page', async () => {
@@ -130,6 +134,7 @@ describe('AdvisorySystems.js', () => {
                 { id: 'test-system-id-1', selected: 'test-system-id-1' },
                 { id: 'test-system-id-2', selected: 'test-system-id-2' }
             ]);
+            wrapper.unmount();
         });
 
         it('Should select all', async () => {
@@ -138,6 +143,7 @@ describe('AdvisorySystems.js', () => {
             bulkSelect.items[2].onClick();
             expect(fetchIDs).toHaveBeenCalledWith('/ids/advisories/RHSA-2020:2755/systems', { limit: -1, offset: 0 });
             expect(bulkSelect.items[2].title).toEqual('Select all (2)');
+            wrapper.unmount();
         });
 
         it('Should handle onSelect', async () => {
@@ -153,12 +159,14 @@ describe('AdvisorySystems.js', () => {
                 }
             ]
             );
+            wrapper.unmount();
         });
     });
 
     it('Should open remediation modal', async () => {
         const { dedicatedAction } = wrapper.find('.testInventroyComponentChild').parent().props();
         expect(dedicatedAction).toMatchSnapshot();
+        wrapper.unmount();
     });
 
     it('Should clear store on unmount', () => {
@@ -169,6 +177,7 @@ describe('AdvisorySystems.js', () => {
 
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_INVENTORY_REDUCER')).toHaveLength(1);
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_ADVISORY_SYSTEMS_REDUCER')).toHaveLength(1);
+        wrapper.unmount();
     });
 
     it('Should display NoRegisteredSystems compnent if there are no systems registered', () => {
@@ -199,5 +208,6 @@ describe('AdvisorySystems.js', () => {
         </Provider>);
 
         expect(tempWrapper.find(NoRegisteredSystems)).toBeTruthy();
+        wrapper.unmount();
     });
 });

@@ -71,7 +71,9 @@ exports[`CveModal.js Should match the snapshots 1`] = `
         >
           <Portal
             containerInfo={
-              <div>
+              <div
+                aria-hidden="true"
+              >
                 <div
                   class="pf-c-backdrop"
                 >

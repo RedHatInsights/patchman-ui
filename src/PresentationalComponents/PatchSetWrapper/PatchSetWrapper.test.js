@@ -36,6 +36,7 @@ describe('PatchSetWrapper', () => {
     it('should display PatchSetWizard when isPatchSetWizardOpen prop is true', () => {
         const wrapper = mountWithIntl(<Provider store={store}><PatchSetWrapper {...testProps} /></Provider>);
         expect(wrapper.find(PatchSetWizard).exists()).toBeTruthy();
+        wrapper.unmount();
     });
     it('should hide PatchSetWizard when isPatchSetWizardOpen prop is false', () => {
         const testHiddenState = {
@@ -44,10 +45,12 @@ describe('PatchSetWrapper', () => {
         };
         const wrapper = mountWithIntl(<Provider store={store}><PatchSetWrapper {...testHiddenState} /></Provider>);
         expect(wrapper.find(PatchSetWizard).exists()).toBeFalsy();
+        wrapper.unmount();
     });
     it('should display UnassignSystemsModal when isUnassignSystemsModalOpen prop is true', () => {
         const wrapper = mountWithIntl(<Provider store={store}><PatchSetWrapper {...testProps} /></Provider>);
         expect(wrapper.find(UnassignSystemsModal).exists()).toBeTruthy();
+        wrapper.unmount();
     });
     it('should display UnassignSystemsModal when isUnassignSystemsModalOpen prop is false', () => {
         const testHiddenState = {
@@ -56,6 +59,7 @@ describe('PatchSetWrapper', () => {
         };
         const wrapper = mountWithIntl(<Provider store={store}><PatchSetWrapper {...testHiddenState} /></Provider>);
         expect(wrapper.find(UnassignSystemsModal).exists()).toBeFalsy();
+        wrapper.unmount();
     });
     it('should props propagate to child components', () => {
         const wrapper = mountWithIntl(<Provider store={store}><PatchSetWrapper {...testProps} /></Provider>);
@@ -75,11 +79,13 @@ describe('PatchSetWrapper', () => {
                     systemsIDs: ['system-1', 'system-2']
                 }
             });
+        wrapper.unmount();
         expect(patchSetWizardProps).toEqual({
             setBaselineState: testProps.setPatchSetState, systemsIDs: [
                 'system-1',
                 'system-2'
             ]
         });
+        wrapper.unmount();
     });
 });

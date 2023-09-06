@@ -12,12 +12,14 @@ describe('Header component', () => {
         const header = { title: '' };
         const wrapper = withLink(<Header {...header} />);
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount()
     });
 
     it('should render with header Hello world', () => {
         const header = { title: 'Hello world' };
         const wrapper = withLink(<Header {...header} />);
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount()
     });
 
     it('should render with empty breadcrumb', () => {
@@ -27,6 +29,7 @@ describe('Header component', () => {
         };
         const wrapper = withLink(<Header {...header} />);
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount()
     });
 
     it('should render with 1 breadcrumb item and last is active', () => {
@@ -42,6 +45,7 @@ describe('Header component', () => {
         };
         const wrapper = withLink(<Header {...header} />);
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount()
     });
 
     it('should render without to attribute', () => {
@@ -56,6 +60,7 @@ describe('Header component', () => {
         };
         const wrapper = withLink(<Header {...header} />);
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount()
     });
 
     it('should render with 2 breadcrumb items and last is active', () => {
@@ -76,6 +81,7 @@ describe('Header component', () => {
         };
         const wrapper = withLink(<Header {...header} />);
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount()
     });
 
     it('should render with 3 breadcrumb items and last is active', () => {
@@ -102,6 +108,7 @@ describe('Header component', () => {
         };
         const wrapper = withLink(<Header {...header} />);
         expect(toJson(wrapper)).toMatchSnapshot();
+        wrapper.unmount()
     });
 
     it('should render with tabs only, click a tab', () => {
@@ -114,6 +121,7 @@ describe('Header component', () => {
             .onSelect();
 
         expect(spy).toBeCalled();
+        wrapper.unmount()
     });
 });
 /* eslint-enable */
