@@ -12,10 +12,6 @@ webpackConfig.module.rules.push({
             '@redhat-cloud-services/frontend-components/useChrome': resolve(
                 __dirname,
                 './overrideChrome.js'
-            ),
-            '../useChrome': resolve(
-                __dirname,
-                './overrideChrome.js'
             )
         }
     }

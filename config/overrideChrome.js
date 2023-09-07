@@ -2,5 +2,9 @@ export default () => ({
     updateDocumentTitle: () => undefined,
     isBeta: () => true,
     getApp: () => 'patch',
-    getBundle: () => 'insights'
+    getBundle: () => 'insights',
+    appAction: () => {},
+    appObjectId: () => {},
+    on: () => {},
+    isProd: () => false
 });

@@ -1,12 +1,10 @@
 import React from 'react';
-import { mount } from '@cypress';
-
 import HeaderBreadcrumbs from './HeaderBreadcrumbs';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('HeaderBreadcrumbs', () => {
     it('renders two breadcrumbs', () => {
-        mount(
+        cy.mount(
             <HeaderBreadcrumbs
                 items={[
                     {
@@ -24,7 +22,7 @@ describe('HeaderBreadcrumbs', () => {
     });
 
     it('renders one breadcrumb with link', () => {
-        mount(
+        cy.mount(
             // Router wrapper is needed since one of the child components render Route
             <MemoryRouter>
                 <HeaderBreadcrumbs
