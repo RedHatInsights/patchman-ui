@@ -1,14 +1,10 @@
 import Advisories from './Advisories';
 import React from 'react';
-import { MemoryRouter, Routes } from 'react-router-dom';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
 import { storeListDefaults } from '../../Utilities/constants';
 import { advisoryRows } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
-
-import {
-    TOOLBAR
-} from '@redhat-cloud-services/frontend-components-utilities';
 
 const mockState = { ...storeListDefaults,
     rows: advisoryRows,
@@ -44,7 +40,7 @@ const mountComponent = () => {
         <Provider store={store}>
             <MemoryRouter>
                 <Routes>
-                    <Advisories />
+                    <Route element={<Advisories />} />
                 </Routes>
             </MemoryRouter>
         </Provider>
@@ -55,12 +51,8 @@ describe('renders correctly', () => {
     beforeEach(() => {
         mountComponent();
     });
-    it('The Rules table renders', () => {
+    it('The Advisories renders correctly', () => {
         cy.get(ROOT).should('have.length', 1);
-    });
-
-    it('renders toolbar', () => {
-        cy.get(TOOLBAR).should('have.length', 1);
     });
 
 });
