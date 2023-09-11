@@ -1,298 +1,112 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <BrowserRouter>
-    <Router
-      location={
-        Object {
-          "hash": "",
-          "key": "default",
-          "pathname": "/",
-          "search": "",
-          "state": null,
-        }
-      }
-      navigationType="POP"
-      navigator={
-        Object {
-          "action": "POP",
-          "createHref": [Function],
-          "createURL": [Function],
-          "encodeLocation": [Function],
-          "go": [Function],
-          "listen": [Function],
-          "location": Object {
-            "hash": "",
-            "key": "default",
-            "pathname": "/",
-            "search": "",
-            "state": null,
-          },
-          "push": [Function],
-          "replace": [Function],
-        }
-      }
+<DocumentFragment>
+  <section
+    class="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+    data-ouia-component-type="advisory-details-page-header"
+    widget-type="InsightsPageHeader"
+  >
+    <nav
+      aria-label="Breadcrumb"
+      class="pf-c-breadcrumb"
+      data-ouia-component-id="OUIA-Generated-Breadcrumb-1"
+      data-ouia-component-type="PF4/Breadcrumb"
+      data-ouia-safe="true"
     >
-      <AdvisoryDetail>
-        <Header
-          breadcrumbs={
-            Array [
-              Object {
-                "isActive": false,
-                "title": "Advisories",
-                "to": "/advisories",
-              },
-              Object {
-                "isActive": true,
-                "title": undefined,
-              },
-            ]
-          }
-          headerOUIA="advisory-details"
+      <ol
+        class="pf-c-breadcrumb__list"
+      >
+        <li
+          class="pf-c-breadcrumb__item"
         >
-          <PageHeader
-            data-ouia-component-type="advisory-details-page-header"
+          <a
+            data-ouia-component-id="breadcrumb-to-Advisories"
+            data-ouia-component-type="advisory-details-breadcrumb"
+            href="/insights/patch/advisories"
           >
-            <section
-              className="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
-              data-ouia-component-type="advisory-details-page-header"
-              widget-type="InsightsPageHeader"
-            >
-              <HeaderBreadcrumbs
-                headerOUIA="advisory-details"
-                items={
-                  Array [
-                    Object {
-                      "isActive": false,
-                      "title": "Advisories",
-                      "to": "/advisories",
-                    },
-                    Object {
-                      "isActive": true,
-                      "title": undefined,
-                    },
-                  ]
-                }
-              >
-                <Breadcrumb>
-                  <nav
-                    aria-label="Breadcrumb"
-                    className="pf-c-breadcrumb"
-                    data-ouia-component-id="OUIA-Generated-Breadcrumb-1"
-                    data-ouia-component-type="PF4/Breadcrumb"
-                    data-ouia-safe={true}
-                  >
-                    <ol
-                      className="pf-c-breadcrumb__list"
-                    >
-                      <BreadcrumbItem
-                        isActive={false}
-                        key=".$Advisories"
-                        showDivider={false}
-                      >
-                        <li
-                          className="pf-c-breadcrumb__item"
-                        >
-                          <InsightsLink
-                            data-ouia-component-id="breadcrumb-to-Advisories"
-                            data-ouia-component-type="advisory-details-breadcrumb"
-                            to="/advisories"
-                          >
-                            <Link
-                              data-ouia-component-id="breadcrumb-to-Advisories"
-                              data-ouia-component-type="advisory-details-breadcrumb"
-                              to="/insights/patch/advisories"
-                            >
-                              <a
-                                data-ouia-component-id="breadcrumb-to-Advisories"
-                                data-ouia-component-type="advisory-details-breadcrumb"
-                                href="/insights/patch/advisories"
-                                onClick={[Function]}
-                              >
-                                Advisories
-                              </a>
-                            </Link>
-                          </InsightsLink>
-                        </li>
-                      </BreadcrumbItem>
-                      <BreadcrumbItem
-                        isActive={true}
-                        key=".1"
-                        showDivider={true}
-                      >
-                        <li
-                          className="pf-c-breadcrumb__item"
-                        >
-                          <span
-                            className="pf-c-breadcrumb__item-divider"
-                          >
-                            <AngleRightIcon
-                              color="currentColor"
-                              noVerticalAlign={false}
-                              size="sm"
-                            >
-                              <svg
-                                aria-hidden={true}
-                                aria-labelledby={null}
-                                fill="currentColor"
-                                height="1em"
-                                role="img"
-                                style={
-                                  Object {
-                                    "verticalAlign": "-0.125em",
-                                  }
-                                }
-                                viewBox="0 0 256 512"
-                                width="1em"
-                              >
-                                <path
-                                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                                />
-                              </svg>
-                            </AngleRightIcon>
-                          </span>
-                        </li>
-                      </BreadcrumbItem>
-                    </ol>
-                  </nav>
-                </Breadcrumb>
-              </HeaderBreadcrumbs>
-              <Split
-                hasGutter={true}
-              >
-                <div
-                  className="pf-l-split pf-m-gutter"
-                >
-                  <SplitItem>
-                    <div
-                      className="pf-l-split__item"
-                    >
-                      <PageHeaderTitle>
-                        <Title
-                          className=""
-                          headingLevel="h1"
-                          size="2xl"
-                          widget-type="InsightsPageHeaderTitle"
-                        >
-                          <h1
-                            className="pf-c-title pf-m-2xl"
-                            data-ouia-component-id="OUIA-Generated-Title-1"
-                            data-ouia-component-type="PF4/Title"
-                            data-ouia-safe={true}
-                            widget-type="InsightsPageHeaderTitle"
-                          />
-                        </Title>
-                      </PageHeaderTitle>
-                    </div>
-                  </SplitItem>
-                  <SplitItem
-                    isFilled={true}
-                  >
-                    <div
-                      className="pf-l-split__item pf-m-fill"
-                    />
-                  </SplitItem>
-                  <SplitItem>
-                    <div
-                      className="pf-l-split__item"
-                    />
-                  </SplitItem>
-                </div>
-              </Split>
-              <Component
-                attributes={
-                  Object {
-                    "cves": Array [
-                      "CVE-2020-11080",
-                    ],
-                    "description": "libnghttp2.",
-                    "fixes": null,
-                    "id": undefined,
-                    "modified_date": "2020-06-25T16:31:29Z",
-                    "packages": Object {
-                      "libnghttp2": "1.33.0-3.el8_2.1.x86_64",
-                    },
-                    "public_date": "2020-06-25T16:31:29Z",
-                    "references": Array [],
-                    "severity": 3,
-                    "solution": "For details",
-                    "synopsis": "Important: ",
-                    "topic": "An update .",
-                  }
-                }
-                isLoading={true}
-              >
-                <div>
-                   hello 
-                </div>
-              </Component>
-            </section>
-          </PageHeader>
-        </Header>
-        <Main>
-          <section
-            className="pf-l-page__main-section pf-c-page__main-section"
+            Advisories
+          </a>
+        </li>
+        <li
+          class="pf-c-breadcrumb__item"
+        >
+          <span
+            class="pf-c-breadcrumb__item-divider"
           >
-            <Stack
-              hasGutter={true}
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              height="1em"
+              role="img"
+              style="vertical-align: -0.125em;"
+              viewBox="0 0 256 512"
+              width="1em"
             >
-              <div
-                className="pf-l-stack pf-m-gutter"
-              >
-                <StackItem>
-                  <div
-                    className="pf-l-stack__item"
-                  >
-                    <TextContent>
-                      <div
-                        className="pf-c-content"
-                      >
-                        <Text
-                          component="h2"
-                        >
-                          <h2
-                            className=""
-                            data-ouia-component-id="OUIA-Generated-Text-1"
-                            data-ouia-component-type="PF4/Text"
-                            data-ouia-safe={true}
-                            data-pf-content={true}
-                          >
-                            Systems
-                          </h2>
-                        </Text>
-                      </div>
-                    </TextContent>
-                  </div>
-                </StackItem>
-                <StackItem>
-                  <div
-                    className="pf-l-stack__item"
-                  >
-                    <Component>
-                      <div>
-                         hello 
-                      </div>
-                    </Component>
-                  </div>
-                </StackItem>
-              </div>
-            </Stack>
-          </section>
-        </Main>
-      </AdvisoryDetail>
-    </Router>
-  </BrowserRouter>
-</Provider>
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              />
+            </svg>
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <div
+      class="pf-l-split pf-m-gutter"
+    >
+      <div
+        class="pf-l-split__item"
+      >
+        <h1
+          class="pf-c-title pf-m-2xl"
+          data-ouia-component-id="OUIA-Generated-Title-1"
+          data-ouia-component-type="PF4/Title"
+          data-ouia-safe="true"
+          widget-type="InsightsPageHeaderTitle"
+        />
+      </div>
+      <div
+        class="pf-l-split__item pf-m-fill"
+      />
+      <div
+        class="pf-l-split__item"
+      />
+    </div>
+    <div>
+       hello 
+    </div>
+  </section>
+  <section
+    class="pf-l-page__main-section pf-c-page__main-section"
+  >
+    <div
+      class="pf-l-stack pf-m-gutter"
+    >
+      <div
+        class="pf-l-stack__item"
+      >
+        <div
+          class="pf-c-content"
+        >
+          <h2
+            class=""
+            data-ouia-component-id="OUIA-Generated-Text-1"
+            data-ouia-component-type="PF4/Text"
+            data-ouia-safe="true"
+            data-pf-content="true"
+          >
+            Systems
+          </h2>
+        </div>
+      </div>
+      <div
+        class="pf-l-stack__item"
+      >
+        <div>
+           hello 
+        </div>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
 `;

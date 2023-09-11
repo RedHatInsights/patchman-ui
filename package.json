@@ -31,6 +31,7 @@
     "toposort": "^2.0.2"
   },
   "jest": {
+    "testEnvironment": "jest-environment-jsdom",
     "coverageDirectory": "./codecov-jest/",
     "collectCoverage": true,
     "collectCoverageFrom": [
@@ -100,6 +101,7 @@
     "husky": "^8.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.4",
+    "jest-environment-jsdom": "^29.6.4",
     "node-sass": "^7.0.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",

@@ -1,6 +1,6 @@
 import InventoryDetail from './InventoryDetail';
 import { act } from 'react-dom/test-utils';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { entityDetail } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
@@ -72,7 +72,12 @@ afterEach(() => {
 
 describe('InventoryPage.js', () => {
     it('Should match the snapshots', () => {
-        expect(toJson(wrapper.update())).toMatchSnapshot();
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router><InventoryDetail /></Router>
+            </Provider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should display "Remove from a template" action in disabled state', () => {

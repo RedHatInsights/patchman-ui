@@ -1,5 +1,5 @@
 import ReviewPatchSet from './ReviewPatchSet';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 
 jest.mock('@data-driven-forms/react-form-renderer/use-form-api',
@@ -24,8 +24,10 @@ describe('ReviewPatchSet.js', () => {
                 }
             })
         }));
-        const wrapper = mount(<ReviewPatchSet />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <ReviewPatchSet />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should display available configuration fields only', () => {
@@ -40,8 +42,10 @@ describe('ReviewPatchSet.js', () => {
                 }
             })
         }));
-        const wrapper = mount(<ReviewPatchSet/>);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <ReviewPatchSet />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 });
 

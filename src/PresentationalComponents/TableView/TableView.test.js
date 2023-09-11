@@ -2,6 +2,7 @@ import TableView from './TableView';
 import toJson from 'enzyme-to-json';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
 
+//NOTE: tried to replace snapshots - and it fails the test. Requires a refactor
 const testObj = {
     columns: [],
     store: {
