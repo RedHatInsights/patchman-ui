@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Systems.js Should open remediation modal 1`] = `
-{
-  "isDisabled": false,
-  "onClick": [Function],
-  "title": "Apply all applicable advisories",
-}
-`;
-
 exports[`Systems.js should match the snapshot 1`] = `
 <DocumentFragment>
   <section
