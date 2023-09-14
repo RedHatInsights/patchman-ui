@@ -31,7 +31,7 @@
     "toposort": "^2.0.2"
   },
   "jest": {
-    "testEnvironment": "jest-environment-jsdom",
+    "testEnvironment": "jsdom",
     "coverageDirectory": "./codecov-jest/",
     "collectCoverage": true,
     "collectCoverageFrom": [
@@ -107,6 +107,7 @@
     "postcss": "^8.4.21",
     "prop-types": "^15.8.1",
     "react-intl": "^5.25.1",
+    "react-test-renderer": "^18.2.0",
     "redux-mock-store": "^1.5.4",
     "rollup": "^2.79.1",
     "rollup-plugin-babel": "^4.4.0",

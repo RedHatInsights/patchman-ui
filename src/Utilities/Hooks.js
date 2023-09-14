@@ -16,8 +16,6 @@ import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
 import { assignSystemToPatchSet, updatePatchSets } from './api';
 import { createSystemsSortBy } from './SystemsHelpers';
-// eslint-disable-next-line no-unused-vars
-import { useFlag, useFlagsStatus } from '@unleash/proxy-client-react';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>

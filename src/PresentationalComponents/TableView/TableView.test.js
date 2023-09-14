@@ -1,8 +1,7 @@
 import TableView from './TableView';
-import toJson from 'enzyme-to-json';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
-//NOTE: tried to replace snapshots - and it fails the test. Requires a refactor
 const testObj = {
     columns: [],
     store: {
@@ -34,10 +33,15 @@ const testObj = {
     apply: jest.fn()
 };
 
+const renderer = new ShallowRenderer();
+
 describe('TableView', () => {
     it('TableView', () => {
-        const wrapper = shallow(<TableView {...testObj} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        renderer.render(
+            <TableView {...testObj} />
+        );
+        const result = renderer.getRenderOutput();
+        expect(result).toMatchSnapshot();
     });
 
     describe('test table props', () => {
@@ -49,7 +53,16 @@ describe('TableView', () => {
         }} />);
 
         it('TableView', () => {
-            expect(toJson(wrapper)).toMatchSnapshot();
+            renderer.render(
+                <TableView {...testObj}  store = {{
+                    rows: [],
+                    metadata: { total_items: 10 },
+                    status: 'resolved',
+                    queryParams: {}
+                }} />
+            );
+            const result = renderer.getRenderOutput();
+            expect(result).toMatchSnapshot();
         });
 
         it('Should call onCollapse', () => {
@@ -62,19 +75,24 @@ describe('TableView', () => {
     });
 
     it('TableView', () => {
-        const wrapper = shallow(<TableView {...testObj}  store = {{
-            rows: [],
-            metadata: {},
-            status: 'loading',
-            queryParams: {}
-        }} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        renderer.render(
+            <TableView {...testObj}  store = {{
+                rows: [],
+                metadata: {},
+                status: 'loading',
+                queryParams: {}
+            }} />
+        );
+        const result = renderer.getRenderOutput();
+        expect(result).toMatchSnapshot();
     });
 
     it('Should open remediation modal', () => {
-        const wrapper = shallow(<TableView {...testObj} />);
-        const { actionsConfig: { actions } }  = wrapper.find('PrimaryToolbar').props();
-        expect(actions[0]).toMatchSnapshot();
+        renderer.render(
+            <TableView {...testObj} />
+        );
+        const result = renderer.getRenderOutput();
+        expect(result).toMatchSnapshot();
     });
 
     it('Should unselect', () => {

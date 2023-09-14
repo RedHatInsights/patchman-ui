@@ -5,9 +5,9 @@ import { storeListDefaults } from '../../Utilities/constants';
 import { cveRows, readyCveRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import CvesModal from './CvesModal';
-import toJson from 'enzyme-to-json';
 import { createCvesRows } from '../../Utilities/DataMappers';
 import { act } from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 
 initMocks();
 
@@ -71,8 +71,12 @@ afterEach(() => {
 
 describe('CveModal.js', () => {
     it('Should match the snapshots', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
-        wrapper.unmount();
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router><CvesModal cveIds={['testCveID']}  /></Router>
+            </Provider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should handle search filter', () => {

@@ -1,4 +1,3 @@
-import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -8,6 +7,7 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
+import { render } from '@testing-library/react';
 
 initMocks();
 
@@ -90,8 +90,12 @@ afterEach(() => {
 describe('AdvisorySystems.js', () => {
 
     it('Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
-        wrapper.unmount();
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router> <AdvisorySystems advisoryName={'RHSA-2020:2755'} /></Router>
+            </Provider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should display error page when status is rejected', () => {

@@ -1,5 +1,4 @@
 import SystemPackages from './SystemPackages';
-import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 import { systemPackages } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
@@ -10,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { fetchIDs } from '../../Utilities/api';
 import { remediationProvider } from '../../Utilities/Helpers';
 import { NotConnected } from '@redhat-cloud-services/frontend-components/NotConnected';
+import { render } from '@testing-library/react';
 
 initMocks();
 
@@ -74,7 +74,12 @@ afterEach(() => {
 
 describe('SystemPackages.js', () => {
     it('Should match the snapshots', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router><SystemPackages inventoryId='entity'/></Router>
+            </Provider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should dispatch FETCH_APPLICABLE_SYSTEM_PACKAGES only once on load', () => {
