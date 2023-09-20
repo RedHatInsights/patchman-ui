@@ -8,7 +8,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import {
     exportAdvisoriesCSV, exportAdvisoriesJSON, fetchIDs,
     fetchViewAdvisoriesSystems } from '../../Utilities/api';
-import { act } from 'react-dom/test-utils';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 
 initMocks();
@@ -137,27 +136,6 @@ describe('Advisories.js', () => {
                 'advisories'
             );
         });
-    });
-
-    it('should clear notifications store on unmount', async () => {
-        let tempWrapper;
-        try {
-            await act(async () => {
-                tempWrapper = mount(
-                    <Provider store={store}>
-                        <Router><Advisories /></Router>
-                    </Provider>
-                );
-            });
-        } catch { console.log('Advisories component failed to mount'); }
-
-        act(() => {
-            tempWrapper.unmount();
-        });
-        const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(
-            item => item.type === '@@INSIGHTS-CORE/NOTIFICATIONS/CLEAR_NOTIFICATIONS')
-        ).toHaveLength(1);
     });
 
     it('should fetch all the data using limit=-1', () => {

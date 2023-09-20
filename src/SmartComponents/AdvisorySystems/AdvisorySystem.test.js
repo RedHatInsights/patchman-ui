@@ -84,7 +84,6 @@ beforeEach(() => {
 afterEach(() => {
     useSelector.mockClear();
     store.clearActions();
-    wrapper.unmount();
 });
 
 describe('AdvisorySystems.js', () => {

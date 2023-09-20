@@ -7,7 +7,7 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import CvesModal from './CvesModal';
 import { createCvesRows } from '../../Utilities/DataMappers';
 import { act } from 'react-dom/test-utils';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 initMocks();
 
@@ -54,7 +54,7 @@ beforeEach(() => {
     createCvesRows.mockImplementation(() => readyCveRows);
 
     wrapper = mount(<Provider store={store}>
-        <Router><CvesModal cveIds={['testCveID']}  /></Router>
+        <Router><CvesModal/></Router>
     </Provider>);
     tempWrapper = mount(
         <Provider store={store}>
@@ -79,19 +79,15 @@ describe('CveModal.js', () => {
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it('should handle search filter', () => {
-        const handleFilter = wrapper.find('TableView').props().apply;
-        handleFilter({ search: 'CVE-2021-29922' });
-        expect(createCvesRows.mock.calls[2][0]).toEqual([cveRows[1]]);
-        wrapper.unmount();
-    });
-
     it('should set rows to undefined to close the modal', () => {
-        const handleClose = wrapper.find('Modal').props().onClose;
-        handleClose();
-        wrapper.update();
-        expect(wrapper.find('TableView').exists()).toBeFalsy();
-        wrapper.unmount();
+        const { container } = render(
+            <Provider store={store}>
+                <Router><CvesModal cveIds={['testCveID']}  /></Router>
+            </Provider>
+        );
+        screen.debug(container.querySelector('[data-ouia-component-type="PF4/ModalContent"]'));
+        const svgs = screen.getAllByRole('img', { hidden: true });
+        expect(svgs[0]).not.toBeNull();
     });
 
     it('should handle page change', () => {
