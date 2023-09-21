@@ -1,5 +1,5 @@
 import InfoBox from './InfoBox';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 
 const props = {
     title: 'testTitle',
@@ -11,7 +11,9 @@ const props = {
 
 describe('InfoBox', () => {
     it('Should match to snapshots', () => {
-        const wrapper = shallow(<InfoBox {...props} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <InfoBox {...props} />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 });

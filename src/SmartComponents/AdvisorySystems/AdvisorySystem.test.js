@@ -1,4 +1,3 @@
-import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -8,8 +7,11 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 initMocks();
+
+const renderer = new ShallowRenderer();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
@@ -89,7 +91,13 @@ afterEach(() => {
 describe('AdvisorySystems.js', () => {
 
     it('Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        renderer.render(
+            <Provider store={store}>
+                <Router> <AdvisorySystems advisoryName={'RHSA-2020:2755'} /></Router>
+            </Provider>
+        );
+        const result = renderer.getRenderOutput();
+        expect(result).toMatchSnapshot();
     });
 
     it('Should display error page when status is rejected', () => {

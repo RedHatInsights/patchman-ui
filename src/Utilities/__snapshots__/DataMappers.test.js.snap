@@ -1,28 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DataMappers Should create package list 1`] = `
-Object {
-  "cells": Array [
-    Object {
+{
+  "cells": [
+    {
       "title": <InsightsLink
         to="/packages/test-name-2"
       >
         test-name-2
       </InsightsLink>,
     },
-    Object {
+    {
       "title": "test-evra-2",
     },
-    Object {
+    {
       "title": "test-evra-2",
     },
-    Object {
+    {
       "title": "test-update-evra",
     },
-    Object {
+    {
       "title": "Upgradable",
     },
-    Object {
+    {
       "title": "Access control list utilities",
     },
   ],

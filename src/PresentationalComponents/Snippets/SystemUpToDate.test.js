@@ -1,11 +1,14 @@
 import { SystemUpToDate } from './SystemUpToDate';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 
 const wrapper = shallow(<SystemUpToDate />);
 
 describe('SystemUpToDate', () => {
     it('Should match the snapshot', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <SystemUpToDate />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should render CheckCircleIcon', () => {

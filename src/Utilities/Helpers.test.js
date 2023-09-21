@@ -1,11 +1,13 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table';
-import toJson from 'enzyme-to-json';
 import { publicDateOptions, remediationIdentifiers } from '../Utilities/constants';
-import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, 
+import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset,
     createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams,
-    getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, 
+    getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable,
     getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs, templateDateFormat } from './Helpers';
+import ShallowRenderer from 'react-test-renderer/shallow';
+
+const renderer = new ShallowRenderer();
 
 const TestHook = ({ callback }) => {
     callback();
@@ -49,8 +51,11 @@ describe('Helpers tests', () => {
     ${1} | ${0} | ${3}
     ${1} | ${2} | ${0}
     `('createAdvisoriesIcons: Should match advisory icons snapshot for [$rhea, $rhba, $rhsa]', ({rhea, rhba, rhsa}) => {
-        let wrapper = shallow(createAdvisoriesIcons([rhea, rhba, rhsa]));
-        expect(toJson(wrapper)).toMatchSnapshot();
+        renderer.render(
+            createAdvisoriesIcons([rhea, rhba, rhsa])
+        );
+        const result = renderer.getRenderOutput();
+        expect(result).toMatchSnapshot();
     });
 
     it.each`
@@ -292,15 +297,15 @@ describe('Helpers tests', () => {
     it('Should return "false" when there is no issues available', () => {
         const resultWhenParams = transformPairs({ data: {} });
         expect(resultWhenParams).toEqual({ "issues": [] });
-        
+
         const resultWhenNoParams = transformPairs();
         expect(resultWhenNoParams).toEqual({ "issues": [] });
     });
     it('Should return transformed issues', () => {
         const resultWhenParams = transformPairs({ data: { testAdvisory1: ['test-system-1'], testAdvisory2: ['test-system-2'] } }, 'test-identifier');
-        expect(resultWhenParams).toEqual({ 
+        expect(resultWhenParams).toEqual({
             issues: [
-                { description: 'testAdvisory1', id: 'test-identifier:testAdvisory1', systems: ['test-system-1'] }, 
+                { description: 'testAdvisory1', id: 'test-identifier:testAdvisory1', systems: ['test-system-1'] },
                 { description: 'testAdvisory2', id: 'test-identifier:testAdvisory2', systems: ['test-system-2'] }
             ]
         });

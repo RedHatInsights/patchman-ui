@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { storeListDefaults } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { systemPackages } from '../../Utilities/RawDataForTesting';
 import { exportPackagesJSON, exportPackagesCSV } from '../../Utilities/api';
 
@@ -64,7 +64,12 @@ afterEach(() => {
 
 describe('Packages.js', () => {
     it('should match the snapshot', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router><Packages /></Router>
+            </Provider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should fetch packages only once on load', () => {

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Label.js Should match the snapshot 1`] = `
-<span
-  className="patchman-label"
-/>
+<DocumentFragment>
+  <span
+    class="patchman-label"
+  />
+</DocumentFragment>
 `;

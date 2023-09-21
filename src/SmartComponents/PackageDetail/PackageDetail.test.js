@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { storeListDefaults } from '../../Utilities/constants';
 import { MemoryRouter as Router } from 'react-router-dom';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { packageDetailData } from '../../Utilities/RawDataForTesting';
 import { mount } from 'enzyme';
 
@@ -41,7 +41,6 @@ const initStore = (state) => {
     return mockStore({ PackageDetailStore: state });
 };
 
-let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
@@ -49,9 +48,6 @@ beforeEach(() => {
     useSelector.mockImplementation(callback => {
         return callback({ PackageDetailStore: mockState });
     });
-    wrapper = mount(<Provider store={store}>
-        <Router><PackageDetail /></Router>
-    </Provider>);
 });
 
 afterEach(() => {
@@ -60,10 +56,18 @@ afterEach(() => {
 
 describe('PackageDetail.js', () => {
     it('should match the snapshot', ()  => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router><PackageDetail /></Router>
+            </Provider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should display Unavailable component on error', () => {
+        mount(<Provider store={store}>
+            <Router><PackageDetail /></Router>
+        </Provider>);
         const rejectedState = { ...mockState, status: { isLoading: false, code: 200, hasError: true } };
         const tempStore = initStore(rejectedState);
         useSelector.mockImplementation(callback => {
