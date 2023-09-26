@@ -41,6 +41,8 @@ const initStore = (state) => {
     return mockStore({ PackageDetailStore: state });
 };
 
+// eslint-disable-next-line no-unused-vars
+let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
@@ -48,6 +50,9 @@ beforeEach(() => {
     useSelector.mockImplementation(callback => {
         return callback({ PackageDetailStore: mockState });
     });
+    wrapper = mount(<Provider store={store}>
+        <Router><PackageDetail /></Router>
+    </Provider>);
 });
 
 afterEach(() => {
@@ -65,9 +70,6 @@ describe('PackageDetail.js', () => {
     });
 
     it('should display Unavailable component on error', () => {
-        mount(<Provider store={store}>
-            <Router><PackageDetail /></Router>
-        </Provider>);
         const rejectedState = { ...mockState, status: { isLoading: false, code: 200, hasError: true } };
         const tempStore = initStore(rejectedState);
         useSelector.mockImplementation(callback => {

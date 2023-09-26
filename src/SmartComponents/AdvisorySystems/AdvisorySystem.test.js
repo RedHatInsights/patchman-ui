@@ -7,11 +7,9 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { render } from '@testing-library/react';
 
 initMocks();
-
-const renderer = new ShallowRenderer();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
@@ -91,13 +89,12 @@ afterEach(() => {
 describe('AdvisorySystems.js', () => {
 
     it('Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once', () => {
-        renderer.render(
+        const { asFragment } = render(
             <Provider store={store}>
                 <Router> <AdvisorySystems advisoryName={'RHSA-2020:2755'} /></Router>
             </Provider>
         );
-        const result = renderer.getRenderOutput();
-        expect(result).toMatchSnapshot();
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should display error page when status is rejected', () => {
