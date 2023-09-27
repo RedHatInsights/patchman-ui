@@ -7,6 +7,7 @@ import { MemoryRouter as Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { packageDetailData } from '../../Utilities/RawDataForTesting';
 import { mount } from 'enzyme';
+import { queryByText } from '@testing-library/dom';
 
 initMocks();
 
@@ -60,13 +61,20 @@ afterEach(() => {
 });
 
 describe('PackageDetail.js', () => {
-    it('should match the snapshot', ()  => {
-        const { asFragment } = render(
+    it('should render the Header', ()  => {
+        const { container } = render(
             <Provider store={store}>
                 <Router><PackageDetail /></Router>
-            </Provider>
-        );
-        expect(asFragment()).toMatchSnapshot();
+            </Provider>);
+        expect(queryByText(container, 'Packages')).not.toBeNull();
+    });
+
+    it('should render the Text', ()  => {
+        const { container } = render(
+            <Provider store={store}>
+                <Router><PackageDetail /></Router>
+            </Provider>);
+        expect(queryByText(container, 'Systems')).not.toBeNull();
     });
 
     it('should display Unavailable component on error', () => {

@@ -7,9 +7,11 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
-import { render } from '@testing-library/react';
+import { render, act as rtlAct } from '@testing-library/react';
 
 initMocks();
+//removing act warnings from the console
+const promise = Promise.resolve();
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
@@ -121,6 +123,7 @@ describe('AdvisorySystems.js', () => {
             expect(dispatchedActions[1].type).toEqual('SELECT_ENTITY');
             expect(bulkSelect.items[0].title).toEqual('Select none (0)');
             expect(dispatchedActions[1].payload).toEqual([{ id: 'test-system-1', selected: false }]);
+            await rtlAct(() => promise);
         });
 
         it('Should select a page', async () => {
@@ -135,6 +138,7 @@ describe('AdvisorySystems.js', () => {
                 { id: 'test-system-id-1', selected: 'test-system-id-1' },
                 { id: 'test-system-id-2', selected: 'test-system-id-2' }
             ]);
+            await rtlAct(() => promise);
         });
 
         it('Should select all', async () => {
@@ -143,6 +147,7 @@ describe('AdvisorySystems.js', () => {
             bulkSelect.items[2].onClick();
             expect(fetchIDs).toHaveBeenCalledWith('/ids/advisories/RHSA-2020:2755/systems', { limit: -1, offset: 0 });
             expect(bulkSelect.items[2].title).toEqual('Select all (2)');
+            await rtlAct(() => promise);
         });
 
         it('Should handle onSelect', async () => {
@@ -158,6 +163,7 @@ describe('AdvisorySystems.js', () => {
                 }
             ]
             );
+            await rtlAct(() => promise);
         });
     });
 
