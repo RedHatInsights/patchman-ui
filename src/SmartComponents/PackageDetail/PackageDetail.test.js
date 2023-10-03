@@ -42,8 +42,6 @@ const initStore = (state) => {
     return mockStore({ PackageDetailStore: state });
 };
 
-// eslint-disable-next-line no-unused-vars
-let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
@@ -51,9 +49,6 @@ beforeEach(() => {
     useSelector.mockImplementation(callback => {
         return callback({ PackageDetailStore: mockState });
     });
-    wrapper = mount(<Provider store={store}>
-        <Router><PackageDetail /></Router>
-    </Provider>);
 });
 
 afterEach(() => {

@@ -104,7 +104,7 @@ describe('Header component', () => {
         const { asFragment } = withLink(<Header {...header} />);
         expect(asFragment()).toMatchSnapshot();
     });
-    //NOTE: Should be rewritten because of wrapper changes
+    //NOTE: Should be rewritten because of how RTL testing approaches testing the router
     //something like this could be ok https://stackoverflow.com/questions/70313688/how-i-could-test-location-with-memoryrouter-on-react-router-dom-v6
     /* it('should render with tabs only, click a tab', () => {
         const wrapper = withLink(<Header showTabs title="Title" />);

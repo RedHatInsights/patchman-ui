@@ -43,9 +43,13 @@ jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
     InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
 }));
 
-jest.mock('@redhat-cloud-services/frontend-components/AsyncComponent', () => (
-    <div>AsyncComponent</div>
-));
+jest.mock(
+    '@redhat-cloud-services/frontend-components/AsyncComponent',
+    () => ({
+        __esModule: true,
+        default: (props) => <div {...props}>AsyncComponent</div>
+    })
+);
 
 global.shallow = shallow;
 global.render = render;

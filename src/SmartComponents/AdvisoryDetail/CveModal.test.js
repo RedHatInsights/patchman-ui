@@ -87,7 +87,7 @@ describe('CveModal.js', () => {
         let tempWrapper;
         tempWrapper = mount(
             <Provider store={store}>
-                <Router><CvesModal /></Router>
+                <Router><CvesModal cveIds={['testCveID']} /></Router>
             </Provider>
         );
 
