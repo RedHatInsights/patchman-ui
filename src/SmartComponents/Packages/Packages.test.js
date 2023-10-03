@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { storeListDefaults } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { systemPackages } from '../../Utilities/RawDataForTesting';
 import { exportPackagesJSON, exportPackagesCSV } from '../../Utilities/api';
 import { queryByText, queryAllByText } from '@testing-library/dom';
@@ -71,7 +71,6 @@ describe('Packages.js', () => {
                 <Router><Packages /></Router>
             </Provider>
         );
-        screen.debug();
         expect(queryByText(container, 'test-name')).not.toBeNull();
         expect(queryByText(container, 'test-name-2')).not.toBeNull();
     });
@@ -82,7 +81,6 @@ describe('Packages.js', () => {
                 <Router><Packages /></Router>
             </Provider>
         );
-        screen.debug();
         expect(queryAllByText(container, 'Access control list utilities')).not.toBeNull();
     });
 
