@@ -127,11 +127,23 @@ describe('TableView', () => {
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should unselect', () => {
-        const wrapper = shallow(<TableView {...testObj} />);
-        const { bulkSelect: { items } }  = wrapper.find('PrimaryToolbar').props();
-        items[0].onClick();
-        expect(testObj.onSelect).toHaveBeenCalledWith('none');
+    it('Should unselect', async () => {
+        await render(
+            <Provider store={store}>
+                <TableView {...testObj}
+                    onSelect={mockOnSelect}
+                    store = {{
+                        rows: [],
+                        metadata: { total_items: 10 },
+                        status: 'resolved',
+                        queryParams: {}
+                    }} />
+            </Provider>
+        );
+        await userEvent.click(screen.getByRole('button', { name: 'Select' }));
+        await userEvent.click(screen.getByRole('menuitem', { name: /select none \(0\)/i }));
+        await waitFor(() =>
+            expect(mockOnSelect).toHaveBeenCalledWith('none'));
     });
 
     it('Should select page', async () => {

@@ -6,7 +6,7 @@ import { storeListDefaults } from '../../Utilities/constants';
 import { advisoryDetailRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisoryDetail from './AdvisoryDetail';
-import { render } from '@testing-library/react';
+import { mountWithRouterAndProvider } from '../../../config/rtlwrapper';
 
 initMocks();
 
@@ -56,11 +56,7 @@ afterEach(() => {
 
 describe('AdvisoryDetail.js', () => {
     it('Should match the snapshots', () => {
-        const { asFragment } = render(
-            <Provider store={store}>
-                <Router><AdvisoryDetail /></Router>
-            </Provider>
-        );
+        const { asFragment } = mountWithRouterAndProvider(<AdvisoryDetail />, store);
         expect(asFragment()).toMatchSnapshot();
     });
 

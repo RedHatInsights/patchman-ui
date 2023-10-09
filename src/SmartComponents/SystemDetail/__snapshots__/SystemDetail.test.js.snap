@@ -1,103 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SystemDetail.js Should match the snapshot when Package tab is active by default 1`] = `
-<Tabs
-  activeKey={0}
-  className="patchTabSelect"
-  component="div"
-  hasBorderBottom={true}
-  isBox={false}
-  isFilled={false}
-  isHidden={true}
-  isSecondary={false}
-  isVertical={false}
-  leftScrollAriaLabel="Scroll left"
-  mountOnEnter={false}
-  onSelect={[Function]}
-  onToggle={[Function]}
-  ouiaSafe={true}
-  rightScrollAriaLabel="Scroll right"
-  unmountOnExit={false}
-  variant="default"
->
-  <Tab
-    data-ouia-component-id="system-advisories-tab"
-    data-ouia-component-type="system-advisories-tab"
-    eventKey={0}
-    title={
-      <TabTitleText>
-        Advisories
-      </TabTitleText>
-    }
-  >
-    <SystemAdvisories
-      handleNoSystemData={[Function]}
-    />
+"<Tabs activeKey={1} onSelect={[Function: onTabSelect]} className="patchTabSelect" isHidden={true} isFilled={false} isSecondary={false} isVertical={false} isBox={false} hasBorderBottom={true} leftScrollAriaLabel="Scroll left" rightScrollAriaLabel="Scroll right" component="div" mountOnEnter={false} unmountOnExit={false} ouiaSafe={true} variant="default" onToggle={[Function: onToggle]}>
+  <Tab eventKey={0} title={{...}} data-ouia-component-type="system-advisories-tab" data-ouia-component-id="system-advisories-tab">
+    <SystemAdvisories handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} shouldRefresh={[undefined]} />
   </Tab>
-  <Tab
-    data-ouia-component-id="system-packages-tab"
-    data-ouia-component-type="system-packages-tab"
-    eventKey={1}
-    title={
-      <TabTitleText>
-        Packages
-      </TabTitleText>
-    }
-  >
-    <SystemPackages
-      handleNoSystemData={[Function]}
-    />
+  <Tab eventKey={1} title={{...}} data-ouia-component-type="system-packages-tab" data-ouia-component-id="system-packages-tab">
+    <SystemPackages handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} shouldRefresh={[undefined]} />
   </Tab>
-</Tabs>
+</Tabs>"
 `;
 
 exports[`SystemDetail.js Should match the snapshots 1`] = `
-<Tabs
-  activeKey={0}
-  className="patchTabSelect"
-  component="div"
-  hasBorderBottom={true}
-  isBox={false}
-  isFilled={false}
-  isHidden={true}
-  isSecondary={false}
-  isVertical={false}
-  leftScrollAriaLabel="Scroll left"
-  mountOnEnter={false}
-  onSelect={[Function]}
-  onToggle={[Function]}
-  ouiaSafe={true}
-  rightScrollAriaLabel="Scroll right"
-  unmountOnExit={false}
-  variant="default"
->
-  <Tab
-    data-ouia-component-id="system-advisories-tab"
-    data-ouia-component-type="system-advisories-tab"
-    eventKey={0}
-    title={
-      <TabTitleText>
-        Advisories
-      </TabTitleText>
-    }
-  >
-    <SystemAdvisories
-      handleNoSystemData={[Function]}
-    />
+"<Tabs activeKey={0} onSelect={[Function: onTabSelect]} className="patchTabSelect" isHidden={true} isFilled={false} isSecondary={false} isVertical={false} isBox={false} hasBorderBottom={true} leftScrollAriaLabel="Scroll left" rightScrollAriaLabel="Scroll right" component="div" mountOnEnter={false} unmountOnExit={false} ouiaSafe={true} variant="default" onToggle={[Function: onToggle]}>
+  <Tab eventKey={0} title={{...}} data-ouia-component-type="system-advisories-tab" data-ouia-component-id="system-advisories-tab">
+    <SystemAdvisories handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} shouldRefresh={[undefined]} />
   </Tab>
-  <Tab
-    data-ouia-component-id="system-packages-tab"
-    data-ouia-component-type="system-packages-tab"
-    eventKey={1}
-    title={
-      <TabTitleText>
-        Packages
-      </TabTitleText>
-    }
-  >
-    <SystemPackages
-      handleNoSystemData={[Function]}
-    />
+  <Tab eventKey={1} title={{...}} data-ouia-component-type="system-packages-tab" data-ouia-component-id="system-packages-tab">
+    <SystemPackages handleNoSystemData={[Function: handleNoSystemData]} inventoryId={[undefined]} shouldRefresh={[undefined]} />
   </Tab>
-</Tabs>
+</Tabs>"
 `;

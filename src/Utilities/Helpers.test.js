@@ -1,13 +1,11 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table';
+import toJson from 'enzyme-to-json';
 import { publicDateOptions, remediationIdentifiers } from '../Utilities/constants';
 import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset,
     createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams,
     getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable,
     getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs, templateDateFormat } from './Helpers';
-import ShallowRenderer from 'react-test-renderer/shallow';
-
-const renderer = new ShallowRenderer();
 
 const TestHook = ({ callback }) => {
     callback();
@@ -51,11 +49,8 @@ describe('Helpers tests', () => {
     ${1} | ${0} | ${3}
     ${1} | ${2} | ${0}
     `('createAdvisoriesIcons: Should match advisory icons snapshot for [$rhea, $rhba, $rhsa]', ({rhea, rhba, rhsa}) => {
-        renderer.render(
-            createAdvisoriesIcons([rhea, rhba, rhsa])
-        );
-        const result = renderer.getRenderOutput();
-        expect(result).toMatchSnapshot();
+        let wrapper = shallow(createAdvisoriesIcons([rhea, rhba, rhsa]));
+        expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it.each`
