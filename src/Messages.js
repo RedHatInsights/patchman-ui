@@ -821,11 +821,6 @@ export default defineMessages({
         description: 'text for patch template wizard',
         defaultMessage: 'You selected {systemsCount, plural, one {<b> # </b> system } other {<b> # </b> systems }}'
     },
-    textThirdPartyInfo: {
-        id: 'textThirdPartyInfo',
-        description: 'text about the third paty managed hosts',
-        defaultMessage: 'This system has content that is managed by repositories other than the Red Hat CDN'
-    },
     textUnassignSystemsShortTitle: {
         id: 'textUnassignSystemsShortTitle',
         description: 'text about systems being removed',
