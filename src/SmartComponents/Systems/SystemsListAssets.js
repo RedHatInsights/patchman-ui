@@ -8,6 +8,17 @@ import {
 import './SystemsListAssets.scss';
 import { sortable } from '@patternfly/react-table';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
+import { Text, TextContent, Tooltip } from '@patternfly/react-core';
+
+export const ManagedBySatelliteCell = () => (
+    <Tooltip content="This system is managed by Satellite and does not use a template.">
+        <TextContent>
+            <Text className="pf-u-font-size-sm">
+                Managed by Satellite
+            </Text>
+        </TextContent>
+    </Tooltip>
+);
 
 export const systemsListColumns = () => [
     {
@@ -21,9 +32,12 @@ export const systemsListColumns = () => [
     {
         key: 'baseline_name',
         title: 'Template',
-        renderFunc: (value, _, row) => value
-            ? <InsightsLink to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</InsightsLink>
-            : 'No template',
+        renderFunc: (value, _, row) =>
+            row.satellite_managed
+                ? <ManagedBySatelliteCell />
+                : value
+                    ? <InsightsLink to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</InsightsLink>
+                    : 'No template',
         props: {
             width: 5
         }
@@ -58,9 +72,12 @@ export const advisorySystemsColumns = () => [
     {
         key: 'baseline_name',
         title: 'Template',
-        renderFunc: (value, _, row) => value
-            ? <InsightsLink to={`/templates/${row.baseline_id}`}>{value}</InsightsLink>
-            : 'No template',
+        renderFunc: (value, _, row) =>
+            row.satellite_managed
+                ? <ManagedBySatelliteCell />
+                : value
+                    ? <InsightsLink to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</InsightsLink>
+                    : 'No template',
         props: {
             width: 5
         }
@@ -101,9 +118,12 @@ export const packageSystemsColumns = [
     {
         key: 'baseline_name',
         title: 'Template',
-        renderFunc: (value, _, row) => value
-            ? <InsightsLink to={`/templates/${row.baseline_id}`}>{value}</InsightsLink>
-            : 'No template',
+        renderFunc: (value, _, row) =>
+            row.satellite_managed
+                ? <ManagedBySatelliteCell />
+                : value
+                    ? <InsightsLink to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</InsightsLink>
+                    : 'No template',
         props: {
             width: 5
         }
@@ -186,3 +206,4 @@ export const systemsRowActions = (
         ] : [])
     ];
 };
+

@@ -15,6 +15,7 @@ import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
+import { ManagedBySatelliteCell } from '../SmartComponents/Systems/SystemsListAssets';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
@@ -362,7 +363,9 @@ export const createSystemsRowsReview = (rows, selectedRows) => {
                         title: attributes.os || 'N/A'
                     },
                     {
-                        title: attributes.baseline_name || 'No template'
+                        title: attributes.satellite_managed
+                            ? <ManagedBySatelliteCell />
+                            : attributes.baseline_name || 'No template'
                     },
                     {
                         title: processDate(attributes.last_upload)
