@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { useSelector, useDispatch, useStore } from 'react-redux';
 import { combineReducers } from 'redux';
@@ -24,7 +24,7 @@ const InventoryDetail = () => {
     const store = useStore();
     const dispatch = useDispatch();
 
-    const { hasThirdPartyRepo, patchSetName, patchSetId } = useSelector(
+    const { hasThirdPartyRepo, satelliteManaged, patchSetName, patchSetId } = useSelector(
         ({ SystemDetailStore }) => SystemDetailStore
     );
 
@@ -49,8 +49,8 @@ const InventoryDetail = () => {
     }, [patchSetState.shouldRefresh]);
 
     const chrome = useChrome();
-    useEffect(()=>{
-        displayName &&  chrome.updateDocumentTitle(`${displayName} - ${intl.formatMessage(messages.titlesSystems)}
+    useEffect(() => {
+        displayName && chrome.updateDocumentTitle(`${displayName} - ${intl.formatMessage(messages.titlesSystems)}
         ${DEFAULT_PATCH_TITLE}`);
     }, [chrome, displayName]);
 
@@ -111,11 +111,36 @@ const InventoryDetail = () => {
                             </TextContent>
                         </GridItem>}
                         <GridItem>
-                            {hasThirdPartyRepo &&
-                                (<Alert className='pf-u-mt-md' isInline variant="info"
-                                    title={intl.formatMessage(messages.textThirdPartyInfo)}>
-                                </Alert>)
-                            }
+                            {hasThirdPartyRepo && (
+                                satelliteManaged
+                                    ? <Fragment>
+                                        <Alert
+                                            className='pf-u-mt-md'
+                                            isInline
+                                            variant="info"
+                                            title="This system has content managed by Satellite. Installable updates are
+                                            current as of the last time the system checked-in with Red Hat Insights."
+                                        />
+                                        <Alert
+                                            className='pf-u-mt-md'
+                                            isInline
+                                            variant="warning"
+                                            title="This system has content managed by Satellite. For accurate reporting of
+                                            installable updates, check in to Red Hat Insights with the --build-packagecache
+                                            option."
+                                        >
+                                            <a href="https://access.redhat.com/documentation/en-us/red_hat_satellite">
+                                                Read more
+                                            </a>
+                                        </Alert>
+                                    </Fragment>
+                                    : <Alert
+                                        className='pf-u-mt-md'
+                                        isInline
+                                        variant="info"
+                                        title="This system has content that is managed by repositories other than the Red Hat CDN"
+                                    />
+                            )}
                         </GridItem>
                     </Grid>
                 </InventoryDetailHead>
