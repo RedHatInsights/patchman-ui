@@ -534,7 +534,7 @@ export default defineMessages({
     templateAlertSystems: {
         id: 'templateAlertSystems',
         description: 'Template wizard alert',
-        defaultMessage: 'If you apply a template to a system that already has one, the old template will be overwritten.'
+        defaultMessage: 'A system can have only one content template, therefore if you apply a new content template to the system, it will be overwritten.'
     },
     templateApply: {
         id: 'templateApply',
@@ -810,11 +810,6 @@ export default defineMessages({
         id: 'textTemplateCreateNew',
         description: 'text for patch template wizard',
         defaultMessage: 'Create new patch template '
-    },
-    textTemplateReviewSystems: {
-        id: 'textTemplateReviewSystems',
-        description: 'text for patch template wizard',
-        defaultMessage: 'Select systems to apply the new template to.'
     },
     textTemplateSelectedSystems: {
         id: 'textTemplateSelectedSystems',

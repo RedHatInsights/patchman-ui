@@ -130,9 +130,10 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
                 </TextContent>
             </StackItem>
             <StackItem>
-                <TextContent style={{ marginTop: '-15px' }}>
+                <TextContent>
                     <Text component={TextVariants.p}>
-                        {intl.formatMessage(messages.textTemplateReviewSystems)}
+                        Select systems to apply the new template to. The list of systems <b>does not contain</b> systems
+                        managed by Satellite.
                     </Text>
                 </TextContent>
             </StackItem>
