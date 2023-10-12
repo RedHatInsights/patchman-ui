@@ -159,9 +159,14 @@ const isRemediationDisabled = (row) => {
     return (applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0)) || (status === 'Applicable');
 };
 
+const isPatchSetAssignmentDisabled = (row) => {
+    const { satellite_managed: satelliteManaged } = row || {};
+    return satelliteManaged;
+};
+
 const isPatchSetRemovalDisabled = (row) => {
-    const { baseline_name: baselineName } = row || {};
-    return !baselineName || (typeof baselineName === 'string' && baselineName === '');
+    const { baseline_name: baselineName, satellite_managed: satelliteManaged } = row || {};
+    return satelliteManaged || !baselineName || baselineName === '';
 };
 
 export const systemsRowActions = (
@@ -192,6 +197,7 @@ export const systemsRowActions = (
         },
         ...(showTemplateAssignSystemsModal ? [{
             title: 'Assign to a template',
+            isDisabled: isPatchSetAssignmentDisabled(row),
             onClick: (event, rowId, rowData) => {
                 showTemplateAssignSystemsModal({ [rowData.id]: true });
             }
