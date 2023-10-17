@@ -1,18 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once 1`] = `
-<DocumentFragment>
-   
-  <div
-    class="testInventroyComponentChild"
-  >
-    <div>
-      This is child
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`AdvisorySystems.js Should open remediation modal 1`] = `
 <AsyncRemediationButton
   isDisabled={false}

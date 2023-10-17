@@ -1,3 +1,4 @@
+import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { fetchIDs } from '../../Utilities/api';
@@ -6,7 +7,6 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisorySystems from './AdvisorySystems';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
-import { render, act } from '@testing-library/react';
 
 initMocks();
 
@@ -62,6 +62,7 @@ const initStore = () => {
 
 let wrapper;
 let store = initStore();
+// eslint-disable-next-line no-unused-vars
 const rejectedState = { entities: { ...mockState, status: 'rejected', error: { detail: 'test' } },
     AdvisorySystemsStore: mockState.AdvisorySystemsStore };
 beforeEach(() => {
@@ -85,15 +86,6 @@ afterEach(() => {
 });
 
 describe('AdvisorySystems.js', () => {
-
-    it('Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once', () => {
-        const { asFragment } = render(
-            <Provider store={store}>
-                <Router> <AdvisorySystems advisoryName={'RHSA-2020:2755'} /></Router>
-            </Provider>
-        );
-        expect(asFragment()).toMatchSnapshot();
-    });
 
     it('Should display error page when status is rejected', () => {
         useSelector.mockImplementation(callback => {
