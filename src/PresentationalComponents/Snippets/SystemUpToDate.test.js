@@ -1,16 +1,20 @@
 import { SystemUpToDate } from './SystemUpToDate';
-import toJson from 'enzyme-to-json';
-
-const wrapper = shallow(<SystemUpToDate />);
+import { render } from '@testing-library/react';
+import { queryByText } from '@testing-library/dom';
 
 describe('SystemUpToDate', () => {
     it('Should match the snapshot', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <SystemUpToDate />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
-    it('Should render CheckCircleIcon', () => {
-        const iconRender = wrapper.find('EmptyStateIcon').props().icon;
-        const component = iconRender();
-        expect(component.type.displayName).toEqual('CheckCircleIcon');
+    it('Should render correct text for the system that is up to date', () => {
+        const { container } = render(<SystemUpToDate />);
+        expect(queryByText(container, 'No applicable advisories')).not.toBeNull();
+        expect(queryByText(container,
+            'This system is up to date, based on package information submitted at the most recent system check-in'))
+        .not.toBeNull();
     });
 });
