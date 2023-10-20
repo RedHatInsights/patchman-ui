@@ -2,19 +2,22 @@ import {
     EmptyAdvisoryList,
     EmptyPackagesList
 } from './EmptyStates';
-import toJson from 'enzyme-to-json';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 describe('EmptyAdvisoryList', () => {
     it('Should match the snapshot', () => {
-        const wrapper = shallow(<EmptyAdvisoryList />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <EmptyAdvisoryList />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 });
 
 describe('EmptyPackagesList', () => {
     it('Should match the snapshot', () => {
-        const wrapper = shallow(<EmptyPackagesList />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <EmptyPackagesList />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 });
