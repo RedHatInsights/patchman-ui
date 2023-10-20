@@ -1,23 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Error.js Should match the snapshot 1`] = `
-<Card>
-  <EmptyState
-    variant="full"
+<DocumentFragment>
+  <article
+    class="pf-c-card"
+    data-ouia-component-id="OUIA-Generated-Card-1"
+    data-ouia-component-type="PF4/Card"
+    data-ouia-safe="true"
+    id=""
   >
-    <EmptyStateIcon
-      color="black"
-      icon={[Function]}
-    />
-    <Title
-      headingLevel="h5"
-      size="lg"
+    <div
+      class="pf-c-empty-state"
     >
-      Error
-    </Title>
-    <EmptyStateBody>
-      testMessage
-    </EmptyStateBody>
-  </EmptyState>
-</Card>
+      <div
+        class="pf-c-empty-state__content"
+      >
+        <svg
+          aria-hidden="true"
+          class="pf-c-empty-state__icon"
+          fill="black"
+          height="1em"
+          role="img"
+          style="vertical-align: -0.125em;"
+          viewBox="0 0 496 512"
+          width="1em"
+        >
+          <path
+            d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zM136 208c0-17.7 14.3-32 32-32s32 14.3 32 32-14.3 32-32 32-32-14.3-32-32zm187.3 183.3c-31.2-9.6-59.4-15.3-75.3-15.3s-44.1 5.7-75.3 15.3c-11.5 3.5-22.5-6.3-20.5-18.1 7-40 60.1-61.2 95.8-61.2s88.8 21.3 95.8 61.2c2 11.9-9.1 21.6-20.5 18.1zM328 240c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"
+          />
+        </svg>
+        <h5
+          class="pf-c-title pf-m-lg"
+          data-ouia-component-id="OUIA-Generated-Title-1"
+          data-ouia-component-type="PF4/Title"
+          data-ouia-safe="true"
+        >
+          Error
+        </h5>
+        <div
+          class="pf-c-empty-state__body"
+        >
+          testMessage
+        </div>
+      </div>
+    </div>
+  </article>
+</DocumentFragment>
 `;
