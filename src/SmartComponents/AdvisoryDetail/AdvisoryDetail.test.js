@@ -1,4 +1,3 @@
-import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { storeListDefaults } from '../../Utilities/constants';
 import { advisoryDetailRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisoryDetail from './AdvisoryDetail';
+import { mountWithRouterAndProvider } from '../../../config/rtlwrapper';
 
 initMocks();
 
@@ -41,7 +41,6 @@ const initStore = (state) => {
     return mockStore({  AdvisoryDetailStore: state });
 };
 
-let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
@@ -49,9 +48,6 @@ beforeEach(() => {
     useSelector.mockImplementation(callback => {
         return callback({ AdvisoryDetailStore: mockState });
     });
-    wrapper = mount(<Provider store={store}>
-        <Router><AdvisoryDetail /></Router>
-    </Provider>);
 });
 
 afterEach(() => {
@@ -60,7 +56,8 @@ afterEach(() => {
 
 describe('AdvisoryDetail.js', () => {
     it('Should match the snapshots', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = mountWithRouterAndProvider(<AdvisoryDetail />, store);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should clear store on unmount', async () => {
