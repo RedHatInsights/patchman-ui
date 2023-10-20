@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Systems.js Should open remediation modal 1`] = `
-Object {
+{
   "isDisabled": false,
   "onClick": [Function],
   "title": "Apply all applicable advisories",
@@ -11,7 +11,7 @@ Object {
 exports[`Systems.js should match the snapshot 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -24,7 +24,7 @@ exports[`Systems.js should match the snapshot 1`] = `
   <BrowserRouter>
     <Router
       location={
-        Object {
+        {
           "hash": "",
           "key": "default",
           "pathname": "/",
@@ -34,14 +34,14 @@ exports[`Systems.js should match the snapshot 1`] = `
       }
       navigationType="POP"
       navigator={
-        Object {
+        {
           "action": "POP",
           "createHref": [Function],
           "createURL": [Function],
           "encodeLocation": [Function],
           "go": [Function],
           "listen": [Function],
-          "location": Object {
+          "location": {
             "hash": "",
             "key": "default",
             "pathname": "/",
@@ -117,11 +117,11 @@ exports[`Systems.js should match the snapshot 1`] = `
         </Header>
         <SystemsStatusReport
           apply={[Function]}
-          queryParams={Object {}}
+          queryParams={{}}
         >
           <Main
             style={
-              Object {
+              {
                 "paddingBottom": 0,
               }
             }
@@ -129,7 +129,7 @@ exports[`Systems.js should match the snapshot 1`] = `
             <section
               className="pf-l-page__main-section pf-c-page__main-section"
               style={
-                Object {
+                {
                   "paddingBottom": 0,
                 }
               }
@@ -153,8 +153,8 @@ exports[`Systems.js should match the snapshot 1`] = `
                         apply={[Function]}
                         color="var(--pf-global--success-color--100)"
                         filter={
-                          Object {
-                            "filter": Object {
+                          {
+                            "filter": {
                               "packages_updatable": "eq:0",
                             },
                           }
@@ -174,7 +174,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                           >
                             <CardTitle
                               style={
-                                Object {
+                                {
                                   "marginTop": "0px",
                                 }
                               }
@@ -182,7 +182,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                               <div
                                 className="pf-c-card__title"
                                 style={
-                                  Object {
+                                  {
                                     "marginTop": "0px",
                                   }
                                 }
@@ -198,12 +198,12 @@ exports[`Systems.js should match the snapshot 1`] = `
                               >
                                 <Flex
                                   flex={
-                                    Object {
+                                    {
                                       "default": "inlineFlex",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "flexWrap": "nowrap",
                                     }
                                   }
@@ -211,19 +211,19 @@ exports[`Systems.js should match the snapshot 1`] = `
                                   <div
                                     className="pf-l-flex pf-m-inline-flex"
                                     style={
-                                      Object {
+                                      {
                                         "flexWrap": "nowrap",
                                       }
                                     }
                                   >
                                     <FlexItem
                                       alignSelf={
-                                        Object {
+                                        {
                                           "default": "alignSelfCenter",
                                         }
                                       }
                                       spacer={
-                                        Object {
+                                        {
                                           "default": "spacerMd",
                                         }
                                       }
@@ -243,7 +243,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                             height="1.5em"
                                             role="img"
                                             style={
-                                              Object {
+                                              {
                                                 "verticalAlign": "-0.1875em",
                                               }
                                             }
@@ -259,7 +259,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                     </FlexItem>
                                     <FlexItem
                                       spacer={
-                                        Object {
+                                        {
                                           "default": "spacerNone",
                                         }
                                       }
@@ -273,7 +273,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                           <div
                                             className="pf-c-skeleton"
                                             style={
-                                              Object {
+                                              {
                                                 "--pf-c-skeleton--Height": undefined,
                                                 "--pf-c-skeleton--Width": "24px",
                                               }
@@ -307,8 +307,8 @@ exports[`Systems.js should match the snapshot 1`] = `
                         apply={[Function]}
                         color="var(--pf-global--primary-color--100)"
                         filter={
-                          Object {
-                            "filter": Object {
+                          {
+                            "filter": {
                               "packages_updatable": "gt:0",
                             },
                           }
@@ -328,7 +328,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                           >
                             <CardTitle
                               style={
-                                Object {
+                                {
                                   "marginTop": "0px",
                                 }
                               }
@@ -336,7 +336,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                               <div
                                 className="pf-c-card__title"
                                 style={
-                                  Object {
+                                  {
                                     "marginTop": "0px",
                                   }
                                 }
@@ -352,12 +352,12 @@ exports[`Systems.js should match the snapshot 1`] = `
                               >
                                 <Flex
                                   flex={
-                                    Object {
+                                    {
                                       "default": "inlineFlex",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "flexWrap": "nowrap",
                                     }
                                   }
@@ -365,19 +365,19 @@ exports[`Systems.js should match the snapshot 1`] = `
                                   <div
                                     className="pf-l-flex pf-m-inline-flex"
                                     style={
-                                      Object {
+                                      {
                                         "flexWrap": "nowrap",
                                       }
                                     }
                                   >
                                     <FlexItem
                                       alignSelf={
-                                        Object {
+                                        {
                                           "default": "alignSelfCenter",
                                         }
                                       }
                                       spacer={
-                                        Object {
+                                        {
                                           "default": "spacerMd",
                                         }
                                       }
@@ -397,7 +397,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                             height="1.5em"
                                             role="img"
                                             style={
-                                              Object {
+                                              {
                                                 "verticalAlign": "-0.1875em",
                                               }
                                             }
@@ -413,7 +413,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                     </FlexItem>
                                     <FlexItem
                                       spacer={
-                                        Object {
+                                        {
                                           "default": "spacerNone",
                                         }
                                       }
@@ -427,7 +427,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                           <div
                                             className="pf-c-skeleton"
                                             style={
-                                              Object {
+                                              {
                                                 "--pf-c-skeleton--Height": undefined,
                                                 "--pf-c-skeleton--Width": "24px",
                                               }
@@ -461,8 +461,8 @@ exports[`Systems.js should match the snapshot 1`] = `
                         apply={[Function]}
                         color="var(--pf-global--warning-color--100)"
                         filter={
-                          Object {
-                            "filter": Object {
+                          {
+                            "filter": {
                               "stale": true,
                             },
                           }
@@ -482,7 +482,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                           >
                             <CardTitle
                               style={
-                                Object {
+                                {
                                   "marginTop": "0px",
                                 }
                               }
@@ -490,7 +490,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                               <div
                                 className="pf-c-card__title"
                                 style={
-                                  Object {
+                                  {
                                     "marginTop": "0px",
                                   }
                                 }
@@ -506,12 +506,12 @@ exports[`Systems.js should match the snapshot 1`] = `
                               >
                                 <Flex
                                   flex={
-                                    Object {
+                                    {
                                       "default": "inlineFlex",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "flexWrap": "nowrap",
                                     }
                                   }
@@ -519,19 +519,19 @@ exports[`Systems.js should match the snapshot 1`] = `
                                   <div
                                     className="pf-l-flex pf-m-inline-flex"
                                     style={
-                                      Object {
+                                      {
                                         "flexWrap": "nowrap",
                                       }
                                     }
                                   >
                                     <FlexItem
                                       alignSelf={
-                                        Object {
+                                        {
                                           "default": "alignSelfCenter",
                                         }
                                       }
                                       spacer={
-                                        Object {
+                                        {
                                           "default": "spacerMd",
                                         }
                                       }
@@ -551,7 +551,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                             height="1.5em"
                                             role="img"
                                             style={
-                                              Object {
+                                              {
                                                 "verticalAlign": "-0.1875em",
                                               }
                                             }
@@ -567,7 +567,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                     </FlexItem>
                                     <FlexItem
                                       spacer={
-                                        Object {
+                                        {
                                           "default": "spacerNone",
                                         }
                                       }
@@ -581,7 +581,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                                           <div
                                             className="pf-c-skeleton"
                                             style={
-                                              Object {
+                                              {
                                                 "--pf-c-skeleton--Height": undefined,
                                                 "--pf-c-skeleton--Width": "24px",
                                               }
@@ -610,34 +610,34 @@ exports[`Systems.js should match the snapshot 1`] = `
         </SystemsStatusReport>
         <PatchSetWrapper
           patchSetState={
-            Object {
+            {
               "isAssignSystemsModalOpen": false,
               "isPatchSetWizardOpen": false,
               "isUnassignSystemsModalOpen": false,
               "shouldRefresh": false,
-              "systemsIDs": Array [],
+              "systemsIDs": [],
             }
           }
           setPatchSetState={[Function]}
         >
           <injectIntl(AssignSystemsModal)
             patchSetState={
-              Object {
+              {
                 "isAssignSystemsModalOpen": false,
                 "isPatchSetWizardOpen": false,
                 "isUnassignSystemsModalOpen": false,
                 "shouldRefresh": false,
-                "systemsIDs": Array [],
+                "systemsIDs": [],
               }
             }
             setPatchSetState={[Function]}
-            systemsIDs={Array []}
+            systemsIDs={[]}
           >
             <AssignSystemsModal
               intl={
-                Object {
+                {
                   "$t": [Function],
-                  "defaultFormats": Object {},
+                  "defaultFormats": {},
                   "defaultLocale": "en",
                   "defaultRichTextElements": undefined,
                   "fallbackOnEmptyString": true,
@@ -654,8 +654,8 @@ exports[`Systems.js should match the snapshot 1`] = `
                   "formatRelativeTime": [Function],
                   "formatTime": [Function],
                   "formatTimeToParts": [Function],
-                  "formats": Object {},
-                  "formatters": Object {
+                  "formats": {},
+                  "formatters": {
                     "getDateTimeFormat": [Function],
                     "getDisplayNames": [Function],
                     "getListFormat": [Function],
@@ -665,7 +665,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                     "getRelativeTimeFormat": [Function],
                   },
                   "locale": "en",
-                  "messages": Object {
+                  "messages": {
                     "default.cancel": "Cancel",
                     "default.delete": "Delete",
                     "default.remove": "Remove",
@@ -679,20 +679,20 @@ exports[`Systems.js should match the snapshot 1`] = `
                 }
               }
               patchSetState={
-                Object {
+                {
                   "isAssignSystemsModalOpen": false,
                   "isPatchSetWizardOpen": false,
                   "isUnassignSystemsModalOpen": false,
                   "shouldRefresh": false,
-                  "systemsIDs": Array [],
+                  "systemsIDs": [],
                 }
               }
               setPatchSetState={[Function]}
-              systemsIDs={Array []}
+              systemsIDs={[]}
             >
               <Modal
                 actions={
-                  Array [
+                  [
                     <Button
                       isDisabled={true}
                       onClick={[Function]}
@@ -727,7 +727,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                 >
                   <ModalContent
                     actions={
-                      Array [
+                      [
                         <Button
                           isDisabled={true}
                           onClick={[Function]}
@@ -771,26 +771,26 @@ exports[`Systems.js should match the snapshot 1`] = `
           >
             <mockConstructor
               actionsConfig={
-                Object {
-                  "actions": Array [
+                {
+                  "actions": [
                     <AsyncRemediationButton
                       isDisabled={false}
                       isLoading={false}
                       remediationProvider={[MockFunction]}
                     />,
-                    Object {
+                    {
                       "key": "assign-multiple-systems",
                       "label": "Assign to a template",
                       "onClick": [Function],
-                      "props": Object {
+                      "props": {
                         "isDisabled": false,
                       },
                     },
-                    Object {
+                    {
                       "key": "remove-multiple-systems",
                       "label": "Remove from a template",
                       "onClick": [Function],
-                      "props": Object {
+                      "props": {
                         "isDisabled": false,
                       },
                     },
@@ -798,33 +798,33 @@ exports[`Systems.js should match the snapshot 1`] = `
                 }
               }
               activeFiltersConfig={
-                Object {
+                {
                   "deleteTitle": "Reset filters",
-                  "filters": Array [],
+                  "filters": [],
                   "onDelete": [Function],
                 }
               }
               autoRefresh={true}
               bulkSelect={
-                Object {
+                {
                   "checked": null,
                   "isDisabled": false,
-                  "items": Array [
-                    Object {
+                  "items": [
+                    {
                       "onClick": [Function],
                       "title": "Select none (0)",
                     },
-                    Object {
+                    {
                       "onClick": [Function],
                       "title": "Select page (2)",
                     },
-                    Object {
+                    {
                       "onClick": [Function],
                       "title": "Select all (2)",
                     },
                   ],
                   "onSelect": [Function],
-                  "toggleProps": Object {
+                  "toggleProps": {
                     "children": "     1 selected",
                     "data-ouia-component-type": "bulk-select-toggle-button",
                   },
@@ -832,8 +832,8 @@ exports[`Systems.js should match the snapshot 1`] = `
               }
               columns={[Function]}
               customFilters={
-                Object {
-                  "patchParams": Object {
+                {
+                  "patchParams": {
                     "filter": undefined,
                     "search": undefined,
                     "selectedTags": undefined,
@@ -842,16 +842,16 @@ exports[`Systems.js should match the snapshot 1`] = `
                 }
               }
               exportConfig={
-                Object {
+                {
                   "isDisabled": false,
                   "onSelect": [Function],
                 }
               }
               filterConfig={
-                Object {
-                  "items": Array [
-                    Object {
-                      "filterValues": Object {
+                {
+                  "items": [
+                    {
+                      "filterValues": {
                         "aria-label": "search-field",
                         "onChange": [Function],
                         "placeholder": "Filter by name",
@@ -860,14 +860,14 @@ exports[`Systems.js should match the snapshot 1`] = `
                       "label": "System",
                       "type": "text",
                     },
-                    Object {
-                      "filterValues": Object {
-                        "items": Array [
-                          Object {
+                    {
+                      "filterValues": {
+                        "items": [
+                          {
                             "label": "Stale",
                             "value": "true",
                           },
-                          Object {
+                          {
                             "label": "Fresh",
                             "value": "false",
                           },
@@ -879,14 +879,14 @@ exports[`Systems.js should match the snapshot 1`] = `
                       "label": "Status",
                       "type": "checkbox",
                     },
-                    Object {
-                      "filterValues": Object {
-                        "items": Array [
-                          Object {
+                    {
+                      "filterValues": {
+                        "items": [
+                          {
                             "label": "Systems up to date",
                             "value": "eq:0",
                           },
-                          Object {
+                          {
                             "label": "Systems with patches available",
                             "value": "gt:0",
                           },
@@ -898,13 +898,13 @@ exports[`Systems.js should match the snapshot 1`] = `
                       "label": "Patch status",
                       "type": "radio",
                     },
-                    Object {
-                      "filterValues": Object {
-                        "groups": Array [
-                          Object {
+                    {
+                      "filterValues": {
+                        "groups": [
+                          {
                             "groupSelectable": true,
-                            "items": Array [
-                              Object {
+                            "items": [
+                              {
                                 "label": "RHEL 9.0",
                                 "type": "checkbox",
                                 "value": "9.0",
@@ -914,20 +914,20 @@ exports[`Systems.js should match the snapshot 1`] = `
                             "noFilter": true,
                             "value": "9.0",
                           },
-                          Object {
+                          {
                             "groupSelectable": true,
-                            "items": Array [
-                              Object {
+                            "items": [
+                              {
                                 "label": "RHEL 8.6",
                                 "type": "checkbox",
                                 "value": "8.6",
                               },
-                              Object {
+                              {
                                 "label": "RHEL 8.5",
                                 "type": "checkbox",
                                 "value": "8.5",
                               },
-                              Object {
+                              {
                                 "label": "RHEL 8.0",
                                 "type": "checkbox",
                                 "value": "8.0",
@@ -937,10 +937,10 @@ exports[`Systems.js should match the snapshot 1`] = `
                             "noFilter": true,
                             "value": "8.0",
                           },
-                          Object {
+                          {
                             "groupSelectable": true,
-                            "items": Array [
-                              Object {
+                            "items": [
+                              {
                                 "label": "RHEL 6.7",
                                 "type": "checkbox",
                                 "value": "6.7",
@@ -951,7 +951,7 @@ exports[`Systems.js should match the snapshot 1`] = `
                             "value": "6.0",
                           },
                         ],
-                        "selected": Object {},
+                        "selected": {},
                       },
                       "id": "rhel_version",
                       "label": "Operating System",
@@ -964,7 +964,7 @@ exports[`Systems.js should match the snapshot 1`] = `
               }
               getEntities={[Function]}
               hideFilters={
-                Object {
+                {
                   "all": true,
                   "hostGroupFilter": false,
                   "tags": false,
@@ -974,13 +974,13 @@ exports[`Systems.js should match the snapshot 1`] = `
               isFullView={true}
               onLoad={[Function]}
               paginationProps={
-                Object {
+                {
                   "isDisabled": false,
                 }
               }
               showTags={true}
               tableProps={
-                Object {
+                {
                   "actionResolver": [Function],
                   "canSelectAll": false,
                   "className": "patchCompactInventory",

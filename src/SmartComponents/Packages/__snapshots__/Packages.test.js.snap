@@ -70,55 +70,55 @@ exports[`Packages.js should match the snapshot 1`] = `
       <TableView
         apply={[Function]}
         columns={
-          Array [
-            Object {
+          [
+            {
               "key": "name",
               "title": "Name",
-              "transforms": Array [
+              "transforms": [
                 [Function],
                 [Function],
               ],
             },
-            Object {
+            {
               "key": "systems_installed",
-              "props": Object {
+              "props": {
                 "width": 10,
               },
               "title": "Installed systems",
-              "transforms": Array [
+              "transforms": [
                 [Function],
                 [Function],
               ],
             },
-            Object {
+            {
               "key": "systems_applicable",
-              "props": Object {
+              "props": {
                 "width": 10,
               },
               "title": "Applicable systems",
-              "transforms": Array [
+              "transforms": [
                 [Function],
                 [Function],
               ],
             },
-            Object {
+            {
               "key": "systems_installable",
-              "props": Object {
+              "props": {
                 "width": 10,
               },
               "title": "Installable systems",
-              "transforms": Array [
+              "transforms": [
                 [Function],
                 [Function],
               ],
             },
-            Object {
+            {
               "key": "summary",
-              "props": Object {
+              "props": {
                 "width": 30,
               },
               "title": "Summary",
-              "transforms": Array [
+              "transforms": [
                 [Function],
                 [Function],
               ],
@@ -127,19 +127,19 @@ exports[`Packages.js should match the snapshot 1`] = `
         }
         compact={true}
         defaultFilters={
-          Object {
-            "filter": Object {
-              "systems_updatable": Array [
+          {
+            "filter": {
+              "systems_updatable": [
                 "gt:0",
               ],
             },
           }
         }
         filterConfig={
-          Object {
-            "items": Array [
-              Object {
-                "filterValues": Object {
+          {
+            "items": [
+              {
+                "filterValues": {
                   "aria-label": "search-field",
                   "onChange": [Function],
                   "placeholder": "Filter by name or summary",
@@ -148,14 +148,14 @@ exports[`Packages.js should match the snapshot 1`] = `
                 "label": "Package",
                 "type": "text",
               },
-              Object {
-                "filterValues": Object {
-                  "items": Array [
-                    Object {
+              {
+                "filterValues": {
+                  "items": [
+                    {
                       "label": "Systems up to date",
                       "value": "eq:0",
                     },
-                    Object {
+                    {
                       "label": "Systems with patches available",
                       "value": "gt:0",
                     },
@@ -177,63 +177,63 @@ exports[`Packages.js should match the snapshot 1`] = `
         paginationOUIA="package-details-pagination"
         remediationButtonOUIA="toolbar-remediation-button"
         searchChipLabel="Package"
-        sortBy={Object {}}
+        sortBy={{}}
         store={
-          Object {
-            "metadata": Object {
+          {
+            "metadata": {
               "limit": 25,
               "offset": 0,
               "total_items": 0,
             },
-            "queryParams": Object {
+            "queryParams": {
               "page": 1,
               "page_size": 20,
             },
-            "rows": Array [
-              Object {
-                "cells": Array [
-                  Object {
+            "rows": [
+              {
+                "cells": [
+                  {
                     "title": <InsightsLink
                       to="/packages/test-name"
                     >
                       test-name
                     </InsightsLink>,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": "Access control list utilities",
                   },
                 ],
                 "id": "test-name",
                 "key": "test-name",
               },
-              Object {
-                "cells": Array [
-                  Object {
+              {
+                "cells": [
+                  {
                     "title": <InsightsLink
                       to="/packages/test-name-2"
                     >
                       test-name-2
                     </InsightsLink>,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": "Access control list utilities",
                   },
                 ],
@@ -241,7 +241,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                 "key": "test-name-2",
               },
             ],
-            "status": Object {
+            "status": {
               "code": 200,
               "hasError": false,
               "isLoading": false,
@@ -252,30 +252,30 @@ exports[`Packages.js should match the snapshot 1`] = `
       >
         <PrimaryToolbar
           actionsConfig={
-            Object {
-              "actions": Array [
+            {
+              "actions": [
                 undefined,
               ],
             }
           }
           activeFiltersConfig={
-            Object {
+            {
               "deleteTitle": "Reset filters",
-              "filters": Array [],
+              "filters": [],
               "onDelete": [Function],
             }
           }
           exportConfig={
-            Object {
+            {
               "isDisabled": true,
               "onSelect": [Function],
             }
           }
           filterConfig={
-            Object {
-              "items": Array [
-                Object {
-                  "filterValues": Object {
+            {
+              "items": [
+                {
+                  "filterValues": {
                     "aria-label": "search-field",
                     "onChange": [Function],
                     "placeholder": "Filter by name or summary",
@@ -284,14 +284,14 @@ exports[`Packages.js should match the snapshot 1`] = `
                   "label": "Package",
                   "type": "text",
                 },
-                Object {
-                  "filterValues": Object {
-                    "items": Array [
-                      Object {
+                {
+                  "filterValues": {
+                    "items": [
+                      {
                         "label": "Systems up to date",
                         "value": "eq:0",
                       },
-                      Object {
+                      {
                         "label": "Systems with patches available",
                         "value": "gt:0",
                       },
@@ -307,7 +307,7 @@ exports[`Packages.js should match the snapshot 1`] = `
             }
           }
           pagination={
-            Object {
+            {
               "isCompact": true,
               "isDisabled": true,
               "itemCount": 0,
@@ -362,9 +362,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                             >
                               <ConditionalFilter
                                 items={
-                                  Array [
-                                    Object {
-                                      "filterValues": Object {
+                                  [
+                                    {
+                                      "filterValues": {
                                         "aria-label": "search-field",
                                         "onChange": [Function],
                                         "placeholder": "Filter by name or summary",
@@ -373,14 +373,14 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       "label": "Package",
                                       "type": "text",
                                     },
-                                    Object {
-                                      "filterValues": Object {
-                                        "items": Array [
-                                          Object {
+                                    {
+                                      "filterValues": {
+                                        "items": [
+                                          {
                                             "label": "Systems up to date",
                                             "value": "eq:0",
                                           },
-                                          Object {
+                                          {
                                             "label": "Systems with patches available",
                                             "value": "gt:0",
                                           },
@@ -408,7 +408,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         <Dropdown
                                           className="ins-c-conditional-filter__group"
                                           dropdownItems={
-                                            Array [
+                                            [
                                               <DropdownItem
                                                 component="button"
                                                 isHovered={true}
@@ -456,7 +456,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             className="ins-c-conditional-filter__group"
                                             direction="down"
                                             dropdownItems={
-                                              Array [
+                                              [
                                                 <DropdownItem
                                                   component="button"
                                                   isHovered={true}
@@ -527,7 +527,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                 onToggle={[Function]}
                                                 ouiaId="ConditionalFilter"
                                                 parentRef={
-                                                  Object {
+                                                  {
                                                     "current": <div
                                                       class="pf-c-dropdown ins-c-conditional-filter__group"
                                                       data-ouia-component-id="ConditionalFilter"
@@ -609,7 +609,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   onEnter={[Function]}
                                                   onToggle={[Function]}
                                                   parentRef={
-                                                    Object {
+                                                    {
                                                       "current": <div
                                                         class="pf-c-dropdown ins-c-conditional-filter__group"
                                                         data-ouia-component-id="ConditionalFilter"
@@ -701,7 +701,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           height="1em"
                                                           role="img"
                                                           style={
-                                                            Object {
+                                                            {
                                                               "verticalAlign": "-0.125em",
                                                             }
                                                           }
@@ -734,7 +734,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                           height="1em"
                                                           role="img"
                                                           style={
-                                                            Object {
+                                                            {
                                                               "verticalAlign": "-0.125em",
                                                             }
                                                           }
@@ -832,7 +832,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                               height="1em"
                                               role="img"
                                               style={
-                                                Object {
+                                                {
                                                   "verticalAlign": "-0.125em",
                                                 }
                                               }
@@ -857,17 +857,17 @@ exports[`Packages.js should match the snapshot 1`] = `
                     </ForwardRef>
                     <Actions
                       actions={
-                        Array [
+                        [
                           undefined,
                         ]
                       }
                       exportConfig={
-                        Object {
+                        {
                           "isDisabled": true,
                           "onSelect": [Function],
                         }
                       }
-                      overflowActions={Array []}
+                      overflowActions={[]}
                     >
                       <ToolbarItem
                         className="pf-m-spacer-sm"
@@ -881,7 +881,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                           >
                             <Dropdown
                               dropdownItems={
-                                Array [
+                                [
                                   <DropdownItem
                                     component="button"
                                     isDisabled={true}
@@ -925,7 +925,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 className=""
                                 direction="down"
                                 dropdownItems={
-                                  Array [
+                                  [
                                     <DropdownItem
                                       component="button"
                                       isDisabled={true}
@@ -990,7 +990,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     onToggle={[Function]}
                                     ouiaId="Export"
                                     parentRef={
-                                      Object {
+                                      {
                                         "current": <div
                                           class="pf-c-dropdown"
                                           data-ouia-component-id="Export"
@@ -1050,7 +1050,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       onEnter={[Function]}
                                       onToggle={[Function]}
                                       parentRef={
-                                        Object {
+                                        {
                                           "current": <div
                                             class="pf-c-dropdown"
                                             data-ouia-component-id="Export"
@@ -1119,7 +1119,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                               height="1em"
                                               role="img"
                                               style={
-                                                Object {
+                                                {
                                                   "verticalAlign": "-0.125em",
                                                 }
                                               }
@@ -1148,7 +1148,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                           className="pf-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
                         >
                           <Dropdown
-                            dropdownItems={Array []}
+                            dropdownItems={[]}
                             isOpen={false}
                             isPlain={true}
                             onSelect={[Function]}
@@ -1163,7 +1163,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                               autoFocus={true}
                               className=""
                               direction="down"
-                              dropdownItems={Array []}
+                              dropdownItems={[]}
                               isFlipEnabled={true}
                               isGrouped={false}
                               isOpen={false}
@@ -1197,7 +1197,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   onEnter={[Function]}
                                   onToggle={[Function]}
                                   parentRef={
-                                    Object {
+                                    {
                                       "current": <div
                                         class="pf-c-dropdown"
                                         data-ouia-component-id="Actions"
@@ -1247,7 +1247,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     onEnter={[Function]}
                                     onToggle={[Function]}
                                     parentRef={
-                                      Object {
+                                      {
                                         "current": <div
                                           class="pf-c-dropdown"
                                           data-ouia-component-id="Actions"
@@ -1303,7 +1303,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           height="1em"
                                           role="img"
                                           style={
-                                            Object {
+                                            {
                                               "verticalAlign": "-0.125em",
                                             }
                                           }
@@ -1354,27 +1354,27 @@ exports[`Packages.js should match the snapshot 1`] = `
                           perPage={25}
                           perPageComponent="div"
                           perPageOptions={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "title": "10",
                                 "value": 10,
                               },
-                              Object {
+                              {
                                 "title": "20",
                                 "value": 20,
                               },
-                              Object {
+                              {
                                 "title": "50",
                                 "value": 50,
                               },
-                              Object {
+                              {
                                 "title": "100",
                                 "value": 100,
                               },
                             ]
                           }
                           titles={
-                            Object {
+                            {
                               "currPage": "Current page",
                               "items": "",
                               "itemsPerPage": "Items per page",
@@ -1442,20 +1442,20 @@ exports[`Packages.js should match the snapshot 1`] = `
                               perPage={25}
                               perPageComponent="div"
                               perPageOptions={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "title": "10",
                                     "value": 10,
                                   },
-                                  Object {
+                                  {
                                     "title": "20",
                                     "value": 20,
                                   },
-                                  Object {
+                                  {
                                     "title": "50",
                                     "value": 50,
                                   },
-                                  Object {
+                                  {
                                     "title": "100",
                                     "value": 100,
                                   },
@@ -1470,7 +1470,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 className=""
                                 direction="down"
                                 dropdownItems={
-                                  Array [
+                                  [
                                     <DropdownItem
                                       className=""
                                       component="button"
@@ -1561,7 +1561,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     onToggle={[Function]}
                                     optionsToggle=""
                                     parentRef={
-                                      Object {
+                                      {
                                         "current": <div
                                           class="pf-c-options-menu"
                                           data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -1663,7 +1663,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         onEnter={[Function]}
                                         onToggle={[Function]}
                                         parentRef={
-                                          Object {
+                                          {
                                             "current": <div
                                               class="pf-c-options-menu"
                                               data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -1744,7 +1744,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           onEnter={[Function]}
                                           onToggle={[Function]}
                                           parentRef={
-                                            Object {
+                                            {
                                               "current": <div
                                                 class="pf-c-options-menu"
                                                 data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -1835,7 +1835,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                   height="1em"
                                                   role="img"
                                                   style={
-                                                    Object {
+                                                    {
                                                       "verticalAlign": "-0.125em",
                                                     }
                                                   }
@@ -1929,7 +1929,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             height="1em"
                                             role="img"
                                             style={
-                                              Object {
+                                              {
                                                 "verticalAlign": "-0.125em",
                                               }
                                             }
@@ -1989,7 +1989,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             height="1em"
                                             role="img"
                                             style={
-                                              Object {
+                                              {
                                                 "verticalAlign": "-0.125em",
                                               }
                                             }
@@ -2014,13 +2014,13 @@ exports[`Packages.js should match the snapshot 1`] = `
                   </div>
                   <ToolbarExpandableContent
                     chipContainerRef={
-                      Object {
+                      {
                         "current": null,
                       }
                     }
                     clearFiltersButtonText="Clear all filters"
                     expandableContentRef={
-                      Object {
+                      {
                         "current": <div
                           class="pf-c-toolbar__expandable-content"
                           id="ins-primary-data-toolbar-expandable-content-2"
@@ -2054,7 +2054,7 @@ exports[`Packages.js should match the snapshot 1`] = `
               </ToolbarContent>
               <ToolbarChipGroupContent
                 chipGroupContentRef={
-                  Object {
+                  {
                     "current": <div
                       class="pf-c-toolbar__content pf-m-hidden"
                       hidden=""
@@ -2100,55 +2100,55 @@ exports[`Packages.js should match the snapshot 1`] = `
           canSelectAll={false}
           canSortFavorites={true}
           cells={
-            Array [
-              Object {
+            [
+              {
                 "key": "name",
                 "title": "Name",
-                "transforms": Array [
+                "transforms": [
                   [Function],
                   [Function],
                 ],
               },
-              Object {
+              {
                 "key": "systems_installed",
-                "props": Object {
+                "props": {
                   "width": 10,
                 },
                 "title": "Installed systems",
-                "transforms": Array [
+                "transforms": [
                   [Function],
                   [Function],
                 ],
               },
-              Object {
+              {
                 "key": "systems_applicable",
-                "props": Object {
+                "props": {
                   "width": 10,
                 },
                 "title": "Applicable systems",
-                "transforms": Array [
+                "transforms": [
                   [Function],
                   [Function],
                 ],
               },
-              Object {
+              {
                 "key": "systems_installable",
-                "props": Object {
+                "props": {
                   "width": 10,
                 },
                 "title": "Installable systems",
-                "transforms": Array [
+                "transforms": [
                   [Function],
                   [Function],
                 ],
               },
-              Object {
+              {
                 "key": "summary",
-                "props": Object {
+                "props": {
                   "width": 30,
                 },
                 "title": "Summary",
-                "transforms": Array [
+                "transforms": [
                   [Function],
                   [Function],
                 ],
@@ -2174,51 +2174,51 @@ exports[`Packages.js should match the snapshot 1`] = `
           role="grid"
           rowLabeledBy="simple-node"
           rows={
-            Array [
-              Object {
-                "cells": Array [
-                  Object {
+            [
+              {
+                "cells": [
+                  {
                     "title": <InsightsLink
                       to="/packages/test-name"
                     >
                       test-name
                     </InsightsLink>,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": "Access control list utilities",
                   },
                 ],
                 "id": "test-name",
                 "key": "test-name",
               },
-              Object {
-                "cells": Array [
-                  Object {
+              {
+                "cells": [
+                  {
                     "title": <InsightsLink
                       to="/packages/test-name-2"
                     >
                       test-name-2
                     </InsightsLink>,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": undefined,
                   },
-                  Object {
+                  {
                     "title": "Access control list utilities",
                   },
                 ],
@@ -2236,18 +2236,18 @@ exports[`Packages.js should match the snapshot 1`] = `
             borders={true}
             className=""
             columns={
-              Array [
-                Object {
-                  "cell": Object {
-                    "formatters": Array [
+              [
+                {
+                  "cell": {
+                    "formatters": [
                       [Function],
                     ],
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                     ],
                   },
                   "data": undefined,
-                  "extraParams": Object {
+                  "extraParams": {
                     "actionResolver": undefined,
                     "actions": undefined,
                     "actionsToggle": undefined,
@@ -2275,10 +2275,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                     "selectVariant": "checkbox",
                     "sortBy": 0,
                   },
-                  "header": Object {
-                    "formatters": Array [],
+                  "header": {
+                    "formatters": [],
                     "label": "Name",
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                       [Function],
                       [Function],
@@ -2286,22 +2286,22 @@ exports[`Packages.js should match the snapshot 1`] = `
                     ],
                   },
                   "property": "name",
-                  "props": Object {
+                  "props": {
                     "data-key": 0,
                     "data-label": "Name",
                   },
                 },
-                Object {
-                  "cell": Object {
-                    "formatters": Array [
+                {
+                  "cell": {
+                    "formatters": [
                       [Function],
                     ],
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                     ],
                   },
                   "data": undefined,
-                  "extraParams": Object {
+                  "extraParams": {
                     "actionResolver": undefined,
                     "actions": undefined,
                     "actionsToggle": undefined,
@@ -2329,10 +2329,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                     "selectVariant": "checkbox",
                     "sortBy": 0,
                   },
-                  "header": Object {
-                    "formatters": Array [],
+                  "header": {
+                    "formatters": [],
                     "label": "Installed systems",
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                       [Function],
                       [Function],
@@ -2340,23 +2340,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                     ],
                   },
                   "property": "installed-systems",
-                  "props": Object {
+                  "props": {
                     "data-key": 1,
                     "data-label": "Installed systems",
                     "width": 10,
                   },
                 },
-                Object {
-                  "cell": Object {
-                    "formatters": Array [
+                {
+                  "cell": {
+                    "formatters": [
                       [Function],
                     ],
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                     ],
                   },
                   "data": undefined,
-                  "extraParams": Object {
+                  "extraParams": {
                     "actionResolver": undefined,
                     "actions": undefined,
                     "actionsToggle": undefined,
@@ -2384,10 +2384,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                     "selectVariant": "checkbox",
                     "sortBy": 0,
                   },
-                  "header": Object {
-                    "formatters": Array [],
+                  "header": {
+                    "formatters": [],
                     "label": "Applicable systems",
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                       [Function],
                       [Function],
@@ -2395,23 +2395,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                     ],
                   },
                   "property": "applicable-systems",
-                  "props": Object {
+                  "props": {
                     "data-key": 2,
                     "data-label": "Applicable systems",
                     "width": 10,
                   },
                 },
-                Object {
-                  "cell": Object {
-                    "formatters": Array [
+                {
+                  "cell": {
+                    "formatters": [
                       [Function],
                     ],
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                     ],
                   },
                   "data": undefined,
-                  "extraParams": Object {
+                  "extraParams": {
                     "actionResolver": undefined,
                     "actions": undefined,
                     "actionsToggle": undefined,
@@ -2439,10 +2439,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                     "selectVariant": "checkbox",
                     "sortBy": 0,
                   },
-                  "header": Object {
-                    "formatters": Array [],
+                  "header": {
+                    "formatters": [],
                     "label": "Installable systems",
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                       [Function],
                       [Function],
@@ -2450,23 +2450,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                     ],
                   },
                   "property": "installable-systems",
-                  "props": Object {
+                  "props": {
                     "data-key": 3,
                     "data-label": "Installable systems",
                     "width": 10,
                   },
                 },
-                Object {
-                  "cell": Object {
-                    "formatters": Array [
+                {
+                  "cell": {
+                    "formatters": [
                       [Function],
                     ],
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                     ],
                   },
                   "data": undefined,
-                  "extraParams": Object {
+                  "extraParams": {
                     "actionResolver": undefined,
                     "actions": undefined,
                     "actionsToggle": undefined,
@@ -2494,10 +2494,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                     "selectVariant": "checkbox",
                     "sortBy": 0,
                   },
-                  "header": Object {
-                    "formatters": Array [],
+                  "header": {
+                    "formatters": [],
                     "label": "Summary",
-                    "transforms": Array [
+                    "transforms": [
                       [Function],
                       [Function],
                       [Function],
@@ -2505,7 +2505,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                     ],
                   },
                   "property": "summary",
-                  "props": Object {
+                  "props": {
                     "data-key": 4,
                     "data-label": "Summary",
                     "width": 30,
@@ -2520,13 +2520,13 @@ exports[`Packages.js should match the snapshot 1`] = `
             ouiaId="package-details-table"
             ouiaSafe={true}
             renderers={
-              Object {
-                "body": Object {
+              {
+                "body": {
                   "cell": [Function],
                   "row": [Function],
                   "wrapper": [Function],
                 },
-                "header": Object {
+                "header": {
                   "cell": [Function],
                 },
               }
@@ -2580,18 +2580,18 @@ exports[`Packages.js should match the snapshot 1`] = `
                         <BaseHeader
                           className=""
                           columns={
-                            Array [
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                            [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -2619,10 +2619,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Name",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -2630,22 +2630,22 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "name",
-                                "props": Object {
+                                "props": {
                                   "data-key": 0,
                                   "data-label": "Name",
                                 },
                               },
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -2673,10 +2673,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Installed systems",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -2684,23 +2684,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "installed-systems",
-                                "props": Object {
+                                "props": {
                                   "data-key": 1,
                                   "data-label": "Installed systems",
                                   "width": 10,
                                 },
                               },
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -2728,10 +2728,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Applicable systems",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -2739,23 +2739,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "applicable-systems",
-                                "props": Object {
+                                "props": {
                                   "data-key": 2,
                                   "data-label": "Applicable systems",
                                   "width": 10,
                                 },
                               },
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -2783,10 +2783,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Installable systems",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -2794,23 +2794,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "installable-systems",
-                                "props": Object {
+                                "props": {
                                   "data-key": 3,
                                   "data-label": "Installable systems",
                                   "width": 10,
                                 },
                               },
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -2838,10 +2838,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Summary",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -2849,7 +2849,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "summary",
-                                "props": Object {
+                                "props": {
                                   "data-key": 4,
                                   "data-label": "Summary",
                                   "width": 30,
@@ -2859,24 +2859,24 @@ exports[`Packages.js should match the snapshot 1`] = `
                           }
                           headerRows={null}
                           renderers={
-                            Object {
-                              "body": Object {
+                            {
+                              "body": {
                                 "cell": [Function],
                                 "row": [Function],
                                 "wrapper": [Function],
                               },
-                              "header": Object {
+                              "header": {
                                 "cell": [Function],
-                                "row": Object {
+                                "row": {
                                   "$$typeof": Symbol(react.forward_ref),
                                   "render": [Function],
                                 },
-                                "wrapper": Object {
+                                "wrapper": {
                                   "$$typeof": Symbol(react.forward_ref),
                                   "render": [Function],
                                 },
                               },
-                              "table": Object {
+                              "table": {
                                 "$$typeof": Symbol(react.forward_ref),
                                 "render": [Function],
                               },
@@ -2896,31 +2896,31 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 <HeaderRow
                                   key="0-header-row"
                                   renderers={
-                                    Object {
+                                    {
                                       "cell": [Function],
-                                      "row": Object {
+                                      "row": {
                                         "$$typeof": Symbol(react.forward_ref),
                                         "render": [Function],
                                       },
-                                      "wrapper": Object {
+                                      "wrapper": {
                                         "$$typeof": Symbol(react.forward_ref),
                                         "render": [Function],
                                       },
                                     }
                                   }
                                   rowData={
-                                    Array [
-                                      Object {
-                                        "cell": Object {
-                                          "formatters": Array [
+                                    [
+                                      {
+                                        "cell": {
+                                          "formatters": [
                                             [Function],
                                           ],
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                           ],
                                         },
                                         "data": undefined,
-                                        "extraParams": Object {
+                                        "extraParams": {
                                           "actionResolver": undefined,
                                           "actions": undefined,
                                           "actionsToggle": undefined,
@@ -2948,10 +2948,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "selectVariant": "checkbox",
                                           "sortBy": 0,
                                         },
-                                        "header": Object {
-                                          "formatters": Array [],
+                                        "header": {
+                                          "formatters": [],
                                           "label": "Name",
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                             [Function],
                                             [Function],
@@ -2959,22 +2959,22 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           ],
                                         },
                                         "property": "name",
-                                        "props": Object {
+                                        "props": {
                                           "data-key": 0,
                                           "data-label": "Name",
                                         },
                                       },
-                                      Object {
-                                        "cell": Object {
-                                          "formatters": Array [
+                                      {
+                                        "cell": {
+                                          "formatters": [
                                             [Function],
                                           ],
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                           ],
                                         },
                                         "data": undefined,
-                                        "extraParams": Object {
+                                        "extraParams": {
                                           "actionResolver": undefined,
                                           "actions": undefined,
                                           "actionsToggle": undefined,
@@ -3002,10 +3002,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "selectVariant": "checkbox",
                                           "sortBy": 0,
                                         },
-                                        "header": Object {
-                                          "formatters": Array [],
+                                        "header": {
+                                          "formatters": [],
                                           "label": "Installed systems",
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                             [Function],
                                             [Function],
@@ -3013,23 +3013,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           ],
                                         },
                                         "property": "installed-systems",
-                                        "props": Object {
+                                        "props": {
                                           "data-key": 1,
                                           "data-label": "Installed systems",
                                           "width": 10,
                                         },
                                       },
-                                      Object {
-                                        "cell": Object {
-                                          "formatters": Array [
+                                      {
+                                        "cell": {
+                                          "formatters": [
                                             [Function],
                                           ],
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                           ],
                                         },
                                         "data": undefined,
-                                        "extraParams": Object {
+                                        "extraParams": {
                                           "actionResolver": undefined,
                                           "actions": undefined,
                                           "actionsToggle": undefined,
@@ -3057,10 +3057,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "selectVariant": "checkbox",
                                           "sortBy": 0,
                                         },
-                                        "header": Object {
-                                          "formatters": Array [],
+                                        "header": {
+                                          "formatters": [],
                                           "label": "Applicable systems",
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                             [Function],
                                             [Function],
@@ -3068,23 +3068,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           ],
                                         },
                                         "property": "applicable-systems",
-                                        "props": Object {
+                                        "props": {
                                           "data-key": 2,
                                           "data-label": "Applicable systems",
                                           "width": 10,
                                         },
                                       },
-                                      Object {
-                                        "cell": Object {
-                                          "formatters": Array [
+                                      {
+                                        "cell": {
+                                          "formatters": [
                                             [Function],
                                           ],
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                           ],
                                         },
                                         "data": undefined,
-                                        "extraParams": Object {
+                                        "extraParams": {
                                           "actionResolver": undefined,
                                           "actions": undefined,
                                           "actionsToggle": undefined,
@@ -3112,10 +3112,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "selectVariant": "checkbox",
                                           "sortBy": 0,
                                         },
-                                        "header": Object {
-                                          "formatters": Array [],
+                                        "header": {
+                                          "formatters": [],
                                           "label": "Installable systems",
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                             [Function],
                                             [Function],
@@ -3123,23 +3123,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           ],
                                         },
                                         "property": "installable-systems",
-                                        "props": Object {
+                                        "props": {
                                           "data-key": 3,
                                           "data-label": "Installable systems",
                                           "width": 10,
                                         },
                                       },
-                                      Object {
-                                        "cell": Object {
-                                          "formatters": Array [
+                                      {
+                                        "cell": {
+                                          "formatters": [
                                             [Function],
                                           ],
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                           ],
                                         },
                                         "data": undefined,
-                                        "extraParams": Object {
+                                        "extraParams": {
                                           "actionResolver": undefined,
                                           "actions": undefined,
                                           "actionsToggle": undefined,
@@ -3167,10 +3167,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "selectVariant": "checkbox",
                                           "sortBy": 0,
                                         },
-                                        "header": Object {
-                                          "formatters": Array [],
+                                        "header": {
+                                          "formatters": [],
                                           "label": "Summary",
-                                          "transforms": Array [
+                                          "transforms": [
                                             [Function],
                                             [Function],
                                             [Function],
@@ -3178,7 +3178,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           ],
                                         },
                                         "property": "summary",
-                                        "props": Object {
+                                        "props": {
                                           "data-key": 4,
                                           "data-label": "Summary",
                                           "width": 30,
@@ -3274,7 +3274,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                             height="1em"
                                                             role="img"
                                                             style={
-                                                              Object {
+                                                              {
                                                                 "verticalAlign": "-0.125em",
                                                               }
                                                             }
@@ -3372,7 +3372,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                             height="1em"
                                                             role="img"
                                                             style={
-                                                              Object {
+                                                              {
                                                                 "verticalAlign": "-0.125em",
                                                               }
                                                             }
@@ -3470,7 +3470,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                             height="1em"
                                                             role="img"
                                                             style={
-                                                              Object {
+                                                              {
                                                                 "verticalAlign": "-0.125em",
                                                               }
                                                             }
@@ -3568,7 +3568,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                             height="1em"
                                                             role="img"
                                                             style={
-                                                              Object {
+                                                              {
                                                                 "verticalAlign": "-0.125em",
                                                               }
                                                             }
@@ -3666,7 +3666,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                                             height="1em"
                                                             role="img"
                                                             style={
-                                                              Object {
+                                                              {
                                                                 "verticalAlign": "-0.125em",
                                                               }
                                                             }
@@ -3701,18 +3701,18 @@ exports[`Packages.js should match the snapshot 1`] = `
                     <ContextBody
                       className=""
                       headerData={
-                        Array [
-                          Object {
-                            "cell": Object {
-                              "formatters": Array [
+                        [
+                          {
+                            "cell": {
+                              "formatters": [
                                 [Function],
                               ],
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                               ],
                             },
                             "data": undefined,
-                            "extraParams": Object {
+                            "extraParams": {
                               "actionResolver": undefined,
                               "actions": undefined,
                               "actionsToggle": undefined,
@@ -3740,10 +3740,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "selectVariant": "checkbox",
                               "sortBy": 0,
                             },
-                            "header": Object {
-                              "formatters": Array [],
+                            "header": {
+                              "formatters": [],
                               "label": "Name",
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                                 [Function],
                                 [Function],
@@ -3751,22 +3751,22 @@ exports[`Packages.js should match the snapshot 1`] = `
                               ],
                             },
                             "property": "name",
-                            "props": Object {
+                            "props": {
                               "data-key": 0,
                               "data-label": "Name",
                             },
                           },
-                          Object {
-                            "cell": Object {
-                              "formatters": Array [
+                          {
+                            "cell": {
+                              "formatters": [
                                 [Function],
                               ],
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                               ],
                             },
                             "data": undefined,
-                            "extraParams": Object {
+                            "extraParams": {
                               "actionResolver": undefined,
                               "actions": undefined,
                               "actionsToggle": undefined,
@@ -3794,10 +3794,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "selectVariant": "checkbox",
                               "sortBy": 0,
                             },
-                            "header": Object {
-                              "formatters": Array [],
+                            "header": {
+                              "formatters": [],
                               "label": "Installed systems",
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                                 [Function],
                                 [Function],
@@ -3805,23 +3805,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                               ],
                             },
                             "property": "installed-systems",
-                            "props": Object {
+                            "props": {
                               "data-key": 1,
                               "data-label": "Installed systems",
                               "width": 10,
                             },
                           },
-                          Object {
-                            "cell": Object {
-                              "formatters": Array [
+                          {
+                            "cell": {
+                              "formatters": [
                                 [Function],
                               ],
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                               ],
                             },
                             "data": undefined,
-                            "extraParams": Object {
+                            "extraParams": {
                               "actionResolver": undefined,
                               "actions": undefined,
                               "actionsToggle": undefined,
@@ -3849,10 +3849,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "selectVariant": "checkbox",
                               "sortBy": 0,
                             },
-                            "header": Object {
-                              "formatters": Array [],
+                            "header": {
+                              "formatters": [],
                               "label": "Applicable systems",
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                                 [Function],
                                 [Function],
@@ -3860,23 +3860,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                               ],
                             },
                             "property": "applicable-systems",
-                            "props": Object {
+                            "props": {
                               "data-key": 2,
                               "data-label": "Applicable systems",
                               "width": 10,
                             },
                           },
-                          Object {
-                            "cell": Object {
-                              "formatters": Array [
+                          {
+                            "cell": {
+                              "formatters": [
                                 [Function],
                               ],
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                               ],
                             },
                             "data": undefined,
-                            "extraParams": Object {
+                            "extraParams": {
                               "actionResolver": undefined,
                               "actions": undefined,
                               "actionsToggle": undefined,
@@ -3904,10 +3904,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "selectVariant": "checkbox",
                               "sortBy": 0,
                             },
-                            "header": Object {
-                              "formatters": Array [],
+                            "header": {
+                              "formatters": [],
                               "label": "Installable systems",
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                                 [Function],
                                 [Function],
@@ -3915,23 +3915,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                               ],
                             },
                             "property": "installable-systems",
-                            "props": Object {
+                            "props": {
                               "data-key": 3,
                               "data-label": "Installable systems",
                               "width": 10,
                             },
                           },
-                          Object {
-                            "cell": Object {
-                              "formatters": Array [
+                          {
+                            "cell": {
+                              "formatters": [
                                 [Function],
                               ],
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                               ],
                             },
                             "data": undefined,
-                            "extraParams": Object {
+                            "extraParams": {
                               "actionResolver": undefined,
                               "actions": undefined,
                               "actionsToggle": undefined,
@@ -3959,10 +3959,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "selectVariant": "checkbox",
                               "sortBy": 0,
                             },
-                            "header": Object {
-                              "formatters": Array [],
+                            "header": {
+                              "formatters": [],
                               "label": "Summary",
-                              "transforms": Array [
+                              "transforms": [
                                 [Function],
                                 [Function],
                                 [Function],
@@ -3970,7 +3970,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                               ],
                             },
                             "property": "summary",
-                            "props": Object {
+                            "props": {
                               "data-key": 4,
                               "data-label": "Summary",
                               "width": 30,
@@ -3983,51 +3983,51 @@ exports[`Packages.js should match the snapshot 1`] = `
                       onRowClick={[Function]}
                       rowKey="secretTableRowKeyId"
                       rows={
-                        Array [
-                          Object {
-                            "cells": Array [
-                              Object {
+                        [
+                          {
+                            "cells": [
+                              {
                                 "title": <InsightsLink
                                   to="/packages/test-name"
                                 >
                                   test-name
                                 </InsightsLink>,
                               },
-                              Object {
+                              {
                                 "title": undefined,
                               },
-                              Object {
+                              {
                                 "title": undefined,
                               },
-                              Object {
+                              {
                                 "title": undefined,
                               },
-                              Object {
+                              {
                                 "title": "Access control list utilities",
                               },
                             ],
                             "id": "test-name",
                             "key": "test-name",
                           },
-                          Object {
-                            "cells": Array [
-                              Object {
+                          {
+                            "cells": [
+                              {
                                 "title": <InsightsLink
                                   to="/packages/test-name-2"
                                 >
                                   test-name-2
                                 </InsightsLink>,
                               },
-                              Object {
+                              {
                                 "title": undefined,
                               },
-                              Object {
+                              {
                                 "title": undefined,
                               },
-                              Object {
+                              {
                                 "title": undefined,
                               },
-                              Object {
+                              {
                                 "title": "Access control list utilities",
                               },
                             ],
@@ -4041,47 +4041,47 @@ exports[`Packages.js should match the snapshot 1`] = `
                         className=""
                         headerRows={null}
                         mappedRows={
-                          Array [
-                            Object {
-                              "applicable-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                          [
+                            {
+                              "applicable-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
                               },
-                              "cells": Array [
-                                Object {
+                              "cells": [
+                                {
                                   "title": <InsightsLink
                                     to="/packages/test-name"
                                   >
                                     test-name
                                   </InsightsLink>,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": "Access control list utilities",
                                 },
                               ],
                               "id": "test-name",
-                              "installable-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "installable-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
                               },
-                              "installed-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "installed-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
@@ -4093,9 +4093,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "isLast": false,
                               "isLastVisible": false,
                               "key": "test-name",
-                              "name": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "name": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": <InsightsLink
@@ -4105,54 +4105,54 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 </InsightsLink>,
                               },
                               "secretTableRowKeyId": "test-name",
-                              "summary": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "summary": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": "Access control list utilities",
                               },
                             },
-                            Object {
-                              "applicable-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                            {
+                              "applicable-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
                               },
-                              "cells": Array [
-                                Object {
+                              "cells": [
+                                {
                                   "title": <InsightsLink
                                     to="/packages/test-name-2"
                                   >
                                     test-name-2
                                   </InsightsLink>,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": "Access control list utilities",
                                 },
                               ],
                               "id": "test-name-2",
-                              "installable-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "installable-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
                               },
-                              "installed-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "installed-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
@@ -4164,9 +4164,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "isLast": true,
                               "isLastVisible": true,
                               "key": "test-name-2",
-                              "name": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "name": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": <InsightsLink
@@ -4176,9 +4176,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 </InsightsLink>,
                               },
                               "secretTableRowKeyId": "test-name-2",
-                              "summary": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "summary": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": "Access control list utilities",
@@ -4189,47 +4189,47 @@ exports[`Packages.js should match the snapshot 1`] = `
                         onRow={[Function]}
                         rowKey="secretTableRowKeyId"
                         rows={
-                          Array [
-                            Object {
-                              "applicable-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                          [
+                            {
+                              "applicable-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
                               },
-                              "cells": Array [
-                                Object {
+                              "cells": [
+                                {
                                   "title": <InsightsLink
                                     to="/packages/test-name"
                                   >
                                     test-name
                                   </InsightsLink>,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": "Access control list utilities",
                                 },
                               ],
                               "id": "test-name",
-                              "installable-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "installable-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
                               },
-                              "installed-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "installed-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
@@ -4241,9 +4241,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "isLast": false,
                               "isLastVisible": false,
                               "key": "test-name",
-                              "name": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "name": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": <InsightsLink
@@ -4253,54 +4253,54 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 </InsightsLink>,
                               },
                               "secretTableRowKeyId": "test-name",
-                              "summary": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "summary": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": "Access control list utilities",
                               },
                             },
-                            Object {
-                              "applicable-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                            {
+                              "applicable-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
                               },
-                              "cells": Array [
-                                Object {
+                              "cells": [
+                                {
                                   "title": <InsightsLink
                                     to="/packages/test-name-2"
                                   >
                                     test-name-2
                                   </InsightsLink>,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": undefined,
                                 },
-                                Object {
+                                {
                                   "title": "Access control list utilities",
                                 },
                               ],
                               "id": "test-name-2",
-                              "installable-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "installable-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
                               },
-                              "installed-systems": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "installed-systems": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": undefined,
@@ -4312,9 +4312,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                               "isLast": true,
                               "isLastVisible": true,
                               "key": "test-name-2",
-                              "name": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "name": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": <InsightsLink
@@ -4324,9 +4324,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 </InsightsLink>,
                               },
                               "secretTableRowKeyId": "test-name-2",
-                              "summary": Object {
-                                "formatters": Array [],
-                                "props": Object {
+                              "summary": {
+                                "formatters": [],
+                                "props": {
                                   "isVisible": true,
                                 },
                                 "title": "Access control list utilities",
@@ -4338,18 +4338,18 @@ exports[`Packages.js should match the snapshot 1`] = `
                         <BaseBody
                           className=""
                           columns={
-                            Array [
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                            [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -4377,10 +4377,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Name",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -4388,22 +4388,22 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "name",
-                                "props": Object {
+                                "props": {
                                   "data-key": 0,
                                   "data-label": "Name",
                                 },
                               },
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -4431,10 +4431,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Installed systems",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -4442,23 +4442,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "installed-systems",
-                                "props": Object {
+                                "props": {
                                   "data-key": 1,
                                   "data-label": "Installed systems",
                                   "width": 10,
                                 },
                               },
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -4486,10 +4486,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Applicable systems",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -4497,23 +4497,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "applicable-systems",
-                                "props": Object {
+                                "props": {
                                   "data-key": 2,
                                   "data-label": "Applicable systems",
                                   "width": 10,
                                 },
                               },
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -4541,10 +4541,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Installable systems",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -4552,23 +4552,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "installable-systems",
-                                "props": Object {
+                                "props": {
                                   "data-key": 3,
                                   "data-label": "Installable systems",
                                   "width": 10,
                                 },
                               },
-                              Object {
-                                "cell": Object {
-                                  "formatters": Array [
+                              {
+                                "cell": {
+                                  "formatters": [
                                     [Function],
                                   ],
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                   ],
                                 },
                                 "data": undefined,
-                                "extraParams": Object {
+                                "extraParams": {
                                   "actionResolver": undefined,
                                   "actions": undefined,
                                   "actionsToggle": undefined,
@@ -4596,10 +4596,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "selectVariant": "checkbox",
                                   "sortBy": 0,
                                 },
-                                "header": Object {
-                                  "formatters": Array [],
+                                "header": {
+                                  "formatters": [],
                                   "label": "Summary",
-                                  "transforms": Array [
+                                  "transforms": [
                                     [Function],
                                     [Function],
                                     [Function],
@@ -4607,7 +4607,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   ],
                                 },
                                 "property": "summary",
-                                "props": Object {
+                                "props": {
                                   "data-key": 4,
                                   "data-label": "Summary",
                                   "width": 30,
@@ -4617,47 +4617,47 @@ exports[`Packages.js should match the snapshot 1`] = `
                           }
                           headerRows={null}
                           mappedRows={
-                            Array [
-                              Object {
-                                "applicable-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                            [
+                              {
+                                "applicable-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
                                 },
-                                "cells": Array [
-                                  Object {
+                                "cells": [
+                                  {
                                     "title": <InsightsLink
                                       to="/packages/test-name"
                                     >
                                       test-name
                                     </InsightsLink>,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": "Access control list utilities",
                                   },
                                 ],
                                 "id": "test-name",
-                                "installable-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "installable-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
                                 },
-                                "installed-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "installed-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
@@ -4669,9 +4669,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 "isLast": false,
                                 "isLastVisible": false,
                                 "key": "test-name",
-                                "name": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "name": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": <InsightsLink
@@ -4681,54 +4681,54 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   </InsightsLink>,
                                 },
                                 "secretTableRowKeyId": "test-name",
-                                "summary": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "summary": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": "Access control list utilities",
                                 },
                               },
-                              Object {
-                                "applicable-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                              {
+                                "applicable-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
                                 },
-                                "cells": Array [
-                                  Object {
+                                "cells": [
+                                  {
                                     "title": <InsightsLink
                                       to="/packages/test-name-2"
                                     >
                                       test-name-2
                                     </InsightsLink>,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": "Access control list utilities",
                                   },
                                 ],
                                 "id": "test-name-2",
-                                "installable-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "installable-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
                                 },
-                                "installed-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "installed-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
@@ -4740,9 +4740,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 "isLast": true,
                                 "isLastVisible": true,
                                 "key": "test-name-2",
-                                "name": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "name": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": <InsightsLink
@@ -4752,9 +4752,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   </InsightsLink>,
                                 },
                                 "secretTableRowKeyId": "test-name-2",
-                                "summary": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "summary": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": "Access control list utilities",
@@ -4764,24 +4764,24 @@ exports[`Packages.js should match the snapshot 1`] = `
                           }
                           onRow={[Function]}
                           renderers={
-                            Object {
-                              "body": Object {
+                            {
+                              "body": {
                                 "cell": [Function],
                                 "row": [Function],
                                 "wrapper": [Function],
                               },
-                              "header": Object {
+                              "header": {
                                 "cell": [Function],
-                                "row": Object {
+                                "row": {
                                   "$$typeof": Symbol(react.forward_ref),
                                   "render": [Function],
                                 },
-                                "wrapper": Object {
+                                "wrapper": {
                                   "$$typeof": Symbol(react.forward_ref),
                                   "render": [Function],
                                 },
                               },
-                              "table": Object {
+                              "table": {
                                 "$$typeof": Symbol(react.forward_ref),
                                 "render": [Function],
                               },
@@ -4789,47 +4789,47 @@ exports[`Packages.js should match the snapshot 1`] = `
                           }
                           rowKey="secretTableRowKeyId"
                           rows={
-                            Array [
-                              Object {
-                                "applicable-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                            [
+                              {
+                                "applicable-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
                                 },
-                                "cells": Array [
-                                  Object {
+                                "cells": [
+                                  {
                                     "title": <InsightsLink
                                       to="/packages/test-name"
                                     >
                                       test-name
                                     </InsightsLink>,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": "Access control list utilities",
                                   },
                                 ],
                                 "id": "test-name",
-                                "installable-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "installable-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
                                 },
-                                "installed-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "installed-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
@@ -4841,9 +4841,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 "isLast": false,
                                 "isLastVisible": false,
                                 "key": "test-name",
-                                "name": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "name": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": <InsightsLink
@@ -4853,54 +4853,54 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   </InsightsLink>,
                                 },
                                 "secretTableRowKeyId": "test-name",
-                                "summary": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "summary": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": "Access control list utilities",
                                 },
                               },
-                              Object {
-                                "applicable-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                              {
+                                "applicable-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
                                 },
-                                "cells": Array [
-                                  Object {
+                                "cells": [
+                                  {
                                     "title": <InsightsLink
                                       to="/packages/test-name-2"
                                     >
                                       test-name-2
                                     </InsightsLink>,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": undefined,
                                   },
-                                  Object {
+                                  {
                                     "title": "Access control list utilities",
                                   },
                                 ],
                                 "id": "test-name-2",
-                                "installable-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "installable-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
                                 },
-                                "installed-systems": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "installed-systems": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": undefined,
@@ -4912,9 +4912,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 "isLast": true,
                                 "isLastVisible": true,
                                 "key": "test-name-2",
-                                "name": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "name": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": <InsightsLink
@@ -4924,9 +4924,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   </InsightsLink>,
                                 },
                                 "secretTableRowKeyId": "test-name-2",
-                                "summary": Object {
-                                  "formatters": Array [],
-                                  "props": Object {
+                                "summary": {
+                                  "formatters": [],
+                                  "props": {
                                     "isVisible": true,
                                   },
                                   "title": "Access control list utilities",
@@ -4939,47 +4939,47 @@ exports[`Packages.js should match the snapshot 1`] = `
                             className=""
                             headerRows={null}
                             mappedRows={
-                              Array [
-                                Object {
-                                  "applicable-systems": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                              [
+                                {
+                                  "applicable-systems": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": undefined,
                                   },
-                                  "cells": Array [
-                                    Object {
+                                  "cells": [
+                                    {
                                       "title": <InsightsLink
                                         to="/packages/test-name"
                                       >
                                         test-name
                                       </InsightsLink>,
                                     },
-                                    Object {
+                                    {
                                       "title": undefined,
                                     },
-                                    Object {
+                                    {
                                       "title": undefined,
                                     },
-                                    Object {
+                                    {
                                       "title": undefined,
                                     },
-                                    Object {
+                                    {
                                       "title": "Access control list utilities",
                                     },
                                   ],
                                   "id": "test-name",
-                                  "installable-systems": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                  "installable-systems": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": undefined,
                                   },
-                                  "installed-systems": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                  "installed-systems": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": undefined,
@@ -4991,9 +4991,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "isLast": false,
                                   "isLastVisible": false,
                                   "key": "test-name",
-                                  "name": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                  "name": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": <InsightsLink
@@ -5003,54 +5003,54 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     </InsightsLink>,
                                   },
                                   "secretTableRowKeyId": "test-name",
-                                  "summary": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                  "summary": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": "Access control list utilities",
                                   },
                                 },
-                                Object {
-                                  "applicable-systems": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                {
+                                  "applicable-systems": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": undefined,
                                   },
-                                  "cells": Array [
-                                    Object {
+                                  "cells": [
+                                    {
                                       "title": <InsightsLink
                                         to="/packages/test-name-2"
                                       >
                                         test-name-2
                                       </InsightsLink>,
                                     },
-                                    Object {
+                                    {
                                       "title": undefined,
                                     },
-                                    Object {
+                                    {
                                       "title": undefined,
                                     },
-                                    Object {
+                                    {
                                       "title": undefined,
                                     },
-                                    Object {
+                                    {
                                       "title": "Access control list utilities",
                                     },
                                   ],
                                   "id": "test-name-2",
-                                  "installable-systems": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                  "installable-systems": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": undefined,
                                   },
-                                  "installed-systems": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                  "installed-systems": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": undefined,
@@ -5062,9 +5062,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   "isLast": true,
                                   "isLastVisible": true,
                                   "key": "test-name-2",
-                                  "name": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                  "name": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": <InsightsLink
@@ -5074,9 +5074,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     </InsightsLink>,
                                   },
                                   "secretTableRowKeyId": "test-name-2",
-                                  "summary": Object {
-                                    "formatters": Array [],
-                                    "props": Object {
+                                  "summary": {
+                                    "formatters": [],
+                                    "props": {
                                       "isVisible": true,
                                     },
                                     "title": "Access control list utilities",
@@ -5098,18 +5098,18 @@ exports[`Packages.js should match the snapshot 1`] = `
                                 >
                                   <BodyRow
                                     columns={
-                                      Array [
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                      [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5137,10 +5137,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Name",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5148,22 +5148,22 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "name",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 0,
                                             "data-label": "Name",
                                           },
                                         },
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5191,10 +5191,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Installed systems",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5202,23 +5202,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "installed-systems",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 1,
                                             "data-label": "Installed systems",
                                             "width": 10,
                                           },
                                         },
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5246,10 +5246,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Applicable systems",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5257,23 +5257,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "applicable-systems",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 2,
                                             "data-label": "Applicable systems",
                                             "width": 10,
                                           },
                                         },
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5301,10 +5301,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Installable systems",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5312,23 +5312,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "installable-systems",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 3,
                                             "data-label": "Installable systems",
                                             "width": 10,
                                           },
                                         },
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5356,10 +5356,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Summary",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5367,7 +5367,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "summary",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 4,
                                             "data-label": "Summary",
                                             "width": 30,
@@ -5378,53 +5378,53 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     key="test-name-row"
                                     onRow={[Function]}
                                     renderers={
-                                      Object {
+                                      {
                                         "cell": [Function],
                                         "row": [Function],
                                         "wrapper": [Function],
                                       }
                                     }
                                     rowData={
-                                      Object {
-                                        "applicable-systems": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                      {
+                                        "applicable-systems": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": undefined,
                                         },
-                                        "cells": Array [
-                                          Object {
+                                        "cells": [
+                                          {
                                             "title": <InsightsLink
                                               to="/packages/test-name"
                                             >
                                               test-name
                                             </InsightsLink>,
                                           },
-                                          Object {
+                                          {
                                             "title": undefined,
                                           },
-                                          Object {
+                                          {
                                             "title": undefined,
                                           },
-                                          Object {
+                                          {
                                             "title": undefined,
                                           },
-                                          Object {
+                                          {
                                             "title": "Access control list utilities",
                                           },
                                         ],
                                         "id": "test-name",
-                                        "installable-systems": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                        "installable-systems": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": undefined,
                                         },
-                                        "installed-systems": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                        "installed-systems": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": undefined,
@@ -5436,9 +5436,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         "isLast": false,
                                         "isLastVisible": false,
                                         "key": "test-name",
-                                        "name": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                        "name": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": <InsightsLink
@@ -5448,9 +5448,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           </InsightsLink>,
                                         },
                                         "secretTableRowKeyId": "test-name",
-                                        "summary": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                        "summary": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": "Access control list utilities",
@@ -5465,46 +5465,46 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       onClick={[Function]}
                                       onKeyDown={[Function]}
                                       row={
-                                        Object {
-                                          "applicable-systems": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                        {
+                                          "applicable-systems": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": undefined,
                                           },
-                                          "cells": Array [
-                                            Object {
+                                          "cells": [
+                                            {
                                               "title": <InsightsLink
                                                 to="/packages/test-name"
                                               >
                                                 test-name
                                               </InsightsLink>,
                                             },
-                                            Object {
+                                            {
                                               "title": undefined,
                                             },
-                                            Object {
+                                            {
                                               "title": undefined,
                                             },
-                                            Object {
+                                            {
                                               "title": undefined,
                                             },
-                                            Object {
+                                            {
                                               "title": "Access control list utilities",
                                             },
                                           ],
                                           "id": "test-name",
-                                          "installable-systems": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                          "installable-systems": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": undefined,
                                           },
-                                          "installed-systems": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                          "installed-systems": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": undefined,
@@ -5516,9 +5516,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "isLast": false,
                                           "isLastVisible": false,
                                           "key": "test-name",
-                                          "name": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                          "name": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": <InsightsLink
@@ -5528,9 +5528,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             </InsightsLink>,
                                           },
                                           "secretTableRowKeyId": "test-name",
-                                          "summary": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                          "summary": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": "Access control list utilities",
@@ -5538,7 +5538,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         }
                                       }
                                       rowProps={
-                                        Object {
+                                        {
                                           "rowIndex": 0,
                                           "rowKey": "test-name-row",
                                         }
@@ -5760,18 +5760,18 @@ exports[`Packages.js should match the snapshot 1`] = `
                                   </BodyRow>
                                   <BodyRow
                                     columns={
-                                      Array [
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                      [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5799,10 +5799,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Name",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5810,22 +5810,22 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "name",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 0,
                                             "data-label": "Name",
                                           },
                                         },
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5853,10 +5853,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Installed systems",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5864,23 +5864,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "installed-systems",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 1,
                                             "data-label": "Installed systems",
                                             "width": 10,
                                           },
                                         },
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5908,10 +5908,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Applicable systems",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5919,23 +5919,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "applicable-systems",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 2,
                                             "data-label": "Applicable systems",
                                             "width": 10,
                                           },
                                         },
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -5963,10 +5963,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Installable systems",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -5974,23 +5974,23 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "installable-systems",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 3,
                                             "data-label": "Installable systems",
                                             "width": 10,
                                           },
                                         },
-                                        Object {
-                                          "cell": Object {
-                                            "formatters": Array [
+                                        {
+                                          "cell": {
+                                            "formatters": [
                                               [Function],
                                             ],
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                             ],
                                           },
                                           "data": undefined,
-                                          "extraParams": Object {
+                                          "extraParams": {
                                             "actionResolver": undefined,
                                             "actions": undefined,
                                             "actionsToggle": undefined,
@@ -6018,10 +6018,10 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             "selectVariant": "checkbox",
                                             "sortBy": 0,
                                           },
-                                          "header": Object {
-                                            "formatters": Array [],
+                                          "header": {
+                                            "formatters": [],
                                             "label": "Summary",
-                                            "transforms": Array [
+                                            "transforms": [
                                               [Function],
                                               [Function],
                                               [Function],
@@ -6029,7 +6029,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             ],
                                           },
                                           "property": "summary",
-                                          "props": Object {
+                                          "props": {
                                             "data-key": 4,
                                             "data-label": "Summary",
                                             "width": 30,
@@ -6040,53 +6040,53 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     key="test-name-2-row"
                                     onRow={[Function]}
                                     renderers={
-                                      Object {
+                                      {
                                         "cell": [Function],
                                         "row": [Function],
                                         "wrapper": [Function],
                                       }
                                     }
                                     rowData={
-                                      Object {
-                                        "applicable-systems": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                      {
+                                        "applicable-systems": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": undefined,
                                         },
-                                        "cells": Array [
-                                          Object {
+                                        "cells": [
+                                          {
                                             "title": <InsightsLink
                                               to="/packages/test-name-2"
                                             >
                                               test-name-2
                                             </InsightsLink>,
                                           },
-                                          Object {
+                                          {
                                             "title": undefined,
                                           },
-                                          Object {
+                                          {
                                             "title": undefined,
                                           },
-                                          Object {
+                                          {
                                             "title": undefined,
                                           },
-                                          Object {
+                                          {
                                             "title": "Access control list utilities",
                                           },
                                         ],
                                         "id": "test-name-2",
-                                        "installable-systems": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                        "installable-systems": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": undefined,
                                         },
-                                        "installed-systems": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                        "installed-systems": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": undefined,
@@ -6098,9 +6098,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         "isLast": true,
                                         "isLastVisible": true,
                                         "key": "test-name-2",
-                                        "name": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                        "name": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": <InsightsLink
@@ -6110,9 +6110,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           </InsightsLink>,
                                         },
                                         "secretTableRowKeyId": "test-name-2",
-                                        "summary": Object {
-                                          "formatters": Array [],
-                                          "props": Object {
+                                        "summary": {
+                                          "formatters": [],
+                                          "props": {
                                             "isVisible": true,
                                           },
                                           "title": "Access control list utilities",
@@ -6127,46 +6127,46 @@ exports[`Packages.js should match the snapshot 1`] = `
                                       onClick={[Function]}
                                       onKeyDown={[Function]}
                                       row={
-                                        Object {
-                                          "applicable-systems": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                        {
+                                          "applicable-systems": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": undefined,
                                           },
-                                          "cells": Array [
-                                            Object {
+                                          "cells": [
+                                            {
                                               "title": <InsightsLink
                                                 to="/packages/test-name-2"
                                               >
                                                 test-name-2
                                               </InsightsLink>,
                                             },
-                                            Object {
+                                            {
                                               "title": undefined,
                                             },
-                                            Object {
+                                            {
                                               "title": undefined,
                                             },
-                                            Object {
+                                            {
                                               "title": undefined,
                                             },
-                                            Object {
+                                            {
                                               "title": "Access control list utilities",
                                             },
                                           ],
                                           "id": "test-name-2",
-                                          "installable-systems": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                          "installable-systems": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": undefined,
                                           },
-                                          "installed-systems": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                          "installed-systems": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": undefined,
@@ -6178,9 +6178,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                           "isLast": true,
                                           "isLastVisible": true,
                                           "key": "test-name-2",
-                                          "name": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                          "name": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": <InsightsLink
@@ -6190,9 +6190,9 @@ exports[`Packages.js should match the snapshot 1`] = `
                                             </InsightsLink>,
                                           },
                                           "secretTableRowKeyId": "test-name-2",
-                                          "summary": Object {
-                                            "formatters": Array [],
-                                            "props": Object {
+                                          "summary": {
+                                            "formatters": [],
+                                            "props": {
                                               "isVisible": true,
                                             },
                                             "title": "Access control list utilities",
@@ -6200,7 +6200,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                         }
                                       }
                                       rowProps={
-                                        Object {
+                                        {
                                           "rowIndex": 1,
                                           "rowKey": "test-name-2-row",
                                         }
@@ -6466,27 +6466,27 @@ exports[`Packages.js should match the snapshot 1`] = `
             perPage={25}
             perPageComponent="div"
             perPageOptions={
-              Array [
-                Object {
+              [
+                {
                   "title": "10",
                   "value": 10,
                 },
-                Object {
+                {
                   "title": "20",
                   "value": 20,
                 },
-                Object {
+                {
                   "title": "50",
                   "value": 50,
                 },
-                Object {
+                {
                   "title": "100",
                   "value": 100,
                 },
               ]
             }
             titles={
-              Object {
+              {
                 "currPage": "Current page",
                 "items": "",
                 "itemsPerPage": "Items per page",
@@ -6530,20 +6530,20 @@ exports[`Packages.js should match the snapshot 1`] = `
                 perPage={25}
                 perPageComponent="div"
                 perPageOptions={
-                  Array [
-                    Object {
+                  [
+                    {
                       "title": "10",
                       "value": 10,
                     },
-                    Object {
+                    {
                       "title": "20",
                       "value": 20,
                     },
-                    Object {
+                    {
                       "title": "50",
                       "value": 50,
                     },
-                    Object {
+                    {
                       "title": "100",
                       "value": 100,
                     },
@@ -6558,7 +6558,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                   className=""
                   direction="up"
                   dropdownItems={
-                    Array [
+                    [
                       <DropdownItem
                         className=""
                         component="button"
@@ -6649,7 +6649,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                       onToggle={[Function]}
                       optionsToggle=""
                       parentRef={
-                        Object {
+                        {
                           "current": <div
                             class="pf-c-options-menu pf-m-top"
                             data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -6751,7 +6751,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                           onEnter={[Function]}
                           onToggle={[Function]}
                           parentRef={
-                            Object {
+                            {
                               "current": <div
                                 class="pf-c-options-menu pf-m-top"
                                 data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -6832,7 +6832,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                             onEnter={[Function]}
                             onToggle={[Function]}
                             parentRef={
-                              Object {
+                              {
                                 "current": <div
                                   class="pf-c-options-menu pf-m-top"
                                   data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -6923,7 +6923,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                                     height="1em"
                                     role="img"
                                     style={
-                                      Object {
+                                      {
                                         "verticalAlign": "-0.125em",
                                       }
                                     }
@@ -7017,7 +7017,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                               height="1em"
                               role="img"
                               style={
-                                Object {
+                                {
                                   "verticalAlign": "-0.125em",
                                 }
                               }
@@ -7077,7 +7077,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                               height="1em"
                               role="img"
                               style={
-                                Object {
+                                {
                                   "verticalAlign": "-0.125em",
                                 }
                               }
@@ -7159,7 +7159,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                               height="1em"
                               role="img"
                               style={
-                                Object {
+                                {
                                   "verticalAlign": "-0.125em",
                                 }
                               }
@@ -7219,7 +7219,7 @@ exports[`Packages.js should match the snapshot 1`] = `
                               height="1em"
                               role="img"
                               style={
-                                Object {
+                                {
                                   "verticalAlign": "-0.125em",
                                 }
                               }
