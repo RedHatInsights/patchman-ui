@@ -3,7 +3,7 @@
 exports[`PackageDetail.js should match the snapshot 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -16,7 +16,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
   <MemoryRouter>
     <Router
       location={
-        Object {
+        {
           "hash": "",
           "key": "default",
           "pathname": "/",
@@ -26,7 +26,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
       }
       navigationType="POP"
       navigator={
-        Object {
+        {
           "action": "POP",
           "createHref": [Function],
           "createURL": [Function],
@@ -34,7 +34,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
           "go": [Function],
           "index": 0,
           "listen": [Function],
-          "location": Object {
+          "location": {
             "hash": "",
             "key": "default",
             "pathname": "/",
@@ -49,13 +49,13 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
       <PackageDetail>
         <Header
           breadcrumbs={
-            Array [
-              Object {
+            [
+              {
                 "isActive": false,
                 "title": "Packages",
                 "to": "/packages",
               },
-              Object {
+              {
                 "isActive": true,
                 "title": undefined,
               },
@@ -74,13 +74,13 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
               <HeaderBreadcrumbs
                 headerOUIA="package-details"
                 items={
-                  Array [
-                    Object {
+                  [
+                    {
                       "isActive": false,
                       "title": "Packages",
                       "to": "/packages",
                     },
-                    Object {
+                    {
                       "isActive": true,
                       "title": undefined,
                     },
@@ -151,7 +151,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
                                 height="1em"
                                 role="img"
                                 style={
-                                  Object {
+                                  {
                                     "verticalAlign": "-0.125em",
                                   }
                                 }
@@ -214,7 +214,7 @@ exports[`PackageDetail.js should match the snapshot 1`] = `
               </Split>
               <PackageHeader
                 attributes={
-                  Object {
+                  {
                     "id": undefined,
                   }
                 }

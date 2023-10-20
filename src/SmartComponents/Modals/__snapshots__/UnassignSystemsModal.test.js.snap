@@ -4,9 +4,9 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
 <injectIntl(UnassignSystemsModal)
   setUnassignSystemsModalOpen={[Function]}
   unassignSystemsModalState={
-    Object {
+    {
       "isUnassignSystemsModalOpen": true,
-      "systemsIDs": Array [
+      "systemsIDs": [
         "test_1",
         "test_2",
         "test_3",
@@ -16,9 +16,9 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
 >
   <UnassignSystemsModal
     intl={
-      Object {
+      {
         "$t": [Function],
-        "defaultFormats": Object {},
+        "defaultFormats": {},
         "defaultLocale": "en",
         "defaultRichTextElements": undefined,
         "fallbackOnEmptyString": true,
@@ -35,8 +35,8 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
         "formatRelativeTime": [Function],
         "formatTime": [Function],
         "formatTimeToParts": [Function],
-        "formats": Object {},
-        "formatters": Object {
+        "formats": {},
+        "formatters": {
           "getDateTimeFormat": [Function],
           "getDisplayNames": [Function],
           "getListFormat": [Function],
@@ -46,7 +46,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
           "getRelativeTimeFormat": [Function],
         },
         "locale": "en",
-        "messages": Object {
+        "messages": {
           "default.cancel": "Cancel",
           "default.delete": "Delete",
           "default.remove": "Remove",
@@ -61,9 +61,9 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
     }
     setUnassignSystemsModalOpen={[Function]}
     unassignSystemsModalState={
-      Object {
+      {
         "isUnassignSystemsModalOpen": true,
-        "systemsIDs": Array [
+        "systemsIDs": [
           "test_1",
           "test_2",
           "test_3",
@@ -73,7 +73,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
   >
     <Modal
       actions={
-        Array [
+        [
           <Button
             isDisabled={true}
             onClick={[Function]}
@@ -242,7 +242,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
       >
         <ModalContent
           actions={
-            Array [
+            [
               <Button
                 isDisabled={true}
                 onClick={[Function]}
@@ -284,9 +284,9 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                 active={true}
                 className="pf-l-bullseye"
                 focusTrapOptions={
-                  Object {
+                  {
                     "clickOutsideDeactivates": true,
-                    "tabbableOptions": Object {
+                    "tabbableOptions": {
                       "displayCheck": "none",
                     },
                   }
@@ -296,9 +296,9 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                   active={true}
                   className="pf-l-bullseye"
                   focusTrapOptions={
-                    Object {
+                    {
                       "clickOutsideDeactivates": true,
-                      "tabbableOptions": Object {
+                      "tabbableOptions": {
                         "displayCheck": "none",
                       },
                     }
@@ -319,7 +319,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                       data-ouia-component-type="PF4/ModalContent"
                       data-ouia-safe={true}
                       id="pf-modal-part-0"
-                      style={Object {}}
+                      style={{}}
                       variant="small"
                     >
                       <div
@@ -333,7 +333,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                         data-ouia-safe={true}
                         id="pf-modal-part-0"
                         role="dialog"
-                        style={Object {}}
+                        style={{}}
                       >
                         <ModalBoxCloseButton
                           onClose={[Function]}
@@ -378,7 +378,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                                     height="1em"
                                     role="img"
                                     style={
-                                      Object {
+                                      {
                                         "verticalAlign": "-0.125em",
                                       }
                                     }
@@ -425,7 +425,7 @@ exports[`UnassignSystemsModal should match the snapshots 1`] = `
                                       height="1em"
                                       role="img"
                                       style={
-                                        Object {
+                                        {
                                           "verticalAlign": "-0.125em",
                                         }
                                       }

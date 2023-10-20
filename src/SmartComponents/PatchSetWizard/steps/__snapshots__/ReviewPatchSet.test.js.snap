@@ -39,7 +39,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
         >
           <TextContent
             style={
-              Object {
+              {
                 "marginTop": "-15px",
               }
             }
@@ -47,7 +47,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
             <div
               className="pf-c-content"
               style={
-                Object {
+                {
                   "marginTop": "-15px",
                 }
               }
@@ -100,7 +100,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   <TextListItem
                     component="dt"
                     style={
-                      Object {
+                      {
                         "minWidth": 220,
                       }
                     }
@@ -108,7 +108,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                     <dt
                       className=""
                       style={
-                        Object {
+                        {
                           "minWidth": 220,
                         }
                       }
@@ -162,7 +162,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   <TextListItem
                     component="dt"
                     style={
-                      Object {
+                      {
                         "minWidth": 220,
                       }
                     }
@@ -170,7 +170,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                     <dt
                       className=""
                       style={
-                        Object {
+                        {
                           "minWidth": 220,
                         }
                       }
@@ -190,7 +190,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   <TextListItem
                     component="dt"
                     style={
-                      Object {
+                      {
                         "minWidth": 220,
                       }
                     }
@@ -198,7 +198,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                     <dt
                       className=""
                       style={
-                        Object {
+                        {
                           "minWidth": 220,
                         }
                       }
@@ -252,7 +252,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                   <TextListItem
                     component="dt"
                     style={
-                      Object {
+                      {
                         "minWidth": 220,
                       }
                     }
@@ -260,7 +260,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
                     <dt
                       className=""
                       style={
-                        Object {
+                        {
                           "minWidth": 220,
                         }
                       }
@@ -327,7 +327,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
         >
           <TextContent
             style={
-              Object {
+              {
                 "marginTop": "-15px",
               }
             }
@@ -335,7 +335,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
             <div
               className="pf-c-content"
               style={
-                Object {
+                {
                   "marginTop": "-15px",
                 }
               }
@@ -388,7 +388,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   <TextListItem
                     component="dt"
                     style={
-                      Object {
+                      {
                         "minWidth": 220,
                       }
                     }
@@ -396,7 +396,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                     <dt
                       className=""
                       style={
-                        Object {
+                        {
                           "minWidth": 220,
                         }
                       }
@@ -450,7 +450,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   <TextListItem
                     component="dt"
                     style={
-                      Object {
+                      {
                         "minWidth": 220,
                       }
                     }
@@ -458,7 +458,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                     <dt
                       className=""
                       style={
-                        Object {
+                        {
                           "minWidth": 220,
                         }
                       }
@@ -478,7 +478,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   <TextListItem
                     component="dt"
                     style={
-                      Object {
+                      {
                         "minWidth": 220,
                       }
                     }
@@ -486,7 +486,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                     <dt
                       className=""
                       style={
-                        Object {
+                        {
                           "minWidth": 220,
                         }
                       }
@@ -540,7 +540,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                   <TextListItem
                     component="dt"
                     style={
-                      Object {
+                      {
                         "minWidth": 220,
                       }
                     }
@@ -548,7 +548,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
                     <dt
                       className=""
                       style={
-                        Object {
+                        {
                           "minWidth": 220,
                         }
                       }

@@ -3,7 +3,7 @@
 exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -16,7 +16,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
   <BrowserRouter>
     <Router
       location={
-        Object {
+        {
           "hash": "",
           "key": "default",
           "pathname": "/",
@@ -26,14 +26,14 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
       }
       navigationType="POP"
       navigator={
-        Object {
+        {
           "action": "POP",
           "createHref": [Function],
           "createURL": [Function],
           "encodeLocation": [Function],
           "go": [Function],
           "listen": [Function],
-          "location": Object {
+          "location": {
             "hash": "",
             "key": "default",
             "pathname": "/",
@@ -48,13 +48,13 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
       <AdvisoryDetail>
         <Header
           breadcrumbs={
-            Array [
-              Object {
+            [
+              {
                 "isActive": false,
                 "title": "Advisories",
                 "to": "/advisories",
               },
-              Object {
+              {
                 "isActive": true,
                 "title": undefined,
               },
@@ -73,13 +73,13 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
               <HeaderBreadcrumbs
                 headerOUIA="advisory-details"
                 items={
-                  Array [
-                    Object {
+                  [
+                    {
                       "isActive": false,
                       "title": "Advisories",
                       "to": "/advisories",
                     },
-                    Object {
+                    {
                       "isActive": true,
                       "title": undefined,
                     },
@@ -150,7 +150,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
                                 height="1em"
                                 role="img"
                                 style={
-                                  Object {
+                                  {
                                     "verticalAlign": "-0.125em",
                                   }
                                 }
@@ -213,19 +213,19 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
               </Split>
               <Component
                 attributes={
-                  Object {
-                    "cves": Array [
+                  {
+                    "cves": [
                       "CVE-2020-11080",
                     ],
                     "description": "libnghttp2.",
                     "fixes": null,
                     "id": undefined,
                     "modified_date": "2020-06-25T16:31:29Z",
-                    "packages": Object {
+                    "packages": {
                       "libnghttp2": "1.33.0-3.el8_2.1.x86_64",
                     },
                     "public_date": "2020-06-25T16:31:29Z",
-                    "references": Array [],
+                    "references": [],
                     "severity": 3,
                     "solution": "For details",
                     "synopsis": "Important: ",

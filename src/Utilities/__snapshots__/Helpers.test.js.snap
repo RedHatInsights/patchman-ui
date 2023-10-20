@@ -4,7 +4,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 <div
   className="pf-l-flex pf-m-inline-flex"
   style={
-    Object {
+    {
       "flexWrap": "nowrap",
     }
   }
@@ -12,7 +12,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   No applicable advisories
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -29,14 +29,14 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 <div
   className="pf-l-flex pf-m-inline-flex"
   style={
-    Object {
+    {
       "flexWrap": "nowrap",
     }
   }
 >
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -49,7 +49,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -62,7 +62,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -79,14 +79,14 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 <div
   className="pf-l-flex pf-m-inline-flex"
   style={
-    Object {
+    {
       "flexWrap": "nowrap",
     }
   }
 >
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -99,7 +99,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -112,7 +112,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -129,14 +129,14 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 <div
   className="pf-l-flex pf-m-inline-flex"
   style={
-    Object {
+    {
       "flexWrap": "nowrap",
     }
   }
 >
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -149,7 +149,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -162,7 +162,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -179,14 +179,14 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 <div
   className="pf-l-flex pf-m-inline-flex"
   style={
-    Object {
+    {
       "flexWrap": "nowrap",
     }
   }
 >
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -199,7 +199,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -212,7 +212,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
@@ -225,7 +225,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
   </FlexItem>
   <FlexItem
     spacer={
-      Object {
+      {
         "default": "spacerXs",
       }
     }
