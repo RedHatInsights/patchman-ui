@@ -111,36 +111,35 @@ const InventoryDetail = () => {
                             </TextContent>
                         </GridItem>}
                         <GridItem>
-                            {hasThirdPartyRepo && (
-                                satelliteManaged
-                                    ? <Fragment>
-                                        <Alert
-                                            className='pf-u-mt-md'
-                                            isInline
-                                            variant="info"
-                                            title="This system has content managed by Satellite. Installable updates are
-                                            current as of the last time the system checked-in with Red Hat Insights."
-                                        />
-                                        <Alert
-                                            className='pf-u-mt-md'
-                                            isInline
-                                            variant="warning"
-                                            title="This system has content managed by Satellite. For accurate reporting of
-                                            installable updates, check in to Red Hat Insights with the --build-packagecache
-                                            option."
-                                        >
-                                            <a href="https://access.redhat.com/documentation/en-us/red_hat_satellite">
-                                                Read more
-                                            </a>
-                                        </Alert>
-                                    </Fragment>
-                                    : <Alert
+                            {satelliteManaged
+                                ? <Fragment>
+                                    <Alert
                                         className='pf-u-mt-md'
                                         isInline
                                         variant="info"
-                                        title="This system has content that is managed by repositories other than the Red Hat CDN"
+                                        title="This system has content managed by Satellite. Installable updates are
+                                            current as of the last time the system checked-in with Red Hat Insights."
                                     />
-                            )}
+                                    <Alert
+                                        className='pf-u-mt-md'
+                                        isInline
+                                        variant="warning"
+                                        title="This system has content managed by Satellite. For accurate reporting of
+                                            installable updates, check in to Red Hat Insights with the --build-packagecache
+                                            option."
+                                    >
+                                        <a href="https://access.redhat.com/documentation/en-us/red_hat_satellite">
+                                            Read more
+                                        </a>
+                                    </Alert>
+                                </Fragment>
+                                : hasThirdPartyRepo && <Alert
+                                    className='pf-u-mt-md'
+                                    isInline
+                                    variant="info"
+                                    title="This system has content that is managed by repositories other than the Red Hat CDN"
+                                />
+                            }
                         </GridItem>
                     </Grid>
                 </InventoryDetailHead>
