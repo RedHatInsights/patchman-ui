@@ -28,8 +28,6 @@ There is [a comprehensive quick start guide in the Storybook Documentation](http
 
 Note: You will need to set up the Insights environment if you want to develop with the starter app due to the consumption of the chroming service as well as setting up your global/app navigation through the API.
 
-
-
 ## Run the app for the first time
 
 1. ```git clone git@github.com:RedHatInsights/patchman-ui.git```
@@ -76,6 +74,26 @@ Any push to the following branches will trigger a build in [patchman-ui-build re
 | stage-stable                 | stage-stable                  | stage stable      | https://console.stage.redhat.com
 | prod-beta                    | prod-beta                     | production beta   | https://console.redhat.com/preview
 | prod-stable                  | prod-stable                   | production stable | https://console.redhat.com
+
+## Testing federated modules with another application
+
+If you want to test Patch with another application deployed locally, you can utilise `LOCAL_APPS` environment variable and deploy the needed application on separate ports. To learn more about the variable, see https://github.com/RedHatInsights/frontend-components/tree/master/packages/config#running-multiple-local-frontend-applications.
+
+### Example
+
+We'll take for example [insights-inventory-frontend](https://github.com/RedHatInsights/insights-inventory-frontend).
+
+Open new terminal, navigate to Inventory repository, and run it on a separate port without proxy:
+
+```
+npm run start -- --port=8003
+```
+
+In a separate terminal, run Patch with proxy enabled and list Inventory:
+
+```
+LOCAL_APPS=inventory:8003~http npm run start:proxy
+```
 
 ## Patternfly
 
