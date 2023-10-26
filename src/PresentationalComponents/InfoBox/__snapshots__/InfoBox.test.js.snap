@@ -12,7 +12,7 @@ exports[`InfoBox Should match to snapshots 1`] = `
   >
     <SplitItem
       style={
-        Object {
+        {
           "backgroundColor": "testColor",
         }
       }

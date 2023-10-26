@@ -3,7 +3,7 @@
 exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -16,7 +16,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
   <BrowserRouter>
     <Router
       location={
-        Object {
+        {
           "hash": "",
           "key": "default",
           "pathname": "/",
@@ -26,14 +26,14 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
       }
       navigationType="POP"
       navigator={
-        Object {
+        {
           "action": "POP",
           "createHref": [Function],
           "createURL": [Function],
           "encodeLocation": [Function],
           "go": [Function],
           "listen": [Function],
-          "location": Object {
+          "location": {
             "hash": "",
             "key": "default",
             "pathname": "/",
@@ -51,33 +51,33 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
       >
         <mockConstructor
           activeFiltersConfig={
-            Object {
+            {
               "deleteTitle": "Reset filters",
-              "filters": Array [],
+              "filters": [],
               "onDelete": [Function],
             }
           }
           autoRefresh={true}
           bulkSelect={
-            Object {
+            {
               "checked": null,
               "isDisabled": false,
-              "items": Array [
-                Object {
+              "items": [
+                {
                   "onClick": [Function],
                   "title": "Select none (0)",
                 },
-                Object {
+                {
                   "onClick": [Function],
                   "title": "Select page (2)",
                 },
-                Object {
+                {
                   "onClick": [Function],
                   "title": "Select all (2)",
                 },
               ],
               "onSelect": [Function],
-              "toggleProps": Object {
+              "toggleProps": {
                 "children": "     1 selected",
                 "data-ouia-component-type": "bulk-select-toggle-button",
               },
@@ -85,8 +85,8 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           }
           columns={[Function]}
           customFilters={
-            Object {
-              "patchParams": Object {
+            {
+              "patchParams": {
                 "filter": undefined,
                 "search": undefined,
                 "selectedTags": undefined,
@@ -101,16 +101,16 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
             />
           }
           exportConfig={
-            Object {
+            {
               "isDisabled": false,
               "onSelect": [Function],
             }
           }
           filterConfig={
-            Object {
-              "items": Array [
-                Object {
-                  "filterValues": Object {
+            {
+              "items": [
+                {
+                  "filterValues": {
                     "aria-label": "search-field",
                     "onChange": [Function],
                     "placeholder": "Filter by name",
@@ -119,14 +119,14 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                   "label": "System",
                   "type": "text",
                 },
-                Object {
-                  "filterValues": Object {
-                    "items": Array [
-                      Object {
+                {
+                  "filterValues": {
+                    "items": [
+                      {
                         "label": "Installable",
                         "value": "Installable",
                       },
-                      Object {
+                      {
                         "label": "Applicable",
                         "value": "Applicable",
                       },
@@ -138,13 +138,13 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                   "label": "Status",
                   "type": "checkbox",
                 },
-                Object {
-                  "filterValues": Object {
-                    "groups": Array [
-                      Object {
+                {
+                  "filterValues": {
+                    "groups": [
+                      {
                         "groupSelectable": true,
-                        "items": Array [
-                          Object {
+                        "items": [
+                          {
                             "label": "RHEL 9.0",
                             "type": "checkbox",
                             "value": "9.0",
@@ -154,20 +154,20 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                         "noFilter": true,
                         "value": "9.0",
                       },
-                      Object {
+                      {
                         "groupSelectable": true,
-                        "items": Array [
-                          Object {
+                        "items": [
+                          {
                             "label": "RHEL 8.6",
                             "type": "checkbox",
                             "value": "8.6",
                           },
-                          Object {
+                          {
                             "label": "RHEL 8.5",
                             "type": "checkbox",
                             "value": "8.5",
                           },
-                          Object {
+                          {
                             "label": "RHEL 8.0",
                             "type": "checkbox",
                             "value": "8.0",
@@ -177,10 +177,10 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                         "noFilter": true,
                         "value": "8.0",
                       },
-                      Object {
+                      {
                         "groupSelectable": true,
-                        "items": Array [
-                          Object {
+                        "items": [
+                          {
                             "label": "RHEL 6.7",
                             "type": "checkbox",
                             "value": "6.7",
@@ -191,7 +191,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                         "value": "6.0",
                       },
                     ],
-                    "selected": Object {},
+                    "selected": {},
                   },
                   "id": "rhel_version",
                   "label": "Operating System",
@@ -204,7 +204,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           }
           getEntities={[Function]}
           hideFilters={
-            Object {
+            {
               "all": true,
               "tags": false,
             }
@@ -214,13 +214,13 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           isFullView={true}
           onLoad={[Function]}
           paginationProps={
-            Object {
+            {
               "isDisabled": false,
             }
           }
           showTags={true}
           tableProps={
-            Object {
+            {
               "actionResolver": [Function],
               "canSelectAll": false,
               "className": "patchCompactInventory",

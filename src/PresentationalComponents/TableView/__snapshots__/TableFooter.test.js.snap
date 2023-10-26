@@ -31,27 +31,27 @@ exports[`TableFooter Should match the snapshots 1`] = `
     perPage={10}
     perPageComponent="div"
     perPageOptions={
-      Array [
-        Object {
+      [
+        {
           "title": "10",
           "value": 10,
         },
-        Object {
+        {
           "title": "20",
           "value": 20,
         },
-        Object {
+        {
           "title": "50",
           "value": 50,
         },
-        Object {
+        {
           "title": "100",
           "value": 100,
         },
       ]
     }
     titles={
-      Object {
+      {
         "currPage": "Current page",
         "items": "",
         "itemsPerPage": "Items per page",
@@ -95,20 +95,20 @@ exports[`TableFooter Should match the snapshots 1`] = `
         perPage={10}
         perPageComponent="div"
         perPageOptions={
-          Array [
-            Object {
+          [
+            {
               "title": "10",
               "value": 10,
             },
-            Object {
+            {
               "title": "20",
               "value": 20,
             },
-            Object {
+            {
               "title": "50",
               "value": 50,
             },
-            Object {
+            {
               "title": "100",
               "value": 100,
             },
@@ -123,7 +123,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
           className=""
           direction="up"
           dropdownItems={
-            Array [
+            [
               <DropdownItem
                 className="pf-m-selected"
                 component="button"
@@ -223,7 +223,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
               onToggle={[Function]}
               optionsToggle=""
               parentRef={
-                Object {
+                {
                   "current": <div
                     class="pf-c-options-menu pf-m-top"
                     data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -324,7 +324,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                   onEnter={[Function]}
                   onToggle={[Function]}
                   parentRef={
-                    Object {
+                    {
                       "current": <div
                         class="pf-c-options-menu pf-m-top"
                         data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -404,7 +404,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                     onEnter={[Function]}
                     onToggle={[Function]}
                     parentRef={
-                      Object {
+                      {
                         "current": <div
                           class="pf-c-options-menu pf-m-top"
                           data-ouia-component-type="PF4/PaginationOptionsMenu"
@@ -494,7 +494,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                             height="1em"
                             role="img"
                             style={
-                              Object {
+                              {
                                 "verticalAlign": "-0.125em",
                               }
                             }
@@ -588,7 +588,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       height="1em"
                       role="img"
                       style={
-                        Object {
+                        {
                           "verticalAlign": "-0.125em",
                         }
                       }
@@ -648,7 +648,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       height="1em"
                       role="img"
                       style={
-                        Object {
+                        {
                           "verticalAlign": "-0.125em",
                         }
                       }
@@ -730,7 +730,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       height="1em"
                       role="img"
                       style={
-                        Object {
+                        {
                           "verticalAlign": "-0.125em",
                         }
                       }
@@ -790,7 +790,7 @@ exports[`TableFooter Should match the snapshots 1`] = `
                       height="1em"
                       role="img"
                       style={
-                        Object {
+                        {
                           "verticalAlign": "-0.125em",
                         }
                       }
