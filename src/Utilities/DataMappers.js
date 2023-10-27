@@ -200,7 +200,8 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                     rhsm: row.rhsm
                 },
                 baseline_name: row.baseline_name,
-                baseline_id: row.baseline_id
+                baseline_id: row.baseline_id,
+                satellite_managed: row.satellite_managed
             };
         });
     return data || [];
