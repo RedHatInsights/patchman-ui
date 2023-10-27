@@ -29,7 +29,6 @@
     "redux-promise-middleware": "^6.1.2"
   },
   "jest": {
-    "testEnvironment": "jsdom",
     "coverageDirectory": "./codecov-jest/",
     "testEnvironment": "jsdom",
     "collectCoverage": true,
