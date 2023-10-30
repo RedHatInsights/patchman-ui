@@ -1238,14 +1238,30 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                           </tbody>
                         </table>
                         <div
-                          class="pf-c-pagination pf-m-bottom"
+                          class="pf-c-toolbar ins-c-table__toolbar ins-m-footer"
+                          data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
+                          data-ouia-component-type="RHI/TableToolbar"
+                          data-ouia-safe="true"
+                          id="pf-random-id-0"
                         >
                           <div
-                            class="pf-c-skeleton pf-m-text-xl"
-                            style="--pf-c-skeleton--Width: 350px; margin: 10px;"
+                            class="pf-c-pagination pf-m-bottom"
                           >
-                            <span
-                              class="pf-u-screen-reader"
+                            <div
+                              class="pf-c-skeleton pf-m-text-xl"
+                              style="--pf-c-skeleton--Width: 350px; margin: 10px;"
+                            >
+                              <span
+                                class="pf-u-screen-reader"
+                              />
+                            </div>
+                          </div>
+                          <div
+                            class="pf-c-toolbar__content pf-m-hidden"
+                            hidden=""
+                          >
+                            <div
+                              class="pf-c-toolbar__group"
                             />
                           </div>
                         </div>
@@ -20199,34 +20215,95 @@ exports[`CveModal.js Should match the snapshots 1`] = `
                                     perPage={10}
                                     totalItems={12}
                                   >
-                                    <div
-                                      className="pf-c-pagination pf-m-bottom"
+                                    <TableToolbar
+                                      isFooter={true}
                                     >
-                                      <Skeleton
-                                        fontSize="xl"
-                                        style={
-                                          {
-                                            "margin": 10,
-                                          }
-                                        }
-                                        width="350px"
+                                      <Toolbar
+                                        className="ins-c-table__toolbar ins-m-footer"
+                                        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
+                                        data-ouia-component-type="RHI/TableToolbar"
+                                        data-ouia-safe={true}
                                       >
-                                        <div
-                                          className="pf-c-skeleton pf-m-text-xl"
-                                          style={
-                                            {
-                                              "--pf-c-skeleton--Height": undefined,
-                                              "--pf-c-skeleton--Width": "350px",
-                                              "margin": 10,
-                                            }
-                                          }
+                                        <GenerateId
+                                          prefix="pf-random-id-"
                                         >
-                                          <span
-                                            className="pf-u-screen-reader"
-                                          />
-                                        </div>
-                                      </Skeleton>
-                                    </div>
+                                          <div
+                                            className="pf-c-toolbar ins-c-table__toolbar ins-m-footer"
+                                            data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-1"
+                                            data-ouia-component-type="RHI/TableToolbar"
+                                            data-ouia-safe={true}
+                                            id="pf-random-id-0"
+                                          >
+                                            <div
+                                              className="pf-c-pagination pf-m-bottom"
+                                            >
+                                              <Skeleton
+                                                fontSize="xl"
+                                                style={
+                                                  {
+                                                    "margin": 10,
+                                                  }
+                                                }
+                                                width="350px"
+                                              >
+                                                <div
+                                                  className="pf-c-skeleton pf-m-text-xl"
+                                                  style={
+                                                    {
+                                                      "--pf-c-skeleton--Height": undefined,
+                                                      "--pf-c-skeleton--Width": "350px",
+                                                      "margin": 10,
+                                                    }
+                                                  }
+                                                >
+                                                  <span
+                                                    className="pf-u-screen-reader"
+                                                  />
+                                                </div>
+                                              </Skeleton>
+                                            </div>
+                                            <ToolbarChipGroupContent
+                                              chipGroupContentRef={
+                                                {
+                                                  "current": <div
+                                                    class="pf-c-toolbar__content pf-m-hidden"
+                                                    hidden=""
+                                                  >
+                                                    <div
+                                                      class="pf-c-toolbar__group"
+                                                    />
+                                                  </div>,
+                                                }
+                                              }
+                                              clearFiltersButtonText="Clear all filters"
+                                              collapseListedFiltersBreakpoint="lg"
+                                              isExpanded={false}
+                                              numberOfFilters={0}
+                                              numberOfFiltersText={[Function]}
+                                              showClearFiltersButton={false}
+                                            >
+                                              <div
+                                                className="pf-c-toolbar__content pf-m-hidden"
+                                                hidden={true}
+                                              >
+                                                <ForwardRef
+                                                  className=""
+                                                >
+                                                  <ToolbarGroupWithRef
+                                                    className=""
+                                                    innerRef={null}
+                                                  >
+                                                    <div
+                                                      className="pf-c-toolbar__group"
+                                                    />
+                                                  </ToolbarGroupWithRef>
+                                                </ForwardRef>
+                                              </div>
+                                            </ToolbarChipGroupContent>
+                                          </div>
+                                        </GenerateId>
+                                      </Toolbar>
+                                    </TableToolbar>
                                   </TableFooter>
                                 </TableView>
                               </div>
