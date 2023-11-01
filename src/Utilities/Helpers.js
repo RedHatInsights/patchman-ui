@@ -503,6 +503,12 @@ export const filterRemediatablePackageSystems = result => ({ data: result.data.f
 
 export const persistantParams = (patchParams, decodedParams) => {
     const persistantParams = { ...patchParams, ...decodedParams };
+
+    if (typeof persistantParams.sort === 'string' && persistantParams.sort.match(/-?groups/)) {
+        // "group_name" is the sort key used by Inventory (requires translation between Patch and Inventory)
+        persistantParams.sort = persistantParams.sort.replace('groups', 'group_name');
+    }
+
     return (
         {
             page: Number(persistantParams.page || 1),

@@ -5,7 +5,7 @@ import { publicDateOptions, remediationIdentifiers } from '../Utilities/constant
 import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, 
     createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams,
     getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, 
-    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs, templateDateFormat } from './Helpers';
+    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs, templateDateFormat, persistantParams } from './Helpers';
 
 const TestHook = ({ callback }) => {
     callback();
@@ -330,3 +330,49 @@ describe('Test global filters', () => {
     });
 })
 /* eslint-enable */
+
+describe('persistantParams', () => {
+    it('should translate descoded desc group sort parameter correctly', () => {
+        expect(persistantParams({}, { sort: '-groups' })).toEqual({
+            page: 1,
+            perPage: 20,
+            sortBy: {
+                key: 'group_name',
+                direction: 'desc'
+            }
+        });
+    });
+
+    it('should translate descoded asc group sort parameter correctly', () => {
+        expect(persistantParams({}, { sort: 'groups' })).toEqual({
+            page: 1,
+            perPage: 20,
+            sortBy: {
+                key: 'group_name',
+                direction: 'asc'
+            }
+        });
+    });
+
+    it('should translate other descoded desc sort parameter correctly', () => {
+        expect(persistantParams({}, { sort: '-abc' })).toEqual({
+            page: 1,
+            perPage: 20,
+            sortBy: {
+                key: 'abc',
+                direction: 'desc'
+            }
+        });
+    });
+
+    it('should translate other descoded asc sort parameter correctly', () => {
+        expect(persistantParams({}, { sort: 'abc' })).toEqual({
+            page: 1,
+            perPage: 20,
+            sortBy: {
+                key: 'abc',
+                direction: 'asc'
+            }
+        });
+    });
+});
