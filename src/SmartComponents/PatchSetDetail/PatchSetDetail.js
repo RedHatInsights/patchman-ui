@@ -57,7 +57,6 @@ import { systemsListColumns } from '../Systems/SystemsListAssets';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/useOnSelect';
 import { systemSelectAction } from '../../store/Actions/Actions';
-import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const PatchSetDetail = () => {
@@ -251,8 +250,7 @@ const PatchSetDetail = () => {
 
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply);
 
-    const osFilterConfig = useOsVersionFilter(filter?.os, apply);
-    const filterConfig = buildTemplateFilterConfig(search, apply, osFilterConfig);
+    const filterConfig = buildTemplateFilterConfig(search, apply);
 
     const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 
@@ -377,7 +375,7 @@ const PatchSetDetail = () => {
                                     isFullView
                                     autoRefresh
                                     initialLoading
-                                    hideFilters={{ all: true, tags: false }}
+                                    hideFilters={{ all: true, tags: false, operatingSystem: false }}
                                     columns={(defaultColumns) => templateSystemsColumnsMerger(defaultColumns)}
                                     showTags
                                     onLoad={({ mergeWithEntities }) => {

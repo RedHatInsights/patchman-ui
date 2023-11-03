@@ -30,7 +30,6 @@ import { buildFilterConfig, buildActiveFiltersConfig } from '../../Utilities/Sys
 import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
 import usePatchSetState from '../../Utilities/usePatchSetState';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
-import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
@@ -107,9 +106,7 @@ const Systems = () => {
     };
 
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
-
-    const osFilterConfig = useOsVersionFilter(filter?.os, apply);
-    const filterConfig = buildFilterConfig(search, filter, apply, osFilterConfig);
+    const filterConfig = buildFilterConfig(search, filter, apply);
 
     const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
 
@@ -164,7 +161,7 @@ const Systems = () => {
                         isFullView
                         autoRefresh
                         initialLoading
-                        hideFilters={{ all: true, tags: false, hostGroupFilter: false }}
+                        hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
                         columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, systemsListColumns)}
                         showTags
                         customFilters={{
