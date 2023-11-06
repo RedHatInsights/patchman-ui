@@ -82,12 +82,15 @@ export const CustomActionsToggle = () => <Tooltip content='For editing access, c
     </Button>
 </Tooltip>;
 
-// TODO: Failure notifications
 export const patchSetUnassignSystemsNotifications = (systemsCount) => ({
     success: {
         title: `Systems succesfully removed from this Patch template.`,
         description: `${systemsCount} ${systemsCount > 1 ? 'systems' : 'system'} removed from Patch template(s)`,
         variant: 'success'
+    },
+    failure: {
+        title: `Failed to remove systems from this Patch template.`,
+        variant: 'danger'
     }
 });
 
@@ -96,5 +99,9 @@ export const patchSetAssignSystemsNotifications = (systemsCount) => ({
         title: `Systems succesfully applied to this Patch template.`,
         description: `${systemsCount} ${systemsCount > 1 ? 'systems' : 'system'} added to Patch template(s)`,
         variant: 'success'
+    },
+    failure: {
+        title: `Failed to apply systems to this Patch template.`,
+        variant: 'danger'
     }
 });
