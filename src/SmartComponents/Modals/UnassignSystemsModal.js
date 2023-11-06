@@ -62,10 +62,13 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
                 {systemsLoading
                     ? <Skeleton />
                     : <Fragment>
+                        {systemsWithPatchSet.length === 0 &&
+                            renderUnassignModalMessages('textUnassignSystemsNoAssignedSystems', systemsWithPatchSet.length, intl)
+                        }
                         {systemsWithPatchSet.length > 0 &&
                             renderUnassignModalMessages('textUnassignSystemsStatement', systemsWithPatchSet.length, intl)
                         }
-                        {systemsWithoutPatchSetCount > 0 &&
+                        {systemsWithPatchSet.length > 0 && systemsWithoutPatchSetCount > 0 &&
                             renderUnassignModalMessages('textUnassignSystemsWarning', systemsWithoutPatchSetCount, intl)
                         }
                     </Fragment>
