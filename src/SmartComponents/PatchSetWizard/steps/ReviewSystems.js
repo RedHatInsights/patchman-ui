@@ -48,8 +48,12 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
 
     useEffect(() => {
         fetchSystems({
-            ...queryParams, filter: { ...queryParams.filter,
-                id: systemsIDs.length > 0 ? `in:${systemsIDs.join(',')}` : undefined }
+            ...queryParams,
+            filter: {
+                ...queryParams.filter,
+                id: systemsIDs.length > 0 ? `in:${systemsIDs.join(',')}` : undefined,
+                satellite_managed: false
+            }
         }).then(result => {
             setSystems(
                 createSystemsRowsReview(
@@ -115,7 +119,11 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
             endpoint: ID_API_ENDPOINTS.systems,
             queryParams: {
                 ...queryParams,
-                filter: { ...queryParams.filter, ...systemsIDs.length > 0 && { id: `in:${systemsIDs.join(',')}` } }
+                filter: {
+                    ...queryParams.filter,
+                    ...systemsIDs.length > 0 && { id: `in:${systemsIDs.join(',')}` },
+                    satellite_managed: false
+                }
             },
             customSelector: selectRows
         }
