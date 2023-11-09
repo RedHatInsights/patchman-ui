@@ -85,8 +85,15 @@ export const templateSystemsColumnsMerger = (defaultColumns) => {
 };
 
 export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
-    orderBy = (orderBy === 'updated' && !hasLastUpload) && 'last_upload' ||
-        (orderBy === 'updated' && hasLastUpload) && packageSystemsColumns[0].key || orderBy;
+    if (orderBy === 'updated') {
+        if (!hasLastUpload) {
+            orderBy = 'last_upload';
+        } else {
+            orderBy = packageSystemsColumns[0].key;
+        }
+    } else if (orderBy === 'group_name') {
+        orderBy = 'groups'; // patch API service uses 'groups' instead of 'group_name' sort parameter
+    }
 
     let sort = `${orderDirection === 'ASC' ? '' : '-'}${orderBy}`;
 
