@@ -24,11 +24,11 @@ exports[`TableFooter Should match the snapshots 1`] = `
           <b>
             1 - 10
           </b>
-           of 
+           of
           <b>
             10
           </b>
-           
+
         </span>
         <button
           aria-expanded="false"

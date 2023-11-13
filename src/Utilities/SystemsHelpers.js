@@ -10,7 +10,7 @@ import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
-export const buildFilterConfig = (search, filter, apply, osFilterConfig) => {
+export const buildFilterConfig = (search, filter, apply) => {
     return {
         items: [
             searchFilter(
@@ -22,13 +22,12 @@ export const buildFilterConfig = (search, filter, apply, osFilterConfig) => {
                 )
             ),
             staleFilter(apply, filter),
-            systemsUpdatableFilter(apply, filter),
-            ...osFilterConfig
+            systemsUpdatableFilter(apply, filter)
         ]
     };
 };
 
-export const buildTemplateFilterConfig = (search, apply, osFilterConfig) => ({
+export const buildTemplateFilterConfig = (search, apply) => ({
     items: [
         searchFilter(
             apply,
@@ -37,8 +36,7 @@ export const buildTemplateFilterConfig = (search, apply, osFilterConfig) => ({
             intl.formatMessage(
                 messages.labelsFiltersSystemsSearchPlaceholder
             )
-        ),
-        ...osFilterConfig
+        )
     ]
 });
 
@@ -85,8 +83,15 @@ export const templateSystemsColumnsMerger = (defaultColumns) => {
 };
 
 export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
-    orderBy = (orderBy === 'updated' && !hasLastUpload) && 'last_upload' ||
-        (orderBy === 'updated' && hasLastUpload) && packageSystemsColumns[0].key || orderBy;
+    if (orderBy === 'updated') {
+        if (!hasLastUpload) {
+            orderBy = 'last_upload';
+        } else {
+            orderBy = packageSystemsColumns[0].key;
+        }
+    } else if (orderBy === 'group_name') {
+        orderBy = 'groups'; // patch API service uses 'groups' instead of 'group_name' sort parameter
+    }
 
     let sort = `${orderDirection === 'ASC' ? '' : '-'}${orderBy}`;
 

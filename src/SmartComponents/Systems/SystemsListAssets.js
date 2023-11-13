@@ -192,13 +192,14 @@ export const systemsRowActions = (
         },
         ...(showTemplateAssignSystemsModal ? [{
             title: 'Assign to a template',
+            isDisabled: row.satellite_managed,
             onClick: (event, rowId, rowData) => {
                 showTemplateAssignSystemsModal({ [rowData.id]: true });
             }
         },
         {
             title: 'Remove from a template',
-            isDisabled: isPatchSetRemovalDisabled(row),
+            isDisabled: isPatchSetRemovalDisabled(row) || row.satellite_managed,
             onClick: (event, rowId, rowData) => {
                 openUnassignSystemsModal([rowData.id]);
             }

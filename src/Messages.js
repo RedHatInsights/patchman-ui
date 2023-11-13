@@ -694,12 +694,17 @@ export default defineMessages({
     templateSelect: {
         id: 'templateSelect',
         description: 'title with capital letters',
-        defaultMessage: 'Select a template to apply to the selected {systemCount, plural, one {# system} other {# systems}}.'
+        defaultMessage: 'Select a template to apply to the selected {systemCount, plural, one {<b>#</b> system} other {<b>#</b> systems}}.'
     },
     templateSelectExisting: {
         id: 'templateSelectExisting',
         description: 'title with capital letters',
         defaultMessage: 'Select an existing template'
+    },
+    templateSelectSatellite: {
+        id: 'templateSelectSatellite',
+        description: 'title with capital letters',
+        defaultMessage: '<b>{systemCount}</b> of the selected systems content is Managed by Satellite therefore Template is not applicable.'
     },
     templateStepSystems: {
         id: 'templateStepSystems',
@@ -815,6 +820,11 @@ export default defineMessages({
         id: 'textTemplateSelectedSystems',
         description: 'text for patch template wizard',
         defaultMessage: 'You selected {systemsCount, plural, one {<b> # </b> system } other {<b> # </b> systems }}'
+    },
+    textUnassignSystemsNoAssignedSystems: {
+        id: 'textUnassignSystemsNoAssignedSystems',
+        description: 'text about systems being removed',
+        defaultMessage: 'None of the systems you have selected are assigned to existing Patch template.'
     },
     textUnassignSystemsShortTitle: {
         id: 'textUnassignSystemsShortTitle',

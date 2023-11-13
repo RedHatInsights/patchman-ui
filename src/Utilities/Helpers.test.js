@@ -2,10 +2,12 @@
 import { SortByDirection } from '@patternfly/react-table';
 import toJson from 'enzyme-to-json';
 import { publicDateOptions, remediationIdentifiers } from '../Utilities/constants';
-import { addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset, 
+import {
+    addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset,
     createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams,
-    getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable, 
-    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs, templateDateFormat } from './Helpers';
+    getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable,
+    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs, templateDateFormat, persistantParams, buildApiFilters
+} from './Helpers';
 
 const TestHook = ({ callback }) => {
     callback();
@@ -330,3 +332,89 @@ describe('Test global filters', () => {
     });
 })
 /* eslint-enable */
+
+describe('persistantParams', () => {
+    it('should translate descoded desc group sort parameter correctly', () => {
+        expect(persistantParams({}, { sort: '-groups' })).toEqual({
+            page: 1,
+            perPage: 20,
+            sortBy: {
+                key: 'group_name',
+                direction: 'desc'
+            }
+        });
+    });
+
+    it('should translate descoded asc group sort parameter correctly', () => {
+        expect(persistantParams({}, { sort: 'groups' })).toEqual({
+            page: 1,
+            perPage: 20,
+            sortBy: {
+                key: 'group_name',
+                direction: 'asc'
+            }
+        });
+    });
+
+    it('should translate other descoded desc sort parameter correctly', () => {
+        expect(persistantParams({}, { sort: '-abc' })).toEqual({
+            page: 1,
+            perPage: 20,
+            sortBy: {
+                key: 'abc',
+                direction: 'desc'
+            }
+        });
+    });
+
+    it('should translate other descoded asc sort parameter correctly', () => {
+        expect(persistantParams({}, { sort: 'abc' })).toEqual({
+            page: 1,
+            perPage: 20,
+            sortBy: {
+                key: 'abc',
+                direction: 'asc'
+            }
+        });
+    });
+});
+
+describe('buildApiFilters', () => {
+    const patchFilters = {
+        patchFilter: 'value'
+    };
+
+    it('combines patch and inventory filters into API params', () => {
+        const inventoryFilters = {
+            inventoryFilter: 'inventoryValue'
+        };
+        expect(buildApiFilters(
+            patchFilters,
+            inventoryFilters
+        )).toEqual({
+            ...patchFilters
+        });
+    });
+
+    it('adds a group_name filter when the inventory is filtered by a hostGroup', () => {
+        const hostGroupFilter = ['groupFilterValue'];
+        const inventoryFilters = {
+            hostGroupFilter
+        };
+        expect(buildApiFilters(
+            patchFilters,
+            inventoryFilters
+        ).group_name).toEqual(hostGroupFilter);
+    });
+
+    it('adds a os filter when the inventory is filtered by OS', () => {
+        const osFilter = [{ value: '8.8' }, { value: '8.9' }];
+        const inventoryFilters = {
+            osFilter
+        };
+        expect(buildApiFilters(
+            patchFilters,
+            inventoryFilters
+        ).os).toEqual('RHEL 8.8,RHEL 8.9');
+    });
+});

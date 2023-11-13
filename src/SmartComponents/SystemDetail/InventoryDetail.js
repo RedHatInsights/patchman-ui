@@ -88,12 +88,13 @@ const InventoryDetail = () => {
                         {
                             title: intl.formatMessage(messages.titlesTemplateAssign),
                             key: 'assign-to-template',
+                            isDisabled: satelliteManaged,
                             onClick: () => openAssignSystemsModal({ [inventoryId]: true })
                         },
                         {
                             title: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
                             key: 'remove-from-template',
-                            isDisabled: !patchSetName,
+                            isDisabled: !patchSetName || satelliteManaged,
                             onClick: () => openUnassignSystemsModal([inventoryId])
                         }]}
                     //FIXME: remove this prop after inventory detail gets rid of activeApps in redux

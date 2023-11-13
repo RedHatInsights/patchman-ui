@@ -224,7 +224,7 @@ export const getFilterValue = (category, key) => {
     const filterCategory = filterCategories[category];
     if (filterCategory) {
         const filterOption = /* some filters don't have constant values */
-        (filterCategory?.values || []).find((item) => item.value === key);
+            (filterCategory?.values || []).find((item) => item.value === key);
         return filterOption || { apiValue: key };
     } else {
         return { apiValue: key };
@@ -241,7 +241,7 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
 
         const SIDsFilter = sap_sids?.map(sid => `filter[system_profile][sap_sids][in]=${sid}`).join('&');
 
-        return result.concat(sap_sids ? `&${SIDsFilter}#SIDs=${sap_sids.join(',') }` : '');
+        return result.concat(sap_sids ? `&${SIDsFilter}#SIDs=${sap_sids.join(',')}` : '');
     };
 
     const flattenFilters = filter => {
@@ -396,6 +396,17 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
     return filterConfig;
 };
 
+export const buildApiFilters = (patchFilters, inventoryFilters) => (
+    {
+        ...patchFilters,
+        ...(Array.isArray(inventoryFilters.hostGroupFilter) && inventoryFilters.hostGroupFilter.length > 0
+            ? { group_name: inventoryFilters.hostGroupFilter }
+            : {}),
+        ...inventoryFilters?.osFilter?.length > 0 ? {
+            os: inventoryFilters.osFilter.map(({ value }) => 'RHEL ' + value).join(',')
+        } : {}
+    });
+
 export const changeListParams = (oldParams, newParams) => {
     const newState = { ...oldParams, ...newParams };
     const offsetResetParams = ['filter', 'search', 'limit', 'selectedTags'];
@@ -503,6 +514,12 @@ export const filterRemediatablePackageSystems = result => ({ data: result.data.f
 
 export const persistantParams = (patchParams, decodedParams) => {
     const persistantParams = { ...patchParams, ...decodedParams };
+
+    if (typeof persistantParams.sort === 'string' && persistantParams.sort.match(/-?groups/)) {
+        // "group_name" is the sort key used by Inventory (requires translation between Patch and Inventory)
+        persistantParams.sort = persistantParams.sort.replace('groups', 'group_name');
+    }
+
     return (
         {
             page: Number(persistantParams.page || 1),
@@ -568,7 +585,7 @@ export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
 
 };
 
-export const convertDateToISO = (dateString)  => {
+export const convertDateToISO = (dateString) => {
     const parsedDate = Date.parse(dateString);
 
     if (isNaN(parsedDate) === false) {
@@ -579,13 +596,13 @@ export const convertDateToISO = (dateString)  => {
         const pad = n => `${Math.floor(Math.abs(n))}`.padStart(2, '0');
 
         return date.getFullYear() +
-                '-' + pad(date.getMonth() + 1) +
-                '-' + pad(date.getDate()) +
-                'T' + pad(date.getHours()) +
-                ':' + pad(date.getMinutes()) +
-                ':' + pad(date.getSeconds()) +
-                diff + pad(tzOffset / 60) +
-                ':' + pad(tzOffset % 60);
+            '-' + pad(date.getMonth() + 1) +
+            '-' + pad(date.getDate()) +
+            'T' + pad(date.getHours()) +
+            ':' + pad(date.getMinutes()) +
+            ':' + pad(date.getSeconds()) +
+            diff + pad(tzOffset / 60) +
+            ':' + pad(tzOffset % 60);
     }
 
     return dateString;
@@ -647,7 +664,7 @@ export const buildSelectedSystemsObj = (systemsIDs, formValueSystems) => {
 
 export const objUndefinedToFalse = (object) =>
     Object.keys(object).reduce((modifiedObject, key) => {
-        modifiedObject[key] =  object[key] === undefined ? false : object[key];
+        modifiedObject[key] = object[key] === undefined ? false : object[key];
         return modifiedObject;
     }, {});
 

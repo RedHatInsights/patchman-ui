@@ -9,7 +9,7 @@ import { Spinner } from '@patternfly/react-core';
 import messages from '../Messages';
 import { defaultCompoundSortValues, exportNotifications } from './constants';
 import {
-    convertLimitOffset, getLimitFromPageSize,
+    convertLimitOffset, getLimitFromPageSize, buildApiFilters,
     getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO, objUndefinedToFalse, objOnlyWithTrue
 } from './Helpers';
 import { intl } from './IntlProvider';
@@ -178,7 +178,7 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
         },
         checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
         isDisabled: (metadata.total_items === 0 && selectedCount === 0)
-        || (queryParams?.filter?.status?.length === 1 && queryParams?.filter?.status?.[0] === 'Applicable')
+            || (queryParams?.filter?.status?.length === 1 && queryParams?.filter?.status?.[0] === 'Applicable')
     });
 };
 
@@ -192,16 +192,12 @@ export const useGetEntities = (fetchApi, apply, config, setSearchParams, applyMe
         const { selectedTags } = mapGlobalFilters(filters.tagFilters);
 
         const sort = createSystemsSortBy(orderBy, orderDirection, packageName);
-
+        const filter = buildApiFilters(patchParams.filter, filters);
         const items = await fetchApi({
             page,
             perPage,
             ...patchParams,
-            filter: {
-                ...patchParams.filter,
-                ...(Array.isArray(filters.hostGroupFilter) && filters.hostGroupFilter.length > 0
-                    ? { group_name: filters.hostGroupFilter }
-                    : {}) },
+            filter,
             selectedTags: [...activeTags, ...selectedTags],
             sort,
             ...id && { id } || {},

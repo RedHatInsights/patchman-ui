@@ -14,13 +14,19 @@ export const useUnassignSystemsHook = (handleModalToggle, systemsWithPatchSet) =
     const dispatch = useDispatch();
     const handleSystemsRemoval = async () => {
         const result = await unassignSystemFromPatchSet({ inventory_ids: systemsWithPatchSet });
+        handleModalToggle(true);
 
-        //TODO: mockups do not have error notifications designed, add them if UX designes.
         if (result.status === 200) {
-            handleModalToggle(true);
             dispatch(
                 addNotification(
                     patchSetUnassignSystemsNotifications(systemsWithPatchSet?.length || 0).success
+                )
+            );
+        }
+        else {
+            dispatch(
+                addNotification(
+                    patchSetUnassignSystemsNotifications().failure
                 )
             );
         }

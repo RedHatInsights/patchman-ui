@@ -6,7 +6,6 @@ import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { combineReducers } from 'redux';
 import messages from '../../Messages';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
-import useOsVersionFilter from '../../PresentationalComponents/Filters/OsVersionFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { defaultReducers } from '../../store';
 import { changeAffectedSystemsParams, clearAdvisorySystemsReducer,
@@ -76,15 +75,13 @@ const AdvisorySystems = ({ advisoryName }) => {
 
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply);
 
-    const osFilterConfig = useOsVersionFilter(filter?.os, apply);
     const filterConfig = {
         items: [
             searchFilter(apply, search,
                 intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
                 intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder)
             ),
-            advisoryStatusFilter(apply, filter),
-            ...osFilterConfig
+            advisoryStatusFilter(apply, filter)
         ]
     };
 
@@ -139,7 +136,7 @@ const AdvisorySystems = ({ advisoryName }) => {
                     autoRefresh
                     initialLoading
                     ignoreRefresh
-                    hideFilters={{ all: true, tags: false }}
+                    hideFilters={{ all: true, tags: false, operatingSystem: false }}
                     columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, advisorySystemsColumns)}
                     showTags
                     customFilters={{
