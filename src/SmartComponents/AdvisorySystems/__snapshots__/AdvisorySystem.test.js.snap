@@ -138,67 +138,6 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
                   "label": "Status",
                   "type": "checkbox",
                 },
-                {
-                  "filterValues": {
-                    "groups": [
-                      {
-                        "groupSelectable": true,
-                        "items": [
-                          {
-                            "label": "RHEL 9.0",
-                            "type": "checkbox",
-                            "value": "9.0",
-                          },
-                        ],
-                        "label": "RHEL 9",
-                        "noFilter": true,
-                        "value": "9.0",
-                      },
-                      {
-                        "groupSelectable": true,
-                        "items": [
-                          {
-                            "label": "RHEL 8.6",
-                            "type": "checkbox",
-                            "value": "8.6",
-                          },
-                          {
-                            "label": "RHEL 8.5",
-                            "type": "checkbox",
-                            "value": "8.5",
-                          },
-                          {
-                            "label": "RHEL 8.0",
-                            "type": "checkbox",
-                            "value": "8.0",
-                          },
-                        ],
-                        "label": "RHEL 8",
-                        "noFilter": true,
-                        "value": "8.0",
-                      },
-                      {
-                        "groupSelectable": true,
-                        "items": [
-                          {
-                            "label": "RHEL 6.7",
-                            "type": "checkbox",
-                            "value": "6.7",
-                          },
-                        ],
-                        "label": "RHEL 6",
-                        "noFilter": true,
-                        "value": "6.0",
-                      },
-                    ],
-                    "selected": {},
-                  },
-                  "id": "rhel_version",
-                  "label": "Operating System",
-                  "placeholder": "Filter by operating system",
-                  "type": "group",
-                  "value": "os-filter",
-                },
               ],
             }
           }
@@ -206,6 +145,7 @@ exports[`AdvisorySystems.js Should match the snapshots and dispatch FETCH_AFFECT
           hideFilters={
             {
               "all": true,
+              "operatingSystem": false,
               "tags": false,
             }
           }
