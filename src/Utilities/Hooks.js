@@ -9,8 +9,14 @@ import { Spinner } from '@patternfly/react-core';
 import messages from '../Messages';
 import { defaultCompoundSortValues, exportNotifications } from './constants';
 import {
-    convertLimitOffset, getLimitFromPageSize, buildApiFilters,
-    getOffsetFromPageLimit, encodeURLParams, mapGlobalFilters, convertDateToISO, objUndefinedToFalse, objOnlyWithTrue
+    convertLimitOffset,
+    getLimitFromPageSize,
+    buildApiFilters,
+    getOffsetFromPageLimit,
+    encodeURLParams,
+    mapGlobalFilters,
+    objUndefinedToFalse,
+    objOnlyWithTrue
 } from './Helpers';
 import { intl } from './IntlProvider';
 import { multiValueFilters } from '../Utilities/constants';
@@ -253,15 +259,22 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
 
     const onSubmit = React.useCallback((formValues) => {
         const { name, description, toDate, id } = formValues.existing_patch_set || formValues;
-        const formattedDate = convertDateToISO(toDate);
-
         const { systems } = formValues;
+
+        const gmtMidnightDate = new Date(toDate);                                                   // get last midnight GMT
+        gmtMidnightDate.setDate(gmtMidnightDate.getDate() + 1);                                     // get next midnight GMT
+        const localTimezoneOffset = gmtMidnightDate.getTimezoneOffset() * 60000;
+
+        // get next local midnight minus 1 second (23:59:59)
+        const localMidnightDate = new Date(gmtMidnightDate.getTime() + localTimezoneOffset - 1000);
 
         const requestConfig = {
             name,
             description,
             inventory_ids: (patchSetID || id) ? objUndefinedToFalse(systems) : objOnlyWithTrue(systems),
-            ...formattedDate && { config: { to_time: formattedDate } }
+            config: {
+                to_time: localMidnightDate.toISOString()
+            }
         };
 
         setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: true });
