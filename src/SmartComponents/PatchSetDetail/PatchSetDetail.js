@@ -25,7 +25,8 @@ import {
     Skeleton,
     Spinner,
     Text,
-    TextContent
+    TextContent,
+    Tooltip
 } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
@@ -128,7 +129,7 @@ const PatchSetDetail = () => {
 
     const patchSetName = templateDetails.data.attributes.name;
 
-    useEffect(()=>{
+    useEffect(() => {
         patchSetName && chrome.updateDocumentTitle(`${patchSetName} - ${intl.formatMessage(messages.titlesTemplate)}
         ${DEFAULT_PATCH_TITLE}`);
     }, [chrome, patchSetName]);
@@ -223,21 +224,35 @@ const PatchSetDetail = () => {
         applyGlobalFilter
     );
 
-    const dropdownItems = [
+    const addTooltip = (children, key) => (
+        <Tooltip key={key} content={hasAccess || 'For editing access, contact your administrator.'}>
+            {children}
+        </Tooltip>
+    );
+
+    const editTemplateButton = (
         <DropdownItem
-            key="edit-patch-set"
             component="button"
             onClick={() => openPatchSetAssignWizard()}
+            isDisabled={!hasAccess}
         >
             {intl.formatMessage(messages.labelsButtonEditTemplate)}
-        </DropdownItem>,
+        </DropdownItem>
+    );
+
+    const deleteTemplateButton = (
         <DropdownItem
-            key="delete-patch-set"
             component="button"
             onClick={() => setDeleteConfirmModalOpen(true)}
+            isDisabled={!hasAccess}
         >
             {intl.formatMessage(messages.labelsButtonRemoveTemplate)}
         </DropdownItem>
+    );
+
+    const dropdownItems = [
+        hasAccess ? editTemplateButton : addTooltip(editTemplateButton, 'edit-template'),
+        hasAccess ? deleteTemplateButton : addTooltip(deleteTemplateButton, 'delete-template')
     ];
 
     const decodedParams = decodeQueryparams('?' + searchParams.toString());
@@ -425,7 +440,7 @@ const PatchSetDetail = () => {
                                     filterConfig={filterConfig}
                                     activeFiltersConfig={activeFiltersConfig}
                                 />
-                            : <NoAppliedSystems onButtonClick={() => openPatchSetAssignWizard()} />}
+                            : <NoAppliedSystems hasAccess={hasAccess} onButtonClick={() => openPatchSetAssignWizard()} />}
                 </Main>
             </Fragment>
     );

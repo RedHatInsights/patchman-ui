@@ -168,7 +168,8 @@ export const systemsRowActions = (
     showRemediationModal,
     showTemplateAssignSystemsModal,
     openUnassignSystemsModal,
-    row
+    row,
+    hasTemplateAccess
 ) => {
     return [
         {
@@ -192,14 +193,14 @@ export const systemsRowActions = (
         },
         ...(showTemplateAssignSystemsModal ? [{
             title: 'Assign to a template',
-            isDisabled: row.satellite_managed,
+            isDisabled: !hasTemplateAccess || row.satellite_managed,
             onClick: (event, rowId, rowData) => {
                 showTemplateAssignSystemsModal({ [rowData.id]: true });
             }
         },
         {
             title: 'Remove from a template',
-            isDisabled: isPatchSetRemovalDisabled(row) || row.satellite_managed,
+            isDisabled: !hasTemplateAccess || isPatchSetRemovalDisabled(row) || row.satellite_managed,
             onClick: (event, rowId, rowData) => {
                 openUnassignSystemsModal([rowData.id]);
             }
