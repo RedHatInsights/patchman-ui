@@ -4,7 +4,8 @@ import {
     EmptyStateBody,
     EmptyStateIcon,
     EmptyStateVariant,
-    Title
+    Title,
+    Tooltip
 } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
 import React from 'react';
@@ -97,20 +98,28 @@ NoPatchSetList.propTypes = {
     Button: PropTypes.node
 };
 
-export const NoAppliedSystems = ({ onButtonClick }) => (
+export const NoAppliedSystems = ({ onButtonClick, hasAccess }) => (
     <EmptyState variant={EmptyStateVariant.full}>
         <EmptyStateIcon icon={PlusCircleIcon} />
         <Title headingLevel="h5" size="lg">
             {intl.formatMessage(messages.templateNoAppliedSystemsTitle)}
         </Title>
         <EmptyStateBody>
-            <Button type="primary" onClick={onButtonClick}>
-                {intl.formatMessage(messages.templateNoAppliedSystemsButton)}
-            </Button>
+            {hasAccess
+                ? <Button type="primary" onClick={onButtonClick}>
+                    {intl.formatMessage(messages.templateNoAppliedSystemsButton)}
+                </Button>
+                : <Tooltip content='For editing access, contact your administrator.'>
+                    <Button isAriaDisabled>
+                        {intl.formatMessage(messages.templateNoAppliedSystemsButton)}
+                    </Button>
+                </Tooltip>
+            }
         </EmptyStateBody>
     </EmptyState>
 );
 
 NoAppliedSystems.propTypes = {
-    onButtonClick: PropTypes.func
+    onButtonClick: PropTypes.func,
+    hasAccess: PropTypes.bool
 };

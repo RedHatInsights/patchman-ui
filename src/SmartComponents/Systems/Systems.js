@@ -34,6 +34,7 @@ import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 
 const Systems = () => {
     const store = useStore();
@@ -74,6 +75,11 @@ const Systems = () => {
     const queryParams = useSelector(
         ({ SystemsStore }) => SystemsStore?.queryParams || {}
     );
+
+    const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([
+        'patch:*:*',
+        'patch:template:write'
+    ]);
 
     const { systemProfile, selectedTags,
         filter, search, page, perPage, sort } = queryParams;
@@ -191,7 +197,8 @@ const Systems = () => {
                                     showRemediationModal,
                                     openAssignSystemsModal,
                                     openUnassignSystemsModal,
-                                    row
+                                    row,
+                                    hasTemplateAccess
                                 ),
                             canSelectAll: false,
                             variant: TableVariant.compact,
@@ -217,13 +224,13 @@ const Systems = () => {
                                     key: 'assign-multiple-systems',
                                     label: intl.formatMessage(messages.titlesTemplateAssign),
                                     onClick: () => openAssignSystemsModal(selectedRows),
-                                    props: { isDisabled: selectedCount === 0 }
+                                    props: { isDisabled: !hasTemplateAccess || selectedCount === 0 }
                                 },
                                 {
                                     key: 'remove-multiple-systems',
                                     label: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
                                     onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
-                                    props: { isDisabled: selectedCount === 0 }
+                                    props: { isDisabled: !hasTemplateAccess || selectedCount === 0 }
                                 }
                             ]
                         }}

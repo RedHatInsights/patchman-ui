@@ -18,6 +18,7 @@ import SystemDetail from './SystemDetail';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
+import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 
 const InventoryDetail = () => {
     const { inventoryId } = useParams();
@@ -54,6 +55,11 @@ const InventoryDetail = () => {
         ${DEFAULT_PATCH_TITLE}`);
     }, [chrome, displayName]);
 
+    const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([
+        'patch:*:*',
+        'patch:template:write'
+    ]);
+
     return (
         <DetailWrapper
             onLoad={({ mergeWithDetail }) => {
@@ -88,13 +94,13 @@ const InventoryDetail = () => {
                         {
                             title: intl.formatMessage(messages.titlesTemplateAssign),
                             key: 'assign-to-template',
-                            isDisabled: satelliteManaged,
+                            isDisabled: !hasTemplateAccess || satelliteManaged,
                             onClick: () => openAssignSystemsModal({ [inventoryId]: true })
                         },
                         {
                             title: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
                             key: 'remove-from-template',
-                            isDisabled: !patchSetName || satelliteManaged,
+                            isDisabled: !hasTemplateAccess || !patchSetName || satelliteManaged,
                             onClick: () => openUnassignSystemsModal([inventoryId])
                         }]}
                     //FIXME: remove this prop after inventory detail gets rid of activeApps in redux
