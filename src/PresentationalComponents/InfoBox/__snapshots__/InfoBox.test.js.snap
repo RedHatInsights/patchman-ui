@@ -1,42 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InfoBox Should match to snapshots 1`] = `
-<Split
-  className="infobox"
-  hasGutter={true}
->
-  <WithLoader
-    loading={false}
-    size="lg"
-    variant="skeleton"
+<DocumentFragment>
+  <div
+    class="pf-l-split pf-m-gutter infobox"
   >
-    <SplitItem
-      style={
-        {
-          "backgroundColor": "testColor",
-        }
-      }
+    <div
+      class="pf-l-split__item"
     >
-      <Bullseye>
+      <div
+        class="pf-l-bullseye"
+      >
         testContent
-      </Bullseye>
-    </SplitItem>
-    <SplitItem
-      isFilled={true}
+      </div>
+    </div>
+    <div
+      class="pf-l-split__item pf-m-fill"
     >
-      <TextContent>
-        <Text
-          component="h6"
+      <div
+        class="pf-c-content"
+      >
+        <h6
+          class=""
+          data-ouia-component-id="OUIA-Generated-Text-1"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
         >
           testTitle
-        </Text>
-        <Text
-          component="p"
+        </h6>
+        <p
+          class=""
+          data-ouia-component-id="OUIA-Generated-Text-2"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
         >
           testText
-        </Text>
-      </TextContent>
-    </SplitItem>
-  </WithLoader>
-</Split>
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;

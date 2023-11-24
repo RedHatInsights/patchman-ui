@@ -1,10 +1,11 @@
 import Label from './Label';
-import toJson from 'enzyme-to-json';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 describe('Label.js', () => {
     it('Should match the snapshot', () => {
-        const wrapper = shallow(<Label message = {<div></div>} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <Label message = {<div></div>} />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 });

@@ -1,23 +1,18 @@
-/* eslint-disable */
-import toJson from 'enzyme-to-json';
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './Header';
+import { mountWithRouter } from '../../../config/rtlwrapper';
 
-const withLink = Component => {
-    return mount(<Router>{Component}</Router>);
-};
 describe('Header component', () => {
     it('should render with header as empty string', () => {
         const header = { title: '' };
-        const wrapper = withLink(<Header {...header} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = mountWithRouter(<Header {...header} />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render with header Hello world', () => {
         const header = { title: 'Hello world' };
-        const wrapper = withLink(<Header {...header} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = mountWithRouter(<Header {...header} />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render with empty breadcrumb', () => {
@@ -25,8 +20,8 @@ describe('Header component', () => {
             breadcrumbs: [],
             title: ''
         };
-        const wrapper = withLink(<Header {...header} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = mountWithRouter(<Header {...header} />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render with 1 breadcrumb item and last is active', () => {
@@ -40,8 +35,8 @@ describe('Header component', () => {
                 }
             ]
         };
-        const wrapper = withLink(<Header {...header} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = mountWithRouter(<Header {...header} />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render without to attribute', () => {
@@ -54,8 +49,8 @@ describe('Header component', () => {
                 }
             ]
         };
-        const wrapper = withLink(<Header {...header} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = mountWithRouter(<Header {...header} />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render with 2 breadcrumb items and last is active', () => {
@@ -74,8 +69,8 @@ describe('Header component', () => {
                 }
             ]
         };
-        const wrapper = withLink(<Header {...header} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = mountWithRouter(<Header {...header} />);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render with 3 breadcrumb items and last is active', () => {
@@ -100,20 +95,20 @@ describe('Header component', () => {
                 }
             ]
         };
-        const wrapper = withLink(<Header {...header} />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = mountWithRouter(<Header {...header} />);
+        expect(asFragment()).toMatchSnapshot();
     });
-
-    it('should render with tabs only, click a tab', () => {
-        const wrapper = withLink(<Header showTabs title="Title" />);
+    //NOTE: Should be rewritten because of how RTL testing approaches testing the router
+    //something like this could be ok
+    //https://stackoverflow.com/questions/70313688/how-i-could-test-location-with-memoryrouter-on-react-router-dom-v6
+    it.skip('should render with tabs only, click a tab', () => {
+        const wrapper = mountWithRouter(<Header showTabs title="Title" />);
         let history = wrapper.find('Router').props().navigator;
         const spy = jest.spyOn(history, 'push');
         wrapper
-            .find('Tabs.patchman-tabs')
-            .props()
-            .onSelect();
-
+        .find('Tabs.patchman-tabs')
+        .props()
+        .onSelect();
         expect(spy).toBeCalled();
     });
 });
-/* eslint-enable */
