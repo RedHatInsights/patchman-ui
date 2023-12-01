@@ -1,12 +1,13 @@
-import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Modal } from '@patternfly/react-core';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-
 import UnassignSystemsModal from './UnassignSystemsModal';
 import { unassignSystemFromPatchSet, fetchSystems } from '../../Utilities/api';
 import { mountWithIntl, initMocks } from '../../Utilities/unitTestingUtilities';
 import { patchSetUnassignSystemsNotifications } from '../PatchSet/PatchSetAssets';
+import { render } from '@testing-library/react';
+import { IntlProvider } from '@redhat-cloud-services/frontend-components-translations';
+import messages from '../../../locales/en.json';
 
 initMocks();
 
@@ -42,7 +43,15 @@ describe('UnassignSystemsModal', () => {
     );
 
     it('should match the snapshots', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <IntlProvider locale={navigator.language.slice(0, 2)} messages={messages}>
+                <UnassignSystemsModal
+                    unassignSystemsModalState={unassignSystemsModalState}
+                    setUnassignSystemsModalOpen={setUnassignSystemsModalOpen}
+                />
+            </IntlProvider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should remove systems from a patch set and handle success notification', async ()  => {
@@ -82,5 +91,23 @@ describe('UnassignSystemsModal', () => {
         );
 
         expect(wrapper.find(Modal).props().isOpen).toBeFalsy();
+    });
+
+    it('Should return correct notification text with 1 system', () => {
+        const result = patchSetUnassignSystemsNotifications(1);
+        expect(result.success).toEqual({
+            title: `Systems succesfully removed from this Patch template.`,
+            description: `1 system removed from Patch template(s)`,
+            variant: 'success'
+        });
+    });
+
+    it('Should return correct notification text with multiple systems', () => {
+        const result = patchSetUnassignSystemsNotifications(2);
+        expect(result.success).toEqual({
+            title: `Systems succesfully removed from this Patch template.`,
+            description: `2 systems removed from Patch template(s)`,
+            variant: 'success'
+        });
     });
 });
