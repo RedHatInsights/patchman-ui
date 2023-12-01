@@ -1,577 +1,303 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] = `
-<ReviewPatchSet>
-  <Stack
-    hasGutter={true}
+<DocumentFragment>
+  <div
+    class="pf-l-stack pf-m-gutter"
   >
     <div
-      className="pf-l-stack pf-m-gutter"
+      class="pf-l-stack__item"
     >
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
+      <div
+        class="pf-c-content"
+      >
+        <h2
+          class=""
+          data-ouia-component-id="OUIA-Generated-Text-1"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
         >
-          <TextContent>
-            <div
-              className="pf-c-content"
-            >
-              <Text
-                component="h2"
-              >
-                <h2
-                  className=""
-                  data-ouia-component-id="OUIA-Generated-Text-1"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Review 
-                </h2>
-              </Text>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
-        >
-          <TextContent
-            style={
-              {
-                "marginTop": "-15px",
-              }
-            }
-          >
-            <div
-              className="pf-c-content"
-              style={
-                {
-                  "marginTop": "-15px",
-                }
-              }
-            >
-              <Text
-                component="p"
-              >
-                <p
-                  className=""
-                  data-ouia-component-id="OUIA-Generated-Text-2"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Review the details of your template.
-                </p>
-              </Text>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
-        >
-          <TextContent>
-            <div
-              className="pf-c-content"
-            >
-              <Text
-                className="pf-u-mt-md pf-u-mb-sm"
-                component="h2"
-              >
-                <h2
-                  className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-3"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Content
-                </h2>
-              </Text>
-              <TextList
-                component="dl"
-              >
-                <dl
-                  className=""
-                >
-                  <TextListItem
-                    component="dt"
-                    style={
-                      {
-                        "minWidth": 220,
-                      }
-                    }
-                  >
-                    <dt
-                      className=""
-                      style={
-                        {
-                          "minWidth": 220,
-                        }
-                      }
-                    >
-                      Red Hat advisories up to date
-                    </dt>
-                  </TextListItem>
-                  <TextListItem
-                    component="dd"
-                  >
-                    <dd
-                      className=""
-                    >
-                      14 June 2022
-                    </dd>
-                  </TextListItem>
-                </dl>
-              </TextList>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
-        >
-          <TextContent>
-            <div
-              className="pf-c-content"
-            >
-              <Text
-                className="pf-u-mt-md pf-u-mb-sm"
-                component="h2"
-              >
-                <h2
-                  className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-4"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Details
-                </h2>
-              </Text>
-              <TextList
-                component="dl"
-              >
-                <dl
-                  className=""
-                >
-                  <TextListItem
-                    component="dt"
-                    style={
-                      {
-                        "minWidth": 220,
-                      }
-                    }
-                  >
-                    <dt
-                      className=""
-                      style={
-                        {
-                          "minWidth": 220,
-                        }
-                      }
-                    >
-                      Name
-                    </dt>
-                  </TextListItem>
-                  <TextListItem
-                    component="dd"
-                  >
-                    <dd
-                      className=""
-                    >
-                      test-name
-                    </dd>
-                  </TextListItem>
-                  <TextListItem
-                    component="dt"
-                    style={
-                      {
-                        "minWidth": 220,
-                      }
-                    }
-                  >
-                    <dt
-                      className=""
-                      style={
-                        {
-                          "minWidth": 220,
-                        }
-                      }
-                    >
-                      Description
-                    </dt>
-                  </TextListItem>
-                  <TextListItem
-                    component="dd"
-                  >
-                    <dd
-                      className=""
-                    >
-                      test-description
-                    </dd>
-                  </TextListItem>
-                </dl>
-              </TextList>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
-        >
-          <TextContent>
-            <div
-              className="pf-c-content"
-            >
-              <Text
-                className="pf-u-mt-md pf-u-mb-sm"
-                component="h2"
-              >
-                <h2
-                  className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-5"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Systems
-                </h2>
-              </Text>
-              <TextList
-                component="dl"
-              >
-                <dl
-                  className=""
-                >
-                  <TextListItem
-                    component="dt"
-                    style={
-                      {
-                        "minWidth": 220,
-                      }
-                    }
-                  >
-                    <dt
-                      className=""
-                      style={
-                        {
-                          "minWidth": 220,
-                        }
-                      }
-                    >
-                      Template applied to
-                    </dt>
-                  </TextListItem>
-                  <TextListItem
-                    component="dd"
-                  >
-                    <dd
-                      className=""
-                    >
-                       2 systems 
-                    </dd>
-                  </TextListItem>
-                </dl>
-              </TextList>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
+          Review 
+        </h2>
+      </div>
     </div>
-  </Stack>
-</ReviewPatchSet>
+    <div
+      class="pf-l-stack__item"
+    >
+      <div
+        class="pf-c-content"
+        style="margin-top: -15px;"
+      >
+        <p
+          class=""
+          data-ouia-component-id="OUIA-Generated-Text-2"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Review the details of your template.
+        </p>
+      </div>
+    </div>
+    <div
+      class="pf-l-stack__item"
+    >
+      <div
+        class="pf-c-content"
+      >
+        <h2
+          class="pf-u-mt-md pf-u-mb-sm"
+          data-ouia-component-id="OUIA-Generated-Text-3"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Content
+        </h2>
+        <dl
+          class=""
+        >
+          <dt
+            class=""
+            style="min-width: 220px;"
+          >
+            Red Hat advisories up to date
+          </dt>
+          <dd
+            class=""
+          >
+            14 June 2022
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div
+      class="pf-l-stack__item"
+    >
+      <div
+        class="pf-c-content"
+      >
+        <h2
+          class="pf-u-mt-md pf-u-mb-sm"
+          data-ouia-component-id="OUIA-Generated-Text-4"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Details
+        </h2>
+        <dl
+          class=""
+        >
+          <dt
+            class=""
+            style="min-width: 220px;"
+          >
+            Name
+          </dt>
+          <dd
+            class=""
+          >
+            test-name
+          </dd>
+          <dt
+            class=""
+            style="min-width: 220px;"
+          >
+            Description
+          </dt>
+          <dd
+            class=""
+          >
+            test-description
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div
+      class="pf-l-stack__item"
+    >
+      <div
+        class="pf-c-content"
+      >
+        <h2
+          class="pf-u-mt-md pf-u-mb-sm"
+          data-ouia-component-id="OUIA-Generated-Text-5"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Systems
+        </h2>
+        <dl
+          class=""
+        >
+          <dt
+            class=""
+            style="min-width: 220px;"
+          >
+            Template applied to
+          </dt>
+          <dd
+            class=""
+          >
+             2 systems 
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`ReviewPatchSet.js Should display available configuration fields only 1`] = `
-<ReviewPatchSet>
-  <Stack
-    hasGutter={true}
+<DocumentFragment>
+  <div
+    class="pf-l-stack pf-m-gutter"
   >
     <div
-      className="pf-l-stack pf-m-gutter"
+      class="pf-l-stack__item"
     >
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
+      <div
+        class="pf-c-content"
+      >
+        <h2
+          class=""
+          data-ouia-component-id="OUIA-Generated-Text-6"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
         >
-          <TextContent>
-            <div
-              className="pf-c-content"
-            >
-              <Text
-                component="h2"
-              >
-                <h2
-                  className=""
-                  data-ouia-component-id="OUIA-Generated-Text-6"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Review 
-                </h2>
-              </Text>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
-        >
-          <TextContent
-            style={
-              {
-                "marginTop": "-15px",
-              }
-            }
-          >
-            <div
-              className="pf-c-content"
-              style={
-                {
-                  "marginTop": "-15px",
-                }
-              }
-            >
-              <Text
-                component="p"
-              >
-                <p
-                  className=""
-                  data-ouia-component-id="OUIA-Generated-Text-7"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Review the details of your template.
-                </p>
-              </Text>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
-        >
-          <TextContent>
-            <div
-              className="pf-c-content"
-            >
-              <Text
-                className="pf-u-mt-md pf-u-mb-sm"
-                component="h2"
-              >
-                <h2
-                  className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-8"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Content
-                </h2>
-              </Text>
-              <TextList
-                component="dl"
-              >
-                <dl
-                  className=""
-                >
-                  <TextListItem
-                    component="dt"
-                    style={
-                      {
-                        "minWidth": 220,
-                      }
-                    }
-                  >
-                    <dt
-                      className=""
-                      style={
-                        {
-                          "minWidth": 220,
-                        }
-                      }
-                    >
-                      Red Hat advisories up to date
-                    </dt>
-                  </TextListItem>
-                  <TextListItem
-                    component="dd"
-                  >
-                    <dd
-                      className=""
-                    >
-                      N/A
-                    </dd>
-                  </TextListItem>
-                </dl>
-              </TextList>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
-        >
-          <TextContent>
-            <div
-              className="pf-c-content"
-            >
-              <Text
-                className="pf-u-mt-md pf-u-mb-sm"
-                component="h2"
-              >
-                <h2
-                  className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-9"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Details
-                </h2>
-              </Text>
-              <TextList
-                component="dl"
-              >
-                <dl
-                  className=""
-                >
-                  <TextListItem
-                    component="dt"
-                    style={
-                      {
-                        "minWidth": 220,
-                      }
-                    }
-                  >
-                    <dt
-                      className=""
-                      style={
-                        {
-                          "minWidth": 220,
-                        }
-                      }
-                    >
-                      Name
-                    </dt>
-                  </TextListItem>
-                  <TextListItem
-                    component="dd"
-                  >
-                    <dd
-                      className=""
-                    >
-                      test-name
-                    </dd>
-                  </TextListItem>
-                  <TextListItem
-                    component="dt"
-                    style={
-                      {
-                        "minWidth": 220,
-                      }
-                    }
-                  >
-                    <dt
-                      className=""
-                      style={
-                        {
-                          "minWidth": 220,
-                        }
-                      }
-                    >
-                      Description
-                    </dt>
-                  </TextListItem>
-                  <TextListItem
-                    component="dd"
-                  >
-                    <dd
-                      className=""
-                    >
-                      No description provided
-                    </dd>
-                  </TextListItem>
-                </dl>
-              </TextList>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
-      <StackItem>
-        <div
-          className="pf-l-stack__item"
-        >
-          <TextContent>
-            <div
-              className="pf-c-content"
-            >
-              <Text
-                className="pf-u-mt-md pf-u-mb-sm"
-                component="h2"
-              >
-                <h2
-                  className="pf-u-mt-md pf-u-mb-sm"
-                  data-ouia-component-id="OUIA-Generated-Text-10"
-                  data-ouia-component-type="PF4/Text"
-                  data-ouia-safe={true}
-                  data-pf-content={true}
-                >
-                  Systems
-                </h2>
-              </Text>
-              <TextList
-                component="dl"
-              >
-                <dl
-                  className=""
-                >
-                  <TextListItem
-                    component="dt"
-                    style={
-                      {
-                        "minWidth": 220,
-                      }
-                    }
-                  >
-                    <dt
-                      className=""
-                      style={
-                        {
-                          "minWidth": 220,
-                        }
-                      }
-                    >
-                      Template applied to
-                    </dt>
-                  </TextListItem>
-                  <TextListItem
-                    component="dd"
-                  >
-                    <dd
-                      className=""
-                    >
-                       2 systems 
-                    </dd>
-                  </TextListItem>
-                </dl>
-              </TextList>
-            </div>
-          </TextContent>
-        </div>
-      </StackItem>
+          Review 
+        </h2>
+      </div>
     </div>
-  </Stack>
-</ReviewPatchSet>
+    <div
+      class="pf-l-stack__item"
+    >
+      <div
+        class="pf-c-content"
+        style="margin-top: -15px;"
+      >
+        <p
+          class=""
+          data-ouia-component-id="OUIA-Generated-Text-7"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Review the details of your template.
+        </p>
+      </div>
+    </div>
+    <div
+      class="pf-l-stack__item"
+    >
+      <div
+        class="pf-c-content"
+      >
+        <h2
+          class="pf-u-mt-md pf-u-mb-sm"
+          data-ouia-component-id="OUIA-Generated-Text-8"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Content
+        </h2>
+        <dl
+          class=""
+        >
+          <dt
+            class=""
+            style="min-width: 220px;"
+          >
+            Red Hat advisories up to date
+          </dt>
+          <dd
+            class=""
+          >
+            N/A
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div
+      class="pf-l-stack__item"
+    >
+      <div
+        class="pf-c-content"
+      >
+        <h2
+          class="pf-u-mt-md pf-u-mb-sm"
+          data-ouia-component-id="OUIA-Generated-Text-9"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Details
+        </h2>
+        <dl
+          class=""
+        >
+          <dt
+            class=""
+            style="min-width: 220px;"
+          >
+            Name
+          </dt>
+          <dd
+            class=""
+          >
+            test-name
+          </dd>
+          <dt
+            class=""
+            style="min-width: 220px;"
+          >
+            Description
+          </dt>
+          <dd
+            class=""
+          >
+            No description provided
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <div
+      class="pf-l-stack__item"
+    >
+      <div
+        class="pf-c-content"
+      >
+        <h2
+          class="pf-u-mt-md pf-u-mb-sm"
+          data-ouia-component-id="OUIA-Generated-Text-10"
+          data-ouia-component-type="PF4/Text"
+          data-ouia-safe="true"
+          data-pf-content="true"
+        >
+          Systems
+        </h2>
+        <dl
+          class=""
+        >
+          <dt
+            class=""
+            style="min-width: 220px;"
+          >
+            Template applied to
+          </dt>
+          <dd
+            class=""
+          >
+             2 systems 
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;
