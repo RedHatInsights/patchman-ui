@@ -6,9 +6,11 @@ import { exportSystemsCSV, exportSystemsJSON, fetchIDs } from '../../Utilities/a
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks, mountWithIntl } from '../../Utilities/unitTestingUtilities.js';
 import Systems from './Systems';
-import toJson from 'enzyme-to-json';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 import NoRegisteredSystems from '../../PresentationalComponents/Snippets/NoRegisteredSystems';
+import { render } from '@testing-library/react';
+import { IntlProvider } from '@redhat-cloud-services/frontend-components-translations';
+import messages from '../../../locales/en.json';
 
 initMocks();
 
@@ -114,7 +116,14 @@ afterEach(() => {
 
 describe('Systems.js', () => {
     it('should match the snapshot', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <IntlProvider locale={navigator.language.slice(0, 2)} messages={messages}>
+                <Provider store={store}>
+                    <Router><Systems /></Router>
+                </Provider>
+            </IntlProvider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should dispatch CHANGE_SYSTEMS_PARAMS action once only', () => {
