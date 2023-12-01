@@ -4,9 +4,10 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { storeListDefaults } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { systemPackages } from '../../Utilities/RawDataForTesting';
 import { exportPackagesJSON, exportPackagesCSV } from '../../Utilities/api';
+import { queryByText, queryAllByText } from '@testing-library/dom';
 
 initMocks();
 
@@ -63,8 +64,24 @@ afterEach(() => {
 });
 
 describe('Packages.js', () => {
-    it('should match the snapshot', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+
+    it('should render the packages names correctly', () => {
+        const { container } = render(
+            <Provider store={store}>
+                <Router><Packages /></Router>
+            </Provider>
+        );
+        expect(queryByText(container, 'test-name')).not.toBeNull();
+        expect(queryByText(container, 'test-name-2')).not.toBeNull();
+    });
+
+    it('should render the packages summary', () => {
+        const { container } = render(
+            <Provider store={store}>
+                <Router><Packages /></Router>
+            </Provider>
+        );
+        expect(queryAllByText(container, 'Access control list utilities')).not.toBeNull();
     });
 
     it('should fetch packages only once on load', () => {
