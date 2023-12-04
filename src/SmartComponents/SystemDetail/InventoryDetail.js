@@ -135,7 +135,11 @@ const InventoryDetail = () => {
                                             installable updates, check in to Red Hat Insights with the --build-packagecache
                                             option."
                                     >
-                                        <a href="https://access.redhat.com/documentation/en-us/red_hat_satellite">
+                                        <a
+                                            href="https://access.redhat.com/solutions/7041171"
+                                            target="__blank"
+                                            rel="noopener noreferrer"
+                                        >
                                             Read more
                                         </a>
                                     </Alert>
