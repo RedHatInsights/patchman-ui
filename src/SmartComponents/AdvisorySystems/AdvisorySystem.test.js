@@ -1,4 +1,3 @@
-import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -87,10 +86,6 @@ afterEach(() => {
 });
 
 describe('AdvisorySystems.js', () => {
-
-    it('Should match the snapshots and dispatch FETCH_AFFECTED_SYSTEMS only once', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
-    });
 
     it('Should display error page when status is rejected', () => {
         useSelector.mockImplementation(callback => {

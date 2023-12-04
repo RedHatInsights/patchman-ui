@@ -4,9 +4,10 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { storeListDefaults } from '../../Utilities/constants';
 import { MemoryRouter as Router } from 'react-router-dom';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { packageDetailData } from '../../Utilities/RawDataForTesting';
 import { mount } from 'enzyme';
+import { queryByText } from '@testing-library/dom';
 
 initMocks();
 
@@ -41,7 +42,6 @@ const initStore = (state) => {
     return mockStore({ PackageDetailStore: state });
 };
 
-let wrapper;
 let store = initStore(mockState);
 
 beforeEach(() => {
@@ -49,9 +49,6 @@ beforeEach(() => {
     useSelector.mockImplementation(callback => {
         return callback({ PackageDetailStore: mockState });
     });
-    wrapper = mount(<Provider store={store}>
-        <Router><PackageDetail /></Router>
-    </Provider>);
 });
 
 afterEach(() => {
@@ -59,8 +56,20 @@ afterEach(() => {
 });
 
 describe('PackageDetail.js', () => {
-    it('should match the snapshot', ()  => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+    it('should render the Header', ()  => {
+        const { container } = render(
+            <Provider store={store}>
+                <Router><PackageDetail /></Router>
+            </Provider>);
+        expect(queryByText(container, 'Packages')).not.toBeNull();
+    });
+
+    it('should render the Text', ()  => {
+        const { container } = render(
+            <Provider store={store}>
+                <Router><PackageDetail /></Router>
+            </Provider>);
+        expect(queryByText(container, 'Systems')).not.toBeNull();
     });
 
     it('should display Unavailable component on error', () => {

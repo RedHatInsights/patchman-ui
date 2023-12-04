@@ -1,9 +1,11 @@
 import AdvisoryType from './AdvisoryType';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 
 describe('AdvisoryType', () => {
     it('Should match the snapshots', () => {
-        const wrapper = mount(<AdvisoryType type = 'security' />);
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <AdvisoryType type = 'security' />
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 });

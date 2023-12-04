@@ -1,5 +1,5 @@
 import React from 'react';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
@@ -55,19 +55,20 @@ const initStore = (state) => {
 };
 
 let store = initStore(mockState);
-let wrapper;
 beforeEach(() => {
     store.clearActions();
     useSelector.mockImplementation(callback => {
         return callback({ PatchSetsStore: mockState });
     });
-    wrapper = mount(<Provider store={store}>
-        <Router><PatchSet history={{ location: {}, push: () => {} }}/></Router>
-    </Provider>);
 });
 
 describe('HeaderBreadcrumbs', () => {
     it('Should render correctly', () => {
-        expect(toJson(wrapper)).toMatchSnapshot();
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router><PatchSet history={{ location: {}, push: () => {} }}/></Router>
+            </Provider>
+        );
+        expect(asFragment()).toMatchSnapshot();
     });
 });
