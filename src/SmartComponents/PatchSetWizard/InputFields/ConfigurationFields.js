@@ -11,7 +11,7 @@ const ConfigurationFields = ({ isLoading }) => {
         <Fragment>
             {/* The form element always need to be rendered in order to correctly disable "Next" button,
                 that's why these are hidden using "display: none" instead of not rendering */}
-            <Spinner size="xl" style={{ display: isLoading ? 'block' : 'none' }} />
+            <Spinner size="xl" style={{ display: isLoading ? 'block' : 'none' }} id={`test-config-fields-spinner`}/>
             <Grid hasGutter style={{ display: isLoading ? 'none' : 'grid' }}>
                 <GridItem lg={12} md={12}>
                     {renderForm(nameComponent)}
