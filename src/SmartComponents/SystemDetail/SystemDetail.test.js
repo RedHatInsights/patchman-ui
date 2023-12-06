@@ -1,26 +1,71 @@
 import SystemDetail from './SystemDetail';
 import { useLocation } from 'react-router-dom';
+import { Provider, useSelector } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import { systemAdvisoryRows, systemPackages } from '../../Utilities/RawDataForTesting';
+import { storeListDefaults } from '../../Utilities/constants';
+
+const mockState = {
+    metadata: {
+        limit: 25,
+        offset: 0,
+        total_items: 10
+    },
+    expandedRows: {},
+    selectedRows: { 'RHSA-2020:2774': true },
+    queryParams: {},
+    error: {},
+    status: {},
+    rows: systemAdvisoryRows
+};
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
-    useSelector: () => ({ id: 'entity-id' })
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(() => () => {})
 }));
+
+const initStore = (state) => {
+    const customMiddleWare = () => next => action => {
+        useSelector.mockImplementation(callback => {
+            return callback({  SystemAdvisoryListStore: state });
+        });
+        next(action);
+    };
+
+    const mockStore = configureStore([customMiddleWare]);
+    return mockStore({  SystemAdvisoryListStore: state });
+};
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
     useLocation: jest.fn(() => ({ state: 'advisories' }))
 }));
+let store = initStore(mockState);
 
 describe('SystemDetail.js', () => {
     it('Should match the snapshots', () => {
-        const wrapper = shallow(<SystemDetail />);
-        expect(wrapper.debug()).toMatchSnapshot();
+        useSelector.mockImplementation(callback => {
+            return callback({ SystemAdvisoryListStore: mockState,
+                SystemPackageListStore: { ...storeListDefaults, rows: systemPackages } });
+        });
+
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router><SystemDetail /></Router>
+            </Provider>);
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('Should match the snapshot when Package tab is active by default', () => {
         useLocation.mockImplementation(() => ({ state: { tab: 'packages' } }));
-        const wrapper = shallow(<SystemDetail />);
-        expect(wrapper.debug()).toMatchSnapshot();
+        const { asFragment } = render(
+            <Provider store={store}>
+                <Router><SystemDetail /></Router>
+            </Provider>);
+        expect(asFragment()).toMatchSnapshot();
     });
 });
 
