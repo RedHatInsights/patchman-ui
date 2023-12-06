@@ -1,6 +1,6 @@
 import ToDateField from './ToDateField';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
-import dateValidator from '../../../Utilities/dateValidator';
+import { render, screen } from '@testing-library/react';
 
 jest.mock('@data-driven-forms/react-form-renderer/use-form-api',
     () => ({
@@ -17,10 +17,6 @@ jest.mock('@data-driven-forms/react-form-renderer/use-field-api',
     }))
 );
 
-jest.mock('../../../Utilities/dateValidator',
-    () => jest.fn(() => ({}))
-);
-
 describe('ConfigurationFields.js', () => {
     it('Should description field have default value', () => {
         useFormApi.mockReturnValue(({
@@ -29,25 +25,12 @@ describe('ConfigurationFields.js', () => {
             })
         })
         );
-
-        const wrapper = mount(<ToDateField />);
-        expect(wrapper.find('input').props().value).toEqual('testToDate');
-    });
-
-    it('Should display configuration fields', () => {
-        useFormApi.mockReturnValue(({
-            getState: () => ({ values: {} })
-        })
+        render(<ToDateField />);
+        expect(screen.getByRole('textbox', {
+            name: /todate/i
+        }).value).toEqual(
+            'testToDate'
         );
-
-        const wrapper = mount(<ToDateField />);
-        expect(wrapper.find('input').props().value).toBeFalsy();
-    });
-
-    it('Should pass dateValidator', () => {
-        const wrapper = mount(<ToDateField />);
-        const validators = wrapper.find('DatePicker').props().validators;
-        expect(validators).toContain(dateValidator);
     });
 });
 

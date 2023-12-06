@@ -17,13 +17,13 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
         role="presentation"
       >
         <button
-          aria-controls="pf-tab-section-0-pf-1701866097791o275i87w37"
+          aria-controls="pf-tab-section-0-system-advisories-tab"
           aria-selected="false"
           class="pf-c-tabs__link"
           data-ouia-component-id="system-advisories-tab"
           data-ouia-component-type="system-advisories-tab"
           data-ouia-safe="true"
-          id="pf-tab-0-pf-1701866097791o275i87w37"
+          id="pf-tab-0-system-advisories-tab"
           role="tab"
           type="button"
         >
@@ -39,13 +39,13 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
         role="presentation"
       >
         <button
-          aria-controls="pf-tab-section-1-pf-1701866097791o275i87w37"
+          aria-controls="pf-tab-section-1-system-packages-tab"
           aria-selected="true"
           class="pf-c-tabs__link"
           data-ouia-component-id="system-packages-tab"
           data-ouia-component-type="system-packages-tab"
           data-ouia-safe="true"
-          id="pf-tab-1-pf-1701866097791o275i87w37"
+          id="pf-tab-1-system-packages-tab"
           role="tab"
           type="button"
         >
@@ -59,12 +59,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
     </ul>
   </div>
   <section
-    aria-labelledby="pf-tab-0-pf-1701866097791o275i87w37"
+    aria-labelledby="pf-tab-0-system-advisories-tab"
     class="pf-c-tab-content"
     data-ouia-component-type="PF4/TabContent"
     data-ouia-safe="true"
     hidden=""
-    id="pf-tab-section-0-pf-1701866097791o275i87w37"
+    id="pf-tab-section-0-system-advisories-tab"
     role="tabpanel"
     tabindex="0"
   >
@@ -1230,11 +1230,11 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
     </div>
   </section>
   <section
-    aria-labelledby="pf-tab-1-pf-1701866097791o275i87w37"
+    aria-labelledby="pf-tab-1-system-packages-tab"
     class="pf-c-tab-content"
     data-ouia-component-type="PF4/TabContent"
     data-ouia-safe="true"
-    id="pf-tab-section-1-pf-1701866097791o275i87w37"
+    id="pf-tab-section-1-system-packages-tab"
     role="tabpanel"
     tabindex="0"
   >
@@ -3392,13 +3392,13 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
         role="presentation"
       >
         <button
-          aria-controls="pf-tab-section-0-pf-1701866097435aj6vg3qm6x"
+          aria-controls="pf-tab-section-0-system-advisories-tab"
           aria-selected="true"
           class="pf-c-tabs__link"
           data-ouia-component-id="system-advisories-tab"
           data-ouia-component-type="system-advisories-tab"
           data-ouia-safe="true"
-          id="pf-tab-0-pf-1701866097435aj6vg3qm6x"
+          id="pf-tab-0-system-advisories-tab"
           role="tab"
           type="button"
         >
@@ -3414,13 +3414,13 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
         role="presentation"
       >
         <button
-          aria-controls="pf-tab-section-1-pf-1701866097435aj6vg3qm6x"
+          aria-controls="pf-tab-section-1-system-packages-tab"
           aria-selected="false"
           class="pf-c-tabs__link"
           data-ouia-component-id="system-packages-tab"
           data-ouia-component-type="system-packages-tab"
           data-ouia-safe="true"
-          id="pf-tab-1-pf-1701866097435aj6vg3qm6x"
+          id="pf-tab-1-system-packages-tab"
           role="tab"
           type="button"
         >
@@ -3434,11 +3434,11 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
     </ul>
   </div>
   <section
-    aria-labelledby="pf-tab-0-pf-1701866097435aj6vg3qm6x"
+    aria-labelledby="pf-tab-0-system-advisories-tab"
     class="pf-c-tab-content"
     data-ouia-component-type="PF4/TabContent"
     data-ouia-safe="true"
-    id="pf-tab-section-0-pf-1701866097435aj6vg3qm6x"
+    id="pf-tab-section-0-system-advisories-tab"
     role="tabpanel"
     tabindex="0"
   >
@@ -4604,12 +4604,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
     </div>
   </section>
   <section
-    aria-labelledby="pf-tab-1-pf-1701866097435aj6vg3qm6x"
+    aria-labelledby="pf-tab-1-system-packages-tab"
     class="pf-c-tab-content"
     data-ouia-component-type="PF4/TabContent"
     data-ouia-safe="true"
     hidden=""
-    id="pf-tab-section-1-pf-1701866097435aj6vg3qm6x"
+    id="pf-tab-section-1-system-packages-tab"
     role="tabpanel"
     tabindex="0"
   >

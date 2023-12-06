@@ -52,7 +52,6 @@ beforeEach(() => {
 describe('OsVersionFilter', () => {
     it('has nothing selected', () => {
         const response = osVersionFilter('', apply);
-        console.log('RESPONSE', response);
         expect(response[0].value).toEqual([]);
     });
     it('has one selected as a string', () => {
