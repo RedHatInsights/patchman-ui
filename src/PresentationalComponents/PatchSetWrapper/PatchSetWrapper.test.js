@@ -28,7 +28,7 @@ const testProps = {
         isPatchSetWizardOpen: true,
         systemsIDs: ['system-1', 'system-2']
     },
-    setPatchSetState: () => ({ isPatchSetWizardOpen: true })
+    setPatchSetState: jest.fn()
 };
 describe('PatchSetWrapper', () => {
     it('should display PatchSetWizard when isPatchSetWizardOpen prop is true', () => {

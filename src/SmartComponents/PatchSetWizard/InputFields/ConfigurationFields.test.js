@@ -1,5 +1,5 @@
 import ConfigurationFields from './ConfigurationFields';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 jest.mock('@data-driven-forms/react-form-renderer/use-form-api',
     () => jest.fn(() => ({
@@ -10,7 +10,6 @@ jest.mock('@data-driven-forms/react-form-renderer/use-form-api',
 describe('ConfigurationFields.js', () => {
     it('Should display Spinner on patch-set loading', () => {
         const { container } = render(<ConfigurationFields isLoading />);
-        screen.logTestingPlaygroundURL();
         expect(container.querySelector('#test-config-fields-spinner')).toBeTruthy();
     });
 
