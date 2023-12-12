@@ -8,8 +8,10 @@ import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { defaultReducers } from '../../store';
-import { changeSystemsParams, clearInventoryReducer,
-    changeSystemsMetadata, changeTags, systemSelectAction } from '../../store/Actions/Actions';
+import {
+    changeSystemsParams, clearInventoryReducer,
+    changeSystemsMetadata, changeTags, systemSelectAction
+} from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
 import {
     exportSystemsCSV, exportSystemsJSON, fetchSystems
@@ -18,7 +20,8 @@ import { DEFAULT_PATCH_TITLE, systemsListDefaultFilters } from '../../Utilities/
 import {
     arrayFromObj, decodeQueryparams, persistantParams, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
-import { useBulkSelectConfig, useGetEntities, useOnExport,
+import {
+    useBulkSelectConfig, useGetEntities, useOnExport,
     useRemoveFilter
 } from '../../Utilities/Hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -41,7 +44,7 @@ const Systems = () => {
     const inventory = useRef(null);
 
     const chrome = useChrome();
-    useEffect(()=>{
+    useEffect(() => {
         chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesSystems)}${DEFAULT_PATCH_TITLE}`);
     }, [chrome, intl]);
 
@@ -82,7 +85,23 @@ const Systems = () => {
     ]);
 
     const { systemProfile, selectedTags,
-        filter, search, page, perPage, sort } = queryParams;
+        filter: queryParamsFilter, search, page, perPage, sort
+    } = queryParams;
+    const { os: operatingSystemFilter, ...filter } = queryParamsFilter || {};
+    const osFilter = operatingSystemFilter && [{
+        osFilter: operatingSystemFilter.reduce((osFilter, os) => {
+            const [osName, osVersion] = os.split(' ');
+            const [major] = osVersion.split('.');
+
+            return {
+                ...osFilter,
+                [`${osName}-${major}`]: {
+                    ...osFilter[`${osName}-${major}`] || {},
+                    [`${osName}-${major}-${osVersion}`]: true
+                }
+            };
+        }, {})
+    }];
 
     React.useEffect(() => {
         apply(decodedParams);
@@ -156,89 +175,93 @@ const Systems = () => {
         <React.Fragment>
             <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
             {(hasError || metadata?.has_systems === false)
-            && <ErrorHandler code={code} metadata={metadata}/>
-            || <React.Fragment>
-                <SystemsStatusReport apply={apply} queryParams={queryParams} />
-                <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
-                {isRemediationOpen && <RemediationModalCmp /> || null}
-                <Main>
-                    <InventoryTable
-                        ref={inventory}
-                        isFullView
-                        autoRefresh
-                        initialLoading
-                        hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
-                        columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, systemsListColumns)}
-                        showTags
-                        customFilters={{
-                            patchParams: {
-                                search,
-                                filter,
-                                systemProfile,
-                                selectedTags
-                            }
-                        }}
-                        paginationProps={{
-                            isDisabled: totalItems === 0
-                        }}
-                        onLoad={({ mergeWithEntities }) => {
-                            store.replaceReducer(combineReducers({
-                                ...defaultReducers,
-                                ...mergeWithEntities(
-                                    inventoryEntitiesReducer(systemsListColumns(), modifyInventory),
-                                    persistantParams({ page, perPage, sort, search }, decodedParams)
-                                )
-                            }));
-                        }}
-                        getEntities={getEntities}
-                        tableProps={{
-                            actionResolver: (row) =>
-                                systemsRowActions(
-                                    showRemediationModal,
-                                    openAssignSystemsModal,
-                                    openUnassignSystemsModal,
-                                    row,
-                                    hasTemplateAccess
-                                ),
-                            canSelectAll: false,
-                            variant: TableVariant.compact,
-                            className: 'patchCompactInventory',
-                            isStickyHeader: true
-                        }}
-                        bulkSelect={bulkSelectConfig}
-                        exportConfig={{
-                            isDisabled: totalItems === 0,
-                            onSelect: onExport
-                        }}
-                        actionsConfig={{
-                            actions: [
-                                <AsyncRemediationButton
-                                    key='remediate-multiple-systems'
-                                    remediationProvider={remediationDataProvider}
-                                    isDisabled={
-                                        arrayFromObj(selectedRows).length === 0 || isRemediationLoading
-                                    }
-                                    isLoading={isRemediationLoading}
-                                />,
-                                {
-                                    key: 'assign-multiple-systems',
-                                    label: intl.formatMessage(messages.titlesTemplateAssign),
-                                    onClick: () => openAssignSystemsModal(selectedRows),
-                                    props: { isDisabled: !hasTemplateAccess || selectedCount === 0 }
-                                },
-                                {
-                                    key: 'remove-multiple-systems',
-                                    label: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
-                                    onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
-                                    props: { isDisabled: !hasTemplateAccess || selectedCount === 0 }
+                && <ErrorHandler code={code} metadata={metadata} />
+                || <React.Fragment>
+                    <SystemsStatusReport apply={apply} queryParams={queryParams} />
+                    <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
+                    {isRemediationOpen && <RemediationModalCmp /> || null}
+                    <Main>
+                        <InventoryTable
+                            ref={inventory}
+                            isFullView
+                            autoRefresh
+                            initialLoading
+                            hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
+                            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, systemsListColumns)}
+                            showTags
+                            customFilters={{
+                                ...operatingSystemFilter ? {
+                                    filters: [...(osFilter || [])]
+                                } : {},
+                                patchParams: {
+                                    search,
+                                    filter,
+                                    systemProfile,
+                                    selectedTags
+
                                 }
-                            ]
-                        }}
-                        filterConfig={filterConfig}
-                        activeFiltersConfig={activeFiltersConfig}
-                    />
-                </Main>
-            </React.Fragment>}
+                            }}
+                            paginationProps={{
+                                isDisabled: totalItems === 0
+                            }}
+                            onLoad={({ mergeWithEntities }) => {
+                                store.replaceReducer(combineReducers({
+                                    ...defaultReducers,
+                                    ...mergeWithEntities(
+                                        inventoryEntitiesReducer(systemsListColumns(), modifyInventory),
+                                        persistantParams({ page, perPage, sort, search }, decodedParams)
+                                    )
+                                }));
+                            }}
+                            getEntities={getEntities}
+                            tableProps={{
+                                actionResolver: (row) =>
+                                    systemsRowActions(
+                                        showRemediationModal,
+                                        openAssignSystemsModal,
+                                        openUnassignSystemsModal,
+                                        row,
+                                        hasTemplateAccess
+                                    ),
+                                canSelectAll: false,
+                                variant: TableVariant.compact,
+                                className: 'patchCompactInventory',
+                                isStickyHeader: true
+                            }}
+                            bulkSelect={bulkSelectConfig}
+                            exportConfig={{
+                                isDisabled: totalItems === 0,
+                                onSelect: onExport
+                            }}
+                            actionsConfig={{
+                                actions: [
+                                    <AsyncRemediationButton
+                                        key='remediate-multiple-systems'
+                                        remediationProvider={remediationDataProvider}
+                                        isDisabled={
+                                            arrayFromObj(selectedRows).length === 0 || isRemediationLoading
+                                        }
+                                        isLoading={isRemediationLoading}
+                                    />,
+                                    {
+                                        key: 'assign-multiple-systems',
+                                        label: intl.formatMessage(messages.titlesTemplateAssign),
+                                        onClick: () => openAssignSystemsModal(selectedRows),
+                                        props: { isDisabled: !hasTemplateAccess || selectedCount === 0 }
+                                    },
+                                    {
+                                        key: 'remove-multiple-systems',
+                                        label: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
+                                        onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
+                                        props: { isDisabled: !hasTemplateAccess || selectedCount === 0 }
+                                    }
+                                ]
+                            }}
+                            filterConfig={filterConfig}
+                            activeFiltersConfig={activeFiltersConfig}
+                        />
+                    </Main>
+                </React.Fragment>}
         </React.Fragment>
     );
 };

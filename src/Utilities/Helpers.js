@@ -396,15 +396,29 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
     return filterConfig;
 };
 
+export const buildOsFilter = (osFilter = {}) => {
+    const osVersions = Object.entries(osFilter).reduce((acc, [, osGroupValues]) => {
+        return [
+            ...acc,
+            ...Object.entries(osGroupValues).filter(([, value]) => (value === true)).map(([key]) => {
+                const keyParts = key.split('-');
+                return keyParts.slice(0, keyParts.length - 2) + ' ' + keyParts[keyParts.length - 1];
+            })
+        ];
+    }, []);
+
+    return osVersions.length > 0 ? {
+        os: osVersions.join(',')
+    } : {};
+};
+
 export const buildApiFilters = (patchFilters, inventoryFilters) => (
     {
         ...patchFilters,
         ...(Array.isArray(inventoryFilters.hostGroupFilter) && inventoryFilters.hostGroupFilter.length > 0
             ? { group_name: inventoryFilters.hostGroupFilter }
             : {}),
-        ...inventoryFilters?.osFilter?.length > 0 ? {
-            os: inventoryFilters.osFilter.map(({ value }) => 'RHEL ' + value).join(',')
-        } : {}
+        ...buildOsFilter(inventoryFilters?.osFilter)
     });
 
 export const changeListParams = (oldParams, newParams) => {
