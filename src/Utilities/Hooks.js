@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SortByDirection } from '@patternfly/react-table';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
@@ -190,6 +190,8 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
 
 export const useGetEntities = (fetchApi, apply, config, setSearchParams, applyMetadata, applyGlobalFilter) => {
     const { id, packageName } = config || {};
+    const mounted = useRef(true);
+
     const getEntities = async (
         _items,
         { orderBy, orderDirection, page, per_page: perPage, patchParams, filters }
@@ -210,27 +212,39 @@ export const useGetEntities = (fetchApi, apply, config, setSearchParams, applyMe
             ...packageName && { package_name: packageName } || {}
         });
 
-        apply({
-            page,
-            perPage,
-            sort
-        });
+        if (mounted.current) {
+            apply({
+                page,
+                perPage,
+                sort
+            });
 
-        applyMetadata && applyMetadata(items.meta);
-        applyGlobalFilter && applyGlobalFilter(selectedTags);
+            applyMetadata && applyMetadata(items.meta);
+            applyGlobalFilter && applyGlobalFilter(selectedTags);
 
-        setSearchParams(encodeURLParams({
-            page,
-            perPage,
-            sort,
-            ...patchParams
-        }));
+            setSearchParams(encodeURLParams({
+                page,
+                perPage,
+                sort,
+                filter
+            }), {
+                replace: true
+            });
+        }
 
         return {
             results: items.data.map(row => ({ ...row, ...row.attributes, id: row.id ?? row.inventory_id })),
             total: items.meta?.total_items
         };
     };
+
+    useEffect(() => {
+        mounted.current = true;
+
+        return () => {
+            mounted.current = false;
+        };
+    }, []);
 
     return getEntities;
 };
