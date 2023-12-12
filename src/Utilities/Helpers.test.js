@@ -408,7 +408,12 @@ describe('buildApiFilters', () => {
     });
 
     it('adds a os filter when the inventory is filtered by OS', () => {
-        const osFilter = [{ value: '8.8' }, { value: '8.9' }];
+        const osFilter = {
+            'RHEL-8': {
+                'RHEL-8-8.8': true,
+                'RHEL-8-8.9': true
+            }
+        };
         const inventoryFilters = {
             osFilter
         };

@@ -104,3 +104,18 @@ export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
 
     return sort;
 };
+
+export const osParamParser = (paramValue) => {
+    return paramValue.replace('in:', '').split(',').reduce((osFilter, os) => {
+        const [osName, osVersion] = os.split(' ');
+        const [major] = osVersion.split('.');
+
+        return {
+            ...osFilter,
+            [`${osName}-${major}`]: {
+                ...osFilter[`${osName}-${major}`] || {},
+                [`${osName}-${major}-${osVersion}`]: true
+            }
+        };
+    }, {});
+};

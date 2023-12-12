@@ -293,16 +293,18 @@ export const encodeURLParams = parameters => {
     return encodeParams(removeUndefinedObjectItems(urlParams), false);
 };
 
-export const decomposeFilterValue = filterValue => {
-    if (typeof(filterValue) === 'string' && filterValue.startsWith('in:')) {
+export const decomposeFilterValue = (filterValue, parser) => {
+    if (parser) {
+        return parser(filterValue);
+    } else if (typeof(filterValue) === 'string' && filterValue.startsWith('in:')) {
         const values = filterValue.slice(3);
         return values.split(',');
+    } else {
+        return filterValue;
     }
-
-    return filterValue;
 };
 
-export const decodeQueryparams = queryString => {
+export const decodeQueryparams = (queryString, parsers = {}) => {
     const parsed = qs.parse(queryString);
     const res = {};
     Object.keys(parsed).forEach(key => {
@@ -313,9 +315,10 @@ export const decodeQueryparams = queryString => {
             if (bracketIndex > 0) {
                 const objParent = key.slice(0, bracketIndex);
                 const objKey = key.slice(bracketIndex + 1, -1);
+                const parser = parsers[objKey];
                 res[objParent] = {
                     ...res[objParent],
-                    [objKey]: decomposeFilterValue(typeHandledParam)
+                    [objKey]: decomposeFilterValue(typeHandledParam, parser)
                 };
             } else {
                 res[key] = typeHandledParam;
@@ -325,11 +328,13 @@ export const decodeQueryparams = queryString => {
     return res;
 };
 
-export const buildFilterChips = (filters, search, searchChipLabel = 'Search') => {
+export const buildFilterChips = (filters, search, searchChipLabel = 'Search', parsers = {}) => {
 
     let filterConfig = [];
     const buildChips = (filters, category) => {
-        if (multiValueFilters.includes(category)) {
+        if (parsers[category]) {
+            return parsers[category](filters[category]);
+        } else if (multiValueFilters.includes(category)) {
             const filterValues = filters[category] && (typeof(filters[category]) === 'string' && filters[category].split(',')
                 || filters[category]) || [];
             return filterValues.map(value => ({
@@ -396,15 +401,29 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search') =>
     return filterConfig;
 };
 
+export const buildOsFilter = (osFilter = {}) => {
+    const osVersions = Object.entries(osFilter).reduce((acc, [, osGroupValues]) => {
+        return [
+            ...acc,
+            ...Object.entries(osGroupValues).filter(([, value]) => (value === true)).map(([key]) => {
+                const keyParts = key.split('-');
+                return keyParts.slice(0, keyParts.length - 2) + ' ' + keyParts[keyParts.length - 1];
+            })
+        ];
+    }, []);
+
+    return osVersions.length > 0 ? {
+        os: osVersions.join(',')
+    } : {};
+};
+
 export const buildApiFilters = (patchFilters, inventoryFilters) => (
     {
         ...patchFilters,
         ...(Array.isArray(inventoryFilters.hostGroupFilter) && inventoryFilters.hostGroupFilter.length > 0
             ? { group_name: inventoryFilters.hostGroupFilter }
             : {}),
-        ...inventoryFilters?.osFilter?.length > 0 ? {
-            os: inventoryFilters.osFilter.map(({ value }) => 'RHEL ' + value).join(',')
-        } : {}
+        ...buildOsFilter(inventoryFilters?.osFilter)
     });
 
 export const changeListParams = (oldParams, newParams) => {
