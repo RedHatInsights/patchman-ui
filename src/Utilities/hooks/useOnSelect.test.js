@@ -1,13 +1,13 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { fetchIDs } from './api';
+import { fetchIDs } from '../api';
 import { useOnSelect } from './useOnSelect';
 
 jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
     useDispatch: jest.fn(() => () => {})
 }));
-jest.mock('./api', () => ({
-    ...jest.requireActual('./api'),
+jest.mock('../api', () => ({
+    ...jest.requireActual('../api'),
     fetchIDs: jest.fn(() => Promise.resolve({
         data: [{ id: 'db-item' }]
     }))

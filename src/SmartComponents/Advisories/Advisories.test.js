@@ -44,8 +44,6 @@ jest.mock('../../Utilities/constants', () => ({
 }));
 jest.mock('../Remediation/AsyncRemediationButton', () =>  () => <div></div>);
 
-jest.mock('../../Utilities/useRemediationDataProvider', () => () => jest.fn());
-
 const mockState = { ...storeListDefaults,
     rows: advisoryRows,
     status: { isLoading: false, code: 200, hasError: false },

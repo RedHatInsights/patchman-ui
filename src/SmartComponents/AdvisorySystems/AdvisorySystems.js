@@ -18,13 +18,12 @@ import {
     remediationProvider, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
 import {
-    useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter
-} from '../../Utilities/Hooks';
+    useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter, useOnSelect, ID_API_ENDPOINTS
+} from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { advisorySystemsColumns, systemsRowActions } from '../Systems/SystemsListAssets';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
-import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
 import { useSearchParams } from 'react-router-dom';

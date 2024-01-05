@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import {
     filterSelectedActiveSystemIDs
-} from './Helpers';
+} from '../Helpers';
 
 /**
 * Manages unified state for patch set wizard and unassign modal.
 * @param {Object} [selectedRows] selected rows object to be removed.
 * @returns {patchSetState, setPatchSetState, openPatchSetAssignWizard, openUnassignSystemsModal, openPatchSetEditModal}
 */
-const usePatchSetState = (selectedRows) => {
+export const usePatchSetState = (selectedRows) => {
     const [patchSetState, setPatchSetState] = useState({
         isPatchSetWizardOpen: false,
         isUnassignSystemsModalOpen: false,
@@ -57,5 +57,3 @@ const usePatchSetState = (selectedRows) => {
         openPatchSetEditModal
     };
 };
-
-export default usePatchSetState;

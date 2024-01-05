@@ -9,7 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { InventoryDetailHead } from '@redhat-cloud-services/frontend-components/Inventory';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
-import { useFeatureFlag } from '../../Utilities/Hooks';
+import { useFeatureFlag } from '../../Utilities/hooks';
 
 initMocks();
 
@@ -19,16 +19,6 @@ jest.mock('react-router-dom', () => ({
         inventoryId: 'test-system-id'
     }),
     useRouteMatch: () => ({ url: '/systems/test-system-id' })
-}));
-
-jest.mock('../../Utilities/Hooks', () => ({
-    ...jest.requireActual('../../Utilities/Hooks'),
-    useFeatureFlag: jest.fn(() => true)
-}));
-
-jest.mock('react-redux', () => ({
-    ...jest.requireActual('react-redux'),
-    useSelector: jest.fn()
 }));
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({

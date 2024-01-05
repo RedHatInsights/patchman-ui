@@ -1,7 +1,6 @@
 import { configure, mount, render, shallow } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import React from 'react';
-
 configure({ adapter: new Adapter() });
 
 jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
@@ -50,6 +49,14 @@ jest.mock(
         default: (props) => <div {...props}>AsyncComponent</div>
     })
 );
+
+jest.mock('../src/Utilities/hooks/useRemediationDataProvider', () => ({
+    useRemediationDataProvider: () => () => jest.fn()
+}));
+
+jest.mock('../src/Utilities/hooks/useFeatureFlag', () => ({
+    useFeatureFlag: () => () => jest.fn()
+}));
 
 global.shallow = shallow;
 global.render = render;

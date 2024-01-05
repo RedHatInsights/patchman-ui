@@ -13,7 +13,7 @@ import { DEFAULT_PATCH_TITLE, packagesListDefaultFilters } from '../../Utilities
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 import { useOnExport, usePerPageSelect,
-    useSetPage, useSortColumn, useDeepCompareEffect } from '../../Utilities/Hooks';
+    useSetPage, useSortColumn, useDeepCompareEffect } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { useSearchParams } from 'react-router-dom';

@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchIDs } from './api';
-import { toggleAllSelectedAction } from '../store/Actions/Actions';
-import { isObject } from './Helpers';
+import { fetchIDs } from '../api';
+import { toggleAllSelectedAction } from '../../store/Actions/Actions';
+import { isObject } from '../Helpers';
 
 export const ID_API_ENDPOINTS = {
     advisories: '/ids/advisories',

@@ -6,7 +6,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
 import { NoAppliedSystems } from '../../PresentationalComponents/Snippets/EmptyStates';
-import { useBulkSelectConfig, useDeepCompareEffect, useGetEntities, useRemoveFilter } from '../../Utilities/Hooks';
+import { useBulkSelectConfig, useDeepCompareEffect, useGetEntities, useRemoveFilter } from '../../Utilities/hooks';
 import {
     changePatchSetDetailsSystemsMetadata,
     changePatchSetDetailsSystemsParams,
@@ -56,7 +56,7 @@ import { defaultReducers } from '../../store';
 import { inventoryEntitiesReducer, modifyTemplateDetailSystems } from '../../store/Reducers/InventoryEntitiesReducer';
 import { systemsListColumns } from '../Systems/SystemsListAssets';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
-import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/useOnSelect';
+import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/hooks';
 import { systemSelectAction } from '../../store/Actions/Actions';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 

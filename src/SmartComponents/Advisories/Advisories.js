@@ -19,14 +19,12 @@ import {
     createSortBy, decodeQueryparams,
     encodeURLParams, getRowIdByIndexExpandable
 } from '../../Utilities/Helpers';
-import { useOnExport,
+import { useOnExport, useRemediationDataProvider, useOnSelect, ID_API_ENDPOINTS,
     usePerPageSelect, useSetPage, useSortColumn
-} from '../../Utilities/Hooks';
+} from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
-import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
-import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -124,7 +122,7 @@ const Advisories = () => {
         dispatch(changeAdvisoryListParams(params));
     }
 
-    const remediationDataProvider = useRemediationProvier(
+    const remediationDataProvider = useRemediationDataProvider(
         selectedRows, setRemediationLoading, 'advisories', areAllSelected
     );
 

@@ -12,7 +12,7 @@ import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
-import usePatchSetState from '../../Utilities/usePatchSetState';
+import { usePatchSetState } from '../../Utilities/hooks';
 import { useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';

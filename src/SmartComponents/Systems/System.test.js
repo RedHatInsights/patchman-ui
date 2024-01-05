@@ -46,16 +46,6 @@ jest.mock('../../Utilities/api', () => ({
     getSystemsGroups: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
 }));
 
-jest.mock('../../Utilities/useFeatureFlag.js', () => jest.fn());
-
-jest.mock('@unleash/proxy-client-react', () => ({
-    ...jest.requireActual('@unleash/proxy-client-react'),
-    useFlagsStatus: jest.fn(),
-    useFlag: jest.fn()
-}));
-
-jest.mock('../../Utilities/useRemediationDataProvider', () => () => jest.fn());
-
 jest.mock('../../Utilities/SystemsHelpers', () => ({
     ...jest.requireActual('../../Utilities/SystemsHelpers'),
     systemsColumnsMerger: jest.fn()

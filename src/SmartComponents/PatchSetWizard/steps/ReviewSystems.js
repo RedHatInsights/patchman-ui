@@ -8,7 +8,7 @@ import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 
 import { createSortBy, buildSelectedSystemsObj } from '../../../Utilities/Helpers';
 import { createSystemsRowsReview } from '../../../Utilities/DataMappers';
-import { usePerPageSelect, useSetPage, useSortColumn } from '../../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect, ID_API_ENDPOINTS } from '../../../Utilities/hooks';
 import TableView from '../../../PresentationalComponents/TableView/TableView';
 import staleFilter from '../../../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../../../PresentationalComponents/Filters/SystemsUpdatableFilter';
@@ -18,7 +18,6 @@ import messages from '../../../Messages';
 import { intl } from '../../../Utilities/IntlProvider';
 import { systemsListDefaultFilters } from '../../../Utilities/constants';
 import useOsVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
-import { useOnSelect, ID_API_ENDPOINTS } from '../../../Utilities/useOnSelect';
 
 export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
     const { input } = useFieldApi(props);

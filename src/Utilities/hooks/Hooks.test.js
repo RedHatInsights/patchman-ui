@@ -2,7 +2,7 @@
 import { SortByDirection } from '@patternfly/react-table';
 import { useEntitlements, useHandleRefresh, usePagePerPage, 
     usePerPageSelect, useRemoveFilter, useSetPage, useSortColumn } from './Hooks';
-import { packagesListDefaultFilters } from './constants';
+import { packagesListDefaultFilters } from '../constants';
 
 jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
     useChrome: jest.fn(() => ({ 
