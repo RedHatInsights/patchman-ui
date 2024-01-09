@@ -19,6 +19,7 @@
     "@unleash/proxy-client-react": "^3.5.0",
     "axios": "^0.21.4",
     "jest-environment-jsdom": "^29.7.0",
+    "p-all": "^5.0.0",
     "query-string": "^6.14.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.2",
@@ -50,6 +51,9 @@
       "<rootDir>/src/SmartComponents/AdvisorySystems/AdvisorySystems.test.js",
       "src/SmartComponents/SystemDetail/InventoryDetail.test.js",
       "src/SmartComponents/PatchSet/PatchSet.test.js"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!(@patternfly/react-core/|@patternfly/react-icons/|@redhat-cloud-services|@openshift|lodash-es|@patternfly/react-table|@patternfly/react-tokens|p-all)).*$"
     ]
   },
   "devDependencies": {

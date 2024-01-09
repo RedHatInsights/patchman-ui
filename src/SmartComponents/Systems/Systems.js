@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
@@ -22,9 +22,8 @@ import { useBulkSelectConfig, useGetEntities, useOnExport,
     useRemoveFilter, useRemediationDataProvider, usePatchSetState, useOnSelect, ID_API_ENDPOINTS
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+import { systemsListColumns, systemsRowActions, useActivateRemediationModal } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
-import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { buildFilterConfig, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
@@ -86,16 +85,6 @@ const Systems = () => {
         return () => dispatch(clearInventoryReducer());
     }, []);
 
-    const showRemediationModal = useCallback(async (data) => {
-        const resolvedData = await data;
-        setRemediationModalCmp(() =>
-            () => <RemediationWizard
-                data={resolvedData}
-                isRemediationOpen
-                setRemediationOpen={setRemediationOpen} />);
-        setRemediationOpen(!isRemediationOpen);
-    }, [isRemediationOpen]);
-
     function apply(queryParams) {
         dispatch(changeSystemsParams(queryParams));
     }
@@ -148,6 +137,10 @@ const Systems = () => {
     const remediationDataProvider = useRemediationDataProvider(selectedRows, setRemediationLoading, 'systems', areAllSelected);
 
     const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
+    const activateRemediationModal = useActivateRemediationModal(
+        setRemediationModalCmp,
+        setRemediationOpen
+    );
 
     return (
         <React.Fragment>
@@ -191,7 +184,7 @@ const Systems = () => {
                         tableProps={{
                             actionResolver: (row) =>
                                 systemsRowActions(
-                                    showRemediationModal,
+                                    activateRemediationModal,
                                     openAssignSystemsModal,
                                     openUnassignSystemsModal,
                                     row,

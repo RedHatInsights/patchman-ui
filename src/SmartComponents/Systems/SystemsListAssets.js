@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
@@ -9,6 +9,8 @@ import './SystemsListAssets.scss';
 import { sortable } from '@patternfly/react-table';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import { Text, TextContent, Tooltip } from '@patternfly/react-core';
+import { useFetchBatched } from '../../Utilities/hooks';
+import RemediationWizard from '../Remediation/RemediationWizard';
 
 export const ManagedBySatelliteCell = () => (
     <Tooltip content="This system is managed by Satellite and does not use a template.">
@@ -164,8 +166,48 @@ const isPatchSetRemovalDisabled = (row) => {
     return !baselineName || (typeof baselineName === 'string' && baselineName === '');
 };
 
+export const useActivateRemediationModal = (setRemediationModalCmp, setRemediationOpen) => {
+    const { fetchBatched } = useFetchBatched();
+
+    return useCallback(async (rowData) => {
+        const filter = {
+            id: rowData.id,
+            'filter[status]': 'in:Installable'
+        };
+
+        const totalCount = await fetchApplicableSystemAdvisoriesApi({ ...filter, limit: 1 }).then(
+            (response) => response?.meta?.total_items || 0
+        );
+
+        fetchBatched(
+            (__, pagination) => fetchApplicableSystemAdvisoriesApi({ ...filter, ...pagination }),
+            totalCount,
+            filter
+        ).then(response => {
+            const advisories = response.flatMap(({ data }) => data);
+            const remediationIssues = remediationProvider(
+                advisories.map(item => item.id),
+                rowData.id,
+                remediationIdentifiers.advisory
+            );
+
+            setRemediationModalCmp(() =>
+                () => <RemediationWizard
+                    data={remediationIssues}
+                    isRemediationOpen
+                    setRemediationOpen={setRemediationOpen} />);
+
+            setRemediationOpen(true);
+        })
+        .catch(() => {
+            setRemediationOpen(false);
+        });
+    }, []);
+
+};
+
 export const systemsRowActions = (
-    showRemediationModal,
+    activateRemediationModal,
     showTemplateAssignSystemsModal,
     openUnassignSystemsModal,
     row,
@@ -176,19 +218,7 @@ export const systemsRowActions = (
             title: 'Apply all applicable advisories',
             isDisabled: isRemediationDisabled(row),
             onClick: (event, rowId, rowData) => {
-                fetchApplicableSystemAdvisoriesApi({
-                    id: rowData.id,
-                    limit: -1,
-                    'filter[status]': 'in:Installable'
-                }).then(res =>
-                    showRemediationModal(
-                        remediationProvider(
-                            res.data.map(item => item.id),
-                            rowData.id,
-                            remediationIdentifiers.advisory
-                        )
-                    )
-                );
+                activateRemediationModal(rowData);
             }
         },
         ...(showTemplateAssignSystemsModal ? [{
