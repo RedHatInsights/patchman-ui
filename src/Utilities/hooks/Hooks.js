@@ -6,8 +6,8 @@ import { downloadFile } from '@redhat-cloud-services/frontend-components-utiliti
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import isDeepEqualReact from 'fast-deep-equal/react';
 import { Spinner } from '@patternfly/react-core';
-import messages from '../Messages';
-import { defaultCompoundSortValues, exportNotifications } from './constants';
+import messages from '../../Messages';
+import { defaultCompoundSortValues, exportNotifications } from '../constants';
 import {
     convertLimitOffset,
     getLimitFromPageSize,
@@ -17,11 +17,11 @@ import {
     mapGlobalFilters,
     objUndefinedToFalse,
     objOnlyWithTrue
-} from './Helpers';
-import { intl } from './IntlProvider';
-import { multiValueFilters } from '../Utilities/constants';
-import { assignSystemToPatchSet, updatePatchSets } from './api';
-import { createSystemsSortBy } from './SystemsHelpers';
+} from '../Helpers';
+import { intl } from '../IntlProvider';
+import { multiValueFilters } from '../constants';
+import { assignSystemToPatchSet, updatePatchSets } from '../api';
+import { createSystemsSortBy } from '../SystemsHelpers';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>

@@ -3,10 +3,10 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import {
     removeUndefinedObjectKeys
-} from './Helpers';
+} from '../Helpers';
 
 const initializeWorker = () => {
-    const worker = new Worker(new URL('./RemediationPairs.js', import.meta.url));
+    const worker = new Worker(new URL('../RemediationPairs.js', import.meta.url));
     return [worker, () => worker.terminate()];
 };
 
@@ -52,7 +52,7 @@ export const prepareRemediationPairs = async (task, dispatch) => {
 * @param {Array} [selectedRows] array of systems to calculate
 * @returns {handleSystemsRemoval}
 */
-const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType, areAllSelected) => {
+export const useRemediationDataProvider = (selectedRows, setRemediationLoading, remediationType, areAllSelected) => {
     const dispatch = useDispatch();
     const chrome = useChrome();
     const remediationDataProvider = async () => {
@@ -78,5 +78,3 @@ const useRemediationDataProvider = (selectedRows, setRemediationLoading, remedia
 
     return remediationDataProvider;
 };
-
-export default useRemediationDataProvider;

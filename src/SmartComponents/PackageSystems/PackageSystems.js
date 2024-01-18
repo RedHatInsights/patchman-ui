@@ -23,11 +23,11 @@ import {
     arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatablePackageSystems,
     persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
-import { useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter } from '../../Utilities/Hooks';
+import { useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter,
+    useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
-import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 
 const PackageSystems = ({ packageName }) => {

@@ -19,18 +19,15 @@ import {
     arrayFromObj, decodeQueryparams, persistantParams, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport,
-    useRemoveFilter
-} from '../../Utilities/Hooks';
+    useRemoveFilter, useRemediationDataProvider, usePatchSetState, useOnSelect, ID_API_ENDPOINTS
+} from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { buildFilterConfig, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
-import useRemediationProvier from '../../Utilities/useRemediationDataProvider';
-import usePatchSetState from '../../Utilities/usePatchSetState';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
-import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
@@ -148,7 +145,7 @@ const Systems = () => {
         }
     }, [patchSetState.shouldRefresh]);
 
-    const remediationDataProvider = useRemediationProvier(selectedRows, setRemediationLoading, 'systems', areAllSelected);
+    const remediationDataProvider = useRemediationDataProvider(selectedRows, setRemediationLoading, 'systems', areAllSelected);
 
     const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
 

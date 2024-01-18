@@ -6,7 +6,7 @@ import React from 'react';
 import messages from '../../Messages';
 import AsyncRemediationButton from '../../SmartComponents/Remediation/AsyncRemediationButton';
 import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
-import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/Hooks';
+import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import TableFooter from './TableFooter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';

@@ -16,9 +16,9 @@ import { exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utiliti
 import { remediationIdentifiers, systemPackagesDefaultFilters } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnExport } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnExport,
+    useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
     const dispatch = useDispatch();

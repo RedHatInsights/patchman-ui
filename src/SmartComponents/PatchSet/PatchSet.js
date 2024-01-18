@@ -14,8 +14,9 @@ import {
 import { deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
-import { useDeepCompareEffect, usePerPageSelect, useSetPage, useSortColumn
-} from '../../Utilities/Hooks';
+import { useDeepCompareEffect, usePerPageSelect, useSetPage, useSortColumn,
+    usePatchSetState, useOnSelect, ID_API_ENDPOINTS
+} from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications, addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import {
@@ -24,9 +25,7 @@ import {
 } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { DEFAULT_PATCH_TITLE, patchSetDeleteNotifications } from '../../Utilities/constants';
-import usePatchSetState from '../../Utilities/usePatchSetState';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
-import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';

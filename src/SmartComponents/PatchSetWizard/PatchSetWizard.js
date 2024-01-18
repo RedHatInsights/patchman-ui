@@ -19,7 +19,7 @@ import ReviewSystems from './steps/ReviewSystems';
 import ReviewPatchSet from './steps/ReviewPatchSet';
 import { schema, validatorMapper, getWizardTitle } from './WizardAssets';
 import RequestProgress from './steps/RequestProgress';
-import { usePatchSetApi } from '../../Utilities/Hooks';
+import { usePatchSetApi } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import {

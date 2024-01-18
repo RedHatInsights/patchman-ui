@@ -17,10 +17,10 @@ import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams,
     getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnExport, usePushUrlParams } from '../../Utilities/Hooks';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnExport, usePushUrlParams,
+    useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/useOnSelect';
 
 const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
     const dispatch = useDispatch();
