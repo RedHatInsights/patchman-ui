@@ -1,5 +1,6 @@
 import DescriptionField from './DescriptionField';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
+import { render, screen } from '@testing-library/react';
 
 jest.mock('@data-driven-forms/react-form-renderer/use-form-api',
     () => ({
@@ -25,8 +26,15 @@ describe('ConfigurationFields.js', () => {
         })
         );
 
-        const wrapper = mount(<DescriptionField />);
-        expect(wrapper.find('input').props().value).toEqual('testDescription');
+        render(
+            <DescriptionField />
+        );
+        const input = screen.getByRole('textbox', {
+            name: /description/i
+        });
+        expect(input.value).toBe('testDescription');
+
+        /* expect(wrapper.find('input').props().value).toEqual('testDescription'); */
     });
 
     it('Should display configuration fields', () => {
@@ -35,8 +43,13 @@ describe('ConfigurationFields.js', () => {
         })
         );
 
-        const wrapper = mount(<DescriptionField />);
-        expect(wrapper.find('input').props().value).toBeFalsy();
+        render(
+            <DescriptionField />
+        );
+        const input = screen.getByRole('textbox', {
+            name: /description/i
+        });
+        expect(input.value).toBe('');
     });
 });
 

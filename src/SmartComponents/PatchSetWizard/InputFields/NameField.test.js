@@ -67,7 +67,6 @@ describe('ConfigurationFields.js', () => {
                 <NameField />
             </Provider >
         );
-        screen.logTestingPlaygroundURL();
         const input = screen.getByRole('textbox', {
             name: /name/i
         });
