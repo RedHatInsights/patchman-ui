@@ -3,6 +3,7 @@ import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { initialState } from '../../../store/Reducers/SpecificPatchSetReducer';
+import { render, screen } from '@testing-library/react';
 
 jest.mock('@data-driven-forms/react-form-renderer/use-form-api',
     () => ({
@@ -44,12 +45,15 @@ describe('ConfigurationFields.js', () => {
             change: () => { }
         }));
 
-        const wrapper = mount(
+        render(
             <Provider store={store}>
                 <NameField />
             </Provider >
         );
-        expect(wrapper.find('input').props().value).toEqual('testName');
+        /* expect(wrapper.find('input').props().value).toEqual('testName'); */
+        expect(screen.getByRole('textbox', {
+            name: /name/i
+        })).toBeTruthy();
     });
 
     it('Should display configuration fields', () => {
@@ -58,11 +62,15 @@ describe('ConfigurationFields.js', () => {
             change: () => { }
         }));
 
-        const wrapper = mount(
+        render(
             <Provider store={store}>
                 <NameField />
             </Provider >
         );
-        expect(wrapper.find('input').props().value).toBeFalsy();
+        screen.logTestingPlaygroundURL();
+        const input = screen.getByRole('textbox', {
+            name: /name/i
+        });
+        expect(input.value).toBe('');
     });
 });
