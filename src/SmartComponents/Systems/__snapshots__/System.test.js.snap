@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Systems.js Should open remediation modal 1`] = `
-{
-  "isDisabled": false,
-  "onClick": [Function],
-  "title": "Apply all applicable advisories",
-}
-`;
-
 exports[`Systems.js should match the snapshot 1`] = `
 <DocumentFragment>
   <section
@@ -23,7 +15,7 @@ exports[`Systems.js should match the snapshot 1`] = `
       >
         <h1
           class="pf-c-title pf-m-2xl"
-          data-ouia-component-id="OUIA-Generated-Title-2"
+          data-ouia-component-id="OUIA-Generated-Title-1"
           data-ouia-component-type="PF4/Title"
           data-ouia-safe="true"
           widget-type="InsightsPageHeaderTitle"
@@ -51,7 +43,7 @@ exports[`Systems.js should match the snapshot 1`] = `
       >
         <article
           class="pf-c-card pf-m-compact pf-m-full-height"
-          data-ouia-component-id="OUIA-Generated-Card-4"
+          data-ouia-component-id="OUIA-Generated-Card-1"
           data-ouia-component-type="PF4/Card"
           data-ouia-safe="true"
           id=""
@@ -107,7 +99,7 @@ exports[`Systems.js should match the snapshot 1`] = `
       >
         <article
           class="pf-c-card pf-m-compact pf-m-full-height"
-          data-ouia-component-id="OUIA-Generated-Card-5"
+          data-ouia-component-id="OUIA-Generated-Card-2"
           data-ouia-component-type="PF4/Card"
           data-ouia-safe="true"
           id=""
@@ -163,7 +155,7 @@ exports[`Systems.js should match the snapshot 1`] = `
       >
         <article
           class="pf-c-card pf-m-compact pf-m-full-height"
-          data-ouia-component-id="OUIA-Generated-Card-6"
+          data-ouia-component-id="OUIA-Generated-Card-3"
           data-ouia-component-type="PF4/Card"
           data-ouia-safe="true"
           id=""
@@ -221,6 +213,7 @@ exports[`Systems.js should match the snapshot 1`] = `
   >
     <div
       class="testInventroyComponentChild"
+      data-testid="testInventroyComponentChild"
     >
       <div>
         This is child

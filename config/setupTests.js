@@ -1,7 +1,4 @@
-import { configure, mount, render, shallow } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import React from 'react';
-configure({ adapter: new Adapter() });
 
 jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
     __esModule: true,
@@ -39,7 +36,11 @@ jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
 }));
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
-    InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
+    InventoryTable: jest.fn(() => <div
+        data-testid="testInventroyComponentChild"
+        className='testInventroyComponentChild'>
+        <div>This is child</div>
+    </div>)
 }));
 
 jest.mock(
@@ -58,7 +59,4 @@ jest.mock('../src/Utilities/hooks/useFeatureFlag', () => ({
     useFeatureFlag: () => () => jest.fn()
 }));
 
-global.shallow = shallow;
-global.render = render;
-global.mount = mount;
 global.React = React;
