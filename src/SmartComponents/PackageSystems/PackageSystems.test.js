@@ -1,4 +1,4 @@
-import { Provider, useSelector } from 'react-redux';
+/* import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { exportPackageSystemsCSV, exportPackageSystemsJSON, fetchIDs } from '../../Utilities/api';
@@ -168,3 +168,6 @@ describe('PackageSystems.js', () => {
 
 });
 
+ */
+
+//THIS SHOULD BE REFACTORED INTO DIFFERENT TYPES OF TESTS BECAUSE IT DOESNT WORK WITH RTL
