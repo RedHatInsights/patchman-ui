@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils';
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
@@ -7,6 +6,7 @@ import { advisoryDetailRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import AdvisoryDetail from './AdvisoryDetail';
 import { mountWithRouterAndProvider } from '../../../config/rtlwrapper';
+import { render, screen } from '@testing-library/react';
 
 initMocks();
 
@@ -57,17 +57,13 @@ describe('AdvisoryDetail.js', () => {
     });
 
     it('Should clear store on unmount', async () => {
-        let tempWrapper;
-        await act(async() => {
-            tempWrapper = mount(
-                <Provider store={store}>
-                    <Router><AdvisoryDetail /></Router>
-                </Provider>
-            );
-        });
-        act(() => {
-            tempWrapper.unmount();
-        });
+        const { unmount } = await render(
+            <Provider store={store}>
+                <Router><AdvisoryDetail /></Router>
+            </Provider>
+        );
+        unmount();
+
         const dispatchedActions = store.getActions();
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_ENTITIES')).toHaveLength(1);
         expect(dispatchedActions.filter(item => item.type === 'CLEAR_ADVISORY_DETAILS')).toHaveLength(1);
@@ -82,11 +78,17 @@ describe('AdvisoryDetail.js', () => {
         });
 
         const tempStore = initStore(rejectedState);
-        const tempWrapper = mount(<Provider store={tempStore}>
+        render(<Provider store={tempStore}>
             <Router><AdvisoryDetail/></Router>
         </Provider>);
-
-        expect(tempWrapper.find('Unavailable')).toBeTruthy();
+        screen.logTestingPlaygroundURL();
+        expect(screen.getByRole('heading', {
+            name: /this page is temporarily unavailable/i
+        })).toBeTruthy();
+        expect(screen.getByText(
+            // eslint-disable-next-line max-len
+            /try refreshing the page\. if the problem persists, contact your organization administrator or visit our for known outages\./i
+        )).toBeTruthy();
     });
 
 });
