@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
@@ -31,6 +31,7 @@ import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
+import RemediationWizard from '../Remediation/RemediationWizard';
 
 const Systems = () => {
     const store = useStore();
@@ -43,13 +44,9 @@ const Systems = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const dispatch = useDispatch();
-    const [isRemediationOpen, setRemediationOpen] = React.useState(false);
-    const [isRemediationLoading, setRemediationLoading] = React.useState(false);
-    const [
-        RemediationModalCmp,
-        setRemediationModalCmp
-    ] = React.useState(() => () => null);
-
+    const [isRemediationOpen, setRemediationOpen] = useState(false);
+    const [isRemediationLoading, setRemediationLoading] = useState(false);
+    const [remediationIssues, setRemediationIssues] = useState([]);
     const decodedParams = decodeQueryparams('?' + searchParams.toString());
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const totalItems = useSelector(
@@ -138,7 +135,7 @@ const Systems = () => {
 
     const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, { total_items: totalItems }, systems);
     const activateRemediationModal = useActivateRemediationModal(
-        setRemediationModalCmp,
+        setRemediationIssues,
         setRemediationOpen
     );
 
@@ -150,7 +147,14 @@ const Systems = () => {
             || <React.Fragment>
                 <SystemsStatusReport apply={apply} queryParams={queryParams} />
                 <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
-                {isRemediationOpen && <RemediationModalCmp /> || null}
+                {isRemediationOpen &&
+                    <RemediationWizard
+                        data={remediationIssues}
+                        isRemediationOpen
+                        setRemediationOpen={setRemediationOpen}
+                    />
+                    || null
+                }
                 <Main>
                     <InventoryTable
                         ref={inventory}

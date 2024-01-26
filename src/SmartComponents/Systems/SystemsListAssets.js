@@ -10,7 +10,6 @@ import { sortable } from '@patternfly/react-table';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import { Text, TextContent, Tooltip } from '@patternfly/react-core';
 import { useFetchBatched } from '../../Utilities/hooks';
-import RemediationWizard from '../Remediation/RemediationWizard';
 
 export const ManagedBySatelliteCell = () => (
     <Tooltip content="This system is managed by Satellite and does not use a template.">
@@ -166,7 +165,7 @@ const isPatchSetRemovalDisabled = (row) => {
     return !baselineName || (typeof baselineName === 'string' && baselineName === '');
 };
 
-export const useActivateRemediationModal = (setRemediationModalCmp, setRemediationOpen) => {
+export const useActivateRemediationModal = (setRemediationIssues, setRemediationOpen) => {
     const { fetchBatched } = useFetchBatched();
 
     return useCallback(async (rowData) => {
@@ -191,11 +190,7 @@ export const useActivateRemediationModal = (setRemediationModalCmp, setRemediati
                 remediationIdentifiers.advisory
             );
 
-            setRemediationModalCmp(() =>
-                () => <RemediationWizard
-                    data={remediationIssues}
-                    isRemediationOpen
-                    setRemediationOpen={setRemediationOpen} />);
+            setRemediationIssues(remediationIssues);
 
             setRemediationOpen(true);
         })
