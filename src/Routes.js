@@ -32,7 +32,7 @@ const Advisories = lazy(() =>
 
 const Systems = lazy(() =>
     import(
-        /* webpackChunkName: "Systems" */ './SmartComponents/Systems/Systems'
+        /* webpackChunkName: "Systems" */ './SmartComponents/Systems/SystemsPage'
     )
 );
 
