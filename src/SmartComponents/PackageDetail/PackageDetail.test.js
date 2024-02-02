@@ -4,9 +4,8 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { storeListDefaults } from '../../Utilities/constants';
 import { MemoryRouter as Router } from 'react-router-dom';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { packageDetailData } from '../../Utilities/RawDataForTesting';
-import { mount } from 'enzyme';
 import { queryByText } from '@testing-library/dom';
 
 initMocks();
@@ -73,11 +72,15 @@ describe('PackageDetail.js', () => {
         useSelector.mockImplementation(callback => {
             return callback({ PackageDetailStore: rejectedState });
         });
-        const tempWrapper = mount(<Provider store={tempStore}>
-            <Router>
-                <PackageDetail />
-            </Router>
-        </Provider>);
-        expect(tempWrapper.find('Unavailable')).toBeTruthy();
+        render(
+            <Provider store={tempStore}>
+                <Router>
+                    <PackageDetail />
+                </Router>
+            </Provider>);
+        const heading = screen.getByRole('heading', {
+            name: /this page is temporarily unavailable/i
+        });
+        expect(heading).toBeTruthy();
     });
 });
