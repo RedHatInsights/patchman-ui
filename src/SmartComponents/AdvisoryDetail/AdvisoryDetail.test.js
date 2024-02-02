@@ -81,7 +81,6 @@ describe('AdvisoryDetail.js', () => {
         render(<Provider store={tempStore}>
             <Router><AdvisoryDetail/></Router>
         </Provider>);
-        screen.logTestingPlaygroundURL();
         expect(screen.getByRole('heading', {
             name: /this page is temporarily unavailable/i
         })).toBeTruthy();

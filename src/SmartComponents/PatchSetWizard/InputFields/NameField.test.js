@@ -50,7 +50,6 @@ describe('ConfigurationFields.js', () => {
                 <NameField />
             </Provider >
         );
-        /* expect(wrapper.find('input').props().value).toEqual('testName'); */
         expect(screen.getByRole('textbox', {
             name: /name/i
         })).toBeTruthy();
