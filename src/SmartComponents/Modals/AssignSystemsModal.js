@@ -10,8 +10,10 @@ import { addNotification } from '@redhat-cloud-services/frontend-components-noti
 import { patchSetAssignSystemsNotifications } from '../PatchSet/PatchSetAssets';
 import { filterSelectedActiveSystemIDs } from '../../Utilities/Helpers';
 import { filterSatelliteManagedSystems } from './Helpers';
+import { useFetchBatched } from '../../Utilities/hooks';
+import isEmpty from 'lodash/isEmpty';
 
-const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl }) => {
+const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl, totalItems }) => {
     const dispatch = useDispatch();
 
     const { systemsIDs, isAssignSystemsModalOpen } = patchSetState;
@@ -20,6 +22,7 @@ const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl }) => {
 
     const [systemsNotManagedBySatellite, setSystemsNotManagedBySatellite] = useState([]);
     const [systemsLoading, setSystemsLoading] = useState(true);
+    const { fetchBatched } = useFetchBatched();
 
     const closeModal = () => {
         setPatchSetState({
@@ -66,10 +69,13 @@ const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl }) => {
     };
 
     useEffect(() => {
-        if (systemsIDs) {
+        if (systemsIDs && !isEmpty(systemsIDs)) {
             setSystemsLoading(true);
-
-            filterSatelliteManagedSystems(Object.keys(systemsIDs)).then(result => {
+            filterSatelliteManagedSystems(
+                Object.keys(systemsIDs),
+                fetchBatched,
+                totalItems
+            ).then(result => {
                 setSystemsNotManagedBySatellite(result);
                 setSystemsLoading(false);
             });
@@ -144,7 +150,8 @@ const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl }) => {
 AssignSystemsModal.propTypes = {
     intl: propTypes.any,
     setPatchSetState: propTypes.func,
-    patchSetState: propTypes.object
+    patchSetState: propTypes.object,
+    totalItems: propTypes.number
 };
 
 export default injectIntl(AssignSystemsModal);

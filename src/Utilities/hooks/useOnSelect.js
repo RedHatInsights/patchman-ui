@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fetchIDs } from '../api';
 import { toggleAllSelectedAction } from '../../store/Actions/Actions';
 import { isObject } from '../Helpers';
+import { useFetchBatched } from './useFetchBatched';
 
 export const ID_API_ENDPOINTS = {
     advisories: '/ids/advisories',
@@ -17,15 +18,21 @@ export const ID_API_ENDPOINTS = {
 
 const useFetchAllIDs = (
     endpoint,
-    apiResponseTransformer
-) =>
-    useCallback((queryParams) =>
-        fetchIDs(endpoint, { ...queryParams, limit: -1 })
+    apiResponseTransformer,
+    totalItems
+) => {
+    const { fetchBatched } = useFetchBatched();
+    return useCallback((queryParams) =>
+        fetchBatched(
+            (__, pagination) => fetchIDs(endpoint, { ...queryParams,  ...pagination }),
+            totalItems,
+            queryParams
+        )
         .then(response =>
             apiResponseTransformer ? apiResponseTransformer(response) : response
         ),
-    []
-    );
+    [totalItems, endpoint]);
+};
 
 const useCreateSelectedRow = (transformKey, constructFilename) =>
     useCallback((rows, toSelect = []) => {
@@ -103,11 +110,12 @@ export const useOnSelect = (rawData, selectedRows, config) => {
         transformKey,
         apiResponseTransformer,
         //TODO: get rid of this custom selector
-        customSelector
+        customSelector,
+        totalItems
     } = config;
 
     const dispatch = useDispatch();
-    const fetchIDs = useFetchAllIDs(endpoint, apiResponseTransformer);
+    const fetchIDs = useFetchAllIDs(endpoint, apiResponseTransformer, totalItems);
     const createSelectedRow = useCreateSelectedRow(transformKey, constructFilename);
 
     const toggleAllSystemsSelected = (flagState) => {

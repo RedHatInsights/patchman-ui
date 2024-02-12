@@ -5,14 +5,25 @@ export const useFetchBatched = () => {
 
     return {
         isLoading,
-        fetchBatched: (fetchFunction, total, filter, batchSize = 50) => {
+        fetchBatched: async (fetchFunction, filter, total, batchSize = 50) => {
+            if (!total) {
+                total = await fetchFunction({ limit: 1 }).then(
+                    response => response?.meta?.total_items || 0
+                );
+            }
+
             const pages = Math.ceil(total / batchSize) || 1;
 
             const results = resolve(
                 [...new Array(pages)].map(
                     // eslint-disable-next-line camelcase
-                    (_, pageIdx) => () =>
-                        fetchFunction(filter, { offset: pageIdx + 1, limit: batchSize })
+                    (_, pageIdx) => () => {
+                        return fetchFunction({
+                            ...filter,
+                            offset: pageIdx * batchSize,
+                            limit: batchSize
+                        });
+                    }
                 )
             );
 
