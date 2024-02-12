@@ -8,7 +8,6 @@ import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
 import { shallowEqual, useSelector } from 'react-redux';
-import { TEMPLATE_NAME_REGEX } from '../WizardAssets';
 
 const NameField = (props) => {
     const { input } = useFieldApi(props);
@@ -34,22 +33,17 @@ const NameField = (props) => {
             return;
         }
 
-        if (!name.match(TEMPLATE_NAME_REGEX) || takenBaselineNames.includes(name)) {
+        if (takenBaselineNames.includes(name)) {
             return 'error';
         }
     };
-
-    const getHelperText = () =>
-        name?.match(TEMPLATE_NAME_REGEX)
-            ? intl.formatMessage(messages.templateWizardValidateNameTaken)
-            : intl.formatMessage(messages.templateWizardValidateRegex);
 
     return (
         <FormGroup
             fieldId="name"
             label={intl.formatMessage(messages.labelsColumnsName)}
             isRequired
-            helperTextInvalid={getHelperText()}
+            helperTextInvalid={intl.formatMessage(messages.templateWizardValidateNameTaken)}
             validated={validateName()}
         >
             <TextInput
