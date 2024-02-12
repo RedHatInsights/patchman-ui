@@ -7,8 +7,6 @@ import dateValidator from '../../Utilities/dateValidator';
 import { sortable } from '@patternfly/react-table/dist/js';
 import React, { Fragment } from 'react';
 
-export const TEMPLATE_NAME_REGEX = /^[a-z0-9][a-z0-9_-]*$/;
-
 export const reviewSystemColumns = [{
     key: 'display_name',
     title: 'Name',
@@ -171,10 +169,6 @@ export const validatorMapper = {
 
         if (formValues.previousName !== name && formValues.takenBaselineNames.includes(name)) {
             return intl.formatMessage(messages.templateWizardValidateNameTaken);
-        }
-
-        if (!name.match(TEMPLATE_NAME_REGEX)) {
-            return intl.formatMessage(messages.templateWizardValidateRegex);
         }
     }
 };
