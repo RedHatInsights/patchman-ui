@@ -7,7 +7,7 @@ const proxyConfiguration = {
     useProxy: process.env.PROXY === 'true',
     appUrl: process.env.BETA ? ['/beta/insights/patch', '/preview/insights/patch'] : ['/insights/patch'],
     deployment: process.env.BETA ? 'beta/apps' : 'apps',
-    env: process.env.BETA ? 'stage-beta' : 'stage-stable',
+    env: process.env.BETA ? 'prod-beta' : 'prod-stable',
     proxyVerbose: true,
     debug: true
 };

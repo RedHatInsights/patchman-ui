@@ -22,22 +22,31 @@ const useFetchAllIDs = (
     totalItems
 ) => {
     const { fetchBatched } = useFetchBatched();
-    return useCallback((queryParams) =>
-        fetchBatched(
-            (__, pagination) => fetchIDs(endpoint, { ...queryParams,  ...pagination }),
+    return useCallback(async (queryParams) => {
+        const response = await fetchBatched(
+            (filter) => fetchIDs(endpoint, filter),
+            queryParams,
             totalItems,
-            queryParams
-        )
-        .then(response =>
-            apiResponseTransformer ? apiResponseTransformer(response) : response
-        ),
+            100
+        );
+
+        const aggregatedResponse = response.reduce((accumulator = {}, currentValue) => {
+            Object.keys(accumulator).forEach(key => {
+                accumulator[key] = accumulator[key].concat(currentValue[key]);
+            });
+
+            return accumulator;
+        }, { data: [], ids: [] });
+
+        return apiResponseTransformer ? apiResponseTransformer(aggregatedResponse) : aggregatedResponse;
+    },
     [totalItems, endpoint]);
 };
 
 const useCreateSelectedRow = (transformKey, constructFilename) =>
     useCallback((rows, toSelect = []) => {
         const { ids, data } = rows;
-        const shouldUseOnlyIDs = Array.isArray(ids);
+        const shouldUseOnlyIDs = !data;
         const items = shouldUseOnlyIDs ? ids : data;
 
         items.forEach((item) => {
@@ -86,7 +95,6 @@ const createSelectors = (
     };
 
     const selectAll = (fetchIDs, queryParams) => {
-        queryParams.offset = 0;
         return fetchIDs(queryParams).then(response => {
             if (Array.isArray(response.data)) {
                 let rowsToSelect = response.data.filter(row => row.status !== 'Applicable');

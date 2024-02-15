@@ -78,7 +78,8 @@ const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
             queryParams,
             selectionDispatcher: selectSystemPackagesRow,
             constructFilename,
-            transformKey
+            transformKey,
+            totalItems: metadata?.total_items
         }
     );
 

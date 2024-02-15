@@ -179,7 +179,7 @@ export const useActivateRemediationModal = (setRemediationIssues, setRemediation
         );
 
         fetchBatched(
-            (__, pagination) => fetchApplicableSystemAdvisoriesApi({ ...filter, ...pagination }),
+            (filterWithPagination) => fetchApplicableSystemAdvisoriesApi(filterWithPagination),
             filter,
             totalCount
         ).then(response => {

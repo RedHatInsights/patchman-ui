@@ -102,7 +102,8 @@ const AdvisorySystems = ({ advisoryName }) => {
         {
             endpoint: ID_API_ENDPOINTS.advisorySystems(advisoryName),
             queryParams,
-            selectionDispatcher: systemSelectAction
+            selectionDispatcher: systemSelectAction,
+            totalItems
         }
     );
 
