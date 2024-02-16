@@ -5,6 +5,7 @@ import { mountWithRouterAndProviderAndIntl } from '../../../config/rtlwrapper';
 
 jest.mock('../../SmartComponents/PatchSetWizard/PatchSetWizard', () => () => <div id={'test-patch-set-wizard'}></div>);
 jest.mock('../../SmartComponents/Modals/UnassignSystemsModal', () => () => <div id={'test-unassign-systems-modal'}></div>);
+jest.mock('../../SmartComponents/Modals/AssignSystemsModal', () => () => <div id={'test-assign-systems-modal'}></div>);
 
 const mockState = {};
 
@@ -28,7 +29,8 @@ const testProps = {
         isPatchSetWizardOpen: true,
         systemsIDs: ['system-1', 'system-2']
     },
-    setPatchSetState: jest.fn()
+    setPatchSetState: jest.fn(),
+    totalItems: 101
 };
 describe('PatchSetWrapper', () => {
     it('should display PatchSetWizard when isPatchSetWizardOpen prop is true', () => {

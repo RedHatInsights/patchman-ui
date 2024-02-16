@@ -53,7 +53,7 @@ const mockState = {
     metadata: {
         limit: 25,
         offset: 0,
-        total_items: 10
+        total_items: 101
     }
 };
 

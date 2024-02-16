@@ -12,7 +12,7 @@ initMocks();
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
     unassignSystemFromPatchSet: jest.fn(),
-    fetchSystems: jest.fn()
+    fetchIDs: jest.fn(() => Promise.resolve({ data: [{ id: 'test_1' }] }))
 }));
 
 jest.mock('react-redux', () => ({

@@ -47,7 +47,7 @@ const mockState = {
         selectedRows: { 'test-system-1': 'packageEvra' },
         error: {},
         status: 'resolved',
-        total: 2
+        total: 101
     },
     PackageSystemsStore: {
         queryParams: {}
