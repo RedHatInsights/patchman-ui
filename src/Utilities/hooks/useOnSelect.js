@@ -4,6 +4,7 @@ import { fetchIDs } from '../api';
 import { toggleAllSelectedAction } from '../../store/Actions/Actions';
 import { isObject } from '../Helpers';
 import { useFetchBatched } from './useFetchBatched';
+import isArray from 'lodash/isArray';
 
 export const ID_API_ENDPOINTS = {
     advisories: '/ids/advisories',
@@ -14,6 +15,9 @@ export const ID_API_ENDPOINTS = {
     packageSystems: (packageName) => `/packages/${packageName}/systems`,
     systemPackages: (systemID) => `/systems/${systemID}/packages`,
     templateSystems: (templateId) => `/ids/baselines/${templateId}/systems`
+};
+const isArrayWithData = (dataStructure) => {
+    return isArray(dataStructure) && dataStructure.length;
 };
 
 const useFetchAllIDs = (
@@ -32,7 +36,9 @@ const useFetchAllIDs = (
 
         const aggregatedResponse = response.reduce((accumulator = {}, currentValue) => {
             Object.keys(accumulator).forEach(key => {
-                accumulator[key] = accumulator[key].concat(currentValue[key]);
+                if (isArrayWithData(currentValue[key])) {
+                    accumulator[key] = accumulator[key].concat(currentValue[key]);
+                }
             });
 
             return accumulator;
@@ -46,7 +52,7 @@ const useFetchAllIDs = (
 const useCreateSelectedRow = (transformKey, constructFilename) =>
     useCallback((rows, toSelect = []) => {
         const { ids, data } = rows;
-        const shouldUseOnlyIDs = !data;
+        const shouldUseOnlyIDs = !isArrayWithData(data);
         const items = shouldUseOnlyIDs ? ids : data;
 
         items.forEach((item) => {
@@ -96,7 +102,7 @@ const createSelectors = (
 
     const selectAll = (fetchIDs, queryParams) => {
         return fetchIDs(queryParams).then(response => {
-            if (Array.isArray(response.data)) {
+            if (isArrayWithData(response.data)) {
                 let rowsToSelect = response.data.filter(row => row.status !== 'Applicable');
                 dispatchSelection(createSelectedRow({ data: rowsToSelect }));
             } else {

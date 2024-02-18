@@ -93,7 +93,8 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
             endpoint: ID_API_ENDPOINTS.systemAdvisories(inventoryId),
             queryParams,
             selectionDispatcher: selectSystemAdvisoryRow,
-            constructFilename
+            constructFilename,
+            totalItems: metadata?.total_items
         }
     );
 

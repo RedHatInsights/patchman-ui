@@ -140,7 +140,8 @@ const PatchSetDetail = () => {
         {
             endpoint: ID_API_ENDPOINTS.templateSystems(patchSetId),
             queryParams,
-            selectionDispatcher: systemSelectAction
+            selectionDispatcher: systemSelectAction,
+            totalItems
         }
     );
 
