@@ -58,7 +58,7 @@ jest.mock('../src/Utilities/hooks/useFeatureFlag', () => ({
     useFeatureFlag: () => () => jest.fn()
 }));
 
-global.shallow = shallow;
-global.render = render;
-global.mount = mount;
+// global.shallow = shallow;
+// global.render = render;
+// global.mount = mount;
 global.React = React;
