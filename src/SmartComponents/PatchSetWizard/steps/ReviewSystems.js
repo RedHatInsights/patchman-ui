@@ -124,7 +124,8 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
                     satellite_managed: false
                 }
             },
-            customSelector: selectRows
+            customSelector: selectRows,
+            totalItems: metadata.total_items
         }
     );
     return (
