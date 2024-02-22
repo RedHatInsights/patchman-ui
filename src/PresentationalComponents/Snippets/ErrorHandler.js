@@ -14,7 +14,6 @@ import NoRegisteredSystems from './NoRegisteredSystems';
 //import { NoRegisteredSystems } from '@redhat-cloud-services/frontend-components/NoRegisteredSystems';
 
 const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
-    console.log(code, 'hereeee');
     switch (code) {
         case 204:
             return <NotConnected />;
