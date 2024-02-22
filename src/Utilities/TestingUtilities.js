@@ -103,4 +103,4 @@ export const testBulkSelection = (fetchAllCallback, fetchAllUrl, spyOnAction, se
         );
     });
 
-}
+};

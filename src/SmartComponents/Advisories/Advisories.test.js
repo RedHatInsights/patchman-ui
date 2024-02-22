@@ -4,15 +4,15 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { storeListDefaults } from '../../Utilities/constants';
 import {
-    exportAdvisoriesCSV, exportAdvisoriesJSON, fetchIDs,
-    fetchViewAdvisoriesSystems } from '../../Utilities/api';
+    exportAdvisoriesCSV, exportAdvisoriesJSON, fetchIDs
+} from '../../Utilities/api';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { ComponentWithContext, testBulkSelection, testExport } from '../../Utilities/TestingUtilities.js';
 import '@testing-library/jest-dom';
-import { waitFor, render, screen, fireEvent } from '@testing-library/react';
+import { waitFor, render } from '@testing-library/react';
 import { queryByText } from '@testing-library/dom';
 import '@testing-library/jest-dom';
-import * as Actions from '../../store/Actions/Actions.js';
+
 initMocks();
 
 jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => ({
