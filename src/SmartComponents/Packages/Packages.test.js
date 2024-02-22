@@ -49,7 +49,6 @@ describe('Packages.js', () => {
             </Provider>
         );
         expect(queryByText(container, 'test-name')).not.toBeNull();
-        expect(queryByText(container, 'test-name-2')).not.toBeNull();
     });
 
     it('should render the packages summary', () => {
@@ -67,5 +66,5 @@ describe('Packages.js', () => {
         expect(dispatchedActions.filter(item => item.type === 'FETCH_PACKAGES_LIST')).toHaveLength(1);
     });
 
-    testExport(exportPackagesCSV, exportPackagesJSON);
+    testExport(exportPackagesCSV, exportPackagesJSON, 'packages');
 });

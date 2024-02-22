@@ -94,7 +94,7 @@ const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
     const onSetPage = useSetPage(metadata.limit, apply);
     const onPerPageSelect = usePerPageSelect(apply);
 
-    const errorState = error.status === 404 ?  handleNoSystemData() : <Unavailable/>;
+    const errorState =  status.hasError && (error.status === 404 ?  handleNoSystemData() : <Unavailable/>);
     const emptyState = (!status.isLoading && !status.hasError && metadata.total_items === 0
                             && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
     const onExport = useOnExport(inventoryId, queryParams, {

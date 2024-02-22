@@ -39,7 +39,11 @@ jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
 }));
 
 jest.mock('@redhat-cloud-services/frontend-components/Inventory', () => ({
-    InventoryTable: jest.fn(() => <div className='testInventroyComponentChild'><div>This is child</div></div>)
+    InventoryTable: jest.fn(() =>
+        <div data-testid='inventory-mock-component'>
+            Inventory
+        </div>
+    )
 }));
 
 jest.mock(

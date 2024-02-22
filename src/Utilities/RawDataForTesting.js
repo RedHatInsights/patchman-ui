@@ -118,19 +118,6 @@ export const systemPackages = [{
     id: 'test-id-0',
     updatable: false,
     update_status: 'None'
-},
-{
-    description: 'This package contains testing data',
-    evra: 'test-evra-2',
-    name: 'test-name-2',
-    summary: 'Access control list utilities',
-    updates: [{
-        id: 'test-update',
-        evra: 'test-update-evra'
-    }],
-    id: 'test-id-1',
-    updatable: true,
-    update_status: 'Installable'
 }];
 
 export const entityDetail = {

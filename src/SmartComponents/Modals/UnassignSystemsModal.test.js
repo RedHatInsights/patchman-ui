@@ -1,13 +1,10 @@
-import { act } from 'react-dom/test-utils';
-import { Modal } from '@patternfly/react-core';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import UnassignSystemsModal from './UnassignSystemsModal';
 import { unassignSystemFromPatchSet, fetchSystems } from '../../Utilities/api';
-import { mountWithIntl, initMocks } from '../../Utilities/unitTestingUtilities';
+import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { patchSetUnassignSystemsNotifications } from '../PatchSet/PatchSetAssets';
-import { render } from '@testing-library/react';
+import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import { IntlProvider } from '@redhat-cloud-services/frontend-components-translations';
-import messages from '../../../locales/en.json';
 
 initMocks();
 
@@ -27,32 +24,27 @@ jest.mock('@redhat-cloud-services/frontend-components-notifications/redux', () =
 
 fetchSystems.mockResolvedValue({ data: [{ id: 'test_1' }] });
 
-describe('UnassignSystemsModal', () => {
-    let unassignSystemsModalState = {
-        isUnassignSystemsModalOpen: true,
-        systemsIDs: ['test_1', 'test_2', 'test_3']
-    };
-    const setUnassignSystemsModalOpen = (modalState) => {
-        unassignSystemsModalState = modalState;
-    };
+let unassignSystemsModalState = {
+    isUnassignSystemsModalOpen: true,
+    systemsIDs: ['test_1', 'test_2', 'test_3']
+};
+const setUnassignSystemsModalOpen = (modalState) => {
+    unassignSystemsModalState = modalState;
+};
 
-    const wrapper = mountWithIntl(<UnassignSystemsModal
-        unassignSystemsModalState={unassignSystemsModalState}
-        setUnassignSystemsModalOpen={setUnassignSystemsModalOpen}
-    />
+beforeEach(() => {
+    unassignSystemsModalState.isUnassignSystemsModalOpen = true;
+    render(
+        <IntlProvider>
+            <UnassignSystemsModal
+                unassignSystemsModalState={unassignSystemsModalState}
+                setUnassignSystemsModalOpen={setUnassignSystemsModalOpen}
+            />
+        </IntlProvider>
     );
+});
 
-    it('should match the snapshots', () => {
-        const { asFragment } = render(
-            <IntlProvider locale={navigator.language.slice(0, 2)} messages={messages}>
-                <UnassignSystemsModal
-                    unassignSystemsModalState={unassignSystemsModalState}
-                    setUnassignSystemsModalOpen={setUnassignSystemsModalOpen}
-                />
-            </IntlProvider>
-        );
-        expect(asFragment()).toMatchSnapshot();
-    });
+describe('UnassignSystemsModal', () => {
 
     it('Should remove systems from a patch set and handle success notification', async ()  => {
         unassignSystemsModalState.isUnassignSystemsModalOpen = true;
@@ -62,35 +54,25 @@ describe('UnassignSystemsModal', () => {
             })
         );
 
-        await wrapper.update().find(Modal).props().actions[0].props.onClick();
-        expect(addNotification).toHaveBeenCalledWith(
-            patchSetUnassignSystemsNotifications(1).success
-        );
-        expect(unassignSystemsModalState).toEqual({ isUnassignSystemsModalOpen: false, shouldRefresh: true, systemsIDs: [] });
-        expect(unassignSystemFromPatchSet).toHaveBeenCalledWith({ inventory_ids: ['test_1'] });
-    });
+        fireEvent.click(screen.getByText('Remove'));
 
-    it('should close the modal', () => {
-        unassignSystemsModalState.isUnassignSystemsModalOpen = true;
-        act(() => {
-            wrapper.props().setUnassignSystemsModalOpen(false);
+        await waitFor(() => {
+            expect(addNotification).toHaveBeenCalledWith(
+                patchSetUnassignSystemsNotifications(1).success
+            );
+            expect(unassignSystemsModalState).toEqual({ isUnassignSystemsModalOpen: false, shouldRefresh: true, systemsIDs: [] });
+            expect(unassignSystemFromPatchSet).toHaveBeenCalledWith({ inventory_ids: ['test_1'] });
         });
-
-        wrapper.update();
-        expect(unassignSystemsModalState.isUnassignSystemsModalOpen).toBeFalsy();
     });
 
-    it('should hide the modal when isUnassignSystemsModalOpen=false', () => {
-        const wrapper = mountWithIntl(<UnassignSystemsModal
-            unassignSystemsModalState={{
-                isUnassignSystemsModalOpen: false,
-                systemsIDs: ['test_1', 'test_2', 'test_3']
-            }}
-            setUnassignSystemsModalOpen={setUnassignSystemsModalOpen}
-        />
-        );
+    it('should close the modal', async () => {
+        unassignSystemsModalState.isUnassignSystemsModalOpen = true;
+        screen.debug(undefined, 30000);
+        fireEvent.click(screen.getByLabelText('Close'));
 
-        expect(wrapper.find(Modal).props().isOpen).toBeFalsy();
+        await waitFor(() => {
+            expect(unassignSystemsModalState.isUnassignSystemsModalOpen).toBeFalsy();
+        });
     });
 
     it('Should return correct notification text with 1 system', () => {

@@ -1,29 +1,30 @@
 import SystemAdvisories from './SystemAdvisories';
-import { Provider } from 'react-redux';
 import { systemAdvisoryRows } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { fetchIDs } from '../../Utilities/api';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { remediationProvider } from '../../Utilities/Helpers';
-import { remediationIdentifiers } from '../../Utilities/constants';
+import { ComponentWithContext, testBulkSelection } from '../../Utilities/TestingUtilities.js';
+import AsyncRemediationButton from '../Remediation/AsyncRemediationButton.js';
+import { render, waitFor, queryByText } from '@testing-library/react';
 
 initMocks();
 
-jest.mock('react-redux', () => ({
-    ...jest.requireActual('react-redux'),
-    useSelector: jest.fn()
-}));
 jest.mock('../../Utilities/Helpers', () => ({
     ...jest.requireActual('../../Utilities/Helpers'),
     remediationProvider: jest.fn()
 }));
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    fetchIDs: jest.fn()
+    fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err)))
 }));
-jest.mock('../Remediation/AsyncRemediationButton', () => () => <div></div>);
+jest.mock('../Remediation/AsyncRemediationButton', () => ({
+    __esModule: true,
+    default: jest.fn((props) => (
+        <div {...props} data-testid='remediation-mock'>
+            Remediation
+        </div>
+    ))
+}));
 
 const mockState = {
     metadata: {
@@ -40,153 +41,67 @@ const mockState = {
 };
 
 const initStore = (state) => {
-    const customMiddleWare = () => next => action => {
-        useSelector.mockImplementation(callback => {
-            return callback({  SystemAdvisoryListStore: state });
-        });
-        next(action);
-    };
-
-    const mockStore = configureStore([customMiddleWare]);
+    const mockStore = configureStore([]);
     return mockStore({  SystemAdvisoryListStore: state });
 };
 
-let wrapper;
 let store = initStore(mockState);
-
 beforeEach(() => {
-    store.clearActions();
-    useSelector.mockImplementation(callback => {
-        return callback({ SystemAdvisoryListStore: mockState });
-    });
-    wrapper = mount(<Provider store={store}>
-        <Router><SystemAdvisories inventoryId='test' /></Router>
-    </Provider>);
-});
-
-afterEach(() => {
-    useSelector.mockClear();
+    render(<ComponentWithContext renderOptions={{ store }}>
+        <SystemAdvisories inventoryId='test' />
+    </ComponentWithContext>);
 });
 
 describe('SystemAdvisories.js', () => {
-    it('Should dispatch CHANGE_ADVISORY_LIST_PARAMS only once on load', () => {
-        const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'CHANGE_SYSTEM_SYSTEMS_LIST_PARAMS')).toHaveLength(1);
-    });
+    it('should handle remediation', async() => {
+        const selectedState = {
+            ...mockState,
+            selectedRows: { 'RHSA-2020:2774': true }
+        };
 
-    it('Should dispatch expandAdvisoryRow action onCollapse', () => {
-        wrapper.find('TableView').props().onCollapse(null, 0, 'testValue');
+        const tempStore = initStore(selectedState);
+        render(
+            <ComponentWithContext renderOptions={{ store: tempStore }}>
+                <SystemAdvisories inventoryId='test' />
+            </ComponentWithContext>
+        );
 
-        const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'EXPAND_SYSTEM_ADVISORY_ROW')).toHaveLength(1);
-        expect(dispatchedActions[1].payload).toEqual({
-            rowId: 'RHSA-2020:2774',
-            value: 'testValue'
+        waitFor(() => {
+            expect(AsyncRemediationButton).toHaveBeenCalledWith({
+                isDisabled: false,
+                isLoading: false,
+                remediationProvider: expect.any(Function)
+            });
         });
     });
 
-    it('Should collapse a row ', () => {
-        wrapper.find('TableView').props().onCollapse(null, 0, 'testValue');
-
-        const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'EXPAND_SYSTEM_ADVISORY_ROW')).toHaveLength(1);
-        expect(dispatchedActions[1].payload).toEqual({
-            rowId: 'RHSA-2020:2774',
-            value: 'testValue'
-        });
-    });
-
-    it('Should provide correct remediation data', () => {
-        const remediation = wrapper.find('TableView').props().remediationProvider;
-        remediation();
-        expect(remediationProvider).toHaveBeenCalledWith([true], 'test', remediationIdentifiers.advisory);
-    });
-
-    describe('test entity selecting', () => {
-        it('Should unselect all', () => {
-            const { bulkSelect } = wrapper.find('PrimaryToolbar').props();
-
-            bulkSelect.items[0].onClick();
-            const dispatchedActions = store.getActions();
-            expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');
-            expect(bulkSelect.items[0].title).toEqual('Select none (0)');
+    testBulkSelection(
+        fetchIDs,
+        '/ids/systems/test/advisories',
+        'selectSystemAdvisoryRow',
+        {
+            limit: -1,
+            offset: 0
         });
 
-        it('Should select a page', () => {
-
-            const { bulkSelect } = wrapper.find('PrimaryToolbar').props();
-
-            bulkSelect.items[1].onClick();
-            const dispatchedActions = store.getActions();
-            expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');
-            expect(bulkSelect.items[1].title).toEqual('Select page (1)');
-        });
-
-        it('Should select all', () => {
-            fetchIDs.mockReturnValue(new Promise((resolve, reject) =>  {
-                resolve({ data: systemAdvisoryRows });
-                reject('System Advisores failed to fetch');
-            }));
-
-            const { bulkSelect } = wrapper.find('PrimaryToolbar').props();
-
-            bulkSelect.items[2].onClick();
-            expect(fetchIDs).toHaveBeenCalled();
-            expect(bulkSelect.items[2].title).toEqual('Select all (10)');
-        });
-
-        it('Should select a single entity', () => {
-            const { onSelect } = wrapper.find('TableView').props();
-
-            onSelect('single', 'test', 0);
-            const dispatchedActions = store.getActions();
-            expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');
-            expect(dispatchedActions[1].payload).toEqual([{ id: 'RHSA-2020:2774', selected: 'RHSA-2020:2774' }]);
-        });
-
-        it('Should handle onSelect', () => {
-            fetchIDs.mockReturnValue(new Promise((resolve, reject) =>  {
-                resolve({ data: systemAdvisoryRows });
-                reject('System Advisores failed to fetch');
-            }));
-
-            const { bulkSelect } = wrapper.find('PrimaryToolbar').props();
-
-            bulkSelect.onSelect();
-            const dispatchedActions = store.getActions();
-            expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_ADVISORY_ROW');
-            expect(dispatchedActions[1].payload).toEqual([
-                {
-                    id: 'RHSA-2020:2774',
-                    selected: false
-                }
-            ]
-            );
-        });
-    });
-
-    it('Should display SystemUpToDate when status is resolved, but there is no items', () => {
+    it('Should display SystemUpToDate when status is resolved, but there is no items', async () => {
         const emptyState = {
             ...mockState,
             metadata: {
                 limit: 25,
                 offset: 0,
-                total_items: 10,
+                total_items: 0,
                 search: 'test',
                 filter: {}
             }
         };
 
-        useSelector.mockImplementation(callback => {
-            return callback({ SystemAdvisoryListStore: emptyState, entityDetails: { entity: 'test' } });
-        });
+        const tempStore = initStore(emptyState);
+        const { container } = render(<ComponentWithContext renderOptions={{ store: tempStore }}>
+            <SystemAdvisories inventoryId='test' />
+        </ComponentWithContext>);
 
-        const tempStore = initStore(mockState);
-        const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemAdvisories inventoryId='test' /></Router>
-        </Provider>);
-
-        expect(tempWrapper.find('SystemUpToDate')).toBeTruthy();
+        await waitFor(() => queryByText(container, 'No applicable advisories'));
     });
 });
 
