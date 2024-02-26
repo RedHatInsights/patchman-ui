@@ -49,8 +49,8 @@ const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
             return <Unavailable />;
 
         default:
-            return ErrorState && ErrorState
-                || EmptyState && EmptyState
+            return ErrorState
+                || EmptyState
                 || !metadata.has_systems && <NoRegisteredSystems />
                 || <SkeletonTable colSize={5} rowSize={20} /> ;
     }

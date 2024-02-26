@@ -46,7 +46,6 @@ export const testExport = (exportCveCallback, exportJsonCallback, exportType) =>
             fireEvent.click(screen.getByLabelText('Export'));
             await waitFor(() => {
                 expect(screen.getByText('Export to CSV')).toBeVisible();
-                screen.debug();
             });
 
             fireEvent.click(screen.getByText('Export to CSV'));
@@ -60,7 +59,6 @@ export const testExport = (exportCveCallback, exportJsonCallback, exportType) =>
             fireEvent.click(screen.getByLabelText('Export'));
             await waitFor(() => {
                 expect(screen.getByText('Export to CSV')).toBeVisible();
-                screen.debug();
             });
 
             fireEvent.click(screen.getByText('Export to JSON'));
