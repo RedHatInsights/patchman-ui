@@ -96,7 +96,7 @@ describe('Advisories.js', () => {
         </ComponentWithContext>);
 
         await waitFor(
-            () => expect(queryByText(container, 'This page is temporarily unavailable')).toBeVisible()
+            () => expect(screen.queryByText('This page is temporarily unavailable')).toBeVisible()
         );
     });
 
