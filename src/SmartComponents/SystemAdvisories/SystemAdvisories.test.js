@@ -101,7 +101,7 @@ describe('SystemAdvisories.js', () => {
             <SystemAdvisories inventoryId='test' />
         </ComponentWithContext>);
 
-        await waitFor(() => queryByText(container, 'No applicable advisories'));
+        await waitFor(() => screen.getByText('No applicable advisories'));
     });
 });
 
