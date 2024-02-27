@@ -805,7 +805,6 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               <input
                 aria-label="Select row 0"
                 checked=""
-                disabled=""
                 name="checkrow0"
                 type="checkbox"
               />
@@ -838,7 +837,9 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             class=""
             data-key="4"
             data-label="Status"
-          />
+          >
+            Installable
+          </td>
           <td
             class=""
             data-key="5"
@@ -4179,7 +4180,6 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               <input
                 aria-label="Select row 0"
                 checked=""
-                disabled=""
                 name="checkrow0"
                 type="checkbox"
               />
@@ -4212,7 +4212,9 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             class=""
             data-key="4"
             data-label="Status"
-          />
+          >
+            Installable
+          </td>
           <td
             class=""
             data-key="5"

@@ -3,8 +3,9 @@ import UnassignSystemsModal from './UnassignSystemsModal';
 import { unassignSystemFromPatchSet, fetchSystems } from '../../Utilities/api';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { patchSetUnassignSystemsNotifications } from '../PatchSet/PatchSetAssets';
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import { IntlProvider } from '@redhat-cloud-services/frontend-components-translations';
+import userEvent from '@testing-library/user-event';
 
 initMocks();
 
@@ -44,8 +45,9 @@ beforeEach(() => {
     );
 });
 
-describe('UnassignSystemsModal', () => {
+const user = userEvent.setup();
 
+describe('UnassignSystemsModal', () => {
     it('Should remove systems from a patch set and handle success notification', async ()  => {
         unassignSystemsModalState.isUnassignSystemsModalOpen = true;
         unassignSystemFromPatchSet.mockReturnValueOnce(
@@ -54,7 +56,7 @@ describe('UnassignSystemsModal', () => {
             })
         );
 
-        fireEvent.click(screen.getByText('Remove'));
+        await user.click(screen.getByText('Remove'));
 
         await waitFor(() => {
             expect(addNotification).toHaveBeenCalledWith(
@@ -67,8 +69,7 @@ describe('UnassignSystemsModal', () => {
 
     it('should close the modal', async () => {
         unassignSystemsModalState.isUnassignSystemsModalOpen = true;
-        screen.debug(undefined, 30000);
-        fireEvent.click(screen.getByLabelText('Close'));
+        await user.click(screen.getByLabelText('Close'));
 
         await waitFor(() => {
             expect(unassignSystemsModalState.isUnassignSystemsModalOpen).toBeFalsy();

@@ -9,9 +9,7 @@ import {
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { ComponentWithContext, testBulkSelection, testExport } from '../../Utilities/TestingUtilities.js';
 import '@testing-library/jest-dom';
-import { waitFor, render } from '@testing-library/react';
-import { queryByText } from '@testing-library/dom';
-import '@testing-library/jest-dom';
+import { waitFor, render, screen } from '@testing-library/react';
 
 initMocks();
 
@@ -78,10 +76,10 @@ describe('Advisories.js', () => {
         fetchIDs,
         '/ids/advisories',
         'selectAdvisoryRow',
-        {
+        [{
             id: 'RHEA-2020:2743',
             selected: 'RHEA-2020:2743'
-        }
+        }]
     );
 
     it('Should display error page when status is rejected', async () => {
@@ -91,7 +89,7 @@ describe('Advisories.js', () => {
             error: {}
         };
         const tempStore = initStore(rejectedState);
-        const { container } = render(<ComponentWithContext renderOptions={{ store: tempStore }}>
+        render(<ComponentWithContext renderOptions={{ store: tempStore }}>
             <Advisories/>
         </ComponentWithContext>);
 
@@ -100,7 +98,7 @@ describe('Advisories.js', () => {
         );
     });
 
-    it('should handle remediation', () => {
+    it('should load remediation button with proper props', () => {
         const selectedState = {
             ...mockState,
             selectedRows: { 'RHEA-2020:2743': true }

@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 import configureStore from 'redux-mock-store';
-import { exportPackageSystemsCSV, exportPackageSystemsJSON, fetchIDs } from '../../Utilities/api';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import PackageSystems from './PackageSystems';

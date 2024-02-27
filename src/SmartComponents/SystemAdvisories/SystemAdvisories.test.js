@@ -4,8 +4,7 @@ import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { fetchIDs } from '../../Utilities/api';
 import { ComponentWithContext, testBulkSelection } from '../../Utilities/TestingUtilities.js';
-import AsyncRemediationButton from '../Remediation/AsyncRemediationButton.js';
-import { render, waitFor, queryByText } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 
 initMocks();
 
@@ -33,7 +32,7 @@ const mockState = {
         total_items: 10
     },
     expandedRows: {},
-    selectedRows: { 'RHSA-2020:2774': true },
+    selectedRows: {},
     queryParams: {},
     error: {},
     status: {},
@@ -45,46 +44,60 @@ const initStore = (state) => {
     return mockStore({  SystemAdvisoryListStore: state });
 };
 
-let store = initStore(mockState);
-beforeEach(() => {
-    render(<ComponentWithContext renderOptions={{ store }}>
-        <SystemAdvisories inventoryId='test' />
-    </ComponentWithContext>);
-});
-
-describe('SystemAdvisories.js', () => {
-    it('should handle remediation', async() => {
-        const selectedState = {
-            ...mockState,
-            selectedRows: { 'RHSA-2020:2774': true }
-        };
-
-        const tempStore = initStore(selectedState);
-        render(
-            <ComponentWithContext renderOptions={{ store: tempStore }}>
-                <SystemAdvisories inventoryId='test' />
-            </ComponentWithContext>
-        );
-
-        waitFor(() => {
-            expect(AsyncRemediationButton).toHaveBeenCalledWith({
-                isDisabled: false,
-                isLoading: false,
-                remediationProvider: expect.any(Function)
-            });
-        });
+describe('Selection',  () => {
+    beforeEach(() => {
+        const store = initStore(mockState);
+        render(<ComponentWithContext renderOptions={{ store }}>
+            <SystemAdvisories inventoryId='test' />
+        </ComponentWithContext>);
     });
 
     testBulkSelection(
         fetchIDs,
         '/ids/systems/test/advisories',
         'selectSystemAdvisoryRow',
-        {
-            limit: -1,
-            offset: 0
-        });
+        [
+            {
+                id: 'RHSA-2020:2774',
+                selected: 'RHSA-2020:2774'
+            }
+        ]
+    );
+});
 
-    it('Should display SystemUpToDate when status is resolved, but there is no items', async () => {
+describe('SystemAdvisories.js', () => {
+    it('should render remediation button', async () => {
+        render(
+            <ComponentWithContext renderOptions={{ store: initStore(mockState) }}>
+                <SystemAdvisories inventoryId='test' />
+            </ComponentWithContext>
+        );
+
+        expect(screen.getByText('Remediation')).toBeVisible();
+    });
+
+    it('Should display SystemUpToDate when status is resolved, but there are no applicable advisories', async () => {
+        const emptyState = {
+            ...mockState,
+            metadata: {
+                limit: 25,
+                offset: 0,
+                total_items: 0,
+                filter: {}
+            },
+            rows: []
+        };
+
+        render(<ComponentWithContext renderOptions={{ store: initStore(emptyState) }}>
+            <SystemAdvisories inventoryId='test' />
+        </ComponentWithContext>);
+
+        await waitFor(() =>
+            expect(screen.getByText('No applicable advisories')).toBeInTheDocument()
+        );
+    });
+
+    it('Should display EmptyAdvisoryList when status is resolved, but there are no items', async () => {
         const emptyState = {
             ...mockState,
             metadata: {
@@ -93,15 +106,17 @@ describe('SystemAdvisories.js', () => {
                 total_items: 0,
                 search: 'test',
                 filter: {}
-            }
+            },
+            rows: []
         };
 
-        const tempStore = initStore(emptyState);
-        const { container } = render(<ComponentWithContext renderOptions={{ store: tempStore }}>
+        render(<ComponentWithContext renderOptions={{ store: initStore(emptyState) }}>
             <SystemAdvisories inventoryId='test' />
         </ComponentWithContext>);
 
-        await waitFor(() => screen.getByText('No applicable advisories'));
+        await waitFor(() =>
+            expect(screen.getByText('No matching advisories found')).toBeInTheDocument()
+        );
     });
 });
 

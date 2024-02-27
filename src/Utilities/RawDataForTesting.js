@@ -23,7 +23,8 @@ export const systemAdvisoryRows = [{
         public_date: '2020-06-30T13:38:53Z',
         severity: 3,
         synopsis: 'Important',
-        reboot_required: true
+        reboot_required: true,
+        status: 'Installable'
     },
     id: 'RHSA-2020:2774',
     type: 'advisory'
@@ -114,10 +115,10 @@ export const systemPackages = [{
     evra: 'test-evra',
     name: 'test-name',
     summary: 'Access control list utilities',
-    updates: null,
     id: 'test-id-0',
     updatable: false,
-    update_status: 'None'
+    update_status: 'None',
+    updates: [{ evra: 'test-evra' }]
 }];
 
 export const entityDetail = {

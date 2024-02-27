@@ -5,9 +5,10 @@ import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { storeListDefaults, remediationIdentifiers } from '../../Utilities/constants';
 import { fetchIDs } from '../../Utilities/api';
 import { remediationProvider } from '../../Utilities/Helpers';
-import { render, waitFor, screen, fireEvent } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import { ComponentWithContext, testBulkSelection } from '../../Utilities/TestingUtilities.js';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 initMocks();
 
@@ -56,7 +57,7 @@ const mockState = {
     }
 };
 
-const mountComponent = async (state, componentProps) => {
+const mountComponent = (state, componentProps) => {
     const initStore = (state) => {
         const mockStore = configureStore([]);
         return mockStore({  SystemPackageListStore: state });
@@ -67,31 +68,35 @@ const mountComponent = async (state, componentProps) => {
     </ComponentWithContext>);
 };
 
+const user = userEvent.setup();
+
 describe('Selection', () => {
     beforeEach(async () =>{
-        await mountComponent(mockState);
+        mountComponent(mockState);
         await waitFor(() => screen.getByLabelText('Patch table view'));
     });
     testBulkSelection(
         fetchIDs,
         '/systems/entity/packages',
         'selectSystemPackagesRow',
-        {}
+        [{
+            id: 'test-name-test-evra',
+            selected: 'test-name-test-evra'
+        }]
     );
 });
 
 describe('SystemPackages', () => {
-
     it('Should provide correct remediation data', async () => {
         const selectedState = {
             ...mockState,
             selectedRows: { 'test-id-0': 'test-id-0' }
         };
 
-        await mountComponent(selectedState);
+        mountComponent(selectedState);
         await waitFor(() => screen.getByLabelText('Patch table view'));
 
-        fireEvent.click(screen.getByText('Remediation'));
+        await user.click(screen.getByText('Remediation'));
         await waitFor(() => {
             expect(remediationProvider).toHaveBeenCalledWith(['test-id-0'], 'entity', remediationIdentifiers.package);
         });
@@ -104,7 +109,7 @@ describe('SystemPackages', () => {
             error: { detail: 'test' }
         };
 
-        await mountComponent(rejectedState);
+        mountComponent(rejectedState);
 
         expect(screen.getByText('You do not have permissions to view or manage Patch')).toBeVisible();
     });
@@ -120,7 +125,7 @@ describe('SystemPackages', () => {
             queryParams: {}
         };
 
-        await mountComponent(emptyState);
+        mountComponent(emptyState);
         expect(screen.getByText('No applicable advisories')).toBeVisible();
     });
 
@@ -130,7 +135,7 @@ describe('SystemPackages', () => {
             status: { code: 500, isLoading: false, hasError: true }
         };
 
-        await mountComponent(unavailableState);
+        mountComponent(unavailableState);
         expect(screen.getByText('This page is temporarily unavailable')).toBeVisible();
     });
 
@@ -147,7 +152,7 @@ describe('SystemPackages', () => {
 
         const handleNoSystemData = jest.fn(() => () => <div>Mocked component</div>);
 
-        await mountComponent(notFoundState, { handleNoSystemData });
+        mountComponent(notFoundState, { handleNoSystemData });
 
         expect(handleNoSystemData).toHaveBeenCalled();
     });

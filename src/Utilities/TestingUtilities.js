@@ -4,7 +4,8 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
-import { waitFor, screen, fireEvent } from '@testing-library/react';
+import { waitFor, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import * as Actions from '../store/Actions/Actions';
 
@@ -39,16 +40,17 @@ ComponentWithContext.propTypes = {
 };
 
 export const testExport = (exportCveCallback, exportJsonCallback, exportType) => {
+    const user = userEvent.setup();
     describe('test exports', () => {
         global.Headers = jest.fn();
         global.fetch = jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)));
         it('Should download csv file current', async () => {
-            fireEvent.click(screen.getByLabelText('Export'));
+            await user.click(screen.getByLabelText('Export'));
             await waitFor(() => {
                 expect(screen.getByText('Export to CSV')).toBeVisible();
             });
 
-            fireEvent.click(screen.getByText('Export to CSV'));
+            await user.click(screen.getByText('Export to CSV'));
 
             await waitFor(() => {
                 expect(exportCveCallback).toHaveBeenCalledWith({ page: 1, page_size: 20 }, exportType);
@@ -56,12 +58,12 @@ export const testExport = (exportCveCallback, exportJsonCallback, exportType) =>
         });
 
         it('Should download csv file current', async () => {
-            fireEvent.click(screen.getByLabelText('Export'));
+            await user.click(screen.getByLabelText('Export'));
             await waitFor(() => {
                 expect(screen.getByText('Export to CSV')).toBeVisible();
             });
 
-            fireEvent.click(screen.getByText('Export to JSON'));
+            await user.click(screen.getByText('Export to JSON'));
 
             await waitFor(() => {
                 expect(exportJsonCallback).toHaveBeenCalledWith({ page: 1, page_size: 20 }, exportType);
@@ -71,9 +73,12 @@ export const testExport = (exportCveCallback, exportJsonCallback, exportType) =>
 };
 
 export const testBulkSelection = (fetchAllCallback, fetchAllUrl, spyOnAction, selectedItem) => {
-    it('should fetch all the data using limit=-1', () => {
-        fireEvent.click(screen.getByLabelText('Select'));
-        fireEvent.click(screen.getByText('Select all (10)'));
+    const user = userEvent.setup();
+    const spy = jest.spyOn(Actions, spyOnAction);
+
+    it('should fetch all the data using limit=-1', async () => {
+        await user.click(screen.getByLabelText('Select'));
+        await user.click(screen.getByText('Select all (10)'));
 
         expect(fetchAllCallback).toHaveBeenCalledWith(
             fetchAllUrl,
@@ -81,23 +86,21 @@ export const testBulkSelection = (fetchAllCallback, fetchAllUrl, spyOnAction, se
         );
     });
 
-    it('should select rows', async () => {
-        const spy = jest.spyOn(Actions, 'selectAdvisoryRow');
-        fireEvent.click(screen.getByLabelText('Select'));
-        fireEvent.click(screen.getByText('Select page (1)'));
+    it('should unselect rows', async () => {
+        await user.click(screen.getByLabelText('Select'));
+        await user.click(screen.getByText('Select none (0)'));
 
-        waitFor(() =>
-            expect(spy).toHaveBeenCalledWith(selectedItem)
+        await waitFor(() =>
+            expect(spy).toHaveBeenCalledWith([])
         );
     });
 
-    it('should unselect rows', async () => {
-        const spy = jest.spyOn(Actions, spyOnAction);
-        fireEvent.click(screen.getByLabelText('Select'));
-        fireEvent.click(screen.getByText('Select none (0)'));
+    it('should select rows', async () => {
+        await user.click(screen.getByLabelText('Select'));
+        await user.click(screen.getByText('Select page (1)'));
 
-        waitFor(() =>
-            expect(spy).toHaveBeenCalledWith([])
+        await waitFor(() =>
+            expect(spy).toHaveBeenCalledWith(selectedItem)
         );
     });
 
