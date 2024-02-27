@@ -1,3 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DataMappers Should create package list 1`] = `undefined`;
+exports[`DataMappers Should create package list 1`] = `
+{
+  "cells": [
+    {
+      "title": <InsightsLink
+        to="/packages/test-name"
+      >
+        test-name
+      </InsightsLink>,
+    },
+    {
+      "title": "test-evra",
+    },
+    {
+      "title": "test-evra",
+    },
+    {
+      "title": "test-evra",
+    },
+    {
+      "title": "Up to applicable version",
+    },
+    {
+      "title": "Access control list utilities",
+    },
+  ],
+  "disableSelection": true,
+  "id": "test-name-test-evra",
+  "key": "test-name-test-evra",
+  "selected": false,
+}
+`;

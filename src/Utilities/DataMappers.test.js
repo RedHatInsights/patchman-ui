@@ -119,7 +119,7 @@ describe('DataMappers', () => {
             ]
         }]);
 
-        expect(packages[1]).toMatchSnapshot();
+        expect(packages[0]).toMatchSnapshot();
 
         const packagesWithCompleteData = createSystemPackagesRows([{
             ...systemPackages[0],
