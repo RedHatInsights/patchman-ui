@@ -5,30 +5,30 @@ exports[`DataMappers Should create package list 1`] = `
   "cells": [
     {
       "title": <InsightsLink
-        to="/packages/test-name-2"
+        to="/packages/test-name"
       >
-        test-name-2
+        test-name
       </InsightsLink>,
     },
     {
-      "title": "test-evra-2",
+      "title": "test-evra",
     },
     {
-      "title": "test-evra-2",
+      "title": "test-evra",
     },
     {
-      "title": "test-update-evra",
+      "title": "test-evra",
     },
     {
-      "title": "Upgradable",
+      "title": "Up to applicable version",
     },
     {
       "title": "Access control list utilities",
     },
   ],
-  "disableSelection": false,
-  "id": "test-name-2-test-evra-2",
-  "key": "test-name-2-test-evra-2",
+  "disableSelection": true,
+  "id": "test-name-test-evra",
+  "key": "test-name-test-evra",
   "selected": false,
 }
 `;

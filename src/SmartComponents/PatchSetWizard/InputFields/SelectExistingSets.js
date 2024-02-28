@@ -59,7 +59,11 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems, select
             return [<SelectOption key='loading'><Spinner size="md"/></SelectOption>];
         }
 
-        return rows?.map(set => <SelectOption key={set.id} value={set.name} />);
+        return rows?.map(set => <SelectOption
+            key={set.id}
+            value={set.name}
+            aria-label='patch-set-option'
+        />);
     }, [rows, status.isLoading]);
 
     const apply = (params) => {

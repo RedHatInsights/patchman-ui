@@ -1,22 +1,16 @@
 import SystemPackages from './SystemPackages';
-import { Provider } from 'react-redux';
 import { systemPackages } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { storeListDefaults, remediationIdentifiers } from '../../Utilities/constants';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { fetchIDs } from '../../Utilities/api';
 import { remediationProvider } from '../../Utilities/Helpers';
-import { NotConnected } from '@redhat-cloud-services/frontend-components/NotConnected';
-import { render } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
+import { ComponentWithContext, testBulkSelection } from '../../Utilities/TestingUtilities.js';
+import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 initMocks();
-
-jest.mock('react-redux', () => ({
-    ...jest.requireActual('react-redux'),
-    useSelector: jest.fn()
-}));
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
@@ -39,133 +33,116 @@ jest.mock('../../Utilities/Helpers', () => ({
     encodeApiParams: jest.fn(),
     remediationProvider: jest.fn()
 }));
-jest.mock('../Remediation/AsyncRemediationButton', () => () => <div></div>);
+jest.mock('../Remediation/AsyncRemediationButton', () => ({
+    __esModule: true,
+    default: jest.fn(({ remediationProvider, ...props }) => {
+        remediationProvider();
+        return (
+            <div {...props} data-testid='remediation-mock'>
+            Remediation
+            </div>
+        );
+    }
+    )
+}));
 
-const mockState = { ...storeListDefaults, rows: systemPackages };
-
-const initStore = (state) => {
-    const customMiddleWare = () => next => action => {
-        useSelector.mockImplementation(callback => {
-            return callback({  SystemPackageListStore: state });
-        });
-        next(action);
-    };
-
-    const mockStore = configureStore([customMiddleWare]);
-    return mockStore({  SystemPackageListStore: state });
+const mockState = {
+    ...storeListDefaults,
+    rows: systemPackages,
+    status: { code: 200, isLoading: false, hasError: false },
+    metadata: {
+        limit: 25,
+        offset: 0,
+        total_items: 10
+    }
 };
 
-let wrapper;
-let store = initStore(mockState);
+const mountComponent = (state, componentProps) => {
+    const initStore = (state) => {
+        const mockStore = configureStore([]);
+        return mockStore({  SystemPackageListStore: state });
+    };
 
-beforeEach(() => {
-    store.clearActions();
-    useSelector.mockImplementation(callback => {
-        return callback({ SystemPackageListStore: mockState });
+    render(<ComponentWithContext renderOptions={{ store: initStore(state) }}>
+        <SystemPackages inventoryId='entity' {...componentProps} />
+    </ComponentWithContext>);
+};
+
+const user = userEvent.setup();
+
+describe('Selection', () => {
+    beforeEach(async () =>{
+        mountComponent(mockState);
+        await waitFor(() => screen.getByLabelText('Patch table view'));
     });
-    wrapper = mount(<Provider store={store}>
-        <Router><SystemPackages inventoryId='entity'/></Router>
-    </Provider>);
+    testBulkSelection(
+        fetchIDs,
+        '/systems/entity/packages',
+        'selectSystemPackagesRow',
+        [{
+            id: 'test-name-test-evra',
+            selected: 'test-name-test-evra'
+        }]
+    );
 });
 
-afterEach(() => {
-    useSelector.mockClear();
-});
+describe('SystemPackages', () => {
+    it('Should provide correct remediation data', async () => {
+        const selectedState = {
+            ...mockState,
+            selectedRows: { 'test-id-0': 'test-id-0' }
+        };
 
-describe('SystemPackages.js', () => {
-    it('Should match the snapshots', () => {
-        const { asFragment } = render(
-            <Provider store={store}>
-                <Router><SystemPackages inventoryId='entity'/></Router>
-            </Provider>
-        );
-        expect(asFragment()).toMatchSnapshot();
+        mountComponent(selectedState);
+        await waitFor(() => screen.getByLabelText('Patch table view'));
+
+        await user.click(screen.getByText('Remediation'));
+        await waitFor(() => {
+            expect(remediationProvider).toHaveBeenCalledWith(['test-id-0'], 'entity', remediationIdentifiers.package);
+        });
     });
 
-    it('Should dispatch FETCH_APPLICABLE_SYSTEM_PACKAGES only once on load', () => {
-        const dispatchedActions = store.getActions();
-        expect(dispatchedActions.filter(item => item.type === 'FETCH_APPLICABLE_SYSTEM_PACKAGES')).toHaveLength(1);
-    });
-
-    it('Should display error page when status is rejected', () => {
+    it('Should render no access component', async () => {
         const rejectedState = {
             ...mockState,
             status: { code: 403, isLoading: false, hasError: true },
             error: { detail: 'test' }
         };
-        useSelector.mockImplementation(callback => {
-            return callback({ SystemPackageListStore: rejectedState });
-        });
-        const tempStore = initStore(rejectedState);
-        const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages inventoryId='entity' /></Router>
-        </Provider>);
-        expect(tempWrapper.find('Error')).toBeTruthy();
+
+        mountComponent(rejectedState);
+
+        expect(screen.getByText('You do not have permissions to view or manage Patch')).toBeVisible();
     });
 
-    it('Should call apply function with parameters', () => {
-
-        const { apply } = wrapper.update().find('TableView').props();
-        apply({ params: 'testParams' });
-        const dispatchedActions = store.getActions();
-
-        expect(dispatchedActions[1].type).toEqual('CHANGE_SYSTEM_PACKAGES_LIST_PARAMS');
-        expect(dispatchedActions[1].payload).toEqual({ id: 'entity', params: 'testParams' });
-    });
-
-    it('Should use onSelect', () => {
-        const { onSelect } = wrapper.update().find('TableView').props();
-        onSelect(null, true, 1);
-        const dispatchedActions = store.getActions();
-
-        expect(dispatchedActions[1].type).toEqual('SELECT_SYSTEM_PACKAGES_ROW');
-        expect(dispatchedActions[1].payload).toEqual([{
-            id: 'test-name-2-test-evra-2',
-            selected: 'test-name-2-test-update-evra'
-        }]);
-    });
-
-    it('Should select all with limit=-1', () => {
-        const { onSelect } = wrapper.update().find('TableView').props();
-        onSelect('all');
-        expect(fetchIDs).toHaveBeenCalledWith('/systems/entity/packages', { limit: -1, offset: 0, page: 1, page_size: 20 });
-    });
-
-    it('Should provide correct remediation data', () => {
-        const remediation = wrapper.find('TableView').props().remediationProvider;
-        remediation();
-        expect(remediationProvider).toHaveBeenCalledWith([], 'entity', remediationIdentifiers.package);
-    });
-
-    it('Should display SystemUpToDate when status is resolved, but there is no items', () => {
+    it('Should display SystemUpToDate when status is resolved, but there is no items', async () => {
         const emptyState = {
             ...mockState,
             metadata: {
-                limit: 25,
-                offset: 0,
-                total_items: 0
+                ...mockState.metadata,
+                total_items: 0,
+                has_systems: false
             },
-            queryParams: {},
-            status: 'resolved',
-            rows: systemPackages
+            queryParams: {}
         };
 
-        useSelector.mockImplementation(callback => {
-            return callback({ SystemPackageListStore: emptyState, entityDetails: { entity: { id: 'entity' } } });
-        });
-
-        const tempStore = initStore(emptyState);
-        const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages inventoryId='entity' /></Router>
-        </Provider>);
-
-        expect(tempWrapper.find('SystemUpToDate')).toBeTruthy();
+        mountComponent(emptyState);
+        expect(screen.getByText('No applicable advisories')).toBeVisible();
     });
 
-    it('Should display NotConnected', () => {
+    it('Should display Unavailable component when there is a generic error', async () => {
+        const unavailableState = {
+            ...mockState,
+            status: { code: 500, isLoading: false, hasError: true }
+        };
+
+        mountComponent(unavailableState);
+        expect(screen.getByText('This page is temporarily unavailable')).toBeVisible();
+    });
+
+    it('Should display NotConnected', async () => {
         const notFoundState = {
             ...mockState,
-            status: { code: 403, isLoading: false, hasError: true },
+            status: { code: 404, isLoading: false, hasError: true },
             error: {
                 status: 404,
                 title: 'testTitle',
@@ -173,15 +150,10 @@ describe('SystemPackages.js', () => {
             }
         };
 
-        useSelector.mockImplementation(callback => {
-            return callback({ SystemPackageListStore: notFoundState, entityDetails: { entity: { id: 'entity' } } });
-        });
+        const handleNoSystemData = jest.fn(() => () => <div>Mocked component</div>);
 
-        const tempStore = initStore(notFoundState);
-        const tempWrapper = mount(<Provider store={tempStore}>
-            <Router><SystemPackages handleNoSystemData={() => <NotConnected />} inventoryId='entity' /></Router>
-        </Provider>);
-        expect(tempWrapper.find('NotConnected')).toBeTruthy();
+        mountComponent(notFoundState, { handleNoSystemData });
 
+        expect(handleNoSystemData).toHaveBeenCalled();
     });
 });

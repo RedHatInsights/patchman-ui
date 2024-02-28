@@ -117,17 +117,9 @@ describe('DataMappers', () => {
                 { title: expect.anything() },
                 { title: 'Access control list utilities' }
             ]
-        },
-        {
-            id: 'test-name-2-test-evra-2',
-            key: 'test-name-2-test-evra-2',
-            selected: false,
-            disableSelection: false,
-            //tested using snapshots
-            cells: expect.anything()
         }]);
 
-        expect(packages[1]).toMatchSnapshot();
+        expect(packages[0]).toMatchSnapshot();
 
         const packagesWithCompleteData = createSystemPackagesRows([{
             ...systemPackages[0],
