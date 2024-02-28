@@ -30,6 +30,7 @@ globals:
     React: true
     jest: true
 rules:
+    rulesdir/disallow-fec-relative-imports: 0
     array-bracket-spacing: 2
     react/no-console: 0
     react/boolean-prop-naming: 2
