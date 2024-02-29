@@ -39,13 +39,13 @@ const renderComponent = async (mockedStore) => {
     });
 };
 
-describe('Systems.js', () => {
+describe('SystemsTable', () => {
     it('Should render inventory table', async () => {
         await renderComponent(mockState);
         expect(screen.getByTestId('inventory-mock-component')).toBeVisible();
     });
 
-    it('Should provide hideFilters prop', async () => {
+    it('Should provide customFilters prop', async () => {
         const filteredState = {
             ...mockState,
             SystemsStore: {
