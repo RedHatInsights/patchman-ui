@@ -96,6 +96,7 @@ const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl }) => {
                     {intl.formatMessage(messages.labelsCancel)}
                 </Button>
             ]}
+            data-testid='assign-systems-modal'
         >
             {systemsLoading
                 ? <Spinner />

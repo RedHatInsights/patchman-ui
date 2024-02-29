@@ -17,6 +17,8 @@ export const usePatchSetState = (selectedRows) => {
         systemsIDs: []
     });
 
+    console.log(selectedRows, 'selectedRows');
+
     const openPatchSetAssignWizard = (systemID) => {
         setPatchSetState({
             isPatchSetWizardOpen: true,

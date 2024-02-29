@@ -26,6 +26,7 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
 
     const handleUnassignment = useUnassignSystemsHook(handleModalToggle, systemsWithPatchSet);
 
+    console.log(systemsIDs, 'systemsIds');
     useEffect(() => {
         setSystemsLoading(true);
 
@@ -57,6 +58,7 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
                     {intl.formatMessage(messages.labelsCancel)}
                 </Button>
             ]}
+            data-testid='unassign-systems-modal'
         >
             <Grid hasGutter>
                 {systemsLoading
