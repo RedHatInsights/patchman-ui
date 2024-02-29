@@ -26,7 +26,6 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
 
     const handleUnassignment = useUnassignSystemsHook(handleModalToggle, systemsWithPatchSet);
 
-    console.log(systemsIDs, 'systemsIds');
     useEffect(() => {
         setSystemsLoading(true);
 
