@@ -1,26 +1,23 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Button, EmptyState, EmptyStateBody, EmptyStateIcon, Title } from '@patternfly/react-core';
+import { Button, EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateHeader, EmptyStateFooter  } from '@patternfly/react-core';
 import { DisconnectedIcon } from '@patternfly/react-icons';
 
 const NoRegisteredSystems = ({ titleText, bodyText, buttonText }) => (
     <EmptyState>
-        <EmptyStateIcon icon={DisconnectedIcon} />
-        <Title headingLevel="h5" size="lg">
-            {titleText}
-        </Title>
-        <EmptyStateBody>{bodyText}</EmptyStateBody>
-        <Button
-            variant="primary"
-            component="a"
-            href="https://access.redhat.com/products/red-hat-insights#getstarted"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pf-u-mt-lg"
-        >
-            {buttonText}
-        </Button>
-    </EmptyState>
+        <EmptyStateHeader titleText={<>{titleText}</>} icon={<EmptyStateIcon icon={DisconnectedIcon} />} headingLevel="h5" />
+        <EmptyStateBody>{bodyText}</EmptyStateBody><EmptyStateFooter>
+            <Button
+                variant="primary"
+                component="a"
+                href="https://access.redhat.com/products/red-hat-insights#getstarted"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pf-u-mt-lg"
+            >
+                {buttonText}
+            </Button>
+        </EmptyStateFooter></EmptyState>
 );
 
 NoRegisteredSystems.propTypes = {

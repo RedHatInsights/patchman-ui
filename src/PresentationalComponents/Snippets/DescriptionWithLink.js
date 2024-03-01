@@ -1,4 +1,5 @@
 import {
+    Icon,
     Text, TextContent, TextList,
     TextListItem, TextListItemVariants, TextListVariants, TextVariants
 } from '@patternfly/react-core';
@@ -24,7 +25,9 @@ export const DescriptionWithLink = ({ row }) => {
                         {intl.formatMessage(messages.labelsSeverity)}
                     </TextListItem>
                     <TextListItem component={TextListItemVariants.dd}>
-                        <SecurityIcon size="sm" color={severityObject.color} />  {severityObject.label}
+                        <Icon size="sm" color={severityObject.color}>
+                            <SecurityIcon  />
+                        </Icon>  {severityObject.label}
                     </TextListItem>
                     <TextListItem component={TextListItemVariants.dt}>
                         {intl.formatMessage(messages.labelsCves)}

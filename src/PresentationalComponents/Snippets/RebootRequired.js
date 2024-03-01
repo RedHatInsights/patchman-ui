@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-    Title, Flex, FlexItem
+    Title, Flex, FlexItem, Icon
 } from '@patternfly/react-core';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -16,7 +16,11 @@ const RebootRequired = () =>  (
         </FlexItem>
         <FlexItem spacer={{ default: 'spacerSm' }}>
             <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
-                <FlexItem><PowerOffIcon size="sm" color={'var(--pf-global--danger-color--100)'} /> </FlexItem>
+                <FlexItem>
+                    <Icon size="sm" color={'var(--pf-global--danger-color--100)'}>
+                        <PowerOffIcon />
+                    </Icon>
+                </FlexItem>&nbsp;
                 <FlexItem isFilled>{intl.formatMessage(messages.textRebootIsRequired)}</FlexItem>
             </Flex>
         </FlexItem>

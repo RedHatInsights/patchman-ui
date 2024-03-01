@@ -5,8 +5,16 @@ import propTypes from 'prop-types';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import {
-    CardTitle, Button, Skeleton,
-    Card, Grid, GridItem, CardBody, Flex, FlexItem
+    CardTitle,
+    Button,
+    Skeleton,
+    Card,
+    Grid,
+    GridItem,
+    CardBody,
+    Flex,
+    FlexItem,
+    Icon as PfIcon
 } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { fetchSystems } from '../../Utilities/api';
@@ -21,7 +29,9 @@ const StatusCard = ({ title, color, Icon, value, filter, apply }) => {
                         spacer={{ default: 'spacerMd' }}
                         alignSelf={{ default: 'alignSelfCenter' }}
                     >
-                        <Icon color={color} size='md'/>
+                        <PfIcon color={color} size='md'>
+                            <Icon />
+                        </PfIcon>
                     </FlexItem>
                     <FlexItem spacer={{ default: 'spacerNone' }}>
                         {

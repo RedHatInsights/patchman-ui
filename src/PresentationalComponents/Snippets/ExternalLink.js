@@ -1,4 +1,4 @@
-import { Flex, FlexItem } from '@patternfly/react-core';
+import { Flex, FlexItem, Icon } from '@patternfly/react-core';
 import ExternalLinkAltIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -14,7 +14,9 @@ const ExternalLink = ({ link, text }) => {
                     {text}
                 </FlexItem>
                 <FlexItem spacer={{ default: 'spacerSm' }}>
-                    <ExternalLinkAltIcon />
+                    <Icon>
+                        <ExternalLinkAltIcon />
+                    </Icon>
                 </FlexItem>
             </Flex>
         </a>

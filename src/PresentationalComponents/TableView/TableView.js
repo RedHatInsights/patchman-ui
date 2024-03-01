@@ -1,4 +1,11 @@
-import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
+import {
+    TableVariant
+} from '@patternfly/react-table';
+import {
+    Table,
+    TableBody,
+    TableHeader
+} from '@patternfly/react-table/deprecated';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
 import PropTypes from 'prop-types';

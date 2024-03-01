@@ -50,7 +50,7 @@ const NameField = (props) => {
                 type="text"
                 isRequired
                 value={name}
-                onChange={(val) => {
+                onChange={(_event, val) => {
                     input.onChange(val);
                     setName(val);
                 }}
