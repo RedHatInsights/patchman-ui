@@ -9,18 +9,16 @@ const axiosInstance = axios.create();
 export function errorInterceptor(err) {
 
     if (!axios.isCancel(err)) {
+        const { response } = { ...err };
 
-        const { response, isAxiosError } = { ...err };
-
-        if (response && isAxiosError) {
+        if (response && err.isAxiosError) {
             const { status, statusText, data } = response;
 
             if (!status) {
                 return err;
             } else {
                 const genericError = {
-                    title:
-                            'There was an error getting data'
+                    title: 'There was an error getting data'
                 };
 
                 const result = { ...genericError, detail: data.error || statusText, status };
