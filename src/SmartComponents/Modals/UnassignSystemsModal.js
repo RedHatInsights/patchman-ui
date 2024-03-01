@@ -57,6 +57,7 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
                     {intl.formatMessage(messages.labelsCancel)}
                 </Button>
             ]}
+            data-testid='unassign-systems-modal'
         >
             <Grid hasGutter>
                 {systemsLoading
