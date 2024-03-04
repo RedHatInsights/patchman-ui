@@ -25,8 +25,8 @@ export const DescriptionWithLink = ({ row }) => {
                         {intl.formatMessage(messages.labelsSeverity)}
                     </TextListItem>
                     <TextListItem component={TextListItemVariants.dd}>
-                        <Icon size="sm" color={severityObject.color}>
-                            <SecurityIcon  />
+                        <Icon size="sm">
+                            <SecurityIcon color={severityObject.color} />
                         </Icon>  {severityObject.label}
                     </TextListItem>
                     <TextListItem component={TextListItemVariants.dt}>

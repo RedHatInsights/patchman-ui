@@ -43,12 +43,8 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
                                     {attributes.severity && (<GridItem>
                                         <Split hasGutter>
                                             <GridItem >
-                                                <Icon
-                                                    size="sm"
-                                                    color={advisorySeverities[attributes.severity].color}
-                                                >
-                                                    <SecurityIcon
-                                                    />
+                                                <Icon>
+                                                    <SecurityIcon color={advisorySeverities[attributes.severity].color} />
                                                 </Icon>
                                             </GridItem>
                                             <GridItem isFilled>{advisorySeverities[attributes.severity].label}</GridItem>
