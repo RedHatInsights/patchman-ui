@@ -1,6 +1,6 @@
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import UnassignSystemsModal from './UnassignSystemsModal';
-import { unassignSystemFromPatchSet, fetchSystems } from '../../Utilities/api';
+import { unassignSystemFromPatchSet } from '../../Utilities/api';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import { patchSetUnassignSystemsNotifications } from '../PatchSet/PatchSetAssets';
 import { render, waitFor, screen } from '@testing-library/react';
@@ -22,8 +22,6 @@ jest.mock('react-redux', () => ({
 jest.mock('@redhat-cloud-services/frontend-components-notifications/redux', () => ({
     addNotification: jest.fn(() => {})
 }));
-
-fetchSystems.mockResolvedValue({ data: [{ id: 'test_1' }] });
 
 let unassignSystemsModalState = {
     isUnassignSystemsModalOpen: true,
