@@ -1,15 +1,15 @@
 table.patchCompactInventory {
     .ins-composed-col {
-        font-size: var(--pf-c-table--m-compact--FontSize);
+        font-size: var(--pf-v5-c-table--m-compact--FontSize);
     }
 }
 
 .patch-root {
     overflow: inherit !important;
 
-    .pf-c-table__expandable-row-content {
+    .pf-v5-c-table__expandable-row-content {
         .patch-advisory-description {
-            font-size: var(--pf-global--FontSize--sm);
+            font-size: var(--pf-v5-global--FontSize--sm);
         }
     }
 
@@ -31,20 +31,20 @@ table.patchCompactInventory {
 }
 
 .ins-c-primary-toolbar {
-    .pf-c-toolbar__content.pf-m-hidden {
+    .pf-v5-c-toolbar__content.pf-m-hidden {
         display: none !important;
     }
 }
 
 .patch-root
     .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items)
-    .pf-c-toolbar__content
-    .pf-c-toolbar__item:last-child {
+    .pf-v5-c-toolbar__content
+    .pf-v5-c-toolbar__item:last-child {
     min-width: unset !important;
 }
 
 .patch-status-report-text {
-    color: var(--pf-global--primary-color--100);
+    color: var(--pf-v5-global--primary-color--100);
     font-weight: bold;
     margin: 0px;
     padding: 0px

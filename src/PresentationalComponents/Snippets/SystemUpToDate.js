@@ -27,7 +27,7 @@ export const SystemUpToDate = () => (
                         icon={() => (
                             <Icon
                                 size="xl"
-                                color={'var(--pf-global--success-color--200)'}
+                                color={'var(--pf-v5-global--success-color--200)'}
                                 style={{ marginBottom: 15 }}
                             >
                                 <CheckCircleIcon

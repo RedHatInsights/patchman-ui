@@ -111,7 +111,7 @@ const InventoryDetail = () => {
                             <TextContent>
                                 <Text>
                                     {intl.formatMessage(messages.labelsColumnsTemplate)}:
-                                    <InsightsLink to={`/templates/${patchSetId}`} className="pf-u-ml-xs">
+                                    <InsightsLink to={`/templates/${patchSetId}`} className="pf-v5-u-ml-xs">
                                         {patchSetName}
                                     </InsightsLink>
                                 </Text>
@@ -121,14 +121,14 @@ const InventoryDetail = () => {
                             {satelliteManaged
                                 ? <Fragment>
                                     <Alert
-                                        className='pf-u-mt-md'
+                                        className='pf-v5-u-mt-md'
                                         isInline
                                         variant="info"
                                         title="This system has content managed by Satellite. Installable updates are
                                             current as of the last time the system checked-in with Red Hat Insights."
                                     />
                                     <Alert
-                                        className='pf-u-mt-md'
+                                        className='pf-v5-u-mt-md'
                                         isInline
                                         variant="warning"
                                         title="This system has content managed by Satellite. For accurate reporting of
@@ -145,7 +145,7 @@ const InventoryDetail = () => {
                                     </Alert>
                                 </Fragment>
                                 : hasThirdPartyRepo && <Alert
-                                    className='pf-u-mt-md'
+                                    className='pf-v5-u-mt-md'
                                     isInline
                                     variant="info"
                                     title="This system has content that is managed by repositories other than the Red Hat CDN"

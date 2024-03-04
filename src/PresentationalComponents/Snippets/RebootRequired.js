@@ -17,7 +17,7 @@ const RebootRequired = () =>  (
         <FlexItem spacer={{ default: 'spacerSm' }}>
             <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
                 <FlexItem>
-                    <Icon size="sm" color={'var(--pf-global--danger-color--100)'}>
+                    <Icon size="sm" color={'var(--pf-v5-global--danger-color--100)'}>
                         <PowerOffIcon />
                     </Icon>
                 </FlexItem>&nbsp;

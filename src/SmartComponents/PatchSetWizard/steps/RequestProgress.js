@@ -49,9 +49,9 @@ const RequestProgress = ({ onClose, state }) => {
                 icon={<EmptyStateIcon
                     color={
                         failed
-                            ? 'var(--pf-global--danger-color--100)'
+                            ? 'var(--pf-v5-global--danger-color--100)'
                             : !requestPending
-                                ? 'var(--pf-global--success-color--100)'
+                                ? 'var(--pf-v5-global--success-color--100)'
                                 : undefined
                     }
                     icon={

@@ -20,7 +20,7 @@ export const DescriptionWithLink = ({ row }) => {
         <TextContent className='patch-advisory-description'>
             {
                 row.attributes.cve_count > 0 &&
-                (<TextList component={TextListVariants.dl} style={{ '--pf-c-content--dl--RowGap': '0.5rem' }}>
+                (<TextList component={TextListVariants.dl} style={{ '--pf-v5-c-content--dl--RowGap': '0.5rem' }}>
                     <TextListItem component={TextListItemVariants.dt}>
                         {intl.formatMessage(messages.labelsSeverity)}
                     </TextListItem>

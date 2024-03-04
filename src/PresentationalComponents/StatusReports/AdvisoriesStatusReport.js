@@ -58,7 +58,7 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
                                         <GridItem>
                                             <Split hasGutter>
                                                 <SplitItem>
-                                                    <Icon color='var(--pf-global--palette--red-100)'>
+                                                    <Icon color='var(--pf-v5-global--palette--red-100)'>
                                                         <PowerOffIcon />
                                                     </Icon>
                                                 </SplitItem>
@@ -100,7 +100,7 @@ const AdvisoriesStatusBar = () => {
     return advisories.data && advisories.data.length && (
         <Main style={{ paddingBottom: 0, paddingTop: 0 }}>
 
-            <Title headingLevel="h3" className='pf-u-my-md'>
+            <Title headingLevel="h3" className='pf-v5-u-my-md'>
                 {intl.formatMessage(messages.titlesMostImpactfulAdvisories)}
             </Title>
 

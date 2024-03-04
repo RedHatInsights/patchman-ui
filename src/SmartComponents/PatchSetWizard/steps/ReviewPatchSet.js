@@ -50,7 +50,7 @@ const ReviewPatchSet = () => {
             </StackItem>
             <StackItem>
                 <TextContent>
-                    <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
+                    <Text component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
                         {intl.formatMessage(messages.textPatchTemplateContent)}
                     </Text>
                     <TextList component={TextListVariants.dl}>
@@ -60,7 +60,7 @@ const ReviewPatchSet = () => {
             </StackItem>
             <StackItem>
                 <TextContent>
-                    <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
+                    <Text component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
                         {intl.formatMessage(messages.textPatchTemplateDetails)}
                     </Text>
                     <TextList component={TextListVariants.dl}>
@@ -72,7 +72,7 @@ const ReviewPatchSet = () => {
             </StackItem>
             <StackItem>
                 <TextContent>
-                    <Text component="h2" className="pf-u-mt-md pf-u-mb-sm">
+                    <Text component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
                         {intl.formatMessage(messages.textPatchTemplateSystems)}
                     </Text>
                     <TextList component={TextListVariants.dl}>

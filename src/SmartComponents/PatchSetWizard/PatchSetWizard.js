@@ -135,9 +135,9 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
                             <Fragment>
                                 {intl.formatMessage(messages.templateDescription)}
                                 {/*<a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer"
-                                    className="pf-u-ml-sm">
+                                    className="pf-v5-u-ml-sm">
                                     {intl.formatMessage(messages.labelsDocumentation)}
-                                    <ExternalLinkAltIcon className="pf-u-ml-xs"/>
+                                    <ExternalLinkAltIcon className="pf-v5-u-ml-xs"/>
                                 </a>*/}
                             </Fragment>
                         }
