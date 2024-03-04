@@ -112,8 +112,8 @@ const TableView = ({
                             </PrimaryToolbar>
                             {isLoading
                                 ? <SkeletonTable
-                                    colSize={columns?.length ?? 5}
-                                    rowSize={20}
+                                    numberOfColumns={columns?.length ?? 5}
+                                    rows={20}
                                     variant={compact && TableVariant.compact}
                                 />
                                 : <Table
