@@ -46,7 +46,7 @@ const useFetchAllIDs = (
 
         return apiResponseTransformer ? apiResponseTransformer(aggregatedResponse) : aggregatedResponse;
     },
-    [totalItems, endpoint]);
+    [totalItems, endpoint, fetchBatched]);
 };
 
 const useCreateSelectedRow = (transformKey, constructFilename) =>
