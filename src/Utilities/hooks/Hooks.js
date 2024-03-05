@@ -175,6 +175,7 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
         },
         toggleProps: {
             'data-ouia-component-type': 'bulk-select-toggle-button',
+            'aria-label': 'Select',
             // FIXME: children is ignored by PrimaryToolbar (BulkSelect) implementation, there is a reimplementation needed
             children: isBulkLoading ? [
                 <React.Fragment key='sd'>

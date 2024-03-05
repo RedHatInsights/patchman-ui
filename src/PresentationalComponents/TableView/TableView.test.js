@@ -22,7 +22,8 @@ const testObj = {
     onExport: jest.fn(),
     filterConfig: {
         items: [{
-            label: 'First filter'
+            label: 'First filter',
+            type: 'text'
         }, {
             label: 'Second filter',
             type: 'checkbox',
@@ -140,7 +141,9 @@ describe('TableView', () => {
                     }} />
             </Provider>
         );
-        await userEvent.click(screen.getByRole('button', { name: 'Select' }));
+        await userEvent.click(screen.getByRole('button', {
+            name: /select/i
+        }));
         await userEvent.click(screen.getByRole('menuitem', { name: /select none \(0\)/i }));
         await waitFor(() =>
             expect(mockOnSelect).toHaveBeenCalledWith('none'));
@@ -159,7 +162,9 @@ describe('TableView', () => {
                     }} />
             </Provider>
         );
-        await userEvent.click(screen.getByRole('button', { name: 'Select' }));
+        await userEvent.click(screen.getByRole('button', {
+            name: /select/i
+        }));
         await userEvent.click(screen.getByRole('menuitem', { name: /select page \(0\)/i }));
         await waitFor(() =>
             expect(mockOnSelect).toHaveBeenCalledWith('page'));
@@ -178,7 +183,9 @@ describe('TableView', () => {
                     }} />
             </Provider>
         );
-        await userEvent.click(screen.getByRole('button', { name: 'Select' }));
+        await userEvent.click(screen.getByRole('button', {
+            name: /select/i
+        }));
         await userEvent.click(screen.getByRole('menuitem', { name: /select all \(10\)/i }));
         await waitFor(() =>
             expect(mockOnSelect).toHaveBeenCalledWith('all', null, null, expect.any(Function)));
@@ -197,7 +204,9 @@ describe('TableView', () => {
                     }} />
             </Provider>
         );
-        await userEvent.click(screen.getByRole('button', { name: 'Select' }));
+        await userEvent.click(screen.getByRole('button', {
+            name: /select/i
+        }));
         await userEvent.click(screen.getByRole('menuitem', { name: /select none \(0\)/i }));
         await waitFor(() =>
             expect(mockOnSelect).toHaveBeenCalledWith('all', null, null, expect.any(Function)));

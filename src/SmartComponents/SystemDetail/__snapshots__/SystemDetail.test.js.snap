@@ -89,6 +89,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             >
               <button
                 aria-expanded="false"
+                aria-label="Select"
                 class="pf-v5-c-menu-toggle"
                 data-ouia-component-id="BulkSelect"
                 data-ouia-component-type="bulk-select-toggle-button"
@@ -1281,6 +1282,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             >
               <button
                 aria-expanded="false"
+                aria-label="Select"
                 class="pf-v5-c-menu-toggle pf-m-disabled"
                 data-ouia-component-id="BulkSelect"
                 data-ouia-component-type="bulk-select-toggle-button"
@@ -3337,6 +3339,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             >
               <button
                 aria-expanded="false"
+                aria-label="Select"
                 class="pf-v5-c-menu-toggle"
                 data-ouia-component-id="BulkSelect"
                 data-ouia-component-type="bulk-select-toggle-button"
@@ -4530,6 +4533,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             >
               <button
                 aria-expanded="false"
+                aria-label="Select"
                 class="pf-v5-c-menu-toggle pf-m-disabled"
                 data-ouia-component-id="BulkSelect"
                 data-ouia-component-type="bulk-select-toggle-button"
