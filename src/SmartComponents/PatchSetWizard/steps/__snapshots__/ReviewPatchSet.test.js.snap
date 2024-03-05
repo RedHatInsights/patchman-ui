@@ -3,18 +3,18 @@
 exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] = `
 <DocumentFragment>
   <div
-    class="pf-l-stack pf-m-gutter"
+    class="pf-v5-l-stack pf-m-gutter"
   >
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
       >
         <h2
           class=""
           data-ouia-component-id="OUIA-Generated-Text-1"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -23,16 +23,16 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
       </div>
     </div>
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
         style="margin-top: -15px;"
       >
         <p
           class=""
           data-ouia-component-id="OUIA-Generated-Text-2"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -41,15 +41,15 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
       </div>
     </div>
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
       >
         <h2
-          class="pf-u-mt-md pf-u-mb-sm"
+          class="pf-v5-u-mt-md pf-v5-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Text-3"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -73,15 +73,15 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
       </div>
     </div>
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
       >
         <h2
-          class="pf-u-mt-md pf-u-mb-sm"
+          class="pf-v5-u-mt-md pf-v5-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Text-4"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -116,15 +116,15 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
       </div>
     </div>
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
       >
         <h2
-          class="pf-u-mt-md pf-u-mb-sm"
+          class="pf-v5-u-mt-md pf-v5-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Text-5"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -154,18 +154,18 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
 exports[`ReviewPatchSet.js Should display available configuration fields only 1`] = `
 <DocumentFragment>
   <div
-    class="pf-l-stack pf-m-gutter"
+    class="pf-v5-l-stack pf-m-gutter"
   >
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
       >
         <h2
           class=""
           data-ouia-component-id="OUIA-Generated-Text-6"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -174,16 +174,16 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
       </div>
     </div>
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
         style="margin-top: -15px;"
       >
         <p
           class=""
           data-ouia-component-id="OUIA-Generated-Text-7"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -192,15 +192,15 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
       </div>
     </div>
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
       >
         <h2
-          class="pf-u-mt-md pf-u-mb-sm"
+          class="pf-v5-u-mt-md pf-v5-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Text-8"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -224,15 +224,15 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
       </div>
     </div>
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
       >
         <h2
-          class="pf-u-mt-md pf-u-mb-sm"
+          class="pf-v5-u-mt-md pf-v5-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Text-9"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >
@@ -267,15 +267,15 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
       </div>
     </div>
     <div
-      class="pf-l-stack__item"
+      class="pf-v5-l-stack__item"
     >
       <div
-        class="pf-c-content"
+        class="pf-v5-c-content"
       >
         <h2
-          class="pf-u-mt-md pf-u-mb-sm"
+          class="pf-v5-u-mt-md pf-v5-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Text-10"
-          data-ouia-component-type="PF4/Text"
+          data-ouia-component-type="PF5/Text"
           data-ouia-safe="true"
           data-pf-content="true"
         >

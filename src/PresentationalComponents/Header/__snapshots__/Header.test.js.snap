@@ -3,22 +3,23 @@
 exports[`Header component should render with 1 breadcrumb item and last is active 1`] = `
 <DocumentFragment>
   <section
-    class="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+    class="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
     data-ouia-component-type="undefined-page-header"
     widget-type="InsightsPageHeader"
   >
     <nav
       aria-label="Breadcrumb"
-      class="pf-c-breadcrumb"
+      class="pf-v5-c-breadcrumb"
       data-ouia-component-id="OUIA-Generated-Breadcrumb-2"
-      data-ouia-component-type="PF4/Breadcrumb"
+      data-ouia-component-type="PF5/Breadcrumb"
       data-ouia-safe="true"
     >
       <ol
-        class="pf-c-breadcrumb__list"
+        class="pf-v5-c-breadcrumb__list"
+        role="list"
       >
         <li
-          class="pf-c-breadcrumb__item"
+          class="pf-v5-c-breadcrumb__item"
         >
           <a
             data-ouia-component-id="breadcrumb-to-First item"
@@ -31,24 +32,24 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
       </ol>
     </nav>
     <div
-      class="pf-l-split pf-m-gutter"
+      class="pf-v5-l-split pf-m-gutter"
     >
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       >
         <h1
-          class="pf-c-title pf-m-2xl"
+          class="pf-v5-c-title pf-m-2xl"
           data-ouia-component-id="OUIA-Generated-Title-4"
-          data-ouia-component-type="PF4/Title"
+          data-ouia-component-type="PF5/Title"
           data-ouia-safe="true"
           widget-type="InsightsPageHeaderTitle"
         />
       </div>
       <div
-        class="pf-l-split__item pf-m-fill"
+        class="pf-v5-l-split__item pf-m-fill"
       />
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       />
     </div>
   </section>
@@ -58,22 +59,23 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
 exports[`Header component should render with 2 breadcrumb items and last is active 1`] = `
 <DocumentFragment>
   <section
-    class="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+    class="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
     data-ouia-component-type="undefined-page-header"
     widget-type="InsightsPageHeader"
   >
     <nav
       aria-label="Breadcrumb"
-      class="pf-c-breadcrumb"
+      class="pf-v5-c-breadcrumb"
       data-ouia-component-id="OUIA-Generated-Breadcrumb-4"
-      data-ouia-component-type="PF4/Breadcrumb"
+      data-ouia-component-type="PF5/Breadcrumb"
       data-ouia-safe="true"
     >
       <ol
-        class="pf-c-breadcrumb__list"
+        class="pf-v5-c-breadcrumb__list"
+        role="list"
       >
         <li
-          class="pf-c-breadcrumb__item"
+          class="pf-v5-c-breadcrumb__item"
         >
           <a
             data-ouia-component-id="breadcrumb-to-First item"
@@ -84,17 +86,17 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
           </a>
         </li>
         <li
-          class="pf-c-breadcrumb__item"
+          class="pf-v5-c-breadcrumb__item"
         >
           <span
-            class="pf-c-breadcrumb__item-divider"
+            class="pf-v5-c-breadcrumb__item-divider"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 256 512"
               width="1em"
             >
@@ -114,24 +116,24 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
       </ol>
     </nav>
     <div
-      class="pf-l-split pf-m-gutter"
+      class="pf-v5-l-split pf-m-gutter"
     >
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       >
         <h1
-          class="pf-c-title pf-m-2xl"
+          class="pf-v5-c-title pf-m-2xl"
           data-ouia-component-id="OUIA-Generated-Title-6"
-          data-ouia-component-type="PF4/Title"
+          data-ouia-component-type="PF5/Title"
           data-ouia-safe="true"
           widget-type="InsightsPageHeaderTitle"
         />
       </div>
       <div
-        class="pf-l-split__item pf-m-fill"
+        class="pf-v5-l-split__item pf-m-fill"
       />
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       />
     </div>
   </section>
@@ -141,22 +143,23 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
 exports[`Header component should render with 3 breadcrumb items and last is active 1`] = `
 <DocumentFragment>
   <section
-    class="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+    class="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
     data-ouia-component-type="undefined-page-header"
     widget-type="InsightsPageHeader"
   >
     <nav
       aria-label="Breadcrumb"
-      class="pf-c-breadcrumb"
+      class="pf-v5-c-breadcrumb"
       data-ouia-component-id="OUIA-Generated-Breadcrumb-5"
-      data-ouia-component-type="PF4/Breadcrumb"
+      data-ouia-component-type="PF5/Breadcrumb"
       data-ouia-safe="true"
     >
       <ol
-        class="pf-c-breadcrumb__list"
+        class="pf-v5-c-breadcrumb__list"
+        role="list"
       >
         <li
-          class="pf-c-breadcrumb__item"
+          class="pf-v5-c-breadcrumb__item"
         >
           <a
             data-ouia-component-id="breadcrumb-to-First item"
@@ -167,17 +170,17 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
           </a>
         </li>
         <li
-          class="pf-c-breadcrumb__item"
+          class="pf-v5-c-breadcrumb__item"
         >
           <span
-            class="pf-c-breadcrumb__item-divider"
+            class="pf-v5-c-breadcrumb__item-divider"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 256 512"
               width="1em"
             >
@@ -195,17 +198,17 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
           </a>
         </li>
         <li
-          class="pf-c-breadcrumb__item"
+          class="pf-v5-c-breadcrumb__item"
         >
           <span
-            class="pf-c-breadcrumb__item-divider"
+            class="pf-v5-c-breadcrumb__item-divider"
           >
             <svg
               aria-hidden="true"
+              class="pf-v5-svg"
               fill="currentColor"
               height="1em"
               role="img"
-              style="vertical-align: -0.125em;"
               viewBox="0 0 256 512"
               width="1em"
             >
@@ -225,24 +228,24 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
       </ol>
     </nav>
     <div
-      class="pf-l-split pf-m-gutter"
+      class="pf-v5-l-split pf-m-gutter"
     >
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       >
         <h1
-          class="pf-c-title pf-m-2xl"
+          class="pf-v5-c-title pf-m-2xl"
           data-ouia-component-id="OUIA-Generated-Title-7"
-          data-ouia-component-type="PF4/Title"
+          data-ouia-component-type="PF5/Title"
           data-ouia-safe="true"
           widget-type="InsightsPageHeaderTitle"
         />
       </div>
       <div
-        class="pf-l-split__item pf-m-fill"
+        class="pf-v5-l-split__item pf-m-fill"
       />
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       />
     </div>
   </section>
@@ -252,40 +255,41 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
 exports[`Header component should render with empty breadcrumb 1`] = `
 <DocumentFragment>
   <section
-    class="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+    class="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
     data-ouia-component-type="undefined-page-header"
     widget-type="InsightsPageHeader"
   >
     <nav
       aria-label="Breadcrumb"
-      class="pf-c-breadcrumb"
+      class="pf-v5-c-breadcrumb"
       data-ouia-component-id="OUIA-Generated-Breadcrumb-1"
-      data-ouia-component-type="PF4/Breadcrumb"
+      data-ouia-component-type="PF5/Breadcrumb"
       data-ouia-safe="true"
     >
       <ol
-        class="pf-c-breadcrumb__list"
+        class="pf-v5-c-breadcrumb__list"
+        role="list"
       />
     </nav>
     <div
-      class="pf-l-split pf-m-gutter"
+      class="pf-v5-l-split pf-m-gutter"
     >
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       >
         <h1
-          class="pf-c-title pf-m-2xl"
+          class="pf-v5-c-title pf-m-2xl"
           data-ouia-component-id="OUIA-Generated-Title-3"
-          data-ouia-component-type="PF4/Title"
+          data-ouia-component-type="PF5/Title"
           data-ouia-safe="true"
           widget-type="InsightsPageHeaderTitle"
         />
       </div>
       <div
-        class="pf-l-split__item pf-m-fill"
+        class="pf-v5-l-split__item pf-m-fill"
       />
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       />
     </div>
   </section>
@@ -295,20 +299,20 @@ exports[`Header component should render with empty breadcrumb 1`] = `
 exports[`Header component should render with header Hello world 1`] = `
 <DocumentFragment>
   <section
-    class="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+    class="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
     data-ouia-component-type="undefined-page-header"
     widget-type="InsightsPageHeader"
   >
     <div
-      class="pf-l-split pf-m-gutter"
+      class="pf-v5-l-split pf-m-gutter"
     >
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       >
         <h1
-          class="pf-c-title pf-m-2xl"
+          class="pf-v5-c-title pf-m-2xl"
           data-ouia-component-id="OUIA-Generated-Title-2"
-          data-ouia-component-type="PF4/Title"
+          data-ouia-component-type="PF5/Title"
           data-ouia-safe="true"
           widget-type="InsightsPageHeaderTitle"
         >
@@ -316,10 +320,10 @@ exports[`Header component should render with header Hello world 1`] = `
         </h1>
       </div>
       <div
-        class="pf-l-split__item pf-m-fill"
+        class="pf-v5-l-split__item pf-m-fill"
       />
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       />
     </div>
   </section>
@@ -329,29 +333,29 @@ exports[`Header component should render with header Hello world 1`] = `
 exports[`Header component should render with header as empty string 1`] = `
 <DocumentFragment>
   <section
-    class="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+    class="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
     data-ouia-component-type="undefined-page-header"
     widget-type="InsightsPageHeader"
   >
     <div
-      class="pf-l-split pf-m-gutter"
+      class="pf-v5-l-split pf-m-gutter"
     >
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       >
         <h1
-          class="pf-c-title pf-m-2xl"
+          class="pf-v5-c-title pf-m-2xl"
           data-ouia-component-id="OUIA-Generated-Title-1"
-          data-ouia-component-type="PF4/Title"
+          data-ouia-component-type="PF5/Title"
           data-ouia-safe="true"
           widget-type="InsightsPageHeaderTitle"
         />
       </div>
       <div
-        class="pf-l-split__item pf-m-fill"
+        class="pf-v5-l-split__item pf-m-fill"
       />
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       />
     </div>
   </section>
@@ -361,46 +365,47 @@ exports[`Header component should render with header as empty string 1`] = `
 exports[`Header component should render without to attribute 1`] = `
 <DocumentFragment>
   <section
-    class="pf-l-page-header pf-c-page-header pf-l-page__main-section pf-c-page__main-section pf-m-light"
+    class="pf-v5-l-page-header pf-v5-c-page-header pf-v5-l-page__main-section pf-v5-c-page__main-section pf-m-light"
     data-ouia-component-type="undefined-page-header"
     widget-type="InsightsPageHeader"
   >
     <nav
       aria-label="Breadcrumb"
-      class="pf-c-breadcrumb"
+      class="pf-v5-c-breadcrumb"
       data-ouia-component-id="OUIA-Generated-Breadcrumb-3"
-      data-ouia-component-type="PF4/Breadcrumb"
+      data-ouia-component-type="PF5/Breadcrumb"
       data-ouia-safe="true"
     >
       <ol
-        class="pf-c-breadcrumb__list"
+        class="pf-v5-c-breadcrumb__list"
+        role="list"
       >
         <li
-          class="pf-c-breadcrumb__item"
+          class="pf-v5-c-breadcrumb__item"
         >
           First item
         </li>
       </ol>
     </nav>
     <div
-      class="pf-l-split pf-m-gutter"
+      class="pf-v5-l-split pf-m-gutter"
     >
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       >
         <h1
-          class="pf-c-title pf-m-2xl"
+          class="pf-v5-c-title pf-m-2xl"
           data-ouia-component-id="OUIA-Generated-Title-5"
-          data-ouia-component-type="PF4/Title"
+          data-ouia-component-type="PF5/Title"
           data-ouia-safe="true"
           widget-type="InsightsPageHeaderTitle"
         />
       </div>
       <div
-        class="pf-l-split__item pf-m-fill"
+        class="pf-v5-l-split__item pf-m-fill"
       />
       <div
-        class="pf-l-split__item"
+        class="pf-v5-l-split__item"
       />
     </div>
   </section>
