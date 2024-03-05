@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { fetchIDs } from '../api';
 import { useOnSelect } from './useOnSelect';
 
