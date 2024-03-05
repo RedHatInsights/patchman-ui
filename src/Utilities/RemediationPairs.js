@@ -1,7 +1,7 @@
 import chunk from 'lodash/chunk';
 
-const REQUEST_CHUNK_SIZE = 1000;
-const BATCH_REQUEST_SIZE = 5;
+const REQUEST_CHUNK_SIZE = 100;
+const BATCH_REQUEST_SIZE = 10;
 const REQUEST_INTERVAL = 15000; //15 seconds. AKAMAI allowed life for 5 API calls
 
 const fetchDataCallback = (endpoint, authToken) => (input) => {

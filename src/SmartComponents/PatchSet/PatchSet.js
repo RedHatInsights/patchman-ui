@@ -106,7 +106,8 @@ const PatchSet = () => {
         {
             endpoint: ID_API_ENDPOINTS.templates,
             queryParams,
-            selectionDispatcher: selectPatchSetRow
+            selectionDispatcher: selectPatchSetRow,
+            totalItems: metadata.total_items
         }
     );
 

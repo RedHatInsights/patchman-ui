@@ -11,7 +11,7 @@ initMocks();
 
 jest.mock('../../Utilities/api', () => ({
     ...jest.requireActual('../../Utilities/api'),
-    fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err)))
+    fetchIDs: jest.fn(() => Promise.resolve({ data: [{ id: 'test_id-1' }] }).catch((err) => console.log(err)))
 }));
 
 jest.mock(
@@ -30,7 +30,7 @@ const mockState = {
         selectedRows: { 'test-system-1': true },
         error: {},
         status: 'resolved',
-        total: 2
+        total: 101
     },
     AdvisorySystemsStore: {
         queryParams: {}

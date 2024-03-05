@@ -85,7 +85,8 @@ const SystemsTable = ({
         {
             endpoint: ID_API_ENDPOINTS.systems,
             queryParams,
-            selectionDispatcher: systemSelectAction
+            selectionDispatcher: systemSelectAction,
+            totalItems
         }
     );
 

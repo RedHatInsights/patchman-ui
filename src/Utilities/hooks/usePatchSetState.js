@@ -14,7 +14,7 @@ export const usePatchSetState = (selectedRows) => {
         isUnassignSystemsModalOpen: false,
         isAssignSystemsModalOpen: false,
         shouldRefresh: false,
-        systemsIDs: []
+        systemsIDs: {}
     });
 
     const openPatchSetAssignWizard = (systemID) => {

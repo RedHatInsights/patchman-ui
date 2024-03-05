@@ -23,12 +23,11 @@ jest.mock('../../Utilities/api', () => ({
     fetchPackageVersions: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchIDs: jest.fn(() => Promise.resolve({
         data: [{
-            attributes: {
-                advisory_type: 2,
-                description: 'The tzdata penhancements.',
-                public_date: '2020-10-19T15:02:38Z',
-                synopsis: 'tzdata enhancement update'
-            },
+            advisory_type: 2,
+            description: 'The tzdata penhancements.',
+            public_date: '2020-10-19T15:02:38Z',
+            synopsis: 'tzdata enhancement update',
+            updatable: true,
             id: 'RHBA-2020:4282',
             type: 'advisory'
         }]
@@ -47,7 +46,7 @@ const mockState = {
         selectedRows: { 'test-system-1': 'packageEvra' },
         error: {},
         status: 'resolved',
-        total: 2
+        total: 101
     },
     PackageSystemsStore: {
         queryParams: {}
