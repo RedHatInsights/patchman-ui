@@ -76,12 +76,12 @@ export const fetchPackageVersions = params => {
 };
 
 export const fetchPackagesList = params => {
-    const { systems_updatable: systemsUpdatable } = params.filter;
+    const { systems_applicable: systemsUpdatable } = params.filter;
 
-    // we have to reset systems_updatable filter to include all filters when we want to show all the data
+    // we have to reset systems_applicable filter to include all filters when we want to show all the data
     if (Array.isArray(systemsUpdatable) && systemsUpdatable.length === 2) {
         const paramsWithoutSystemsUpdatable = JSON.parse(JSON.stringify(params));
-        delete paramsWithoutSystemsUpdatable.filter.systems_updatable;
+        delete paramsWithoutSystemsUpdatable.filter.systems_applicable;
 
         return createApiCall('/packages', 'v3', 'get', paramsWithoutSystemsUpdatable);
     }
