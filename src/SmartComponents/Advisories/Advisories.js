@@ -100,7 +100,8 @@ const Advisories = () => {
         {
             endpoint: ID_API_ENDPOINTS.advisories,
             queryParams,
-            selectionDispatcher: selectAdvisoryRow
+            selectionDispatcher: selectAdvisoryRow,
+            totalItems: metadata?.total_items
         }
     );
 

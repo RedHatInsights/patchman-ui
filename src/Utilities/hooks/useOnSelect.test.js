@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import { fetchIDs } from '../api';
 import { useOnSelect } from './useOnSelect';
 
@@ -8,9 +8,11 @@ jest.mock('react-redux', () => ({
 }));
 jest.mock('../api', () => ({
     ...jest.requireActual('../api'),
-    fetchIDs: jest.fn(() => Promise.resolve({
-        data: [{ id: 'db-item' }]
-    }))
+    fetchIDs: jest.fn(() => {
+        return Promise.resolve({
+            data: [{ id: 'db-item' }]
+        });
+    })
 }));
 
 const rows = [
@@ -127,16 +129,21 @@ describe('useOnSelect', () => {
         ]);
     });
 
-    it('Should select all items from db', () => {
+    it('Should select all items from db', async () => {
+        config.totalItems = 102;
         const { result } = renderHook(() =>
             useOnSelect(rows, {}, config)
         );
 
-        act(() => {
-            result.current('all', {});
-        });
+        result.current('all', {});
 
-        expect(fetchIDs).toHaveBeenCalledWith('/some/api/endpoint', { limit: -1, offset: 0, search: 'test-search' });
+        await waitFor(
+            () => {
+                expect(fetchIDs).toHaveBeenCalledTimes(2);
+                expect(fetchIDs).toHaveBeenCalledWith('/some/api/endpoint', { limit: 100, offset: 0, search: 'test-search' });
+                expect(fetchIDs).toHaveBeenCalledWith('/some/api/endpoint', { limit: 100, offset: 100, search: 'test-search' });
+            }
+        );
     });
 
     it('Should skip invalid rows while selection', () => {

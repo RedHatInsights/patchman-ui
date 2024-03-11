@@ -6,11 +6,13 @@ import { injectIntl } from 'react-intl';
 import messages from '../../Messages';
 import { useUnassignSystemsHook } from './useUnassignSystemsHook';
 import { renderUnassignModalMessages, filterSystemsWithoutSets } from './Helpers';
+import { useFetchBatched } from '../../Utilities/hooks';
 
-const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSystemsModalOpen, intl }) => {
+const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSystemsModalOpen, intl, totalItems }) => {
     const { systemsIDs, isUnassignSystemsModalOpen } = unassignSystemsModalState;
     const [systemsWithPatchSet, setSystemWithPatchSet] = useState([]);
     const [systemsLoading, setSystemsLoading] = useState(true);
+    const { fetchBatched } = useFetchBatched();
 
     const handleModalToggle = (shouldRefresh) => {
         setUnassignSystemsModalOpen({
@@ -29,7 +31,12 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
     useEffect(() => {
         setSystemsLoading(true);
 
-        filterSystemsWithoutSets(systemsIDs).then(result => {
+        filterSystemsWithoutSets(
+            systemsIDs,
+            fetchBatched,
+            totalItems
+        )
+        .then(result => {
             setSystemWithPatchSet(result);
             setSystemsLoading(false);
         });
@@ -82,6 +89,7 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
 UnassignSystemsModal.propTypes = {
     intl: propTypes.any,
     setUnassignSystemsModalOpen: propTypes.func,
-    unassignSystemsModalState: propTypes.object
+    unassignSystemsModalState: propTypes.object,
+    totalItems: propTypes.number
 };
 export default injectIntl(UnassignSystemsModal);

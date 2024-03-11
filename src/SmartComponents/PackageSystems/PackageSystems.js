@@ -100,7 +100,8 @@ const PackageSystems = ({ packageName }) => {
             queryParams,
             selectionDispatcher: systemSelectAction,
             constructFilename,
-            apiResponseTransformer: filterRemediatablePackageSystems
+            apiResponseTransformer: filterRemediatablePackageSystems,
+            totalItems
         }
     );
 

@@ -179,9 +179,9 @@ export const useActivateRemediationModal = (setRemediationIssues, setRemediation
         );
 
         fetchBatched(
-            (__, pagination) => fetchApplicableSystemAdvisoriesApi({ ...filter, ...pagination }),
-            totalCount,
-            filter
+            (filterWithPagination) => fetchApplicableSystemAdvisoriesApi(filterWithPagination),
+            filter,
+            totalCount
         ).then(response => {
             const advisories = response.flatMap(({ data }) => data);
             const remediationIssues = remediationProvider(

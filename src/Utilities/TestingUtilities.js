@@ -78,12 +78,21 @@ export const testBulkSelection = (fetchAllCallback, fetchAllUrl, spyOnAction, se
 
     it('should fetch all the data using limit=-1', async () => {
         await user.click(screen.getByLabelText('Select'));
-        await user.click(screen.getByText('Select all (10)'));
-
-        expect(fetchAllCallback).toHaveBeenCalledWith(
-            fetchAllUrl,
-            expect.objectContaining({ limit: -1, offset: 0 })
+        await user.click(screen.getByText('Select all (101)'));
+        await waitFor(
+            () => {
+                expect(fetchAllCallback).toHaveBeenCalledTimes(2);
+                expect(fetchAllCallback).toHaveBeenCalledWith(
+                    fetchAllUrl,
+                    expect.objectContaining({ limit: 100, offset: 0 })
+                );
+                expect(fetchAllCallback).toHaveBeenCalledWith(
+                    fetchAllUrl,
+                    expect.objectContaining({ limit: 100, offset: 100 })
+                );
+            }
         );
+
     });
 
     it('should unselect rows', async () => {

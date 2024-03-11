@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { fetchIDs } from '../api';
 import { toggleAllSelectedAction } from '../../store/Actions/Actions';
 import { isObject } from '../Helpers';
+import { useFetchBatched } from './useFetchBatched';
+import isArray from 'lodash/isArray';
 
 export const ID_API_ENDPOINTS = {
     advisories: '/ids/advisories',
@@ -14,23 +16,43 @@ export const ID_API_ENDPOINTS = {
     systemPackages: (systemID) => `/systems/${systemID}/packages`,
     templateSystems: (templateId) => `/ids/baselines/${templateId}/systems`
 };
+const isArrayWithData = (dataStructure) => {
+    return isArray(dataStructure) && dataStructure.length;
+};
 
 const useFetchAllIDs = (
     endpoint,
-    apiResponseTransformer
-) =>
-    useCallback((queryParams) =>
-        fetchIDs(endpoint, { ...queryParams, limit: -1 })
-        .then(response =>
-            apiResponseTransformer ? apiResponseTransformer(response) : response
-        ),
-    []
-    );
+    apiResponseTransformer,
+    totalItems
+) => {
+    const { fetchBatched } = useFetchBatched();
+    return useCallback(async (queryParams) => {
+        const response = await fetchBatched(
+            (filter) => fetchIDs(endpoint, filter),
+            queryParams,
+            totalItems,
+            100
+        );
+
+        const aggregatedResponse = response.reduce((accumulator = {}, currentValue) => {
+            Object.keys(accumulator).forEach(key => {
+                if (isArrayWithData(currentValue[key])) {
+                    accumulator[key] = accumulator[key].concat(currentValue[key]);
+                }
+            });
+
+            return accumulator;
+        }, { data: [], ids: [] });
+
+        return apiResponseTransformer ? apiResponseTransformer(aggregatedResponse) : aggregatedResponse;
+    },
+    [totalItems, endpoint, fetchBatched]);
+};
 
 const useCreateSelectedRow = (transformKey, constructFilename) =>
     useCallback((rows, toSelect = []) => {
         const { ids, data } = rows;
-        const shouldUseOnlyIDs = Array.isArray(ids);
+        const shouldUseOnlyIDs = !isArrayWithData(data);
         const items = shouldUseOnlyIDs ? ids : data;
 
         items.forEach((item) => {
@@ -79,9 +101,8 @@ const createSelectors = (
     };
 
     const selectAll = (fetchIDs, queryParams) => {
-        queryParams.offset = 0;
         return fetchIDs(queryParams).then(response => {
-            if (Array.isArray(response.data)) {
+            if (isArrayWithData(response.data)) {
                 let rowsToSelect = response.data.filter(row => row.status !== 'Applicable');
                 dispatchSelection(createSelectedRow({ data: rowsToSelect }));
             } else {
@@ -103,11 +124,12 @@ export const useOnSelect = (rawData, selectedRows, config) => {
         transformKey,
         apiResponseTransformer,
         //TODO: get rid of this custom selector
-        customSelector
+        customSelector,
+        totalItems
     } = config;
 
     const dispatch = useDispatch();
-    const fetchIDs = useFetchAllIDs(endpoint, apiResponseTransformer);
+    const fetchIDs = useFetchAllIDs(endpoint, apiResponseTransformer, totalItems);
     const createSelectedRow = useCreateSelectedRow(transformKey, constructFilename);
 
     const toggleAllSystemsSelected = (flagState) => {

@@ -24,7 +24,7 @@ jest.mock('../../Utilities/api', () => ({
     exportAdvisoriesCSV: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
     fetchSystems: jest.fn(() => Promise.resolve({ data: { id: 'testId' } }).catch((err) => console.log(err))),
     fetchViewAdvisoriesSystems: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err))),
-    fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err))),
+    fetchIDs: jest.fn(() => Promise.resolve({ data: [{ id: 'test_id-1' }] }).catch((err) => console.log(err))),
     fetchApplicableAdvisoriesApi: jest.fn(() => Promise.resolve({ success: true }).catch((err) => console.log(err)))
 }));
 
@@ -52,7 +52,7 @@ const mockState = { ...storeListDefaults,
     metadata: {
         limit: 25,
         offset: 0,
-        total_items: 10
+        total_items: 101
     }
 };
 

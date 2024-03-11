@@ -2,28 +2,37 @@ import React from 'react';
 import { GridItem } from '@patternfly/react-core';
 
 import messages from '../../Messages';
-import { fetchIDs, fetchSystems } from '../../Utilities/api';
+import { fetchIDs } from '../../Utilities/api';
 
-export const filterSystemsWithoutSets = (systemsIDs) =>  {
-    return fetchSystems({
-        limit: -1, 'filter[baseline_name]': 'neq:',
-        filter: { stale: [true, false] }
-    }).then((allSystemsWithPatchSet) => {
-        return systemsIDs.filter(systemID =>
-            allSystemsWithPatchSet?.data?.some(system => system.id === systemID)
+const filterChosenSystems = (urlFilter, systemsIDs, fetchBatched, totalItems) => {
+    return fetchBatched(
+        (filter) => fetchIDs(
+            '/ids/systems',
+            filter
+        ),
+        {
+            ...urlFilter,
+            filter: { stale: [true, false] }
+        },
+        totalItems,
+        100
+    ).then((systemsNotManagedBySatellite) => {
+        const aggregatedResult = systemsNotManagedBySatellite.flatMap(({ data }) => data);
+        return systemsIDs.filter(systemID =>{
+            return aggregatedResult?.some(system => system.id === systemID);
+        }
         );
     });
 };
 
-export const filterSatelliteManagedSystems = (systemsIDs) =>  {
-    return fetchIDs('/ids/systems', {
-        limit: -1, 'filter[satellite_managed]': 'false',
-        filter: { stale: [true, false] }
-    }).then((systemsNotManagedBySatellite) => {
-        return systemsIDs.filter(systemID =>
-            systemsNotManagedBySatellite?.data?.some(system => system.id === systemID)
-        );
-    });
+export const filterSystemsWithoutSets = (systemsIDs, fetchBatched, totalItems) =>  {
+    const urlFilter = { 'filter[baseline_name]': 'neq:' };
+    return filterChosenSystems(urlFilter, systemsIDs, fetchBatched, totalItems);
+};
+
+export const filterSatelliteManagedSystems = (systemsIDs, fetchBatched, totalItems) =>  {
+    const urlFilter = { 'filter[satellite_managed]': 'false' };
+    return filterChosenSystems(urlFilter, systemsIDs, fetchBatched, totalItems);
 };
 
 export const renderUnassignModalMessages = (bodyMessage, systemsCount, intl) => (<GridItem>
