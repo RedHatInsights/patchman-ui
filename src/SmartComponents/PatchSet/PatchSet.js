@@ -186,9 +186,10 @@ const PatchSet = () => {
                     }
                     */
                     >
-                        <Icon color="var(--pf-v5-global--secondary-color--100)">
+                        <Icon>
                             <OutlinedQuestionCircleIcon
                                 className="pf-v5-u-ml-sm"
+                                color="var(--pf-v5-global--secondary-color--100)"
                                 style={{ verticalAlign: '0', fontSize: 16, cursor: 'pointer' }}
                             />
                         </Icon>

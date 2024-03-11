@@ -9,7 +9,7 @@ const Error = ({ message }) =>
     <Card>
         <EmptyState variant={EmptyStateVariant.full}>
             <EmptyStateHeader
-                titleText={<>{intl.formatMessage(messages.statesError)}</>}
+                titleText={intl.formatMessage(messages.statesError)}
                 icon={<EmptyStateIcon icon={FrownOpenIcon} color="black"/>}
                 headingLevel="h5"
             />

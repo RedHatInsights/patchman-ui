@@ -954,18 +954,16 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                     class="pf-m-spacer-sm"
                   >
                     <div
-                      class="pf-v5-l-flex pf-m-inline-flex"
-                      style="flex-wrap: nowrap;"
+                      class="pf-v5-l-split pf-m-gutter"
                     >
                       <div
-                        class=""
+                        class="pf-v5-l-split__item"
                       >
                         <span
-                          class="pf-v5-c-icon pf-m-sm"
-                          color="var(--pf-v5-global--danger-color--100)"
+                          class="pf-v5-c-icon pf-m-md"
                         >
                           <span
-                            class="pf-v5-c-icon__content"
+                            class="pf-v5-c-icon__content pf-m-danger"
                           >
                             <svg
                               aria-hidden="true"
@@ -983,9 +981,8 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                           </span>
                         </span>
                       </div>
-                       
                       <div
-                        class=""
+                        class="pf-v5-l-split__item pf-m-fill"
                       >
                         Reboot is required
                       </div>
@@ -4204,18 +4201,16 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                     class="pf-m-spacer-sm"
                   >
                     <div
-                      class="pf-v5-l-flex pf-m-inline-flex"
-                      style="flex-wrap: nowrap;"
+                      class="pf-v5-l-split pf-m-gutter"
                     >
                       <div
-                        class=""
+                        class="pf-v5-l-split__item"
                       >
                         <span
-                          class="pf-v5-c-icon pf-m-sm"
-                          color="var(--pf-v5-global--danger-color--100)"
+                          class="pf-v5-c-icon pf-m-md"
                         >
                           <span
-                            class="pf-v5-c-icon__content"
+                            class="pf-v5-c-icon__content pf-m-danger"
                           >
                             <svg
                               aria-hidden="true"
@@ -4233,9 +4228,8 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                           </span>
                         </span>
                       </div>
-                       
                       <div
-                        class=""
+                        class="pf-v5-l-split__item pf-m-fill"
                       >
                         Reboot is required
                       </div>

@@ -15,22 +15,17 @@ export const SystemUpToDate = () => (
     <Bullseye>
         <EmptyState style={{ paddingTop: 40 }}>
             <EmptyStateHeader
-                titleText={
-                    <>
-                        {intl.formatMessage(
-                            messages.statesNoApplicableAdvisories
-                        )}
-                    </>
-                }
+                titleText={intl.formatMessage(
+                    messages.statesNoApplicableAdvisories
+                )}
                 icon={
                     <EmptyStateIcon
                         icon={() => (
-                            <Icon
-                                size="xl"
-                                color={'var(--pf-v5-global--success-color--200)'}
-                                style={{ marginBottom: 15 }}
-                            >
+                            <Icon size="xl" style={{ marginBottom: 15 }}>
                                 <CheckCircleIcon
+                                    color={
+                                        'var(--pf-v5-global--success-color--200)'
+                                    }
                                 />
                             </Icon>
                         )}

@@ -1,12 +1,24 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Button, EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateHeader, EmptyStateFooter  } from '@patternfly/react-core';
+import {
+    Button,
+    EmptyState,
+    EmptyStateBody,
+    EmptyStateIcon,
+    EmptyStateHeader,
+    EmptyStateFooter
+} from '@patternfly/react-core';
 import { DisconnectedIcon } from '@patternfly/react-icons';
 
 const NoRegisteredSystems = ({ titleText, bodyText, buttonText }) => (
     <EmptyState>
-        <EmptyStateHeader titleText={<>{titleText}</>} icon={<EmptyStateIcon icon={DisconnectedIcon} />} headingLevel="h5" />
-        <EmptyStateBody>{bodyText}</EmptyStateBody><EmptyStateFooter>
+        <EmptyStateHeader
+            titleText={titleText}
+            icon={<EmptyStateIcon icon={DisconnectedIcon} />}
+            headingLevel="h5"
+        />
+        <EmptyStateBody>{bodyText}</EmptyStateBody>
+        <EmptyStateFooter>
             <Button
                 variant="primary"
                 component="a"
@@ -17,7 +29,8 @@ const NoRegisteredSystems = ({ titleText, bodyText, buttonText }) => (
             >
                 {buttonText}
             </Button>
-        </EmptyStateFooter></EmptyState>
+        </EmptyStateFooter>
+    </EmptyState>
 );
 
 NoRegisteredSystems.propTypes = {
@@ -28,8 +41,7 @@ NoRegisteredSystems.propTypes = {
 
 NoRegisteredSystems.defaultProps = {
     titleText: 'Do more with your Red Hat Enterprise Linux environment',
-    bodyText:
-    `Connect your systems to keep your Red Hat environment running efficiently,
+    bodyText: `Connect your systems to keep your Red Hat environment running efficiently,
      with security and compliance with various standards.`,
     buttonText: 'Learn more about connecting your systems'
 };

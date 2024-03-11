@@ -20,7 +20,6 @@ exports[`SystemUpToDate Should match the snapshot 1`] = `
           >
             <span
               class="pf-v5-c-icon pf-m-xl"
-              color="var(--pf-v5-global--success-color--200)"
               style="margin-bottom: 15px;"
             >
               <span
@@ -29,6 +28,7 @@ exports[`SystemUpToDate Should match the snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   class="pf-v5-svg"
+                  color="var(--pf-v5-global--success-color--200)"
                   fill="currentColor"
                   height="1em"
                   role="img"

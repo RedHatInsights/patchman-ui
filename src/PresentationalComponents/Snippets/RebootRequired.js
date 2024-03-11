@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-    Title, Flex, FlexItem, Icon
+    Title, Flex, FlexItem, Icon, Split, SplitItem
 } from '@patternfly/react-core';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -15,14 +15,14 @@ const RebootRequired = () =>  (
             </Title>
         </FlexItem>
         <FlexItem spacer={{ default: 'spacerSm' }}>
-            <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
-                <FlexItem>
-                    <Icon size="sm" color={'var(--pf-v5-global--danger-color--100)'}>
+            <Split hasGutter>
+                <SplitItem>
+                    <Icon size="md" status='danger'>
                         <PowerOffIcon />
                     </Icon>
-                </FlexItem>&nbsp;
-                <FlexItem isFilled>{intl.formatMessage(messages.textRebootIsRequired)}</FlexItem>
-            </Flex>
+                </SplitItem>
+                <SplitItem isFilled>{intl.formatMessage(messages.textRebootIsRequired)}</SplitItem>
+            </Split>
         </FlexItem>
     </Flex>
 );
