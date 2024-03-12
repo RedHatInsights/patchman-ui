@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import {
     FormGroup,
     FormHelperText,
@@ -10,20 +11,14 @@ import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
-import { shallowEqual, useSelector } from 'react-redux';
 
-const NameField = (props) => {
+const NameField = ({ takenTemplateNames, areTakenTemplateNamesLoading, ...props }) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState()?.values;
 
     const [name, setName] = useState(values?.name);
     const [validated, setValidated] = useState();
-
-    const { takenBaselineNames, takenBaselineNamesLoading } = useSelector(
-        ({ SpecificPatchSetReducer }) => SpecificPatchSetReducer,
-        shallowEqual
-    );
 
     useEffect(() => {
         const validateName = () => {
@@ -34,7 +29,7 @@ const NameField = (props) => {
                 return 'default';
             }
 
-            if (takenBaselineNames.includes(values.name)) {
+            if (takenTemplateNames.includes(values.name)) {
                 return 'error';
             }
 
@@ -46,12 +41,9 @@ const NameField = (props) => {
     }, [values.name]);
 
     useEffect(() => {
-        formOptions.change('takenBaselineNames', takenBaselineNames);
-        formOptions.change(
-            'takenBaselineNamesLoading',
-            takenBaselineNamesLoading
-        );
-    }, [takenBaselineNames, takenBaselineNamesLoading]);
+        formOptions.change('takenTemplateNames', takenTemplateNames);
+        formOptions.change('areTakenTemplateNamesLoading', areTakenTemplateNamesLoading);
+    }, [takenTemplateNames, areTakenTemplateNamesLoading]);
 
     return (
         <FormGroup
@@ -86,4 +78,8 @@ const NameField = (props) => {
     );
 };
 
+NameField.propTypes = {
+    takenTemplateNames: propTypes.array,
+    areTakenTemplateNamesLoading: propTypes.bool
+};
 export default NameField;

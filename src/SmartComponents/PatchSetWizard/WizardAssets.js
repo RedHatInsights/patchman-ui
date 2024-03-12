@@ -6,6 +6,8 @@ import { filterSelectedActiveSystemIDs } from '../../Utilities/Helpers';
 import dateValidator from '../../Utilities/dateValidator';
 import { sortable } from '@patternfly/react-table/dist/js';
 import React, { Fragment } from 'react';
+import { useFetchBatched } from '../../Utilities/hooks';
+import { fetchPatchSets } from '../../Utilities/api';
 
 export const reviewSystemColumns = [{
     key: 'display_name',
@@ -163,11 +165,11 @@ export const validatorMapper = {
     },
     'validate-date': () => dateValidator,
     'validate-name': () => (name, formValues) => {
-        if (formValues.takenBaselineNamesLoading || formValues.templateDetailLoading) {
+        if (formValues.areTakenTemplateNamesLoading || formValues.templateDetailLoading) {
             return intl.formatMessage(messages.templateWizardValidateLoading);
         }
 
-        if (formValues.previousName !== name && formValues.takenBaselineNames.includes(name)) {
+        if (formValues.previousName !== name && formValues.takenTemplateNames.includes(name)) {
             return intl.formatMessage(messages.templateWizardValidateNameTaken);
         }
     }
@@ -178,3 +180,18 @@ export const apiFailedNotification = (description) => ({
     description,
     variant: 'danger'
 });
+
+export const useFetchAllTemplateNames = () => {
+    const { fetchBatched, isLoading } = useFetchBatched();
+    return async (params = {}) => {
+        const result = await fetchBatched(
+            fetchPatchSets,
+            params
+        );
+
+        return {
+            areTakenTemplateNamesLoading: isLoading,
+            takenTemplateNames: result.flatMap(({ data }) => data).map(({ attributes }) => attributes.name)
+        };
+    };
+};
