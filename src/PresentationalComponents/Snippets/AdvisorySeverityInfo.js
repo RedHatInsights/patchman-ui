@@ -1,4 +1,4 @@
-import { Split, SplitItem, Title } from '@patternfly/react-core';
+import { Icon, Split, SplitItem, Title } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -19,7 +19,9 @@ const AdvisorySeverityInfo = ({ severity }) => {
                     <FlexItem spacer={{ default: 'spacerSm' }}>
                         <Flex flex={{ default: 'row' }}>
                             <FlexItem>
-                                <SecurityIcon size='sm' color={severity.color} />
+                                <Icon size='sm'>
+                                    <SecurityIcon color={severity.color} />
+                                </Icon>
                             </FlexItem>
                             <FlexItem>
                                 {severity.label}

@@ -4,8 +4,7 @@ import {
     EmptyStateBody,
     EmptyStateIcon,
     EmptyStateVariant,
-    Title,
-    Tooltip
+    Tooltip, EmptyStateHeader
 } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
 import React from 'react';
@@ -16,9 +15,7 @@ import PropTypes from 'prop-types';
 
 export const EmptyAdvisoryList = () => (
     <EmptyState variant={EmptyStateVariant.full}>
-        <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.statesNoMatchingAdvisories)}
-        </Title>
+        <EmptyStateHeader titleText={intl.formatMessage(messages.statesNoMatchingAdvisories)} headingLevel="h5" />
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -27,10 +24,11 @@ export const EmptyAdvisoryList = () => (
 
 export const EmptyPackagesList = () => (
     <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateIcon icon={SearchIcon} />
-        <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.statesNoMatchingPackages)}
-        </Title>
+        <EmptyStateHeader
+            titleText={intl.formatMessage(messages.statesNoMatchingPackages)}
+            icon={<EmptyStateIcon icon={SearchIcon} />}
+            headingLevel="h5"
+        />
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -39,10 +37,11 @@ export const EmptyPackagesList = () => (
 
 export const EmptyCvesList = () => (
     <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateIcon icon={SearchIcon} />
-        <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.statesNoMatchingCve)}
-        </Title>
+        <EmptyStateHeader
+            titleText={intl.formatMessage(messages.statesNoMatchingCve)}
+            icon={<EmptyStateIcon icon={SearchIcon} />}
+            headingLevel="h5"
+        />
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -51,9 +50,7 @@ export const EmptyCvesList = () => (
 
 export const EmptySystemsList = () => (
     <EmptyState variant={EmptyStateVariant.full}>
-        <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.statesNoMatchingSystems)}
-        </Title>
+        <EmptyStateHeader titleText={intl.formatMessage(messages.statesNoMatchingSystems)} headingLevel="h5" />
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -62,10 +59,11 @@ export const EmptySystemsList = () => (
 
 export const EmptyPatchSetList = () => (
     <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateIcon icon={SearchIcon} />
-        <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.statesNoMatchingTemplate)}
-        </Title>
+        <EmptyStateHeader
+            titleText={intl.formatMessage(messages.statesNoMatchingTemplate)}
+            icon={<EmptyStateIcon icon={SearchIcon} />}
+            headingLevel="h5"
+        />
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -73,11 +71,12 @@ export const EmptyPatchSetList = () => (
 );
 
 export const NoPatchSetList = ({ Button }) => (
-    <EmptyState variant={EmptyStateVariant.large}>
-        <EmptyStateIcon icon={PlusCircleIcon} />
-        <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.statesNoTemplate)}
-        </Title>
+    <EmptyState variant={EmptyStateVariant.lg}>
+        <EmptyStateHeader
+            titleText={intl.formatMessage(messages.statesNoTemplate)}
+            icon={<EmptyStateIcon icon={PlusCircleIcon} />}
+            headingLevel="h5"
+        />
         <EmptyStateBody>
             {intl.formatMessage(messages.statesNoTemplateBody)}
             <br />
@@ -100,10 +99,11 @@ NoPatchSetList.propTypes = {
 
 export const NoAppliedSystems = ({ onButtonClick, hasAccess }) => (
     <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateIcon icon={PlusCircleIcon} />
-        <Title headingLevel="h5" size="lg">
-            {intl.formatMessage(messages.templateNoAppliedSystemsTitle)}
-        </Title>
+        <EmptyStateHeader
+            titleText={intl.formatMessage(messages.templateNoAppliedSystemsTitle)}
+            icon={<EmptyStateIcon icon={PlusCircleIcon} />}
+            headingLevel="h5"
+        />
         <EmptyStateBody>
             {hasAccess
                 ? <Button type="primary" onClick={onButtonClick}>

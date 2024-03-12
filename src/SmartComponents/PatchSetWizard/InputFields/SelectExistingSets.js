@@ -4,7 +4,19 @@ import propTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { useDispatch, useSelector } from 'react-redux';
 import { AngleLeftIcon, AngleRightIcon } from '@patternfly/react-icons';
-import { Select, SelectOption, SelectVariant, FormGroup, Spinner, Flex, FlexItem, Button } from '@patternfly/react-core';
+import {
+    FormGroup,
+    Spinner,
+    Flex,
+    FlexItem,
+    Button,
+    Icon
+} from '@patternfly/react-core';
+import {
+    Select,
+    SelectOption,
+    SelectVariant
+} from '@patternfly/react-core/deprecated';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { fetchPatchSetsAction, changePatchSetsParams, clearPatchSetsAction } from '../../../store/Actions/Actions';
 import { intl } from '../../../Utilities/IntlProvider';
@@ -18,14 +30,18 @@ const SelectPagination = ({ changePage, page, perPage, totalItems }) =>{
         <Flex justifyContent={{ default: 'justifyContentSpaceBetween' }}>
             <FlexItem>
                 <Button variant="plain" aria-label="prev" isDisabled={page === 1} onClick={openPrevPage}>
-                    <AngleLeftIcon />
+                    <Icon>
+                        <AngleLeftIcon />
+                    </Icon>
                 </Button>
             </FlexItem>
             <FlexItem>
                 <Button variant="plain" aria-label="next"
                     isDisabled={totalItems < page * perPage}
                     onClick={openNextPage}>
-                    <AngleRightIcon />
+                    <Icon>
+                        <AngleRightIcon />
+                    </Icon>
                 </Button>
             </FlexItem>
         </Flex>

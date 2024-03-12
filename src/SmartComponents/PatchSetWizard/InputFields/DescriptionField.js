@@ -22,7 +22,7 @@ const DescriptionField = (props) => {
                 type="text"
                 isRequired
                 value={description}
-                onChange={(val) => {
+                onChange={(_event, val) => {
                     input.onChange(val);
                     setDescription(val);
                 }}

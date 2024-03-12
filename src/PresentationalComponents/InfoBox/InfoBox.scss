@@ -1,20 +1,20 @@
 .infobox {
-    background-color: var(--pf-global--BackgroundColor--150);
-    border: var(--pf-global--BorderColor--300) var(--pf-global--BorderWidth--sm)
+    background-color: var(--pf-v5-global--BackgroundColor--150);
+    border: var(--pf-v5-global--BorderColor--300) var(--pf-v5-global--BorderWidth--sm)
         solid;
     height: 65px;
-    > .pf-l-split__item:first-child {
+    > .pf-v5-l-split__item:first-child {
         width: 65px;
         color: black;
-        background-color: var(--pf-global--warning-color--100);
-        > div.pf-l-bullseye svg {
+        background-color: var(--pf-v5-global--warning-color--100);
+        > div.pf-v5-l-bullseye svg {
             color: white;
         }
     }
-    .pf-c-content h6 {
+    .pf-v5-c-content h6 {
         margin: 0;
     }
-    > .pf-l-split__item:nth-child(2) {
+    > .pf-v5-l-split__item:nth-child(2) {
         display: flex;
         justify-content: flex-start;
         align-items: center;

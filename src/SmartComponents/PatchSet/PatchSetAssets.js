@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Tooltip } from '@patternfly/react-core';
+import { Button, Icon, Tooltip } from '@patternfly/react-core';
 import { sortable } from '@patternfly/react-table';
 import {
     EllipsisVIcon
@@ -78,7 +78,9 @@ export const CustomActionsToggle = () => <Tooltip content='For editing access, c
         variant="plain"
         aria-label="plain kebab"
     >
-        <EllipsisVIcon />
+        <Icon>
+            <EllipsisVIcon />
+        </Icon>
     </Button>
 </Tooltip>;
 

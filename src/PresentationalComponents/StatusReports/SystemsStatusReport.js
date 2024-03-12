@@ -5,8 +5,16 @@ import propTypes from 'prop-types';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import {
-    CardTitle, Button, Skeleton,
-    Card, Grid, GridItem, CardBody, Flex, FlexItem
+    CardTitle,
+    Button,
+    Skeleton,
+    Card,
+    Grid,
+    GridItem,
+    CardBody,
+    Flex,
+    FlexItem,
+    Icon as PfIcon
 } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { fetchSystems } from '../../Utilities/api';
@@ -21,7 +29,9 @@ const StatusCard = ({ title, color, Icon, value, filter, apply }) => {
                         spacer={{ default: 'spacerMd' }}
                         alignSelf={{ default: 'alignSelfCenter' }}
                     >
-                        <Icon color={color} size='md'/>
+                        <PfIcon size='md'>
+                            <Icon color={color} />
+                        </PfIcon>
                     </FlexItem>
                     <FlexItem spacer={{ default: 'spacerNone' }}>
                         {
@@ -88,7 +98,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsUpToDate)}
                         Icon={CheckCircleIcon}
-                        color={'var(--pf-global--success-color--100)'}
+                        color={'var(--pf-v5-global--success-color--100)'}
                         value={subtotals?.patched}
                         apply={apply}
                         filter={{ filter: { packages_updatable: 'eq:0' } }}
@@ -98,7 +108,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsWithPatchesAvailable)}
                         Icon={PackageIcon}
-                        color={'var(--pf-global--primary-color--100)'}
+                        color={'var(--pf-v5-global--primary-color--100)'}
                         value={subtotals?.unpatched}
                         apply={apply}
                         filter={{ filter: { packages_updatable: 'gt:0' } }}
@@ -108,7 +118,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusStaleSystems)}
                         Icon={ExclamationTriangleIcon}
-                        color={'var(--pf-global--warning-color--100)'}
+                        color={'var(--pf-v5-global--warning-color--100)'}
                         value={subtotals?.stale}
                         apply={apply}
                         filter={{ filter: { stale: true } }}

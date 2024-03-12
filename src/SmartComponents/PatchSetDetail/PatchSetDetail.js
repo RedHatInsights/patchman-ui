@@ -18,16 +18,18 @@ import {
 } from '../../store/Actions/Actions';
 import {
     Bullseye,
-    Dropdown,
-    DropdownItem,
-    DropdownPosition,
-    DropdownToggle,
     Skeleton,
     Spinner,
     Text,
     TextContent,
     Tooltip
 } from '@patternfly/react-core';
+import {
+    Dropdown,
+    DropdownItem,
+    DropdownPosition,
+    DropdownToggle
+} from '@patternfly/react-core/deprecated';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -314,8 +316,8 @@ const PatchSetDetail = () => {
                             toggle={
                                 <DropdownToggle
                                     id="patch-set-detail-header-kebab"
-                                    className="pf-u-mr-xl"
-                                    onToggle={(isOpen) => setHeaderDropdownOpen(isOpen)}
+                                    className="pf-v5-u-mr-xl"
+                                    onToggle={(_event, isOpen) => setHeaderDropdownOpen(isOpen)}
                                     style={{ minWidth: 150 }}
                                 >
                                     {intl.formatMessage(messages.labelsActions)}
@@ -374,7 +376,7 @@ const PatchSetDetail = () => {
                 </Header>
                 <Main>
                     <TextContent>
-                        <Text component="h2" className="pf-u-mb-md">
+                        <Text component="h2" className="pf-v5-u-mb-md">
                             {intl.formatMessage(messages.templateDetailTableTitle)}
                         </Text>
                     </TextContent>

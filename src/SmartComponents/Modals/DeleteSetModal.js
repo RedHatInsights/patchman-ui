@@ -30,10 +30,10 @@ const DeleteSetModal = ({ isModalOpen, setModalOpen, templateName, onConfirm }) 
         >
             {intl.formatMessage(messages.titlesTemplateDeleteModalText, { templateName, b: (...chunks) => <b>{chunks}</b> })}
             <Checkbox
-                className="pf-u-mt-md"
+                className="pf-v5-u-mt-md"
                 isChecked={isCheckboxChecked}
                 checked={isCheckboxChecked}
-                onChange={(value) => setCheckboxChecked(value)}
+                onChange={(_event, value) => setCheckboxChecked(value)}
                 label={intl.formatMessage(messages.titlesTemplateDeleteModalCheckbox)}
                 id="template-delete-modal-checkbox"
             />

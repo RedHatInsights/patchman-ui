@@ -5,7 +5,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import { fetchApplicableAdvisoriesApi } from '../../Utilities/api';
 import messages from '../../Messages';
 import {
-    CardTitle, Card, Grid, GridItem, CardBody, Title, Split, SplitItem
+    CardTitle, Card, Grid, GridItem, CardBody, Title, Split, SplitItem, Icon
 } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { handlePatchLink, handleLongSynopsis } from '../../Utilities/Helpers';
@@ -43,7 +43,9 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
                                     {attributes.severity && (<GridItem>
                                         <Split hasGutter>
                                             <GridItem >
-                                                <SecurityIcon size="sm" color={advisorySeverities[attributes.severity].color} />
+                                                <Icon>
+                                                    <SecurityIcon color={advisorySeverities[attributes.severity].color} />
+                                                </Icon>
                                             </GridItem>
                                             <GridItem isFilled>{advisorySeverities[attributes.severity].label}</GridItem>
                                         </Split>
@@ -51,7 +53,11 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
                                     {attributes.reboot_required && (
                                         <GridItem>
                                             <Split hasGutter>
-                                                <SplitItem><PowerOffIcon color='var(--pf-global--palette--red-100)' /></SplitItem>
+                                                <SplitItem>
+                                                    <Icon color='var(--pf-v5-global--palette--red-100)'>
+                                                        <PowerOffIcon />
+                                                    </Icon>
+                                                </SplitItem>
                                                 <SplitItem isFilled style={{ flexWrap: 'nowrap' }}>
                                                     {intl.formatMessage(messages.textRebootIsRequired)}
                                                 </SplitItem>
@@ -90,7 +96,7 @@ const AdvisoriesStatusBar = () => {
     return advisories.data && advisories.data.length && (
         <Main style={{ paddingBottom: 0, paddingTop: 0 }}>
 
-            <Title headingLevel="h3" className='pf-u-my-md'>
+            <Title headingLevel="h3" className='pf-v5-u-my-md'>
                 {intl.formatMessage(messages.titlesMostImpactfulAdvisories)}
             </Title>
 

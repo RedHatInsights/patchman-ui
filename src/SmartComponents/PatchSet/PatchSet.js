@@ -27,7 +27,7 @@ import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { DEFAULT_PATCH_TITLE, patchSetDeleteNotifications } from '../../Utilities/constants';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
-import { Popover } from '@patternfly/react-core';
+import { Icon, Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { NoPatchSetList } from '../../PresentationalComponents/Snippets/EmptyStates';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
@@ -186,11 +186,13 @@ const PatchSet = () => {
                     }
                     */
                     >
-                        <OutlinedQuestionCircleIcon
-                            color="var(--pf-global--secondary-color--100)"
-                            className="pf-u-ml-sm"
-                            style={{ verticalAlign: '0', fontSize: 16, cursor: 'pointer' }}
-                        />
+                        <Icon>
+                            <OutlinedQuestionCircleIcon
+                                className="pf-v5-u-ml-sm"
+                                color="var(--pf-v5-global--secondary-color--100)"
+                                style={{ verticalAlign: '0', fontSize: 16, cursor: 'pointer' }}
+                            />
+                        </Icon>
                     </Popover>
                 </span>}
             />

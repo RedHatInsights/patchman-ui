@@ -1,4 +1,5 @@
 import {
+    Icon,
     Text, TextContent, TextList,
     TextListItem, TextListItemVariants, TextListVariants, TextVariants
 } from '@patternfly/react-core';
@@ -19,12 +20,14 @@ export const DescriptionWithLink = ({ row }) => {
         <TextContent className='patch-advisory-description'>
             {
                 row.attributes.cve_count > 0 &&
-                (<TextList component={TextListVariants.dl} style={{ '--pf-c-content--dl--RowGap': '0.5rem' }}>
+                (<TextList component={TextListVariants.dl} style={{ '--pf-v5-c-content--dl--RowGap': '0.5rem' }}>
                     <TextListItem component={TextListItemVariants.dt}>
                         {intl.formatMessage(messages.labelsSeverity)}
                     </TextListItem>
                     <TextListItem component={TextListItemVariants.dd}>
-                        <SecurityIcon size="sm" color={severityObject.color} />  {severityObject.label}
+                        <Icon size="sm">
+                            <SecurityIcon color={severityObject.color} />
+                        </Icon>  {severityObject.label}
                     </TextListItem>
                     <TextListItem component={TextListItemVariants.dt}>
                         {intl.formatMessage(messages.labelsCves)}

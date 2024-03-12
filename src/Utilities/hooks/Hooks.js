@@ -175,6 +175,8 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
         },
         toggleProps: {
             'data-ouia-component-type': 'bulk-select-toggle-button',
+            'aria-label': 'Select',
+            // FIXME: children is ignored by PrimaryToolbar (BulkSelect) implementation, there is a reimplementation needed
             children: isBulkLoading ? [
                 <React.Fragment key='sd'>
                     <Spinner size="sm" />
@@ -184,7 +186,8 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
         },
         checked: selectedCount === 0 ? false : selectedCount === metadata.total_items ? true : null,
         isDisabled: (metadata.total_items === 0 && selectedCount === 0)
-            || (queryParams?.filter?.status?.length === 1 && queryParams?.filter?.status?.[0] === 'Applicable')
+            || (queryParams?.filter?.status?.length === 1 && queryParams?.filter?.status?.[0] === 'Applicable'),
+        count: selectedCount
     });
 };
 

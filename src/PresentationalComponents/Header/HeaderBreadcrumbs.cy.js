@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from '@cypress/react';
+import { mount } from '@cypress/react18';
 
 import HeaderBreadcrumbs from './HeaderBreadcrumbs';
 import { MemoryRouter } from 'react-router-dom';
@@ -20,7 +20,7 @@ describe('HeaderBreadcrumbs', () => {
                 ]}
             />
         );
-        cy.get('.pf-c-breadcrumb__list').children().should('have.length', 2);
+        cy.get('.pf-v5-c-breadcrumb__list').children().should('have.length', 2);
     });
 
     it('renders one breadcrumb with link', () => {
@@ -42,8 +42,8 @@ describe('HeaderBreadcrumbs', () => {
                 />
             </MemoryRouter>
         );
-        cy.get('.pf-c-breadcrumb__list').children().should('have.length', 2);
-        cy.get('.pf-c-breadcrumb__list')
+        cy.get('.pf-v5-c-breadcrumb__list').children().should('have.length', 2);
+        cy.get('.pf-v5-c-breadcrumb__list')
         .children()
         .eq(0)
         .find('a')

@@ -476,7 +476,7 @@ export const createOSColumn = ({ osName, rhsm }) => !rhsm ? osName : (
         <Flex flex={{ default: 'inlineFlex' }}>
             <FlexItem spacer={{ default: 'spacerSm' }}>{osName}</FlexItem>
             <FlexItem spacer={{ default: 'spacerSm' }}>
-                <InfoCircleIcon size="sm" color={'var(--pf-global--info-color--100)'} />
+                <InfoCircleIcon size="sm" color={'var(--pf-v5-global--info-color--100)'} />
             </FlexItem>
         </Flex>
     </Tooltip>

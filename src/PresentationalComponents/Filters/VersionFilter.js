@@ -1,5 +1,9 @@
 import React from 'react';
-import { Select, SelectOption, SelectVariant } from '@patternfly/react-core';
+import {
+    Select,
+    SelectOption,
+    SelectVariant
+} from '@patternfly/react-core/deprecated';
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -50,7 +54,7 @@ const VersionFilter = (apply, filter, packageVersions) => {
                     <Select
                         variant={versionList.length > 0 && SelectVariant.checkbox || SelectVariant.typeaheadMulti}
                         typeAheadAriaLabel={intl.formatMessage(messages.labelsFiltersPackageVersionPlaceholder)}
-                        onToggle={onToggle}
+                        onToggle={(_event, isOpen) => onToggle(isOpen)}
                         onSelect={onSelect}
                         selections={installedEvra}
                         isOpen={isOpen}

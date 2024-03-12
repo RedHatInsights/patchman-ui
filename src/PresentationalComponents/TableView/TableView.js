@@ -1,4 +1,11 @@
-import { Table, TableBody, TableHeader, TableVariant } from '@patternfly/react-table';
+import {
+    TableVariant
+} from '@patternfly/react-table';
+import {
+    Table,
+    TableBody,
+    TableHeader
+} from '@patternfly/react-table/deprecated';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
 import PropTypes from 'prop-types';
@@ -105,8 +112,8 @@ const TableView = ({
                             </PrimaryToolbar>
                             {isLoading
                                 ? <SkeletonTable
-                                    colSize={columns?.length ?? 5}
-                                    rowSize={20}
+                                    numberOfColumns={columns?.length ?? 5}
+                                    rows={20}
                                     variant={compact && TableVariant.compact}
                                 />
                                 : <Table
