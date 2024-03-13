@@ -54,7 +54,7 @@ export const systemPackagesDefaultFilters = {
 };
 
 export const packagesListDefaultFilters = {
-    filter: { systems_updatable: ['gt:0'] }
+    filter: { systems_applicable: ['gt:0'] }
 };
 
 export const systemsListDefaultFilters = {
@@ -234,7 +234,7 @@ export const filterCategories = {
         label: 'Status',
         values: updatableTypes
     },
-    systems_updatable: {
+    systems_applicable: {
         label: 'Status',
         values: packagesListUpdatableTypes
     },
