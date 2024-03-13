@@ -22,15 +22,14 @@ import ToDateField from './InputFields/ToDateField';
 import DescriptionField from './InputFields/DescriptionField';
 import ReviewSystems from './steps/ReviewSystems';
 import ReviewPatchSet from './steps/ReviewPatchSet';
-import { schema, validatorMapper, getWizardTitle, useFetchAllTemplateNames } from './WizardAssets';
+import { schema, validatorMapper, getWizardTitle } from './WizardAssets';
 import RequestProgress from './steps/RequestProgress';
 import { usePatchSetApi } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import {
     fetchPatchSetAction,
-    clearPatchSetAction,
-    fetchPatchSetSystemsAction
+    clearPatchSetAction
 } from '../../store/Actions/Actions';
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
@@ -43,22 +42,12 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         failed: false,
         shouldRefresh: false
     });
-    const [takenTemplateNames, setTakenTemplateNames] = useState([]);
-    const [areTakenTemplateNamesLoading, setAreTakenTemplateNamesLoading] = useState(true);
 
     const dispatch = useDispatch();
-    const fetchTemplateNames = useFetchAllTemplateNames();
-
     useEffect(() => {
         if (patchSetID) {
             dispatch(fetchPatchSetAction(patchSetID));
-            dispatch(fetchPatchSetSystemsAction({ id: patchSetID, limit: -1 }));
         }
-
-        fetchTemplateNames().then(({ takenTemplateNames, areTakenTemplateNamesLoading }) => {
-            setTakenTemplateNames(takenTemplateNames);
-            setAreTakenTemplateNamesLoading(areTakenTemplateNamesLoading);
-        });
 
         return () => dispatch(clearPatchSetAction());
     }, []);
@@ -74,9 +63,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
 
     const mapperExtensions = {
         nameField: {
-            component: NameField,
-            takenTemplateNames,
-            areTakenTemplateNamesLoading
+            component: NameField
         },
         descriptionField: {
             component: DescriptionField
@@ -95,7 +82,8 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         },
         reviewSystems: {
             component: ReviewSystems,
-            systemsIDs: systemsIDs || []
+            systemsIDs: systemsIDs || [],
+            patchSetID
         },
         reviewPatchSet: {
             component: ReviewPatchSet,

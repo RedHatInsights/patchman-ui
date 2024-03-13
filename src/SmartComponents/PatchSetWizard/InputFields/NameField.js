@@ -1,24 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import propTypes from 'prop-types';
 import {
     FormGroup,
     FormHelperText,
     HelperText,
     HelperTextItem,
-    TextInput
+    TextInput,
+    Spinner
 } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
+import { useFetchAllTemplateData } from '../WizardAssets';
+import { fetchPatchSets } from '../../../Utilities/api';
 
-const NameField = ({ takenTemplateNames, areTakenTemplateNamesLoading, ...props }) => {
+const NameField = (props) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const values = formOptions.getState()?.values;
 
     const [name, setName] = useState(values?.name);
     const [validated, setValidated] = useState();
+    const [takenTemplateNames, setTakenTemplateNames] = useState([]);
+    const [areTakenTemplateNamesLoading, setAreTakenTemplateNamesLoading] = useState(true);
+
+    const fetchTemplateNames = useFetchAllTemplateData(
+        fetchPatchSets,
+        ({ attributes }) => attributes.name
+    );
+
+    useEffect(() => {
+        fetchTemplateNames().then(({ data, isLoading }) => {
+            formOptions.change('takenTemplateNames', data);
+            formOptions.change('areTakenTemplateNamesLoading', isLoading);
+            setTakenTemplateNames(data);
+            setAreTakenTemplateNamesLoading(isLoading);
+        });
+    }, []);
 
     useEffect(() => {
         const validateName = () => {
@@ -38,12 +56,7 @@ const NameField = ({ takenTemplateNames, areTakenTemplateNamesLoading, ...props 
 
         setName(values.name);
         setValidated(validateName());
-    }, [values.name]);
-
-    useEffect(() => {
-        formOptions.change('takenTemplateNames', takenTemplateNames);
-        formOptions.change('areTakenTemplateNamesLoading', areTakenTemplateNamesLoading);
-    }, [takenTemplateNames, areTakenTemplateNamesLoading]);
+    }, [values.name, takenTemplateNames]);
 
     return (
         <FormGroup
@@ -63,14 +76,17 @@ const NameField = ({ takenTemplateNames, areTakenTemplateNamesLoading, ...props 
                 autoFocus
                 validated={validated}
             />
-            {validated === 'error' && (
+            {(validated === 'error' || areTakenTemplateNamesLoading) && (
                 <FormHelperText>
                     <HelperText>
-                        <HelperTextItem variant={validated}>
-                            {intl.formatMessage(
-                                messages.templateWizardValidateNameTaken
-                            )}
-                        </HelperTextItem>
+                        {areTakenTemplateNamesLoading
+                            ? <Spinner size="md" />
+                            : <HelperTextItem variant={validated}>
+                                {intl.formatMessage(
+                                    messages.templateWizardValidateNameTaken
+                                )}
+                            </HelperTextItem>
+                        }
                     </HelperText>
                 </FormHelperText>
             )}
@@ -78,8 +94,4 @@ const NameField = ({ takenTemplateNames, areTakenTemplateNamesLoading, ...props 
     );
 };
 
-NameField.propTypes = {
-    takenTemplateNames: propTypes.array,
-    areTakenTemplateNamesLoading: propTypes.bool
-};
 export default NameField;

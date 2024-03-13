@@ -7,7 +7,6 @@ import dateValidator from '../../Utilities/dateValidator';
 import { sortable } from '@patternfly/react-table/dist/js';
 import React, { Fragment } from 'react';
 import { useFetchBatched } from '../../Utilities/hooks';
-import { fetchPatchSets } from '../../Utilities/api';
 
 export const reviewSystemColumns = [{
     key: 'display_name',
@@ -181,17 +180,19 @@ export const apiFailedNotification = (description) => ({
     variant: 'danger'
 });
 
-export const useFetchAllTemplateNames = () => {
+export const useFetchAllTemplateData = (fetchFunction, mapFunction) => {
     const { fetchBatched, isLoading } = useFetchBatched();
     return async (params = {}) => {
         const result = await fetchBatched(
-            fetchPatchSets,
-            params
+            fetchFunction,
+            params,
+            undefined,
+            100
         );
 
         return {
-            areTakenTemplateNamesLoading: isLoading,
-            takenTemplateNames: result.flatMap(({ data }) => data).map(({ attributes }) => attributes.name)
+            isLoading,
+            data: result.flatMap(({ data }) => data).map(mapFunction)
         };
     };
 };
