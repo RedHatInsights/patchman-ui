@@ -9,7 +9,7 @@ import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/
 import {
     exportSystemsCSV, exportSystemsJSON, fetchSystems
 } from '../../Utilities/api';
-import { systemsListDefaultFilters } from '../../Utilities/constants';
+import { systemsListDefaultFilters, NO_ADVISORIES_TEXT } from '../../Utilities/constants';
 import {
     arrayFromObj, persistantParams, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
@@ -191,6 +191,7 @@ const SystemsTable = ({
                             arrayFromObj(selectedRows).length === 0 || isRemediationLoading
                         }
                         isLoading={isRemediationLoading}
+                        patchNoAdvisoryText={NO_ADVISORIES_TEXT}
                     />,
                     {
                         key: 'assign-multiple-systems',
