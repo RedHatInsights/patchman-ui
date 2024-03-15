@@ -144,6 +144,8 @@ export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
             totalItems: metadata.total_items
         }
     );
+
+    const isTableLoading = isLoading || (patchSetID && areAssignedSystemsLoading);
     return (
         <Stack hasGutter>
             <StackItem>
@@ -178,7 +180,7 @@ export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
                     store={{
                         rows: systems,
                         metadata,
-                        status: { isLoading: isLoading || areAssignedSystemsLoading },
+                        status: { isLoading: isTableLoading },
                         queryParams
                     }}
                     filterConfig={{

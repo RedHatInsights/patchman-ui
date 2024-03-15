@@ -31,8 +31,6 @@ const NameField = (props) => {
 
     useEffect(() => {
         fetchTemplateNames().then(({ data, isLoading }) => {
-            formOptions.change('takenTemplateNames', data);
-            formOptions.change('areTakenTemplateNamesLoading', isLoading);
             setTakenTemplateNames(data);
             setAreTakenTemplateNamesLoading(isLoading);
         });
@@ -57,6 +55,11 @@ const NameField = (props) => {
         setName(values.name);
         setValidated(validateName());
     }, [values.name, takenTemplateNames]);
+
+    useEffect(() => {
+        formOptions.change('takenTemplateNames', takenTemplateNames);
+        formOptions.change('areTakenTemplateNamesLoading', areTakenTemplateNamesLoading);
+    }, [takenTemplateNames, areTakenTemplateNamesLoading]);
 
     return (
         <FormGroup

@@ -168,7 +168,7 @@ export const validatorMapper = {
             return intl.formatMessage(messages.templateWizardValidateLoading);
         }
 
-        if (formValues.previousName !== name && formValues.takenTemplateNames.includes(name)) {
+        if (formValues.previousName !== name && formValues.takenTemplateNames?.includes(name)) {
             return intl.formatMessage(messages.templateWizardValidateNameTaken);
         }
     }
