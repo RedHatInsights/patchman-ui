@@ -47,8 +47,6 @@
       "\\.(css|scss)$": "identity-obj-proxy"
     },
     "testPathIgnorePatterns": [
-      "<rootDir>/src/SmartComponents/Systems/Systems.test.js",
-      "<rootDir>/src/SmartComponents/AdvisorySystems/AdvisorySystems.test.js",
       "src/SmartComponents/SystemDetail/InventoryDetail.test.js",
       "src/SmartComponents/PatchSet/PatchSet.test.js"
     ],
