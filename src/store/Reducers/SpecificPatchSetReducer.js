@@ -31,15 +31,6 @@ export const SpecificPatchSetReducer = (state = initialState, action) => {
         case ActionTypes.FETCH_PATCH_SET + '_REJECTED':
             return fetchRejected(state, action);
 
-        case ActionTypes.FETCH_PATCH_SET_SYSTEMS + `_FULFILLED`: {
-            const systems = action.payload?.data || [];
-
-            return {
-                ...state,
-                assignedSystems: systems.map(system => system?.inventory_id)
-            };
-        }
-
         case ActionTypes.CLEAR_PATCH_SET:
             return initialState;
 
