@@ -218,13 +218,6 @@ export const fetchPatchSetsAction = params => ({
     }).then(result => result)
 });
 
-export const fetchPatchSetsNamesAction = params => ({
-    type: ActionTypes.FETCH_ALL_PATCH_SETS_NAMES,
-    payload: new Promise(resolve => {
-        resolve(fetchPatchSets(params));
-    }).then(payload => payload.data.map(item => item.attributes.name))
-});
-
 export const changePatchSetsParams = (params) => ({
     type: ActionTypes.CHANGE_PATCH_SET_PARAMS,
     payload: params
@@ -279,13 +272,6 @@ export const clearPatchSetDetailsSystems = () => ({
 export const clearPatchSetAction = () => ({
     type: ActionTypes.CLEAR_PATCH_SET,
     payload: []
-});
-
-export const fetchPatchSetSystemsAction = (params) => ({
-    type: ActionTypes.FETCH_PATCH_SET_SYSTEMS,
-    payload: new Promise(resolve => {
-        resolve(fetchPatchSetSystems(params));
-    }).then(result => result)
 });
 
 export const fetchPatchSetSystemsNoFiltersAction = (params) => ({

@@ -24,7 +24,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
     const [shouldCreateNew, setShouldCreateNew] = useState(true);
     const [selectedPatchSet, setSelectedPatchSet] = useState([]);
 
-    const { patchSet, status, takenBaselineNamesLoading } =
+    const { patchSet, status, areTakenTemplateNamesLoading } =
         useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
 
     const handleRadioChange = () => {
@@ -90,7 +90,7 @@ const ConfigurationStepFields = ({ systemsIDs, patchSetID }) => {
                     </StackItem></>) || null}
                     <StackItem>
                         {shouldCreateNew ? <ConfigurationFields
-                            isLoading={(patchSetID && status.isLoading) || takenBaselineNamesLoading}
+                            isLoading={(patchSetID && status.isLoading) || areTakenTemplateNamesLoading}
                         /> : null}
                     </StackItem>
                 </Stack>

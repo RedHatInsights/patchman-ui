@@ -7,7 +7,7 @@ export const useFetchBatched = () => {
         isLoading,
         fetchBatched: async (fetchFunction, filter, total, batchSize = 50) => {
             if (!total) {
-                total = await fetchFunction({ limit: 1 }).then(
+                total = await fetchFunction({ ...filter, limit: 1 }).then(
                     response => response?.meta?.total_items || 0
                 );
             }

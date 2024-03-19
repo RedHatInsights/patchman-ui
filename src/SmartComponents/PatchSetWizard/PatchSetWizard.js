@@ -29,9 +29,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import {
     fetchPatchSetAction,
-    clearPatchSetAction,
-    fetchPatchSetSystemsAction,
-    fetchPatchSetsNamesAction
+    clearPatchSetAction
 } from '../../store/Actions/Actions';
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
@@ -46,14 +44,10 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
     });
 
     const dispatch = useDispatch();
-
     useEffect(() => {
         if (patchSetID) {
             dispatch(fetchPatchSetAction(patchSetID));
-            dispatch(fetchPatchSetSystemsAction({ id: patchSetID, limit: -1 }));
         }
-
-        dispatch(fetchPatchSetsNamesAction({ limit: -1 }));
 
         return () => dispatch(clearPatchSetAction());
     }, []);
@@ -88,7 +82,8 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         },
         reviewSystems: {
             component: ReviewSystems,
-            systemsIDs: systemsIDs || []
+            systemsIDs: systemsIDs || [],
+            patchSetID
         },
         reviewPatchSet: {
             component: ReviewPatchSet,

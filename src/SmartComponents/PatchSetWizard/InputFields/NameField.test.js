@@ -1,9 +1,7 @@
 import NameField from './NameField';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
-import { Provider, useSelector } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { initialState } from '../../../store/Reducers/SpecificPatchSetReducer';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor, queryByLabelText } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 jest.mock('@data-driven-forms/react-form-renderer/use-form-api',
     () => ({
@@ -20,23 +18,14 @@ jest.mock('@data-driven-forms/react-form-renderer/use-field-api',
     }))
 );
 
-const mockState = initialState;
+jest.mock('../../../Utilities/api', () => ({
+    ...jest.requireActual('../../../Utilities/api'),
+    fetchPatchSets: jest.fn(
+        () => Promise.resolve({ data: [{ attributes: { name: 'taken-template-name' } }] })
+    )
+}));
 
-const initStore = (state) => {
-    const customMiddleWare = () => next => action => {
-        useSelector.mockImplementation(callback => {
-            return callback({ SpecificPatchSetReducer: state });
-        });
-        next(action);
-    };
-
-    const mockStore = configureStore([customMiddleWare]);
-    return mockStore({ SpecificPatchSetReducer: state });
-};
-
-let store = initStore(mockState);
-
-describe('ConfigurationFields.js', () => {
+describe('NameField.js', () => {
     it('Should description field have default value and fire input onChange', () => {
         useFormApi.mockReturnValue(({
             getState: () => ({
@@ -46,9 +35,7 @@ describe('ConfigurationFields.js', () => {
         }));
 
         render(
-            <Provider store={store}>
-                <NameField />
-            </Provider >
+            <NameField />
         );
         expect(screen.getByRole('textbox', {
             name: /name/i
@@ -62,13 +49,27 @@ describe('ConfigurationFields.js', () => {
         }));
 
         render(
-            <Provider store={store}>
-                <NameField />
-            </Provider >
+            <NameField />
         );
         const input = screen.getByRole('textbox', {
             name: /name/i
         });
         expect(input.value).toBe('');
+    });
+
+    it('Should invalidate taken template names', async () => {
+        useFormApi.mockReturnValue(({
+            getState: () => ({ values: { name: 'taken-template-name' } }),
+            change: () => { }
+        }));
+
+        const { container } = render(
+            <NameField />
+        );
+
+        await waitFor(() => {
+            expect(queryByLabelText(container, 'Contents')).not.toBeInTheDocument();
+        });
+        await waitFor(() => expect(screen.getByText('Template name already exists. Try a different name.')).toBeVisible());
     });
 });

@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import searchFilter from '../../../PresentationalComponents/Filters/SearchFilter';
 import { Text, TextContent, Stack, StackItem, TextVariants, Alert } from '@patternfly/react-core';
-import { useSelector, shallowEqual } from 'react-redux';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 
 import { createSortBy, buildSelectedSystemsObj } from '../../../Utilities/Helpers';
@@ -12,14 +11,15 @@ import { usePerPageSelect, useSetPage, useSortColumn, useOnSelect, ID_API_ENDPOI
 import TableView from '../../../PresentationalComponents/TableView/TableView';
 import staleFilter from '../../../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../../../PresentationalComponents/Filters/SystemsUpdatableFilter';
-import { fetchSystems } from '../../../Utilities/api';
+import { fetchSystems, fetchPatchSetSystems } from '../../../Utilities/api';
 import { reviewSystemColumns } from '../WizardAssets';
 import messages from '../../../Messages';
 import { intl } from '../../../Utilities/IntlProvider';
 import { systemsListDefaultFilters } from '../../../Utilities/constants';
 import useOsVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
+import { useFetchAllTemplateData } from '../WizardAssets';
 
-export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
+export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const { values } = formOptions.getState();
@@ -34,6 +34,8 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
         offset: 0,
         total_items: 0
     });
+    const [assignedSystems, setAssignedSystems] = useState([]);
+    const [areAssignedSystemsLoading, setAssignedSystemsLoading] = useState(true);
 
     const [queryParams, setQueryParams] = useState({
         page: 1,
@@ -43,7 +45,21 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
         }
     });
 
-    const { assignedSystems } = useSelector(({ SpecificPatchSetReducer }) => SpecificPatchSetReducer, shallowEqual);
+    const fetchAssignedSystems = useFetchAllTemplateData(
+        fetchPatchSetSystems,
+        system => system?.inventory_id
+    );
+
+    useEffect(() => {
+        if (patchSetID) {
+            fetchAssignedSystems({ id: patchSetID }).then(
+                ({ isLoading, data }) => {
+                    setAssignedSystems(data);
+                    setAssignedSystemsLoading(isLoading);
+                }
+            );
+        }
+    }, [patchSetID]);
 
     useEffect(() => {
         fetchSystems({
@@ -64,7 +80,7 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
             setRawData(result.data);
             setLoading(false);
         });
-    }, [queryParams.filter, queryParams]);
+    }, [queryParams.filter, queryParams, assignedSystems]);
 
     useEffect(() => {
         input.onChange(selectedRows);
@@ -128,6 +144,8 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
             totalItems: metadata.total_items
         }
     );
+
+    const isTableLoading = isLoading || (patchSetID && areAssignedSystemsLoading);
     return (
         <Stack hasGutter>
             <StackItem>
@@ -159,7 +177,12 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
                     apply={apply}
                     tableOUIA={'patch-set-table'}
                     paginationOUIA={'patch-set-pagination'}
-                    store={{ rows: systems, metadata, status: { isLoading }, queryParams }}
+                    store={{
+                        rows: systems,
+                        metadata,
+                        status: { isLoading: isTableLoading },
+                        queryParams
+                    }}
                     filterConfig={{
                         items: [
                             searchFilter(apply, queryParams.search,
@@ -180,7 +203,8 @@ export const ReviewSystems = ({ systemsIDs = [], ...props }) => {
 };
 
 ReviewSystems.propTypes = {
-    systemsIDs: propTypes.array
+    systemsIDs: propTypes.array,
+    patchSetID: propTypes.string
 };
 
 export default ReviewSystems;

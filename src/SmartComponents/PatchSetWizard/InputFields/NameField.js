@@ -4,13 +4,15 @@ import {
     FormHelperText,
     HelperText,
     HelperTextItem,
-    TextInput
+    TextInput,
+    Spinner
 } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
-import { shallowEqual, useSelector } from 'react-redux';
+import { useFetchAllTemplateData } from '../WizardAssets';
+import { fetchPatchSets } from '../../../Utilities/api';
 
 const NameField = (props) => {
     const { input } = useFieldApi(props);
@@ -19,11 +21,20 @@ const NameField = (props) => {
 
     const [name, setName] = useState(values?.name);
     const [validated, setValidated] = useState();
+    const [takenTemplateNames, setTakenTemplateNames] = useState([]);
+    const [areTakenTemplateNamesLoading, setAreTakenTemplateNamesLoading] = useState(true);
 
-    const { takenBaselineNames, takenBaselineNamesLoading } = useSelector(
-        ({ SpecificPatchSetReducer }) => SpecificPatchSetReducer,
-        shallowEqual
+    const fetchTemplateNames = useFetchAllTemplateData(
+        fetchPatchSets,
+        ({ attributes }) => attributes.name
     );
+
+    useEffect(() => {
+        fetchTemplateNames().then(({ data, isLoading }) => {
+            setTakenTemplateNames(data);
+            setAreTakenTemplateNamesLoading(isLoading);
+        });
+    }, []);
 
     useEffect(() => {
         const validateName = () => {
@@ -34,7 +45,7 @@ const NameField = (props) => {
                 return 'default';
             }
 
-            if (takenBaselineNames.includes(values.name)) {
+            if (takenTemplateNames.includes(values.name)) {
                 return 'error';
             }
 
@@ -43,15 +54,12 @@ const NameField = (props) => {
 
         setName(values.name);
         setValidated(validateName());
-    }, [values.name]);
+    }, [values.name, takenTemplateNames]);
 
     useEffect(() => {
-        formOptions.change('takenBaselineNames', takenBaselineNames);
-        formOptions.change(
-            'takenBaselineNamesLoading',
-            takenBaselineNamesLoading
-        );
-    }, [takenBaselineNames, takenBaselineNamesLoading]);
+        formOptions.change('takenTemplateNames', takenTemplateNames);
+        formOptions.change('areTakenTemplateNamesLoading', areTakenTemplateNamesLoading);
+    }, [takenTemplateNames, areTakenTemplateNamesLoading]);
 
     return (
         <FormGroup
@@ -71,14 +79,17 @@ const NameField = (props) => {
                 autoFocus
                 validated={validated}
             />
-            {validated === 'error' && (
+            {(validated === 'error' || areTakenTemplateNamesLoading) && (
                 <FormHelperText>
                     <HelperText>
-                        <HelperTextItem variant={validated}>
-                            {intl.formatMessage(
-                                messages.templateWizardValidateNameTaken
-                            )}
-                        </HelperTextItem>
+                        {areTakenTemplateNamesLoading
+                            ? <Spinner size="md" />
+                            : <HelperTextItem variant={validated}>
+                                {intl.formatMessage(
+                                    messages.templateWizardValidateNameTaken
+                                )}
+                            </HelperTextItem>
+                        }
                     </HelperText>
                 </FormHelperText>
             )}
