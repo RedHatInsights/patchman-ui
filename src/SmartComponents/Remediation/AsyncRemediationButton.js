@@ -7,7 +7,7 @@ import { Spinner } from '@patternfly/react-core';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
-const AsyncRemediationButton = ({ remediationProvider, isDisabled, isLoading }) => {
+const AsyncRemediationButton = ({ remediationProvider, isDisabled, isLoading, patchNoAdvisoryText }) => {
     const dispatch = useDispatch();
 
     const handleRemediationSuccess = res => {
@@ -23,6 +23,7 @@ const AsyncRemediationButton = ({ remediationProvider, isDisabled, isLoading }) 
             onRemediationCreated={handleRemediationSuccess}
             isDisabled={isDisabled}
             buttonProps={{ isLoading }}
+            patchNoAdvisoryText={patchNoAdvisoryText}
         >
             {intl.formatMessage(messages.labelsRemediate)}
         </AsyncComponent>
@@ -32,7 +33,8 @@ const AsyncRemediationButton = ({ remediationProvider, isDisabled, isLoading }) 
 AsyncRemediationButton.propTypes = {
     remediationProvider: propTypes.func,
     isDisabled: propTypes.bool,
-    isLoading: propTypes.bool
+    isLoading: propTypes.bool,
+    patchNoAdvisoryText: propTypes.string
 };
 
 export default AsyncRemediationButton;

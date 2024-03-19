@@ -314,3 +314,5 @@ export const featureFlags = {
 
 export const TEMPLATES_DOCS_LINK = 'https://access.redhat.com/documentation/en-us/red_hat_insights/2022/html/'
     + 'system_patching_using_ansible_playbooks_via_remediations/index';
+
+export const NO_ADVISORIES_TEXT = 'There is no installable content that can be remediated with Ansible for selected systems.';
