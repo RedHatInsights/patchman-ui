@@ -95,8 +95,8 @@ export const fetchCvesInfo = async ({ cveIds }) => {
         method: 'POST',
         credentials: 'include',
         headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
+            Accept: 'application/vnd.api+json',
+            'Content-Type': 'application/vnd.api+json'
         },
         body: JSON.stringify({ cve_list: cveIds })
     }).then(res => res.json()).then(data => data).catch(err => err);
