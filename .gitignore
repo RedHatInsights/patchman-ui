@@ -22,3 +22,5 @@ coverage
 codecov*
 .nyc_output/
 reports/
+
+.cache/
