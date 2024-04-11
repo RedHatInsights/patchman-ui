@@ -15,10 +15,8 @@ jobs:
       script: npm run lint
     - stage: Test
       script: npm run test && npm run test:ct && npm run coverage
-    - stage: Deploy
-      script: npm run deploy && curl -sSL https://raw.githubusercontent.com/RedHatInsights/insights-frontend-builder-common/master/src/bootstrap.sh | bash -s
-    - stage: Build components and release
-      script: rm -rf dist ; npm run build:components ; npm run semantic-release
+    - stage: Tag release
+      script: npm run semantic-release
 env:
   global:
     - REPO="git@github.com:RedHatInsights/patchman-ui-build"
