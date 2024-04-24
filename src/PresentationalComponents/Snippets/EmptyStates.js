@@ -81,13 +81,6 @@ export const NoPatchSetList = ({ Button }) => (
             {intl.formatMessage(messages.statesNoTemplateBody)}
             <br />
             <br />
-            {/*
-            <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
-                {intl.formatMessage(messages.statesNoTemplateLink)} <ExternalLinkAltIcon />
-            </a>
-            <br />
-            <br />
-            */}
             <Button />
         </EmptyStateBody>
     </EmptyState>

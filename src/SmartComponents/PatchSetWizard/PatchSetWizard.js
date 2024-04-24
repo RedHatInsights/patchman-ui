@@ -77,7 +77,6 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
         },
         configurationStep: {
             component: ConfigurationStepFields,
-            systemsIDs: systemsIDs || [],
             patchSetID
         },
         reviewSystems: {
@@ -129,11 +128,6 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
                         description={
                             <Fragment>
                                 {intl.formatMessage(messages.templateDescription)}
-                                {/*<a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer"
-                                    className="pf-v5-u-ml-sm">
-                                    {intl.formatMessage(messages.labelsDocumentation)}
-                                    <ExternalLinkAltIcon className="pf-v5-u-ml-xs"/>
-                                </a>*/}
                             </Fragment>
                         }
                         steps={[
