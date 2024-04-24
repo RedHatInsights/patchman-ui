@@ -178,13 +178,6 @@ const PatchSet = () => {
                         bodyContent={
                             intl.formatMessage(messages.templatePopoverBody)
                         }
-                    /*
-                    footerContent={
-                        <a href={TEMPLATES_DOCS_LINK} target="__blank" rel="noopener noreferrer">
-                            {intl.formatMessage(messages.linksLearnMore)} <ExternalLinkAltIcon />
-                        </a>
-                    }
-                    */
                     >
                         <Icon>
                             <OutlinedQuestionCircleIcon
