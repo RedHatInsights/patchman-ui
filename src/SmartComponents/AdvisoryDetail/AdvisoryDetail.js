@@ -12,7 +12,6 @@ import { intl } from '../../Utilities/IntlProvider';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 
 const AdvisoryDetail = () => {
     const dispatch = useDispatch();
@@ -21,8 +20,7 @@ const AdvisoryDetail = () => {
 
     useEffect(()=>{
         advisoryName &&
-        chrome.updateDocumentTitle(`${advisoryName}
-         - ${intl.formatMessage(messages.titlesAdvisories)} ${DEFAULT_PATCH_TITLE}`);
+        chrome.updateDocumentTitle(`${advisoryName} - Advisories - Content | RHEL`);
     }, [chrome, advisoryName]);
 
     const advisoryDetails = useSelector(

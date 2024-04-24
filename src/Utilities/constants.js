@@ -8,7 +8,6 @@ import { subtractDate } from './Helpers';
 export const STATUS_REJECTED = 'rejected';
 export const STATUS_LOADING = 'loading';
 export const STATUS_RESOLVED = 'resolved';
-export const DEFAULT_PATCH_TITLE  = ` - Patch | Red Hat Insights`;
 
 export const defaultCompoundSortValues = {
     operating_system: {

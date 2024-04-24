@@ -24,7 +24,7 @@ import {
     patchSetRowActions, CustomActionsToggle
 } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
-import { DEFAULT_PATCH_TITLE, patchSetDeleteNotifications } from '../../Utilities/constants';
+import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Icon, Popover } from '@patternfly/react-core';
@@ -36,7 +36,7 @@ const PatchSet = () => {
     const IS_SELECTION_ENABLED = false;
     const chrome = useChrome();
     useEffect(()=>{
-        chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesTemplate)} ${DEFAULT_PATCH_TITLE}`);
+        chrome.updateDocumentTitle(`Templates - Patch | RHEL`);
     }, [chrome]);
 
     const dispatch = useDispatch();
