@@ -20,7 +20,7 @@ const AdvisoryDetail = () => {
 
     useEffect(()=>{
         advisoryName &&
-        chrome.updateDocumentTitle(`${advisoryName} - Advisories - Content | RHEL`);
+        chrome.updateDocumentTitle(`${advisoryName} - Advisories - Content | RHEL`, true);
     }, [chrome, advisoryName]);
 
     const advisoryDetails = useSelector(

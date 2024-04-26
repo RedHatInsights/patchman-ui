@@ -36,7 +36,7 @@ const PatchSet = () => {
     const IS_SELECTION_ENABLED = false;
     const chrome = useChrome();
     useEffect(()=>{
-        chrome.updateDocumentTitle(`Templates - Patch | RHEL`);
+        chrome.updateDocumentTitle(`Templates - Patch | RHEL`, true);
     }, [chrome]);
 
     const dispatch = useDispatch();

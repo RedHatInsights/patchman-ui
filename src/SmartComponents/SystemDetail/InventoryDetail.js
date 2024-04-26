@@ -50,7 +50,7 @@ const InventoryDetail = () => {
 
     const chrome = useChrome();
     useEffect(() => {
-        displayName && chrome.updateDocumentTitle(`${displayName} - Systems - Patch | RHEL`);
+        displayName && chrome.updateDocumentTitle(`${displayName} - Systems - Patch | RHEL`, true);
     }, [chrome, displayName]);
 
     const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([

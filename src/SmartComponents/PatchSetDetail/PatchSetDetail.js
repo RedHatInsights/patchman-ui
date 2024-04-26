@@ -132,7 +132,7 @@ const PatchSetDetail = () => {
     const patchSetName = templateDetails.data.attributes.name;
 
     useEffect(() => {
-        patchSetName && chrome.updateDocumentTitle(`${patchSetName} - Templates - Patch | RHEL`);
+        patchSetName && chrome.updateDocumentTitle(`${patchSetName} - Templates - Patch | RHEL`, true);
     }, [chrome, patchSetName]);
 
     const onSelect = useOnSelect(

@@ -23,7 +23,7 @@ const Packages = () => {
     const [firstMount, setFirstMount] = React.useState(true);
     const chrome = useChrome();
     useEffect(()=>{
-        chrome.updateDocumentTitle(`Packages - Content | RHEL`);
+        chrome.updateDocumentTitle(`Packages - Content | RHEL`, true);
     }, [chrome]);
 
     const [searchParams, setSearchParams] = useSearchParams();

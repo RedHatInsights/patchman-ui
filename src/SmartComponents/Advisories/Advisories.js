@@ -34,7 +34,7 @@ const Advisories = () => {
     const chrome = useChrome();
 
     useEffect(()=>{
-        chrome.updateDocumentTitle(`Advisories - Content | RHEL`);
+        chrome.updateDocumentTitle(`Advisories - Content | RHEL`, true);
     }, [chrome]);
 
     const dispatch = useDispatch();

@@ -9,7 +9,7 @@ import SystemsMainContent from './SystemsMainContent';
 const SystemsPage = () => {
     const chrome = useChrome();
     useEffect(()=>{
-        chrome.updateDocumentTitle(`Systems - Patch | RHEL`);
+        chrome.updateDocumentTitle(`Systems - Patch | RHEL`, true);
     }, [chrome, intl]);
 
     return (

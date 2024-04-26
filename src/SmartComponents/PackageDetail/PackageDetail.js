@@ -20,7 +20,7 @@ const PackageDetail = () => {
     const chrome = useChrome();
 
     useEffect(()=>{
-        packageName && chrome.updateDocumentTitle(`${packageName} - Packages - Content | RHEL`);
+        packageName && chrome.updateDocumentTitle(`${packageName} - Packages - Content | RHEL`, true);
     }, [chrome, packageName]);
 
     const packageDetails = useSelector(
