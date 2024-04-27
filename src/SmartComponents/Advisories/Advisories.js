@@ -26,7 +26,6 @@ import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const Advisories = () => {
@@ -35,7 +34,7 @@ const Advisories = () => {
     const chrome = useChrome();
 
     useEffect(()=>{
-        chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesAdvisories)}${DEFAULT_PATCH_TITLE}`);
+        chrome.updateDocumentTitle(`Advisories - Content | RHEL`, true);
     }, [chrome]);
 
     const dispatch = useDispatch();

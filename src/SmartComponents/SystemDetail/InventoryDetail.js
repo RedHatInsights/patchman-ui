@@ -16,7 +16,6 @@ import { usePatchSetState } from '../../Utilities/hooks';
 import { useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 
@@ -51,8 +50,7 @@ const InventoryDetail = () => {
 
     const chrome = useChrome();
     useEffect(() => {
-        displayName && chrome.updateDocumentTitle(`${displayName} - ${intl.formatMessage(messages.titlesSystems)}
-        ${DEFAULT_PATCH_TITLE}`);
+        displayName && chrome.updateDocumentTitle(`${displayName} - Systems - Patch | RHEL`, true);
     }, [chrome, displayName]);
 
     const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([

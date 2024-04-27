@@ -9,7 +9,7 @@ import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
 import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api';
-import { DEFAULT_PATCH_TITLE, packagesListDefaultFilters } from '../../Utilities/constants';
+import { packagesListDefaultFilters } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 import { useOnExport, usePerPageSelect,
@@ -23,7 +23,7 @@ const Packages = () => {
     const [firstMount, setFirstMount] = React.useState(true);
     const chrome = useChrome();
     useEffect(()=>{
-        chrome.updateDocumentTitle(`${intl.formatMessage(messages.titlesPackages)} ${DEFAULT_PATCH_TITLE}`);
+        chrome.updateDocumentTitle(`Packages - Content | RHEL`, true);
     }, [chrome]);
 
     const [searchParams, setSearchParams] = useSearchParams();

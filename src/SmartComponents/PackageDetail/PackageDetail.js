@@ -13,7 +13,6 @@ import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import { DEFAULT_PATCH_TITLE } from '../../Utilities/constants';
 
 const PackageDetail = () => {
     const dispatch = useDispatch();
@@ -21,8 +20,7 @@ const PackageDetail = () => {
     const chrome = useChrome();
 
     useEffect(()=>{
-        packageName && chrome.updateDocumentTitle(`${packageName} - ${intl.formatMessage(messages.titlesPackages)}
-        ${DEFAULT_PATCH_TITLE}`);
+        packageName && chrome.updateDocumentTitle(`${packageName} - Packages - Content | RHEL`, true);
     }, [chrome, packageName]);
 
     const packageDetails = useSelector(

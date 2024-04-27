@@ -33,7 +33,7 @@ import {
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
-import { DEFAULT_PATCH_TITLE, patchSetDeleteNotifications } from '../../Utilities/constants';
+import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import {
     arrayFromObj,
@@ -132,8 +132,7 @@ const PatchSetDetail = () => {
     const patchSetName = templateDetails.data.attributes.name;
 
     useEffect(() => {
-        patchSetName && chrome.updateDocumentTitle(`${patchSetName} - ${intl.formatMessage(messages.titlesTemplate)}
-        ${DEFAULT_PATCH_TITLE}`);
+        patchSetName && chrome.updateDocumentTitle(`${patchSetName} - Templates - Patch | RHEL`, true);
     }, [chrome, patchSetName]);
 
     const onSelect = useOnSelect(
