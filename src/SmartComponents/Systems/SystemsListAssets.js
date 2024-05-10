@@ -96,14 +96,6 @@ export const advisorySystemsColumns = () => [
 
 export const packageSystemsColumns = [
     {
-        key: 'display_name',
-        title: 'Name',
-        composed: ['facts.os_release', 'display_name'],
-        props: {
-            width: 40
-        }
-    },
-    {
         key: 'tags',
         title: 'Tags',
         props: { width: 10, isStatic: true }
