@@ -262,7 +262,6 @@ describe('SystemsTable', () => {
                     ],
                     onSelect: expect.any(Function),
                     toggleProps: {
-                        children: '     1 selected',
                         'aria-label': 'Select',
                         'data-ouia-component-type': 'bulk-select-toggle-button'
                     }
