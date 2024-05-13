@@ -26,10 +26,10 @@ describe('createSystemsSortBy,', () => {
 
     it('should translate updated parameter while having last upload', () => {
         expect(createSystemsSortBy('updated', 'ASC', true)).toEqual(
-            'display_name'
+            'os'
         );
         expect(createSystemsSortBy('updated', 'DESC', true)).toEqual(
-            '-display_name'
+            '-os'
         );
     });
 });
