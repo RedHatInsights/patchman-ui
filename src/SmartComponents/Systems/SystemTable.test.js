@@ -27,9 +27,11 @@ const initStore = (state) => {
     return mockStore(state);
 };
 
+const apply = () => {};
+
 const renderComponent = async (mockedStore) => {
     render(<ComponentWithContext renderOptions={{ store: initStore(mockedStore) }}>
-        <Systems patchSetState={{}}/>
+        <Systems patchSetState={{}} apply={apply}/>
     </ComponentWithContext>);
 
     await waitFor(() => {
@@ -269,5 +271,9 @@ describe('SystemsTable', () => {
             }),
             {}
         );
+    });
+
+    it('should', async () => {
+
     });
 });

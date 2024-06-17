@@ -14,7 +14,8 @@ import {
     arrayFromObj, persistantParams, filterSelectedActiveSystemIDs
 } from '../../Utilities/Helpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport,
-    useRemoveFilter, useRemediationDataProvider, useOnSelect, ID_API_ENDPOINTS
+    useRemoveFilter, useRemediationDataProvider, useOnSelect, ID_API_ENDPOINTS,
+    usePushUrlParams
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
@@ -36,6 +37,8 @@ const SystemsTable = ({
 }) => {
     const store = useStore();
     const inventory = useRef(null);
+
+    const [firstMount, setFirstMount] = useState(true);
 
     const dispatch = useDispatch();
     const [isRemediationLoading, setRemediationLoading] = useState(false);
@@ -114,6 +117,17 @@ const SystemsTable = ({
             inventory?.current?.onRefreshData({ timestamp: Date.now() });
         }
     }, [patchSetState.shouldRefresh]);
+
+    const historyPusher = usePushUrlParams(queryParams);
+
+    useEffect(() => {
+        if (firstMount) {
+            apply(decodedParams);
+            setFirstMount(false);
+        } else {
+            historyPusher();
+        }
+    }, [queryParams]);
 
     const onExport = useOnExport(
         'systems',
