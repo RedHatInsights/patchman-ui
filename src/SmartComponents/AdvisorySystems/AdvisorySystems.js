@@ -8,6 +8,9 @@ import { changeAffectedSystemsParams, clearAdvisorySystemsReducer,
 import {
     decodeQueryparams
 } from '../../Utilities/Helpers';
+import {
+    osParamParser
+} from '../../Utilities/SystemsHelpers';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import { useSearchParams } from 'react-router-dom';
 import { useActivateRemediationModal } from '../Systems/SystemsListAssets';
@@ -20,7 +23,7 @@ const AdvisorySystems = ({ advisoryName }) => {
     const [isRemediationOpen, setRemediationOpen] = useState(false);
     const [remediationIssues, setRemediationIssues] = useState([]);
 
-    const decodedParams = decodeQueryparams('?' + searchParams.toString());
+    const decodedParams = decodeQueryparams('?' + searchParams.toString(), { os: osParamParser });
     const status = useSelector(
         ({ entities }) => entities?.status || {}
     );

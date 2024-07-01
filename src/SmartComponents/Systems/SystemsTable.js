@@ -60,7 +60,23 @@ const SystemsTable = ({
     ]);
 
     const { systemProfile, selectedTags,
-        filter, search, page, perPage, sort } = queryParams;
+        filter: queryParamsFilter, search, page, perPage, sort
+    } = queryParams;
+    const { os: operatingSystemFilter, ...filter } = queryParamsFilter || {};
+    const osFilter = operatingSystemFilter && [{
+        osFilter: operatingSystemFilter.reduce((osFilter, os) => {
+            const [osName, osVersion] = os.split(' ');
+            const [major] = osVersion.split('.');
+
+            return {
+                ...osFilter,
+                [`${osName}-${major}`]: {
+                    ...osFilter[`${osName}-${major}`] || {},
+                    [`${osName}-${major}-${osVersion}`]: true
+                }
+            };
+        }, {})
+    }];
 
     const applyMetadata = (metadata) => {
         dispatch(changeSystemsMetadata(metadata));
@@ -143,6 +159,9 @@ const SystemsTable = ({
             columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, systemsListColumns)}
             showTags
             customFilters={{
+                ...operatingSystemFilter ? {
+                    filters: [...(osFilter || [])]
+                } : {},
                 patchParams: {
                     search,
                     filter,
