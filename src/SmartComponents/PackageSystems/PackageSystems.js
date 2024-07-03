@@ -23,6 +23,9 @@ import {
     arrayFromObj, buildFilterChips, decodeQueryparams, filterRemediatablePackageSystems,
     persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
+import {
+    osParamParser
+} from '../../Utilities/SystemsHelpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter,
     useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
@@ -36,7 +39,7 @@ const PackageSystems = ({ packageName }) => {
     const [packageVersions, setPackageVersions] = React.useState([]);
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const decodedParams = decodeQueryparams('?' + searchParams.toString());
+    const decodedParams = decodeQueryparams('?' + searchParams.toString(), { os: osParamParser });
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const status = useSelector(
         ({ entities }) => entities?.status || {}
