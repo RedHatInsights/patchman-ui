@@ -92,7 +92,7 @@ export const publicDateOptions = [
 export const advisorySeverities = [
     {
         value: 0,
-        label: 'N/A',
+        label: 'None',
         color: 'var(--pf-v5-global--Color--200)'
     },
     {

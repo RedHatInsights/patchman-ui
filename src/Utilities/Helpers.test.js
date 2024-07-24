@@ -57,8 +57,8 @@ describe('Helpers tests', () => {
 
     it.each`
     severity | result
-    ${123}   | ${"N/A"}
-    ${0}     | ${"N/A"}
+    ${123}   | ${"None"}
+    ${0}     | ${"None"}
     ${1}     | ${"Low"}
     ${2}     | ${"Moderate"}
     ${3}     | ${"Important"}

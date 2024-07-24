@@ -34,7 +34,6 @@ exports[`TableView Should open remediation modal 1`] = `
               >
                 <label
                   class="pf-v5-c-check pf-m-standalone"
-                  for="toggle-checkbox"
                 >
                   <input
                     aria-invalid="false"
@@ -653,7 +652,6 @@ exports[`TableView TableView 1`] = `
               >
                 <label
                   class="pf-v5-c-check pf-m-standalone"
-                  for="toggle-checkbox"
                 >
                   <input
                     aria-invalid="false"
@@ -1272,7 +1270,6 @@ exports[`TableView TableView 2`] = `
               >
                 <label
                   class="pf-v5-c-check pf-m-standalone"
-                  for="toggle-checkbox"
                 >
                   <input
                     aria-invalid="false"
@@ -1891,7 +1888,6 @@ exports[`TableView test table props TableView 1`] = `
               >
                 <label
                   class="pf-v5-c-check pf-m-standalone"
-                  for="toggle-checkbox"
                 >
                   <input
                     aria-invalid="false"
@@ -2271,12 +2267,14 @@ exports[`TableView test table props TableView 1`] = `
           class="pf-v5-c-table__th"
           data-key="0"
           data-label=""
+          scope=""
           tabindex="-1"
         />
         <th
           class="pf-v5-c-table__th"
           data-key="1"
           data-label=""
+          scope=""
           tabindex="-1"
         />
       </tr>
