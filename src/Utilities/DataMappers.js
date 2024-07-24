@@ -323,8 +323,8 @@ export const createCvesRows = (rows) => {
                     {
                         title: (<TextContent>
                             <TextListItem component={TextListItemVariants.dd}>
-                                <Icon size="sm" color={severityObject.color}>
-                                    <SecurityIcon />
+                                <Icon size="sm" >
+                                    <SecurityIcon color={severityObject.color}/>
                                 </Icon>
                                 &nbsp;{severityObject.label}
                             </TextListItem>
