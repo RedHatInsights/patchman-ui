@@ -7,7 +7,7 @@ const publishDateFilter = (apply, currentFilter = {}) => {
     let { public_date: currentValue } = currentFilter;
 
     const filterByPublicDate = value => {
-        apply({ filter: { public_date: (value !== 'all' && value) || '' } });
+        apply({ filter: { public_date: value === 'all' ? '' : value } });
     };
 
     return {
@@ -18,7 +18,7 @@ const publishDateFilter = (apply, currentFilter = {}) => {
                 filterByPublicDate(value);
             },
             items: publicDateOptions,
-            value: currentValue,
+            value: currentValue ?? 'all',
             placeholder: intl.formatMessage(messages.labelsFiltersPublishDatePlaceholder)
         }
     };

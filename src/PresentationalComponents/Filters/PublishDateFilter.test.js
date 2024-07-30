@@ -3,10 +3,10 @@ import publishDateFilter from './PublishDateFilter';
 const apply = jest.fn();
 const currentFilter = { public_date: 'filter' };
 
-describe('PublishDateFitler', () => {
-    it('Should set currentValue to zero and init', () => {
+describe('PublishDateFilter', () => {
+    it('Should set currentValue to "all" by default', () => {
         const response = publishDateFilter(apply);
-        expect(response.filterValues.value).toEqual(undefined);
+        expect(response.filterValues.value).toEqual('all');
         expect(response.label).toEqual('Publish date');
         expect(response.type).toEqual('radio');
     });
@@ -17,10 +17,10 @@ describe('PublishDateFitler', () => {
         expect(apply).toHaveBeenCalledWith({ filter: { public_date: 'testValue' } });
     });
 
-    it('Should call apply with empty string ', () => {
+    it('Should call apply with undefined', () => {
         const response = publishDateFilter(apply);
         response.filterValues.onChange();
-        expect(apply).toHaveBeenCalledWith({ filter: { public_date: '' } });
+        expect(apply).toHaveBeenCalledWith({ filter: { public_date: undefined } });
     });
 });
 /* eslint-enable */
