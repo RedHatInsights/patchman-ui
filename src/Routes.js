@@ -103,7 +103,6 @@ const PatchRoutes = () => {
                 appName="dashboard"
                 module="./AppZeroState"
                 scope="dashboard"
-                ErrorComponent={<div>Error state</div>}
                 app="Content_management"
                 customFetchResults={hasSystems}
             />
