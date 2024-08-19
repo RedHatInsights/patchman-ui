@@ -74,7 +74,7 @@ const TemplateDetail = lazy(() =>
 
 const PatchRoutes = () => {
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
-    const [hasSystems, setHasSystems] = useState(true);
+    const [hasSystems, setHasSystems] = useState(null);
     const INVENTORY_TOTAL_FETCH_URL = '/api/inventory/v1/hosts';
     const RHEL_ONLY_FILTER = '?filter[system_profile][operating_system][RHEL][version][gte]=0';
 
@@ -90,7 +90,7 @@ const PatchRoutes = () => {
         }
     }, [hasSystems]);
 
-    return (
+    return !hasSystems ? (
         <Suspense
             fallback={
                 <Bullseye>
@@ -98,40 +98,54 @@ const PatchRoutes = () => {
                 </Bullseye>
             }
         >
-            <Routes>
-                <Route path='*' element={
-                    <AsyncComponent
-                        appId="content_management_zero_state"
-                        appName="dashboard"
-                        module="./AppZeroState"
-                        scope="dashboard"
-                        ErrorComponent={<div>Error state</div>}
-                        app="Content_management"
-                        customFetchResults={ hasSystems }
-                    >
-                        <Routes>
-                            <Route element={<PermissionRoute requiredPermissions={generalPermissions} />}>
-                                <Route path='/advisories' element={<Advisories />} />
-                                <Route path='/advisories/:advisoryId/:inventoryId'
-                                    element={<NavigateToSystem />} />
-                                <Route path='/advisories/:advisoryId' element={<AdvisoryPage />} />
-                                <Route path='/systems' element={<Systems />} />
-                                <Route path='/systems/:inventoryId' element={<InventoryDetail />} />
-                                <Route path='/packages' element={<PackagesPage />} />
-                                <Route path='/packages/:packageName' element={<PackageDetail />} />
-                                <Route path='/packages/:packageName/:inventoryId'
-                                    element={<NavigateToSystem />} />
-                                <Route path='/templates' element={<Templates />} />
-                                <Route path='/templates/:templateName' element={<TemplateDetail />} />
-                                <Route path='*' element={<Navigate to="advisories" />} />
-                            </Route>
-                        </Routes>
-
-                    </AsyncComponent>
-                } />
-
-            </Routes>
+            <AsyncComponent
+                appId="content_management_zero_state"
+                appName="dashboard"
+                module="./AppZeroState"
+                scope="dashboard"
+                ErrorComponent={<div>Error state</div>}
+                app="Content_management"
+                customFetchResults={hasSystems}
+            />
         </Suspense>
+    ) : (
+        <Routes>
+            <Route
+                element={
+                    <PermissionRoute requiredPermissions={generalPermissions} />
+                }
+            >
+                <Route path="/advisories" element={<Advisories />} />
+                <Route
+                    path="/advisories/:advisoryId/:inventoryId"
+                    element={<NavigateToSystem />}
+                />
+                <Route
+                    path="/advisories/:advisoryId"
+                    element={<AdvisoryPage />}
+                />
+                <Route path="/systems" element={<Systems />} />
+                <Route
+                    path="/systems/:inventoryId"
+                    element={<InventoryDetail />}
+                />
+                <Route path="/packages" element={<PackagesPage />} />
+                <Route
+                    path="/packages/:packageName"
+                    element={<PackageDetail />}
+                />
+                <Route
+                    path="/packages/:packageName/:inventoryId"
+                    element={<NavigateToSystem />}
+                />
+                <Route path="/templates" element={<Templates />} />
+                <Route
+                    path="/templates/:templateName"
+                    element={<TemplateDetail />}
+                />
+                <Route path="*" element={<Navigate to="advisories" />} />
+            </Route>
+        </Routes>
     );
 };
 
