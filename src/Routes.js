@@ -1,28 +1,9 @@
 import { Bullseye, Spinner } from '@patternfly/react-core';
-import { NotAuthorized } from '@redhat-cloud-services/frontend-components/NotAuthorized';
-import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { NavigateToSystem } from './Utilities/NavigateToSystem';
-
-const PermissionRoute = ({ requiredPermissions = [] }) => {
-    const { hasAccess, isLoading } = usePermissionsWithContext(requiredPermissions);
-    if (!isLoading) {
-        return hasAccess ? <Outlet /> : <NotAuthorized serviceName="patch" />;
-    } else {
-        return '';
-    }
-};
-
-PermissionRoute.propTypes = {
-    requiredPermissions: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.string
-    ])
-};
 
 const Advisories = lazy(() =>
     import(
@@ -73,8 +54,8 @@ const TemplateDetail = lazy(() =>
 );
 
 const PatchRoutes = () => {
-    const generalPermissions = ['patch:*:*', 'patch:*:read'];
     const [hasSystems, setHasSystems] = useState(null);
+
     const INVENTORY_TOTAL_FETCH_URL = '/api/inventory/v1/hosts';
     const RHEL_ONLY_FILTER = '?filter[system_profile][operating_system][RHEL][version][gte]=0';
 
@@ -109,41 +90,35 @@ const PatchRoutes = () => {
         </Suspense>
     ) : (
         <Routes>
+            <Route path="/advisories" element={<Advisories />} />
             <Route
-                element={
-                    <PermissionRoute requiredPermissions={generalPermissions} />
-                }
-            >
-                <Route path="/advisories" element={<Advisories />} />
-                <Route
-                    path="/advisories/:advisoryId/:inventoryId"
-                    element={<NavigateToSystem />}
-                />
-                <Route
-                    path="/advisories/:advisoryId"
-                    element={<AdvisoryPage />}
-                />
-                <Route path="/systems" element={<Systems />} />
-                <Route
-                    path="/systems/:inventoryId"
-                    element={<InventoryDetail />}
-                />
-                <Route path="/packages" element={<PackagesPage />} />
-                <Route
-                    path="/packages/:packageName"
-                    element={<PackageDetail />}
-                />
-                <Route
-                    path="/packages/:packageName/:inventoryId"
-                    element={<NavigateToSystem />}
-                />
-                <Route path="/templates" element={<Templates />} />
-                <Route
-                    path="/templates/:templateName"
-                    element={<TemplateDetail />}
-                />
-                <Route path="*" element={<Navigate to="advisories" />} />
-            </Route>
+                path="/advisories/:advisoryId/:inventoryId"
+                element={<NavigateToSystem />}
+            />
+            <Route
+                path="/advisories/:advisoryId"
+                element={<AdvisoryPage />}
+            />
+            <Route path="/systems" element={<Systems />} />
+            <Route
+                path="/systems/:inventoryId"
+                element={<InventoryDetail />}
+            />
+            <Route path="/packages" element={<PackagesPage />} />
+            <Route
+                path="/packages/:packageName"
+                element={<PackageDetail />}
+            />
+            <Route
+                path="/packages/:packageName/:inventoryId"
+                element={<NavigateToSystem />}
+            />
+            <Route path="/templates" element={<Templates />} />
+            <Route
+                path="/templates/:templateName"
+                element={<TemplateDetail />}
+            />
+            <Route path="*" element={<Navigate to="advisories" />} />
         </Routes>
     );
 };

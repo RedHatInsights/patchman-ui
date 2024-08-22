@@ -8,6 +8,7 @@ import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/A
 import { mapGlobalFilters } from './Utilities/Helpers';
 import './App.scss';
 import Routes from './Routes';
+import AccessWrapper from './AccessWrapper';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -46,7 +47,9 @@ const App = () => {
         <React.Fragment>
             <NotificationPortal />
             <RBACProvider appName="patch">
-                <Routes />
+                <AccessWrapper>
+                    <Routes />
+                </AccessWrapper>
             </RBACProvider>
         </React.Fragment>
     );
