@@ -90,32 +90,32 @@ const PatchRoutes = () => {
         </Suspense>
     ) : (
         <Routes>
-            <Route path="/advisories" element={<Advisories />} />
+            <Route path="advisories" element={<Advisories />} />
             <Route
-                path="/advisories/:advisoryId/:inventoryId"
+                path="advisories/:advisoryId/:inventoryId"
                 element={<NavigateToSystem />}
             />
             <Route
-                path="/advisories/:advisoryId"
+                path="advisories/:advisoryId"
                 element={<AdvisoryPage />}
             />
-            <Route path="/systems" element={<Systems />} />
+            <Route path="systems" element={<Systems />} />
             <Route
-                path="/systems/:inventoryId"
+                path="systems/:inventoryId"
                 element={<InventoryDetail />}
             />
-            <Route path="/packages" element={<PackagesPage />} />
+            <Route path="packages" element={<PackagesPage />} />
             <Route
-                path="/packages/:packageName"
+                path="packages/:packageName"
                 element={<PackageDetail />}
             />
             <Route
-                path="/packages/:packageName/:inventoryId"
+                path="packages/:packageName/:inventoryId"
                 element={<NavigateToSystem />}
             />
-            <Route path="/templates" element={<Templates />} />
+            <Route path="templates" element={<Templates />} />
             <Route
-                path="/templates/:templateName"
+                path="templates/:templateName"
                 element={<TemplateDetail />}
             />
             <Route path="*" element={<Navigate to="advisories" />} />
