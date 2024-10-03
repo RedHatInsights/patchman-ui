@@ -65,7 +65,7 @@
     "@babel/preset-flow": "^7.21.4",
     "@babel/preset-react": "^7.18.6",
     "@babel/runtime": "^7.21.0",
-    "@cypress/code-coverage": "^3.12.26",
+    "@cypress/code-coverage": "^3.12.37",
     "@cypress/react18": "^2.0.0",
     "@formatjs/cli": "^6.2.9",
     "@patternfly/patternfly": "^5.2.0",
