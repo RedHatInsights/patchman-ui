@@ -1,27 +1,31 @@
-const { resolve } = require('path');
+const path = require("path");
+const { dependencies, insights } = require("./package.json");
+
+const moduleName = insights.appname.replace(/-(\w)/g, (_, match) =>
+    match.toUpperCase()
+);
+
+const srcDir = path.resolve(__dirname, "./src");
 
 module.exports = {
-    appUrl: '/insights/patch',
-    debug: true,
-    useProxy: process.env.PROXY === 'true',
-    proxyVerbose: true,
-    plugins: [],
-    ...(process.env.HOT ? { hotReload: process.env.HOT === 'true' } : { hotReload: true }),
-    ...(process.env.port ? { port: parseInt(process.env.port) } : {}),
+    appName: moduleName,
+    appUrl: "/insights/patch",
+    useProxy: process.env.PROXY === "true",
     moduleFederation: {
+        moduleName,
+        exposes: {
+            "./RootApp": path.resolve(__dirname, "./src/AppEntry"),
+            "./SystemDetail": path.resolve(__dirname, "./src/index.js"),
+        },
         shared: [
             {
-                'react-router-dom': {
+                "react-router-dom": {
                     singleton: true,
                     import: false,
-                    version: '^6.8.1',
-                    requiredVersion: '>=6.0.0 <7.0.0'
-                }
-            }
+                    version: dependencies["react-router-dom"],
+                    requiredVersion: ">=6.0.0 <7.0.0",
+                },
+            },
         ],
-        exposes: {
-            './RootApp': resolve(__dirname, './src/AppEntry'),
-            './SystemDetail': resolve(__dirname, './src/index.js')
-        }
-    }
+    },
 };
