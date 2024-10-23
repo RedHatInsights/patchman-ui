@@ -43,7 +43,7 @@ exports[`Header component should render with 1 breadcrumb item and last is activ
           class="pf-v5-l-flex pf-m-justify-content-space-between"
         >
           <div
-            class=""
+            class="pf-v5-u-flex-grow-1"
           >
             <h1
               class="pf-v5-c-title pf-m-2xl"
@@ -137,7 +137,7 @@ exports[`Header component should render with 2 breadcrumb items and last is acti
           class="pf-v5-l-flex pf-m-justify-content-space-between"
         >
           <div
-            class=""
+            class="pf-v5-u-flex-grow-1"
           >
             <h1
               class="pf-v5-c-title pf-m-2xl"
@@ -259,7 +259,7 @@ exports[`Header component should render with 3 breadcrumb items and last is acti
           class="pf-v5-l-flex pf-m-justify-content-space-between"
         >
           <div
-            class=""
+            class="pf-v5-u-flex-grow-1"
           >
             <h1
               class="pf-v5-c-title pf-m-2xl"
@@ -313,7 +313,7 @@ exports[`Header component should render with empty breadcrumb 1`] = `
           class="pf-v5-l-flex pf-m-justify-content-space-between"
         >
           <div
-            class=""
+            class="pf-v5-u-flex-grow-1"
           >
             <h1
               class="pf-v5-c-title pf-m-2xl"
@@ -355,7 +355,7 @@ exports[`Header component should render with header Hello world 1`] = `
           class="pf-v5-l-flex pf-m-justify-content-space-between"
         >
           <div
-            class=""
+            class="pf-v5-u-flex-grow-1"
           >
             <h1
               class="pf-v5-c-title pf-m-2xl"
@@ -399,7 +399,7 @@ exports[`Header component should render with header as empty string 1`] = `
           class="pf-v5-l-flex pf-m-justify-content-space-between"
         >
           <div
-            class=""
+            class="pf-v5-u-flex-grow-1"
           >
             <h1
               class="pf-v5-c-title pf-m-2xl"
@@ -459,7 +459,7 @@ exports[`Header component should render without to attribute 1`] = `
           class="pf-v5-l-flex pf-m-justify-content-space-between"
         >
           <div
-            class=""
+            class="pf-v5-u-flex-grow-1"
           >
             <h1
               class="pf-v5-c-title pf-m-2xl"
