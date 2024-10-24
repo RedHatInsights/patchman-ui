@@ -25,7 +25,7 @@
     "react-dom": "^18.2.0",
     "react-lines-ellipsis": "^0.15.3",
     "react-redux": "^7.2.9",
-    "react-router-dom": "^6.11.1",
+    "react-router-dom": "^6.26.1",
     "redux": "^4.2.1",
     "redux-promise-middleware": "^6.1.2"
   },
