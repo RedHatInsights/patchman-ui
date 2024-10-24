@@ -31,13 +31,15 @@ export const systemsListColumns = () => [
         }
     },
     {
-        key: 'baseline_name',
+        key: 'template_name',
         title: 'Template',
         renderFunc: (value, _, row) =>
             row.satellite_managed
                 ? <ManagedBySatelliteCell />
                 : value
-                    ? <InsightsLink to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</InsightsLink>
+                    ? <InsightsLink app="content" to={{ pathname: `/templates/${row.template_uuid}/details` }}>
+                        {value}
+                    </InsightsLink>
                     : 'No template',
         props: {
             width: 5
@@ -71,13 +73,15 @@ export const advisorySystemsColumns = () => [
         }
     },
     {
-        key: 'baseline_name',
+        key: 'template_name',
         title: 'Template',
         renderFunc: (value, _, row) =>
             row.satellite_managed
                 ? <ManagedBySatelliteCell />
                 : value
-                    ? <InsightsLink to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</InsightsLink>
+                    ? <InsightsLink app="content" to={{ pathname: `/templates/${row.template_uuid}/details` }}>
+                        {value}
+                    </InsightsLink>
                     : 'No template',
         props: {
             width: 5
@@ -104,13 +108,15 @@ export const packageSystemsColumns = [
         }
     },
     {
-        key: 'baseline_name',
+        key: 'template_name',
         title: 'Template',
         renderFunc: (value, _, row) =>
             row.satellite_managed
                 ? <ManagedBySatelliteCell />
                 : value
-                    ? <InsightsLink to={{ pathname: `/templates/${row.baseline_id}` }}>{value}</InsightsLink>
+                    ?  <InsightsLink app="content" to={{ pathname: `/templates/${row.template_uuid}/details` }}>
+                        {value}
+                    </InsightsLink>
                     : 'No template',
         props: {
             width: 5
@@ -147,10 +153,10 @@ const isRemediationDisabled = (row) => {
     return (applicableAdvisories && applicableAdvisories.every(typeSum => typeSum === 0)) || (status === 'Applicable');
 };
 
-const isPatchSetRemovalDisabled = (row) => {
-    const { baseline_name: baselineName } = row || {};
-    return !baselineName || (typeof baselineName === 'string' && baselineName === '');
-};
+// const isPatchSetRemovalDisabled = (row) => {
+//     const { template_name: templateName } = row || {};
+//     return !templateName || (typeof templateName === 'string' && templateName === '');
+// };
 
 export const useActivateRemediationModal = (setRemediationIssues, setRemediationOpen) => {
     const { fetchBatched } = useFetchBatched();
@@ -190,10 +196,10 @@ export const useActivateRemediationModal = (setRemediationIssues, setRemediation
 
 export const systemsRowActions = (
     activateRemediationModal,
-    showTemplateAssignSystemsModal,
-    openUnassignSystemsModal,
-    row,
-    hasTemplateAccess
+    // showTemplateAssignSystemsModal,
+    // openUnassignSystemsModal,
+    row
+    // hasTemplateAccess
 ) => {
     return [
         {
@@ -202,22 +208,22 @@ export const systemsRowActions = (
             onClick: (event, rowId, rowData) => {
                 activateRemediationModal(rowData);
             }
-        },
-        ...(showTemplateAssignSystemsModal ? [{
-            title: 'Assign to a template',
-            isDisabled: !hasTemplateAccess || row.satellite_managed,
-            onClick: (event, rowId, rowData) => {
-                showTemplateAssignSystemsModal({ [rowData.id]: true });
-            }
-        },
-        {
-            title: 'Remove from a template',
-            isDisabled: !hasTemplateAccess || isPatchSetRemovalDisabled(row) || row.satellite_managed,
-            onClick: (event, rowId, rowData) => {
-                openUnassignSystemsModal([rowData.id]);
-            }
         }
-        ] : [])
+        // ...(showTemplateAssignSystemsModal ? [{
+        //     title: 'Assign to a template',
+        //     isDisabled: !hasTemplateAccess || row.satellite_managed,
+        //     onClick: (event, rowId, rowData) => {
+        //         showTemplateAssignSystemsModal({ [rowData.id]: true });
+        //     }
+        // },
+        // {
+        //     title: 'Remove from a template',
+        //     isDisabled: !hasTemplateAccess || isPatchSetRemovalDisabled(row) || row.satellite_managed,
+        //     onClick: (event, rowId, rowData) => {
+        //         openUnassignSystemsModal([rowData.id]);
+        //     }
+        // }
+        // ] : [])
     ];
 };
 
