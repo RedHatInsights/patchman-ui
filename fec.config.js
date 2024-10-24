@@ -1,27 +1,25 @@
-const { resolve } = require('path');
+const path = require('path');
+const { dependencies, insights } = require('./package.json');
 
 module.exports = {
+    appName: insights.appname,
     appUrl: '/insights/patch',
-    debug: true,
     useProxy: process.env.PROXY === 'true',
-    proxyVerbose: true,
-    plugins: [],
-    ...(process.env.HOT ? { hotReload: process.env.HOT === 'true' } : { hotReload: true }),
-    ...(process.env.port ? { port: parseInt(process.env.port) } : {}),
     moduleFederation: {
+        moduleName: insights.appname,
+        exposes: {
+            './RootApp': path.resolve(__dirname, './src/AppEntry'),
+            './SystemDetail': path.resolve(__dirname, './src/index.js')
+        },
         shared: [
             {
                 'react-router-dom': {
                     singleton: true,
                     import: false,
-                    version: '^6.8.1',
+                    version: dependencies['react-router-dom'],
                     requiredVersion: '>=6.0.0 <7.0.0'
                 }
             }
-        ],
-        exposes: {
-            './RootApp': resolve(__dirname, './src/AppEntry'),
-            './SystemDetail': resolve(__dirname, './src/index.js')
-        }
+        ]
     }
 };

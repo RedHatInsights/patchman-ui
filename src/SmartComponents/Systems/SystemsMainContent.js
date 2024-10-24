@@ -43,7 +43,7 @@ const SystemsMainContent = () => {
     }, []);
 
     const {
-        patchSetState, setPatchSetState, openUnassignSystemsModal, openAssignSystemsModal
+        patchSetState, setPatchSetState// openUnassignSystemsModal, openAssignSystemsModal
     } = usePatchSetState(selectedRows);
 
     const activateRemediationModal = useActivateRemediationModal(
@@ -75,8 +75,8 @@ const SystemsMainContent = () => {
                 <SystemsTable
                     apply={apply}
                     patchSetState={patchSetState}
-                    openAssignSystemsModal={openAssignSystemsModal}
-                    openUnassignSystemsModal={openUnassignSystemsModal}
+                    // openAssignSystemsModal={openAssignSystemsModal}
+                    // openUnassignSystemsModal={openUnassignSystemsModal}
                     setSearchParams={setSearchParams}
                     activateRemediationModal={activateRemediationModal}
                     decodedParams={decodeQueryparams}

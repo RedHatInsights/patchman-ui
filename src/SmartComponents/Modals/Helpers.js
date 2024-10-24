@@ -26,7 +26,7 @@ const filterChosenSystems = (urlFilter, systemsIDs, fetchBatched, totalItems) =>
 };
 
 export const filterSystemsWithoutSets = (systemsIDs, fetchBatched, totalItems) =>  {
-    const urlFilter = { 'filter[baseline_name]': 'neq:' };
+    const urlFilter = { 'filter[template_name]': 'neq:' };
     return filterChosenSystems(urlFilter, systemsIDs, fetchBatched, totalItems);
 };
 

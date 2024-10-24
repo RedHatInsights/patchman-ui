@@ -25,7 +25,7 @@ export const reviewSystemColumns = [{
     transforms: [sortable]
 },
 {
-    key: 'baseline_name',
+    key: 'template_name',
     title: 'Template',
     props: {
         width: 20

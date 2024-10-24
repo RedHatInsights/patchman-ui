@@ -64,7 +64,7 @@ exports[`AdvisoryDetail.js Should match the snapshots 1`] = `
           class="pf-v5-l-flex pf-m-justify-content-space-between"
         >
           <div
-            class=""
+            class="pf-v5-u-flex-grow-1"
           >
             <h1
               class="pf-v5-c-title pf-m-2xl"

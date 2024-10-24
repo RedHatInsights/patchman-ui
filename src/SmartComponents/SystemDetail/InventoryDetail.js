@@ -17,14 +17,13 @@ import { useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
-import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 
 const InventoryDetail = () => {
     const { inventoryId } = useParams();
     const store = useStore();
     const dispatch = useDispatch();
 
-    const { hasThirdPartyRepo, satelliteManaged, patchSetName, patchSetId } = useSelector(
+    const { hasThirdPartyRepo, satelliteManaged, patchSetName, templateUUID } = useSelector(
         ({ SystemDetailStore }) => SystemDetailStore
     );
 
@@ -32,7 +31,7 @@ const InventoryDetail = () => {
         ({ entityDetails }) => entityDetails?.entity ?? {}
     );
 
-    const { patchSetState, setPatchSetState, openAssignSystemsModal, openUnassignSystemsModal } = usePatchSetState();
+    const { patchSetState, setPatchSetState /*,openAssignSystemsModal, openUnassignSystemsModal */ } = usePatchSetState();
 
     useEffect(() => {
         dispatch(fetchSystemDetailsAction(inventoryId));
@@ -53,10 +52,10 @@ const InventoryDetail = () => {
         displayName && chrome.updateDocumentTitle(`${displayName} - Systems - Patch | RHEL`, true);
     }, [chrome, displayName]);
 
-    const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([
-        'patch:*:*',
-        'patch:template:write'
-    ]);
+    // const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([
+    //     'patch:*:*',
+    //     'patch:template:write'
+    // ]);
 
     return (
         <DetailWrapper
@@ -89,18 +88,19 @@ const InventoryDetail = () => {
                     showTags
                     inventoryId={inventoryId}
                     actions={[
-                        {
-                            title: intl.formatMessage(messages.titlesTemplateAssign),
-                            key: 'assign-to-template',
-                            isDisabled: !hasTemplateAccess || satelliteManaged,
-                            onClick: () => openAssignSystemsModal({ [inventoryId]: true })
-                        },
-                        {
-                            title: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
-                            key: 'remove-from-template',
-                            isDisabled: !hasTemplateAccess || !patchSetName || satelliteManaged,
-                            onClick: () => openUnassignSystemsModal([inventoryId])
-                        }]}
+                        // {
+                        //     title: intl.formatMessage(messages.titlesTemplateAssign),
+                        //     key: 'assign-to-template',
+                        //     isDisabled: !hasTemplateAccess || satelliteManaged,
+                        //     onClick: () => openAssignSystemsModal({ [inventoryId]: true })
+                        // },
+                        // {
+                        //     title: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
+                        //     key: 'remove-from-template',
+                        //     isDisabled: !hasTemplateAccess || !patchSetName || satelliteManaged,
+                        //     onClick: () => openUnassignSystemsModal([inventoryId])
+                        // }
+                    ]}
                     //FIXME: remove this prop after inventory detail gets rid of activeApps in redux
                     appList={[]}
                 >
@@ -108,8 +108,8 @@ const InventoryDetail = () => {
                         {patchSetName && <GridItem>
                             <TextContent>
                                 <Text>
-                                    {intl.formatMessage(messages.labelsColumnsTemplate)}:
-                                    <InsightsLink to={`/templates/${patchSetId}`} className="pf-v5-u-ml-xs">
+                                    {intl.formatMessage(messages.labelsColumnsTemplate)}:{' '}
+                                    <InsightsLink app="content" to={{ pathname: `/templates/${templateUUID}/details` }}>
                                         {patchSetName}
                                     </InsightsLink>
                                 </Text>
