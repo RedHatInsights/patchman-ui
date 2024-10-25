@@ -121,6 +121,14 @@ const PatchRoutes = () => {
                                 <Route path='/packages/:packageName' element={<PackageDetail />} />
                                 <Route path='/packages/:packageName/:inventoryId'
                                     element={<NavigateToSystem />} />
+                                <Route path='/templates' >
+                                    <Route path='' element={
+                                        <Navigate relative="route" to={'/insights/content/templates'} replace />
+                                    } />
+                                    <Route path='*' element={
+                                        <Navigate relative="route" to={'/insights/content/templates'} replace /> }
+                                    />
+                                </Route>
                                 {/* <Route path='/templates' element={<Templates />} />
                                 <Route path='/templates/:templateName' element={<TemplateDetail />} /> */}
                                 <Route path='*' element={<Navigate to="advisories" />} />
