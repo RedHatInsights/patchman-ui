@@ -60,17 +60,17 @@ const PackageDetail = lazy(() =>
     )
 );
 
-const Templates = lazy(() =>
-    import(
-        /* webpackChunkName: "Templates" */ './SmartComponents/PatchSet/PatchSet'
-    )
-);
+// const Templates = lazy(() =>
+//     import(
+//         /* webpackChunkName: "Templates" */ './SmartComponents/PatchSet/PatchSet'
+//     )
+// );
 
-const TemplateDetail = lazy(() =>
-    import(
-        /* webpackChunkName: "TemplateDetail" */ './SmartComponents/PatchSetDetail/PatchSetDetail'
-    )
-);
+// const TemplateDetail = lazy(() =>
+//     import(
+//         /* webpackChunkName: "TemplateDetail" */ './SmartComponents/PatchSetDetail/PatchSetDetail'
+//     )
+// );
 
 const PatchRoutes = () => {
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
@@ -121,8 +121,16 @@ const PatchRoutes = () => {
                                 <Route path='/packages/:packageName' element={<PackageDetail />} />
                                 <Route path='/packages/:packageName/:inventoryId'
                                     element={<NavigateToSystem />} />
-                                <Route path='/templates' element={<Templates />} />
-                                <Route path='/templates/:templateName' element={<TemplateDetail />} />
+                                <Route path='/templates' >
+                                    <Route path='' element={
+                                        <Navigate relative="route" to={'/insights/content/templates'} replace />
+                                    } />
+                                    <Route path='*' element={
+                                        <Navigate relative="route" to={'/insights/content/templates'} replace /> }
+                                    />
+                                </Route>
+                                {/* <Route path='/templates' element={<Templates />} />
+                                <Route path='/templates/:templateName' element={<TemplateDetail />} /> */}
                                 <Route path='*' element={<Navigate to="advisories" />} />
                             </Route>
                         </Routes>
