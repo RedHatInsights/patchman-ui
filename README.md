@@ -21,7 +21,7 @@ Patch is one of the applications for console.redhat.com. It allows users to disp
 
 ## Testing
 [Cypress](https://cypress.io/) and [Jest](https://jestjs.io/) are used as the testing frameworks
-- ```npm run test``` - run all Jest tests
+- ```npm run test``` - run all Jest tests.
 - ```npm run test:ct``` - open Cypress in the component testing mode.
 - ```npm run lint``` - run linter
 - ```npm run coverage``` - generate lect coverage information after running the tests
