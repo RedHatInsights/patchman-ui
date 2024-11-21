@@ -25,6 +25,7 @@ import { advisorySystemsColumns, systemsRowActions } from '../Systems/SystemsLis
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
+import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const AdvisorySystemsTable = ({
     advisoryName,
@@ -35,6 +36,7 @@ const AdvisorySystemsTable = ({
 }) => {
     const dispatch = useDispatch();
     const store = useStore();
+    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const totalItems = useSelector(
@@ -101,7 +103,7 @@ const AdvisorySystemsTable = ({
             initialLoading
             ignoreRefresh
             hideFilters={{ all: true, tags: false, operatingSystem: false }}
-            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, advisorySystemsColumns)}
+            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, ()=>advisorySystemsColumns(templateUpdateEnabled))}
             showTags
             customFilters={{
                 patchParams: {
@@ -118,14 +120,14 @@ const AdvisorySystemsTable = ({
                 store.replaceReducer(combineReducers({
                     ...defaultReducers,
                     ...mergeWithEntities(
-                        inventoryEntitiesReducer(advisorySystemsColumns(false), modifyAdvisorySystems),
+                        inventoryEntitiesReducer(advisorySystemsColumns(templateUpdateEnabled), modifyAdvisorySystems),
                         persistantParams({ page, perPage, sort, search }, decodedParams)
                     )
                 }));
             }}
             getEntities={getEntites}
             tableProps={{
-                actionResolver: (row) => systemsRowActions(activateRemediationModal, row),
+                actionResolver: (row) => systemsRowActions(activateRemediationModal, undefined, undefined, row),
                 canSelectAll: false,
                 variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
             }}

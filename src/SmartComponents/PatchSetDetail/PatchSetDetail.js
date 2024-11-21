@@ -61,6 +61,7 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/hooks';
 import { systemSelectAction } from '../../store/Actions/Actions';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const PatchSetDetail = () => {
     const intl = useIntl();
@@ -68,6 +69,7 @@ const PatchSetDetail = () => {
     const chrome = useChrome();
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
+    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const store = useStore();
     const inventory = useRef(null);
@@ -399,7 +401,8 @@ const PatchSetDetail = () => {
                                         store.replaceReducer(combineReducers({
                                             ...defaultReducers,
                                             ...mergeWithEntities(
-                                                inventoryEntitiesReducer(systemsListColumns(true), modifyTemplateDetailSystems),
+                                                inventoryEntitiesReducer(systemsListColumns(templateUpdateEnabled),
+                                                    modifyTemplateDetailSystems),
                                                 persistantParams({ page, perPage, sort, search }, decodedParams)
                                             )
                                         }));

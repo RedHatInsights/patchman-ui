@@ -23,7 +23,7 @@ describe('SystemListAssets.js', () => {
     });
 
     it('Should call createUpgradableColumn on Status renderFunc with correct params', () => {
-        packageSystemsColumns[4].renderFunc('testValue');
+        packageSystemsColumns()[4].renderFunc('testValue');
         expect(createUpgradableColumn).toHaveBeenCalledWith('testValue');
     });
 
@@ -67,7 +67,7 @@ describe('SystemListAssets.js', () => {
         });
         it('Should disable "Apply all applicable advisories" action when there is no applicable advisories ', () => {
             const testRow = { applicable_advisories: [0, 0, 0, 0] };
-            const actions = systemsRowActions(null, testRow);
+            const actions = systemsRowActions(null, null, null, testRow);
             expect(actions).toEqual(
                 [{ isDisabled: true, onClick: expect.any(Function), title: 'Apply all applicable advisories' }]
             );

@@ -7,12 +7,14 @@ import messages from '../../Messages';
 import { useUnassignSystemsHook } from './useUnassignSystemsHook';
 import { renderUnassignModalMessages, filterSystemsWithoutSets } from './Helpers';
 import { useFetchBatched } from '../../Utilities/hooks';
+import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSystemsModalOpen, intl, totalItems }) => {
     const { systemsIDs, isUnassignSystemsModalOpen } = unassignSystemsModalState;
     const [systemsWithPatchSet, setSystemWithPatchSet] = useState([]);
     const [systemsLoading, setSystemsLoading] = useState(true);
     const { fetchBatched } = useFetchBatched();
+    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const handleModalToggle = (shouldRefresh) => {
         setUnassignSystemsModalOpen({
@@ -34,7 +36,8 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
         filterSystemsWithoutSets(
             systemsIDs,
             fetchBatched,
-            totalItems
+            totalItems,
+            templateUpdateEnabled
         )
         .then(result => {
             setSystemWithPatchSet(result);

@@ -199,6 +199,7 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
                     osName: row.os?.osName || row.os || 'N/A',
                     rhsm: row.rhsm
                 },
+                baseline_name: row.baseline_name, //ToBeDeprecated
                 template_name: row.template_name,
                 template_uuid: row.template_uuid,
                 baseline_id: row.baseline_id,
@@ -370,7 +371,7 @@ export const createSystemsRowsReview = (rows, selectedRows) => {
                     {
                         title: attributes.satellite_managed
                             ? <ManagedBySatelliteCell />
-                            : attributes.template_name || 'No template'
+                            : attributes.baseline_name || 'No template'
                     },
                     {
                         title: processDate(attributes.last_upload)
