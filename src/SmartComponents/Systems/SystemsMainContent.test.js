@@ -134,17 +134,17 @@ describe('SystemsTable', () => {
         ).toBeTruthy();
     });
 
-    // it('Should display assign systems modal', async () => {
-    //     renderComponent(mockState);
-    //     await user.click(screen.getByTestId('open-assign-modal'));
-    //     await waitFor(() => expect(screen.getByTestId('assign-systems-modal')).toBeVisible());
-    // });
+    it('Should display assign systems modal', async () => {
+        renderComponent(mockState);
+        await user.click(screen.getByTestId('open-assign-modal'));
+        await waitFor(() => expect(screen.getByTestId('assign-systems-modal')).toBeVisible());
+    });
 
-    // it('Should display unassign systems modal', async () => {
-    //     renderComponent(mockState);
-    //     await user.click(screen.getByTestId('open-unasssign-modal'));
-    //     await waitFor(() => expect(screen.getByTestId('unassign-systems-modal')).toBeVisible());
-    // });
+    it('Should display unassign systems modal', async () => {
+        renderComponent(mockState);
+        await user.click(screen.getByTestId('open-unasssign-modal'));
+        await waitFor(() => expect(screen.getByTestId('unassign-systems-modal')).toBeVisible());
+    });
 
     it('Should display remediation wizard', async () => {
         renderComponent(mockState);

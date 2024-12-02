@@ -181,36 +181,36 @@ describe('SystemsTable', () => {
         ));
     });
 
-    // it('should provide actions config', async () => {
-    //     await renderComponent(mockState);
-    //     expect(InventoryTable).toHaveBeenCalledWith(
-    //         expect.objectContaining({
-    //             actionsConfig: {
-    //                 actions: [
-    //                     //Remdiation button
-    //                     expect.anything(),
-    //                     {
-    //                         key: 'assign-multiple-systems',
-    //                         label: 'Assign to a template',
-    //                         onClick: expect.any(Function),
-    //                         props: {
-    //                             isDisabled: true
-    //                         }
-    //                     },
-    //                     {
-    //                         key: 'remove-multiple-systems',
-    //                         label: 'Remove from a template',
-    //                         onClick: expect.any(Function),
-    //                         props: {
-    //                             isDisabled: true
-    //                         }
-    //                     }
-    //                 ]
-    //             }
-    //         }),
-    //         {}
-    //     );
-    // });
+    it('should provide actions config', async () => {
+        await renderComponent(mockState);
+        expect(InventoryTable).toHaveBeenCalledWith(
+            expect.objectContaining({
+                actionsConfig: {
+                    actions: [
+                        //Remdiation button
+                        expect.anything(),
+                        {
+                            key: 'assign-multiple-systems',
+                            label: 'Assign to a template',
+                            onClick: expect.any(Function),
+                            props: {
+                                isDisabled: true
+                            }
+                        },
+                        {
+                            key: 'remove-multiple-systems',
+                            label: 'Remove from a template',
+                            onClick: expect.any(Function),
+                            props: {
+                                isDisabled: true
+                            }
+                        }
+                    ]
+                }
+            }),
+            {}
+        );
+    });
 
     it('should provide activeFilters config', async () => {
         await renderComponent(mockState);

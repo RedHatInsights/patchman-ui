@@ -10,8 +10,9 @@ export const SystemDetailStore = (state = initialState, { type, payload }) => {
                 ...state,
                 hasThirdPartyRepo: payload.data?.attributes.third_party,
                 satelliteManaged: payload.data?.attributes.satellite_managed,
-                patchSetName: payload.data?.attributes.template_name,
+                patchSetName: payload.data?.attributes.baseline_name,
                 patchSetId: payload.data?.attributes.baseline_id,
+                templateName: payload.data?.attributes.template_name,
                 templateUUID: payload.data?.attributes.template_uuid
             };
         case 'LOAD_ENTITY_PENDING':

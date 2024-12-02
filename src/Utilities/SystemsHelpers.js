@@ -87,7 +87,7 @@ export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
         if (!hasLastUpload) {
             orderBy = 'last_upload';
         } else {
-            orderBy = packageSystemsColumns[0].key;
+            orderBy = packageSystemsColumns()[0].key;
         }
     } else if (orderBy === 'group_name') {
         orderBy = 'groups'; // patch API service uses 'groups' instead of 'group_name' sort parameter

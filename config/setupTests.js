@@ -55,8 +55,6 @@ jest.mock('../src/Utilities/hooks/useRemediationDataProvider', () => ({
     useRemediationDataProvider: () => () => jest.fn()
 }));
 
-jest.mock('../src/Utilities/hooks/useFeatureFlag', () => ({
-    useFeatureFlag: () => () => jest.fn()
-}));
+jest.mock('../src/Utilities/hooks/useFeatureFlag', () => jest.fn());
 
 global.React = React;

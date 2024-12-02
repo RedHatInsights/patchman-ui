@@ -32,8 +32,11 @@ import { intl } from '../../Utilities/IntlProvider';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { packageSystemsColumns } from '../Systems/SystemsListAssets';
 import { combineReducers } from 'redux';
+import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const PackageSystems = ({ packageName }) => {
+    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
+
     const dispatch = useDispatch();
     const store = useStore();
     const [packageVersions, setPackageVersions] = React.useState([]);
@@ -156,7 +159,7 @@ const PackageSystems = ({ packageName }) => {
                     autoRefresh
                     initialLoading
                     hideFilters={{ all: true, tags: false, operatingSystem: false }}
-                    columns={packageSystemsColumns}
+                    columns={packageSystemsColumns(templateUpdateEnabled)}
                     showTags
                     getEntities={getEntites}
                     customFilters={{
@@ -174,7 +177,7 @@ const PackageSystems = ({ packageName }) => {
                         store.replaceReducer(combineReducers({
                             ...defaultReducers,
                             ...mergeWithEntities(
-                                inventoryEntitiesReducer(packageSystemsColumns, modifyPackageSystems),
+                                inventoryEntitiesReducer(packageSystemsColumns(templateUpdateEnabled), modifyPackageSystems),
                                 persistantParams({ page, perPage, sort, search }, decodedParams)
                             )
                         }));
