@@ -1,5 +1,5 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
@@ -27,6 +27,9 @@ import { clearNotifications } from '@redhat-cloud-services/frontend-components-n
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
+import { Flex, Icon, Popover, Text, TextContent, TextVariants } from '@patternfly/react-core';
+import ExternalLink from '../../PresentationalComponents/Snippets/ExternalLink';
 
 const Advisories = () => {
     const navigate = useNavigate();
@@ -128,7 +131,42 @@ const Advisories = () => {
 
     return (
         <React.Fragment>
-            <Header title={intl.formatMessage(messages.titlesPatchAdvisories)} headerOUIA={'advisories'} />
+            <Header
+                title={
+                    <Fragment>
+                        {intl.formatMessage(messages.titlesPatchAdvisories)}
+                        <Popover
+                            headerContent="About advisories"
+                            bodyContent={
+                                <TextContent>
+                                    <Flex direction={{ default: 'column' }}>
+                                        <Text component={TextVariants.p}>
+                                            Advisories allow to see all of the applicable Red Hat and Extra Packages for
+                                            Enterprise Linux (EPEL) advisories for your RHEL systems checking into Insights.
+                                        </Text>
+                                        <Text component={TextVariants.p}>
+                                            <ExternalLink
+                                                link={'https://docs.redhat.com/en/documentation/red_hat_insights/1-latest'
+                                                + '/html/system_patching_using_remediation_playbooks'}
+                                                text="System Patching Using Remediation Playbooks"
+                                            />
+                                        </Text>
+                                    </Flex>
+                                </TextContent>
+                            }
+                        >
+                            <Icon>
+                                <OutlinedQuestionCircleIcon
+                                    className="pf-v5-u-ml-sm"
+                                    color="var(--pf-v5-global--secondary-color--100)"
+                                    style={{ verticalAlign: '0', fontSize: 16, cursor: 'pointer' }}
+                                />
+                            </Icon>
+                        </Popover>
+                    </Fragment>
+                }
+                headerOUIA={'advisories'}
+            />
             <AdvisoriesStatusReport/>
             <Main>
                 <TableView
