@@ -18,6 +18,7 @@ import { intl } from '../../Utilities/IntlProvider';
 import TableFooter from './TableFooter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { Skeleton, ToolbarItem } from '@patternfly/react-core';
+import { ColumnManagementModal } from '@patternfly/react-component-groups';
 
 const TableView = ({
     columns,
@@ -48,9 +49,9 @@ const TableView = ({
     ToolbarButton,
     actionsConfig,
     isRemediationLoading,
-    actionsToggle
+    actionsToggle,
+    hasColumnManagement
 }) => {
-
     const [page, perPage] = React.useMemo(
         () => convertLimitOffset(metadata.limit, metadata.offset),
         [metadata.limit, metadata.offset]
@@ -61,92 +62,114 @@ const TableView = ({
     const { code, hasError, isLoading } = status;
     const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse);
 
+    const [isColumnMgmtModalOpen, setColumnMgmtModalOpen] = React.useState(false);
+    const [appliedColumns, setAppliedColumns] = React.useState(columns);
+
+    const shownColumns = hasColumnManagement
+        ? appliedColumns?.filter((column) => column.isShown)
+        : columns;
+
+    // remove cells correspoding to hidden columns from all rows
+    const slicedRows = hasColumnManagement
+        ? rows.map((row, rowIndex) =>
+            rowIndex % 2 === 1
+                ? row // rows corresponding to expandible cells
+                : { ...row, cells: row.cells.filter((_, index) => appliedColumns[index].isShown) }
+        )
+        : rows;
+
     return (
         <React.Fragment>
-            {
-                (<React.Fragment>
-                    {(hasError || metadata.has_systems === false)
-                        ? <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} metadata={metadata} />
-                        : <React.Fragment>
-                            <PrimaryToolbar
-                                pagination={isLoading
-                                    ? <Skeleton fontSize="xl" width="200px" style={{ margin: 10 }} />
-                                    : {
-                                        itemCount: metadata.total_items,
-                                        page,
-                                        perPage,
-                                        isCompact: true,
-                                        onSetPage,
-                                        onPerPageSelect,
-                                        ouiaId: `top-${paginationOUIA}`,
-                                        isDisabled: metadata.total_items === 0
-                                    }}
-                                filterConfig={filterConfig}
-                                activeFiltersConfig={{
-                                    filters: buildFilterChips(filter, search, searchChipLabel),
-                                    onDelete: deleteFilters,
-                                    deleteTitle: intl.formatMessage(defaultFilters
-                                        && messages.labelsFiltersReset || messages.labelsFiltersClear)
-                                }}
-                                actionsConfig={{
-                                    actions: [remediationProvider && (
-                                        <AsyncRemediationButton
-                                            remediationProvider={remediationProvider}
-                                            isDisabled={
-                                                Object.values(selectedRows).filter(isSelected => isSelected).length === 0
-                                                || isRemediationLoading
-                                            }
-                                            isLoading={isRemediationLoading}
-                                        />
-                                    )]
-                                }}
-                                exportConfig={{
-                                    isDisabled: metadata.total_items === 0,
-                                    onSelect: onExport
-                                }}
-                                bulkSelect={onSelect && bulkSelectConfig}
-                            >
-                                {ToolbarButton && <ToolbarItem>
-                                    <ToolbarButton />
-                                </ToolbarItem>}
-                            </PrimaryToolbar>
-                            {isLoading
-                                ? <SkeletonTable
-                                    numberOfColumns={columns?.length ?? 5}
-                                    rows={20}
-                                    variant={compact && TableVariant.compact}
+            <ColumnManagementModal
+                appliedColumns={appliedColumns}
+                applyColumns={(newColumns) => setAppliedColumns(newColumns)}
+                isOpen={isColumnMgmtModalOpen}
+                onClose={() => setColumnMgmtModalOpen(false)}
+            />
+            {(hasError || metadata.has_systems === false)
+                ? <ErrorHandler code={code} ErrorState={errorState} EmptyState={emptyState} metadata={metadata} />
+                : <React.Fragment>
+                    <PrimaryToolbar
+                        pagination={isLoading
+                            ? <Skeleton fontSize="xl" width="200px" style={{ margin: 10 }} />
+                            : {
+                                itemCount: metadata.total_items,
+                                page,
+                                perPage,
+                                isCompact: true,
+                                onSetPage,
+                                onPerPageSelect,
+                                ouiaId: `top-${paginationOUIA}`,
+                                isDisabled: metadata.total_items === 0
+                            }}
+                        filterConfig={filterConfig}
+                        activeFiltersConfig={{
+                            filters: buildFilterChips(filter, search, searchChipLabel),
+                            onDelete: deleteFilters,
+                            deleteTitle: intl.formatMessage(defaultFilters
+                                && messages.labelsFiltersReset || messages.labelsFiltersClear)
+                        }}
+                        actionsConfig={{
+                            actions: [remediationProvider && (
+                                <AsyncRemediationButton
+                                    remediationProvider={remediationProvider}
+                                    isDisabled={
+                                        Object.values(selectedRows).filter(isSelected => isSelected).length === 0
+                                        || isRemediationLoading
+                                    }
+                                    isLoading={isRemediationLoading}
                                 />
-                                : <Table
-                                    aria-label="Patch table view"
-                                    cells={columns}
-                                    onSelect={metadata.total_items && onSelect}
-                                    rows={rows}
-                                    onCollapse={metadata.total_items && onCollapse}
-                                    canSelectAll={false}
-                                    onSort={metadata.total_items && onSort}
-                                    ouiaId={tableOUIA}
-                                    sortBy={metadata.total_items && sortBy}
-                                    isStickyHeader
-                                    variant={compact && TableVariant.compact}
-                                    actions={actionsConfig}
-                                    actionsToggle={actionsToggle}
-                                >
-                                    <TableHeader />
-                                    <TableBody />
-                                </Table>
-                            }
-                            <TableFooter
-                                isLoading={isLoading}
-                                totalItems={metadata.total_items}
-                                perPage={perPage}
-                                page={page}
-                                onSetPage={onSetPage}
-                                onPerPageSelect={onPerPageSelect}
-                                paginationOUIA={`bottom-${paginationOUIA}`}
-                            />
-                        </React.Fragment>
+                            ),
+                            ...hasColumnManagement ? [{
+                                label: 'Manage columns',
+                                onClick: () => setColumnMgmtModalOpen(true)
+                            }] : []]
+                        }}
+                        exportConfig={{
+                            isDisabled: metadata.total_items === 0,
+                            onSelect: onExport
+                        }}
+                        bulkSelect={onSelect && bulkSelectConfig}
+                    >
+                        {ToolbarButton && <ToolbarItem>
+                            <ToolbarButton />
+                        </ToolbarItem>}
+                    </PrimaryToolbar>
+                    {isLoading
+                        ? <SkeletonTable
+                            numberOfColumns={shownColumns?.length ?? 5}
+                            rows={20}
+                            variant={compact && TableVariant.compact}
+                        />
+                        : <Table
+                            aria-label="Patch table view"
+                            cells={shownColumns}
+                            onSelect={metadata.total_items && onSelect}
+                            rows={slicedRows}
+                            onCollapse={metadata.total_items && onCollapse}
+                            canSelectAll={false}
+                            onSort={metadata.total_items && onSort}
+                            ouiaId={tableOUIA}
+                            sortBy={metadata.total_items && sortBy}
+                            isStickyHeader
+                            variant={compact && TableVariant.compact}
+                            actions={actionsConfig}
+                            actionsToggle={actionsToggle}
+                        >
+                            <TableHeader />
+                            <TableBody />
+                        </Table>
                     }
-                </React.Fragment>)
+                    <TableFooter
+                        isLoading={isLoading}
+                        totalItems={metadata.total_items}
+                        perPage={perPage}
+                        page={page}
+                        onSetPage={onSetPage}
+                        onPerPageSelect={onPerPageSelect}
+                        paginationOUIA={`bottom-${paginationOUIA}`}
+                    />
+                </React.Fragment>
             }
         </React.Fragment>
     );
@@ -176,7 +199,8 @@ TableView.propTypes = {
     ToolbarButton: PropTypes.elementType,
     actionsConfig: PropTypes.array,
     isRemediationLoading: PropTypes.bool,
-    actionsToggle: PropTypes.func
+    actionsToggle: PropTypes.func,
+    hasColumnManagement: PropTypes.bool
 };
 
 export default TableView;

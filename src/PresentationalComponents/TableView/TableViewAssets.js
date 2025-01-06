@@ -7,32 +7,45 @@ export const advisoriesColumns = [
         title: intl.formatMessage(messages.labelsColumnsName),
         cellFormatters: [expandable],
         transforms: [sortable, cellWidth(15)],
-        key: 'id'
+        key: 'id',
+        isShown: true,
+        isShownByDefault: true,
+        isUntoggleable: true
     },
     {
         title: intl.formatMessage(messages.labelsColumnsSynopsis),
         transforms: [sortable],
-        key: 'synopsis'
+        key: 'synopsis',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         title: intl.formatMessage(messages.labelsColumnsType),
         transforms: [sortable, cellWidth(10)],
-        key: 'advisory_type_name'
+        key: 'advisory_type_name',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         title: intl.formatMessage(messages.labelsColumnsAffectedSystems),
         transforms: [sortable, cellWidth(15)],
-        key: 'applicable_systems'
+        key: 'applicable_systems',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         title: intl.formatMessage(messages.labelsColumnsReboot),
         transforms: [sortable],
-        key: 'reboot_required'
+        key: 'reboot_required',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         title: intl.formatMessage(messages.labelsColumnsPublishDate),
         transforms: [sortable, cellWidth(15)],
-        key: 'public_date'
+        key: 'public_date',
+        isShown: true,
+        isShownByDefault: true
     }
 ];
 

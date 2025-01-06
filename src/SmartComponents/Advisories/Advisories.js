@@ -199,6 +199,7 @@ const Advisories = () => {
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
                     isRemediationLoading={isRemediationLoading}
+                    hasColumnManagement
                 />
             </Main>
         </React.Fragment>
