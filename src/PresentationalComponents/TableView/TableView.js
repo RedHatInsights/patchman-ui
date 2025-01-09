@@ -69,11 +69,11 @@ const TableView = ({
         ? appliedColumns?.filter((column) => column.isShown)
         : columns;
 
-    // remove cells correspoding to hidden columns from all rows
+    // remove cells correspoding to hidden columns from table rows
     const slicedRows = hasColumnManagement
-        ? rows.map((row, rowIndex) =>
-            rowIndex % 2 === 1
-                ? row // rows corresponding to expandible cells
+        ? rows.map(row =>
+            row.parent
+                ? row // rows with parent are expandible cells and should't be affected by column mgmt
                 : { ...row, cells: row.cells.filter((_, index) => appliedColumns[index].isShown) }
         )
         : rows;
