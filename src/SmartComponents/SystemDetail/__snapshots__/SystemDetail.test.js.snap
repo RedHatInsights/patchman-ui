@@ -311,7 +311,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             </div>
           </div>
           <div
-            class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+            class="pf-v5-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
           >
             <button
               aria-expanded="false"
@@ -1947,7 +1947,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             </div>
           </div>
           <div
-            class="pf-v5-c-toolbar__item ins-m-actions--empty ins-c-primary-toolbar__actions pf-m-spacer-sm"
+            class="pf-v5-c-toolbar__item  ins-c-primary-toolbar__actions pf-m-spacer-sm"
           >
             <button
               aria-expanded="false"
