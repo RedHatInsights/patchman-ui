@@ -157,6 +157,7 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
                 }}
                 errorState={errorState}
                 searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
+                hasColumnManagement
             />
         </React.Fragment>
     );
