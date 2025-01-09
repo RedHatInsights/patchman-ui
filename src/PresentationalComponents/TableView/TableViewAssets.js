@@ -120,7 +120,10 @@ export const packagesColumns = [
     {
         key: 'name',
         title: intl.formatMessage(messages.labelsColumnsName),
-        transforms: [sortable, cellWidth(25)]
+        transforms: [sortable, cellWidth(25)],
+        isShown: true,
+        isShownByDefault: true,
+        isUntoggleable: true
     },
     {
         key: 'systems_installed',
@@ -128,7 +131,9 @@ export const packagesColumns = [
         transforms: [sortable, cellWidth(10)],
         props: {
             width: 10
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'systems_applicable',
@@ -136,7 +141,9 @@ export const packagesColumns = [
         transforms: [sortable, cellWidth(10)],
         props: {
             width: 10
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'systems_installable',
@@ -144,7 +151,9 @@ export const packagesColumns = [
         transforms: [sortable, cellWidth(10)],
         props: {
             width: 10
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'summary',
@@ -152,7 +161,9 @@ export const packagesColumns = [
         transforms: [sortable, cellWidth(40)],
         props: {
             width: 30
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     }
 ];
 
