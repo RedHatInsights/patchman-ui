@@ -113,7 +113,6 @@ const PatchRoutes = () => {
                 <Route path='*' element={
                     <AsyncComponent
                         appId="content_management_zero_state"
-                        appName="dashboard"
                         module="./AppZeroState"
                         scope="dashboard"
                         ErrorComponent={<div>Error state</div>}

@@ -172,7 +172,7 @@ describe('SystemsTable', () => {
                                 value: undefined
                             },
                             label: 'Patch status',
-                            type: 'radio'
+                            type: 'singleSelect'
                         }
                     ]
                 }

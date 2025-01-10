@@ -670,3 +670,7 @@ export const objOnlyWithTrue = (object) =>
 export const isObject = (variable) => {
     return (typeof variable === 'object' && variable !== null) ? true : false;
 };
+
+export const findFilterData = (optionName, options) => {
+    return options.find((item) => item.label === optionName);
+};

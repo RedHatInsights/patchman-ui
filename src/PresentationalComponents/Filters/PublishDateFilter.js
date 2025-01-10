@@ -12,7 +12,7 @@ const publishDateFilter = (apply, currentFilter = {}) => {
 
     return {
         label: intl.formatMessage(messages.labelsFiltersPublishDate),
-        type: conditionalFilterType.radio,
+        type: conditionalFilterType.singleSelect,
         filterValues: {
             onChange: (event, value) => {
                 filterByPublicDate(value);
