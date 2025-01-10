@@ -1,5 +1,4 @@
 [![Build Status](https://app.travis-ci.com/RedHatInsights/patchman-ui.svg?branch=master)](https://app.travis-ci.com/RedHatInsights/patchman-ui)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![GitHub release](https://img.shields.io/github/v/release/RedHatInsights/patchman-ui.svg)](https://github.com/RedHatInsights/patchman-ui/releases/latest)
 [![codecov](https://codecov.io/gh/RedHatInsights/patchman-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/RedHatInsights/patchman-ui)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)

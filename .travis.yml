@@ -16,8 +16,6 @@ jobs:
       script: npm run lint
     - stage: Test
       script: npm run test && npm run test:ct && npm run coverage
-    - stage: Tag release
-      script: npm run semantic-release
 env:
   global:
     - BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
