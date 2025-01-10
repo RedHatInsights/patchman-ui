@@ -1,3 +1,4 @@
+const { resolve } = require('path');
 const path = require('path');
 const { dependencies, insights } = require('./package.json');
 
@@ -21,5 +22,8 @@ module.exports = {
                 }
             }
         ]
+    },
+    resolve: {
+        modules: ['...', resolve(__dirname, 'node_modules'), 'node_modules']
     }
 };

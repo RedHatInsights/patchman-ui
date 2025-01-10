@@ -351,8 +351,9 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search', pa
 
             return [].concat(filters[category]).map(filterValue => {
                 const match = values.find(
-                    item =>
-                        item.value.toString() === filterValue.toString()
+                    item => {
+                        return item.value.toString() === filterValue.toString();
+                    }
                 );
                 return {
                     name: match.label,
@@ -669,4 +670,8 @@ export const objOnlyWithTrue = (object) =>
 
 export const isObject = (variable) => {
     return (typeof variable === 'object' && variable !== null) ? true : false;
+};
+
+export const findFilterData = (optionName, options) => {
+    return options.find((item) => item.label === optionName);
 };
