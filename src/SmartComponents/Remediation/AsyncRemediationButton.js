@@ -16,7 +16,7 @@ const AsyncRemediationButton = ({ remediationProvider, isDisabled, isLoading, pa
 
     return (
         <AsyncComponent
-            appName="remediations"
+            scope="remediations"
             module="./RemediationButton"
             fallback={<Spinner size="lg" />}
             dataProvider={remediationProvider}

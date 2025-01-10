@@ -5,7 +5,7 @@ import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComp
 const RemediationWizard = ({ data, setRemediationOpen }) => {
     return (
         <AsyncComponent
-            appName="remediations"
+            scope="remediations"
             module="./RemediationWizard"
             setOpen={setRemediationOpen}
             fallback={<span />}

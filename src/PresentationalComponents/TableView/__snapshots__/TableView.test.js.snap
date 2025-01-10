@@ -198,10 +198,10 @@ exports[`TableView Should open remediation modal 1`] = `
           class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
         >
           <div
-            appname="remediations"
             buttonprops="[object Object]"
             fallback="[object Object]"
             module="./RemediationButton"
+            scope="remediations"
           >
             AsyncComponent
           </div>
@@ -429,7 +429,7 @@ exports[`TableView Should open remediation modal 1`] = `
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-5"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
-    id="pf-random-id-7"
+    id="pf-random-id-4"
   >
     <div
       class="pf-v5-c-pagination pf-m-bottom"
@@ -830,10 +830,10 @@ exports[`TableView TableView 1`] = `
           class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
         >
           <div
-            appname="remediations"
             buttonprops="[object Object]"
             fallback="[object Object]"
             module="./RemediationButton"
+            scope="remediations"
           >
             AsyncComponent
           </div>
@@ -1462,10 +1462,10 @@ exports[`TableView TableView 2`] = `
           class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
         >
           <div
-            appname="remediations"
             buttonprops="[object Object]"
             fallback="[object Object]"
             module="./RemediationButton"
+            scope="remediations"
           >
             AsyncComponent
           </div>
@@ -1693,7 +1693,7 @@ exports[`TableView TableView 2`] = `
     data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-4"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
-    id="pf-random-id-6"
+    id="pf-random-id-3"
   >
     <div
       class="pf-v5-c-pagination pf-m-bottom"
@@ -2094,10 +2094,10 @@ exports[`TableView test table props TableView 1`] = `
           class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
         >
           <div
-            appname="remediations"
             buttonprops="[object Object]"
             fallback="[object Object]"
             module="./RemediationButton"
+            scope="remediations"
           >
             AsyncComponent
           </div>

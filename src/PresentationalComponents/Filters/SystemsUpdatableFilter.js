@@ -1,10 +1,10 @@
+
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 import { packagesListUpdatableTypes } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const systemsUpdatableFilter = (apply, currentFilter = {}) => {
-
     let { packages_updatable: currentValue } = currentFilter;
 
     const filterByUpdatableSystems = value => {
@@ -13,7 +13,7 @@ const systemsUpdatableFilter = (apply, currentFilter = {}) => {
 
     return {
         label: intl.formatMessage(messages.labelsFiltersUpdatable),
-        type: conditionalFilterType.radio,
+        type: conditionalFilterType.singleSelect,
         filterValues: {
             onChange: (event, value) => {
                 filterByUpdatableSystems(value);

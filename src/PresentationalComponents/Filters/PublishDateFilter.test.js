@@ -8,7 +8,7 @@ describe('PublishDateFilter', () => {
         const response = publishDateFilter(apply);
         expect(response.filterValues.value).toEqual('all');
         expect(response.label).toEqual('Publish date');
-        expect(response.type).toEqual('radio');
+        expect(response.type).toEqual('singleSelect');
     });
 
     it('Should call apply with a date', () => {

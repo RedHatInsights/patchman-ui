@@ -43,5 +43,6 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    frontendCRDPath: 'deploy/frontend.yml'
 };
