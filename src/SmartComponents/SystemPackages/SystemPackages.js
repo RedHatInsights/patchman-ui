@@ -140,6 +140,7 @@ const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
                 errorState={errorState}
                 emptyState={emptyState}
                 searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
+                hasColumnManagement
             />
         </React.Fragment>
     );
