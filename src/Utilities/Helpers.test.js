@@ -222,7 +222,7 @@ describe('Helpers tests', () => {
 
     it.each`
     category         | key                  | result
-    ${"public_date"} | ${"last7"}           | ${publicDateOptions[1]}
+    ${"public_date"} | ${"last7"}           | ${publicDateOptions[0]}
     ${"public_date"} | ${"random value"}    | ${{apiValue: "random value"}}
     ${undefined}     | ${"last7"}           | ${{ "apiValue": "last7" }}
     `('getFilterValue: Should create object for $category', ({category, key, result}) => {

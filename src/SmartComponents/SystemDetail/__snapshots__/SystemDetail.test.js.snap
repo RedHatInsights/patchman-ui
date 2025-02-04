@@ -271,10 +271,10 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
           >
             <div
-              appname="remediations"
               buttonprops="[object Object]"
               fallback="[object Object]"
               module="./RemediationButton"
+              scope="remediations"
             >
               AsyncComponent
             </div>
@@ -510,7 +510,6 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             tabindex="-1"
           />
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-15"
             data-key="2"
             data-label="Name"
@@ -550,7 +549,6 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-35"
             data-key="3"
             data-label="Synopsis"
@@ -590,7 +588,6 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-10"
             data-key="4"
             data-label="Status"
@@ -630,7 +627,6 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-10"
             data-key="5"
             data-label="Type"
@@ -670,7 +666,6 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-10"
             data-key="6"
             data-label="Reboot"
@@ -710,7 +705,6 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-10"
             data-key="7"
             data-label="Publish date"
@@ -1449,10 +1443,10 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
           >
             <div
-              appname="remediations"
               buttonprops="[object Object]"
               fallback="[object Object]"
               module="./RemediationButton"
+              scope="remediations"
             >
               AsyncComponent
             </div>
@@ -1913,10 +1907,10 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
           >
             <div
-              appname="remediations"
               buttonprops="[object Object]"
               fallback="[object Object]"
               module="./RemediationButton"
+              scope="remediations"
             >
               AsyncComponent
             </div>
@@ -2152,7 +2146,6 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             tabindex="-1"
           />
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-15"
             data-key="2"
             data-label="Name"
@@ -2192,7 +2185,6 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-35"
             data-key="3"
             data-label="Synopsis"
@@ -2232,7 +2224,6 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-10"
             data-key="4"
             data-label="Status"
@@ -2272,7 +2263,6 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-10"
             data-key="5"
             data-label="Type"
@@ -2312,7 +2302,6 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-10"
             data-key="6"
             data-label="Reboot"
@@ -2352,7 +2341,6 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             </button>
           </th>
           <th
-            aria-sort="none"
             class="pf-v5-c-table__th pf-v5-c-table__sort pf-m-width-10"
             data-key="7"
             data-label="Publish date"
@@ -3092,10 +3080,10 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             class="pf-v5-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
           >
             <div
-              appname="remediations"
               buttonprops="[object Object]"
               fallback="[object Object]"
               module="./RemediationButton"
+              scope="remediations"
             >
               AsyncComponent
             </div>

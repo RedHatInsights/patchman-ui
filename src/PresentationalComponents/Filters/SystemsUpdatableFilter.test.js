@@ -8,7 +8,7 @@ describe('SystemsUpdatableFilter', () => {
         const response = systemsUpdatableFilter(apply, currentFilter);
         expect(response.filterValues.value).toEqual('filter');
         expect(response.label).toEqual('Patch status');
-        expect(response.type).toEqual('radio');
+        expect(response.type).toEqual('singleSelect');
     });
 
     it('Should call apply with a test value', () => {
