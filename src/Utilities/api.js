@@ -1,6 +1,5 @@
 import { APIFactory } from '@redhat-cloud-services/javascript-clients-shared/utils';
-import apiSystemProfileGetOperatingSystem from '@redhat-cloud-services/host-inventory-client/apiSystemProfileGetOperatingSystem';
-import apiGroupGetGroupList from '@redhat-cloud-services/host-inventory-client/apiGroupGetGroupList';
+import apiSystemProfileGetOperatingSystem from '@redhat-cloud-services/host-inventory-client/ApiSystemProfileGetOperatingSystem';
 import axiosInstance from './axiosInterceptors';
 import { encodeApiParams, prepareEntitiesParams } from './Helpers';
 
@@ -33,8 +32,7 @@ export function createApiCall(
 const hostInventoryApi = APIFactory(
     INVENTORY_API_BASE,
     {
-        apiSystemProfileGetOperatingSystem,
-        apiGroupGetGroupList
+        apiSystemProfileGetOperatingSystem
     },
     {
         axios: axiosInstance
@@ -227,10 +225,6 @@ export const unassignSystemFromPatchSet = (payload) => {
 
 export const getOperatingSystems = () => {
     return hostInventoryApi.apiSystemProfileGetOperatingSystem();
-};
-
-export const getSystemsGroups = () => {
-    return hostInventoryApi.apiGroupGetGroupList();
 };
 
 export const fetchIDs = (endpoint, queryParams) => {
