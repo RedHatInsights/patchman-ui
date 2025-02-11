@@ -1,5 +1,6 @@
-import { SystemProfileApi, GroupsApi } from '@redhat-cloud-services/host-inventory-client';
-import axios from './axiosInterceptors';
+import { APIFactory } from '@redhat-cloud-services/javascript-clients-shared/utils';
+import apiSystemProfileGetOperatingSystem from '@redhat-cloud-services/host-inventory-client/ApiSystemProfileGetOperatingSystem';
+import axiosInstance from './axiosInterceptors';
 import { encodeApiParams, prepareEntitiesParams } from './Helpers';
 
 const INVENTORY_API_BASE = '/api/inventory/v1';
@@ -16,7 +17,7 @@ export function createApiCall(
         endpoint = endpoint.concat(encodeApiParams(parameters));
     }
 
-    let result = axios({
+    let result = axiosInstance({
         method,
         url: '/api/patch/' + version + endpoint,
         withCredentials: true,
@@ -27,8 +28,16 @@ export function createApiCall(
     return result;
 }
 
-const systemProfile = new SystemProfileApi(undefined, INVENTORY_API_BASE, axios);
-const groupsProfile = new GroupsApi(undefined, INVENTORY_API_BASE, axios);
+// eslint-disable-next-line new-cap
+const hostInventoryApi = APIFactory(
+    INVENTORY_API_BASE,
+    {
+        apiSystemProfileGetOperatingSystem
+    },
+    {
+        axios: axiosInstance
+    }
+);
 
 export const fetchApplicableAdvisoriesApi = params => {
     return createApiCall('/advisories', 'v3', 'get', params);
@@ -215,11 +224,7 @@ export const unassignSystemFromPatchSet = (payload) => {
 };
 
 export const getOperatingSystems = () => {
-    return systemProfile.apiSystemProfileGetOperatingSystem();
-};
-
-export const getSystemsGroups = () => {
-    return groupsProfile.apiGroupGetGroupList();
+    return hostInventoryApi.apiSystemProfileGetOperatingSystem();
 };
 
 export const fetchIDs = (endpoint, queryParams) => {
