@@ -44,5 +44,6 @@ module.exports = {
             }
         ]
     },
-    frontendCRDPath: 'deploy/frontend.yml'
+    frontendCRDPath: 'deploy/frontend.yml',
+    _unstableSpdy: true
 };
