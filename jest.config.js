@@ -1,5 +1,5 @@
 module.exports = {
-    coverageDirectory: "./codecov-jest/",
+    coverageDirectory: "coverage-jest",
     testEnvironment: "jsdom",
     transform: {
         "^.+\\.(js|jsx)$": "babel-jest",

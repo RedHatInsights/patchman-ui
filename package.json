@@ -48,6 +48,7 @@
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.13",
     "babel-jest": "^29.7.0",
+    "babel-loader": "^9.2.1",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "css-loader": "^5.2.7",
     "cypress": "^14.0.2",
@@ -83,6 +84,7 @@
     "lint:js": "eslint config src",
     "lint:js:fix": "eslint config src --fix",
     "lint:sass": "stylelint 'src/**/*.scss' --config .stylelintrc.json",
+    "postinstall": "ts-patch install",
     "server:ctr": "node src/server/generateServerKey.js",
     "start": "fec dev",
     "start:proxy": "PROXY=true fec dev",
@@ -90,10 +92,10 @@
     "verify": "npm-run-all build lint test",
     "verify:local": "npm-run-all build lint test:local",
     "nightly": "npm run deploy",
+    "test:coverage": "curl -sSL 'https://raw.githubusercontent.com/RedHatInsights/insights-interact-tools/refs/heads/main/scripts/coverage.sh' | bash",
     "test:ct": "BABEL_ENV=componentTest cypress run --component",
     "test:openct": "cypress open --component",
-    "coverage": "bash coverage.sh",
-    "postinstall": "ts-patch install"
+    "travis:verify": "npm run test:coverage"
   },
   "files": [
     "/dist"
@@ -102,12 +104,13 @@
     "appname": "patch"
   },
   "nyc": {
-    "report-dir": "codecov-cypress",
+    "report-dir": "coverage-cypress",
     "include": [
       "src/**/*"
     ],
     "exclude": [
-      "src/**/*.test.js"
+      "src/**/*.test.js",
+      "src/**/*.cy.js"
     ]
   }
 }

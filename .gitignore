@@ -17,11 +17,10 @@ yarn-debug.log*
 yarn-error.log*
 
 .DS_Store
-coverage
-
-codecov*
 .nyc_output/
-reports/
+coverage
+coverage/*
+coverage-*
 
 .cache/
 # Sentry Config File
