@@ -5,7 +5,7 @@
 
 # Patchman UI
 
-Patch is one of the applications for console.redhat.com. It allows users to display and manage available patches for their registered systems. This repository containes source code for the frontend part of the application which uses the REST API available from [Patchman Engine](https://github.com/RedHatInsights/patchman-engine).
+Patch  is one of the applications for console.redhat.com. It allows users to display and manage available patches for their registered systems. This repository containes source code for the frontend part of the application which uses the REST API available from [Patchman Engine](https://github.com/RedHatInsights/patchman-engine).
 
 ## First time setup
 
