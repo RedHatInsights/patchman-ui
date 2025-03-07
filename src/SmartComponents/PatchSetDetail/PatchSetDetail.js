@@ -56,12 +56,11 @@ import {
 import { combineReducers } from 'redux';
 import { defaultReducers } from '../../store';
 import { inventoryEntitiesReducer, modifyTemplateDetailSystems } from '../../store/Reducers/InventoryEntitiesReducer';
-import { systemsListColumns } from '../Systems/SystemsListAssets';
+import { SYSTEMS_LIST_COLUMNS } from '../Systems/SystemsListAssets';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/hooks';
 import { systemSelectAction } from '../../store/Actions/Actions';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
-import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const PatchSetDetail = () => {
     const intl = useIntl();
@@ -69,7 +68,6 @@ const PatchSetDetail = () => {
     const chrome = useChrome();
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
-    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const store = useStore();
     const inventory = useRef(null);
@@ -401,8 +399,7 @@ const PatchSetDetail = () => {
                                         store.replaceReducer(combineReducers({
                                             ...defaultReducers,
                                             ...mergeWithEntities(
-                                                inventoryEntitiesReducer(systemsListColumns(templateUpdateEnabled),
-                                                    modifyTemplateDetailSystems),
+                                                inventoryEntitiesReducer(SYSTEMS_LIST_COLUMNS, modifyTemplateDetailSystems),
                                                 persistantParams({ page, perPage, sort, search }, decodedParams)
                                             )
                                         }));

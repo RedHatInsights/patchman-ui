@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
-import messages from '../../Messages';
 import { defaultReducers } from '../../store';
 import { changeSystemsMetadata, changeTags, systemSelectAction } from '../../store/Actions/Actions';
 import { inventoryEntitiesReducer, modifyInventory } from '../../store/Reducers/InventoryEntitiesReducer';
@@ -10,26 +9,21 @@ import {
     exportSystemsCSV, exportSystemsJSON, fetchSystems
 } from '../../Utilities/api';
 import { systemsListDefaultFilters, NO_ADVISORIES_TEXT } from '../../Utilities/constants';
-import {
-    arrayFromObj, persistantParams, filterSelectedActiveSystemIDs
-} from '../../Utilities/Helpers';
+import { arrayFromObj, persistantParams } from '../../Utilities/Helpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport,
     useRemoveFilter, useRemediationDataProvider, useOnSelect, ID_API_ENDPOINTS
 } from '../../Utilities/hooks';
-import { intl } from '../../Utilities/IntlProvider';
-import { systemsListColumns, systemsRowActions } from './SystemsListAssets';
+import { SYSTEMS_LIST_COLUMNS, systemsRowActions } from './SystemsListAssets';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { buildFilterConfig, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
 import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import propTypes from 'prop-types';
-import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const SystemsTable = ({
     apply,
     patchSetState,
-    openAssignSystemsModal,
     openUnassignSystemsModal,
     setSearchParams,
     activateRemediationModal,
@@ -37,7 +31,6 @@ const SystemsTable = ({
 }) => {
     const store = useStore();
     const inventory = useRef(null);
-    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const dispatch = useDispatch();
     const [isRemediationLoading, setRemediationLoading] = useState(false);
@@ -158,7 +151,7 @@ const SystemsTable = ({
             autoRefresh
             initialLoading
             hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
-            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, ()=>systemsListColumns(templateUpdateEnabled))}
+            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, () => SYSTEMS_LIST_COLUMNS)}
             showTags
             customFilters={{
                 ...operatingSystemFilter ? {
@@ -178,7 +171,7 @@ const SystemsTable = ({
                 store.replaceReducer(combineReducers({
                     ...defaultReducers,
                     ...mergeWithEntities(
-                        inventoryEntitiesReducer(systemsListColumns(templateUpdateEnabled), modifyInventory),
+                        inventoryEntitiesReducer(SYSTEMS_LIST_COLUMNS, modifyInventory),
                         persistantParams({ page, perPage, sort, search }, decodedParams)
                     )
                 }));
@@ -188,7 +181,7 @@ const SystemsTable = ({
                 actionResolver: (row) =>
                     systemsRowActions(
                         activateRemediationModal,
-                        !templateUpdateEnabled  && openAssignSystemsModal,
+                        false,
                         openUnassignSystemsModal,
                         row,
                         hasTemplateAccess
@@ -213,19 +206,7 @@ const SystemsTable = ({
                         }
                         isLoading={isRemediationLoading}
                         patchNoAdvisoryText={NO_ADVISORIES_TEXT}
-                    />,
-                    ...templateUpdateEnabled ? [] : [{
-                        key: 'assign-multiple-systems',
-                        label: intl.formatMessage(messages.titlesTemplateAssign),
-                        onClick: () => openAssignSystemsModal(selectedRows),
-                        props: { isDisabled: !hasTemplateAccess || selectedCount === 0 }
-                    },
-                    {
-                        key: 'remove-multiple-systems',
-                        label: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
-                        onClick: () => openUnassignSystemsModal(filterSelectedActiveSystemIDs(selectedRows)),
-                        props: { isDisabled: !hasTemplateAccess || selectedCount === 0 }
-                    }]
+                    />
                 ]
             }}
             filterConfig={filterConfig}
@@ -237,7 +218,6 @@ const SystemsTable = ({
 SystemsTable.propTypes = {
     apply: propTypes.func.isRequired,
     patchSetState: propTypes.object.isRequired,
-    openAssignSystemsModal: propTypes.func.isRequired,
     openUnassignSystemsModal: propTypes.func.isRequired,
     setSearchParams: propTypes.func.isRequired,
     activateRemediationModal: propTypes.func.isRequired,

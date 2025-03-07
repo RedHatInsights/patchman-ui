@@ -1,4 +1,6 @@
-import { systemsListColumns, packageSystemsColumns, systemsRowActions, useActivateRemediationModal } from './SystemsListAssets';
+import {
+    SYSTEMS_LIST_COLUMNS, PACKAGE_SYSTEMS_COLUMNS, systemsRowActions, useActivateRemediationModal
+} from './SystemsListAssets';
 import { createAdvisoriesIcons, createUpgradableColumn, remediationProvider } from '../../Utilities/Helpers';
 import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
@@ -18,12 +20,12 @@ jest.mock('../../Utilities/api', () => ({
 describe('SystemListAssets.js', () => {
 
     it('Should call systemsListColumns on Applicable advisories renderFunc with correct params', () => {
-        systemsListColumns()[2].renderFunc('testValue');
+        SYSTEMS_LIST_COLUMNS[2].renderFunc('testValue');
         expect(createAdvisoriesIcons).toHaveBeenCalledWith('testValue', 'installable');
     });
 
     it('Should call createUpgradableColumn on Status renderFunc with correct params', () => {
-        packageSystemsColumns()[4].renderFunc('testValue');
+        PACKAGE_SYSTEMS_COLUMNS[4].renderFunc('testValue');
         expect(createUpgradableColumn).toHaveBeenCalledWith('testValue');
     });
 
