@@ -21,7 +21,7 @@ export const ManagedBySatelliteCell = () => (
     </Tooltip>
 );
 
-export const systemsListColumns = (templateUpdateEnabled = false) => [
+export const SYSTEMS_LIST_COLUMNS = [
     {
         key: 'operating_system',
         title: 'OS',
@@ -31,17 +31,15 @@ export const systemsListColumns = (templateUpdateEnabled = false) => [
         }
     },
     {
-        key: templateUpdateEnabled ? 'template_name' : 'baseline_name',
+        key: 'template_name',
         title: 'Template',
         renderFunc: (value, _, row) =>
             row.satellite_managed
                 ? <ManagedBySatelliteCell />
                 : value
                     ? <InsightsLink
-                        app={templateUpdateEnabled ? 'content' : undefined}
-                        to={{ pathname: templateUpdateEnabled ?
-                            `/templates/${row.template_uuid}/details` :
-                            `/templates/${row.baseline_id}` }}
+                        app="content"
+                        to={{ pathname: `/templates/${row.template_uuid}/details` }}
                     >{value}</InsightsLink>
                     : 'No template',
         props: {
@@ -66,7 +64,7 @@ export const systemsListColumns = (templateUpdateEnabled = false) => [
     }
 ];
 
-export const advisorySystemsColumns = (templateUpdateEnabled = false) => [
+export const ADVISORY_SYSTEMS_COLUMNS = [
     {
         key: 'os',
         title: 'OS',
@@ -76,17 +74,15 @@ export const advisorySystemsColumns = (templateUpdateEnabled = false) => [
         }
     },
     {
-        key: templateUpdateEnabled ? 'template_name' : 'baseline_name',
+        key: 'template_name',
         title: 'Template',
         renderFunc: (value, _, row) =>
             row.satellite_managed
                 ? <ManagedBySatelliteCell />
                 : value
                     ? <InsightsLink
-                        app={templateUpdateEnabled ? 'content' : undefined}
-                        to={{ pathname: templateUpdateEnabled ?
-                            `/templates/${row.template_uuid}/details` :
-                            `/templates/${row.baseline_id}` }}
+                        app="content"
+                        to={{ pathname: `/templates/${row.template_uuid}/details` }}
                     >{value}</InsightsLink>
                     : 'No template',
         props: {
@@ -104,7 +100,7 @@ export const advisorySystemsColumns = (templateUpdateEnabled = false) => [
     }
 ];
 
-export const packageSystemsColumns = (templateUpdateEnabled = false) => [
+export const PACKAGE_SYSTEMS_COLUMNS = [
     {
         key: 'os',
         title: 'OS',
@@ -114,17 +110,15 @@ export const packageSystemsColumns = (templateUpdateEnabled = false) => [
         }
     },
     {
-        key: templateUpdateEnabled ? 'template_name' : 'baseline_name',
+        key: 'template_name',
         title: 'Template',
         renderFunc: (value, _, row) =>
             row.satellite_managed
                 ? <ManagedBySatelliteCell />
                 : value
                     ? <InsightsLink
-                        app={templateUpdateEnabled ? 'content' : undefined}
-                        to={{ pathname: templateUpdateEnabled ?
-                            `/templates/${row.template_uuid}/details` :
-                            `/templates/${row.baseline_id}` }}
+                        app="content"
+                        to={{ pathname: `/templates/${row.template_uuid}/details` }}
                     >{value}</InsightsLink>
                     : 'No template',
         props: {

@@ -25,8 +25,8 @@ const filterChosenSystems = (urlFilter, systemsIDs, fetchBatched, totalItems) =>
     });
 };
 
-export const filterSystemsWithoutSets = (systemsIDs, fetchBatched, totalItems, templateUpdateEnabled = false) =>  {
-    const urlFilter = { [`filter[${templateUpdateEnabled ? 'template_name' : 'baseline_name'}]`]: 'neq:' };
+export const filterSystemsWithoutTemplates = (systemsIDs, fetchBatched, totalItems) =>  {
+    const urlFilter = { [`filter[template_name]`]: 'neq:' };
     return filterChosenSystems(urlFilter, systemsIDs, fetchBatched, totalItems);
 };
 

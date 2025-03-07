@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import searchFilter from '../../../PresentationalComponents/Filters/SearchFilter';
@@ -12,20 +12,18 @@ import TableView from '../../../PresentationalComponents/TableView/TableView';
 import staleFilter from '../../../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../../../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import { fetchSystems, fetchPatchSetSystems } from '../../../Utilities/api';
-import { reviewSystemColumns } from '../WizardAssets';
+import { REVIEW_SYSTEM_COLUMNS } from '../WizardAssets';
 import messages from '../../../Messages';
 import { intl } from '../../../Utilities/IntlProvider';
 import { systemsListDefaultFilters } from '../../../Utilities/constants';
 import useOsVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
 import { useFetchAllTemplateData } from '../WizardAssets';
-import useFeatureFlag from '../../../Utilities/hooks/useFeatureFlag';
 
 export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
     const { input } = useFieldApi(props);
     const formOptions = useFormApi();
     const { values } = formOptions.getState();
     const defaultSelectedSystems = buildSelectedSystemsObj(systemsIDs, values?.systems);
-    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const [isLoading, setLoading] = useState(true);
     const [rawData, setRawData] = useState([]);
@@ -109,12 +107,10 @@ export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
         }));
     };
 
-    const reviewSysColumns = useMemo(()=>reviewSystemColumns(templateUpdateEnabled), [templateUpdateEnabled]);
-
     const osFilterConfig = useOsVersionFilter(queryParams.filter.os, apply);
-    const onSort = useSortColumn(reviewSysColumns, apply, 1);
+    const onSort = useSortColumn(REVIEW_SYSTEM_COLUMNS, apply, 1);
     const sortBy = React.useMemo(
-        () => createSortBy(reviewSysColumns, metadata.sort, 1),
+        () => createSortBy(REVIEW_SYSTEM_COLUMNS, metadata.sort, 1),
         [metadata.sort]
     );
 
@@ -170,7 +166,7 @@ export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
             <Alert variant="warning" title={intl.formatMessage(messages.templateAlertSystems)} isInline />
             <StackItem>
                 <TableView
-                    columns={reviewSysColumns}
+                    columns={REVIEW_SYSTEM_COLUMNS}
                     compact
                     onSetPage={onSetPage}
                     onPerPageSelect={onPerPageSelect}
