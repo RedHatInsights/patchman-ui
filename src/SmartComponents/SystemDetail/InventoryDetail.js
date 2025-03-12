@@ -83,7 +83,6 @@ const InventoryDetail = () => {
                     hideBack
                     showTags
                     inventoryId={inventoryId}
-                    actions={[]}
                     //FIXME: remove this prop after inventory detail gets rid of activeApps in redux
                     appList={[]}
                 >
