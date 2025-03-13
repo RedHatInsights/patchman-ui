@@ -5,7 +5,6 @@ import systemsUpdatableFilter from '../PresentationalComponents/Filters/SystemsU
 import { buildFilterChips, templateDateFormat } from './Helpers';
 import { intl } from './IntlProvider';
 import messages from '../Messages';
-import { PACKAGE_SYSTEMS_COLUMNS } from '../SmartComponents/Systems/SystemsListAssets';
 import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
@@ -93,7 +92,7 @@ export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
         if (!hasLastUpload) {
             orderBy = 'last_upload';
         } else {
-            orderBy = PACKAGE_SYSTEMS_COLUMNS[0].key;
+            orderBy = 'os';
         }
     } else if (orderBy === 'group_name') {
         orderBy = 'groups'; // patch API service uses 'groups' instead of 'group_name' sort parameter

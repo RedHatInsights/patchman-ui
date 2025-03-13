@@ -132,6 +132,12 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
 
 export const PACKAGE_SYSTEMS_COLUMNS = [
     {
+        key: 'display_name'
+    },
+    {
+        key: 'tags'
+    },
+    {
         key: 'os',
         title: 'OS',
         renderFunc: value => createOSColumn(value),
