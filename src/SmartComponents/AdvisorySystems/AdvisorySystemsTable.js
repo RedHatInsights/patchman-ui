@@ -21,11 +21,10 @@ import {
     useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter, useOnSelect, ID_API_ENDPOINTS
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import { advisorySystemsColumns, systemsRowActions } from '../Systems/SystemsListAssets';
+import { ADVISORY_SYSTEMS_COLUMNS, systemsRowActions } from '../Systems/SystemsListAssets';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
 import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
-import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const AdvisorySystemsTable = ({
     advisoryName,
@@ -36,7 +35,6 @@ const AdvisorySystemsTable = ({
 }) => {
     const dispatch = useDispatch();
     const store = useStore();
-    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const systems = useSelector(({ entities }) => entities?.rows || [], shallowEqual);
     const totalItems = useSelector(
@@ -103,7 +101,7 @@ const AdvisorySystemsTable = ({
             initialLoading
             ignoreRefresh
             hideFilters={{ all: true, tags: false, operatingSystem: false }}
-            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, ()=>advisorySystemsColumns(templateUpdateEnabled))}
+            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, () => ADVISORY_SYSTEMS_COLUMNS)}
             showTags
             customFilters={{
                 patchParams: {
@@ -120,7 +118,7 @@ const AdvisorySystemsTable = ({
                 store.replaceReducer(combineReducers({
                     ...defaultReducers,
                     ...mergeWithEntities(
-                        inventoryEntitiesReducer(advisorySystemsColumns(templateUpdateEnabled), modifyAdvisorySystems),
+                        inventoryEntitiesReducer(ADVISORY_SYSTEMS_COLUMNS, modifyAdvisorySystems),
                         persistantParams({ page, perPage, sort, search }, decodedParams)
                     )
                 }));

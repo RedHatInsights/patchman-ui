@@ -5,16 +5,14 @@ import { injectIntl } from 'react-intl';
 
 import messages from '../../Messages';
 import { useUnassignSystemsHook } from './useUnassignSystemsHook';
-import { renderUnassignModalMessages, filterSystemsWithoutSets } from './Helpers';
+import { renderUnassignModalMessages, filterSystemsWithoutTemplates } from './Helpers';
 import { useFetchBatched } from '../../Utilities/hooks';
-import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSystemsModalOpen, intl, totalItems }) => {
     const { systemsIDs, isUnassignSystemsModalOpen } = unassignSystemsModalState;
     const [systemsWithPatchSet, setSystemWithPatchSet] = useState([]);
     const [systemsLoading, setSystemsLoading] = useState(true);
     const { fetchBatched } = useFetchBatched();
-    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const handleModalToggle = (shouldRefresh) => {
         setUnassignSystemsModalOpen({
@@ -33,11 +31,10 @@ const UnassignSystemsModal = ({ unassignSystemsModalState = {}, setUnassignSyste
     useEffect(() => {
         setSystemsLoading(true);
 
-        filterSystemsWithoutSets(
+        filterSystemsWithoutTemplates(
             systemsIDs,
             fetchBatched,
-            totalItems,
-            templateUpdateEnabled
+            totalItems
         )
         .then(result => {
             setSystemWithPatchSet(result);

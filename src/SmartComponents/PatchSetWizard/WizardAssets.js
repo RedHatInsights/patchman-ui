@@ -8,7 +8,7 @@ import { sortable } from '@patternfly/react-table/dist/js';
 import React, { Fragment } from 'react';
 import { useFetchBatched } from '../../Utilities/hooks';
 
-export const reviewSystemColumns = (templateUpdateEnabled = false)=> [{
+export const REVIEW_SYSTEM_COLUMNS = [{
     key: 'display_name',
     title: 'Name',
     props: {
@@ -25,7 +25,7 @@ export const reviewSystemColumns = (templateUpdateEnabled = false)=> [{
     transforms: [sortable]
 },
 {
-    key: templateUpdateEnabled ? 'template_name' : 'baseline_name',
+    key: 'template_name',
     title: 'Template',
     props: {
         width: 20

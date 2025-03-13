@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { NavigateToSystem } from './Utilities/NavigateToSystem';
-import useFeatureFlag from './Utilities/hooks/useFeatureFlag';
 
 const PermissionRoute = ({ requiredPermissions = [] }) => {
     const { hasAccess, isLoading } = usePermissionsWithContext(requiredPermissions);
@@ -61,21 +60,8 @@ const PackageDetail = lazy(() =>
     )
 );
 
-const Templates = lazy(() =>
-    import(
-        /* webpackChunkName: "Templates" */ './SmartComponents/PatchSet/PatchSet'
-    )
-);
-
-const TemplateDetail = lazy(() =>
-    import(
-        /* webpackChunkName: "TemplateDetail" */ './SmartComponents/PatchSetDetail/PatchSetDetail'
-    )
-);
-
 const PatchRoutes = () => {
     const generalPermissions = ['patch:*:*', 'patch:*:read'];
-    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
     const [hasSystems, setHasSystems] = useState(true);
     const INVENTORY_TOTAL_FETCH_URL = '/api/inventory/v1/hosts';
     const RHEL_ONLY_FILTER = '?filter[system_profile][operating_system][RHEL][version][gte]=0';
@@ -101,15 +87,11 @@ const PatchRoutes = () => {
             }
         >
             <Routes>
-                {templateUpdateEnabled ?
-                    <Route path='/templates' >
-                        <Route path='' element={
-                            <Navigate relative="route" to={'/insights/content/templates'} replace />
-                        } />
-                        <Route path='*' element={
-                            <Navigate relative="route" to={'/insights/content/templates'} replace />}
-                        />
-                    </Route> : ''}
+                <Route path='/templates' >
+                    <Route path='' element={
+                        <Navigate relative="route" to={'/insights/content/templates'} replace />
+                    } />
+                </Route>
                 <Route path='*' element={
                     <AsyncComponent
                         appId="content_management_zero_state"
@@ -131,13 +113,6 @@ const PatchRoutes = () => {
                                 <Route path='/packages/:packageName' element={<PackageDetail />} />
                                 <Route path='/packages/:packageName/:inventoryId'
                                     element={<NavigateToSystem />} />
-                                {templateUpdateEnabled ?
-                                    [] : [
-                                        <Route key="base" path='/templates' element={<Templates />} />,
-                                        <Route key="templatedetail" path='/templates/:templateName'
-                                            element={<TemplateDetail />} />
-                                    ]
-                                }
                                 <Route path='*' element={<Navigate to="advisories" />} />
                             </Route>
                         </Routes>

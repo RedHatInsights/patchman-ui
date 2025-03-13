@@ -17,28 +17,22 @@ import { useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
-import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
-import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const InventoryDetail = () => {
     const { inventoryId } = useParams();
     const store = useStore();
     const dispatch = useDispatch();
-    const templateUpdateEnabled = useFeatureFlag('patchman-ui.template-update.enabled');
 
     const { hasThirdPartyRepo, satelliteManaged,
-        patchSetName: patchSetOldName,
-        patchSetId, templateName, templateUUID } = useSelector(
+        templateName, templateUUID } = useSelector(
         ({ SystemDetailStore }) => SystemDetailStore
     );
-
-    const patchSetName = templateUpdateEnabled ?  templateName : patchSetOldName;
 
     const { display_name: displayName } = useSelector(
         ({ entityDetails }) => entityDetails?.entity ?? {}
     );
 
-    const { patchSetState, setPatchSetState, openAssignSystemsModal, openUnassignSystemsModal } = usePatchSetState();
+    const { patchSetState, setPatchSetState } = usePatchSetState();
 
     useEffect(() => {
         dispatch(fetchSystemDetailsAction(inventoryId));
@@ -58,11 +52,6 @@ const InventoryDetail = () => {
     useEffect(() => {
         displayName && chrome.updateDocumentTitle(`${displayName} - Systems - Patch | RHEL`, true);
     }, [chrome, displayName]);
-
-    const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([
-        'patch:*:*',
-        'patch:template:write'
-    ]);
 
     return (
         <DetailWrapper
@@ -94,34 +83,19 @@ const InventoryDetail = () => {
                     hideBack
                     showTags
                     inventoryId={inventoryId}
-                    actions={templateUpdateEnabled ? [] : [
-                        {
-                            title: intl.formatMessage(messages.titlesTemplateAssign),
-                            key: 'assign-to-template',
-                            isDisabled: !hasTemplateAccess || satelliteManaged,
-                            onClick: () => openAssignSystemsModal({ [inventoryId]: true })
-                        },
-                        {
-                            title: intl.formatMessage(messages.titlesTemplateRemoveMultipleButton),
-                            key: 'remove-from-template',
-                            isDisabled: !hasTemplateAccess || !patchSetName || satelliteManaged,
-                            onClick: () => openUnassignSystemsModal([inventoryId])
-                        }]}
                     //FIXME: remove this prop after inventory detail gets rid of activeApps in redux
                     appList={[]}
                 >
                     <Grid>
-                        {patchSetName && <GridItem>
+                        {templateName && <GridItem>
                             <TextContent>
                                 <Text>
                                     {intl.formatMessage(messages.labelsColumnsTemplate)}:
                                     <InsightsLink
-                                        app={templateUpdateEnabled ? 'content' : undefined}
-                                        to={templateUpdateEnabled ?
-                                            `/templates/${templateUUID}/details` :
-                                            `/templates/${patchSetId}`}
+                                        app="content"
+                                        to={`/templates/${templateUUID}/details`}
                                         className="pf-v5-u-ml-xs">
-                                        {patchSetName}
+                                        {templateName}
                                     </InsightsLink>
                                 </Text>
                             </TextContent>
