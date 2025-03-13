@@ -1,4 +1,4 @@
-import { createSystemsSortBy, systemsColumnsMerger } from './SystemsHelpers';
+import { createSystemsSortBy, mergeInventoryColumns } from './SystemsHelpers';
 
 describe('createSystemsSortBy,', () => {
     it('should translate main parameters', () => {
@@ -34,74 +34,93 @@ describe('createSystemsSortBy,', () => {
     });
 });
 
-describe('systemsColumnsMerger', () => {
-    const baseColumns = [
-        {
-            key: 'updated'
+describe('mergeInventoryColumns', () => {
+    it('should merge basic columns correctly', () => {
+        const patchColumns = [
+            {
+                key: 'display_name'
+            },
+            {
+                key: 'package_count',
+                title: 'Package count'
+            }
+        ];
+
+        const inventoryColumns = [
+            {
+                key: 'display_name',
+                title: 'Display name'
+            }
+        ];
+
+        expect(mergeInventoryColumns(patchColumns, inventoryColumns))
+        .toMatchObject([{
+            key: 'display_name',
+            title: 'Display name'
         },
         {
-            key: 'display_name'
-        }
-    ];
-
-    it('should merge basic columns correctly', () => {
-        expect(systemsColumnsMerger(baseColumns, () => []))
-        .toMatchInlineSnapshot(`
-[
-  {
-    "key": "display_name",
-    "renderFunc": [Function],
-  },
-  {
-    "key": "last_upload",
-    "sortKey": "last_upload",
-  },
-]
-`);
+            key: 'package_count',
+            title: 'Package count'
+        }]);
     });
 
-    it('should omit extra columns', () => {
-        expect(
-            systemsColumnsMerger(
-                [...baseColumns, { key: 'omitted' }],
-                () => []
-            ).map(({ key }) => key)
-        ).not.toContain('omitted');
+    it('should merge modified columns correctly', () => {
+        const patchColumns = [
+            {
+                key: 'display_name',
+                title: 'Name'
+            },
+            {
+                key: 'package_count',
+                title: 'Package count'
+            }
+        ];
+
+        const inventoryColumns = [
+            {
+                key: 'display_name',
+                title: 'Display name'
+            }
+        ];
+
+        expect(mergeInventoryColumns(patchColumns, inventoryColumns))
+        .toMatchObject([{
+            key: 'display_name',
+            title: 'Name'
+        },
+        {
+            key: 'package_count',
+            title: 'Package count'
+        }]);
     });
 
-    it('should keep group column', () => {
-        expect(systemsColumnsMerger([...baseColumns, { key: 'groups' }], () => [])).toMatchInlineSnapshot(`
-[
-  {
-    "key": "display_name",
-    "renderFunc": [Function],
-  },
-  {
-    "key": "groups",
-  },
-  {
-    "key": "last_upload",
-    "sortKey": "last_upload",
-  },
-]
-`);
-    });
+    it('should merge renamed columns correctly', () => {
+        const patchColumns = [
+            {
+                inventoryKey: 'display_name',
+                key: 'name'
+            },
+            {
+                key: 'package_count',
+                title: 'Package count'
+            }
+        ];
 
-    it('should keep tags column', () => {
-        expect(systemsColumnsMerger([...baseColumns, { key: 'tags' }], () => [])).toMatchInlineSnapshot(`
-[
-  {
-    "key": "display_name",
-    "renderFunc": [Function],
-  },
-  {
-    "key": "tags",
-  },
-  {
-    "key": "last_upload",
-    "sortKey": "last_upload",
-  },
-]
-`);
+        const inventoryColumns = [
+            {
+                key: 'display_name',
+                title: 'Display name'
+            }
+        ];
+
+        expect(mergeInventoryColumns(patchColumns, inventoryColumns))
+        .toMatchObject([{
+            key: 'name',
+            title: 'Display name'
+        },
+        {
+            key: 'package_count',
+            title: 'Package count'
+        }]);
     });
 });

@@ -23,7 +23,7 @@ import {
 import { intl } from '../../Utilities/IntlProvider';
 import { ADVISORY_SYSTEMS_COLUMNS, systemsRowActions } from '../Systems/SystemsListAssets';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
-import { systemsColumnsMerger, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
+import { buildActiveFiltersConfig, mergeInventoryColumns } from '../../Utilities/SystemsHelpers';
 import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
 
 const AdvisorySystemsTable = ({
@@ -101,7 +101,7 @@ const AdvisorySystemsTable = ({
             initialLoading
             ignoreRefresh
             hideFilters={{ all: true, tags: false, operatingSystem: false }}
-            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, () => ADVISORY_SYSTEMS_COLUMNS)}
+            columns={(inventoryColumns) => mergeInventoryColumns(ADVISORY_SYSTEMS_COLUMNS, inventoryColumns)}
             showTags
             customFilters={{
                 patchParams: {

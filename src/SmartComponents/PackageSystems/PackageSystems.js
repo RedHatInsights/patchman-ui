@@ -24,6 +24,7 @@ import {
     persistantParams, remediationProviderWithPairs, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
 import {
+    mergeInventoryColumns,
     osParamParser
 } from '../../Utilities/SystemsHelpers';
 import { useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter,
@@ -151,12 +152,11 @@ const PackageSystems = ({ packageName }) => {
         <React.Fragment>
             {status.hasError && <ErrorHandler code={status.code} /> || (
                 <InventoryTable
-                    disableDefaultColumns={['system_profile', 'updated', 'groups']}
                     isFullView
                     autoRefresh
                     initialLoading
                     hideFilters={{ all: true, tags: false, operatingSystem: false }}
-                    columns={PACKAGE_SYSTEMS_COLUMNS}
+                    columns={(inventoryColumns) => mergeInventoryColumns(PACKAGE_SYSTEMS_COLUMNS, inventoryColumns)}
                     showTags
                     getEntities={getEntites}
                     customFilters={{
