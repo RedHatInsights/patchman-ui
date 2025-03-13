@@ -23,6 +23,16 @@ export const ManagedBySatelliteCell = () => (
 
 export const SYSTEMS_LIST_COLUMNS = [
     {
+        key: 'display_name',
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+    },
+    {
+        key: 'groups'
+    },
+    {
+        key: 'tags'
+    },
+    {
         key: 'operating_system',
         title: 'OS',
         renderFunc: value => createOSColumn(value),
@@ -61,6 +71,11 @@ export const SYSTEMS_LIST_COLUMNS = [
         props: {
             width: 10
         }
+    },
+    {
+        inventoryKey: 'updated',
+        key: 'last_upload',
+        sortKey: 'last_upload'
     }
 ];
 

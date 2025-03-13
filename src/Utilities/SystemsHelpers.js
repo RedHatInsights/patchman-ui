@@ -51,6 +51,12 @@ export const buildActiveFiltersConfig = (filter, search, deleteFilters) => {
         deleteTitle: intl.formatMessage(messages.labelsFiltersReset)
     };};
 
+export const mergeInventoryColumns = (patchmanColumns, inventoryColumns) =>
+    patchmanColumns.map(column => ({
+        ...inventoryColumns.find(inventoryColumn => inventoryColumn.key === (column.inventoryKey ?? column.key)),
+        ...column
+    }));
+
 export const systemsColumnsMerger = (defaultColumns, additionalColumns) => {
     let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
     let nameColumn = defaultColumns.filter(({ key }) => key === 'display_name');
