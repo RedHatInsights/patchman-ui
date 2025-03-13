@@ -81,6 +81,16 @@ export const SYSTEMS_LIST_COLUMNS = [
 
 export const ADVISORY_SYSTEMS_COLUMNS = [
     {
+        key: 'display_name',
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+    },
+    {
+        key: 'groups'
+    },
+    {
+        key: 'tags'
+    },
+    {
         key: 'os',
         title: 'OS',
         renderFunc: value => createOSColumn(value),
@@ -112,6 +122,11 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
             isStatic: true
         },
         transforms: [sortable]
+    },
+    {
+        inventoryKey: 'updated',
+        key: 'last_upload',
+        sortKey: 'last_upload'
     }
 ];
 
