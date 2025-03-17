@@ -187,8 +187,9 @@ describe('SystemsTable', () => {
             expect.objectContaining({
                 actionsConfig: {
                     actions: [
-                        //Remediation button
-                        expect.anything()
+                        expect.anything(), // remediation button
+                        expect.anything()  // column mgmt button
+
                     ]
                 }
             }),
