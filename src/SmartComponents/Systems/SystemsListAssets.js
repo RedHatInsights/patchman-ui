@@ -24,13 +24,23 @@ export const ManagedBySatelliteCell = () => (
 export const SYSTEMS_LIST_COLUMNS = [
     {
         key: 'display_name',
-        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+        title: 'Name',
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>,
+        isShown: true,
+        isShownByDefault: true,
+        isUntoggleable: true
     },
     {
-        key: 'groups'
+        key: 'groups',
+        title: 'Workspace',
+        isShown: true,
+        isShownByDefault: true
     },
     {
-        key: 'tags'
+        key: 'tags',
+        title: 'Tags',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'operating_system',
@@ -38,7 +48,9 @@ export const SYSTEMS_LIST_COLUMNS = [
         renderFunc: value => createOSColumn(value),
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'template_name',
@@ -54,7 +66,9 @@ export const SYSTEMS_LIST_COLUMNS = [
                     : 'No template',
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'applicable_advisories',
@@ -62,7 +76,9 @@ export const SYSTEMS_LIST_COLUMNS = [
         props: {
             width: 15
         },
-        renderFunc: value => createAdvisoriesIcons(value, 'installable')
+        renderFunc: value => createAdvisoriesIcons(value, 'installable'),
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'packages_installed',
@@ -70,12 +86,17 @@ export const SYSTEMS_LIST_COLUMNS = [
         renderFunc: (packageCount, systemID) => createPackagesColumn(packageCount, systemID),
         props: {
             width: 10
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         inventoryKey: 'updated',
         key: 'last_upload',
-        sortKey: 'last_upload'
+        sortKey: 'last_upload',
+        title: 'Last seen',
+        isShown: true,
+        isShownByDefault: true
     }
 ];
 
