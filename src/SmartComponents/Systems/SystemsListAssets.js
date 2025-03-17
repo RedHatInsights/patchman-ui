@@ -103,13 +103,23 @@ export const SYSTEMS_LIST_COLUMNS = [
 export const ADVISORY_SYSTEMS_COLUMNS = [
     {
         key: 'display_name',
-        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+        title: 'Name',
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>,
+        isShown: true,
+        isShownByDefault: true,
+        isUntoggleable: true
     },
     {
-        key: 'groups'
+        key: 'groups',
+        title: 'Workspace',
+        isShown: true,
+        isShownByDefault: true
     },
     {
-        key: 'tags'
+        key: 'tags',
+        title: 'Tags',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'os',
@@ -117,7 +127,9 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
         renderFunc: value => createOSColumn(value),
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'template_name',
@@ -133,7 +145,9 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
                     : 'No template',
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'status',
@@ -142,12 +156,17 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
             width: 5,
             isStatic: true
         },
-        transforms: [sortable]
+        transforms: [sortable],
+        isShown: true,
+        isShownByDefault: true
     },
     {
         inventoryKey: 'updated',
         key: 'last_upload',
-        sortKey: 'last_upload'
+        sortKey: 'last_upload',
+        title: 'Last seen',
+        isShown: true,
+        isShownByDefault: true
     }
 ];
 
