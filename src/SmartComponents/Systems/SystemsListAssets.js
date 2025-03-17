@@ -172,10 +172,17 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
 
 export const PACKAGE_SYSTEMS_COLUMNS = [
     {
-        key: 'display_name'
+        key: 'display_name',
+        title: 'Name',
+        isShown: true,
+        isShownByDefault: true,
+        isUntoggleable: true
     },
     {
-        key: 'tags'
+        key: 'tags',
+        title: 'Tags',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'os',
@@ -183,7 +190,9 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
         renderFunc: value => createOSColumn(value),
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'template_name',
@@ -199,21 +208,27 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
                     : 'No template',
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'installed_evra',
         title: 'Installed version',
         props: {
             width: 15
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'available_evra',
         title: 'Latest version',
         props: {
             width: 15
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'update_status',
@@ -221,7 +236,9 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
         props: {
             width: 20
         },
-        renderFunc: value => createUpgradableColumn(value)
+        renderFunc: value => createUpgradableColumn(value),
+        isShown: true,
+        isShownByDefault: true
     }
 ];
 
