@@ -27,8 +27,15 @@ import {
     mergeInventoryColumns,
     osParamParser
 } from '../../Utilities/SystemsHelpers';
-import { useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter,
-    useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/hooks';
+import {
+    useBulkSelectConfig,
+    useGetEntities,
+    useOnExport,
+    useRemoveFilter,
+    useOnSelect,
+    ID_API_ENDPOINTS,
+    useColumnManagement
+} from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import { PACKAGE_SYSTEMS_COLUMNS } from '../Systems/SystemsListAssets';
@@ -73,6 +80,10 @@ const PackageSystems = ({ packageName }) => {
             dispatch(clearPackageSystemsReducer());
         };
     }, []);
+
+    const [appliedColumns, setAppliedColumns] = React.useState(PACKAGE_SYSTEMS_COLUMNS);
+    const [ColumnManagementModal, setColumnManagementModalOpen] =
+        useColumnManagement(appliedColumns, newColumns => setAppliedColumns(newColumns));
 
     const [deleteFilters] = useRemoveFilter({ ...filter, search }, apply);
 
@@ -150,13 +161,17 @@ const PackageSystems = ({ packageName }) => {
 
     return (
         <React.Fragment>
+            {ColumnManagementModal}
+
             {status.hasError && <ErrorHandler code={status.code} /> || (
                 <InventoryTable
                     isFullView
                     autoRefresh
                     initialLoading
                     hideFilters={{ all: true, tags: false, operatingSystem: false }}
-                    columns={(inventoryColumns) => mergeInventoryColumns(PACKAGE_SYSTEMS_COLUMNS, inventoryColumns)}
+                    columns={(inventoryColumns) =>
+                        mergeInventoryColumns(appliedColumns.filter(column => column.isShown), inventoryColumns)
+                    }
                     showTags
                     getEntities={getEntites}
                     customFilters={{
@@ -179,6 +194,15 @@ const PackageSystems = ({ packageName }) => {
                             )
                         }));
 
+                    }}
+                    actionsConfig={{
+                        actions: [
+                            null, // first item of actions will be a big button, but we want "Manage columns" in kebab menu
+                            {
+                                label: 'Manage columns',
+                                onClick: () => setColumnManagementModalOpen(true)
+                            }
+                        ]
                     }}
                     tableProps={{
                         canSelectAll: false,
