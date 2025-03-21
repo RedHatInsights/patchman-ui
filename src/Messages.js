@@ -389,7 +389,7 @@ export default defineMessages({
     labelsRemediate: {
         id: 'labelsRemediate',
         description: 'Button label',
-        defaultMessage: 'Remediate'
+        defaultMessage: 'Plan remediation'
     },
     labelsRemove: {
         id: 'labelsRemove',
