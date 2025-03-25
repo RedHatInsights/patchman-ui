@@ -15,9 +15,8 @@ import { useBulkSelectConfig, useGetEntities, useOnExport,
 } from '../../Utilities/hooks';
 import { SYSTEMS_LIST_COLUMNS, systemsRowActions } from './SystemsListAssets';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
-import { buildFilterConfig, buildActiveFiltersConfig } from '../../Utilities/SystemsHelpers';
+import { buildFilterConfig, buildActiveFiltersConfig, mergeInventoryColumns } from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
-import { systemsColumnsMerger } from '../../Utilities/SystemsHelpers';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import propTypes from 'prop-types';
 
@@ -151,7 +150,7 @@ const SystemsTable = ({
             autoRefresh
             initialLoading
             hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
-            columns={(defaultColumns) => systemsColumnsMerger(defaultColumns, () => SYSTEMS_LIST_COLUMNS)}
+            columns={(inventoryColumns) => mergeInventoryColumns(SYSTEMS_LIST_COLUMNS, inventoryColumns)}
             showTags
             customFilters={{
                 ...operatingSystemFilter ? {
