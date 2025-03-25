@@ -24,13 +24,23 @@ export const ManagedBySatelliteCell = () => (
 export const SYSTEMS_LIST_COLUMNS = [
     {
         key: 'display_name',
-        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+        title: 'Name',
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>,
+        isShown: true,
+        isShownByDefault: true,
+        isUntoggleable: true
     },
     {
-        key: 'groups'
+        key: 'groups',
+        title: 'Workspace',
+        isShown: true,
+        isShownByDefault: true
     },
     {
-        key: 'tags'
+        key: 'tags',
+        title: 'Tags',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'operating_system',
@@ -38,7 +48,9 @@ export const SYSTEMS_LIST_COLUMNS = [
         renderFunc: value => createOSColumn(value),
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'template_name',
@@ -54,7 +66,9 @@ export const SYSTEMS_LIST_COLUMNS = [
                     : 'No template',
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'applicable_advisories',
@@ -62,7 +76,9 @@ export const SYSTEMS_LIST_COLUMNS = [
         props: {
             width: 15
         },
-        renderFunc: value => createAdvisoriesIcons(value, 'installable')
+        renderFunc: value => createAdvisoriesIcons(value, 'installable'),
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'packages_installed',
@@ -70,25 +86,40 @@ export const SYSTEMS_LIST_COLUMNS = [
         renderFunc: (packageCount, systemID) => createPackagesColumn(packageCount, systemID),
         props: {
             width: 10
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         inventoryKey: 'updated',
         key: 'last_upload',
-        sortKey: 'last_upload'
+        sortKey: 'last_upload',
+        title: 'Last seen',
+        isShown: true,
+        isShownByDefault: true
     }
 ];
 
 export const ADVISORY_SYSTEMS_COLUMNS = [
     {
         key: 'display_name',
-        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+        title: 'Name',
+        renderFunc: (displayName, id) => <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>,
+        isShown: true,
+        isShownByDefault: true,
+        isUntoggleable: true
     },
     {
-        key: 'groups'
+        key: 'groups',
+        title: 'Workspace',
+        isShown: true,
+        isShownByDefault: true
     },
     {
-        key: 'tags'
+        key: 'tags',
+        title: 'Tags',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'os',
@@ -96,7 +127,9 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
         renderFunc: value => createOSColumn(value),
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'template_name',
@@ -112,7 +145,9 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
                     : 'No template',
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'status',
@@ -121,21 +156,33 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
             width: 5,
             isStatic: true
         },
-        transforms: [sortable]
+        transforms: [sortable],
+        isShown: true,
+        isShownByDefault: true
     },
     {
         inventoryKey: 'updated',
         key: 'last_upload',
-        sortKey: 'last_upload'
+        sortKey: 'last_upload',
+        title: 'Last seen',
+        isShown: true,
+        isShownByDefault: true
     }
 ];
 
 export const PACKAGE_SYSTEMS_COLUMNS = [
     {
-        key: 'display_name'
+        key: 'display_name',
+        title: 'Name',
+        isShown: true,
+        isShownByDefault: true,
+        isUntoggleable: true
     },
     {
-        key: 'tags'
+        key: 'tags',
+        title: 'Tags',
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'os',
@@ -143,7 +190,9 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
         renderFunc: value => createOSColumn(value),
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'template_name',
@@ -159,21 +208,27 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
                     : 'No template',
         props: {
             width: 5
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'installed_evra',
         title: 'Installed version',
         props: {
             width: 15
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'available_evra',
         title: 'Latest version',
         props: {
             width: 15
-        }
+        },
+        isShown: true,
+        isShownByDefault: true
     },
     {
         key: 'update_status',
@@ -181,7 +236,9 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
         props: {
             width: 20
         },
-        renderFunc: value => createUpgradableColumn(value)
+        renderFunc: value => createUpgradableColumn(value),
+        isShown: true,
+        isShownByDefault: true
     }
 ];
 

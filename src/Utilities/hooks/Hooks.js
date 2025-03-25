@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, Fragment } from 'react';
+import React, { useCallback, useEffect, useRef, Fragment, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SortByDirection } from '@patternfly/react-table';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
@@ -22,6 +22,7 @@ import { intl } from '../IntlProvider';
 import { multiValueFilters } from '../constants';
 import { assignSystemToPatchSet, updatePatchSets } from '../api';
 import { createSystemsSortBy } from '../SystemsHelpers';
+import { ColumnManagementModal } from '@patternfly/react-component-groups';
 
 export const useSetPage = (limit, callback) => {
     const onSetPage = React.useCallback((_, page) =>
@@ -335,4 +336,18 @@ export const useEntitlements = () => {
     });
 
     return getEntitlements;
+};
+
+export const useColumnManagement = (columns, onApply) => {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    return [(
+        <ColumnManagementModal
+            appliedColumns={columns}
+            applyColumns={newColumns => onApply(newColumns)}
+            isOpen={isModalOpen}
+            setOpen={setModalOpen}
+            onClose={() => setModalOpen(false)}
+            key="column-mgmt-modal"
+        />), setModalOpen];
 };

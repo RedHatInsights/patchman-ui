@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
@@ -18,7 +18,8 @@ import {
     remediationProvider, removeUndefinedObjectKeys
 } from '../../Utilities/Helpers';
 import {
-    useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter, useOnSelect, ID_API_ENDPOINTS
+    useBulkSelectConfig, useGetEntities, useOnExport, useRemoveFilter, useOnSelect, ID_API_ENDPOINTS,
+    useColumnManagement
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { ADVISORY_SYSTEMS_COLUMNS, systemsRowActions } from '../Systems/SystemsListAssets';
@@ -49,6 +50,10 @@ const AdvisorySystemsTable = ({
 
     const { systemProfile, selectedTags,
         filter, search, page, perPage, sort } = queryParams;
+
+    const [appliedColumns, setAppliedColumns] = React.useState(ADVISORY_SYSTEMS_COLUMNS);
+    const [ColumnManagementModal, setColumnManagementModalOpen] =
+        useColumnManagement(appliedColumns, newColumns => setAppliedColumns(newColumns));
 
     const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply);
 
@@ -95,57 +100,72 @@ const AdvisorySystemsTable = ({
     );
 
     return (
-        <InventoryTable
-            isFullView
-            autoRefresh
-            initialLoading
-            ignoreRefresh
-            hideFilters={{ all: true, tags: false, operatingSystem: false }}
-            columns={(inventoryColumns) => mergeInventoryColumns(ADVISORY_SYSTEMS_COLUMNS, inventoryColumns)}
-            showTags
-            customFilters={{
-                patchParams: {
-                    search,
-                    filter,
-                    systemProfile,
-                    selectedTags
-                }
-            }}
-            paginationProps={{
-                isDisabled: totalItems === 0
-            }}
-            onLoad={({ mergeWithEntities }) => {
-                store.replaceReducer(combineReducers({
-                    ...defaultReducers,
-                    ...mergeWithEntities(
-                        inventoryEntitiesReducer(ADVISORY_SYSTEMS_COLUMNS, modifyAdvisorySystems),
-                        persistantParams({ page, perPage, sort, search }, decodedParams)
-                    )
-                }));
-            }}
-            getEntities={getEntites}
-            tableProps={{
-                actionResolver: (row) => systemsRowActions(activateRemediationModal, undefined, undefined, row),
-                canSelectAll: false,
-                variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
-            }}
-            filterConfig={filterConfig}
-            activeFiltersConfig={activeFiltersConfig}
-            exportConfig={{
-                isDisabled: totalItems === 0,
-                onSelect: onExport
-            }}
-            bulkSelect={onSelect && bulkSelectConfig}
-            dedicatedAction={(
-                <AsyncRemediationButton
-                    remediationProvider={remediationDataProvider}
-                    isDisabled={
-                        arrayFromObj(selectedRows).length === 0
-                    }
-                />
-            )}
+        <Fragment>
+            {ColumnManagementModal}
 
-        />
+            <InventoryTable
+                isFullView
+                autoRefresh
+                initialLoading
+                ignoreRefresh
+                hideFilters={{ all: true, tags: false, operatingSystem: false }}
+                columns={(inventoryColumns) =>
+                    mergeInventoryColumns(appliedColumns.filter(column => column.isShown), inventoryColumns)
+                }
+                showTags
+                customFilters={{
+                    patchParams: {
+                        search,
+                        filter,
+                        systemProfile,
+                        selectedTags
+                    }
+                }}
+                paginationProps={{
+                    isDisabled: totalItems === 0
+                }}
+                onLoad={({ mergeWithEntities }) => {
+                    store.replaceReducer(combineReducers({
+                        ...defaultReducers,
+                        ...mergeWithEntities(
+                            inventoryEntitiesReducer(ADVISORY_SYSTEMS_COLUMNS, modifyAdvisorySystems),
+                            persistantParams({ page, perPage, sort, search }, decodedParams)
+                        )
+                    }));
+                }}
+                getEntities={getEntites}
+                actionsConfig={{
+                    actions: [
+                        null, // first item of actions will be a big button, but we want "Manage columns" in kebab menu
+                        {
+                            label: 'Manage columns',
+                            onClick: () => setColumnManagementModalOpen(true)
+                        }
+                    ]
+                }}
+                tableProps={{
+                    actionResolver: (row) => systemsRowActions(activateRemediationModal, undefined, undefined, row),
+                    canSelectAll: false,
+                    variant: TableVariant.compact, className: 'patchCompactInventory', isStickyHeader: true
+                }}
+                filterConfig={filterConfig}
+                activeFiltersConfig={activeFiltersConfig}
+                exportConfig={{
+                    isDisabled: totalItems === 0,
+                    onSelect: onExport
+                }}
+                bulkSelect={onSelect && bulkSelectConfig}
+                dedicatedAction={(
+                    <AsyncRemediationButton
+                        remediationProvider={remediationDataProvider}
+                        isDisabled={
+                            arrayFromObj(selectedRows).length === 0
+                        }
+                    />
+                )}
+
+            />
+        </Fragment>
     );
 };
 
