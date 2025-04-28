@@ -94,7 +94,6 @@ export const SYSTEMS_LIST_COLUMNS = [
         inventoryKey: 'updated',
         key: 'last_upload',
         sortKey: 'last_upload',
-        title: 'Last seen',
         isShown: true,
         isShownByDefault: true
     }
@@ -164,7 +163,6 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
         inventoryKey: 'updated',
         key: 'last_upload',
         sortKey: 'last_upload',
-        title: 'Last seen',
         isShown: true,
         isShownByDefault: true
     }
