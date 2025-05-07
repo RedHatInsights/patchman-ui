@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/RedHatInsights/patchman-ui.svg?branch=master)](https://app.travis-ci.com/RedHatInsights/patchman-ui)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/RedhatInsights/patchman-ui/test.yml?branch=master)](https://github.com/RedHatInsights/patchman-ui/actions/workflows/test.yml)
 [![GitHub release](https://img.shields.io/github/v/release/RedHatInsights/patchman-ui.svg)](https://github.com/RedHatInsights/patchman-ui/releases/latest)
 [![codecov](https://codecov.io/gh/RedHatInsights/patchman-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/RedHatInsights/patchman-ui)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
