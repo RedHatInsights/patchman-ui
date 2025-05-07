@@ -38,6 +38,8 @@
     "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@cypress/code-coverage": "^3.13.4",
     "@cypress/react18": "^2.0.1",
     "@patternfly/patternfly": "^5.2.0",
@@ -93,9 +95,9 @@
     "verify:local": "npm-run-all build lint test:local",
     "nightly": "npm run deploy",
     "test:coverage": "curl -sSL 'https://raw.githubusercontent.com/RedHatInsights/insights-interact-tools/refs/heads/main/scripts/coverage.sh' | bash",
-    "test:ct": "BABEL_ENV=componentTest cypress run --component",
+    "test:ct": "BABEL_ENV=componentTest cypress run --browser chrome --component",
     "test:openct": "cypress open --component",
-    "travis:verify": "npm run test:coverage"
+    "ci:verify": "npm run test:coverage"
   },
   "files": [
     "/dist"
