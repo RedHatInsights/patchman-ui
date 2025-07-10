@@ -49,7 +49,7 @@ const Advisories = () => {
         ({ AdvisoryListStore }) => AdvisoryListStore.expandedRows
     );
     const queryParams = useSelector(
-        ({ AdvisoryListStore }) => AdvisoryListStore.queryParams
+        ({ AdvisoryListStore }) => AdvisoryListStore?.queryParams
     );
     const selectedRows = useSelector(
         ({ AdvisoryListStore }) => AdvisoryListStore.selectedRows
@@ -188,13 +188,13 @@ const Advisories = () => {
                     store={{ rows, metadata, status, queryParams }}
                     filterConfig={{
                         items: [
-                            searchFilter(apply, queryParams.search,
+                            searchFilter(apply, queryParams?.search,
                                 intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle),
                                 intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder)
                             ),
-                            typeFilter(apply, queryParams.filter),
-                            publishDateFilter(apply, queryParams.filter),
-                            rebootFilter(apply, queryParams.filter)
+                            typeFilter(apply, queryParams?.filter),
+                            publishDateFilter(apply, queryParams?.filter),
+                            rebootFilter(apply, queryParams?.filter)
                         ]
                     }}
                     searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
