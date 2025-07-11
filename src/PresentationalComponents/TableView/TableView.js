@@ -26,7 +26,7 @@ const TableView = ({
         rows,
         metadata,
         status,
-        queryParams: { filter, search }
+        queryParams: { filter = {}, search = '' } = {}
     },
     onCollapse,
     onSelect,
