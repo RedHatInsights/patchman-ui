@@ -49,7 +49,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                                 intl.formatMessage(messages.labelsRebootRequired)
                                 || intl.formatMessage(messages.labelsRebootNotRequired)
                         },
-                        { title: processDate(row.attributes.public_date) }
+                        { title: row.attributes.public_date ? processDate(row.attributes.public_date) : 'Not Available' }
                     ]
                 },
                 {
