@@ -3,26 +3,26 @@
 exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
 <DocumentFragment>
   <div
-    class="pf-v5-l-grid pf-m-gutter"
+    class="pf-v6-l-grid pf-m-gutter"
     style="min-height: 150px;"
   >
     <div
-      class="pf-v5-l-grid__item pf-m-12-col-on-sm pf-m-8-col-on-md"
+      class="pf-v6-l-grid__item pf-m-12-col-on-sm pf-m-8-col-on-md"
     >
       <div
-        class="pf-v5-l-stack pf-m-gutter"
+        class="pf-v6-l-stack pf-m-gutter"
       >
         <div
-          class="pf-v5-l-stack__item"
+          class="pf-v6-l-stack__item"
         />
         <div
-          class="pf-v5-l-stack__item"
+          class="pf-v6-l-stack__item"
           style="white-space: pre-line;"
         >
           Kernel-based Virtual.
         </div>
         <div
-          class="pf-v5-l-stack__item"
+          class="pf-v6-l-stack__item"
         >
           Issued 30 June 2020
           <br />
@@ -31,30 +31,30 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
       </div>
     </div>
     <div
-      class="pf-v5-l-grid__item pf-m-12-col-on-sm pf-m-4-col-on-md"
+      class="pf-v6-l-grid__item pf-m-12-col-on-sm pf-m-4-col-on-md"
     >
       <div
-        class="pf-v5-l-flex pf-m-column"
+        class="pf-v6-l-flex pf-m-column"
       >
         <div
           class=""
         >
           <div
-            class="pf-v5-l-split pf-m-gutter infobox"
+            class="pf-v6-l-split pf-m-gutter infobox"
           >
             <div
-              class="pf-v5-l-split__item pf-m-fill"
+              class="pf-v6-l-split__item pf-m-fill"
             >
               <div
-                class="pf-v5-l-flex pf-m-column"
+                class="pf-v6-l-flex pf-m-column"
               >
                 <div
                   class="pf-m-spacer-none"
                 >
                   <h5
-                    class="pf-v5-c-title pf-m-md"
+                    class="pf-v6-c-title pf-m-h5"
                     data-ouia-component-id="OUIA-Generated-Title-3"
-                    data-ouia-component-type="PF5/Title"
+                    data-ouia-component-type="PF6/Title"
                     data-ouia-safe="true"
                   >
                     Advisory type
@@ -64,20 +64,20 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
                   class="pf-m-spacer-sm"
                 >
                   <div
-                    class="pf-v5-l-split pf-m-gutter"
+                    class="pf-v6-l-split pf-m-gutter"
                   >
                     <div
-                      class="pf-v5-l-split__item"
+                      class="pf-v6-l-split__item"
                     >
                       <span
-                        class="pf-v5-c-icon"
+                        class="pf-v6-c-icon"
                       >
                         <span
-                          class="pf-v5-c-icon__content"
+                          class="pf-v6-c-icon__content"
                         >
                           <svg
                             aria-hidden="true"
-                            class="pf-v5-svg"
+                            class="pf-v6-svg"
                             fill="currentColor"
                             height="1em"
                             role="img"
@@ -92,7 +92,7 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
                       </span>
                     </div>
                     <div
-                      class="pf-v5-l-split__item pf-m-fill"
+                      class="pf-v6-l-split__item pf-m-fill"
                     >
                       Security
                     </div>
@@ -106,21 +106,21 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
           class=""
         >
           <div
-            class="pf-v5-l-split pf-m-gutter infobox"
+            class="pf-v6-l-split pf-m-gutter infobox"
           >
             <div
-              class="pf-v5-l-split__item pf-m-fill"
+              class="pf-v6-l-split__item pf-m-fill"
             >
               <div
-                class="pf-v5-l-flex pf-m-column"
+                class="pf-v6-l-flex pf-m-column"
               >
                 <div
                   class="pf-m-spacer-none"
                 >
                   <h5
-                    class="pf-v5-c-title pf-m-md"
+                    class="pf-v6-c-title pf-m-h5"
                     data-ouia-component-id="OUIA-Generated-Title-4"
-                    data-ouia-component-type="PF5/Title"
+                    data-ouia-component-type="PF6/Title"
                     data-ouia-safe="true"
                   >
                     Severity
@@ -130,21 +130,21 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
                   class="pf-m-spacer-sm"
                 >
                   <div
-                    class="pf-v5-l-flex pf-m-row"
+                    class="pf-v6-l-flex pf-m-row"
                   >
                     <div
                       class=""
                     >
                       <span
-                        class="pf-v5-c-icon pf-m-sm"
+                        class="pf-v6-c-icon pf-m-sm"
                       >
                         <span
-                          class="pf-v5-c-icon__content"
+                          class="pf-v6-c-icon__content"
                         >
                           <svg
                             aria-hidden="true"
-                            class="pf-v5-svg"
-                            color="#ec7a08"
+                            class="pf-v6-svg"
+                            color="#ca6c0f"
                             fill="currentColor"
                             height="1em"
                             role="img"
@@ -178,48 +178,48 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
 exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
 <DocumentFragment>
   <div
-    class="pf-v5-l-grid pf-m-gutter"
+    class="pf-v6-l-grid pf-m-gutter"
     style="min-height: 150px;"
   >
     <div
-      class="pf-v5-l-grid__item pf-m-12-col-on-sm pf-m-8-col-on-md"
+      class="pf-v6-l-grid__item pf-m-12-col-on-sm pf-m-8-col-on-md"
     >
       <div
         class="ins-c-spinner ins-m-center"
         role="status"
       >
         <span
-          class="pf-v5-u-screen-reader"
+          class="pf-v6-u-screen-reader"
         >
           Loading...
         </span>
       </div>
     </div>
     <div
-      class="pf-v5-l-grid__item pf-m-12-col-on-sm pf-m-4-col-on-md"
+      class="pf-v6-l-grid__item pf-m-12-col-on-sm pf-m-4-col-on-md"
     >
       <div
-        class="pf-v5-l-flex pf-m-column"
+        class="pf-v6-l-flex pf-m-column"
       >
         <div
           class=""
         >
           <div
-            class="pf-v5-l-split pf-m-gutter infobox"
+            class="pf-v6-l-split pf-m-gutter infobox"
           >
             <div
-              class="pf-v5-l-split__item pf-m-fill"
+              class="pf-v6-l-split__item pf-m-fill"
             >
               <div
-                class="pf-v5-l-flex pf-m-column"
+                class="pf-v6-l-flex pf-m-column"
               >
                 <div
                   class="pf-m-spacer-none"
                 >
                   <h5
-                    class="pf-v5-c-title pf-m-md"
+                    class="pf-v6-c-title pf-m-h5"
                     data-ouia-component-id="OUIA-Generated-Title-1"
-                    data-ouia-component-type="PF5/Title"
+                    data-ouia-component-type="PF6/Title"
                     data-ouia-safe="true"
                   >
                     Advisory type
@@ -229,20 +229,20 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
                   class="pf-m-spacer-sm"
                 >
                   <div
-                    class="pf-v5-l-split pf-m-gutter"
+                    class="pf-v6-l-split pf-m-gutter"
                   >
                     <div
-                      class="pf-v5-l-split__item"
+                      class="pf-v6-l-split__item"
                     >
                       <span
-                        class="pf-v5-c-icon"
+                        class="pf-v6-c-icon"
                       >
                         <span
-                          class="pf-v5-c-icon__content"
+                          class="pf-v6-c-icon__content"
                         >
                           <svg
                             aria-hidden="true"
-                            class="pf-v5-svg"
+                            class="pf-v6-svg"
                             fill="currentColor"
                             height="1em"
                             role="img"
@@ -257,7 +257,7 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
                       </span>
                     </div>
                     <div
-                      class="pf-v5-l-split__item pf-m-fill"
+                      class="pf-v6-l-split__item pf-m-fill"
                     >
                       Security
                     </div>
@@ -271,21 +271,21 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
           class=""
         >
           <div
-            class="pf-v5-l-split pf-m-gutter infobox"
+            class="pf-v6-l-split pf-m-gutter infobox"
           >
             <div
-              class="pf-v5-l-split__item pf-m-fill"
+              class="pf-v6-l-split__item pf-m-fill"
             >
               <div
-                class="pf-v5-l-flex pf-m-column"
+                class="pf-v6-l-flex pf-m-column"
               >
                 <div
                   class="pf-m-spacer-none"
                 >
                   <h5
-                    class="pf-v5-c-title pf-m-md"
+                    class="pf-v6-c-title pf-m-h5"
                     data-ouia-component-id="OUIA-Generated-Title-2"
-                    data-ouia-component-type="PF5/Title"
+                    data-ouia-component-type="PF6/Title"
                     data-ouia-safe="true"
                   >
                     Severity
@@ -295,21 +295,21 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
                   class="pf-m-spacer-sm"
                 >
                   <div
-                    class="pf-v5-l-flex pf-m-row"
+                    class="pf-v6-l-flex pf-m-row"
                   >
                     <div
                       class=""
                     >
                       <span
-                        class="pf-v5-c-icon pf-m-sm"
+                        class="pf-v6-c-icon pf-m-sm"
                       >
                         <span
-                          class="pf-v5-c-icon__content"
+                          class="pf-v6-c-icon__content"
                         >
                           <svg
                             aria-hidden="true"
-                            class="pf-v5-svg"
-                            color="#ec7a08"
+                            class="pf-v6-svg"
+                            color="#ca6c0f"
                             fill="currentColor"
                             height="1em"
                             role="img"

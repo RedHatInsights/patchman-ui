@@ -86,7 +86,7 @@ describe('AdvisoryDetail.js', () => {
         })).toBeTruthy();
         expect(screen.getByText(
             // eslint-disable-next-line max-len
-            /try refreshing the page\. if the problem persists, contact your organization administrator or visit our for known outages\./i
+            /try refreshing the page\. if the problem persists, contact your organization administrator or visit our status page for known outages\./i
         )).toBeTruthy();
     });
 
