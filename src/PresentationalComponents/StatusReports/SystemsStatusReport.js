@@ -98,7 +98,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsUpToDate)}
                         Icon={CheckCircleIcon}
-                        color={'var(--pf-v5-global--success-color--100)'}
+                        color={'var(--pf-t--temp--dev--tbd)'/* CODEMODS: original v5 color was --pf-v5-global--success-color--100 */}
                         value={subtotals?.patched}
                         apply={apply}
                         filter={{ filter: { packages_updatable: 'eq:0' } }}
@@ -108,7 +108,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsWithPatchesAvailable)}
                         Icon={PackageIcon}
-                        color={'var(--pf-v5-global--primary-color--100)'}
+                        color={'var(--pf-t--temp--dev--tbd)'/* CODEMODS: original v5 color was --pf-v5-global--primary-color--100 */}
                         value={subtotals?.unpatched}
                         apply={apply}
                         filter={{ filter: { packages_updatable: 'gt:0' } }}
@@ -118,7 +118,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusStaleSystems)}
                         Icon={ExclamationTriangleIcon}
-                        color={'var(--pf-v5-global--warning-color--100)'}
+                        color={'var(--pf-t--temp--dev--tbd)'/* CODEMODS: original v5 color was --pf-v5-global--warning-color--100 */}
                         value={subtotals?.stale}
                         apply={apply}
                         filter={{ filter: { stale: true } }}
