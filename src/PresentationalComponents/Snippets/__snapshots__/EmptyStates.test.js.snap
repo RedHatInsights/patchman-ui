@@ -3,26 +3,26 @@
 exports[`EmptyAdvisoryList Should match the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="pf-v5-c-empty-state"
+    class="pf-v6-c-empty-state"
   >
     <div
-      class="pf-v5-c-empty-state__content"
+      class="pf-v6-c-empty-state__content"
     >
       <div
-        class="pf-v5-c-empty-state__header"
+        class="pf-v6-c-empty-state__header"
       >
         <div
-          class="pf-v5-c-empty-state__title"
+          class="pf-v6-c-empty-state__title"
         >
           <h5
-            class="pf-v5-c-empty-state__title-text"
+            class="pf-v6-c-empty-state__title-text"
           >
             No matching advisories found
           </h5>
         </div>
       </div>
       <div
-        class="pf-v5-c-empty-state__body"
+        class="pf-v6-c-empty-state__body"
       >
         To continue, edit your filter settings and search again.
       </div>
@@ -34,20 +34,20 @@ exports[`EmptyAdvisoryList Should match the snapshot 1`] = `
 exports[`EmptyPackagesList Should match the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="pf-v5-c-empty-state"
+    class="pf-v6-c-empty-state"
   >
     <div
-      class="pf-v5-c-empty-state__content"
+      class="pf-v6-c-empty-state__content"
     >
       <div
-        class="pf-v5-c-empty-state__header"
+        class="pf-v6-c-empty-state__header"
       >
         <div
-          class="pf-v5-c-empty-state__icon"
+          class="pf-v6-c-empty-state__icon"
         >
           <svg
             aria-hidden="true"
-            class="pf-v5-svg"
+            class="pf-v6-svg"
             fill="currentColor"
             height="1em"
             role="img"
@@ -60,17 +60,17 @@ exports[`EmptyPackagesList Should match the snapshot 1`] = `
           </svg>
         </div>
         <div
-          class="pf-v5-c-empty-state__title"
+          class="pf-v6-c-empty-state__title"
         >
           <h5
-            class="pf-v5-c-empty-state__title-text"
+            class="pf-v6-c-empty-state__title-text"
           >
             No matching packages found
           </h5>
         </div>
       </div>
       <div
-        class="pf-v5-c-empty-state__body"
+        class="pf-v6-c-empty-state__body"
       >
         To continue, edit your filter settings and search again.
       </div>
