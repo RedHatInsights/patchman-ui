@@ -9,7 +9,7 @@ table.patchCompactInventory {
 
     .pf-v5-c-table__expandable-row-content {
         .patch-advisory-description {
-            font-size: var(--pf-v5-global--FontSize--sm);
+            font-size: var(--pf-t--global--font--size--sm);
         }
     }
 
@@ -44,7 +44,7 @@ table.patchCompactInventory {
 }
 
 .patch-status-report-text {
-    color: var(--pf-v5-global--primary-color--100);
+    color: var(--pf-t--temp--dev--tbd /* CODEMODS: original v5 color was:--pf-v5-global--primary-color--100 */);
     font-weight: bold;
     margin: 0px;
     padding: 0px
