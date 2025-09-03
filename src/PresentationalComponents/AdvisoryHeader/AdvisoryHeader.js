@@ -1,6 +1,5 @@
 import {
-    Button, Grid, GridItem, Stack, StackItem, Text, TextContent,
-    FlexItem, TextVariants, Flex, Split, SplitItem, Title
+    Button, Grid, GridItem, Stack, StackItem, Content, FlexItem, ContentVariants, Flex, Split, SplitItem, Title
 } from '@patternfly/react-core';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
@@ -107,14 +106,14 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
             </GridItem>
             {cves && cves.length !== 0 && (
                 <GridItem md={4} sm={12}>
-                    <TextContent>
-                        <Text component={TextVariants.h3}>
+                    <Content>
+                        <Content component={ContentVariants.h3}>
                             {intl.formatMessage(messages.labelsCves)}
-                        </Text>
+                        </Content>
                         <Button variant='link' style={{ padding: 0 }} onClick={showCvesModal} >
                             {intl.formatMessage(messages.labelsCvesButton, { cvesCount: cves.length })}
                         </Button>
-                    </TextContent>
+                    </Content>
                 </GridItem>
             )}
             <Suspense fallback={<Fragment/>}>

@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import { Button, Checkbox, Modal } from '@patternfly/react-core';
+import {
+    Button,
+    Checkbox
+} from '@patternfly/react-core';
+import {
+    Modal
+} from '@patternfly/react-core/deprecated';
 import messages from '../../Messages';
 import { intl } from '../../Utilities/IntlProvider';
 

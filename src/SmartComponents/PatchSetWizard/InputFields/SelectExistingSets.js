@@ -15,8 +15,9 @@ import {
 import {
     Select,
     SelectOption,
-    SelectVariant
-} from '@patternfly/react-core/deprecated';
+    MenuToggle,
+    SelectList
+} from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { fetchPatchSetsAction, changePatchSetsParams, clearPatchSetsAction } from '../../../store/Actions/Actions';
 import { intl } from '../../../Utilities/IntlProvider';
@@ -29,20 +30,16 @@ const SelectPagination = ({ changePage, page, perPage, totalItems }) =>{
     return (
         <Flex justifyContent={{ default: 'justifyContentSpaceBetween' }}>
             <FlexItem>
-                <Button variant="plain" aria-label="prev" isDisabled={page === 1} onClick={openPrevPage}>
-                    <Icon>
-                        <AngleLeftIcon />
-                    </Icon>
-                </Button>
+                <Button icon={<Icon>
+                    <AngleLeftIcon />
+                </Icon>} variant="plain" aria-label="prev" isDisabled={page === 1} onClick={openPrevPage} />
             </FlexItem>
             <FlexItem>
-                <Button variant="plain" aria-label="next"
-                    isDisabled={totalItems < page * perPage}
-                    onClick={openNextPage}>
-                    <Icon>
-                        <AngleRightIcon />
-                    </Icon>
-                </Button>
+                <Button icon={<Icon>
+                    <AngleRightIcon />
+                </Icon>} variant="plain" aria-label="next"
+                isDisabled={totalItems < page * perPage}
+                onClick={openNextPage} />
             </FlexItem>
         </Flex>
     );
@@ -79,7 +76,9 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems, select
             key={set.id}
             value={set.name}
             aria-label='patch-set-option'
-        />);
+        >
+            {set.name}
+        </SelectOption>);
     }, [rows, status.isLoading]);
 
     const apply = (params) => {
@@ -110,24 +109,28 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems, select
         dispatch(changePatchSetsParams({ ...queryParams, page }));
     };
 
-    const onFilter = (props, searchValue) => {
-        searchAdvisory(searchValue);
-    };
+    const toggle = (toggleRef) => (
+        <MenuToggle
+            ref={toggleRef}
+            onClick={() => setOpen(open => !open)}
+            isExpanded={isOpen}
+            isFullWidth
+            aria-label={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
+        >
+            {intl.formatMessage(messages.templateSelectExisting)}
+        </MenuToggle>
+    );
 
     return (
         <FormGroup fieldId='existing_patch_set' label={intl.formatMessage(messages.textTemplateChoose)} isRequired>
             <Select
-                variant={SelectVariant.single}
                 aria-label={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
                 onSelect={handleSelect}
-                placeholderText={intl.formatMessage(messages.templateSelectExisting)}
-                inlineFilterPlaceholderText={intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder)}
-                selections={selectedSets}
+                selected={selectedSets}
                 onToggle={handleOpen}
                 isOpen={isOpen}
-                isDisabled={false}
-                onFilter={onFilter}
-                hasInlineFilter
+                onOpenChange={setOpen}
+                toggle={toggle}
                 className='patch-existing-sets'
                 footer={
                     <SelectPagination
@@ -137,10 +140,10 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems, select
                         totalItems={metadata.total_items}
                     />
                 }
-                menuAppendTo={document.body}
-                maxHeight={350}
             >
-                {patchOptions}
+                <SelectList>
+                    {patchOptions}
+                </SelectList>
             </Select>
         </FormGroup>
     );

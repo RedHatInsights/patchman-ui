@@ -73,15 +73,13 @@ export const patchSetDetailRowActions = (handleSystemUnassign) => [
 ];
 
 export const CustomActionsToggle = () => <Tooltip content='For editing access, contact your administrator.'>
-    <Button
-        isAriaDisabled
-        variant="plain"
-        aria-label="plain kebab"
-    >
-        <Icon>
-            <EllipsisVIcon />
-        </Icon>
-    </Button>
+    <Button icon={<Icon>
+        <EllipsisVIcon />
+    </Icon>}
+    isAriaDisabled
+    variant="plain"
+    aria-label="plain kebab"
+    />
 </Tooltip>;
 
 export const patchSetUnassignSystemsNotifications = (systemsCount) => ({

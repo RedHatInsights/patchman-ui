@@ -1,4 +1,4 @@
-import { Card, EmptyState, EmptyStateBody, EmptyStateIcon, EmptyStateVariant, EmptyStateHeader  } from '@patternfly/react-core';
+import { Card, EmptyState, EmptyStateBody, EmptyStateVariant   } from '@patternfly/react-core';
 import { FrownOpenIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -7,12 +7,7 @@ import messages from '../../Messages';
 
 const Error = ({ message }) =>
     <Card>
-        <EmptyState variant={EmptyStateVariant.full}>
-            <EmptyStateHeader
-                titleText={intl.formatMessage(messages.statesError)}
-                icon={<EmptyStateIcon icon={FrownOpenIcon} color="black"/>}
-                headingLevel="h5"
-            />
+        <EmptyState  headingLevel="h5" icon={FrownOpenIcon}  titleText={intl.formatMessage(messages.statesError)} variant={EmptyStateVariant.full}>
             <EmptyStateBody>
                 {message}
             </EmptyStateBody>
