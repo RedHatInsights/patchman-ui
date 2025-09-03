@@ -3,8 +3,7 @@ import propTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import {
-    Text,
-    TextContent,
+    Content,
     Stack,
     StackItem,
     ExpandableSection
@@ -32,11 +31,11 @@ const ContentStep = ({ patchSetID }) => {
     return (
         <Stack hasGutter>
             <StackItem>
-                <TextContent>
-                    <Text component="h2">
+                <Content>
+                    <Content component="h2">
                         {intl.formatMessage(messages.templateContentStepTitle)}
-                    </Text>
-                </TextContent>
+                    </Content>
+                </Content>
             </StackItem>
             <StackItem>
                 {intl.formatMessage(messages.templateContentStepText)}

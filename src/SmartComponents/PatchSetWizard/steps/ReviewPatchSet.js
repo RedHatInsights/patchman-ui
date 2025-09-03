@@ -1,14 +1,10 @@
 import React, { Fragment } from 'react';
 import {
-    Text,
-    TextContent,
+    Content,
     Stack,
     StackItem,
-    TextVariants,
-    TextList,
-    TextListVariants,
-    TextListItem,
-    TextListItemVariants
+    ContentVariants
+
 } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import { intl } from '../../../Utilities/IntlProvider';
@@ -17,12 +13,12 @@ import { templateDateFormat } from '../../../Utilities/Helpers';
 
 const renderTextListItem = (label, text) => (
     <Fragment>
-        <TextListItem component={TextListItemVariants.dt} style={{ minWidth: 220 }}>
+        <Content component={ContentVariants.dt} style={{ minWidth: 220 }}>
             {intl.formatMessage(messages[label])}
-        </TextListItem>
-        <TextListItem component={TextListItemVariants.dd}>
+        </Content>
+        <Content component={ContentVariants.dd}>
             {text}
-        </TextListItem>
+        </Content>
     </Fragment>
 );
 
@@ -35,55 +31,55 @@ const ReviewPatchSet = () => {
     return (
         <Stack hasGutter>
             <StackItem>
-                <TextContent>
-                    <Text component="h2">
+                <Content>
+                    <Content component="h2">
                         {intl.formatMessage(messages.templateReview)}
-                    </Text>
-                </TextContent>
+                    </Content>
+                </Content>
             </StackItem>
             <StackItem>
-                <TextContent style={{ marginTop: '-15px' }}>
-                    <Text component={TextVariants.p}>
+                <Content style={{ marginTop: '-15px' }}>
+                    <Content component={ContentVariants.p}>
                         {intl.formatMessage(messages.textPatchTemplateReview)}
-                    </Text>
-                </TextContent>
+                    </Content>
+                </Content>
             </StackItem>
             <StackItem>
-                <TextContent>
-                    <Text component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
+                <Content>
+                    <Content component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
                         {intl.formatMessage(messages.textPatchTemplateContent)}
-                    </Text>
-                    <TextList component={TextListVariants.dl}>
+                    </Content>
+                    <Content component={ContentVariants.dl}>
                         {renderTextListItem('labelsColumnsUpToDate', templateDateFormat(toDate))}
-                    </TextList>
-                </TextContent>
+                    </Content>
+                </Content>
             </StackItem>
             <StackItem>
-                <TextContent>
-                    <Text component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
+                <Content>
+                    <Content component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
                         {intl.formatMessage(messages.textPatchTemplateDetails)}
-                    </Text>
-                    <TextList component={TextListVariants.dl}>
+                    </Content>
+                    <Content component={ContentVariants.dl}>
                         {renderTextListItem('labelsColumnsName', name)}
                         {renderTextListItem('labelsDescription', description
                             || intl.formatMessage(messages.titlesTemplateNoDescriptionProvided))}
-                    </TextList>
-                </TextContent>
+                    </Content>
+                </Content>
             </StackItem>
             <StackItem>
-                <TextContent>
-                    <Text component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
+                <Content>
+                    <Content component="h2" className="pf-v5-u-mt-md pf-v5-u-mb-sm">
                         {intl.formatMessage(messages.textPatchTemplateSystems)}
-                    </Text>
-                    <TextList component={TextListVariants.dl}>
+                    </Content>
+                    <Content component={ContentVariants.dl}>
                         {renderTextListItem(
                             'labelsSelectedSystems',
                             intl.formatMessage(messages.labelsSystem, {
                                 systemsCount: Object.values(systems).filter(system => system).length
                             })
                         )}
-                    </TextList>
-                </TextContent>
+                    </Content>
+                </Content>
             </StackItem>
         </Stack>
     );

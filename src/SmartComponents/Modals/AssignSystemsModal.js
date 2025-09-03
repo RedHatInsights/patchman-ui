@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import { Modal, Button, Stack, StackItem, Form, Spinner } from '@patternfly/react-core';
+import {
+    Button,
+    Stack,
+    StackItem,
+    Form,
+    Spinner
+} from '@patternfly/react-core';
+import {
+    Modal
+} from '@patternfly/react-core/deprecated';
 import { injectIntl } from 'react-intl';
 import SelectExistingSets from '../PatchSetWizard/InputFields/SelectExistingSets';
 import messages from '../../Messages';

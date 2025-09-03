@@ -1,4 +1,4 @@
-import { Stack, StackItem, Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { Stack, StackItem, Content, ContentVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -68,9 +68,9 @@ const PackageDetail = () => {
             <Main>
                 <Stack hasGutter>
                     <StackItem>
-                        <TextContent>
-                            <Text component={TextVariants.h2}>{intl.formatMessage(messages.titlesAffectedSystems)}</Text>
-                        </TextContent>
+                        <Content>
+                            <Content component={ContentVariants.h2}>{intl.formatMessage(messages.titlesAffectedSystems)}</Content>
+                        </Content>
                     </StackItem>
                     <StackItem>
                         {status.hasError

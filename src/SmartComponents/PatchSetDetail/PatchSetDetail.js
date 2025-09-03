@@ -20,8 +20,7 @@ import {
     Bullseye,
     Skeleton,
     Spinner,
-    Text,
-    TextContent,
+    Content,
     Tooltip
 } from '@patternfly/react-core';
 import {
@@ -29,7 +28,7 @@ import {
     DropdownItem,
     DropdownPosition,
     DropdownToggle
-} from '@patternfly/react-core/deprecated';
+} from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -374,11 +373,11 @@ const PatchSetDetail = () => {
                     </table>
                 </Header>
                 <Main>
-                    <TextContent>
-                        <Text component="h2" className="pf-v5-u-mb-md">
+                    <Content>
+                        <Content component="h2" className="pf-v5-u-mb-md">
                             {intl.formatMessage(messages.templateDetailTableTitle)}
-                        </Text>
-                    </TextContent>
+                        </Content>
+                    </Content>
                     {templateHasSystemsLoading
                         ? (
                             <Bullseye>

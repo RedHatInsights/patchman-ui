@@ -24,8 +24,8 @@ const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
         case 401:
             return <NotAuthorized
                 icon={LockIcon}
-                title={intl.formatMessage(messages.labelsNotAuthorizedTitle)}
-                description={intl.formatMessage(messages.labelsNotAuthorizedDescription)}
+                titleText={intl.formatMessage(messages.labelsNotAuthorizedTitle)}
+                bodyText={intl.formatMessage(messages.labelsNotAuthorizedDescription)}
                 prevPageButtonText={intl.formatMessage(messages.labelsReturnToPreviousPage)}
                 toLandingPageText={intl.formatMessage(messages.labelsReturnToLandingPage)}
             />;
@@ -33,8 +33,8 @@ const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
         case 403:
             return <NotAuthorized
                 icon={LockIcon}
-                title={intl.formatMessage(messages.labelsNotAuthorizedTitle)}
-                description={intl.formatMessage(messages.labelsNotAuthorizedDescription)}
+                titleText={intl.formatMessage(messages.labelsNotAuthorizedTitle)}
+                bodyText={intl.formatMessage(messages.labelsNotAuthorizedDescription)}
                 prevPageButtonText={intl.formatMessage(messages.labelsReturnToPreviousPage)}
                 toLandingPageText={intl.formatMessage(messages.labelsReturnToLandingPage)}
             />;

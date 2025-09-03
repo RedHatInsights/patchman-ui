@@ -54,7 +54,7 @@ const StatusCard = ({ advisory: { attributes, id } }) =>
                                         <GridItem>
                                             <Split hasGutter>
                                                 <SplitItem>
-                                                    <Icon color='var(--pf-v5-global--palette--red-100)'>
+                                                    <Icon color="var(--pf-t--temp--dev--tbd)"/* CODEMODS: original v5 color was --pf-v5-global--palette--red-100 */>
                                                         <PowerOffIcon />
                                                     </Icon>
                                                 </SplitItem>

@@ -4,19 +4,12 @@ import {
     Button,
     EmptyState,
     EmptyStateBody,
-    EmptyStateIcon,
-    EmptyStateHeader,
     EmptyStateFooter
 } from '@patternfly/react-core';
 import { DisconnectedIcon } from '@patternfly/react-icons';
 
 const NoRegisteredSystems = ({ titleText, bodyText, buttonText }) => (
-    <EmptyState>
-        <EmptyStateHeader
-            titleText={titleText}
-            icon={<EmptyStateIcon icon={DisconnectedIcon} />}
-            headingLevel="h5"
-        />
+    <EmptyState  headingLevel="h5" icon={DisconnectedIcon}  titleText={titleText}>
         <EmptyStateBody>{bodyText}</EmptyStateBody>
         <EmptyStateFooter>
             <Button
