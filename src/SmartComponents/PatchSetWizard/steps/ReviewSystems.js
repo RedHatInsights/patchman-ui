@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import useFieldApi from '@data-driven-forms/react-form-renderer/use-field-api';
 import searchFilter from '../../../PresentationalComponents/Filters/SearchFilter';
-import { Text, TextContent, Stack, StackItem, TextVariants, Alert } from '@patternfly/react-core';
+import { Content, Stack, StackItem, ContentVariants, Alert } from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 
 import { createSortBy, buildSelectedSystemsObj } from '../../../Utilities/Helpers';
@@ -149,19 +149,19 @@ export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
     return (
         <Stack hasGutter>
             <StackItem>
-                <TextContent>
-                    <Text component="h2">
+                <Content>
+                    <Content component="h2">
                         {intl.formatMessage(messages.templateApplySystems)}
-                    </Text>
-                </TextContent>
+                    </Content>
+                </Content>
             </StackItem>
             <StackItem>
-                <TextContent>
-                    <Text component={TextVariants.p}>
+                <Content>
+                    <Content component={ContentVariants.p}>
                         Select systems to apply the new template to. The list of systems <b>does not contain</b> systems
                         managed by Satellite.
-                    </Text>
-                </TextContent>
+                    </Content>
+                </Content>
             </StackItem>
             <Alert variant="warning" title={intl.formatMessage(messages.templateAlertSystems)} isInline />
             <StackItem>

@@ -8,7 +8,7 @@ import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { InventoryDetailHead, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
-import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
+import { Alert, Grid, GridItem, Content  } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
@@ -88,8 +88,8 @@ const InventoryDetail = () => {
                 >
                     <Grid>
                         {templateName && <GridItem>
-                            <TextContent>
-                                <Text>
+                            <Content>
+                                <Content component="p">
                                     {intl.formatMessage(messages.labelsColumnsTemplate)}:
                                     <InsightsLink
                                         app="content"
@@ -97,8 +97,8 @@ const InventoryDetail = () => {
                                         className="pf-v5-u-ml-xs">
                                         {templateName}
                                     </InsightsLink>
-                                </Text>
-                            </TextContent>
+                                </Content>
+                            </Content>
                         </GridItem>}
                         <GridItem>
                             {satelliteManaged

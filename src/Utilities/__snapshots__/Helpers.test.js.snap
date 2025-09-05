@@ -3,7 +3,7 @@
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [0, 0, 0] 1`] = `
 <div>
   <div
-    class="pf-v5-l-flex pf-m-inline-flex"
+    class="pf-v6-l-flex pf-m-inline-flex"
     style="flex-wrap: nowrap;"
   >
     No applicable advisories
@@ -14,21 +14,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -57,7 +57,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [0, 5, 3] 1`] = `
 <div>
   <div
-    class="pf-v5-l-flex pf-m-inline-flex"
+    class="pf-v6-l-flex pf-m-inline-flex"
     style="flex-wrap: nowrap;"
   >
     <div
@@ -67,21 +67,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -110,21 +110,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -153,21 +153,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -196,7 +196,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 0, 3] 1`] = `
 <div>
   <div
-    class="pf-v5-l-flex pf-m-inline-flex"
+    class="pf-v6-l-flex pf-m-inline-flex"
     style="flex-wrap: nowrap;"
   >
     <div
@@ -206,21 +206,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -249,21 +249,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -292,21 +292,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -335,7 +335,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 2, 0] 1`] = `
 <div>
   <div
-    class="pf-v5-l-flex pf-m-inline-flex"
+    class="pf-v6-l-flex pf-m-inline-flex"
     style="flex-wrap: nowrap;"
   >
     <div
@@ -345,21 +345,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -388,21 +388,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -431,21 +431,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -474,7 +474,7 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
 exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapshot for [1, 2, 3] 1`] = `
 <div>
   <div
-    class="pf-v5-l-flex pf-m-inline-flex"
+    class="pf-v6-l-flex pf-m-inline-flex"
     style="flex-wrap: nowrap;"
   >
     <div
@@ -484,21 +484,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -527,21 +527,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -570,21 +570,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -613,21 +613,21 @@ exports[`Helpers tests createAdvisoriesIcons: Should match advisory icons snapsh
         style="display: contents;"
       >
         <div
-          class="pf-v5-l-flex pf-m-inline-flex"
+          class="pf-v6-l-flex pf-m-inline-flex"
           style="flex-wrap: nowrap;"
         >
           <div
             class="pf-m-spacer-sm"
           >
             <span
-              class="pf-v5-c-icon"
+              class="pf-v6-c-icon"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
+                  class="pf-v6-svg"
                   fill="currentColor"
                   height="1em"
                   role="img"

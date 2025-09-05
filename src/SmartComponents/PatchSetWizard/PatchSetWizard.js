@@ -7,11 +7,10 @@ import componentTypes from '@data-driven-forms/react-form-renderer/component-typ
 import WizardMapper from '@data-driven-forms/pf4-component-mapper/wizard';
 import TextField from '@data-driven-forms/pf4-component-mapper/text-field';
 import DatePicker from '@data-driven-forms/pf4-component-mapper/date-picker';
+
 import {
+    Wizard,
     Modal
-} from '@patternfly/react-core';
-import {
-    Wizard
 } from '@patternfly/react-core/deprecated';
 import { useDispatch } from 'react-redux';
 

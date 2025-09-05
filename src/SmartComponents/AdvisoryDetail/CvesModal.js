@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Modal } from '@patternfly/react-core';
+import {
+    Modal
+} from '@patternfly/react-core/deprecated';
 import messages from '../../Messages';
 import { intl } from '../../Utilities/IntlProvider';
 import TableView from '../../PresentationalComponents/TableView/TableView';

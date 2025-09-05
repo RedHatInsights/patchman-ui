@@ -1,6 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import { Modal, Button, Grid, Skeleton } from '@patternfly/react-core';
+import {
+    Button,
+    Grid,
+    Skeleton
+} from '@patternfly/react-core';
+import {
+    Modal
+} from '@patternfly/react-core/deprecated';
 import { injectIntl } from 'react-intl';
 
 import messages from '../../Messages';
