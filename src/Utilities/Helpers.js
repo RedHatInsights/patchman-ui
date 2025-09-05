@@ -495,7 +495,7 @@ export const createOSColumn = ({ osName, rhsm }) => !rhsm ? osName : (
         <Flex flex={{ default: 'inlineFlex' }}>
             <FlexItem spacer={{ default: 'spacerSm' }}>{osName}</FlexItem>
             <FlexItem spacer={{ default: 'spacerSm' }}>
-                <InfoCircleIcon size="sm" color={'var(--pf-t--temp--dev--tbd)'/* CODEMODS: original v5 color was --pf-v5-global--info-color--100 */} />
+                <InfoCircleIcon size="sm" color={'var(--pf-t--global--color--status--info--100)'} />
             </FlexItem>
         </Flex>
     </Tooltip>

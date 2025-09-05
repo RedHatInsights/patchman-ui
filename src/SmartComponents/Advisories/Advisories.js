@@ -160,8 +160,8 @@ const Advisories = () => {
                         >
                             <Icon>
                                 <OutlinedQuestionCircleIcon
-                                    className="pf-v5-u-ml-sm"
-                                    color="var(--pf-t--temp--dev--tbd)"/* CODEMODS: original v5 color was --pf-v5-global--secondary-color--100 */
+                                    className="pf-v6-u-ml-sm"
+                                    color="var(--pf-t--global--icon--color--subtle)"
                                     style={{ verticalAlign: '0', fontSize: 16, cursor: 'pointer' }}
                                 />
                             </Icon>
