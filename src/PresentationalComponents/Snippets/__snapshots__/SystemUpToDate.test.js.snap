@@ -28,6 +28,7 @@ exports[`SystemUpToDate Should match the snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   class="pf-v6-svg"
+                  color="var(--pf-t--global--icon--color--status--success--default)"
                   fill="currentColor"
                   height="1em"
                   role="img"

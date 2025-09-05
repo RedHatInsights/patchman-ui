@@ -1,9 +1,9 @@
 span {
     &.patchman-label {
         display: inline-block;
-        font-size: var(--pf-t--global--font--size--sm);
+        font-size: var(--pf-t--global--font--size--body--default);
         font-weight: var(--pf-t--global--font--weight--heading--bold);
         line-height: var(--pf-t--global--font--line-height--heading);
-        color: var(--pf-t--temp--dev--tbd /* CODEMODS: original v5 color was:--pf-v5-global--Color--100 */);
+        color: var(--pf-t--global--text--color--regular);
     }
 }

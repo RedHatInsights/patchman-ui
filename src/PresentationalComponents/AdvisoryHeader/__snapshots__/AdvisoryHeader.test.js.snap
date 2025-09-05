@@ -144,7 +144,7 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
                           <svg
                             aria-hidden="true"
                             class="pf-v6-svg"
-                            color="#ca6c0f"
+                            color="var(--pf-t--global--icon--color--severity--important--default)"
                             fill="currentColor"
                             height="1em"
                             role="img"
@@ -309,7 +309,7 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
                           <svg
                             aria-hidden="true"
                             class="pf-v6-svg"
-                            color="#ca6c0f"
+                            color="var(--pf-t--global--icon--color--severity--important--default)"
                             fill="currentColor"
                             height="1em"
                             role="img"
