@@ -14,7 +14,7 @@ import { useFetchBatched } from '../../Utilities/hooks';
 export const ManagedBySatelliteCell = () => (
     <Tooltip content="This system is managed by Satellite and does not use a template.">
         <Content>
-            <Content component="p" className="pf-v5-u-font-size-sm">
+            <Content component="p" className="pf-v6-u-font-size-sm">
                 Managed by Satellite
             </Content>
         </Content>

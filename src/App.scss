@@ -7,7 +7,7 @@ table.patchCompactInventory {
 .patch-root {
     overflow: inherit !important;
 
-    .pf-v5-c-table__expandable-row-content {
+    .pf-v6-c-table__expandable-row-content {
         .patch-advisory-description {
             font-size: var(--pf-t--global--font--size--body--default);
         }
@@ -31,15 +31,15 @@ table.patchCompactInventory {
 }
 
 .ins-c-primary-toolbar {
-    .pf-v5-c-toolbar__content.pf-m-hidden {
+    .pf-v6-c-toolbar__content.pf-m-hidden {
         display: none !important;
     }
 }
 
 .patch-root
     .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items)
-    .pf-v5-c-toolbar__content
-    .pf-v5-c-toolbar__item:last-child {
+    .pf-v6-c-toolbar__content
+    .pf-v6-c-toolbar__item:last-child {
     min-width: unset !important;
 }
 

@@ -59,7 +59,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
         data-pf-content="true"
       >
         <h2
-          class="pf-v6-c-content--h2 pf-v5-u-mt-md pf-v5-u-mb-sm"
+          class="pf-v6-c-content--h2 pf-v6-u-mt-md pf-v6-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Content-6"
           data-ouia-component-type="PF6/Content"
           data-ouia-safe="true"
@@ -107,7 +107,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
         data-pf-content="true"
       >
         <h2
-          class="pf-v6-c-content--h2 pf-v5-u-mt-md pf-v5-u-mb-sm"
+          class="pf-v6-c-content--h2 pf-v6-u-mt-md pf-v6-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Content-11"
           data-ouia-component-type="PF6/Content"
           data-ouia-safe="true"
@@ -174,7 +174,7 @@ exports[`ReviewPatchSet.js Should display all Patch Template configuration 1`] =
         data-pf-content="true"
       >
         <h2
-          class="pf-v6-c-content--h2 pf-v5-u-mt-md pf-v5-u-mb-sm"
+          class="pf-v6-c-content--h2 pf-v6-u-mt-md pf-v6-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Content-18"
           data-ouia-component-type="PF6/Content"
           data-ouia-safe="true"
@@ -274,7 +274,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
         data-pf-content="true"
       >
         <h2
-          class="pf-v6-c-content--h2 pf-v5-u-mt-md pf-v5-u-mb-sm"
+          class="pf-v6-c-content--h2 pf-v6-u-mt-md pf-v6-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Content-27"
           data-ouia-component-type="PF6/Content"
           data-ouia-safe="true"
@@ -322,7 +322,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
         data-pf-content="true"
       >
         <h2
-          class="pf-v6-c-content--h2 pf-v5-u-mt-md pf-v5-u-mb-sm"
+          class="pf-v6-c-content--h2 pf-v6-u-mt-md pf-v6-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Content-32"
           data-ouia-component-type="PF6/Content"
           data-ouia-safe="true"
@@ -389,7 +389,7 @@ exports[`ReviewPatchSet.js Should display available configuration fields only 1`
         data-pf-content="true"
       >
         <h2
-          class="pf-v6-c-content--h2 pf-v5-u-mt-md pf-v5-u-mb-sm"
+          class="pf-v6-c-content--h2 pf-v6-u-mt-md pf-v6-u-mb-sm"
           data-ouia-component-id="OUIA-Generated-Content-39"
           data-ouia-component-type="PF6/Content"
           data-ouia-safe="true"

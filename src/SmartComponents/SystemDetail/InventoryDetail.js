@@ -94,7 +94,7 @@ const InventoryDetail = () => {
                                     <InsightsLink
                                         app="content"
                                         to={`/templates/${templateUUID}/details`}
-                                        className="pf-v5-u-ml-xs">
+                                        className="pf-v6-u-ml-xs">
                                         {templateName}
                                     </InsightsLink>
                                 </Content>
@@ -104,14 +104,14 @@ const InventoryDetail = () => {
                             {satelliteManaged
                                 ? <Fragment>
                                     <Alert
-                                        className='pf-v5-u-mt-md'
+                                        className='pf-v6-u-mt-md'
                                         isInline
                                         variant="info"
                                         title="This system has content managed by Satellite. Installable updates are
                                             current as of the last time the system checked-in with Red Hat Insights."
                                     />
                                     <Alert
-                                        className='pf-v5-u-mt-md'
+                                        className='pf-v6-u-mt-md'
                                         isInline
                                         variant="warning"
                                         title="This system has content managed by Satellite. For accurate reporting of
@@ -128,7 +128,7 @@ const InventoryDetail = () => {
                                     </Alert>
                                 </Fragment>
                                 : hasThirdPartyRepo && <Alert
-                                    className='pf-v5-u-mt-md'
+                                    className='pf-v6-u-mt-md'
                                     isInline
                                     variant="info"
                                     title="This system has content that is managed by repositories other than the Red Hat CDN"

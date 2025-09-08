@@ -18,7 +18,7 @@ const NoRegisteredSystems = ({ titleText, bodyText, buttonText }) => (
                 href="https://access.redhat.com/products/red-hat-insights#getstarted"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pf-v5-u-mt-lg"
+                className="pf-v6-u-mt-lg"
             >
                 {buttonText}
             </Button>
