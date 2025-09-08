@@ -1031,7 +1031,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                   View packages and errata at access.redhat.com
                   <svg
                     aria-hidden="true"
-                    class="pf-v6-svg pf-v5-u-ml-xs"
+                    class="pf-v6-svg pf-v6-u-ml-xs"
                     fill="currentColor"
                     height="1em"
                     role="img"
@@ -1665,7 +1665,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
       id="pf-random-id-3"
     >
       <div
-        class="pf-v5-c-pagination pf-m-bottom"
+        class="pf-v6-c-pagination pf-m-bottom"
       >
         <div
           class="pf-v6-c-skeleton pf-m-text-xl"
@@ -2719,7 +2719,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                   View packages and errata at access.redhat.com
                   <svg
                     aria-hidden="true"
-                    class="pf-v6-svg pf-v5-u-ml-xs"
+                    class="pf-v6-svg pf-v6-u-ml-xs"
                     fill="currentColor"
                     height="1em"
                     role="img"
@@ -3354,7 +3354,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
       id="pf-random-id-1"
     >
       <div
-        class="pf-v5-c-pagination pf-m-bottom"
+        class="pf-v6-c-pagination pf-m-bottom"
       >
         <div
           class="pf-v6-c-skeleton pf-m-text-xl"
