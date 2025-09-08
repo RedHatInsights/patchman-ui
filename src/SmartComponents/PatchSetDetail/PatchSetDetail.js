@@ -314,7 +314,7 @@ const PatchSetDetail = () => {
                             toggle={
                                 <DropdownToggle
                                     id="patch-set-detail-header-kebab"
-                                    className="pf-v5-u-mr-xl"
+                                    className="pf-v6-u-mr-xl"
                                     onToggle={(_event, isOpen) => setHeaderDropdownOpen(isOpen)}
                                     style={{ minWidth: 150 }}
                                 >
@@ -374,7 +374,7 @@ const PatchSetDetail = () => {
                 </Header>
                 <Main>
                     <Content>
-                        <Content component="h2" className="pf-v5-u-mb-md">
+                        <Content component="h2" className="pf-v6-u-mb-md">
                             {intl.formatMessage(messages.templateDetailTableTitle)}
                         </Content>
                     </Content>
