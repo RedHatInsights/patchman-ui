@@ -1,7 +1,6 @@
 import '../../../App.scss';
 import React, { useState, useMemo, useEffect } from 'react';
 import propTypes from 'prop-types';
-import debounce from 'lodash/debounce';
 import { useDispatch, useSelector } from 'react-redux';
 import { AngleLeftIcon, AngleRightIcon } from '@patternfly/react-icons';
 import {
@@ -80,14 +79,6 @@ const SelectExistingSets = ({ setSelectedPatchSet, selectedSets, systems, select
             {set.name}
         </SelectOption>);
     }, [rows, status.isLoading]);
-
-    const apply = (params) => {
-        dispatch(changePatchSetsParams(params));
-    };
-
-    const [searchAdvisory] = useState(() =>
-        debounce(value => apply({ search: value }), 700)
-    );
 
     const handleOpen = () => {
         setOpen(!isOpen);
