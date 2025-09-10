@@ -9,7 +9,13 @@ const VersionFilter = (apply, filter = {}, packageVersions) => {
 
     const items = packageVersions && packageVersions.data
         ? packageVersions.data.sort().map(version => ({ value: version.evra, label: version.evra }))
-        : [{ value: intl.formatMessage(messages.textNoVersionAvailable), label: intl.formatMessage(messages.textNoVersionAvailable), disabled: true }];
+        : [
+            {
+                value: intl.formatMessage(messages.textNoVersionAvailable),
+                label: intl.formatMessage(messages.textNoVersionAvailable),
+                disabled: true
+            }
+        ];
 
     return {
         label: intl.formatMessage(messages.labelsFiltersPackageVersionTitle),

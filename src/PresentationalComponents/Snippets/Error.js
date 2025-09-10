@@ -7,7 +7,12 @@ import messages from '../../Messages';
 
 const Error = ({ message }) =>
     <Card>
-        <EmptyState  headingLevel="h5" icon={FrownOpenIcon}  titleText={intl.formatMessage(messages.statesError)} variant={EmptyStateVariant.full}>
+        <EmptyState
+            headingLevel="h5"
+            icon={FrownOpenIcon}
+            titleText={intl.formatMessage(messages.statesError)}
+            variant={EmptyStateVariant.full}
+        >
             <EmptyStateBody>
                 {message}
             </EmptyStateBody>
