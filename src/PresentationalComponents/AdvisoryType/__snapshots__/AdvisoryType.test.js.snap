@@ -3,20 +3,20 @@
 exports[`AdvisoryType Should match the snapshots 1`] = `
 <DocumentFragment>
   <div
-    class="pf-v5-l-split pf-m-gutter"
+    class="pf-v6-l-split pf-m-gutter"
   >
     <div
-      class="pf-v5-l-split__item"
+      class="pf-v6-l-split__item"
     >
       <span
-        class="pf-v5-c-icon"
+        class="pf-v6-c-icon"
       >
         <span
-          class="pf-v5-c-icon__content"
+          class="pf-v6-c-icon__content"
         >
           <svg
             aria-hidden="true"
-            class="pf-v5-svg"
+            class="pf-v6-svg"
             fill="currentColor"
             height="1em"
             role="img"
@@ -31,7 +31,7 @@ exports[`AdvisoryType Should match the snapshots 1`] = `
       </span>
     </div>
     <div
-      class="pf-v5-l-split__item pf-m-fill"
+      class="pf-v6-l-split__item pf-m-fill"
     >
       Security
     </div>

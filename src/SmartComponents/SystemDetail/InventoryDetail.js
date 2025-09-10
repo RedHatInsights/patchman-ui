@@ -8,7 +8,7 @@ import { SystemDetailStore } from '../../store/Reducers/SystemDetailStore';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { InventoryDetailHead, DetailWrapper } from '@redhat-cloud-services/frontend-components/Inventory';
-import { Alert, Grid, GridItem, TextContent, Text } from '@patternfly/react-core';
+import { Alert, Grid, GridItem, Content  } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';;
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
@@ -88,30 +88,30 @@ const InventoryDetail = () => {
                 >
                     <Grid>
                         {templateName && <GridItem>
-                            <TextContent>
-                                <Text>
+                            <Content>
+                                <Content component="p">
                                     {intl.formatMessage(messages.labelsColumnsTemplate)}:
                                     <InsightsLink
                                         app="content"
                                         to={`/templates/${templateUUID}/details`}
-                                        className="pf-v5-u-ml-xs">
+                                        className="pf-v6-u-ml-xs">
                                         {templateName}
                                     </InsightsLink>
-                                </Text>
-                            </TextContent>
+                                </Content>
+                            </Content>
                         </GridItem>}
                         <GridItem>
                             {satelliteManaged
                                 ? <Fragment>
                                     <Alert
-                                        className='pf-v5-u-mt-md'
+                                        className='pf-v6-u-mt-md'
                                         isInline
                                         variant="info"
                                         title="This system has content managed by Satellite. Installable updates are
                                             current as of the last time the system checked-in with Red Hat Insights."
                                     />
                                     <Alert
-                                        className='pf-v5-u-mt-md'
+                                        className='pf-v6-u-mt-md'
                                         isInline
                                         variant="warning"
                                         title="This system has content managed by Satellite. For accurate reporting of
@@ -128,7 +128,7 @@ const InventoryDetail = () => {
                                     </Alert>
                                 </Fragment>
                                 : hasThirdPartyRepo && <Alert
-                                    className='pf-v5-u-mt-md'
+                                    className='pf-v6-u-mt-md'
                                     isInline
                                     variant="info"
                                     title="This system has content that is managed by repositories other than the Red Hat CDN"

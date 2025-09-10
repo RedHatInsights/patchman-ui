@@ -8,16 +8,16 @@ import {
 import './SystemsListAssets.scss';
 import { sortable } from '@patternfly/react-table';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
-import { Text, TextContent, Tooltip } from '@patternfly/react-core';
+import { Content, Tooltip } from '@patternfly/react-core';
 import { useFetchBatched } from '../../Utilities/hooks';
 
 export const ManagedBySatelliteCell = () => (
     <Tooltip content="This system is managed by Satellite and does not use a template.">
-        <TextContent>
-            <Text className="pf-v5-u-font-size-sm">
+        <Content>
+            <Content component="p" className="pf-v6-u-font-size-sm">
                 Managed by Satellite
-            </Text>
-        </TextContent>
+            </Content>
+        </Content>
     </Tooltip>
 );
 

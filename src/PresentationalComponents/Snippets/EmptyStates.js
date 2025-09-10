@@ -2,9 +2,8 @@ import {
     Button,
     EmptyState,
     EmptyStateBody,
-    EmptyStateIcon,
     EmptyStateVariant,
-    Tooltip, EmptyStateHeader
+    Tooltip
 } from '@patternfly/react-core';
 import { SearchIcon } from '@patternfly/react-icons';
 import React from 'react';
@@ -14,8 +13,11 @@ import { PlusCircleIcon } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 
 export const EmptyAdvisoryList = () => (
-    <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateHeader titleText={intl.formatMessage(messages.statesNoMatchingAdvisories)} headingLevel="h5" />
+    <EmptyState
+        headingLevel="h5"
+        titleText={intl.formatMessage(messages.statesNoMatchingAdvisories)}
+        variant={EmptyStateVariant.full}
+    >
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -23,12 +25,12 @@ export const EmptyAdvisoryList = () => (
 );
 
 export const EmptyPackagesList = () => (
-    <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateHeader
-            titleText={intl.formatMessage(messages.statesNoMatchingPackages)}
-            icon={<EmptyStateIcon icon={SearchIcon} />}
-            headingLevel="h5"
-        />
+    <EmptyState
+        headingLevel="h5"
+        icon={SearchIcon}
+        titleText={intl.formatMessage(messages.statesNoMatchingPackages)}
+        variant={EmptyStateVariant.full}
+    >
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -36,12 +38,12 @@ export const EmptyPackagesList = () => (
 );
 
 export const EmptyCvesList = () => (
-    <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateHeader
-            titleText={intl.formatMessage(messages.statesNoMatchingCve)}
-            icon={<EmptyStateIcon icon={SearchIcon} />}
-            headingLevel="h5"
-        />
+    <EmptyState
+        headingLevel="h5"
+        icon={SearchIcon}
+        titleText={intl.formatMessage(messages.statesNoMatchingCve)}
+        variant={EmptyStateVariant.full}
+    >
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -49,8 +51,11 @@ export const EmptyCvesList = () => (
 );
 
 export const EmptySystemsList = () => (
-    <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateHeader titleText={intl.formatMessage(messages.statesNoMatchingSystems)} headingLevel="h5" />
+    <EmptyState
+        headingLevel="h5"
+        titleText={intl.formatMessage(messages.statesNoMatchingSystems)}
+        variant={EmptyStateVariant.full}
+    >
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -58,12 +63,12 @@ export const EmptySystemsList = () => (
 );
 
 export const EmptyPatchSetList = () => (
-    <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateHeader
-            titleText={intl.formatMessage(messages.statesNoMatchingTemplate)}
-            icon={<EmptyStateIcon icon={SearchIcon} />}
-            headingLevel="h5"
-        />
+    <EmptyState
+        headingLevel="h5"
+        icon={SearchIcon}
+        titleText={intl.formatMessage(messages.statesNoMatchingTemplate)}
+        variant={EmptyStateVariant.full}
+    >
         <EmptyStateBody>
             {intl.formatMessage(messages.textEmptyStateBody)}
         </EmptyStateBody>
@@ -71,12 +76,12 @@ export const EmptyPatchSetList = () => (
 );
 
 export const NoPatchSetList = ({ Button }) => (
-    <EmptyState variant={EmptyStateVariant.lg}>
-        <EmptyStateHeader
-            titleText={intl.formatMessage(messages.statesNoTemplate)}
-            icon={<EmptyStateIcon icon={PlusCircleIcon} />}
-            headingLevel="h5"
-        />
+    <EmptyState
+        headingLevel="h5"
+        icon={PlusCircleIcon}
+        titleText={intl.formatMessage(messages.statesNoTemplate)}
+        variant={EmptyStateVariant.lg}
+    >
         <EmptyStateBody>
             {intl.formatMessage(messages.statesNoTemplateBody)}
             <br />
@@ -91,12 +96,12 @@ NoPatchSetList.propTypes = {
 };
 
 export const NoAppliedSystems = ({ onButtonClick, hasAccess }) => (
-    <EmptyState variant={EmptyStateVariant.full}>
-        <EmptyStateHeader
-            titleText={intl.formatMessage(messages.templateNoAppliedSystemsTitle)}
-            icon={<EmptyStateIcon icon={PlusCircleIcon} />}
-            headingLevel="h5"
-        />
+    <EmptyState
+        headingLevel="h5"
+        icon={PlusCircleIcon}
+        titleText={intl.formatMessage(messages.templateNoAppliedSystemsTitle)}
+        variant={EmptyStateVariant.full}
+    >
         <EmptyStateBody>
             {hasAccess
                 ? <Button type="primary" onClick={onButtonClick}>

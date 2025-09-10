@@ -1,4 +1,4 @@
-import { Text, TextContent, TextVariants, Bullseye, Split, SplitItem } from '@patternfly/react-core';
+import { Content, ContentVariants, Bullseye, Split, SplitItem } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
 import WithLoader, { WithLoaderVariants } from '../WithLoader/WithLoader';
@@ -16,10 +16,10 @@ const InfoBox = ({ title, text, isLoading, content, color }) => {
                     <Bullseye>{content}</Bullseye>
                 </SplitItem>
                 <SplitItem isFilled>
-                    <TextContent>
-                        <Text component={TextVariants.h6}>{title}</Text>
-                        <Text component={TextVariants.p}>{text}</Text>
-                    </TextContent>
+                    <Content>
+                        <Content component={ContentVariants.h6}>{title}</Content>
+                        <Content component={ContentVariants.p}>{text}</Content>
+                    </Content>
                 </SplitItem>
             </WithLoader>
         </Split>
