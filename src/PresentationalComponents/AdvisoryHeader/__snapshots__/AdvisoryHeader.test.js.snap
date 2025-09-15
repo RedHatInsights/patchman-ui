@@ -136,7 +136,7 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
                       class=""
                     >
                       <span
-                        class="pf-v6-c-icon pf-m-sm"
+                        class="pf-v6-c-icon pf-m-md"
                       >
                         <span
                           class="pf-v6-c-icon__content"
@@ -301,7 +301,7 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
                       class=""
                     >
                       <span
-                        class="pf-v6-c-icon pf-m-sm"
+                        class="pf-v6-c-icon pf-m-md"
                       >
                         <span
                           class="pf-v6-c-icon__content"

@@ -19,7 +19,7 @@ const AdvisorySeverityInfo = ({ severity }) => {
                     <FlexItem spacer={{ default: 'spacerSm' }}>
                         <Flex flex={{ default: 'row' }}>
                             <FlexItem>
-                                <Icon size='sm'>
+                                <Icon size='md'>
                                     <SecurityIcon color={severity.color} />
                                 </Icon>
                             </FlexItem>
