@@ -93,7 +93,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
 
     return (
         <Main style={{ paddingBottom: 0 }}>
-            <Grid hasGutter span={12} >
+            <Grid hasGutter span={12} style={{ paddingBottom: 'var(--pf-t--global--spacer--control--vertical--spacious)' }} >
                 <GridItem lg={3} md={4}>
                     <StatusCard
                         title={intl.formatMessage(messages.labelsStatusSystemsUpToDate)}
