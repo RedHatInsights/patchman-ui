@@ -94,7 +94,7 @@ const AdvisoriesStatusBar = () => {
     }, []);
 
     return advisories.data && advisories.data.length && (
-        <Main style={{ paddingBottom: 0, paddingTop: 0 }}>
+        <Main style={{ paddingBottom: 'var(--pf-t--global--spacer--control--vertical--spacious)', paddingTop: 0 }}>
 
             <Title headingLevel="h3" className='pf-v6-u-my-md'>
                 {intl.formatMessage(messages.titlesMostImpactfulAdvisories)}

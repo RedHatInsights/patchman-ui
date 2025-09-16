@@ -49,3 +49,11 @@ table.patchCompactInventory {
     margin: 0px;
     padding: 0px
 }
+
+.pf-v6-c-table__th {
+    font-weight: var(--pf-t--global--font--weight--heading--default);
+}
+
+.pf-v6-c-page__main-section {
+    --pf-v6-c-page__main-section--RowGap: 0;
+}
