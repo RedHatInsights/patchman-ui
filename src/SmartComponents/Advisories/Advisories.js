@@ -30,11 +30,13 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Flex, Icon, Popover, Text, TextContent, TextVariants } from '@patternfly/react-core';
 import ExternalLink from '../../PresentationalComponents/Snippets/ExternalLink';
+import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
 const Advisories = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const chrome = useChrome();
+    const isLightspeedEnabled = useFeatureFlag('platform.lightspeed-rebrand');
 
     useEffect(()=>{
         chrome.updateDocumentTitle(`Advisories - Content | RHEL`, true);
@@ -142,7 +144,8 @@ const Advisories = () => {
                                     <Flex direction={{ default: 'column' }}>
                                         <Text component={TextVariants.p}>
                                             Advisories allow to see all of the applicable Red Hat and Extra Packages for
-                                            Enterprise Linux (EPEL) advisories for your RHEL systems checking into Insights.
+                                            Enterprise Linux (EPEL) advisories for your RHEL systems checking into
+                                            {isLightspeedEnabled ? 'Red Hat Lightspeed' : 'Insights'}.
                                         </Text>
                                         <Text component={TextVariants.p}>
                                             <ExternalLink
