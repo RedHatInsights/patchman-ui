@@ -10,7 +10,10 @@ import {
 } from './HelperReducers';
 
 // eslint-disable-next-line
-const { queryParams: _queryParams, ...storeListDefaultsModified } = storeListDefaults;
+const storeListDefaultsModified = {
+    ...storeListDefaults,
+    queryParams: {}
+};
 
 export const AdvisoryListStore = (state = storeListDefaultsModified, action) => {
     let newState = { ...state };
