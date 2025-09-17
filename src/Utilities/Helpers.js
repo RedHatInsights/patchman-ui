@@ -434,7 +434,7 @@ export const changeListParams = (oldParams, newParams) => {
     }
 
     if (newParams.hasOwnProperty('filter')) {
-        newState.filter = { ...oldParams.filter, ...newParams.filter };
+        newState.filter = { ...oldParams?.filter, ...newParams.filter };
 
         //we need explicitly remove 'undefined' filters for safety
         Object.keys(newState.filter).forEach(
