@@ -1,15 +1,15 @@
 table.patchCompactInventory {
     .ins-composed-col {
-        font-size: var(--pf-v5-c-table--m-compact--FontSize);
+        font-size: var(--pf-v6-c-table--m-compact--FontSize);
     }
 }
 
 .patch-root {
     overflow: inherit !important;
 
-    .pf-v5-c-table__expandable-row-content {
+    .pf-v6-c-table__expandable-row-content {
         .patch-advisory-description {
-            font-size: var(--pf-v5-global--FontSize--sm);
+            font-size: var(--pf-t--global--font--size--body--default);
         }
     }
 
@@ -31,21 +31,29 @@ table.patchCompactInventory {
 }
 
 .ins-c-primary-toolbar {
-    .pf-v5-c-toolbar__content.pf-m-hidden {
+    .pf-v6-c-toolbar__content.pf-m-hidden {
         display: none !important;
     }
 }
 
 .patch-root
     .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items)
-    .pf-v5-c-toolbar__content
-    .pf-v5-c-toolbar__item:last-child {
+    .pf-v6-c-toolbar__content
+    .pf-v6-c-toolbar__item:last-child {
     min-width: unset !important;
 }
 
 .patch-status-report-text {
-    color: var(--pf-v5-global--primary-color--100);
+    color: var(--pf-t--global--icon--color--brand--default);
     font-weight: bold;
     margin: 0px;
     padding: 0px
+}
+
+.pf-v6-c-table__th {
+    font-weight: var(--pf-t--global--font--weight--heading--default);
+}
+
+.pf-v6-c-page__main-section {
+    --pf-v6-c-page__main-section--RowGap: 0;
 }

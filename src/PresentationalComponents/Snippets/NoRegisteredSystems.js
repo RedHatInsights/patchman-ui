@@ -4,19 +4,12 @@ import {
     Button,
     EmptyState,
     EmptyStateBody,
-    EmptyStateIcon,
-    EmptyStateHeader,
     EmptyStateFooter
 } from '@patternfly/react-core';
 import { DisconnectedIcon } from '@patternfly/react-icons';
 
 const NoRegisteredSystems = ({ titleText, bodyText, buttonText }) => (
-    <EmptyState>
-        <EmptyStateHeader
-            titleText={titleText}
-            icon={<EmptyStateIcon icon={DisconnectedIcon} />}
-            headingLevel="h5"
-        />
+    <EmptyState  headingLevel="h5" icon={DisconnectedIcon}  titleText={titleText}>
         <EmptyStateBody>{bodyText}</EmptyStateBody>
         <EmptyStateFooter>
             <Button
@@ -25,7 +18,7 @@ const NoRegisteredSystems = ({ titleText, bodyText, buttonText }) => (
                 href="https://access.redhat.com/products/red-hat-insights#getstarted"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pf-v5-u-mt-lg"
+                className="pf-v6-u-mt-lg"
             >
                 {buttonText}
             </Button>

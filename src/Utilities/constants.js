@@ -92,12 +92,12 @@ export const advisorySeverities = [
     {
         value: 0,
         label: 'None',
-        color: 'var(--pf-v5-global--Color--200)'
+        color: 'var(--pf-t--global--icon--color--severity--minor--default)'
     },
     {
         value: 1,
         label: 'Low',
-        color: 'var(--pf-v5-global--Color--200)',
+        color: 'var(--pf-t--global--icon--color--severity--minor--default)',
         text:
             'This rating is given to all other issues that have a security impact. These are the types of vulnerabilities' +
             ' that are believed to require unlikely circumstances to be able to be exploited, or where a successful exploit' +
@@ -106,7 +106,7 @@ export const advisorySeverities = [
     {
         value: 2,
         label: 'Moderate',
-        color: 'var(--pf-v5-global--warning-color--100)',
+        color: 'var(--pf-t--global--icon--color--severity--moderate--default)',
         text:
             'This rating is given to flaws that may be more difficult to exploit but could still lead to some' +
             ' compromise of the confidentiality, integrity, or availability of resources, under certain circumstances.' +
@@ -117,7 +117,7 @@ export const advisorySeverities = [
     {
         value: 3,
         label: 'Important',
-        color: '#ec7a08',
+        color: 'var(--pf-t--global--icon--color--severity--important--default)',
         text:
             'This rating is given to flaws that can easily compromise the confidentiality, integrity, or availability' +
             ' of resources. These are the types of vulnerabilities that allow local users to gain privileges, allow' +
@@ -128,7 +128,7 @@ export const advisorySeverities = [
     {
         value: 4,
         label: 'Critical',
-        color: 'var(--pf-v5-global--danger-color--100)',
+        color: 'var(--pf-t--global--icon--color--severity--critical--default)',
         text:
             'This rating is given to flaws that could be easily exploited by a remote unauthenticated attacker' +
             ' and lead to system compromise (arbitrary code execution) without requiring user interaction.' +

@@ -9,7 +9,7 @@ const ExternalLink = ({ link, text }) => (
         rel="noreferrer"
     >
         {text}
-        <ExternalLinkAltIcon className="pf-v5-u-ml-xs" />
+        <ExternalLinkAltIcon className="pf-v6-u-ml-xs" />
     </a>
 );
 
