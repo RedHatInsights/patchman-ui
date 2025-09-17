@@ -17,7 +17,10 @@ const fulfilled_payload = {
 };
 
 // eslint-disable-next-line
-const { queryParams: _queryParams, ...advisoryListStoreDefaults } = storeListDefaults;
+const advisoryListStoreDefaults = {
+    ...storeListDefaults,
+    queryParams: {}
+};
 
 const error = 'Error';
 
