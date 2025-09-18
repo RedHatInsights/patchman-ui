@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/RedHatInsights/frontend-components/refs/heads/master/packages/config-utils/src/feo/spec/frontend-crd.schema.json
+---
 apiVersion: v1
 kind: Template
 metadata:
@@ -8,6 +10,7 @@ objects:
     metadata:
       name: patch
     spec:
+      feoConfigEnabled: true
       envName: ${ENV_NAME}
       title: Patch
       deploymentRepo: https://github.com/RedHatInsights/patchman-ui
@@ -18,32 +21,97 @@ objects:
         paths:
           - /apps/patch
       image: ${IMAGE}:${IMAGE_TAG}
-      navItems:
-        - appId: "patch"
-          title: "Patch"
-          href: "/insights/patch"
-          product: "Red Hat Insights"
-          expandable: true
-          routes:
-            - appId: 'patch'
-              title: 'Advisories'
-              href: '/insights/patch/advisories'
-            - appId: 'patch'
-              title: 'Systems'
-              href: '/insights/patch/systems'
-            - appId: 'patch'
-              title: 'Packages'
-              href: '/insights/patch/packages'
-            - appId: 'patch'
-              title: 'Templates'
-              href: '/insights/patch/templates'
       module:
-        manifestLocation: "/apps/patch/fed-mods.json"
+        manifestLocation: /apps/patch/fed-mods.json
         modules:
-          - id: "patch"
-            module: "./RootApp"
+          - id: patch
+            module: ./RootApp
             routes:
               - pathname: /insights/patch
+      navigationSegments:
+        - segmentId: patch-advisories-packages
+          navItems:
+            - id: advisories
+              title: Advisories
+              href: /insights/patch/advisories
+            - id: packages
+              title: Packages
+              href: /insights/patch/packages
+        - segmentId: patch-systems
+          navItems:
+            - id: patchSystems
+              title: Systems
+              href: /insights/patch/systems
+      serviceTiles:
+        - section: observe
+          group: rhel
+          id: advisories
+          href: /insights/patch/advisories
+          title: Advisories
+          description: "View applicable advisories and updates for your Red Hat Enterprise Linux systems."
+          icon: InsightsIcon
+        - section: observe
+          group: rhel
+          id: packages
+          href: /insights/patch/packages
+          title: Packages
+          description: "Review package applicability on your Red Hat Enterprise Linux systems."
+          icon: InsightsIcon
+        - section: observe
+          group: rhel
+          id: patchSystems
+          href: /insights/patch/systems
+          title: Systems
+          description: "View Red Hat Enterprise Linux systems and their applicable advisories and updates."
+          icon: InsightsIcon
+      searchEntries:
+        - id: advisories
+          title: Advisories
+          href: /insights/patch/advisories
+          description: "View applicable advisories and updates for your Red Hat Enterprise Linux systems."
+          alt_title:
+            - "applicable"
+            - "errata"
+            - "updates"
+            - "patch"
+            - "insights"
+        - id: packages
+          title: Packages
+          href: /insights/patch/packages
+          description: "Review package applicability on your Red Hat Enterprise Linux systems."
+          alt_title:
+            - "packages"
+            - "updates"
+            - "insights"
+            - "repositories"
+            - "rpm"
+            - "dnf"
+            - "yum"
+            - "errata"
+            - "patch"
+            - "advisories"
+            - "patching"
+            - "content management"
+            - "content view"
+            - "patch cycle"
+            - "RHSA"
+            - "RHBA"
+            - "RHEA"
+        - id: patchSystems
+          title: Systems
+          href: /insights/patch/systems
+          description: "View Red Hat Enterprise Linux systems and their applicable advisories and updates."
+          alt_title:
+            - "patch"
+            - "content"
+            - "advisories"
+            - "insights"
+            - "RHEL"
+            - "patch"
+            - "updates"
+            - "update"
+            - "systems"
+            - "upgrade"
 
 parameters:
   - name: ENV_NAME
