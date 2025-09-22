@@ -28,7 +28,7 @@ import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
-import { Flex, Icon, Popover, Text, TextContent, TextVariants } from '@patternfly/react-core';
+import { Flex, Icon, Popover, Content, ContentVariants } from '@patternfly/react-core';
 import ExternalLink from '../../PresentationalComponents/Snippets/ExternalLink';
 import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 
@@ -140,28 +140,28 @@ const Advisories = () => {
                         <Popover
                             headerContent="About advisories"
                             bodyContent={
-                                <TextContent>
+                                <Content>
                                     <Flex direction={{ default: 'column' }}>
-                                        <Text component={TextVariants.p}>
+                                        <Content component={ContentVariants.p}>
                                             Advisories allow to see all of the applicable Red Hat and Extra Packages for
                                             Enterprise Linux (EPEL) advisories for your RHEL systems checking into{' '}
                                             {isLightspeedEnabled ? 'Red Hat Lightspeed' : 'Insights'}.
-                                        </Text>
-                                        <Text component={TextVariants.p}>
+                                        </Content>
+                                        <Content component={ContentVariants.p}>
                                             <ExternalLink
                                                 link={'https://docs.redhat.com/en/documentation/red_hat_insights/1-latest'
                                                 + '/html/system_patching_using_remediation_playbooks'}
                                                 text="System Patching Using Remediation Playbooks"
                                             />
-                                        </Text>
+                                        </Content>
                                     </Flex>
-                                </TextContent>
+                                </Content>
                             }
                         >
                             <Icon>
                                 <OutlinedQuestionCircleIcon
-                                    className="pf-v5-u-ml-sm"
-                                    color="var(--pf-v5-global--secondary-color--100)"
+                                    className="pf-v6-u-ml-sm"
+                                    color="var(--pf-t--global--icon--color--subtle)"
                                     style={{ verticalAlign: '0', fontSize: 16, cursor: 'pointer' }}
                                 />
                             </Icon>

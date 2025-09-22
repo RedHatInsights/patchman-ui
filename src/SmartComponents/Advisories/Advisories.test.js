@@ -34,7 +34,7 @@ jest.mock('../../Utilities/constants', () => ({
     advisorySeverities: [{
         value: 0,
         label: 'N/A',
-        color: 'var(--pf-v5-global--Color--200)'
+        color: 'var(--pf-t--global--icon--color--severity--minor--default'
     }]
 }));
 jest.mock('../Remediation/AsyncRemediationButton', () => ({

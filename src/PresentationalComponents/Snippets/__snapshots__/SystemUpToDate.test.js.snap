@@ -3,32 +3,32 @@
 exports[`SystemUpToDate Should match the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="pf-v5-l-bullseye"
+    class="pf-v6-l-bullseye"
   >
     <div
-      class="pf-v5-c-empty-state"
+      class="pf-v6-c-empty-state"
       style="padding-top: 40px;"
     >
       <div
-        class="pf-v5-c-empty-state__content"
+        class="pf-v6-c-empty-state__content"
       >
         <div
-          class="pf-v5-c-empty-state__header"
+          class="pf-v6-c-empty-state__header"
         >
           <div
-            class="pf-v5-c-empty-state__icon"
+            class="pf-v6-c-empty-state__icon"
           >
             <span
-              class="pf-v5-c-icon pf-m-xl"
+              class="pf-v6-c-icon pf-m-xl"
               style="margin-bottom: 15px;"
             >
               <span
-                class="pf-v5-c-icon__content"
+                class="pf-v6-c-icon__content"
               >
                 <svg
                   aria-hidden="true"
-                  class="pf-v5-svg"
-                  color="var(--pf-v5-global--success-color--200)"
+                  class="pf-v6-svg"
+                  color="var(--pf-t--global--icon--color--status--success--default)"
                   fill="currentColor"
                   height="1em"
                   role="img"
@@ -43,17 +43,17 @@ exports[`SystemUpToDate Should match the snapshot 1`] = `
             </span>
           </div>
           <div
-            class="pf-v5-c-empty-state__title"
+            class="pf-v6-c-empty-state__title"
           >
             <h5
-              class="pf-v5-c-empty-state__title-text"
+              class="pf-v6-c-empty-state__title-text"
             >
               No applicable advisories
             </h5>
           </div>
         </div>
         <div
-          class="pf-v5-c-empty-state__body"
+          class="pf-v6-c-empty-state__body"
         >
           This system is up to date, based on package information submitted at the most recent system check-in
         </div>

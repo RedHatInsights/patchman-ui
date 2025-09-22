@@ -46,7 +46,7 @@ describe('SelectExistingSets', () => {
         expect(screen.getByText('Template')).toBeVisible();
     });
     it('Should render the select with options', async () => {
-        await userEvent.click(screen.getByRole('button', { name: /options menu/i }));
+        await userEvent.click(screen.getByRole('button', { name: /filter by template name/i }));
         await waitFor(() => {
             expect(screen.getByText('test-set-1')).toBeInTheDocument();
             expect(screen.getAllByLabelText('patch-set-option')).toHaveLength(patchSets.length);

@@ -3,14 +3,13 @@ import propTypes from 'prop-types';
 import {
     EmptyState,
     EmptyStateVariant,
-    EmptyStateIcon,
     EmptyStateBody,
     Grid,
     GridItem,
     HelperText,
     HelperTextItem,
-    Button,
-    EmptyStateHeader
+    Button
+
 } from '@patternfly/react-core';
 import {
     CheckCircleIcon,
@@ -36,34 +35,20 @@ const RequestProgress = ({ onClose, state }) => {
     }
 
     return (
-        <EmptyState
-            variant={EmptyStateVariant.lg}
-            data-component-ouia-id="patch-set-progress"
+        <EmptyState  headingLevel="h1" icon={
+            failed
+                ? ExclamationCircleIcon
+                : requestPending
+                    ? InProgressIcon
+                    : CheckCircleIcon
+        }  titleText={failed
+            ? intl.formatMessage(messages.textErrorSomethingWrong)
+            : requestPending
+                ? intl.formatMessage(messages.textConfigurationInProgress)
+                : intl.formatMessage(messages.textPatchTemplateSuccessfuly)}
+        variant={EmptyStateVariant.lg}
+        data-component-ouia-id="patch-set-progress"
         >
-            <EmptyStateHeader
-                titleText={failed
-                    ? intl.formatMessage(messages.textErrorSomethingWrong)
-                    : requestPending
-                        ? intl.formatMessage(messages.textConfigurationInProgress)
-                        : intl.formatMessage(messages.textPatchTemplateSuccessfuly)}
-                icon={<EmptyStateIcon
-                    color={
-                        failed
-                            ? 'var(--pf-v5-global--danger-color--100)'
-                            : !requestPending
-                                ? 'var(--pf-v5-global--success-color--100)'
-                                : undefined
-                    }
-                    icon={
-                        failed
-                            ? ExclamationCircleIcon
-                            : requestPending
-                                ? InProgressIcon
-                                : CheckCircleIcon
-                    }
-                />}
-                headingLevel="h1"
-            />
             <EmptyStateBody>
                 <Grid hasGutter>
                     {(requestPending) && (

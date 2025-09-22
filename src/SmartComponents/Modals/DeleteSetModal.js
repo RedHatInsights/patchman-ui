@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import { Button, Checkbox, Modal } from '@patternfly/react-core';
+import {
+    Button,
+    Checkbox
+} from '@patternfly/react-core';
+import {
+    Modal
+} from '@patternfly/react-core/deprecated';
 import messages from '../../Messages';
 import { intl } from '../../Utilities/IntlProvider';
 
@@ -30,7 +36,7 @@ const DeleteSetModal = ({ isModalOpen, setModalOpen, templateName, onConfirm }) 
         >
             {intl.formatMessage(messages.titlesTemplateDeleteModalText, { templateName, b: (...chunks) => <b>{chunks}</b> })}
             <Checkbox
-                className="pf-v5-u-mt-md"
+                className="pf-v6-u-mt-md"
                 isChecked={isCheckboxChecked}
                 checked={isCheckboxChecked}
                 onChange={(_event, value) => setCheckboxChecked(value)}

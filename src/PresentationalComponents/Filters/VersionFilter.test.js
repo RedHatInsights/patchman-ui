@@ -7,57 +7,49 @@ import messages from '../../Messages';
 const apply = jest.fn();
 const currentFilter = { installed_evra: undefined };
 
-jest.mock('react', () => ({
-    ...jest.requireActual('react'),
-    useState: jest.fn().mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([2, () => { }])
-    .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([2, () => { }])
-    .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([2, () => { }])
-    .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([2, () => { }])
-    .mockReturnValueOnce([false, () => { }]).mockReturnValueOnce([2, () => { }])
-}));
-
 describe('Version filter', () => {
     it('should initialize the filter', () => {
         const response = versionFilter(apply, currentFilter, packageVersions);
-
         expect(response.label).toEqual(intl.formatMessage(messages.labelsFiltersPackageVersionTitle));
-        expect(response.value).toEqual('custom');
-        expect(response.type).toEqual('custom');
-        expect(response.filterValues.children.props.typeAheadAriaLabel).toEqual(
-            intl.formatMessage(messages.labelsFiltersPackageVersionPlaceholder)
-        );
-        expect(response.filterValues.children.props.isOpen).toBeFalsy();
-        expect(response.filterValues.children.props.children.length).toEqual(2);
+        expect(response.type).toEqual('checkbox');
+        expect(Array.isArray(response.filterValues.items)).toBe(true);
+        expect(response.filterValues.value).toEqual([]);
+        expect(response.filterValues.items).toHaveLength(packageVersions.data.length);
     });
 
-    it('should call apply when onSelect is fired', () => {
+    it('should call apply when selecting a single version', () => {
         const response = versionFilter(apply, currentFilter, packageVersions);
-        response.filterValues.children.props.onSelect(null, packageVersions.data[0].evra);
+        response.filterValues.onChange(null, packageVersions.data[0].evra);
 
         expect(apply).toHaveBeenCalledWith({ filter: { installed_evra: packageVersions.data[0].evra } });
     });
 
-    it('should call apply when onSelect is fired and append previously selected versions into new selection', () => {
-        const response = versionFilter(apply, { installed_evra: 'testVerions' }, packageVersions);
-        response.filterValues.children.props.onSelect(null, packageVersions.data[0].evra);
+    it('should call apply when onChange is fired and append previously selected versions into new selection', () => {
+        const existing = 'testVersions';
 
-        expect(apply).toHaveBeenCalledWith({ filter: { installed_evra: `testVerions,${packageVersions.data[0].evra}` } });
+        const response = versionFilter(apply, { installed_evra: existing }, packageVersions);
+        response.filterValues.onChange(null, [existing, packageVersions.data[0].evra]);
+
+        expect(apply).toHaveBeenCalledWith({ filter: { installed_evra: `${existing},${packageVersions.data[0].evra}` } });
     });
 
     it('should send installed_evra: undefined when previously selected version and new version are the same', () => {
         const response = versionFilter(apply, { installed_evra: packageVersions.data[1].evra }, packageVersions);
-        response.filterValues.children.props.onSelect(null, packageVersions.data[1].evra);
+        response.filterValues.onChange(null, []);
 
         expect(apply).toHaveBeenCalledWith({ filter: { installed_evra: undefined } });
     });
 
-    it('should call apply when onSelect is fired and deselect the version', () => {
+    it('should call apply when onChange is fired and deselect the version', () => {
+        const package1 = packageVersions.data[0].evra;
+        const package2 = packageVersions.data[1].evra;
+
         const response = versionFilter(apply,
-            { installed_evra: `${packageVersions.data[0].evra},${packageVersions.data[1].evra}` }, packageVersions);
-        response.filterValues.children.props.onSelect(null, packageVersions.data[0].evra);
+            { installed_evra: `${package1},${package2}` }, packageVersions);
+        response.filterValues.onChange(null, [package1]);
 
         expect(apply).toHaveBeenCalledWith({ filter:
-            { installed_evra: `${packageVersions.data[0].evra}` }
+            { installed_evra: package1 }
         });
     });
 

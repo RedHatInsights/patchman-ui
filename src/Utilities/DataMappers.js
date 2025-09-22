@@ -1,4 +1,4 @@
-import { Icon, TextContent, TextListItem, TextListItemVariants } from '@patternfly/react-core';
+import { Icon, Content, ContentVariants } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { flatMap } from 'lodash';
@@ -323,14 +323,14 @@ export const createCvesRows = (rows) => {
                             </a>)
                     },
                     {
-                        title: (<TextContent>
-                            <TextListItem component={TextListItemVariants.dd}>
+                        title: (<Content>
+                            <Content component={ContentVariants.dd}>
                                 <Icon size="sm" >
                                     <SecurityIcon color={severityObject.color}/>
                                 </Icon>
                                 &nbsp;{severityObject.label}
-                            </TextListItem>
-                        </TextContent>),
+                            </Content>
+                        </Content>),
                         value: severityObject.label
                     },
                     { title: parseFloat(attributes.cvss_score).toFixed(1) }

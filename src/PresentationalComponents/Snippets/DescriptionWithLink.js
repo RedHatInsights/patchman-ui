@@ -1,7 +1,6 @@
 import {
     Icon,
-    Text, TextContent, TextList,
-    TextListItem, TextListItemVariants, TextListVariants, TextVariants
+    Content, ContentVariants
 } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
@@ -17,39 +16,39 @@ import RebootRequired from '../Snippets/RebootRequired';
 export const DescriptionWithLink = ({ row }) => {
     const severityObject = getSeverityById(row.attributes.severity);
     return (
-        <TextContent className='patch-advisory-description'>
+        <Content className='patch-advisory-description'>
             {
                 row.attributes.cve_count > 0 &&
-                (<TextList component={TextListVariants.dl} style={{ '--pf-v5-c-content--dl--RowGap': '0.5rem' }}>
-                    <TextListItem component={TextListItemVariants.dt}>
+                (<Content component={ContentVariants.dl} style={{ '--pf-v6-c-content--dl--RowGap': '0.5rem' }}>
+                    <Content component={ContentVariants.dt}>
                         {intl.formatMessage(messages.labelsSeverity)}
-                    </TextListItem>
-                    <TextListItem component={TextListItemVariants.dd}>
+                    </Content>
+                    <Content component={ContentVariants.dd}>
                         <Icon size="sm">
                             <SecurityIcon color={severityObject.color} />
                         </Icon>  {severityObject.label}
-                    </TextListItem>
-                    <TextListItem component={TextListItemVariants.dt}>
+                    </Content>
+                    <Content component={ContentVariants.dt}>
                         {intl.formatMessage(messages.labelsCves)}
-                    </TextListItem>
-                    <TextListItem component={TextListItemVariants.dd}>
+                    </Content>
+                    <Content component={ContentVariants.dd}>
                         {row.attributes.cve_count}
-                    </TextListItem>
-                </TextList>)
+                    </Content>
+                </Content>)
             }
             <Label>{intl.formatMessage(messages.labelsDescription)}</Label>
-            <Text component={TextVariants.p} style={{ whiteSpace: 'pre-line' }}>
+            <Content component={ContentVariants.p} style={{ whiteSpace: 'pre-line' }}>
                 {truncate(row.attributes.description.replace(
                     new RegExp('\\n(?=[^\\n])', 'g'),
                     ''
                 ), 570, handlePatchLink(entityTypes.advisories, row.id, intl.formatMessage(messages.linksReadMore)))}
-            </Text>
+            </Content>
             {
                 row.attributes.reboot_required && <RebootRequired/>
             }
             {isRHAdvisory(row.id) && <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
                 text={intl.formatMessage(messages.linksViewPackagesAndErrata)} />}
-        </TextContent>);
+        </Content>);
 };
 
 DescriptionWithLink.propTypes = {
