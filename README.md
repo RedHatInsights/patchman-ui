@@ -9,7 +9,7 @@ Patch is one of the applications for console.redhat.com. It allows users to disp
 
 ## First time setup
 
-1. Make sure you have [`Node.js`](https://nodejs.org/en/) version >= 18 installed
+1. Make sure you have [`Node.js`](https://nodejs.org/en/) version >= 18 installed.
 2. Run [script to patch your `/etc/hosts`](https://github.com/RedHatInsights/insights-proxy/blob/master/scripts/patch-etc-hosts.sh)
 3. Make sure you are using [Red Hat proxy](https://hdn.corp.redhat.com/proxy.pac) if working against the stage environment.
 
