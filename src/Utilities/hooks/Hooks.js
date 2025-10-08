@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, Fragment, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { SortByDirection } from '@patternfly/react-table';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
@@ -306,22 +305,6 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
         handleApiResponse(response);
     });
     return onSubmit;
-};
-
-/***
- * Pushes new URL params together location state into the history
- * @param {object} [queryParams] query params to build the URL params
- * @returns {historyPusher} function to trigger the push
- */
-export const usePushUrlParams = (queryParams) => {
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    const historyPusher = useCallback(() => {
-        navigate(`${location.pathname}${encodeURLParams(queryParams)}`, { state: location.state });
-    }, [JSON.stringify(queryParams), location.state, location.pathname]);
-
-    return historyPusher;
 };
 
 /***
