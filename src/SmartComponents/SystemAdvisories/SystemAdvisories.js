@@ -16,8 +16,8 @@ import { exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON } from '../../Uti
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, decodeQueryparams,
-    getRowIdByIndexExpandable, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnExport, usePushUrlParams,
+    getRowIdByIndexExpandable, remediationProvider, encodeURLParams } from '../../Utilities/Helpers';
+import { usePerPageSelect, useSetPage, useSortColumn, useOnExport,
     useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -50,9 +50,7 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
         [advisories, expandedRows, selectedRows]
     );
 
-    const [searchParams] = useSearchParams();
-
-    const historyPusher = usePushUrlParams(queryParams);
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         return () => dispatch(clearSystemAdvisoriesStore());
@@ -63,12 +61,12 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
             apply(decodeQueryparams('?' + searchParams.toString()));
             setFirstMount(false);
         } else {
-            historyPusher();
+            setSearchParams(encodeURLParams(queryParams), { replace: true });
             dispatch(
                 fetchApplicableSystemAdvisories({ id: inventoryId, ...queryParams })
             );
         }
-    }, [queryParams]);
+    }, [firstMount, queryParams]);
 
     useEffect(() => {
         if (shouldRefresh) {
