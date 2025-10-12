@@ -1,12 +1,23 @@
 import {
-    Button, Grid, GridItem, Stack, StackItem, Content, FlexItem, ContentVariants, Flex, Split, SplitItem, Title
+    Button,
+    Content,
+    ContentVariants,
+    Flex,
+    FlexItem,
+    Grid,
+    GridItem,
+    Split,
+    SplitItem,
+    Stack,
+    StackItem,
+    Title
 } from '@patternfly/react-core';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
-import React, { useState, lazy, Suspense, Fragment } from 'react';
+import React, { Fragment, lazy, Suspense, useState } from 'react';
 import messages from '../../Messages';
 import WithLoader, { WithLoaderVariants } from '../../PresentationalComponents/WithLoader/WithLoader';
-import { getSeverityById, isRHAdvisory, truncateDescription } from '../../Utilities/Helpers';
+import { getSeverityByValue, isRHAdvisory, truncateDescription } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import RebootRequired from '../Snippets/RebootRequired';
 import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
@@ -22,11 +33,11 @@ const CvesModal = lazy(() =>
 const AdvisoryHeader = ({ attributes, isLoading }) => {
     const [CvesInfoModal, setCvesModal] = useState(() => () => null);
     const [wordLength, setWordLength] = useState(1000);
-    const severityObject = getSeverityById(attributes.severity);
+    const severityObject = getSeverityByValue(attributes?.severity);
     const cves = attributes.cves;
 
     const showCvesModal = () => {
-        setCvesModal(() => () => <CvesModal cveIds={cves} />);
+        setCvesModal(() => () => <CvesModal cveIds={cves}/>);
     };
 
     return (
@@ -38,7 +49,7 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                     centered
                 >
                     <Stack hasGutter>
-                        <StackItem />
+                        <StackItem/>
                         <StackItem style={{ whiteSpace: 'pre-line' }}>
                             {
                                 attributes.description && truncateDescription(attributes.description, wordLength, setWordLength)
@@ -52,7 +63,7 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                                             attributes.public_date
                                         )
                                     })}
-                                    <br />
+                                    <br/>
                                 </React.Fragment>
                             )}
                             {attributes.modified_date && (
@@ -68,7 +79,7 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                         {isRHAdvisory(attributes.id) &&
                             <StackItem>
                                 <ExternalLink link={`https://access.redhat.com/errata/${attributes.id}`}
-                                    text={intl.formatMessage(messages.linksViewPackagesAndErrata)} />
+                                    text={intl.formatMessage(messages.linksViewPackagesAndErrata)}/>
                             </StackItem>
                         }
                     </Stack>
@@ -95,12 +106,12 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                         </Split>
                     </FlexItem>
                     )}
-                    {severityObject.value !== 0 && (<FlexItem>
+                    {severityObject.value === null ? null : (<FlexItem>
                         <AdvisorySeverityInfo severity={severityObject}/>
                     </FlexItem>
                     )}
                     {attributes.reboot_required && (<FlexItem spacer={{ default: 'spacerMd' }}>
-                        <RebootRequired />
+                        <RebootRequired/>
                     </FlexItem>)}
                 </Flex>
             </GridItem>
@@ -110,14 +121,14 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
                         <Content component={ContentVariants.h3}>
                             {intl.formatMessage(messages.labelsCves)}
                         </Content>
-                        <Button variant='link' style={{ padding: 0 }} onClick={showCvesModal} >
+                        <Button variant='link' style={{ padding: 0 }} onClick={showCvesModal}>
                             {intl.formatMessage(messages.labelsCvesButton, { cvesCount: cves.length })}
                         </Button>
                     </Content>
                 </GridItem>
             )}
             <Suspense fallback={<Fragment/>}>
-                <CvesInfoModal />
+                <CvesInfoModal/>
             </Suspense>
         </Grid>
     );

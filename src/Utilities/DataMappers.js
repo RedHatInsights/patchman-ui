@@ -1,5 +1,3 @@
-import { Icon, Content, ContentVariants } from '@patternfly/react-core';
-import { SecurityIcon } from '@patternfly/react-icons';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { flatMap } from 'lodash';
 import React from 'react';
@@ -7,8 +5,11 @@ import messages from '../Messages';
 import AdvisoryType from '../PresentationalComponents/AdvisoryType/AdvisoryType';
 import { DescriptionWithLink } from '../PresentationalComponents/Snippets/DescriptionWithLink';
 import {
-    EmptyAdvisoryList, EmptyCvesList, EmptyPackagesList,
-    EmptyPatchSetList, EmptySystemsList
+    EmptyAdvisoryList,
+    EmptyCvesList,
+    EmptyPackagesList,
+    EmptyPatchSetList,
+    EmptySystemsList
 } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
@@ -16,17 +17,25 @@ import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './H
 import { intl } from './IntlProvider';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import { ManagedBySatelliteCell } from '../SmartComponents/Systems/SystemsListAssets';
+import AdvisorySeverity from '../PresentationalComponents/AdvisorySeverity/AdvisorySeverity';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
     if (rows.length !== 0) {
         return flatMap(rows, (row, index) => {
+            // Bugfixes and enhancements lack the severity property, so we default to "None"
+            const severityObject = row.attributes?.severity ? advisorySeverities[row.attributes.severity] : advisorySeverities[0];
             return [
                 {
                     id: row.id,
                     isOpen: expandedRows[row.id] === true,
                     selected: selectedRows[row.id] !== undefined,
                     cells: [
-                        { title: handlePatchLink(entityTypes.advisories, row.id) },
+                        {
+                            title: handlePatchLink(
+                                entityTypes.advisories,
+                                row.id
+                            )
+                        },
                         {
                             title: handleLongSynopsis(row.attributes.synopsis)
                         },
@@ -38,6 +47,9 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                             )
                         },
                         {
+                            title: (<AdvisorySeverity severity={severityObject}/>)
+                        },
+                        {
                             title: handlePatchLink(
                                 entityTypes.advisories,
                                 row.id,
@@ -45,17 +57,26 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                             )
                         },
                         {
-                            title: row.attributes.reboot_required &&
-                                intl.formatMessage(messages.labelsRebootRequired)
-                                || intl.formatMessage(messages.labelsRebootNotRequired)
+                            title:
+                                (row.attributes.reboot_required &&
+                                    intl.formatMessage(
+                                        messages.labelsRebootRequired
+                                    )) ||
+                                intl.formatMessage(
+                                    messages.labelsRebootNotRequired
+                                )
                         },
-                        { title: row.attributes.public_date ? processDate(row.attributes.public_date) : 'Not Available' }
+                        {
+                            title: row.attributes.public_date
+                                ? processDate(row.attributes.public_date)
+                                : 'Not Available'
+                        }
                     ]
                 },
                 {
                     cells: [
                         {
-                            title: <DescriptionWithLink row={row} />
+                            title: <DescriptionWithLink row={row}/>
                         }
                     ],
                     parent: index * 2,
@@ -70,7 +91,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
                 cells: [
                     {
                         props: { colSpan: 5 },
-                        title: <EmptyAdvisoryList />
+                        title: <EmptyAdvisoryList/>
                     }
                 ]
             }
@@ -86,6 +107,7 @@ export const createSystemAdvisoriesRows = (
 ) => {
     if (rows.length !== 0) {
         return flatMap(rows, (row, index) => {
+            const severityObject = row.attributes?.severity ? advisorySeverities[row.attributes.severity] : advisorySeverities[0];
             return [
                 {
                     id: row.id,
@@ -93,7 +115,12 @@ export const createSystemAdvisoriesRows = (
                     selected: selectedRows[row.id] !== undefined,
                     disableSelection: row.attributes.status !== 'Installable',
                     cells: [
-                        { title: handlePatchLink(entityTypes.advisories, row.id) },
+                        {
+                            title: handlePatchLink(
+                                entityTypes.advisories,
+                                row.id
+                            )
+                        },
                         {
                             title: handleLongSynopsis(row.attributes.synopsis)
                         },
@@ -108,9 +135,17 @@ export const createSystemAdvisoriesRows = (
                             )
                         },
                         {
-                            title: row.attributes.reboot_required &&
-                                intl.formatMessage(messages.labelsRebootRequired)
-                                || intl.formatMessage(messages.labelsRebootNotRequired)
+                            title: (<AdvisorySeverity severity={severityObject}/>)
+                        },
+                        {
+                            title:
+                                (row.attributes.reboot_required &&
+                                    intl.formatMessage(
+                                        messages.labelsRebootRequired
+                                    )) ||
+                                intl.formatMessage(
+                                    messages.labelsRebootNotRequired
+                                )
                         },
                         { title: processDate(row.attributes.public_date) }
                     ]
@@ -118,7 +153,7 @@ export const createSystemAdvisoriesRows = (
                 {
                     cells: [
                         {
-                            title: <DescriptionWithLink row={row} />
+                            title: <DescriptionWithLink row={row}/>
                         }
                     ],
                     parent: index * 2,
@@ -133,9 +168,11 @@ export const createSystemAdvisoriesRows = (
                 cells: [
                     {
                         props: { colSpan: 6 },
-                        title: !metadata.search && (metadata.filter && Object.keys(metadata.filter).length === 0)
-                            && <SystemUpToDate />
-                            || <EmptyAdvisoryList />
+                        title: (!metadata.search &&
+                            metadata.filter &&
+                            Object.keys(metadata.filter).length === 0 && (
+                            <SystemUpToDate/>
+                        )) || <EmptyAdvisoryList/>
                     }
                 ]
             }
@@ -144,52 +181,53 @@ export const createSystemAdvisoriesRows = (
 };
 
 export const createSystemsRows = (rows, selectedRows = {}) => {
-    const data =
-        rows.map(({ id, ...rest }) => {
-            const {
-                packages_installed: installedPckg,
-                rhba_count: rhba,
-                rhsa_count: rhsa,
-                rhea_count: rhea,
-                other_count: other,
-                os,
-                rhsm,
-                tags,
-                last_upload: lastUpload
-            } = rest;
-            return {
-                id,
-                ...rest,
-                key: Math.random().toString() + id,
-                packages_installed: installedPckg,
-                applicable_advisories: [
-                    rhea || 0,
-                    rhba || 0,
-                    rhsa || 0,
-                    other || 0
-                ],
-                operating_system: {
-                    osName: os || 'N/A',
-                    rhsm
-                },
-                selected: selectedRows[id] !== undefined,
-                tags,
-                updated: lastUpload
-            };
-        });
+    const data = rows.map(({ id, ...rest }) => {
+        const {
+            packages_installed: installedPckg,
+            rhba_count: rhba,
+            rhsa_count: rhsa,
+            rhea_count: rhea,
+            other_count: other,
+            os,
+            rhsm,
+            tags,
+            last_upload: lastUpload
+        } = rest;
+        return {
+            id,
+            ...rest,
+            key: Math.random().toString() + id,
+            packages_installed: installedPckg,
+            applicable_advisories: [
+                rhea || 0,
+                rhba || 0,
+                rhsa || 0,
+                other || 0
+            ],
+            operating_system: {
+                osName: os || 'N/A',
+                rhsm
+            },
+            selected: selectedRows[id] !== undefined,
+            tags,
+            updated: lastUpload
+        };
+    });
     return data || [];
 };
 
 export const createPackageSystemsRows = (rows, selectedRows = {}) => {
     const data =
         rows &&
-        rows.map(row => {
+        rows.map((row) => {
             return {
                 id: row.id,
                 key: Math.random().toString() + row.id,
                 display_name: row.display_name,
                 installed_evra: row.installed_evra,
-                available_evra: row.updatable ? row.available_evra : row.installed_evra,
+                available_evra: row.updatable
+                    ? row.available_evra
+                    : row.installed_evra,
                 disableSelection: !row.updatable,
                 updatable: row.updatable,
                 update_status: row.update_status,
@@ -210,41 +248,42 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
 };
 
 export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
-    const data =
-        rows.map(({ id, ...rest }) => {
-            const {
-                packages_installed: installedPckg,
-                os,
-                rhsm,
-                tags,
-                last_upload: lastUpload,
-                status
-            } = rest;
-            return {
-                id,
-                ...rest,
-                key: Math.random().toString() + id,
-                packages_installed: installedPckg,
-                os: {
-                    osName: os.osName || os || 'N/A',
-                    rhsm
-                },
-                selected: selectedRows[id] !== undefined,
-                tags,
-                updated: lastUpload,
-                disableSelection: status !== 'Installable'
-            };
-        });
+    const data = rows.map(({ id, ...rest }) => {
+        const {
+            packages_installed: installedPckg,
+            os,
+            rhsm,
+            tags,
+            last_upload: lastUpload,
+            status
+        } = rest;
+        return {
+            id,
+            ...rest,
+            key: Math.random().toString() + id,
+            packages_installed: installedPckg,
+            os: {
+                osName: os.osName || os || 'N/A',
+                rhsm
+            },
+            selected: selectedRows[id] !== undefined,
+            tags,
+            updated: lastUpload,
+            disableSelection: status !== 'Installable'
+        };
+    });
     return data || [];
 };
 
 export const createSystemPackagesRows = (rows, selectedRows = {}) => {
     if (rows && rows.length !== 0) {
-        return rows.map(pkg => {
+        return rows.map((pkg) => {
             const pkgNEVRA = `${pkg.name}-${pkg.evra}`;
             const pkgUpdates = pkg.updates || [];
             const latestApplicable = pkgUpdates[pkgUpdates.length - 1];
-            const latestInstallable = pkgUpdates.filter(version => version.status === 'Installable').pop();
+            const latestInstallable = pkgUpdates
+            .filter((version) => version.status === 'Installable')
+            .pop();
 
             return {
                 id: pkgNEVRA,
@@ -268,7 +307,7 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
                 cells: [
                     {
                         props: { colSpan: 7 },
-                        title: <EmptyPackagesList />
+                        title: <EmptyPackagesList/>
                     }
                 ]
             }
@@ -278,7 +317,7 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
 
 export const createPackagesRows = (rows) => {
     if (rows && rows.length !== 0) {
-        return rows.map(pkg => {
+        return rows.map((pkg) => {
             return {
                 id: pkg.name,
                 key: pkg.name,
@@ -298,7 +337,7 @@ export const createPackagesRows = (rows) => {
                 cells: [
                     {
                         props: { colSpan: 7 },
-                        title: <EmptyPackagesList />
+                        title: <EmptyPackagesList/>
                     }
                 ]
             }
@@ -308,9 +347,11 @@ export const createPackagesRows = (rows) => {
 
 export const createCvesRows = (rows) => {
     if (rows.length !== 0) {
-        return rows.map(cve => {
+        return rows.map((cve) => {
             const { attributes, id } = cve;
-            const severityObject = advisorySeverities.filter(severity => severity.label === attributes.impact)[0];
+            const severityObject = advisorySeverities.filter(
+                (severity) => severity.label === attributes.impact
+            )[0];
 
             return {
                 id,
@@ -318,19 +359,15 @@ export const createCvesRows = (rows) => {
                 cells: [
                     {
                         title: (
-                            <a href={`${document.baseURI}insights/vulnerability/cves/${attributes.synopsis}`}>
+                            <a
+                                href={`${document.baseURI}insights/vulnerability/cves/${attributes.synopsis}`}
+                            >
                                 {attributes.synopsis}
-                            </a>)
+                            </a>
+                        )
                     },
                     {
-                        title: (<Content>
-                            <Content component={ContentVariants.dd}>
-                                <Icon size="sm" >
-                                    <SecurityIcon color={severityObject.color}/>
-                                </Icon>
-                                &nbsp;{severityObject.label}
-                            </Content>
-                        </Content>),
+                        title: <AdvisorySeverity severity={severityObject}/>,
                         value: severityObject.label
                     },
                     { title: parseFloat(attributes.cvss_score).toFixed(1) }
@@ -344,7 +381,7 @@ export const createCvesRows = (rows) => {
                 cells: [
                     {
                         props: { colSpan: 4 },
-                        title: <EmptyCvesList />
+                        title: <EmptyCvesList/>
                     }
                 ]
             }
@@ -354,7 +391,7 @@ export const createCvesRows = (rows) => {
 
 export const createSystemsRowsReview = (rows, selectedRows) => {
     if (rows.length !== 0) {
-        return rows.map(system => {
+        return rows.map((system) => {
             const { attributes, id } = system;
 
             return {
@@ -369,9 +406,11 @@ export const createSystemsRowsReview = (rows, selectedRows) => {
                         title: attributes.os || 'N/A'
                     },
                     {
-                        title: attributes.satellite_managed
-                            ? <ManagedBySatelliteCell />
-                            : attributes.baseline_name || 'No template'
+                        title: attributes.satellite_managed ? (
+                            <ManagedBySatelliteCell/>
+                        ) : (
+                            attributes.baseline_name || 'No template'
+                        )
                     },
                     {
                         title: processDate(attributes.last_upload)
@@ -386,7 +425,7 @@ export const createSystemsRowsReview = (rows, selectedRows) => {
                 cells: [
                     {
                         props: { colSpan: 4 },
-                        title: <EmptySystemsList />
+                        title: <EmptySystemsList/>
                     }
                 ]
             }
@@ -395,10 +434,9 @@ export const createSystemsRowsReview = (rows, selectedRows) => {
 };
 
 export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
-
     const data =
         rows &&
-        rows.map(row => {
+        rows.map((row) => {
             return {
                 id: row.id,
                 displayName: row.name,
@@ -412,7 +450,13 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
                             </InsightsLink>
                         )
                     },
-                    { title: row.systems || intl.formatMessage(messages.labelsTemplateNoSystems) },
+                    {
+                        title:
+                            row.systems ||
+                            intl.formatMessage(
+                                messages.labelsTemplateNoSystems
+                            )
+                    },
                     { title: processDate(row.last_edited) },
                     { title: processDate(row.published) },
                     { title: row.creator }
@@ -420,25 +464,27 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
             };
         });
 
-    return data?.length > 0 ? data :
-        (filters.search || Object.keys(filters.filter).length) ?
-            [
+    return data?.length > 0
+        ? data
+        : filters.search || Object.keys(filters.filter).length
+            ? [
                 {
                     heightAuto: true,
                     cells: [
                         {
                             props: { colSpan: 6 },
-                            title: <EmptyPatchSetList />
+                            title: <EmptyPatchSetList/>
                         }
                     ]
                 }
-            ] : [];
+            ]
+            : [];
 };
 
 export const createPatchSetDetailRows = (rows) => {
     const data =
         rows &&
-        rows.map(row => {
+        rows.map((row) => {
             row = { ...row, ...row.attributes };
 
             return {

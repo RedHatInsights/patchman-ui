@@ -1,6 +1,11 @@
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { EmptyAdvisoryList } from '../PresentationalComponents/Snippets/EmptyStates';
-import { createAdvisoriesRows, createSystemAdvisoriesRows, createSystemPackagesRows, createSystemsRows } from './DataMappers';
+import {
+    createAdvisoriesRows,
+    createSystemAdvisoriesRows,
+    createSystemPackagesRows,
+    createSystemsRows
+} from './DataMappers';
 import { handlePatchLink } from './Helpers';
 import { advisoryRows, systemAdvisoryRows, systemPackages, systemRows } from './RawDataForTesting';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
@@ -14,10 +19,11 @@ describe('DataMappers', () => {
         expect(firstRow.isOpen).toEqual(false);
         expect(firstRow.selected).toEqual(false);
         expect(firstRow.cells[0].title).toEqual(handlePatchLink('advisories', advisoryRows[0].id));
-        expect(firstRow.cells[4].title).toEqual(intl.formatMessage(messages.labelsRebootRequired));
-        expect(firstRow.cells[5].title).toEqual(processDate(advisoryRows[0].attributes.public_date));
+        expect(firstRow.cells[5].title).toEqual(intl.formatMessage(messages.labelsRebootRequired));
+        expect(firstRow.cells[6].title).toEqual(processDate(advisoryRows[0].attributes.public_date));
         expect(firstRow.cells[2].title.props.type).toEqual(advisoryRows[0].attributes.advisory_type_name);
-        expect(firstRow.cells[3].title).toEqual(
+        expect(firstRow.cells[3].title.props.severity.value).toEqual(advisoryRows[0].attributes.severity);
+        expect(firstRow.cells[4].title).toEqual(
             handlePatchLink('advisories', advisoryRows[0].id, advisoryRows[0].attributes.applicable_systems)
         );
         expect(firstRow.cells[1]).toBeTruthy();
@@ -38,9 +44,10 @@ describe('DataMappers', () => {
         expect(firstRow.id).toEqual(systemAdvisoryRows[0].id);
         expect(firstRow.isOpen).toEqual(false);
         expect(firstRow.selected).toEqual(false);
-        expect(firstRow.cells[5].title).toEqual(processDate(systemAdvisoryRows[0].attributes.public_date));
-        expect(firstRow.cells[4].title).toEqual('Required');
+        expect(firstRow.cells[6].title).toEqual(processDate(systemAdvisoryRows[0].attributes.public_date));
+        expect(firstRow.cells[5].title).toEqual('Required');
         expect(firstRow.cells[3].title.props.type).toEqual(systemAdvisoryRows[0].attributes.advisory_type_name);
+        expect(firstRow.cells[4].title.props.severity.value).toEqual(advisoryRows[0].attributes.severity);
         expect(firstRow.cells[1]).toBeTruthy();
         expect(firstRow.cells[0].title).toEqual(handlePatchLink('advisories', systemAdvisoryRows[0].id));
         const portalAdvisoryLink = secondRow.cells[0].title;
@@ -134,7 +141,7 @@ describe('DataMappers', () => {
             selected: false,
             disableSelection: false,
             cells: [
-                { title: expect.anything()  }, // FIXME!
+                { title: expect.anything() }, // FIXME!
                 { title: 'test-evra' },
                 { title: 'testEvra' },
                 { title: expect.anything() },

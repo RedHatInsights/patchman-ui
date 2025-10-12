@@ -32,8 +32,8 @@ jest.mock('../../Utilities/constants', () => ({
     ...jest.requireActual('../../Utilities/constants'),
     publicDateOptions: jest.fn().mockReturnValue([]),
     advisorySeverities: [{
-        value: 0,
-        label: 'N/A',
+        value: null,
+        label: 'None',
         color: 'var(--pf-t--global--icon--color--severity--minor--default'
     }]
 }));
@@ -46,7 +46,8 @@ jest.mock('../Remediation/AsyncRemediationButton', () => ({
     ))
 }));
 
-const mockState = { ...storeListDefaults,
+const mockState = {
+    ...storeListDefaults,
     rows: advisoryRows,
     status: { isLoading: false, code: 200, hasError: false },
     metadata: {
@@ -58,7 +59,7 @@ const mockState = { ...storeListDefaults,
 
 const initStore = (state) => {
     const mockStore = configureStore([]);
-    return mockStore({  AdvisoryListStore: state });
+    return mockStore({ AdvisoryListStore: state });
 };
 
 let store = initStore(mockState);
@@ -107,7 +108,7 @@ describe('Advisories.js', () => {
         const tempStore = initStore(selectedState);
         render(
             <ComponentWithContext renderOptions={{ store: tempStore }}>
-                <Advisories />
+                <Advisories/>
             </ComponentWithContext>
         );
 

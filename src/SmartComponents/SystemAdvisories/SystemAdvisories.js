@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import React, { useMemo, useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
@@ -10,17 +10,27 @@ import advisoryStatusFilter from '../../PresentationalComponents/Filters/Advisor
 import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavailable';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
-import { changeSystemAdvisoryListParams, clearSystemAdvisoriesStore, expandSystemAdvisoryRow,
-    fetchApplicableSystemAdvisories, selectSystemAdvisoryRow } from '../../store/Actions/Actions';
+import {
+    changeSystemAdvisoryListParams,
+    clearSystemAdvisoriesStore,
+    expandSystemAdvisoryRow,
+    fetchApplicableSystemAdvisories,
+    selectSystemAdvisoryRow
+} from '../../store/Actions/Actions';
 import { exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
-import { arrayFromObj, createSortBy, decodeQueryparams,
-    getRowIdByIndexExpandable, remediationProvider, encodeURLParams } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnExport,
-    useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/hooks';
+import {
+    arrayFromObj, createSortBy, decodeQueryparams,
+    getRowIdByIndexExpandable, remediationProvider, encodeURLParams
+} from '../../Utilities/Helpers';
+import {
+    usePerPageSelect, useSetPage, useSortColumn, useOnExport,
+    useOnSelect, ID_API_ENDPOINTS
+} from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
+import severityFilter from '../../PresentationalComponents/Filters/SeverityFilter';
 
 const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
     const dispatch = useDispatch();
@@ -148,6 +158,7 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
                             intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder)
                         ),
                         typeFilter(apply, queryParams.filter),
+                        severityFilter(apply, queryParams?.filter),
                         publishDateFilter(apply, queryParams.filter),
                         rebootFilter(apply, queryParams.filter),
                         advisoryStatusFilter(apply, queryParams.filter)

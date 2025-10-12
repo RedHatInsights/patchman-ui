@@ -10,17 +10,22 @@ import Header from '../../PresentationalComponents/Header/Header';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { advisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import {
-    changeAdvisoryListParams, expandAdvisoryRow,
-    fetchApplicableAdvisories, selectAdvisoryRow
+    changeAdvisoryListParams,
+    expandAdvisoryRow,
+    fetchApplicableAdvisories,
+    selectAdvisoryRow
 } from '../../store/Actions/Actions';
 import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
+import { createSortBy, decodeQueryparams, encodeURLParams, getRowIdByIndexExpandable } from '../../Utilities/Helpers';
 import {
-    createSortBy, decodeQueryparams,
-    encodeURLParams, getRowIdByIndexExpandable
-} from '../../Utilities/Helpers';
-import { useOnExport, useRemediationDataProvider, useOnSelect, ID_API_ENDPOINTS,
-    usePerPageSelect, useSetPage, useSortColumn
+    ID_API_ENDPOINTS,
+    useOnExport,
+    useOnSelect,
+    usePerPageSelect,
+    useRemediationDataProvider,
+    useSetPage,
+    useSortColumn
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -28,9 +33,10 @@ import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
-import { Flex, Icon, Popover, Content, ContentVariants } from '@patternfly/react-core';
+import { Content, ContentVariants, Flex, Icon, Popover } from '@patternfly/react-core';
 import ExternalLink from '../../PresentationalComponents/Snippets/ExternalLink';
 import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
+import severityFilter from '../../PresentationalComponents/Filters/SeverityFilter';
 
 const Advisories = () => {
     const navigate = useNavigate();
@@ -38,7 +44,7 @@ const Advisories = () => {
     const chrome = useChrome();
     const isLightspeedEnabled = useFeatureFlag('platform.lightspeed-rebrand');
 
-    useEffect(()=>{
+    useEffect(() => {
         chrome.updateDocumentTitle(`Advisories - Content | RHEL`, true);
     }, [chrome]);
 
@@ -150,7 +156,7 @@ const Advisories = () => {
                                         <Content component={ContentVariants.p}>
                                             <ExternalLink
                                                 link={'https://docs.redhat.com/en/documentation/red_hat_insights/1-latest'
-                                                + '/html/system_patching_using_remediation_playbooks'}
+                                                    + '/html/system_patching_using_remediation_playbooks'}
                                                 text="System Patching Using Remediation Playbooks"
                                             />
                                         </Content>
@@ -196,6 +202,7 @@ const Advisories = () => {
                                 intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder)
                             ),
                             typeFilter(apply, queryParams?.filter),
+                            severityFilter(apply, queryParams?.filter),
                             publishDateFilter(apply, queryParams?.filter),
                             rebootFilter(apply, queryParams?.filter)
                         ]

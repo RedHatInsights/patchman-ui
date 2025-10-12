@@ -27,6 +27,13 @@ export const advisoriesColumns = [
         isShownByDefault: true
     },
     {
+        title: intl.formatMessage(messages.labelsColumnsSeverity),
+        transforms: [sortable, cellWidth(10)],
+        key: 'severity',
+        isShown: true,
+        isShownByDefault: true
+    },
+    {
         title: intl.formatMessage(messages.labelsColumnsAffectedSystems),
         transforms: [sortable, cellWidth(15)],
         key: 'applicable_systems',
@@ -77,6 +84,13 @@ export const systemAdvisoriesColumns = [
         title: intl.formatMessage(messages.labelsColumnsType),
         transforms: [sortable, cellWidth(10)],
         key: 'advisory_type_name',
+        isShown: true,
+        isShownByDefault: true
+    },
+    {
+        title: intl.formatMessage(messages.labelsColumnsSeverity),
+        transforms: [sortable, cellWidth(10)],
+        key: 'severity',
         isShown: true,
         isShownByDefault: true
     },
