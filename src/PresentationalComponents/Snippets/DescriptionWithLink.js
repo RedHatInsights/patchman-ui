@@ -1,20 +1,17 @@
-import {
-    Icon,
-    Content, ContentVariants
-} from '@patternfly/react-core';
+import { Content, ContentVariants, Icon } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
 import messages from '../../Messages';
 import { entityTypes } from '../../Utilities/constants';
-import { getSeverityById, handlePatchLink, isRHAdvisory, truncate } from '../../Utilities/Helpers';
+import { getSeverityByValue, handlePatchLink, isRHAdvisory, truncate } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import ExternalLink from './ExternalLink';
 import Label from './Label';
 import RebootRequired from '../Snippets/RebootRequired';
 
 export const DescriptionWithLink = ({ row }) => {
-    const severityObject = getSeverityById(row.attributes.severity);
+    const severityObject = getSeverityByValue(row.attributes?.severity);
     return (
         <Content className='patch-advisory-description'>
             {
@@ -25,8 +22,8 @@ export const DescriptionWithLink = ({ row }) => {
                     </Content>
                     <Content component={ContentVariants.dd}>
                         <Icon size="sm">
-                            <SecurityIcon color={severityObject.color} />
-                        </Icon>  {severityObject.label}
+                            <SecurityIcon color={severityObject.color}/>
+                        </Icon> {severityObject.label}
                     </Content>
                     <Content component={ContentVariants.dt}>
                         {intl.formatMessage(messages.labelsCves)}
@@ -47,7 +44,7 @@ export const DescriptionWithLink = ({ row }) => {
                 row.attributes.reboot_required && <RebootRequired/>
             }
             {isRHAdvisory(row.id) && <ExternalLink link={`https://access.redhat.com/errata/${row.id}`}
-                text={intl.formatMessage(messages.linksViewPackagesAndErrata)} />}
+                text={intl.formatMessage(messages.linksViewPackagesAndErrata)}/>}
         </Content>);
 };
 

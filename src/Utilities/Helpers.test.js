@@ -1,21 +1,41 @@
 /* eslint-disable */
-import { SortByDirection } from '@patternfly/react-table';
-import { publicDateOptions, remediationIdentifiers } from '../Utilities/constants';
+import {SortByDirection} from '@patternfly/react-table';
+import {publicDateOptions, remediationIdentifiers} from '../Utilities/constants';
 import {
-    addOrRemoveItemFromSet, arrayFromObj, buildFilterChips, changeListParams, convertLimitOffset,
-    createAdvisoriesIcons, createSortBy, decodeQueryparams, encodeApiParams, encodeParams, encodeURLParams,
-    getFilterValue, getLimitFromPageSize, getNewSelectedItems, getOffsetFromPageLimit, getRowIdByIndexExpandable,
-    getSeverityById, handlePatchLink, remediationProvider, mapGlobalFilters, transformPairs, templateDateFormat, persistantParams, buildApiFilters
+    addOrRemoveItemFromSet,
+    arrayFromObj,
+    buildApiFilters,
+    buildFilterChips,
+    changeListParams,
+    convertLimitOffset,
+    createAdvisoriesIcons,
+    createSortBy,
+    decodeQueryparams,
+    encodeApiParams,
+    encodeParams,
+    encodeURLParams,
+    getFilterValue,
+    getLimitFromPageSize,
+    getNewSelectedItems,
+    getOffsetFromPageLimit,
+    getRowIdByIndexExpandable,
+    getSeverityByValue,
+    handlePatchLink,
+    mapGlobalFilters,
+    persistantParams,
+    remediationProvider,
+    templateDateFormat,
+    transformPairs
 } from './Helpers';
-import { render } from '@testing-library/react';
+import {render} from '@testing-library/react';
 
-const TestHook = ({ callback }) => {
+const TestHook = ({callback}) => {
     callback();
     return null;
 };
 
 export const testHook = callback => {
-    mount(<TestHook callback={callback} />);
+    mount(<TestHook callback={callback}/>);
 };
 
 describe('Helpers tests', () => {
@@ -35,8 +55,8 @@ describe('Helpers tests', () => {
     ];
     it.each`
     header      | value         | offset    | result
-    ${header}   | ${['-a']}     | ${0}      | ${{ index: 0, direction: SortByDirection.desc }}
-    ${header}   | ${['c']}      | ${1}      | ${{ index: 3, direction: SortByDirection.asc }}
+    ${header}   | ${['-a']}     | ${0}      | ${{index: 0, direction: SortByDirection.desc}}
+    ${header}   | ${['c']}      | ${1}      | ${{index: 3, direction: SortByDirection.asc}}
     ${undefined}   | ${undefined}      | ${undefined}      | ${{}}
     `('createSortBy: Should create correct sort for $value and offset $offset', ({header, value, offset, result}) => {
         let ret = createSortBy(header, value, offset);
@@ -63,8 +83,8 @@ describe('Helpers tests', () => {
     ${2}     | ${"Moderate"}
     ${3}     | ${"Important"}
     ${4}     | ${"Critical"}
-    `('getSeverityById: Should match $severity to value $result', ({severity, result}) => {
-        expect(getSeverityById(severity).label).toEqual(result);
+    `('getSeverityByValue: Should match $severity to value $result', ({severity, result}) => {
+        expect(getSeverityByValue(severity).label).toEqual(result);
     });
 
     it('addOrRemoveItemFromSet: Should create correct object  ', () => {
@@ -90,8 +110,8 @@ describe('Helpers tests', () => {
                 value: undefined
             }
         ];
-        let targetObj = { '4': 'e' };
-        let expected = { '0': 'a', '1': 'b', '2': 'c', '3': 'd', '4': 'e' };
+        let targetObj = {'4': 'e'};
+        let expected = {'0': 'a', '1': 'b', '2': 'c', '3': 'd', '4': 'e'};
         let ret = addOrRemoveItemFromSet(targetObj, inputArr);
 
         expect(ret).toEqual(expected);
@@ -137,9 +157,9 @@ describe('Helpers tests', () => {
         const host = document.baseURI;
         let advisoryName = 'ABCD';
         const expected = `${host}insights/patch/advisories/${advisoryName}`;
-        let result = handlePatchLink('advisories',advisoryName);
+        let result = handlePatchLink('advisories', advisoryName);
         let {
-            props: { href, children }
+            props: {href, children}
         } = result;
         expect(href).toEqual(expected);
         expect(children).toEqual(advisoryName);
@@ -153,9 +173,9 @@ describe('Helpers tests', () => {
         const host = document.baseURI;
         let advisoryName = 'ABCD';
         const expected = `${host}insights/patch/advisories/${advisoryName}`;
-        let result = handlePatchLink('advisories',advisoryName, 'custom text');
+        let result = handlePatchLink('advisories', advisoryName, 'custom text');
         let {
-            props: { href, children }
+            props: {href, children}
         } = result;
         expect(href).toEqual(expected);
         expect(children).toEqual('custom text');
@@ -168,9 +188,9 @@ describe('Helpers tests', () => {
         };
         let advisoryName = 'ABCD';
         const expected = `/advisories/${advisoryName}`;
-        let result = handlePatchLink('advisories',advisoryName);
+        let result = handlePatchLink('advisories', advisoryName);
         let {
-            props: { to, children }
+            props: {to, children}
         } = result;
         expect(to).toEqual(expected);
         expect(children).toEqual(advisoryName);
@@ -183,9 +203,9 @@ describe('Helpers tests', () => {
         };
         let advisoryName = 'ABCD';
         const expected = `/advisories/${advisoryName}`;
-        let result = handlePatchLink('advisories',advisoryName, 'custom text');
+        let result = handlePatchLink('advisories', advisoryName, 'custom text');
         let {
-            props: { to, children }
+            props: {to, children}
         } = result;
         expect(to).toEqual(expected);
         expect(children).toEqual('custom text');
@@ -213,20 +233,35 @@ describe('Helpers tests', () => {
 
     it.each`
     issues         | systems            |  identifier                        | result
-    ${["issue-1"]} | ${["system-1"]}    | ${remediationIdentifiers.advisory} | ${{issues: [{id: "patch-advisory:issue-1", description: "issue-1"}],systems: ["system-1"]}}
-    ${"issue-1"}   | ${"system-1"}      | ${remediationIdentifiers.package}  | ${{issues: [{id: "patch-package:issue-1", description: "issue-1"}],systems: ["system-1"]}}
+    ${["issue-1"]} | ${["system-1"]}    | ${remediationIdentifiers.advisory} | ${{
+        issues: [{
+            id: "patch-advisory:issue-1",
+            description: "issue-1"
+        }], systems: ["system-1"]
+    }}
+    ${"issue-1"}   | ${"system-1"}      | ${remediationIdentifiers.package}  | ${{
+        issues: [{
+            id: "patch-package:issue-1",
+            description: "issue-1"
+        }], systems: ["system-1"]
+    }}
     ${[]}          | ${["system-1"]}    | ${remediationIdentifiers.package}  | ${false}
-    `('remediationProvider: Should create correct remediation object for $issues $systems', ({issues, systems, identifier, result}) => {
-        expect(remediationProvider(issues,systems, identifier)).toEqual(result);
+    `('remediationProvider: Should create correct remediation object for $issues $systems', ({
+                                                                                                                                                                                              issues,
+                                                                                                                                                                                              systems,
+                                                                                                                                                                                              identifier,
+                                                                                                                                                                                              result
+                                                                                                                                                                                          }) => {
+        expect(remediationProvider(issues, systems, identifier)).toEqual(result);
     });
 
     it.each`
     category         | key                  | result
     ${"public_date"} | ${"last7"}           | ${publicDateOptions[0]}
     ${"public_date"} | ${"random value"}    | ${{apiValue: "random value"}}
-    ${undefined}     | ${"last7"}           | ${{ "apiValue": "last7" }}
+    ${undefined}     | ${"last7"}           | ${{"apiValue": "last7"}}
     `('getFilterValue: Should create object for $category', ({category, key, result}) => {
-        expect(getFilterValue(category,key)).toEqual(result);
+        expect(getFilterValue(category, key)).toEqual(result);
     });
 
     it.each`
@@ -234,25 +269,36 @@ describe('Helpers tests', () => {
     ${{search: "trolo"}}                               | ${true}           | ${"?search=trolo"}
     ${{search: ""}}                                    | ${true}           | ${"?"}
     ${{filter: {advisory_type: 2}}}                    | ${false}          | ${"?filter%5Badvisory_type%5D=2"}
-    ${{filter: {advisory_type: [1,2]}}}                | ${true}           | ${"?filter%5Badvisory_type%5D=in%3A1%2C2"}
-    ${{filter: {advisory_type: [1,2]}, param: "text"}} | ${true}           | ${"?param=text&filter%5Badvisory_type%5D=in%3A1%2C2"}
+    ${{filter: {advisory_type: [1, 2]}}}                | ${true}           | ${"?filter%5Badvisory_type%5D=in%3A1%2C2"}
+    ${{
+        filter: {advisory_type: [1, 2]},
+        param: "text"
+    }} | ${true}           | ${"?param=text&filter%5Badvisory_type%5D=in%3A1%2C2"}
     `('encodeParams: Should encode parameters $parameters', ({parameters, shouldTranslate, result}) => {
-        expect(encodeParams(parameters,shouldTranslate)).toEqual(result);
+        expect(encodeParams(parameters, shouldTranslate)).toEqual(result);
     });
 
     it.each`
     parameters                                              | result
     ${"search=trolo"}                                       | ${{search: "trolo"}}
     ${"filter%5Badvisory_type%5D=2"}                        | ${{filter: {advisory_type: 2}}}
-    ${"param=text&filter%5Badvisory_type%5D=in%3A1%2C2"}    | ${{filter: {advisory_type: ["1","2"]}, param: "text"}}
+    ${"param=text&filter%5Badvisory_type%5D=in%3A1%2C2"}    | ${{filter: {advisory_type: ["1", "2"]}, param: "text"}}
     `('decodeQueryparams: Should decodeQueryParams $parameters', ({parameters, result}) => {
         expect(decodeQueryparams(parameters)).toEqual(result);
     });
 
     it.each`
     filters               | search       | result
-    ${{advisory_type_name: 'bugfix'}} | ${undefined} | ${[{"category": "Advisory type", "chips": [{"id": 'bugfix', "name": "Bugfix", "value": 'bugfix'}], "id": "advisory_type_name"}]}
-    ${undefined}          | ${"firefox"} | ${[{"category": "Search", "chips": [{"name": "firefox", "value": "firefox"}], "id": "search"}]}
+    ${{advisory_type_name: 'bugfix'}} | ${undefined} | ${[{
+        "category": "Advisory type",
+        "chips": [{"id": 'bugfix', "name": "Bugfix", "value": 'bugfix'}],
+        "id": "advisory_type_name"
+    }]}
+    ${undefined}          | ${"firefox"} | ${[{
+        "category": "Search",
+        "chips": [{"name": "firefox", "value": "firefox"}],
+        "id": "search"
+    }]}
      `('buildFilterChips: Should build correct filter chip, $filters, $search ', ({filters, search, result}) => {
         expect(buildFilterChips(filters, search)).toEqual(result);
     });
@@ -260,8 +306,13 @@ describe('Helpers tests', () => {
     it.each`
     oldParams               | newParams       | result
     ${{param: "Hey!"}}      | ${{param: "Yo!"}} | ${{param: "Yo!"}}
-    ${{offset: 15}} | ${{limit:100}} | ${{"limit": 100, "offset": 0}}
-    ${{filter: {advisory_type: 2}}} | ${{filter: {public_date: "last7" }}} | ${{filter:{advisory_type: 2, public_date: "last7"}, offset: 0}}
+    ${{offset: 15}} | ${{limit: 100}} | ${{"limit": 100, "offset": 0}}
+    ${{filter: {advisory_type: 2}}} | ${{filter: {public_date: "last7"}}} | ${{
+        filter: {
+            advisory_type: 2,
+            public_date: "last7"
+        }, offset: 0
+    }}
      `('changeListParams: Should return correct parameters', ({oldParams, newParams, result}) => {
         expect(changeListParams(oldParams, newParams)).toEqual(result);
     });
@@ -284,26 +335,31 @@ describe('Helpers tests', () => {
 
     it.each`
     selectedItems                   | currentItems                  | result
-    ${{ id: "a", selected: true}}   | ${{c: true, d: false}}        | ${{"a": true, "c": true}}
-    ${{ id: "a", selected: true }}  | ${{ c: undefined, d: true }}  | ${{ "a": true, "d": true }}
-    ${{ id: "a", selected: true }}  | ${{ c: '', d: true }}         | ${{ "a": true, "d": true }}
-     `('getNewSelectedItems: Should return new set of selected items', ({selectedItems, currentItems,result}) => {
+    ${{id: "a", selected: true}}   | ${{c: true, d: false}}        | ${{"a": true, "c": true}}
+    ${{id: "a", selected: true}}  | ${{c: undefined, d: true}}  | ${{"a": true, "d": true}}
+    ${{id: "a", selected: true}}  | ${{c: '', d: true}}         | ${{"a": true, "d": true}}
+     `('getNewSelectedItems: Should return new set of selected items', ({selectedItems, currentItems, result}) => {
         expect(getNewSelectedItems(selectedItems, currentItems)).toEqual(result);
     });
 
     it('Should return "false" when there is no issues available', () => {
-        const resultWhenParams = transformPairs({ data: {} });
-        expect(resultWhenParams).toEqual({ "issues": [] });
+        const resultWhenParams = transformPairs({data: {}});
+        expect(resultWhenParams).toEqual({"issues": []});
 
         const resultWhenNoParams = transformPairs();
-        expect(resultWhenNoParams).toEqual({ "issues": [] });
+        expect(resultWhenNoParams).toEqual({"issues": []});
     });
     it('Should return transformed issues', () => {
-        const resultWhenParams = transformPairs({ data: { testAdvisory1: ['test-system-1'], testAdvisory2: ['test-system-2'] } }, 'test-identifier');
+        const resultWhenParams = transformPairs({
+            data: {
+                testAdvisory1: ['test-system-1'],
+                testAdvisory2: ['test-system-2']
+            }
+        }, 'test-identifier');
         expect(resultWhenParams).toEqual({
             issues: [
-                { description: 'testAdvisory1', id: 'test-identifier:testAdvisory1', systems: ['test-system-1'] },
-                { description: 'testAdvisory2', id: 'test-identifier:testAdvisory2', systems: ['test-system-2'] }
+                {description: 'testAdvisory1', id: 'test-identifier:testAdvisory1', systems: ['test-system-1']},
+                {description: 'testAdvisory2', id: 'test-identifier:testAdvisory2', systems: ['test-system-2']}
             ]
         });
     });
@@ -321,14 +377,40 @@ describe('Test global filters', () => {
 
     it.each`
     tags                               | SIDs               | workloads                                                                 | result
-    ${[]}                              | ${[]}              | ${{ 'Ansible Automation Platform': { isSelected: true } }}                | ${{ selectedTags: [], systemProfile: { ansible: { controller_version: 'not_nil' } } }}
-    ${[]}                              | ${[]}              | ${{ 'Microsoft SQL': { isSelected: true } }}                              | ${{ selectedTags: [], systemProfile: { mssql: { version: 'not_nil' } }  }}
-    ${[]}                              | ${[]}              | ${{ SAP: { isSelected: true } }}                                          | ${{ selectedTags: [], systemProfile: { sap_system: true } }}
-    ${[]}                              | ${['abc']}         | ${{ SAP: { isSelected: true } }}                                          | ${{ selectedTags: [], systemProfile: { sap_sids: ['abc'], sap_system: true } }}
-    ${[]}                              | ${['abc', 'bca']}  | ${{ SAP: { isSelected: true }, 'Microsoft SQL': { isSelected: true } }}   | ${{ selectedTags: [], systemProfile: { sap_sids: ['abc', 'bca'], sap_system: true, mssql: { version: 'not_nil' } } }}
-    ${['null/key.BnZPeP=tag.MNGmxQ']}  | ${['abc', 'bca']}  | ${{ SAP: { isSelected: true } }}                                              | ${{ selectedTags: ["tags=null%2Fkey.BnZPeP%3Dtag.MNGmxQ"], systemProfile: { sap_sids: ['abc', 'bca'], sap_system: true } }}
-     `('mapGlobalFilters: Should build correct global filters, $tags, $SIDs, $workloads ', ({ tags, SIDs, workloads, result }) => {
-         expect(mapGlobalFilters(tags, SIDs, workloads,)).toEqual(result);
+    ${[]}                              | ${[]}              | ${{'Ansible Automation Platform': {isSelected: true}}}                | ${{
+        selectedTags: [],
+        systemProfile: {ansible: {controller_version: 'not_nil'}}
+    }}
+    ${[]}                              | ${[]}              | ${{'Microsoft SQL': {isSelected: true}}}                              | ${{
+        selectedTags: [],
+        systemProfile: {mssql: {version: 'not_nil'}}
+    }}
+    ${[]}                              | ${[]}              | ${{SAP: {isSelected: true}}}                                          | ${{
+        selectedTags: [],
+        systemProfile: {sap_system: true}
+    }}
+    ${[]}                              | ${['abc']}         | ${{SAP: {isSelected: true}}}                                          | ${{
+        selectedTags: [],
+        systemProfile: {sap_sids: ['abc'], sap_system: true}
+    }}
+    ${[]}                              | ${['abc', 'bca']}  | ${{
+        SAP: {isSelected: true},
+        'Microsoft SQL': {isSelected: true}
+    }}   | ${{
+        selectedTags: [],
+        systemProfile: {sap_sids: ['abc', 'bca'], sap_system: true, mssql: {version: 'not_nil'}}
+    }}
+    ${['null/key.BnZPeP=tag.MNGmxQ']}  | ${['abc', 'bca']}  | ${{SAP: {isSelected: true}}}                                              | ${{
+        selectedTags: ["tags=null%2Fkey.BnZPeP%3Dtag.MNGmxQ"],
+        systemProfile: {sap_sids: ['abc', 'bca'], sap_system: true}
+    }}
+     `('mapGlobalFilters: Should build correct global filters, $tags, $SIDs, $workloads ', ({
+                                                                                                      tags,
+                                                                                                      SIDs,
+                                                                                                      workloads,
+                                                                                                      result
+                                                                                                  }) => {
+        expect(mapGlobalFilters(tags, SIDs, workloads,)).toEqual(result);
     });
 })
 /* eslint-enable */

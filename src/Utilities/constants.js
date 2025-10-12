@@ -1,7 +1,4 @@
-import { BugIcon } from '@patternfly/react-icons';
-import { EnhancementIcon } from '@patternfly/react-icons';
-import { SecurityIcon } from '@patternfly/react-icons';
-import { FlagIcon } from '@patternfly/react-icons';
+import { BugIcon, EnhancementIcon, FlagIcon, SecurityIcon } from '@patternfly/react-icons';
 import React from 'react';
 import { subtractDate } from './Helpers';
 
@@ -90,7 +87,7 @@ export const publicDateOptions = [
 
 export const advisorySeverities = [
     {
-        value: 0,
+        value: null,
         label: 'None',
         color: 'var(--pf-t--global--icon--color--severity--minor--default)'
     },
@@ -141,22 +138,22 @@ export const advisoryTypes = [
     {
         value: 'security',
         label: 'Security',
-        icon: <SecurityIcon />
+        icon: <SecurityIcon/>
     },
     {
         value: 'bugfix',
         label: 'Bugfix',
-        icon: <BugIcon />
+        icon: <BugIcon/>
     },
     {
         value: 'enhancement',
         label: 'Enhancement',
-        icon: <EnhancementIcon />
+        icon: <EnhancementIcon/>
     },
     {
         value: 'other',
         label: 'Other',
-        icon: <FlagIcon />
+        icon: <FlagIcon/>
     }
 ];
 
@@ -223,6 +220,10 @@ export const filterCategories = {
     advisory_type_name: {
         label: 'Advisory type',
         values: advisoryTypes
+    },
+    severity: {
+        label: 'Severity',
+        values: advisorySeverities
     },
     public_date: {
         label: 'Public date',

@@ -1,11 +1,9 @@
-
 /* eslint-disable max-len */
 /* eslint sort-keys: ["error", "asc", {minKeys: 4}] */
 
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-
     generalAppName: {
         id: 'generalAppName',
         description: 'regsiter page title',
@@ -179,7 +177,8 @@ export default defineMessages({
     labelsCvesButton: {
         id: 'labelsCvesButton',
         description: 'label for cves button',
-        defaultMessage: '{cvesCount, plural, one {# CVE} other {# CVEs}} associated with this patch'
+        defaultMessage:
+            '{cvesCount, plural, one {# CVE} other {# CVEs}} associated with this patch'
     },
     labelsDate: {
         id: 'labelsDate',
@@ -311,6 +310,16 @@ export default defineMessages({
         description: 'Label for search filter placeholder',
         defaultMessage: 'Template'
     },
+    labelsFiltersSeverity: {
+        id: 'labelsFiltersSeverity',
+        description: 'Label for severity filter',
+        defaultMessage: 'Severity'
+    },
+    labelsFiltersSeverityPlaceholder: {
+        id: 'labelsFiltersSeverity',
+        description: 'Label for severity filter placeholder',
+        defaultMessage: 'Filter by severity'
+    },
     labelsFiltersStale: {
         id: 'labelsFiltersStale',
         description: 'Label for stale filter title',
@@ -363,12 +372,15 @@ export default defineMessages({
     },
     labelsNotAuthorizedDescription: {
         id: 'notAuthorizedDescription',
-        description: 'Description for component which shows up when user doesn\'t have permission to view content',
-        defaultMessage: 'Contact your organization administrator(s) for more information.'
+        description:
+            'Description for component which shows up when user doesn\'t have permission to view content',
+        defaultMessage:
+            'Contact your organization administrator(s) for more information.'
     },
     labelsNotAuthorizedTitle: {
         id: 'notAuthorizedTitle',
-        description: 'Title for component which shows up when user doesn\'t have permission to view content',
+        description:
+            'Title for component which shows up when user doesn\'t have permission to view content',
         defaultMessage: 'You do not have permissions to view or manage Patch'
     },
     labelsPublicDate: {
@@ -434,7 +446,8 @@ export default defineMessages({
     labelsSystem: {
         id: 'labelsSystem',
         description: 'Generic pluralized systems label',
-        defaultMessage: '{systemsCount, plural, one { # system } other { # systems }}'
+        defaultMessage:
+            '{systemsCount, plural, one { # system } other { # systems }}'
     },
     labelsTemplateNoSystems: {
         id: 'labelsTemplateNoSystems',
@@ -474,7 +487,8 @@ export default defineMessages({
     statesMinimumPatchPermissionsRequired: {
         id: 'statesMinimumPatchPermissionsRequired',
         description: 'No access page body',
-        defaultMessage: 'To view the content of this page, you must be granted a minimum of Patch permissions from your Organisation Administratior'
+        defaultMessage:
+            'To view the content of this page, you must be granted a minimum of Patch permissions from your Organisation Administratior'
     },
     statesNoApplicableAdvisories: {
         id: 'statesNoApplicableAdvisories',
@@ -514,7 +528,8 @@ export default defineMessages({
     statesNoTemplateBody: {
         id: 'statesNoTemplateBody',
         description: 'Label',
-        defaultMessage: 'Control the scope of package and advisory updates to be installed on selected systems with templates. To get started, create a template.'
+        defaultMessage:
+            'Control the scope of package and advisory updates to be installed on selected systems with templates. To get started, create a template.'
     },
     statesNoTemplateLink: {
         id: 'statesNoTemplateLink',
@@ -529,12 +544,14 @@ export default defineMessages({
     statesSystemUpToDate: {
         id: 'statesSystemUpToDate',
         description: 'system up to date page body',
-        defaultMessage: 'This system is up to date, based on package information submitted at the most recent system check-in'
+        defaultMessage:
+            'This system is up to date, based on package information submitted at the most recent system check-in'
     },
     templateAlertSystems: {
         id: 'templateAlertSystems',
         description: 'Template wizard alert',
-        defaultMessage: 'A system can have only one content template, therefore if you apply a new content template to the system, it will be overwritten.'
+        defaultMessage:
+            'A system can have only one content template, therefore if you apply a new content template to the system, it will be overwritten.'
     },
     templateApply: {
         id: 'templateApply',
@@ -549,7 +566,8 @@ export default defineMessages({
     templateContentStepExpandable: {
         id: 'templateContentStepExpandable',
         description: 'template wizard template expandable text',
-        defaultMessage: 'You have a system with 10 applicable RHEL advisories, the most recent of which was published today. You apply a template with a date of yesterday to that system. After re-evaluation, the advisory published today will not be considered installable on the system, but will be considered applicable.'
+        defaultMessage:
+            'You have a system with 10 applicable RHEL advisories, the most recent of which was published today. You apply a template with a date of yesterday to that system. After re-evaluation, the advisory published today will not be considered installable on the system, but will be considered applicable.'
     },
     templateContentStepExpandableTitle: {
         id: 'templateContentStepExpandableTitle',
@@ -564,7 +582,8 @@ export default defineMessages({
     templateContentStepText: {
         id: 'templateContentStepText',
         description: 'template wizard template text',
-        defaultMessage: 'Templates provide you with consistent content across environments and time by allowing you to control the scope of package and advisory updates to be installed on selected systems.'
+        defaultMessage:
+            'Templates provide you with consistent content across environments and time by allowing you to control the scope of package and advisory updates to be installed on selected systems.'
     },
     templateContentStepTitle: {
         id: 'templateContentStepTitle',
@@ -589,7 +608,8 @@ export default defineMessages({
     templateDescription: {
         id: 'templateDescription',
         description: 'description of the patch template wizard',
-        defaultMessage: 'Prepare for your next patching cycle with a content template.'
+        defaultMessage:
+            'Prepare for your next patching cycle with a content template.'
     },
     templateDetailHeaderBreadcrumb: {
         id: 'templateDetailHeaderBreadcrumb',
@@ -649,7 +669,8 @@ export default defineMessages({
     templateError: {
         id: 'templateError',
         description: 'error text for the patch template wizard',
-        defaultMessage: 'There was a problem processing the patch template. Please try again. If the problem persists, contact <a>Red Hat support</a>'
+        defaultMessage:
+            'There was a problem processing the patch template. Please try again. If the problem persists, contact <a>Red Hat support</a>'
     },
     templateNew: {
         id: 'templateNew',
@@ -658,18 +679,21 @@ export default defineMessages({
     },
     templateNoAppliedSystemsButton: {
         id: 'templateNoAppliedSystemsButton',
-        description: 'button in the empty state in template assigned systems table',
+        description:
+            'button in the empty state in template assigned systems table',
         defaultMessage: 'Apply to systems'
     },
     templateNoAppliedSystemsTitle: {
         id: 'templateNoAppliedSystemsTitle',
-        description: 'title of the empty state in template assigned systems table',
+        description:
+            'title of the empty state in template assigned systems table',
         defaultMessage: 'Not applied to any systems'
     },
     templateNoSystemSelected: {
         id: 'templateNoSystemSelected',
         description: 'validation text of the patch template wizard',
-        defaultMessage: 'At least one system must be selected. Actions must be associated to a system to be added to a playbook.'
+        defaultMessage:
+            'At least one system must be selected. Actions must be associated to a system to be added to a playbook.'
     },
     templateOr: {
         id: 'templateOr',
@@ -679,7 +703,8 @@ export default defineMessages({
     templatePopoverBody: {
         id: 'templatePopoverBody',
         description: 'Template page header popover body',
-        defaultMessage: 'Templates allow you to control the scope of package and advisory updates to be installed on selected systems.'
+        defaultMessage:
+            'Templates allow you to control the scope of package and advisory updates to be installed on selected systems.'
     },
     templatePopoverHeader: {
         id: 'templatePopoverHeader',
@@ -694,7 +719,8 @@ export default defineMessages({
     templateSelect: {
         id: 'templateSelect',
         description: 'title with capital letters',
-        defaultMessage: 'Select a template to apply to the selected {systemCount, plural, one {<b>#</b> system} other {<b>#</b> systems}}.'
+        defaultMessage:
+            'Select a template to apply to the selected {systemCount, plural, one {<b>#</b> system} other {<b>#</b> systems}}.'
     },
     templateSelectExisting: {
         id: 'templateSelectExisting',
@@ -704,7 +730,8 @@ export default defineMessages({
     templateSelectSatellite: {
         id: 'templateSelectSatellite',
         description: 'title with capital letters',
-        defaultMessage: '<b>{systemCount}</b> of the selected systems content is Managed by Satellite therefore Template is not applicable.'
+        defaultMessage:
+            '<b>{systemCount}</b> of the selected systems content is Managed by Satellite therefore Template is not applicable.'
     },
     templateStepSystems: {
         id: 'templateStepSystems',
@@ -739,7 +766,8 @@ export default defineMessages({
     textEmptyStateBody: {
         id: 'textEmptyStateBody',
         description: 'text for the Empty state body',
-        defaultMessage: 'To continue, edit your filter settings and search again.'
+        defaultMessage:
+            'To continue, edit your filter settings and search again.'
     },
     textErrorSomethingWrong: {
         id: 'textErrorSomethingWrong',
@@ -769,7 +797,8 @@ export default defineMessages({
     textPatchTemplatePending: {
         id: 'textPatchTemplatePending',
         description: 'text for the patch template',
-        defaultMessage: 'Please allow a few minutes to set up a patch template. You will receive a notification when finished.'
+        defaultMessage:
+            'Please allow a few minutes to set up a patch template. You will receive a notification when finished.'
     },
     textPatchTemplateReview: {
         id: 'textPatchTemplateReview',
@@ -814,12 +843,14 @@ export default defineMessages({
     textTemplateSelectedSystems: {
         id: 'textTemplateSelectedSystems',
         description: 'text for patch template wizard',
-        defaultMessage: 'You selected {systemsCount, plural, one {<b> # </b> system } other {<b> # </b> systems }}'
+        defaultMessage:
+            'You selected {systemsCount, plural, one {<b> # </b> system } other {<b> # </b> systems }}'
     },
     textUnassignSystemsNoAssignedSystems: {
         id: 'textUnassignSystemsNoAssignedSystems',
         description: 'text about systems being removed',
-        defaultMessage: 'None of the systems you have selected are assigned to existing Patch template.'
+        defaultMessage:
+            'None of the systems you have selected are assigned to existing Patch template.'
     },
     textUnassignSystemsShortTitle: {
         id: 'textUnassignSystemsShortTitle',
@@ -829,7 +860,8 @@ export default defineMessages({
     textUnassignSystemsStatement: {
         id: 'textUnassignSystemsStatement',
         description: 'text about systems being removed',
-        defaultMessage: 'Do you want to remove the {systemsCount, plural, one {<b> # </b> selected system } other {<b> # </b> selected systems }} from assigned Patch templates?'
+        defaultMessage:
+            'Do you want to remove the {systemsCount, plural, one {<b> # </b> selected system } other {<b> # </b> selected systems }} from assigned Patch templates?'
     },
     textUnassignSystemsTitle: {
         id: 'textUnassignSystemsTitle',
@@ -839,7 +871,8 @@ export default defineMessages({
     textUnassignSystemsWarning: {
         id: 'textUnassignSystemsWarning',
         description: 'warning about systems without patch template assigned',
-        defaultMessage: 'There {systemsCount, plural, one {is <b> # </b>  system } other { are <b> # </b>  systems }} you are trying to remove that {systemsCount, plural, one {is} other {are}} not assigned to any existing Patch template. This action will not affect {systemsCount, plural, one {it} other {them}}.'
+        defaultMessage:
+            'There {systemsCount, plural, one {is <b> # </b>  system } other { are <b> # </b>  systems }} you are trying to remove that {systemsCount, plural, one {is} other {are}} not assigned to any existing Patch template. This action will not affect {systemsCount, plural, one {it} other {them}}.'
     },
     titlesAdvisories: {
         id: 'titlesAdvisories',
@@ -904,7 +937,8 @@ export default defineMessages({
     titlesTemplateDeleteModalText: {
         id: 'titlesTemplateDeleteModalText',
         description: 'page title with capital letter',
-        defaultMessage: '<b>{templateName}</b> and all its data will be permanently deleted. Associated systems will be removed from the template but will not be deleted.'
+        defaultMessage:
+            '<b>{templateName}</b> and all its data will be permanently deleted. Associated systems will be removed from the template but will not be deleted.'
     },
     titlesTemplateDeleteModalTitle: {
         id: 'titlesTemplateDeleteModalTitle',
@@ -924,7 +958,8 @@ export default defineMessages({
     titlesTemplateRemoveFromSystems: {
         id: 'titlesTemplateRemoveMultipleButton',
         description: 'title with capital letters',
-        defaultMessage: 'Remove from {systemsCount, plural, one {system} other {systems}}'
+        defaultMessage:
+            'Remove from {systemsCount, plural, one {system} other {systems}}'
     },
     titlesTemplateRemoveMultipleButton: {
         id: 'titlesTemplateRemoveMultipleButton',
