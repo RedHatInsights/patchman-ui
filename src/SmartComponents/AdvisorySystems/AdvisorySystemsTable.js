@@ -161,6 +161,7 @@ const AdvisorySystemsTable = ({
                         isDisabled={
                             arrayFromObj(selectedRows).length === 0
                         }
+                        hasSelected={arrayFromObj(selectedRows).length > 0}
                     />
                 )}
 
