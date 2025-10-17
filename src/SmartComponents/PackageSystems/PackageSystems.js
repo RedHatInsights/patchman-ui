@@ -219,6 +219,7 @@ const PackageSystems = ({ packageName }) => {
                         <AsyncRemediationButton
                             remediationProvider={remediationDataProvider}
                             isDisabled={arrayFromObj(selectedRows).length === 0}
+                            hasSelected={arrayFromObj(selectedRows).length !== 0}
                         />
                     )}
                 />

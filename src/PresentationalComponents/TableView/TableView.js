@@ -118,6 +118,7 @@ const TableView = ({
                                         || isRemediationLoading
                                     }
                                     isLoading={isRemediationLoading}
+                                    hasSelected={Object.values(selectedRows).filter(isSelected => isSelected).length > 0}
                                 />
                             ),
                             ...hasColumnManagement ? [{
