@@ -221,6 +221,7 @@ const SystemsTable = ({
                             }
                             isLoading={isRemediationLoading}
                             patchNoAdvisoryText={NO_ADVISORIES_TEXT}
+                            hasSelected={arrayFromObj(selectedRows).length > 0}
                         />,
                         {
                             label: 'Manage columns',
