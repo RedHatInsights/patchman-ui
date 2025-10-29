@@ -6,9 +6,31 @@ updates:
       interval: "weekly"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 5
     commit-message:
       prefix: "chore(deps):"
+    ignore:
+      - dependency-name: "@patternfly/react-core"
+        versions: ["7.x.x"]
+      - dependency-name: "@patternfly/react-icons"
+        versions: ["7.x.x"]
+      - dependency-name: "@patternfly/react-table"
+        versions: ["7.x.x"]
+      - dependency-name: "react-router-dom"
+        versions: ["7.x.x"]
+      - dependency-name: "@redhat-cloud-services/frontend-components-utilities"
+        versions: ["8.x.x"]
+      - dependency-name: "@redhat-cloud-services/frontend-components"
+        versions: ["8.x.x"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "htmlparser2"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "jest"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "jest-environment-jsdom"
+        update-types: ["version-update:semver-major"]
     groups:
       fec:
         patterns:
@@ -49,3 +71,6 @@ updates:
         patterns:
           - "webpack"
           - "webpack-bundle-analyzer"
+      npm:
+        patterns:
+          - "*"
