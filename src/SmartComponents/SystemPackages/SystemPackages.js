@@ -45,9 +45,7 @@ const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
     [packages, selectedRows],
   );
 
-  useEffect(() => {
-    return () => dispatch(clearSystemPackagesStore());
-  }, []);
+  useEffect(() => () => dispatch(clearSystemPackagesStore()), []);
 
   useEffect(() => {
     dispatch(fetchApplicableSystemPackages({ id: inventoryId, ...queryParams }));
@@ -65,9 +63,7 @@ const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
     return latestUpdate && `${pkg.name}-${latestUpdate.evra}`;
   };
 
-  const transformKey = (row) => {
-    return `${row.name}-${row.evra}`;
-  };
+  const transformKey = (row) => `${row.name}-${row.evra}`;
 
   const onSelect = useOnSelect(packages, selectedRows, {
     endpoint: ID_API_ENDPOINTS.systemPackages(inventoryId),
@@ -139,9 +135,9 @@ const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
           ],
         }}
         defaultFilters={systemPackagesDefaultFilters}
-        remediationButtonOUIA={'toolbar-remediation-button'}
-        tableOUIA={'system-packages-table'}
-        paginationOUIA={'system-packages-pagination'}
+        remediationButtonOUIA='toolbar-remediation-button'
+        tableOUIA='system-packages-table'
+        paginationOUIA='system-packages-pagination'
         errorState={errorState}
         emptyState={emptyState}
         searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}

@@ -26,13 +26,13 @@ const SystemDetail = ({ isInventoryApp, inventoryId, shouldRefresh }) => {
 
   return (
     (!areTabsHidden && (
-      <Tabs activeKey={activeTabKey} onSelect={onTabSelect} className={'patchTabSelect'} isHidden>
+      <Tabs activeKey={activeTabKey} onSelect={onTabSelect} className='patchTabSelect' isHidden>
         <Tab
           eventKey={0}
           title={<TabTitleText>{intl.formatMessage(messages.titlesAdvisories)}</TabTitleText>}
-          data-ouia-component-type={`system-advisories-tab`}
-          data-ouia-component-id={`system-advisories-tab`}
-          id={`system-advisories-tab`}
+          data-ouia-component-type='system-advisories-tab'
+          data-ouia-component-id='system-advisories-tab'
+          id='system-advisories-tab'
         >
           <SystemAdvisories
             handleNoSystemData={handleNoSystemData}
@@ -43,9 +43,9 @@ const SystemDetail = ({ isInventoryApp, inventoryId, shouldRefresh }) => {
         <Tab
           eventKey={1}
           title={<TabTitleText>{intl.formatMessage(messages.titlesPackages)}</TabTitleText>}
-          data-ouia-component-type={`system-packages-tab`}
-          data-ouia-component-id={`system-packages-tab`}
-          id={`system-packages-tab`}
+          data-ouia-component-type='system-packages-tab'
+          data-ouia-component-id='system-packages-tab'
+          id='system-packages-tab'
         >
           <SystemPackages
             handleNoSystemData={handleNoSystemData}

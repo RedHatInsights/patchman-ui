@@ -73,7 +73,7 @@ const Packages = () => {
 
   return (
     <React.Fragment>
-      <Header title={intl.formatMessage(messages.titlesPatchPackages)} headerOUIA={'packages'} />
+      <Header title={intl.formatMessage(messages.titlesPatchPackages)} headerOUIA='packages' />
       <Main>
         <TableView
           columns={packagesColumns}
@@ -96,9 +96,9 @@ const Packages = () => {
               packagesListStatusFilter(apply, queryParams.filter),
             ],
           }}
-          remediationButtonOUIA={'toolbar-remediation-button'}
-          tableOUIA={'package-details-table'}
-          paginationOUIA={'package-details-pagination'}
+          remediationButtonOUIA='toolbar-remediation-button'
+          tableOUIA='package-details-table'
+          paginationOUIA='package-details-pagination'
           defaultFilters={packagesListDefaultFilters}
           searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
           hasColumnManagement

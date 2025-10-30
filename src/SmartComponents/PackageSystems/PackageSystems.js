@@ -77,12 +77,13 @@ const PackageSystems = ({ packageName }) => {
     fetchPackageVersions({ package_name: packageName }).then(setPackageVersions);
   }, []);
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       dispatch(clearInventoryReducer());
       dispatch(clearPackageSystemsReducer());
-    };
-  }, []);
+    },
+    [],
+  );
 
   const [appliedColumns, setAppliedColumns] = React.useState(PACKAGE_SYSTEMS_COLUMNS);
   const [ColumnManagementModal, setColumnManagementModalOpen] = useColumnManagement(
@@ -117,9 +118,7 @@ const PackageSystems = ({ packageName }) => {
     [filter, search],
   );
 
-  const constructFilename = (system) => {
-    return `${system.available_evra}`;
-  };
+  const constructFilename = (system) => `${system.available_evra}`;
 
   const onSelect = useOnSelect(systems, selectedRows, {
     endpoint: ID_API_ENDPOINTS.packageSystems(packageName),

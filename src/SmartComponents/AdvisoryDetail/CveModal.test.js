@@ -38,7 +38,7 @@ beforeEach(() => {
   );
 });
 
-//TODO: convert disabled tests to RTL after react&paterrnfly migration
+// TODO: convert disabled tests to RTL after react&paterrnfly migration
 describe('CveModal.js', () => {
   it('should render the CVEs modal', async () => {
     await waitFor(() => screen.getByText('CVEs'));

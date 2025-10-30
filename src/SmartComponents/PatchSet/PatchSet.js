@@ -78,12 +78,13 @@ const PatchSet = () => {
     dispatch(fetchPatchSetsAction({ ...queryParams, page: 1, offset: 0 }));
   };
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       dispatch(clearPatchSetsAction());
       dispatch(clearNotifications());
-    };
-  }, []);
+    },
+    [],
+  );
 
   const { patchSetState, setPatchSetState, openPatchSetEditModal } = usePatchSetState(selectedRows);
 
@@ -141,7 +142,7 @@ const PatchSet = () => {
   const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);
   const actionsConfig = patchSetRowActions(openPatchSetEditModal, openPatchDeleteModal);
 
-  //TODO: refactor search filter to be able to wrap this into useMemo
+  // TODO: refactor search filter to be able to wrap this into useMemo
   const filterConfig = {
     items: [
       searchFilter(
@@ -163,7 +164,7 @@ const PatchSet = () => {
         onConfirm={handlePatchSetDelete}
       />
       <Header
-        headerOUIA={'advisories'}
+        headerOUIA='advisories'
         title={
           <span>
             {intl.formatMessage(messages.titlesTemplate)}
@@ -210,8 +211,8 @@ const PatchSet = () => {
             onSelect={IS_SELECTION_ENABLED ? onSelect : undefined}
             sortBy={sortBy}
             apply={apply}
-            tableOUIA={'patch-set-table'}
-            paginationOUIA={'patch-set-pagination'}
+            tableOUIA='patch-set-table'
+            paginationOUIA='patch-set-pagination'
             store={{ rows, metadata, status, queryParams }}
             actionsConfig={patchSets?.length > 0 ? actionsConfig : []}
             filterConfig={filterConfig}

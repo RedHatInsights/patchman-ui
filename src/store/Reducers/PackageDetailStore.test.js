@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 import { fetchPending, fetchRejected } from './HelperReducers';
 import { PackageDetailStore } from './PackageDetailStore';
 import { FETCH_PACKAGE_DETAILS } from '../ActionTypes';

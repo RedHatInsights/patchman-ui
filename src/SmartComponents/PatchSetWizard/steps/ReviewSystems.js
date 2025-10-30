@@ -171,8 +171,8 @@ export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
           onSelect={onSelect}
           sortBy={sortBy}
           apply={apply}
-          tableOUIA={'patch-set-table'}
-          paginationOUIA={'patch-set-pagination'}
+          tableOUIA='patch-set-table'
+          paginationOUIA='patch-set-pagination'
           store={{
             rows: systems,
             metadata,

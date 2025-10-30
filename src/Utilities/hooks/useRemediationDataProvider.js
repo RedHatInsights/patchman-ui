@@ -11,7 +11,7 @@ const initializeWorker = () => {
 const deligateWorkerTask = (worker, task) => {
   worker.postMessage(task);
 
-  //waits web worker response
+  // waits web worker response
   return new Promise((resolve, reject) => {
     worker.onmessage = ({ data: { status, error, result } } = {}) => {
       if (status === 'resolved') {
@@ -39,7 +39,7 @@ export const prepareRemediationPairs = async (task, dispatch) => {
 
   terminateWorker();
 
-  //displays NoDataModal when there is no patch updates available
+  // displays NoDataModal when there is no patch updates available
   return response?.issues?.length ? response : false;
 };
 
@@ -60,8 +60,8 @@ export const useRemediationDataProvider = (
   const remediationDataProvider = async () => {
     setRemediationLoading(true);
 
-    //Auth token must be added to webworker request as webworker does not have access
-    //to default token by platform
+    // Auth token must be added to webworker request as webworker does not have access
+    // to default token by platform
     const authToken = await chrome.auth.getToken();
     const remediationPairs = await prepareRemediationPairs(
       {

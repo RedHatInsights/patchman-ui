@@ -11,29 +11,27 @@ const TableFooter = ({
   totalItems,
   onPerPageSelect,
   paginationOUIA,
-}) => {
-  return (
-    <TableToolbar isFooter>
-      {isLoading ? (
-        <div className='pf-v6-c-pagination pf-m-bottom'>
-          <Skeleton fontSize='xl' width='350px' style={{ margin: 10 }} />
-        </div>
-      ) : (
-        <Pagination
-          itemCount={totalItems}
-          perPage={perPage}
-          page={page}
-          onSetPage={onSetPage}
-          onPerPageSelect={onPerPageSelect}
-          widgetId={`pagination-options-menu-bottom`}
-          variant={PaginationVariant.bottom}
-          ouiaId={paginationOUIA}
-          isDisabled={totalItems === 0}
-        />
-      )}
-    </TableToolbar>
-  );
-};
+}) => (
+  <TableToolbar isFooter>
+    {isLoading ? (
+      <div className='pf-v6-c-pagination pf-m-bottom'>
+        <Skeleton fontSize='xl' width='350px' style={{ margin: 10 }} />
+      </div>
+    ) : (
+      <Pagination
+        itemCount={totalItems}
+        perPage={perPage}
+        page={page}
+        onSetPage={onSetPage}
+        onPerPageSelect={onPerPageSelect}
+        widgetId='pagination-options-menu-bottom'
+        variant={PaginationVariant.bottom}
+        ouiaId={paginationOUIA}
+        isDisabled={totalItems === 0}
+      />
+    )}
+  </TableToolbar>
+);
 
 TableFooter.propTypes = {
   isLoading: PropTypes.bool,

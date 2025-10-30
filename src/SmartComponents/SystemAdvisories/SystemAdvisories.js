@@ -62,9 +62,7 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    return () => dispatch(clearSystemAdvisoriesStore());
-  }, []);
+  useEffect(() => () => dispatch(clearSystemAdvisoriesStore()), []);
 
   useEffect(() => {
     if (firstMount) {
@@ -149,9 +147,9 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
         systemId={inventoryId}
         apply={apply}
         store={{ rows, metadata, status, queryParams }}
-        remediationButtonOUIA={'toolbar-remediation-button'}
-        tableOUIA={'system-advisories-table'}
-        paginationOUIA={'system-advisories-pagination'}
+        remediationButtonOUIA='toolbar-remediation-button'
+        tableOUIA='system-advisories-table'
+        paginationOUIA='system-advisories-pagination'
         filterConfig={{
           items: [
             searchFilter(

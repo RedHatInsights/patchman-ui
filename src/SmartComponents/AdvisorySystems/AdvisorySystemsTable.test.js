@@ -34,7 +34,7 @@ const initStore = (state) => {
 const renderComponent = async (mockedStore) => {
   render(
     <ComponentWithContext renderOptions={{ store: initStore(mockedStore) }}>
-      <AdvisorySystems advisoryName={'RHSA-2020:2755'} />
+      <AdvisorySystems advisoryName='RHSA-2020:2755' />
     </ComponentWithContext>,
   );
 

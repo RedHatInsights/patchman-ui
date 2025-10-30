@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { storeListDefaults } from '../../Utilities/constants';
 import {
   CHANGE_SYSTEM_PACKAGES_LIST_PARAMS,
@@ -41,5 +40,3 @@ describe('SystemPackageListStore tests', () => {
     expect(res).toEqual(result);
   });
 });
-
-/* eslint-enable */

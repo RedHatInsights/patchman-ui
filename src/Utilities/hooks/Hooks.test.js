@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table';
 import {
   useEntitlements,

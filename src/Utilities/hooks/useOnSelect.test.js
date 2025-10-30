@@ -8,11 +8,11 @@ jest.mock('react-redux', () => ({
 }));
 jest.mock('../api', () => ({
   ...jest.requireActual('../api'),
-  fetchIDs: jest.fn(() => {
-    return Promise.resolve({
+  fetchIDs: jest.fn(() =>
+    Promise.resolve({
       data: [{ id: 'db-item' }],
-    });
-  }),
+    }),
+  ),
 }));
 
 const rows = [

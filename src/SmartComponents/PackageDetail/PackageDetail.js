@@ -30,12 +30,13 @@ const PackageDetail = () => {
     dispatch(fetchPackageDetails({ packageName }));
   }, []);
 
-  React.useEffect(() => {
-    return () => {
+  React.useEffect(
+    () => () => {
       dispatch(clearNotifications());
       dispatch(clearPackageDetailStore());
-    };
-  }, []);
+    },
+    [],
+  );
 
   const { attributes } = packageDetails.data;
 
@@ -43,7 +44,7 @@ const PackageDetail = () => {
     <React.Fragment>
       <Header
         title={packageName}
-        headerOUIA={'package-details'}
+        headerOUIA='package-details'
         breadcrumbs={[
           {
             title: intl.formatMessage(messages.titlesPatchPackages),

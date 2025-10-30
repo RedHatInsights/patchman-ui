@@ -5,7 +5,6 @@ const locale = navigator.language.slice(0, 2);
 
 export const intl = createIntl(
   {
-    // eslint-disable-next-line no-console
     onError: console.log,
     locale,
   },

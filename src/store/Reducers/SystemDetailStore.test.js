@@ -1,7 +1,5 @@
 import { initialState, SystemDetailStore } from './SystemDetailStore';
 
-/* eslint-disable */
-
 const stateAfterAction = {
   loaded: true,
 };
@@ -19,5 +17,3 @@ describe('SystemDetailStore', () => {
     expect(res).toEqual(result);
   });
 });
-
-/* eslint-enable */

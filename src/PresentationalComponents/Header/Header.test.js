@@ -98,9 +98,9 @@ describe('Header component', () => {
     const { asFragment } = mountWithRouter(<Header {...header} />);
     expect(asFragment()).toMatchSnapshot();
   });
-  //NOTE: Should be rewritten because of how RTL testing approaches testing the router
-  //something like this could be ok
-  //https://stackoverflow.com/questions/70313688/how-i-could-test-location-with-memoryrouter-on-react-router-dom-v6
+  // NOTE: Should be rewritten because of how RTL testing approaches testing the router
+  // something like this could be ok
+  // https://stackoverflow.com/questions/70313688/how-i-could-test-location-with-memoryrouter-on-react-router-dom-v6
   it.skip('should render with tabs only, click a tab', () => {
     const wrapper = mountWithRouter(<Header showTabs title='Title' />);
     let history = wrapper.find('Router').props().navigator;

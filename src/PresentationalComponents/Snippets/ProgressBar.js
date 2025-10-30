@@ -18,7 +18,7 @@ const ProgressBar = ({ percent, failed }) => {
   }
 
   return (
-    <Progress id={'finished-create-remediation'} value={percent} title={title} variant={variant} />
+    <Progress id='finished-create-remediation' value={percent} title={title} variant={variant} />
   );
 };
 

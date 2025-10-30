@@ -46,9 +46,7 @@ jest.mock('@scalprum/react-core', () => ({
 }));
 
 beforeEach(() => {
-  useSelector.mockImplementation((callback) => {
-    return callback({ entities: mockEntities });
-  });
+  useSelector.mockImplementation((callback) => callback({ entities: mockEntities }));
 });
 
 describe('OsVersionFilter', () => {

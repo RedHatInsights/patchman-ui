@@ -16,9 +16,7 @@ export const ID_API_ENDPOINTS = {
   systemPackages: (systemID) => `/systems/${systemID}/packages`,
   templateSystems: (templateId) => `/ids/baselines/${templateId}/systems`,
 };
-const isArrayWithData = (dataStructure) => {
-  return isArray(dataStructure) && dataStructure.length;
-};
+const isArrayWithData = (dataStructure) => isArray(dataStructure) && dataStructure.length;
 
 const useFetchAllIDs = (endpoint, apiResponseTransformer, totalItems) => {
   const { fetchBatched } = useFetchBatched();
@@ -61,7 +59,7 @@ const useCreateSelectedRow = (transformKey, constructFilename) =>
     items.forEach((item) => {
       const id = shouldUseOnlyIDs ? item : item.id;
 
-      //expanded rows does not have ID and should be disabled for selection
+      // expanded rows does not have ID and should be disabled for selection
       if (!(isObject(item) && item.isExpandedRow)) {
         toSelect.push({
           id: transformKey ? transformKey(item) : id,
@@ -95,8 +93,8 @@ const createSelectors = (createSelectedRow, dispatchSelection, toggleAllSystemsS
     dispatchSelection(createSelectedRow({ data: pageRows }));
   };
 
-  const selectAll = (fetchIDs, queryParams) => {
-    return fetchIDs(queryParams).then((response) => {
+  const selectAll = (fetchIDs, queryParams) =>
+    fetchIDs(queryParams).then((response) => {
       if (isArrayWithData(response.data)) {
         let rowsToSelect = response.data.filter((row) => row.status !== 'Applicable');
         dispatchSelection(createSelectedRow({ data: rowsToSelect }));
@@ -105,7 +103,6 @@ const createSelectors = (createSelectedRow, dispatchSelection, toggleAllSystemsS
         toggleAllSystemsSelected(true);
       }
     });
-  };
 
   return { selectNone, selectPage, selectAll };
 };
@@ -118,7 +115,7 @@ export const useOnSelect = (rawData, selectedRows, config) => {
     constructFilename,
     transformKey,
     apiResponseTransformer,
-    //TODO: get rid of this custom selector
+    // TODO: get rid of this custom selector
     customSelector,
     totalItems,
   } = config;

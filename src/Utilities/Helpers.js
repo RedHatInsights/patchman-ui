@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import {
   BugIcon,
@@ -32,9 +31,7 @@ export const removeUndefinedObjectItems = (originalObject) => {
   return newObject;
 };
 
-export const convertLimitOffset = (limit, offset) => {
-  return [offset / limit + 1, limit];
-};
+export const convertLimitOffset = (limit, offset) => [offset / limit + 1, limit];
 
 export const transformPairs = (input, remediationIdentifier) => {
   let issues = [];
@@ -101,17 +98,11 @@ export const getNewSelectedItems = (selectedItems, currentItems) => {
 };
 
 // for expandable rows only
-export const getRowIdByIndexExpandable = (arrayOfObjects, index) => {
-  return arrayOfObjects[index / 2].id;
-};
+export const getRowIdByIndexExpandable = (arrayOfObjects, index) => arrayOfObjects[index / 2].id;
 
-export const getOffsetFromPageLimit = (page, limit) => {
-  return page * limit - limit;
-};
+export const getOffsetFromPageLimit = (page, limit) => page * limit - limit;
 
-export const getLimitFromPageSize = (limit) => {
-  return limit;
-};
+export const getLimitFromPageSize = (limit) => limit;
 
 export function truncate(str, max, end) {
   return str.length > max ? (
@@ -148,22 +139,22 @@ export function createAdvisoriesIcons([rhea, rhba, rhsa, other], type = 'applica
       {[rhea, rhba, rhsa].every((item) => item === 0) && `No ${type} advisories`}
       {rhsa !== 0 && (
         <FlexItem spacer={{ default: 'spacerXs' }}>
-          <AdvisoriesIcon tooltipText={'Security advisories'} count={rhsa} Icon={SecurityIcon} />
+          <AdvisoriesIcon tooltipText='Security advisories' count={rhsa} Icon={SecurityIcon} />
         </FlexItem>
       )}
       {rhba !== 0 && (
         <FlexItem spacer={{ default: 'spacerXs' }}>
-          <AdvisoriesIcon tooltipText={'Bug fixes'} count={rhba} Icon={BugIcon} />
+          <AdvisoriesIcon tooltipText='Bug fixes' count={rhba} Icon={BugIcon} />
         </FlexItem>
       )}
       {rhea !== 0 && (
         <FlexItem spacer={{ default: 'spacerXs' }}>
-          <AdvisoriesIcon tooltipText={'Enhancements'} count={rhea} Icon={EnhancementIcon} />
+          <AdvisoriesIcon tooltipText='Enhancements' count={rhea} Icon={EnhancementIcon} />
         </FlexItem>
       )}
       {other !== 0 && (
         <FlexItem spacer={{ default: 'spacerXs' }}>
-          <AdvisoriesIcon tooltipText={'Other'} count={other} Icon={FlagIcon} />
+          <AdvisoriesIcon tooltipText='Other' count={other} Icon={FlagIcon} />
         </FlexItem>
       )}
     </Flex>
@@ -220,9 +211,8 @@ export const remediationProvider = (issues, systems, remediationIdentifier) => {
     : false;
 };
 
-export const remediationProviderWithPairs = (issuePairs, transformFunc, remediationIdentifier) => {
-  return issuePairs ? transformFunc(issuePairs, remediationIdentifier) : false;
-};
+export const remediationProviderWithPairs = (issuePairs, transformFunc, remediationIdentifier) =>
+  issuePairs ? transformFunc(issuePairs, remediationIdentifier) : false;
 
 export const getFilterValue = (category, key) => {
   const filterCategory = filterCategories[category];
@@ -293,9 +283,7 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
   return '?'.concat(params.join('&')).concat(workloadsFilter);
 };
 
-export const encodeApiParams = (parameters) => {
-  return encodeParams(parameters, true);
-};
+export const encodeApiParams = (parameters) => encodeParams(parameters, true);
 
 export const encodeURLParams = (parameters) => {
   delete parameters.id;
@@ -412,8 +400,8 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search', pa
 };
 
 export const buildOsFilter = (osFilter = {}) => {
-  const osVersions = Object.entries(osFilter).reduce((acc, [, osGroupValues]) => {
-    return [
+  const osVersions = Object.entries(osFilter).reduce(
+    (acc, [, osGroupValues]) => [
       ...acc,
       ...Object.entries(osGroupValues)
         .filter(([, value]) => value === true)
@@ -421,8 +409,9 @@ export const buildOsFilter = (osFilter = {}) => {
           const keyParts = key.split('-');
           return keyParts.slice(0, keyParts.length - 2) + ' ' + keyParts[keyParts.length - 1];
         }),
-    ];
-  }, []);
+    ],
+    [],
+  );
 
   return osVersions.length > 0
     ? {
@@ -449,7 +438,7 @@ export const changeListParams = (oldParams, newParams) => {
   if (newParams.hasOwnProperty('filter')) {
     newState.filter = { ...oldParams.filter, ...newParams.filter };
 
-    //we need explicitly remove 'undefined' filters for safety
+    // we need explicitly remove 'undefined' filters for safety
     Object.keys(newState.filter).forEach(
       (key) =>
         (newState.filter[key] === undefined || newState.filter[key] === '') &&
@@ -499,7 +488,7 @@ export const createOSColumn = ({ osName, rhsm }) =>
       <Flex flex={{ default: 'inlineFlex' }}>
         <FlexItem spacer={{ default: 'spacerSm' }}>{osName}</FlexItem>
         <FlexItem spacer={{ default: 'spacerSm' }}>
-          <InfoCircleIcon size='sm' color={'var(--pf-t--global--color--status--info--100)'} />
+          <InfoCircleIcon size='sm' color='var(--pf-t--global--color--status--info--100)' />
         </FlexItem>
       </Flex>
     </Tooltip>
@@ -515,7 +504,7 @@ export const prepareEntitiesParams = (parameters) => {
 
   const apiParams = { ...parameters, offset, limit };
 
-  //we need explicitly remove 'undefined' parameters for safety
+  // we need explicitly remove 'undefined' parameters for safety
   return removeUndefinedObjectItems(apiParams);
 };
 
@@ -560,17 +549,14 @@ export const persistantParams = (patchParams, decodedParams) => {
   };
 };
 
-export const handleLongSynopsis = (synopsis) => {
-  return <LinesEllipsis text={synopsis} maxLine='1' ellipsis='(...)' trimRight basedOn='letters' />;
-};
+export const handleLongSynopsis = (synopsis) => (
+  <LinesEllipsis text={synopsis} maxLine='1' ellipsis='(...)' trimRight basedOn='letters' />
+);
 
-export const isRHAdvisory = (name) => {
-  return /^(RHEA|RHBA|RHSA)/.test(name);
-};
+export const isRHAdvisory = (name) => /^(RHEA|RHBA|RHSA)/.test(name);
 
-export const buildTagString = (tag) => {
-  return `${tag.category}/${tag.values?.tagKey}=${tag.value?.tagValue}`;
-};
+export const buildTagString = (tag) =>
+  `${tag.category}/${tag.values?.tagKey}=${tag.value?.tagValue}`;
 
 export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
   let tagsInUrlFormat = [];
@@ -680,10 +666,8 @@ export const objUndefinedToFalse = (object) =>
 export const objOnlyWithTrue = (object) =>
   Object.keys(Object.fromEntries(Object.entries(object).filter(([, v]) => v === true)));
 
-export const isObject = (variable) => {
-  return typeof variable === 'object' && variable !== null ? true : false;
-};
+export const isObject = (variable) =>
+  typeof variable === 'object' && variable !== null ? true : false;
 
-export const findFilterData = (optionName, options) => {
-  return options.find((item) => item.label === optionName);
-};
+export const findFilterData = (optionName, options) =>
+  options.find((item) => item.label === optionName);

@@ -4,22 +4,20 @@ import configureStore from 'redux-mock-store';
 import { mountWithRouterAndProviderAndIntl } from '../../../config/rtlwrapper';
 
 jest.mock('../../SmartComponents/PatchSetWizard/PatchSetWizard', () => () => (
-  <div id={'test-patch-set-wizard'}></div>
+  <div id='test-patch-set-wizard'></div>
 ));
 jest.mock('../../SmartComponents/Modals/UnassignSystemsModal', () => () => (
-  <div id={'test-unassign-systems-modal'}></div>
+  <div id='test-unassign-systems-modal'></div>
 ));
 jest.mock('../../SmartComponents/Modals/AssignSystemsModal', () => () => (
-  <div id={'test-assign-systems-modal'}></div>
+  <div id='test-assign-systems-modal'></div>
 ));
 
 const mockState = {};
 
 const initStore = (state) => {
   const customMiddleWare = () => (next) => (action) => {
-    useSelector.mockImplementation((callback) => {
-      return callback({ SpecificPatchSetReducer: state });
-    });
+    useSelector.mockImplementation((callback) => callback({ SpecificPatchSetReducer: state }));
     next(action);
   };
 

@@ -2,7 +2,6 @@ import { inventoryEntitiesReducer, initialState } from './InventoryEntitiesReduc
 import { modifyInventory, modifyPackageSystems } from './InventoryEntitiesReducer';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 
-/* eslint-disable */
 describe('InventoryEntitiesReducer tests', () => {
   it.each`
     columns | state                                                                | action                                                                                  | result
@@ -79,4 +78,3 @@ describe('InventoryEntitiesReducer tests', () => {
     });
   });
 });
-/* eslint-enable */

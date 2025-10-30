@@ -82,7 +82,7 @@ const PatchRoutes = () => {
         <Route path='/templates'>
           <Route
             path=''
-            element={<Navigate relative='route' to={'/insights/content/templates'} replace />}
+            element={<Navigate relative='route' to='/insights/content/templates' replace />}
           />
         </Route>
         <Route

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import versionFilter from './VersionFilter';
 import { packageVersions } from '../../Utilities/RawDataForTesting';
 import { intl } from '../../Utilities/IntlProvider';

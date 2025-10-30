@@ -34,20 +34,21 @@ const AdvisoryDetail = () => {
     dispatch(fetchAvisoryDetails({ advisoryName }));
   }, []);
 
-  React.useEffect(() => {
-    return () => {
+  React.useEffect(
+    () => () => {
       dispatch(clearEntitiesStore());
       dispatch(clearAdvisoryDetailStore());
       dispatch(clearNotifications());
-    };
-  }, []);
+    },
+    [],
+  );
 
   const { attributes } = advisoryDetails.data;
   return (
     <React.Fragment>
       <Header
         title={advisoryName}
-        headerOUIA={'advisory-details'}
+        headerOUIA='advisory-details'
         breadcrumbs={[
           {
             title: intl.formatMessage(messages.titlesPatchAdvisories),

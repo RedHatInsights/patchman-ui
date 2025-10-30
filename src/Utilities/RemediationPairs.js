@@ -2,10 +2,10 @@ import chunk from 'lodash/chunk';
 
 const REQUEST_CHUNK_SIZE = 100;
 const BATCH_REQUEST_SIZE = 10;
-const REQUEST_INTERVAL = 15000; //15 seconds. AKAMAI allowed life for 5 API calls
+const REQUEST_INTERVAL = 15000; // 15 seconds. AKAMAI allowed life for 5 API calls
 
-const fetchDataCallback = (endpoint, authToken) => (input) => {
-  return fetch(`/api/patch/v3/views${endpoint}`, {
+const fetchDataCallback = (endpoint, authToken) => (input) =>
+  fetch(`/api/patch/v3/views${endpoint}`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -15,19 +15,14 @@ const fetchDataCallback = (endpoint, authToken) => (input) => {
     },
     body: JSON.stringify(input),
   }).then((result) => (result.status === 200 ? result.json() : Promise.reject(result.statusText)));
-};
 
-export const transformPairs = (input) => {
-  return {
-    issues: Object.keys(input?.data || {}).map((advisory) => {
-      return {
-        id: `patch-advisory:${advisory}`,
-        description: advisory,
-        systems: input.data[advisory],
-      };
-    }),
-  };
-};
+export const transformPairs = (input) => ({
+  issues: Object.keys(input?.data || {}).map((advisory) => ({
+    id: `patch-advisory:${advisory}`,
+    description: advisory,
+    systems: input.data[advisory],
+  })),
+});
 
 const transformSystemsPairs = (input) => {
   const pairs = [];

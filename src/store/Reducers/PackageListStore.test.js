@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 import { changeFilters, fetchFulfilled, fetchPending, fetchRejected } from './HelperReducers';
 import { PackagesListStore } from './PackagesListStore';
 import { FETCH_PACKAGES_LIST } from '../ActionTypes';

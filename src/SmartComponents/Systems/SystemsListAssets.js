@@ -307,33 +307,30 @@ export const systemsRowActions = (
   openUnassignSystemsModal,
   row,
   hasTemplateAccess,
-) => {
-  return [
-    {
-      title: 'Apply all applicable advisories',
-      isDisabled: isRemediationDisabled(row),
-      onClick: (event, rowId, rowData) => {
-        activateRemediationModal(rowData);
-      },
+) => [
+  {
+    title: 'Apply all applicable advisories',
+    isDisabled: isRemediationDisabled(row),
+    onClick: (event, rowId, rowData) => {
+      activateRemediationModal(rowData);
     },
-    ...(showTemplateAssignSystemsModal
-      ? [
-          {
-            title: 'Assign to a template',
-            isDisabled: !hasTemplateAccess || row.satellite_managed,
-            onClick: (event, rowId, rowData) => {
-              showTemplateAssignSystemsModal({ [rowData.id]: true });
-            },
+  },
+  ...(showTemplateAssignSystemsModal
+    ? [
+        {
+          title: 'Assign to a template',
+          isDisabled: !hasTemplateAccess || row.satellite_managed,
+          onClick: (event, rowId, rowData) => {
+            showTemplateAssignSystemsModal({ [rowData.id]: true });
           },
-          {
-            title: 'Remove from a template',
-            isDisabled:
-              !hasTemplateAccess || isPatchSetRemovalDisabled(row) || row.satellite_managed,
-            onClick: (event, rowId, rowData) => {
-              openUnassignSystemsModal([rowData.id]);
-            },
+        },
+        {
+          title: 'Remove from a template',
+          isDisabled: !hasTemplateAccess || isPatchSetRemovalDisabled(row) || row.satellite_managed,
+          onClick: (event, rowId, rowData) => {
+            openUnassignSystemsModal([rowData.id]);
           },
-        ]
-      : []),
-  ];
-};
+        },
+      ]
+    : []),
+];

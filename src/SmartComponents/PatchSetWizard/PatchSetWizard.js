@@ -25,7 +25,7 @@ import messages from '../../Messages';
 import { fetchPatchSetAction, clearPatchSetAction } from '../../store/Actions/Actions';
 
 export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => {
-  //if system ids exist, those are being assigned. Likewise if patchSetID exists, it is being edited
+  // if system ids exist, those are being assigned. Likewise if patchSetID exists, it is being edited
   const wizardType = patchSetID ? 'edit' : 'create';
   const [wizardState, setWizardState] = useState({
     submitted: false,
@@ -111,7 +111,7 @@ export const PatchSetWizard = ({ systemsIDs, setBaselineState, patchSetID }) => 
       )) || (
         <Modal
           isOpen
-          variant={'large'}
+          variant='large'
           showClose={false}
           className='patch-set'
           hasNoBodyWrapper
@@ -143,6 +143,7 @@ PatchSetWizard.propTypes = {
   patchSetID: propTypes.string,
 };
 
-export default memo(PatchSetWizard, (prevProps, nextProps) => {
-  return JSON.stringify(prevProps) === JSON.stringify(nextProps);
-});
+export default memo(
+  PatchSetWizard,
+  (prevProps, nextProps) => JSON.stringify(prevProps) === JSON.stringify(nextProps),
+);

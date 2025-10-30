@@ -13,16 +13,16 @@ const HeaderTabs = ({ headerOUIA }) => {
   };
 
   return (
-    <Tabs onSelect={handleRedirect} activeKey={location.pathname} className={'patchman-tabs'}>
+    <Tabs onSelect={handleRedirect} activeKey={location.pathname} className='patchman-tabs'>
       <Tab
-        eventKey={'advisories'}
-        title={'Applicable advisories'}
+        eventKey='advisories'
+        title='Applicable advisories'
         data-ouia-component-type={`${headerOUIA}-tab`}
         data-ouia-component-id={`${headerOUIA}-tab-Applicable advisories'`}
       />
       <Tab
-        eventKey={'systems'}
-        title={'Systems'}
+        eventKey='systems'
+        title='Systems'
         data-ouia-component-type={`${headerOUIA}-tab`}
         data-ouia-component-id={`${headerOUIA}-tab-Systems`}
       />

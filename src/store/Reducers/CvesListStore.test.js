@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 import { changeFilters, fetchFulfilled, fetchPending, fetchRejected } from './HelperReducers';
 import { CvesListStore } from './CvesListStore';
 import { FETCH_CVES_INFO } from '../ActionTypes';

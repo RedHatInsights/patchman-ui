@@ -9,20 +9,18 @@ import { defaultCompoundSortValues } from './constants';
 import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
-export const buildFilterConfig = (search, filter, apply) => {
-  return {
-    items: [
-      searchFilter(
-        apply,
-        search,
-        intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-        intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder),
-      ),
-      staleFilter(apply, filter),
-      systemsUpdatableFilter(apply, filter),
-    ],
-  };
-};
+export const buildFilterConfig = (search, filter, apply) => ({
+  items: [
+    searchFilter(
+      apply,
+      search,
+      intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+      intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder),
+    ),
+    staleFilter(apply, filter),
+    systemsUpdatableFilter(apply, filter),
+  ],
+});
 
 export const buildTemplateFilterConfig = (search, apply) => ({
   items: [
@@ -98,7 +96,7 @@ export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
 
   let sort = `${orderDirection === 'ASC' ? '' : '-'}${orderBy}`;
 
-  //if orderBy is for a compound column reset sort value to relative compound sort value
+  // if orderBy is for a compound column reset sort value to relative compound sort value
   Object.keys(defaultCompoundSortValues).forEach((col) => {
     if (col === orderBy) {
       sort = defaultCompoundSortValues[col][orderDirection.toLowerCase()];
@@ -108,8 +106,8 @@ export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
   return sort;
 };
 
-export const osParamParser = (paramValue) => {
-  return paramValue
+export const osParamParser = (paramValue) =>
+  paramValue
     .replace('in:', '')
     .split(',')
     .reduce((osFilter, os) => {
@@ -124,4 +122,3 @@ export const osParamParser = (paramValue) => {
         },
       };
     }, {});
-};

@@ -1,5 +1,5 @@
 import publishDateFilter from './PublishDateFilter';
-/* eslint-disable */
+
 const apply = jest.fn();
 const currentFilter = { public_date: 'filter' };
 
@@ -23,4 +23,3 @@ describe('PublishDateFilter', () => {
     expect(apply).toHaveBeenCalledWith({ filter: { public_date: undefined } });
   });
 });
-/* eslint-enable */

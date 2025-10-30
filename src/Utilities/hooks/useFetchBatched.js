@@ -16,14 +16,12 @@ export const useFetchBatched = () => {
 
       const results = resolve(
         [...new Array(pages)].map(
-          // eslint-disable-next-line camelcase
-          (_, pageIdx) => () => {
-            return fetchFunction({
+          (_, pageIdx) => () =>
+            fetchFunction({
               ...filter,
               offset: pageIdx * batchSize,
               limit: batchSize,
-            });
-          },
+            }),
         ),
       );
 

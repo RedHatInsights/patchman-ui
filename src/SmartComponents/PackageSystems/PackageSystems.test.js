@@ -76,7 +76,7 @@ beforeEach(() => {
   );
 });
 
-//TODO: find a meaningful way of testing InventoryTable fed module
+// TODO: find a meaningful way of testing InventoryTable fed module
 describe('PackageSystems.js', () => {
   it('Should render inventory table', () => {
     expect(screen.getByTestId('inventory-mock-component')).toBeVisible();

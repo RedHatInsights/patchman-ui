@@ -25,9 +25,7 @@ const mockState = {
 
 const initStore = (state) => {
   const customMiddleWare = () => (next) => (action) => {
-    useSelector.mockImplementation((callback) => {
-      return callback({ PackageDetailStore: state });
-    });
+    useSelector.mockImplementation((callback) => callback({ PackageDetailStore: state }));
     next(action);
   };
 
@@ -39,9 +37,7 @@ let store = initStore(mockState);
 
 beforeEach(() => {
   store.clearActions();
-  useSelector.mockImplementation((callback) => {
-    return callback({ PackageDetailStore: mockState });
-  });
+  useSelector.mockImplementation((callback) => callback({ PackageDetailStore: mockState }));
 });
 
 afterEach(() => {
@@ -74,9 +70,7 @@ describe('PackageDetail.js', () => {
   it('should display Unavailable component on error', () => {
     const rejectedState = { ...mockState, status: { isLoading: false, code: 200, hasError: true } };
     const tempStore = initStore(rejectedState);
-    useSelector.mockImplementation((callback) => {
-      return callback({ PackageDetailStore: rejectedState });
-    });
+    useSelector.mockImplementation((callback) => callback({ PackageDetailStore: rejectedState }));
     render(
       <Provider store={tempStore}>
         <Router>
