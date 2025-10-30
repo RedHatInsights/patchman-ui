@@ -43,9 +43,7 @@ const mockState = {
 
 const initStore = (state) => {
   const customMiddleWare = () => (next) => (action) => {
-    useSelector.mockImplementation((callback) => {
-      return callback({ PatchSetsStore: state });
-    });
+    useSelector.mockImplementation((callback) => callback({ PatchSetsStore: state }));
     next(action);
   };
 
@@ -56,9 +54,7 @@ const initStore = (state) => {
 let store = initStore(mockState);
 beforeEach(() => {
   store.clearActions();
-  useSelector.mockImplementation((callback) => {
-    return callback({ PatchSetsStore: mockState });
-  });
+  useSelector.mockImplementation((callback) => callback({ PatchSetsStore: mockState }));
 });
 
 describe('HeaderBreadcrumbs', () => {

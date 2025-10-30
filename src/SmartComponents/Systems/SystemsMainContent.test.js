@@ -11,19 +11,17 @@ initMocks();
 jest.mock('./SystemsTable', () => ({
   __esModule: true,
   default: jest.fn(
-    ({ openAssignSystemsModal, openUnassignSystemsModal, activateRemediationModal, ...props }) => {
-      return (
-        <div {...props} data-testid='systems-table-mock'>
-          <button data-testid='open-assign-modal' onClick={openAssignSystemsModal} />
-          <button
-            data-testid='open-unasssign-modal'
-            onClick={() => openUnassignSystemsModal(['test-system-id-1'])}
-          />
-          <button data-testid='active-remediation-modal' onClick={activateRemediationModal} />
-          Systems table
-        </div>
-      );
-    },
+    ({ openAssignSystemsModal, openUnassignSystemsModal, activateRemediationModal, ...props }) => (
+      <div {...props} data-testid='systems-table-mock'>
+        <button data-testid='open-assign-modal' onClick={openAssignSystemsModal} />
+        <button
+          data-testid='open-unasssign-modal'
+          onClick={() => openUnassignSystemsModal(['test-system-id-1'])}
+        />
+        <button data-testid='active-remediation-modal' onClick={activateRemediationModal} />
+        Systems table
+      </div>
+    ),
   ),
 }));
 

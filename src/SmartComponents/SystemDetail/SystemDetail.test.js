@@ -29,9 +29,7 @@ jest.mock('react-redux', () => ({
 
 const initStore = (state) => {
   const customMiddleWare = () => (next) => (action) => {
-    useSelector.mockImplementation((callback) => {
-      return callback({ SystemAdvisoryListStore: state });
-    });
+    useSelector.mockImplementation((callback) => callback({ SystemAdvisoryListStore: state }));
     next(action);
   };
 
@@ -47,12 +45,12 @@ let store = initStore(mockState);
 
 describe('SystemDetail.js', () => {
   it('Should match the snapshots', () => {
-    useSelector.mockImplementation((callback) => {
-      return callback({
+    useSelector.mockImplementation((callback) =>
+      callback({
         SystemAdvisoryListStore: mockState,
         SystemPackageListStore: { ...storeListDefaults, rows: systemPackages },
-      });
-    });
+      }),
+    );
 
     const { asFragment } = render(
       <Provider store={store}>

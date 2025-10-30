@@ -44,9 +44,7 @@ const mockOnSelect = jest.fn();
 
 const initStore = (state) => {
   const customMiddleWare = () => (next) => (action) => {
-    useSelector.mockImplementation((callback) => {
-      return callback({ PackagesListStore: state });
-    });
+    useSelector.mockImplementation((callback) => callback({ PackagesListStore: state }));
     next(action);
   };
 
@@ -250,7 +248,7 @@ describe('TableView', () => {
         />
       </Provider>,
     );
-    // eslint-disable-next-line max-len
+
     expect(
       screen.getByText(
         /connect your systems to keep your red hat environment running efficiently, with security and compliance with various standards\./i,

@@ -39,9 +39,9 @@ const mockState = { ...entityDetail, SystemDetailStore: {} };
 
 const initStore = (state) => {
   const customMiddleWare = () => (next) => (action) => {
-    useSelector.mockImplementation((callback) => {
-      return callback({ entityDetails: state, SystemDetailStore: state });
-    });
+    useSelector.mockImplementation((callback) =>
+      callback({ entityDetails: state, SystemDetailStore: state }),
+    );
     next(action);
   };
 
@@ -56,9 +56,9 @@ beforeEach(() => {
   console.error = () => {};
 
   store.clearActions();
-  useSelector.mockImplementation((callback) => {
-    return callback({ entityDetails: mockState, SystemDetailStore: {} });
-  });
+  useSelector.mockImplementation((callback) =>
+    callback({ entityDetails: mockState, SystemDetailStore: {} }),
+  );
   wrapper = mountWithIntl(
     <Provider store={store}>
       <Router>
@@ -99,12 +99,12 @@ describe('InventoryPage.js', () => {
   });
 
   it('Should display "Remove from a template" action in enabled state', () => {
-    useSelector.mockImplementation((callback) => {
-      return callback({
+    useSelector.mockImplementation((callback) =>
+      callback({
         entityDetails: { ...mockState, patchSetName: 'test-name' },
         SystemDetailStore: { patchSetName: 'template-name' },
-      });
-    });
+      }),
+    );
     const tempWrapper = mount(
       <Provider store={store}>
         <Router>
@@ -127,12 +127,12 @@ describe('InventoryPage.js', () => {
 
   it('Should open UnassignSystemsModal when "Remove from a template" action is called', () => {
     const testID = 'test-system-id';
-    useSelector.mockImplementation((callback) => {
-      return callback({
+    useSelector.mockImplementation((callback) =>
+      callback({
         entityDetails: { ...mockState, patchSetName: 'test-name' },
         SystemDetailStore: {},
-      });
-    });
+      }),
+    );
     const tempWrapper = mountWithIntl(
       <Provider store={store}>
         <Router>

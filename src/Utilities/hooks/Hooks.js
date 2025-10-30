@@ -306,7 +306,7 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
     return onSubmit;
 };
 
-/***
+/** *
  * Returns readly available user entitelments
  * @returns {getEntitlements} function that returns entitlements
  */

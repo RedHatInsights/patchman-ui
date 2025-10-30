@@ -8,9 +8,7 @@ export const initMocks = () => {
       init: jest.fn(),
       identifyApp: () => {},
       navigation: () => {},
-      on: () => {
-        return () => {};
-      },
+      on: () => () => {},
       isBeta: () => true,
       auth: {
         getUser: () =>
@@ -53,9 +51,7 @@ export const initMocks = () => {
 
 export const mockStore = (initialState, mutatedState) => {
   const customMiddleWare = () => (next) => (action) => {
-    useSelector.mockImplementation((callback) => {
-      return callback(mutatedState);
-    });
+    useSelector.mockImplementation((callback) => callback(mutatedState));
     next(action);
   };
 

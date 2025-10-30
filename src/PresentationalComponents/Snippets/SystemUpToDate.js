@@ -10,7 +10,7 @@ export const SystemUpToDate = () => (
       headingLevel='h5'
       icon={() => (
         <Icon size='xl' style={{ marginBottom: 15 }}>
-          <CheckCircleIcon color={'var(--pf-t--global--icon--color--status--success--default)'} />
+          <CheckCircleIcon color='var(--pf-t--global--icon--color--status--success--default)' />
         </Icon>
       )}
       titleText={intl.formatMessage(messages.statesNoApplicableAdvisories)}

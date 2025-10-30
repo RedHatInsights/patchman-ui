@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { AdvisorySystemsStore, initialState } from './AdvisorySystemsStore';
 import { SystemsStore } from './SystemsStore';
 import { PackageSystemsStore } from './PackageSystemsStore';
@@ -6,7 +5,6 @@ import { systemRows, systemsStoreState } from '../../Utilities/RawDataForTesting
 
 const state = { ...initialState, loaded: true, columns: [{ key: 'testCol' }], rows: systemRows };
 
-/* eslint-disable */
 describe('InventoryEntitiesReducer tests', () => {
   it('should change AdvisorySystemsStore nicely', () => {
     const res = AdvisorySystemsStore(state, {
@@ -77,4 +75,3 @@ describe('InventoryEntitiesReducer tests', () => {
     expect(res).toEqual({ ...state, metadata: { metadata: 'testMetadata' } });
   });
 });
-/* eslint-enable */

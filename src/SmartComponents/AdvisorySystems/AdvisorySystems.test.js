@@ -10,14 +10,12 @@ initMocks();
 
 jest.mock('./AdvisorySystemsTable', () => ({
   __esModule: true,
-  default: jest.fn(({ activateRemediationModal, ...props }) => {
-    return (
-      <div {...props} data-testid='systems-table-mock'>
-        <button data-testid='active-remediation-modal' onClick={activateRemediationModal} />
-        Systems table
-      </div>
-    );
-  }),
+  default: jest.fn(({ activateRemediationModal, ...props }) => (
+    <div {...props} data-testid='systems-table-mock'>
+      <button data-testid='active-remediation-modal' onClick={activateRemediationModal} />
+      Systems table
+    </div>
+  )),
 }));
 
 jest.mock('../../PresentationalComponents/Filters/OsVersionFilter');

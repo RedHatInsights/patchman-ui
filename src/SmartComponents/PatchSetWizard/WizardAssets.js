@@ -85,63 +85,60 @@ export const toDateComponent = [
   },
 ];
 
-export const getWizardTitle = (wizardType) => {
-  return wizardType === 'edit'
+export const getWizardTitle = (wizardType) =>
+  wizardType === 'edit'
     ? intl.formatMessage(messages.templateEdit)
     : intl.formatMessage(messages.templateTitle);
-};
 
-export const schema = (wizardType) => {
-  return {
-    fields: [
-      {
-        component: componentTypes.WIZARD,
-        name: 'patch-set-wizard',
-        isDynamic: true,
-        inModal: true,
-        title: getWizardTitle(wizardType),
-        description: <Fragment>{intl.formatMessage(messages.templateDescription)}</Fragment>,
-        fields: [
-          {
-            name: 'template-content',
-            title: intl.formatMessage(messages.templateContentStepSidebarName),
-            fields: contentStep,
-            nextStep: 'template-details',
-          },
-          {
-            name: 'template-details',
-            title: intl.formatMessage(messages.templateDetailStepSidebarName),
-            fields: configurationFields,
-            nextStep: 'template-systems',
-          },
-          {
-            name: 'template-systems',
-            title: intl.formatMessage(messages.templateStepSystems),
-            fields: [
-              {
-                name: 'systems',
-                component: 'reviewSystems',
-                //We can use this later in case UX wantes to prevent patch template s without zero systems
-                //validate: [{ type: 'validate-systems' }]
-              },
-            ],
-            nextStep: 'template-review',
-          },
-          {
-            name: 'template-review',
-            title: intl.formatMessage(messages.templateReview),
-            fields: [
-              {
-                name: 'review',
-                component: 'reviewPatchSet',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  };
-};
+export const schema = (wizardType) => ({
+  fields: [
+    {
+      component: componentTypes.WIZARD,
+      name: 'patch-set-wizard',
+      isDynamic: true,
+      inModal: true,
+      title: getWizardTitle(wizardType),
+      description: <Fragment>{intl.formatMessage(messages.templateDescription)}</Fragment>,
+      fields: [
+        {
+          name: 'template-content',
+          title: intl.formatMessage(messages.templateContentStepSidebarName),
+          fields: contentStep,
+          nextStep: 'template-details',
+        },
+        {
+          name: 'template-details',
+          title: intl.formatMessage(messages.templateDetailStepSidebarName),
+          fields: configurationFields,
+          nextStep: 'template-systems',
+        },
+        {
+          name: 'template-systems',
+          title: intl.formatMessage(messages.templateStepSystems),
+          fields: [
+            {
+              name: 'systems',
+              component: 'reviewSystems',
+              // We can use this later in case UX wantes to prevent patch template s without zero systems
+              // validate: [{ type: 'validate-systems' }]
+            },
+          ],
+          nextStep: 'template-review',
+        },
+        {
+          name: 'template-review',
+          title: intl.formatMessage(messages.templateReview),
+          fields: [
+            {
+              name: 'review',
+              component: 'reviewPatchSet',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+});
 
 export const validatorMapper = {
   'validate-systems': () => (formValueSystems) => {

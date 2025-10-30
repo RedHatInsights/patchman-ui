@@ -25,9 +25,7 @@ const mockState = { ...storeListDefaults, ...advisoryDetailRows };
 
 const initStore = (state) => {
   const customMiddleWare = () => (next) => (action) => {
-    useSelector.mockImplementation((callback) => {
-      return callback({ AdvisoryDetailStore: state });
-    });
+    useSelector.mockImplementation((callback) => callback({ AdvisoryDetailStore: state }));
     next(action);
   };
 
@@ -39,9 +37,7 @@ let store = initStore(mockState);
 
 beforeEach(() => {
   store.clearActions();
-  useSelector.mockImplementation((callback) => {
-    return callback({ AdvisoryDetailStore: mockState });
-  });
+  useSelector.mockImplementation((callback) => callback({ AdvisoryDetailStore: mockState }));
 });
 
 afterEach(() => {
@@ -74,9 +70,7 @@ describe('AdvisoryDetail.js', () => {
   it('Should display error page when status is rejected', () => {
     const rejectedState = { ...mockState, status: { hasError: true }, error: { detail: 'test' } };
 
-    useSelector.mockImplementation((callback) => {
-      return callback({ AdvisoryDetailStore: rejectedState });
-    });
+    useSelector.mockImplementation((callback) => callback({ AdvisoryDetailStore: rejectedState }));
 
     const tempStore = initStore(rejectedState);
     render(
@@ -93,7 +87,6 @@ describe('AdvisoryDetail.js', () => {
     ).toBeTruthy();
     expect(
       screen.getByText(
-        // eslint-disable-next-line max-len
         /try refreshing the page\. if the problem persists, contact your organization administrator or visit our status page for known outages\./i,
       ),
     ).toBeTruthy();

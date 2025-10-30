@@ -14,7 +14,7 @@ const ConfigurationFields = ({ isLoading }) => {
       <Spinner
         size='xl'
         style={{ display: isLoading ? 'block' : 'none' }}
-        id={`test-config-fields-spinner`}
+        id='test-config-fields-spinner'
       />
       <Grid hasGutter style={{ display: isLoading ? 'none' : 'grid' }}>
         <GridItem lg={12} md={12}>
