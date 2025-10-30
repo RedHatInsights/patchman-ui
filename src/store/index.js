@@ -17,31 +17,36 @@ import { PatchSetsReducer } from './Reducers/PatchSetsReducer';
 import { PatchSetDetailStore } from './Reducers/PatchSetDetailStore';
 import { PatchSetDetailSystemsStore } from './Reducers/PatchSetDetailSystemsStore';
 import { SpecificPatchSetReducer } from './Reducers/SpecificPatchSetReducer';
-import { legacy_createStore as createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import {
+  legacy_createStore as createStore,
+  applyMiddleware,
+  combineReducers,
+  compose,
+} from 'redux';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const defaultReducers = {
-    AdvisoryListStore,
-    SystemDetailStore,
-    SystemAdvisoryListStore,
-    AdvisoryDetailStore,
-    SystemPackageListStore,
-    PackagesListStore,
-    PackageDetailStore,
-    CvesListStore,
-    SystemsStore,
-    PackageSystemsStore,
-    AdvisorySystemsStore,
-    GlobalFilterStore,
-    PatchSetsStore: PatchSetsReducer,
-    PatchSetDetailStore,
-    PatchSetDetailSystemsStore,
-    SpecificPatchSetReducer,
-    notifications: notificationsReducer
+  AdvisoryListStore,
+  SystemDetailStore,
+  SystemAdvisoryListStore,
+  AdvisoryDetailStore,
+  SystemPackageListStore,
+  PackagesListStore,
+  PackageDetailStore,
+  CvesListStore,
+  SystemsStore,
+  PackageSystemsStore,
+  AdvisorySystemsStore,
+  GlobalFilterStore,
+  PatchSetsStore: PatchSetsReducer,
+  PatchSetDetailStore,
+  PatchSetDetailSystemsStore,
+  SpecificPatchSetReducer,
+  notifications: notificationsReducer,
 };
 
 export const store = createStore(
-    combineReducers(defaultReducers),
-    composeEnhancers(applyMiddleware(promiseMiddleware, notificationsMiddleware()))
+  combineReducers(defaultReducers),
+  composeEnhancers(applyMiddleware(promiseMiddleware, notificationsMiddleware())),
 );

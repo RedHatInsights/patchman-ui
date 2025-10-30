@@ -7,35 +7,31 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const AdvisorySeverityInfo = ({ severity }) => {
-    return (
-        <Split className='infobox' hasGutter>
-            <SplitItem isFilled>
-                <Flex flex={{ default: 'column' }}>
-                    <FlexItem spacer={{ default: 'spacerNone' }}>
-                        <Title headingLevel='h5'>
-                            {intl.formatMessage(messages.labelsColumnsSeverity)}
-                        </Title>
-                    </FlexItem>
-                    <FlexItem spacer={{ default: 'spacerSm' }}>
-                        <Flex flex={{ default: 'row' }}>
-                            <FlexItem>
-                                <Icon size='md'>
-                                    <SecurityIcon color={severity.color} />
-                                </Icon>
-                            </FlexItem>
-                            <FlexItem>
-                                {severity.label}
-                            </FlexItem>
-                        </Flex>
-                    </FlexItem>
-                </Flex>
-            </SplitItem>
-        </Split>
-    );
+  return (
+    <Split className='infobox' hasGutter>
+      <SplitItem isFilled>
+        <Flex flex={{ default: 'column' }}>
+          <FlexItem spacer={{ default: 'spacerNone' }}>
+            <Title headingLevel='h5'>{intl.formatMessage(messages.labelsColumnsSeverity)}</Title>
+          </FlexItem>
+          <FlexItem spacer={{ default: 'spacerSm' }}>
+            <Flex flex={{ default: 'row' }}>
+              <FlexItem>
+                <Icon size='md'>
+                  <SecurityIcon color={severity.color} />
+                </Icon>
+              </FlexItem>
+              <FlexItem>{severity.label}</FlexItem>
+            </Flex>
+          </FlexItem>
+        </Flex>
+      </SplitItem>
+    </Split>
+  );
 };
 
 AdvisorySeverityInfo.propTypes = {
-    severity: propTypes.object
+  severity: propTypes.object,
 };
 
 export default AdvisorySeverityInfo;

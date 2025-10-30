@@ -3,19 +3,15 @@ import propTypes from 'prop-types';
 import React from 'react';
 
 const ExternalLink = ({ link, text }) => (
-    <a
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-    >
-        {text}
-        <ExternalLinkAltIcon className="pf-v6-u-ml-xs" />
-    </a>
+  <a href={link} target='_blank' rel='noreferrer'>
+    {text}
+    <ExternalLinkAltIcon className='pf-v6-u-ml-xs' />
+  </a>
 );
 
 ExternalLink.propTypes = {
-    link: propTypes.string,
-    text: propTypes.string
+  link: propTypes.string,
+  text: propTypes.string,
 };
 
 export default ExternalLink;
