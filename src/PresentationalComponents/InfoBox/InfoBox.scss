@@ -1,22 +1,22 @@
 .infobox {
-    background-color: var(--pf-t--global--background--color--primary-default);
-    border: var(--pf-t--global--border--color--control--read-only) var(--pf-t--global--border--width--regular)
-        solid;
-    height: 65px;
-    > .pf-v6-l-split__item:first-child {
-        width: 65px;
-        color: black;
-        background-color: var(--pf-t--global--color--status--warning--100);
-        > div.pf-v6-l-bullseye svg {
-            color: white;
-        }
+  background-color: var(--pf-t--global--background--color--primary-default);
+  border: var(--pf-t--global--border--color--control--read-only)
+    var(--pf-t--global--border--width--regular) solid;
+  height: 65px;
+  > .pf-v6-l-split__item:first-child {
+    width: 65px;
+    color: black;
+    background-color: var(--pf-t--global--color--status--warning--100);
+    > div.pf-v6-l-bullseye svg {
+      color: white;
     }
-    .pf-v6-c-content h6 {
-        margin: 0;
-    }
-    > .pf-v6-l-split__item:nth-child(2) {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
+  }
+  .pf-v6-c-content h6 {
+    margin: 0;
+  }
+  > .pf-v6-l-split__item:nth-child(2) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }

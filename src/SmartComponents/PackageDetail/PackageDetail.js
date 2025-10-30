@@ -15,73 +15,73 @@ import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const PackageDetail = () => {
-    const dispatch = useDispatch();
-    const { packageName } = useParams();
-    const chrome = useChrome();
+  const dispatch = useDispatch();
+  const { packageName } = useParams();
+  const chrome = useChrome();
 
-    useEffect(()=>{
-        packageName && chrome.updateDocumentTitle(`${packageName} - Packages - Content | RHEL`, true);
-    }, [chrome, packageName]);
+  useEffect(() => {
+    packageName && chrome.updateDocumentTitle(`${packageName} - Packages - Content | RHEL`, true);
+  }, [chrome, packageName]);
 
-    const packageDetails = useSelector(
-        ({ PackageDetailStore }) => PackageDetailStore
-    );
-    const status = useSelector(
-        ({ PackageDetailStore }) => PackageDetailStore.status
-    );
+  const packageDetails = useSelector(({ PackageDetailStore }) => PackageDetailStore);
+  const status = useSelector(({ PackageDetailStore }) => PackageDetailStore.status);
 
-    React.useEffect(() => {
-        dispatch(fetchPackageDetails({ packageName }));
-    }, []);
+  React.useEffect(() => {
+    dispatch(fetchPackageDetails({ packageName }));
+  }, []);
 
-    React.useEffect(() => {
-        return () => {
-            dispatch(clearNotifications());
-            dispatch(clearPackageDetailStore());
-        };
-    }, []);
+  React.useEffect(() => {
+    return () => {
+      dispatch(clearNotifications());
+      dispatch(clearPackageDetailStore());
+    };
+  }, []);
 
-    const { attributes } = packageDetails.data;
+  const { attributes } = packageDetails.data;
 
-    return (
-        <React.Fragment>
-            <Header
-                title={packageName}
-                headerOUIA={'package-details'}
-                breadcrumbs={[
-                    {
-                        title: intl.formatMessage(messages.titlesPatchPackages),
-                        to: '/packages',
-                        isActive: false
-                    },
-                    {
-                        title: packageName,
-                        isActive: true
-                    }
-                ]}
-            >{status.hasError ? <Unavailable/> :
-                    <PackageHeader
-                        attributes={{ ...attributes, id: packageName }}
-                        isLoading={status.isLoading}
-                    />}
-            </Header>
-            <Main>
-                <Stack hasGutter>
-                    <StackItem>
-                        <Content>
-                            <Content component={ContentVariants.h2}>{intl.formatMessage(messages.titlesAffectedSystems)}</Content>
-                        </Content>
-                    </StackItem>
-                    <StackItem>
-                        {status.hasError
-                            && < ErrorHandler />
-                                || (!status.isLoading && <PackageSystems packageName={packageName}></PackageSystems>)
-                        }
-                    </StackItem>
-                </Stack>
-            </Main>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <Header
+        title={packageName}
+        headerOUIA={'package-details'}
+        breadcrumbs={[
+          {
+            title: intl.formatMessage(messages.titlesPatchPackages),
+            to: '/packages',
+            isActive: false,
+          },
+          {
+            title: packageName,
+            isActive: true,
+          },
+        ]}
+      >
+        {status.hasError ? (
+          <Unavailable />
+        ) : (
+          <PackageHeader
+            attributes={{ ...attributes, id: packageName }}
+            isLoading={status.isLoading}
+          />
+        )}
+      </Header>
+      <Main>
+        <Stack hasGutter>
+          <StackItem>
+            <Content>
+              <Content component={ContentVariants.h2}>
+                {intl.formatMessage(messages.titlesAffectedSystems)}
+              </Content>
+            </Content>
+          </StackItem>
+          <StackItem>
+            {(status.hasError && <ErrorHandler />) ||
+              (!status.isLoading && <PackageSystems packageName={packageName}></PackageSystems>)}
+          </StackItem>
+        </Stack>
+      </Main>
+    </React.Fragment>
+  );
 };
 
 export default PackageDetail;

@@ -9,147 +9,151 @@ import { SystemUpToDate } from '../../PresentationalComponents/Snippets/SystemUp
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemPackagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import {
-    changeSystemPackagesParams, clearSystemPackagesStore,
-    fetchApplicableSystemPackages, selectSystemPackagesRow
+  changeSystemPackagesParams,
+  clearSystemPackagesStore,
+  fetchApplicableSystemPackages,
+  selectSystemPackagesRow,
 } from '../../store/Actions/Actions';
 import { exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utilities/api';
 import { remediationIdentifiers, systemPackagesDefaultFilters } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
-import { usePerPageSelect, useSetPage, useSortColumn, useOnExport,
-    useOnSelect, ID_API_ENDPOINTS } from '../../Utilities/hooks';
+import {
+  usePerPageSelect,
+  useSetPage,
+  useSortColumn,
+  useOnExport,
+  useOnSelect,
+  ID_API_ENDPOINTS,
+} from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 
 const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
-    const dispatch = useDispatch();
-    const packages = useSelector(
-        ({ SystemPackageListStore }) => SystemPackageListStore.rows
-    );
-    const queryParams = useSelector(
-        ({ SystemPackageListStore }) => SystemPackageListStore.queryParams
-    );
-    const selectedRows = useSelector(
-        ({ SystemPackageListStore }) => SystemPackageListStore.selectedRows
-    );
-    const metadata = useSelector(
-        ({ SystemPackageListStore }) => SystemPackageListStore.metadata
-    );
-    const status = useSelector(
-        ({ SystemPackageListStore }) => SystemPackageListStore.status
-    );
-    const error = useSelector(
-        ({ SystemPackageListStore }) => SystemPackageListStore.error
-    );
-    const rows = useMemo(
-        () =>
-            createSystemPackagesRows(packages, selectedRows),
-        [packages,  selectedRows]
-    );
+  const dispatch = useDispatch();
+  const packages = useSelector(({ SystemPackageListStore }) => SystemPackageListStore.rows);
+  const queryParams = useSelector(
+    ({ SystemPackageListStore }) => SystemPackageListStore.queryParams,
+  );
+  const selectedRows = useSelector(
+    ({ SystemPackageListStore }) => SystemPackageListStore.selectedRows,
+  );
+  const metadata = useSelector(({ SystemPackageListStore }) => SystemPackageListStore.metadata);
+  const status = useSelector(({ SystemPackageListStore }) => SystemPackageListStore.status);
+  const error = useSelector(({ SystemPackageListStore }) => SystemPackageListStore.error);
+  const rows = useMemo(
+    () => createSystemPackagesRows(packages, selectedRows),
+    [packages, selectedRows],
+  );
 
-    useEffect(() => {
-        return () => dispatch(clearSystemPackagesStore());
-    }, []);
+  useEffect(() => {
+    return () => dispatch(clearSystemPackagesStore());
+  }, []);
 
-    useEffect(()=> {
-        dispatch(fetchApplicableSystemPackages({ id: inventoryId, ...queryParams }));
-    }, [queryParams]);
+  useEffect(() => {
+    dispatch(fetchApplicableSystemPackages({ id: inventoryId, ...queryParams }));
+  }, [queryParams]);
 
-    useEffect(() => {
-        if (shouldRefresh) {
-            dispatch(fetchApplicableSystemPackages({ id: inventoryId, ...queryParams }));
-        }
-    }, [shouldRefresh]);
-
-    const constructFilename = (pkg) => {
-        const pkgUpdates = pkg.updates || [];
-        const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
-        return latestUpdate && `${pkg.name}-${latestUpdate.evra}`;
-    };
-
-    const transformKey = (row) => {
-        return `${row.name}-${row.evra}`;
-    };
-
-    const onSelect = useOnSelect(
-        packages,
-        selectedRows,
-        {
-            endpoint: ID_API_ENDPOINTS.systemPackages(inventoryId),
-            queryParams,
-            selectionDispatcher: selectSystemPackagesRow,
-            constructFilename,
-            transformKey,
-            totalItems: metadata?.total_items
-        }
-    );
-
-    function apply(params) {
-        dispatch(changeSystemPackagesParams({ id: inventoryId, ...params }));
+  useEffect(() => {
+    if (shouldRefresh) {
+      dispatch(fetchApplicableSystemPackages({ id: inventoryId, ...queryParams }));
     }
+  }, [shouldRefresh]);
 
-    const onSort = useSortColumn(systemPackagesColumns, apply, 1);
-    const sortBy = useMemo(
-        () => createSortBy(systemPackagesColumns, metadata.sort, 1),
-        [metadata.sort]
-    );
-    const onSetPage = useSetPage(metadata.limit, apply);
-    const onPerPageSelect = usePerPageSelect(apply);
+  const constructFilename = (pkg) => {
+    const pkgUpdates = pkg.updates || [];
+    const latestUpdate = pkgUpdates[pkgUpdates.length - 1];
+    return latestUpdate && `${pkg.name}-${latestUpdate.evra}`;
+  };
 
-    const errorState =  status.hasError && (error.status === 404 ?  handleNoSystemData() : <Unavailable/>);
-    const emptyState = (!status.isLoading && !status.hasError && metadata.total_items === 0
-                            && Object.keys(queryParams).length === 0) && <SystemUpToDate/>;
-    const onExport = useOnExport(inventoryId, queryParams, {
-        csv: exportSystemPackagesCSV,
-        json: exportSystemPackagesJSON
-    }, dispatch);
+  const transformKey = (row) => {
+    return `${row.name}-${row.evra}`;
+  };
 
-    return (
-        <React.Fragment>
-            <TableView
-                columns={systemPackagesColumns}
-                store={{ rows, metadata, status, queryParams }}
-                onSelect={onSelect}
-                selectedRows={selectedRows}
-                compact
-                onSort={onSort}
-                sortBy={sortBy}
-                onSetPage={onSetPage}
-                onPerPageSelect={onPerPageSelect}
-                onExport={onExport}
-                remediationProvider={() =>
-                    remediationProvider(
-                        arrayFromObj(selectedRows),
-                        inventoryId,
-                        remediationIdentifiers.package
-                    )
-                }
-                apply={apply}
-                filterConfig={{
-                    items: [
-                        searchFilter(apply, queryParams.search,
-                            intl.formatMessage(messages.labelsFiltersPackagesSearchTitle),
-                            intl.formatMessage(messages.labelsFiltersPackagesSearchPlaceHolder)
-                        ),
-                        statusFilter(apply, queryParams.filter)
-                    ]
-                }}
-                defaultFilters = {systemPackagesDefaultFilters}
-                remediationButtonOUIA={'toolbar-remediation-button'}
-                tableOUIA={'system-packages-table'}
-                paginationOUIA={'system-packages-pagination'}
-                errorState={errorState}
-                emptyState={emptyState}
-                searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
-                hasColumnManagement
-            />
-        </React.Fragment>
-    );
+  const onSelect = useOnSelect(packages, selectedRows, {
+    endpoint: ID_API_ENDPOINTS.systemPackages(inventoryId),
+    queryParams,
+    selectionDispatcher: selectSystemPackagesRow,
+    constructFilename,
+    transformKey,
+    totalItems: metadata?.total_items,
+  });
+
+  function apply(params) {
+    dispatch(changeSystemPackagesParams({ id: inventoryId, ...params }));
+  }
+
+  const onSort = useSortColumn(systemPackagesColumns, apply, 1);
+  const sortBy = useMemo(
+    () => createSortBy(systemPackagesColumns, metadata.sort, 1),
+    [metadata.sort],
+  );
+  const onSetPage = useSetPage(metadata.limit, apply);
+  const onPerPageSelect = usePerPageSelect(apply);
+
+  const errorState =
+    status.hasError && (error.status === 404 ? handleNoSystemData() : <Unavailable />);
+  const emptyState = !status.isLoading &&
+    !status.hasError &&
+    metadata.total_items === 0 &&
+    Object.keys(queryParams).length === 0 && <SystemUpToDate />;
+  const onExport = useOnExport(
+    inventoryId,
+    queryParams,
+    {
+      csv: exportSystemPackagesCSV,
+      json: exportSystemPackagesJSON,
+    },
+    dispatch,
+  );
+
+  return (
+    <React.Fragment>
+      <TableView
+        columns={systemPackagesColumns}
+        store={{ rows, metadata, status, queryParams }}
+        onSelect={onSelect}
+        selectedRows={selectedRows}
+        compact
+        onSort={onSort}
+        sortBy={sortBy}
+        onSetPage={onSetPage}
+        onPerPageSelect={onPerPageSelect}
+        onExport={onExport}
+        remediationProvider={() =>
+          remediationProvider(
+            arrayFromObj(selectedRows),
+            inventoryId,
+            remediationIdentifiers.package,
+          )
+        }
+        apply={apply}
+        filterConfig={{
+          items: [
+            searchFilter(
+              apply,
+              queryParams.search,
+              intl.formatMessage(messages.labelsFiltersPackagesSearchTitle),
+              intl.formatMessage(messages.labelsFiltersPackagesSearchPlaceHolder),
+            ),
+            statusFilter(apply, queryParams.filter),
+          ],
+        }}
+        defaultFilters={systemPackagesDefaultFilters}
+        remediationButtonOUIA={'toolbar-remediation-button'}
+        tableOUIA={'system-packages-table'}
+        paginationOUIA={'system-packages-pagination'}
+        errorState={errorState}
+        emptyState={emptyState}
+        searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
+        hasColumnManagement
+      />
+    </React.Fragment>
+  );
 };
 
 SystemPackages.propTypes = {
-    handleNoSystemData: propTypes.func,
-    inventoryId: propTypes.string.isRequired,
-    shouldRefresh: propTypes.bool
+  handleNoSystemData: propTypes.func,
+  inventoryId: propTypes.string.isRequired,
+  shouldRefresh: propTypes.bool,
 };
 export default SystemPackages;
-

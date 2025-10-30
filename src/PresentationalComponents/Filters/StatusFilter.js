@@ -5,33 +5,32 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const statusFilter = (apply, currentFilter = {}) => {
+  let { update_status: currentValue } = currentFilter;
 
-    let { update_status: currentValue } = currentFilter;
+  const updatableTypesMap = React.useMemo(
+    () =>
+      updatableTypes.map(({ value, label }) => ({
+        label,
+        value: value.toString(),
+      })),
+    [],
+  );
+  const filterByType = (value) => {
+    apply({ filter: { update_status: value } });
+  };
 
-    const updatableTypesMap = React.useMemo(
-        () =>
-            updatableTypes.map(({ value, label }) => ({
-                label,
-                value: value.toString()
-            })),
-        []
-    );
-    const filterByType = value => {
-        apply({ filter: { update_status: value } });
-    };
-
-    return {
-        label: intl.formatMessage(messages.labelsFiltersStatus),
-        type: conditionalFilterType.checkbox,
-        filterValues: {
-            onChange: (event, value) => {
-                filterByType(value);
-            },
-            items: updatableTypesMap,
-            value: currentValue,
-            placeholder: intl.formatMessage(messages.labelsColumnsStatusPlaceholder)
-        }
-    };
+  return {
+    label: intl.formatMessage(messages.labelsFiltersStatus),
+    type: conditionalFilterType.checkbox,
+    filterValues: {
+      onChange: (event, value) => {
+        filterByType(value);
+      },
+      items: updatableTypesMap,
+      value: currentValue,
+      placeholder: intl.formatMessage(messages.labelsColumnsStatusPlaceholder),
+    },
+  };
 };
 
 export default statusFilter;

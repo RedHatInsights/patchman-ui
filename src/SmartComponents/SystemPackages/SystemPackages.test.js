@@ -13,147 +13,153 @@ import userEvent from '@testing-library/user-event';
 initMocks();
 
 jest.mock('../../Utilities/api', () => ({
-    ...jest.requireActual('../../Utilities/api'),
-    fetchIDs: jest.fn(() => Promise.resolve({
-        data: [{
-            attributes: {
-                advisory_type: 2,
-                description: 'The tzdata penhancements.',
-                public_date: '2020-10-19T15:02:38Z',
-                synopsis: 'tzdata enhancement update'
-            },
-            id: 'RHBA-2020:4282',
-            type: 'advisory'
-        }]
-    }).catch((err) => console.log(err)))
+  ...jest.requireActual('../../Utilities/api'),
+  fetchIDs: jest.fn(() =>
+    Promise.resolve({
+      data: [
+        {
+          attributes: {
+            advisory_type: 2,
+            description: 'The tzdata penhancements.',
+            public_date: '2020-10-19T15:02:38Z',
+            synopsis: 'tzdata enhancement update',
+          },
+          id: 'RHBA-2020:4282',
+          type: 'advisory',
+        },
+      ],
+    }).catch((err) => console.log(err)),
+  ),
 }));
 
 jest.mock('../../Utilities/Helpers', () => ({
-    ...jest.requireActual('../../Utilities/Helpers'),
-    encodeApiParams: jest.fn(),
-    remediationProvider: jest.fn()
+  ...jest.requireActual('../../Utilities/Helpers'),
+  encodeApiParams: jest.fn(),
+  remediationProvider: jest.fn(),
 }));
 jest.mock('../Remediation/AsyncRemediationButton', () => ({
-    __esModule: true,
-    default: jest.fn(({ remediationProvider, ...props }) => {
-        remediationProvider();
-        return (
-            <div {...props} data-testid='remediation-mock'>
-            Remediation
-            </div>
-        );
-    }
-    )
+  __esModule: true,
+  default: jest.fn(({ remediationProvider, ...props }) => {
+    remediationProvider();
+    return (
+      <div {...props} data-testid='remediation-mock'>
+        Remediation
+      </div>
+    );
+  }),
 }));
 
 const mockState = {
-    ...storeListDefaults,
-    rows: systemPackages,
-    status: { code: 200, isLoading: false, hasError: false },
-    metadata: {
-        limit: 25,
-        offset: 0,
-        total_items: 101
-    }
+  ...storeListDefaults,
+  rows: systemPackages,
+  status: { code: 200, isLoading: false, hasError: false },
+  metadata: {
+    limit: 25,
+    offset: 0,
+    total_items: 101,
+  },
 };
 
 const mountComponent = (state, componentProps) => {
-    const initStore = (state) => {
-        const mockStore = configureStore([]);
-        return mockStore({  SystemPackageListStore: state });
-    };
+  const initStore = (state) => {
+    const mockStore = configureStore([]);
+    return mockStore({ SystemPackageListStore: state });
+  };
 
-    render(<ComponentWithContext renderOptions={{ store: initStore(state) }}>
-        <SystemPackages inventoryId='entity' {...componentProps} />
-    </ComponentWithContext>);
+  render(
+    <ComponentWithContext renderOptions={{ store: initStore(state) }}>
+      <SystemPackages inventoryId='entity' {...componentProps} />
+    </ComponentWithContext>,
+  );
 };
 
 const user = userEvent.setup();
 
 describe('Selection', () => {
-    beforeEach(async () =>{
-        mountComponent(mockState);
-        await waitFor(() => screen.getByLabelText('Patch table view'));
-    });
-    testBulkSelection(
-        fetchIDs,
-        '/systems/entity/packages',
-        'selectSystemPackagesRow',
-        [{
-            id: 'test-name-test-evra',
-            selected: 'test-name-test-evra'
-        }]
-    );
+  beforeEach(async () => {
+    mountComponent(mockState);
+    await waitFor(() => screen.getByLabelText('Patch table view'));
+  });
+  testBulkSelection(fetchIDs, '/systems/entity/packages', 'selectSystemPackagesRow', [
+    {
+      id: 'test-name-test-evra',
+      selected: 'test-name-test-evra',
+    },
+  ]);
 });
 
 describe('SystemPackages', () => {
-    it('Should provide correct remediation data', async () => {
-        const selectedState = {
-            ...mockState,
-            selectedRows: { 'test-id-0': 'test-id-0' }
-        };
+  it('Should provide correct remediation data', async () => {
+    const selectedState = {
+      ...mockState,
+      selectedRows: { 'test-id-0': 'test-id-0' },
+    };
 
-        mountComponent(selectedState);
-        await waitFor(() => screen.getByLabelText('Patch table view'));
+    mountComponent(selectedState);
+    await waitFor(() => screen.getByLabelText('Patch table view'));
 
-        await user.click(screen.getByText('Remediation'));
-        await waitFor(() => {
-            expect(remediationProvider).toHaveBeenCalledWith(['test-id-0'], 'entity', remediationIdentifiers.package);
-        });
+    await user.click(screen.getByText('Remediation'));
+    await waitFor(() => {
+      expect(remediationProvider).toHaveBeenCalledWith(
+        ['test-id-0'],
+        'entity',
+        remediationIdentifiers.package,
+      );
     });
+  });
 
-    it('Should render no access component', async () => {
-        const rejectedState = {
-            ...mockState,
-            status: { code: 403, isLoading: false, hasError: true },
-            error: { detail: 'test' }
-        };
+  it('Should render no access component', async () => {
+    const rejectedState = {
+      ...mockState,
+      status: { code: 403, isLoading: false, hasError: true },
+      error: { detail: 'test' },
+    };
 
-        mountComponent(rejectedState);
+    mountComponent(rejectedState);
 
-        expect(screen.getByText('You do not have permissions to view or manage Patch')).toBeVisible();
-    });
+    expect(screen.getByText('You do not have permissions to view or manage Patch')).toBeVisible();
+  });
 
-    it('Should display SystemUpToDate when status is resolved, but there is no items', async () => {
-        const emptyState = {
-            ...mockState,
-            metadata: {
-                ...mockState.metadata,
-                total_items: 0,
-                has_systems: false
-            },
-            queryParams: {}
-        };
+  it('Should display SystemUpToDate when status is resolved, but there is no items', async () => {
+    const emptyState = {
+      ...mockState,
+      metadata: {
+        ...mockState.metadata,
+        total_items: 0,
+        has_systems: false,
+      },
+      queryParams: {},
+    };
 
-        mountComponent(emptyState);
-        expect(screen.getByText('No applicable advisories')).toBeVisible();
-    });
+    mountComponent(emptyState);
+    expect(screen.getByText('No applicable advisories')).toBeVisible();
+  });
 
-    it('Should display Unavailable component when there is a generic error', async () => {
-        const unavailableState = {
-            ...mockState,
-            status: { code: 500, isLoading: false, hasError: true }
-        };
+  it('Should display Unavailable component when there is a generic error', async () => {
+    const unavailableState = {
+      ...mockState,
+      status: { code: 500, isLoading: false, hasError: true },
+    };
 
-        mountComponent(unavailableState);
-        expect(screen.getByText('This page is temporarily unavailable')).toBeVisible();
-    });
+    mountComponent(unavailableState);
+    expect(screen.getByText('This page is temporarily unavailable')).toBeVisible();
+  });
 
-    it('Should display NotConnected', async () => {
-        const notFoundState = {
-            ...mockState,
-            status: { code: 404, isLoading: false, hasError: true },
-            error: {
-                status: 404,
-                title: 'testTitle',
-                detail: 'testDescription'
-            }
-        };
+  it('Should display NotConnected', async () => {
+    const notFoundState = {
+      ...mockState,
+      status: { code: 404, isLoading: false, hasError: true },
+      error: {
+        status: 404,
+        title: 'testTitle',
+        detail: 'testDescription',
+      },
+    };
 
-        const handleNoSystemData = jest.fn(() => () => <div>Mocked component</div>);
+    const handleNoSystemData = jest.fn(() => () => <div>Mocked component</div>);
 
-        mountComponent(notFoundState, { handleNoSystemData });
+    mountComponent(notFoundState, { handleNoSystemData });
 
-        expect(handleNoSystemData).toHaveBeenCalled();
-    });
+    expect(handleNoSystemData).toHaveBeenCalled();
+  });
 });

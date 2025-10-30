@@ -5,43 +5,39 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const systemsStaleFilter = (apply, currentFilter = {}) => {
+  let { stale: currentValue } = currentFilter;
 
-    let { stale: currentValue } = currentFilter;
+  const staleMap = React.useMemo(
+    () =>
+      staleSystems.map(({ value, label }) => ({
+        label,
+        value: value.toString(),
+      })),
+    [],
+  );
 
-    const staleMap = React.useMemo(
-        () =>
-            staleSystems.map(({ value, label }) => ({
-                label,
-                value: value.toString()
-            })),
-        []
-    );
+  const currentValueStringType =
+    currentValue &&
+    ((Array.isArray(currentValue) && currentValue.map((value) => value.toString())) || [
+      currentValue.toString(),
+    ]);
 
-    const currentValueStringType = (
-        currentValue
-            && (
-                Array.isArray(currentValue)
-                    && currentValue.map(value => value.toString())
-                    || [currentValue.toString()]
-            )
-    );
+  const filterByStale = (value) => {
+    apply({ filter: { stale: value } });
+  };
 
-    const filterByStale = value => {
-        apply({ filter: { stale: value } });
-    };
-
-    return {
-        label: intl.formatMessage(messages.labelsFiltersStale),
-        type: conditionalFilterType.checkbox,
-        filterValues: {
-            onChange: (event, value) => {
-                filterByStale(value);
-            },
-            items: staleMap,
-            value: currentValueStringType,
-            placeholder: intl.formatMessage(messages.labelsFiltersStalePlaceholder)
-        }
-    };
+  return {
+    label: intl.formatMessage(messages.labelsFiltersStale),
+    type: conditionalFilterType.checkbox,
+    filterValues: {
+      onChange: (event, value) => {
+        filterByStale(value);
+      },
+      items: staleMap,
+      value: currentValueStringType,
+      placeholder: intl.formatMessage(messages.labelsFiltersStalePlaceholder),
+    },
+  };
 };
 
 export default systemsStaleFilter;

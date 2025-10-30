@@ -14,53 +14,60 @@ import NoRegisteredSystems from './NoRegisteredSystems';
 //import { NoRegisteredSystems } from '@redhat-cloud-services/frontend-components/NoRegisteredSystems';
 
 const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
-    switch (code) {
-        case 204:
-            return <NotConnected />;
+  switch (code) {
+    case 204:
+      return <NotConnected />;
 
-        case 400:
-            return <Unavailable />;
+    case 400:
+      return <Unavailable />;
 
-        case 401:
-            return <NotAuthorized
-                icon={LockIcon}
-                titleText={intl.formatMessage(messages.labelsNotAuthorizedTitle)}
-                bodyText={intl.formatMessage(messages.labelsNotAuthorizedDescription)}
-                prevPageButtonText={intl.formatMessage(messages.labelsReturnToPreviousPage)}
-                toLandingPageText={intl.formatMessage(messages.labelsReturnToLandingPage)}
-            />;
+    case 401:
+      return (
+        <NotAuthorized
+          icon={LockIcon}
+          titleText={intl.formatMessage(messages.labelsNotAuthorizedTitle)}
+          bodyText={intl.formatMessage(messages.labelsNotAuthorizedDescription)}
+          prevPageButtonText={intl.formatMessage(messages.labelsReturnToPreviousPage)}
+          toLandingPageText={intl.formatMessage(messages.labelsReturnToLandingPage)}
+        />
+      );
 
-        case 403:
-            return <NotAuthorized
-                icon={LockIcon}
-                titleText={intl.formatMessage(messages.labelsNotAuthorizedTitle)}
-                bodyText={intl.formatMessage(messages.labelsNotAuthorizedDescription)}
-                prevPageButtonText={intl.formatMessage(messages.labelsReturnToPreviousPage)}
-                toLandingPageText={intl.formatMessage(messages.labelsReturnToLandingPage)}
-            />;
+    case 403:
+      return (
+        <NotAuthorized
+          icon={LockIcon}
+          titleText={intl.formatMessage(messages.labelsNotAuthorizedTitle)}
+          bodyText={intl.formatMessage(messages.labelsNotAuthorizedDescription)}
+          prevPageButtonText={intl.formatMessage(messages.labelsReturnToPreviousPage)}
+          toLandingPageText={intl.formatMessage(messages.labelsReturnToLandingPage)}
+        />
+      );
 
-        case 404:
-            return <InvalidObject />;
+    case 404:
+      return <InvalidObject />;
 
-        case 500:
-        case 502:
-        case 503:
-        case 504:
-            return <Unavailable />;
+    case 500:
+    case 502:
+    case 503:
+    case 504:
+      return <Unavailable />;
 
-        default:
-            return ErrorState
-                || EmptyState
-                || !metadata.has_systems && <NoRegisteredSystems />
-                || <SkeletonTable colSize={5} rowSize={20} /> ;
-    }
+    default:
+      return (
+        ErrorState ||
+        EmptyState ||
+        (!metadata.has_systems && <NoRegisteredSystems />) || (
+          <SkeletonTable colSize={5} rowSize={20} />
+        )
+      );
+  }
 };
 
 ErrorHandler.propTypes = {
-    code: propTypes.number,
-    ErrorState: propTypes.element,
-    EmptyState: propTypes.element,
-    metadata: propTypes.object.isRequired
+  code: propTypes.number,
+  ErrorState: propTypes.element,
+  EmptyState: propTypes.element,
+  metadata: propTypes.object.isRequired,
 };
 
 export default ErrorHandler;

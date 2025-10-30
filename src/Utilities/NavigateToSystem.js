@@ -2,9 +2,7 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
 export const NavigateToSystem = () => {
-    const { inventoryId } = useParams();
+  const { inventoryId } = useParams();
 
-    return (
-        <Navigate to={`../systems/${inventoryId}`} />
-    );
+  return <Navigate to={`../systems/${inventoryId}`} />;
 };

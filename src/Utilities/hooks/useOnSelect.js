@@ -7,176 +7,171 @@ import { useFetchBatched } from './useFetchBatched';
 import isArray from 'lodash/isArray';
 
 export const ID_API_ENDPOINTS = {
-    advisories: '/ids/advisories',
-    systems: '/ids/systems',
-    templates: '/baselines',
-    advisorySystems: (advisoryID) => `/ids/advisories/${advisoryID}/systems`,
-    systemAdvisories: (systemID) => `/ids/systems/${systemID}/advisories`,
-    packageSystems: (packageName) => `/packages/${packageName}/systems`,
-    systemPackages: (systemID) => `/systems/${systemID}/packages`,
-    templateSystems: (templateId) => `/ids/baselines/${templateId}/systems`
+  advisories: '/ids/advisories',
+  systems: '/ids/systems',
+  templates: '/baselines',
+  advisorySystems: (advisoryID) => `/ids/advisories/${advisoryID}/systems`,
+  systemAdvisories: (systemID) => `/ids/systems/${systemID}/advisories`,
+  packageSystems: (packageName) => `/packages/${packageName}/systems`,
+  systemPackages: (systemID) => `/systems/${systemID}/packages`,
+  templateSystems: (templateId) => `/ids/baselines/${templateId}/systems`,
 };
 const isArrayWithData = (dataStructure) => {
-    return isArray(dataStructure) && dataStructure.length;
+  return isArray(dataStructure) && dataStructure.length;
 };
 
-const useFetchAllIDs = (
-    endpoint,
-    apiResponseTransformer,
-    totalItems
-) => {
-    const { fetchBatched } = useFetchBatched();
-    return useCallback(async (queryParams) => {
-        const response = await fetchBatched(
-            (filter) => fetchIDs(endpoint, filter),
-            queryParams,
-            totalItems,
-            100
-        );
+const useFetchAllIDs = (endpoint, apiResponseTransformer, totalItems) => {
+  const { fetchBatched } = useFetchBatched();
+  return useCallback(
+    async (queryParams) => {
+      const response = await fetchBatched(
+        (filter) => fetchIDs(endpoint, filter),
+        queryParams,
+        totalItems,
+        100,
+      );
 
-        const aggregatedResponse = response.reduce((accumulator = {}, currentValue) => {
-            Object.keys(accumulator).forEach(key => {
-                if (isArrayWithData(currentValue[key])) {
-                    accumulator[key] = accumulator[key].concat(currentValue[key]);
-                }
-            });
+      const aggregatedResponse = response.reduce(
+        (accumulator = {}, currentValue) => {
+          Object.keys(accumulator).forEach((key) => {
+            if (isArrayWithData(currentValue[key])) {
+              accumulator[key] = accumulator[key].concat(currentValue[key]);
+            }
+          });
 
-            return accumulator;
-        }, { data: [], ids: [] });
+          return accumulator;
+        },
+        { data: [], ids: [] },
+      );
 
-        return apiResponseTransformer ? apiResponseTransformer(aggregatedResponse) : aggregatedResponse;
+      return apiResponseTransformer
+        ? apiResponseTransformer(aggregatedResponse)
+        : aggregatedResponse;
     },
-    [totalItems, endpoint, fetchBatched]);
+    [totalItems, endpoint, fetchBatched],
+  );
 };
 
 const useCreateSelectedRow = (transformKey, constructFilename) =>
-    useCallback((rows, toSelect = []) => {
-        const { ids, data } = rows;
-        const shouldUseOnlyIDs = !isArrayWithData(data);
-        const items = shouldUseOnlyIDs ? ids : data;
+  useCallback((rows, toSelect = []) => {
+    const { ids, data } = rows;
+    const shouldUseOnlyIDs = !isArrayWithData(data);
+    const items = shouldUseOnlyIDs ? ids : data;
 
-        items.forEach((item) => {
-            const id = shouldUseOnlyIDs ? item : item.id;
+    items.forEach((item) => {
+      const id = shouldUseOnlyIDs ? item : item.id;
 
-            //expanded rows does not have ID and should be disabled for selection
-            if (!(isObject(item) && item.isExpandedRow)) {
-                toSelect.push(
-                    {
-                        id: transformKey ? transformKey(item) : id,
-                        selected: constructFilename ? constructFilename(item) : id
-                    }
-                );
-            }
+      //expanded rows does not have ID and should be disabled for selection
+      if (!(isObject(item) && item.isExpandedRow)) {
+        toSelect.push({
+          id: transformKey ? transformKey(item) : id,
+          selected: constructFilename ? constructFilename(item) : id,
         });
-
-        return toSelect;
+      }
     });
 
-const createSelectors = (
-    createSelectedRow,
-    dispatchSelection,
-    toggleAllSystemsSelected
-) => {
-    const selectNone = (rows) => {
-        const toSelect = [];
-        Object.keys(rows).forEach(id => {
-            toSelect.push(
-                {
-                    id,
-                    selected: false
-                }
-            );
-        });
+    return toSelect;
+  });
 
-        dispatchSelection(toSelect);
-        toggleAllSystemsSelected(false);
-    };
+const createSelectors = (createSelectedRow, dispatchSelection, toggleAllSystemsSelected) => {
+  const selectNone = (rows) => {
+    const toSelect = [];
+    Object.keys(rows).forEach((id) => {
+      toSelect.push({
+        id,
+        selected: false,
+      });
+    });
 
-    const selectPage = (pageRows) => {
-        if (Array.isArray(pageRows)) {
-            pageRows = pageRows.filter(row => !row.disableSelection);
-        }
+    dispatchSelection(toSelect);
+    toggleAllSystemsSelected(false);
+  };
 
-        dispatchSelection(createSelectedRow({ data: pageRows }));
-    };
+  const selectPage = (pageRows) => {
+    if (Array.isArray(pageRows)) {
+      pageRows = pageRows.filter((row) => !row.disableSelection);
+    }
 
-    const selectAll = (fetchIDs, queryParams) => {
-        return fetchIDs(queryParams).then(response => {
-            if (isArrayWithData(response.data)) {
-                let rowsToSelect = response.data.filter(row => row.status !== 'Applicable');
-                dispatchSelection(createSelectedRow({ data: rowsToSelect }));
-            } else {
-                dispatchSelection(createSelectedRow(response));
-                toggleAllSystemsSelected(true);
-            }
-        });
-    };
+    dispatchSelection(createSelectedRow({ data: pageRows }));
+  };
 
-    return { selectNone, selectPage, selectAll };
+  const selectAll = (fetchIDs, queryParams) => {
+    return fetchIDs(queryParams).then((response) => {
+      if (isArrayWithData(response.data)) {
+        let rowsToSelect = response.data.filter((row) => row.status !== 'Applicable');
+        dispatchSelection(createSelectedRow({ data: rowsToSelect }));
+      } else {
+        dispatchSelection(createSelectedRow(response));
+        toggleAllSystemsSelected(true);
+      }
+    });
+  };
+
+  return { selectNone, selectPage, selectAll };
 };
 
 export const useOnSelect = (rawData, selectedRows, config) => {
-    const {
-        endpoint,
-        queryParams,
-        selectionDispatcher,
-        constructFilename,
-        transformKey,
-        apiResponseTransformer,
-        //TODO: get rid of this custom selector
-        customSelector,
-        totalItems
-    } = config;
+  const {
+    endpoint,
+    queryParams,
+    selectionDispatcher,
+    constructFilename,
+    transformKey,
+    apiResponseTransformer,
+    //TODO: get rid of this custom selector
+    customSelector,
+    totalItems,
+  } = config;
 
-    const dispatch = useDispatch();
-    const fetchIDs = useFetchAllIDs(endpoint, apiResponseTransformer, totalItems);
-    const createSelectedRow = useCreateSelectedRow(transformKey, constructFilename);
+  const dispatch = useDispatch();
+  const fetchIDs = useFetchAllIDs(endpoint, apiResponseTransformer, totalItems);
+  const createSelectedRow = useCreateSelectedRow(transformKey, constructFilename);
 
-    const toggleAllSystemsSelected = (flagState) => {
-        dispatch(toggleAllSelectedAction(flagState));
-    };
+  const toggleAllSystemsSelected = (flagState) => {
+    dispatch(toggleAllSelectedAction(flagState));
+  };
 
-    const dispatchSelection = (toSelect) => {
-        if (customSelector) {
-            customSelector(toSelect);
-        } else {
-            dispatch(selectionDispatcher(toSelect));
-        }
-    };
+  const dispatchSelection = (toSelect) => {
+    if (customSelector) {
+      customSelector(toSelect);
+    } else {
+      dispatch(selectionDispatcher(toSelect));
+    }
+  };
 
-    const { selectNone, selectPage, selectAll } = createSelectors(
-        createSelectedRow,
-        dispatchSelection,
-        toggleAllSystemsSelected
-    );
+  const { selectNone, selectPage, selectAll } = createSelectors(
+    createSelectedRow,
+    dispatchSelection,
+    toggleAllSystemsSelected,
+  );
 
-    const onSelect = useCallback(
-        async (event, selected, rowId, setBulkLoading = () => {}) => {
-            switch (event) {
-                case 'none': {
-                    selectNone(selectedRows);
-                    break;
-                }
+  const onSelect = useCallback(async (event, selected, rowId, setBulkLoading = () => {}) => {
+    switch (event) {
+      case 'none': {
+        selectNone(selectedRows);
+        break;
+      }
 
-                case 'page': {
-                    selectPage(rawData);
-                    break;
-                }
+      case 'page': {
+        selectPage(rawData);
+        break;
+      }
 
-                case 'all': {
-                    selectAll(fetchIDs, queryParams)
-                    .then(() => setBulkLoading(false));
-                    break;
-                }
+      case 'all': {
+        selectAll(fetchIDs, queryParams).then(() => setBulkLoading(false));
+        break;
+      }
 
-                default: {
-                    dispatchSelection([{
-                        id: transformKey ? transformKey(rawData[rowId]) : rawData[rowId].id,
-                        selected: selected && (constructFilename ? constructFilename(rawData[rowId]) : true)
-                    }]);
-                }
-            }
-        });
+      default: {
+        dispatchSelection([
+          {
+            id: transformKey ? transformKey(rawData[rowId]) : rawData[rowId].id,
+            selected: selected && (constructFilename ? constructFilename(rawData[rowId]) : true),
+          },
+        ]);
+      }
+    }
+  });
 
-    return onSelect;
+  return onSelect;
 };

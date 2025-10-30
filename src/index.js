@@ -7,25 +7,27 @@ import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const WrappedSystemDetail = ({ getRegistry, ...props }) => {
-    const [Wrapper, setWrapper] = useState();
-    useEffect(() => {
-        if (getRegistry) {
-            getRegistry()?.register?.({ SystemAdvisoryListStore, SystemPackageListStore });
-        }
+  const [Wrapper, setWrapper] = useState();
+  useEffect(() => {
+    if (getRegistry) {
+      getRegistry()?.register?.({ SystemAdvisoryListStore, SystemPackageListStore });
+    }
 
-        setWrapper(() => getRegistry ? Provider : Fragment);
-    }, []);
-    return (
-        Wrapper ? <Wrapper {...getRegistry && { store: getRegistry()?.getStore() }}>
-            <SystemDetail {...props} isInventoryApp />
-        </Wrapper> : <Bullseye>
-            <Spinner size="xl" />
-        </Bullseye>
-    );
+    setWrapper(() => (getRegistry ? Provider : Fragment));
+  }, []);
+  return Wrapper ? (
+    <Wrapper {...(getRegistry && { store: getRegistry()?.getStore() })}>
+      <SystemDetail {...props} isInventoryApp />
+    </Wrapper>
+  ) : (
+    <Bullseye>
+      <Spinner size='xl' />
+    </Bullseye>
+  );
 };
 
 WrappedSystemDetail.propTypes = {
-    getRegistry: PropTypes.func
+  getRegistry: PropTypes.func,
 };
 
 export { SystemPackageListStore, SystemAdvisoryListStore };
