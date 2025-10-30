@@ -1,6 +1,7 @@
-describe('useRemediationDataProvider', () => it('temproray test', () => {
+describe('useRemediationDataProvider', () =>
+  it('temproray test', () => {
     expect(true).toBeTruthy();
-}));
+  }));
 
 // /**
 //  * @jest-environment jsdom

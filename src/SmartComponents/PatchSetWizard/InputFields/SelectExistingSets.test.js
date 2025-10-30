@@ -10,47 +10,44 @@ import userEvent from '@testing-library/user-event';
 
 initMocks();
 
-const mockChage = jest.fn((payload) => { return payload; });
+const mockChage = jest.fn((payload) => {
+  return payload;
+});
 
 jest.mock('@data-driven-forms/react-form-renderer/use-form-api', () => () => ({
-    change: mockChage
-})
-);
+  change: mockChage,
+}));
 
 const initStore = (state) => {
-    const mockStore = configureStore([]);
-    return mockStore({ PatchSetsStore: state });
+  const mockStore = configureStore([]);
+  return mockStore({ PatchSetsStore: state });
 };
 
 let store = initStore({
-    ...initialState,
-    rows: patchSets,
-    status: { ...initialState, isLoading: false }
-
+  ...initialState,
+  rows: patchSets,
+  status: { ...initialState, isLoading: false },
 });
 
 beforeEach(() => {
-    store.clearActions();
-    render(<ComponentWithContext renderOptions={{ store }}>
-        <SelectExistingSets
-            setSelectedPatchSet={jest.fn()}
-            systems={['test-system']}
-        />
-    </ComponentWithContext>);
+  store.clearActions();
+  render(
+    <ComponentWithContext renderOptions={{ store }}>
+      <SelectExistingSets setSelectedPatchSet={jest.fn()} systems={['test-system']} />
+    </ComponentWithContext>,
+  );
 });
 
 describe('SelectExistingSets', () => {
-    it('Should render the select existing sets component', () => {
-
-        expect(screen.getByText('Select an existing template')).toBeVisible();
-        expect(screen.getByText('Template')).toBeVisible();
+  it('Should render the select existing sets component', () => {
+    expect(screen.getByText('Select an existing template')).toBeVisible();
+    expect(screen.getByText('Template')).toBeVisible();
+  });
+  it('Should render the select with options', async () => {
+    await userEvent.click(screen.getByRole('button', { name: /filter by template name/i }));
+    await waitFor(() => {
+      expect(screen.getByText('test-set-1')).toBeInTheDocument();
+      expect(screen.getAllByLabelText('patch-set-option')).toHaveLength(patchSets.length);
     });
-    it('Should render the select with options', async () => {
-        await userEvent.click(screen.getByRole('button', { name: /filter by template name/i }));
-        await waitFor(() => {
-            expect(screen.getByText('test-set-1')).toBeInTheDocument();
-            expect(screen.getAllByLabelText('patch-set-option')).toHaveLength(patchSets.length);
-        });
-
-    });
+  });
 });
