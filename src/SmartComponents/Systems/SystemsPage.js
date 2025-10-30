@@ -14,7 +14,7 @@ const SystemsPage = () => {
 
   return (
     <React.Fragment>
-      <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA={'systems'} />
+      <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA='systems' />
       <SystemsMainContent />
     </React.Fragment>
   );

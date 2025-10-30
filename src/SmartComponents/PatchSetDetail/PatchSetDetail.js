@@ -278,7 +278,7 @@ const PatchSetDetail = () => {
       />
       <Header
         title={isHeaderLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
-        headerOUIA={'template-details'}
+        headerOUIA='template-details'
         breadcrumbs={[
           {
             title: intl.formatMessage(messages.templateDetailHeaderBreadcrumb),

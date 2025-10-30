@@ -70,7 +70,7 @@ const InventoryDetail = () => {
       <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
       <Header
         title=''
-        headerOUIA={'inventory-details'}
+        headerOUIA='inventory-details'
         breadcrumbs={[
           {
             title: intl.formatMessage(messages.titlesPatchSystems),
@@ -87,7 +87,7 @@ const InventoryDetail = () => {
           hideBack
           showTags
           inventoryId={inventoryId}
-          //FIXME: remove this prop after inventory detail gets rid of activeApps in redux
+          // FIXME: remove this prop after inventory detail gets rid of activeApps in redux
           appList={[]}
         >
           <Grid>

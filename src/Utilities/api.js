@@ -28,7 +28,6 @@ export function createApiCall(
   return result;
 }
 
-// eslint-disable-next-line new-cap
 const hostInventoryApi = APIFactory(
   INVENTORY_API_BASE,
   {
@@ -39,30 +38,24 @@ const hostInventoryApi = APIFactory(
   },
 );
 
-export const fetchApplicableAdvisoriesApi = (params) => {
-  return createApiCall('/advisories', 'v3', 'get', params);
-};
+export const fetchApplicableAdvisoriesApi = (params) =>
+  createApiCall('/advisories', 'v3', 'get', params);
 
 export const fetchApplicableSystemAdvisoriesApi = (params) => {
   let { id, ...allParams } = params;
   return createApiCall(`/systems/${id}/advisories`, 'v3', 'get', allParams);
 };
 
-export const fetchSystems = (params) => {
-  return createApiCall('/systems', 'v3', 'get', prepareEntitiesParams(params));
-};
+export const fetchSystems = (params) =>
+  createApiCall('/systems', 'v3', 'get', prepareEntitiesParams(params));
 
-export const fetchSystemDetails = (id) => {
-  return createApiCall(`/systems/${id}`, 'v3', 'get');
-};
+export const fetchSystemDetails = (id) => createApiCall(`/systems/${id}`, 'v3', 'get');
 
-export const fetchAdvisoryDetailsApi = (params) => {
-  return createApiCall(`/advisories/${params.advisoryName}`, 'v3', 'get');
-};
+export const fetchAdvisoryDetailsApi = (params) =>
+  createApiCall(`/advisories/${params.advisoryName}`, 'v3', 'get');
 
-export const fetchPackageDetailsApi = (params) => {
-  return createApiCall(`/packages/${params.packageName}`, 'v3', 'get');
-};
+export const fetchPackageDetailsApi = (params) =>
+  createApiCall(`/packages/${params.packageName}`, 'v3', 'get');
 
 export const fetchApplicablePackagesApi = (params) => {
   let { id, ...allParams } = params;
@@ -204,25 +197,18 @@ export const exportPackageSystemsJSON = (params, packageName) => {
   return fetchFile(params, endpoint, 'application/json');
 };
 
-export const assignSystemToPatchSet = (payload) => {
-  return createApiCall(`/baselines`, 'v3', 'put', null, payload);
-};
+export const assignSystemToPatchSet = (payload) =>
+  createApiCall(`/baselines`, 'v3', 'put', null, payload);
 
-export const fetchPatchSets = (params) => {
-  return createApiCall(`/baselines`, 'v3', 'get', params);
-};
+export const fetchPatchSets = (params) => createApiCall(`/baselines`, 'v3', 'get', params);
 
-export const updatePatchSets = (payload, id) => {
-  return createApiCall(`/baselines/${id}`, 'v3', 'put', null, payload);
-};
+export const updatePatchSets = (payload, id) =>
+  createApiCall(`/baselines/${id}`, 'v3', 'put', null, payload);
 
-export const deletePatchSet = (patchSetID) => {
-  return createApiCall(`/baselines/${patchSetID}`, 'v3', 'delete');
-};
+export const deletePatchSet = (patchSetID) =>
+  createApiCall(`/baselines/${patchSetID}`, 'v3', 'delete');
 
-export const fetchPatchSet = (id) => {
-  return createApiCall(`/baselines/${id}`, 'v3', 'get');
-};
+export const fetchPatchSet = (id) => createApiCall(`/baselines/${id}`, 'v3', 'get');
 
 export const fetchPatchSetSystems = (params) => {
   const id = params.id;
@@ -231,14 +217,10 @@ export const fetchPatchSetSystems = (params) => {
   return createApiCall(`/baselines/${id}/systems`, 'v3', 'get', prepareEntitiesParams(params));
 };
 
-export const unassignSystemFromPatchSet = (payload) => {
-  return createApiCall('/baselines/systems/remove', 'v3', 'post', null, payload);
-};
+export const unassignSystemFromPatchSet = (payload) =>
+  createApiCall('/baselines/systems/remove', 'v3', 'post', null, payload);
 
-export const getOperatingSystems = () => {
-  return hostInventoryApi.apiSystemProfileGetOperatingSystem();
-};
+export const getOperatingSystems = () => hostInventoryApi.apiSystemProfileGetOperatingSystem();
 
-export const fetchIDs = (endpoint, queryParams) => {
-  return createApiCall(endpoint, 'v3', 'get', queryParams);
-};
+export const fetchIDs = (endpoint, queryParams) =>
+  createApiCall(endpoint, 'v3', 'get', queryParams);

@@ -88,7 +88,7 @@ const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl, totalI
 
   return (
     <Modal
-      variant={'small'}
+      variant='small'
       isOpen={patchSetState.isAssignSystemsModalOpen}
       title={intl.formatMessage(messages.templateApply)}
       onClose={closeModal}

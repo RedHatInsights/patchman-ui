@@ -19,33 +19,31 @@ import {
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { fetchSystems } from '../../Utilities/api';
 
-const StatusCard = ({ title, color, Icon, value, filter, apply }) => {
-  return (
-    <Card isCompact isFullHeight>
-      <CardTitle style={{ marginTop: '0px' }}>{title}</CardTitle>
-      <CardBody className='fonst-size-sm'>
-        <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
-          <FlexItem spacer={{ default: 'spacerMd' }} alignSelf={{ default: 'alignSelfCenter' }}>
-            <PfIcon size='md'>
-              <Icon color={color} />
-            </PfIcon>
-          </FlexItem>
-          <FlexItem spacer={{ default: 'spacerNone' }}>
-            {(typeof value === 'undefined' && <Skeleton width='24px' />) || (
-              <Button
-                variant='link'
-                onClick={() => apply(filter)}
-                className='patch-status-report-text'
-              >
-                {value}
-              </Button>
-            )}
-          </FlexItem>
-        </Flex>
-      </CardBody>
-    </Card>
-  );
-};
+const StatusCard = ({ title, color, Icon, value, filter, apply }) => (
+  <Card isCompact isFullHeight>
+    <CardTitle style={{ marginTop: '0px' }}>{title}</CardTitle>
+    <CardBody className='fonst-size-sm'>
+      <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
+        <FlexItem spacer={{ default: 'spacerMd' }} alignSelf={{ default: 'alignSelfCenter' }}>
+          <PfIcon size='md'>
+            <Icon color={color} />
+          </PfIcon>
+        </FlexItem>
+        <FlexItem spacer={{ default: 'spacerNone' }}>
+          {(typeof value === 'undefined' && <Skeleton width='24px' />) || (
+            <Button
+              variant='link'
+              onClick={() => apply(filter)}
+              className='patch-status-report-text'
+            >
+              {value}
+            </Button>
+          )}
+        </FlexItem>
+      </Flex>
+    </CardBody>
+  </Card>
+);
 
 const SystemsStatusReport = ({ apply, queryParams }) => {
   const [subtotals, setSubtotals] = React.useState({});
@@ -102,7 +100,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
           <StatusCard
             title={intl.formatMessage(messages.labelsStatusSystemsUpToDate)}
             Icon={CheckCircleIcon}
-            color={'var(--pf-t--global--icon--color--status--success--default)'}
+            color='var(--pf-t--global--icon--color--status--success--default)'
             value={subtotals?.patched}
             apply={apply}
             filter={{ filter: { packages_updatable: 'eq:0' } }}
@@ -112,7 +110,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
           <StatusCard
             title={intl.formatMessage(messages.labelsStatusSystemsWithPatchesAvailable)}
             Icon={PackageIcon}
-            color={'var(--pf-t--global--icon--color--brand--default)'}
+            color='var(--pf-t--global--icon--color--brand--default)'
             value={subtotals?.unpatched}
             apply={apply}
             filter={{ filter: { packages_updatable: 'gt:0' } }}
@@ -122,7 +120,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
           <StatusCard
             title={intl.formatMessage(messages.labelsStatusStaleSystems)}
             Icon={ExclamationTriangleIcon}
-            color={'var(--pf-t--global--icon--color--severity--moderate--default)'}
+            color='var(--pf-t--global--icon--color--severity--moderate--default)'
             value={subtotals?.stale}
             apply={apply}
             filter={{ filter: { stale: true } }}

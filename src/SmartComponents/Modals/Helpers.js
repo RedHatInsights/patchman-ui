@@ -4,8 +4,8 @@ import { GridItem } from '@patternfly/react-core';
 import messages from '../../Messages';
 import { fetchIDs } from '../../Utilities/api';
 
-const filterChosenSystems = (urlFilter, systemsIDs, fetchBatched, totalItems) => {
-  return fetchBatched(
+const filterChosenSystems = (urlFilter, systemsIDs, fetchBatched, totalItems) =>
+  fetchBatched(
     (filter) => fetchIDs('/ids/systems', filter),
     {
       ...urlFilter,
@@ -15,11 +15,10 @@ const filterChosenSystems = (urlFilter, systemsIDs, fetchBatched, totalItems) =>
     100,
   ).then((systemsNotManagedBySatellite) => {
     const aggregatedResult = systemsNotManagedBySatellite.flatMap(({ data }) => data);
-    return systemsIDs.filter((systemID) => {
-      return aggregatedResult?.some((system) => system.id === systemID);
-    });
+    return systemsIDs.filter((systemID) =>
+      aggregatedResult?.some((system) => system.id === systemID),
+    );
   });
-};
 
 export const filterSystemsWithoutTemplates = (systemsIDs, fetchBatched, totalItems) => {
   const urlFilter = { [`filter[template_name]`]: 'neq:' };

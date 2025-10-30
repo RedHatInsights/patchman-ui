@@ -9,7 +9,6 @@ import {
   fetchFulfilled,
 } from './HelperReducers';
 
-// eslint-disable-next-line
 const storeListDefaultsModified = {
   ...storeListDefaults,
   queryParams: {},

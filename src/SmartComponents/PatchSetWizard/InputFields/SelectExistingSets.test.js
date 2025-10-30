@@ -10,9 +10,7 @@ import userEvent from '@testing-library/user-event';
 
 initMocks();
 
-const mockChage = jest.fn((payload) => {
-  return payload;
-});
+const mockChage = jest.fn((payload) => payload);
 
 jest.mock('@data-driven-forms/react-form-renderer/use-form-api', () => () => ({
   change: mockChage,

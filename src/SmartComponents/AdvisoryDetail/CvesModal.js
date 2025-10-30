@@ -89,8 +89,8 @@ const CvesModal = ({ cveIds }) => {
           onSetPage={handlePageChange}
           onPerPageSelect={handlePerPageChange}
           apply={handleFilter}
-          tableOUIA={'cves-table'}
-          paginationOUIA={'cves-pagination'}
+          tableOUIA='cves-table'
+          paginationOUIA='cves-pagination'
           onSort={handleSort}
           sortBy={sortBy}
           store={{

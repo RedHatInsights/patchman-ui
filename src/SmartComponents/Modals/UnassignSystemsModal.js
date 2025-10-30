@@ -47,7 +47,7 @@ const UnassignSystemsModal = ({
 
   return (
     <Modal
-      variant={'small'}
+      variant='small'
       isOpen={unassignSystemsModalState.isUnassignSystemsModalOpen}
       title={intl.formatMessage(messages.textUnassignSystemsTitle)}
       onClose={handleModalClose}

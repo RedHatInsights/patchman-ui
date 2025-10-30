@@ -11,170 +11,172 @@ import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavaila
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import {
-    changeSystemAdvisoryListParams,
-    clearSystemAdvisoriesStore,
-    expandSystemAdvisoryRow,
-    fetchApplicableSystemAdvisories,
-    selectSystemAdvisoryRow
+  changeSystemAdvisoryListParams,
+  clearSystemAdvisoriesStore,
+  expandSystemAdvisoryRow,
+  fetchApplicableSystemAdvisories,
+  selectSystemAdvisoryRow,
 } from '../../store/Actions/Actions';
 import { exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON } from '../../Utilities/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
-    arrayFromObj, createSortBy, decodeQueryparams,
-    getRowIdByIndexExpandable, remediationProvider, encodeURLParams
+  arrayFromObj,
+  createSortBy,
+  decodeQueryparams,
+  getRowIdByIndexExpandable,
+  remediationProvider,
+  encodeURLParams,
 } from '../../Utilities/Helpers';
 import {
-    usePerPageSelect, useSetPage, useSortColumn, useOnExport,
-    useOnSelect, ID_API_ENDPOINTS
+  usePerPageSelect,
+  useSetPage,
+  useSortColumn,
+  useOnExport,
+  useOnSelect,
+  ID_API_ENDPOINTS,
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import severityFilter from '../../PresentationalComponents/Filters/SeverityFilter';
 
 const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
-    const dispatch = useDispatch();
-    const [firstMount, setFirstMount] = useState(true);
-    const advisories = useSelector(
-        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.rows
-    );
+  const dispatch = useDispatch();
+  const [firstMount, setFirstMount] = useState(true);
+  const advisories = useSelector(({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.rows);
 
-    const expandedRows = useSelector(
-        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.expandedRows
-    );
-    const queryParams = useSelector(
-        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.queryParams
-    );
-    const selectedRows = useSelector(
-        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.selectedRows
-    );
-    const metadata = useSelector(
-        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.metadata
-    );
-    const status = useSelector(
-        ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.status
-    );
-    const rows = useMemo(
-        () =>
-            createSystemAdvisoriesRows(advisories, expandedRows, selectedRows, metadata),
-        [advisories, expandedRows, selectedRows]
-    );
+  const expandedRows = useSelector(
+    ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.expandedRows,
+  );
+  const queryParams = useSelector(
+    ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.queryParams,
+  );
+  const selectedRows = useSelector(
+    ({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.selectedRows,
+  );
+  const metadata = useSelector(({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.metadata);
+  const status = useSelector(({ SystemAdvisoryListStore }) => SystemAdvisoryListStore.status);
+  const rows = useMemo(
+    () => createSystemAdvisoriesRows(advisories, expandedRows, selectedRows, metadata),
+    [advisories, expandedRows, selectedRows],
+  );
 
-    const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-    useEffect(() => {
-        return () => dispatch(clearSystemAdvisoriesStore());
-    }, []);
+  useEffect(() => () => dispatch(clearSystemAdvisoriesStore()), []);
 
-    useEffect(() => {
-        if (firstMount) {
-            apply(decodeQueryparams('?' + searchParams.toString()));
-            setFirstMount(false);
-        } else {
-            setSearchParams(encodeURLParams(queryParams), { replace: true });
-            dispatch(
-                fetchApplicableSystemAdvisories({ id: inventoryId, ...queryParams })
-            );
-        }
-    }, [firstMount, queryParams]);
-
-    useEffect(() => {
-        if (shouldRefresh) {
-            dispatch(fetchApplicableSystemAdvisories({ id: inventoryId, ...queryParams }));
-        }
-    }, [shouldRefresh]);
-
-    const onCollapse = useCallback((_, rowId, value) =>
-        dispatch(
-            expandSystemAdvisoryRow({
-                rowId: getRowIdByIndexExpandable(advisories, rowId),
-                value
-            })
-        ), [JSON.stringify(advisories)]
-    );
-
-    const constructFilename = (advisory) => advisory?.id || advisory;
-    const onSelect = useOnSelect(
-        rows,
-        selectedRows,
-        {
-            endpoint: ID_API_ENDPOINTS.systemAdvisories(inventoryId),
-            queryParams,
-            selectionDispatcher: selectSystemAdvisoryRow,
-            constructFilename,
-            totalItems: metadata?.total_items
-        }
-    );
-
-    const onSort = useSortColumn(systemAdvisoriesColumns, apply, 2);
-    const sortBy = React.useMemo(
-        () => createSortBy(systemAdvisoriesColumns, metadata.sort, 2),
-        [metadata.sort]
-    );
-    const onSetPage = useSetPage(metadata.limit, apply);
-    const onPerPageSelect = usePerPageSelect(apply);
-
-    function apply(params) {
-        dispatch(changeSystemAdvisoryListParams({ id: inventoryId, ...params }));
+  useEffect(() => {
+    if (firstMount) {
+      apply(decodeQueryparams('?' + searchParams.toString()));
+      setFirstMount(false);
+    } else {
+      setSearchParams(encodeURLParams(queryParams), { replace: true });
+      dispatch(fetchApplicableSystemAdvisories({ id: inventoryId, ...queryParams }));
     }
+  }, [firstMount, queryParams]);
 
-    const errorState = status.code === 404 ? handleNoSystemData() : <Unavailable/>;
+  useEffect(() => {
+    if (shouldRefresh) {
+      dispatch(fetchApplicableSystemAdvisories({ id: inventoryId, ...queryParams }));
+    }
+  }, [shouldRefresh]);
 
-    const onExport = useOnExport(inventoryId, queryParams, {
-        csv: exportSystemAdvisoriesCSV,
-        json: exportSystemAdvisoriesJSON
-    }, dispatch);
+  const onCollapse = useCallback(
+    (_, rowId, value) =>
+      dispatch(
+        expandSystemAdvisoryRow({
+          rowId: getRowIdByIndexExpandable(advisories, rowId),
+          value,
+        }),
+      ),
+    [JSON.stringify(advisories)],
+  );
 
-    return (
-        <React.Fragment>
-            <TableView
-                columns={systemAdvisoriesColumns}
-                compact
-                onCollapse={onCollapse}
-                onSelect={onSelect}
-                onSetPage={onSetPage}
-                onPerPageSelect={onPerPageSelect}
-                onSort={onSort}
-                onExport={onExport}
-                sortBy={sortBy}
-                remediationProvider={() =>
-                    remediationProvider(
-                        arrayFromObj(selectedRows),
-                        inventoryId,
-                        remediationIdentifiers.advisory
-                    )
-                }
-                selectedRows={selectedRows}
-                systemId={inventoryId}
-                apply={apply}
-                store={{ rows, metadata, status, queryParams }}
-                remediationButtonOUIA={'toolbar-remediation-button'}
-                tableOUIA={'system-advisories-table'}
-                paginationOUIA={'system-advisories-pagination'}
-                filterConfig={{
-                    items: [
-                        searchFilter(apply, queryParams.search,
-                            intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle),
-                            intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder)
-                        ),
-                        typeFilter(apply, queryParams.filter),
-                        severityFilter(apply, queryParams?.filter),
-                        publishDateFilter(apply, queryParams.filter),
-                        rebootFilter(apply, queryParams.filter),
-                        advisoryStatusFilter(apply, queryParams.filter)
-                    ]
-                }}
-                errorState={errorState}
-                searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
-                hasColumnManagement
-            />
-        </React.Fragment>
-    );
+  const constructFilename = (advisory) => advisory?.id || advisory;
+  const onSelect = useOnSelect(rows, selectedRows, {
+    endpoint: ID_API_ENDPOINTS.systemAdvisories(inventoryId),
+    queryParams,
+    selectionDispatcher: selectSystemAdvisoryRow,
+    constructFilename,
+    totalItems: metadata?.total_items,
+  });
+
+  const onSort = useSortColumn(systemAdvisoriesColumns, apply, 2);
+  const sortBy = React.useMemo(
+    () => createSortBy(systemAdvisoriesColumns, metadata.sort, 2),
+    [metadata.sort],
+  );
+  const onSetPage = useSetPage(metadata.limit, apply);
+  const onPerPageSelect = usePerPageSelect(apply);
+
+  function apply(params) {
+    dispatch(changeSystemAdvisoryListParams({ id: inventoryId, ...params }));
+  }
+
+  const errorState = status.code === 404 ? handleNoSystemData() : <Unavailable />;
+
+  const onExport = useOnExport(
+    inventoryId,
+    queryParams,
+    {
+      csv: exportSystemAdvisoriesCSV,
+      json: exportSystemAdvisoriesJSON,
+    },
+    dispatch,
+  );
+
+  return (
+    <React.Fragment>
+      <TableView
+        columns={systemAdvisoriesColumns}
+        compact
+        onCollapse={onCollapse}
+        onSelect={onSelect}
+        onSetPage={onSetPage}
+        onPerPageSelect={onPerPageSelect}
+        onSort={onSort}
+        onExport={onExport}
+        sortBy={sortBy}
+        remediationProvider={() =>
+          remediationProvider(
+            arrayFromObj(selectedRows),
+            inventoryId,
+            remediationIdentifiers.advisory,
+          )
+        }
+        selectedRows={selectedRows}
+        systemId={inventoryId}
+        apply={apply}
+        store={{ rows, metadata, status, queryParams }}
+        remediationButtonOUIA='toolbar-remediation-button'
+        tableOUIA='system-advisories-table'
+        paginationOUIA='system-advisories-pagination'
+        filterConfig={{
+          items: [
+            searchFilter(
+              apply,
+              queryParams.search,
+              intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle),
+              intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder),
+            ),
+            typeFilter(apply, queryParams.filter),
+            severityFilter(apply, queryParams?.filter),
+            publishDateFilter(apply, queryParams.filter),
+            rebootFilter(apply, queryParams.filter),
+            advisoryStatusFilter(apply, queryParams.filter),
+          ],
+        }}
+        errorState={errorState}
+        searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
+        hasColumnManagement
+      />
+    </React.Fragment>
+  );
 };
 
 SystemAdvisories.propTypes = {
-    handleNoSystemData: propTypes.func,
-    inventoryId: propTypes.string.isRequired,
-    shouldRefresh: propTypes.bool
+  handleNoSystemData: propTypes.func,
+  inventoryId: propTypes.string.isRequired,
+  shouldRefresh: propTypes.bool,
 };
 export default SystemAdvisories;

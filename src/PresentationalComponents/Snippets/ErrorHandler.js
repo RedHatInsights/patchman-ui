@@ -9,9 +9,9 @@ import { LockIcon } from '@patternfly/react-icons';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
-//TODO: use the shared component from platform
+// TODO: use the shared component from platform
 import NoRegisteredSystems from './NoRegisteredSystems';
-//import { NoRegisteredSystems } from '@redhat-cloud-services/frontend-components/NoRegisteredSystems';
+// import { NoRegisteredSystems } from '@redhat-cloud-services/frontend-components/NoRegisteredSystems';
 
 const ErrorHandler = ({ code, ErrorState, EmptyState, metadata = {} }) => {
   switch (code) {
