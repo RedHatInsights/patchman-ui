@@ -21,7 +21,7 @@ const SystemDetail = ({ isInventoryApp, inventoryId, shouldRefresh }) => {
 
   const handleNoSystemData = () => {
     isInventoryApp && setTabsHidden((prevTabsHidden) => !prevTabsHidden);
-    return (isInventoryApp && null) || <NotConnected />;
+    return isInventoryApp ? null : <NotConnected />;
   };
 
   return (
