@@ -1,6 +1,7 @@
 import react from 'eslint-plugin-react';
 import prettier from 'eslint-plugin-prettier';
 import unusedImports from 'eslint-plugin-unused-imports';
+import importPlugin from 'eslint-plugin-import';
 import cypress from 'eslint-plugin-cypress';
 import globals from 'globals';
 import babelParser from '@babel/eslint-parser';
@@ -33,6 +34,7 @@ export default [
       prettier,
       'unused-imports': unusedImports,
       cypress,
+      import: importPlugin,
     },
 
     languageOptions: {
@@ -76,7 +78,7 @@ export default [
       camelcase: 'off',
       'spaced-comment': 'error',
       'prettier/prettier': ['warn', { singleQuote: true }],
-      'no-duplicate-imports': 'error',
+      'import/no-duplicates': 'error', // This rule provides auto-fix capability
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': ['warn'],
       'no-empty-pattern': ['error', { allowObjectPatternsAsParameters: true }],

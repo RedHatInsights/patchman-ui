@@ -11,6 +11,8 @@ import {
   useDeepCompareEffect,
   useGetEntities,
   useRemoveFilter,
+  ID_API_ENDPOINTS,
+  useOnSelect,
 } from '../../Utilities/hooks';
 import {
   changePatchSetDetailsSystemsMetadata,
@@ -20,9 +22,19 @@ import {
   clearTemplateDetail,
   fetchPatchSetSystemsNoFiltersAction,
   fetchTemplateDetail,
+  systemSelectAction,
 } from '../../store/Actions/Actions';
-import { Bullseye, Skeleton, Spinner, Content, Tooltip } from '@patternfly/react-core';
-import { Dropdown, DropdownItem, DropdownPosition, DropdownToggle } from '@patternfly/react-core';
+import {
+  Bullseye,
+  Skeleton,
+  Spinner,
+  Content,
+  Tooltip,
+  Dropdown,
+  DropdownItem,
+  DropdownPosition,
+  DropdownToggle,
+} from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
 import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
@@ -54,8 +66,6 @@ import {
 } from '../../store/Reducers/InventoryEntitiesReducer';
 import { SYSTEMS_LIST_COLUMNS } from '../Systems/SystemsListAssets';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
-import { ID_API_ENDPOINTS, useOnSelect } from '../../Utilities/hooks';
-import { systemSelectAction } from '../../store/Actions/Actions';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const PatchSetDetail = () => {
