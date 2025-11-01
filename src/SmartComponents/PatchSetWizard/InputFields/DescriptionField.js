@@ -6,30 +6,30 @@ import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
 
 const DescriptionField = (props) => {
-    const { input } = useFieldApi(props);
-    const formOptions = useFormApi();
-    const values = formOptions.getState()?.values;
+  const { input } = useFieldApi(props);
+  const formOptions = useFormApi();
+  const values = formOptions.getState()?.values;
 
-    const [description, setDescription] = useState(values?.description);
+  const [description, setDescription] = useState(values?.description);
 
-    useEffect(() => {
-        setDescription(values.description);
-    }, [values.description]);
+  useEffect(() => {
+    setDescription(values.description);
+  }, [values.description]);
 
-    return (
-        <FormGroup fieldId="description" label={intl.formatMessage(messages.labelsDescription)}>
-            <TextInput
-                type="text"
-                isRequired
-                value={description}
-                onChange={(_event, val) => {
-                    input.onChange(val);
-                    setDescription(val);
-                }}
-                aria-label="description"
-            />
-        </FormGroup>
-    );
+  return (
+    <FormGroup fieldId='description' label={intl.formatMessage(messages.labelsDescription)}>
+      <TextInput
+        type='text'
+        isRequired
+        value={description}
+        onChange={(_event, val) => {
+          input.onChange(val);
+          setDescription(val);
+        }}
+        aria-label='description'
+      />
+    </FormGroup>
+  );
 };
 
 export default DescriptionField;

@@ -1,59 +1,59 @@
 table.patchCompactInventory {
-    .ins-composed-col {
-        font-size: var(--pf-v6-c-table--m-compact--FontSize);
-    }
+  .ins-composed-col {
+    font-size: var(--pf-v6-c-table--m-compact--FontSize);
+  }
 }
 
 .patch-root {
-    overflow: inherit !important;
+  overflow: inherit !important;
 
-    .pf-v6-c-table__expandable-row-content {
-        .patch-advisory-description {
-            font-size: var(--pf-t--global--font--size--body--default);
-        }
+  .pf-v6-c-table__expandable-row-content {
+    .patch-advisory-description {
+      font-size: var(--pf-t--global--font--size--body--default);
     }
+  }
 
-    .ins-c-primary-toolbar__filter {
-        margin-right: 16px;
-    }
+  .ins-c-primary-toolbar__filter {
+    margin-right: 16px;
+  }
 
-    .ins-c-inventory__list-tags {
-        display: block !important;
-    }
+  .ins-c-inventory__list-tags {
+    display: block !important;
+  }
 
-    .ins-c-tag-count{
-        padding-top: 2px;
-        padding-bottom: 0;
-        padding-left: 2px;
-        display: contents;
-        height: 20px;
-    }
+  .ins-c-tag-count {
+    padding-top: 2px;
+    padding-bottom: 0;
+    padding-left: 2px;
+    display: contents;
+    height: 20px;
+  }
 }
 
 .ins-c-primary-toolbar {
-    .pf-v6-c-toolbar__content.pf-m-hidden {
-        display: none !important;
-    }
+  .pf-v6-c-toolbar__content.pf-m-hidden {
+    display: none !important;
+  }
 }
 
 .patch-root
-    .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items)
-    .pf-v6-c-toolbar__content
-    .pf-v6-c-toolbar__item:last-child {
-    min-width: unset !important;
+  .ins-c-inventory__table--toolbar:not(.ins-c-inventory__table--toolbar-has-items)
+  .pf-v6-c-toolbar__content
+  .pf-v6-c-toolbar__item:last-child {
+  min-width: unset !important;
 }
 
 .patch-status-report-text {
-    color: var(--pf-t--global--icon--color--brand--default);
-    font-weight: bold;
-    margin: 0px;
-    padding: 0px
+  color: var(--pf-t--global--icon--color--brand--default);
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
 }
 
 .pf-v6-c-table__th {
-    font-weight: var(--pf-t--global--font--weight--heading--default);
+  font-weight: var(--pf-t--global--font--weight--heading--default);
 }
 
 .pf-v6-c-page__main-section {
-    --pf-v6-c-page__main-section--RowGap: 0;
+  --pf-v6-c-page__main-section--RowGap: 0;
 }
