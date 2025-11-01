@@ -5,11 +5,10 @@ import {
   EmptyStateVariant,
   Tooltip,
 } from '@patternfly/react-core';
-import { SearchIcon } from '@patternfly/react-icons';
+import { SearchIcon, PlusCircleIcon } from '@patternfly/react-icons';
 import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { PlusCircleIcon } from '@patternfly/react-icons';
 import PropTypes from 'prop-types';
 
 export const EmptyAdvisoryList = () => (

@@ -1,7 +1,6 @@
 import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
 import propTypes from 'prop-types';
-import React from 'react';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { truncateDescription } from '../../Utilities/Helpers';
 import WithLoader, { WithLoaderVariants } from '../WithLoader/WithLoader';
 

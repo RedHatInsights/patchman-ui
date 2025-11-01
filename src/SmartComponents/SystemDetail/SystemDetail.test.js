@@ -1,8 +1,7 @@
 import SystemDetail from './SystemDetail';
-import { useLocation } from 'react-router-dom';
+import { useLocation, BrowserRouter as Router } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { systemAdvisoryRows, systemPackages } from '../../Utilities/RawDataForTesting';
 import { storeListDefaults } from '../../Utilities/constants';
