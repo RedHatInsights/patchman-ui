@@ -44,6 +44,7 @@ export default [
         ...globals.jest,
         insights: true,
         React: true,
+        mount: true, // Set to true to allow it to be used without definition
       },
 
       parser: babelParser,
