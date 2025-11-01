@@ -1,8 +1,7 @@
-import { Icon, Split, SplitItem, Title } from '@patternfly/react-core';
+import { Icon, Split, SplitItem, Title, Flex, FlexItem } from '@patternfly/react-core';
 import { SecurityIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import React from 'react';
-import { Flex, FlexItem } from '@patternfly/react-core';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 

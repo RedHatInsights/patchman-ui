@@ -18,12 +18,11 @@ import TableView from '../../../PresentationalComponents/TableView/TableView';
 import staleFilter from '../../../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../../../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import { fetchSystems, fetchPatchSetSystems } from '../../../Utilities/api';
-import { REVIEW_SYSTEM_COLUMNS } from '../WizardAssets';
+import { REVIEW_SYSTEM_COLUMNS, useFetchAllTemplateData } from '../WizardAssets';
 import messages from '../../../Messages';
 import { intl } from '../../../Utilities/IntlProvider';
 import { systemsListDefaultFilters } from '../../../Utilities/constants';
 import useOsVersionFilter from '../../../PresentationalComponents/Filters/OsVersionFilter';
-import { useFetchAllTemplateData } from '../WizardAssets';
 
 export const ReviewSystems = ({ systemsIDs = [], patchSetID, ...props }) => {
   const { input } = useFieldApi(props);

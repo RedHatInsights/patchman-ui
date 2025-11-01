@@ -2,8 +2,8 @@ import {
   createAdvisorySystemsRows,
   createSystemsRows,
   createPatchSetDetailRows,
+  createPackageSystemsRows,
 } from '../../Utilities/DataMappers';
-import { createPackageSystemsRows } from '../../Utilities/DataMappers';
 import { selectRows, fetchRejected } from './HelperReducers';
 import * as ActionTypes from '../ActionTypes';
 

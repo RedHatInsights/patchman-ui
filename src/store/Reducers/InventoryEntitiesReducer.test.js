@@ -1,5 +1,9 @@
-import { inventoryEntitiesReducer, initialState } from './InventoryEntitiesReducer';
-import { modifyInventory, modifyPackageSystems } from './InventoryEntitiesReducer';
+import {
+  inventoryEntitiesReducer,
+  initialState,
+  modifyInventory,
+  modifyPackageSystems,
+} from './InventoryEntitiesReducer';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 
 describe('InventoryEntitiesReducer tests', () => {

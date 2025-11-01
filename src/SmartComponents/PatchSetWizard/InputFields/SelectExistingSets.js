@@ -3,8 +3,18 @@ import React, { useState, useMemo, useEffect } from 'react';
 import propTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AngleLeftIcon, AngleRightIcon } from '@patternfly/react-icons';
-import { FormGroup, Spinner, Flex, FlexItem, Button, Icon } from '@patternfly/react-core';
-import { Select, SelectOption, MenuToggle, SelectList } from '@patternfly/react-core';
+import {
+  FormGroup,
+  Spinner,
+  Flex,
+  FlexItem,
+  Button,
+  Icon,
+  Select,
+  SelectOption,
+  MenuToggle,
+  SelectList,
+} from '@patternfly/react-core';
 import useFormApi from '@data-driven-forms/react-form-renderer/use-form-api';
 import {
   fetchPatchSetsAction,

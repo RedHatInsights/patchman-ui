@@ -1,12 +1,11 @@
 import InventoryDetail from './InventoryDetail';
 import { act } from 'react-dom/test-utils';
 import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { entityDetail } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks, mountWithIntl } from '../../Utilities/unitTestingUtilities.js';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { InventoryDetailHead } from '@redhat-cloud-services/frontend-components/Inventory';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 import { useFeatureFlag } from '../../Utilities/hooks';
