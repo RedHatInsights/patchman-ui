@@ -31,7 +31,7 @@ export APP_NAME="patchman"
 export DEPLOY_TIMEOUT="900"  # 15min
 export IQE_CJI_TIMEOUT="30m"
 export REF_ENV="insights-production"
-export COMPONENTS_W_RESOURCES="vmaas patchman"
+export COMPONENTS_W_RESOURCES="vmaas patchman pulp"
 export COMPONENT_NAME="patchman-ui"
 
 IQE_PLUGINS="patchman"
