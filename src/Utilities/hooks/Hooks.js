@@ -167,11 +167,10 @@ export const useBulkSelectConfig = (selectedCount, onSelect, metadata, rows, onC
         onSelect: () => {
             let action = 'none';
             if (selectedCount === 0) {
-                setBulkLoading(true);
-                action = 'all';
+                action = 'page';
             }
 
-            onSelect(action, null, null, setBulkLoading);
+            onSelect(action);
         },
         toggleProps: {
             'data-ouia-component-type': 'bulk-select-toggle-button',
