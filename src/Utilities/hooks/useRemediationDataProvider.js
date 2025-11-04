@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { removeUndefinedObjectKeys } from '../Helpers';
 
@@ -23,18 +22,16 @@ const deligateWorkerTask = (worker, task) => {
   });
 };
 
-export const prepareRemediationPairs = async (task, dispatch) => {
+export const prepareRemediationPairs = async (task, addNotification) => {
   const [worker, terminateWorker] = initializeWorker();
   const deligatedTask = deligateWorkerTask(worker, task);
 
   const response = await deligatedTask.catch((err) =>
-    dispatch(
-      addNotification({
-        title: `There was an error while processing.`,
-        description: err,
-        variant: 'danger',
-      }),
-    ),
+    addNotification({
+      title: `There was an error while processing.`,
+      description: err,
+      variant: 'danger',
+    }),
   );
 
   terminateWorker();
@@ -55,8 +52,8 @@ export const useRemediationDataProvider = (
   remediationType,
   areAllSelected,
 ) => {
-  const dispatch = useDispatch();
   const chrome = useChrome();
+  const addNotification = useAddNotification();
   const remediationDataProvider = async () => {
     setRemediationLoading(true);
 
@@ -70,7 +67,7 @@ export const useRemediationDataProvider = (
         areAllSelected,
         authToken,
       },
-      dispatch,
+      addNotification,
     );
 
     setRemediationLoading(false);

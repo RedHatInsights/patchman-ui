@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import NotificationPortal from '@redhat-cloud-services/frontend-components-notifications/NotificationPortal';
+import { NotificationsProvider } from '@redhat-cloud-services/frontend-components-notifications';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACProvider';
@@ -42,9 +42,10 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <NotificationPortal />
       <RBACProvider appName='patch'>
-        <Routes />
+        <NotificationsProvider>
+          <Routes />
+        </NotificationsProvider>
       </RBACProvider>
     </React.Fragment>
   );

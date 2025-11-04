@@ -6,8 +6,7 @@ import { injectIntl } from 'react-intl';
 import SelectExistingSets from '../PatchSetWizard/InputFields/SelectExistingSets';
 import messages from '../../Messages';
 import { updatePatchSets } from '../../Utilities/api';
-import { useDispatch } from 'react-redux';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { patchSetAssignSystemsNotifications } from '../PatchSet/PatchSetAssets';
 import { filterSelectedActiveSystemIDs } from '../../Utilities/Helpers';
 import { filterSatelliteManagedSystems } from './Helpers';
@@ -15,8 +14,6 @@ import { useFetchBatched } from '../../Utilities/hooks';
 import isEmpty from 'lodash/isEmpty';
 
 const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl, totalItems }) => {
-  const dispatch = useDispatch();
-
   const { systemsIDs, isAssignSystemsModalOpen } = patchSetState;
   const [selectedPatchSet, setSelectedPatchSet] = useState([]);
   const [selectedPatchSetDetails, setSelectedPatchSetDetails] = useState({});
@@ -24,6 +21,7 @@ const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl, totalI
   const [systemsNotManagedBySatellite, setSystemsNotManagedBySatellite] = useState([]);
   const [systemsLoading, setSystemsLoading] = useState(true);
   const { fetchBatched } = useFetchBatched();
+  const addNotification = useAddNotification();
 
   const closeModal = () => {
     setPatchSetState({
@@ -42,18 +40,16 @@ const AssignSystemsModal = ({ patchSetState = {}, setPatchSetState, intl, totalI
 
     updatePatchSets({ inventory_ids: systemsIDs }, selectedPatchSetDetails.id)
       .then(() => {
-        dispatch(
-          addNotification(patchSetAssignSystemsNotifications(Object.keys(systems).length).success),
-        );
-        setPatchSetState({
-          ...patchSetState,
-          shouldRefresh: true,
-          isAssignSystemsModalOpen: false,
-          systemsIDs: [],
-        });
+        (addNotification(patchSetAssignSystemsNotifications(Object.keys(systems).length).success),
+          setPatchSetState({
+            ...patchSetState,
+            shouldRefresh: true,
+            isAssignSystemsModalOpen: false,
+            systemsIDs: [],
+          }));
       })
       .catch(() => {
-        dispatch(addNotification(patchSetAssignSystemsNotifications().failure));
+        addNotification(patchSetAssignSystemsNotifications().failure);
       });
 
     closeModal();

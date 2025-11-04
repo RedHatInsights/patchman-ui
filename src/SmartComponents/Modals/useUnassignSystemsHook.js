@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 
 import { unassignSystemFromPatchSet } from '../../Utilities/api';
 import { patchSetUnassignSystemsNotifications } from '../PatchSet/PatchSetAssets';
@@ -11,19 +10,18 @@ import { patchSetUnassignSystemsNotifications } from '../PatchSet/PatchSetAssets
  * @returns {handleSystemsRemoval}
  */
 export const useUnassignSystemsHook = (handleModalToggle, systemsWithPatchSet) => {
-  const dispatch = useDispatch();
+  const addNotification = useAddNotification();
+
   const handleSystemsRemoval = async () => {
     const result = await unassignSystemFromPatchSet({ inventory_ids: systemsWithPatchSet });
     handleModalToggle(true);
 
     if (result.status === 200) {
-      dispatch(
-        addNotification(
-          patchSetUnassignSystemsNotifications(systemsWithPatchSet?.length || 0).success,
-        ),
+      addNotification(
+        patchSetUnassignSystemsNotifications(systemsWithPatchSet?.length || 0).success,
       );
     } else {
-      dispatch(addNotification(patchSetUnassignSystemsNotifications().failure));
+      addNotification(patchSetUnassignSystemsNotifications().failure);
     }
   };
 

@@ -1,5 +1,3 @@
-import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
-import { notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
 import { AdvisoryListStore } from './Reducers/AdvisoryListStore';
@@ -43,10 +41,9 @@ export const defaultReducers = {
   PatchSetDetailStore,
   PatchSetDetailSystemsStore,
   SpecificPatchSetReducer,
-  notifications: notificationsReducer,
 };
 
 export const store = createStore(
   combineReducers(defaultReducers),
-  composeEnhancers(applyMiddleware(promiseMiddleware, notificationsMiddleware())),
+  composeEnhancers(applyMiddleware(promiseMiddleware)),
 );
