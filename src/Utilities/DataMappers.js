@@ -218,6 +218,7 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
 export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
   const data = rows.map(({ id, ...rest }) => {
     const {
+      groups,
       packages_installed: installedPckg,
       os,
       rhsm,
@@ -227,6 +228,7 @@ export const createAdvisorySystemsRows = (rows, selectedRows = {}) => {
     } = rest;
     return {
       id,
+      groups,
       ...rest,
       key: Math.random().toString() + id,
       packages_installed: installedPckg,
