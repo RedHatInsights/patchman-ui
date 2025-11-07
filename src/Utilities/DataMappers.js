@@ -193,6 +193,7 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
     rows &&
     rows.map((row) => ({
       id: row.id,
+      groups: row.groups,
       key: Math.random().toString() + row.id,
       display_name: row.display_name,
       installed_evra: row.installed_evra,

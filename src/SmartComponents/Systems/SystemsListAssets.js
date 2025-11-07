@@ -186,6 +186,12 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
     isUntoggleable: true,
   },
   {
+    key: 'groups',
+    title: 'Workspace',
+    isShown: true,
+    isShownByDefault: true,
+  },
+  {
     key: 'tags',
     title: 'Tags',
     isShown: true,

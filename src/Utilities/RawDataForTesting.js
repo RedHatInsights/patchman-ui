@@ -37,6 +37,7 @@ export const systemAdvisoryRows = [
 export const systemRows = [
   {
     id: 'test-system-id-1',
+    groups: [{ id: '019a2fe7-92df-7430-bdb6-cb02d1c8162b', name: 'Ungrouped Hosts' }],
     created: '2021-06-05T09:03:09.154453Z',
     culled_timestamp: '2021-06-20T14:03:09.096101Z',
     display_name: 'test-system-1',
@@ -60,6 +61,7 @@ export const systemRows = [
   },
   {
     id: 'test-system-id-2',
+    groups: [{ id: '019a2fe7-92df-7430-bdb6-cb02d1c8162b', name: 'Ungrouped Hosts' }],
     created: '2021-06-05T09:03:09.154453Z',
     culled_timestamp: '2021-06-20T14:03:09.096101Z',
     display_name: 'test-system-2',
@@ -328,6 +330,7 @@ export const systemsStoreState = {
   rows: [
     {
       id: 'test-system-id-1',
+      groups: [{ id: '019a2fe7-92df-7430-bdb6-cb02d1c8162b', name: 'Ungrouped Hosts' }],
       created: '2021-06-05T09:03:09.154453Z',
       culled_timestamp: '2021-06-20T14:03:09.096101Z',
       display_name: 'test-system-1',
@@ -351,6 +354,7 @@ export const systemsStoreState = {
     },
     {
       id: 'test-system-id-2',
+      groups: [{ id: '019a2fe7-92df-7430-bdb6-cb02d1c8162b', name: 'Ungrouped Hosts' }],
       created: '2021-06-05T09:03:09.154453Z',
       culled_timestamp: '2021-06-20T14:03:09.096101Z',
       display_name: 'test-system-2',
