@@ -191,7 +191,7 @@ const PackageSystems = ({ packageName }) => {
           isFullView
           autoRefresh
           initialLoading
-          hideFilters={{ all: true, tags: false, operatingSystem: false }}
+          hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
           columns={(inventoryColumns) =>
             mergeInventoryColumns(
               appliedColumns.filter((column) => column.isShown),
