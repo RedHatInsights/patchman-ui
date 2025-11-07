@@ -80,13 +80,14 @@ describe('AdvisorySystemsTable.js', () => {
     );
   });
 
-  it('should use os and tag filter from Inventory', async () => {
+  it('should use os, tag and workspace filter from Inventory', async () => {
     await renderComponent(mockState);
     expect(InventoryTable).toHaveBeenCalledWith(
       expect.objectContaining({
         hideFilters: {
           all: true,
           tags: false,
+          hostGroupFilter: false,
           operatingSystem: false,
         },
       }),
