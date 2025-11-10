@@ -1,7 +1,6 @@
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import propTypes from 'prop-types';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 import { Spinner } from '@patternfly/react-core';
 import { intl } from '../../Utilities/IntlProvider';
@@ -14,9 +13,9 @@ const AsyncRemediationButton = ({
   patchNoAdvisoryText,
   hasSelected,
 }) => {
-  const dispatch = useDispatch();
+  const addNotification = useAddNotification();
   const handleRemediationSuccess = (res) => {
-    dispatch(addNotification(res.getNotification()));
+    addNotification(res.getNotification());
   };
 
   return (

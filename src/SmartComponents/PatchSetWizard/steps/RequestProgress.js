@@ -13,16 +13,15 @@ import {
 import { CheckCircleIcon, ExclamationCircleIcon, InProgressIcon } from '@patternfly/react-icons';
 import { intl } from '../../../Utilities/IntlProvider';
 import messages from '../../../Messages';
-import { useDispatch } from 'react-redux';
 import { apiFailedNotification } from '../WizardAssets';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 
 const RequestProgress = ({ onClose, state }) => {
   const { requestPending, failed, error } = state;
-  const dispatch = useDispatch();
+  const addNotification = useAddNotification();
 
   if (failed) {
-    dispatch(addNotification(apiFailedNotification(error.detail)));
+    addNotification(apiFailedNotification(error.detail));
   }
 
   return (

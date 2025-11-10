@@ -26,10 +26,7 @@ import {
   ID_API_ENDPOINTS,
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import {
-  clearNotifications,
-  addNotification,
-} from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import {
   patchSetColumns,
   CreatePatchSetButton as createPatchSetButton,
@@ -57,6 +54,7 @@ const PatchSet = () => {
   const [firstMount, setFirstMount] = React.useState(true);
   const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = React.useState(false);
   const [patchSetToDelete, setPatchSetToDelete] = React.useState(null);
+  const addNotification = useAddNotification();
 
   const patchSets = useSelector(({ PatchSetsStore }) => PatchSetsStore.rows);
 
@@ -81,7 +79,6 @@ const PatchSet = () => {
   useEffect(
     () => () => {
       dispatch(clearPatchSetsAction());
-      dispatch(clearNotifications());
     },
     [],
   );
@@ -128,13 +125,11 @@ const PatchSet = () => {
   const handlePatchSetDelete = () => {
     deletePatchSet(patchSetToDelete.id)
       .then(() => {
-        dispatch(
-          addNotification(patchSetDeleteNotifications(patchSetToDelete.displayName).success),
-        );
+        addNotification(patchSetDeleteNotifications(patchSetToDelete.displayName).success);
         refreshTable();
       })
       .catch(() => {
-        dispatch(addNotification(patchSetDeleteNotifications(patchSetToDelete.displayName).error));
+        addNotification(patchSetDeleteNotifications(patchSetToDelete.displayName).error);
       });
   };
 

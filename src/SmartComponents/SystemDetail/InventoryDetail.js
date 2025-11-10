@@ -13,7 +13,6 @@ import {
 } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Alert, Grid, GridItem, Content } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
-import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import { usePatchSetState } from '../../Utilities/hooks';
 import { useParams } from 'react-router-dom';
@@ -38,10 +37,6 @@ const InventoryDetail = () => {
 
   useEffect(() => {
     dispatch(fetchSystemDetailsAction(inventoryId));
-
-    return () => {
-      dispatch(clearNotifications());
-    };
   }, []);
 
   useEffect(() => {

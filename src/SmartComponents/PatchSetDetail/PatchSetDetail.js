@@ -37,7 +37,7 @@ import {
 } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
 import { deletePatchSet, fetchPatchSetSystems } from '../../Utilities/api';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import {
@@ -79,6 +79,7 @@ const PatchSetDetail = () => {
   const inventory = useRef(null);
 
   const { templateName: patchSetId } = useParams();
+  const addNotification = useAddNotification();
 
   const [firstMount, setFirstMount] = React.useState(true);
   const [isHeaderDropdownOpen, setHeaderDropdownOpen] = useState(false);
@@ -190,11 +191,11 @@ const PatchSetDetail = () => {
   const deleteSet = () => {
     deletePatchSet(patchSetId)
       .then(() => {
-        dispatch(addNotification(patchSetDeleteNotifications(patchSetName).success));
+        addNotification(patchSetDeleteNotifications(patchSetName).success);
         navigate('../templates');
       })
       .catch(() => {
-        dispatch(addNotification(patchSetDeleteNotifications(patchSetName).error));
+        addNotification(patchSetDeleteNotifications(patchSetName).error);
       });
   };
 

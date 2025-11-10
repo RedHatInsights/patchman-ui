@@ -33,7 +33,6 @@ import {
   useSortColumn,
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -69,13 +68,6 @@ const Advisories = () => {
   );
 
   const [isRemediationLoading, setRemediationLoading] = React.useState(false);
-
-  React.useEffect(
-    () => () => {
-      dispatch(clearNotifications());
-    },
-    [],
-  );
 
   useEffect(() => {
     if (firstMount) {

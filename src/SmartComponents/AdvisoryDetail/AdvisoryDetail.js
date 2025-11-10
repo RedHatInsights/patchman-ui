@@ -14,7 +14,6 @@ import {
 } from '../../store/Actions/Actions';
 import { intl } from '../../Utilities/IntlProvider';
 import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
-import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
 const AdvisoryDetail = () => {
@@ -38,7 +37,6 @@ const AdvisoryDetail = () => {
     () => () => {
       dispatch(clearEntitiesStore());
       dispatch(clearAdvisoryDetailStore());
-      dispatch(clearNotifications());
     },
     [],
   );

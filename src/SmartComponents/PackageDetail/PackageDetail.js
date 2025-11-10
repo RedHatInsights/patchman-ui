@@ -10,7 +10,6 @@ import { Unavailable } from '@redhat-cloud-services/frontend-components/Unavaila
 import PackageSystems from '../../SmartComponents/PackageSystems/PackageSystems';
 import { clearPackageDetailStore, fetchPackageDetails } from '../../store/Actions/Actions';
 import { intl } from '../../Utilities/IntlProvider';
-import { clearNotifications } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
@@ -32,7 +31,6 @@ const PackageDetail = () => {
 
   React.useEffect(
     () => () => {
-      dispatch(clearNotifications());
       dispatch(clearPackageDetailStore());
     },
     [],

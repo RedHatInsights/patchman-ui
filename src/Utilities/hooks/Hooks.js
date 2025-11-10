@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, Fragment, useState } from 'react';
 import { SortByDirection } from '@patternfly/react-table';
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux/actions/notifications';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import isDeepEqualReact from 'fast-deep-equal/react';
@@ -286,17 +286,19 @@ export const useGetEntities = (
   return getEntities;
 };
 
-export const useOnExport = (prefix, queryParams, formatHandlers, dispatch) => {
+export const useOnExport = (prefix, queryParams, formatHandlers) => {
+  const addNotification = useAddNotification();
+
   const onExport = React.useCallback((_, format) => {
     const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
     const filename = `${prefix}-${date}`;
-    dispatch(addNotification(exportNotifications(format).pending));
+    addNotification(exportNotifications(format).pending);
     formatHandlers[format](queryParams, prefix)
       .then((data) => {
-        dispatch(addNotification(exportNotifications(format).success));
+        addNotification(exportNotifications(format).success);
         downloadFile(data, filename, format);
       })
-      .catch(() => dispatch(addNotification(exportNotifications().error)));
+      .catch(() => addNotification(exportNotifications().error));
   });
   return onExport;
 };

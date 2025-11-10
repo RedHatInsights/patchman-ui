@@ -1,4 +1,4 @@
-import { addNotification } from '@redhat-cloud-services/frontend-components-notifications/redux';
+import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import UnassignSystemsModal from './UnassignSystemsModal';
 import { unassignSystemFromPatchSet } from '../../Utilities/api';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
@@ -19,9 +19,11 @@ jest.mock('react-redux', () => ({
   useDispatch: jest.fn(() => () => {}),
 }));
 
-jest.mock('@redhat-cloud-services/frontend-components-notifications/redux', () => ({
-  addNotification: jest.fn(() => {}),
+jest.mock('@redhat-cloud-services/frontend-components-notifications', () => ({
+  useAddNotification: jest.fn(() => {}),
 }));
+
+const mockAddNotification = jest.fn();
 
 let unassignSystemsModalState = {
   isUnassignSystemsModalOpen: true,
@@ -33,6 +35,8 @@ const setUnassignSystemsModalOpen = (modalState) => {
 
 beforeEach(() => {
   unassignSystemsModalState.isUnassignSystemsModalOpen = true;
+  useAddNotification.mockReturnValue(mockAddNotification);
+
   render(
     <IntlProvider>
       <UnassignSystemsModal
@@ -57,7 +61,9 @@ describe('UnassignSystemsModal', () => {
     await user.click(screen.getByText('Remove'));
 
     await waitFor(() => {
-      expect(addNotification).toHaveBeenCalledWith(patchSetUnassignSystemsNotifications(1).success);
+      expect(mockAddNotification).toHaveBeenCalledWith(
+        patchSetUnassignSystemsNotifications(1).success,
+      );
       expect(unassignSystemsModalState).toEqual({
         isUnassignSystemsModalOpen: false,
         shouldRefresh: true,
