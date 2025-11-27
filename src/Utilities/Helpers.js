@@ -230,18 +230,14 @@ export const getFilterValue = (category, key) => {
 };
 
 export const encodeParams = (parameters, shouldTranslateKeys) => {
-  const calculateWorkloads = ({ sap_sids, ...restOfProfile }) => {
+  const calculateWorkloads = (systemProfile) => {
     let result = '';
-    Object.entries(generateFilter({ system_profile: restOfProfile })).forEach((entry) => {
+    Object.entries(generateFilter({ system_profile: systemProfile })).forEach((entry) => {
       const [key, value] = entry;
       result = `${result}&${key}=${value}`;
     });
 
-    const SIDsFilter = sap_sids
-      ?.map((sid) => `filter[system_profile][sap_sids][in]=${sid}`)
-      .join('&');
-
-    return result.concat(sap_sids ? `&${SIDsFilter}#SIDs=${sap_sids.join(',')}` : '');
+    return result;
   };
 
   const flattenFilters = (filter) => {
@@ -582,7 +578,7 @@ export const isRHAdvisory = (name) => /^(RHEA|RHBA|RHSA)/.test(name);
 export const buildTagString = (tag) =>
   `${tag.category}/${tag.values?.tagKey}=${tag.value?.tagValue}`;
 
-export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
+export const mapGlobalFilters = (tags, workloads = {}) => {
   let tagsInUrlFormat = [];
   tags &&
     tags.forEach((tag, index) => {
@@ -607,7 +603,6 @@ export const mapGlobalFilters = (tags, SIDs, workloads = {}) => {
     ...(workloads?.['Microsoft SQL']?.isSelected && {
       mssql: { version: 'not_nil' },
     }),
-    ...(SIDs?.length > 0 && { sap_sids: SIDs }),
   };
 
   tagsInUrlFormat && (globalFilterConfig.selectedTags = tagsInUrlFormat);
