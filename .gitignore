@@ -25,3 +25,13 @@ coverage-*
 .cache/
 # Sentry Config File
 .env.sentry-build-plugin
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/playwright/test-utils/data/tmp/
+.env
+.auth/

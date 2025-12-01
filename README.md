@@ -27,12 +27,45 @@ REST API available from [Patchman Engine](https://github.com/RedHatInsights/patc
 
 ## Testing
 
-[Cypress](https://cypress.io/) and [Jest](https://jestjs.io/) are used as the testing frameworks
+[Playwright](https://playwright.dev/) and [Jest](https://jestjs.io/) are used as the testing frameworks
 
-- `npm run test` - run all Jest tests
-- `npm run test:ct` - open Cypress in the component testing mode.
+### Jest Component/Unit tests
+
 - `npm run lint` - run linter
-- `npm run coverage` - generate lect coverage information after running the tests
+- `npm run test` - run all Jest tests
+- `npm run coverage` - generate coverage information from Jest tests after them
+
+### Playwright System/E2E tests
+
+The tests are located in the [playwright/](playwright/) directory and are identified by the `*.spec.ts` file extension. All of the helpers live in the [test-utils](playwright/test-utils/) directory.
+
+#### First time setup
+1. Copy the [example env file](playwright_example.env) content and create a file named `.env` in the root directory of the project. Paste the example file content into it.
+   For local development fill in the:
+    * `BASE_URL` - `https://stage.foo.redhat.com:1337` is required, which is already set in the example config
+    * `ADMIN_USER` - your consoledot stage username
+    * `ADMIN_PASSWORD` - your consoledot stage password
+
+2. Make sure Playwright is installed as a dev dependency
+   ```bash
+   npm clean-install
+   ```
+
+3. Download the Playwright browsers with
+   ```bash
+   npx playwright install
+   ```
+
+#### Running locally
+1. Start the local development stage server by running
+   ```bash
+   npm run start:stage
+   ```
+
+2. Now you have two options of how to run the tests:
+   * Using terminal - `npx playwright test` will run the playwright test suite. `npx playwright test --headed` will run the suite in a vnc-like browser so you can watch it's interactions.
+   * Use VS Code (or VS Code forks, like Cursor) and the [Playwright Test module for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright). But other editors do have similar plugins for ease of use, if so desired
+
 
 ## Deploying
 

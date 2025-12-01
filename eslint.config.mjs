@@ -3,6 +3,9 @@ import prettier from 'eslint-plugin-prettier';
 import unusedImports from 'eslint-plugin-unused-imports';
 import importPlugin from 'eslint-plugin-import';
 import cypress from 'eslint-plugin-cypress';
+import playwright from 'eslint-plugin-playwright';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
 import babelParser from '@babel/eslint-parser';
 import path from 'node:path';
@@ -125,6 +128,35 @@ export default [
       'vars-on-top': 'error',
       'wrap-iife': 'error',
       yoda: ['error', 'never'],
+    },
+  },
+  {
+    // Override for Playwright tests
+    files: ['playwright/**/*.ts'],
+    plugins: {
+      playwright: playwright,
+      '@typescript-eslint': typescriptEslint,
+    },
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+
+      parser: tsParser,
+      ecmaVersion: 12,
+      sourceType: 'module',
+    },
+    rules: {
+      ...playwright.configs.recommended.rules,
+      'playwright/no-conditional-in-test': 'off',
+      'playwright/no-conditional-expect': 'off',
+      'playwright/no-nested-step': 'off',
+      'playwright/no-skipped-test': [
+        'error',
+        {
+          allowConditional: true,
+        },
+      ],
     },
   },
 ];
