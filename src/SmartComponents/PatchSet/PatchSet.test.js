@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 
 import { storeListDefaults } from '../../Utilities/constants';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
-import patchSets from '../../../cypress/fixtures/api/patchSets.json';
+import patchSets from './patchSets.json';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import PatchSet from './PatchSet';
 

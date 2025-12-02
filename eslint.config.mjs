@@ -2,7 +2,6 @@ import react from 'eslint-plugin-react';
 import prettier from 'eslint-plugin-prettier';
 import unusedImports from 'eslint-plugin-unused-imports';
 import importPlugin from 'eslint-plugin-import';
-import cypress from 'eslint-plugin-cypress';
 import playwright from 'eslint-plugin-playwright';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
@@ -25,18 +24,12 @@ export default [
   {
     ignores: ['node_modules/*', 'dist/*', 'coverage-jest/*', 'coverage-cypress/*'],
   },
-  ...compat.extends(
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:cypress/recommended',
-    'prettier',
-  ),
+  ...compat.extends('eslint:recommended', 'plugin:react/recommended', 'prettier'),
   {
     plugins: {
       react,
       prettier,
       'unused-imports': unusedImports,
-      cypress,
       import: importPlugin,
     },
 

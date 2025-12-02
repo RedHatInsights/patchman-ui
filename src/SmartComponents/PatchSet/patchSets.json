@@ -50,9 +50,7 @@
   "meta": {
     "limit": 20,
     "offset": 0,
-    "sort": [
-      "-name"
-    ],
+    "sort": ["-name"],
     "filter": {},
     "total_items": 1407,
     "has_systems": true
