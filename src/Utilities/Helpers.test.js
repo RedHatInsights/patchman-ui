@@ -410,38 +410,38 @@ describe('Helpers tests', () => {
 
 describe('Test global filters', () => {
   it.each`
-    tags | SIDs | workloads | result
-    ${[]} | ${[]} | ${{ 'Ansible Automation Platform': { isSelected: true } }} | ${{
+    tags | workloads | result
+    ${[]} | ${{ 'Ansible Automation Platform': { isSelected: true } }} | ${{
   selectedTags: [],
   systemProfile: { ansible: { controller_version: 'not_nil' } },
 }}
-    ${[]} | ${[]} | ${{ 'Microsoft SQL': { isSelected: true } }} | ${{
+    ${[]} | ${{ 'Microsoft SQL': { isSelected: true } }} | ${{
   selectedTags: [],
   systemProfile: { mssql: { version: 'not_nil' } },
 }}
-    ${[]} | ${[]} | ${{ SAP: { isSelected: true } }} | ${{
+    ${[]} | ${{ SAP: { isSelected: true } }} | ${{
   selectedTags: [],
   systemProfile: { sap_system: true },
 }}
-    ${[]} | ${['abc']} | ${{ SAP: { isSelected: true } }} | ${{
+    ${[]} | ${{ SAP: { isSelected: true } }} | ${{
   selectedTags: [],
-  systemProfile: { sap_sids: ['abc'], sap_system: true },
+  systemProfile: { sap_system: true },
 }}
-    ${[]} | ${['abc', 'bca']} | ${{
+    ${[]} | ${{
   SAP: { isSelected: true },
   'Microsoft SQL': { isSelected: true },
 }} | ${{
   selectedTags: [],
-  systemProfile: { sap_sids: ['abc', 'bca'], sap_system: true, mssql: { version: 'not_nil' } },
+  systemProfile: { sap_system: true, mssql: { version: 'not_nil' } },
 }}
-    ${['null/key.BnZPeP=tag.MNGmxQ']} | ${['abc', 'bca']} | ${{ SAP: { isSelected: true } }} | ${{
+    ${['null/key.BnZPeP=tag.MNGmxQ']} | ${{ SAP: { isSelected: true } }} | ${{
   selectedTags: ['tags=null%2Fkey.BnZPeP%3Dtag.MNGmxQ'],
-  systemProfile: { sap_sids: ['abc', 'bca'], sap_system: true },
+  systemProfile: { sap_system: true },
 }}
   `(
-    'mapGlobalFilters: Should build correct global filters, $tags, $SIDs, $workloads ',
-    ({ tags, SIDs, workloads, result }) => {
-      expect(mapGlobalFilters(tags, SIDs, workloads)).toEqual(result);
+    'mapGlobalFilters: Should build correct global filters, $tags, $workloads ',
+    ({ tags, workloads, result }) => {
+      expect(mapGlobalFilters(tags, workloads)).toEqual(result);
     },
   );
 });

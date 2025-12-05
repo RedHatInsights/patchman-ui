@@ -25,10 +25,9 @@ const App = () => {
 
     if (chrome?.globalFilterScope) {
       chrome?.on('GLOBAL_FILTER_UPDATE', ({ data }) => {
-        const SIDs = chrome?.mapGlobalFilter?.(data, false, true)[1];
         const TAGs = chrome?.mapGlobalFilter?.(data)?.filter((item) => !item.includes('Workloads'));
 
-        const globalFilterConfig = mapGlobalFilters(TAGs, SIDs, data?.Workloads);
+        const globalFilterConfig = mapGlobalFilters(TAGs, data?.Workloads);
 
         if (JSON.stringify(config) !== JSON.stringify(globalFilterConfig)) {
           dispatch(globalFilter(globalFilterConfig));
