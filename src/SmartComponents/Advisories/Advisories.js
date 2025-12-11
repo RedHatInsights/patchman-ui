@@ -144,8 +144,9 @@ const Advisories = () => {
                     <Content component={ContentVariants.p}>
                       <ExternalLink
                         link={
-                          'https://docs.redhat.com/en/documentation/red_hat_insights/1-latest' +
-                          '/html/system_patching_using_remediation_playbooks'
+                          'https://docs.redhat.com/en/documentation/red_hat_lightspeed/1-latest' +
+                          '/html/managing_system_content_and_patch_updates_on_rhel_systems' +
+                          '/patch-service-overview#patching-using-playbooks_patch-service-overview'
                         }
                         text='System Patching Using Remediation Playbooks'
                       />
