@@ -1,8 +1,17 @@
+/**
+ * Table interaction helpers for Playwright tests.
+ *
+ * This module provides utilities for:
+ * - Waiting for table loading states to complete
+ * - Filtering tables by name and clearing filters
+ * - Locating table rows and cells by name or column header
+ */
+
 import { expect, sleep } from 'test-utils';
 import { Locator, Page } from '@playwright/test';
 
 /**
- * Waits for the skeleton table loading state to disappear
+ * Waits for the skeleton table loading state to disappear.
  *
  * @param locator - Page or Locator containing the table
  */

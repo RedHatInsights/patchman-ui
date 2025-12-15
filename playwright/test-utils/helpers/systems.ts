@@ -1,22 +1,32 @@
 /**
- * System creation helpers for Playwright E2E tests.
+ * System helpers for Playwright E2E tests.
  *
- * This module provides utilities for creating test systems by:
+ * This module provides utilities for:
+ *
+ * System Creation:
  * 1. Extracting a base archive
  * 2. Customizing it with unique identifiers (machine ID, subscription manager ID, hostname)
  * 3. Compressing it into a new archive
  * 4. Uploading it to the Insights ingress API
  * 5. Waiting for it to appear in Inventory and Patch services
  *
+ * System State Checking:
+ * - Checking if a system exists in Patch service
+ * - Polling for system template attachment status
+ *
+ * Cleanup:
+ * - Removing local archive files and folders created during tests
+ * - Deleting systems from the Inventory service
+ *
  * All created archives are stored in `../data/tmp/` and should be cleaned up after tests.
  */
 
-import { APIRequestContext } from '@playwright/test';
+import { APIRequestContext, Page } from '@playwright/test';
 import { spawnSync } from 'child_process';
 import { randomUUID } from 'crypto';
 import fs from 'fs';
 import path from 'path';
-import { poll } from './poll';
+import { poll, sleep } from './general';
 
 /**
  * Available system types for test systems.
@@ -236,10 +246,7 @@ const waitForSystemInInventory = async (request: APIRequestContext, systemName: 
   };
   const condition = (result: any) => {
     try {
-      if (result?.results?.length > 0) {
-        return false;
-      }
-      return true;
+      return result?.results?.length <= 0;
     } catch {
       return false;
     }
@@ -285,10 +292,7 @@ const waitForSystemInPatch = async (
   };
   const systemsCondition = (result: any) => {
     try {
-      if (result?.data?.length > 0) {
-        return false;
-      }
-      return true;
+      return result?.data?.length <= 0;
     } catch {
       return false;
     }
@@ -314,10 +318,7 @@ const waitForSystemInPatch = async (
         (result?.data?.attributes?.rhea_count ?? 0) +
         (result?.data?.attributes?.other_count ?? 0);
 
-      if (installablePackages + advisories >= 1) {
-        return false;
-      }
-      return true;
+      return installablePackages + advisories < 1;
     } catch {
       return false;
     }
@@ -348,7 +349,7 @@ const waitForSystemInPatch = async (
  * ```typescript
  * const system = await createSystem(context, 'test-system-abc123', 'base');
  * console.log(system.name); // 'test-system-abc123'
- * console.log(system.id);   // 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6'
+ * console.log(system.id); // 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6'
  * ```
  */
 export const createSystem = async (
@@ -365,4 +366,234 @@ export const createSystem = async (
     name: systemName,
     id,
   };
+};
+
+/**
+ * Diagnostic helper to check if a system exists in Patch and log its details.
+ * @param page - Playwright Page object
+ * @param hostname - The display name of the system to check
+ * @param expectInPatch - Whether we expect the system to be in Patch (true) or not (false)
+ * @returns Promise<boolean> - true if system state matches expectation, false otherwise
+ */
+export const isInPatch = async (
+  page: Page,
+  hostname: string,
+  expectInPatch: boolean = true,
+): Promise<boolean> => {
+  try {
+    const response = await page.request.get(
+      `/api/patch/v3/systems?search=${encodeURIComponent(hostname)}&limit=100`,
+    );
+
+    if (response.status() !== 200) {
+      console.log(`⚠️  API request failed with status ${response.status()}`);
+      return false;
+    }
+
+    const body = await response.json();
+    const system = body.data?.find(
+      (sys: { attributes: { display_name: string } }) => sys.attributes.display_name === hostname,
+    );
+
+    if (system) {
+      // System found
+      if (expectInPatch) {
+        console.log('✅ System found in Patch:', {
+          display_name: system.attributes.display_name,
+          id: system.id,
+          template_uuid: system.attributes.template_uuid,
+          template_name: system.attributes.template_name,
+          last_upload: system.attributes.last_upload,
+        });
+      } else {
+        console.log('ℹ️  System still in Patch (expected to be removed):', {
+          display_name: system.attributes.display_name,
+          id: system.id,
+          template_uuid: system.attributes.template_uuid,
+          template_name: system.attributes.template_name,
+          last_upload: system.attributes.last_upload,
+        });
+        console.log('   Will poll for removal.');
+      }
+      return true;
+    } else {
+      // System not found
+      if (expectInPatch) {
+        console.log('⚠️  System not found in Patch yet. Will poll.');
+        console.log(`   Total systems in response: ${body.data?.length || 0}`);
+      } else {
+        console.log('✅ System already removed from Patch');
+      }
+      return false;
+    }
+  } catch (error) {
+    console.log('⚠️  Error checking system in Patch:', error);
+    return false;
+  }
+};
+
+/**
+ * Polls the API to check if a system with the given host name is attached to a template.
+ *
+ * @param page - Playwright Page object
+ * @param hostname - The display name of the system to check
+ * @param expectedAttachment - Whether to expect the system to be attached (true) or not attached (false) (default: true)
+ * @param delayMs - Delay between polling attempts in milliseconds (default: 10000ms / 10s)
+ * @param maxAttempts - Number of times to poll (default: 10)
+ * @returns Promise<boolean> - true if a system is in the expected state, false otherwise
+ */
+export const pollForSystemTemplateAttachment = async (
+  page: Page,
+  hostname: string,
+  expectedAttachment: boolean = true,
+  delayMs: number = 10_000,
+  maxAttempts: number = 10,
+): Promise<boolean> => {
+  let attempts = 0;
+
+  while (attempts < maxAttempts) {
+    attempts++;
+    let shouldRetry = false;
+
+    try {
+      // Query the systems API with the search filter for the host name
+      const response = await page.request.get(
+        `/api/patch/v3/systems?search=${encodeURIComponent(hostname)}&limit=100`,
+      );
+
+      if (response.status() !== 200) {
+        console.log(
+          `API request failed with status ${response.status()}, attempt ${attempts}/${maxAttempts}`,
+        );
+        shouldRetry = true;
+      } else {
+        const body = await response.json();
+
+        if (!body.data || !Array.isArray(body.data)) {
+          console.log(`Invalid response format, attempt ${attempts}/${maxAttempts}`);
+          shouldRetry = true;
+        } else {
+          // Find the system with a matching host name
+          const system = body.data.find(
+            (sys: { attributes: { display_name: string } }) =>
+              sys.attributes.display_name === hostname,
+          );
+
+          if (!system) {
+            // System isn't found in Patch
+            if (!expectedAttachment) {
+              // The system is expected to not be attached, and so if it's not in Patch,
+              // that's a success (the system was removed)
+              console.log(`System '${hostname}' not found in Patch (as expected - system removed)`);
+              return true;
+            } else {
+              // If we expect the system to be attached, but it's not found,
+              // continue polling as it might be slow to appear
+              console.log(
+                `System '${hostname}' not found in Patch, attempt ${attempts}/${maxAttempts}`,
+              );
+              shouldRetry = true;
+            }
+          } else {
+            // Check if a system has a template_uuid assigned
+            const hasTemplate = !!system.attributes?.template_uuid;
+
+            // If the system is in the expected state, return early
+            if (hasTemplate === expectedAttachment) {
+              const message = hasTemplate
+                ? `System '${hostname}' is attached to template: ${system.attributes.template_name} (as expected)`
+                : `System '${hostname}' is not attached to any template (as expected)`;
+              console.log(message);
+              return true;
+            } else {
+              const message = hasTemplate
+                ? `System '${hostname}' is attached to template but expected not to be, attempt ${attempts}/${maxAttempts}`
+                : `System '${hostname}' is not attached to template but expected to be, attempt ${attempts}/${maxAttempts}`;
+              console.log(message);
+              shouldRetry = true;
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.log(
+        `Error checking system template attachment: ${error}, attempt ${attempts}/${maxAttempts}`,
+      );
+      shouldRetry = true;
+    }
+
+    // Check if we should retry with delay
+    if (shouldRetry && attempts < maxAttempts) {
+      await sleep(delayMs);
+    }
+  }
+
+  return false;
+};
+
+/**
+ * Cleans up local archive files and folders created for a test system.
+ *
+ * This function removes:
+ * - The working directory in `../data/tmp/{systemName}/` (created during archive preparation)
+ * - The compressed archive file `../data/tmp/{systemName}.tar.gz`
+ *
+ * If either path doesn't exist or deletion fails, the error is silently ignored.
+ *
+ * @param systemName - The name of the system whose archive should be cleaned up
+ *
+ * @example
+ * ```typescript
+ * cleanupArchive('test-system-abc123');
+ * // Removes: ../data/tmp/test-system-abc123/ and ../data/tmp/test-system-abc123.tar.gz
+ * ```
+ */
+export const cleanupArchive = (systemName: string) => {
+  try {
+    const folderPath = path.join(__dirname, '../data/tmp/', systemName);
+    const archivePath = path.join(__dirname, '../data/tmp/', `${systemName}.tar.gz`);
+
+    if (fs.existsSync(folderPath)) {
+      fs.rmSync(folderPath, { recursive: true });
+    }
+
+    if (fs.existsSync(archivePath)) {
+      fs.rmSync(archivePath);
+    }
+  } catch {
+    return;
+  }
+};
+
+/**
+ * Removes a system from the Inventory service.
+ *
+ * This function deletes a system from the Inventory API by:
+ * 1. First checking if the system exists (GET request)
+ * 2. If the system exists (status 200), sends a DELETE request to remove it
+ *
+ * If the system doesn't exist or the deletion fails, the error is silently ignored.
+ *
+ * @param request - Playwright APIRequestContext with proper authorization
+ * @param systemId - The inventory ID (UUID) of the system to delete
+ *
+ * @example
+ * ```typescript
+ * await cleanupSystem(context, 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6');
+ * // Removes the system from Inventory if it exists
+ * ```
+ */
+export const cleanupSystem = async (request: APIRequestContext, systemId: string) => {
+  try {
+    const hostUrl = `/api/inventory/v1/hosts/${systemId}`;
+
+    const getHostResponse = await request.get(hostUrl);
+    if (getHostResponse.status() !== 200) {
+      return;
+    }
+
+    await request.delete(hostUrl);
+  } catch {
+    return;
+  }
 };

@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 /**
- * Logs in to Red Hat account using username and password.
+ * Logs in to a Red Hat account using username and password.
  * @param page - Playwright page instance
  * @param username - Red Hat account username
  * @param password - Red Hat account password
@@ -80,7 +80,7 @@ export const storeStorageStateAndToken = async (page: Page, fileName: string) =>
 };
 
 /**
- * Retrieves JWT token from stored authentication file.
+ * Retrieves JWT token from a stored authentication file.
  * @param name - Name of the auth file (without .json extension)
  * @returns JWT bearer token or empty string if not found
  */
@@ -118,7 +118,7 @@ export const throwIfMissingEnvVariables = () => {
 };
 
 /**
- * Ensures that preview is not turned on, disables it if it is.
+ * Ensures that Preview mode is not turned on, disables it if it is.
  * @param page - Playwright page instance
  */
 export const ensureNotInPreview = async (page: Page) => {
