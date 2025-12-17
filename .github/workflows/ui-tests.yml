@@ -1,7 +1,7 @@
-name: UI project tests
+name: 'UI: Playwright Tests'
 on:
   pull_request:
-    types: [opened, reopened, synchronize, labeled, unlabeled]
+    types: [ opened, reopened, synchronize, labeled, unlabeled ]
   workflow_dispatch:
 
 concurrency:
@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  playwright-tests:
+  playwright-ui-tests:
     runs-on:
       - codebuild-patch-frontend-${{ github.run_id }}-${{ github.run_attempt }}
       - instance-size:large
