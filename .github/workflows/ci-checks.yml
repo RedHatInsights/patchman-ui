@@ -1,11 +1,11 @@
-name: Test runner
+name: 'CI: Lint & Unit Tests'
 on:
   push:
-    branches: ['master']
+    branches: [ 'master' ]
   pull_request:
-    branches: ['master']
+    branches: [ 'master' ]
 jobs:
-  test:
+  ci-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
