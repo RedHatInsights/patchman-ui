@@ -51,14 +51,24 @@ export default defineConfig({
   },
   projects: [
     { name: 'setup', testMatch: /.*\.setup\.ts/, use: { trace: 'off' } },
-    {
-      name: 'UI',
-      use: {
-        ...devices['Desktop Chrome'],
-        storageState: '.auth/admin_user.json',
-      },
-      testDir: './playwright/UI/',
-      dependencies: ['setup'],
-    },
+    process.env.INTEGRATION
+      ? {
+          name: 'Integration',
+          use: {
+            ...devices['Desktop Chrome'],
+            storageState: '.auth/admin_user.json',
+          },
+          testDir: './playwright/Integration/',
+          dependencies: ['setup'],
+        }
+      : {
+          name: 'UI',
+          use: {
+            ...devices['Desktop Chrome'],
+            storageState: '.auth/admin_user.json',
+          },
+          testDir: './playwright/UI/',
+          dependencies: ['setup'],
+        },
   ],
 });
