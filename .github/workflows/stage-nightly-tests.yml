@@ -1,0 +1,176 @@
+name: 'Stage: E2E Tests'
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize, labeled, unlabeled ]
+
+  schedule:
+    - cron: '0 0 * * *' # This cron expression runs the action every 24 hours at midnight UTC
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  playwright-integration-tests:
+    if: ${{ ! contains(github.event.pull_request.labels.*.name, 'skip-integration-tests') }}
+    runs-on:
+      - codebuild-patch-frontend-${{ github.run_id }}-${{ github.run_attempt }}
+      - instance-size:large
+      - buildspec-override:true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Cache - node_modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules 
+            dist
+          key: ${{ runner.os }}-frontend-node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: ${{ runner.os }}-frontend-node-modules-
+
+      - name: Install dependencies
+        run: 'npm ci'
+
+      - name: Setup Playwright
+        run: 'npx playwright install chromium --only-shell'
+
+      - name: Create .env file
+        run: |
+          # Check if the secrets are set
+          if [ -z "$ADMIN_USERNAME" ]; then
+            echo "Error: ADMIN_USERNAME secret is not set."
+            exit 1
+          fi
+
+          if [ -z "$ADMIN_PASSWORD" ]; then
+            echo "Error: ADMIN_PASSWORD secret is not set."
+            exit 1
+          fi
+
+          # Create the .env file and write the secrets and other variables to it
+          {
+            # Mandatory secrets (they should exist)
+            echo "ADMIN_USERNAME=$ADMIN_USERNAME"
+            echo "ADMIN_PASSWORD=$ADMIN_PASSWORD"
+
+            # Other variables (some might be optional/missing)
+            echo "CI=true"
+            echo "INTEGRATION=true"
+            echo "RH_CLIENT_PROXY=\"$RH_PROXY_URL\""
+            echo "DOCKER_SOCKET=/var/run/docker.sock"
+            echo "ORG_ID_1=\"$STAGE_ORG_ID\""
+            echo "ACTIVATION_KEY_1=\"$STAGE_ACTIVATION_KEY\""
+          } >> .env 2>/dev/null
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "BASE_URL=https://stage.foo.redhat.com:1337" >> .env
+          else
+            echo "BASE_URL=$STAGE_BASE_URL" >> .env
+            echo "PROXY=$RH_PROXY_URL" >> .env
+          fi
+
+          echo ".env file created successfully."
+
+      ### Pull request specific steps ###
+      # This prevents an error related to minimum watchers when running the front-end and playwright
+      - name: Increase file watchers limit
+        if: ${{ github.event_name == 'pull_request' }}
+        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+      - name: Update /etc/hosts
+        if: ${{ github.event_name == 'pull_request' }}
+        run: sudo npx fec patch-etc-hosts
+
+      - name: Build frontend
+        if: ${{ github.event_name == 'pull_request' }}
+        run: npm run build
+
+      - name: Frontend run (static)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: npx fec static --port 8003 &
+
+      - name: Wait for frontend to be ready
+        if: ${{ github.event_name == 'pull_request' }}
+        timeout-minutes: 3
+        run: npx wait-on http://localhost:8003/apps/patch/
+
+      - name: Run testing proxy
+        if: ${{ github.event_name == 'pull_request' }}
+        run: docker run -d --network=host -e HTTPS_PROXY=$RH_PROXY_URL -e ROUTES_JSON_PATH=/config/routes-ci.json -v "$(pwd)/config:/config:ro,Z"  --name frontend-development-proxy quay.io/redhat-user-workloads/hcc-platex-services-tenant/frontend-development-proxy:latest
+      ### End of pull request specific steps ###
+
+      - name: Run Playwright tests
+        run: CURRENTS_PROJECT_ID=nKL5NV CURRENTS_RECORD_KEY=$CURRENTS_RECORD_KEY CURRENTS_CI_BUILD_ID="${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt }}" npx playwright test
+
+      - name: Publish Test Report
+        uses: ctrf-io/github-test-reporter@v1
+        with:
+          report-path: './playwright-ctrf/playwright-ctrf.json'
+        if: ${{ !cancelled() }}
+
+      - name: Store Test report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 10
+
+      - name: Notify Slack on success
+        uses: slackapi/slack-github-action@v2.1.1
+        if: ${{ success() && github.event_name == 'schedule' && !cancelled() }}
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOOK }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "attachments": [
+                {
+                  "color": "#2EB67D",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/ | :milky_way: Nightly Stage Test (Patch)>: *SUCCESS* :partymeow:"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+
+      - name: Notify Slack on failure
+        uses: slackapi/slack-github-action@v2.1.1
+        if: ${{ failure() && github.event_name == 'schedule' && !cancelled() }}
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOOK }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "attachments": [
+                {
+                  "color": "#d72839",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/ | :milky_way: Nightly Stage Test (Patch)>: *FAILED* :big-sad:"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
