@@ -1,0 +1,41 @@
+---
+globs: **/*.spec.ts
+alwaysApply: false
+---
+
+# Playwright Test Rules
+
+Apply these rules to TypeScript test files (`**/*spec.ts`) in the `playwright` folder.
+
+## General Guidelines
+
+- Follow the Playwright style guide
+- Write tests that are independent, idempotent, and can run in parallel
+- Use clear, descriptive and distinct test names and group related tests in `describe` blocks
+- Use `test.step()` to break down complex tests into readable steps
+
+## Selector Preferences (in order)
+
+1. **Role-based selectors**: `page.getByRole('button', { name: 'Submit' })`
+2. **Text content**: `page.getByText('Welcome', { exact: true })`
+3. **Test IDs**: `page.getByTestId('submit-button')` (only when necessary)
+4. **CSS selectors**: `page.locator('.selector')` (avoid when possible)
+
+## Assertions
+
+- Use web-first assertions that auto-wait: `expect(element).toBeVisible()`
+- Avoid manual waits or `isVisible()` checks that don't auto-retry
+- Use `expect.poll()` for non-DOM assertions like API responses
+
+## Code Structure
+
+- Only create helpers/fixtures for truly generic, reusable functionality
+- Avoid page objects - tests should read like articles
+- Use test steps and white spaces for separation
+
+## Anti-patterns to Avoid
+
+- Manual `sleep()` or `wait()` statements
+- Fragile XPath selectors
+- Tests that depend on other test state
+- Over-abstraction that hurts test readability
