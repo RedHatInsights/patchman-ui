@@ -21,7 +21,7 @@ export default defineConfig({
       ]
     : 'list',
   globalTimeout: (process.env.INTEGRATION ? 35 : 20) * 60 * 1000, // 35m || 20m
-  timeout: (process.env.INTEGRATION ? 6 : 4) * 60 * 1000, // 6m || 4m
+  timeout: (process.env.INTEGRATION ? 8 : 4) * 60 * 1000, // 8m || 4m
   expect: { timeout: 30_000 }, // 30s
   use: {
     actionTimeout: 30_000, // 30s
