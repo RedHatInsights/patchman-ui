@@ -27,7 +27,7 @@ REST API available from [Patchman Engine](https://github.com/RedHatInsights/patc
 
 ## Testing
 
-[Playwright](https://playwright.dev/) and [Jest](https://jestjs.io/) are used as the testing frameworks
+[Playwright](https://playwright.dev/) and [Jest](https://jestjs.io/) are used as the testing frameworks.
 
 ### Jest Component/Unit tests
 
