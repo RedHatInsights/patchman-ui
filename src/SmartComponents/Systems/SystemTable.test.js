@@ -52,7 +52,7 @@ describe('SystemsTable', () => {
         queryParams: {
           filter: { packages_updatable: 'eq:0' },
           selectedTags: ['tags=test-tag'],
-          systemProfile: { ansible: { controller_version: 'not_nil' } },
+          systemProfile: { workloads: { ansible: { controller_version: 'not_nil' } } },
         },
       },
     };
@@ -66,7 +66,7 @@ describe('SystemsTable', () => {
               filter: { packages_updatable: 'eq:0' },
               search: undefined,
               selectedTags: ['tags=test-tag'],
-              systemProfile: { ansible: { controller_version: 'not_nil' } },
+              systemProfile: { workloads: { ansible: { controller_version: 'not_nil' } } },
             },
           },
         }),

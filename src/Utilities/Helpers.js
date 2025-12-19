@@ -595,8 +595,8 @@ export const mapGlobalFilters = (tags, workloads = {}) => {
 
   const globalFilterConfig = { selectedTags: [], systemProfile: {} };
 
-  globalFilterConfig.systemProfile = {
-    ...(workloads?.SAP?.isSelected && { sap_system: true }),
+  const workloadsConfig = {
+    ...(workloads?.SAP?.isSelected && { sap: { sap_system: true } }),
     ...(workloads?.['Ansible Automation Platform']?.isSelected && {
       ansible: { controller_version: 'not_nil' },
     }),
@@ -604,6 +604,12 @@ export const mapGlobalFilters = (tags, workloads = {}) => {
       mssql: { version: 'not_nil' },
     }),
   };
+
+  if (Object.keys(workloadsConfig).length > 0) {
+    globalFilterConfig.systemProfile = {
+      workloads: workloadsConfig,
+    };
+  }
 
   tagsInUrlFormat && (globalFilterConfig.selectedTags = tagsInUrlFormat);
 

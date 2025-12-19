@@ -413,30 +413,30 @@ describe('Test global filters', () => {
     tags | workloads | result
     ${[]} | ${{ 'Ansible Automation Platform': { isSelected: true } }} | ${{
   selectedTags: [],
-  systemProfile: { ansible: { controller_version: 'not_nil' } },
+  systemProfile: { workloads: { ansible: { controller_version: 'not_nil' } } },
 }}
     ${[]} | ${{ 'Microsoft SQL': { isSelected: true } }} | ${{
   selectedTags: [],
-  systemProfile: { mssql: { version: 'not_nil' } },
+  systemProfile: { workloads: { mssql: { version: 'not_nil' } } },
 }}
     ${[]} | ${{ SAP: { isSelected: true } }} | ${{
   selectedTags: [],
-  systemProfile: { sap_system: true },
+  systemProfile: { workloads: { sap: { sap_system: true } } },
 }}
     ${[]} | ${{ SAP: { isSelected: true } }} | ${{
   selectedTags: [],
-  systemProfile: { sap_system: true },
+  systemProfile: { workloads: { sap: { sap_system: true } } },
 }}
     ${[]} | ${{
   SAP: { isSelected: true },
   'Microsoft SQL': { isSelected: true },
 }} | ${{
   selectedTags: [],
-  systemProfile: { sap_system: true, mssql: { version: 'not_nil' } },
+  systemProfile: { workloads: { sap: { sap_system: true }, mssql: { version: 'not_nil' } } },
 }}
     ${['null/key.BnZPeP=tag.MNGmxQ']} | ${{ SAP: { isSelected: true } }} | ${{
   selectedTags: ['tags=null%2Fkey.BnZPeP%3Dtag.MNGmxQ'],
-  systemProfile: { sap_system: true },
+  systemProfile: { workloads: { sap: { sap_system: true } } },
 }}
   `(
     'mapGlobalFilters: Should build correct global filters, $tags, $workloads ',
