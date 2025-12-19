@@ -4,7 +4,7 @@ import {
   logInWithUsernameAndPassword,
   storeStorageStateAndToken,
   ensureNotInPreview,
-} from 'test-utils/helpers/login';
+} from 'test-utils/helpers/auth';
 
 import { existsSync, mkdirSync } from 'fs';
 const authDir = '.auth';

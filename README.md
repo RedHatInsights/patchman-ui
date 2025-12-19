@@ -6,7 +6,7 @@
 # Patchman UI
 
 Patch is one of the applications for console.redhat.com. It allows users to display and manage available patches for
-their registered systems. This repository containes source code for the frontend part of the application which uses the
+their registered systems. This repository contains source code for the frontend part of the application which uses the
 REST API available from [Patchman Engine](https://github.com/RedHatInsights/patchman-engine).
 
 ## First time setup
@@ -27,45 +27,71 @@ REST API available from [Patchman Engine](https://github.com/RedHatInsights/patc
 
 ## Testing
 
-[Playwright](https://playwright.dev/) and [Jest](https://jestjs.io/) are used as the testing frameworks.
+[Playwright](https://playwright.dev/) and [Jest](https://jestjs.io/) are used as our testing frameworks.
 
-### Jest Component/Unit tests
+### Unit tests: Jest
 
-- `npm run lint` - run linter
-- `npm run test` - run all Jest tests
-- `npm run coverage` - generate coverage information from Jest tests after them
+- `npm run lint` - run the linter.
+- `npm run test` - run all Jest tests.
+- `npm run coverage` - generate coverage information from Jest tests after running them.
 
-### Playwright System/E2E tests
+### E2E (UI & Integration) tests: Playwright
 
-The tests are located in the [playwright/](playwright/) directory and are identified by the `*.spec.ts` file extension. All of the helpers live in the [test-utils](playwright/test-utils/) directory.
+The E2E tests are located in the [playwright/](playwright/) directory and are identified by the `*.spec.ts` file
+extension.
+All the helpers live in the [test-utils](playwright/test-utils/) directory.
 
 #### First time setup
-1. Copy the [example env file](playwright_example.env) content and create a file named `.env` in the root directory of the project. Paste the example file content into it.
-   For local development fill in the:
+
+1. Copy the [example env file](playwright_example.env) content and create a file named `.env` in the root directory of
+   the project. Paste the example file content into it. For local development fill in the following variables:
     * `BASE_URL` - `https://stage.foo.redhat.com:1337` is required, which is already set in the example config
     * `ADMIN_USER` - your consoledot stage username
     * `ADMIN_PASSWORD` - your consoledot stage password
 
-2. Make sure Playwright is installed as a dev dependency
+
+2. Make sure Playwright is installed as a dev dependency:
    ```bash
    npm clean-install
    ```
 
-3. Download the Playwright browsers with
+3. Download the Playwright browsers with:
    ```bash
    npx playwright install
    ```
 
-#### Running locally
-1. Start the local development stage server by running
-   ```bash
-   npm run start:stage
-   ```
+#### Running UI tests
+
+1. Start the local development stage server by running: `npm run start:stage`
 
 2. Now you have two options of how to run the tests:
-   * Using terminal - `npx playwright test` will run the playwright test suite. `npx playwright test --headed` will run the suite in a vnc-like browser so you can watch it's interactions.
-   * Use VS Code (or VS Code forks, like Cursor) and the [Playwright Test module for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright). But other editors do have similar plugins for ease of use, if so desired
+    * Using the terminal
+        * `npx playwright test` will run the playwright test suite.
+        * `npx playwright test --headed` will run the suite in a vnc-like browser so you can watch its interactions.
 
+    * Using VSCode (or VSCode forks, like Cursor) +
+      the [Playwright Test module for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) –
+      other editors have similar plugins for ease of use.
+
+#### Running Integration tests
+
+Running integration tests requires two distinct steps: first, pointing Playwright to stage; and second, enabling the
+Podman API wrapper for managing containers that are provisioned by our Playwright tests. Follow these setup steps:
+
+1. Set `PROXY` and `BASE_URL`. See `playwright_example.env` for reference
+2. Set the `INTEGRATION` flag to true
+3. Set the `DOCKER_SOCKET` option in your `.env` file as follows:
+   ```bash
+   DOCKER_SOCKET="/tmp/podman.sock"
+   ```
+4. Start the API service for Podman by running:
+    ```bash
+    podman system service -t 0 unix:///tmp/podman.sock
+    ```
+5. Run the tests with `npx playwright test`
+
+If you're using Docker instead of Podman, you'll need to use `DOCKER_SOCKET="/var/run/docker.sock"`. You can also skip
+step 4 and run the tests directly with `npx playwright test`.
 
 ## Deploying
 
