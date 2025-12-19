@@ -22,7 +22,7 @@ export const navigateToAdvisories = async (page: Page) => {
   } catch {
     await page.goto('/insights/patch/advisories');
   }
-  await expect(page.getByRole('heading', { name: 'Advisories' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Advisories', exact: true })).toBeVisible();
 };
 
 /**
