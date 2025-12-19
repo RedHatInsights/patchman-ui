@@ -22,7 +22,8 @@ export const navigateToAdvisories = async (page: Page) => {
   } catch {
     await page.goto('/insights/patch/advisories');
   }
-  await expect(page.getByRole('heading', { name: 'Advisories' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Advisories', exact: true })).toBeVisible();
+  await waitForTableLoad(page);
 };
 
 /**
@@ -41,6 +42,7 @@ export const navigateToPackages = async (page: Page) => {
     await page.goto('/insights/patch/packages');
   }
   await expect(page.getByRole('heading', { name: 'Packages' })).toBeVisible();
+  await waitForTableLoad(page);
 };
 
 /**
