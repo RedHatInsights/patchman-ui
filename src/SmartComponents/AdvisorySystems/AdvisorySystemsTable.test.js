@@ -57,7 +57,7 @@ describe('AdvisorySystemsTable.js', () => {
           filter: { status: ['Installable'] },
           search: 'test-search',
           selectedTags: ['tags=test-tag'],
-          systemProfile: { ansible: { controller_version: 'not_nil' } },
+          systemProfile: { workloads: { ansible: { controller_version: 'not_nil' } } },
         },
       },
     };
@@ -71,7 +71,7 @@ describe('AdvisorySystemsTable.js', () => {
               filter: { status: ['Installable'] },
               search: 'test-search',
               selectedTags: ['tags=test-tag'],
-              systemProfile: { ansible: { controller_version: 'not_nil' } },
+              systemProfile: { workloads: { ansible: { controller_version: 'not_nil' } } },
             },
           },
         }),
