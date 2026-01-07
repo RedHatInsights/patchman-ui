@@ -64,3 +64,25 @@ export const navigateToSystems = async (page: Page) => {
   await expect(page.getByRole('columnheader').first()).toBeVisible();
   await waitForTableLoad(page);
 };
+
+/**
+ * Navigates to the Templates page via menu or direct URL.
+ * @param page
+ */
+export const navigateToTemplates = async (page: Page) => {
+  try {
+    await page
+      .getByRole('navigation', {
+        name: 'Insights Global Navigation',
+        exact: true,
+      })
+      .getByRole('region', { name: 'Content', exact: true })
+      .getByRole('link', { name: 'Templates', exact: true })
+      .click({ timeout: 2_500, noWaitAfter: true });
+  } catch {
+    await page.goto('/insights/content/templates');
+  }
+  await expect(page.getByRole('heading', { name: 'Templates' })).toBeVisible();
+  const subheading = page.getByText('View all content templates within your organization.');
+  await expect(subheading).toBeVisible(); // Wait for either list page or zero state
+};
