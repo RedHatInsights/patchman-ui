@@ -64,7 +64,7 @@ export const SYSTEMS_LIST_COLUMNS = [
       row.satellite_managed ? (
         <ManagedBySatelliteCell />
       ) : value ? (
-        <InsightsLink app='content' to={{ pathname: `/templates/${row.template_uuid}/details` }}>
+        <InsightsLink app='content' to={{ pathname: `/templates/${row.template_uuid}` }}>
           {value}
         </InsightsLink>
       ) : (
@@ -145,7 +145,7 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
       row.satellite_managed ? (
         <ManagedBySatelliteCell />
       ) : value ? (
-        <InsightsLink app='content' to={{ pathname: `/templates/${row.template_uuid}/details` }}>
+        <InsightsLink app='content' to={{ pathname: `/templates/${row.template_uuid}` }}>
           {value}
         </InsightsLink>
       ) : (
@@ -214,7 +214,7 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
       row.satellite_managed ? (
         <ManagedBySatelliteCell />
       ) : value ? (
-        <InsightsLink app='content' to={{ pathname: `/templates/${row.template_uuid}/details` }}>
+        <InsightsLink app='content' to={{ pathname: `/templates/${row.template_uuid}` }}>
           {value}
         </InsightsLink>
       ) : (

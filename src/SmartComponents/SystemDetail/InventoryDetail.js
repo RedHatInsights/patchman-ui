@@ -93,7 +93,7 @@ const InventoryDetail = () => {
                     {intl.formatMessage(messages.labelsColumnsTemplate)}:
                     <InsightsLink
                       app='content'
-                      to={`/templates/${templateUUID}/details`}
+                      to={`/templates/${templateUUID}`}
                       className='pf-v6-u-ml-xs'
                     >
                       {templateName}
