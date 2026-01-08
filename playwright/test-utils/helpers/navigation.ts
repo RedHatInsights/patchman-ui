@@ -4,7 +4,7 @@
  * Each function attempts to use the navigation menu first, then falls back to direct URL navigation.
  */
 
-import { expect, waitForTableLoad } from 'test-utils';
+import { disableTrackingAndConsent, expect, waitForTableLoad } from 'test-utils';
 import { Page } from 'playwright/test';
 
 /**
@@ -14,6 +14,7 @@ import { Page } from 'playwright/test';
  */
 export const navigateToAdvisories = async (page: Page) => {
   try {
+    await disableTrackingAndConsent(page);
     await page
       .getByRole('navigation', { name: 'Insights Global Navigation', exact: true })
       .getByRole('region', { name: 'Content', exact: true })
@@ -33,6 +34,7 @@ export const navigateToAdvisories = async (page: Page) => {
  */
 export const navigateToPackages = async (page: Page) => {
   try {
+    await disableTrackingAndConsent(page);
     await page
       .getByRole('navigation', { name: 'Insights Global Navigation', exact: true })
       .getByRole('region', { name: 'Content', exact: true })
@@ -52,6 +54,7 @@ export const navigateToPackages = async (page: Page) => {
  */
 export const navigateToSystems = async (page: Page) => {
   try {
+    await disableTrackingAndConsent(page);
     await page
       .getByRole('navigation', { name: 'Insights Global Navigation', exact: true })
       .getByRole('region', { name: 'Content', exact: true })
@@ -71,6 +74,7 @@ export const navigateToSystems = async (page: Page) => {
  */
 export const navigateToTemplates = async (page: Page) => {
   try {
+    await disableTrackingAndConsent(page);
     await page
       .getByRole('navigation', {
         name: 'Insights Global Navigation',
