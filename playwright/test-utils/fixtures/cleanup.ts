@@ -32,7 +32,10 @@ export interface Cleanup {
  * Automatically runs registered cleanup functions after each test.
  */
 export const cleanupTest = base.extend<WithCleanup>({
-  cleanup: async ({}, use) => {
+  // Add `request` to claim it as a dependency for the `cleanup` fixture
+  // Playwright will not close the request context until the teardown block has finished executing
+  // eslint-disable-next-line unused-imports/no-unused-vars
+  cleanup: async ({ request }, use) => {
     const cleanupFns: Map<symbol, () => Promise<unknown>> = new Map();
 
     await use({
