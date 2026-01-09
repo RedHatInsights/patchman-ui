@@ -83,10 +83,13 @@ export const closePopupsIfExist = async (page: Page) => {
 };
 
 /**
- * Aborts requests to analytics (Red Hat Metrics) and cookie consent (TrustArc) services to prevent
- * UI interference and reduce console error noise.
+ * Aborts requests to analytics (Red Hat Metrics, Amplitude) and cookie consent (TrustArc), to
+ * prevent UI interference and reduce console error noise during test execution.
+ *
+ * @param page - Playwright Page object
  */
 export const disableTrackingAndConsent = async (page: Page) => {
   await page.route('https://consent.trustarc.com/**', (route) => route.abort());
   await page.route('https://smetrics.redhat.com/**', (route) => route.abort());
+  await page.route(/(cdn|gs)\.amplitude\.com/, (route) => route.abort());
 };
