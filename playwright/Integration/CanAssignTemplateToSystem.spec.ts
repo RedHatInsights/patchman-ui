@@ -6,12 +6,12 @@ import {
   randomName,
   closePopupsIfExist,
   isInPatch,
+  poll,
 } from 'test-utils';
 import { cleanupTemplates } from 'test-utils/helpers/cleaners';
 
-import { refreshSubscriptionManager, RHSMClient, runCmd } from 'test-utils/helpers/rhsmClient';
+import { refreshSubscriptionManager, RHSMClient } from 'test-utils/helpers/rhsmClient';
 import { pollForSystemTemplateAttachment } from 'test-utils/helpers/systems';
-import { waitForTemplateInPatch } from 'test-utils/helpers/templates';
 
 test.describe('System Registration and Template Assignment', () => {
   test('verify template assignment displays correctly in Patch Systems UI', async ({
@@ -61,7 +61,6 @@ test.describe('System Registration and Template Assignment', () => {
       await closePopupsIfExist(page);
 
       const row = await getRowByName(page, hostname);
-      await expect(row).toBeVisible();
       await expect(row.getByText('No template')).toBeVisible();
     });
 
@@ -88,7 +87,28 @@ test.describe('System Registration and Template Assignment', () => {
         throw new Error(`Failed to create template '${templateName}': ${error}`);
       }
 
-      await waitForTemplateInPatch(request, templateName);
+      // Wait for template to sync from Content Sources to Patch API
+      await expect
+        .poll(
+          async () => {
+            try {
+              const response = await request.get('/api/patch/v3/templates', {
+                params: { search: templateName, limit: 1 },
+              });
+              const result = await response.json();
+              return result?.data?.length > 0;
+            } catch (error) {
+              console.log(`Network error while polling for template '${templateName}':`, error);
+              return false;
+            }
+          },
+          {
+            message: `Template '${templateName}' did not appear in Patch API`,
+            timeout: 60_000,
+            intervals: [10_000],
+          },
+        )
+        .toBe(true);
     });
 
     await test.step('Assign template to system via API', async () => {
@@ -103,16 +123,19 @@ test.describe('System Registration and Template Assignment', () => {
         throw new Error(`Failed to fetch system '${hostname}' from Patch: ${error}`);
       }
 
-      // Assign template to system via API
-      try {
-        const response = await request.patch(`/api/patch/v3/templates/${templateUUID}/systems`, {
-          data: { systems: [systemUUID] },
-        });
-        // Playwright's request API doesn't throw on 4xx/5xx, so we must check explicitly
-        await expect(response).toBeOK();
-      } catch (error) {
-        throw new Error(`Failed to assign template '${templateName}' to system: ${error}`);
-      }
+      // Assign the template to the system
+      // We poll here because the backend may return a 400 status while the system is in a transitional state
+      const assignTemplate = async () => {
+        try {
+          return await request.patch(`/api/patch/v3/templates/${templateUUID}/systems`, {
+            data: { systems: [systemUUID] },
+          });
+        } catch {
+          return { status: () => 0 }; // Treat network errors as a retryable status (0) to continue polling
+        }
+      };
+      const shouldRetryAssignment = (response: any) => response.status() !== 200;
+      await poll(assignTemplate, shouldRetryAssignment, 1000);
 
       await refreshSubscriptionManager(client);
     });
@@ -126,38 +149,43 @@ test.describe('System Registration and Template Assignment', () => {
     });
 
     await test.step('Verify template is displayed in Systems table', async () => {
-      await navigateToSystems(page);
-      await closePopupsIfExist(page);
-
       // The UI does not automatically refresh when data changes via API
       // Reload to clear stale data from our earlier visit
       // See: https://issues.redhat.com/browse/RHINENG-23269
       await page.reload();
-      await closePopupsIfExist(page);
 
       const row = await getRowByName(page, hostname);
-      await expect(row).toBeVisible();
       await expect(row.getByText(templateName)).toBeVisible();
     });
 
     await test.step('Verify template link on system details page', async () => {
       const row = await getRowByName(page, hostname);
       await row.getByRole('link', { name: hostname }).click();
-
       await expect(page.getByRole('link', { name: templateName })).toBeVisible();
     });
 
     await test.step('Verify system uses internal repository URLs', async () => {
-      const result = await runCmd(
-        'Count internal URLs in redhat.repo',
-        ['grep', '-c', 'cert.console', '/etc/yum.repos.d/redhat.repo'],
-        client,
-      );
-
-      expect(
-        Number(result?.stdout),
-        'Expected 2 internal URLs for the 2 selected repositories',
-      ).toBe(2);
+      await expect
+        .poll(
+          async () => {
+            try {
+              await refreshSubscriptionManager(client);
+              const result = await client.Exec(
+                ['grep', '-c', 'cert.console', '/etc/yum.repos.d/redhat.repo'],
+                10_000,
+              );
+              return Number(result?.stdout?.trim()) || 0;
+            } catch {
+              return -1; // Return -1 on crash so it keeps retrying
+            }
+          },
+          {
+            message: 'Internal URLs should match expected count of 2',
+            timeout: 60_000,
+            intervals: [5_000], // Retry every 5 seconds
+          },
+        )
+        .toBe(2);
     });
   });
 });
