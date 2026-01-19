@@ -75,20 +75,40 @@ test.describe('Systems Tests', () => {
       await page.locator('#select-typeahead-create').click();
       await page.getByRole('button', { name: 'Create plan' }).click();
       await expect(page.locator('h1').getByText(system.name)).toBeVisible();
-      await expect(page.getByRole('heading', { name: 'Remediation plan details and' })).toBeVisible(
-        { timeout: 180_000 },
-      );
+      await expect(page.getByRole('heading', { name: 'Details' })).toBeVisible({
+        timeout: 180_000,
+      });
     });
 
-    await test.step('Check actions and systems tabs', async () => {
-      await page.getByRole('tab', { name: 'ActionTab' }).click();
+    await test.step('Check actions, systems, and execution history tabs', async () => {
+      await page.getByRole('tab', { name: 'PlannedRemediationsTab' }).click();
+      await expect(page.getByRole('tab', { name: 'PlannedRemediationsTab' })).toHaveAttribute(
+        'aria-selected',
+        'true',
+      );
+      await expect(page.getByRole('tab', { name: 'ActionsTab' })).toHaveAttribute(
+        'aria-selected',
+        'true',
+      );
       await waitForTableLoad(page);
       await expect(page.locator('section > table > tbody > tr')).toHaveCount(1);
 
-      await page.getByRole('tab', { name: 'SystemTab' }).click();
+      await page.getByRole('tab', { name: 'SystemsTab' }).click();
+      await expect(page.getByRole('tab', { name: 'SystemsTab' })).toHaveAttribute(
+        'aria-selected',
+        'true',
+      );
       await waitForTableLoad(page);
       await expect(await getRowByName(page, system.name)).toBeVisible();
       await expect(page.locator('section > table > tbody > tr')).toHaveCount(1);
+
+      await page.getByRole('tab', { name: 'ExecutionHistoryTab' }).click();
+      await expect(page.getByRole('tab', { name: 'ExecutionHistoryTab' })).toHaveAttribute(
+        'aria-selected',
+        'true',
+      );
+      await waitForTableLoad(page);
+      await expect(page.getByText('No execution history')).toBeVisible();
     });
 
     await test.step('Delete remediation plan', async () => {
