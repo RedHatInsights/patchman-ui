@@ -102,3 +102,39 @@ export const cleanupTemplates = async (
     },
     { box: true },
   );
+
+/**
+ * Removes a remediation plan.
+ *
+ * This function deletes a remediation plan by:
+ * 1. First checking if the remediation plan exists (GET request)
+ * 2. If the remediation plan exists (status 200), sends a DELETE request to remove it
+ *
+ * If the remediation plan doesn't exist or the deletion fails, the error is silently ignored.
+ *
+ * @param request - Playwright APIRequestContext with proper authorization
+ * @param remediationPlanId - The remediation plan ID (UUID) of the remediation plan to delete
+ *
+ * @example
+ * ```typescript
+ * await cleanupRemediationPlan(context, 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6');
+ * // Removes the remediation plan if it exists
+ * ```
+ */
+export const cleanupRemediationPlan = async (
+  request: APIRequestContext,
+  remediationPlanId: string,
+) => {
+  try {
+    const remediationPlanUrl = `/api/remediations/v1/remediations/${remediationPlanId}`;
+
+    const getRemediationPlanResponse = await request.get(remediationPlanUrl);
+    if (getRemediationPlanResponse.status() !== 200) {
+      return;
+    }
+
+    await request.delete(remediationPlanUrl);
+  } catch {
+    return;
+  }
+};
