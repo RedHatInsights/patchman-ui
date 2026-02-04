@@ -6,8 +6,11 @@ import {
   getRowCellByHeader,
   waitForTableLoad,
   closePopupsIfExist,
+  randomName,
+  navigateToTemplates,
 } from 'test-utils';
-import { cleanupRemediationPlan } from 'test-utils/helpers/cleaners';
+import { cleanupRemediationPlan, cleanupTemplates } from 'test-utils/helpers/cleaners';
+import { createTemplate } from 'test-utils/helpers/templates';
 
 test.describe('Systems Tests', () => {
   test('Verify the shown system data matches the archive', async ({ page, request, systems }) => {
@@ -117,6 +120,65 @@ test.describe('Systems Tests', () => {
       );
       await waitForTableLoad(page);
       await expect(page.getByText('No execution history')).toBeVisible();
+    });
+  });
+
+  test('Version-locked systems display a tooltip and cannot be assigned to a template', async ({
+    page,
+    request,
+    systems,
+    cleanup,
+  }) => {
+    const system = await systems.add('version-locked-system-test', 'version-locked');
+    const version = '9.6';
+    let templateUUID: string;
+    const templatePrefix = 'template-version-locked-system-test';
+    const templateName = `${templatePrefix}-${randomName()}`;
+
+    await navigateToSystems(page);
+    await closePopupsIfExist(page);
+    const row = await getRowByName(page, system.name);
+
+    await test.step('Set up cleanup', async () => {
+      await cleanup.runAndAdd(() => cleanupTemplates(request, templatePrefix));
+    });
+
+    await test.step('Tooltip is displayed showing the system is version-locked', async () => {
+      const OScell = await getRowCellByHeader(page, row, 'OS');
+      await OScell.hover();
+      await expect(
+        page.getByText(`Your RHEL version is locked at version ${version}`),
+      ).toBeVisible();
+    });
+
+    await test.step('Create a template via API', async () => {
+      templateUUID = await createTemplate(
+        request,
+        templateName,
+        'VersionLockedSystemTestDescription',
+      );
+      expect(templateUUID).toBeDefined();
+    });
+
+    await test.step('Navigate to details of created template', async () => {
+      await navigateToTemplates(page);
+      const templateRow = await getRowByName(page, templateName);
+      await templateRow.getByRole('button', { name: templateName }).click();
+      expect(page.url()).toContain(templateUUID);
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText(templateName);
+    });
+
+    await test.step('Verify template cannot be assigned to the version-locked system', async () => {
+      await page.getByRole('button', { name: 'Assign to systems' }).click();
+      const modal = page.getByRole('dialog', { name: 'Assign template to systems' });
+      await expect(modal).toBeVisible();
+      const systemRow = await getRowByName(modal, system.name);
+      await expect(systemRow.getByRole('checkbox')).toBeDisabled();
+      // using an OUIA attribute selector here, other tests depend on the default data-testid attribute
+      // so we can't change the testIdAttribute globally
+      await systemRow.locator('[data-ouia-component-id="system-list-warning-icon"]').hover();
+      await expect(page.getByText('Cannot associate system with a template')).toBeVisible();
+      await expect(page.getByText(`RHEL is locked at version ${version}`)).toBeVisible();
     });
   });
 });

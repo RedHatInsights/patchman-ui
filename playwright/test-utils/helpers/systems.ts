@@ -33,8 +33,9 @@ import { poll, sleep } from './general';
  *
  * - `base`: RHEL 9.6 system with patch data (advisories, packages)
  * - `clean`: RHEL 9.4 system without patch data
+ * - `version-locked`: RHEL 9.6 system locked to minor release version
  */
-export type SystemType = 'base' | 'clean'; // | 'rhel10' || 'satellite-managed' etc.
+export type SystemType = 'base' | 'clean' | 'version-locked'; // | 'rhel10' || 'satellite-managed' etc.
 
 /**
  * Maps system types to their base archives and whether patch data is expected.
@@ -46,6 +47,7 @@ export type SystemType = 'base' | 'clean'; // | 'rhel10' || 'satellite-managed' 
 const SystemTypeArchiveMap = new Map<SystemType, [string, boolean]>([
   ['base', ['rhel96_base.tar.gz', true]],
   ['clean', ['rhel94_clean.tar.gz', false]],
+  ['version-locked', ['rhel96_version_locked.tar.gz', false]],
 ]);
 
 /**
