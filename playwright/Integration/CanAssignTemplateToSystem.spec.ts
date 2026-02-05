@@ -66,7 +66,12 @@ test.describe('System Registration and Template Assignment', () => {
     });
 
     await test.step('Create template via API', async () => {
-      templateUUID = await createTemplate(request, templateName, 'CanAssignTemplateToSystemTestDescription');
+      templateUUID = await createTemplate(
+        request,
+        templateName,
+        'CanAssignTemplateToSystemTestDescription',
+      );
+      expect(templateUUID, 'Template UUID should be returned').toBeDefined();
 
       // Wait for template to sync from Content Sources to Patch API
       await expect

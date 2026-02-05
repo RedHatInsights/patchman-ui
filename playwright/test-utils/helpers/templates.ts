@@ -9,8 +9,8 @@ import { APIRequestContext } from '@playwright/test';
  * @param request - Playwright APIRequestContext with proper authorization
  * @param templateName - The name of the template to create
  * @param description - The description of the template to create
- * @returns {Promise<string>} A promise that resolves to the UUID of the created template.
- * @throws {Error} If an unexpected error occurs during template creation.
+ * @returns {Promise<string>} A promise that resolves to the UUID of the created template
+ * @throws {Error} If an unexpected error occurs during template creation
  *
  * @example
  * ```typescript
