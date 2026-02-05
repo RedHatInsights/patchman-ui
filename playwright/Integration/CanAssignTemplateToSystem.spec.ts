@@ -12,6 +12,7 @@ import { cleanupTemplates } from 'test-utils/helpers/cleaners';
 
 import { refreshSubscriptionManager, RHSMClient } from 'test-utils/helpers/rhsmClient';
 import { pollForSystemTemplateAttachment } from 'test-utils/helpers/systems';
+import { createTemplate } from 'test-utils/helpers/templates';
 
 test.describe('System Registration and Template Assignment', () => {
   test('verify template assignment displays correctly in Patch Systems UI', async ({
@@ -65,27 +66,7 @@ test.describe('System Registration and Template Assignment', () => {
     });
 
     await test.step('Create template via API', async () => {
-      try {
-        templateUUID = await request
-          .post('/api/content-sources/v1.0/templates/', {
-            data: {
-              name: templateName,
-              description: 'CanAssignTemplateToSystemTestDescription',
-              arch: 'x86_64',
-              version: '9',
-              repository_uuids: [
-                '00b214de-e01d-4191-ad48-59bcc859e691', // AppStream repo
-                '5d2861ad-0d74-4116-98b4-254880126654', // BaseOS repo
-              ],
-              use_latest: true,
-            },
-          })
-          .then((response) => response.json())
-          .then((response) => response?.uuid);
-        expect(templateUUID, 'Template UUID should be returned').toBeDefined();
-      } catch (error) {
-        throw new Error(`Failed to create template '${templateName}': ${error}`);
-      }
+      templateUUID = await createTemplate(request, templateName, 'CanAssignTemplateToSystemTestDescription');
 
       // Wait for template to sync from Content Sources to Patch API
       await expect
