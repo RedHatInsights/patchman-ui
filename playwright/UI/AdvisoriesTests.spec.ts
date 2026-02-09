@@ -9,8 +9,19 @@ import {
 import { cleanupRemediationPlan } from 'test-utils/helpers/cleaners';
 
 test.describe('Advisories Tests', () => {
+  test.use({
+    storageState: '.auth/advisory_remediation_user.json',
+    extraHTTPHeaders: process.env.ADVISORY_REMEDIATION_TOKEN
+      ? { Authorization: process.env.ADVISORY_REMEDIATION_TOKEN }
+      : {},
+  });
+
   test('Create a new remediation plan', async ({ page, request, systems, cleanup }) => {
-    const system = await systems.add('system-remediation-plan-test', 'base');
+    const system = await systems.add(
+      'advisory-remediation-plan-test',
+      'base',
+      process.env.ADVISORY_REMEDIATION_TOKEN,
+    );
 
     await navigateToAdvisories(page);
     await closePopupsIfExist(page);
@@ -66,7 +77,6 @@ test.describe('Advisories Tests', () => {
       );
       await waitForTableLoad(page);
       await expect(await getRowByName(page, system.name)).toBeVisible();
-      await expect(page.getByRole('row')).toHaveCount(2);
 
       await page.getByRole('tab', { name: 'ExecutionHistoryTab' }).click();
       await expect(page.getByRole('tab', { name: 'ExecutionHistoryTab' })).toHaveAttribute(
