@@ -35,10 +35,22 @@ jobs:
             exit 1
           fi
 
+          if [ -z "$ADVISORY_REMEDIATION_USERNAME" ]; then
+            echo "Error: ADVISORY_REMEDIATION_USERNAME secret is not set."
+            exit 1
+          fi
+
+          if [ -z "$ADVISORY_REMEDIATION_PASSWORD" ]; then
+            echo "Error: ADVISORY_REMEDIATION_PASSWORD secret is not set."
+            exit 1
+          fi
+
           # Create the .env file and write the secrets and other variables to it
           {
             echo "ADMIN_USERNAME=$ADMIN_USERNAME"
             echo "ADMIN_PASSWORD=$ADMIN_PASSWORD"
+            echo "ADVISORY_REMEDIATION_USERNAME=$ADVISORY_REMEDIATION_USERNAME"
+            echo "ADVISORY_REMEDIATION_PASSWORD=$ADVISORY_REMEDIATION_PASSWORD"
             echo "BASE_URL=https://stage.foo.redhat.com:1337"
             echo "CI=true"
           } >> .env

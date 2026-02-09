@@ -56,6 +56,8 @@ export type SystemResult = {
   name: string;
   /** The inventory ID (UUID) of the created system */
   id: string;
+  /** The token of the user that created the system */
+  token: string;
 };
 
 /**
@@ -339,15 +341,16 @@ const waitForSystemInPatch = async (
  * The created archive file is stored in `../data/tmp/{systemName}.tar.gz` and should be
  * cleaned up after the test using `cleanupArchive()`.
  *
- * @param request - Playwright APIRequestContext with ADMIN_TOKEN authorization
+ * @param request - Playwright APIRequestContext with authorization
  * @param systemName - The name for the test system (used for hostname and archive filename)
  * @param systemType - The type of system to create
+ * @param token - The token of the user to create the system for
  * @returns The created system's name and inventory ID
  * @throws Error if any step fails (preparation, upload, or processing)
  *
  * @example
  * ```typescript
- * const system = await createSystem(context, 'test-system-abc123', 'base');
+ * const system = await createSystem(context, 'test-system-abc123', 'base', process.env.ADMIN_TOKEN);
  * console.log(system.name); // 'test-system-abc123'
  * console.log(system.id); // 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6'
  * ```
@@ -356,6 +359,7 @@ export const createSystem = async (
   request: APIRequestContext,
   systemName: string,
   systemType: SystemType,
+  token: string,
 ): Promise<SystemResult> => {
   prepareTestArchive(systemName, systemType);
   await uploadArchive(request, path.join(__dirname, `../data/tmp/${systemName}.tar.gz`));
@@ -365,6 +369,7 @@ export const createSystem = async (
   return {
     name: systemName,
     id,
+    token,
   };
 };
 
