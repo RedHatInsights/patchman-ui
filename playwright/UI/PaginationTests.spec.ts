@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Locator } from '@playwright/test';
 import {
   test,
   expect,
@@ -6,16 +6,9 @@ import {
   closePopupsIfExist,
   waitForTableLoad,
   navigateToAdvisories,
+  navigateToPackages,
 } from 'test-utils';
-
-const commonNonInventoryLocators = (page: Page) => {
-  const currentPageNumber = page.getByRole('spinbutton', { name: 'Current page' });
-  const pageCountLocator = page.locator('.pf-v6-c-pagination__nav-page-select > span').last();
-  return {
-    currentPageNumber,
-    pageCountLocator,
-  };
-};
+import { commonNonInventoryPaginationLocators } from 'test-utils/helpers/pagination';
 
 test.describe('Pagination', () => {
   test('Verify pagination on systems page', async ({ page, systems }) => {
@@ -38,7 +31,7 @@ test.describe('Pagination', () => {
       .getByRole('button', { name: 'Go to previous page' });
     const bottomFirstPageButton = page.getByRole('button', { name: 'Go to first page' });
     const bottomLastPageButton = page.getByRole('button', { name: 'Go to last page' });
-    const { currentPageNumber, pageCountLocator } = commonNonInventoryLocators(page);
+    const { currentPageNumber, pageCountLocator } = commonNonInventoryPaginationLocators(page);
 
     await test.step('Populate the systems table', async () => {
       const { prefix: systemPrefix } = await systems.addMany(12, 'system-pagination', 'base');
@@ -224,203 +217,213 @@ test.describe('Pagination', () => {
     });
   });
 
-  test('Verify pagination on advisories page', async ({ page, systems }) => {
-    const { currentPageNumber, pageCountLocator } = commonNonInventoryLocators(page);
-    const toolbarTopPaginationToggle = page.locator('#options-menu-top-toggle');
-    const toolbarBottomPaginationToggle = page.locator(
-      '#pagination-options-menu-bottom-bottom-toggle',
-    );
-    let advisoriesCount: string | undefined;
-    const targetRows = page.getByRole('row').filter({ has: page.getByText('RH') });
-    const topPreviousButton = page
-      .locator('#options-menu-top-pagination')
-      .getByRole('button', { name: 'Go to previous page' });
-    const topNextButton = page
-      .locator('#options-menu-top-pagination')
-      .getByRole('button', { name: 'Go to next page' });
-    const bottomNextButton = page
-      .locator('#pagination-options-menu-bottom-bottom-pagination')
-      .getByRole('button', { name: 'Go to next page' });
-    const bottomPreviousButton = page
-      .locator('#pagination-options-menu-bottom-bottom-pagination')
-      .getByRole('button', { name: 'Go to previous page' });
-    const bottomLastPageButton = page.getByRole('button', { name: 'Go to last page' });
-    const bottomFirstPageButton = page.getByRole('button', { name: 'Go to first page' });
-    let pageCount: string;
-    let initialPageCount: string;
+  [{ name: 'advisories' }, { name: 'packages' }].forEach(({ name }) => {
+    test(`Verify pagination on ${name} page`, async ({ page, systems }) => {
+      const {
+        currentPageNumber,
+        pageCountLocator,
+        toolbarTopPaginationToggle,
+        toolbarBottomPaginationToggle,
+        topPreviousButton,
+        topNextButton,
+        bottomNextButton,
+        bottomPreviousButton,
+        bottomLastPageButton,
+        bottomFirstPageButton,
+      } = commonNonInventoryPaginationLocators(page);
+      let targetRows: Locator;
+      let advisoriesCount: string | undefined;
+      let pageCount: string;
+      let initialPageCount: string;
 
-    await test.step('Populate the advisories table', async () => {
-      await systems.add('system-remediation-plan-test', 'base');
+      await test.step(`Populate the ${name} table`, async () => {
+        await systems.add('system-pagination', 'base');
+      });
 
-      await navigateToAdvisories(page);
-      await closePopupsIfExist(page);
+      await test.step(`Navigate to the ${name} page`, async () => {
+        switch (name) {
+          case 'advisories':
+            await navigateToAdvisories(page);
+            targetRows = page.getByRole('row').filter({ has: page.getByText('RH') });
+            break;
+          case 'packages':
+            await navigateToPackages(page);
+            targetRows = page
+              .getByRole('row')
+              .filter({ hasNot: page.getByRole('columnheader', { name: 'Name' }) });
+            break;
+          default:
+            throw new Error(`Invalid page name: ${name}`);
+        }
+        await closePopupsIfExist(page);
 
-      advisoriesCount = (await toolbarTopPaginationToggle.textContent())
-        ?.trimEnd()
-        .split(' ')
-        .pop();
-      await expect(toolbarTopPaginationToggle).toHaveText(`1 - 20 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 20 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(20);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeDisabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeDisabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeDisabled();
-      await expect(currentPageNumber).toHaveValue('1');
-      initialPageCount = (await pageCountLocator.textContent())?.split(' ').pop() ?? '';
-    });
+        advisoriesCount = (await toolbarTopPaginationToggle.textContent())
+          ?.trimEnd()
+          .split(' ')
+          .pop();
+        await expect(toolbarTopPaginationToggle).toHaveText(`1 - 20 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 20 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(20);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeDisabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeDisabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeDisabled();
+        await expect(currentPageNumber).toHaveValue('1');
+        initialPageCount = (await pageCountLocator.textContent())?.split(' ').pop() ?? '';
+      });
 
-    await test.step('Top paginator: set pagination to 10', async () => {
-      await toolbarTopPaginationToggle.click();
-      await page.getByRole('menuitem', { name: '10 per page' }).click();
+      await test.step('Top paginator: set pagination to 10', async () => {
+        await toolbarTopPaginationToggle.click();
+        await page.getByRole('menuitem', { name: '10 per page' }).click();
 
-      await expect(toolbarTopPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(10);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeDisabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeDisabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeDisabled();
-      await expect(currentPageNumber).toHaveValue('1');
-      pageCount = (await pageCountLocator.textContent())?.split(' ').pop() ?? '';
-    });
+        await expect(toolbarTopPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(10);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeDisabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeDisabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeDisabled();
+        await expect(currentPageNumber).toHaveValue('1');
+        pageCount = (await pageCountLocator.textContent())?.split(' ').pop() ?? '';
+      });
 
-    await test.step('Top paginator: click go to next page button', async () => {
-      await topNextButton.click();
+      await test.step('Top paginator: click go to next page button', async () => {
+        await topNextButton.click();
 
-      await expect(toolbarTopPaginationToggle).toHaveText(`11 - 20 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`11 - 20 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(10);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeEnabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeEnabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeEnabled();
-      await expect(currentPageNumber).toHaveValue('2');
-      await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
-    });
+        await expect(toolbarTopPaginationToggle).toHaveText(`11 - 20 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`11 - 20 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(10);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeEnabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeEnabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeEnabled();
+        await expect(currentPageNumber).toHaveValue('2');
+        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+      });
 
-    await test.step('Top paginator: click go to previous page button', async () => {
-      await topPreviousButton.click();
+      await test.step('Top paginator: click go to previous page button', async () => {
+        await topPreviousButton.click();
 
-      await expect(toolbarTopPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(10);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeDisabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeDisabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeDisabled();
-      await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
-    });
+        await expect(toolbarTopPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(10);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeDisabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeDisabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeDisabled();
+        await expect(currentPageNumber).toHaveValue('1');
+        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+      });
 
-    await test.step('Bottom paginator: click go to next page button', async () => {
-      await bottomNextButton.click();
+      await test.step('Bottom paginator: click go to next page button', async () => {
+        await bottomNextButton.click();
 
-      await expect(toolbarTopPaginationToggle).toHaveText(`11 - 20 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`11 - 20 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(10);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeEnabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeEnabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeEnabled();
-      await expect(currentPageNumber).toHaveValue('2');
-      await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
-    });
+        await expect(toolbarTopPaginationToggle).toHaveText(`11 - 20 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`11 - 20 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(10);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeEnabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeEnabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeEnabled();
+        await expect(currentPageNumber).toHaveValue('2');
+        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+      });
 
-    await test.step('Bottom paginator: click go to previous page button', async () => {
-      await bottomPreviousButton.click();
+      await test.step('Bottom paginator: click go to previous page button', async () => {
+        await bottomPreviousButton.click();
 
-      await expect(toolbarTopPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(10);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeDisabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeDisabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeDisabled();
-      await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
-    });
+        await expect(toolbarTopPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(10);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeDisabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeDisabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeDisabled();
+        await expect(currentPageNumber).toHaveValue('1');
+        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+      });
 
-    await test.step('Bottom paginator: click go to last page button', async () => {
-      await bottomLastPageButton.click();
+      await test.step('Bottom paginator: click go to last page button', async () => {
+        await bottomLastPageButton.click();
 
-      await expect(toolbarTopPaginationToggle).toContainText(
-        ` - ${advisoriesCount} of ${advisoriesCount}`,
-      );
-      await expect(toolbarBottomPaginationToggle).toContainText(
-        ` - ${advisoriesCount} of ${advisoriesCount}`,
-      );
-      expect(await targetRows.count()).toBeLessThanOrEqual(10);
-      await expect(topNextButton).toBeDisabled();
-      await expect(topPreviousButton).toBeEnabled();
-      await expect(bottomNextButton).toBeDisabled();
-      await expect(bottomPreviousButton).toBeEnabled();
-      await expect(bottomLastPageButton).toBeDisabled();
-      await expect(bottomFirstPageButton).toBeEnabled();
-      await expect(currentPageNumber).toHaveValue(pageCount);
-      await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
-    });
+        await expect(toolbarTopPaginationToggle).toContainText(
+          ` - ${advisoriesCount} of ${advisoriesCount}`,
+        );
+        await expect(toolbarBottomPaginationToggle).toContainText(
+          ` - ${advisoriesCount} of ${advisoriesCount}`,
+        );
+        expect(await targetRows.count()).toBeLessThanOrEqual(10);
+        await expect(topNextButton).toBeDisabled();
+        await expect(topPreviousButton).toBeEnabled();
+        await expect(bottomNextButton).toBeDisabled();
+        await expect(bottomPreviousButton).toBeEnabled();
+        await expect(bottomLastPageButton).toBeDisabled();
+        await expect(bottomFirstPageButton).toBeEnabled();
+        await expect(currentPageNumber).toHaveValue(pageCount);
+        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+      });
 
-    await test.step('Bottom paginator: click go to first page button', async () => {
-      await bottomFirstPageButton.click();
+      await test.step('Bottom paginator: click go to first page button', async () => {
+        await bottomFirstPageButton.click();
 
-      await expect(toolbarTopPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(10);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeDisabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeDisabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeDisabled();
-      await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
-    });
+        await expect(toolbarTopPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 10 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(10);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeDisabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeDisabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeDisabled();
+        await expect(currentPageNumber).toHaveValue('1');
+        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+      });
 
-    await test.step('Bottom paginator: input page number', async () => {
-      await currentPageNumber.fill('3');
-      await currentPageNumber.press('Enter');
+      await test.step('Bottom paginator: input page number', async () => {
+        await currentPageNumber.fill('3');
+        await currentPageNumber.press('Enter');
 
-      await expect(toolbarTopPaginationToggle).toHaveText(`21 - 30 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`21 - 30 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(10);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeEnabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeEnabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeEnabled();
-      await expect(currentPageNumber).toHaveValue('3');
-      await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
-    });
+        await expect(toolbarTopPaginationToggle).toHaveText(`21 - 30 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`21 - 30 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(10);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeEnabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeEnabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeEnabled();
+        await expect(currentPageNumber).toHaveValue('3');
+        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+      });
 
-    await test.step('Bottom paginator: set pagination to 20', async () => {
-      await toolbarBottomPaginationToggle.click();
-      await page.getByRole('menuitem', { name: '20 per page' }).click();
+      await test.step('Bottom paginator: set pagination to 20', async () => {
+        await toolbarBottomPaginationToggle.click();
+        await page.getByRole('menuitem', { name: '20 per page' }).click();
 
-      await expect(toolbarTopPaginationToggle).toHaveText(`1 - 20 of ${advisoriesCount}`);
-      await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 20 of ${advisoriesCount}`);
-      await expect(targetRows).toHaveCount(20);
-      await expect(topNextButton).toBeEnabled();
-      await expect(topPreviousButton).toBeDisabled();
-      await expect(bottomNextButton).toBeEnabled();
-      await expect(bottomPreviousButton).toBeDisabled();
-      await expect(bottomLastPageButton).toBeEnabled();
-      await expect(bottomFirstPageButton).toBeDisabled();
-      await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText(`of ${initialPageCount}`);
+        await expect(toolbarTopPaginationToggle).toHaveText(`1 - 20 of ${advisoriesCount}`);
+        await expect(toolbarBottomPaginationToggle).toHaveText(`1 - 20 of ${advisoriesCount}`);
+        await expect(targetRows).toHaveCount(20);
+        await expect(topNextButton).toBeEnabled();
+        await expect(topPreviousButton).toBeDisabled();
+        await expect(bottomNextButton).toBeEnabled();
+        await expect(bottomPreviousButton).toBeDisabled();
+        await expect(bottomLastPageButton).toBeEnabled();
+        await expect(bottomFirstPageButton).toBeDisabled();
+        await expect(currentPageNumber).toHaveValue('1');
+        await expect(pageCountLocator).toHaveText(`of ${initialPageCount}`);
+      });
     });
   });
 });
