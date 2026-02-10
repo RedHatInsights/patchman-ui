@@ -20,9 +20,7 @@ export const logInWithUsernameAndPassword = async (
 
   await page.goto('/insights/patch/systems');
 
-  await expect(async () =>
-    expect(page.getByText('Log in to your Red Hat account')).toBeVisible(),
-  ).toPass();
+  await expect(page.getByText('Log in to your Red Hat account')).toBeVisible();
 
   const login = page.getByRole('textbox');
   await login.fill(username);
@@ -70,13 +68,14 @@ export const logout = async (page: Page) => {
  * @param fileName - Name for the storage state file
  * @returns JWT bearer token or undefined
  */
-export const storeStorageStateAndToken = async (page: Page, fileName: string) => {
+export const storeStorageStateAndToken = async (page: Page, tokenEnvVar: string) => {
+  const storageFile = `${tokenEnvVar}.json`;
   const { cookies } = await page
     .context()
-    .storageState({ path: path.join(__dirname, '../../../.auth', fileName) });
+    .storageState({ path: path.join(__dirname, '../../../.auth', storageFile) });
   const token = cookies.find((cookie) => cookie.name === 'cs_jwt')?.value;
   process.env.TOKEN = `Bearer ${token}`;
-  return token;
+  process.env[tokenEnvVar] = `Bearer ${token}`;
 };
 
 /**
@@ -96,25 +95,6 @@ export const getUserAuthToken = (name: string) => {
   }
 
   return '';
-};
-
-/**
- * Validates required environment variables are set.
- * @throws Error listing missing required environment variables
- */
-export const throwIfMissingEnvVariables = () => {
-  const MandatoryEnvVariables = ['BASE_URL', 'ADMIN_USERNAME', 'ADMIN_PASSWORD'];
-
-  const missing: string[] = [];
-  MandatoryEnvVariables.forEach((envVar) => {
-    if (!process.env[envVar]) {
-      missing.push(envVar);
-    }
-  });
-
-  if (missing.length > 0) {
-    throw new Error('Missing env variables:' + missing.join(','));
-  }
 };
 
 /**
