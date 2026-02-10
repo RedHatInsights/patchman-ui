@@ -10,7 +10,7 @@ import { cleanupRemediationPlan } from 'test-utils/helpers/cleaners';
 
 test.describe('Advisories Tests', () => {
   test.use({
-    storageState: '.auth/advisory_remediation_user.json',
+    storageState: '.auth/ADVISORY_REMEDIATION_TOKEN.json',
     extraHTTPHeaders: process.env.ADVISORY_REMEDIATION_TOKEN
       ? { Authorization: process.env.ADVISORY_REMEDIATION_TOKEN }
       : {},

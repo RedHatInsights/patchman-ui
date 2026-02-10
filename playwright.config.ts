@@ -56,7 +56,7 @@ export default defineConfig({
           name: 'Integration',
           use: {
             ...devices['Desktop Chrome'],
-            storageState: '.auth/admin_user.json',
+            storageState: '.auth/ADMIN_TOKEN.json',
           },
           testDir: './playwright/Integration/',
           dependencies: ['setup'],
@@ -65,7 +65,7 @@ export default defineConfig({
           name: 'UI',
           use: {
             ...devices['Desktop Chrome'],
-            storageState: '.auth/admin_user.json',
+            storageState: '.auth/ADMIN_TOKEN.json',
           },
           testDir: './playwright/UI/',
           dependencies: ['setup'],
