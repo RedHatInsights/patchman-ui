@@ -96,15 +96,3 @@ export const patchSetUnassignSystemsNotifications = (systemsCount) => ({
     variant: 'danger',
   },
 });
-
-export const patchSetAssignSystemsNotifications = (systemsCount) => ({
-  success: {
-    title: `Systems succesfully applied to this Patch template.`,
-    description: `${systemsCount} ${systemsCount > 1 ? 'systems' : 'system'} added to Patch template(s)`,
-    variant: 'success',
-  },
-  failure: {
-    title: `Failed to apply systems to this Patch template.`,
-    variant: 'danger',
-  },
-});
