@@ -549,11 +549,6 @@ export default defineMessages({
     defaultMessage:
       'A system can have only one content template, therefore if you apply a new content template to the system, it will be overwritten.',
   },
-  templateApply: {
-    id: 'templateApply',
-    description: 'title with capital letters',
-    defaultMessage: 'Apply template',
-  },
   templateApplySystems: {
     id: 'templateApplySystems',
     description: 'step name of the patch template wizard',
@@ -585,11 +580,6 @@ export default defineMessages({
     id: 'templateContentStepTitle',
     description: 'template wizard template title',
     defaultMessage: 'Define template content',
-  },
-  templateCreate: {
-    id: 'templateCreate',
-    description: 'title with capital letters',
-    defaultMessage: 'Create',
   },
   templateDateField: {
     id: 'templateDateField',
@@ -688,11 +678,6 @@ export default defineMessages({
     defaultMessage:
       'At least one system must be selected. Actions must be associated to a system to be added to a playbook.',
   },
-  templateOr: {
-    id: 'templateOr',
-    description: 'title with capital letters',
-    defaultMessage: 'Or',
-  },
   templatePopoverBody: {
     id: 'templatePopoverBody',
     description: 'Template page header popover body',
@@ -709,22 +694,10 @@ export default defineMessages({
     description: 'step name of the patch template wizard',
     defaultMessage: 'Review ',
   },
-  templateSelect: {
-    id: 'templateSelect',
-    description: 'title with capital letters',
-    defaultMessage:
-      'Select a template to apply to the selected {systemCount, plural, one {<b>#</b> system} other {<b>#</b> systems}}.',
-  },
   templateSelectExisting: {
     id: 'templateSelectExisting',
     description: 'title with capital letters',
     defaultMessage: 'Select an existing template',
-  },
-  templateSelectSatellite: {
-    id: 'templateSelectSatellite',
-    description: 'title with capital letters',
-    defaultMessage:
-      '<b>{systemCount}</b> of the selected systems content is Managed by Satellite therefore Template is not applicable.',
   },
   templateStepSystems: {
     id: 'templateStepSystems',

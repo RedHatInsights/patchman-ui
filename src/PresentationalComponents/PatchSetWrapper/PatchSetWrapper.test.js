@@ -9,9 +9,6 @@ jest.mock('../../SmartComponents/PatchSetWizard/PatchSetWizard', () => () => (
 jest.mock('../../SmartComponents/Modals/UnassignSystemsModal', () => () => (
   <div id='test-unassign-systems-modal'></div>
 ));
-jest.mock('../../SmartComponents/Modals/AssignSystemsModal', () => () => (
-  <div id='test-assign-systems-modal'></div>
-));
 
 const mockState = {};
 

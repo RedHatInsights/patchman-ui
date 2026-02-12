@@ -25,11 +25,6 @@ export const filterSystemsWithoutTemplates = (systemsIDs, fetchBatched, totalIte
   return filterChosenSystems(urlFilter, systemsIDs, fetchBatched, totalItems);
 };
 
-export const filterSatelliteManagedSystems = (systemsIDs, fetchBatched, totalItems) => {
-  const urlFilter = { 'filter[satellite_managed]': 'false' };
-  return filterChosenSystems(urlFilter, systemsIDs, fetchBatched, totalItems);
-};
-
 export const renderUnassignModalMessages = (bodyMessage, systemsCount, intl) => (
   <GridItem>
     {intl.formatMessage(messages[bodyMessage], { systemsCount, b: (...chunks) => <b>{chunks}</b> })}
