@@ -18,7 +18,7 @@ import {
   objOnlyWithTrue,
 } from '../Helpers';
 import { intl } from '../IntlProvider';
-import { assignSystemToPatchSet, updatePatchSets } from '../api';
+import { assignSystemToPatchSet } from '../api';
 import { createSystemsSortBy } from '../SystemsHelpers';
 import { ColumnManagementModal } from '@patternfly/react-component-groups';
 
@@ -341,10 +341,7 @@ export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
 
     setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: true });
 
-    const response =
-      patchSetID || id
-        ? updatePatchSets(requestConfig, patchSetID || id)
-        : assignSystemToPatchSet(requestConfig);
+    const response = assignSystemToPatchSet(requestConfig);
 
     handleApiResponse(response);
   });
