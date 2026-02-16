@@ -6,9 +6,6 @@ import { mountWithRouterAndProviderAndIntl } from '../../../config/rtlwrapper';
 jest.mock('../../SmartComponents/PatchSetWizard/PatchSetWizard', () => () => (
   <div id='test-patch-set-wizard'></div>
 ));
-jest.mock('../../SmartComponents/Modals/UnassignSystemsModal', () => () => (
-  <div id='test-unassign-systems-modal'></div>
-));
 
 const mockState = {};
 
@@ -52,25 +49,5 @@ describe('PatchSetWrapper', () => {
       store,
     );
     expect(container.querySelector('#test-patch-set-wizard')).toBeFalsy();
-  });
-
-  it('should display UnassignSystemsModal when isUnassignSystemsModalOpen prop is true', () => {
-    const { container } = mountWithRouterAndProviderAndIntl(
-      <PatchSetWrapper {...testProps} />,
-      store,
-    );
-    expect(container.querySelector('#test-unassign-systems-modal')).toBeTruthy();
-  });
-
-  it('should hide UnassignSystemsModal when isUnassignSystemsModalOpen prop is false', () => {
-    const testHiddenState = {
-      patchSetState: { ...testProps.patchSetState, isUnassignSystemsModalOpen: false },
-      ...testProps.setPatchSetState,
-    };
-    const { container } = mountWithRouterAndProviderAndIntl(
-      <PatchSetWrapper {...testHiddenState} />,
-      store,
-    );
-    expect(container.querySelector('#test-unassign-systems-modal')).toBeFalsy();
   });
 });

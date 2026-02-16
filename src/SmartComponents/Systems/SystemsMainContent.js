@@ -49,11 +49,7 @@ const SystemsMainContent = () => {
   return (
     <React.Fragment>
       <SystemsStatusReport apply={apply} queryParams={queryParams} />
-      <PatchSetWrapper
-        patchSetState={patchSetState}
-        setPatchSetState={setPatchSetState}
-        totalItems={metadata?.total_items}
-      />
+      <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
       {(isRemediationOpen && (
         <RemediationWizard
           data={remediationIssues}

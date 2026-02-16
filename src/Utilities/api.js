@@ -211,9 +211,6 @@ export const fetchPatchSetSystems = (params) => {
   return createApiCall(`/baselines/${id}/systems`, 'v3', 'get', prepareEntitiesParams(params));
 };
 
-export const unassignSystemFromPatchSet = (payload) =>
-  createApiCall('/baselines/systems/remove', 'v3', 'post', null, payload);
-
 export const getOperatingSystems = () => hostInventoryApi.apiSystemProfileGetOperatingSystem();
 
 export const fetchIDs = (endpoint, queryParams) =>

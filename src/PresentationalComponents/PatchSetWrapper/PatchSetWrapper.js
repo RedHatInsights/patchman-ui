@@ -2,17 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import PatchSetWizard from '../../SmartComponents/PatchSetWizard/PatchSetWizard';
-import UnassignSystemsModal from '../../SmartComponents/Modals/UnassignSystemsModal';
 
-const PatchSetWrapper = ({ patchSetState, setPatchSetState, totalItems }) => (
+const PatchSetWrapper = ({ patchSetState, setPatchSetState }) => (
   <>
-    {patchSetState.isUnassignSystemsModalOpen && (
-      <UnassignSystemsModal
-        unassignSystemsModalState={patchSetState}
-        setUnassignSystemsModalOpen={setPatchSetState}
-        totalItems={totalItems}
-      />
-    )}
     {patchSetState.isPatchSetWizardOpen && <PatchSetWizard setBaselineState={setPatchSetState} />}
   </>
 );
@@ -20,6 +12,5 @@ const PatchSetWrapper = ({ patchSetState, setPatchSetState, totalItems }) => (
 PatchSetWrapper.propTypes = {
   patchSetState: propTypes.object,
   setPatchSetState: propTypes.func,
-  totalItems: propTypes.number,
 };
 export default PatchSetWrapper;

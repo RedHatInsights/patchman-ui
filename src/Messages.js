@@ -380,11 +380,6 @@ export default defineMessages({
     description: 'Button label',
     defaultMessage: 'Plan remediation',
   },
-  labelsRemove: {
-    id: 'labelsRemove',
-    description: 'Button label',
-    defaultMessage: 'Remove',
-  },
   labelsReturnToLandingPage: {
     id: 'returnToLandingPage',
     description: 'Return to landing page label for general usage',
@@ -731,11 +726,6 @@ export default defineMessages({
     defaultMessage:
       'Do you want to remove the {systemsCount, plural, one {<b> # </b> selected system } other {<b> # </b> selected systems }} from assigned Patch templates?',
   },
-  textUnassignSystemsTitle: {
-    id: 'textUnassignSystemsTitle',
-    description: 'text about systems being removed',
-    defaultMessage: 'Remove systems from patch template ',
-  },
   textUnassignSystemsWarning: {
     id: 'textUnassignSystemsWarning',
     description: 'warning about systems without patch template assigned',
@@ -817,11 +807,6 @@ export default defineMessages({
     id: 'titlesTemplateNoDescription',
     description: 'title with capital letters',
     defaultMessage: 'No description available',
-  },
-  titlesTemplateRemoveFromSystems: {
-    id: 'titlesTemplateRemoveMultipleButton',
-    description: 'title with capital letters',
-    defaultMessage: 'Remove from {systemsCount, plural, one {system} other {systems}}',
   },
   titlesTemplateRemoveMultipleButton: {
     id: 'titlesTemplateRemoveMultipleButton',
