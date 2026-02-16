@@ -197,9 +197,6 @@ export const exportPackageSystemsJSON = (params, packageName) => {
   return fetchFile(params, endpoint, 'application/json');
 };
 
-export const assignSystemToPatchSet = (payload) =>
-  createApiCall(`/baselines`, 'v3', 'put', null, payload);
-
 export const fetchPatchSets = (params) => createApiCall(`/baselines`, 'v3', 'get', params);
 
 export const deletePatchSet = (patchSetID) =>

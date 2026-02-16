@@ -277,11 +277,7 @@ const PatchSetDetail = () => {
         onConfirm={deleteSet}
       />
       {patchSetState.isPatchSetWizardOpen && (
-        <PatchSetWizard
-          systemsIDs={patchSetState.systemsIDs}
-          setBaselineState={setPatchSetState}
-          patchSetID={patchSetId}
-        />
+        <PatchSetWizard setBaselineState={setPatchSetState} patchSetID={patchSetId} />
       )}
       <UnassignSystemsModal
         unassignSystemsModalState={patchSetState}
