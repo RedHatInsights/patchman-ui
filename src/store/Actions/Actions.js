@@ -277,11 +277,6 @@ export const clearPatchSetDetailsSystems = () => ({
   payload: [],
 });
 
-export const clearPatchSetAction = () => ({
-  type: ActionTypes.CLEAR_PATCH_SET,
-  payload: [],
-});
-
 export const fetchPatchSetSystemsNoFiltersAction = (params) => ({
   type: ActionTypes.FETCH_PATCH_SET_SYSTEMS_NO_FILTERS,
   payload: new Promise((resolve) => {
