@@ -610,18 +610,6 @@ export const mapGlobalFilters = (tags, workloads = {}) => {
   return globalFilterConfig;
 };
 
-export const convertIsoToDate = (isoDate) => {
-  if (!isoDate) {
-    return '';
-  }
-
-  const dateObject = new Date(isoDate);
-  return (
-    `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}` +
-    `-${dateObject.getDate().toString().padStart(2, '0')}`
-  );
-};
-
 // 2023-03-05 -> 05 Mar 2023
 // 2023-03-22T20:00:00-04:00 (ISO format) -> 23 Mar 2023
 export const templateDateFormat = (dateString) => {
@@ -666,26 +654,6 @@ export const filterSelectedActiveSystemIDs = (selectedSystemsObject) => {
 
   return formValueSystemIDs;
 };
-
-export const buildSelectedSystemsObj = (systemsIDs, formValueSystems) => {
-  const mergedSystems = [...systemsIDs, ...filterSelectedActiveSystemIDs(formValueSystems)];
-
-  const assignedSystemsObject = mergedSystems?.reduce((object, system) => {
-    object[system] = true;
-    return object;
-  }, {});
-
-  return assignedSystemsObject;
-};
-
-export const objUndefinedToFalse = (object) =>
-  Object.keys(object).reduce((modifiedObject, key) => {
-    modifiedObject[key] = object[key] === undefined ? false : object[key];
-    return modifiedObject;
-  }, {});
-
-export const objOnlyWithTrue = (object) =>
-  Object.keys(Object.fromEntries(Object.entries(object).filter(([, v]) => v === true)));
 
 export const isObject = (variable) =>
   typeof variable === 'object' && variable !== null ? true : false;

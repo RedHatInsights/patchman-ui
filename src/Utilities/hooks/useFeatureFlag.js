@@ -8,5 +8,4 @@ const useFeatureFlag = (flag) => {
 
 export default useFeatureFlag;
 
-export const useKesselFeatureFlag = () =>
-  useFeatureFlag('patch-frontend.kessel-enabled');
+export const useKesselFeatureFlag = () => useFeatureFlag('patch-frontend.kessel-enabled');

@@ -43,16 +43,6 @@ export const EmptyCvesList = () => (
   </EmptyState>
 );
 
-export const EmptySystemsList = () => (
-  <EmptyState
-    headingLevel='h5'
-    titleText={intl.formatMessage(messages.statesNoMatchingSystems)}
-    variant={EmptyStateVariant.full}
-  >
-    <EmptyStateBody>{intl.formatMessage(messages.textEmptyStateBody)}</EmptyStateBody>
-  </EmptyState>
-);
-
 export const EmptyPatchSetList = () => (
   <EmptyState
     headingLevel='h5'

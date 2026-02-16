@@ -14,11 +14,8 @@ import {
   getOffsetFromPageLimit,
   encodeURLParams,
   mapGlobalFilters,
-  objUndefinedToFalse,
-  objOnlyWithTrue,
 } from '../Helpers';
 import { intl } from '../IntlProvider';
-import { assignSystemToPatchSet } from '../api';
 import { createSystemsSortBy } from '../SystemsHelpers';
 import { ColumnManagementModal } from '@patternfly/react-component-groups';
 
@@ -301,51 +298,6 @@ export const useOnExport = (prefix, queryParams, formatHandlers) => {
       .catch(() => addNotification(exportNotifications().error));
   });
   return onExport;
-};
-
-export const usePatchSetApi = (wizardState, setWizardState, patchSetID) => {
-  const handleApiResponse = (response) =>
-    response
-      .then(() => {
-        setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: false });
-      })
-      .catch((error) => {
-        setWizardState({
-          ...wizardState,
-          submitted: true,
-          failed: true,
-          requestPending: false,
-          error,
-        });
-      });
-
-  const onSubmit = React.useCallback((formValues) => {
-    const { name, description, toDate, id } = formValues.existing_patch_set || formValues;
-    const { systems } = formValues;
-
-    const gmtMidnightDate = new Date(toDate); // get last midnight GMT
-    gmtMidnightDate.setDate(gmtMidnightDate.getDate() + 1); // get next midnight GMT
-    const localTimezoneOffset = gmtMidnightDate.getTimezoneOffset() * 60000;
-
-    // get next local midnight minus 1 second (23:59:59)
-    const localMidnightDate = new Date(gmtMidnightDate.getTime() + localTimezoneOffset - 1000);
-
-    const requestConfig = {
-      name,
-      description,
-      inventory_ids: patchSetID || id ? objUndefinedToFalse(systems) : objOnlyWithTrue(systems),
-      config: {
-        to_time: localMidnightDate.toISOString(),
-      },
-    };
-
-    setWizardState({ ...wizardState, submitted: true, failed: false, requestPending: true });
-
-    const response = assignSystemToPatchSet(requestConfig);
-
-    handleApiResponse(response);
-  });
-  return onSubmit;
 };
 
 /** *

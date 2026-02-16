@@ -10,13 +10,10 @@ const PatchSetWrapper = ({ patchSetState, setPatchSetState, totalItems }) => (
       <UnassignSystemsModal
         unassignSystemsModalState={patchSetState}
         setUnassignSystemsModalOpen={setPatchSetState}
-        systemsIDs={patchSetState.systemsIDs}
         totalItems={totalItems}
       />
     )}
-    {patchSetState.isPatchSetWizardOpen && (
-      <PatchSetWizard systemsIDs={patchSetState.systemsIDs} setBaselineState={setPatchSetState} />
-    )}
+    {patchSetState.isPatchSetWizardOpen && <PatchSetWizard setBaselineState={setPatchSetState} />}
   </>
 );
 

@@ -153,11 +153,6 @@ export default defineMessages({
     description: 'shared label',
     defaultMessage: 'Up to applicable version',
   },
-  labelsColumnsUpToDate: {
-    id: 'labelsColumnsUpToDate',
-    description: 'shared label',
-    defaultMessage: 'Red Hat advisories up to date',
-  },
   labelsColumnsUpToInstallable: {
     id: 'labelsColumnsUpToInstallable',
     description: 'shared label',
@@ -197,16 +192,6 @@ export default defineMessages({
     id: 'labelsDocumentation',
     description: 'Documentation link text',
     defaultMessage: 'Documentation',
-  },
-  labelsErrorDateLimit: {
-    id: 'labelsErrorDateLimit',
-    description: 'Label',
-    defaultMessage: 'Date is before the allowable range.',
-  },
-  labelsErrorInvalidDate: {
-    id: 'labelsErrorInvalidDate',
-    description: 'Label',
-    defaultMessage: 'The date should be valid of a type YYYY-MM-DD',
   },
   labelsFiltersClear: {
     id: 'labelsFiltersClear',
@@ -282,11 +267,6 @@ export default defineMessages({
     id: 'labelsFiltersReset',
     description: 'label for remove filter chips',
     defaultMessage: 'Reset filters',
-  },
-  labelsFiltersSearch: {
-    id: 'labelsFiltersSearch',
-    description: 'Label for search filter placeholder',
-    defaultMessage: 'Search ',
   },
   labelsFiltersSearchAdvisoriesPlaceholder: {
     id: 'labelsFiltersSearchAdvisoriesPlaceholder',
@@ -415,11 +395,6 @@ export default defineMessages({
     description: 'Return to previous page label for general usage',
     defaultMessage: 'Return to previous page',
   },
-  labelsSelectedSystems: {
-    id: 'labelsSelectedSystems',
-    description: 'label',
-    defaultMessage: 'Template applied to',
-  },
   labelsSeverity: {
     id: 'labelsSeverity',
     description: 'label for cves info',
@@ -439,11 +414,6 @@ export default defineMessages({
     id: 'labelsSystemsWithPatchesAvailable',
     description: 'Label for status report',
     defaultMessage: 'Systems with patches available',
-  },
-  labelsSystem: {
-    id: 'labelsSystem',
-    description: 'Generic pluralized systems label',
-    defaultMessage: '{systemsCount, plural, one { # system } other { # systems }}',
   },
   labelsTemplateNoSystems: {
     id: 'labelsTemplateNoSystems',
@@ -506,11 +476,6 @@ export default defineMessages({
     description: 'Label',
     defaultMessage: 'No matching packages found',
   },
-  statesNoMatchingSystems: {
-    id: 'statesNoMatchingSystems',
-    description: 'Label',
-    defaultMessage: 'No matching systems found',
-  },
   statesNoMatchingTemplate: {
     id: 'statesNoMatchingTemplate',
     description: 'Label',
@@ -543,28 +508,6 @@ export default defineMessages({
     defaultMessage:
       'This system is up to date, based on package information submitted at the most recent system check-in',
   },
-  templateAlertSystems: {
-    id: 'templateAlertSystems',
-    description: 'Template wizard alert',
-    defaultMessage:
-      'A system can have only one content template, therefore if you apply a new content template to the system, it will be overwritten.',
-  },
-  templateApplySystems: {
-    id: 'templateApplySystems',
-    description: 'step name of the patch template wizard',
-    defaultMessage: 'Apply to systems (optional)',
-  },
-  templateContentStepExpandable: {
-    id: 'templateContentStepExpandable',
-    description: 'template wizard template expandable text',
-    defaultMessage:
-      'You have a system with 10 applicable RHEL advisories, the most recent of which was published today. You apply a template with a date of yesterday to that system. After re-evaluation, the advisory published today will not be considered installable on the system, but will be considered applicable.',
-  },
-  templateContentStepExpandableTitle: {
-    id: 'templateContentStepExpandableTitle',
-    description: 'template wizard template expandable title',
-    defaultMessage: 'What does it mean?',
-  },
   templateContentStepSidebarName: {
     id: 'templateContentStepSidebarName',
     description: 'template wizard template left sidebar label',
@@ -580,16 +523,6 @@ export default defineMessages({
     id: 'templateContentStepTitle',
     description: 'template wizard template title',
     defaultMessage: 'Define template content',
-  },
-  templateDateField: {
-    id: 'templateDateField',
-    description: 'Field name of the patch template wizard',
-    defaultMessage: 'Select date of Red Hat repositiories',
-  },
-  templateDateUpto: {
-    id: 'templateDateUpto',
-    description: 'Field text of the patch template wizard',
-    defaultMessage: 'Include advisories up to this date',
   },
   templateDescription: {
     id: 'templateDescription',
@@ -689,11 +622,6 @@ export default defineMessages({
     description: 'Template page header popover title',
     defaultMessage: 'About Templates',
   },
-  templateReview: {
-    id: 'templateReview',
-    description: 'step name of the patch template wizard',
-    defaultMessage: 'Review ',
-  },
   templateSelectExisting: {
     id: 'templateSelectExisting',
     description: 'title with capital letters',
@@ -713,16 +641,6 @@ export default defineMessages({
     id: 'templateTitleAssignSystem',
     description: 'title of the patch template wizard',
     defaultMessage: 'Assign system(s) to a patch template ',
-  },
-  templateWizardValidateLoading: {
-    id: 'templateWizardValidateLoading',
-    description: 'template wizard text when user input is not valid',
-    defaultMessage: 'Template details are loading.',
-  },
-  templateWizardValidateNameTaken: {
-    id: 'templateWizardValidateNameTaken',
-    description: 'template wizard text when user input is not valid',
-    defaultMessage: 'Template name already exists. Try a different name.',
   },
   textConfigurationInProgress: {
     id: 'textConfigurationInProgress',
@@ -749,11 +667,6 @@ export default defineMessages({
     description: 'text to notify there is not available version',
     defaultMessage: 'No version is available',
   },
-  textPatchTemplateContent: {
-    id: 'textPatchTemplateContent',
-    description: 'text for the patch template',
-    defaultMessage: 'Content',
-  },
   textPatchTemplateDetails: {
     id: 'textPatchTemplateDetails',
     description: 'text for the patch template',
@@ -765,20 +678,10 @@ export default defineMessages({
     defaultMessage:
       'Please allow a few minutes to set up a patch template. You will receive a notification when finished.',
   },
-  textPatchTemplateReview: {
-    id: 'textPatchTemplateReview',
-    description: 'text for the patch template',
-    defaultMessage: 'Review the details of your template.',
-  },
   textPatchTemplateSuccessfuly: {
     id: 'textPatchTemplateSuccessfuly',
     description: 'text for the patch template',
     defaultMessage: 'Patch template configuration successful',
-  },
-  textPatchTemplateSystems: {
-    id: 'textPatchTemplateSystems',
-    description: 'text for the patch template',
-    defaultMessage: 'Systems',
   },
   textRebootIsRequired: {
     id: 'textRebootIsRequired',
@@ -914,11 +817,6 @@ export default defineMessages({
     id: 'titlesTemplateNoDescription',
     description: 'title with capital letters',
     defaultMessage: 'No description available',
-  },
-  titlesTemplateNoDescriptionProvided: {
-    id: 'titlesTemplateNoDescriptionProvided',
-    description: 'title with capital letters',
-    defaultMessage: 'No description provided',
   },
   titlesTemplateRemoveFromSystems: {
     id: 'titlesTemplateRemoveMultipleButton',

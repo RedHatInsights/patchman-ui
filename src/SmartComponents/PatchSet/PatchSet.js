@@ -186,11 +186,7 @@ const PatchSet = () => {
         }
       />
       {patchSetState.isPatchSetWizardOpen && (
-        <PatchSetWizard
-          systemsIDs={patchSetState.systemsIDs}
-          setBaselineState={setPatchSetState}
-          patchSetID={patchSetState.patchSetID}
-        />
+        <PatchSetWizard setBaselineState={setPatchSetState} patchSetID={patchSetState.patchSetID} />
       )}
       <Main>
         {rows.length === 0 && !status.isLoading ? (

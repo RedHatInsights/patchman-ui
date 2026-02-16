@@ -9,14 +9,12 @@ import {
   EmptyCvesList,
   EmptyPackagesList,
   EmptyPatchSetList,
-  EmptySystemsList,
 } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
-import { ManagedBySatelliteCell } from '../SmartComponents/Systems/SystemsListAssets';
 import AdvisorySeverity from '../PresentationalComponents/AdvisorySeverity/AdvisorySeverity';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -349,50 +347,6 @@ export const createCvesRows = (rows) => {
           {
             props: { colSpan: 4 },
             title: <EmptyCvesList />,
-          },
-        ],
-      },
-    ];
-  }
-};
-
-export const createSystemsRowsReview = (rows, selectedRows) => {
-  if (rows.length !== 0) {
-    return rows.map((system) => {
-      const { attributes, id } = system;
-
-      return {
-        id,
-        key: id,
-        selected: selectedRows[system.id] !== undefined,
-        cells: [
-          {
-            title: attributes.display_name,
-          },
-          {
-            title: attributes.os || 'N/A',
-          },
-          {
-            title: attributes.satellite_managed ? (
-              <ManagedBySatelliteCell />
-            ) : (
-              attributes.baseline_name || 'No template'
-            ),
-          },
-          {
-            title: processDate(attributes.last_upload),
-          },
-        ],
-      };
-    });
-  } else {
-    return [
-      {
-        heightAuto: true,
-        cells: [
-          {
-            props: { colSpan: 4 },
-            title: <EmptySystemsList />,
           },
         ],
       },
