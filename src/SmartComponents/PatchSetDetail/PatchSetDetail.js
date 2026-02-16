@@ -44,13 +44,10 @@ import {
   arrayFromObj,
   decodeQueryparams,
   encodeURLParams,
-  filterSelectedActiveSystemIDs,
   persistantParams,
 } from '../../Utilities/Helpers';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
-import { patchSetDetailRowActions } from '../PatchSet/PatchSetAssets';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
-import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import {
@@ -86,7 +83,6 @@ const PatchSetDetail = () => {
   const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = useState(false);
   const [patchSetState, setPatchSetState] = useState({
     isPatchSetWizardOpen: false,
-    isUnassignSystemsModalOpen: false,
     systemsIDs: [],
     shouldRefresh: false,
   });
@@ -184,10 +180,6 @@ const PatchSetDetail = () => {
     }
   }, [queryParams, firstMount]);
 
-  const openSystemUnassignModal = (ids) => {
-    setPatchSetState({ ...patchSetState, isUnassignSystemsModalOpen: true, systemsIDs: ids });
-  };
-
   const deleteSet = () => {
     deletePatchSet(patchSetId)
       .then(() => {
@@ -279,10 +271,6 @@ const PatchSetDetail = () => {
       {patchSetState.isPatchSetWizardOpen && (
         <PatchSetWizard setBaselineState={setPatchSetState} patchSetID={patchSetId} />
       )}
-      <UnassignSystemsModal
-        unassignSystemsModalState={patchSetState}
-        setUnassignSystemsModalOpen={setPatchSetState}
-      />
       <Header
         title={isHeaderLoading ? <Skeleton style={{ width: 300 }} /> : patchSetName}
         headerOUIA='template-details'
@@ -428,22 +416,6 @@ const PatchSetDetail = () => {
                 variant: TableVariant.compact,
                 className: 'patchCompactInventory',
                 isStickyHeader: true,
-                actionResolver: () =>
-                  hasAccess ? patchSetDetailRowActions(openSystemUnassignModal) : [],
-              }}
-              actionsConfig={{
-                actions: [
-                  '', // intentionally empty, remediation button placeholder
-                  {
-                    key: 'remove-multiple-systems',
-                    label: intl.formatMessage(messages.titlesTemplateRemoveFromSystems, {
-                      systemsCount: selectedCount,
-                    }),
-                    onClick: () =>
-                      openSystemUnassignModal(filterSelectedActiveSystemIDs(selectedRows)),
-                    props: { isDisabled: selectedCount === 0 },
-                  },
-                ],
               }}
               filterConfig={filterConfig}
               activeFiltersConfig={activeFiltersConfig}
