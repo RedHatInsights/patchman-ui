@@ -61,15 +61,6 @@ export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) 
   },
 ];
 
-export const patchSetDetailRowActions = (handleSystemUnassign) => [
-  {
-    title: intl.formatMessage(messages.titlesTemplateRemoveFromSystems, { systemsCount: 1 }),
-    onClick: (_event, _rowId, rowData) => {
-      handleSystemUnassign([rowData.id]);
-    },
-  },
-];
-
 export const CustomActionsToggle = () => (
   <Tooltip content='For editing access, contact your administrator.'>
     <Button
@@ -84,15 +75,3 @@ export const CustomActionsToggle = () => (
     />
   </Tooltip>
 );
-
-export const patchSetUnassignSystemsNotifications = (systemsCount) => ({
-  success: {
-    title: `Systems succesfully removed from this Patch template.`,
-    description: `${systemsCount} ${systemsCount > 1 ? 'systems' : 'system'} removed from Patch template(s)`,
-    variant: 'success',
-  },
-  failure: {
-    title: `Failed to remove systems from this Patch template.`,
-    variant: 'danger',
-  },
-});
