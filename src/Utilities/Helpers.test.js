@@ -24,7 +24,6 @@ import {
   mapGlobalFilters,
   persistantParams,
   remediationProvider,
-  templateDateFormat,
   transformPairs,
 } from './Helpers';
 import { render } from '@testing-library/react';
@@ -397,14 +396,6 @@ describe('Helpers tests', () => {
         },
       ],
     });
-  });
-
-  test('templateDateFormat function should correctly parse dates', () => {
-    expect(templateDateFormat('2023-03-05')).toEqual('05 Mar 2023');
-    expect(templateDateFormat('2023-03-22T20:00:00-04:00')).toEqual('23 Mar 2023');
-    expect(templateDateFormat('2023-03-22T20:00:00-00:00')).toEqual('22 Mar 2023');
-    expect(templateDateFormat('2023-03-22T20:00:00+04:00')).toEqual('22 Mar 2023');
-    expect(templateDateFormat('2023-03-22T20:00:00Z')).toEqual('22 Mar 2023');
   });
 });
 

@@ -8,11 +8,6 @@ export default defineMessages({
     description: 'regsiter page title',
     defaultMessage: 'Patch',
   },
-  labelsActions: {
-    id: 'labelsActions',
-    description: 'dropdown with actions label',
-    defaultMessage: 'Actions',
-  },
   labelsAffectedSystemsCount: {
     id: 'labelsAffectedSystemsCount',
     description: 'applicable systems number label',
@@ -524,11 +519,6 @@ export default defineMessages({
     description: 'description of the patch template wizard',
     defaultMessage: 'Prepare for your next patching cycle with a content template.',
   },
-  templateDetailHeaderBreadcrumb: {
-    id: 'templateDetailHeaderBreadcrumb',
-    description: 'breadcrumb for template detail header',
-    defaultMessage: 'Templates',
-  },
   templateDetailStepSidebarName: {
     id: 'templateDetailStepSidebarName',
     description: 'template wizard template left sidebar label',
@@ -543,36 +533,6 @@ export default defineMessages({
     id: 'templateDetailStepTitle',
     description: 'template wizard template detail step title',
     defaultMessage: 'Enter template details',
-  },
-  templateDetailTableCreatedBy: {
-    id: 'templateDetailTableCreatedBy',
-    description: 'label inside template detail header',
-    defaultMessage: 'Created by:',
-  },
-  templateDetailTableDescription: {
-    id: 'templateDetailTableDescription',
-    description: 'label inside template detail header',
-    defaultMessage: 'Template description:',
-  },
-  templateDetailTableLastEdited: {
-    id: 'templateDetailTableLastEdited',
-    description: 'title of template assigned systems table',
-    defaultMessage: 'Last edited:',
-  },
-  templateDetailTablePublished: {
-    id: 'templateDetailTablePublished',
-    description: 'title of template assigned systems table',
-    defaultMessage: 'Published:',
-  },
-  templateDetailTableTitle: {
-    id: 'templateDetailTableTitle',
-    description: 'title of template assigned systems table',
-    defaultMessage: 'Systems applied',
-  },
-  templateDetailTableUpToDate: {
-    id: 'templateDetailTableUpToDate',
-    description: 'label inside template detail header',
-    defaultMessage: 'Includes Red Hat repositories up to:',
   },
   templateEdit: {
     id: 'templateEdit',
@@ -589,16 +549,6 @@ export default defineMessages({
     id: 'templateNew',
     description: 'step name of the patch template wizard',
     defaultMessage: 'New patch template ',
-  },
-  templateNoAppliedSystemsButton: {
-    id: 'templateNoAppliedSystemsButton',
-    description: 'button in the empty state in template assigned systems table',
-    defaultMessage: 'Apply to systems',
-  },
-  templateNoAppliedSystemsTitle: {
-    id: 'templateNoAppliedSystemsTitle',
-    description: 'title of the empty state in template assigned systems table',
-    defaultMessage: 'Not applied to any systems',
   },
   templateNoSystemSelected: {
     id: 'templateNoSystemSelected',
@@ -802,11 +752,6 @@ export default defineMessages({
     id: 'titlesTemplateDeleteModalTitle',
     description: 'page title with capital letter',
     defaultMessage: 'Delete template?',
-  },
-  titlesTemplateNoDescription: {
-    id: 'titlesTemplateNoDescription',
-    description: 'title with capital letters',
-    defaultMessage: 'No description available',
   },
   titlesTemplateRemoveMultipleButton: {
     id: 'titlesTemplateRemoveMultipleButton',
