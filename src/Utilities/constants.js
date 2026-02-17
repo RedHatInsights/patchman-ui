@@ -294,17 +294,6 @@ export const exportNotifications = (format) => ({
   },
 });
 
-export const patchSetDeleteNotifications = (templateName) => ({
-  success: {
-    title: `Deleted “${templateName}”.`,
-    variant: 'success',
-  },
-  error: {
-    title: `Failed to delete “${templateName}”.`,
-    variant: 'danger',
-  },
-});
-
 export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status', 'group_name'];
 
 export const featureFlags = {

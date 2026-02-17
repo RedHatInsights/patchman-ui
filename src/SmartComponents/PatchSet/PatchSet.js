@@ -13,7 +13,6 @@ import {
   selectPatchSetRow,
   clearPatchSetsAction,
 } from '../../store/Actions/Actions';
-import { deletePatchSet } from '../../Utilities/api';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
 import {
@@ -26,19 +25,15 @@ import {
   ID_API_ENDPOINTS,
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
-import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import {
   patchSetColumns,
   CreatePatchSetButton as createPatchSetButton,
-  patchSetRowActions,
   CustomActionsToggle,
 } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
-import { patchSetDeleteNotifications } from '../../Utilities/constants';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Icon, Popover } from '@patternfly/react-core';
-import DeleteSetModal from '../Modals/DeleteSetModal';
 import { NoPatchSetList } from '../../PresentationalComponents/Snippets/EmptyStates';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 
@@ -52,9 +47,6 @@ const PatchSet = () => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [firstMount, setFirstMount] = React.useState(true);
-  const [isDeleteConfirmModalOpen, setDeleteConfirmModalOpen] = React.useState(false);
-  const [patchSetToDelete, setPatchSetToDelete] = React.useState(null);
-  const addNotification = useAddNotification();
 
   const patchSets = useSelector(({ PatchSetsStore }) => PatchSetsStore.rows);
 
@@ -117,25 +109,16 @@ const PatchSet = () => {
   const onSetPage = useSetPage(metadata.limit, apply);
   const onPerPageSelect = usePerPageSelect(apply);
 
-  const openPatchDeleteModal = (rowData) => {
-    setDeleteConfirmModalOpen(true);
-    setPatchSetToDelete(rowData);
-  };
-
-  const handlePatchSetDelete = () => {
-    deletePatchSet(patchSetToDelete.id)
-      .then(() => {
-        addNotification(patchSetDeleteNotifications(patchSetToDelete.displayName).success);
-        refreshTable();
-      })
-      .catch(() => {
-        addNotification(patchSetDeleteNotifications(patchSetToDelete.displayName).error);
-      });
-  };
-
   const { hasAccess } = usePermissionsWithContext(['patch:*:*', 'patch:template:write']);
   const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);
-  const actionsConfig = patchSetRowActions(openPatchSetEditModal, openPatchDeleteModal);
+  const actionsConfig = [
+    {
+      title: intl.formatMessage(messages.labelsButtonEditTemplate),
+      onClick: (_event, _rowId, rowData) => {
+        openPatchSetEditModal(rowData?.id);
+      },
+    },
+  ];
 
   // TODO: refactor search filter to be able to wrap this into useMemo
   const filterConfig = {
@@ -152,12 +135,6 @@ const PatchSet = () => {
 
   return (
     <React.Fragment>
-      <DeleteSetModal
-        templateName={patchSetToDelete?.displayName}
-        isModalOpen={isDeleteConfirmModalOpen}
-        setModalOpen={setDeleteConfirmModalOpen}
-        onConfirm={handlePatchSetDelete}
-      />
       <Header
         headerOUIA='advisories'
         title={

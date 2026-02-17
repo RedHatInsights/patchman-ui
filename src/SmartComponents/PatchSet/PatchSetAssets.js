@@ -46,21 +46,6 @@ export const patchSetColumns = [
   },
 ];
 
-export const patchSetRowActions = (openPatchSetEditModal, handlePatchSetDelete) => [
-  {
-    title: intl.formatMessage(messages.labelsButtonEditTemplate),
-    onClick: (_event, _rowId, rowData) => {
-      openPatchSetEditModal(rowData?.id);
-    },
-  },
-  {
-    title: intl.formatMessage(messages.labelsButtonRemoveTemplate),
-    onClick: (_event, _rowId, rowData) => {
-      handlePatchSetDelete(rowData);
-    },
-  },
-];
-
 export const CustomActionsToggle = () => (
   <Tooltip content='For editing access, contact your administrator.'>
     <Button
