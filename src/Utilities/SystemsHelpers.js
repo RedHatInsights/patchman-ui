@@ -1,13 +1,10 @@
-import React from 'react';
 import searchFilter from '../PresentationalComponents/Filters/SearchFilter';
 import staleFilter from '../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../PresentationalComponents/Filters/SystemsUpdatableFilter';
-import { buildFilterChips, templateDateFormat } from './Helpers';
+import { buildFilterChips } from './Helpers';
 import { intl } from './IntlProvider';
 import messages from '../Messages';
 import { defaultCompoundSortValues } from './constants';
-import { patchSetDetailColumns } from '../SmartComponents/PatchSetDetail/PatchSetDetailAssets';
-import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 
 export const buildFilterConfig = (search, filter, apply) => ({
   items: [
@@ -19,17 +16,6 @@ export const buildFilterConfig = (search, filter, apply) => ({
     ),
     staleFilter(apply, filter),
     systemsUpdatableFilter(apply, filter),
-  ],
-});
-
-export const buildTemplateFilterConfig = (search, apply) => ({
-  items: [
-    searchFilter(
-      apply,
-      search,
-      intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-      intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder),
-    ),
   ],
 });
 
@@ -56,32 +42,6 @@ export const mergeInventoryColumns = (patchmanColumns, inventoryColumns) =>
     ),
     ...column,
   }));
-
-export const templateSystemsColumnsMerger = (defaultColumns) => {
-  let lastSeen = defaultColumns.filter(({ key }) => key === 'updated');
-  lastSeen = [
-    {
-      ...lastSeen[0],
-      key: 'last_upload',
-      sortKey: 'last_upload',
-      renderFunc: (value) => templateDateFormat(value),
-    },
-  ];
-
-  let name = defaultColumns.filter(({ key }) => key === 'display_name');
-  let tag = defaultColumns.filter(({ key }) => key === 'tags');
-
-  name = [
-    {
-      ...name[0],
-      renderFunc: (displayName, id) => (
-        <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
-      ),
-    },
-  ];
-
-  return [...name, ...tag, ...patchSetDetailColumns, lastSeen[0]];
-};
 
 export const createSystemsSortBy = (orderBy, orderDirection, hasLastUpload) => {
   if (orderBy === 'updated') {

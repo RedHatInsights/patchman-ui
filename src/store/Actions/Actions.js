@@ -10,7 +10,6 @@ import {
   fetchSystemDetails,
   fetchPatchSets,
   fetchPatchSet,
-  fetchPatchSetSystems,
 } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
@@ -243,45 +242,9 @@ export const fetchPatchSetAction = (id) => ({
   }).then((result) => result),
 });
 
-export const fetchTemplateDetail = (id) => ({
-  type: ActionTypes.FETCH_TEMPLATE_DETAIL,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSet(id));
-  }).then((result) => result),
-});
-
-export const clearTemplateDetail = () => ({
-  type: ActionTypes.CLEAR_TEMPLATE_DETAIL,
-  payload: [],
-});
-
-export const fetchPatchSetDetailSystemsAction = (id, params) => ({
-  type: ActionTypes.FETCH_PATCH_SET_DETAIL_SYSTEMS,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSetSystems(id, params));
-  }).then((result) => result),
-});
-
-export const changePatchSetDetailsSystemsParams = (params) => ({
-  type: ActionTypes.CHANGE_PATCH_SET_DETAIL_SYSTEMS_PARAMS,
-  payload: params,
-});
-
-export const changePatchSetDetailsSystemsMetadata = (params) => ({
-  type: ActionTypes.CHANGE_PATCH_SET_DETAIL_SYSTEMS_METADATA,
-  payload: params,
-});
-
 export const clearPatchSetDetailsSystems = () => ({
   type: ActionTypes.CLEAR_PATCH_SET_DETAIL_SYSTEMS,
   payload: [],
-});
-
-export const fetchPatchSetSystemsNoFiltersAction = (params) => ({
-  type: ActionTypes.FETCH_PATCH_SET_SYSTEMS_NO_FILTERS,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSetSystems(params));
-  }).then((result) => result),
 });
 
 export const clearPatchSetsAction = () => ({

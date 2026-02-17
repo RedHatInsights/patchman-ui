@@ -391,26 +391,3 @@ export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
         ]
       : [];
 };
-
-export const createPatchSetDetailRows = (rows) => {
-  const data =
-    rows &&
-    rows.map((row) => {
-      row = { ...row, ...row.attributes };
-
-      return {
-        ...row,
-        id: row.inventory_id,
-        display_name: row.display_name,
-        key: row.inventory_id,
-        os: {
-          osName: row.os || 'N/A',
-          rhsm: row.rhsm,
-        },
-        last_upload: row.last_upload,
-        tags: row.tags,
-      };
-    });
-
-  return data;
-};
