@@ -12,8 +12,6 @@ import { PackageSystemsStore } from './Reducers/PackageSystemsStore';
 import { AdvisorySystemsStore } from './Reducers/AdvisorySystemsStore';
 import { GlobalFilterStore } from './Reducers/GlobalFilterStore';
 import { PatchSetsReducer } from './Reducers/PatchSetsReducer';
-import { PatchSetDetailStore } from './Reducers/PatchSetDetailStore';
-import { PatchSetDetailSystemsStore } from './Reducers/PatchSetDetailSystemsStore';
 import {
   legacy_createStore as createStore,
   applyMiddleware,
@@ -37,8 +35,6 @@ export const defaultReducers = {
   AdvisorySystemsStore,
   GlobalFilterStore,
   PatchSetsStore: PatchSetsReducer,
-  PatchSetDetailStore,
-  PatchSetDetailSystemsStore,
 };
 
 export const store = createStore(

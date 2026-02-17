@@ -1,7 +1,6 @@
 import {
   createAdvisorySystemsRows,
   createSystemsRows,
-  createPatchSetDetailRows,
   createPackageSystemsRows,
 } from '../../Utilities/DataMappers';
 import { selectRows, fetchRejected } from './HelperReducers';
@@ -68,18 +67,6 @@ export const modifyPackageSystems = (columns, state, lastAction) => {
       ...state,
       columns,
       rows: createPackageSystemsRows(state.rows, state.selectedRows),
-    };
-  }
-
-  return state;
-};
-
-export const modifyTemplateDetailSystems = (columns, state) => {
-  if (state.loaded) {
-    return {
-      ...state,
-      status: { isLoading: false, hasError: false },
-      rows: createPatchSetDetailRows(state.rows, state.selectedRows),
     };
   }
 
