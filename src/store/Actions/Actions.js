@@ -9,7 +9,6 @@ import {
   fetchCvesInfo,
   fetchSystemDetails,
   fetchPatchSets,
-  fetchPatchSet,
 } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
@@ -233,13 +232,6 @@ export const changePatchSetsParams = (params) => ({
 export const selectPatchSetRow = (rowState) => ({
   type: ActionTypes.SELECT_PATCH_SET_ROW,
   payload: rowState,
-});
-
-export const fetchPatchSetAction = (id) => ({
-  type: ActionTypes.FETCH_PATCH_SET,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSet(id));
-  }).then((result) => result),
 });
 
 export const clearPatchSetDetailsSystems = () => ({
