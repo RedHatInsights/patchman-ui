@@ -199,8 +199,6 @@ export const exportPackageSystemsJSON = (params, packageName) => {
 
 export const fetchPatchSets = (params) => createApiCall(`/baselines`, 'v3', 'get', params);
 
-export const fetchPatchSet = (id) => createApiCall(`/baselines/${id}`, 'v3', 'get');
-
 export const getOperatingSystems = () => hostInventoryApi.apiSystemProfileGetOperatingSystem();
 
 export const fetchIDs = (endpoint, queryParams) =>
