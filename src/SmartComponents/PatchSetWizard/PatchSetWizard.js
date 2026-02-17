@@ -1,14 +1,12 @@
-import React, { Fragment, useState, memo, useEffect } from 'react';
+import React, { Fragment, useState, memo } from 'react';
 import propTypes from 'prop-types';
 
 import { Wizard, Modal } from '@patternfly/react-core/deprecated';
-import { useDispatch } from 'react-redux';
 
 import { getWizardTitle } from './WizardAssets';
 import RequestProgress from './steps/RequestProgress';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import { fetchPatchSetAction } from '../../store/Actions/Actions';
 
 export const PatchSetWizard = ({ setBaselineState, patchSetID }) => {
   // if system ids exist, those are being assigned. Likewise if patchSetID exists, it is being edited
@@ -20,13 +18,6 @@ export const PatchSetWizard = ({ setBaselineState, patchSetID }) => {
     failed: false,
     shouldRefresh: false,
   });
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (patchSetID) {
-      dispatch(fetchPatchSetAction(patchSetID));
-    }
-  }, []);
 
   const handleWizardClose = () => {
     const shouldRefresh = !wizardState.failed && wizardState.submitted;
