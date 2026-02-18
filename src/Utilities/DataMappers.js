@@ -8,13 +8,11 @@ import {
   EmptyAdvisoryList,
   EmptyCvesList,
   EmptyPackagesList,
-  EmptyPatchSetList,
 } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
-import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import AdvisorySeverity from '../PresentationalComponents/AdvisorySeverity/AdvisorySeverity';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -352,42 +350,4 @@ export const createCvesRows = (rows) => {
       },
     ];
   }
-};
-
-export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
-  const data =
-    rows &&
-    rows.map((row) => ({
-      id: row.id,
-      displayName: row.name,
-      key: row.id,
-      selected: selectedRows[row.id] !== undefined,
-      cells: [
-        {
-          title: <InsightsLink to={`/templates/${row.id}`}>{row.name}</InsightsLink>,
-        },
-        {
-          title: row.systems || intl.formatMessage(messages.labelsTemplateNoSystems),
-        },
-        { title: processDate(row.last_edited) },
-        { title: processDate(row.published) },
-        { title: row.creator },
-      ],
-    }));
-
-  return data?.length > 0
-    ? data
-    : filters.search || Object.keys(filters.filter).length
-      ? [
-          {
-            heightAuto: true,
-            cells: [
-              {
-                props: { colSpan: 6 },
-                title: <EmptyPatchSetList />,
-              },
-            ],
-          },
-        ]
-      : [];
 };

@@ -1,29 +1,12 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import React, { useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import messages from '../../Messages';
 import Header from '../../PresentationalComponents/Header/Header';
-import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
-import creatorFilter from '../../PresentationalComponents/Filters/CreatorFilter';
 import TableView from '../../PresentationalComponents/TableView/TableView';
-import {
-  fetchPatchSetsAction,
-  changePatchSetsParams,
-  selectPatchSetRow,
-  clearPatchSetsAction,
-} from '../../store/Actions/Actions';
 import { createPatchSetRows } from '../../Utilities/DataMappers';
-import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
-import {
-  useDeepCompareEffect,
-  usePerPageSelect,
-  useSetPage,
-  useSortColumn,
-  usePatchSetState,
-  useOnSelect,
-  ID_API_ENDPOINTS,
-} from '../../Utilities/hooks';
+import { createSortBy } from '../../Utilities/Helpers';
+import { usePatchSetState } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import {
   patchSetColumns,
@@ -44,10 +27,6 @@ const PatchSet = () => {
     chrome.updateDocumentTitle(`Templates - Patch | RHEL`, true);
   }, [chrome]);
 
-  const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [firstMount, setFirstMount] = React.useState(true);
-
   const patchSets = useSelector(({ PatchSetsStore }) => PatchSetsStore.rows);
 
   const queryParams = useSelector(({ PatchSetsStore }) => PatchSetsStore.queryParams);
@@ -60,54 +39,12 @@ const PatchSet = () => {
     [patchSets, selectedRows],
   );
 
-  function apply(params) {
-    dispatch(changePatchSetsParams(params));
-  }
-
-  const refreshTable = () => {
-    dispatch(fetchPatchSetsAction({ ...queryParams, page: 1, offset: 0 }));
-  };
-
-  useEffect(
-    () => () => {
-      dispatch(clearPatchSetsAction());
-    },
-    [],
-  );
-
   const { patchSetState, setPatchSetState, openPatchSetEditModal } = usePatchSetState(selectedRows);
 
-  useEffect(() => {
-    if (patchSetState.shouldRefresh === true) {
-      refreshTable();
-    }
-  }, [patchSetState.shouldRefresh]);
-
-  useDeepCompareEffect(() => {
-    if (firstMount) {
-      apply(decodeQueryparams('?' + searchParams.toString()));
-      setFirstMount(false);
-    } else {
-      setSearchParams(encodeURLParams(queryParams));
-      dispatch(fetchPatchSetsAction(queryParams));
-    }
-  }, [queryParams, firstMount]);
-
-  const onSelect = useOnSelect(rows, selectedRows, {
-    endpoint: ID_API_ENDPOINTS.templates,
-    queryParams,
-    selectionDispatcher: selectPatchSetRow,
-    totalItems: metadata.total_items,
-  });
-
-  const onSort = useSortColumn(patchSetColumns, apply, 0);
   const sortBy = React.useMemo(
     () => createSortBy(patchSetColumns, metadata.sort, 0),
     [metadata.sort],
   );
-
-  const onSetPage = useSetPage(metadata.limit, apply);
-  const onPerPageSelect = usePerPageSelect(apply);
 
   const { hasAccess } = usePermissionsWithContext(['patch:*:*', 'patch:template:write']);
   const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);
@@ -119,19 +56,6 @@ const PatchSet = () => {
       },
     },
   ];
-
-  // TODO: refactor search filter to be able to wrap this into useMemo
-  const filterConfig = {
-    items: [
-      searchFilter(
-        apply,
-        queryParams.search,
-        intl.formatMessage(messages.labelsFiltersSearchTemplateTitle),
-        intl.formatMessage(messages.labelsFiltersSearchTemplatePlaceholder),
-      ),
-      creatorFilter(apply, queryParams.filter, metadata.creators),
-    ],
-  };
 
   return (
     <React.Fragment>
@@ -172,19 +96,13 @@ const PatchSet = () => {
           <TableView
             columns={patchSetColumns}
             compact
-            onSetPage={onSetPage}
-            onPerPageSelect={onPerPageSelect}
-            onSort={onSort}
             selectedRows={IS_SELECTION_ENABLED ? selectedRows : undefined}
-            onSelect={IS_SELECTION_ENABLED ? onSelect : undefined}
             sortBy={sortBy}
-            apply={apply}
             tableOUIA='patch-set-table'
             paginationOUIA='patch-set-pagination'
             store={{ rows, metadata, status, queryParams }}
             actionsConfig={patchSets?.length > 0 ? actionsConfig : []}
-            filterConfig={filterConfig}
-            searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchTemplateTitle)}
+            searchChipLabel={intl.formatMessage()}
             ToolbarButton={CreatePatchSetButton}
             actionsToggle={!hasAccess ? CustomActionsToggle : null}
           />

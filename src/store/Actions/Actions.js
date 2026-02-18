@@ -8,7 +8,6 @@ import {
   fetchPackageSystems,
   fetchCvesInfo,
   fetchSystemDetails,
-  fetchPatchSets,
 } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
@@ -217,30 +216,8 @@ export const changeSystemsMetadata = (params) => ({
   payload: params,
 });
 
-export const fetchPatchSetsAction = (params) => ({
-  type: ActionTypes.FETCH_ALL_PATCH_SETS,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSets(params));
-  }).then((result) => result),
-});
-
-export const changePatchSetsParams = (params) => ({
-  type: ActionTypes.CHANGE_PATCH_SET_PARAMS,
-  payload: params,
-});
-
-export const selectPatchSetRow = (rowState) => ({
-  type: ActionTypes.SELECT_PATCH_SET_ROW,
-  payload: rowState,
-});
-
 export const clearPatchSetDetailsSystems = () => ({
   type: ActionTypes.CLEAR_PATCH_SET_DETAIL_SYSTEMS,
-  payload: [],
-});
-
-export const clearPatchSetsAction = () => ({
-  type: ActionTypes.CLEAR_PATCH_SETS,
   payload: [],
 });
 
