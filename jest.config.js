@@ -13,7 +13,6 @@ module.exports = {
     },
     testPathIgnorePatterns: [
         "src/SmartComponents/SystemDetail/InventoryDetail.test.js",
-        "src/SmartComponents/PatchSet/PatchSet.test.js",
     ],
     transformIgnorePatterns: [
         "<rootDir>/node_modules/(?!(@patternfly/react-core/|@patternfly/react-icons/|@redhat-cloud-services|@openshift|lodash-es|@patternfly/react-table|@patternfly/react-tokens|p-all)).*$",
