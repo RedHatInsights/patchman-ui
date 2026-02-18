@@ -13,8 +13,6 @@ import {
 } from '@redhat-cloud-services/frontend-components/Inventory';
 import { Alert, Grid, GridItem, Content } from '@patternfly/react-core';
 import { fetchSystemDetailsAction } from '../../store/Actions/Actions';
-import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
-import { usePatchSetState } from '../../Utilities/hooks';
 import { useParams } from 'react-router-dom';
 import SystemDetail from './SystemDetail';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
@@ -33,17 +31,9 @@ const InventoryDetail = () => {
     ({ entityDetails }) => entityDetails?.entity ?? {},
   );
 
-  const { patchSetState, setPatchSetState } = usePatchSetState();
-
   useEffect(() => {
     dispatch(fetchSystemDetailsAction(inventoryId));
   }, []);
-
-  useEffect(() => {
-    if (patchSetState.shouldRefresh) {
-      dispatch(fetchSystemDetailsAction(inventoryId));
-    }
-  }, [patchSetState.shouldRefresh]);
 
   const chrome = useChrome();
   useEffect(() => {
@@ -62,7 +52,6 @@ const InventoryDetail = () => {
       }}
       inventoryId={inventoryId}
     >
-      <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
       <Header
         title=''
         headerOUIA='inventory-details'
@@ -144,7 +133,7 @@ const InventoryDetail = () => {
         </InventoryDetailHead>
       </Header>
       <Main>
-        <SystemDetail inventoryId={inventoryId} shouldRefresh={patchSetState.shouldRefresh} />
+        <SystemDetail inventoryId={inventoryId} />
       </Main>
     </DetailWrapper>
   );
