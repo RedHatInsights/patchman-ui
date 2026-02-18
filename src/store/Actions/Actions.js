@@ -216,11 +216,6 @@ export const changeSystemsMetadata = (params) => ({
   payload: params,
 });
 
-export const clearPatchSetDetailsSystems = () => ({
-  type: ActionTypes.CLEAR_PATCH_SET_DETAIL_SYSTEMS,
-  payload: [],
-});
-
 export const toggleAllSelectedAction = (state) => ({
   type: ActionTypes.TOGGLE_ALL_SELECTED,
   payload: state,

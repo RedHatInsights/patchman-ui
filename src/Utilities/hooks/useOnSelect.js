@@ -9,12 +9,10 @@ import isArray from 'lodash/isArray';
 export const ID_API_ENDPOINTS = {
   advisories: '/ids/advisories',
   systems: '/ids/systems',
-  templates: '/baselines',
   advisorySystems: (advisoryID) => `/ids/advisories/${advisoryID}/systems`,
   systemAdvisories: (systemID) => `/ids/systems/${systemID}/advisories`,
   packageSystems: (packageName) => `/packages/${packageName}/systems`,
   systemPackages: (systemID) => `/systems/${systemID}/packages`,
-  templateSystems: (templateId) => `/ids/baselines/${templateId}/systems`,
 };
 const isArrayWithData = (dataStructure) => isArray(dataStructure) && dataStructure.length;
 
