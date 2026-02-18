@@ -183,16 +183,6 @@ export default defineMessages({
     description: 'label for remove filter chips',
     defaultMessage: 'Reset filters',
   },
-  labelsFiltersCreator: {
-    id: 'labelsFiltersCreator',
-    description: 'Label for creator filter',
-    defaultMessage: 'Creator',
-  },
-  labelsFiltersCreatorPlaceholder: {
-    id: 'labelsFiltersCreatorPlaceholder',
-    description: 'Label for creator filter',
-    defaultMessage: 'Filter by creator',
-  },
   labelsFiltersCvesSearchPlaceHolder: {
     id: 'labelsFiltersCvesSearch',
     description: 'search filter placeholder for packages pages',
@@ -262,16 +252,6 @@ export default defineMessages({
     id: 'labelsFiltersSearchAdvisoriesTitle',
     description: 'Label for search filter placeholder',
     defaultMessage: 'Advisory',
-  },
-  labelsFiltersSearchTemplatePlaceholder: {
-    id: 'labelsFiltersSearchTemplatePlaceholder',
-    description: 'Label for search filter placeholder',
-    defaultMessage: 'Filter by template name ',
-  },
-  labelsFiltersSearchTemplateTitle: {
-    id: 'labelsFiltersSearchTemplateTitle',
-    description: 'Label for search filter placeholder',
-    defaultMessage: 'Template',
   },
   labelsFiltersSeverity: {
     id: 'labelsFiltersSeverity',
@@ -395,11 +375,6 @@ export default defineMessages({
     description: 'Label for status report',
     defaultMessage: 'Systems with patches available',
   },
-  labelsTemplateNoSystems: {
-    id: 'labelsTemplateNoSystems',
-    description: 'Template list table applied systems column fallback',
-    defaultMessage: 'No systems applied',
-  },
   linksLearnAboutInsights: {
     id: 'linksLearnAboutInsights',
     description: 'no system data page button label',
@@ -455,11 +430,6 @@ export default defineMessages({
     id: 'statesNoMatchingPackages',
     description: 'Label',
     defaultMessage: 'No matching packages found',
-  },
-  statesNoMatchingTemplate: {
-    id: 'statesNoMatchingTemplate',
-    description: 'Label',
-    defaultMessage: 'No matching patch template found',
   },
   statesNoTemplate: {
     id: 'statesNoTemplate',
@@ -557,11 +527,6 @@ export default defineMessages({
     description: 'Template page header popover title',
     defaultMessage: 'About Templates',
   },
-  templateSelectExisting: {
-    id: 'templateSelectExisting',
-    description: 'title with capital letters',
-    defaultMessage: 'Select an existing template',
-  },
   templateStepSystems: {
     id: 'templateStepSystems',
     description: 'step name of the patch template wizard',
@@ -632,11 +597,6 @@ export default defineMessages({
     id: 'textTemplateAddToExisting',
     description: 'text for patch template wizard',
     defaultMessage: 'Add to existing patch template ',
-  },
-  textTemplateChoose: {
-    id: 'textTemplateChoose',
-    description: 'text for patch template wizard',
-    defaultMessage: 'Template',
   },
   textTemplateCreateNew: {
     id: 'textTemplateCreateNew',

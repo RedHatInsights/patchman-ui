@@ -37,17 +37,6 @@ export const EmptyCvesList = () => (
   </EmptyState>
 );
 
-export const EmptyPatchSetList = () => (
-  <EmptyState
-    headingLevel='h5'
-    icon={SearchIcon}
-    titleText={intl.formatMessage(messages.statesNoMatchingTemplate)}
-    variant={EmptyStateVariant.full}
-  >
-    <EmptyStateBody>{intl.formatMessage(messages.textEmptyStateBody)}</EmptyStateBody>
-  </EmptyState>
-);
-
 export const NoPatchSetList = ({ Button }) => (
   <EmptyState
     headingLevel='h5'
