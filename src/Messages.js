@@ -28,21 +28,6 @@ export default defineMessages({
     description: 'bulk select option',
     defaultMessage: 'Select page ({count})',
   },
-  labelsButtonCreateTemplate: {
-    id: 'labelsButtonCreateTemplate',
-    description: 'button label',
-    defaultMessage: 'Create a template',
-  },
-  labelsButtonEditTemplate: {
-    id: 'labelsButtonEditTemplate',
-    description: 'button label',
-    defaultMessage: 'Edit template',
-  },
-  labelsCancel: {
-    id: 'labelsCancel',
-    description: 'Button label',
-    defaultMessage: 'Cancel',
-  },
   labelsColumnsAffectedSystems: {
     id: 'labelsColumnsAffectedSystems',
     description: 'shared label',
@@ -431,17 +416,6 @@ export default defineMessages({
     description: 'Label',
     defaultMessage: 'No matching packages found',
   },
-  statesNoTemplate: {
-    id: 'statesNoTemplate',
-    description: 'Label',
-    defaultMessage: 'No templates yet',
-  },
-  statesNoTemplateBody: {
-    id: 'statesNoTemplateBody',
-    description: 'Label',
-    defaultMessage:
-      'Control the scope of package and advisory updates to be installed on selected systems with templates. To get started, create a template.',
-  },
   statesNoTemplateLink: {
     id: 'statesNoTemplateLink',
     description: 'Label',
@@ -474,11 +448,6 @@ export default defineMessages({
     description: 'template wizard template title',
     defaultMessage: 'Define template content',
   },
-  templateDescription: {
-    id: 'templateDescription',
-    description: 'description of the patch template wizard',
-    defaultMessage: 'Prepare for your next patching cycle with a content template.',
-  },
   templateDetailStepSidebarName: {
     id: 'templateDetailStepSidebarName',
     description: 'template wizard template left sidebar label',
@@ -494,17 +463,6 @@ export default defineMessages({
     description: 'template wizard template detail step title',
     defaultMessage: 'Enter template details',
   },
-  templateEdit: {
-    id: 'templateEdit',
-    description: 'step name of the patch template wizard',
-    defaultMessage: 'Edit content template ',
-  },
-  templateError: {
-    id: 'templateError',
-    description: 'error text for the patch template wizard',
-    defaultMessage:
-      'There was a problem processing the patch template. Please try again. If the problem persists, contact <a>Red Hat support</a>',
-  },
   templateNew: {
     id: 'templateNew',
     description: 'step name of the patch template wizard',
@@ -516,46 +474,20 @@ export default defineMessages({
     defaultMessage:
       'At least one system must be selected. Actions must be associated to a system to be added to a playbook.',
   },
-  templatePopoverBody: {
-    id: 'templatePopoverBody',
-    description: 'Template page header popover body',
-    defaultMessage:
-      'Templates allow you to control the scope of package and advisory updates to be installed on selected systems.',
-  },
-  templatePopoverHeader: {
-    id: 'templatePopoverHeader',
-    description: 'Template page header popover title',
-    defaultMessage: 'About Templates',
-  },
   templateStepSystems: {
     id: 'templateStepSystems',
     description: 'step name of the patch template wizard',
     defaultMessage: 'Systems (optional)',
-  },
-  templateTitle: {
-    id: 'templateTitle',
-    description: 'title of the patch template wizard',
-    defaultMessage: 'Create content template ',
   },
   templateTitleAssignSystem: {
     id: 'templateTitleAssignSystem',
     description: 'title of the patch template wizard',
     defaultMessage: 'Assign system(s) to a patch template ',
   },
-  textConfigurationInProgress: {
-    id: 'textConfigurationInProgress',
-    description: 'text for the patch template',
-    defaultMessage: 'Configuration in progress',
-  },
   textEmptyStateBody: {
     id: 'textEmptyStateBody',
     description: 'text for the Empty state body',
     defaultMessage: 'To continue, edit your filter settings and search again.',
-  },
-  textErrorSomethingWrong: {
-    id: 'textErrorSomethingWrong',
-    description: 'text for the error state body',
-    defaultMessage: 'Something went wrong',
   },
   textLockVersionTooltip: {
     id: 'textLockVersionTooltip',
@@ -567,47 +499,10 @@ export default defineMessages({
     description: 'text to notify there is not available version',
     defaultMessage: 'No version is available',
   },
-  textPatchTemplateDetails: {
-    id: 'textPatchTemplateDetails',
-    description: 'text for the patch template',
-    defaultMessage: 'Details',
-  },
-  textPatchTemplatePending: {
-    id: 'textPatchTemplatePending',
-    description: 'text for the patch template',
-    defaultMessage:
-      'Please allow a few minutes to set up a patch template. You will receive a notification when finished.',
-  },
-  textPatchTemplateSuccessfuly: {
-    id: 'textPatchTemplateSuccessfuly',
-    description: 'text for the patch template',
-    defaultMessage: 'Patch template configuration successful',
-  },
   textRebootIsRequired: {
     id: 'textRebootIsRequired',
     description: 'Advisories table cell text',
     defaultMessage: 'Reboot is required',
-  },
-  textReturnToApp: {
-    id: 'textReturnToApp',
-    description: 'text for wizards',
-    defaultMessage: 'Return to application',
-  },
-  textTemplateAddToExisting: {
-    id: 'textTemplateAddToExisting',
-    description: 'text for patch template wizard',
-    defaultMessage: 'Add to existing patch template ',
-  },
-  textTemplateCreateNew: {
-    id: 'textTemplateCreateNew',
-    description: 'text for patch template wizard',
-    defaultMessage: 'Create new patch template ',
-  },
-  textTemplateSelectedSystems: {
-    id: 'textTemplateSelectedSystems',
-    description: 'text for patch template wizard',
-    defaultMessage:
-      'You selected {systemsCount, plural, one {<b> # </b> system } other {<b> # </b> systems }}',
   },
   textUnassignSystemsNoAssignedSystems: {
     id: 'textUnassignSystemsNoAssignedSystems',
@@ -676,20 +571,5 @@ export default defineMessages({
     id: 'titlesSystems',
     description: 'title with capital letters',
     defaultMessage: 'Systems',
-  },
-  titlesTemplate: {
-    id: 'titlesTemplate',
-    description: 'page title with capital letter',
-    defaultMessage: 'Templates',
-  },
-  titlesTemplateAssign: {
-    id: 'titlesTemplateAssign',
-    description: 'title with capital letters',
-    defaultMessage: 'Assign to a template',
-  },
-  titlesTemplateRemoveMultipleButton: {
-    id: 'titlesTemplateRemoveMultipleButton',
-    description: 'title with capital letters',
-    defaultMessage: 'Remove from a template',
   },
 });

@@ -1,9 +1,8 @@
 import { EmptyState, EmptyStateBody, EmptyStateVariant } from '@patternfly/react-core';
-import { SearchIcon, PlusCircleIcon } from '@patternfly/react-icons';
+import { SearchIcon } from '@patternfly/react-icons';
 import React from 'react';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import PropTypes from 'prop-types';
 
 export const EmptyAdvisoryList = () => (
   <EmptyState
@@ -36,23 +35,3 @@ export const EmptyCvesList = () => (
     <EmptyStateBody>{intl.formatMessage(messages.textEmptyStateBody)}</EmptyStateBody>
   </EmptyState>
 );
-
-export const NoPatchSetList = ({ Button }) => (
-  <EmptyState
-    headingLevel='h5'
-    icon={PlusCircleIcon}
-    titleText={intl.formatMessage(messages.statesNoTemplate)}
-    variant={EmptyStateVariant.lg}
-  >
-    <EmptyStateBody>
-      {intl.formatMessage(messages.statesNoTemplateBody)}
-      <br />
-      <br />
-      <Button />
-    </EmptyStateBody>
-  </EmptyState>
-);
-
-NoPatchSetList.propTypes = {
-  Button: PropTypes.node,
-};

@@ -610,19 +610,6 @@ export const mapGlobalFilters = (tags, workloads = {}) => {
   return globalFilterConfig;
 };
 
-export const filterSelectedActiveSystemIDs = (selectedSystemsObject) => {
-  const formValueSystemIDs = [];
-  if (typeof selectedSystemsObject === 'object') {
-    Object.keys(selectedSystemsObject).forEach((key) => {
-      if (selectedSystemsObject[key]) {
-        formValueSystemIDs.push(key);
-      }
-    });
-  }
-
-  return formValueSystemIDs;
-};
-
 export const isObject = (variable) =>
   typeof variable === 'object' && variable !== null ? true : false;
 

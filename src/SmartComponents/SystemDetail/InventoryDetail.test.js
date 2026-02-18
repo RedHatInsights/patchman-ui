@@ -3,10 +3,8 @@ import { render } from '@testing-library/react';
 import { Provider, useSelector } from 'react-redux';
 import { entityDetail } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
-import { initMocks, mountWithIntl } from '../../Utilities/unitTestingUtilities.js';
+import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { InventoryDetailHead } from '@redhat-cloud-services/frontend-components/Inventory';
-import { useFeatureFlag } from '../../Utilities/hooks';
 
 initMocks();
 
@@ -71,19 +69,5 @@ describe('InventoryPage.js', () => {
       </Provider>,
     );
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('Should hide all dropdown actions when patch template flag is disabled', () => {
-    useFeatureFlag.mockReturnValueOnce(false);
-    const tempWrapper = mountWithIntl(
-      <Provider store={store}>
-        <Router>
-          <InventoryDetail />
-        </Router>
-      </Provider>,
-    );
-
-    const { actions } = tempWrapper.find(InventoryDetailHead).props();
-    expect(actions.length).toEqual(undefined);
   });
 });

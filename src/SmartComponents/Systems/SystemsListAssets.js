@@ -266,11 +266,6 @@ const isRemediationDisabled = (row) => {
   );
 };
 
-const isPatchSetRemovalDisabled = (row) => {
-  const { baseline_name: baselineName } = row || {};
-  return !baselineName || (typeof baselineName === 'string' && baselineName === '');
-};
-
 export const useActivateRemediationModal = (setRemediationIssues, setRemediationOpen) => {
   const { fetchBatched } = useFetchBatched();
 
@@ -307,13 +302,7 @@ export const useActivateRemediationModal = (setRemediationIssues, setRemediation
   }, []);
 };
 
-export const systemsRowActions = (
-  activateRemediationModal,
-  showTemplateAssignSystemsModal,
-  openUnassignSystemsModal,
-  row,
-  hasTemplateAccess,
-) => [
+export const systemsRowActions = (activateRemediationModal, row) => [
   {
     title: 'Apply all applicable advisories',
     isDisabled: isRemediationDisabled(row),
@@ -321,22 +310,4 @@ export const systemsRowActions = (
       activateRemediationModal(rowData);
     },
   },
-  ...(showTemplateAssignSystemsModal
-    ? [
-        {
-          title: 'Assign to a template',
-          isDisabled: !hasTemplateAccess || row.satellite_managed,
-          onClick: (event, rowId, rowData) => {
-            showTemplateAssignSystemsModal({ [rowData.id]: true });
-          },
-        },
-        {
-          title: 'Remove from a template',
-          isDisabled: !hasTemplateAccess || isPatchSetRemovalDisabled(row) || row.satellite_managed,
-          onClick: (event, rowId, rowData) => {
-            openUnassignSystemsModal([rowData.id]);
-          },
-        },
-      ]
-    : []),
 ];

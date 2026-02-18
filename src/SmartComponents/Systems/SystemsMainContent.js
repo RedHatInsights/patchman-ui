@@ -3,11 +3,9 @@ import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { useSelector, useDispatch } from 'react-redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { changeSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
-import { usePatchSetState } from '../../Utilities/hooks';
 import { decodeQueryparams } from '../../Utilities/Helpers';
 import { useActivateRemediationModal } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
-import PatchSetWrapper from '../../PresentationalComponents/PatchSetWrapper/PatchSetWrapper';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import SystemsTable from './SystemsTable';
 import { useSearchParams } from 'react-router-dom';
@@ -19,7 +17,6 @@ const SystemsMainContent = () => {
   const decodedParams = decodeQueryparams('?' + searchParams.toString());
   const [remediationIssues, setRemediationIssues] = useState([]);
 
-  const selectedRows = useSelector(({ entities }) => entities?.selectedRows || []);
   const { hasError, code } = useSelector(({ entities }) => entities?.status || {});
   const metadata = useSelector(({ SystemsStore }) => SystemsStore?.metadata || {});
 
@@ -34,9 +31,6 @@ const SystemsMainContent = () => {
     return () => dispatch(clearInventoryReducer());
   }, []);
 
-  const { patchSetState, setPatchSetState, openUnassignSystemsModal, openAssignSystemsModal } =
-    usePatchSetState(selectedRows);
-
   const activateRemediationModal = useActivateRemediationModal(
     setRemediationIssues,
     setRemediationOpen,
@@ -49,7 +43,6 @@ const SystemsMainContent = () => {
   return (
     <React.Fragment>
       <SystemsStatusReport apply={apply} queryParams={queryParams} />
-      <PatchSetWrapper patchSetState={patchSetState} setPatchSetState={setPatchSetState} />
       {(isRemediationOpen && (
         <RemediationWizard
           data={remediationIssues}
@@ -61,9 +54,6 @@ const SystemsMainContent = () => {
       <Main>
         <SystemsTable
           apply={apply}
-          patchSetState={patchSetState}
-          openAssignSystemsModal={openAssignSystemsModal}
-          openUnassignSystemsModal={openUnassignSystemsModal}
           setSearchParams={setSearchParams}
           activateRemediationModal={activateRemediationModal}
           decodedParams={decodeQueryparams}

@@ -30,7 +30,7 @@ const initStore = (state) => {
 const renderComponent = async (mockedStore) => {
   render(
     <ComponentWithContext renderOptions={{ store: initStore(mockedStore) }}>
-      <Systems patchSetState={{}} />
+      <Systems />
     </ComponentWithContext>,
   );
 
