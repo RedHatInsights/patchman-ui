@@ -8,9 +8,6 @@ import {
   fetchPackageSystems,
   fetchCvesInfo,
   fetchSystemDetails,
-  fetchPatchSets,
-  fetchPatchSet,
-  fetchPatchSetSystems,
 } from '../../Utilities/api';
 import * as ActionTypes from '../ActionTypes';
 
@@ -217,81 +214,6 @@ export const clearAdvisorySystemsReducer = () => ({
 export const changeSystemsMetadata = (params) => ({
   type: ActionTypes.CHANGE_SYSTEMS_METADATA,
   payload: params,
-});
-
-export const fetchPatchSetsAction = (params) => ({
-  type: ActionTypes.FETCH_ALL_PATCH_SETS,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSets(params));
-  }).then((result) => result),
-});
-
-export const changePatchSetsParams = (params) => ({
-  type: ActionTypes.CHANGE_PATCH_SET_PARAMS,
-  payload: params,
-});
-
-export const selectPatchSetRow = (rowState) => ({
-  type: ActionTypes.SELECT_PATCH_SET_ROW,
-  payload: rowState,
-});
-
-export const fetchPatchSetAction = (id) => ({
-  type: ActionTypes.FETCH_PATCH_SET,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSet(id));
-  }).then((result) => result),
-});
-
-export const fetchTemplateDetail = (id) => ({
-  type: ActionTypes.FETCH_TEMPLATE_DETAIL,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSet(id));
-  }).then((result) => result),
-});
-
-export const clearTemplateDetail = () => ({
-  type: ActionTypes.CLEAR_TEMPLATE_DETAIL,
-  payload: [],
-});
-
-export const fetchPatchSetDetailSystemsAction = (id, params) => ({
-  type: ActionTypes.FETCH_PATCH_SET_DETAIL_SYSTEMS,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSetSystems(id, params));
-  }).then((result) => result),
-});
-
-export const changePatchSetDetailsSystemsParams = (params) => ({
-  type: ActionTypes.CHANGE_PATCH_SET_DETAIL_SYSTEMS_PARAMS,
-  payload: params,
-});
-
-export const changePatchSetDetailsSystemsMetadata = (params) => ({
-  type: ActionTypes.CHANGE_PATCH_SET_DETAIL_SYSTEMS_METADATA,
-  payload: params,
-});
-
-export const clearPatchSetDetailsSystems = () => ({
-  type: ActionTypes.CLEAR_PATCH_SET_DETAIL_SYSTEMS,
-  payload: [],
-});
-
-export const clearPatchSetAction = () => ({
-  type: ActionTypes.CLEAR_PATCH_SET,
-  payload: [],
-});
-
-export const fetchPatchSetSystemsNoFiltersAction = (params) => ({
-  type: ActionTypes.FETCH_PATCH_SET_SYSTEMS_NO_FILTERS,
-  payload: new Promise((resolve) => {
-    resolve(fetchPatchSetSystems(params));
-  }).then((result) => result),
-});
-
-export const clearPatchSetsAction = () => ({
-  type: ActionTypes.CLEAR_PATCH_SETS,
-  payload: [],
 });
 
 export const toggleAllSelectedAction = (state) => ({

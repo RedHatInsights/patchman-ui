@@ -10,19 +10,12 @@ initMocks();
 
 jest.mock('./SystemsTable', () => ({
   __esModule: true,
-  default: jest.fn(
-    ({ openAssignSystemsModal, openUnassignSystemsModal, activateRemediationModal, ...props }) => (
-      <div {...props} data-testid='systems-table-mock'>
-        <button data-testid='open-assign-modal' onClick={openAssignSystemsModal} />
-        <button
-          data-testid='open-unasssign-modal'
-          onClick={() => openUnassignSystemsModal(['test-system-id-1'])}
-        />
-        <button data-testid='active-remediation-modal' onClick={activateRemediationModal} />
-        Systems table
-      </div>
-    ),
-  ),
+  default: jest.fn(({ activateRemediationModal, ...props }) => (
+    <div {...props} data-testid='systems-table-mock'>
+      <button data-testid='active-remediation-modal' onClick={activateRemediationModal} />
+      Systems table
+    </div>
+  )),
 }));
 
 jest.mock('../../PresentationalComponents/Filters/OsVersionFilter');
@@ -137,18 +130,6 @@ describe('SystemsTable', () => {
 
     renderComponent(noSystemState);
     expect(screen.getByText(`Do more with your Red Hat Enterprise Linux environment`)).toBeTruthy();
-  });
-
-  it('Should display assign systems modal', async () => {
-    renderComponent(mockState);
-    await user.click(screen.getByTestId('open-assign-modal'));
-    await waitFor(() => expect(screen.getByTestId('assign-systems-modal')).toBeVisible());
-  });
-
-  it('Should display unassign systems modal', async () => {
-    renderComponent(mockState);
-    await user.click(screen.getByTestId('open-unasssign-modal'));
-    await waitFor(() => expect(screen.getByTestId('unassign-systems-modal')).toBeVisible());
   });
 
   it('Should display remediation wizard', async () => {

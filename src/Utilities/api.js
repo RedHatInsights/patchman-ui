@@ -197,29 +197,6 @@ export const exportPackageSystemsJSON = (params, packageName) => {
   return fetchFile(params, endpoint, 'application/json');
 };
 
-export const assignSystemToPatchSet = (payload) =>
-  createApiCall(`/baselines`, 'v3', 'put', null, payload);
-
-export const fetchPatchSets = (params) => createApiCall(`/baselines`, 'v3', 'get', params);
-
-export const updatePatchSets = (payload, id) =>
-  createApiCall(`/baselines/${id}`, 'v3', 'put', null, payload);
-
-export const deletePatchSet = (patchSetID) =>
-  createApiCall(`/baselines/${patchSetID}`, 'v3', 'delete');
-
-export const fetchPatchSet = (id) => createApiCall(`/baselines/${id}`, 'v3', 'get');
-
-export const fetchPatchSetSystems = (params) => {
-  const id = params.id;
-  delete params.id;
-
-  return createApiCall(`/baselines/${id}/systems`, 'v3', 'get', prepareEntitiesParams(params));
-};
-
-export const unassignSystemFromPatchSet = (payload) =>
-  createApiCall('/baselines/systems/remove', 'v3', 'post', null, payload);
-
 export const getOperatingSystems = () => hostInventoryApi.apiSystemProfileGetOperatingSystem();
 
 export const fetchIDs = (endpoint, queryParams) =>

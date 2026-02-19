@@ -8,11 +8,6 @@ export default defineMessages({
     description: 'regsiter page title',
     defaultMessage: 'Patch',
   },
-  labelsActions: {
-    id: 'labelsActions',
-    description: 'dropdown with actions label',
-    defaultMessage: 'Actions',
-  },
   labelsAffectedSystemsCount: {
     id: 'labelsAffectedSystemsCount',
     description: 'applicable systems number label',
@@ -32,26 +27,6 @@ export default defineMessages({
     id: 'labelsBulkSelectPage',
     description: 'bulk select option',
     defaultMessage: 'Select page ({count})',
-  },
-  labelsButtonCreateTemplate: {
-    id: 'labelsButtonCreateTemplate',
-    description: 'button label',
-    defaultMessage: 'Create a template',
-  },
-  labelsButtonEditTemplate: {
-    id: 'labelsButtonEditTemplate',
-    description: 'button label',
-    defaultMessage: 'Edit template',
-  },
-  labelsButtonRemoveTemplate: {
-    id: 'labelsButtonRemoveTemplate',
-    description: 'button label',
-    defaultMessage: 'Delete template',
-  },
-  labelsCancel: {
-    id: 'labelsCancel',
-    description: 'Button label',
-    defaultMessage: 'Cancel',
   },
   labelsColumnsAffectedSystems: {
     id: 'labelsColumnsAffectedSystems',
@@ -153,11 +128,6 @@ export default defineMessages({
     description: 'shared label',
     defaultMessage: 'Up to applicable version',
   },
-  labelsColumnsUpToDate: {
-    id: 'labelsColumnsUpToDate',
-    description: 'shared label',
-    defaultMessage: 'Red Hat advisories up to date',
-  },
   labelsColumnsUpToInstallable: {
     id: 'labelsColumnsUpToInstallable',
     description: 'shared label',
@@ -183,11 +153,6 @@ export default defineMessages({
     description: 'Label',
     defaultMessage: 'Date',
   },
-  labelsDelete: {
-    id: 'labelsDelete',
-    description: 'button label',
-    defaultMessage: 'Delete',
-  },
   labelsDescription: {
     id: 'labelsDescription',
     description: 'Label',
@@ -198,30 +163,10 @@ export default defineMessages({
     description: 'Documentation link text',
     defaultMessage: 'Documentation',
   },
-  labelsErrorDateLimit: {
-    id: 'labelsErrorDateLimit',
-    description: 'Label',
-    defaultMessage: 'Date is before the allowable range.',
-  },
-  labelsErrorInvalidDate: {
-    id: 'labelsErrorInvalidDate',
-    description: 'Label',
-    defaultMessage: 'The date should be valid of a type YYYY-MM-DD',
-  },
   labelsFiltersClear: {
     id: 'labelsFiltersClear',
     description: 'label for remove filter chips',
     defaultMessage: 'Reset filters',
-  },
-  labelsFiltersCreator: {
-    id: 'labelsFiltersCreator',
-    description: 'Label for creator filter',
-    defaultMessage: 'Creator',
-  },
-  labelsFiltersCreatorPlaceholder: {
-    id: 'labelsFiltersCreatorPlaceholder',
-    description: 'Label for creator filter',
-    defaultMessage: 'Filter by creator',
   },
   labelsFiltersCvesSearchPlaceHolder: {
     id: 'labelsFiltersCvesSearch',
@@ -283,11 +228,6 @@ export default defineMessages({
     description: 'label for remove filter chips',
     defaultMessage: 'Reset filters',
   },
-  labelsFiltersSearch: {
-    id: 'labelsFiltersSearch',
-    description: 'Label for search filter placeholder',
-    defaultMessage: 'Search ',
-  },
   labelsFiltersSearchAdvisoriesPlaceholder: {
     id: 'labelsFiltersSearchAdvisoriesPlaceholder',
     description: 'Label for search filter placeholder',
@@ -297,16 +237,6 @@ export default defineMessages({
     id: 'labelsFiltersSearchAdvisoriesTitle',
     description: 'Label for search filter placeholder',
     defaultMessage: 'Advisory',
-  },
-  labelsFiltersSearchTemplatePlaceholder: {
-    id: 'labelsFiltersSearchTemplatePlaceholder',
-    description: 'Label for search filter placeholder',
-    defaultMessage: 'Filter by template name ',
-  },
-  labelsFiltersSearchTemplateTitle: {
-    id: 'labelsFiltersSearchTemplateTitle',
-    description: 'Label for search filter placeholder',
-    defaultMessage: 'Template',
   },
   labelsFiltersSeverity: {
     id: 'labelsFiltersSeverity',
@@ -400,11 +330,6 @@ export default defineMessages({
     description: 'Button label',
     defaultMessage: 'Plan remediation',
   },
-  labelsRemove: {
-    id: 'labelsRemove',
-    description: 'Button label',
-    defaultMessage: 'Remove',
-  },
   labelsReturnToLandingPage: {
     id: 'returnToLandingPage',
     description: 'Return to landing page label for general usage',
@@ -414,11 +339,6 @@ export default defineMessages({
     id: 'returnPreviousPage',
     description: 'Return to previous page label for general usage',
     defaultMessage: 'Return to previous page',
-  },
-  labelsSelectedSystems: {
-    id: 'labelsSelectedSystems',
-    description: 'label',
-    defaultMessage: 'Template applied to',
   },
   labelsSeverity: {
     id: 'labelsSeverity',
@@ -439,16 +359,6 @@ export default defineMessages({
     id: 'labelsSystemsWithPatchesAvailable',
     description: 'Label for status report',
     defaultMessage: 'Systems with patches available',
-  },
-  labelsSystem: {
-    id: 'labelsSystem',
-    description: 'Generic pluralized systems label',
-    defaultMessage: '{systemsCount, plural, one { # system } other { # systems }}',
-  },
-  labelsTemplateNoSystems: {
-    id: 'labelsTemplateNoSystems',
-    description: 'Template list table applied systems column fallback',
-    defaultMessage: 'No systems applied',
   },
   linksLearnAboutInsights: {
     id: 'linksLearnAboutInsights',
@@ -506,27 +416,6 @@ export default defineMessages({
     description: 'Label',
     defaultMessage: 'No matching packages found',
   },
-  statesNoMatchingSystems: {
-    id: 'statesNoMatchingSystems',
-    description: 'Label',
-    defaultMessage: 'No matching systems found',
-  },
-  statesNoMatchingTemplate: {
-    id: 'statesNoMatchingTemplate',
-    description: 'Label',
-    defaultMessage: 'No matching patch template found',
-  },
-  statesNoTemplate: {
-    id: 'statesNoTemplate',
-    description: 'Label',
-    defaultMessage: 'No templates yet',
-  },
-  statesNoTemplateBody: {
-    id: 'statesNoTemplateBody',
-    description: 'Label',
-    defaultMessage:
-      'Control the scope of package and advisory updates to be installed on selected systems with templates. To get started, create a template.',
-  },
   statesNoTemplateLink: {
     id: 'statesNoTemplateLink',
     description: 'Label',
@@ -542,33 +431,6 @@ export default defineMessages({
     description: 'system up to date page body',
     defaultMessage:
       'This system is up to date, based on package information submitted at the most recent system check-in',
-  },
-  templateAlertSystems: {
-    id: 'templateAlertSystems',
-    description: 'Template wizard alert',
-    defaultMessage:
-      'A system can have only one content template, therefore if you apply a new content template to the system, it will be overwritten.',
-  },
-  templateApply: {
-    id: 'templateApply',
-    description: 'title with capital letters',
-    defaultMessage: 'Apply template',
-  },
-  templateApplySystems: {
-    id: 'templateApplySystems',
-    description: 'step name of the patch template wizard',
-    defaultMessage: 'Apply to systems (optional)',
-  },
-  templateContentStepExpandable: {
-    id: 'templateContentStepExpandable',
-    description: 'template wizard template expandable text',
-    defaultMessage:
-      'You have a system with 10 applicable RHEL advisories, the most recent of which was published today. You apply a template with a date of yesterday to that system. After re-evaluation, the advisory published today will not be considered installable on the system, but will be considered applicable.',
-  },
-  templateContentStepExpandableTitle: {
-    id: 'templateContentStepExpandableTitle',
-    description: 'template wizard template expandable title',
-    defaultMessage: 'What does it mean?',
   },
   templateContentStepSidebarName: {
     id: 'templateContentStepSidebarName',
@@ -586,31 +448,6 @@ export default defineMessages({
     description: 'template wizard template title',
     defaultMessage: 'Define template content',
   },
-  templateCreate: {
-    id: 'templateCreate',
-    description: 'title with capital letters',
-    defaultMessage: 'Create',
-  },
-  templateDateField: {
-    id: 'templateDateField',
-    description: 'Field name of the patch template wizard',
-    defaultMessage: 'Select date of Red Hat repositiories',
-  },
-  templateDateUpto: {
-    id: 'templateDateUpto',
-    description: 'Field text of the patch template wizard',
-    defaultMessage: 'Include advisories up to this date',
-  },
-  templateDescription: {
-    id: 'templateDescription',
-    description: 'description of the patch template wizard',
-    defaultMessage: 'Prepare for your next patching cycle with a content template.',
-  },
-  templateDetailHeaderBreadcrumb: {
-    id: 'templateDetailHeaderBreadcrumb',
-    description: 'breadcrumb for template detail header',
-    defaultMessage: 'Templates',
-  },
   templateDetailStepSidebarName: {
     id: 'templateDetailStepSidebarName',
     description: 'template wizard template left sidebar label',
@@ -626,61 +463,10 @@ export default defineMessages({
     description: 'template wizard template detail step title',
     defaultMessage: 'Enter template details',
   },
-  templateDetailTableCreatedBy: {
-    id: 'templateDetailTableCreatedBy',
-    description: 'label inside template detail header',
-    defaultMessage: 'Created by:',
-  },
-  templateDetailTableDescription: {
-    id: 'templateDetailTableDescription',
-    description: 'label inside template detail header',
-    defaultMessage: 'Template description:',
-  },
-  templateDetailTableLastEdited: {
-    id: 'templateDetailTableLastEdited',
-    description: 'title of template assigned systems table',
-    defaultMessage: 'Last edited:',
-  },
-  templateDetailTablePublished: {
-    id: 'templateDetailTablePublished',
-    description: 'title of template assigned systems table',
-    defaultMessage: 'Published:',
-  },
-  templateDetailTableTitle: {
-    id: 'templateDetailTableTitle',
-    description: 'title of template assigned systems table',
-    defaultMessage: 'Systems applied',
-  },
-  templateDetailTableUpToDate: {
-    id: 'templateDetailTableUpToDate',
-    description: 'label inside template detail header',
-    defaultMessage: 'Includes Red Hat repositories up to:',
-  },
-  templateEdit: {
-    id: 'templateEdit',
-    description: 'step name of the patch template wizard',
-    defaultMessage: 'Edit content template ',
-  },
-  templateError: {
-    id: 'templateError',
-    description: 'error text for the patch template wizard',
-    defaultMessage:
-      'There was a problem processing the patch template. Please try again. If the problem persists, contact <a>Red Hat support</a>',
-  },
   templateNew: {
     id: 'templateNew',
     description: 'step name of the patch template wizard',
     defaultMessage: 'New patch template ',
-  },
-  templateNoAppliedSystemsButton: {
-    id: 'templateNoAppliedSystemsButton',
-    description: 'button in the empty state in template assigned systems table',
-    defaultMessage: 'Apply to systems',
-  },
-  templateNoAppliedSystemsTitle: {
-    id: 'templateNoAppliedSystemsTitle',
-    description: 'title of the empty state in template assigned systems table',
-    defaultMessage: 'Not applied to any systems',
   },
   templateNoSystemSelected: {
     id: 'templateNoSystemSelected',
@@ -688,83 +474,20 @@ export default defineMessages({
     defaultMessage:
       'At least one system must be selected. Actions must be associated to a system to be added to a playbook.',
   },
-  templateOr: {
-    id: 'templateOr',
-    description: 'title with capital letters',
-    defaultMessage: 'Or',
-  },
-  templatePopoverBody: {
-    id: 'templatePopoverBody',
-    description: 'Template page header popover body',
-    defaultMessage:
-      'Templates allow you to control the scope of package and advisory updates to be installed on selected systems.',
-  },
-  templatePopoverHeader: {
-    id: 'templatePopoverHeader',
-    description: 'Template page header popover title',
-    defaultMessage: 'About Templates',
-  },
-  templateReview: {
-    id: 'templateReview',
-    description: 'step name of the patch template wizard',
-    defaultMessage: 'Review ',
-  },
-  templateSelect: {
-    id: 'templateSelect',
-    description: 'title with capital letters',
-    defaultMessage:
-      'Select a template to apply to the selected {systemCount, plural, one {<b>#</b> system} other {<b>#</b> systems}}.',
-  },
-  templateSelectExisting: {
-    id: 'templateSelectExisting',
-    description: 'title with capital letters',
-    defaultMessage: 'Select an existing template',
-  },
-  templateSelectSatellite: {
-    id: 'templateSelectSatellite',
-    description: 'title with capital letters',
-    defaultMessage:
-      '<b>{systemCount}</b> of the selected systems content is Managed by Satellite therefore Template is not applicable.',
-  },
   templateStepSystems: {
     id: 'templateStepSystems',
     description: 'step name of the patch template wizard',
     defaultMessage: 'Systems (optional)',
-  },
-  templateTitle: {
-    id: 'templateTitle',
-    description: 'title of the patch template wizard',
-    defaultMessage: 'Create content template ',
   },
   templateTitleAssignSystem: {
     id: 'templateTitleAssignSystem',
     description: 'title of the patch template wizard',
     defaultMessage: 'Assign system(s) to a patch template ',
   },
-  templateWizardValidateLoading: {
-    id: 'templateWizardValidateLoading',
-    description: 'template wizard text when user input is not valid',
-    defaultMessage: 'Template details are loading.',
-  },
-  templateWizardValidateNameTaken: {
-    id: 'templateWizardValidateNameTaken',
-    description: 'template wizard text when user input is not valid',
-    defaultMessage: 'Template name already exists. Try a different name.',
-  },
-  textConfigurationInProgress: {
-    id: 'textConfigurationInProgress',
-    description: 'text for the patch template',
-    defaultMessage: 'Configuration in progress',
-  },
   textEmptyStateBody: {
     id: 'textEmptyStateBody',
     description: 'text for the Empty state body',
     defaultMessage: 'To continue, edit your filter settings and search again.',
-  },
-  textErrorSomethingWrong: {
-    id: 'textErrorSomethingWrong',
-    description: 'text for the error state body',
-    defaultMessage: 'Something went wrong',
   },
   textLockVersionTooltip: {
     id: 'textLockVersionTooltip',
@@ -776,67 +499,10 @@ export default defineMessages({
     description: 'text to notify there is not available version',
     defaultMessage: 'No version is available',
   },
-  textPatchTemplateContent: {
-    id: 'textPatchTemplateContent',
-    description: 'text for the patch template',
-    defaultMessage: 'Content',
-  },
-  textPatchTemplateDetails: {
-    id: 'textPatchTemplateDetails',
-    description: 'text for the patch template',
-    defaultMessage: 'Details',
-  },
-  textPatchTemplatePending: {
-    id: 'textPatchTemplatePending',
-    description: 'text for the patch template',
-    defaultMessage:
-      'Please allow a few minutes to set up a patch template. You will receive a notification when finished.',
-  },
-  textPatchTemplateReview: {
-    id: 'textPatchTemplateReview',
-    description: 'text for the patch template',
-    defaultMessage: 'Review the details of your template.',
-  },
-  textPatchTemplateSuccessfuly: {
-    id: 'textPatchTemplateSuccessfuly',
-    description: 'text for the patch template',
-    defaultMessage: 'Patch template configuration successful',
-  },
-  textPatchTemplateSystems: {
-    id: 'textPatchTemplateSystems',
-    description: 'text for the patch template',
-    defaultMessage: 'Systems',
-  },
   textRebootIsRequired: {
     id: 'textRebootIsRequired',
     description: 'Advisories table cell text',
     defaultMessage: 'Reboot is required',
-  },
-  textReturnToApp: {
-    id: 'textReturnToApp',
-    description: 'text for wizards',
-    defaultMessage: 'Return to application',
-  },
-  textTemplateAddToExisting: {
-    id: 'textTemplateAddToExisting',
-    description: 'text for patch template wizard',
-    defaultMessage: 'Add to existing patch template ',
-  },
-  textTemplateChoose: {
-    id: 'textTemplateChoose',
-    description: 'text for patch template wizard',
-    defaultMessage: 'Template',
-  },
-  textTemplateCreateNew: {
-    id: 'textTemplateCreateNew',
-    description: 'text for patch template wizard',
-    defaultMessage: 'Create new patch template ',
-  },
-  textTemplateSelectedSystems: {
-    id: 'textTemplateSelectedSystems',
-    description: 'text for patch template wizard',
-    defaultMessage:
-      'You selected {systemsCount, plural, one {<b> # </b> system } other {<b> # </b> systems }}',
   },
   textUnassignSystemsNoAssignedSystems: {
     id: 'textUnassignSystemsNoAssignedSystems',
@@ -854,11 +520,6 @@ export default defineMessages({
     description: 'text about systems being removed',
     defaultMessage:
       'Do you want to remove the {systemsCount, plural, one {<b> # </b> selected system } other {<b> # </b> selected systems }} from assigned Patch templates?',
-  },
-  textUnassignSystemsTitle: {
-    id: 'textUnassignSystemsTitle',
-    description: 'text about systems being removed',
-    defaultMessage: 'Remove systems from patch template ',
   },
   textUnassignSystemsWarning: {
     id: 'textUnassignSystemsWarning',
@@ -910,51 +571,5 @@ export default defineMessages({
     id: 'titlesSystems',
     description: 'title with capital letters',
     defaultMessage: 'Systems',
-  },
-  titlesTemplate: {
-    id: 'titlesTemplate',
-    description: 'page title with capital letter',
-    defaultMessage: 'Templates',
-  },
-  titlesTemplateAssign: {
-    id: 'titlesTemplateAssign',
-    description: 'title with capital letters',
-    defaultMessage: 'Assign to a template',
-  },
-  titlesTemplateDeleteModalCheckbox: {
-    id: 'titlesTemplateDeleteModalCheckbox',
-    description: 'page title with capital letter',
-    defaultMessage: 'I understand that this action cannot be undone.',
-  },
-  titlesTemplateDeleteModalText: {
-    id: 'titlesTemplateDeleteModalText',
-    description: 'page title with capital letter',
-    defaultMessage:
-      '<b>{templateName}</b> and all its data will be permanently deleted. Associated systems will be removed from the template but will not be deleted.',
-  },
-  titlesTemplateDeleteModalTitle: {
-    id: 'titlesTemplateDeleteModalTitle',
-    description: 'page title with capital letter',
-    defaultMessage: 'Delete template?',
-  },
-  titlesTemplateNoDescription: {
-    id: 'titlesTemplateNoDescription',
-    description: 'title with capital letters',
-    defaultMessage: 'No description available',
-  },
-  titlesTemplateNoDescriptionProvided: {
-    id: 'titlesTemplateNoDescriptionProvided',
-    description: 'title with capital letters',
-    defaultMessage: 'No description provided',
-  },
-  titlesTemplateRemoveFromSystems: {
-    id: 'titlesTemplateRemoveMultipleButton',
-    description: 'title with capital letters',
-    defaultMessage: 'Remove from {systemsCount, plural, one {system} other {systems}}',
-  },
-  titlesTemplateRemoveMultipleButton: {
-    id: 'titlesTemplateRemoveMultipleButton',
-    description: 'title with capital letters',
-    defaultMessage: 'Remove from a template',
   },
 });

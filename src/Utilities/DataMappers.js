@@ -8,15 +8,11 @@ import {
   EmptyAdvisoryList,
   EmptyCvesList,
   EmptyPackagesList,
-  EmptyPatchSetList,
-  EmptySystemsList,
 } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
 import { advisorySeverities, entityTypes } from './constants';
 import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
 import { intl } from './IntlProvider';
-import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
-import { ManagedBySatelliteCell } from '../SmartComponents/Systems/SystemsListAssets';
 import AdvisorySeverity from '../PresentationalComponents/AdvisorySeverity/AdvisorySeverity';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
@@ -207,10 +203,8 @@ export const createPackageSystemsRows = (rows, selectedRows = {}) => {
         osName: row.os?.osName || row.os || 'N/A',
         rhsm: row.rhsm,
       },
-      baseline_name: row.baseline_name, // ToBeDeprecated
       template_name: row.template_name,
       template_uuid: row.template_uuid,
-      baseline_id: row.baseline_id,
       satellite_managed: row.satellite_managed,
     }));
   return data || [];
@@ -354,109 +348,4 @@ export const createCvesRows = (rows) => {
       },
     ];
   }
-};
-
-export const createSystemsRowsReview = (rows, selectedRows) => {
-  if (rows.length !== 0) {
-    return rows.map((system) => {
-      const { attributes, id } = system;
-
-      return {
-        id,
-        key: id,
-        selected: selectedRows[system.id] !== undefined,
-        cells: [
-          {
-            title: attributes.display_name,
-          },
-          {
-            title: attributes.os || 'N/A',
-          },
-          {
-            title: attributes.satellite_managed ? (
-              <ManagedBySatelliteCell />
-            ) : (
-              attributes.baseline_name || 'No template'
-            ),
-          },
-          {
-            title: processDate(attributes.last_upload),
-          },
-        ],
-      };
-    });
-  } else {
-    return [
-      {
-        heightAuto: true,
-        cells: [
-          {
-            props: { colSpan: 4 },
-            title: <EmptySystemsList />,
-          },
-        ],
-      },
-    ];
-  }
-};
-
-export const createPatchSetRows = (rows, selectedRows = {}, filters) => {
-  const data =
-    rows &&
-    rows.map((row) => ({
-      id: row.id,
-      displayName: row.name,
-      key: row.id,
-      selected: selectedRows[row.id] !== undefined,
-      cells: [
-        {
-          title: <InsightsLink to={`/templates/${row.id}`}>{row.name}</InsightsLink>,
-        },
-        {
-          title: row.systems || intl.formatMessage(messages.labelsTemplateNoSystems),
-        },
-        { title: processDate(row.last_edited) },
-        { title: processDate(row.published) },
-        { title: row.creator },
-      ],
-    }));
-
-  return data?.length > 0
-    ? data
-    : filters.search || Object.keys(filters.filter).length
-      ? [
-          {
-            heightAuto: true,
-            cells: [
-              {
-                props: { colSpan: 6 },
-                title: <EmptyPatchSetList />,
-              },
-            ],
-          },
-        ]
-      : [];
-};
-
-export const createPatchSetDetailRows = (rows) => {
-  const data =
-    rows &&
-    rows.map((row) => {
-      row = { ...row, ...row.attributes };
-
-      return {
-        ...row,
-        id: row.inventory_id,
-        display_name: row.display_name,
-        key: row.inventory_id,
-        os: {
-          osName: row.os || 'N/A',
-          rhsm: row.rhsm,
-        },
-        last_upload: row.last_upload,
-        tags: row.tags,
-      };
-    });
-
-  return data;
 };

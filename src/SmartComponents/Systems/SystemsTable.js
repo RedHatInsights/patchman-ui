@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
@@ -29,17 +29,9 @@ import {
   mergeInventoryColumns,
 } from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
-import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import propTypes from 'prop-types';
 
-const SystemsTable = ({
-  apply,
-  patchSetState,
-  openUnassignSystemsModal,
-  setSearchParams,
-  activateRemediationModal,
-  decodedParams,
-}) => {
+const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decodedParams }) => {
   const store = useStore();
   const inventory = useRef(null);
 
@@ -51,11 +43,6 @@ const SystemsTable = ({
   const selectedRows = useSelector(({ entities }) => entities?.selectedRows || []);
   const areAllSelected = useSelector(({ SystemsStore }) => SystemsStore?.areAllSelected);
   const queryParams = useSelector(({ SystemsStore }) => SystemsStore?.queryParams || {});
-
-  const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([
-    'patch:*:*',
-    'patch:template:write',
-  ]);
 
   const [appliedColumns, setAppliedColumns] = React.useState(SYSTEMS_LIST_COLUMNS);
   const [ColumnManagementModal, setColumnManagementModalOpen] = useColumnManagement(
@@ -109,15 +96,6 @@ const SystemsTable = ({
     selectionDispatcher: systemSelectAction,
     totalItems,
   });
-
-  useEffect(() => {
-    if (patchSetState.shouldRefresh) {
-      onSelect('none');
-      // timestamp is used to force inventory to refresh
-      // if it wasn't there inventory might ignore request to refresh because parameters are the same
-      inventory?.current?.onRefreshData({ timestamp: Date.now() });
-    }
-  }, [patchSetState.shouldRefresh]);
 
   const onExport = useOnExport(
     'systems',
@@ -200,14 +178,7 @@ const SystemsTable = ({
         }}
         getEntities={getEntities}
         tableProps={{
-          actionResolver: (row) =>
-            systemsRowActions(
-              activateRemediationModal,
-              false,
-              openUnassignSystemsModal,
-              row,
-              hasTemplateAccess,
-            ),
+          actionResolver: (row) => systemsRowActions(activateRemediationModal, row),
           canSelectAll: false,
           variant: TableVariant.compact,
           className: 'patchCompactInventory',
@@ -243,8 +214,6 @@ const SystemsTable = ({
 
 SystemsTable.propTypes = {
   apply: propTypes.func.isRequired,
-  patchSetState: propTypes.object.isRequired,
-  openUnassignSystemsModal: propTypes.func.isRequired,
   setSearchParams: propTypes.func.isRequired,
   activateRemediationModal: propTypes.func.isRequired,
   decodedParams: propTypes.func.isRequired,
