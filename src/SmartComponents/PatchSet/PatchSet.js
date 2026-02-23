@@ -35,7 +35,7 @@ import {
 } from './PatchSetAssets';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDeleteNotifications } from '../../Utilities/constants';
-import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
+import usePermissionCheck from '../../Utilities/hooks/usePermissionCheck';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
 import { Icon, Popover } from '@patternfly/react-core';
 import DeleteSetModal from '../Modals/DeleteSetModal';
@@ -133,7 +133,7 @@ const PatchSet = () => {
       });
   };
 
-  const { hasAccess } = usePermissionsWithContext(['patch:*:*', 'patch:template:write']);
+  const { hasAccess } = usePermissionCheck(['patch:*:*', 'patch:template:write']);
   const CreatePatchSetButton = createPatchSetButton(setPatchSetState, hasAccess);
   const actionsConfig = patchSetRowActions(openPatchSetEditModal, openPatchDeleteModal);
 

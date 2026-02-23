@@ -29,7 +29,7 @@ import {
   mergeInventoryColumns,
 } from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
-import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
+import usePermissionCheck from '../../Utilities/hooks/usePermissionCheck';
 import propTypes from 'prop-types';
 
 const SystemsTable = ({
@@ -52,7 +52,7 @@ const SystemsTable = ({
   const areAllSelected = useSelector(({ SystemsStore }) => SystemsStore?.areAllSelected);
   const queryParams = useSelector(({ SystemsStore }) => SystemsStore?.queryParams || {});
 
-  const { hasAccess: hasTemplateAccess } = usePermissionsWithContext([
+  const { hasAccess: hasTemplateAccess } = usePermissionCheck([
     'patch:*:*',
     'patch:template:write',
   ]);

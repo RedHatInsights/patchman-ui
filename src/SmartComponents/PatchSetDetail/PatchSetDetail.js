@@ -49,7 +49,7 @@ import {
 } from '../../Utilities/Helpers';
 import PatchSetWizard from '../PatchSetWizard/PatchSetWizard';
 import { patchSetDetailRowActions } from '../PatchSet/PatchSetAssets';
-import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
+import usePermissionCheck from '../../Utilities/hooks/usePermissionCheck';
 import UnassignSystemsModal from '../Modals/UnassignSystemsModal';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
@@ -119,7 +119,7 @@ const PatchSetDetail = () => {
     ({ PatchSetDetailSystemsStore }) => PatchSetDetailSystemsStore?.templateHasSystems,
   );
 
-  const { hasAccess } = usePermissionsWithContext(['patch:*:*', 'patch:template:write']);
+  const { hasAccess } = usePermissionCheck(['patch:*:*', 'patch:template:write']);
 
   const patchSetName = templateDetails.data.attributes.name;
 

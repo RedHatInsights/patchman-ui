@@ -57,4 +57,23 @@ jest.mock('../src/Utilities/hooks/useRemediationDataProvider', () => ({
 
 jest.mock('../src/Utilities/hooks/useFeatureFlag', () => jest.fn());
 
+jest.mock('../src/Utilities/hooks/usePermissionCheck', () => ({
+    __esModule: true,
+    default: () => ({ hasAccess: true, isLoading: false }),
+    useRbacV1Permissions: () => ({ hasAccess: true, isLoading: false }),
+    useKesselPermissions: () => ({ hasAccess: true, isLoading: false }),
+    PERMISSION_MAP: {
+        'patch:*:read': 'patch_system_view',
+        'patch:*:*': 'patch_system_edit',
+        'patch:template:write': 'patch_template_edit',
+    },
+}));
+
+jest.mock('@project-kessel/react-kessel-access-check', () => ({
+    AccessCheck: {
+        Provider: ({ children }) => <>{children}</>,
+    },
+    useSelfAccessCheck: () => ({ data: null, loading: false, error: null }),
+}));
+
 global.React = React;
