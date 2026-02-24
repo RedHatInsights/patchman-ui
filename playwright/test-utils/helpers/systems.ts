@@ -51,6 +51,18 @@ const SystemTypeArchiveMap = new Map<SystemType, [string, boolean]>([
 ]);
 
 /**
+ * UI display name for the Operating system filter per system type.
+ */
+const SYSTEM_TYPE_OS_DISPLAY_NAME: Record<SystemType, string> = {
+  base: 'RHEL 9.6',
+  clean: 'RHEL 9.4',
+  'version-locked': 'RHEL 9.6',
+};
+
+/** OS display name for the default (base) system type. Use in filtered table assertions. */
+export const osBaseName = SYSTEM_TYPE_OS_DISPLAY_NAME.base;
+
+/**
  * Result of creating a test system.
  */
 export type SystemResult = {
