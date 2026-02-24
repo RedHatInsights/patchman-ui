@@ -143,6 +143,41 @@ const updateHostname = (baseDir: string, systemName: string) => {
 };
 
 /**
+ * Workspace group name written into the archive and used in Workspace filter tests.
+ * Reads from WORKSPACE_GROUP env to match a group created in the Inventory UI (insights/inventory/workspaces).
+ * Inventory UI only shows groups created there as menu options (not group names from system uploads).
+ */
+export const getWorkspaceGroup = () => process.env.WORKSPACE_GROUP;
+
+/**
+ * Escapes a string for use as a YAML double-quoted value (backslash and quote escaped).
+ */
+const yamlQuoted = (s: string) => `"${s.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+
+const setInsightsClientGroup = (baseDir: string, extraTags?: Record<string, string>) => {
+  // Path must match insights-client payload: data/etc/insights-client/tags.yaml inside the archive.
+  const insightsClientDir = path.join(baseDir, 'data/etc/insights-client');
+  const tagsPath = path.join(insightsClientDir, 'tags.yaml');
+  if (!fs.existsSync(insightsClientDir)) {
+    fs.mkdirSync(insightsClientDir, { recursive: true });
+  }
+  const groupName = getWorkspaceGroup();
+  if (!groupName) {
+    throw new Error(
+      'WORKSPACE_GROUP env is required. Add it to your .env (e.g. WORKSPACE_GROUP=TestSpace).',
+    );
+  }
+  const lines = [`insights-client:`, `  group: ${yamlQuoted(groupName)}`];
+  if (extraTags) {
+    for (const [key, value] of Object.entries(extraTags)) {
+      lines.push(`  ${key}: ${yamlQuoted(value)}`);
+    }
+  }
+  const tagsYaml = lines.join('\n') + '\n';
+  fs.writeFileSync(tagsPath, tagsYaml);
+};
+
+/**
  * Compresses the modified archive into a new tar.gz file.
  *
  * The compressed archive is saved in `../data/tmp/` with the name `{systemName}.tar.gz`.
@@ -168,6 +203,12 @@ const compressArchive = (workingDir: string, systemName: string) => {
   }
 };
 
+/** Options when creating a test system (e.g. extra insights-client tags). */
+export type CreateSystemOptions = {
+  /** Predefined/custom tags for insights-client tags.yaml (e.g. { network_performance: 'latency' }). */
+  tags?: Record<string, string>;
+};
+
 /**
  * Prepares a test archive by extracting a base archive, customizing it, and recompressing it.
  *
@@ -175,13 +216,19 @@ const compressArchive = (workingDir: string, systemName: string) => {
  * 1. Creates a unique working directory in `../data/tmp/`
  * 2. Extracts the base archive for the specified system type
  * 3. Updates the machine ID, subscription manager ID, and hostname
- * 4. Compresses the modified archive back into a tar.gz file
+ * 4. Optionally sets extra insights-client tags
+ * 5. Compresses the modified archive back into a tar.gz file
  *
  * @param systemName - The name for the test system (used for hostname and archive filename)
  * @param type - The type of system to create
+ * @param options - Optional extra tags for the system
  * @throws Error if the base archive doesn't exist or any preparation step fails
  */
-const prepareTestArchive = (systemName: string, type: SystemType) => {
+const prepareTestArchive = (
+  systemName: string,
+  type: SystemType,
+  options?: CreateSystemOptions,
+) => {
   const archive = SystemTypeArchiveMap.get(type)?.[0] ?? '';
   const archivePath = path.join(__dirname, '../data/', archive);
   if (!fs.existsSync(archivePath)) {
@@ -199,6 +246,7 @@ const prepareTestArchive = (systemName: string, type: SystemType) => {
   updateMachineId(baseDir);
   updateSubscriptionManagerIdentity(baseDir);
   updateHostname(baseDir, systemName);
+  setInsightsClientGroup(baseDir, options?.tags);
   compressArchive(workingDir, systemName);
 };
 
@@ -362,8 +410,9 @@ export const createSystem = async (
   systemName: string,
   systemType: SystemType,
   token: string,
+  options?: CreateSystemOptions,
 ): Promise<SystemResult> => {
-  prepareTestArchive(systemName, systemType);
+  prepareTestArchive(systemName, systemType, options);
   await uploadArchive(request, path.join(__dirname, `../data/tmp/${systemName}.tar.gz`));
   const id = await waitForSystemInInventory(request, systemName);
   await waitForSystemInPatch(request, systemName, systemType, id);
