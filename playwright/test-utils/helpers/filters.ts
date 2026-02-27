@@ -12,15 +12,17 @@
 
 import { Page } from '@playwright/test';
 
+const DAY_MS = 24 * 60 * 60 * 1000;
+
 /** Returns { minDate } for "Last X" filters or { maxDate } for "More than 1 year ago". */
 export function getPublishDateCutoff(filterLabel: string): {
   minDate?: Date;
   maxDate?: Date;
 } {
   const now = new Date();
-  const dayMs = 24 * 60 * 60 * 1000;
   if (filterLabel === 'More than 1 year ago') {
-    const max = new Date(now.getTime() - 365 * dayMs);
+    const max = new Date(now.getTime() - 365 * DAY_MS);
+    max.setUTCHours(23, 59, 59, 999); // End of day so date-only display matches
     return { maxDate: max };
   }
   const days =
@@ -31,7 +33,8 @@ export function getPublishDateCutoff(filterLabel: string): {
         : filterLabel === 'Last 90 days'
           ? 90
           : 365;
-  const min = new Date(now.getTime() - days * dayMs);
+  const min = new Date(now.getTime() - days * DAY_MS);
+  min.setUTCHours(0, 0, 0, 0); // Start of day - cells show date-only, avoid boundary failures
   return { minDate: min };
 }
 
@@ -98,7 +101,7 @@ export const verifyFilterTypeExists = async (page: Page, filterType: string, exa
  * @param filterType - Name of the filter type to select
  */
 export const selectFilterType = async (page: Page, filterType: string) => {
-  const menuitem = page.getByRole('menuitem', { name: filterType });
+  const menuitem = page.getByRole('menuitem', { name: filterType, exact: true });
 
   // Open the conditional filter dropdown if the menuitem isn't visible
   if (!(await menuitem.isVisible())) {
@@ -150,6 +153,26 @@ export const applyFilterSubtype = async (
   // Select the filter type first
   await selectFilterType(page, filterType);
 
+  // Some filter types use a subtype filter button with text "Filter by <filterType>" (e.g. Operating system, Status).
+  // Others use "Menu toggle" (Workspace, Tags) or "Options menu" (Patch status). Open the list when needed.
+  const groupFilterBtn = page.getByRole('button', { name: 'Group filter' }).filter({
+    hasText: new RegExp(`Filter by ${filterType.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'),
+  });
+  const openedViaGroupFilter = await groupFilterBtn.isVisible();
+  if (openedViaGroupFilter) {
+    await groupFilterBtn.click();
+    // Clicking Group filter (e.g. "Filter by status") opens the Options menu (menuitems like Fresh, Stale)
+  } else if (subtype.inputType !== 'search') {
+    // Open the list: Workspace/Tags use "Menu toggle", others use "Options menu"
+    const menuToggle = page.getByRole('button', { name: 'Menu toggle' });
+    const optionsMenu = page.getByRole('button', { name: 'Options menu' });
+    if (await menuToggle.isVisible()) {
+      await menuToggle.click();
+    } else {
+      await optionsMenu.click();
+    }
+  }
+
   // Apply the subtype based on its input type
   switch (subtype.inputType) {
     case 'search':
@@ -157,16 +180,17 @@ export const applyFilterSubtype = async (
       break;
 
     case 'checkbox': {
-      const dropdown = page.getByRole('button', { name: 'Options menu' });
-      await dropdown.click();
-      await page.getByRole('menuitem', { name: subtype.name, exact: true }).click();
-      // Dropdown auto-closes after clicking menuitem, wait for table to update
+      // Some filters use menuitems (e.g. Type, Severity); others use options (e.g. Patch status). Match either.
+      await page
+        .getByRole('menuitem')
+        .filter({ hasText: subtype.name })
+        .or(page.getByRole('option', { name: subtype.name }))
+        .first()
+        .click();
       break;
     }
 
     case 'option': {
-      const dropdown = page.getByRole('button', { name: 'Options menu' });
-      await dropdown.click();
       await page.getByRole('option', { name: subtype.name }).click();
       break;
     }
@@ -196,9 +220,25 @@ export const verifyFilterSubtypesExist = async (
   // Select the filter type
   await selectFilterType(page, filterType);
 
-  // Open the dropdown to see subtypes
-  const dropdown = page.getByRole('button', { name: 'Options menu' });
-  await dropdown.click();
+  // Some filter types show a "Group filter" button with text "Filter by <filterType>" (e.g. Operating system, Status).
+  // Others use "Menu toggle" (Workspace, Tags) or "Options menu". Open the list when needed.
+  const groupFilterBtn = page.getByRole('button', { name: 'Group filter' }).filter({
+    hasText: new RegExp(`Filter by ${filterType.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'),
+  });
+  const openedViaGroupFilter = await groupFilterBtn.isVisible();
+  let openedViaMenuToggle = false;
+  if (openedViaGroupFilter) {
+    await groupFilterBtn.click();
+  } else {
+    const menuToggle = page.getByRole('button', { name: 'Menu toggle' });
+    const optionsMenu = page.getByRole('button', { name: 'Options menu' });
+    if (await menuToggle.isVisible()) {
+      await menuToggle.click();
+      openedViaMenuToggle = true;
+    } else {
+      await optionsMenu.click();
+    }
+  }
 
   // Verify each subtype exists
   for (const subtype of subtypes) {
@@ -209,8 +249,14 @@ export const verifyFilterSubtypesExist = async (
     ).toBeVisible();
   }
 
-  // Close the dropdown
-  await dropdown.click();
+  // Close the dropdown (same control we used to open it)
+  if (openedViaGroupFilter) {
+    await groupFilterBtn.click();
+  } else if (openedViaMenuToggle) {
+    await page.getByRole('button', { name: 'Menu toggle' }).click();
+  } else {
+    await page.getByRole('button', { name: 'Options menu' }).click();
+  }
 };
 
 /**
