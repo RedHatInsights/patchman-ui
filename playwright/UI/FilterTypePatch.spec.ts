@@ -12,7 +12,13 @@ import {
   waitForTableLoad,
   getPublishDateCutoff,
   parsePublishDateCell,
+  osBaseName,
+  getWorkspaceGroup,
+  selectFilterType,
 } from 'test-utils';
+
+/** One day in ms; used for date-only display tolerance. */
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 /**
  * Filter tests for Patch pages: Advisories, Packages, and Systems.
@@ -20,7 +26,9 @@ import {
 
 test.describe('Patch Filters', () => {
   test('Filter types on Advisory page', async ({ page, request, systems }) => {
-    const system = await systems.add('filter-advisory-test', 'base');
+    const system = await systems.add('filter-advisory-test', 'base', undefined, {
+      tags: { network_performance: 'latency' },
+    });
 
     // Fetch an advisory ID from the created system
     const advisoriesResponse = await request
@@ -112,11 +120,12 @@ test.describe('Patch Filters', () => {
             const cellDate = parsePublishDateCell(text ?? '');
             if (cellDate) {
               if (minDate !== undefined) {
-                // Cell shows date only; filter is "not older than X" so date must be >= cutoff
+                // Cell shows date only (no time); allow 1-day tolerance for timezone/display
+                const cutoffMs = minDate.getTime() - DAY_MS;
                 expect(
                   cellDate.getTime(),
                   `Publish date "${text}" should not be older than ${dateValue}`,
-                ).toBeGreaterThanOrEqual(minDate.getTime());
+                ).toBeGreaterThanOrEqual(cutoffMs);
               } else if (maxDate !== undefined) {
                 // "More than 1 year ago" means date must be before the cutoff
                 expect(
@@ -263,5 +272,107 @@ test.describe('Patch Filters', () => {
     });
 
     await expect(page.getByRole('button', { name: 'Conditional filter toggle' })).toBeVisible();
+  });
+});
+
+/**
+ * Verify filter contents (OS, Workspace, Tags, System, Patch status).
+ * Note: Workspace and Tag options come from the Inventory service (not Patch).
+ * If the Workspace or Tag dropdown is empty, the Inventory API returned no groups/tags
+ * for the account (e.g. on stage, or no host groups/tags created in Inventory).
+ */
+test('Verify filter contents', async ({ page, systems }) => {
+  await systems.add('filter-contents-test', 'base', undefined, {
+    tags: { network_performance: 'latency' },
+  });
+  await navigateToSystems(page);
+  await closePopupsIfExist(page);
+  await openConditionalFilter(page);
+  await resetFilters(page);
+
+  await test.step('Verify "Operating system" filter contents', async () => {
+    await openConditionalFilter(page);
+    await applyFilterSubtype(page, 'Operating system', {
+      name: osBaseName,
+      inputType: 'checkbox',
+    });
+    await expect(page.locator('td[data-label="OS"]').first()).toContainText('RHEL');
+    await resetFilters(page);
+  });
+
+  await test.step('Verify "Workspace" filter contents', async () => {
+    await openConditionalFilter(page);
+    await selectFilterType(page, 'Workspace');
+    await page.getByRole('button', { name: 'Menu toggle' }).click();
+    // Workspace options come from Inventory. Set it in insights/inventory/workspaces and in .env file.
+    // Otherwise only "Ungrouped Hosts" is available.
+    const workspaceGroup = getWorkspaceGroup();
+    const groupOption = page
+      .getByRole('menuitem')
+      .filter({ hasText: workspaceGroup })
+      .or(page.getByRole('option', { name: workspaceGroup }));
+    let useUngrouped = true;
+    try {
+      await expect(groupOption.first()).toBeVisible({ timeout: 3000 });
+      useUngrouped = false;
+    } catch {
+      // Group option not in Inventory; use Ungrouped Hosts
+    }
+    if (useUngrouped) {
+      await page
+        .getByRole('menuitem')
+        .filter({ hasText: 'Ungrouped Hosts' })
+        .or(page.getByRole('option', { name: 'Ungrouped Hosts' }))
+        .first()
+        .click();
+      await waitForTableLoad(page);
+      await expect(
+        page.getByRole('grid', { name: 'Patch table view' }).locator('tbody [role="row"]').first(),
+      ).toBeVisible();
+    } else {
+      await groupOption.first().click();
+      await waitForTableLoad(page);
+      await expect(page.locator('td').filter({ hasText: workspaceGroup }).first()).toBeVisible();
+    }
+    await resetFilters(page);
+  });
+
+  await test.step('Verify "Tag" filter contents', async () => {
+    await openConditionalFilter(page);
+    await applyFilterSubtype(page, 'Tag', {
+      name: 'network_performance: latency',
+      inputType: 'checkbox',
+    });
+    const grid = page.getByRole('grid', { name: 'Patch table view' });
+    await expect(grid.locator('tbody [role="row"]').first()).toBeVisible();
+    await expect(page.locator('td[data-label="Name"]').first()).toContainText(
+      'filter-contents-test',
+    );
+    await resetFilters(page);
+  });
+
+  await test.step('Verify "System" filter contents', async () => {
+    await openConditionalFilter(page);
+    // System filter shows "Filter by name" input, not a checkbox menu
+    await applyFilterSubtype(page, 'System', {
+      name: 'filter-contents-test',
+      inputType: 'search',
+    });
+    await expect(page.locator('td[data-label="Name"]').first()).toContainText(
+      'filter-contents-test',
+    );
+    await resetFilters(page);
+  });
+
+  await test.step('Verify "Patch status" filter contents', async () => {
+    await openConditionalFilter(page);
+    await applyFilterSubtype(page, 'Patch status', {
+      name: 'Systems with patches available',
+      inputType: 'checkbox',
+    });
+    await expect(page.locator('td[data-label="Name"]').first()).toContainText(
+      'filter-systems-test',
+    );
+    await resetFilters(page);
   });
 });
