@@ -181,4 +181,68 @@ test.describe('Systems Tests', () => {
       await expect(page.getByText(`RHEL is locked at version ${version}`)).toBeVisible();
     });
   });
+
+  test('Satellite-managed systems have template column label and alerts in its detail, and cannot be assigned to a template', async ({
+    page,
+    request,
+    systems,
+    cleanup,
+  }) => {
+    const system = await systems.add('satellite-managed-system-test', 'satellite-managed');
+    let templateUUID: string;
+    const templatePrefix = 'template-satellite-managed-system-test';
+    const templateName = `${templatePrefix}-${randomName()}`;
+
+    await navigateToSystems(page);
+    await closePopupsIfExist(page);
+    const row = await getRowByName(page, system.name);
+
+    await test.step('Set up cleanup', async () => {
+      await cleanup.runAndAdd(() => cleanupTemplates(request, templatePrefix));
+    });
+
+    await test.step('Verify system shows "Managed by Satellite" in Template column', async () => {
+      const cell = await getRowCellByHeader(page, row, 'Template');
+      await expect(cell).toHaveText('Managed by Satellite');
+    });
+
+    await test.step('Verify system deatil shows two alerts', async () => {
+      await row.getByRole('link', { name: system.name }).click();
+      await expect(
+        page.locator('section.inventory [data-ouia-component-type="PF6/Alert"]'),
+      ).toContainText([
+        'This system has content managed by Satellite. Installable updates are current as of the last time the system checked-in with Red Hat Insights.',
+        'This system has content managed by Satellite. For accurate reporting of installable updates, check in to Red Hat Insights with the --build-packagecache option.',
+      ]);
+    });
+
+    await test.step('Create a template via API', async () => {
+      templateUUID = await createTemplate(
+        request,
+        templateName,
+        'SatelliteManagedSystemTestDescription',
+        '8',
+      );
+      expect(templateUUID).toBeDefined();
+    });
+
+    await test.step('Navigate to details of created template', async () => {
+      await navigateToTemplates(page);
+      const templateRow = await getRowByName(page, templateName);
+      await templateRow.getByRole('button', { name: templateName }).click();
+      expect(page.url()).toContain(templateUUID);
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText(templateName);
+    });
+
+    await test.step('Verify template cannot be assigned to the satelite-managed system', async () => {
+      await page.getByRole('button', { name: 'Assign to systems' }).click();
+      const modal = page.getByRole('dialog', { name: 'Assign template to systems' });
+      await expect(modal).toBeVisible();
+      const systemRow = await getRowByName(modal, system.name);
+      await expect(systemRow.getByRole('checkbox')).toBeDisabled();
+      await systemRow.locator('[data-ouia-component-id="system-list-warning-icon"]').hover();
+      await expect(page.getByText('Cannot associate system with a template')).toBeVisible();
+      await expect(page.getByText('This system is managed by Satellite')).toBeVisible();
+    });
+  });
 });
