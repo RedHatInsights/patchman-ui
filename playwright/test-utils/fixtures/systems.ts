@@ -19,6 +19,7 @@ import {
   cleanupArchive,
   cleanupSystem,
   createSystem,
+  CreateSystemOptions,
   randomName,
   SystemResult,
   SystemType,
@@ -41,15 +42,21 @@ export interface Systems {
    * @param prefix - Prefix for the system name (will be combined with a random suffix)
    * @param type - Type of system to create (defaults to 'base')
    * @param token - Token of user to create system for (defaults to 'ADMIN_TOKEN' env variable)
+   * @param options - Optional (e.g. predefined tags like network_performance=latency)
    * @returns Promise resolving to the created system's ID and name
    *
    * @example
    * ```typescript
    * const system = await systems.add('my-test', 'base', process.env.ADMIN_TOKEN);
-   * console.log(system.id, system.name);
+   * const systemWithTag = await systems.add('filter-advisory-test', 'base', undefined, { tags: { network_performance: 'latency' } });
    * ```
    */
-  add: (prefix: string, type?: SystemType, token?: string) => Promise<SystemResult>;
+  add: (
+    prefix: string,
+    type?: SystemType,
+    token?: string,
+    options?: CreateSystemOptions,
+  ) => Promise<SystemResult>;
   /**
    * Creates multiple test systems in parallel.
    *
@@ -120,7 +127,12 @@ export const systemsTest = base.extend<WithSystems>({
     };
 
     await use({
-      add: async (prefix: string, type: SystemType = 'base', token?: string) =>
+      add: async (
+        prefix: string,
+        type: SystemType = 'base',
+        token?: string,
+        options?: CreateSystemOptions,
+      ) =>
         await systemsTest.step(
           `Adding system`,
           async (): Promise<SystemResult> => {
@@ -130,6 +142,7 @@ export const systemsTest = base.extend<WithSystems>({
               `${prefix}-${randomName()}`,
               type,
               token ?? process.env.ADMIN_TOKEN!,
+              options,
             );
             allSystems.push(response);
             return response;
