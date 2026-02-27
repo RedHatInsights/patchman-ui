@@ -34,8 +34,9 @@ import { poll, sleep } from './general';
  * - `base`: RHEL 9.6 system with patch data (advisories, packages)
  * - `clean`: RHEL 9.4 system without patch data
  * - `version-locked`: RHEL 9.6 system locked to minor release version
+ * - `satellite-managed`: RHEL 8.3 system managed by Satellite
  */
-export type SystemType = 'base' | 'clean' | 'version-locked'; // | 'rhel10' || 'satellite-managed' etc.
+export type SystemType = 'base' | 'clean' | 'version-locked' | 'satellite-managed'; // | 'rhel10' etc.
 
 /**
  * Maps system types to their base archives and whether patch data is expected.
@@ -48,6 +49,7 @@ const SystemTypeArchiveMap = new Map<SystemType, [string, boolean]>([
   ['base', ['rhel96_base.tar.gz', true]],
   ['clean', ['rhel94_clean.tar.gz', false]],
   ['version-locked', ['rhel96_version_locked.tar.gz', false]],
+  ['satellite-managed', ['rhel83_satellite_managed.tar.gz', false]],
 ]);
 
 /**
@@ -57,6 +59,7 @@ const SYSTEM_TYPE_OS_DISPLAY_NAME: Record<SystemType, string> = {
   base: 'RHEL 9.6',
   clean: 'RHEL 9.4',
   'version-locked': 'RHEL 9.6',
+  'satellite-managed': 'RHEL 8.3',
 };
 
 /** OS display name for the default (base) system type. Use in filtered table assertions. */
