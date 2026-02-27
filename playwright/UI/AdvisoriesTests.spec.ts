@@ -3,6 +3,7 @@ import {
   expect,
   navigateToAdvisories,
   getRowByName,
+  filterByName,
   waitForTableLoad,
   closePopupsIfExist,
 } from 'test-utils';
@@ -68,6 +69,7 @@ test.describe('Advisories Tests', () => {
         'true',
       );
       await waitForTableLoad(page);
+      await filterByName(page, system.name);
       await expect(page.getByRole('row')).toHaveCount(2);
 
       await page.getByRole('tab', { name: 'SystemsTab' }).click();
