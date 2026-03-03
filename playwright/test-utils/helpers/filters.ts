@@ -141,35 +141,51 @@ export const expectFilterChipHidden = async (page: Page, text: string) => {
  * @param options - Optional settings
  * @param options.verifyChip - Whether to verify the filter chip appears (default: true)
  * @param options.chipText - Custom text to verify in the chip (defaults to subtype.name)
+ * @param options.exactMatch - When true, match menuitem/option by exact text (e.g. for Workspace when multiple groups exist)
  */
 export const applyFilterSubtype = async (
   page: Page,
   filterType: string,
   subtype: FilterSubtype,
-  options: { verifyChip?: boolean; chipText?: string } = {},
+  options: { verifyChip?: boolean; chipText?: string; exactMatch?: boolean } = {},
 ) => {
-  const { verifyChip = true, chipText = subtype.name } = options;
+  const { verifyChip = true, chipText = subtype.name, exactMatch = false } = options;
 
   // Select the filter type first
   await selectFilterType(page, filterType);
 
-  // Some filter types use a subtype filter button with text "Filter by <filterType>" (e.g. Operating system, Status).
-  // Others use "Menu toggle" (Workspace, Tags) or "Options menu" (Patch status). Open the list when needed.
-  const groupFilterBtn = page.getByRole('button', { name: 'Group filter' }).filter({
-    hasText: new RegExp(`Filter by ${filterType.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'),
-  });
-  const openedViaGroupFilter = await groupFilterBtn.isVisible();
-  if (openedViaGroupFilter) {
-    await groupFilterBtn.click();
-    // Clicking Group filter (e.g. "Filter by status") opens the Options menu (menuitems like Fresh, Stale)
-  } else if (subtype.inputType !== 'search') {
-    // Open the list: Workspace/Tags use "Menu toggle", others use "Options menu"
-    const menuToggle = page.getByRole('button', { name: 'Menu toggle' });
-    const optionsMenu = page.getByRole('button', { name: 'Options menu' });
-    if (await menuToggle.isVisible()) {
-      await menuToggle.click();
-    } else {
-      await optionsMenu.click();
+  // Tags uses a textbox (combobox) "input with dropdown and clear", not Group filter.
+  // Two exist (global filter + table toolbar); use the table toolbar one (second) when filtering the Systems table.
+  if (filterType === 'Tags' && subtype.inputType !== 'search') {
+    const tagsTextbox = page.getByRole('textbox', { name: 'input with dropdown and clear' }).nth(1);
+    await tagsTextbox.waitFor({ state: 'visible', timeout: 10000 });
+    await tagsTextbox.click();
+  } else {
+    // Some filter types use "Filter by <filterType>" Group filter (e.g. Operating system, Status).
+    // Others use "Menu toggle" (Workspace) or "Options menu" (Patch status).
+    const groupFilterBtn = page.getByRole('button', { name: 'Group filter' }).filter({
+      hasText: new RegExp(
+        `Filter by ${filterType.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
+        'i',
+      ),
+    });
+    let openedViaGroupFilter = false;
+    try {
+      await groupFilterBtn.waitFor({ state: 'visible', timeout: 10000 });
+      openedViaGroupFilter = true;
+    } catch {
+      // Group filter not visible; will try Menu toggle or Options menu
+    }
+    if (openedViaGroupFilter) {
+      await groupFilterBtn.click();
+    } else if (subtype.inputType !== 'search') {
+      const menuToggle = page.getByRole('button', { name: 'Menu toggle' });
+      const optionsMenu = page.getByRole('button', { name: 'Options menu' });
+      if (await menuToggle.isVisible()) {
+        await menuToggle.click();
+      } else {
+        await optionsMenu.click();
+      }
     }
   }
 
@@ -181,12 +197,23 @@ export const applyFilterSubtype = async (
 
     case 'checkbox': {
       // Some filters use menuitems (e.g. Type, Severity); others use options (e.g. Patch status). Match either.
-      await page
-        .getByRole('menuitem')
-        .filter({ hasText: subtype.name })
-        .or(page.getByRole('option', { name: subtype.name }))
-        .first()
-        .click();
+      if (exactMatch) {
+        const escaped = subtype.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const exactRe = new RegExp(`^${escaped}$`);
+        await page
+          .getByRole('menuitem')
+          .filter({ hasText: exactRe })
+          .or(page.getByRole('option', { name: exactRe }))
+          .first()
+          .click();
+      } else {
+        await page
+          .getByRole('menuitem')
+          .filter({ hasText: subtype.name })
+          .or(page.getByRole('option', { name: subtype.name }))
+          .first()
+          .click();
+      }
       break;
     }
 
@@ -223,7 +250,10 @@ export const verifyFilterSubtypesExist = async (
   // Some filter types show a "Group filter" button with text "Filter by <filterType>" (e.g. Operating system, Status).
   // Others use "Menu toggle" (Workspace, Tags) or "Options menu". Open the list when needed.
   const groupFilterBtn = page.getByRole('button', { name: 'Group filter' }).filter({
-    hasText: new RegExp(`Filter by ${filterType.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'),
+    hasText: new RegExp(
+      `Filter by ${filterType.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
+      'i',
+    ),
   });
   const openedViaGroupFilter = await groupFilterBtn.isVisible();
   let openedViaMenuToggle = false;
