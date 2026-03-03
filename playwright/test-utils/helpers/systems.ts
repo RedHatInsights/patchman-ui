@@ -51,6 +51,18 @@ const SystemTypeArchiveMap = new Map<SystemType, [string, boolean]>([
 ]);
 
 /**
+ * UI display name for the Operating system filter per system type.
+ */
+const SYSTEM_TYPE_OS_DISPLAY_NAME: Record<SystemType, string> = {
+  base: 'RHEL 9.6',
+  clean: 'RHEL 9.4',
+  'version-locked': 'RHEL 9.6',
+};
+
+/** OS display name for the default (base) system type. Use in filtered table assertions. */
+export const osBaseName = SYSTEM_TYPE_OS_DISPLAY_NAME.base;
+
+/**
  * Result of creating a test system.
  */
 export type SystemResult = {
@@ -143,6 +155,94 @@ const updateHostname = (baseDir: string, systemName: string) => {
 };
 
 /**
+ * Workspace group name for filter tests. Set WORKSPACE_GROUP in .env to match a group created in
+ * the Inventory UI (insights/inventory/workspaces). Only used when creating a system with
+ * options.workspaceGroup: true (writes group= into data/etc/insights-client/insights-client.conf).
+ */
+export const getWorkspaceGroup = () => process.env.WORKSPACE_GROUP;
+
+/**
+ * Sets or updates the group line in insights-client.conf so the upload payload assigns the host to that workspace.
+ * Path in archive: data/etc/insights-client/insights-client.conf (same as on-host /etc/insights-client/insights-client.conf).
+ */
+const setInsightsClientConfGroup = (baseDir: string, groupName: string) => {
+  const insightsClientDir = path.join(baseDir, 'data/etc/insights-client');
+  const confPath = path.join(insightsClientDir, 'insights-client.conf');
+  if (!fs.existsSync(insightsClientDir)) {
+    fs.mkdirSync(insightsClientDir, { recursive: true });
+  }
+
+  const groupLine = `group=${groupName}`;
+  let lines: string[];
+
+  if (fs.existsSync(confPath)) {
+    const content = fs.readFileSync(confPath, 'utf-8');
+    const confLines = content.split(/\r?\n/);
+    const groupRegex = /^\s*group\s*=/;
+    const replaced = confLines.some((line, i) => {
+      if (groupRegex.test(line)) {
+        confLines[i] = groupLine;
+        return true;
+      }
+      return false;
+    });
+    if (!replaced) {
+      confLines.push(groupLine);
+    }
+    lines = confLines;
+  } else {
+    lines = [groupLine];
+  }
+
+  fs.writeFileSync(confPath, lines.join('\n') + '\n');
+};
+
+/** Meta_data spec for tags; ingestion uses this to find and process data/tags.json. */
+const TAGS_SPEC_JSON = JSON.stringify({
+  name: 'insights.specs.Specs.tags',
+  exec_time: 1.38e-5,
+  errors: [],
+  results: {
+    type: 'insights.core.spec_factory.DatasourceProvider',
+    object: { relative_path: 'tags.json', save_as: null },
+  },
+  ser_time: 9.96e-5,
+});
+
+/**
+ * Writes tags to data/tags.json for predefined/custom tags.
+ * Also adds meta_data/insights.specs.Specs.tags.json so ingestion processes the tags.
+ * Format: [{"key": "...", "value": "...", "namespace": "insights-client"}]
+ */
+const setInsightsClientTags = (
+  baseDir: string,
+  extraTags: Record<string, string>,
+  groupName?: string,
+) => {
+  const tagsArray: { key: string; value: string; namespace: string }[] = [];
+  if (groupName) {
+    tagsArray.push({ key: 'group', value: groupName, namespace: 'insights-client' });
+  }
+  for (const [key, value] of Object.entries(extraTags)) {
+    tagsArray.push({ key, value, namespace: 'insights-client' });
+  }
+  if (tagsArray.length === 0) {
+    return;
+  }
+  const dataDir = path.join(baseDir, 'data');
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+  }
+  fs.writeFileSync(path.join(dataDir, 'tags.json'), JSON.stringify(tagsArray));
+
+  const metaDataDir = path.join(baseDir, 'meta_data');
+  if (!fs.existsSync(metaDataDir)) {
+    fs.mkdirSync(metaDataDir, { recursive: true });
+  }
+  fs.writeFileSync(path.join(metaDataDir, 'insights.specs.Specs.tags.json'), TAGS_SPEC_JSON);
+};
+
+/**
  * Compresses the modified archive into a new tar.gz file.
  *
  * The compressed archive is saved in `../data/tmp/` with the name `{systemName}.tar.gz`.
@@ -168,6 +268,17 @@ const compressArchive = (workingDir: string, systemName: string) => {
   }
 };
 
+/** Options when creating a test system. */
+export type CreateSystemOptions = {
+  /** Predefined/custom tags for data/tags.json (e.g. { network_performance: 'latency' }). */
+  tags?: Record<string, string>;
+  /**
+   * When true, set group=WORKSPACE_GROUP in insights-client.conf and add group to tags.json so the
+   * host is assigned to that workspace. Requires WORKSPACE_GROUP in .env.
+   */
+  workspaceGroup?: boolean;
+};
+
 /**
  * Prepares a test archive by extracting a base archive, customizing it, and recompressing it.
  *
@@ -175,13 +286,19 @@ const compressArchive = (workingDir: string, systemName: string) => {
  * 1. Creates a unique working directory in `../data/tmp/`
  * 2. Extracts the base archive for the specified system type
  * 3. Updates the machine ID, subscription manager ID, and hostname
- * 4. Compresses the modified archive back into a tar.gz file
+ * 4. Optionally sets workspace (insights-client.conf + tags.json) and/or tags (data/tags.json)
+ * 5. Compresses the modified archive back into a tar.gz file
  *
  * @param systemName - The name for the test system (used for hostname and archive filename)
  * @param type - The type of system to create
+ * @param options - Optional tags and/or workspaceGroup (insights-client.conf group=)
  * @throws Error if the base archive doesn't exist or any preparation step fails
  */
-const prepareTestArchive = (systemName: string, type: SystemType) => {
+const prepareTestArchive = (
+  systemName: string,
+  type: SystemType,
+  options?: CreateSystemOptions,
+) => {
   const archive = SystemTypeArchiveMap.get(type)?.[0] ?? '';
   const archivePath = path.join(__dirname, '../data/', archive);
   if (!fs.existsSync(archivePath)) {
@@ -199,6 +316,24 @@ const prepareTestArchive = (systemName: string, type: SystemType) => {
   updateMachineId(baseDir);
   updateSubscriptionManagerIdentity(baseDir);
   updateHostname(baseDir, systemName);
+
+  let groupName: string | undefined;
+  if (options?.workspaceGroup) {
+    groupName = getWorkspaceGroup();
+    if (!groupName) {
+      throw new Error(
+        'WORKSPACE_GROUP env is required when options.workspaceGroup is true. Add it to your .env (e.g. WORKSPACE_GROUP=TestSpace).',
+      );
+    }
+    setInsightsClientConfGroup(baseDir, groupName);
+  }
+  if (options?.tags && Object.keys(options.tags).length > 0) {
+    setInsightsClientTags(baseDir, options.tags, groupName);
+  } else if (groupName) {
+    // Original behavior: always write tags.yaml when group is set (even without custom tags)
+    setInsightsClientTags(baseDir, {}, groupName);
+  }
+
   compressArchive(workingDir, systemName);
 };
 
@@ -332,6 +467,45 @@ const waitForSystemInPatch = async (
 };
 
 /**
+ * Associates a host with an Inventory group (workspace) via the Inventory API.
+ * The group must already exist in Inventory (e.g. created in the UI at insights/inventory/workspaces).
+ *
+ * @param request - Playwright APIRequestContext with authorization
+ * @param hostId - Inventory host UUID
+ * @param groupName - Name of the group (e.g. TestSpace)
+ * @throws Error if the group is not found or the association request fails
+ */
+const associateHostWithGroup = async (
+  request: APIRequestContext,
+  hostId: string,
+  groupName: string,
+) => {
+  const groupsResponse = await request.get('/api/inventory/v1/groups', {
+    params: { name: groupName },
+  });
+  if (!groupsResponse.ok()) {
+    throw new Error(`Failed to fetch Inventory group "${groupName}": ${groupsResponse.status()}`);
+  }
+  const groupsBody = await groupsResponse.json();
+  const results = groupsBody?.results ?? [];
+  if (results.length === 0) {
+    throw new Error(
+      `Inventory group "${groupName}" not found. Create it in the UI (insights/inventory/workspaces) and set WORKSPACE_GROUP in .env.`,
+    );
+  }
+  const groupId = results[0].id;
+
+  const associateResponse = await request.post(`/api/inventory/v1/groups/${groupId}/hosts`, {
+    data: [hostId],
+  });
+  if (!associateResponse.ok()) {
+    throw new Error(
+      `Failed to add host ${hostId} to group "${groupName}": ${associateResponse.status()}`,
+    );
+  }
+};
+
+/**
  * Creates a test system by preparing an archive, uploading it, and waiting for it to be processed.
  *
  * This is the main entry point for creating test systems. It performs the following steps:
@@ -362,11 +536,19 @@ export const createSystem = async (
   systemName: string,
   systemType: SystemType,
   token: string,
+  options?: CreateSystemOptions,
 ): Promise<SystemResult> => {
-  prepareTestArchive(systemName, systemType);
+  prepareTestArchive(systemName, systemType, options);
   await uploadArchive(request, path.join(__dirname, `../data/tmp/${systemName}.tar.gz`));
   const id = await waitForSystemInInventory(request, systemName);
   await waitForSystemInPatch(request, systemName, systemType, id);
+
+  if (options?.workspaceGroup) {
+    const groupName = getWorkspaceGroup();
+    if (groupName) {
+      await associateHostWithGroup(request, id, groupName);
+    }
+  }
 
   return {
     name: systemName,
