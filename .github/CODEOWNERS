@@ -1,6 +1,1 @@
 * @RedHatInsights/patchman-ui-reviewers
-
-.tekton/*
-
-build-tools
-.gitmodules
