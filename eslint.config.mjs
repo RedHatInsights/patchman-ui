@@ -26,6 +26,8 @@ export default [
   },
   ...compat.extends('eslint:recommended', 'plugin:react/recommended', 'prettier'),
   {
+    // Apply only to js/jsx files while migrating
+    files: ['**/*.{js,jsx}'],
     plugins: {
       react,
       prettier,
@@ -129,6 +131,9 @@ export default [
     plugins: {
       playwright: playwright,
       '@typescript-eslint': typescriptEslint,
+      prettier,
+      'unused-imports': unusedImports,
+      import: importPlugin,
     },
     languageOptions: {
       globals: {
@@ -139,7 +144,15 @@ export default [
       ecmaVersion: 12,
       sourceType: 'module',
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
+      'no-unused-vars': 'off',
       ...playwright.configs.recommended.rules,
       'playwright/no-conditional-in-test': 'off',
       'playwright/no-conditional-expect': 'off',
@@ -150,6 +163,45 @@ export default [
           allowConditional: true,
         },
       ],
+    },
+  },
+  {
+    // Override for files migrated to typescript
+    files: ['src/**/*.{ts,tsx}'],
+    plugins: {
+      '@typescript-eslint': typescriptEslint,
+      react,
+      prettier,
+      'unused-imports': unusedImports,
+      import: importPlugin,
+    },
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+        ...globals.browser,
+      },
+      parser: tsParser,
+      ecmaVersion: 12,
+      sourceType: 'module',
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    rules: {
+      ...typescriptEslint.configs.recommended.rules,
+      'arrow-body-style': ['error', 'as-needed'],
+      'react/react-in-jsx-scope': 'off',
+      camelcase: 'off',
+      'spaced-comment': 'error',
+      'prettier/prettier': ['warn', { singleQuote: true }],
+      'no-duplicate-imports': 'error',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': ['warn'],
+      'no-empty-pattern': ['error', { allowObjectPatternsAsParameters: true }],
+      '@typescript-eslint/no-explicit-any': 'error',
     },
   },
 ];

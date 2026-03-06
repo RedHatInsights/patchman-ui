@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLoadModule } from '@scalprum/react-core';
-import { getOperatingSystems } from '../../Utilities/api';
+import { getOperatingSystems } from '../../Utilities/api/api';
 
 const useOsVersionFilter = (currentFilter = '', apply) => {
   const versions = useSelector(({ entities }) => entities?.operatingSystems);

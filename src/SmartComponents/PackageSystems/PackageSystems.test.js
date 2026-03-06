@@ -14,8 +14,8 @@ jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => 
 
 jest.mock('../../PresentationalComponents/Filters/OsVersionFilter');
 
-jest.mock('../../Utilities/api', () => ({
-  ...jest.requireActual('../../Utilities/api'),
+jest.mock('../../Utilities/api/api', () => ({
+  ...jest.requireActual('../../Utilities/api/api'),
   exportPackageSystemsCSV: jest.fn(() =>
     Promise.resolve({ success: true }).catch((err) => console.log(err)),
   ),
