@@ -25,7 +25,7 @@ import {
   exportPackageSystemsJSON,
   fetchPackageSystems,
   fetchPackageVersions,
-} from '../../Utilities/api';
+} from '../../Utilities/api/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
   arrayFromObj,

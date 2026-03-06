@@ -16,7 +16,7 @@ import {
   exportAdvisorySystemsCSV,
   exportAdvisorySystemsJSON,
   fetchAdvisorySystems,
-} from '../../Utilities/api';
+} from '../../Utilities/api/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
   arrayFromObj,
