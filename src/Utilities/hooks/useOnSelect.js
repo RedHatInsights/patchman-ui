@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchIDs } from '../api';
+import { fetchIDs } from '../api/api';
 import { toggleAllSelectedAction } from '../../store/Actions/Actions';
 import { isObject } from '../Helpers';
 import { useFetchBatched } from './useFetchBatched';

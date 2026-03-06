@@ -3,7 +3,7 @@ import { advisoryRows } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { storeListDefaults } from '../../Utilities/constants';
-import { exportAdvisoriesCSV, exportAdvisoriesJSON, fetchIDs } from '../../Utilities/api';
+import { exportAdvisoriesCSV, exportAdvisoriesJSON, fetchIDs } from '../../Utilities/api/api';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import {
   ComponentWithContext,
@@ -20,8 +20,8 @@ jest.mock('@redhat-cloud-services/frontend-components-utilities/helpers', () => 
   downloadFile: jest.fn(),
 }));
 
-jest.mock('../../Utilities/api', () => ({
-  ...jest.requireActual('../../Utilities/api'),
+jest.mock('../../Utilities/api/api', () => ({
+  ...jest.requireActual('../../Utilities/api/api'),
   exportAdvisoriesJSON: jest.fn(() =>
     Promise.resolve({ success: true }).catch((err) => console.log(err)),
   ),
