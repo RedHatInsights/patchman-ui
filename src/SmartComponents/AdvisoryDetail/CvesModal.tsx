@@ -1,38 +1,43 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Modal } from '@patternfly/react-core/deprecated';
 import messages from '../../Messages';
 import { intl } from '../../Utilities/IntlProvider';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { cvesTableColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCves } from '../../store/Actions/Actions';
-import propTypes from 'prop-types';
+import { fetchCves } from '../../store/Actions/VulnerabilityActions';
 import { createCvesRows } from '../../Utilities/DataMappers';
-import { sortCves } from '..//../Utilities/Helpers';
+import { sortCves } from '../../Utilities/Helpers';
 import { SortByDirection } from '@patternfly/react-table';
+import { CveItem } from '../../Utilities/api/vulnerabilityApi';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
-const CvesModal = ({ cveIds }) => {
-  const dispatch = useDispatch();
-  const [cves, setCves] = useState([]);
-  const [rows, setRows] = useState([]);
+interface CvesModalProps {
+  cveIds: Array<string>;
+}
+
+const CvesModal = ({ cveIds }: CvesModalProps) => {
+  const [cves, setCves] = useState<Array<CveItem>>([]);
+  const [rows, setRows] = useState<Array<CveItem>>([]);
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
-  const [search, setSearch] = useState(undefined);
+  const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState({
     direction: SortByDirection.asc,
     index: 0,
   });
 
-  const data = useSelector(({ CvesListStore }) => CvesListStore.rows);
+  const data = useAppSelector(({ CvesListStore }) => CvesListStore.rows);
 
-  const status = useSelector(({ CvesListStore }) => CvesListStore.status);
+  const status = useAppSelector(({ CvesListStore }) => CvesListStore.status);
 
-  React.useEffect(() => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
     dispatch(fetchCves({ cveIds }));
   }, []);
 
-  React.useMemo(() => {
+  useMemo(() => {
     setRows(cves.slice((page - 1) * perPage, page * perPage));
   }, [cves, page, perPage, sortBy]);
 
@@ -40,7 +45,7 @@ const CvesModal = ({ cveIds }) => {
     const sortedCves =
       (search !== undefined &&
         search !== '' &&
-        data.filter((cve) => {
+        data.filter((cve: CveItem) => {
           const {
             attributes: { synopsis },
           } = cve;
@@ -52,24 +57,24 @@ const CvesModal = ({ cveIds }) => {
   }, [search, data]);
 
   const handleClose = () => {
-    setRows(undefined);
+    setRows([]);
   };
 
-  const handleFilter = ({ search }) => {
+  const handleFilter = ({ search }: { search: string }) => {
     setPage(page);
     setSearch(search);
   };
 
-  const handlePageChange = (_, page) => {
+  const handlePageChange = (_, page: number) => {
     setPage(page);
   };
 
-  const handlePerPageChange = (_, perPage) => {
+  const handlePerPageChange = (_, perPage: number) => {
     setPage(1);
     setPerPage(perPage);
   };
 
-  const handleSort = (_, index, direction) => {
+  const handleSort = (_, index: number, direction: SortByDirection) => {
     const { sortBy, sortedCves } = sortCves(cves, index, direction);
 
     setSortBy(sortBy);
@@ -81,7 +86,7 @@ const CvesModal = ({ cveIds }) => {
       <Modal
         variant='small'
         title={intl.formatMessage(messages.labelsCves)}
-        isOpen={Boolean(rows)}
+        isOpen={rows.length > 0}
         onClose={handleClose}
       >
         <TableView
@@ -117,10 +122,6 @@ const CvesModal = ({ cveIds }) => {
       </Modal>
     </React.Fragment>
   );
-};
-
-CvesModal.propTypes = {
-  cveIds: propTypes.array,
 };
 
 export default CvesModal;
