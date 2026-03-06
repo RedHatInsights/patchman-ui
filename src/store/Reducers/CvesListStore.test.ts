@@ -1,6 +1,8 @@
 import { changeFilters, fetchFulfilled, fetchPending, fetchRejected } from './HelperReducers';
 import { CvesListStore } from './CvesListStore';
 import { FETCH_CVES_INFO } from '../ActionTypes';
+import { storeListDefaults } from '../../Utilities/constants';
+
 jest.mock('./HelperReducers', () => ({
   ...jest.requireActual('./HelperReducers'),
   changeFilters: jest.fn(),
@@ -9,7 +11,7 @@ jest.mock('./HelperReducers', () => ({
   fetchRejected: jest.fn(),
 }));
 
-const state = { testObj: 'testVal' };
+const state = { ...storeListDefaults };
 const actionFulfilled = FETCH_CVES_INFO + '_FULFILLED';
 const actionRejected = FETCH_CVES_INFO + '_REJECTED';
 const actionPending = FETCH_CVES_INFO + '_PENDING';
@@ -22,10 +24,12 @@ describe('PackageListStore', () => {
       payload: { search: 'testSearch' },
     });
   });
+
   it('should fetch package list', () => {
     CvesListStore(state, { type: actionPending, payload: { search: 'testSearch' } });
     expect(fetchPending).toHaveBeenCalledWith(state);
   });
+
   it('should handle rejected call', () => {
     CvesListStore(state, { type: actionRejected, payload: { search: 'testSearch' } });
     expect(fetchRejected).toHaveBeenCalledWith(state, {
