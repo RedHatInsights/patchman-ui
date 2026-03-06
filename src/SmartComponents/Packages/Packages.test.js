@@ -6,15 +6,15 @@ import { storeListDefaults } from '../../Utilities/constants';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { systemPackages } from '../../Utilities/RawDataForTesting';
-import { exportPackagesJSON, exportPackagesCSV } from '../../Utilities/api';
+import { exportPackagesJSON, exportPackagesCSV } from '../../Utilities/api/api';
 import { queryByText, queryAllByText } from '@testing-library/dom';
 import { ComponentWithContext, testExport } from '../../Utilities/TestingUtilities';
 import '@testing-library/jest-dom';
 
 initMocks();
 
-jest.mock('../../Utilities/api', () => ({
-  ...jest.requireActual('../../Utilities/api'),
+jest.mock('../../Utilities/api/api', () => ({
+  ...jest.requireActual('../../Utilities/api/api'),
   exportPackagesCSV: jest.fn(() =>
     Promise.resolve({ success: true }).catch((err) => console.log(err)),
   ),

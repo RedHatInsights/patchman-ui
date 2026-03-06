@@ -9,7 +9,7 @@ import {
   createUpgradableColumn,
   remediationProvider,
 } from '../../Utilities/Helpers';
-import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
+import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { renderHook, waitFor } from '@testing-library/react';
 
@@ -19,8 +19,8 @@ jest.mock('../../Utilities/Helpers', () => ({
   createUpgradableColumn: jest.fn(),
   remediationProvider: jest.fn(),
 }));
-jest.mock('../../Utilities/api', () => ({
-  ...jest.requireActual('../../Utilities/api'),
+jest.mock('../../Utilities/api/api', () => ({
+  ...jest.requireActual('../../Utilities/api/api'),
   fetchApplicableSystemAdvisoriesApi: jest.fn(),
 }));
 

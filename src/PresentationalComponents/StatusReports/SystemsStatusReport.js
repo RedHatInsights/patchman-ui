@@ -17,7 +17,7 @@ import {
   Icon as PfIcon,
 } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import { fetchSystems } from '../../Utilities/api';
+import { fetchSystems } from '../../Utilities/api/api';
 
 const StatusCard = ({ title, color, Icon, value, filter, apply }) => (
   <Card isCompact isFullHeight>

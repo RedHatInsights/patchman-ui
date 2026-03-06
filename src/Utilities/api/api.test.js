@@ -5,7 +5,7 @@ import {
   exportSystemsCSV,
   exportSystemsJSON,
 } from './api';
-import { initMocks } from '../Utilities/unitTestingUtilities';
+import { initMocks } from '../unitTestingUtilities';
 
 initMocks();
 

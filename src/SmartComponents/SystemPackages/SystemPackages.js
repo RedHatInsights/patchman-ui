@@ -14,7 +14,7 @@ import {
   fetchApplicableSystemPackages,
   selectSystemPackagesRow,
 } from '../../store/Actions/Actions';
-import { exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utilities/api';
+import { exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utilities/api/api';
 import { remediationIdentifiers, systemPackagesDefaultFilters } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
