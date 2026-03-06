@@ -22,6 +22,7 @@ export const createTemplate = async (
   request: APIRequestContext,
   templateName: string,
   description: string,
+  version: string = '9',
 ) => {
   const appstreamRepoUUID = '00b214de-e01d-4191-ad48-59bcc859e691';
   const baseOSRepoUUID = '5d2861ad-0d74-4116-98b4-254880126654';
@@ -32,7 +33,7 @@ export const createTemplate = async (
         name: templateName,
         description,
         arch: 'x86_64',
-        version: '9',
+        version,
         repository_uuids: [appstreamRepoUUID, baseOSRepoUUID],
         use_latest: true,
       },
