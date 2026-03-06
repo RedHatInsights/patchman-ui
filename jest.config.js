@@ -1,11 +1,12 @@
 module.exports = {
     coverageDirectory: "coverage-jest",
     testEnvironment: "jsdom",
+    preset: "ts-jest",
     transform: {
-        "^.+\\.(js|jsx)$": "babel-jest",
+        "^.+\\.(js|jsx|ts|tsx)$": "ts-jest",
     },
     collectCoverage: true,
-    collectCoverageFrom: ["src/**/*.js", "!src/**/stories/*"],
+    collectCoverageFrom: ["src/**/*.{js,ts,tsx}", "!src/**/stories/*"],
     setupFiles: ["<rootDir>/config/setupTests.js"],
     roots: ["<rootDir>/src/"],
     moduleNameMapper: {
