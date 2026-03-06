@@ -2,7 +2,7 @@ import SystemAdvisories from './SystemAdvisories';
 import { systemAdvisoryRows } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
-import { fetchIDs } from '../../Utilities/api';
+import { fetchIDs } from '../../Utilities/api/api';
 import { ComponentWithContext, testBulkSelection } from '../../Utilities/TestingUtilities.js';
 import { render, waitFor, screen } from '@testing-library/react';
 
@@ -12,8 +12,8 @@ jest.mock('../../Utilities/Helpers', () => ({
   ...jest.requireActual('../../Utilities/Helpers'),
   remediationProvider: jest.fn(),
 }));
-jest.mock('../../Utilities/api', () => ({
-  ...jest.requireActual('../../Utilities/api'),
+jest.mock('../../Utilities/api/api', () => ({
+  ...jest.requireActual('../../Utilities/api/api'),
   fetchIDs: jest.fn(() => Promise.resolve({ ids: [] }).catch((err) => console.log(err))),
 }));
 jest.mock('../Remediation/AsyncRemediationButton', () => ({

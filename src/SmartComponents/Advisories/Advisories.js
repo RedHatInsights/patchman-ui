@@ -15,7 +15,7 @@ import {
   fetchApplicableAdvisories,
   selectAdvisoryRow,
 } from '../../store/Actions/Actions';
-import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api';
+import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api/api';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
   createSortBy,

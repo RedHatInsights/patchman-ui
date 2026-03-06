@@ -17,7 +17,7 @@ import {
   fetchApplicableSystemAdvisories,
   selectSystemAdvisoryRow,
 } from '../../store/Actions/Actions';
-import { exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON } from '../../Utilities/api';
+import { exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON } from '../../Utilities/api/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
