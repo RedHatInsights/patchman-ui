@@ -10,67 +10,66 @@ import {
   EmptyPackagesList,
 } from '../PresentationalComponents/Snippets/EmptyStates';
 import { SystemUpToDate } from '../PresentationalComponents/Snippets/SystemUpToDate';
-import { advisorySeverities, entityTypes } from './constants';
-import { createUpgradableColumn, handleLongSynopsis, handlePatchLink } from './Helpers';
+import { entityTypes } from './constants';
+import {
+  createUpgradableColumn,
+  getSeverityByCveImpact,
+  handleLongSynopsis,
+  handlePatchLink,
+} from './Helpers';
 import { intl } from './IntlProvider';
 import AdvisorySeverity from '../PresentationalComponents/AdvisorySeverity/AdvisorySeverity';
 
 export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
   if (rows.length !== 0) {
-    return flatMap(rows, (row, index) => {
-      // Bugfixes and enhancements lack the severity property, so we default to "None"
-      const severityObject = row.attributes?.severity
-        ? advisorySeverities[row.attributes.severity]
-        : advisorySeverities[0];
-      return [
-        {
-          id: row.id,
-          isOpen: expandedRows[row.id] === true,
-          selected: selectedRows[row.id] !== undefined,
-          cells: [
-            {
-              title: handlePatchLink(entityTypes.advisories, row.id),
-            },
-            {
-              title: handleLongSynopsis(row.attributes.synopsis),
-            },
-            {
-              title: <AdvisoryType type={row.attributes.advisory_type_name} />,
-            },
-            {
-              title: <AdvisorySeverity severity={severityObject} />,
-            },
-            {
-              title: handlePatchLink(
-                entityTypes.advisories,
-                row.id,
-                row.attributes.applicable_systems,
-              ),
-            },
-            {
-              title:
-                (row.attributes.reboot_required &&
-                  intl.formatMessage(messages.labelsRebootRequired)) ||
-                intl.formatMessage(messages.labelsRebootNotRequired),
-            },
-            {
-              title: row.attributes.public_date
-                ? processDate(row.attributes.public_date)
-                : 'Not Available',
-            },
-          ],
-        },
-        {
-          cells: [
-            {
-              title: <DescriptionWithLink row={row} />,
-            },
-          ],
-          parent: index * 2,
-          isExpandedRow: true,
-        },
-      ];
-    });
+    return flatMap(rows, (row, index) => [
+      {
+        id: row.id,
+        isOpen: expandedRows[row.id] === true,
+        selected: selectedRows[row.id] !== undefined,
+        cells: [
+          {
+            title: handlePatchLink(entityTypes.advisories, row.id),
+          },
+          {
+            title: handleLongSynopsis(row.attributes.synopsis),
+          },
+          {
+            title: <AdvisoryType type={row.attributes.advisory_type_name} />,
+          },
+          {
+            title: <AdvisorySeverity severity={row.attributes?.severity} />,
+          },
+          {
+            title: handlePatchLink(
+              entityTypes.advisories,
+              row.id,
+              row.attributes.applicable_systems,
+            ),
+          },
+          {
+            title:
+              (row.attributes.reboot_required &&
+                intl.formatMessage(messages.labelsRebootRequired)) ||
+              intl.formatMessage(messages.labelsRebootNotRequired),
+          },
+          {
+            title: row.attributes.public_date
+              ? processDate(row.attributes.public_date)
+              : 'Not Available',
+          },
+        ],
+      },
+      {
+        cells: [
+          {
+            title: <DescriptionWithLink row={row} />,
+          },
+        ],
+        parent: index * 2,
+        isExpandedRow: true,
+      },
+    ]);
   } else {
     return [
       {
@@ -88,52 +87,47 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
 
 export const createSystemAdvisoriesRows = (rows, expandedRows, selectedRows, metadata) => {
   if (rows.length !== 0) {
-    return flatMap(rows, (row, index) => {
-      const severityObject = row.attributes?.severity
-        ? advisorySeverities[row.attributes.severity]
-        : advisorySeverities[0];
-      return [
-        {
-          id: row.id,
-          isOpen: expandedRows[row.id] === true,
-          selected: selectedRows[row.id] !== undefined,
-          disableSelection: row.attributes.status !== 'Installable',
-          cells: [
-            {
-              title: handlePatchLink(entityTypes.advisories, row.id),
-            },
-            {
-              title: handleLongSynopsis(row.attributes.synopsis),
-            },
-            {
-              title: row.attributes.status,
-            },
-            {
-              title: <AdvisoryType type={row.attributes.advisory_type_name} />,
-            },
-            {
-              title: <AdvisorySeverity severity={severityObject} />,
-            },
-            {
-              title:
-                (row.attributes.reboot_required &&
-                  intl.formatMessage(messages.labelsRebootRequired)) ||
-                intl.formatMessage(messages.labelsRebootNotRequired),
-            },
-            { title: processDate(row.attributes.public_date) },
-          ],
-        },
-        {
-          cells: [
-            {
-              title: <DescriptionWithLink row={row} />,
-            },
-          ],
-          parent: index * 2,
-          isExpandedRow: true,
-        },
-      ];
-    });
+    return flatMap(rows, (row, index) => [
+      {
+        id: row.id,
+        isOpen: expandedRows[row.id] === true,
+        selected: selectedRows[row.id] !== undefined,
+        disableSelection: row.attributes.status !== 'Installable',
+        cells: [
+          {
+            title: handlePatchLink(entityTypes.advisories, row.id),
+          },
+          {
+            title: handleLongSynopsis(row.attributes.synopsis),
+          },
+          {
+            title: row.attributes.status,
+          },
+          {
+            title: <AdvisoryType type={row.attributes.advisory_type_name} />,
+          },
+          {
+            title: <AdvisorySeverity severity={row.attributes?.severity} />,
+          },
+          {
+            title:
+              (row.attributes.reboot_required &&
+                intl.formatMessage(messages.labelsRebootRequired)) ||
+              intl.formatMessage(messages.labelsRebootNotRequired),
+          },
+          { title: processDate(row.attributes.public_date) },
+        ],
+      },
+      {
+        cells: [
+          {
+            title: <DescriptionWithLink row={row} />,
+          },
+        ],
+        parent: index * 2,
+        isExpandedRow: true,
+      },
+    ]);
   } else {
     return [
       {
@@ -312,9 +306,7 @@ export const createCvesRows = (rows) => {
   if (rows.length !== 0) {
     return rows.map((cve) => {
       const { attributes, id } = cve;
-      const severityObject = advisorySeverities.filter(
-        (severity) => severity.label === attributes.impact,
-      )[0];
+      const severity = getSeverityByCveImpact(attributes.impact);
 
       return {
         id,
@@ -328,8 +320,8 @@ export const createCvesRows = (rows) => {
             ),
           },
           {
-            title: <AdvisorySeverity severity={severityObject} />,
-            value: severityObject.label,
+            title: <AdvisorySeverity severity={severity} />,
+            value: severity,
           },
           { title: parseFloat(attributes.cvss_score).toFixed(1) },
         ],

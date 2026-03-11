@@ -19,7 +19,7 @@ import {
   getNewSelectedItems,
   getOffsetFromPageLimit,
   getRowIdByIndexExpandable,
-  getSeverityByValue,
+  getSeverityByCveImpact,
   handlePatchLink,
   mapGlobalFilters,
   persistantParams,
@@ -81,15 +81,16 @@ describe('Helpers tests', () => {
   );
 
   it.each`
-    severity | result
-    ${123}   | ${'None'}
-    ${0}     | ${'None'}
-    ${1}     | ${'Low'}
-    ${2}     | ${'Moderate'}
-    ${3}     | ${'Important'}
-    ${4}     | ${'Critical'}
-  `('getSeverityByValue: Should match $severity to value $result', ({ severity, result }) => {
-    expect(getSeverityByValue(severity).label).toEqual(result);
+    impact         | severity
+    ${'None'}      | ${null}
+    ${'Low'}       | ${1}
+    ${'Moderate'}  | ${2}
+    ${'Important'} | ${3}
+    ${'Critical'}  | ${4}
+    ${'foo'}       | ${null}
+    ${undefined}   | ${null}
+  `('getSeverityByCveImpact: Should match $impact to $severity', ({ impact, severity }) => {
+    expect(getSeverityByCveImpact(impact)).toEqual(severity);
   });
 
   it('addOrRemoveItemFromSet: Should create correct object  ', () => {

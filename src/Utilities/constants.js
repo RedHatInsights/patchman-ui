@@ -99,7 +99,7 @@ export const advisorySeverities = [
   },
   {
     value: SEVERITY_MINOR,
-    label: 'Low',
+    label: 'Minor',
     color: 'var(--pf-t--global--icon--color--severity--minor--default)',
     text:
       'This rating is given to all other issues that have a security impact. These are the types of vulnerabilities' +
