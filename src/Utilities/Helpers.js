@@ -16,10 +16,14 @@ import LinesEllipsis from 'react-lines-ellipsis';
 import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
 import {
-  advisorySeverities,
   defaultCompoundSortValues,
   filterCategories,
   multiValueFilters,
+  SEVERITY_NONE,
+  SEVERITY_CRITICAL,
+  SEVERITY_IMPORTANT,
+  SEVERITY_MINOR,
+  SEVERITY_MODERATE,
 } from './constants';
 import { intl } from './IntlProvider';
 import { generateFilter } from '@redhat-cloud-services/frontend-components-utilities/helpers';
@@ -172,12 +176,22 @@ export function createUpgradableColumn(updatableStatus) {
   }
 }
 
-export function getSeverityByValue(value) {
-  // Convert `undefined` to `null`, as utility functions rely on `null` to signify no severity
-  const severityValue = value === undefined ? null : value;
-
-  return advisorySeverities.find((item) => item.value === severityValue) || advisorySeverities[0];
-}
+export const getSeverityByCveImpact = (impact) => {
+  switch (impact) {
+    case 'None':
+      return SEVERITY_NONE;
+    case 'Low':
+      return SEVERITY_MINOR;
+    case 'Moderate':
+      return SEVERITY_MODERATE;
+    case 'Important':
+      return SEVERITY_IMPORTANT;
+    case 'Critical':
+      return SEVERITY_CRITICAL;
+    default: // null, undefined
+      return SEVERITY_NONE;
+  }
+};
 
 export const createPackagesColumn = (packageCount, systemID) => (
   <InsightsLink

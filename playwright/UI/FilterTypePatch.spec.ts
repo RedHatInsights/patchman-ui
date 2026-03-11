@@ -76,7 +76,7 @@ test.describe('Patch Filters', () => {
       await verifyFilterTypeExists(page, 'Severity');
 
       // Test each severity filter and verify all results match
-      for (const severityValue of ['None', 'Low', 'Moderate', 'Important', 'Critical']) {
+      for (const severityValue of ['None', 'Minor', 'Moderate', 'Important', 'Critical']) {
         await applyFilterSubtype(page, 'Severity', { name: severityValue, inputType: 'checkbox' });
 
         // Get all cells in the Severity column using data-label attribute
