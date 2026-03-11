@@ -19,10 +19,10 @@ import messages from '../../Messages';
 import WithLoader, {
   WithLoaderVariants,
 } from '../../PresentationalComponents/WithLoader/WithLoader';
-import { getSeverityByValue, isRHAdvisory, truncateDescription } from '../../Utilities/Helpers';
+import { isRHAdvisory, truncateDescription } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import RebootRequired from '../Snippets/RebootRequired';
-import AdvisorySeverityInfo from '../Snippets/AdvisorySeverityInfo';
+import AdvisorySeverity from '../AdvisorySeverity/AdvisorySeverity';
 import ExternalLink from '../Snippets/ExternalLink';
 import AdvisoryType from '../AdvisoryType/AdvisoryType';
 
@@ -34,7 +34,7 @@ const CvesModal = lazy(
 const AdvisoryHeader = ({ attributes, isLoading }) => {
   const [CvesInfoModal, setCvesModal] = useState(() => () => null);
   const [wordLength, setWordLength] = useState(1000);
-  const severityObject = getSeverityByValue(attributes?.severity);
+  const severity = attributes.severity;
   const cves = attributes.cves;
 
   const showCvesModal = () => {
@@ -99,9 +99,10 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
               </Split>
             </FlexItem>
           )}
-          {severityObject.value === null ? null : (
-            <FlexItem>
-              <AdvisorySeverityInfo severity={severityObject} />
+          {severity && (
+            <FlexItem className='infobox'>
+              <Title headingLevel='h5'>{intl.formatMessage(messages.labelsColumnsSeverity)}</Title>
+              <AdvisorySeverity gap='gapMd' size='md' severity={severity} />
             </FlexItem>
           )}
           {attributes.reboot_required && (

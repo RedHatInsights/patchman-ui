@@ -24,9 +24,7 @@ describe('DataMappers', () => {
     expect(firstRow.cells[2].title.props.type).toEqual(
       advisoryRows[0].attributes.advisory_type_name,
     );
-    expect(firstRow.cells[3].title.props.severity.value).toEqual(
-      advisoryRows[0].attributes.severity,
-    );
+    expect(firstRow.cells[3].title.props.severity).toEqual(advisoryRows[0].attributes.severity);
     expect(firstRow.cells[4].title).toEqual(
       handlePatchLink(
         'advisories',
@@ -59,9 +57,7 @@ describe('DataMappers', () => {
     expect(firstRow.cells[3].title.props.type).toEqual(
       systemAdvisoryRows[0].attributes.advisory_type_name,
     );
-    expect(firstRow.cells[4].title.props.severity.value).toEqual(
-      advisoryRows[0].attributes.severity,
-    );
+    expect(firstRow.cells[4].title.props.severity).toEqual(advisoryRows[0].attributes.severity);
     expect(firstRow.cells[1]).toBeTruthy();
     expect(firstRow.cells[0].title).toEqual(
       handlePatchLink('advisories', systemAdvisoryRows[0].id),
