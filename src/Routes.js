@@ -1,15 +1,15 @@
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import { NotAuthorized } from '@redhat-cloud-services/frontend-components/NotAuthorized';
-import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { NavigateToSystem } from './Utilities/NavigateToSystem';
+import usePermissionCheck from './Utilities/hooks/usePermissionCheck';
 
 const PermissionRoute = ({ requiredPermissions = [] }) => {
-  const { hasAccess, isLoading } = usePermissionsWithContext(requiredPermissions);
+  const { hasAccess, isLoading } = usePermissionCheck(requiredPermissions);
   if (!isLoading) {
     return hasAccess ? <Outlet /> : <NotAuthorized serviceName='patch' />;
   } else {

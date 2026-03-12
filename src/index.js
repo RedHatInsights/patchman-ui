@@ -4,10 +4,15 @@ import { SystemAdvisoryListStore } from './store/Reducers/SystemAdvisoryListStor
 import { SystemPackageListStore } from './store/Reducers/SystemPackageListStore';
 import { Bullseye, Spinner } from '@patternfly/react-core';
 import { Provider } from 'react-redux';
+import { AccessCheck } from '@project-kessel/react-kessel-access-check';
 import PropTypes from 'prop-types';
+import { useKesselFeatureFlag } from './Utilities/hooks/useFeatureFlag';
+import { KESSEL_API_BASE_URL } from './Utilities/constants';
 
 const WrappedSystemDetail = ({ getRegistry, ...props }) => {
   const [Wrapper, setWrapper] = useState();
+  const isKesselEnabled = useKesselFeatureFlag();
+
   useEffect(() => {
     if (getRegistry) {
       getRegistry()?.register?.({ SystemAdvisoryListStore, SystemPackageListStore });
@@ -15,7 +20,8 @@ const WrappedSystemDetail = ({ getRegistry, ...props }) => {
 
     setWrapper(() => (getRegistry ? Provider : Fragment));
   }, []);
-  return Wrapper ? (
+
+  const content = Wrapper ? (
     <Wrapper {...(getRegistry && { store: getRegistry()?.getStore() })}>
       <SystemDetail {...props} isInventoryApp />
     </Wrapper>
@@ -23,6 +29,19 @@ const WrappedSystemDetail = ({ getRegistry, ...props }) => {
     <Bullseye>
       <Spinner size='xl' />
     </Bullseye>
+  );
+
+  if (!isKesselEnabled) {
+    return content;
+  }
+
+  return (
+    <AccessCheck.Provider
+      baseUrl={window.location.origin}
+      apiPath={KESSEL_API_BASE_URL}
+    >
+      {content}
+    </AccessCheck.Provider>
   );
 };
 
