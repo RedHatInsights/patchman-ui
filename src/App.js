@@ -4,8 +4,10 @@ import { NotificationsProvider } from '@redhat-cloud-services/frontend-component
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { RBACProvider } from '@redhat-cloud-services/frontend-components/RBACProvider';
+import { AccessCheck } from '@project-kessel/react-kessel-access-check';
 import { changeGlobalTags, changeProfile, globalFilter } from './store/Actions/Actions';
 import { mapGlobalFilters } from './Utilities/Helpers';
+import { KESSEL_API_BASE_URL } from './Utilities/constants';
 import './App.scss';
 import Routes from './Routes';
 
@@ -40,13 +42,13 @@ const App = () => {
   }, []);
 
   return (
-    <React.Fragment>
-      <RBACProvider appName='patch'>
+    <RBACProvider appName='patch'>
+      <AccessCheck.Provider baseUrl={window.location.origin} apiPath={KESSEL_API_BASE_URL}>
         <NotificationsProvider>
           <Routes />
         </NotificationsProvider>
-      </RBACProvider>
-    </React.Fragment>
+      </AccessCheck.Provider>
+    </RBACProvider>
   );
 };
 

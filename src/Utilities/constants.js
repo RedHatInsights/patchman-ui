@@ -296,8 +296,11 @@ export const exportNotifications = (format) => ({
 
 export const multiValueFilters = ['installed_evra', 'os', 'creator', 'status', 'group_name'];
 
+export const KESSEL_API_BASE_URL = '/api/kessel/v1beta2';
+
 export const featureFlags = {
   patch_set: 'patch.patch_set',
+  kessel_enabled: 'patch-frontend.kessel-enabled',
 };
 
 export const NO_ADVISORIES_TEXT =
