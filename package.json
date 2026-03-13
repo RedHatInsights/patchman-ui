@@ -39,6 +39,7 @@
     "@babel/plugin-transform-runtime": "^7.29.0",
     "@babel/preset-env": "^7.29.0",
     "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@currents/playwright": "^1.21.1",
@@ -86,7 +87,8 @@
     "stylelint-config-recommended-scss": "^17.0.0",
     "stylelint-scss": "^7.0.0",
     "ts-patch": "^3.1.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "ts-jest": "^29.4.4"
   },
   "scripts": {
     "commit": "./node_modules/cz-customizable/standalone.js",
