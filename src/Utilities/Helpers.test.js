@@ -155,14 +155,11 @@ describe('Helpers tests', () => {
   });
 
   it('handlePatchLink: Get advisory link from inventory', () => {
-    delete global.window.location;
-    global.window.location = {
-      href: 'https://cloud.redhat.com/insights/inventory',
-    };
+    const windowLike = { location: { href: 'https://cloud.redhat.com/insights/inventory' } };
     const host = document.baseURI;
     let advisoryName = 'ABCD';
     const expected = `${host}insights/patch/advisories/${advisoryName}`;
-    let result = handlePatchLink('advisories', advisoryName);
+    let result = handlePatchLink('advisories', advisoryName, undefined, windowLike);
     let {
       props: { href, children },
     } = result;
@@ -171,14 +168,11 @@ describe('Helpers tests', () => {
   });
 
   it('handlePatchLink: Get advisory link from inventory with custom text', () => {
-    delete global.window.location;
-    global.window.location = {
-      href: 'https://cloud.redhat.com/insights/inventory',
-    };
+    const windowLike = { location: { href: 'https://cloud.redhat.com/insights/inventory' } };
     const host = document.baseURI;
     let advisoryName = 'ABCD';
     const expected = `${host}insights/patch/advisories/${advisoryName}`;
-    let result = handlePatchLink('advisories', advisoryName, 'custom text');
+    let result = handlePatchLink('advisories', advisoryName, 'custom text', windowLike);
     let {
       props: { href, children },
     } = result;
@@ -187,13 +181,10 @@ describe('Helpers tests', () => {
   });
 
   it('handlePatchLink: Get advisory link from patch', () => {
-    delete global.window.location;
-    global.window.location = {
-      href: 'https://cloud.redhat.com/rhel/patch',
-    };
+    const windowLike = { location: { href: 'https://cloud.redhat.com/rhel/patch' } };
     let advisoryName = 'ABCD';
     const expected = `/advisories/${advisoryName}`;
-    let result = handlePatchLink('advisories', advisoryName);
+    let result = handlePatchLink('advisories', advisoryName, undefined, windowLike);
     let {
       props: { to, children },
     } = result;
@@ -201,14 +192,11 @@ describe('Helpers tests', () => {
     expect(children).toEqual(advisoryName);
   });
 
-  it('handlePatchLink: Get advisory link from patch', () => {
-    delete global.window.location;
-    global.window.location = {
-      href: 'https://cloud.redhat.com/rhel/patch',
-    };
+  it('handlePatchLink: Get advisory link from patch with custom text', () => {
+    const windowLike = { location: { href: 'https://cloud.redhat.com/rhel/patch' } };
     let advisoryName = 'ABCD';
     const expected = `/advisories/${advisoryName}`;
-    let result = handlePatchLink('advisories', advisoryName, 'custom text');
+    let result = handlePatchLink('advisories', advisoryName, 'custom text', windowLike);
     let {
       props: { to, children },
     } = result;
