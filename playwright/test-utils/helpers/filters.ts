@@ -198,14 +198,10 @@ export const applyFilterSubtype = async (
     case 'checkbox': {
       // Some filters use menuitems (e.g. Type, Severity); others use options (e.g. Patch status). Match either.
       if (exactMatch) {
+        // exactMatch is only used for Workspace (groups filter); it uses a custom dropdown, not menuitem/option
         const escaped = subtype.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const exactRe = new RegExp(`^${escaped}$`);
-        await page
-          .getByRole('menuitem')
-          .filter({ hasText: exactRe })
-          .or(page.getByRole('option', { name: exactRe }))
-          .first()
-          .click();
+        await page.locator('#groups-filter-select').getByText(exactRe).first().click();
       } else {
         await page
           .getByRole('menuitem')
