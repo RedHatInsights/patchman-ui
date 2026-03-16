@@ -332,29 +332,28 @@ test('Verify filter contents', async ({ page, systems }) => {
     await resetFilters(page);
   });
 
-  // HMS-10287 [QE] Make PR for tag filter test when RHINENG-23546 is resolved
-  // await test.step('Verify "Tags" filter contents', async () => {
-  //   await openConditionalFilter(page);
-  //   await applyFilterSubtype(page, 'Tags', {
-  //     name: 'network_performance=latency',
-  //     inputType: 'checkbox',
-  //   });
-  //   await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
-  //   await expect(page.locator('td[data-label="Name"]').first()).toContainText(
-  //     'filter-contents-test-base',
-  //   );
-  //   await resetFilters(page);
-  //   await openConditionalFilter(page);
-  //   await applyFilterSubtype(page, 'Tags', {
-  //     name: 'network_performance=throughput',
-  //     inputType: 'checkbox',
-  //   });
-  //   await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
-  //   await expect(page.locator('td[data-label="Name"]').first()).toContainText(
-  //     'filter-contents-test-clean',
-  //   );
-  //   await resetFilters(page);
-  // });
+  await test.step('Verify "Tags" filter contents', async () => {
+    await openConditionalFilter(page);
+    await applyFilterSubtype(page, 'Tags', {
+      name: 'network_performance=latency',
+      inputType: 'checkbox',
+    });
+    await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
+    await expect(page.locator('td[data-label="Name"]').first()).toContainText(
+      'filter-contents-test-base',
+    );
+    await resetFilters(page);
+    await openConditionalFilter(page);
+    await applyFilterSubtype(page, 'Tags', {
+      name: 'network_performance=throughput',
+      inputType: 'checkbox',
+    });
+    await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
+    await expect(page.locator('td[data-label="Name"]').first()).toContainText(
+      'filter-contents-test-clean',
+    );
+    await resetFilters(page);
+  });
 
   await test.step('Verify "System" filter contents', async () => {
     await openConditionalFilter(page);
