@@ -241,7 +241,9 @@ test.describe('Systems Tests', () => {
       const systemRow = await getRowByName(modal, system.name);
       await expect(systemRow.getByRole('checkbox')).toBeDisabled();
       await systemRow.locator('[data-ouia-component-id="system-list-warning-icon"]').hover();
-      await expect(page.getByText('Cannot associate system with a template')).toBeVisible();
+      await expect(
+        page.getByText('Systems managed by Satellite cannot be associated with a template.'),
+      ).toBeVisible();
       await expect(page.getByText('This system is managed by Satellite')).toBeVisible();
     });
   });
