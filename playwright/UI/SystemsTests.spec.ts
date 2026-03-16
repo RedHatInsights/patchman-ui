@@ -180,7 +180,7 @@ test.describe('Systems Tests', () => {
       await expect(
         page.getByText('Remove the version lock to assign a standard template.'),
       ).toBeVisible();
-      await expect(page.getByText(`RHEL is locked at version ${version}`)).toBeVisible();
+      await expect(page.getByText(`This system is locked to version ${version}`)).toBeVisible();
     });
   });
 
