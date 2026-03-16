@@ -508,9 +508,9 @@ export const createOSColumn = ({ osName, rhsm }) =>
         lockedVersion: rhsm,
       })}
     >
-      <Flex flex={{ default: 'inlineFlex' }}>
-        <FlexItem spacer={{ default: 'spacerSm' }}>{osName}</FlexItem>
-        <FlexItem spacer={{ default: 'spacerSm' }}>
+      <Flex flex={{ default: 'flexDefault' }} gap={{ default: 'gapSm' }}>
+        <FlexItem>{osName}</FlexItem>
+        <FlexItem>
           <InfoCircleIcon size='sm' color='var(--pf-t--global--color--status--info--100)' />
         </FlexItem>
       </Flex>
