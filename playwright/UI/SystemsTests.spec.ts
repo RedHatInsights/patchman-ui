@@ -146,9 +146,7 @@ test.describe('Systems Tests', () => {
     await test.step('Tooltip is displayed showing the system is version-locked', async () => {
       const OScell = await getRowCellByHeader(page, row, 'OS');
       await OScell.hover();
-      await expect(
-        page.getByText(`Your RHEL version is locked at version ${version}`),
-      ).toBeVisible();
+      await expect(page.getByText(`This system is locked to version ${version}`)).toBeVisible();
     });
 
     await test.step('Create a template via API', async () => {

@@ -491,8 +491,8 @@ export default defineMessages({
   },
   textLockVersionTooltip: {
     id: 'textLockVersionTooltip',
-    description: 'Tooltip text for vesrion lock column',
-    defaultMessage: `Your RHEL version is locked at version {lockedVersion}`,
+    description: 'Tooltip text for version lock column',
+    defaultMessage: `This system is locked to version {lockedVersion}`,
   },
   textNoVersionAvailable: {
     id: 'textNoVersionAvailable',
