@@ -177,8 +177,10 @@ test.describe('Systems Tests', () => {
       // using an OUIA attribute selector here, other tests depend on the default data-testid attribute
       // so we can't change the testIdAttribute globally
       await systemRow.locator('[data-ouia-component-id="system-list-warning-icon"]').hover();
-      await expect(page.getByText('Cannot associate system with a template')).toBeVisible();
-      await expect(page.getByText(`RHEL is locked at version ${version}`)).toBeVisible();
+      await expect(
+        page.getByText('Remove the version lock to assign a standard template.'),
+      ).toBeVisible();
+      await expect(page.getByText(`This system is locked to version ${version}`)).toBeVisible();
     });
   });
 
@@ -241,7 +243,9 @@ test.describe('Systems Tests', () => {
       const systemRow = await getRowByName(modal, system.name);
       await expect(systemRow.getByRole('checkbox')).toBeDisabled();
       await systemRow.locator('[data-ouia-component-id="system-list-warning-icon"]').hover();
-      await expect(page.getByText('Cannot associate system with a template')).toBeVisible();
+      await expect(
+        page.getByText('Systems managed by Satellite cannot be associated with a template.'),
+      ).toBeVisible();
       await expect(page.getByText('This system is managed by Satellite')).toBeVisible();
     });
   });
