@@ -8,7 +8,7 @@ import Header from '../../PresentationalComponents/Header/Header';
 import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
-import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api';
+import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api/api';
 import { packagesListDefaultFilters } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';

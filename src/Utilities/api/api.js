@@ -1,7 +1,7 @@
 import { APIFactory } from '@redhat-cloud-services/javascript-clients-shared/utils';
 import apiSystemProfileGetOperatingSystem from '@redhat-cloud-services/host-inventory-client/ApiSystemProfileGetOperatingSystem';
-import axiosInstance from './axiosInterceptors';
-import { encodeApiParams, prepareEntitiesParams } from './Helpers';
+import axiosInstance from '../axiosInterceptors';
+import { encodeApiParams, prepareEntitiesParams } from '../Helpers';
 
 const INVENTORY_API_BASE = '/api/inventory/v1';
 
@@ -94,26 +94,6 @@ export const fetchPackagesList = (params) => {
   }
 
   return createApiCall('/packages', 'v3', 'get', params);
-};
-
-export const fetchCvesInfo = async ({ cveIds }) => {
-  const result = await fetch(
-    `/api/vulnerability/v1/vulnerabilities/cves?limit=${cveIds && cveIds.length}`,
-    {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        Accept: 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json',
-      },
-      body: JSON.stringify({ cve_list: cveIds }),
-    },
-  )
-    .then((res) => res.json())
-    .then((data) => data)
-    .catch((err) => err);
-
-  return result;
 };
 
 const fetchFile = (params, endpoint, type) => {
