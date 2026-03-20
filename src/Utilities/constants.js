@@ -85,15 +85,21 @@ export const publicDateOptions = [
   },
 ];
 
+export const SEVERITY_NONE = null;
+export const SEVERITY_MINOR = 1;
+export const SEVERITY_MODERATE = 2;
+export const SEVERITY_IMPORTANT = 3;
+export const SEVERITY_CRITICAL = 4;
+
 export const advisorySeverities = [
   {
-    value: null,
+    value: SEVERITY_NONE,
     label: 'None',
-    color: 'var(--pf-t--global--icon--color--severity--minor--default)',
+    color: 'var(--pf-t--global--icon--color--severity--none--default)',
   },
   {
-    value: 1,
-    label: 'Low',
+    value: SEVERITY_MINOR,
+    label: 'Minor',
     color: 'var(--pf-t--global--icon--color--severity--minor--default)',
     text:
       'This rating is given to all other issues that have a security impact. These are the types of vulnerabilities' +
@@ -101,7 +107,7 @@ export const advisorySeverities = [
       ' would give minimal consequences.',
   },
   {
-    value: 2,
+    value: SEVERITY_MODERATE,
     label: 'Moderate',
     color: 'var(--pf-t--global--icon--color--severity--moderate--default)',
     text:
@@ -112,7 +118,7 @@ export const advisorySeverities = [
       ' configurations.',
   },
   {
-    value: 3,
+    value: SEVERITY_IMPORTANT,
     label: 'Important',
     color: 'var(--pf-t--global--icon--color--severity--important--default)',
     text:
@@ -123,7 +129,7 @@ export const advisorySeverities = [
       ' of service.',
   },
   {
-    value: 4,
+    value: SEVERITY_CRITICAL,
     label: 'Critical',
     color: 'var(--pf-t--global--icon--color--severity--critical--default)',
     text:

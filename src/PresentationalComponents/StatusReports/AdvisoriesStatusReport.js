@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { PowerOffIcon, SecurityIcon } from '@patternfly/react-icons';
+import { PowerOffIcon } from '@patternfly/react-icons';
 import { intl } from '../../Utilities/IntlProvider';
 import { fetchApplicableAdvisoriesApi } from '../../Utilities/api';
 import messages from '../../Messages';
@@ -17,9 +17,10 @@ import {
 } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { handlePatchLink, handleLongSynopsis } from '../../Utilities/Helpers';
-import { entityTypes, advisorySeverities } from '../../Utilities/constants';
+import { entityTypes } from '../../Utilities/constants';
 import AdvisoryType from '../AdvisoryType/AdvisoryType';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
+import AdvisorySeverity from '../AdvisorySeverity/AdvisorySeverity';
 
 const StatusCard = ({ advisory: { attributes, id } }) => (
   <Card isFullHeight>
@@ -41,14 +42,7 @@ const StatusCard = ({ advisory: { attributes, id } }) => (
               <Grid>
                 {attributes.severity && (
                   <GridItem>
-                    <Split hasGutter>
-                      <GridItem>
-                        <Icon>
-                          <SecurityIcon color={advisorySeverities[attributes.severity].color} />
-                        </Icon>
-                      </GridItem>
-                      <GridItem isFilled>{advisorySeverities[attributes.severity].label}</GridItem>
-                    </Split>
+                    <AdvisorySeverity gap='md' size='md' severity={attributes.severity} />
                   </GridItem>
                 )}
                 {attributes.reboot_required && (
