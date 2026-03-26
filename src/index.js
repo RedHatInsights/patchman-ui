@@ -36,10 +36,7 @@ const WrappedSystemDetail = ({ getRegistry, ...props }) => {
   }
 
   return (
-    <AccessCheck.Provider
-      baseUrl={window.location.origin}
-      apiPath={KESSEL_API_BASE_URL}
-    >
+    <AccessCheck.Provider baseUrl={window.location.origin} apiPath={KESSEL_API_BASE_URL}>
       {content}
     </AccessCheck.Provider>
   );
