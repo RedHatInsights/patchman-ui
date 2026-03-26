@@ -7,6 +7,7 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { NavigateToSystem } from './Utilities/NavigateToSystem';
 import usePermissionCheck from './Utilities/hooks/usePermissionCheck';
+import ErrorState from '@redhat-cloud-services/frontend-components/ErrorState';
 
 const PermissionRoute = ({ requiredPermissions = [] }) => {
   const { hasAccess, isLoading } = usePermissionCheck(requiredPermissions);
@@ -92,7 +93,7 @@ const PatchRoutes = () => {
               appId='content_management_zero_state'
               module='./AppZeroState'
               scope='dashboard'
-              ErrorComponent={<div>Error state</div>}
+              ErrorComponent={<ErrorState />}
               app='Content_management'
               customFetchResults={hasSystems}
             >

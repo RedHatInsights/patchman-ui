@@ -2,14 +2,13 @@ import { useMemo } from 'react';
 import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-components-utilities/RBACHook';
 import { getKesselAccessCheckParams } from '@redhat-cloud-services/frontend-components-utilities/kesselPermissions';
 import { useSelfAccessCheck } from '@project-kessel/react-kessel-access-check';
-import { useFetchDefaultWorkspaceId } from './useKesselWorkspaces';
+import { useKesselWorkspaceIds } from './useKesselWorkspaceIds';
 import useFeatureFlag from './useFeatureFlag';
 import { featureFlags } from '../constants';
 
-export const PERMISSION_MAP = {
+export const PERMISSION_MAP_HOST_CENTRIC = {
   'patch:*:read': 'patch_system_view',
   'patch:*:*': 'patch_system_edit',
-  'patch:template:write': 'patch_template_edit',
 };
 
 export const useRbacV1Permissions = (requiredPermissions) => {
@@ -17,34 +16,34 @@ export const useRbacV1Permissions = (requiredPermissions) => {
   return { hasAccess, isLoading };
 };
 
-export const useKesselPermissions = (requiredPermissions, enabled = true) => {
+export const useKesselPermissions = (requiredPermissions, enabled = false) => {
   const {
-    workspaceId,
-    isLoading: workspaceLoading,
-    error: workspaceError,
-  } = useFetchDefaultWorkspaceId(enabled);
+    workspaceIds,
+    isLoading: workspacesLoading,
+    error: workspacesError,
+  } = useKesselWorkspaceIds(enabled);
 
-  const checkParams = useMemo(
+  const permissionCheckParams = useMemo(
     () =>
       getKesselAccessCheckParams({
-        permissionMap: PERMISSION_MAP,
+        permissionMap: PERMISSION_MAP_HOST_CENTRIC,
         requiredPermissions,
-        resourceIdOrIds: workspaceId,
+        resourceIdOrIds: workspaceIds,
       }),
-    [workspaceId, requiredPermissions],
+    [workspaceIds],
   );
 
-  const { data, loading, error } = useSelfAccessCheck(checkParams);
+  const { data, loading, error } = useSelfAccessCheck(permissionCheckParams);
 
-  if (workspaceLoading) {
+  if (workspacesLoading) {
     return { hasAccess: false, isLoading: true };
   }
 
-  if (checkParams?.resources?.length === 0) {
+  if (permissionCheckParams?.resources?.length === 0) {
     return { hasAccess: true, isLoading: false };
   }
 
-  if (!workspaceId || workspaceError || error) {
+  if (!workspaceIds?.length || workspacesError || error) {
     return { hasAccess: false, isLoading: false };
   }
 
