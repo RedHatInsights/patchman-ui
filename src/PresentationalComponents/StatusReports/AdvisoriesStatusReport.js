@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { PowerOffIcon } from '@patternfly/react-icons';
 import { intl } from '../../Utilities/IntlProvider';
-import { fetchApplicableAdvisoriesApi } from '../../Utilities/api';
+import { fetchApplicableAdvisoriesApi } from '../../Utilities/api/api';
 import messages from '../../Messages';
 import {
   CardTitle,

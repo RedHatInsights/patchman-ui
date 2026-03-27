@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api';
+import { fetchApplicableSystemAdvisoriesApi } from '../../Utilities/api/api';
 import { remediationIdentifiers } from '../../Utilities/constants';
 import {
   createAdvisoriesIcons,

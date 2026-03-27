@@ -29,7 +29,7 @@ jest.mock('../Remediation/RemediationWizard', () => ({
   )),
 }));
 
-jest.mock('../../Utilities/api', () => ({
+jest.mock('../../Utilities/api/api', () => ({
   fetchSystems: jest.fn(() =>
     Promise.resolve({
       meta: {
