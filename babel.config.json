@@ -1,5 +1,5 @@
 {
-  "presets": ["@babel/preset-react", "@babel/env"],
+  "presets": ["@babel/preset-react", "@babel/env", "@babel/preset-typescript"],
   "plugins": [
     [
       "transform-inline-environment-variables",

@@ -6,9 +6,8 @@ import {
   fetchPackageDetailsApi,
   fetchPackagesList,
   fetchPackageSystems,
-  fetchCvesInfo,
   fetchSystemDetails,
-} from '../../Utilities/api';
+} from '../../Utilities/api/api';
 import * as ActionTypes from '../ActionTypes';
 
 export const fetchApplicableAdvisories = (params) => ({
@@ -153,18 +152,6 @@ export const changePackagesListParams = (params) => ({
 
 export const changePackageSystemsParams = (params) => ({
   type: ActionTypes.CHANGE_PACKAGE_SYSTEMS_PARAMS,
-  payload: params,
-});
-
-export const fetchCves = (params) => ({
-  type: ActionTypes.FETCH_CVES_INFO,
-  payload: new Promise((resolve) => {
-    resolve(fetchCvesInfo(params));
-  }).then((result) => result),
-});
-
-export const changeCvesListParams = (params) => ({
-  type: ActionTypes.CHANGE_CVES_STORE_PARAMS,
   payload: params,
 });
 

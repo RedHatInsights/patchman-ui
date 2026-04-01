@@ -8,7 +8,7 @@ import {
   inventoryEntitiesReducer,
   modifyInventory,
 } from '../../store/Reducers/InventoryEntitiesReducer';
-import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api';
+import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api/api';
 import { systemsListDefaultFilters, NO_ADVISORIES_TEXT } from '../../Utilities/constants';
 import { arrayFromObj, persistantParams } from '../../Utilities/Helpers';
 import {

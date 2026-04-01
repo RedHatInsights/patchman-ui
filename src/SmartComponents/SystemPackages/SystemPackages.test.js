@@ -3,7 +3,7 @@ import { systemPackages } from '../../Utilities/RawDataForTesting';
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import { storeListDefaults, remediationIdentifiers } from '../../Utilities/constants';
-import { fetchIDs } from '../../Utilities/api';
+import { fetchIDs } from '../../Utilities/api/api';
 import { remediationProvider } from '../../Utilities/Helpers';
 import { render, waitFor, screen } from '@testing-library/react';
 import { ComponentWithContext, testBulkSelection } from '../../Utilities/TestingUtilities.js';
@@ -12,8 +12,8 @@ import userEvent from '@testing-library/user-event';
 
 initMocks();
 
-jest.mock('../../Utilities/api', () => ({
-  ...jest.requireActual('../../Utilities/api'),
+jest.mock('../../Utilities/api/api', () => ({
+  ...jest.requireActual('../../Utilities/api/api'),
   fetchIDs: jest.fn(() =>
     Promise.resolve({
       data: [
