@@ -128,5 +128,9 @@
   ],
   "insights": {
     "appname": "patch"
+  },
+  "overrides": {
+    "react-redux": "^7.2.9",
+    "redux": "^4.2.1"
   }
 }
