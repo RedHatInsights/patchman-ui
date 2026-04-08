@@ -24,7 +24,7 @@
     "dockerode": "^4.0.9",
     "jest-environment-jsdom": "^30.3.0",
     "p-all": "^5.0.1",
-    "query-string": "^9.3.1",
+    "query-string": "^6.14.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lines-ellipsis": "^0.16.1",
@@ -130,6 +130,7 @@
     "appname": "patch"
   },
   "overrides": {
+    "query-string": "^6.14.1",
     "react-redux": "^7.2.9",
     "redux": "^4.2.1"
   }
