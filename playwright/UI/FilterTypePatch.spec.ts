@@ -16,6 +16,8 @@ import {
   getWorkspaceGroup,
 } from 'test-utils';
 
+const FILTER_TEST_PREFIX = 'filter-test';
+
 /** One day in ms; used for date-only display tolerance. */
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -255,10 +257,10 @@ test.describe('Patch Filters', () => {
     });
 
     await test.step('Verify "Tags" filter exists', async () => {
-      await systems.add('filter-contents-test-base', 'base', undefined, {
+      await systems.add(`${FILTER_TEST_PREFIX}-base`, 'base', undefined, {
         tags: { network_performance: 'latency' },
       });
-      await systems.add('filter-contents-test-clean', 'clean', undefined, {
+      await systems.add(`${FILTER_TEST_PREFIX}-clean`, 'clean', undefined, {
         tags: { network_performance: 'throughput' },
       });
       await verifyFilterTypeExists(page, 'Tags');
@@ -285,11 +287,11 @@ test.describe('Patch Filters', () => {
  * Note: Workspace and Tag options come from the Inventory service (not Patch).
  */
 test('Verify filter contents', async ({ page, systems }) => {
-  await systems.add('filter-contents-test-base', 'base', undefined, {
+  const baseSystem = await systems.add(`${FILTER_TEST_PREFIX}-base`, 'base', undefined, {
     tags: { network_performance: 'latency' },
     workspaceGroup: true,
   });
-  await systems.add('filter-contents-test-clean', 'clean', undefined, {
+  const cleanSystem = await systems.add(`${FILTER_TEST_PREFIX}-clean`, 'clean', undefined, {
     tags: { network_performance: 'throughput' },
   });
 
@@ -323,11 +325,11 @@ test('Verify filter contents', async ({ page, systems }) => {
     await expect(
       page
         .locator('td[data-label="Name"]')
-        .filter({ hasText: 'filter-contents-test-base' })
+        .filter({ hasText: baseSystem.name })
         .first(),
     ).toBeVisible();
     await expect(page.locator('td[data-label="Name"]').first()).toContainText(
-      'filter-contents-test-base',
+      baseSystem.name,
     );
     await resetFilters(page);
   });
@@ -340,7 +342,7 @@ test('Verify filter contents', async ({ page, systems }) => {
     });
     await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
     await expect(page.locator('td[data-label="Name"]').first()).toContainText(
-      'filter-contents-test-base',
+      baseSystem.name,
     );
     await resetFilters(page);
     await openConditionalFilter(page);
@@ -350,7 +352,7 @@ test('Verify filter contents', async ({ page, systems }) => {
     });
     await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
     await expect(page.locator('td[data-label="Name"]').first()).toContainText(
-      'filter-contents-test-clean',
+      cleanSystem.name,
     );
     await resetFilters(page);
   });
@@ -359,12 +361,12 @@ test('Verify filter contents', async ({ page, systems }) => {
     await openConditionalFilter(page);
     // System filter shows "Filter by name" input, not a checkbox menu
     await applyFilterSubtype(page, 'System', {
-      name: 'filter-contents-test-base',
+      name: baseSystem.name,
       inputType: 'search',
     });
     await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
     await expect(page.locator('td[data-label="Name"]').first()).toContainText(
-      'filter-contents-test-base',
+      baseSystem.name,
     );
     await resetFilters(page);
   });
@@ -377,7 +379,7 @@ test('Verify filter contents', async ({ page, systems }) => {
     });
     await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
     await expect(page.locator('td[data-label="Name"]').first()).toContainText(
-      'filter-contents-test-base',
+      baseSystem.name,
     );
     await resetFilters(page);
   });
