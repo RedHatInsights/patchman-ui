@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/github/actions/workflow/status/RedhatInsights/patchman-ui/test.yml?branch=master)](https://github.com/RedHatInsights/patchman-ui/actions/workflows/test.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/RedhatInsights/patchman-ui/sentry.yml?branch=master)](https://github.com/RedHatInsights/patchman-ui/actions/workflows/sentry.yml)
 [![GitHub release](https://img.shields.io/github/v/release/RedHatInsights/patchman-ui.svg)](https://github.com/RedHatInsights/patchman-ui/releases/latest)
 [![codecov](https://codecov.io/gh/RedHatInsights/patchman-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/RedHatInsights/patchman-ui)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
@@ -8,6 +8,22 @@
 Patch is one of the applications for console.redhat.com. It allows users to display and manage available patches for
 their registered systems. This repository contains source code for the frontend part of the application which uses the
 REST API available from [Patchman Engine](https://github.com/RedHatInsights/patchman-engine).
+
+<!--toc:start-->
+
+- [First time setup](#first-time-setup)
+- [Running locally](#running-locally)
+- [Testing](#testing)
+  - [Unit tests: Jest](#unit-tests-jest)
+  - [E2E (UI & Integration) tests: Playwright](#e2e-ui--integration-tests-playwright)
+    - [First time setup](#first-time-setup-1)
+    - [Running UI tests](#running-ui-tests)
+    - [Running Integration tests](#running-integration-tests)
+- [Deploying](#deploying)
+- [Design System](#design-system)
+- [Insights Components](#insights-components)
+- [AI Coding Assistants](#ai-coding-assistants)
+<!--toc:end-->
 
 ## First time setup
 
@@ -115,3 +131,12 @@ This app imports components
 from [Insights Front-end Components library](https://github.com/RedHatInsights/frontend-components). ESI tags are used
 to import [Insights Chrome](https://github.com/RedHatInsights/insights-chrome) which takes care of the header, sidebar,
 and footer.
+
+## AI Coding Assistants
+
+This project includes guidance for AI coding assistants (Claude Code, Cursor, etc.):
+
+- **`AGENTS.md`** - Main entry point with project context, setup requirements, and workflows
+- **`docs/rules/`** - Topic-specific detailed rules (testing, etc.)
+
+**For maintainers**: See [docs/rules/README.md](docs/rules/README.md) for how to add or modify AI assistant rules.
