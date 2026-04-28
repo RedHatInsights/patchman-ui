@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 import { Tab, Tabs, TabTitleText } from '@patternfly/react-core';
 import SystemAdvisories from '../SystemAdvisories/SystemAdvisories';
 import SystemPackages from '../SystemPackages/SystemPackages';
-import './SystemDetail.scss';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { NotConnected } from '@redhat-cloud-services/frontend-components/NotConnected';
 import propTypes from 'prop-types';
+import spacing from '@patternfly/react-styles/css/utilities/Spacing/spacing';
 
 const SystemDetail = ({ isInventoryApp, inventoryId, shouldRefresh }) => {
   const { state } = useLocation();
@@ -26,7 +26,7 @@ const SystemDetail = ({ isInventoryApp, inventoryId, shouldRefresh }) => {
 
   return (
     (!areTabsHidden && (
-      <Tabs activeKey={activeTabKey} onSelect={onTabSelect} className='patchTabSelect' isHidden>
+      <Tabs activeKey={activeTabKey} onSelect={onTabSelect} isHidden isSubtab={isInventoryApp}>
         <Tab
           eventKey={0}
           title={<TabTitleText>{intl.formatMessage(messages.titlesAdvisories)}</TabTitleText>}
@@ -34,11 +34,13 @@ const SystemDetail = ({ isInventoryApp, inventoryId, shouldRefresh }) => {
           data-ouia-component-id='system-advisories-tab'
           id='system-advisories-tab'
         >
-          <SystemAdvisories
-            handleNoSystemData={handleNoSystemData}
-            inventoryId={inventoryId}
-            shouldRefresh={shouldRefresh}
-          />
+          <div className={spacing.mtMd}>
+            <SystemAdvisories
+              handleNoSystemData={handleNoSystemData}
+              inventoryId={inventoryId}
+              shouldRefresh={shouldRefresh}
+            />
+          </div>
         </Tab>
         <Tab
           eventKey={1}
@@ -47,11 +49,13 @@ const SystemDetail = ({ isInventoryApp, inventoryId, shouldRefresh }) => {
           data-ouia-component-id='system-packages-tab'
           id='system-packages-tab'
         >
-          <SystemPackages
-            handleNoSystemData={handleNoSystemData}
-            inventoryId={inventoryId}
-            shouldRefresh={shouldRefresh}
-          />
+          <div className={spacing.mtMd}>
+            <SystemPackages
+              handleNoSystemData={handleNoSystemData}
+              inventoryId={inventoryId}
+              shouldRefresh={shouldRefresh}
+            />
+          </div>
         </Tab>
       </Tabs>
     )) || <NotConnected />

@@ -87,7 +87,7 @@ const TableView = ({
           <PrimaryToolbar
             pagination={
               isLoading ? (
-                <Skeleton fontSize='xl' width='200px' style={{ margin: 10 }} />
+                <Skeleton fontSize='xl' width='200px' />
               ) : (
                 {
                   itemCount: metadata.total_items,
