@@ -86,7 +86,7 @@
     "redux-mock-store": "^1.5.4",
     "sass-loader": "^16.0.7",
     "source-map-loader": "^5.0.0",
-    "stylelint": "^17.8.0",
+    "stylelint": "^17.9.1",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-recommended-scss": "^17.0.1",
     "stylelint-scss": "^7.0.0",
