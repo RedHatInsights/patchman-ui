@@ -59,10 +59,9 @@ jest.mock('../src/Utilities/hooks/useFeatureFlag', () => jest.fn());
 
 jest.mock('../src/Utilities/hooks/usePermissionCheck', () => ({
     __esModule: true,
-    default: () => ({ hasAccess: true, isLoading: false }),
-    useRbacV1Permissions: () => ({ hasAccess: true, isLoading: false }),
-    useKesselPermissions: () => ({ hasAccess: true, isLoading: false }),
-    PERMISSION_MAP: {
+    useRbacPermissionCheck: () => ({ hasAccess: true, isLoading: false }),
+    useKesselPermissionCheck: () => ({ hasAccess: true, isLoading: false }),
+    PERMISSION_MAP_HOST_CENTRIC: {
         'patch:*:read': 'patch_system_view',
         'patch:*:*': 'patch_system_edit',
         'patch:template:write': 'patch_template_edit',
