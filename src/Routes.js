@@ -6,11 +6,15 @@ import PropTypes from 'prop-types';
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { NavigateToSystem } from './Utilities/NavigateToSystem';
-import usePermissionCheck from './Utilities/hooks/usePermissionCheck';
+import {
+  useKesselPermissionCheck,
+  useRbacPermissionCheck,
+} from './Utilities/hooks/usePermissionCheck';
+import PatchPermissionGate from './Utilities/PatchPermissionGate';
 import ErrorState from '@redhat-cloud-services/frontend-components/ErrorState';
 
-const PermissionRoute = ({ requiredPermissions = [] }) => {
-  const { hasAccess, isLoading } = usePermissionCheck(requiredPermissions);
+const PermissionRouteKessel = ({ requiredPermissions = [] }) => {
+  const { hasAccess, isLoading } = useKesselPermissionCheck(requiredPermissions);
   if (!isLoading) {
     return hasAccess ? <Outlet /> : <NotAuthorized serviceName='patch' />;
   } else {
@@ -18,9 +22,29 @@ const PermissionRoute = ({ requiredPermissions = [] }) => {
   }
 };
 
-PermissionRoute.propTypes = {
+const PermissionRouteRbac = ({ requiredPermissions = [] }) => {
+  const { hasAccess, isLoading } = useRbacPermissionCheck(requiredPermissions);
+  if (!isLoading) {
+    return hasAccess ? <Outlet /> : <NotAuthorized serviceName='patch' />;
+  } else {
+    return '';
+  }
+};
+
+const permissionRoutePropTypes = {
   requiredPermissions: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
 };
+
+const PermissionRoute = (props) => (
+  <PatchPermissionGate
+    kessel={<PermissionRouteKessel {...props} />}
+    rbac={<PermissionRouteRbac {...props} />}
+  />
+);
+
+PermissionRouteKessel.propTypes = permissionRoutePropTypes;
+PermissionRouteRbac.propTypes = permissionRoutePropTypes;
+PermissionRoute.propTypes = permissionRoutePropTypes;
 
 const Advisories = lazy(
   () => import(/* webpackChunkName: "Advisories" */ './SmartComponents/Advisories/Advisories'),

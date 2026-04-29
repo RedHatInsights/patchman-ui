@@ -3,20 +3,18 @@ import { usePermissionsWithContext } from '@redhat-cloud-services/frontend-compo
 import { getKesselAccessCheckParams } from '@redhat-cloud-services/frontend-components-utilities/kesselPermissions';
 import { useSelfAccessCheck } from '@project-kessel/react-kessel-access-check';
 import { useKesselWorkspaceIds } from './useKesselWorkspaceIds';
-import useFeatureFlag from './useFeatureFlag';
-import { featureFlags } from '../constants';
 
 export const PERMISSION_MAP_HOST_CENTRIC = {
   'patch:*:read': 'patch_system_view',
   'patch:*:*': 'patch_system_edit',
 };
 
-export const useRbacV1Permissions = (requiredPermissions) => {
+const useRbacV1Permission = (requiredPermissions) => {
   const { hasAccess, isLoading } = usePermissionsWithContext(requiredPermissions);
   return { hasAccess, isLoading };
 };
 
-export const useKesselPermissions = (requiredPermissions, enabled = false) => {
+const useKesselPermission = (requiredPermissions, enabled = true) => {
   const {
     workspaceIds,
     isLoading: workspacesLoading,
@@ -30,7 +28,7 @@ export const useKesselPermissions = (requiredPermissions, enabled = false) => {
         requiredPermissions,
         resourceIdOrIds: workspaceIds,
       }),
-    [workspaceIds],
+    [workspaceIds, requiredPermissions],
   );
 
   const { data, loading, error } = useSelfAccessCheck(permissionCheckParams);
@@ -54,12 +52,8 @@ export const useKesselPermissions = (requiredPermissions, enabled = false) => {
   return { hasAccess, isLoading: loading };
 };
 
-const usePermissionCheck = (requiredPermissions) => {
-  const isKesselEnabled = useFeatureFlag(featureFlags.kessel_enabled);
-  const rbac = useRbacV1Permissions(requiredPermissions);
-  const kessel = useKesselPermissions(requiredPermissions, !!isKesselEnabled);
+export const useKesselPermissionCheck = (requiredPermissions) =>
+  useKesselPermission(requiredPermissions);
 
-  return isKesselEnabled ? kessel : rbac;
-};
-
-export default usePermissionCheck;
+export const useRbacPermissionCheck = (requiredPermissions) =>
+  useRbacV1Permission(requiredPermissions);
