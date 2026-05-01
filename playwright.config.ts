@@ -29,10 +29,10 @@ export default defineConfig({
     launchOptions: {
       args: ['--use-fake-device-for-media-stream'],
     },
-    ...(process.env.TOKEN
+    ...(process.env.ADMIN_TOKEN
       ? {
           extraHTTPHeaders: {
-            Authorization: process.env.TOKEN,
+            Authorization: process.env.ADMIN_TOKEN,
           },
         }
       : {}),
