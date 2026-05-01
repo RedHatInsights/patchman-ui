@@ -45,9 +45,14 @@ const useKesselPermission = (requiredPermissions, enabled = true) => {
     return { hasAccess: false, isLoading: false };
   }
 
-  const hasAccess = Array.isArray(data)
-    ? data.some((check) => check.allowed)
-    : (data?.allowed ?? false);
+  if (data?.length === 0) {
+    return { hasAccess: false, isLoading: true };
+  }
+
+  const hasAccess =
+    Array.isArray(data) && data.length > 0
+      ? data.some((check) => check.allowed)
+      : (data?.allowed ?? false);
 
   return { hasAccess, isLoading: loading };
 };

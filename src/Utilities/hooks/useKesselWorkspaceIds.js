@@ -55,7 +55,7 @@ export const useKesselWorkspaceIds = (enabled = true) => {
         setError(true);
       })
       .finally(() => setIsLoading(false));
-  }, [baseUrl]);
+  }, [baseUrl, enabled]);
 
   return {
     workspaceIds,
