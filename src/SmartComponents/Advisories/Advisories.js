@@ -1,5 +1,5 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
@@ -69,7 +69,7 @@ const Advisories = () => {
 
   const [isRemediationLoading, setRemediationLoading] = React.useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (firstMount) {
       apply(decodeQueryparams('?' + searchParams.toString()));
       setFirstMount(false);
