@@ -1,5 +1,5 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import packagesListStatusFilter from '../../PresentationalComponents/Filters/PackagesListStatusFilter';
@@ -17,7 +17,6 @@ import {
   usePerPageSelect,
   useSetPage,
   useSortColumn,
-  useDeepCompareEffect,
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
@@ -39,7 +38,7 @@ const Packages = () => {
   const metadata = useSelector(({ PackagesListStore }) => PackagesListStore.metadata);
   const queryParams = useSelector(({ PackagesListStore }) => PackagesListStore.queryParams);
 
-  useDeepCompareEffect(() => {
+  useLayoutEffect(() => {
     if (firstMount) {
       apply(decodeQueryparams('?' + searchParams.toString()));
       setFirstMount(false);
@@ -47,7 +46,7 @@ const Packages = () => {
       setSearchParams(encodeURLParams(queryParams));
       dispatch(fetchPackagesAction(queryParams));
     }
-  }, [queryParams, firstMount]);
+  }, [JSON.stringify(queryParams), firstMount]);
 
   function apply(params) {
     dispatch(changePackagesListParams(params));
