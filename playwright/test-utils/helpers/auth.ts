@@ -74,7 +74,6 @@ export const storeStorageStateAndToken = async (page: Page, tokenEnvVar: string)
     .context()
     .storageState({ path: path.join(__dirname, '../../../.auth', storageFile) });
   const token = cookies.find((cookie) => cookie.name === 'cs_jwt')?.value;
-  process.env.TOKEN = `Bearer ${token}`;
   process.env[tokenEnvVar] = `Bearer ${token}`;
 };
 

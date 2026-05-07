@@ -9,12 +9,8 @@ import {
 import { cleanupRemediationPlan } from 'test-utils/helpers/cleaners';
 
 test.describe('Advisories Tests', () => {
-  test.use({
-    storageState: '.auth/ADVISORY_REMEDIATION_TOKEN.json',
-    extraHTTPHeaders: process.env.ADVISORY_REMEDIATION_TOKEN
-      ? { Authorization: process.env.ADVISORY_REMEDIATION_TOKEN }
-      : {},
-  });
+  // Disable retries for this test, systems are not deleted immediately in patch so second attempt will likely fail
+  test.describe.configure({ retries: 0 });
 
   test('Create a new remediation plan', async ({ page, request, systems, cleanup }) => {
     const system = await systems.add(
