@@ -50,25 +50,44 @@ export default defineConfig({
     video: 'on',
   },
   projects: [
-    { name: 'setup', testMatch: /.*\.setup\.ts/, use: { trace: 'off' } },
-    process.env.INTEGRATION
-      ? {
-          name: 'Integration',
-          use: {
-            ...devices['Desktop Chrome'],
-            storageState: '.auth/ADMIN_TOKEN.json',
+    { name: 'setup', testMatch: /auth\.setup\.ts/, use: { trace: 'off' } },
+    ...(process.env.INTEGRATION
+      ? [
+          {
+            name: 'Integration',
+            use: {
+              ...devices['Desktop Chrome'],
+              storageState: '.auth/ADMIN_TOKEN.json',
+            },
+            testDir: './playwright/Integration/',
+            dependencies: ['setup'],
           },
-          testDir: './playwright/Integration/',
-          dependencies: ['setup'],
-        }
-      : {
-          name: 'UI',
-          use: {
-            ...devices['Desktop Chrome'],
-            storageState: '.auth/ADMIN_TOKEN.json',
+        ]
+      : [
+          {
+            name: 'UI-default-user',
+            use: {
+              ...devices['Desktop Chrome'],
+              storageState: '.auth/ADMIN_TOKEN.json',
+            },
+            testDir: './playwright/UI/',
+            testIgnore: ['**/AdvisoriesTests.spec.ts'],
+            dependencies: ['setup'],
           },
-          testDir: './playwright/UI/',
-          dependencies: ['setup'],
-        },
+          {
+            name: 'UI-advisory-remediation-user',
+            use: {
+              ...devices['Desktop Chrome'],
+              storageState: '.auth/ADVISORY_REMEDIATION_TOKEN.json',
+              extraHTTPHeaders: process.env.ADVISORY_REMEDIATION_TOKEN
+                ? { Authorization: process.env.ADVISORY_REMEDIATION_TOKEN }
+                : {},
+            },
+            testDir: './playwright/UI/',
+            testMatch: ['**/AdvisoriesTests.spec.ts'],
+            // Run after all default-user UI tests to prevent auth state conflicts
+            dependencies: ['setup', 'UI-default-user'],
+          },
+        ]),
   ],
 });
