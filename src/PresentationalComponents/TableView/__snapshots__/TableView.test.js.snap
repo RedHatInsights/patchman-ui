@@ -13,7 +13,7 @@ exports[`TableView Should open remediation modal 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -75,7 +75,7 @@ exports[`TableView Should open remediation modal 1`] = `
             class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter"
+              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
             >
               <div
                 class="pf-v6-l-split__item"
@@ -679,7 +679,7 @@ exports[`TableView TableView 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -741,7 +741,7 @@ exports[`TableView TableView 1`] = `
             class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter"
+              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
             >
               <div
                 class="pf-v6-l-split__item"
@@ -1345,7 +1345,7 @@ exports[`TableView TableView 2`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -1407,7 +1407,7 @@ exports[`TableView TableView 2`] = `
             class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter"
+              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
             >
               <div
                 class="pf-v6-l-split__item"
@@ -2011,7 +2011,7 @@ exports[`TableView test table props TableView 1`] = `
       class="pf-v6-c-toolbar__content"
     >
       <div
-        class="pf-v6-c-toolbar__content-section"
+        class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
       >
         <div
           class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -2073,7 +2073,7 @@ exports[`TableView test table props TableView 1`] = `
             class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
           >
             <div
-              class="pf-v6-l-split ins-c-conditional-filter"
+              class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
             >
               <div
                 class="pf-v6-l-split__item"
