@@ -80,7 +80,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
         class="pf-v6-c-toolbar__content"
       >
         <div
-          class="pf-v6-c-toolbar__content-section"
+          class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
         >
           <div
             class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -149,7 +149,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
             >
               <div
-                class="pf-v6-l-split ins-c-conditional-filter"
+                class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
               >
                 <div
                   class="pf-v6-l-split__item"
@@ -1374,7 +1374,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
         class="pf-v6-c-toolbar__content"
       >
         <div
-          class="pf-v6-c-toolbar__content-section"
+          class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
         >
           <div
             class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -1437,7 +1437,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
             >
               <div
-                class="pf-v6-l-split ins-c-conditional-filter"
+                class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
               >
                 <div
                   class="pf-v6-l-split__item"
@@ -1841,7 +1841,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
         class="pf-v6-c-toolbar__content"
       >
         <div
-          class="pf-v6-c-toolbar__content-section"
+          class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
         >
           <div
             class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -1910,7 +1910,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
             >
               <div
-                class="pf-v6-l-split ins-c-conditional-filter"
+                class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
               >
                 <div
                   class="pf-v6-l-split__item"
@@ -3136,7 +3136,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
         class="pf-v6-c-toolbar__content"
       >
         <div
-          class="pf-v6-c-toolbar__content-section"
+          class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
         >
           <div
             class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
@@ -3199,7 +3199,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
             >
               <div
-                class="pf-v6-l-split ins-c-conditional-filter"
+                class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
               >
                 <div
                   class="pf-v6-l-split__item"
