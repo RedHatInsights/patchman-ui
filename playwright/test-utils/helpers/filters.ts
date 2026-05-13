@@ -332,6 +332,11 @@ export const removeFilter = async (page: Page, filter: FilterConfig) => {
 export const resetFilters = async (page: Page) => {
   // Close any open dropdowns first
   await page.keyboard.press('Escape');
-  await page.getByRole('button', { name: /Reset filters/i }).click();
+  try {
+    await page.getByRole('button', { name: /(Reset|Clear) filters/i }).waitFor({ timeout: 5000 });
+  } catch {
+    return;
+  }
+  await page.getByRole('button', { name: /(Reset|Clear) filters/i }).click();
   await waitForTableLoad(page);
 };

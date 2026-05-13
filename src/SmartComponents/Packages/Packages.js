@@ -9,15 +9,10 @@ import TableView from '../../PresentationalComponents/TableView/TableView';
 import { packagesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { changePackagesListParams, fetchPackagesAction } from '../../store/Actions/Actions';
 import { exportPackagesCSV, exportPackagesJSON } from '../../Utilities/api/api';
-import { packagesListDefaultFilters } from '../../Utilities/constants';
+import { pageDefaultFilters } from '../../Utilities/constants';
 import { createPackagesRows } from '../../Utilities/DataMappers';
 import { createSortBy, decodeQueryparams, encodeURLParams } from '../../Utilities/Helpers';
-import {
-  useOnExport,
-  usePerPageSelect,
-  useSetPage,
-  useSortColumn,
-} from '../../Utilities/hooks';
+import { useOnExport, usePerPageSelect, useSetPage, useSortColumn } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { useSearchParams } from 'react-router-dom';
@@ -98,7 +93,7 @@ const Packages = () => {
           remediationButtonOUIA='toolbar-remediation-button'
           tableOUIA='package-details-table'
           paginationOUIA='package-details-pagination'
-          defaultFilters={packagesListDefaultFilters}
+          defaultFilters={pageDefaultFilters.packages}
           searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
           hasColumnManagement
         />

@@ -17,7 +17,7 @@ import {
   exportAdvisorySystemsJSON,
   fetchAdvisorySystems,
 } from '../../Utilities/api/api';
-import { remediationIdentifiers } from '../../Utilities/constants';
+import { pageDefaultFilters, remediationIdentifiers } from '../../Utilities/constants';
 import {
   arrayFromObj,
   persistantParams,
@@ -64,7 +64,11 @@ const AdvisorySystemsTable = ({
     (newColumns) => setAppliedColumns(newColumns),
   );
 
-  const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply);
+  const [deleteFilters] = useRemoveFilter(
+    { search, ...filter },
+    apply,
+    pageDefaultFilters.advisorySystems,
+  );
 
   const filterConfig = {
     items: [
@@ -78,7 +82,12 @@ const AdvisorySystemsTable = ({
     ],
   };
 
-  const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
+  const activeFiltersConfig = buildActiveFiltersConfig(
+    filter,
+    search,
+    deleteFilters,
+    pageDefaultFilters.advisorySystems,
+  );
 
   const onSelect = useOnSelect(systems, selectedRows, {
     endpoint: ID_API_ENDPOINTS.advisorySystems(advisoryName),
