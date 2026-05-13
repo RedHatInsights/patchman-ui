@@ -6,6 +6,7 @@ import TableView from '../../PresentationalComponents/TableView/TableView';
 import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { cvesTableColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import { fetchCves } from '../../store/Actions/VulnerabilityActions';
+import { pageDefaultFilters } from '../../Utilities/constants';
 import { createCvesRows } from '../../Utilities/DataMappers';
 import { sortCves } from '../../Utilities/Helpers';
 import { SortByDirection } from '@patternfly/react-table';
@@ -108,6 +109,7 @@ const CvesModal = ({ cveIds }: CvesModalProps) => {
             status,
             queryParams: { filter: {}, search },
           }}
+          defaultFilters={pageDefaultFilters.cves}
           filterConfig={{
             items: [
               searchFilter(

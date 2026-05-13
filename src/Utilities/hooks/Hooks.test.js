@@ -1,6 +1,7 @@
 import { SortByDirection } from '@patternfly/react-table';
 import {
   useEntitlements,
+  useGetEntities,
   useHandleRefresh,
   usePagePerPage,
   usePerPageSelect,
@@ -127,6 +128,19 @@ describe('Custom hooks tests', () => {
     },
   );
 
+  it('useRemoveFilter: should restore category defaults when removing a deviated default filter', () => {
+    const apply = jest.fn();
+    const { result } = renderHook(() =>
+      useRemoveFilter({ systems_applicable: ['eq:0'] }, apply, packagesListDefaultFilters),
+    );
+
+    result.current[0]({}, [{ id: 'systems_applicable', chips: [{ id: 'eq:0' }] }]);
+
+    expect(apply).toHaveBeenCalledWith({
+      filter: { systems_applicable: ['gt:0'] },
+    });
+  });
+
   it.each`
     metadata                     | apply        | input                        | finalResult
     ${{ limit: 10, offset: 0 }}  | ${jest.fn()} | ${{ page: 2, per_page: 10 }} | ${{ offset: 10 }}
@@ -140,6 +154,76 @@ describe('Custom hooks tests', () => {
     } else {
       expect(apply).not.toHaveBeenCalled();
     }
+  });
+
+  it('useGetEntities: should publish the inventory snapshot before the fetch resolves', async () => {
+    let resolveFetch;
+    const fetchApi = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        }),
+    );
+    const apply = jest.fn();
+    const setSearchParams = jest.fn();
+    const applyMetadata = jest.fn();
+    const applyGlobalFilter = jest.fn();
+    const applyInventorySnapshot = jest.fn();
+    const params = {
+      orderBy: 'display_name',
+      orderDirection: 'ASC',
+      page: 1,
+      per_page: 20,
+      patchParams: {
+        filter: { stale: [true, false] },
+        selectedTags: ['tags=owner%2Fteam%3Dplatform'],
+        systemProfile: { ansible: { controller_version: 'not_nil' } },
+      },
+      filters: {
+        hostGroupFilter: ['web'],
+        osFilter: {
+          'RHEL-8': {
+            'RHEL-8-8.8': true,
+          },
+        },
+        tagFilters: [
+          {
+            category: 'env',
+            values: [{ tagKey: 'stage', value: 'prod' }],
+          },
+        ],
+      },
+    };
+    const { result } = renderHook(() =>
+      useGetEntities(
+        fetchApi,
+        apply,
+        {},
+        setSearchParams,
+        applyMetadata,
+        applyGlobalFilter,
+        applyInventorySnapshot,
+      ),
+    );
+
+    const request = result.current([], params);
+
+    expect(applyInventorySnapshot).toHaveBeenCalledWith({
+      filter: {
+        stale: [true, false],
+        group_name: ['web'],
+        os: 'RHEL 8.8',
+      },
+      filters: params.filters,
+      selectedTags: ['tags=owner%2Fteam%3Dplatform', ['tags=env%2Fstage%3Dprod']],
+      systemProfile: { ansible: { controller_version: 'not_nil' } },
+    });
+    expect(applyInventorySnapshot.mock.invocationCallOrder[0]).toBeLessThan(
+      fetchApi.mock.invocationCallOrder[0],
+    );
+
+    resolveFetch({ data: [], meta: { total_items: 0 } });
+    await request;
   });
 
   it('useEntitlements, should return correct entitlements', async () => {

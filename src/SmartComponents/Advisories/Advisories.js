@@ -16,6 +16,7 @@ import {
   selectAdvisoryRow,
 } from '../../store/Actions/Actions';
 import { exportAdvisoriesCSV, exportAdvisoriesJSON } from '../../Utilities/api/api';
+import { pageDefaultFilters } from '../../Utilities/constants';
 import { createAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
   createSortBy,
@@ -200,6 +201,7 @@ const Advisories = () => {
               rebootFilter(apply, queryParams?.filter),
             ],
           }}
+          defaultFilters={pageDefaultFilters.advisories}
           searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
           isRemediationLoading={isRemediationLoading}
           hasColumnManagement

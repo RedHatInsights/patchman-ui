@@ -3,7 +3,8 @@ import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities.js';
 import PackageSystems from './PackageSystems';
 import { ComponentWithContext } from '../../Utilities/TestingUtilities.js';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 
 initMocks();
 
@@ -61,25 +62,81 @@ const mockState = {
   },
 };
 
-const initStore = () => {
+const initStore = (state = mockState) => {
   const mockStore = configureStore([]);
-  return mockStore(mockState);
+  return mockStore(state);
 };
 
-const store = initStore(mockState);
-
-beforeEach(() => {
+const renderComponent = async (state = mockState) => {
   render(
-    <ComponentWithContext renderOptions={{ store }}>
+    <ComponentWithContext renderOptions={{ store: initStore(state) }}>
       <PackageSystems packageName='testName' />
     </ComponentWithContext>,
   );
+
+  await waitFor(() => {
+    expect(screen.getByTestId('inventory-mock-component')).toBeVisible();
+  });
+};
+
+beforeEach(() => {
+  InventoryTable.mockClear();
 });
 
 // TODO: find a meaningful way of testing InventoryTable fed module
 describe('PackageSystems.js', () => {
-  it('Should render inventory table', () => {
+  it('Should render inventory table', async () => {
+    await renderComponent();
     expect(screen.getByTestId('inventory-mock-component')).toBeVisible();
+  });
+
+  it('should keep active filters empty when there are no non-default filters', async () => {
+    await renderComponent();
+
+    expect(InventoryTable).toHaveBeenCalledWith(
+      expect.objectContaining({
+        activeFiltersConfig: {
+          deleteTitle: 'Clear filters',
+          filters: [],
+          onDelete: expect.any(Function),
+        },
+      }),
+      {},
+    );
+  });
+
+  it('should provide a clear filters action when filters are active', async () => {
+    await renderComponent({
+      ...mockState,
+      PackageSystemsStore: {
+        queryParams: {
+          filter: { status: ['Applicable'] },
+        },
+      },
+    });
+
+    expect(InventoryTable).toHaveBeenCalledWith(
+      expect.objectContaining({
+        activeFiltersConfig: {
+          deleteTitle: 'Clear filters',
+          filters: [
+            {
+              category: 'Status',
+              chips: [
+                {
+                  id: 'status',
+                  name: 'Applicable',
+                  value: 'Applicable',
+                },
+              ],
+              id: 'status',
+            },
+          ],
+          onDelete: expect.any(Function),
+        },
+      }),
+      {},
+    );
   });
   // it('Should dispatch change package systems params  action once only', () => {
   //     const dispatchedActions = store.getActions();

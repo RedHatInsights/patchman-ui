@@ -4,11 +4,9 @@ import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/Prima
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
 import PropTypes from 'prop-types';
 import React from 'react';
-import messages from '../../Messages';
 import AsyncRemediationButton from '../../SmartComponents/Remediation/AsyncRemediationButton';
-import { arrayFromObj, buildFilterChips, convertLimitOffset } from '../../Utilities/Helpers';
+import { arrayFromObj, buildActiveFilterConfig, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/hooks';
-import { intl } from '../../Utilities/IntlProvider';
 import TableFooter from './TableFooter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import { Skeleton, ToolbarItem } from '@patternfly/react-core';
@@ -50,6 +48,10 @@ const TableView = ({
   const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
   const { code, hasError, isLoading } = status;
   const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse);
+  const activeFiltersConfig = React.useMemo(
+    () => buildActiveFilterConfig(filter, search, deleteFilters, searchChipLabel, defaultFilters),
+    [defaultFilters, deleteFilters, filter, search, searchChipLabel],
+  );
 
   const [isColumnMgmtModalOpen, setColumnMgmtModalOpen] = React.useState(false);
   const [appliedColumns, setAppliedColumns] = React.useState(columns);
@@ -102,13 +104,7 @@ const TableView = ({
               )
             }
             filterConfig={filterConfig}
-            activeFiltersConfig={{
-              filters: buildFilterChips(filter, search, searchChipLabel),
-              onDelete: deleteFilters,
-              deleteTitle: intl.formatMessage(
-                (defaultFilters && messages.labelsFiltersReset) || messages.labelsFiltersClear,
-              ),
-            }}
+            activeFiltersConfig={activeFiltersConfig}
             actionsConfig={{
               actions: [
                 remediationProvider && (

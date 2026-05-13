@@ -15,7 +15,7 @@ import {
   selectSystemPackagesRow,
 } from '../../store/Actions/Actions';
 import { exportSystemPackagesCSV, exportSystemPackagesJSON } from '../../Utilities/api/api';
-import { remediationIdentifiers, systemPackagesDefaultFilters } from '../../Utilities/constants';
+import { pageDefaultFilters, remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemPackagesRows } from '../../Utilities/DataMappers';
 import { arrayFromObj, createSortBy, remediationProvider } from '../../Utilities/Helpers';
 import {
@@ -134,7 +134,7 @@ const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
             statusFilter(apply, queryParams.filter),
           ],
         }}
-        defaultFilters={systemPackagesDefaultFilters}
+        defaultFilters={pageDefaultFilters.systemPackages}
         remediationButtonOUIA='toolbar-remediation-button'
         tableOUIA='system-packages-table'
         paginationOUIA='system-packages-pagination'

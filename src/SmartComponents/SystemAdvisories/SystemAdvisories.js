@@ -18,7 +18,7 @@ import {
   selectSystemAdvisoryRow,
 } from '../../store/Actions/Actions';
 import { exportSystemAdvisoriesCSV, exportSystemAdvisoriesJSON } from '../../Utilities/api/api';
-import { remediationIdentifiers } from '../../Utilities/constants';
+import { pageDefaultFilters, remediationIdentifiers } from '../../Utilities/constants';
 import { createSystemAdvisoriesRows } from '../../Utilities/DataMappers';
 import {
   arrayFromObj,
@@ -167,6 +167,7 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
           ],
         }}
         errorState={errorState}
+        defaultFilters={pageDefaultFilters.systemAdvisories}
         searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
         hasColumnManagement
       />

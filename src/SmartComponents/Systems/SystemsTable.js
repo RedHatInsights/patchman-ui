@@ -1,6 +1,7 @@
 import React, { Fragment, useRef, useState } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
+import isDeepEqualReact from 'fast-deep-equal/react';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { defaultReducers } from '../../store';
 import { changeSystemsMetadata, changeTags, systemSelectAction } from '../../store/Actions/Actions';
@@ -9,8 +10,8 @@ import {
   modifyInventory,
 } from '../../store/Reducers/InventoryEntitiesReducer';
 import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api/api';
-import { systemsListDefaultFilters, NO_ADVISORIES_TEXT } from '../../Utilities/constants';
-import { arrayFromObj, persistantParams } from '../../Utilities/Helpers';
+import { pageDefaultFilters, NO_ADVISORIES_TEXT } from '../../Utilities/constants';
+import { arrayFromObj, hasActiveInventoryFilters, persistantParams } from '../../Utilities/Helpers';
 import {
   useBulkSelectConfig,
   useGetEntities,
@@ -30,6 +31,12 @@ import {
 } from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
 import propTypes from 'prop-types';
+
+const buildInventorySnapshot = (filters = {}, selectedTags = [], systemProfile = {}) => ({
+  filters,
+  selectedTags: selectedTags || [],
+  systemProfile: systemProfile || {},
+});
 
 const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decodedParams }) => {
   const store = useStore();
@@ -76,6 +83,13 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
       }, {}),
     },
   ];
+  const [inventorySnapshot, setInventorySnapshot] = useState(() =>
+    buildInventorySnapshot(
+      operatingSystemFilter ? { osFilter: osFilter?.[0]?.osFilter || {} } : {},
+      selectedTags,
+      systemProfile,
+    ),
+  );
 
   const applyMetadata = (metadata) => {
     dispatch(changeSystemsMetadata(metadata));
@@ -85,10 +99,33 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
     dispatch(changeTags(tags));
   };
 
-  const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, systemsListDefaultFilters);
+  const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, pageDefaultFilters.systems);
   const filterConfig = buildFilterConfig(search, filter, apply);
+  const applyInventorySnapshot = React.useCallback((nextSnapshot) => {
+    setInventorySnapshot((previousSnapshot) =>
+      isDeepEqualReact(previousSnapshot, nextSnapshot) ? previousSnapshot : nextSnapshot,
+    );
+  }, []);
+  const hasInventoryFilterDeviation =
+    hasActiveInventoryFilters(inventorySnapshot.filters) ||
+    Boolean(inventorySnapshot.selectedTags?.length) ||
+    Boolean(
+      inventorySnapshot.systemProfile && Object.keys(inventorySnapshot.systemProfile).length > 0,
+    );
 
-  const activeFiltersConfig = buildActiveFiltersConfig(filter, search, deleteFilters);
+  const activeFiltersConfig = React.useMemo(() => {
+    const config = buildActiveFiltersConfig(
+      filter,
+      search,
+      deleteFilters,
+      pageDefaultFilters.systems,
+    );
+
+    return {
+      ...config,
+      showDeleteButton: config.showDeleteButton || hasInventoryFilterDeviation,
+    };
+  }, [deleteFilters, filter, hasInventoryFilterDeviation, search]);
 
   const onSelect = useOnSelect(systems, selectedRows, {
     endpoint: ID_API_ENDPOINTS.systems,
@@ -114,6 +151,7 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
     setSearchParams,
     applyMetadata,
     applyGlobalFilter,
+    applyInventorySnapshot,
   );
 
   const remediationDataProvider = useRemediationDataProvider(
@@ -216,6 +254,6 @@ SystemsTable.propTypes = {
   apply: propTypes.func.isRequired,
   setSearchParams: propTypes.func.isRequired,
   activateRemediationModal: propTypes.func.isRequired,
-  decodedParams: propTypes.func.isRequired,
+  decodedParams: propTypes.object.isRequired,
 };
 export default SystemsTable;
