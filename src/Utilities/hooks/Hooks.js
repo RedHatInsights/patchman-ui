@@ -13,6 +13,7 @@ import {
   buildApiFilters,
   getOffsetFromPageLimit,
   encodeURLParams,
+  getDefaultFilterState,
   mapGlobalFilters,
 } from '../Helpers';
 import { intl } from '../IntlProvider';
@@ -72,6 +73,9 @@ export const useSortColumn = (
 };
 
 export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {} }) => {
+  const { filter: defaultFilterState, search: defaultSearch } =
+    getDefaultFilterState(defaultFilters);
+
   const removeFilter = React.useCallback((selected, resetFilters, shouldReset) => {
     let newParams = { filter: {} };
     selected.forEach((selectedItem) => {
@@ -81,11 +85,11 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
         let activeFilter = filters[categoryId];
         const toRemove = chips.map((item) => item.id?.toString());
         if (Array.isArray(activeFilter)) {
-          newParams.filter[categoryId] = activeFilter.filter(
-            (item) => !toRemove.includes(item.toString()),
-          );
+          const nextValue = activeFilter.filter((item) => !toRemove.includes(item.toString()));
+          newParams.filter[categoryId] =
+            nextValue.length > 0 ? nextValue : defaultFilterState[categoryId];
         } else {
-          newParams.filter[categoryId] = undefined;
+          newParams.filter[categoryId] = defaultFilterState[categoryId];
         }
       } else if (multiValueFilters.includes(categoryId)) {
         const filterValues =
@@ -94,14 +98,16 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
               filters[categoryId])) ||
           [];
 
-        newParams.filter[categoryId] =
+        const nextValue =
           (filterValues.length !== 1 &&
             filterValues
               .filter((filterValue) => !chips.find((chip) => chip.value === filterValue))
               .join(',')) ||
           undefined;
+
+        newParams.filter[categoryId] = nextValue ?? defaultFilterState[categoryId];
       } else {
-        newParams.search = '';
+        newParams.search = defaultSearch;
       }
     });
 
@@ -118,8 +124,8 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
 
   const deleteFilters = (__, selected, shouldReset) => {
     const resetFilters = (currentFilters) => {
-      if (Object.keys(defaultFilters.filter).length > 0) {
-        currentFilters.filter = { ...currentFilters.filter, ...defaultFilters.filter };
+      if (Object.keys(defaultFilterState).length > 0) {
+        currentFilters.filter = { ...currentFilters.filter, ...defaultFilterState };
       }
 
       return currentFilters;
@@ -215,6 +221,7 @@ export const useGetEntities = (
   setSearchParams,
   applyMetadata,
   applyGlobalFilter,
+  applyInventorySnapshot,
 ) => {
   const { id, packageName } = config || {};
   const mounted = useRef(true);
@@ -228,12 +235,22 @@ export const useGetEntities = (
 
     const sort = createSystemsSortBy(orderBy, orderDirection, packageName);
     const filter = buildApiFilters(patchParams.filter, filters);
+    const nextSelectedTags = [...activeTags, ...selectedTags];
+
+    applyInventorySnapshot &&
+      applyInventorySnapshot({
+        filter,
+        filters,
+        selectedTags: nextSelectedTags,
+        systemProfile: patchParams.systemProfile || {},
+      });
+
     const items = await fetchApi({
       page,
       perPage,
       ...patchParams,
       filter,
-      selectedTags: [...activeTags, ...selectedTags],
+      selectedTags: nextSelectedTags,
       sort,
       ...((id && { id }) || {}),
       ...((packageName && { package_name: packageName }) || {}),

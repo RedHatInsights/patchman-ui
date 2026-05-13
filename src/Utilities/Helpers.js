@@ -17,6 +17,7 @@ import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
 import {
   defaultCompoundSortValues,
+  emptyDefaultFilters,
   filterCategories,
   multiValueFilters,
   SEVERITY_NONE,
@@ -356,6 +357,87 @@ export const decodeQueryparams = (queryString, parsers = {}) => {
 
 const getFilterStringFromApi = (value) => (value === null ? 'null' : String(value));
 
+const compareNormalizedValues = (left, right) =>
+  getFilterStringFromApi(left).localeCompare(getFilterStringFromApi(right));
+
+const normalizeFilterComparisonValue = (category, value) => {
+  if (Array.isArray(value)) {
+    return [...value]
+      .map((item) => normalizeFilterComparisonValue(category, item))
+      .sort(compareNormalizedValues);
+  }
+
+  if (multiValueFilters.includes(category) && typeof value === 'string') {
+    return value.split(',').sort(compareNormalizedValues);
+  }
+
+  return value;
+};
+
+const areFilterValuesEqual = (category, currentValue, defaultValue) =>
+  JSON.stringify(normalizeFilterComparisonValue(category, currentValue)) ===
+  JSON.stringify(normalizeFilterComparisonValue(category, defaultValue));
+
+const sanitizeFilterState = (filters = {}) =>
+  Object.entries(filters).reduce((activeFilters, [category, value]) => {
+    if (value !== undefined && value !== '' && [].concat(value).length !== 0) {
+      activeFilters[category] = value;
+    }
+
+    return activeFilters;
+  }, {});
+
+const hasActiveNestedFilterValue = (value) => {
+  if (Array.isArray(value)) {
+    return value.some(hasActiveNestedFilterValue);
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.values(value).some(hasActiveNestedFilterValue);
+  }
+
+  return ![undefined, null, '', false].includes(value);
+};
+
+export const getDefaultFilterState = (defaultFilters = emptyDefaultFilters) => ({
+  filter: sanitizeFilterState(defaultFilters?.filter ?? {}),
+  search: defaultFilters?.search ?? '',
+});
+
+export const hasActiveInventoryFilters = (filters = {}) => hasActiveNestedFilterValue(filters);
+
+export const hasDefaultFilterState = (defaultFilters = emptyDefaultFilters) => {
+  const { filter, search } = getDefaultFilterState(defaultFilters);
+
+  return Object.keys(filter).length > 0 || search !== '';
+};
+
+export const getActiveFilterState = (
+  filters = {},
+  search = '',
+  defaultFilters = emptyDefaultFilters,
+) => {
+  const sanitizedFilters = sanitizeFilterState(filters);
+  const { filter: defaultFilter, search: defaultSearch } = getDefaultFilterState(defaultFilters);
+
+  const activeFilters = Object.keys(sanitizedFilters).reduce((currentFilters, category) => {
+    const currentValue = sanitizedFilters[category];
+    const defaultValue = defaultFilter[category];
+
+    if (!areFilterValuesEqual(category, currentValue, defaultValue)) {
+      currentFilters[category] = currentValue;
+    }
+
+    return currentFilters;
+  }, {});
+
+  return {
+    filter: activeFilters,
+    hasDefaultFilterState: hasDefaultFilterState(defaultFilters),
+    search: (search ?? '') === defaultSearch ? '' : search,
+  };
+};
+
 export const buildFilterChips = (filters, search, searchChipLabel = 'Search', parsers = {}) => {
   let filterConfig = [];
   const buildChips = (filters, category) => {
@@ -430,6 +512,32 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search', pa
   search && processSearch();
 
   return filterConfig;
+};
+
+export const buildActiveFilterConfig = (
+  filters,
+  search,
+  deleteFilters,
+  searchChipLabel = 'Search',
+  defaultFilters = emptyDefaultFilters,
+) => {
+  const visibleFilters = sanitizeFilterState(filters);
+  const visibleSearch = search ?? '';
+  const {
+    filter: deviatedFilters,
+    hasDefaultFilterState,
+    search: deviatedSearch,
+  } = getActiveFilterState(filters, search, defaultFilters);
+  const hasDeviation = Object.keys(deviatedFilters).length > 0 || Boolean(deviatedSearch);
+
+  return {
+    filters: buildFilterChips(visibleFilters, visibleSearch, searchChipLabel),
+    onDelete: deleteFilters,
+    deleteTitle: intl.formatMessage(
+      hasDefaultFilterState ? messages.labelsFiltersReset : messages.labelsFiltersClear,
+    ),
+    ...(hasDefaultFilterState && { showDeleteButton: hasDeviation }),
+  };
 };
 
 export const buildOsFilter = (osFilter = {}) => {

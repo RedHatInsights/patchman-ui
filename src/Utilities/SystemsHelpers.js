@@ -1,7 +1,7 @@
 import searchFilter from '../PresentationalComponents/Filters/SearchFilter';
 import staleFilter from '../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../PresentationalComponents/Filters/SystemsUpdatableFilter';
-import { buildFilterChips } from './Helpers';
+import { buildActiveFilterConfig } from './Helpers';
 import { intl } from './IntlProvider';
 import messages from '../Messages';
 import { defaultCompoundSortValues } from './constants';
@@ -19,21 +19,14 @@ export const buildFilterConfig = (search, filter, apply) => ({
   ],
 });
 
-export const buildActiveFiltersConfig = (filter, search, deleteFilters) => {
-  if (filter?.group_name?.length === 0) {
-    delete filter.group_name;
-  }
-
-  return {
-    filters: buildFilterChips(
-      filter,
-      search,
-      intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-    ),
-    onDelete: deleteFilters,
-    deleteTitle: intl.formatMessage(messages.labelsFiltersReset),
-  };
-};
+export const buildActiveFiltersConfig = (filter, search, deleteFilters, defaultFilters) =>
+  buildActiveFilterConfig(
+    filter,
+    search,
+    deleteFilters,
+    intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+    defaultFilters,
+  );
 
 export const mergeInventoryColumns = (patchmanColumns, inventoryColumns) =>
   patchmanColumns.map((column) => ({

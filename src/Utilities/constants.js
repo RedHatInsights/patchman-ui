@@ -57,6 +57,21 @@ export const systemsListDefaultFilters = {
   filter: { stale: [true, false] },
 };
 
+export const emptyDefaultFilters = {
+  filter: {},
+};
+
+export const pageDefaultFilters = {
+  advisories: emptyDefaultFilters,
+  advisorySystems: emptyDefaultFilters,
+  cves: emptyDefaultFilters,
+  packages: packagesListDefaultFilters,
+  packageSystems: emptyDefaultFilters,
+  systemAdvisories: emptyDefaultFilters,
+  systemPackages: systemPackagesDefaultFilters,
+  systems: systemsListDefaultFilters,
+};
+
 export const publicDateOptions = [
   {
     apiValue: `gt:${subtractDate(7)}`,

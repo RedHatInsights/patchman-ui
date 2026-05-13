@@ -56,7 +56,7 @@ const SystemsMainContent = () => {
           apply={apply}
           setSearchParams={setSearchParams}
           activateRemediationModal={activateRemediationModal}
-          decodedParams={decodeQueryparams}
+          decodedParams={decodedParams}
         />
       </Main>
     </React.Fragment>

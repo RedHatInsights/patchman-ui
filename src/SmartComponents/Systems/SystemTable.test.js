@@ -2,9 +2,17 @@ import configureStore from 'redux-mock-store';
 import { systemRows } from '../../Utilities/RawDataForTesting';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import Systems from './SystemsTable';
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { ComponentWithContext } from '../../Utilities/TestingUtilities';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
+import { fetchSystems } from '../../Utilities/api/api';
+
+jest.mock('../../Utilities/api/api', () => ({
+  exportSystemsCSV: jest.fn(),
+  exportSystemsJSON: jest.fn(),
+  fetchSystems: jest.fn(),
+}));
+
 initMocks();
 
 const mockState = {
@@ -27,10 +35,27 @@ const initStore = (state) => {
   return mockStore(state);
 };
 
-const renderComponent = async (mockedStore) => {
+beforeEach(() => {
+  InventoryTable.mockClear();
+  fetchSystems.mockReset();
+  fetchSystems.mockResolvedValue({
+    data: [],
+    meta: {
+      total_items: 0,
+    },
+  });
+});
+
+const renderComponent = async (mockedStore, props = {}) => {
   render(
     <ComponentWithContext renderOptions={{ store: initStore(mockedStore) }}>
-      <Systems />
+      <Systems
+        apply={jest.fn()}
+        setSearchParams={jest.fn()}
+        activateRemediationModal={jest.fn()}
+        decodedParams={{}}
+        {...props}
+      />
     </ComponentWithContext>,
   );
 
@@ -198,8 +223,59 @@ describe('SystemsTable', () => {
     );
   });
 
-  it('should provide activeFilters config', async () => {
-    await renderComponent(mockState);
+  it('should keep default systems filters visible while hiding reset at baseline', async () => {
+    const filteredState = {
+      ...mockState,
+      SystemsStore: {
+        queryParams: {
+          filter: { stale: [true, false] },
+        },
+      },
+    };
+
+    await renderComponent(filteredState);
+    expect(InventoryTable).toHaveBeenCalledWith(
+      expect.objectContaining({
+        activeFiltersConfig: {
+          deleteTitle: 'Reset filters',
+          filters: [
+            {
+              category: 'Status',
+              chips: [
+                {
+                  id: true,
+                  name: 'Stale',
+                  value: true,
+                },
+                {
+                  id: false,
+                  name: 'Fresh',
+                  value: false,
+                },
+              ],
+              id: 'stale',
+            },
+          ],
+          onDelete: expect.any(Function),
+          showDeleteButton: false,
+        },
+      }),
+      {},
+    );
+  });
+
+  it('should show reset only when at least one filter differs from defaults', async () => {
+    const filteredState = {
+      ...mockState,
+      SystemsStore: {
+        queryParams: {
+          filter: { packages_updatable: 'eq:0', stale: [true, false] },
+        },
+      },
+    };
+
+    await renderComponent(filteredState);
+
     expect(InventoryTable).toHaveBeenCalledWith(
       expect.objectContaining({
         activeFiltersConfig: {
@@ -216,12 +292,121 @@ describe('SystemsTable', () => {
               ],
               id: 'packages_updatable',
             },
+            {
+              category: 'Status',
+              chips: [
+                {
+                  id: true,
+                  name: 'Stale',
+                  value: true,
+                },
+                {
+                  id: false,
+                  name: 'Fresh',
+                  value: false,
+                },
+              ],
+              id: 'stale',
+            },
           ],
           onDelete: expect.any(Function),
+          showDeleteButton: true,
         },
       }),
       {},
     );
+  });
+
+  it('should show reset when inventory-based operating system filters are active', async () => {
+    const filteredState = {
+      ...mockState,
+      SystemsStore: {
+        queryParams: {
+          filter: { os: ['RHEL 8.8'], stale: [true, false] },
+        },
+      },
+    };
+
+    await renderComponent(filteredState);
+
+    expect(InventoryTable).toHaveBeenCalledWith(
+      expect.objectContaining({
+        activeFiltersConfig: expect.objectContaining({
+          deleteTitle: 'Reset filters',
+          showDeleteButton: true,
+        }),
+        customFilters: expect.objectContaining({
+          filters: [
+            {
+              osFilter: {
+                'RHEL-8': {
+                  'RHEL-8-8.8': true,
+                },
+              },
+            },
+          ],
+        }),
+      }),
+      {},
+    );
+  });
+
+  it('should show reset before an inventory-backed fetch resolves', async () => {
+    let resolveFetch;
+    fetchSystems.mockImplementationOnce(
+      () =>
+        new Promise((resolve) => {
+          resolveFetch = resolve;
+        }),
+    );
+
+    await renderComponent(mockState);
+
+    const inventoryProps = InventoryTable.mock.calls[InventoryTable.mock.calls.length - 1][0];
+    let request;
+
+    act(() => {
+      request = inventoryProps.getEntities([], {
+        orderBy: 'display_name',
+        orderDirection: 'ASC',
+        page: 1,
+        per_page: 20,
+        patchParams: {
+          filter: { stale: [true, false] },
+          selectedTags: [],
+          systemProfile: {},
+        },
+        filters: {
+          osFilter: {
+            'RHEL-8': {
+              'RHEL-8-8.8': true,
+            },
+          },
+        },
+      });
+    });
+
+    await waitFor(() =>
+      expect(InventoryTable).toHaveBeenLastCalledWith(
+        expect.objectContaining({
+          activeFiltersConfig: expect.objectContaining({
+            deleteTitle: 'Reset filters',
+            showDeleteButton: true,
+          }),
+        }),
+        {},
+      ),
+    );
+
+    await act(async () => {
+      resolveFetch({
+        data: [],
+        meta: {
+          total_items: 0,
+        },
+      });
+      await request;
+    });
   });
 
   it('should provide bulkSelect config', async () => {

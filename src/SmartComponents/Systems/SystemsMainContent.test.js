@@ -1,6 +1,7 @@
 import configureStore from 'redux-mock-store';
 import { initMocks } from '../../Utilities/unitTestingUtilities';
 import Systems from './SystemsMainContent';
+import SystemsTable from './SystemsTable';
 import { render, screen, waitFor } from '@testing-library/react';
 import { ComponentWithContext } from '../../Utilities/TestingUtilities';
 import '@testing-library/jest-dom';
@@ -75,9 +76,9 @@ const initStore = (state) => {
   return mockStore(state);
 };
 
-const renderComponent = async (mockedStore) => {
+const renderComponent = async (mockedStore, renderOptions = {}) => {
   render(
-    <ComponentWithContext renderOptions={{ store: initStore(mockedStore) }}>
+    <ComponentWithContext renderOptions={{ store: initStore(mockedStore), ...renderOptions }}>
       <Systems />
     </ComponentWithContext>,
   );
@@ -85,6 +86,10 @@ const renderComponent = async (mockedStore) => {
 
 const user = userEvent.setup();
 describe('SystemsTable', () => {
+  beforeEach(() => {
+    SystemsTable.mockClear();
+  });
+
   it('Should display systems table when there are no errors', async () => {
     renderComponent(mockState);
     expect(screen.getByTestId('systems-table-mock')).toBeVisible();
@@ -136,5 +141,20 @@ describe('SystemsTable', () => {
     renderComponent(mockState);
     await user.click(screen.getByTestId('active-remediation-modal'));
     expect(screen.getByTestId('remediation-wizard-mock')).toBeVisible();
+  });
+
+  it('should pass parsed decoded params into SystemsTable', async () => {
+    renderComponent(mockState, { initialEntries: ['/?search=test-search'] });
+
+    await waitFor(() => {
+      expect(SystemsTable).toHaveBeenCalledWith(
+        expect.objectContaining({
+          decodedParams: {
+            search: 'test-search',
+          },
+        }),
+        {},
+      );
+    });
   });
 });
