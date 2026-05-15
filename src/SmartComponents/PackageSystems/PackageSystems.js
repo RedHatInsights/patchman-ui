@@ -26,10 +26,10 @@ import {
   fetchPackageSystems,
   fetchPackageVersions,
 } from '../../Utilities/api/api';
-import { remediationIdentifiers } from '../../Utilities/constants';
+import { pageDefaultFilters, remediationIdentifiers } from '../../Utilities/constants';
 import {
   arrayFromObj,
-  buildFilterChips,
+  buildActiveFilterConfig,
   decodeQueryparams,
   filterRemediatablePackageSystems,
   persistantParams,
@@ -91,7 +91,11 @@ const PackageSystems = ({ packageName }) => {
     (newColumns) => setAppliedColumns(newColumns),
   );
 
-  const [deleteFilters] = useRemoveFilter({ ...filter, search }, apply);
+  const [deleteFilters] = useRemoveFilter(
+    { ...filter, search },
+    apply,
+    pageDefaultFilters.packageSystems,
+  );
 
   const filterConfig = {
     items: [
@@ -107,15 +111,15 @@ const PackageSystems = ({ packageName }) => {
   };
 
   const activeFiltersConfig = useMemo(
-    () => ({
-      filters: buildFilterChips(
+    () =>
+      buildActiveFilterConfig(
         filter,
         search,
+        deleteFilters,
         intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+        pageDefaultFilters.packageSystems,
       ),
-      onDelete: deleteFilters,
-    }),
-    [filter, search],
+    [deleteFilters, filter, search],
   );
 
   const constructFilename = (system) => `${system.available_evra}`;

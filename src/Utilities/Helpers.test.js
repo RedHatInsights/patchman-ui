@@ -1,10 +1,11 @@
 /* eslint-disable */
 import { SortByDirection } from '@patternfly/react-table';
-import { publicDateOptions, remediationIdentifiers } from '../Utilities/constants';
+import { pageDefaultFilters, publicDateOptions, remediationIdentifiers } from '../Utilities/constants';
 import {
   addOrRemoveItemFromSet,
   arrayFromObj,
   buildApiFilters,
+  buildActiveFilterConfig,
   buildFilterChips,
   changeListParams,
   convertLimitOffset,
@@ -14,6 +15,7 @@ import {
   encodeApiParams,
   encodeParams,
   encodeURLParams,
+  hasActiveInventoryFilters,
   getFilterValue,
   getLimitFromPageSize,
   getNewSelectedItems,
@@ -310,6 +312,85 @@ describe('Helpers tests', () => {
       expect(buildFilterChips(filters, search)).toEqual(result);
     },
   );
+
+  it('buildActiveFilterConfig: should keep default filters visible while hiding reset at baseline', () => {
+    expect(
+      buildActiveFilterConfig(
+        { systems_applicable: ['gt:0'] },
+        '',
+        jest.fn(),
+        'Package',
+        pageDefaultFilters.packages,
+      ),
+    ).toEqual({
+      deleteTitle: 'Reset filters',
+      filters: [
+        {
+          category: 'Status',
+          chips: [{ id: 'gt:0', name: 'Systems with patches available', value: 'gt:0' }],
+          id: 'systems_applicable',
+        },
+      ],
+      onDelete: expect.any(Function),
+      showDeleteButton: false,
+    });
+  });
+
+  it('buildActiveFilterConfig: should show reset when current state differs from defaults', () => {
+    expect(
+      buildActiveFilterConfig(
+        { systems_applicable: ['eq:0'] },
+        '',
+        jest.fn(),
+        'Package',
+        pageDefaultFilters.packages,
+      ),
+    ).toEqual({
+      deleteTitle: 'Reset filters',
+      filters: [
+        {
+          category: 'Status',
+          chips: [{ id: 'eq:0', name: 'Systems up to date', value: 'eq:0' }],
+          id: 'systems_applicable',
+        },
+      ],
+      onDelete: expect.any(Function),
+      showDeleteButton: true,
+    });
+  });
+
+  it('buildActiveFilterConfig: should show clear filters when a page has no defaults', () => {
+    expect(
+      buildActiveFilterConfig(
+        { advisory_type_name: 'bugfix' },
+        '',
+        jest.fn(),
+        'Advisory',
+        pageDefaultFilters.advisories,
+      ),
+    ).toEqual({
+      deleteTitle: 'Clear filters',
+      filters: [
+        {
+          category: 'Advisory type',
+          chips: [{ id: 'bugfix', name: 'Bugfix', value: 'bugfix' }],
+          id: 'advisory_type_name',
+        },
+      ],
+      onDelete: expect.any(Function),
+    });
+  });
+
+  it.each`
+    filters                                                                                       | result
+    ${{}}                                                                                         | ${false}
+    ${{ hostGroupFilter: [], osFilter: {}, tagFilters: [] }}                                      | ${false}
+    ${{ osFilter: { 'RHEL-8': { 'RHEL-8-8.8': true } } }}                                         | ${true}
+    ${{ tagFilters: [{ category: 'env', values: [{ tagKey: 'stage', value: 'prod' }] }] }}      | ${true}
+    ${{ workspaceFilter: { workspaces: [{ id: 'workspace-1', name: 'Workspace 1' }] } }}         | ${true}
+  `('hasActiveInventoryFilters: should detect inventory filter activity', ({ filters, result }) => {
+    expect(hasActiveInventoryFilters(filters)).toEqual(result);
+  });
 
   it.each`
     oldParams            | newParams           | result

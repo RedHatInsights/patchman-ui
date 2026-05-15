@@ -31,6 +31,10 @@ const initStore = (state) => {
   return mockStore(state);
 };
 
+beforeEach(() => {
+  InventoryTable.mockClear();
+});
+
 const renderComponent = async (mockedStore) => {
   render(
     <ComponentWithContext renderOptions={{ store: initStore(mockedStore) }}>
@@ -179,6 +183,21 @@ describe('AdvisorySystemsTable.js', () => {
     );
   });
 
+  it('should keep active filters empty when the page is at its default state', async () => {
+    await renderComponent(mockState);
+
+    expect(InventoryTable).toHaveBeenCalledWith(
+      expect.objectContaining({
+        activeFiltersConfig: {
+          deleteTitle: 'Clear filters',
+          filters: [],
+          onDelete: expect.any(Function),
+        },
+      }),
+      {},
+    );
+  });
+
   it('should provide activeFilters config', async () => {
     const filteredState = {
       ...mockState,
@@ -194,7 +213,7 @@ describe('AdvisorySystemsTable.js', () => {
     expect(InventoryTable).toHaveBeenCalledWith(
       expect.objectContaining({
         activeFiltersConfig: {
-          deleteTitle: 'Reset filters',
+          deleteTitle: 'Clear filters',
           filters: [
             {
               category: 'Status',

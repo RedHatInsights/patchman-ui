@@ -2,9 +2,10 @@ import TableView from './TableView';
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider, useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { storeListDefaults } from '../../Utilities/constants';
+import { pageDefaultFilters, storeListDefaults } from '../../Utilities/constants';
 import { systemPackages } from '../../Utilities/RawDataForTesting';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
 
 const testObj = {
   columns: [],
@@ -132,6 +133,67 @@ describe('TableView', () => {
       </Provider>,
     );
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should keep default filter chips visible while hiding reset at the default state', () => {
+    render(
+      <Provider store={store}>
+        <TableView
+          {...testObj}
+          defaultFilters={pageDefaultFilters.packages}
+          searchChipLabel='Package'
+          store={{
+            rows: [],
+            metadata: { total_items: 10, limit: 20, offset: 0 },
+            status: { isLoading: false, code: 200, hasError: false },
+            queryParams: { filter: { systems_applicable: ['gt:0'] } },
+          }}
+        />
+      </Provider>,
+    );
+
+    expect(screen.getByText('Systems with patches available')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /reset filters/i })).not.toBeInTheDocument();
+  });
+
+  it('should show a reset button when active filters differ from defaults', () => {
+    render(
+      <Provider store={store}>
+        <TableView
+          {...testObj}
+          defaultFilters={pageDefaultFilters.packages}
+          searchChipLabel='Package'
+          store={{
+            rows: [],
+            metadata: { total_items: 10, limit: 20, offset: 0 },
+            status: { isLoading: false, code: 200, hasError: false },
+            queryParams: { filter: { systems_applicable: ['eq:0'] } },
+          }}
+        />
+      </Provider>,
+    );
+
+    expect(screen.getByRole('button', { name: /reset filters/i })).toBeInTheDocument();
+  });
+
+  it('should show a clear button for pages without defaults', () => {
+    render(
+      <Provider store={store}>
+        <TableView
+          {...testObj}
+          defaultFilters={pageDefaultFilters.advisories}
+          searchChipLabel='Advisory'
+          store={{
+            rows: [],
+            metadata: { total_items: 10, limit: 20, offset: 0 },
+            status: { isLoading: false, code: 200, hasError: false },
+            queryParams: { filter: { advisory_type_name: 'bugfix' } },
+          }}
+        />
+      </Provider>,
+    );
+
+    expect(screen.getByRole('button', { name: /clear filters/i })).toBeInTheDocument();
   });
 
   it('Should unselect', async () => {
