@@ -576,6 +576,15 @@ describe('buildApiFilters', () => {
     expect(buildApiFilters(patchFilters, inventoryFilters).group_name).toEqual(hostGroupFilter);
   });
 
+  it('uses resolved group_name when group id passed', () => {
+    const inventoryFilters = {
+      hostGroupFilter: ['019d6966-e358-7213-b88c-95c1d63f26aa'],
+    };
+    expect(buildApiFilters(patchFilters, inventoryFilters, ['My Workspace']).group_name).toEqual([
+      'My Workspace',
+    ]);
+  });
+
   it('adds a os filter when the inventory is filtered by OS', () => {
     const osFilter = {
       'RHEL-8': {

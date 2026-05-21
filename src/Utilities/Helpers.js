@@ -561,13 +561,19 @@ export const buildOsFilter = (osFilter = {}) => {
     : {};
 };
 
-export const buildApiFilters = (patchFilters, inventoryFilters) => ({
-  ...patchFilters,
-  ...(Array.isArray(inventoryFilters.hostGroupFilter) && inventoryFilters.hostGroupFilter.length > 0
-    ? { group_name: inventoryFilters.hostGroupFilter }
-    : {}),
-  ...buildOsFilter(inventoryFilters?.osFilter),
-});
+export const buildApiFilters = (patchFilters, inventoryFilters, group_name) => {
+  const resolvedGroupNames =
+    group_name ??
+    (Array.isArray(inventoryFilters?.hostGroupFilter) && inventoryFilters.hostGroupFilter.length > 0
+      ? inventoryFilters.hostGroupFilter
+      : undefined);
+
+  return {
+    ...patchFilters,
+    ...(resolvedGroupNames?.length > 0 ? { group_name: resolvedGroupNames } : {}),
+    ...buildOsFilter(inventoryFilters?.osFilter),
+  };
+};
 
 export const changeListParams = (oldParams, newParams) => {
   const newState = { ...oldParams, ...newParams };

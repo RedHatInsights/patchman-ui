@@ -21,6 +21,10 @@ jest.mock('@redhat-cloud-services/frontend-components/useChrome', () => ({
   })),
 }));
 
+jest.mock('./useHostGroupFilter', () => ({
+  useHostGroupFilter: () => (hostGroupFilter) => Promise.resolve(hostGroupFilter ?? []),
+}));
+
 describe('Custom hooks tests', () => {
   it('useSetPage, should return correct offset for pagination', () => {
     let limit = 10;
@@ -207,6 +211,8 @@ describe('Custom hooks tests', () => {
     );
 
     const request = result.current([], params);
+
+    await Promise.resolve();
 
     expect(applyInventorySnapshot).toHaveBeenCalledWith({
       filter: {

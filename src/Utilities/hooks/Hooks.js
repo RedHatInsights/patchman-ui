@@ -16,6 +16,7 @@ import {
   getDefaultFilterState,
   mapGlobalFilters,
 } from '../Helpers';
+import { useHostGroupFilter } from './useHostGroupFilter';
 import { intl } from '../IntlProvider';
 import { createSystemsSortBy } from '../SystemsHelpers';
 import { ColumnManagementModal } from '@patternfly/react-component-groups';
@@ -225,6 +226,7 @@ export const useGetEntities = (
 ) => {
   const { id, packageName } = config || {};
   const mounted = useRef(true);
+  const resolveHostGroupNames = useHostGroupFilter();
 
   const getEntities = async (
     _items,
@@ -234,7 +236,8 @@ export const useGetEntities = (
     const { selectedTags } = mapGlobalFilters(filters.tagFilters);
 
     const sort = createSystemsSortBy(orderBy, orderDirection, packageName);
-    const filter = buildApiFilters(patchParams.filter, filters);
+    const groupNames = await resolveHostGroupNames(filters?.hostGroupFilter);
+    const filter = buildApiFilters(patchParams.filter, filters, groupNames);
     const nextSelectedTags = [...activeTags, ...selectedTags];
 
     applyInventorySnapshot &&
