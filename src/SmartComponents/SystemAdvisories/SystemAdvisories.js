@@ -13,7 +13,7 @@ import { systemAdvisoriesColumns } from '../../PresentationalComponents/TableVie
 import {
   changeSystemAdvisoryListParams,
   clearSystemAdvisoriesStore,
-  expandSystemAdvisoryRow,
+  expandSystemAdvisoryRows,
   fetchApplicableSystemAdvisories,
   selectSystemAdvisoryRow,
 } from '../../store/Actions/Actions';
@@ -82,13 +82,26 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
   }, [shouldRefresh]);
 
   const onCollapse = useCallback(
-    (_, rowId, value) =>
-      dispatch(
-        expandSystemAdvisoryRow({
-          rowId: getRowIdByIndexExpandable(advisories, rowId),
+    (_, rowId, value) => {
+      let changes = [];
+      if (rowId === undefined) {
+        // toggle all
+        changes = advisories.map((advisory) => ({
+          rowId: advisory.id,
           value,
-        }),
-      ),
+        }));
+      } else {
+        // toggle single
+        changes = [
+          {
+            rowId: getRowIdByIndexExpandable(advisories, rowId),
+            value,
+          },
+        ];
+      }
+
+      return dispatch(expandSystemAdvisoryRows(changes));
+    },
     [JSON.stringify(advisories)],
   );
 

@@ -1,5 +1,5 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { Fragment, useEffect, useLayoutEffect } from 'react';
+import React, { useEffect, useState, useMemo, useCallback, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import publishDateFilter from '../../PresentationalComponents/Filters/PublishDateFilter';
@@ -11,7 +11,7 @@ import TableView from '../../PresentationalComponents/TableView/TableView';
 import { advisoriesColumns } from '../../PresentationalComponents/TableView/TableViewAssets';
 import {
   changeAdvisoryListParams,
-  expandAdvisoryRow,
+  expandAdvisoryRows,
   fetchApplicableAdvisories,
   selectAdvisoryRow,
 } from '../../store/Actions/Actions';
@@ -54,7 +54,7 @@ const Advisories = () => {
   }, [chrome]);
 
   const dispatch = useDispatch();
-  const [firstMount, setFirstMount] = React.useState(true);
+  const [firstMount, setFirstMount] = useState(true);
   const advisories = useSelector(({ AdvisoryListStore }) => AdvisoryListStore.rows);
   const expandedRows = useSelector(({ AdvisoryListStore }) => AdvisoryListStore.expandedRows);
   const queryParams = useSelector(({ AdvisoryListStore }) => AdvisoryListStore?.queryParams);
@@ -63,12 +63,12 @@ const Advisories = () => {
   const status = useSelector(({ AdvisoryListStore }) => AdvisoryListStore.status);
   const areAllSelected = useSelector(({ SystemsStore }) => SystemsStore?.areAllSelected);
 
-  const rows = React.useMemo(
+  const rows = useMemo(
     () => createAdvisoriesRows(advisories, expandedRows, selectedRows),
     [advisories, expandedRows, selectedRows],
   );
 
-  const [isRemediationLoading, setRemediationLoading] = React.useState(false);
+  const [isRemediationLoading, setRemediationLoading] = useState(false);
 
   useLayoutEffect(() => {
     if (firstMount) {
@@ -80,13 +80,28 @@ const Advisories = () => {
     }
   }, [JSON.stringify(queryParams), firstMount]);
 
-  const onCollapse = React.useCallback((_, rowId, value) =>
-    dispatch(
-      expandAdvisoryRow({
-        rowId: getRowIdByIndexExpandable(advisories, rowId),
-        value,
-      }),
-    ),
+  const onCollapse = useCallback(
+    (_, rowId, value) => {
+      let changes = [];
+      if (rowId === undefined) {
+        // toggle all
+        changes = advisories.map((advisory) => ({
+          rowId: advisory.id,
+          value,
+        }));
+      } else {
+        // toggle single
+        changes = [
+          {
+            rowId: getRowIdByIndexExpandable(advisories, rowId),
+            value,
+          },
+        ];
+      }
+
+      return dispatch(expandAdvisoryRows(changes));
+    },
+    [JSON.stringify(advisories)],
   );
 
   const onSelect = useOnSelect(rows, selectedRows, {
@@ -97,10 +112,7 @@ const Advisories = () => {
   });
 
   const onSort = useSortColumn(advisoriesColumns, apply, 2);
-  const sortBy = React.useMemo(
-    () => createSortBy(advisoriesColumns, metadata.sort, 2),
-    [metadata.sort],
-  );
+  const sortBy = useMemo(() => createSortBy(advisoriesColumns, metadata.sort, 2), [metadata.sort]);
 
   const onExport = useOnExport(
     'advisories',
@@ -127,10 +139,10 @@ const Advisories = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <Header
         title={
-          <Fragment>
+          <>
             {intl.formatMessage(messages.titlesPatchAdvisories)}
             <Popover
               headerContent='About advisories'
@@ -164,7 +176,7 @@ const Advisories = () => {
                 />
               </Icon>
             </Popover>
-          </Fragment>
+          </>
         }
         headerOUIA='advisories'
       />
@@ -207,7 +219,7 @@ const Advisories = () => {
           hasColumnManagement
         />
       </Main>
-    </React.Fragment>
+    </>
   );
 };
 

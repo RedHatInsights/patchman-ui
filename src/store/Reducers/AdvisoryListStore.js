@@ -29,7 +29,7 @@ export const AdvisoryListStore = (state = storeListDefaultsModified, action) => 
     case ActionTypes.CHANGE_ADVISORY_LIST_PARAMS:
       return changeFilters(newState, action);
 
-    case ActionTypes.EXPAND_ADVISORY_ROW:
+    case ActionTypes.EXPAND_ADVISORY_ROWS:
       return expandRows(newState, action);
 
     case ActionTypes.SELECT_ADVISORY_ROW:
