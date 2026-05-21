@@ -208,10 +208,8 @@ export const createPackagesColumn = (packageCount, systemID) => (
 export function handlePatchLink(type, name, body, windowLike) {
   const loc = windowLike?.location ?? (typeof location !== 'undefined' ? location : { href: '' });
   if (loc.href.indexOf('inventory') === -1) {
-    console.log('location.href', loc.href);
     return <InsightsLink to={`/${type}/${name}`}>{body === undefined ? name : body}</InsightsLink>;
   } else {
-    console.log('document.baseURI', document.baseURI);
     return <a href={`${document.baseURI}insights/patch/${type}/${name}`}>{body || name}</a>;
   }
 }

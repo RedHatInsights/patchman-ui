@@ -8,7 +8,7 @@ import {
 import {
   CHANGE_SYSTEM_ADVISORY_LIST_PARAMS,
   CLEAR_SYSTEM_ADVISORIES,
-  EXPAND_SYSTEM_ADVISORY_ROW,
+  EXPAND_SYSTEM_ADVISORY_ROWS,
   FETCH_APPLICABLE_SYSTEM_ADVISORIES,
   SELECT_SYSTEM_ADVISORY_ROW,
 } from '../ActionTypes';
@@ -30,15 +30,15 @@ const error = 'Error';
 
 describe('SystemAdvisoryListStore tests', () => {
   it.each`
-    state                | action                                                                      | result
-    ${storeListDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}                   | ${{ ...storeListDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: { code: undefined, isLoading: false, hasError: false }, error: {} }}
-    ${storeListDefaults} | ${{ type: action_pending, payload: {} }}                                    | ${{ ...storeListDefaults, status: { code: undefined, isLoading: true, hasError: false }, error: {} }}
-    ${storeListDefaults} | ${{ type: EXPAND_SYSTEM_ADVISORY_ROW, payload: { rowId: 1, value: true } }} | ${{ ...storeListDefaults, expandedRows: { 1: true } }}
-    ${storeListDefaults} | ${{ type: CHANGE_SYSTEM_ADVISORY_LIST_PARAMS, payload: { limit: 10 } }}     | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0, page: 1, page_size: 20 } }}
-    ${storeListDefaults} | ${{ type: SELECT_SYSTEM_ADVISORY_ROW, payload: { id: 1, selected: true } }} | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
-    ${storeListDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                        | ${storeListDefaults}
-    ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                        | ${storeListDefaults}
-    ${storeListDefaults} | ${{ type: CLEAR_SYSTEM_ADVISORIES, payload: {} }}                           | ${storeListDefaults}
+    state                | action                                                                         | result
+    ${storeListDefaults} | ${{ type: action_fulfilled, payload: fulfilled_payload }}                      | ${{ ...storeListDefaults, metadata: fulfilled_payload.meta, rows: fulfilled_payload.data, status: { code: undefined, isLoading: false, hasError: false }, error: {} }}
+    ${storeListDefaults} | ${{ type: action_pending, payload: {} }}                                       | ${{ ...storeListDefaults, status: { code: undefined, isLoading: true, hasError: false }, error: {} }}
+    ${storeListDefaults} | ${{ type: EXPAND_SYSTEM_ADVISORY_ROWS, payload: [{ rowId: 1, value: true }] }} | ${{ ...storeListDefaults, expandedRows: { 1: true } }}
+    ${storeListDefaults} | ${{ type: CHANGE_SYSTEM_ADVISORY_LIST_PARAMS, payload: { limit: 10 } }}        | ${{ ...storeListDefaults, queryParams: { limit: 10, offset: 0, page: 1, page_size: 20 } }}
+    ${storeListDefaults} | ${{ type: SELECT_SYSTEM_ADVISORY_ROW, payload: { id: 1, selected: true } }}    | ${{ ...storeListDefaults, selectedRows: { 1: true } }}
+    ${storeListDefaults} | ${{ type: 'NONSENSE', payload: {} }}                                           | ${storeListDefaults}
+    ${undefined}         | ${{ type: 'NONSENSE', payload: {} }}                                           | ${storeListDefaults}
+    ${storeListDefaults} | ${{ type: CLEAR_SYSTEM_ADVISORIES, payload: {} }}                              | ${storeListDefaults}
   `('$action', ({ state, action: { type, payload }, result }) => {
     const res = SystemAdvisoryListStore(state, { type, payload });
     expect(res).toEqual(result);

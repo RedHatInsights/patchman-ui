@@ -17,7 +17,7 @@ export const selectRows = (state, action) => {
 };
 
 export const expandRows = (state, action) => {
-  const expandedUpdated = addOrRemoveItemFromSet(state.expandedRows, [].concat(action.payload));
+  const expandedUpdated = addOrRemoveItemFromSet(state.expandedRows, action.payload);
   state = { ...state, expandedRows: expandedUpdated };
   return state;
 };
