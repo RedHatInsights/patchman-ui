@@ -83,7 +83,7 @@ test.describe('Verify exporting feature', () => {
 
     const { csvData, jsonData } = await exportCsvJson(page);
 
-    expect(csvData.length).toBe(page_count);
+    expect(csvData).toHaveLength(page_count);
 
     const matchingCsvRow = csvData.find((row) => row.id === nameText);
     expect(matchingCsvRow).toBeDefined();
@@ -97,7 +97,7 @@ test.describe('Verify exporting feature', () => {
     // CSV uses "advisory_type_name" field for type
     expect(matchingCsvRow!.advisory_type_name.toLowerCase()).toBe(typeText!.toLowerCase());
 
-    expect(jsonData.length).toBe(page_count);
+    expect(jsonData).toHaveLength(page_count);
 
     // Find matching row in JSON and validate
     const matchingJsonRow = jsonData.find((row) => row.id === nameText);
@@ -132,7 +132,7 @@ test.describe('Verify exporting feature', () => {
     const { csvData, jsonData } = await exportCsvJson(page);
 
     // After filtering, we should have exactly 1 system
-    expect(csvData.length).toBe(1);
+    expect(csvData).toHaveLength(1);
 
     // Verify our created system is in the exported data
     const matchingCsvRow = csvData.find((row) => row.display_name === system.name);
@@ -141,7 +141,7 @@ test.describe('Verify exporting feature', () => {
     expect(matchingCsvRow!.os).toBe(osText);
     expect(matchingCsvRow!.packages_installed).toBe(installedPackagesText);
 
-    expect(jsonData.length).toBe(1);
+    expect(jsonData).toHaveLength(1);
 
     // Find matching row in JSON and validate
     const matchingJsonRow = jsonData.find((row) => row.display_name === system.name);
@@ -177,7 +177,7 @@ test.describe('Verify exporting feature', () => {
     const { csvData, jsonData } = await exportCsvJson(page);
 
     // Verify row count matches UI count
-    expect(csvData.length).toBe(page_count);
+    expect(csvData).toHaveLength(page_count);
 
     const matchingCsvRow = csvData.find((row) => row.name === nameText);
     expect(matchingCsvRow).toBeDefined();
@@ -190,7 +190,7 @@ test.describe('Verify exporting feature', () => {
     expect(matchingCsvRow!.summary.toLowerCase()).toContain(summaryPrefix.toLowerCase());
     expect(matchingCsvRow!.systems_installed).toBe(installedSystemsText);
 
-    expect(jsonData.length).toBe(page_count);
+    expect(jsonData).toHaveLength(page_count);
 
     // Find matching row in JSON and validate
     const matchingJsonRow = jsonData.find((row) => row.name === nameText);
