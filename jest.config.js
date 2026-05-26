@@ -16,4 +16,5 @@ module.exports = {
   transformIgnorePatterns: [
     '<rootDir>/node_modules/(?!(@patternfly/react-core/|@patternfly/react-icons/|@redhat-cloud-services|@openshift|lodash-es|@patternfly/react-table|@patternfly/react-tokens|p-all)).*$',
   ],
+  maxWorkers: 4,
 };
