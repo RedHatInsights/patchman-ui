@@ -320,8 +320,6 @@ test('Verify filter contents', async ({ page, systems }) => {
       { name: workspaceGroup!, inputType: 'checkbox' },
       { exactMatch: true },
     );
-    await waitForTableLoad(page);
-    await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
     await expect(
       page
         .locator('td[data-label="Name"]')
