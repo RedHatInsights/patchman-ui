@@ -169,13 +169,7 @@ export const applyFilterSubtype = async (
         'i',
       ),
     });
-    let openedViaGroupFilter = false;
-    try {
-      await groupFilterBtn.waitFor({ state: 'visible', timeout: 10000 });
-      openedViaGroupFilter = true;
-    } catch {
-      // Group filter not visible; will try Menu toggle or Options menu
-    }
+    const openedViaGroupFilter = await groupFilterBtn.isVisible();
     if (openedViaGroupFilter) {
       await groupFilterBtn.click();
     } else if (subtype.inputType !== 'search') {
