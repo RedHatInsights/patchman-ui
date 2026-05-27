@@ -297,8 +297,6 @@ test('Verify filter contents', async ({ page, systems }) => {
 
   await navigateToSystems(page);
   await closePopupsIfExist(page);
-  await openConditionalFilter(page);
-  await resetFilters(page);
 
   await test.step('Verify "Operating system" filter contents', async () => {
     await openConditionalFilter(page);
