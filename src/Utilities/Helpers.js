@@ -703,18 +703,40 @@ export const isRHAdvisory = (name) => /^(RHEA|RHBA|RHSA)/.test(name);
 export const buildTagString = (tag) =>
   `${tag.category}/${tag.values?.tagKey}=${tag.value?.tagValue}`;
 
+/**
+ * Build one `tags=…` query fragment with a single URI encode pass. Inventory / insights-chrome
+ * sometimes passes tag strings that are already `tags=` segments or percent-encoded and encoding
+ * again turns `%2F` into `%252F` and breaks the patch API.
+ */
+const buildTagsQuerySegment = (rawTagInput) => {
+  if (rawTagInput === undefined || rawTagInput === null) {
+    return '';
+  }
+  let inner = String(rawTagInput).trim();
+  if (inner.startsWith('tags=')) {
+    inner = inner.slice(5);
+  }
+  let decoded = inner;
+  try {
+    decoded = decodeURIComponent(inner);
+  } catch {
+    decoded = inner;
+  }
+  return `tags=${encodeURIComponent(decoded)}`;
+};
+
 export const mapGlobalFilters = (tags, workloads = {}) => {
   let tagsInUrlFormat = [];
   tags &&
     tags.forEach((tag, index) => {
       let tagGruop = tag;
-      if (typeof tag === 'object') {
-        tagGruop = tag?.values.map(
-          (value) => `tags=${encodeURIComponent(`${tag.category}/${value.tagKey}=${value.value}`)}`,
+      if (typeof tag === 'object' && tag !== null) {
+        tagGruop = tag?.values.map((value) =>
+          buildTagsQuerySegment(`${tag.category}/${value.tagKey}=${value.value}`),
         );
         tagsInUrlFormat[index] = (Array.isArray(tagGruop) && flatten(tagGruop)) || tagGruop;
-      } else {
-        tagsInUrlFormat[index] = `tags=${encodeURIComponent(tagGruop)}`;
+      } else if (typeof tag === 'string') {
+        tagsInUrlFormat[index] = buildTagsQuerySegment(tagGruop);
       }
     });
 
@@ -730,7 +752,9 @@ export const mapGlobalFilters = (tags, workloads = {}) => {
     }),
   };
 
-  tagsInUrlFormat && (globalFilterConfig.selectedTags = tagsInUrlFormat);
+  if (tagsInUrlFormat?.length) {
+    globalFilterConfig.selectedTags = flatten(tagsInUrlFormat).filter(Boolean);
+  }
 
   return globalFilterConfig;
 };

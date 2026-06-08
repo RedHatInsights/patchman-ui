@@ -215,7 +215,7 @@ describe('Custom hooks tests', () => {
         os: 'RHEL 8.8',
       },
       filters: params.filters,
-      selectedTags: ['tags=owner%2Fteam%3Dplatform', ['tags=env%2Fstage%3Dprod']],
+      selectedTags: ['tags=owner%2Fteam%3Dplatform', 'tags=env%2Fstage%3Dprod'],
       systemProfile: { ansible: { controller_version: 'not_nil' } },
     });
     expect(applyInventorySnapshot.mock.invocationCallOrder[0]).toBeLessThan(
