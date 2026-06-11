@@ -304,6 +304,7 @@ test('Verify filter contents', async ({ page, systems }) => {
       name: osBaseName,
       inputType: 'checkbox',
     });
+    await waitForTableLoad(page);
     await page.locator('td[data-label="OS"]').first().scrollIntoViewIfNeeded();
     await expect(page.locator('td[data-label="OS"]').first()).toContainText('RHEL');
     await resetFilters(page);

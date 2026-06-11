@@ -264,7 +264,7 @@ exports[`TableView Should open remediation modal 1`] = `
               aria-expanded="false"
               aria-label="Export"
               class="pf-v6-c-menu-toggle pf-m-plain"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r62:"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r64:"
               data-ouia-component-type="PF6/MenuToggle"
               data-ouia-safe="true"
               type="button"
@@ -374,7 +374,7 @@ exports[`TableView Should open remediation modal 1`] = `
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-                data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r69:"
+                data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r6b:"
                 data-ouia-component-type="PF6/MenuToggle"
                 data-ouia-safe="true"
                 id="options-menu-top-toggle"
@@ -438,7 +438,7 @@ exports[`TableView Should open remediation modal 1`] = `
                   aria-label="Go to previous page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="previous"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-:r6a:"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-:r6c:"
                   data-ouia-component-type="PF6/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -481,7 +481,7 @@ exports[`TableView Should open remediation modal 1`] = `
                   aria-label="Go to next page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="next"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-:r6b:"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-:r6d:"
                   data-ouia-component-type="PF6/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -534,7 +534,7 @@ exports[`TableView Should open remediation modal 1`] = `
   <table
     aria-label="Patch table view"
     class="pf-v6-c-table pf-m-grid-md pf-m-sticky-header"
-    data-ouia-component-id="OUIA-Generated-Table-:r6c:"
+    data-ouia-component-id="OUIA-Generated-Table-:r6e:"
     data-ouia-component-type="PF6/Table"
     data-ouia-safe="true"
     role="grid"
@@ -544,7 +544,7 @@ exports[`TableView Should open remediation modal 1`] = `
     >
       <tr
         class="pf-v6-c-table__tr"
-        data-ouia-component-id="OUIA-Generated-TableRow-:r6d:"
+        data-ouia-component-id="OUIA-Generated-TableRow-:r6f:"
         data-ouia-component-type="PF6/TableRow"
         data-ouia-safe="true"
       />
@@ -552,10 +552,10 @@ exports[`TableView Should open remediation modal 1`] = `
   </table>
   <div
     class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
-    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r6e:"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r6g:"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
-    id="pf-random-id-:r6f:"
+    id="pf-random-id-:r6h:"
   >
     <div
       class="pf-v6-c-pagination pf-m-bottom"
@@ -572,7 +572,7 @@ exports[`TableView Should open remediation modal 1`] = `
           aria-expanded="false"
           aria-haspopup="listbox"
           class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-          data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r6j:"
+          data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r6l:"
           data-ouia-component-type="PF6/MenuToggle"
           data-ouia-safe="true"
           id="pagination-options-menu-bottom-bottom-toggle"
@@ -636,7 +636,7 @@ exports[`TableView Should open remediation modal 1`] = `
             aria-label="Go to first page"
             class="pf-v6-c-button pf-m-plain"
             data-action="first"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r6k:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r6m:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -679,7 +679,7 @@ exports[`TableView Should open remediation modal 1`] = `
             aria-label="Go to previous page"
             class="pf-v6-c-button pf-m-plain"
             data-action="previous"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r6l:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r6n:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -724,7 +724,7 @@ exports[`TableView Should open remediation modal 1`] = `
             <input
               aria-invalid="false"
               aria-label="Current page"
-              data-ouia-component-id="OUIA-Generated-TextInputBase-:r6n:"
+              data-ouia-component-id="OUIA-Generated-TextInputBase-:r6p:"
               data-ouia-component-type="PF6/TextInput"
               data-ouia-safe="true"
               max="NaN"
@@ -741,7 +741,7 @@ exports[`TableView Should open remediation modal 1`] = `
             aria-label="Go to next page"
             class="pf-v6-c-button pf-m-plain"
             data-action="next"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r6o:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r6q:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -784,7 +784,7 @@ exports[`TableView Should open remediation modal 1`] = `
             aria-label="Go to last page"
             class="pf-v6-c-button pf-m-plain"
             data-action="last"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r6p:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r6r:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -1932,7 +1932,7 @@ exports[`TableView TableView 2`] = `
               aria-expanded="false"
               aria-label="Export"
               class="pf-v6-c-menu-toggle pf-m-plain"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r4m:"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r4o:"
               data-ouia-component-type="PF6/MenuToggle"
               data-ouia-safe="true"
               type="button"
@@ -2042,7 +2042,7 @@ exports[`TableView TableView 2`] = `
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-                data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r4t:"
+                data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r4v:"
                 data-ouia-component-type="PF6/MenuToggle"
                 data-ouia-safe="true"
                 id="options-menu-top-toggle"
@@ -2106,7 +2106,7 @@ exports[`TableView TableView 2`] = `
                   aria-label="Go to previous page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="previous"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-:r4u:"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-:r50:"
                   data-ouia-component-type="PF6/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -2149,7 +2149,7 @@ exports[`TableView TableView 2`] = `
                   aria-label="Go to next page"
                   class="pf-v6-c-button pf-m-plain"
                   data-action="next"
-                  data-ouia-component-id="OUIA-Generated-Button-plain-:r4v:"
+                  data-ouia-component-id="OUIA-Generated-Button-plain-:r51:"
                   data-ouia-component-type="PF6/Button"
                   data-ouia-safe="true"
                   type="button"
@@ -2202,7 +2202,7 @@ exports[`TableView TableView 2`] = `
   <table
     aria-label="Patch table view"
     class="pf-v6-c-table pf-m-grid-md pf-m-sticky-header"
-    data-ouia-component-id="OUIA-Generated-Table-:r50:"
+    data-ouia-component-id="OUIA-Generated-Table-:r52:"
     data-ouia-component-type="PF6/Table"
     data-ouia-safe="true"
     role="grid"
@@ -2212,7 +2212,7 @@ exports[`TableView TableView 2`] = `
     >
       <tr
         class="pf-v6-c-table__tr"
-        data-ouia-component-id="OUIA-Generated-TableRow-:r51:"
+        data-ouia-component-id="OUIA-Generated-TableRow-:r53:"
         data-ouia-component-type="PF6/TableRow"
         data-ouia-safe="true"
       />
@@ -2220,10 +2220,10 @@ exports[`TableView TableView 2`] = `
   </table>
   <div
     class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
-    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r52:"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r54:"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
-    id="pf-random-id-:r53:"
+    id="pf-random-id-:r55:"
   >
     <div
       class="pf-v6-c-pagination pf-m-bottom"
@@ -2240,7 +2240,7 @@ exports[`TableView TableView 2`] = `
           aria-expanded="false"
           aria-haspopup="listbox"
           class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-          data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r57:"
+          data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r59:"
           data-ouia-component-type="PF6/MenuToggle"
           data-ouia-safe="true"
           id="pagination-options-menu-bottom-bottom-toggle"
@@ -2304,7 +2304,7 @@ exports[`TableView TableView 2`] = `
             aria-label="Go to first page"
             class="pf-v6-c-button pf-m-plain"
             data-action="first"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r58:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r5a:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -2347,7 +2347,7 @@ exports[`TableView TableView 2`] = `
             aria-label="Go to previous page"
             class="pf-v6-c-button pf-m-plain"
             data-action="previous"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r59:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r5b:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -2392,7 +2392,7 @@ exports[`TableView TableView 2`] = `
             <input
               aria-invalid="false"
               aria-label="Current page"
-              data-ouia-component-id="OUIA-Generated-TextInputBase-:r5b:"
+              data-ouia-component-id="OUIA-Generated-TextInputBase-:r5d:"
               data-ouia-component-type="PF6/TextInput"
               data-ouia-safe="true"
               max="NaN"
@@ -2409,7 +2409,7 @@ exports[`TableView TableView 2`] = `
             aria-label="Go to next page"
             class="pf-v6-c-button pf-m-plain"
             data-action="next"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r5c:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r5e:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -2452,7 +2452,7 @@ exports[`TableView TableView 2`] = `
             aria-label="Go to last page"
             class="pf-v6-c-button pf-m-plain"
             data-action="last"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r5d:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r5f:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -3051,12 +3051,46 @@ exports[`TableView test table props TableView 1`] = `
         data-ouia-safe="true"
       >
         <th
-          class="pf-v6-c-table__th"
+          class="pf-v6-c-table__th pf-v6-c-table__toggle"
           data-key="0"
           data-label=""
           scope=""
           tabindex="-1"
-        />
+        >
+          <button
+            aria-expanded="false"
+            aria-label="Expand all rows"
+            aria-labelledby="simple-node-1 expandable-toggle-1"
+            class="pf-v6-c-button pf-m-plain"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r2a:"
+            data-ouia-component-type="PF6/Button"
+            data-ouia-safe="true"
+            id="expandable-toggle-1"
+            type="button"
+          >
+            <span
+              class="pf-v6-c-button__icon"
+            >
+              <div
+                class="pf-v6-c-table__toggle-icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="pf-v6-svg"
+                  fill="currentColor"
+                  height="1em"
+                  role="img"
+                  viewBox="0 0 20 20"
+                  width="1em"
+                >
+                  <path
+                    d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"
+                  />
+                </svg>
+              </div>
+            </span>
+          </button>
+        </th>
         <th
           class="pf-v6-c-table__th"
           data-key="1"
@@ -3073,10 +3107,10 @@ exports[`TableView test table props TableView 1`] = `
   </table>
   <div
     class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
-    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r2a:"
+    data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r2b:"
     data-ouia-component-type="RHI/TableToolbar"
     data-ouia-safe="true"
-    id="pf-random-id-:r2b:"
+    id="pf-random-id-:r2c:"
   >
     <div
       class="pf-v6-c-pagination pf-m-bottom"
@@ -3093,7 +3127,7 @@ exports[`TableView test table props TableView 1`] = `
           aria-expanded="false"
           aria-haspopup="listbox"
           class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-          data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r2f:"
+          data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r2g:"
           data-ouia-component-type="PF6/MenuToggle"
           data-ouia-safe="true"
           id="pagination-options-menu-bottom-bottom-toggle"
@@ -3157,7 +3191,7 @@ exports[`TableView test table props TableView 1`] = `
             aria-label="Go to first page"
             class="pf-v6-c-button pf-m-plain"
             data-action="first"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r2g:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r2h:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -3200,7 +3234,7 @@ exports[`TableView test table props TableView 1`] = `
             aria-label="Go to previous page"
             class="pf-v6-c-button pf-m-plain"
             data-action="previous"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r2h:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r2i:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -3245,7 +3279,7 @@ exports[`TableView test table props TableView 1`] = `
             <input
               aria-invalid="false"
               aria-label="Current page"
-              data-ouia-component-id="OUIA-Generated-TextInputBase-:r2j:"
+              data-ouia-component-id="OUIA-Generated-TextInputBase-:r2k:"
               data-ouia-component-type="PF6/TextInput"
               data-ouia-safe="true"
               max="1"
@@ -3267,7 +3301,7 @@ exports[`TableView test table props TableView 1`] = `
             aria-label="Go to next page"
             class="pf-v6-c-button pf-m-plain"
             data-action="next"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r2k:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r2l:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"
@@ -3310,7 +3344,7 @@ exports[`TableView test table props TableView 1`] = `
             aria-label="Go to last page"
             class="pf-v6-c-button pf-m-plain"
             data-action="last"
-            data-ouia-component-id="OUIA-Generated-Button-plain-:r2l:"
+            data-ouia-component-id="OUIA-Generated-Button-plain-:r2m:"
             data-ouia-component-type="PF6/Button"
             data-ouia-safe="true"
             type="button"

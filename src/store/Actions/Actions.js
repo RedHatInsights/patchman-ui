@@ -54,13 +54,13 @@ export const changeAdvisorySystemsParams = (params) => ({
   payload: params,
 });
 
-export const expandAdvisoryRow = (rowState) => ({
-  type: ActionTypes.EXPAND_ADVISORY_ROW,
+export const expandAdvisoryRows = (rowState) => ({
+  type: ActionTypes.EXPAND_ADVISORY_ROWS,
   payload: rowState,
 });
 
-export const expandSystemAdvisoryRow = (rowState) => ({
-  type: ActionTypes.EXPAND_SYSTEM_ADVISORY_ROW,
+export const expandSystemAdvisoryRows = (rowState) => ({
+  type: ActionTypes.EXPAND_SYSTEM_ADVISORY_ROWS,
   payload: rowState,
 });
 
