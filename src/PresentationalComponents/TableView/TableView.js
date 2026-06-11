@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
+import React, { useState, useMemo } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table/deprecated';
 import { PrimaryToolbar } from '@redhat-cloud-services/frontend-components/PrimaryToolbar';
 import { SkeletonTable } from '@redhat-cloud-services/frontend-components/SkeletonTable';
-import PropTypes from 'prop-types';
-import React from 'react';
 import AsyncRemediationButton from '../../SmartComponents/Remediation/AsyncRemediationButton';
 import { arrayFromObj, buildActiveFilterConfig, convertLimitOffset } from '../../Utilities/Helpers';
 import { useRemoveFilter, useBulkSelectConfig } from '../../Utilities/hooks';
@@ -39,7 +39,7 @@ const TableView = ({
   actionsToggle,
   hasColumnManagement,
 }) => {
-  const [page, perPage] = React.useMemo(
+  const [page, perPage] = useMemo(
     () => convertLimitOffset(metadata.limit, metadata.offset),
     [metadata.limit, metadata.offset],
   );
@@ -48,13 +48,13 @@ const TableView = ({
   const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
   const { code, hasError, isLoading } = status;
   const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse);
-  const activeFiltersConfig = React.useMemo(
+  const activeFiltersConfig = useMemo(
     () => buildActiveFilterConfig(filter, search, deleteFilters, searchChipLabel, defaultFilters),
     [defaultFilters, deleteFilters, filter, search, searchChipLabel],
   );
 
-  const [isColumnMgmtModalOpen, setColumnMgmtModalOpen] = React.useState(false);
-  const [appliedColumns, setAppliedColumns] = React.useState(columns);
+  const [isColumnMgmtModalOpen, setColumnMgmtModalOpen] = useState(false);
+  const [appliedColumns, setAppliedColumns] = useState(columns);
 
   const shownColumns = hasColumnManagement
     ? appliedColumns?.filter((column) => column.isShown)
@@ -70,7 +70,7 @@ const TableView = ({
     : rows;
 
   return (
-    <React.Fragment>
+    <>
       <ColumnManagementModal
         appliedColumns={appliedColumns}
         applyColumns={(newColumns) => setAppliedColumns(newColumns)}
@@ -85,7 +85,7 @@ const TableView = ({
           metadata={metadata}
         />
       ) : (
-        <React.Fragment>
+        <>
           <PrimaryToolbar
             pagination={
               isLoading ? (
@@ -163,6 +163,7 @@ const TableView = ({
               variant={compact && TableVariant.compact}
               actions={actionsConfig}
               actionsToggle={actionsToggle}
+              canCollapseAll
             >
               <TableHeader />
               <TableBody />
@@ -177,9 +178,9 @@ const TableView = ({
             onPerPageSelect={onPerPageSelect}
             paginationOUIA={`bottom-${paginationOUIA}`}
           />
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   );
 };
 

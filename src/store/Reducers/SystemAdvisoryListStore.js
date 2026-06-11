@@ -24,7 +24,7 @@ export const SystemAdvisoryListStore = (state = storeListDefaults, action) => {
     case ActionTypes.CHANGE_SYSTEM_ADVISORY_LIST_PARAMS:
       return changeFilters(newState, action);
 
-    case ActionTypes.EXPAND_SYSTEM_ADVISORY_ROW:
+    case ActionTypes.EXPAND_SYSTEM_ADVISORY_ROWS:
       return expandRows(newState, action);
 
     case ActionTypes.SELECT_SYSTEM_ADVISORY_ROW:
