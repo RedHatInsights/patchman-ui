@@ -6,7 +6,7 @@ import { entityTypes } from '../../Utilities/constants';
 import { handlePatchLink, isRHAdvisory, truncate } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import ExternalLink from './ExternalLink';
-import RebootRequired from '../Snippets/RebootRequired';
+import RebootRequired from './RebootRequired';
 import AdvisorySeverity from '../AdvisorySeverity/AdvisorySeverity';
 
 export const DescriptionWithLink = ({ row }) => (

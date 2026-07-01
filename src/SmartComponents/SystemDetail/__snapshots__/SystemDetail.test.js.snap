@@ -1280,14 +1280,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                   >
                     Reboot
                   </h6>
-                  <div
-                    class="pf-v6-l-split pf-m-gutter"
-                  >
-                    <div
-                      class="pf-v6-l-split__item"
+                  <p>
+                    <span
+                      class="pf-v6-u-text-nowrap"
                     >
                       <span
-                        class="pf-v6-c-icon pf-m-md"
+                        class="pf-v6-c-icon pf-m-md pf-v6-u-mr-sm"
                       >
                         <span
                           class="pf-v6-c-icon__content pf-m-danger"
@@ -1319,13 +1317,9 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                           </svg>
                         </span>
                       </span>
-                    </div>
-                    <div
-                      class="pf-v6-l-split__item pf-m-fill"
-                    >
-                      Reboot is required
-                    </div>
-                  </div>
+                    </span>
+                    Reboot is required
+                  </p>
                   <p />
                   <a
                     href="https://access.redhat.com/errata/RHSA-2020:2774"
@@ -3374,14 +3368,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                   >
                     Reboot
                   </h6>
-                  <div
-                    class="pf-v6-l-split pf-m-gutter"
-                  >
-                    <div
-                      class="pf-v6-l-split__item"
+                  <p>
+                    <span
+                      class="pf-v6-u-text-nowrap"
                     >
                       <span
-                        class="pf-v6-c-icon pf-m-md"
+                        class="pf-v6-c-icon pf-m-md pf-v6-u-mr-sm"
                       >
                         <span
                           class="pf-v6-c-icon__content pf-m-danger"
@@ -3413,13 +3405,9 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                           </svg>
                         </span>
                       </span>
-                    </div>
-                    <div
-                      class="pf-v6-l-split__item pf-m-fill"
-                    >
-                      Reboot is required
-                    </div>
-                  </div>
+                    </span>
+                    Reboot is required
+                  </p>
                   <p />
                   <a
                     href="https://access.redhat.com/errata/RHSA-2020:2774"

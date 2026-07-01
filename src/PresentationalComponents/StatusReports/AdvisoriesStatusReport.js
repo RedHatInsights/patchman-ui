@@ -1,16 +1,16 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { PowerOffIcon } from '@patternfly/react-icons';
 import { intl } from '../../Utilities/IntlProvider';
 import { fetchApplicableAdvisoriesApi } from '../../Utilities/api/api';
 import messages from '../../Messages';
-import { CardTitle, Card, Grid, GridItem, CardBody, Title, Icon } from '@patternfly/react-core';
+import { CardTitle, Card, Grid, GridItem, CardBody, Title } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { handlePatchLink, handleLongSynopsis } from '../../Utilities/Helpers';
 import { entityTypes } from '../../Utilities/constants';
 import AdvisoryType from '../AdvisoryType/AdvisoryType';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import AdvisorySeverity from '../AdvisorySeverity/AdvisorySeverity';
+import RebootRequired from '../Snippets/RebootRequired';
 
 const StatusCard = ({ advisory: { attributes, id } }) => (
   <Card isFullHeight>
@@ -26,14 +26,7 @@ const StatusCard = ({ advisory: { attributes, id } }) => (
           {attributes.severity && (
             <AdvisorySeverity gap='gapMd' size='md' severity={attributes.severity} />
           )}
-          {attributes.reboot_required && (
-            <>
-              <Icon status='danger'>
-                <PowerOffIcon />
-              </Icon>
-              {intl.formatMessage(messages.textRebootIsRequired)}
-            </>
-          )}
+          {attributes.reboot_required && <RebootRequired />}
         </GridItem>
       </Grid>
       {handlePatchLink(
