@@ -88,7 +88,7 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
           {severity && (
             <FlexItem>
               <Title headingLevel='h5'>{intl.formatMessage(messages.labelsColumnsSeverity)}</Title>
-              <AdvisorySeverity gap='gapMd' size='md' severity={severity} />
+              <AdvisorySeverity size='md' severity={severity} />
             </FlexItem>
           )}
           {attributes.reboot_required && (
