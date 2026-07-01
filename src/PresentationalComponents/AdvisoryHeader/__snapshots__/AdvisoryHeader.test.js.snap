@@ -47,14 +47,12 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
           >
             Type
           </h5>
-          <div
-            class="pf-v6-l-split pf-m-gutter"
-          >
-            <div
-              class="pf-v6-l-split__item"
+          <p>
+            <span
+              class="pf-v6-u-text-nowrap"
             >
               <span
-                class="pf-v6-c-icon"
+                class="pf-v6-c-icon pf-m-md pf-v6-u-mr-sm"
               >
                 <span
                   class="pf-v6-c-icon__content"
@@ -86,13 +84,9 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
                   </svg>
                 </span>
               </span>
-            </div>
-            <div
-              class="pf-v6-l-split__item pf-m-fill"
-            >
-              Security
-            </div>
-          </div>
+            </span>
+            Security
+          </p>
         </div>
         <div
           class=""
@@ -190,14 +184,12 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
           >
             Type
           </h5>
-          <div
-            class="pf-v6-l-split pf-m-gutter"
-          >
-            <div
-              class="pf-v6-l-split__item"
+          <p>
+            <span
+              class="pf-v6-u-text-nowrap"
             >
               <span
-                class="pf-v6-c-icon"
+                class="pf-v6-c-icon pf-m-md pf-v6-u-mr-sm"
               >
                 <span
                   class="pf-v6-c-icon__content"
@@ -229,13 +221,9 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
                   </svg>
                 </span>
               </span>
-            </div>
-            <div
-              class="pf-v6-l-split__item pf-m-fill"
-            >
-              Security
-            </div>
-          </div>
+            </span>
+            Security
+          </p>
         </div>
         <div
           class=""

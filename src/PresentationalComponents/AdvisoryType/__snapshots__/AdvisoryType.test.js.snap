@@ -2,14 +2,12 @@
 
 exports[`AdvisoryType Should match the snapshots 1`] = `
 <DocumentFragment>
-  <div
-    class="pf-v6-l-split pf-m-gutter"
-  >
-    <div
-      class="pf-v6-l-split__item"
+  <p>
+    <span
+      class="pf-v6-u-text-nowrap"
     >
       <span
-        class="pf-v6-c-icon"
+        class="pf-v6-c-icon pf-m-sm pf-v6-u-mr-sm"
       >
         <span
           class="pf-v6-c-icon__content"
@@ -41,12 +39,8 @@ exports[`AdvisoryType Should match the snapshots 1`] = `
           </svg>
         </span>
       </span>
-    </div>
-    <div
-      class="pf-v6-l-split__item pf-m-fill"
-    >
-      Security
-    </div>
-  </div>
+    </span>
+    Security
+  </p>
 </DocumentFragment>
 `;

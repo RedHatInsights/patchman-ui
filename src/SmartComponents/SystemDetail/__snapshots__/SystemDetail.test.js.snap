@@ -1103,14 +1103,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               data-label="Type"
               tabindex="-1"
             >
-              <div
-                class="pf-v6-l-split pf-m-gutter"
-              >
-                <div
-                  class="pf-v6-l-split__item"
+              <p>
+                <span
+                  class="pf-v6-u-text-nowrap"
                 >
                   <span
-                    class="pf-v6-c-icon"
+                    class="pf-v6-c-icon pf-m-sm pf-v6-u-mr-sm"
                   >
                     <span
                       class="pf-v6-c-icon__content"
@@ -1142,13 +1140,9 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       </svg>
                     </span>
                   </span>
-                </div>
-                <div
-                  class="pf-v6-l-split__item pf-m-fill"
-                >
-                  Security
-                </div>
-              </div>
+                </span>
+                Security
+              </p>
             </td>
             <td
               class="pf-v6-c-table__td"
@@ -3193,14 +3187,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               data-label="Type"
               tabindex="-1"
             >
-              <div
-                class="pf-v6-l-split pf-m-gutter"
-              >
-                <div
-                  class="pf-v6-l-split__item"
+              <p>
+                <span
+                  class="pf-v6-u-text-nowrap"
                 >
                   <span
-                    class="pf-v6-c-icon"
+                    class="pf-v6-c-icon pf-m-sm pf-v6-u-mr-sm"
                   >
                     <span
                       class="pf-v6-c-icon__content"
@@ -3232,13 +3224,9 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                       </svg>
                     </span>
                   </span>
-                </div>
-                <div
-                  class="pf-v6-l-split__item pf-m-fill"
-                >
-                  Security
-                </div>
-              </div>
+                </span>
+                Security
+              </p>
             </td>
             <td
               class="pf-v6-c-table__td"

@@ -82,7 +82,7 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
           {attributes.advisory_type_name && (
             <FlexItem>
               <Title headingLevel='h5'>{intl.formatMessage(messages.titlesAdvisoryType)}</Title>
-              <AdvisoryType type={attributes.advisory_type_name} />
+              <AdvisoryType type={attributes.advisory_type_name} size='md' />
             </FlexItem>
           )}
           {severity && (
