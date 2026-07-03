@@ -64,7 +64,7 @@ const AdvisoriesStatusBar = () => {
 
         <Grid hasGutter>
           {advisories.data.map((advisory) => (
-            <GridItem key={advisory.id} lg={3} md={3} sm={12}>
+            <GridItem key={advisory.id} xl2={3} xl={6} lg={6} md={6} sm={12}>
               <StatusCard advisory={advisory} />
             </GridItem>
           ))}
