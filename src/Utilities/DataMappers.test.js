@@ -40,7 +40,7 @@ describe('DataMappers', () => {
   it('Should createAdvisoriesRows handle empty row data', () => {
     const result = createAdvisoriesRows([], [], []);
     expect(result[0].heightAuto).toBeTruthy();
-    expect(result[0].cells[0].props).toEqual({ colSpan: 5 });
+    expect(result[0].cells[0].props).toEqual({ colSpan: 7 });
     expect(result[0].cells[0].title.type).toEqual(EmptyAdvisoryList);
   });
 
@@ -69,14 +69,14 @@ describe('DataMappers', () => {
   it('Should createSystemAdvisoriesRows handle empty row data and show SystemUpToDate', () => {
     const result = createSystemAdvisoriesRows([], [], [], { filter: {} });
     expect(result[0].heightAuto).toBeTruthy();
-    expect(result[0].cells[0].props).toEqual({ colSpan: 6 });
+    expect(result[0].cells[0].props).toEqual({ colSpan: 7 });
     expect(result[0].cells[0].title.type).toEqual(SystemUpToDate);
   });
 
   it('Should createSystemAdvisoriesRows handle empty row data and show EmptyAdvisoryList', () => {
     const result = createSystemAdvisoriesRows([], [], [], { filter: { search: 'test' } });
     expect(result[0].heightAuto).toBeTruthy();
-    expect(result[0].cells[0].props).toEqual({ colSpan: 6 });
+    expect(result[0].cells[0].props).toEqual({ colSpan: 7 });
     expect(result[0].cells[0].title.type).toEqual(EmptyAdvisoryList);
   });
 
