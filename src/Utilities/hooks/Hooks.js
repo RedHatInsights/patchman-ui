@@ -232,6 +232,7 @@ export const useGetEntities = (
   ) => {
     const { selectedTags: activeTags = [] } = patchParams;
     const { selectedTags } = mapGlobalFilters(filters.tagFilters);
+    const search = filters?.hostnameOrId || '';
 
     const sort = createSystemsSortBy(orderBy, orderDirection, packageName);
     const filter = buildApiFilters(patchParams.filter, filters);
@@ -249,6 +250,7 @@ export const useGetEntities = (
       page,
       perPage,
       ...patchParams,
+      search,
       filter,
       selectedTags: nextSelectedTags,
       sort,
@@ -261,6 +263,7 @@ export const useGetEntities = (
         page,
         perPage,
         sort,
+        search,
       });
 
       applyMetadata && applyMetadata(items.meta);

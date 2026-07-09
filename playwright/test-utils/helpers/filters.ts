@@ -51,6 +51,16 @@ import { expect, waitForTableLoad } from 'test-utils';
 
 type FilterInputType = 'checkbox' | 'option' | 'search';
 
+const NAME_FILTER_PLACEHOLDER = /^Filter by name.*$/;
+
+const fillSearchFilterInput = async (page: Page, filterType: string, value: string) => {
+  if (filterType === 'Name') {
+    await page.getByPlaceholder(NAME_FILTER_PLACEHOLDER).fill(value);
+  } else {
+    await page.getByRole('textbox', { name: 'search-field' }).fill(value);
+  }
+};
+
 export interface FilterConfig {
   name: string; // Button/dropdown name (e.g., 'Type', 'Severity')
   type: FilterInputType; // How to interact with the filter
@@ -80,7 +90,7 @@ export const openConditionalFilter = async (page: Page) => {
  *
  * @param page - Playwright Page object
  * @param filterType - Name of the filter type (e.g., 'Type', 'Severity', 'Advisory')
- * @param exact - If true, match the filter type name exactly (e.g. "System" not "Operating system")
+ * @param exact - If true, match the filter type name exactly (e.g. "Name" not "Operating system")
  */
 export const verifyFilterTypeExists = async (page: Page, filterType: string, exact?: boolean) => {
   const menuitem = page.getByRole('menuitem', { name: filterType, exact: exact ?? false });
@@ -186,7 +196,7 @@ export const applyFilterSubtype = async (
   // Apply the subtype based on its input type
   switch (subtype.inputType) {
     case 'search':
-      await page.getByRole('textbox', { name: 'search-field' }).fill(subtype.name);
+      await fillSearchFilterInput(page, filterType, subtype.name);
       break;
 
     case 'checkbox': {
@@ -287,7 +297,7 @@ export const verifyFilterSubtypesExist = async (
  */
 export const applyFilter = async (page: Page, filter: FilterConfig) => {
   if (filter.type === 'search') {
-    await page.getByRole('textbox', { name: 'search-field' }).fill(filter.value);
+    await fillSearchFilterInput(page, filter.name, filter.value);
   } else {
     const dropdown = page.getByRole('button', { name: 'Options menu' });
     await dropdown.click();

@@ -118,6 +118,7 @@ test.describe('Verify exporting feature', () => {
 
     const row = page.locator('tbody[role="rowgroup"]').first();
     await expect(row).toBeVisible();
+    await expect(row).toContainText(system.name);
 
     const [osCell, installedPackagesCell] = await Promise.all([
       getRowCellByHeader(page, row, 'OS'),

@@ -89,7 +89,6 @@ describe('SystemsTable', () => {
           customFilters: {
             patchParams: {
               filter: { packages_updatable: 'eq:0' },
-              search: undefined,
               selectedTags: ['tags=test-tag'],
               systemProfile: { ansible: { controller_version: 'not_nil' } },
             },
@@ -106,6 +105,7 @@ describe('SystemsTable', () => {
       expect.objectContaining({
         hideFilters: {
           all: true,
+          name: false,
           tags: false,
           hostGroupFilter: false,
           operatingSystem: false,
@@ -152,16 +152,6 @@ describe('SystemsTable', () => {
         expect.objectContaining({
           filterConfig: {
             items: [
-              {
-                filterValues: {
-                  'aria-label': 'search-field',
-                  onChange: expect.any(Function),
-                  placeholder: 'Filter by name',
-                  value: undefined,
-                },
-                label: 'System',
-                type: 'text',
-              },
               {
                 filterValues: {
                   items: [

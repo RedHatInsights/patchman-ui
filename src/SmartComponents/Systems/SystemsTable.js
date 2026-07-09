@@ -61,7 +61,6 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
     systemProfile,
     selectedTags,
     filter: queryParamsFilter,
-    search,
     page,
     perPage,
     sort,
@@ -99,8 +98,8 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
     dispatch(changeTags(tags));
   };
 
-  const [deleteFilters] = useRemoveFilter({ search, ...filter }, apply, pageDefaultFilters.systems);
-  const filterConfig = buildFilterConfig(search, filter, apply);
+  const [deleteFilters] = useRemoveFilter(filter, apply, pageDefaultFilters.systems);
+  const filterConfig = buildFilterConfig(filter, apply);
   const applyInventorySnapshot = React.useCallback((nextSnapshot) => {
     setInventorySnapshot((previousSnapshot) =>
       isDeepEqualReact(previousSnapshot, nextSnapshot) ? previousSnapshot : nextSnapshot,
@@ -114,18 +113,13 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
     );
 
   const activeFiltersConfig = React.useMemo(() => {
-    const config = buildActiveFiltersConfig(
-      filter,
-      search,
-      deleteFilters,
-      pageDefaultFilters.systems,
-    );
+    const config = buildActiveFiltersConfig(filter, '', deleteFilters, pageDefaultFilters.systems);
 
     return {
       ...config,
       showDeleteButton: config.showDeleteButton || hasInventoryFilterDeviation,
     };
-  }, [deleteFilters, filter, hasInventoryFilterDeviation, search]);
+  }, [deleteFilters, filter, hasInventoryFilterDeviation]);
 
   const onSelect = useOnSelect(systems, selectedRows, {
     endpoint: ID_API_ENDPOINTS.systems,
@@ -179,7 +173,13 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
         isFullView
         autoRefresh
         initialLoading
-        hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
+        hideFilters={{
+          all: true,
+          name: false,
+          tags: false,
+          hostGroupFilter: false,
+          operatingSystem: false,
+        }}
         columns={(inventoryColumns) =>
           mergeInventoryColumns(
             appliedColumns.filter((column) => column.isShown),
@@ -194,7 +194,6 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
               }
             : {}),
           patchParams: {
-            search,
             filter,
             systemProfile,
             selectedTags,
@@ -209,7 +208,7 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
               ...defaultReducers,
               ...mergeWithEntities(
                 inventoryEntitiesReducer(SYSTEMS_LIST_COLUMNS, modifyInventory),
-                persistantParams({ page, perPage, sort, search }, decodedParams),
+                persistantParams({ page, perPage, sort }, decodedParams),
               ),
             }),
           );
