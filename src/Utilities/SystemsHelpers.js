@@ -1,4 +1,3 @@
-import searchFilter from '../PresentationalComponents/Filters/SearchFilter';
 import staleFilter from '../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import { buildActiveFilterConfig } from './Helpers';
@@ -6,17 +5,8 @@ import { intl } from './IntlProvider';
 import messages from '../Messages';
 import { defaultCompoundSortValues } from './constants';
 
-export const buildFilterConfig = (search, filter, apply) => ({
-  items: [
-    searchFilter(
-      apply,
-      search,
-      intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-      intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder),
-    ),
-    staleFilter(apply, filter),
-    systemsUpdatableFilter(apply, filter),
-  ],
+export const buildFilterConfig = (filter, apply) => ({
+  items: [staleFilter(apply, filter), systemsUpdatableFilter(apply, filter)],
 });
 
 export const buildActiveFiltersConfig = (filter, search, deleteFilters, defaultFilters) =>

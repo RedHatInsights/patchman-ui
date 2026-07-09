@@ -266,8 +266,8 @@ test.describe('Patch Filters', () => {
       await verifyFilterTypeExists(page, 'Tags');
     });
 
-    await test.step('Verify "System" filter exists', async () => {
-      await verifyFilterTypeExists(page, 'System', true);
+    await test.step('Verify "Name" filter exists', async () => {
+      await verifyFilterTypeExists(page, 'Name', true);
     });
 
     await test.step('Verify "Status" filter exists', async () => {
@@ -283,7 +283,7 @@ test.describe('Patch Filters', () => {
 });
 
 /**
- * Verify filter contents (OS, Workspace, Tags, System, Patch status).
+ * Verify filter contents (OS, Workspace, Tags, Name, Patch status).
  * Note: Workspace and Tag options come from the Inventory service (not Patch).
  */
 test('Verify filter contents', async ({ page, systems }) => {
@@ -356,10 +356,10 @@ test('Verify filter contents', async ({ page, systems }) => {
     await resetFilters(page);
   });
 
-  await test.step('Verify "System" filter contents', async () => {
+  await test.step('Verify "Name" filter contents', async () => {
     await openConditionalFilter(page);
-    // System filter shows "Filter by name" input, not a checkbox menu
-    await applyFilterSubtype(page, 'System', {
+    // Name filter shows "Filter by name" input, not a checkbox menu
+    await applyFilterSubtype(page, 'Name', {
       name: baseSystem.name,
       inputType: 'search',
     });
@@ -377,9 +377,9 @@ test('Verify filter contents', async ({ page, systems }) => {
       inputType: 'checkbox',
     });
     await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
-    await expect(page.locator('td[data-label="Name"]').first()).toContainText(
-      baseSystem.name,
-    );
+    await expect(
+      page.locator('td[data-label="Name"]').filter({ hasText: baseSystem.name }).first(),
+    ).toBeVisible();
     await resetFilters(page);
   });
 });

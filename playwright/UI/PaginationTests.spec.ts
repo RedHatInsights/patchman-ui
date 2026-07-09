@@ -61,6 +61,7 @@ test.describe('Pagination', () => {
     await test.step('Set pagination to 10 using top paginator', async () => {
       await toolbarPaginationButton.click();
       await page.getByRole('menuitem', { name: '10 per page' }).click();
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('1 - 10 of 12');
       await expect(page.getByText(`${prefix}-10`)).toBeVisible();
@@ -78,6 +79,7 @@ test.describe('Pagination', () => {
 
     await test.step('Top paginator: click go to next page button', async () => {
       await topNextButton.click();
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('11 - 12 of 12');
       await expect(page.getByText(`${prefix}-11`)).toBeVisible();
@@ -96,6 +98,7 @@ test.describe('Pagination', () => {
 
     await test.step('Top paginator: click go to previous page button', async () => {
       await topPreviousButton.click();
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('1 - 10 of 12');
       await expect(page.getByText(`${prefix}-10`)).toBeVisible();
@@ -113,6 +116,7 @@ test.describe('Pagination', () => {
 
     await test.step('Bottom paginator: click go to next page button', async () => {
       await bottomNextButton.click();
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('11 - 12 of 12');
       await expect(page.getByText(`${prefix}-11`)).toBeVisible();
@@ -131,6 +135,7 @@ test.describe('Pagination', () => {
 
     await test.step('Bottom paginator: click go to previous page button', async () => {
       await bottomPreviousButton.click();
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('1 - 10 of 12');
       await expect(page.getByText(`${prefix}-10`)).toBeVisible();
@@ -148,6 +153,7 @@ test.describe('Pagination', () => {
 
     await test.step('Bottom paginator: click go to last page button', async () => {
       await bottomLastPageButton.click();
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('11 - 12 of 12');
       await expect(page.getByText(`${prefix}-11`)).toBeVisible();
@@ -166,6 +172,7 @@ test.describe('Pagination', () => {
 
     await test.step('Bottom paginator: click go to first page button', async () => {
       await bottomFirstPageButton.click();
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('1 - 10 of 12');
       await expect(page.getByText(`${prefix}-10`)).toBeVisible();
@@ -184,6 +191,7 @@ test.describe('Pagination', () => {
     await test.step('Bottom paginator: input page number', async () => {
       await currentPageNumber.fill('2');
       await currentPageNumber.press('Enter');
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('11 - 12 of 12');
       await expect(page.getByText(`${prefix}-11`)).toBeVisible();
@@ -203,6 +211,7 @@ test.describe('Pagination', () => {
     await test.step('Bottom paginator: set pagination to 20', async () => {
       await toolbarPaginationButton.click();
       await page.getByRole('menuitem', { name: '20 per page' }).click();
+      await waitForTableLoad(page);
 
       await expect(toolbarPaginationButton).toHaveText('1 - 12 of 12');
       await expect(targetRows).toHaveCount(12);
