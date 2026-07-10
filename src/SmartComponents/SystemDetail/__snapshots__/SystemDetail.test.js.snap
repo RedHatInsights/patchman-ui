@@ -4,7 +4,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
 <DocumentFragment>
   <div
     class="pf-v6-c-tabs pf-m-animate-current pf-m-initializing-accent"
-    data-ouia-component-id="OUIA-Generated-Tabs-:r2r:"
+    data-ouia-component-id="OUIA-Generated-Tabs-:r2s:"
     data-ouia-component-type="PF6/Tabs"
     data-ouia-safe="true"
     style="--pf-v6-c-tabs--link-accent--length: 0px; --pf-v6-c-tabs--link-accent--start: 0px;"
@@ -313,7 +313,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                   aria-expanded="false"
                   aria-label="Export"
                   class="pf-v6-c-menu-toggle pf-m-plain"
-                  data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r3e:"
+                  data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r3f:"
                   data-ouia-component-type="PF6/MenuToggle"
                   data-ouia-safe="true"
                   type="button"
@@ -423,7 +423,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                     aria-expanded="false"
                     aria-haspopup="listbox"
                     class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-                    data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r3l:"
+                    data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r3m:"
                     data-ouia-component-type="PF6/MenuToggle"
                     data-ouia-safe="true"
                     id="options-menu-top-toggle"
@@ -475,7 +475,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       aria-label="Go to previous page"
                       class="pf-v6-c-button pf-m-plain"
                       data-action="previous"
-                      data-ouia-component-id="OUIA-Generated-Button-plain-:r3m:"
+                      data-ouia-component-id="OUIA-Generated-Button-plain-:r3n:"
                       data-ouia-component-type="PF6/Button"
                       data-ouia-safe="true"
                       disabled=""
@@ -519,7 +519,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       aria-label="Go to next page"
                       class="pf-v6-c-button pf-m-plain"
                       data-action="next"
-                      data-ouia-component-id="OUIA-Generated-Button-plain-:r3n:"
+                      data-ouia-component-id="OUIA-Generated-Button-plain-:r3o:"
                       data-ouia-component-type="PF6/Button"
                       data-ouia-safe="true"
                       disabled=""
@@ -583,7 +583,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
         >
           <tr
             class="pf-v6-c-table__tr"
-            data-ouia-component-id="OUIA-Generated-TableRow-:r3p:"
+            data-ouia-component-id="OUIA-Generated-TableRow-:r3q:"
             data-ouia-component-type="PF6/TableRow"
             data-ouia-safe="true"
           >
@@ -599,7 +599,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 aria-label="Expand all rows"
                 aria-labelledby="simple-node-1 expandable-toggle-1"
                 class="pf-v6-c-button pf-m-plain"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r3q:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r3r:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 id="expandable-toggle-1"
@@ -1000,7 +1000,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
         >
           <tr
             class="pf-v6-c-table__tr"
-            data-ouia-component-id="OUIA-Generated-TableRow-:r3r:"
+            data-ouia-component-id="OUIA-Generated-TableRow-:r3s:"
             data-ouia-component-type="PF6/TableRow"
             data-ouia-safe="true"
           >
@@ -1014,7 +1014,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 aria-label="Details"
                 aria-labelledby="simple-node0 expandable-toggle0"
                 class="pf-v6-c-button pf-m-plain"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r3s:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r3t:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 id="expandable-toggle0"
@@ -1056,7 +1056,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                   aria-label="Select row 0"
                   checked=""
                   class="pf-v6-c-check__input"
-                  data-ouia-component-id="OUIA-Generated-Checkbox-:r3u:"
+                  data-ouia-component-id="OUIA-Generated-Checkbox-:r3v:"
                   data-ouia-component-type="PF6/Checkbox"
                   data-ouia-safe="true"
                   id="select-0"
@@ -1215,7 +1215,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
           </tr>
           <tr
             class="pf-v6-c-table__tr pf-v6-c-table__expandable-row"
-            data-ouia-component-id="OUIA-Generated-TableRow-:r3v:"
+            data-ouia-component-id="OUIA-Generated-TableRow-:r40:"
             data-ouia-component-type="PF6/TableRow"
             data-ouia-safe="true"
             hidden=""
@@ -1242,19 +1242,22 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               >
                 <div
                   class="pf-v6-c-content patch-advisory-description"
-                  data-ouia-component-id="OUIA-Generated-Content-:r40:"
+                  data-ouia-component-id="OUIA-Generated-Content-:r41:"
                   data-ouia-component-type="PF6/Content"
                   data-ouia-safe="true"
                   data-pf-content="true"
                 >
-                  <span
-                    class="patchman-label"
+                  <h6
+                    class="pf-v6-c-title pf-m-h6"
+                    data-ouia-component-id="OUIA-Generated-Title-:r42:"
+                    data-ouia-component-type="PF6/Title"
+                    data-ouia-safe="true"
                   >
                     Description
-                  </span>
+                  </h6>
                   <p
                     class="pf-v6-c-content--p"
-                    data-ouia-component-id="OUIA-Generated-Content-:r41:"
+                    data-ouia-component-id="OUIA-Generated-Content-:r43:"
                     data-ouia-component-type="PF6/Content"
                     data-ouia-safe="true"
                     data-pf-content="true"
@@ -1270,7 +1273,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                     >
                       <h6
                         class="pf-v6-c-title pf-m-h6"
-                        data-ouia-component-id="OUIA-Generated-Title-:r42:"
+                        data-ouia-component-id="OUIA-Generated-Title-:r44:"
                         data-ouia-component-type="PF6/Title"
                         data-ouia-safe="true"
                       >
@@ -1373,10 +1376,10 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
       </table>
       <div
         class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
-        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r43:"
+        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r45:"
         data-ouia-component-type="RHI/TableToolbar"
         data-ouia-safe="true"
-        id="pf-random-id-:r44:"
+        id="pf-random-id-:r46:"
       >
         <div
           class="pf-v6-c-pagination pf-m-bottom"
@@ -1393,7 +1396,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               aria-expanded="false"
               aria-haspopup="listbox"
               class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r48:"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r4a:"
               data-ouia-component-type="PF6/MenuToggle"
               data-ouia-safe="true"
               id="pagination-options-menu-bottom-bottom-toggle"
@@ -1445,7 +1448,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 aria-label="Go to first page"
                 class="pf-v6-c-button pf-m-plain"
                 data-action="first"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r49:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r4b:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 disabled=""
@@ -1477,7 +1480,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 aria-label="Go to previous page"
                 class="pf-v6-c-button pf-m-plain"
                 data-action="previous"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r4a:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r4c:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 disabled=""
@@ -1523,7 +1526,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 <input
                   aria-invalid="false"
                   aria-label="Current page"
-                  data-ouia-component-id="OUIA-Generated-TextInputBase-:r4c:"
+                  data-ouia-component-id="OUIA-Generated-TextInputBase-:r4e:"
                   data-ouia-component-type="PF6/TextInput"
                   data-ouia-safe="true"
                   disabled=""
@@ -1546,7 +1549,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 aria-label="Go to next page"
                 class="pf-v6-c-button pf-m-plain"
                 data-action="next"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r4d:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r4f:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 disabled=""
@@ -1590,7 +1593,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 aria-label="Go to last page"
                 class="pf-v6-c-button pf-m-plain"
                 data-action="last"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r4e:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r4g:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 disabled=""
@@ -1887,7 +1890,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                   aria-expanded="false"
                   aria-label="Export"
                   class="pf-v6-c-menu-toggle pf-m-plain"
-                  data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r51:"
+                  data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r53:"
                   data-ouia-component-type="PF6/MenuToggle"
                   data-ouia-safe="true"
                   type="button"
@@ -2065,10 +2068,10 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
       </table>
       <div
         class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
-        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r5d:"
+        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r5f:"
         data-ouia-component-type="RHI/TableToolbar"
         data-ouia-safe="true"
-        id="pf-random-id-:r5e:"
+        id="pf-random-id-:r5g:"
       >
         <div
           class="pf-v6-c-pagination pf-m-bottom"
@@ -3342,14 +3345,17 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                   data-ouia-safe="true"
                   data-pf-content="true"
                 >
-                  <span
-                    class="patchman-label"
+                  <h6
+                    class="pf-v6-c-title pf-m-h6"
+                    data-ouia-component-id="OUIA-Generated-Title-:r17:"
+                    data-ouia-component-type="PF6/Title"
+                    data-ouia-safe="true"
                   >
                     Description
-                  </span>
+                  </h6>
                   <p
                     class="pf-v6-c-content--p"
-                    data-ouia-component-id="OUIA-Generated-Content-:r17:"
+                    data-ouia-component-id="OUIA-Generated-Content-:r18:"
                     data-ouia-component-type="PF6/Content"
                     data-ouia-safe="true"
                     data-pf-content="true"
@@ -3365,7 +3371,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                     >
                       <h6
                         class="pf-v6-c-title pf-m-h6"
-                        data-ouia-component-id="OUIA-Generated-Title-:r18:"
+                        data-ouia-component-id="OUIA-Generated-Title-:r19:"
                         data-ouia-component-type="PF6/Title"
                         data-ouia-safe="true"
                       >
@@ -3468,10 +3474,10 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
       </table>
       <div
         class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
-        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r19:"
+        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r1a:"
         data-ouia-component-type="RHI/TableToolbar"
         data-ouia-safe="true"
-        id="pf-random-id-:r1a:"
+        id="pf-random-id-:r1b:"
       >
         <div
           class="pf-v6-c-pagination pf-m-bottom"
@@ -3488,7 +3494,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               aria-expanded="false"
               aria-haspopup="listbox"
               class="pf-v6-c-menu-toggle pf-m-plain pf-m-text"
-              data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r1e:"
+              data-ouia-component-id="OUIA-Generated-MenuToggle-plainText-:r1f:"
               data-ouia-component-type="PF6/MenuToggle"
               data-ouia-safe="true"
               id="pagination-options-menu-bottom-bottom-toggle"
@@ -3540,7 +3546,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 aria-label="Go to first page"
                 class="pf-v6-c-button pf-m-plain"
                 data-action="first"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r1f:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r1g:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 disabled=""
@@ -3572,7 +3578,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 aria-label="Go to previous page"
                 class="pf-v6-c-button pf-m-plain"
                 data-action="previous"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r1g:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r1h:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 disabled=""
@@ -3618,7 +3624,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 <input
                   aria-invalid="false"
                   aria-label="Current page"
-                  data-ouia-component-id="OUIA-Generated-TextInputBase-:r1i:"
+                  data-ouia-component-id="OUIA-Generated-TextInputBase-:r1j:"
                   data-ouia-component-type="PF6/TextInput"
                   data-ouia-safe="true"
                   disabled=""
@@ -3641,7 +3647,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 aria-label="Go to next page"
                 class="pf-v6-c-button pf-m-plain"
                 data-action="next"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r1j:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r1k:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 disabled=""
@@ -3685,7 +3691,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 aria-label="Go to last page"
                 class="pf-v6-c-button pf-m-plain"
                 data-action="last"
-                data-ouia-component-id="OUIA-Generated-Button-plain-:r1k:"
+                data-ouia-component-id="OUIA-Generated-Button-plain-:r1l:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
                 disabled=""
@@ -3983,7 +3989,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                   aria-expanded="false"
                   aria-label="Export"
                   class="pf-v6-c-menu-toggle pf-m-plain"
-                  data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r27:"
+                  data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r28:"
                   data-ouia-component-type="PF6/MenuToggle"
                   data-ouia-safe="true"
                   type="button"
@@ -4161,10 +4167,10 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
       </table>
       <div
         class="pf-v6-c-toolbar ins-c-table__toolbar ins-m-footer"
-        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r2j:"
+        data-ouia-component-id="OUIA-Generated-RHI/TableToolbar-true-:r2k:"
         data-ouia-component-type="RHI/TableToolbar"
         data-ouia-safe="true"
-        id="pf-random-id-:r2k:"
+        id="pf-random-id-:r2l:"
       >
         <div
           class="pf-v6-c-pagination pf-m-bottom"

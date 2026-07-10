@@ -1,4 +1,4 @@
-import { Content, ContentVariants } from '@patternfly/react-core';
+import { Content, ContentVariants, Title } from '@patternfly/react-core';
 import propTypes from 'prop-types';
 import React from 'react';
 import messages from '../../Messages';
@@ -6,7 +6,6 @@ import { entityTypes } from '../../Utilities/constants';
 import { handlePatchLink, isRHAdvisory, truncate } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import ExternalLink from './ExternalLink';
-import Label from './Label';
 import RebootRequired from '../Snippets/RebootRequired';
 import AdvisorySeverity from '../AdvisorySeverity/AdvisorySeverity';
 
@@ -24,7 +23,7 @@ export const DescriptionWithLink = ({ row }) => (
         <Content component={ContentVariants.dd}>{row.attributes.cve_count}</Content>
       </Content>
     )}
-    <Label>{intl.formatMessage(messages.labelsDescription)}</Label>
+    <Title headingLevel='h6'>{intl.formatMessage(messages.labelsDescription)}</Title>
     <Content component={ContentVariants.p} style={{ whiteSpace: 'pre-line' }}>
       {truncate(
         row.attributes.description.replace(new RegExp('\\n(?=[^\\n])', 'g'), ''),
