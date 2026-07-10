@@ -8,7 +8,6 @@ import {
   createOSColumn,
   createPackagesColumn,
 } from '../../Utilities/Helpers';
-import './SystemsListAssets.scss';
 import { sortable } from '@patternfly/react-table';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import { Content, Tooltip } from '@patternfly/react-core';
