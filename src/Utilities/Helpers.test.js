@@ -294,7 +294,7 @@ describe('Helpers tests', () => {
     filters | search | result
     ${{ advisory_type_name: 'bugfix' }} | ${undefined} | ${[
   {
-    category: 'Advisory type',
+    category: 'Type',
     chips: [{ id: 'bugfix', name: 'Bugfix', value: 'bugfix' }],
     id: 'advisory_type_name',
   },
@@ -372,7 +372,7 @@ describe('Helpers tests', () => {
       deleteTitle: 'Clear filters',
       filters: [
         {
-          category: 'Advisory type',
+          category: 'Type',
           chips: [{ id: 'bugfix', name: 'Bugfix', value: 'bugfix' }],
           id: 'advisory_type_name',
         },

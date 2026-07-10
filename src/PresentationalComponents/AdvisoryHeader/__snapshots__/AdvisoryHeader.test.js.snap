@@ -57,7 +57,7 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
                     data-ouia-component-type="PF6/Title"
                     data-ouia-safe="true"
                   >
-                    Advisory type
+                    Type
                   </h5>
                 </div>
                 <div
@@ -218,7 +218,7 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
                     data-ouia-component-type="PF6/Title"
                     data-ouia-safe="true"
                   >
-                    Advisory type
+                    Type
                   </h5>
                 </div>
                 <div
