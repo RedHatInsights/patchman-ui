@@ -40,8 +40,8 @@ test.describe('Patch Filters', () => {
     await openConditionalFilter(page);
 
     await test.step('Verify "Advisory" filter with search subtype', async () => {
-      await verifyFilterTypeExists(page, 'Advisory');
-      await applyFilterSubtype(page, 'Advisory', { name: advisoryId, inputType: 'search' });
+      await verifyFilterTypeExists(page, 'Name');
+      await applyFilterSubtype(page, 'Name', { name: advisoryId, inputType: 'search' });
 
       // Assert exactly one data row exists (header + 1 row) and that it contains the advisory ID
       await page.getByRole('grid', { name: 'Patch table view' }).scrollIntoViewIfNeeded();
@@ -180,12 +180,12 @@ test.describe('Patch Filters', () => {
 
     await openConditionalFilter(page);
 
-    await test.step('Verify "Package" filter exists', async () => {
-      await verifyFilterTypeExists(page, 'Package');
+    await test.step('Verify "Name" filter exists', async () => {
+      await verifyFilterTypeExists(page, 'Name');
     });
 
-    await test.step('Verify "Package" filter with search displays expected package', async () => {
-      await applyFilterSubtype(page, 'Package', { name: packageName!, inputType: 'search' });
+    await test.step('Verify "Name" filter with search displays expected package', async () => {
+      await applyFilterSubtype(page, 'Name', { name: packageName!, inputType: 'search' });
 
       const rows = page.getByRole('row');
       await expect(rows).toHaveCount(2);

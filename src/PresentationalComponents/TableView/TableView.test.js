@@ -141,7 +141,7 @@ describe('TableView', () => {
         <TableView
           {...testObj}
           defaultFilters={pageDefaultFilters.packages}
-          searchChipLabel='Package'
+          searchChipLabel='Name'
           store={{
             rows: [],
             metadata: { total_items: 10, limit: 20, offset: 0 },
@@ -162,7 +162,7 @@ describe('TableView', () => {
         <TableView
           {...testObj}
           defaultFilters={pageDefaultFilters.packages}
-          searchChipLabel='Package'
+          searchChipLabel='Name'
           store={{
             rows: [],
             metadata: { total_items: 10, limit: 20, offset: 0 },
@@ -182,7 +182,7 @@ describe('TableView', () => {
         <TableView
           {...testObj}
           defaultFilters={pageDefaultFilters.advisories}
-          searchChipLabel='Advisory'
+          searchChipLabel='Name'
           store={{
             rows: [],
             metadata: { total_items: 10, limit: 20, offset: 0 },

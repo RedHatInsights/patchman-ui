@@ -201,7 +201,7 @@ export default defineMessages({
   labelsFiltersPackagesSearchTitle: {
     id: 'labelsFiltersPackagesSearchTitle',
     description: 'search filter placeholder for packages pages',
-    defaultMessage: 'Package',
+    defaultMessage: 'Name',
   },
   labelsFiltersPublishDate: {
     id: 'labelsFiltersPublishDate',
@@ -230,13 +230,13 @@ export default defineMessages({
   },
   labelsFiltersSearchAdvisoriesPlaceholder: {
     id: 'labelsFiltersSearchAdvisoriesPlaceholder',
-    description: 'Label for search filter placeholder',
+    description: 'filter by advisory name search bar placeholder',
     defaultMessage: 'Filter by name or synopsis',
   },
   labelsFiltersSearchAdvisoriesTitle: {
     id: 'labelsFiltersSearchAdvisoriesTitle',
-    description: 'Label for search filter placeholder',
-    defaultMessage: 'Advisory',
+    description: 'Label for searching by advisory name',
+    defaultMessage: 'Name',
   },
   labelsFiltersSeverity: {
     id: 'labelsFiltersSeverity',
@@ -265,13 +265,13 @@ export default defineMessages({
   },
   labelsFiltersSystemsSearchPlaceholder: {
     id: 'labelsFiltersSystemsSearch',
-    description: 'search filter placeholder for systems pages',
+    description: 'filter by system name search bar placeholder',
     defaultMessage: 'Filter by name',
   },
   labelsFiltersSystemsSearchTitle: {
     id: 'labelsFiltersSystemsSearchTitle',
-    description: 'search filter placeholder for systems pages',
-    defaultMessage: 'System',
+    description: 'Label for searching by system name',
+    defaultMessage: 'Name',
   },
   labelsFiltersType: {
     id: 'labelsFiltersType',

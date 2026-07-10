@@ -217,7 +217,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                         <span
                           class="ins-c-conditional-filter__value-selector"
                         >
-                          Advisory
+                          Name
                         </span>
                       </span>
                       <span
@@ -1850,7 +1850,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                         <span
                           class="ins-c-conditional-filter__value-selector"
                         >
-                          Package
+                          Name
                         </span>
                       </span>
                       <span
@@ -2399,7 +2399,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                         <span
                           class="ins-c-conditional-filter__value-selector"
                         >
-                          Advisory
+                          Name
                         </span>
                       </span>
                       <span
@@ -4033,7 +4033,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                         <span
                           class="ins-c-conditional-filter__value-selector"
                         >
-                          Package
+                          Name
                         </span>
                       </span>
                       <span

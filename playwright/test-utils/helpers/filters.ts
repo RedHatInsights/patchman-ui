@@ -89,7 +89,7 @@ export const openConditionalFilter = async (page: Page) => {
  * Opens the conditional filter dropdown if it's not already open.
  *
  * @param page - Playwright Page object
- * @param filterType - Name of the filter type (e.g., 'Type', 'Severity', 'Advisory')
+ * @param filterType - Name of the filter type (e.g., 'Type', 'Severity', 'Name')
  * @param exact - If true, match the filter type name exactly (e.g. "Name" not "Operating system")
  */
 export const verifyFilterTypeExists = async (page: Page, filterType: string, exact?: boolean) => {

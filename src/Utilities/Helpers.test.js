@@ -319,7 +319,7 @@ describe('Helpers tests', () => {
         { systems_applicable: ['gt:0'] },
         '',
         jest.fn(),
-        'Package',
+        'Name',
         pageDefaultFilters.packages,
       ),
     ).toEqual({
@@ -342,7 +342,7 @@ describe('Helpers tests', () => {
         { systems_applicable: ['eq:0'] },
         '',
         jest.fn(),
-        'Package',
+        'Name',
         pageDefaultFilters.packages,
       ),
     ).toEqual({
@@ -365,7 +365,7 @@ describe('Helpers tests', () => {
         { advisory_type_name: 'bugfix' },
         '',
         jest.fn(),
-        'Advisory',
+        'Name',
         pageDefaultFilters.advisories,
       ),
     ).toEqual({

@@ -143,7 +143,7 @@ describe('AdvisorySystemsTable.js', () => {
                   placeholder: 'Filter by name',
                   value: undefined,
                 },
-                label: 'System',
+                label: 'Name',
                 type: 'text',
               },
               {
