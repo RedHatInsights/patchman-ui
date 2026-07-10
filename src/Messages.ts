@@ -535,7 +535,7 @@ export default defineMessages({
   titlesAdvisoryType: {
     id: 'titlesAdvisoryType',
     description: 'title with capital letter',
-    defaultMessage: 'Advisory type',
+    defaultMessage: 'Type',
   },
   titlesAffectedSystems: {
     id: 'affectedSystems',
