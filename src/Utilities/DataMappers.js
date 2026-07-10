@@ -76,7 +76,7 @@ export const createAdvisoriesRows = (rows, expandedRows, selectedRows) => {
         heightAuto: true,
         cells: [
           {
-            props: { colSpan: 5 },
+            props: { colSpan: 7 },
             title: <EmptyAdvisoryList />,
           },
         ],
@@ -134,7 +134,7 @@ export const createSystemAdvisoriesRows = (rows, expandedRows, selectedRows, met
         heightAuto: true,
         cells: [
           {
-            props: { colSpan: 6 },
+            props: { colSpan: 7 },
             title: (!metadata.search &&
               metadata.filter &&
               Object.keys(metadata.filter).length === 0 && <SystemUpToDate />) || (
