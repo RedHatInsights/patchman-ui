@@ -619,23 +619,34 @@ export function sortCves(cves, index, direction) {
   };
 }
 
-export const createOSColumn = ({ osName, rhsm }) =>
-  !rhsm ? (
-    osName
-  ) : (
-    <Tooltip
-      content={intl.formatMessage(messages.textLockVersionTooltip, {
-        lockedVersion: rhsm,
-      })}
-    >
-      <Flex flex={{ default: 'flexDefault' }} gap={{ default: 'gapSm' }}>
-        <FlexItem>{osName}</FlexItem>
-        <FlexItem>
-          <InfoCircleIcon size='sm' color='var(--pf-t--global--color--status--info--100)' />
-        </FlexItem>
-      </Flex>
-    </Tooltip>
+export const createOSColumn = ({ osName, rhsm }) => {
+  // replace the last space with nbsp;
+  // this assumes the last space in `osName` string separates name from version like "RHEL 9.10" or "CentOS Linux 7.10"
+  osName = osName.replace(/ (?!.* )/, '\u00A0')
+  return (
+    !rhsm ? (
+      osName
+    ) : (
+      <Tooltip
+        content={intl.formatMessage(messages.textLockVersionTooltip, {
+          lockedVersion: rhsm,
+        })}
+      >
+        <div>
+          {osName}
+          <span className='pf-v6-u-text-nowrap'>
+            {'\u200d'}
+            <InfoCircleIcon
+              size='sm'
+              color='var(--pf-t--global--color--status--info--default)'
+              className='pf-v6-u-ml-xs'  
+            />
+          </span>
+        </div>
+      </Tooltip>
+    )
   );
+}
 
 export const removeUndefinedObjectKeys = (selectedRows) =>
   Object.keys(selectedRows).filter((row) => selectedRows[row]);
