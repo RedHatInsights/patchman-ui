@@ -150,7 +150,7 @@ const Advisories = () => {
                 <Content>
                   <Flex direction={{ default: 'column' }}>
                     <Content component={ContentVariants.p}>
-                      Advisories allow to see all of the applicable Red Hat and Extra Packages for
+                      Advisories show all applicable Red Hat and Extra Packages for
                       Enterprise Linux (EPEL) advisories for your RHEL systems checking into{' '}
                       {isLightspeedEnabled ? 'Red Hat Lightspeed' : 'Insights'}.
                     </Content>
