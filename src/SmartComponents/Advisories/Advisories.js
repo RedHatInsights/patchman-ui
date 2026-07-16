@@ -37,8 +37,8 @@ import { intl } from '../../Utilities/IntlProvider';
 import AdvisoriesStatusReport from '../../PresentationalComponents/StatusReports/AdvisoriesStatusReport';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons';
-import { Content, ContentVariants, Flex, Icon, Popover } from '@patternfly/react-core';
+import { HelpIcon } from '@patternfly/react-icons';
+import { Button, Content, Popover } from '@patternfly/react-core';
 import ExternalLink from '../../PresentationalComponents/Snippets/ExternalLink';
 import useFeatureFlag from '../../Utilities/hooks/useFeatureFlag';
 import severityFilter from '../../PresentationalComponents/Filters/SeverityFilter';
@@ -147,34 +147,32 @@ const Advisories = () => {
             <Popover
               headerContent='About advisories'
               bodyContent={
-                <Content>
-                  <Flex direction={{ default: 'column' }}>
-                    <Content component={ContentVariants.p}>
-                      Advisories show all applicable Red Hat and Extra Packages for
-                      Enterprise Linux (EPEL) advisories for your RHEL systems checking into{' '}
-                      {isLightspeedEnabled ? 'Red Hat Lightspeed' : 'Insights'}.
-                    </Content>
-                    <Content component={ContentVariants.p}>
-                      <ExternalLink
-                        link={
-                          'https://docs.redhat.com/en/documentation/red_hat_lightspeed/1-latest' +
-                          '/html/managing_system_content_and_patch_updates_on_rhel_systems' +
-                          '/patch-service-overview#patching-using-playbooks_patch-service-overview'
-                        }
-                        text='System Patching Using Remediation Playbooks'
-                      />
-                    </Content>
-                  </Flex>
+                <Content component='p'>
+                    Advisories show all applicable Red Hat and Extra Packages for
+                    Enterprise Linux (EPEL) advisories for your RHEL systems checking into{' '}
+                    {isLightspeedEnabled ? 'Red Hat Lightspeed' : 'Insights'}.
+                </Content>
+              }
+              footerContent={
+                <Content component='p'>
+                  <ExternalLink
+                    link={
+                      'https://docs.redhat.com/en/documentation/red_hat_lightspeed/1-latest' +
+                      '/html/managing_system_content_and_patch_updates_on_rhel_systems' +
+                      '/patch-service-overview#patching-using-playbooks_patch-service-overview'
+                    }
+                    text='System Patching Using Remediation Playbooks'
+                  />
                 </Content>
               }
             >
-              <Icon>
-                <OutlinedQuestionCircleIcon
-                  className='pf-v6-u-ml-sm'
-                  color='var(--pf-t--global--icon--color--subtle)'
-                  style={{ verticalAlign: '0', fontSize: 16, cursor: 'pointer' }}
-                />
-              </Icon>
+              <Button
+                icon={<HelpIcon style={{verticalAlign: '-2px' }} />}
+                variant='plain'
+                aria-label='About advisories'
+                className='pf-v6-u-ml-sm'
+                style={{ verticalAlign: '2px' }}
+              />
             </Popover>
           </>
         }
