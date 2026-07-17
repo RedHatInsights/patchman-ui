@@ -1,1 +1,1 @@
-docs/rules/typescript.md
+../../docs/rules/typescript.md

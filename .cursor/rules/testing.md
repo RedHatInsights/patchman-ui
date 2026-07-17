@@ -1,1 +1,1 @@
-docs/rules/testing.md
+../../docs/rules/testing.md
