@@ -4,9 +4,8 @@ import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
 
-// Backend note: Patch handles `filter[severity]=null` as an `IS NULL` predicate and ignores `IN (...)` lists
-// that contain NULL. We keep the UI state as arrays for PatternFly (ConditionalFilter checkbox) but collapse
-// `[null]` to bare `null` before dispatching so the API stays on the supported code path
+// Backend: bare `filter[severity]=null` for "None" only; mixed selection uses `in:1,2,null`.
+// Keep UI state as string arrays for PatternFly checkboxes, but collapse `[null]` to bare `null`.
 
 const severityFilter = (apply, currentFilter = {}) => {
   const advisorySeverityMap = React.useMemo(
@@ -41,13 +40,11 @@ const severityFilter = (apply, currentFilter = {}) => {
       return;
     }
 
-    // Convert each string into its respective raw value before passing it to the API
-    // The engine expects a scalar `null` for the "None" case and integer arrays for actual severities
+    // Scalar `null` for "None" alone; otherwise an array that may include `null` (encoded as in:1,2,null)
     const mappedSeverities = severityStrings.map((item) =>
       item === 'null' ? null : parseInt(item, 10),
     );
 
-    // Send a bare `null` so we use the API's `IS NULL` path instead of an unsupported `IN (NULL)` clause
     if (mappedSeverities.length === 1 && mappedSeverities[0] === null) {
       apply({ filter: { severity: null } });
       return;
