@@ -21,7 +21,7 @@
     "@sentry/webpack-plugin": "^5.1.1",
     "@types/dockerode": "^4.0.1",
     "@unleash/proxy-client-react": "^5.0.1",
-    "axios": "^1.16.0",
+    "axios": "^1.18.1",
     "dockerode": "^4.0.9",
     "jest-environment-jsdom": "^30.4.1",
     "p-all": "^5.0.1",
