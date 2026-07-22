@@ -11,7 +11,7 @@ export async function getTotalCountFromPagination(page: Page): Promise<number> {
 
 export const commonNonInventoryPaginationLocators = (page: Page) => {
   const currentPageNumber = page.getByRole('spinbutton', { name: 'Current page' });
-  const pageCountLocator = page.locator('.pf-v6-c-pagination__nav-page-select > span').last();
+  const totalPagesLocator = page.locator('.pf-v6-c-pagination__nav-page-select > span').last();
   const toolbarTopPaginationToggle = page.locator('#options-menu-top-toggle');
   const toolbarBottomPaginationToggle = page.locator(
     '#pagination-options-menu-bottom-bottom-toggle',
@@ -32,7 +32,7 @@ export const commonNonInventoryPaginationLocators = (page: Page) => {
   const bottomFirstPageButton = page.getByRole('button', { name: 'Go to first page' });
   return {
     currentPageNumber,
-    pageCountLocator,
+    totalPagesLocator,
     toolbarTopPaginationToggle,
     toolbarBottomPaginationToggle,
     topPreviousButton,
