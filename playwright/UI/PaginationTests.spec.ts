@@ -31,7 +31,7 @@ test.describe('Pagination', () => {
       .getByRole('button', { name: 'Go to previous page' });
     const bottomFirstPageButton = page.getByRole('button', { name: 'Go to first page' });
     const bottomLastPageButton = page.getByRole('button', { name: 'Go to last page' });
-    const { currentPageNumber, pageCountLocator } = commonNonInventoryPaginationLocators(page);
+    const { currentPageNumber, totalPagesLocator } = commonNonInventoryPaginationLocators(page);
 
     await test.step('Populate the systems table', async () => {
       const { prefix: systemPrefix } = await systems.addMany(12, 'system-pagination', 'base');
@@ -55,7 +55,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeDisabled();
       await expect(bottomFirstPageButton).toBeDisabled();
       await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText('of 1');
+      await expect(totalPagesLocator).toHaveText('of 1');
     });
 
     await test.step('Set pagination to 10 using top paginator', async () => {
@@ -74,7 +74,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeEnabled();
       await expect(bottomFirstPageButton).toBeDisabled();
       await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText('of 2');
+      await expect(totalPagesLocator).toHaveText('of 2');
     });
 
     await test.step('Top paginator: click go to next page button', async () => {
@@ -93,7 +93,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeDisabled();
       await expect(bottomFirstPageButton).toBeEnabled();
       await expect(currentPageNumber).toHaveValue('2');
-      await expect(pageCountLocator).toHaveText('of 2');
+      await expect(totalPagesLocator).toHaveText('of 2');
     });
 
     await test.step('Top paginator: click go to previous page button', async () => {
@@ -111,7 +111,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeEnabled();
       await expect(bottomFirstPageButton).toBeDisabled();
       await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText('of 2');
+      await expect(totalPagesLocator).toHaveText('of 2');
     });
 
     await test.step('Bottom paginator: click go to next page button', async () => {
@@ -130,7 +130,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeDisabled();
       await expect(bottomFirstPageButton).toBeEnabled();
       await expect(currentPageNumber).toHaveValue('2');
-      await expect(pageCountLocator).toHaveText('of 2');
+      await expect(totalPagesLocator).toHaveText('of 2');
     });
 
     await test.step('Bottom paginator: click go to previous page button', async () => {
@@ -148,7 +148,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeEnabled();
       await expect(bottomFirstPageButton).toBeDisabled();
       await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText('of 2');
+      await expect(totalPagesLocator).toHaveText('of 2');
     });
 
     await test.step('Bottom paginator: click go to last page button', async () => {
@@ -167,7 +167,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeDisabled();
       await expect(bottomFirstPageButton).toBeEnabled();
       await expect(currentPageNumber).toHaveValue('2');
-      await expect(pageCountLocator).toHaveText('of 2');
+      await expect(totalPagesLocator).toHaveText('of 2');
     });
 
     await test.step('Bottom paginator: click go to first page button', async () => {
@@ -185,7 +185,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeEnabled();
       await expect(bottomFirstPageButton).toBeDisabled();
       await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText('of 2');
+      await expect(totalPagesLocator).toHaveText('of 2');
     });
 
     await test.step('Bottom paginator: input page number', async () => {
@@ -205,7 +205,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeDisabled();
       await expect(bottomFirstPageButton).toBeEnabled();
       await expect(currentPageNumber).toHaveValue('2');
-      await expect(pageCountLocator).toHaveText('of 2');
+      await expect(totalPagesLocator).toHaveText('of 2');
     });
 
     await test.step('Bottom paginator: set pagination to 20', async () => {
@@ -222,7 +222,7 @@ test.describe('Pagination', () => {
       await expect(bottomLastPageButton).toBeDisabled();
       await expect(bottomFirstPageButton).toBeDisabled();
       await expect(currentPageNumber).toHaveValue('1');
-      await expect(pageCountLocator).toHaveText('of 1');
+      await expect(totalPagesLocator).toHaveText('of 1');
     });
   });
 
@@ -230,7 +230,7 @@ test.describe('Pagination', () => {
     test(`Verify pagination on ${name} page`, async ({ page, systems }) => {
       const {
         currentPageNumber,
-        pageCountLocator,
+        totalPagesLocator,
         toolbarTopPaginationToggle,
         toolbarBottomPaginationToggle,
         topPreviousButton,
@@ -280,7 +280,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeDisabled();
         await expect(currentPageNumber).toHaveValue('1');
-        initialPageCount = (await pageCountLocator.textContent())?.split(' ').pop() ?? '';
+        initialPageCount = (await totalPagesLocator.textContent())?.split(' ').pop() ?? '';
       });
 
       await test.step('Top paginator: set pagination to 10', async () => {
@@ -297,7 +297,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeDisabled();
         await expect(currentPageNumber).toHaveValue('1');
-        pageCount = (await pageCountLocator.textContent())?.split(' ').pop() ?? '';
+        pageCount = (await totalPagesLocator.textContent())?.split(' ').pop() ?? '';
       });
 
       await test.step('Top paginator: click go to next page button', async () => {
@@ -313,7 +313,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeEnabled();
         await expect(currentPageNumber).toHaveValue('2');
-        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+        await expect(totalPagesLocator).toHaveText(`of ${pageCount}`);
       });
 
       await test.step('Top paginator: click go to previous page button', async () => {
@@ -329,7 +329,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeDisabled();
         await expect(currentPageNumber).toHaveValue('1');
-        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+        await expect(totalPagesLocator).toHaveText(`of ${pageCount}`);
       });
 
       await test.step('Bottom paginator: click go to next page button', async () => {
@@ -345,7 +345,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeEnabled();
         await expect(currentPageNumber).toHaveValue('2');
-        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+        await expect(totalPagesLocator).toHaveText(`of ${pageCount}`);
       });
 
       await test.step('Bottom paginator: click go to previous page button', async () => {
@@ -361,7 +361,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeDisabled();
         await expect(currentPageNumber).toHaveValue('1');
-        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+        await expect(totalPagesLocator).toHaveText(`of ${pageCount}`);
       });
 
       await test.step('Bottom paginator: click go to last page button', async () => {
@@ -381,7 +381,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeDisabled();
         await expect(bottomFirstPageButton).toBeEnabled();
         await expect(currentPageNumber).toHaveValue(pageCount);
-        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+        await expect(totalPagesLocator).toHaveText(`of ${pageCount}`);
       });
 
       await test.step('Bottom paginator: click go to first page button', async () => {
@@ -397,7 +397,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeDisabled();
         await expect(currentPageNumber).toHaveValue('1');
-        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+        await expect(totalPagesLocator).toHaveText(`of ${pageCount}`);
       });
 
       await test.step('Bottom paginator: input page number', async () => {
@@ -414,7 +414,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeEnabled();
         await expect(currentPageNumber).toHaveValue('3');
-        await expect(pageCountLocator).toHaveText(`of ${pageCount}`);
+        await expect(totalPagesLocator).toHaveText(`of ${pageCount}`);
       });
 
       await test.step('Bottom paginator: set pagination to 20', async () => {
@@ -431,7 +431,7 @@ test.describe('Pagination', () => {
         await expect(bottomLastPageButton).toBeEnabled();
         await expect(bottomFirstPageButton).toBeDisabled();
         await expect(currentPageNumber).toHaveValue('1');
-        await expect(pageCountLocator).toHaveText(`of ${initialPageCount}`);
+        await expect(totalPagesLocator).toHaveText(`of ${initialPageCount}`);
       });
     });
   });
