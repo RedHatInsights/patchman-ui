@@ -86,103 +86,198 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
           >
             <div
-              class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+              class="pf-v6-c-toolbar__item"
             >
-              <div
-                class="pf-v6-c-toolbar__item"
+              <button
+                aria-expanded="false"
+                aria-label="Select"
+                class="pf-v6-c-menu-toggle"
+                data-ouia-component-id="BulkSelect"
+                data-ouia-component-type="PF6/MenuToggle"
+                data-ouia-safe="true"
+                type="button"
               >
-                <button
-                  aria-expanded="false"
-                  aria-label="Select"
-                  class="pf-v6-c-menu-toggle"
-                  data-ouia-component-id="BulkSelect"
-                  data-ouia-component-type="PF6/MenuToggle"
-                  data-ouia-safe="true"
-                  type="button"
+                <span
+                  class="pf-v6-c-menu-toggle__text"
+                >
+                  <label
+                    class="pf-v6-c-check"
+                  >
+                    <input
+                      aria-invalid="false"
+                      aria-label="Select all"
+                      class="pf-v6-c-check__input"
+                      data-ouia-component-id="BulkSelectCheckbox"
+                      data-ouia-component-type="PF6/MenuToggleCheckbox"
+                      data-ouia-safe="true"
+                      name="toggle-checkbox"
+                      type="checkbox"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pf-v6-c-check__label"
+                      id="toggle-checkbox"
+                    >
+                      1 selected
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="pf-v6-c-menu-toggle__controls"
                 >
                   <span
-                    class="pf-v6-c-menu-toggle__text"
+                    class="pf-v6-c-menu-toggle__toggle-icon"
                   >
-                    <label
-                      class="pf-v6-c-check"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-label="Select all"
-                        class="pf-v6-c-check__input"
-                        data-ouia-component-id="BulkSelectCheckbox"
-                        data-ouia-component-type="PF6/MenuToggleCheckbox"
-                        data-ouia-safe="true"
-                        name="toggle-checkbox"
-                        type="checkbox"
-                      />
-                      <span
-                        aria-hidden="true"
-                        class="pf-v6-c-check__label"
-                        id="toggle-checkbox"
-                      >
-                        1 selected
-                      </span>
-                    </label>
-                  </span>
-                  <span
-                    class="pf-v6-c-menu-toggle__controls"
-                  >
-                    <span
-                      class="pf-v6-c-menu-toggle__toggle-icon"
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      width="1em"
                     >
                       <svg
-                        aria-hidden="true"
-                        class="pf-v6-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        width="1em"
+                        class="pf-v6-icon-default"
+                        viewBox="0 0 320 512"
                       >
-                        <svg
-                          class="pf-v6-icon-default"
-                          viewBox="0 0 320 512"
-                        >
-                          <path
-                            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                          />
-                        </svg>
-                        <svg
-                          class="pf-v6-icon-rh-ui"
-                          viewBox="0 0 32 32"
-                        >
-                          <path
-                            d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
-                          />
-                        </svg>
+                        <path
+                          d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        />
                       </svg>
-                    </span>
+                      <svg
+                        class="pf-v6-icon-rh-ui"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
+                        />
+                      </svg>
+                    </svg>
                   </span>
-                </button>
-              </div>
+                </span>
+              </button>
+            </div>
+            <div
+              class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+            >
               <div
-                class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+                class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
               >
                 <div
-                  class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
+                  class="pf-v6-l-split__item"
                 >
-                  <div
-                    class="pf-v6-l-split__item"
+                  <button
+                    aria-expanded="false"
+                    aria-label="Conditional filter toggle"
+                    class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
+                    data-ouia-component-id="ConditionalFilterToggle"
+                    data-ouia-component-type="PF6/MenuToggle"
+                    data-ouia-safe="true"
+                    type="button"
                   >
-                    <button
-                      aria-expanded="false"
-                      aria-label="Conditional filter toggle"
-                      class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
-                      data-ouia-component-id="ConditionalFilterToggle"
-                      data-ouia-component-type="PF6/MenuToggle"
-                      data-ouia-safe="true"
-                      type="button"
+                    <span
+                      class="pf-v6-c-menu-toggle__text"
                     >
                       <span
-                        class="pf-v6-c-menu-toggle__text"
+                        class="pf-v6-c-icon pf-m-md"
                       >
                         <span
-                          class="pf-v6-c-icon pf-m-md"
+                          class="pf-v6-c-icon__content"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="pf-v6-svg"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            width="1em"
+                          >
+                            <svg
+                              class="pf-v6-icon-default"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                              />
+                            </svg>
+                            <svg
+                              class="pf-v6-icon-rh-ui"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                              />
+                            </svg>
+                          </svg>
+                        </span>
+                      </span>
+                      <span
+                        class="ins-c-conditional-filter__value-selector"
+                      >
+                        Name
+                      </span>
+                    </span>
+                    <span
+                      class="pf-v6-c-menu-toggle__controls"
+                    >
+                      <span
+                        class="pf-v6-c-menu-toggle__toggle-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v6-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          width="1em"
+                        >
+                          <svg
+                            class="pf-v6-icon-default"
+                            viewBox="0 0 320 512"
+                          >
+                            <path
+                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                            />
+                          </svg>
+                          <svg
+                            class="pf-v6-icon-rh-ui"
+                            viewBox="0 0 32 32"
+                          >
+                            <path
+                              d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
+                            />
+                          </svg>
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="pf-v6-l-split__item pf-m-fill"
+                  data-ouia-component-id="ConditionalFilter"
+                >
+                  <span
+                    class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
+                  >
+                    <input
+                      aria-invalid="false"
+                      aria-label="search-field"
+                      data-ouia-component-id="ConditionalFilter"
+                      data-ouia-component-type="PF6/TextInput"
+                      data-ouia-safe="true"
+                      placeholder="Filter by name or synopsis"
+                      type="text"
+                      value=""
+                      widget-type="InsightsInput"
+                    />
+                    <span
+                      class="pf-v6-c-form-control__utilities"
+                    >
+                      <span
+                        class="pf-v6-c-form-control__icon"
+                      >
+                        <span
+                          class="pf-v6-c-icon pf-m-md ins-c-search-icon"
                         >
                           <span
                             class="pf-v6-c-icon__content"
@@ -200,7 +295,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                                 viewBox="0 0 512 512"
                               >
                                 <path
-                                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
                                 />
                               </svg>
                               <svg
@@ -208,114 +303,15 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                                 viewBox="0 0 32 32"
                               >
                                 <path
-                                  d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                                  d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
                                 />
                               </svg>
                             </svg>
                           </span>
                         </span>
-                        <span
-                          class="ins-c-conditional-filter__value-selector"
-                        >
-                          Name
-                        </span>
-                      </span>
-                      <span
-                        class="pf-v6-c-menu-toggle__controls"
-                      >
-                        <span
-                          class="pf-v6-c-menu-toggle__toggle-icon"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="pf-v6-svg"
-                            fill="currentColor"
-                            height="1em"
-                            role="img"
-                            width="1em"
-                          >
-                            <svg
-                              class="pf-v6-icon-default"
-                              viewBox="0 0 320 512"
-                            >
-                              <path
-                                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                              />
-                            </svg>
-                            <svg
-                              class="pf-v6-icon-rh-ui"
-                              viewBox="0 0 32 32"
-                            >
-                              <path
-                                d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
-                              />
-                            </svg>
-                          </svg>
-                        </span>
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="pf-v6-l-split__item pf-m-fill"
-                    data-ouia-component-id="ConditionalFilter"
-                  >
-                    <span
-                      class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-label="search-field"
-                        data-ouia-component-id="ConditionalFilter"
-                        data-ouia-component-type="PF6/TextInput"
-                        data-ouia-safe="true"
-                        placeholder="Filter by name or synopsis"
-                        type="text"
-                        value=""
-                        widget-type="InsightsInput"
-                      />
-                      <span
-                        class="pf-v6-c-form-control__utilities"
-                      >
-                        <span
-                          class="pf-v6-c-form-control__icon"
-                        >
-                          <span
-                            class="pf-v6-c-icon pf-m-md ins-c-search-icon"
-                          >
-                            <span
-                              class="pf-v6-c-icon__content"
-                            >
-                              <svg
-                                aria-hidden="true"
-                                class="pf-v6-svg"
-                                fill="currentColor"
-                                height="1em"
-                                role="img"
-                                width="1em"
-                              >
-                                <svg
-                                  class="pf-v6-icon-default"
-                                  viewBox="0 0 512 512"
-                                >
-                                  <path
-                                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                                  />
-                                </svg>
-                                <svg
-                                  class="pf-v6-icon-rh-ui"
-                                  viewBox="0 0 32 32"
-                                >
-                                  <path
-                                    d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
-                                  />
-                                </svg>
-                              </svg>
-                            </span>
-                          </span>
-                        </span>
                       </span>
                     </span>
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
@@ -1730,97 +1726,192 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
           >
             <div
-              class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+              class="pf-v6-c-toolbar__item"
             >
-              <div
-                class="pf-v6-c-toolbar__item"
+              <button
+                aria-expanded="false"
+                aria-label="Select"
+                class="pf-v6-c-menu-toggle pf-m-disabled"
+                data-ouia-component-id="BulkSelect"
+                data-ouia-component-type="PF6/MenuToggle"
+                data-ouia-safe="true"
+                disabled=""
+                type="button"
               >
-                <button
-                  aria-expanded="false"
-                  aria-label="Select"
-                  class="pf-v6-c-menu-toggle pf-m-disabled"
-                  data-ouia-component-id="BulkSelect"
-                  data-ouia-component-type="PF6/MenuToggle"
-                  data-ouia-safe="true"
-                  disabled=""
-                  type="button"
+                <span
+                  class="pf-v6-c-menu-toggle__text"
+                >
+                  <label
+                    class="pf-v6-c-check pf-m-standalone"
+                  >
+                    <input
+                      aria-invalid="false"
+                      aria-label="Select all"
+                      class="pf-v6-c-check__input"
+                      data-ouia-component-id="BulkSelectCheckbox"
+                      data-ouia-component-type="PF6/MenuToggleCheckbox"
+                      data-ouia-safe="true"
+                      name="toggle-checkbox"
+                      type="checkbox"
+                    />
+                  </label>
+                </span>
+                <span
+                  class="pf-v6-c-menu-toggle__controls"
                 >
                   <span
-                    class="pf-v6-c-menu-toggle__text"
+                    class="pf-v6-c-menu-toggle__toggle-icon"
                   >
-                    <label
-                      class="pf-v6-c-check pf-m-standalone"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-label="Select all"
-                        class="pf-v6-c-check__input"
-                        data-ouia-component-id="BulkSelectCheckbox"
-                        data-ouia-component-type="PF6/MenuToggleCheckbox"
-                        data-ouia-safe="true"
-                        name="toggle-checkbox"
-                        type="checkbox"
-                      />
-                    </label>
-                  </span>
-                  <span
-                    class="pf-v6-c-menu-toggle__controls"
-                  >
-                    <span
-                      class="pf-v6-c-menu-toggle__toggle-icon"
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      width="1em"
                     >
                       <svg
-                        aria-hidden="true"
-                        class="pf-v6-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        width="1em"
+                        class="pf-v6-icon-default"
+                        viewBox="0 0 320 512"
                       >
-                        <svg
-                          class="pf-v6-icon-default"
-                          viewBox="0 0 320 512"
-                        >
-                          <path
-                            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                          />
-                        </svg>
-                        <svg
-                          class="pf-v6-icon-rh-ui"
-                          viewBox="0 0 32 32"
-                        >
-                          <path
-                            d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
-                          />
-                        </svg>
+                        <path
+                          d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        />
                       </svg>
-                    </span>
+                      <svg
+                        class="pf-v6-icon-rh-ui"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
+                        />
+                      </svg>
+                    </svg>
                   </span>
-                </button>
-              </div>
+                </span>
+              </button>
+            </div>
+            <div
+              class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+            >
               <div
-                class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+                class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
               >
                 <div
-                  class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
+                  class="pf-v6-l-split__item"
                 >
-                  <div
-                    class="pf-v6-l-split__item"
+                  <button
+                    aria-expanded="false"
+                    aria-label="Conditional filter toggle"
+                    class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
+                    data-ouia-component-id="ConditionalFilterToggle"
+                    data-ouia-component-type="PF6/MenuToggle"
+                    data-ouia-safe="true"
+                    type="button"
                   >
-                    <button
-                      aria-expanded="false"
-                      aria-label="Conditional filter toggle"
-                      class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
-                      data-ouia-component-id="ConditionalFilterToggle"
-                      data-ouia-component-type="PF6/MenuToggle"
-                      data-ouia-safe="true"
-                      type="button"
+                    <span
+                      class="pf-v6-c-menu-toggle__text"
                     >
                       <span
-                        class="pf-v6-c-menu-toggle__text"
+                        class="pf-v6-c-icon pf-m-md"
                       >
                         <span
-                          class="pf-v6-c-icon pf-m-md"
+                          class="pf-v6-c-icon__content"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="pf-v6-svg"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            width="1em"
+                          >
+                            <svg
+                              class="pf-v6-icon-default"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                              />
+                            </svg>
+                            <svg
+                              class="pf-v6-icon-rh-ui"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                              />
+                            </svg>
+                          </svg>
+                        </span>
+                      </span>
+                      <span
+                        class="ins-c-conditional-filter__value-selector"
+                      >
+                        Name
+                      </span>
+                    </span>
+                    <span
+                      class="pf-v6-c-menu-toggle__controls"
+                    >
+                      <span
+                        class="pf-v6-c-menu-toggle__toggle-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v6-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          width="1em"
+                        >
+                          <svg
+                            class="pf-v6-icon-default"
+                            viewBox="0 0 320 512"
+                          >
+                            <path
+                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                            />
+                          </svg>
+                          <svg
+                            class="pf-v6-icon-rh-ui"
+                            viewBox="0 0 32 32"
+                          >
+                            <path
+                              d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
+                            />
+                          </svg>
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="pf-v6-l-split__item pf-m-fill"
+                  data-ouia-component-id="ConditionalFilter"
+                >
+                  <span
+                    class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
+                  >
+                    <input
+                      aria-invalid="false"
+                      aria-label="search-field"
+                      data-ouia-component-id="ConditionalFilter"
+                      data-ouia-component-type="PF6/TextInput"
+                      data-ouia-safe="true"
+                      placeholder="Filter by name or summary"
+                      type="text"
+                      value=""
+                      widget-type="InsightsInput"
+                    />
+                    <span
+                      class="pf-v6-c-form-control__utilities"
+                    >
+                      <span
+                        class="pf-v6-c-form-control__icon"
+                      >
+                        <span
+                          class="pf-v6-c-icon pf-m-md ins-c-search-icon"
                         >
                           <span
                             class="pf-v6-c-icon__content"
@@ -1838,7 +1929,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                                 viewBox="0 0 512 512"
                               >
                                 <path
-                                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
                                 />
                               </svg>
                               <svg
@@ -1846,114 +1937,15 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                                 viewBox="0 0 32 32"
                               >
                                 <path
-                                  d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                                  d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
                                 />
                               </svg>
                             </svg>
                           </span>
                         </span>
-                        <span
-                          class="ins-c-conditional-filter__value-selector"
-                        >
-                          Name
-                        </span>
-                      </span>
-                      <span
-                        class="pf-v6-c-menu-toggle__controls"
-                      >
-                        <span
-                          class="pf-v6-c-menu-toggle__toggle-icon"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="pf-v6-svg"
-                            fill="currentColor"
-                            height="1em"
-                            role="img"
-                            width="1em"
-                          >
-                            <svg
-                              class="pf-v6-icon-default"
-                              viewBox="0 0 320 512"
-                            >
-                              <path
-                                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                              />
-                            </svg>
-                            <svg
-                              class="pf-v6-icon-rh-ui"
-                              viewBox="0 0 32 32"
-                            >
-                              <path
-                                d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
-                              />
-                            </svg>
-                          </svg>
-                        </span>
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="pf-v6-l-split__item pf-m-fill"
-                    data-ouia-component-id="ConditionalFilter"
-                  >
-                    <span
-                      class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-label="search-field"
-                        data-ouia-component-id="ConditionalFilter"
-                        data-ouia-component-type="PF6/TextInput"
-                        data-ouia-safe="true"
-                        placeholder="Filter by name or summary"
-                        type="text"
-                        value=""
-                        widget-type="InsightsInput"
-                      />
-                      <span
-                        class="pf-v6-c-form-control__utilities"
-                      >
-                        <span
-                          class="pf-v6-c-form-control__icon"
-                        >
-                          <span
-                            class="pf-v6-c-icon pf-m-md ins-c-search-icon"
-                          >
-                            <span
-                              class="pf-v6-c-icon__content"
-                            >
-                              <svg
-                                aria-hidden="true"
-                                class="pf-v6-svg"
-                                fill="currentColor"
-                                height="1em"
-                                role="img"
-                                width="1em"
-                              >
-                                <svg
-                                  class="pf-v6-icon-default"
-                                  viewBox="0 0 512 512"
-                                >
-                                  <path
-                                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                                  />
-                                </svg>
-                                <svg
-                                  class="pf-v6-icon-rh-ui"
-                                  viewBox="0 0 32 32"
-                                >
-                                  <path
-                                    d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
-                                  />
-                                </svg>
-                              </svg>
-                            </span>
-                          </span>
-                        </span>
                       </span>
                     </span>
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
@@ -2273,103 +2265,198 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
           >
             <div
-              class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+              class="pf-v6-c-toolbar__item"
             >
-              <div
-                class="pf-v6-c-toolbar__item"
+              <button
+                aria-expanded="false"
+                aria-label="Select"
+                class="pf-v6-c-menu-toggle"
+                data-ouia-component-id="BulkSelect"
+                data-ouia-component-type="PF6/MenuToggle"
+                data-ouia-safe="true"
+                type="button"
               >
-                <button
-                  aria-expanded="false"
-                  aria-label="Select"
-                  class="pf-v6-c-menu-toggle"
-                  data-ouia-component-id="BulkSelect"
-                  data-ouia-component-type="PF6/MenuToggle"
-                  data-ouia-safe="true"
-                  type="button"
+                <span
+                  class="pf-v6-c-menu-toggle__text"
+                >
+                  <label
+                    class="pf-v6-c-check"
+                  >
+                    <input
+                      aria-invalid="false"
+                      aria-label="Select all"
+                      class="pf-v6-c-check__input"
+                      data-ouia-component-id="BulkSelectCheckbox"
+                      data-ouia-component-type="PF6/MenuToggleCheckbox"
+                      data-ouia-safe="true"
+                      name="toggle-checkbox"
+                      type="checkbox"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pf-v6-c-check__label"
+                      id="toggle-checkbox"
+                    >
+                      1 selected
+                    </span>
+                  </label>
+                </span>
+                <span
+                  class="pf-v6-c-menu-toggle__controls"
                 >
                   <span
-                    class="pf-v6-c-menu-toggle__text"
+                    class="pf-v6-c-menu-toggle__toggle-icon"
                   >
-                    <label
-                      class="pf-v6-c-check"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-label="Select all"
-                        class="pf-v6-c-check__input"
-                        data-ouia-component-id="BulkSelectCheckbox"
-                        data-ouia-component-type="PF6/MenuToggleCheckbox"
-                        data-ouia-safe="true"
-                        name="toggle-checkbox"
-                        type="checkbox"
-                      />
-                      <span
-                        aria-hidden="true"
-                        class="pf-v6-c-check__label"
-                        id="toggle-checkbox"
-                      >
-                        1 selected
-                      </span>
-                    </label>
-                  </span>
-                  <span
-                    class="pf-v6-c-menu-toggle__controls"
-                  >
-                    <span
-                      class="pf-v6-c-menu-toggle__toggle-icon"
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      width="1em"
                     >
                       <svg
-                        aria-hidden="true"
-                        class="pf-v6-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        width="1em"
+                        class="pf-v6-icon-default"
+                        viewBox="0 0 320 512"
                       >
-                        <svg
-                          class="pf-v6-icon-default"
-                          viewBox="0 0 320 512"
-                        >
-                          <path
-                            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                          />
-                        </svg>
-                        <svg
-                          class="pf-v6-icon-rh-ui"
-                          viewBox="0 0 32 32"
-                        >
-                          <path
-                            d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
-                          />
-                        </svg>
+                        <path
+                          d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        />
                       </svg>
-                    </span>
+                      <svg
+                        class="pf-v6-icon-rh-ui"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
+                        />
+                      </svg>
+                    </svg>
                   </span>
-                </button>
-              </div>
+                </span>
+              </button>
+            </div>
+            <div
+              class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+            >
               <div
-                class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+                class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
               >
                 <div
-                  class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
+                  class="pf-v6-l-split__item"
                 >
-                  <div
-                    class="pf-v6-l-split__item"
+                  <button
+                    aria-expanded="false"
+                    aria-label="Conditional filter toggle"
+                    class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
+                    data-ouia-component-id="ConditionalFilterToggle"
+                    data-ouia-component-type="PF6/MenuToggle"
+                    data-ouia-safe="true"
+                    type="button"
                   >
-                    <button
-                      aria-expanded="false"
-                      aria-label="Conditional filter toggle"
-                      class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
-                      data-ouia-component-id="ConditionalFilterToggle"
-                      data-ouia-component-type="PF6/MenuToggle"
-                      data-ouia-safe="true"
-                      type="button"
+                    <span
+                      class="pf-v6-c-menu-toggle__text"
                     >
                       <span
-                        class="pf-v6-c-menu-toggle__text"
+                        class="pf-v6-c-icon pf-m-md"
                       >
                         <span
-                          class="pf-v6-c-icon pf-m-md"
+                          class="pf-v6-c-icon__content"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="pf-v6-svg"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            width="1em"
+                          >
+                            <svg
+                              class="pf-v6-icon-default"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                              />
+                            </svg>
+                            <svg
+                              class="pf-v6-icon-rh-ui"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                              />
+                            </svg>
+                          </svg>
+                        </span>
+                      </span>
+                      <span
+                        class="ins-c-conditional-filter__value-selector"
+                      >
+                        Name
+                      </span>
+                    </span>
+                    <span
+                      class="pf-v6-c-menu-toggle__controls"
+                    >
+                      <span
+                        class="pf-v6-c-menu-toggle__toggle-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v6-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          width="1em"
+                        >
+                          <svg
+                            class="pf-v6-icon-default"
+                            viewBox="0 0 320 512"
+                          >
+                            <path
+                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                            />
+                          </svg>
+                          <svg
+                            class="pf-v6-icon-rh-ui"
+                            viewBox="0 0 32 32"
+                          >
+                            <path
+                              d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
+                            />
+                          </svg>
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="pf-v6-l-split__item pf-m-fill"
+                  data-ouia-component-id="ConditionalFilter"
+                >
+                  <span
+                    class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
+                  >
+                    <input
+                      aria-invalid="false"
+                      aria-label="search-field"
+                      data-ouia-component-id="ConditionalFilter"
+                      data-ouia-component-type="PF6/TextInput"
+                      data-ouia-safe="true"
+                      placeholder="Filter by name or synopsis"
+                      type="text"
+                      value=""
+                      widget-type="InsightsInput"
+                    />
+                    <span
+                      class="pf-v6-c-form-control__utilities"
+                    >
+                      <span
+                        class="pf-v6-c-form-control__icon"
+                      >
+                        <span
+                          class="pf-v6-c-icon pf-m-md ins-c-search-icon"
                         >
                           <span
                             class="pf-v6-c-icon__content"
@@ -2387,7 +2474,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                                 viewBox="0 0 512 512"
                               >
                                 <path
-                                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
                                 />
                               </svg>
                               <svg
@@ -2395,114 +2482,15 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                                 viewBox="0 0 32 32"
                               >
                                 <path
-                                  d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                                  d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
                                 />
                               </svg>
                             </svg>
                           </span>
                         </span>
-                        <span
-                          class="ins-c-conditional-filter__value-selector"
-                        >
-                          Name
-                        </span>
-                      </span>
-                      <span
-                        class="pf-v6-c-menu-toggle__controls"
-                      >
-                        <span
-                          class="pf-v6-c-menu-toggle__toggle-icon"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="pf-v6-svg"
-                            fill="currentColor"
-                            height="1em"
-                            role="img"
-                            width="1em"
-                          >
-                            <svg
-                              class="pf-v6-icon-default"
-                              viewBox="0 0 320 512"
-                            >
-                              <path
-                                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                              />
-                            </svg>
-                            <svg
-                              class="pf-v6-icon-rh-ui"
-                              viewBox="0 0 32 32"
-                            >
-                              <path
-                                d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
-                              />
-                            </svg>
-                          </svg>
-                        </span>
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="pf-v6-l-split__item pf-m-fill"
-                    data-ouia-component-id="ConditionalFilter"
-                  >
-                    <span
-                      class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-label="search-field"
-                        data-ouia-component-id="ConditionalFilter"
-                        data-ouia-component-type="PF6/TextInput"
-                        data-ouia-safe="true"
-                        placeholder="Filter by name or synopsis"
-                        type="text"
-                        value=""
-                        widget-type="InsightsInput"
-                      />
-                      <span
-                        class="pf-v6-c-form-control__utilities"
-                      >
-                        <span
-                          class="pf-v6-c-form-control__icon"
-                        >
-                          <span
-                            class="pf-v6-c-icon pf-m-md ins-c-search-icon"
-                          >
-                            <span
-                              class="pf-v6-c-icon__content"
-                            >
-                              <svg
-                                aria-hidden="true"
-                                class="pf-v6-svg"
-                                fill="currentColor"
-                                height="1em"
-                                role="img"
-                                width="1em"
-                              >
-                                <svg
-                                  class="pf-v6-icon-default"
-                                  viewBox="0 0 512 512"
-                                >
-                                  <path
-                                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                                  />
-                                </svg>
-                                <svg
-                                  class="pf-v6-icon-rh-ui"
-                                  viewBox="0 0 32 32"
-                                >
-                                  <path
-                                    d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
-                                  />
-                                </svg>
-                              </svg>
-                            </span>
-                          </span>
-                        </span>
                       </span>
                     </span>
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
@@ -3918,97 +3906,192 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             class="pf-v6-c-toolbar__content-section pf-m-align-items-center"
           >
             <div
-              class="pf-v6-c-toolbar__group pf-m-filter-group ins-c-primary-toolbar__group-filter pf-m-spacer-md pf-m-space-items-lg"
+              class="pf-v6-c-toolbar__item"
             >
-              <div
-                class="pf-v6-c-toolbar__item"
+              <button
+                aria-expanded="false"
+                aria-label="Select"
+                class="pf-v6-c-menu-toggle pf-m-disabled"
+                data-ouia-component-id="BulkSelect"
+                data-ouia-component-type="PF6/MenuToggle"
+                data-ouia-safe="true"
+                disabled=""
+                type="button"
               >
-                <button
-                  aria-expanded="false"
-                  aria-label="Select"
-                  class="pf-v6-c-menu-toggle pf-m-disabled"
-                  data-ouia-component-id="BulkSelect"
-                  data-ouia-component-type="PF6/MenuToggle"
-                  data-ouia-safe="true"
-                  disabled=""
-                  type="button"
+                <span
+                  class="pf-v6-c-menu-toggle__text"
+                >
+                  <label
+                    class="pf-v6-c-check pf-m-standalone"
+                  >
+                    <input
+                      aria-invalid="false"
+                      aria-label="Select all"
+                      class="pf-v6-c-check__input"
+                      data-ouia-component-id="BulkSelectCheckbox"
+                      data-ouia-component-type="PF6/MenuToggleCheckbox"
+                      data-ouia-safe="true"
+                      name="toggle-checkbox"
+                      type="checkbox"
+                    />
+                  </label>
+                </span>
+                <span
+                  class="pf-v6-c-menu-toggle__controls"
                 >
                   <span
-                    class="pf-v6-c-menu-toggle__text"
+                    class="pf-v6-c-menu-toggle__toggle-icon"
                   >
-                    <label
-                      class="pf-v6-c-check pf-m-standalone"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-label="Select all"
-                        class="pf-v6-c-check__input"
-                        data-ouia-component-id="BulkSelectCheckbox"
-                        data-ouia-component-type="PF6/MenuToggleCheckbox"
-                        data-ouia-safe="true"
-                        name="toggle-checkbox"
-                        type="checkbox"
-                      />
-                    </label>
-                  </span>
-                  <span
-                    class="pf-v6-c-menu-toggle__controls"
-                  >
-                    <span
-                      class="pf-v6-c-menu-toggle__toggle-icon"
+                    <svg
+                      aria-hidden="true"
+                      class="pf-v6-svg"
+                      fill="currentColor"
+                      height="1em"
+                      role="img"
+                      width="1em"
                     >
                       <svg
-                        aria-hidden="true"
-                        class="pf-v6-svg"
-                        fill="currentColor"
-                        height="1em"
-                        role="img"
-                        width="1em"
+                        class="pf-v6-icon-default"
+                        viewBox="0 0 320 512"
                       >
-                        <svg
-                          class="pf-v6-icon-default"
-                          viewBox="0 0 320 512"
-                        >
-                          <path
-                            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                          />
-                        </svg>
-                        <svg
-                          class="pf-v6-icon-rh-ui"
-                          viewBox="0 0 32 32"
-                        >
-                          <path
-                            d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
-                          />
-                        </svg>
+                        <path
+                          d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                        />
                       </svg>
-                    </span>
+                      <svg
+                        class="pf-v6-icon-rh-ui"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
+                        />
+                      </svg>
+                    </svg>
                   </span>
-                </button>
-              </div>
+                </span>
+              </button>
+            </div>
+            <div
+              class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+            >
               <div
-                class="pf-v6-c-toolbar__item ins-c-primary-toolbar__filter"
+                class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
               >
                 <div
-                  class="pf-v6-l-split ins-c-conditional-filter ins-c-conditional-filter__split-items-space"
+                  class="pf-v6-l-split__item"
                 >
-                  <div
-                    class="pf-v6-l-split__item"
+                  <button
+                    aria-expanded="false"
+                    aria-label="Conditional filter toggle"
+                    class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
+                    data-ouia-component-id="ConditionalFilterToggle"
+                    data-ouia-component-type="PF6/MenuToggle"
+                    data-ouia-safe="true"
+                    type="button"
                   >
-                    <button
-                      aria-expanded="false"
-                      aria-label="Conditional filter toggle"
-                      class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
-                      data-ouia-component-id="ConditionalFilterToggle"
-                      data-ouia-component-type="PF6/MenuToggle"
-                      data-ouia-safe="true"
-                      type="button"
+                    <span
+                      class="pf-v6-c-menu-toggle__text"
                     >
                       <span
-                        class="pf-v6-c-menu-toggle__text"
+                        class="pf-v6-c-icon pf-m-md"
                       >
                         <span
-                          class="pf-v6-c-icon pf-m-md"
+                          class="pf-v6-c-icon__content"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="pf-v6-svg"
+                            fill="currentColor"
+                            height="1em"
+                            role="img"
+                            width="1em"
+                          >
+                            <svg
+                              class="pf-v6-icon-default"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                              />
+                            </svg>
+                            <svg
+                              class="pf-v6-icon-rh-ui"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                              />
+                            </svg>
+                          </svg>
+                        </span>
+                      </span>
+                      <span
+                        class="ins-c-conditional-filter__value-selector"
+                      >
+                        Name
+                      </span>
+                    </span>
+                    <span
+                      class="pf-v6-c-menu-toggle__controls"
+                    >
+                      <span
+                        class="pf-v6-c-menu-toggle__toggle-icon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="pf-v6-svg"
+                          fill="currentColor"
+                          height="1em"
+                          role="img"
+                          width="1em"
+                        >
+                          <svg
+                            class="pf-v6-icon-default"
+                            viewBox="0 0 320 512"
+                          >
+                            <path
+                              d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                            />
+                          </svg>
+                          <svg
+                            class="pf-v6-icon-rh-ui"
+                            viewBox="0 0 32 32"
+                          >
+                            <path
+                              d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
+                            />
+                          </svg>
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="pf-v6-l-split__item pf-m-fill"
+                  data-ouia-component-id="ConditionalFilter"
+                >
+                  <span
+                    class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
+                  >
+                    <input
+                      aria-invalid="false"
+                      aria-label="search-field"
+                      data-ouia-component-id="ConditionalFilter"
+                      data-ouia-component-type="PF6/TextInput"
+                      data-ouia-safe="true"
+                      placeholder="Filter by name or summary"
+                      type="text"
+                      value=""
+                      widget-type="InsightsInput"
+                    />
+                    <span
+                      class="pf-v6-c-form-control__utilities"
+                    >
+                      <span
+                        class="pf-v6-c-form-control__icon"
+                      >
+                        <span
+                          class="pf-v6-c-icon pf-m-md ins-c-search-icon"
                         >
                           <span
                             class="pf-v6-c-icon__content"
@@ -4026,7 +4109,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                                 viewBox="0 0 512 512"
                               >
                                 <path
-                                  d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
                                 />
                               </svg>
                               <svg
@@ -4034,114 +4117,15 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                                 viewBox="0 0 32 32"
                               >
                                 <path
-                                  d="M28.5 2h-25C2.673 2 2 2.673 2 3.5V7c0 .265.105.52.293.707L12 17.414V30a1 1 0 0 0 1.316.949l6-2A1 1 0 0 0 20 28V17.414l9.707-9.707A1 1 0 0 0 30 7V3.5c0-.827-.673-1.5-1.5-1.5ZM28 6.586l-9.707 9.707A1 1 0 0 0 18 17v10.279l-4 1.333V16.999a.997.997 0 0 0-.293-.707L4 6.586V4h24v2.586Z"
+                                  d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
                                 />
                               </svg>
                             </svg>
                           </span>
                         </span>
-                        <span
-                          class="ins-c-conditional-filter__value-selector"
-                        >
-                          Name
-                        </span>
-                      </span>
-                      <span
-                        class="pf-v6-c-menu-toggle__controls"
-                      >
-                        <span
-                          class="pf-v6-c-menu-toggle__toggle-icon"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="pf-v6-svg"
-                            fill="currentColor"
-                            height="1em"
-                            role="img"
-                            width="1em"
-                          >
-                            <svg
-                              class="pf-v6-icon-default"
-                              viewBox="0 0 320 512"
-                            >
-                              <path
-                                d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                              />
-                            </svg>
-                            <svg
-                              class="pf-v6-icon-rh-ui"
-                              viewBox="0 0 32 32"
-                            >
-                              <path
-                                d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"
-                              />
-                            </svg>
-                          </svg>
-                        </span>
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="pf-v6-l-split__item pf-m-fill"
-                    data-ouia-component-id="ConditionalFilter"
-                  >
-                    <span
-                      class="pf-v6-c-form-control pf-m-icon ins-c-conditional-filter"
-                    >
-                      <input
-                        aria-invalid="false"
-                        aria-label="search-field"
-                        data-ouia-component-id="ConditionalFilter"
-                        data-ouia-component-type="PF6/TextInput"
-                        data-ouia-safe="true"
-                        placeholder="Filter by name or summary"
-                        type="text"
-                        value=""
-                        widget-type="InsightsInput"
-                      />
-                      <span
-                        class="pf-v6-c-form-control__utilities"
-                      >
-                        <span
-                          class="pf-v6-c-form-control__icon"
-                        >
-                          <span
-                            class="pf-v6-c-icon pf-m-md ins-c-search-icon"
-                          >
-                            <span
-                              class="pf-v6-c-icon__content"
-                            >
-                              <svg
-                                aria-hidden="true"
-                                class="pf-v6-svg"
-                                fill="currentColor"
-                                height="1em"
-                                role="img"
-                                width="1em"
-                              >
-                                <svg
-                                  class="pf-v6-icon-default"
-                                  viewBox="0 0 512 512"
-                                >
-                                  <path
-                                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                                  />
-                                </svg>
-                                <svg
-                                  class="pf-v6-icon-rh-ui"
-                                  viewBox="0 0 32 32"
-                                >
-                                  <path
-                                    d="m30.796 29.205-8.557-8.557A11.945 11.945 0 0 0 25 13c0-6.617-5.383-12-12-12S1 6.383 1 13s5.383 12 12 12c2.904 0 5.57-1.038 7.648-2.761l8.556 8.556a1.122 1.122 0 0 0 1.592 0 1.127 1.127 0 0 0 0-1.591ZM3 13C3 7.486 7.486 3 13 3s10 4.486 10 10-4.486 10-10 10S3 18.514 3 13Z"
-                                  />
-                                </svg>
-                              </svg>
-                            </span>
-                          </span>
-                        </span>
                       </span>
                     </span>
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
