@@ -148,9 +148,9 @@ const Advisories = () => {
               headerContent='About advisories'
               bodyContent={
                 <Content component='p'>
-                    Advisories show all applicable Red Hat and Extra Packages for
-                    Enterprise Linux (EPEL) advisories for your RHEL systems checking into{' '}
-                    {isLightspeedEnabled ? 'Red Hat Lightspeed' : 'Insights'}.
+                  Advisories show all applicable Red Hat and Extra Packages for Enterprise Linux
+                  (EPEL) advisories for your RHEL systems checking into{' '}
+                  {isLightspeedEnabled ? 'Red Hat Lightspeed' : 'Insights'}.
                 </Content>
               }
               footerContent={
@@ -167,7 +167,7 @@ const Advisories = () => {
               }
             >
               <Button
-                icon={<HelpIcon style={{verticalAlign: '-2px' }} />}
+                icon={<HelpIcon style={{ verticalAlign: '-2px' }} />}
                 variant='plain'
                 aria-label='About advisories'
                 className='pf-v6-u-ml-sm'
