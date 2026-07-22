@@ -63,10 +63,10 @@ test.describe('Pagination', () => {
       await page.getByRole('menuitem', { name: '10 per page' }).click();
       await waitForTableLoad(page);
 
+      await expect(targetRows).toHaveCount(10);
       await expect(toolbarPaginationButton).toHaveText('1 - 10 of 12');
       await expect(page.getByText(`${prefix}-10`)).toBeVisible();
       await expect(page.getByText(`${prefix}-11`)).toBeHidden();
-      await expect(targetRows).toHaveCount(10);
       await expect(topNextButton).toBeEnabled();
       await expect(topPreviousButton).toBeDisabled();
       await expect(bottomNextButton).toBeEnabled();
@@ -81,11 +81,11 @@ test.describe('Pagination', () => {
       await topNextButton.click();
       await waitForTableLoad(page);
 
+      await expect(targetRows).toHaveCount(2);
       await expect(toolbarPaginationButton).toHaveText('11 - 12 of 12');
       await expect(page.getByText(`${prefix}-11`)).toBeVisible();
       await expect(page.getByText(`${prefix}-12`)).toBeVisible();
       await expect(page.getByText(`${prefix}-10`)).toBeHidden();
-      await expect(targetRows).toHaveCount(2);
       await expect(topNextButton).toBeDisabled();
       await expect(topPreviousButton).toBeEnabled();
       await expect(bottomNextButton).toBeDisabled();
@@ -100,10 +100,10 @@ test.describe('Pagination', () => {
       await topPreviousButton.click();
       await waitForTableLoad(page);
 
+      await expect(targetRows).toHaveCount(10);
       await expect(toolbarPaginationButton).toHaveText('1 - 10 of 12');
       await expect(page.getByText(`${prefix}-10`)).toBeVisible();
       await expect(page.getByText(`${prefix}-11`)).toBeHidden();
-      await expect(targetRows).toHaveCount(10);
       await expect(topNextButton).toBeEnabled();
       await expect(topPreviousButton).toBeDisabled();
       await expect(bottomNextButton).toBeEnabled();
@@ -118,11 +118,11 @@ test.describe('Pagination', () => {
       await bottomNextButton.click();
       await waitForTableLoad(page);
 
+      await expect(targetRows).toHaveCount(2);
       await expect(toolbarPaginationButton).toHaveText('11 - 12 of 12');
       await expect(page.getByText(`${prefix}-11`)).toBeVisible();
       await expect(page.getByText(`${prefix}-12`)).toBeVisible();
       await expect(page.getByText(`${prefix}-10`)).toBeHidden();
-      await expect(targetRows).toHaveCount(2);
       await expect(topNextButton).toBeDisabled();
       await expect(topPreviousButton).toBeEnabled();
       await expect(bottomNextButton).toBeDisabled();
@@ -137,10 +137,10 @@ test.describe('Pagination', () => {
       await bottomPreviousButton.click();
       await waitForTableLoad(page);
 
+      await expect(targetRows).toHaveCount(10);
       await expect(toolbarPaginationButton).toHaveText('1 - 10 of 12');
       await expect(page.getByText(`${prefix}-10`)).toBeVisible();
       await expect(page.getByText(`${prefix}-11`)).toBeHidden();
-      await expect(targetRows).toHaveCount(10);
       await expect(topNextButton).toBeEnabled();
       await expect(topPreviousButton).toBeDisabled();
       await expect(bottomNextButton).toBeEnabled();
@@ -155,11 +155,11 @@ test.describe('Pagination', () => {
       await bottomLastPageButton.click();
       await waitForTableLoad(page);
 
+      await expect(targetRows).toHaveCount(2);
       await expect(toolbarPaginationButton).toHaveText('11 - 12 of 12');
       await expect(page.getByText(`${prefix}-11`)).toBeVisible();
       await expect(page.getByText(`${prefix}-12`)).toBeVisible();
       await expect(page.getByText(`${prefix}-10`)).toBeHidden();
-      await expect(targetRows).toHaveCount(2);
       await expect(topNextButton).toBeDisabled();
       await expect(topPreviousButton).toBeEnabled();
       await expect(bottomNextButton).toBeDisabled();
@@ -174,10 +174,10 @@ test.describe('Pagination', () => {
       await bottomFirstPageButton.click();
       await waitForTableLoad(page);
 
+      await expect(targetRows).toHaveCount(10);
       await expect(toolbarPaginationButton).toHaveText('1 - 10 of 12');
       await expect(page.getByText(`${prefix}-10`)).toBeVisible();
       await expect(page.getByText(`${prefix}-11`)).toBeHidden();
-      await expect(targetRows).toHaveCount(10);
       await expect(topNextButton).toBeEnabled();
       await expect(topPreviousButton).toBeDisabled();
       await expect(bottomNextButton).toBeEnabled();
@@ -193,11 +193,11 @@ test.describe('Pagination', () => {
       await currentPageNumber.press('Enter');
       await waitForTableLoad(page);
 
+      await expect(targetRows).toHaveCount(2);
       await expect(toolbarPaginationButton).toHaveText('11 - 12 of 12');
       await expect(page.getByText(`${prefix}-11`)).toBeVisible();
       await expect(page.getByText(`${prefix}-12`)).toBeVisible();
       await expect(page.getByText(`${prefix}-10`)).toBeHidden();
-      await expect(targetRows).toHaveCount(2);
       await expect(topNextButton).toBeDisabled();
       await expect(topPreviousButton).toBeEnabled();
       await expect(bottomNextButton).toBeDisabled();
