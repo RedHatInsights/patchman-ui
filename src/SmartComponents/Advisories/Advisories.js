@@ -1,4 +1,5 @@
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
+import { OpenSourceBadge } from '@redhat-cloud-services/frontend-components';
 import React, { useEffect, useState, useMemo, useCallback, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
@@ -174,6 +175,9 @@ const Advisories = () => {
                 style={{ verticalAlign: '2px' }}
               />
             </Popover>
+            <span style={{ verticalAlign: '2px' }}>
+              <OpenSourceBadge size='sm' repositoriesURL='https://github.com/RedHatInsights/patchman-ui' />
+            </span>
           </>
         }
         headerOUIA='advisories'
