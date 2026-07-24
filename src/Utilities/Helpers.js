@@ -479,15 +479,11 @@ export const buildFilterChips = (filters, search, searchChipLabel = 'Search', pa
       (item) => filters[item] !== '' && [].concat(filters[item]).length !== 0,
     );
     filterConfig = filterConfig.concat(
-      categories.map((category) => {
-        const label =
-          (category === 'installed_evra' && 'Package version') || filterCategories[category].label;
-        return {
-          category: label,
-          id: category,
-          chips: buildChips(filters, category),
-        };
-      }),
+      categories.map((category) => ({
+        category: filterCategories[category].label,
+        id: category,
+        chips: buildChips(filters, category),
+      })),
     );
   };
 
