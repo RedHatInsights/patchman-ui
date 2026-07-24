@@ -270,6 +270,8 @@ describe('Helpers tests', () => {
     ${{ search: '' }}                        | ${true}         | ${'?'}
     ${{ filter: { advisory_type: 2 } }}      | ${false}        | ${'?filter%5Badvisory_type%5D=2'}
     ${{ filter: { advisory_type: [1, 2] } }} | ${true}         | ${'?filter%5Badvisory_type%5D=in%3A1%2C2'}
+    ${{ filter: { severity: null } }}        | ${false}        | ${'?filter%5Bseverity%5D=null'}
+    ${{ filter: { severity: [1, 2, null] } }} | ${false}      | ${'?filter%5Bseverity%5D=in%3A1%2C2%2Cnull'}
     ${{
   filter: { advisory_type: [1, 2] },
   param: 'text',
@@ -286,6 +288,8 @@ describe('Helpers tests', () => {
     ${'search=trolo'}                                    | ${{ search: 'trolo' }}
     ${'filter%5Badvisory_type%5D=2'}                     | ${{ filter: { advisory_type: 2 } }}
     ${'param=text&filter%5Badvisory_type%5D=in%3A1%2C2'} | ${{ filter: { advisory_type: ['1', '2'] }, param: 'text' }}
+    ${'filter%5Bseverity%5D=null'}                        | ${{ filter: { severity: null } }}
+    ${'filter%5Bseverity%5D=in%3A1%2C2%2Cnull'}           | ${{ filter: { severity: ['1', '2', null] } }}
   `('decodeQueryparams: Should decodeQueryParams $parameters', ({ parameters, result }) => {
     expect(decodeQueryparams(parameters)).toEqual(result);
   });

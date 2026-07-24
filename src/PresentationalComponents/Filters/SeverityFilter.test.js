@@ -44,6 +44,14 @@ describe('SeverityFilter', () => {
     expect(rehydratedResponse.filterValues.value).toEqual(['null']);
   });
 
+  it('keeps null inside a multi-severity selection for in:1,2,null encoding', () => {
+    const response = renderFilter(currentFilterEmpty);
+    response.filterValues.onChange('event', ['1', '2', 'null']);
+    expect(apply).toHaveBeenCalledWith({ filter: { severity: [1, 2, null] } });
+    const rehydratedResponse = rehydrateFilter([1, 2, null]);
+    expect(rehydratedResponse.filterValues.value).toEqual(['1', '2', 'null']);
+  });
+
   it('dispatches undefined severity when onChange receives no payload', () => {
     const response = renderFilter(currentFilterEmpty);
     response.filterValues.onChange();

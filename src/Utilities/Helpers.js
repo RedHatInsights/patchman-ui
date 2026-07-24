@@ -245,6 +245,9 @@ export const getFilterValue = (category, key) => {
   }
 };
 
+// Array#toString / String(array) turns null into '', so keep the API literal "null"
+const getFilterStringFromApi = (value) => (value === null ? 'null' : String(value));
+
 export const encodeParams = (parameters, shouldTranslateKeys) => {
   const calculateWorkloads = (systemProfile) => {
     let result = '';
@@ -264,9 +267,12 @@ export const encodeParams = (parameters, shouldTranslateKeys) => {
         value = (shouldTranslateKeys && getFilterValue(key, value).apiValue) || value;
         const operator =
           [].concat(value).length > 1 || multiValueFilters.includes(key) ? 'in:' : '';
+        const serializedValue = Array.isArray(value)
+          ? value.map(getFilterStringFromApi).join(',')
+          : getFilterStringFromApi(value);
         result = {
           ...result,
-          [`filter[${key}]`]: `${operator}${String(value)}`,
+          [`filter[${key}]`]: `${operator}${serializedValue}`,
         };
       });
     return result;
@@ -352,8 +358,6 @@ export const decodeQueryparams = (queryString, parsers = {}) => {
   });
   return res;
 };
-
-const getFilterStringFromApi = (value) => (value === null ? 'null' : String(value));
 
 const compareNormalizedValues = (left, right) =>
   getFilterStringFromApi(left).localeCompare(getFilterStringFromApi(right));
