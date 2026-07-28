@@ -239,7 +239,7 @@ export const rebootRequired = [
 
 export const filterCategories = {
   advisory_type_name: {
-    label: 'Advisory type',
+    label: 'Type',
     values: advisoryTypes,
   },
   severity: {
@@ -247,7 +247,7 @@ export const filterCategories = {
     values: advisorySeverities,
   },
   public_date: {
-    label: 'Public date',
+    label: 'Publish date',
     values: publicDateOptions,
   },
   update_status: {
@@ -282,6 +282,9 @@ export const filterCategories = {
   },
   group_name: {
     label: 'Group',
+  },
+  installed_evra: {
+    label: 'Version',
   },
 };
 
