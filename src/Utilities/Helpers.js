@@ -3,7 +3,7 @@ import {
   BugIcon,
   EnhancementIcon,
   FlagIcon,
-  InfoCircleIcon,
+  LockIcon,
   SecurityIcon,
 } from '@patternfly/react-icons';
 import { SortByDirection } from '@patternfly/react-table';
@@ -619,23 +619,33 @@ export function sortCves(cves, index, direction) {
   };
 }
 
-export const createOSColumn = ({ osName, rhsm }) =>
-  !rhsm ? (
+export const createOSColumn = ({ osName, rhsm }) => {
+  // replace the last space with nbsp;
+  // this assumes the last space in `osName` string separates name from version like "RHEL 9.10" or "CentOS Linux 7.10"
+  osName = osName.replace(/ (?!.* )/, '\u00A0');
+  return !rhsm ? (
     osName
   ) : (
-    <Tooltip
-      content={intl.formatMessage(messages.textLockVersionTooltip, {
-        lockedVersion: rhsm,
-      })}
-    >
-      <Flex flex={{ default: 'flexDefault' }} gap={{ default: 'gapSm' }}>
-        <FlexItem>{osName}</FlexItem>
-        <FlexItem>
-          <InfoCircleIcon size='sm' color='var(--pf-t--global--color--status--info--100)' />
-        </FlexItem>
-      </Flex>
-    </Tooltip>
+    <span>
+      {osName}
+      <Tooltip
+        content={intl.formatMessage(messages.textLockVersionTooltip, {
+          lockedVersion: rhsm,
+        })}
+      >
+        <span className='pf-v6-u-text-nowrap'>
+          {'\u200d'}
+          <LockIcon
+            size='sm'
+            color='var(--pf-t--global--color--status--info--default)'
+            className='pf-v6-u-mx-xs'
+            data-testid='tooltip-target'
+          />
+        </span>
+      </Tooltip>
+    </span>
   );
+};
 
 export const removeUndefinedObjectKeys = (selectedRows) =>
   Object.keys(selectedRows).filter((row) => selectedRows[row]);

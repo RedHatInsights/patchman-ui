@@ -145,7 +145,7 @@ test.describe('Systems Tests', () => {
 
     await test.step('Tooltip is displayed showing the system is version-locked', async () => {
       const OScell = await getRowCellByHeader(page, row, 'OS');
-      await OScell.hover();
+      await OScell.getByTestId('tooltip-target').hover();
       await expect(page.getByText(`This system is locked to version ${version}`)).toBeVisible();
     });
 

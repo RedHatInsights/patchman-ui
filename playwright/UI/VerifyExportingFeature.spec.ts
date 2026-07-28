@@ -139,7 +139,8 @@ test.describe('Verify exporting feature', () => {
     const matchingCsvRow = csvData.find((row) => row.display_name === system.name);
     expect(matchingCsvRow).toBeDefined();
 
-    expect(matchingCsvRow!.os).toBe(osText);
+    const expectedOsText = osText?.replace('\u00A0', ' ')
+    expect(matchingCsvRow!.os).toBe(expectedOsText);
     expect(matchingCsvRow!.packages_installed).toBe(installedPackagesText);
 
     expect(jsonData).toHaveLength(1);
@@ -149,7 +150,7 @@ test.describe('Verify exporting feature', () => {
     expect(matchingJsonRow).toBeDefined();
 
     // Compare UI data with JSON data
-    expect(matchingJsonRow!.os).toBe(osText);
+    expect(matchingJsonRow!.os).toBe(expectedOsText);
     expect(String(matchingJsonRow!.packages_installed)).toBe(installedPackagesText);
   });
 
