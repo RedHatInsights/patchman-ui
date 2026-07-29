@@ -75,7 +75,6 @@ describe('Header component', () => {
 
   it('should render with 3 breadcrumb items and last is active', () => {
     const header = {
-      showTabs: false,
       title: '',
       breadcrumbs: [
         {
