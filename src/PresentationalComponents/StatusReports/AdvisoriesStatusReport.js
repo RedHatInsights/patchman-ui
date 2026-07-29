@@ -4,17 +4,7 @@ import { PowerOffIcon } from '@patternfly/react-icons';
 import { intl } from '../../Utilities/IntlProvider';
 import { fetchApplicableAdvisoriesApi } from '../../Utilities/api/api';
 import messages from '../../Messages';
-import {
-  CardTitle,
-  Card,
-  Grid,
-  GridItem,
-  CardBody,
-  Title,
-  Split,
-  SplitItem,
-  Icon,
-} from '@patternfly/react-core';
+import { CardTitle, Card, Grid, GridItem, CardBody, Title, Icon } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { handlePatchLink, handleLongSynopsis } from '../../Utilities/Helpers';
 import { entityTypes } from '../../Utilities/constants';
@@ -25,56 +15,35 @@ import AdvisorySeverity from '../AdvisorySeverity/AdvisorySeverity';
 const StatusCard = ({ advisory: { attributes, id } }) => (
   <Card isFullHeight>
     <CardTitle>{handlePatchLink(entityTypes.advisories, id)}</CardTitle>
-    <CardBody className='fonst-size-sm'>
+    <CardBody>
       <Grid>
-        <GridItem>
-          <Grid>
-            <GridItem lg={6} md={12} sm={6}>
-              <Grid>
-                <GridItem>
-                  <AdvisoryType type={attributes.advisory_type_name} />
-                </GridItem>
-                <GridItem>{processDate(attributes.public_date)}</GridItem>
-                {attributes.os_name && <GridItem>{attributes.os_name}</GridItem>}
-              </Grid>
-            </GridItem>
-            <GridItem lg={6} className='adjustableElement' sm={6}>
-              <Grid>
-                {attributes.severity && (
-                  <GridItem>
-                    <AdvisorySeverity gap='gapMd' size='md' severity={attributes.severity} />
-                  </GridItem>
-                )}
-                {attributes.reboot_required && (
-                  <GridItem>
-                    <Split hasGutter>
-                      <SplitItem>
-                        <Icon status='danger'>
-                          <PowerOffIcon />
-                        </Icon>
-                      </SplitItem>
-                      <SplitItem isFilled style={{ flexWrap: 'nowrap' }}>
-                        {intl.formatMessage(messages.textRebootIsRequired)}
-                      </SplitItem>
-                    </Split>
-                  </GridItem>
-                )}
-              </Grid>
-            </GridItem>
-          </Grid>
+        <GridItem span={6}>
+          <AdvisoryType type={attributes.advisory_type_name} />
+          {processDate(attributes.public_date)}
+          {attributes.os_name && attributes.os_name}
         </GridItem>
-
-        <GridItem>
-          {handlePatchLink(
-            entityTypes.advisories,
-            id,
-            intl.formatMessage(messages.labelsAffectedSystemsCount, {
-              systemsCount: attributes.applicable_systems,
-            }),
+        <GridItem span={6}>
+          {attributes.severity && (
+            <AdvisorySeverity gap='gapMd' size='md' severity={attributes.severity} />
+          )}
+          {attributes.reboot_required && (
+            <>
+              <Icon status='danger'>
+                <PowerOffIcon />
+              </Icon>
+              {intl.formatMessage(messages.textRebootIsRequired)}
+            </>
           )}
         </GridItem>
-        <GridItem>{handleLongSynopsis(attributes.synopsis)}</GridItem>
       </Grid>
+      {handlePatchLink(
+        entityTypes.advisories,
+        id,
+        intl.formatMessage(messages.labelsAffectedSystemsCount, {
+          systemsCount: attributes.applicable_systems,
+        }),
+      )}
+      {handleLongSynopsis(attributes.synopsis)}
     </CardBody>
   </Card>
 );
