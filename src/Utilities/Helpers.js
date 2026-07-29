@@ -635,12 +635,7 @@ export const createOSColumn = ({ osName, rhsm }) => {
       >
         <span className='pf-v6-u-text-nowrap'>
           {'\u200d'}
-          <LockIcon
-            size='sm'
-            color='var(--pf-t--global--color--status--info--default)'
-            className='pf-v6-u-mx-xs'
-            data-testid='tooltip-target'
-          />
+          <LockIcon size='sm' className='pf-v6-u-mx-xs' data-testid='tooltip-target' />
         </span>
       </Tooltip>
     </span>
