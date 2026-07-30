@@ -1,22 +1,18 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { advisoryTypes } from '../../Utilities/constants';
-import { Icon, Split, SplitItem } from '@patternfly/react-core';
+import React, { useMemo } from 'react';
+import { advisoryTypes, TYPE_OTHER } from '../../Utilities/constants';
+import IconWithLabel from '../Snippets/IconWithLabel';
 
-const AdvisoryType = ({ type }) => {
-  const advisoryType = advisoryTypes.find((item) => item.value === type) || advisoryTypes[3];
-  return (
-    <Split hasGutter>
-      <SplitItem>
-        <Icon>{advisoryType.icon}</Icon>
-      </SplitItem>
-      <SplitItem isFilled>{advisoryType.label}</SplitItem>
-    </Split>
-  );
-};
+const AdvisoryType = ({ type = TYPE_OTHER, size = 'sm' }) =>
+  useMemo(() => {
+    const advisoryType =
+      advisoryTypes.find((item) => item.value === type) ?? advisoryTypes[TYPE_OTHER];
+    return <IconWithLabel icon={advisoryType.icon} size={size} label={advisoryType.label} />;
+  }, [type]);
 
 AdvisoryType.propTypes = {
   type: PropTypes.string,
+  size: PropTypes.string,
 };
 
 export default AdvisoryType;

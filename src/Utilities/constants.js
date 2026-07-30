@@ -155,24 +155,29 @@ export const advisorySeverities = [
   },
 ];
 
+export const TYPE_SECURITY = 'security';
+export const TYPE_BUGFIX = 'bugfix';
+export const TYPE_ENHANCEMENT = 'enhancement';
+export const TYPE_OTHER = 'other';
+
 export const advisoryTypes = [
   {
-    value: 'security',
+    value: TYPE_SECURITY,
     label: 'Security',
     icon: <SecurityIcon />,
   },
   {
-    value: 'bugfix',
+    value: TYPE_BUGFIX,
     label: 'Bugfix',
     icon: <BugIcon />,
   },
   {
-    value: 'enhancement',
+    value: TYPE_ENHANCEMENT,
     label: 'Enhancement',
     icon: <EnhancementIcon />,
   },
   {
-    value: 'other',
+    value: TYPE_OTHER,
     label: 'Other',
     icon: <FlagIcon />,
   },

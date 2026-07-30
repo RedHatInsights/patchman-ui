@@ -6,7 +6,7 @@ import { entityTypes } from '../../Utilities/constants';
 import { handlePatchLink, isRHAdvisory, truncate } from '../../Utilities/Helpers';
 import { intl } from '../../Utilities/IntlProvider';
 import ExternalLink from './ExternalLink';
-import RebootRequired from '../Snippets/RebootRequired';
+import RebootRequired from './RebootRequired';
 import AdvisorySeverity from '../AdvisorySeverity/AdvisorySeverity';
 
 export const DescriptionWithLink = ({ row }) => (
@@ -31,7 +31,12 @@ export const DescriptionWithLink = ({ row }) => (
         handlePatchLink(entityTypes.advisories, row.id, intl.formatMessage(messages.linksReadMore)),
       )}
     </Content>
-    {row.attributes.reboot_required && <RebootRequired />}
+    {row.attributes.reboot_required && (
+      <Content component={ContentVariants.p}>
+        <Title headingLevel='h6'>{intl.formatMessage(messages.labelsColumnsReboot)}</Title>
+        <RebootRequired />
+      </Content>
+    )}
     {isRHAdvisory(row.id) && (
       <ExternalLink
         link={`https://access.redhat.com/errata/${row.id}`}

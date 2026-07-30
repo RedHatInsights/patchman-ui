@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
-import { Flex, Icon } from '@patternfly/react-core';
 import {
   advisorySeverities,
   SEVERITY_CRITICAL,
@@ -16,6 +15,7 @@ import {
   SeverityModerateIcon,
   SeverityNoneIcon,
 } from '@patternfly/react-icons';
+import IconWithLabel from '../Snippets/IconWithLabel';
 
 /**
  * Display advisory severity icon with label.
@@ -23,7 +23,7 @@ import {
  * @param {string} props.size - The size of the icon (default: 'sm').
  * @param {number} props.severity - The numeric value of advisory severity (default: null).
  */
-const AdvisorySeverity = ({ gap = 'gapSm', size = 'sm', severity = SEVERITY_NONE }) => {
+const AdvisorySeverity = ({ size = 'sm', severity = SEVERITY_NONE }) => {
   const severityData = advisorySeverities[severity] ?? advisorySeverities[0];
 
   return useMemo(() => {
@@ -44,18 +44,16 @@ const AdvisorySeverity = ({ gap = 'gapSm', size = 'sm', severity = SEVERITY_NONE
     }
 
     return (
-      <Flex gap={{ default: gap }} flexWrap={{ default: 'nowrap' }}>
-        <Icon size={size}>
-          <SevIcon color={severityData.color} />
-        </Icon>
-        {severityData.label}
-      </Flex>
+      <IconWithLabel
+        icon={<SevIcon color={severityData.color} />}
+        size={size}
+        label={severityData.label}
+      />
     );
-  }, [gap, size, severity]);
+  }, [size, severity]);
 };
 
 AdvisorySeverity.propTypes = {
-  gap: PropTypes.string,
   size: PropTypes.string,
   severity: PropTypes.number,
 };
