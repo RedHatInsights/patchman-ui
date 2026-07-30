@@ -293,6 +293,16 @@ export default defineMessages({
     description: 'search filter placeholder for systems updatable pages',
     defaultMessage: 'Filter by patch status',
   },
+  labelsFiltersWorkload: {
+    id: 'labelsFiltersWorkload',
+    description: 'Label for workload filter',
+    defaultMessage: 'Workload',
+  },
+  labelsFiltersWorkloadPlaceholder: {
+    id: 'labelsFiltersWorkloadPlaceholder',
+    description: 'Label for workload filter placeholder',
+    defaultMessage: 'Filter by workload',
+  },
   labelsModifiedDate: {
     id: 'labelsModifiedDate',
     description: 'Modified date label',

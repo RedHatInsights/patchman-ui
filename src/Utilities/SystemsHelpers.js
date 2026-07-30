@@ -1,12 +1,28 @@
 import staleFilter from '../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../PresentationalComponents/Filters/SystemsUpdatableFilter';
+import systemsWorkloadFilter from '../PresentationalComponents/Filters/WorkloadFilter';
 import { buildActiveFilterConfig } from './Helpers';
 import { intl } from './IntlProvider';
 import messages from '../Messages';
 import { defaultCompoundSortValues } from './constants';
 
+export const workloadToSystemProfile = (workloads = []) => ({
+  ...(workloads.includes('sap') && { sap_system: true }),
+  ...(workloads.includes('ansible') && { ansible: { controller_version: 'not_nil' } }),
+  ...(workloads.includes('mssql') && { mssql: { version: 'not_nil' } }),
+  ...(workloads.includes('crowdstrike') && { crowdstrike: true }),
+  ...(workloads.includes('ibm_db2') && { ibm_db2: true }),
+  ...(workloads.includes('intersystems') && { intersystems: true }),
+  ...(workloads.includes('oracle_db') && { oracle_db: true }),
+  ...(workloads.includes('rhel_ai') && { rhel_ai: true }),
+});
+
 export const buildFilterConfig = (filter, apply) => ({
-  items: [staleFilter(apply, filter), systemsUpdatableFilter(apply, filter)],
+  items: [
+    staleFilter(apply, filter),
+    systemsUpdatableFilter(apply, filter),
+    systemsWorkloadFilter(apply, filter),
+  ],
 });
 
 export const buildActiveFiltersConfig = (filter, search, deleteFilters, defaultFilters) =>

@@ -215,6 +215,17 @@ export const packagesListUpdatableTypes = [
   },
 ];
 
+export const workloadOptions = [
+  { label: 'Ansible Automation Platform', value: 'ansible' },
+  { label: 'CrowdStrike', value: 'crowdstrike' },
+  { label: 'IBM DB2', value: 'ibm_db2' },
+  { label: 'InterSystems', value: 'intersystems' },
+  { label: 'Microsoft SQL', value: 'mssql' },
+  { label: 'Oracle DB', value: 'oracle_db' },
+  { label: 'RHEL AI', value: 'rhel_ai' },
+  { label: 'SAP', value: 'sap' },
+];
+
 export const staleSystems = [
   {
     value: true,
@@ -285,6 +296,10 @@ export const filterCategories = {
   },
   installed_evra: {
     label: 'Version',
+  },
+  workloads: {
+    label: 'Workload',
+    values: workloadOptions,
   },
 };
 

@@ -753,6 +753,11 @@ export const mapGlobalFilters = (tags, workloads = {}) => {
     ...(workloads?.['Microsoft SQL']?.isSelected && {
       mssql: { version: 'not_nil' },
     }),
+    ...(workloads?.CrowdStrike?.isSelected && { crowdstrike: true }),
+    ...(workloads?.['IBM DB2']?.isSelected && { ibm_db2: true }),
+    ...(workloads?.InterSystems?.isSelected && { intersystems: true }),
+    ...(workloads?.['Oracle DB']?.isSelected && { oracle_db: true }),
+    ...(workloads?.['RHEL AI']?.isSelected && { rhel_ai: true }),
   };
 
   if (tagsInUrlFormat?.length) {

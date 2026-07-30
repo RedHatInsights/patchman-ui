@@ -28,6 +28,7 @@ import {
   buildFilterConfig,
   buildActiveFiltersConfig,
   mergeInventoryColumns,
+  workloadToSystemProfile,
 } from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
 import propTypes from 'prop-types';
@@ -65,7 +66,17 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
     perPage,
     sort,
   } = queryParams;
-  const { os: operatingSystemFilter, ...filter } = queryParamsFilter || {};
+  const {
+    os: operatingSystemFilter,
+    workloads: workloadFilter,
+    ...apiFilter
+  } = queryParamsFilter || {};
+  const filter = workloadFilter?.length ? { ...apiFilter, workloads: workloadFilter } : apiFilter;
+  // systemProfile comes from the Chrome global filter; merge local workload selections on top
+  const mergedSystemProfile = {
+    ...systemProfile,
+    ...workloadToSystemProfile(workloadFilter || []),
+  };
   const osFilter = operatingSystemFilter && [
     {
       osFilter: operatingSystemFilter.reduce((osFilter, os) => {
@@ -86,7 +97,7 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
     buildInventorySnapshot(
       operatingSystemFilter ? { osFilter: osFilter?.[0]?.osFilter || {} } : {},
       selectedTags,
-      systemProfile,
+      mergedSystemProfile,
     ),
   );
 
@@ -194,8 +205,8 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
               }
             : {}),
           patchParams: {
-            filter,
-            systemProfile,
+            filter: apiFilter,
+            systemProfile: mergedSystemProfile,
             selectedTags,
           },
         }}
