@@ -6,8 +6,6 @@ import {
   FlexItem,
   Grid,
   GridItem,
-  Split,
-  SplitItem,
   Stack,
   StackItem,
   Title,
@@ -83,30 +81,19 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
         <Flex flex={{ default: 'column' }}>
           {attributes.advisory_type_name && (
             <FlexItem>
-              <Split className='infobox' hasGutter>
-                <SplitItem isFilled>
-                  <Flex flex={{ default: 'column' }}>
-                    <FlexItem spacer={{ default: 'spacerNone' }}>
-                      <Title headingLevel='h5'>
-                        {intl.formatMessage(messages.titlesAdvisoryType)}
-                      </Title>
-                    </FlexItem>
-                    <FlexItem spacer={{ default: 'spacerSm' }}>
-                      <AdvisoryType type={attributes.advisory_type_name} />
-                    </FlexItem>
-                  </Flex>
-                </SplitItem>
-              </Split>
+              <Title headingLevel='h5'>{intl.formatMessage(messages.titlesAdvisoryType)}</Title>
+              <AdvisoryType type={attributes.advisory_type_name} size='md' />
             </FlexItem>
           )}
           {severity && (
-            <FlexItem className='infobox'>
+            <FlexItem>
               <Title headingLevel='h5'>{intl.formatMessage(messages.labelsColumnsSeverity)}</Title>
-              <AdvisorySeverity gap='gapMd' size='md' severity={severity} />
+              <AdvisorySeverity size='md' severity={severity} />
             </FlexItem>
           )}
           {attributes.reboot_required && (
-            <FlexItem spacer={{ default: 'spacerMd' }}>
+            <FlexItem>
+              <Title headingLevel='h5'>{intl.formatMessage(messages.labelsColumnsReboot)}</Title>
               <RebootRequired />
             </FlexItem>
           )}
