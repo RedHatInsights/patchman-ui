@@ -81,7 +81,7 @@ test.describe('Systems Tests', () => {
       await page.locator('#select-typeahead-create').click();
       await page.getByRole('button', { name: 'Create plan' }).click();
       await expect(page.locator('h1').getByText(system.name)).toBeVisible();
-      await expect(page.getByRole('heading', { name: 'Details' })).toBeVisible({
+      await expect(page.getByRole('heading', { name: 'Overview' })).toBeVisible({
         timeout: 180_000,
       });
       remediationPlanId = (page.url().split('/').pop() ?? '').split('#')[0];
