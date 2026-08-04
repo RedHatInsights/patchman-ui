@@ -6,9 +6,10 @@ import IconWithLabel from '../Snippets/IconWithLabel';
 const AdvisoryType = ({ type = TYPE_OTHER, size = 'sm' }) =>
   useMemo(() => {
     const advisoryType =
-      advisoryTypes.find((item) => item.value === type) ?? advisoryTypes[TYPE_OTHER];
+      advisoryTypes.find((item) => item.value === type) ??
+      advisoryTypes.find((item) => item.value === TYPE_OTHER);
     return <IconWithLabel icon={advisoryType.icon} size={size} label={advisoryType.label} />;
-  }, [type]);
+  }, [type, size]);
 
 AdvisoryType.propTypes = {
   type: PropTypes.string,
