@@ -31,6 +31,7 @@ const SystemsMainContent = () => {
   };
 
   const setQueryParams = (queryParams) => {
+    dispatch(clearInventoryReducer());
     dispatch(setSystemParams(queryParams));
   };
 
