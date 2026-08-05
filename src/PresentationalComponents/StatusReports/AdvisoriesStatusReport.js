@@ -12,6 +12,8 @@ import { processDate } from '@redhat-cloud-services/frontend-components-utilitie
 import AdvisorySeverity from '../AdvisorySeverity/AdvisorySeverity';
 import RebootRequired from '../Snippets/RebootRequired';
 
+import './Card.css';
+
 const StatusCard = ({ advisory: { attributes, id } }) => (
   <Card isFullHeight>
     <CardTitle>{handlePatchLink(entityTypes.advisories, id)}</CardTitle>
@@ -29,6 +31,8 @@ const StatusCard = ({ advisory: { attributes, id } }) => (
           {attributes.reboot_required && <RebootRequired />}
         </GridItem>
       </Grid>
+    </CardBody>
+    <CardBody>
       {handlePatchLink(
         entityTypes.advisories,
         id,
@@ -36,8 +40,8 @@ const StatusCard = ({ advisory: { attributes, id } }) => (
           systemsCount: attributes.applicable_systems,
         }),
       )}
-      {handleLongSynopsis(attributes.synopsis)}
     </CardBody>
+    <CardBody>{handleLongSynopsis(attributes.synopsis)}</CardBody>
   </Card>
 );
 
@@ -64,7 +68,7 @@ const AdvisoriesStatusBar = () => {
 
         <Grid hasGutter>
           {advisories.data.map((advisory) => (
-            <GridItem key={advisory.id} lg={3} md={3} sm={12}>
+            <GridItem key={advisory.id} xl2={3} xl={6} lg={6} md={6} sm={12}>
               <StatusCard advisory={advisory} />
             </GridItem>
           ))}
