@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { useSelector, useDispatch } from 'react-redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { changeSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
+import {
+  changeSystemsParams,
+  setSystemParams,
+  clearInventoryReducer,
+} from '../../store/Actions/Actions';
 import { decodeQueryparams } from '../../Utilities/Helpers';
 import { useActivateRemediationModal } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
@@ -26,6 +30,10 @@ const SystemsMainContent = () => {
     dispatch(changeSystemsParams(queryParams));
   };
 
+  const setQueryParams = (queryParams) => {
+    dispatch(setSystemParams(queryParams));
+  };
+
   useEffect(() => {
     apply(decodedParams);
     return () => dispatch(clearInventoryReducer());
@@ -42,7 +50,7 @@ const SystemsMainContent = () => {
 
   return (
     <React.Fragment>
-      <SystemsStatusReport apply={apply} queryParams={queryParams} />
+      <SystemsStatusReport apply={setQueryParams} queryParams={queryParams} />
       {(isRemediationOpen && (
         <RemediationWizard
           data={remediationIssues}

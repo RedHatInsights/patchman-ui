@@ -183,6 +183,11 @@ export const changeSystemsParams = (params) => ({
   payload: params,
 });
 
+export const setSystemParams = (params) => ({
+  type: ActionTypes.SET_SYSTEM_PARAMS,
+  payload: params,
+});
+
 export const changeAffectedSystemsParams = (params) => ({
   type: ActionTypes.CHANGE_AFFECTED_SYSTEMS_PARAMS,
   payload: params,
