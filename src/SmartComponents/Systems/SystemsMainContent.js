@@ -20,6 +20,7 @@ const SystemsMainContent = () => {
   const [isRemediationOpen, setRemediationOpen] = useState(false);
   const decodedParams = decodeQueryparams('?' + searchParams.toString());
   const [remediationIssues, setRemediationIssues] = useState([]);
+  const [resetKey, setResetKey] = useState(0);
 
   const { hasError, code } = useSelector(({ entities }) => entities?.status || {});
   const metadata = useSelector(({ SystemsStore }) => SystemsStore?.metadata || {});
@@ -33,6 +34,7 @@ const SystemsMainContent = () => {
   const setQueryParams = (queryParams) => {
     dispatch(clearInventoryReducer());
     dispatch(setSystemParams(queryParams));
+    setResetKey((k) => k + 1);
   };
 
   useEffect(() => {
@@ -62,6 +64,7 @@ const SystemsMainContent = () => {
         null}
       <Main>
         <SystemsTable
+          resetKey={resetKey}
           apply={apply}
           setSearchParams={setSearchParams}
           activateRemediationModal={activateRemediationModal}

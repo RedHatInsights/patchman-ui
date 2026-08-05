@@ -39,7 +39,13 @@ const buildInventorySnapshot = (filters = {}, selectedTags = [], systemProfile =
   systemProfile: systemProfile || {},
 });
 
-const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decodedParams }) => {
+const SystemsTable = ({
+  resetKey,
+  apply,
+  setSearchParams,
+  activateRemediationModal,
+  decodedParams,
+}) => {
   const store = useStore();
   const inventory = useRef(null);
 
@@ -180,6 +186,7 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
       {ColumnManagementModal}
 
       <InventoryTable
+        key={resetKey}
         ref={inventory}
         isFullView
         autoRefresh
@@ -261,6 +268,7 @@ const SystemsTable = ({ apply, setSearchParams, activateRemediationModal, decode
 };
 
 SystemsTable.propTypes = {
+  resetKey: propTypes.number,
   apply: propTypes.func.isRequired,
   setSearchParams: propTypes.func.isRequired,
   activateRemediationModal: propTypes.func.isRequired,
