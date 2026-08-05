@@ -90,7 +90,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
             color='var(--pf-t--global--icon--color--status--success--default)'
             value={subtotals?.patched}
             apply={apply}
-            filter={{ filter: { packages_updatable: 'eq:0' } }}
+            filter={{ filter: { packages_updatable: 'eq:0', stale: false } }} // TODO: remove `stale: false` once default filter is gone
           />
         </GridItem>
         <GridItem lg={3} md={4}>
@@ -100,7 +100,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
             color='var(--pf-t--global--icon--color--brand--default)'
             value={subtotals?.unpatched}
             apply={apply}
-            filter={{ filter: { packages_updatable: 'gt:0' } }}
+            filter={{ filter: { packages_updatable: 'gt:0', stale: false } }} // TODO: remove `stale: false` once default filter is gone
           />
         </GridItem>
         <GridItem lg={3} md={4}>
