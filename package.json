@@ -30,7 +30,7 @@
     "react-dom": "^18.2.0",
     "react-lines-ellipsis": "^0.16.1",
     "react-redux": "^7.2.9",
-    "react-router-dom": "^6.30.3",
+    "react-router-dom": "^6.30.4",
     "redux": "^4.2.1",
     "redux-promise-middleware": "^6.1.2"
   },
@@ -69,7 +69,7 @@
     "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-playwright": "^2.10.5",
+    "eslint-plugin-playwright": "^2.11.0",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-unused-imports": "^4.4.1",
