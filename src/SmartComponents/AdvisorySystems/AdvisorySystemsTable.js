@@ -58,7 +58,7 @@ const AdvisorySystemsTable = ({
 
   const { systemProfile, selectedTags, filter, search, page, perPage, sort } = queryParams;
 
-  const [deleteFilters] = useRemoveFilter(
+  const [deleteFilters, deleteFilterGroup] = useRemoveFilter(
     { search, ...filter },
     apply,
     pageDefaultFilters.advisorySystems,
@@ -82,6 +82,7 @@ const AdvisorySystemsTable = ({
     deleteFilters,
     deleteFilterGroup,
     intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+    deleteFilterGroup,
     pageDefaultFilters.advisorySystems,
   );
 
