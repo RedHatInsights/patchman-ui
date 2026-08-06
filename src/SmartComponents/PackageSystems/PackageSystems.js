@@ -84,7 +84,7 @@ const PackageSystems = ({ packageName }) => {
     [],
   );
 
-  const [deleteFilters] = useRemoveFilter(
+  const [deleteFilters, deleteFilterGroup] = useRemoveFilter(
     { ...filter, search },
     apply,
     pageDefaultFilters.packageSystems,
@@ -109,10 +109,11 @@ const PackageSystems = ({ packageName }) => {
         filter,
         search,
         deleteFilters,
+        deleteFilterGroup,
         intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
         pageDefaultFilters.packageSystems,
       ),
-    [deleteFilters, filter, search],
+    [deleteFilters, deleteFilterGroup, filter, search],
   );
 
   const constructFilename = (system) => `${system.available_evra}`;
