@@ -42,13 +42,21 @@ const TableView = ({
     [metadata.limit, metadata.offset],
   );
 
-  const [deleteFilters] = useRemoveFilter(filter, apply, defaultFilters);
+  const [deleteFilters, deleteFilterGroup] = useRemoveFilter(filter, apply, defaultFilters);
   const selectedCount = selectedRows && arrayFromObj(selectedRows).length;
   const { code, hasError, isLoading } = status;
   const bulkSelectConfig = useBulkSelectConfig(selectedCount, onSelect, metadata, rows, onCollapse);
   const activeFiltersConfig = useMemo(
-    () => buildActiveFilterConfig(filter, search, deleteFilters, searchChipLabel, defaultFilters),
-    [defaultFilters, deleteFilters, filter, search, searchChipLabel],
+    () =>
+      buildActiveFilterConfig(
+        filter,
+        search,
+        deleteFilters,
+        deleteFilterGroup,
+        searchChipLabel,
+        defaultFilters,
+      ),
+    [defaultFilters, deleteFilters, deleteFilterGroup, filter, search, searchChipLabel],
   );
 
   return (
