@@ -114,7 +114,11 @@ const SystemsTable = ({
     dispatch(changeTags(tags));
   };
 
-  const [deleteFilters] = useRemoveFilter(filter, apply, pageDefaultFilters.systems);
+  const [deleteFilters, deleteFilterGroup] = useRemoveFilter(
+    filter,
+    apply,
+    pageDefaultFilters.systems,
+  );
   const filterConfig = buildFilterConfig(filter, apply);
   const applyInventorySnapshot = useCallback((nextSnapshot) => {
     setInventorySnapshot((previousSnapshot) =>
@@ -133,7 +137,7 @@ const SystemsTable = ({
       filter,
       '',
       deleteFilters,
-      undefined,
+      deleteFilterGroup,
       intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
       pageDefaultFilters.systems,
     );
@@ -142,7 +146,7 @@ const SystemsTable = ({
       ...config,
       showDeleteButton: config.showDeleteButton || hasInventoryFilterDeviation,
     };
-  }, [deleteFilters, filter, hasInventoryFilterDeviation]);
+  }, [deleteFilters, deleteFilterGroup, filter, hasInventoryFilterDeviation]);
 
   const onSelect = useOnSelect(systems, selectedRows, {
     endpoint: ID_API_ENDPOINTS.systems,
