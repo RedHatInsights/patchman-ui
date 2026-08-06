@@ -53,3 +53,10 @@ table.patchCompactInventory {
 .pf-v6-c-page__main-section {
   --pf-v6-c-page__main-section--RowGap: 0;
 }
+
+// fix compact table row item alignment
+.pf-m-compact tbody {
+  & .pf-v6-c-table__tr, & .pf-v6-c-table__check {
+    vertical-align: middle;
+  }
+}
