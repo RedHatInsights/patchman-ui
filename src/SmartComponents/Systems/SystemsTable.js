@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import isDeepEqualReact from 'fast-deep-equal/react';
@@ -20,7 +20,6 @@ import {
   useRemediationDataProvider,
   useOnSelect,
   ID_API_ENDPOINTS,
-  useColumnManagement,
 } from '../../Utilities/hooks';
 import { SYSTEMS_LIST_COLUMNS, systemsRowActions } from './SystemsListAssets';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
@@ -57,12 +56,6 @@ const SystemsTable = ({
   const selectedRows = useSelector(({ entities }) => entities?.selectedRows || []);
   const areAllSelected = useSelector(({ SystemsStore }) => SystemsStore?.areAllSelected);
   const queryParams = useSelector(({ SystemsStore }) => SystemsStore?.queryParams || {});
-
-  const [appliedColumns, setAppliedColumns] = React.useState(SYSTEMS_LIST_COLUMNS);
-  const [ColumnManagementModal, setColumnManagementModalOpen] = useColumnManagement(
-    appliedColumns,
-    (newColumns) => setAppliedColumns(newColumns),
-  );
 
   const {
     systemProfile,
@@ -117,7 +110,7 @@ const SystemsTable = ({
 
   const [deleteFilters] = useRemoveFilter(filter, apply, pageDefaultFilters.systems);
   const filterConfig = buildFilterConfig(filter, apply);
-  const applyInventorySnapshot = React.useCallback((nextSnapshot) => {
+  const applyInventorySnapshot = useCallback((nextSnapshot) => {
     setInventorySnapshot((previousSnapshot) =>
       isDeepEqualReact(previousSnapshot, nextSnapshot) ? previousSnapshot : nextSnapshot,
     );
@@ -129,7 +122,7 @@ const SystemsTable = ({
       inventorySnapshot.systemProfile && Object.keys(inventorySnapshot.systemProfile).length > 0,
     );
 
-  const activeFiltersConfig = React.useMemo(() => {
+  const activeFiltersConfig = useMemo(() => {
     const config = buildActiveFiltersConfig(filter, '', deleteFilters, pageDefaultFilters.systems);
 
     return {
@@ -182,88 +175,75 @@ const SystemsTable = ({
   );
 
   return (
-    <Fragment>
-      {ColumnManagementModal}
-
-      <InventoryTable
-        key={resetKey}
-        ref={inventory}
-        isFullView
-        autoRefresh
-        initialLoading
-        hideFilters={{
-          all: true,
-          name: false,
-          tags: false,
-          hostGroupFilter: false,
-          operatingSystem: false,
-        }}
-        columns={(inventoryColumns) =>
-          mergeInventoryColumns(
-            appliedColumns.filter((column) => column.isShown),
-            inventoryColumns,
-          )
-        }
-        showTags
-        customFilters={{
-          ...(operatingSystemFilter
-            ? {
-                filters: [...(osFilter || [])],
-              }
-            : {}),
-          patchParams: {
-            filter: apiFilter,
-            systemProfile: mergedSystemProfile,
-            selectedTags,
-          },
-        }}
-        paginationProps={{
-          isDisabled: totalItems === 0,
-        }}
-        onLoad={({ mergeWithEntities }) => {
-          store.replaceReducer(
-            combineReducers({
-              ...defaultReducers,
-              ...mergeWithEntities(
-                inventoryEntitiesReducer(SYSTEMS_LIST_COLUMNS, modifyInventory),
-                persistantParams({ page, perPage, sort }, decodedParams),
-              ),
-            }),
-          );
-        }}
-        getEntities={getEntities}
-        tableProps={{
-          actionResolver: (row) => systemsRowActions(activateRemediationModal, row),
-          canSelectAll: false,
-          variant: TableVariant.compact,
-          className: 'patchCompactInventory',
-          isStickyHeader: true,
-        }}
-        bulkSelect={bulkSelectConfig}
-        exportConfig={{
-          isDisabled: totalItems === 0,
-          onSelect: onExport,
-        }}
-        actionsConfig={{
-          actions: [
-            <AsyncRemediationButton
-              key='remediate-multiple-systems'
-              remediationProvider={remediationDataProvider}
-              isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
-              isLoading={isRemediationLoading}
-              patchNoAdvisoryText={NO_ADVISORIES_TEXT}
-              hasSelected={arrayFromObj(selectedRows).length > 0}
-            />,
-            {
-              label: 'Manage columns',
-              onClick: () => setColumnManagementModalOpen(true),
-            },
-          ],
-        }}
-        filterConfig={filterConfig}
-        activeFiltersConfig={activeFiltersConfig}
-      />
-    </Fragment>
+    <InventoryTable
+      key={resetKey}
+      ref={inventory}
+      isFullView
+      autoRefresh
+      initialLoading
+      hideFilters={{
+        all: true,
+        name: false,
+        tags: false,
+        hostGroupFilter: false,
+        operatingSystem: false,
+      }}
+      columns={(inventoryColumns) => mergeInventoryColumns(SYSTEMS_LIST_COLUMNS, inventoryColumns)}
+      showTags
+      customFilters={{
+        ...(operatingSystemFilter
+          ? {
+              filters: [...(osFilter || [])],
+            }
+          : {}),
+        patchParams: {
+          filter: apiFilter,
+          systemProfile: mergedSystemProfile,
+          selectedTags,
+        },
+      }}
+      paginationProps={{
+        isDisabled: totalItems === 0,
+      }}
+      onLoad={({ mergeWithEntities }) => {
+        store.replaceReducer(
+          combineReducers({
+            ...defaultReducers,
+            ...mergeWithEntities(
+              inventoryEntitiesReducer(SYSTEMS_LIST_COLUMNS, modifyInventory),
+              persistantParams({ page, perPage, sort }, decodedParams),
+            ),
+          }),
+        );
+      }}
+      getEntities={getEntities}
+      tableProps={{
+        actionResolver: (row) => systemsRowActions(activateRemediationModal, row),
+        canSelectAll: false,
+        variant: TableVariant.compact,
+        className: 'patchCompactInventory',
+        isStickyHeader: true,
+      }}
+      bulkSelect={bulkSelectConfig}
+      exportConfig={{
+        isDisabled: totalItems === 0,
+        onSelect: onExport,
+      }}
+      actionsConfig={{
+        actions: [
+          <AsyncRemediationButton
+            key='remediate-multiple-systems'
+            remediationProvider={remediationDataProvider}
+            isDisabled={arrayFromObj(selectedRows).length === 0 || isRemediationLoading}
+            isLoading={isRemediationLoading}
+            patchNoAdvisoryText={NO_ADVISORIES_TEXT}
+            hasSelected={arrayFromObj(selectedRows).length > 0}
+          />,
+        ],
+      }}
+      filterConfig={filterConfig}
+      activeFiltersConfig={activeFiltersConfig}
+    />
   );
 };
 
