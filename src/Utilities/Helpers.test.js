@@ -337,6 +337,7 @@ describe('Helpers tests', () => {
       ],
       onDelete: expect.any(Function),
       showDeleteButton: false,
+      onDeleteGroup: expect.any(Function),
     });
   });
 
@@ -360,9 +361,10 @@ describe('Helpers tests', () => {
       ],
       onDelete: expect.any(Function),
       showDeleteButton: true,
+      onDeleteGroup: expect.any(Function),
     });
   });
-
+  
   it('buildActiveFilterConfig: should show clear filters when a page has no defaults', () => {
     expect(
       buildActiveFilterConfig(
@@ -382,6 +384,7 @@ describe('Helpers tests', () => {
         },
       ],
       onDelete: expect.any(Function),
+      onDeleteGroup: expect.any(Function),
     });
   });
 

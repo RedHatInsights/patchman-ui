@@ -516,6 +516,7 @@ export const buildActiveFilterConfig = (
   filters,
   search,
   deleteFilters,
+  deleteFilterGroup,
   searchChipLabel = 'Search',
   defaultFilters = emptyDefaultFilters,
 ) => {
@@ -531,6 +532,7 @@ export const buildActiveFilterConfig = (
   return {
     filters: buildFilterChips(visibleFilters, visibleSearch, searchChipLabel),
     onDelete: deleteFilters,
+    onDeleteGroup: deleteFilterGroup,
     deleteTitle: intl.formatMessage(
       hasDefaultFilterState ? messages.labelsFiltersReset : messages.labelsFiltersClear,
     ),
