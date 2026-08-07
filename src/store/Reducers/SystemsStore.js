@@ -23,6 +23,10 @@ export const SystemsStore = (state = initialState, action) => {
       newState.queryParams = changeListParams(newState.queryParams, action.payload);
       return newState;
 
+    case ActionTypes.SET_SYSTEM_PARAMS:
+      newState.queryParams = changeListParams(initialState.queryParams, action.payload);
+      return newState;
+
     case ActionTypes.TRIGGER_GLOBAL_FILTER:
       return changeFilters(newState, action);
 
