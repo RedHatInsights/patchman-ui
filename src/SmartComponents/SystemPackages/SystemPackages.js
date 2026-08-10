@@ -103,47 +103,40 @@ const SystemPackages = ({ handleNoSystemData, inventoryId, shouldRefresh }) => {
   );
 
   return (
-    <React.Fragment>
-      <TableView
-        columns={systemPackagesColumns}
-        store={{ rows, metadata, status, queryParams }}
-        onSelect={onSelect}
-        selectedRows={selectedRows}
-        compact
-        onSort={onSort}
-        sortBy={sortBy}
-        onSetPage={onSetPage}
-        onPerPageSelect={onPerPageSelect}
-        onExport={onExport}
-        remediationProvider={() =>
-          remediationProvider(
-            arrayFromObj(selectedRows),
-            inventoryId,
-            remediationIdentifiers.package,
-          )
-        }
-        apply={apply}
-        filterConfig={{
-          items: [
-            searchFilter(
-              apply,
-              queryParams.search,
-              intl.formatMessage(messages.labelsFiltersPackagesSearchTitle),
-              intl.formatMessage(messages.labelsFiltersPackagesSearchPlaceHolder),
-            ),
-            statusFilter(apply, queryParams.filter),
-          ],
-        }}
-        defaultFilters={pageDefaultFilters.systemPackages}
-        remediationButtonOUIA='toolbar-remediation-button'
-        tableOUIA='system-packages-table'
-        paginationOUIA='system-packages-pagination'
-        errorState={errorState}
-        emptyState={emptyState}
-        searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
-        hasColumnManagement
-      />
-    </React.Fragment>
+    <TableView
+      columns={systemPackagesColumns}
+      store={{ rows, metadata, status, queryParams }}
+      onSelect={onSelect}
+      selectedRows={selectedRows}
+      compact
+      onSort={onSort}
+      sortBy={sortBy}
+      onSetPage={onSetPage}
+      onPerPageSelect={onPerPageSelect}
+      onExport={onExport}
+      remediationProvider={() =>
+        remediationProvider(arrayFromObj(selectedRows), inventoryId, remediationIdentifiers.package)
+      }
+      apply={apply}
+      filterConfig={{
+        items: [
+          searchFilter(
+            apply,
+            queryParams.search,
+            intl.formatMessage(messages.labelsFiltersPackagesSearchTitle),
+            intl.formatMessage(messages.labelsFiltersPackagesSearchPlaceHolder),
+          ),
+          statusFilter(apply, queryParams.filter),
+        ],
+      }}
+      defaultFilters={pageDefaultFilters.systemPackages}
+      remediationButtonOUIA='toolbar-remediation-button'
+      tableOUIA='system-packages-table'
+      paginationOUIA='system-packages-pagination'
+      errorState={errorState}
+      emptyState={emptyState}
+      searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
+    />
   );
 };
 

@@ -221,7 +221,6 @@ const Advisories = () => {
           defaultFilters={pageDefaultFilters.advisories}
           searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
           isRemediationLoading={isRemediationLoading}
-          hasColumnManagement
         />
       </Main>
     </>

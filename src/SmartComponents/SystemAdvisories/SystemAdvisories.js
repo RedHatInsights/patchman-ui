@@ -115,7 +115,7 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
   });
 
   const onSort = useSortColumn(systemAdvisoriesColumns, apply, 2);
-  const sortBy = React.useMemo(
+  const sortBy = useMemo(
     () => createSortBy(systemAdvisoriesColumns, metadata.sort, 2),
     [metadata.sort],
   );
@@ -139,52 +139,49 @@ const SystemAdvisories = ({ handleNoSystemData, inventoryId, shouldRefresh }) =>
   );
 
   return (
-    <React.Fragment>
-      <TableView
-        columns={systemAdvisoriesColumns}
-        compact
-        onCollapse={onCollapse}
-        onSelect={onSelect}
-        onSetPage={onSetPage}
-        onPerPageSelect={onPerPageSelect}
-        onSort={onSort}
-        onExport={onExport}
-        sortBy={sortBy}
-        remediationProvider={() =>
-          remediationProvider(
-            arrayFromObj(selectedRows),
-            inventoryId,
-            remediationIdentifiers.advisory,
-          )
-        }
-        selectedRows={selectedRows}
-        systemId={inventoryId}
-        apply={apply}
-        store={{ rows, metadata, status, queryParams }}
-        remediationButtonOUIA='toolbar-remediation-button'
-        tableOUIA='system-advisories-table'
-        paginationOUIA='system-advisories-pagination'
-        filterConfig={{
-          items: [
-            searchFilter(
-              apply,
-              queryParams.search,
-              intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle),
-              intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder),
-            ),
-            typeFilter(apply, queryParams.filter),
-            severityFilter(apply, queryParams?.filter),
-            publishDateFilter(apply, queryParams.filter),
-            rebootFilter(apply, queryParams.filter),
-            advisoryStatusFilter(apply, queryParams.filter),
-          ],
-        }}
-        errorState={errorState}
-        defaultFilters={pageDefaultFilters.systemAdvisories}
-        searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
-        hasColumnManagement
-      />
-    </React.Fragment>
+    <TableView
+      columns={systemAdvisoriesColumns}
+      compact
+      onCollapse={onCollapse}
+      onSelect={onSelect}
+      onSetPage={onSetPage}
+      onPerPageSelect={onPerPageSelect}
+      onSort={onSort}
+      onExport={onExport}
+      sortBy={sortBy}
+      remediationProvider={() =>
+        remediationProvider(
+          arrayFromObj(selectedRows),
+          inventoryId,
+          remediationIdentifiers.advisory,
+        )
+      }
+      selectedRows={selectedRows}
+      systemId={inventoryId}
+      apply={apply}
+      store={{ rows, metadata, status, queryParams }}
+      remediationButtonOUIA='toolbar-remediation-button'
+      tableOUIA='system-advisories-table'
+      paginationOUIA='system-advisories-pagination'
+      filterConfig={{
+        items: [
+          searchFilter(
+            apply,
+            queryParams.search,
+            intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle),
+            intl.formatMessage(messages.labelsFiltersSearchAdvisoriesPlaceholder),
+          ),
+          typeFilter(apply, queryParams.filter),
+          severityFilter(apply, queryParams?.filter),
+          publishDateFilter(apply, queryParams.filter),
+          rebootFilter(apply, queryParams.filter),
+          advisoryStatusFilter(apply, queryParams.filter),
+        ],
+      }}
+      errorState={errorState}
+      defaultFilters={pageDefaultFilters.systemAdvisories}
+      searchChipLabel={intl.formatMessage(messages.labelsFiltersSearchAdvisoriesTitle)}
+    />
   );
 };
 
