@@ -1,7 +1,7 @@
+import React, { useCallback, useMemo, useEffect, useState } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import propTypes from 'prop-types';
-import React, { useCallback, useMemo, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import messages from '../../Messages';
@@ -44,7 +44,6 @@ import {
   useRemoveFilter,
   useOnSelect,
   ID_API_ENDPOINTS,
-  useColumnManagement,
 } from '../../Utilities/hooks';
 import { intl } from '../../Utilities/IntlProvider';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
@@ -54,7 +53,7 @@ import { combineReducers } from 'redux';
 const PackageSystems = ({ packageName }) => {
   const dispatch = useDispatch();
   const store = useStore();
-  const [packageVersions, setPackageVersions] = React.useState([]);
+  const [packageVersions, setPackageVersions] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const decodedParams = decodeQueryparams('?' + searchParams.toString(), { os: osParamParser });
@@ -83,12 +82,6 @@ const PackageSystems = ({ packageName }) => {
       dispatch(clearPackageSystemsReducer());
     },
     [],
-  );
-
-  const [appliedColumns, setAppliedColumns] = React.useState(PACKAGE_SYSTEMS_COLUMNS);
-  const [ColumnManagementModal, setColumnManagementModalOpen] = useColumnManagement(
-    appliedColumns,
-    (newColumns) => setAppliedColumns(newColumns),
   );
 
   const [deleteFilters] = useRemoveFilter(
@@ -187,9 +180,7 @@ const PackageSystems = ({ packageName }) => {
   );
 
   return (
-    <React.Fragment>
-      {ColumnManagementModal}
-
+    <>
       {(status.hasError && <ErrorHandler code={status.code} />) || (
         <InventoryTable
           isFullView
@@ -197,10 +188,7 @@ const PackageSystems = ({ packageName }) => {
           initialLoading
           hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
           columns={(inventoryColumns) =>
-            mergeInventoryColumns(
-              appliedColumns.filter((column) => column.isShown),
-              inventoryColumns,
-            )
+            mergeInventoryColumns(PACKAGE_SYSTEMS_COLUMNS, inventoryColumns)
           }
           showTags
           getEntities={getEntites}
@@ -226,15 +214,7 @@ const PackageSystems = ({ packageName }) => {
               }),
             );
           }}
-          actionsConfig={{
-            actions: [
-              null, // first item of actions will be a big button, but we want "Manage columns" in kebab menu
-              {
-                label: 'Manage columns',
-                onClick: () => setColumnManagementModalOpen(true),
-              },
-            ],
-          }}
+          actionsConfig={{ actions: [null] }}
           tableProps={{
             canSelectAll: false,
             variant: TableVariant.compact,
@@ -257,7 +237,7 @@ const PackageSystems = ({ packageName }) => {
           }
         />
       )}
-    </React.Fragment>
+    </>
   );
 };
 
