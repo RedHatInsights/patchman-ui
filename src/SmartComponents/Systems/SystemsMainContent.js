@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { useSelector, useDispatch } from 'react-redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
-import { changeSystemsParams, clearInventoryReducer } from '../../store/Actions/Actions';
+import {
+  changeSystemsParams,
+  setSystemParams,
+  clearInventoryReducer,
+} from '../../store/Actions/Actions';
 import { decodeQueryparams } from '../../Utilities/Helpers';
 import { useActivateRemediationModal } from './SystemsListAssets';
 import SystemsStatusReport from '../../PresentationalComponents/StatusReports/SystemsStatusReport';
@@ -16,6 +20,7 @@ const SystemsMainContent = () => {
   const [isRemediationOpen, setRemediationOpen] = useState(false);
   const decodedParams = decodeQueryparams('?' + searchParams.toString());
   const [remediationIssues, setRemediationIssues] = useState([]);
+  const [resetKey, setResetKey] = useState(0);
 
   const { hasError, code } = useSelector(({ entities }) => entities?.status || {});
   const metadata = useSelector(({ SystemsStore }) => SystemsStore?.metadata || {});
@@ -24,6 +29,12 @@ const SystemsMainContent = () => {
 
   const apply = (queryParams) => {
     dispatch(changeSystemsParams(queryParams));
+  };
+
+  const setQueryParams = (queryParams) => {
+    dispatch(clearInventoryReducer());
+    dispatch(setSystemParams(queryParams));
+    setResetKey((k) => k + 1);
   };
 
   useEffect(() => {
@@ -42,7 +53,7 @@ const SystemsMainContent = () => {
 
   return (
     <React.Fragment>
-      <SystemsStatusReport apply={apply} queryParams={queryParams} />
+      <SystemsStatusReport apply={setQueryParams} queryParams={queryParams} />
       {(isRemediationOpen && (
         <RemediationWizard
           data={remediationIssues}
@@ -53,6 +64,7 @@ const SystemsMainContent = () => {
         null}
       <Main>
         <SystemsTable
+          resetKey={resetKey}
           apply={apply}
           setSearchParams={setSearchParams}
           activateRemediationModal={activateRemediationModal}

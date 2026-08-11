@@ -1,46 +1,25 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { CheckCircleIcon, PackageIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
+import { CheckCircleIcon, BundleIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
-import {
-  CardTitle,
-  Button,
-  Skeleton,
-  Card,
-  Grid,
-  GridItem,
-  CardBody,
-  Flex,
-  FlexItem,
-  Icon as PfIcon,
-} from '@patternfly/react-core';
+import { CardTitle, Skeleton, Card, Grid, CardBody, CardHeader } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
 import { fetchSystems } from '../../Utilities/api/api';
+import IconWithLabel from '../Snippets/IconWithLabel';
+
+import './Card.css';
 
 const StatusCard = ({ title, color, Icon, value, filter, apply }) => (
-  <Card isCompact isFullHeight>
-    <CardTitle style={{ marginTop: '0px' }}>{title}</CardTitle>
-    <CardBody className='fonst-size-sm'>
-      <Flex flex={{ default: 'inlineFlex' }} style={{ flexWrap: 'nowrap' }}>
-        <FlexItem spacer={{ default: 'spacerMd' }} alignSelf={{ default: 'alignSelfCenter' }}>
-          <PfIcon size='md'>
-            <Icon color={color} />
-          </PfIcon>
-        </FlexItem>
-        <FlexItem spacer={{ default: 'spacerNone' }}>
-          {(typeof value === 'undefined' && <Skeleton width='24px' />) || (
-            <Button
-              variant='link'
-              onClick={() => apply(filter)}
-              className='patch-status-report-text'
-            >
-              {value}
-            </Button>
-          )}
-        </FlexItem>
-      </Flex>
+  <Card isFullHeight isClickable>
+    <CardHeader selectableActions={{ onClickAction: () => apply(filter) }}>
+      <CardTitle>{title}</CardTitle>
+    </CardHeader>
+    <CardBody>
+      {(typeof value === 'undefined' && <Skeleton width='24px' />) || (
+        <IconWithLabel icon={<Icon color={color} />} size='md' label={value} />
+      )}
     </CardBody>
   </Card>
 );
@@ -90,42 +69,31 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
   ]);
 
   return (
-    <Main style={{ paddingBottom: 0 }}>
-      <Grid
-        hasGutter
-        span={12}
-        style={{ paddingBottom: 'var(--pf-t--global--spacer--control--vertical--spacious)' }}
-      >
-        <GridItem lg={3} md={4}>
-          <StatusCard
-            title={intl.formatMessage(messages.labelsStatusSystemsUpToDate)}
-            Icon={CheckCircleIcon}
-            color='var(--pf-t--global--icon--color--status--success--default)'
-            value={subtotals?.patched}
-            apply={apply}
-            filter={{ filter: { packages_updatable: 'eq:0' } }}
-          />
-        </GridItem>
-        <GridItem lg={3} md={4}>
-          <StatusCard
-            title={intl.formatMessage(messages.labelsStatusSystemsWithPatchesAvailable)}
-            Icon={PackageIcon}
-            color='var(--pf-t--global--icon--color--brand--default)'
-            value={subtotals?.unpatched}
-            apply={apply}
-            filter={{ filter: { packages_updatable: 'gt:0' } }}
-          />
-        </GridItem>
-        <GridItem lg={3} md={4}>
-          <StatusCard
-            title={intl.formatMessage(messages.labelsStatusStaleSystems)}
-            Icon={ExclamationTriangleIcon}
-            color='var(--pf-t--global--icon--color--severity--moderate--default)'
-            value={subtotals?.stale}
-            apply={apply}
-            filter={{ filter: { stale: true } }}
-          />
-        </GridItem>
+    <Main>
+      <Grid hasGutter xl2={3} xl={4} md={4} sm={12}>
+        <StatusCard
+          title={intl.formatMessage(messages.labelsStatusSystemsUpToDate)}
+          Icon={CheckCircleIcon}
+          color='var(--pf-t--global--icon--color--status--success--default)'
+          value={subtotals?.patched}
+          apply={apply}
+          filter={{ filter: { packages_updatable: 'eq:0', stale: false } }} // TODO: remove `stale: false` once default filter is gone
+        />
+        <StatusCard
+          title={intl.formatMessage(messages.labelsStatusSystemsWithPatchesAvailable)}
+          Icon={BundleIcon}
+          value={subtotals?.unpatched}
+          apply={apply}
+          filter={{ filter: { packages_updatable: 'gt:0', stale: false } }} // TODO: remove `stale: false` once default filter is gone
+        />
+        <StatusCard
+          title={intl.formatMessage(messages.labelsStatusStaleSystems)}
+          Icon={ExclamationTriangleIcon}
+          color='var(--pf-t--global--icon--color--status--warning--default)'
+          value={subtotals?.stale}
+          apply={apply}
+          filter={{ filter: { stale: true } }}
+        />
       </Grid>
     </Main>
   );
