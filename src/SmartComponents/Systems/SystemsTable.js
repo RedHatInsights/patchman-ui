@@ -11,7 +11,12 @@ import {
 } from '../../store/Reducers/InventoryEntitiesReducer';
 import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api/api';
 import { pageDefaultFilters, NO_ADVISORIES_TEXT } from '../../Utilities/constants';
-import { arrayFromObj, hasActiveInventoryFilters, persistantParams } from '../../Utilities/Helpers';
+import {
+  arrayFromObj,
+  buildActiveFilterConfig,
+  hasActiveInventoryFilters,
+  persistantParams,
+} from '../../Utilities/Helpers';
 import {
   useBulkSelectConfig,
   useGetEntities,
@@ -25,12 +30,13 @@ import { SYSTEMS_LIST_COLUMNS, systemsRowActions } from './SystemsListAssets';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import {
   buildFilterConfig,
-  buildActiveFiltersConfig,
   mergeInventoryColumns,
   workloadToSystemProfile,
 } from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
 import propTypes from 'prop-types';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const buildInventorySnapshot = (filters = {}, selectedTags = [], systemProfile = {}) => ({
   filters,
@@ -123,7 +129,14 @@ const SystemsTable = ({
     );
 
   const activeFiltersConfig = useMemo(() => {
-    const config = buildActiveFiltersConfig(filter, '', deleteFilters, pageDefaultFilters.systems);
+    const config = buildActiveFilterConfig(
+      filter,
+      '',
+      deleteFilters,
+      undefined,
+      intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+      pageDefaultFilters.systems,
+    );
 
     return {
       ...config,

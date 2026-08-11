@@ -20,6 +20,7 @@ import {
 import { pageDefaultFilters, remediationIdentifiers } from '../../Utilities/constants';
 import {
   arrayFromObj,
+  buildActiveFilterConfig,
   persistantParams,
   remediationProvider,
   removeUndefinedObjectKeys,
@@ -35,7 +36,7 @@ import {
 import { intl } from '../../Utilities/IntlProvider';
 import { ADVISORY_SYSTEMS_COLUMNS, systemsRowActions } from '../Systems/SystemsListAssets';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
-import { buildActiveFiltersConfig, mergeInventoryColumns } from '../../Utilities/SystemsHelpers';
+import { mergeInventoryColumns } from '../../Utilities/SystemsHelpers';
 import advisoryStatusFilter from '../../PresentationalComponents/Filters/AdvisoryStatusFilter';
 
 const AdvisorySystemsTable = ({
@@ -75,10 +76,12 @@ const AdvisorySystemsTable = ({
     ],
   };
 
-  const activeFiltersConfig = buildActiveFiltersConfig(
+  const activeFiltersConfig = buildActiveFilterConfig(
     filter,
     search,
     deleteFilters,
+    deleteFilterGroup,
+    intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
     pageDefaultFilters.advisorySystems,
   );
 
