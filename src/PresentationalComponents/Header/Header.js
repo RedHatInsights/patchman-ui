@@ -1,11 +1,11 @@
+import React from 'react';
 import { Split, SplitItem } from '@patternfly/react-core';
 import { PageHeader, PageHeaderTitle } from '@redhat-cloud-services/frontend-components/PageHeader';
 import PropTypes from 'prop-types';
-import React from 'react';
 import HeaderBreadcrumbs from './HeaderBreadcrumbs';
 
 const Header = ({ title, breadcrumbs, children, headerOUIA, actions }) => (
-  <React.Fragment>
+  <>
     <PageHeader data-ouia-component-type={`${headerOUIA}-page-header`}>
       {breadcrumbs && <HeaderBreadcrumbs items={breadcrumbs} headerOUIA={headerOUIA} />}
       <Split hasGutter>
@@ -17,7 +17,7 @@ const Header = ({ title, breadcrumbs, children, headerOUIA, actions }) => (
       </Split>
       {children}
     </PageHeader>
-  </React.Fragment>
+  </>
 );
 
 Header.propTypes = {

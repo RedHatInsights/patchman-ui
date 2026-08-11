@@ -1,5 +1,5 @@
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import messages from '../../Messages';
 import packagesListStatusFilter from '../../PresentationalComponents/Filters/PackagesListStatusFilter';
@@ -19,7 +19,7 @@ import { useSearchParams } from 'react-router-dom';
 
 const Packages = () => {
   const dispatch = useDispatch();
-  const [firstMount, setFirstMount] = React.useState(true);
+  const [firstMount, setFirstMount] = useState(true);
   const chrome = useChrome();
   useEffect(() => {
     chrome.updateDocumentTitle(`Packages - Content | RHEL`, true);
@@ -27,7 +27,7 @@ const Packages = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const packageRows = useSelector(({ PackagesListStore }) => PackagesListStore.rows);
-  const rows = React.useMemo(() => createPackagesRows(packageRows), [packageRows]);
+  const rows = useMemo(() => createPackagesRows(packageRows), [packageRows]);
 
   const status = useSelector(({ PackagesListStore }) => PackagesListStore.status);
   const metadata = useSelector(({ PackagesListStore }) => PackagesListStore.metadata);
@@ -58,15 +58,12 @@ const Packages = () => {
   );
 
   const onSort = useSortColumn(packagesColumns, apply);
-  const sortBy = React.useMemo(
-    () => createSortBy(packagesColumns, metadata.sort, 0),
-    [metadata.sort],
-  );
+  const sortBy = useMemo(() => createSortBy(packagesColumns, metadata.sort, 0), [metadata.sort]);
   const onSetPage = useSetPage(metadata.limit, apply);
   const onPerPageSelect = usePerPageSelect(apply);
 
   return (
-    <React.Fragment>
+    <>
       <Header title={intl.formatMessage(messages.titlesPatchPackages)} headerOUIA='packages' />
       <Main>
         <TableView
@@ -97,7 +94,7 @@ const Packages = () => {
           searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
         />
       </Main>
-    </React.Fragment>
+    </>
   );
 };
 

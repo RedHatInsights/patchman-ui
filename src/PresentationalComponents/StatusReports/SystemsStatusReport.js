@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { CheckCircleIcon, BundleIcon, ExclamationTriangleIcon } from '@patternfly/react-icons';
 import propTypes from 'prop-types';
@@ -25,7 +25,7 @@ const StatusCard = ({ title, color, Icon, value, filter, apply }) => (
 );
 
 const SystemsStatusReport = ({ apply, queryParams }) => {
-  const [subtotals, setSubtotals] = React.useState({});
+  const [subtotals, setSubtotals] = useState({});
 
   const { selectedTags, selectedGlobalTags, systemProfile } = useSelector(
     ({ GlobalFilterStore }) => GlobalFilterStore,
@@ -55,7 +55,7 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
     return result;
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchResource();
   }, [
     queryParams?.filter?.os?.length,
