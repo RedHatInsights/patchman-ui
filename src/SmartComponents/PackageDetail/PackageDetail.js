@@ -1,6 +1,6 @@
+import React, { useEffect } from 'react';
 import { Stack, StackItem, Content, ContentVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import messages from '../../Messages';
@@ -25,11 +25,11 @@ const PackageDetail = () => {
   const packageDetails = useSelector(({ PackageDetailStore }) => PackageDetailStore);
   const status = useSelector(({ PackageDetailStore }) => PackageDetailStore.status);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchPackageDetails({ packageName }));
   }, []);
 
-  React.useEffect(
+  useEffect(
     () => () => {
       dispatch(clearPackageDetailStore());
     },
@@ -39,7 +39,7 @@ const PackageDetail = () => {
   const { attributes } = packageDetails.data;
 
   return (
-    <React.Fragment>
+    <>
       <Header
         title={packageName}
         headerOUIA='package-details'
@@ -79,7 +79,7 @@ const PackageDetail = () => {
           </StackItem>
         </Stack>
       </Main>
-    </React.Fragment>
+    </>
   );
 };
 

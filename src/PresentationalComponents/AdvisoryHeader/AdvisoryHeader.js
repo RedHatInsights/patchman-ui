@@ -1,3 +1,4 @@
+import React, { Fragment, lazy, Suspense, useState } from 'react';
 import {
   Button,
   Content,
@@ -12,7 +13,6 @@ import {
 } from '@patternfly/react-core';
 import { processDate } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 import propTypes from 'prop-types';
-import React, { Fragment, lazy, Suspense, useState } from 'react';
 import messages from '../../Messages';
 import WithLoader, {
   WithLoaderVariants,
@@ -51,19 +51,19 @@ const AdvisoryHeader = ({ attributes, isLoading }) => {
             </StackItem>
             <StackItem>
               {attributes.public_date && (
-                <React.Fragment>
+                <>
                   {intl.formatMessage(messages.labelsPublicDate, {
                     date: processDate(attributes.public_date),
                   })}
                   <br />
-                </React.Fragment>
+                </>
               )}
               {attributes.modified_date && (
-                <React.Fragment>
+                <>
                   {intl.formatMessage(messages.labelsModifiedDate, {
                     date: processDate(attributes.modified_date),
                   })}
-                </React.Fragment>
+                </>
               )}
             </StackItem>
             {isRHAdvisory(attributes.id) && (

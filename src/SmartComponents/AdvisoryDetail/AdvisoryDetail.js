@@ -1,6 +1,6 @@
+import React, { useEffect } from 'react';
 import { Stack, StackItem, Content, ContentVariants } from '@patternfly/react-core';
 import { Main } from '@redhat-cloud-services/frontend-components/Main';
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import messages from '../../Messages';
@@ -29,11 +29,11 @@ const AdvisoryDetail = () => {
   const advisoryDetails = useSelector(({ AdvisoryDetailStore }) => AdvisoryDetailStore);
   const status = useSelector(({ AdvisoryDetailStore }) => AdvisoryDetailStore.status);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchAvisoryDetails({ advisoryName }));
   }, []);
 
-  React.useEffect(
+  useEffect(
     () => () => {
       dispatch(clearEntitiesStore());
       dispatch(clearAdvisoryDetailStore());
@@ -43,7 +43,7 @@ const AdvisoryDetail = () => {
 
   const { attributes } = advisoryDetails.data;
   return (
-    <React.Fragment>
+    <>
       <Header
         title={advisoryName}
         headerOUIA='advisory-details'
@@ -82,7 +82,7 @@ const AdvisoryDetail = () => {
           </StackItem>
         </Stack>
       </Main>
-    </React.Fragment>
+    </>
   );
 };
 
