@@ -1,9 +1,6 @@
 import staleFilter from '../PresentationalComponents/Filters/SystemStaleFilter';
 import systemsUpdatableFilter from '../PresentationalComponents/Filters/SystemsUpdatableFilter';
 import systemsWorkloadFilter from '../PresentationalComponents/Filters/WorkloadFilter';
-import { buildActiveFilterConfig } from './Helpers';
-import { intl } from './IntlProvider';
-import messages from '../Messages';
 import { defaultCompoundSortValues } from './constants';
 
 export const workloadToSystemProfile = (workloads = []) => ({
@@ -25,15 +22,6 @@ export const buildFilterConfig = (filter, apply) => ({
     systemsWorkloadFilter(apply, filter),
   ],
 });
-
-export const buildActiveFiltersConfig = (filter, search, deleteFilters, defaultFilters) =>
-  buildActiveFilterConfig(
-    filter,
-    search,
-    deleteFilters,
-    intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-    defaultFilters,
-  );
 
 export const mergeInventoryColumns = (patchmanColumns, inventoryColumns) =>
   patchmanColumns.map((column) => ({

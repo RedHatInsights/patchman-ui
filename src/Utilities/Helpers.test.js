@@ -323,6 +323,7 @@ describe('Helpers tests', () => {
         { systems_applicable: ['gt:0'] },
         '',
         jest.fn(),
+        jest.fn(),
         'Name',
         pageDefaultFilters.packages,
       ),
@@ -347,6 +348,7 @@ describe('Helpers tests', () => {
         { systems_applicable: ['eq:0'] },
         '',
         jest.fn(),
+        jest.fn(),
         'Name',
         pageDefaultFilters.packages,
       ),
@@ -370,6 +372,7 @@ describe('Helpers tests', () => {
       buildActiveFilterConfig(
         { advisory_type_name: 'bugfix' },
         '',
+        jest.fn(),
         jest.fn(),
         'Name',
         pageDefaultFilters.advisories,
