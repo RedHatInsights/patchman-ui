@@ -1,11 +1,11 @@
+import React, { useState } from 'react';
 import { Grid, GridItem, Stack, StackItem } from '@patternfly/react-core';
 import propTypes from 'prop-types';
-import React, { Fragment } from 'react';
 import { truncateDescription } from '../../Utilities/Helpers';
 import WithLoader, { WithLoaderVariants } from '../WithLoader/WithLoader';
 
 const PackageHeader = ({ attributes: { description }, isLoading }) => {
-  const [wordLength, setWordLength] = React.useState(1000);
+  const [wordLength, setWordLength] = useState(1000);
 
   return (
     (description && (
@@ -21,7 +21,7 @@ const PackageHeader = ({ attributes: { description }, isLoading }) => {
           </WithLoader>
         </GridItem>
       </Grid>
-    )) || <Fragment />
+    )) || <></>
   );
 };
 

@@ -1,5 +1,5 @@
+import { useMemo } from 'react';
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
-import React from 'react';
 import { staleSystems } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -7,7 +7,7 @@ import messages from '../../Messages';
 const systemsStaleFilter = (apply, currentFilter = {}) => {
   let { stale: currentValue } = currentFilter;
 
-  const staleMap = React.useMemo(
+  const staleMap = useMemo(
     () =>
       staleSystems.map(({ value, label }) => ({
         label,

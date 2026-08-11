@@ -1,5 +1,5 @@
+import { useMemo } from 'react';
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
-import React from 'react';
 import { rebootRequired } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -7,7 +7,7 @@ import messages from '../../Messages';
 const rebootFilter = (apply, currentFilter = {}) => {
   let { reboot_required: currentValue } = currentFilter;
 
-  const rebootMap = React.useMemo(
+  const rebootMap = useMemo(
     () =>
       rebootRequired.map(({ value, label }) => ({
         label,
