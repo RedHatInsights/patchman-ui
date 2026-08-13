@@ -15,6 +15,7 @@ export const workloadToSystemProfile = (workloads = []) => ({
   ...(workloads.includes('intersystems') && { intersystems: true }),
   ...(workloads.includes('oracle_db') && { oracle_db: true }),
   ...(workloads.includes('rhel_ai') && { rhel_ai: true }),
+  ...(workloads.includes('satellite') && { satellite: true }),
 });
 
 export const buildFilterConfig = (filter, apply) => ({
