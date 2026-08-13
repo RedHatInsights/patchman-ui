@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, Fragment, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useMemo, useState, Fragment } from 'react';
 import { SortByDirection } from '@patternfly/react-table';
 import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
@@ -18,17 +18,16 @@ import {
 } from '../Helpers';
 import { intl } from '../IntlProvider';
 import { createSystemsSortBy } from '../SystemsHelpers';
-import { ColumnManagementModal } from '@patternfly/react-component-groups';
 
 export const useSetPage = (limit, callback) => {
-  const onSetPage = React.useCallback((_, page) =>
+  const onSetPage = useCallback((_, page) =>
     callback({ offset: getOffsetFromPageLimit(page, limit) }),
   );
   return onSetPage;
 };
 
 export const useHandleRefresh = (metadata, callback) => {
-  const handleRefresh = React.useCallback(({ page, per_page: perPage }) => {
+  const handleRefresh = useCallback(({ page, per_page: perPage }) => {
     const offset = getOffsetFromPageLimit(page, perPage);
     const limit = getLimitFromPageSize(perPage);
     (metadata.offset !== offset || metadata.limit !== limit) &&
@@ -41,12 +40,12 @@ export const useHandleRefresh = (metadata, callback) => {
 };
 
 export const usePagePerPage = (limit, offset) => {
-  const [page, perPage] = React.useMemo(() => convertLimitOffset(limit, offset), [limit, offset]);
+  const [page, perPage] = useMemo(() => convertLimitOffset(limit, offset), [limit, offset]);
   return [page, perPage];
 };
 
 export const usePerPageSelect = (callback) => {
-  const onPerPageSelect = React.useCallback((_, perPage) =>
+  const onPerPageSelect = useCallback((_, perPage) =>
     callback({ limit: getLimitFromPageSize(perPage), offset: 0 }),
   );
   return onPerPageSelect;
@@ -58,7 +57,7 @@ export const useSortColumn = (
   offset = 0,
   compoundSortValues = defaultCompoundSortValues,
 ) => {
-  const onSort = React.useCallback((_, index, direction) => {
+  const onSort = useCallback((_, index, direction) => {
     let columnName = columns[index - offset].key;
     const compoundKey = compoundSortValues[columnName];
     if (compoundKey) {
@@ -76,7 +75,7 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
   const { filter: defaultFilterState, search: defaultSearch } =
     getDefaultFilterState(defaultFilters);
 
-  const removeFilter = React.useCallback((selected, resetFilters, shouldReset) => {
+  const removeFilter = useCallback((selected, resetFilters, shouldReset) => {
     let newParams = { filter: {} };
     selected.forEach((selectedItem) => {
       let { id: categoryId, chips } = selectedItem;
@@ -138,13 +137,13 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
 };
 
 export const useDeepCompareEffect = (effect, deps) => {
-  const ref = React.useRef(undefined);
+  const ref = useRef(undefined);
 
   if (!ref.current || !isDeepEqualReact(deps, ref.current)) {
     ref.current = deps;
   }
 
-  React.useEffect(effect, ref.current);
+  useEffect(effect, ref.current);
 };
 
 export const useBulkSelectConfig = (
@@ -155,7 +154,7 @@ export const useBulkSelectConfig = (
   onCollapse,
   queryParams,
 ) => {
-  const [isBulkLoading, setBulkLoading] = React.useState(false);
+  const [isBulkLoading, setBulkLoading] = useState(false);
 
   return {
     items: [
@@ -306,7 +305,7 @@ export const useGetEntities = (
 export const useOnExport = (prefix, queryParams, formatHandlers) => {
   const addNotification = useAddNotification();
 
-  const onExport = React.useCallback((_, format) => {
+  const onExport = useCallback((_, format) => {
     const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
     const filename = `${prefix}-${date}`;
     addNotification(exportNotifications(format).pending);
@@ -332,20 +331,4 @@ export const useEntitlements = () => {
   });
 
   return getEntitlements;
-};
-
-export const useColumnManagement = (columns, onApply) => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  return [
-    <ColumnManagementModal
-      appliedColumns={columns}
-      applyColumns={(newColumns) => onApply(newColumns)}
-      isOpen={isModalOpen}
-      setOpen={setModalOpen}
-      onClose={() => setModalOpen(false)}
-      key='column-mgmt-modal'
-    />,
-    setModalOpen,
-  ];
 };
