@@ -224,7 +224,6 @@ describe('SystemsTable', () => {
         actionsConfig: {
           actions: [
             expect.anything(), // remediation button
-            expect.anything(), // column mgmt button
           ],
         },
       }),

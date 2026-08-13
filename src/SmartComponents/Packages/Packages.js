@@ -95,7 +95,6 @@ const Packages = () => {
           paginationOUIA='package-details-pagination'
           defaultFilters={pageDefaultFilters.packages}
           searchChipLabel={intl.formatMessage(messages.labelsFiltersPackagesSearchTitle)}
-          hasColumnManagement
         />
       </Main>
     </React.Fragment>
