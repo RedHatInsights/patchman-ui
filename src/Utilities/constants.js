@@ -54,7 +54,7 @@ export const packagesListDefaultFilters = {
 };
 
 export const systemsListDefaultFilters = {
-  filter: { stale: [true, false] },
+  filter: {},
 };
 
 export const emptyDefaultFilters = {

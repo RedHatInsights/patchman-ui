@@ -44,7 +44,6 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
         selectedTags: [...selectedTags, ...selectedGlobalTags],
         systemProfile,
         limit: 1,
-        'filter[stale]': 'in:true,false',
       }).then((result) => {
         setSubtotals(result.meta?.subtotals);
       });
@@ -77,14 +76,14 @@ const SystemsStatusReport = ({ apply, queryParams }) => {
           color='var(--pf-t--global--icon--color--status--success--default)'
           value={subtotals?.patched}
           apply={apply}
-          filter={{ filter: { packages_updatable: 'eq:0', stale: false } }} // TODO: remove `stale: false` once default filter is gone
+          filter={{ filter: { packages_updatable: 'eq:0', stale: false } }}
         />
         <StatusCard
           title={intl.formatMessage(messages.labelsStatusSystemsWithPatchesAvailable)}
           Icon={BundleIcon}
           value={subtotals?.unpatched}
           apply={apply}
-          filter={{ filter: { packages_updatable: 'gt:0', stale: false } }} // TODO: remove `stale: false` once default filter is gone
+          filter={{ filter: { packages_updatable: 'gt:0', stale: false } }}
         />
         <StatusCard
           title={intl.formatMessage(messages.labelsStatusStaleSystems)}
