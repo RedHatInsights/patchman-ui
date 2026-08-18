@@ -13,7 +13,7 @@ describe('SystemStaleFilter', () => {
     const response = systemStaleFilter(apply, currentFilter);
     expect(response.filterValues.value).toEqual(['filter']);
     expect(response.label).toEqual('Status');
-    expect(response.type).toEqual('checkbox');
+    expect(response.type).toEqual('singleSelect');
   });
 
   it('Should call apply with a test value', () => {

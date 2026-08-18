@@ -8,9 +8,6 @@ const initialState = {
   queryParams: {
     page: 1,
     perPage: 20,
-    filter: {
-      stale: [true, false],
-    },
   },
 };
 
