@@ -7,6 +7,7 @@ import {
   remediationProvider,
   createOSColumn,
   createPackagesColumn,
+  wrappableEVRA,
 } from '../../Utilities/Helpers';
 import { sortable, wrappable, nowrap } from '@patternfly/react-table';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
@@ -144,6 +145,9 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
     key: 'display_name',
     title: 'Name',
     transforms: [wrappable],
+    renderFunc: (displayName, id) => (
+      <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+    ),
   },
   {
     key: 'groups',
@@ -180,11 +184,13 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
     key: 'installed_evra',
     title: 'Installed version',
     transforms: [wrappable],
+    renderFunc: (value) => wrappableEVRA(value),
   },
   {
     key: 'available_evra',
     title: 'Latest version',
     transforms: [wrappable],
+    renderFunc: (value) => wrappableEVRA(value),
   },
   {
     key: 'update_status',

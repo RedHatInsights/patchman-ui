@@ -16,6 +16,7 @@ import {
   getSeverityByCveImpact,
   handleLongSynopsis,
   handlePatchLink,
+  wrappableEVRA,
 } from './Helpers';
 import { intl } from './IntlProvider';
 import AdvisorySeverity from '../PresentationalComponents/AdvisorySeverity/AdvisorySeverity';
@@ -251,9 +252,9 @@ export const createSystemPackagesRows = (rows, selectedRows = {}) => {
         disableSelection: !pkg.updatable,
         cells: [
           { title: handlePatchLink(entityTypes.packages, pkg.name) },
-          { title: pkg.evra },
-          { title: latestInstallable?.evra ?? pkg.evra },
-          { title: latestApplicable?.evra ?? pkg.evra },
+          { title: wrappableEVRA(pkg.evra) },
+          { title: wrappableEVRA(latestInstallable?.evra ?? pkg.evra) },
+          { title: wrappableEVRA(latestApplicable?.evra ?? pkg.evra) },
           { title: createUpgradableColumn(pkg.update_status) },
           { title: pkg.summary },
         ],
