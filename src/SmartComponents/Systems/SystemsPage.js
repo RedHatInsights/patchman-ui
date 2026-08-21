@@ -13,10 +13,10 @@ const SystemsPage = () => {
   }, [chrome, intl]);
 
   return (
-    <React.Fragment>
+    <>
       <Header title={intl.formatMessage(messages.titlesPatchSystems)} headerOUIA='systems' />
       <SystemsMainContent />
-    </React.Fragment>
+    </>
   );
 };
 

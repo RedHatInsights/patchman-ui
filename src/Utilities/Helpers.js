@@ -1,3 +1,4 @@
+import React from 'react';
 import { Flex, FlexItem, Tooltip } from '@patternfly/react-core';
 import {
   BugIcon,
@@ -11,7 +12,6 @@ import flatten from 'lodash/flatten';
 import findIndex from 'lodash/findIndex';
 import pickBy from 'lodash/pickBy';
 import qs from 'query-string';
-import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
 import messages from '../Messages';
 import AdvisoriesIcon from '../PresentationalComponents/Snippets/AdvisoriesIcon';
@@ -111,10 +111,10 @@ export const getLimitFromPageSize = (limit) => limit;
 
 export function truncate(str, max, end) {
   return str.length > max ? (
-    <React.Fragment>
+    <>
       {str.substring(0, max - 1)}
       ...&nbsp;{end}
-    </React.Fragment>
+    </>
   ) : (
     str
   );
@@ -516,6 +516,7 @@ export const buildActiveFilterConfig = (
   filters,
   search,
   deleteFilters,
+  deleteFilterGroup,
   searchChipLabel = 'Search',
   defaultFilters = emptyDefaultFilters,
 ) => {
@@ -531,6 +532,7 @@ export const buildActiveFilterConfig = (
   return {
     filters: buildFilterChips(visibleFilters, visibleSearch, searchChipLabel),
     onDelete: deleteFilters,
+    onDeleteGroup: deleteFilterGroup,
     deleteTitle: intl.formatMessage(
       hasDefaultFilterState ? messages.labelsFiltersReset : messages.labelsFiltersClear,
     ),

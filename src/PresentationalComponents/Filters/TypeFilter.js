@@ -1,11 +1,11 @@
+import { useMemo } from 'react';
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
-import React from 'react';
 import { advisoryTypes } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
 
 const typeFilter = (apply, currentFilter = {}) => {
-  const advisoryTypesMap = React.useMemo(
+  const advisoryTypesMap = useMemo(
     () =>
       advisoryTypes.map(({ value, label }) => ({
         label,

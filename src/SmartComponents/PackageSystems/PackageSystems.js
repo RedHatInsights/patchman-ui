@@ -84,7 +84,7 @@ const PackageSystems = ({ packageName }) => {
     [],
   );
 
-  const [deleteFilters] = useRemoveFilter(
+  const [deleteFilters, deleteFilterGroup] = useRemoveFilter(
     { ...filter, search },
     apply,
     pageDefaultFilters.packageSystems,
@@ -109,10 +109,11 @@ const PackageSystems = ({ packageName }) => {
         filter,
         search,
         deleteFilters,
+        deleteFilterGroup,
         intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
         pageDefaultFilters.packageSystems,
       ),
-    [deleteFilters, filter, search],
+    [deleteFilters, deleteFilterGroup, filter, search],
   );
 
   const constructFilename = (system) => `${system.available_evra}`;
@@ -179,65 +180,65 @@ const PackageSystems = ({ packageName }) => {
     systems,
   );
 
+  if (status.hasError) {
+    return <ErrorHandler code={status.code} />;
+  }
+
   return (
-    <>
-      {(status.hasError && <ErrorHandler code={status.code} />) || (
-        <InventoryTable
-          isFullView
-          autoRefresh
-          initialLoading
-          hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
-          columns={(inventoryColumns) =>
-            mergeInventoryColumns(PACKAGE_SYSTEMS_COLUMNS, inventoryColumns)
-          }
-          showTags
-          getEntities={getEntites}
-          customFilters={{
-            patchParams: {
-              search,
-              filter,
-              systemProfile,
-              selectedTags,
-            },
-          }}
-          paginationProps={{
-            isDisabled: totalItems === 0,
-          }}
-          onLoad={({ mergeWithEntities }) => {
-            store.replaceReducer(
-              combineReducers({
-                ...defaultReducers,
-                ...mergeWithEntities(
-                  inventoryEntitiesReducer(PACKAGE_SYSTEMS_COLUMNS, modifyPackageSystems),
-                  persistantParams({ page, perPage, sort, search }, decodedParams),
-                ),
-              }),
-            );
-          }}
-          actionsConfig={{ actions: [null] }}
-          tableProps={{
-            canSelectAll: false,
-            variant: TableVariant.compact,
-            className: 'patchCompactInventory',
-            isStickyHeader: true,
-          }}
-          filterConfig={filterConfig}
-          activeFiltersConfig={activeFiltersConfig}
-          bulkSelect={onSelect && bulkSelectConfig}
-          exportConfig={{
-            isDisabled: totalItems === 0,
-            onSelect: onExport,
-          }}
-          dedicatedAction={
-            <AsyncRemediationButton
-              remediationProvider={remediationDataProvider}
-              isDisabled={arrayFromObj(selectedRows).length === 0}
-              hasSelected={arrayFromObj(selectedRows).length !== 0}
-            />
-          }
+    <InventoryTable
+      isFullView
+      autoRefresh
+      initialLoading
+      hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
+      columns={(inventoryColumns) =>
+        mergeInventoryColumns(PACKAGE_SYSTEMS_COLUMNS, inventoryColumns)
+      }
+      showTags
+      getEntities={getEntites}
+      customFilters={{
+        patchParams: {
+          search,
+          filter,
+          systemProfile,
+          selectedTags,
+        },
+      }}
+      paginationProps={{
+        isDisabled: totalItems === 0,
+      }}
+      onLoad={({ mergeWithEntities }) => {
+        store.replaceReducer(
+          combineReducers({
+            ...defaultReducers,
+            ...mergeWithEntities(
+              inventoryEntitiesReducer(PACKAGE_SYSTEMS_COLUMNS, modifyPackageSystems),
+              persistantParams({ page, perPage, sort, search }, decodedParams),
+            ),
+          }),
+        );
+      }}
+      actionsConfig={{ actions: [null] }}
+      tableProps={{
+        canSelectAll: false,
+        variant: TableVariant.compact,
+        className: 'patchCompactInventory',
+        isStickyHeader: true,
+      }}
+      filterConfig={filterConfig}
+      activeFiltersConfig={activeFiltersConfig}
+      bulkSelect={onSelect && bulkSelectConfig}
+      exportConfig={{
+        isDisabled: totalItems === 0,
+        onSelect: onExport,
+      }}
+      dedicatedAction={
+        <AsyncRemediationButton
+          remediationProvider={remediationDataProvider}
+          isDisabled={arrayFromObj(selectedRows).length === 0}
+          hasSelected={arrayFromObj(selectedRows).length !== 0}
         />
-      )}
-    </>
+      }
+    />
   );
 };
 
