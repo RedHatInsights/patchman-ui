@@ -169,7 +169,7 @@ describe('SystemsTable', () => {
                   value: undefined,
                 },
                 label: 'Status',
-                type: 'checkbox',
+                type: 'singleSelect',
               },
               {
                 filterValues: {
@@ -232,106 +232,12 @@ describe('SystemsTable', () => {
     );
   });
 
-  it('should keep default systems filters visible while hiding reset at baseline', async () => {
+  it('should show clear when inventory-based operating system filters are active', async () => {
     const filteredState = {
       ...mockState,
       SystemsStore: {
         queryParams: {
-          filter: { stale: [true, false] },
-        },
-      },
-    };
-
-    await renderComponent(filteredState);
-    expect(InventoryTable).toHaveBeenCalledWith(
-      expect.objectContaining({
-        activeFiltersConfig: {
-          deleteTitle: 'Reset filters',
-          filters: [
-            {
-              category: 'Status',
-              chips: [
-                {
-                  id: true,
-                  name: 'Stale',
-                  value: true,
-                },
-                {
-                  id: false,
-                  name: 'Fresh',
-                  value: false,
-                },
-              ],
-              id: 'stale',
-            },
-          ],
-          onDelete: expect.any(Function),
-          showDeleteButton: false,
-        },
-      }),
-      {},
-    );
-  });
-
-  it('should show reset only when at least one filter differs from defaults', async () => {
-    const filteredState = {
-      ...mockState,
-      SystemsStore: {
-        queryParams: {
-          filter: { packages_updatable: 'eq:0', stale: [true, false] },
-        },
-      },
-    };
-
-    await renderComponent(filteredState);
-
-    expect(InventoryTable).toHaveBeenCalledWith(
-      expect.objectContaining({
-        activeFiltersConfig: {
-          deleteTitle: 'Reset filters',
-          filters: [
-            {
-              category: 'Patch status',
-              chips: [
-                {
-                  id: 'eq:0',
-                  name: 'Systems up to date',
-                  value: 'eq:0',
-                },
-              ],
-              id: 'packages_updatable',
-            },
-            {
-              category: 'Status',
-              chips: [
-                {
-                  id: true,
-                  name: 'Stale',
-                  value: true,
-                },
-                {
-                  id: false,
-                  name: 'Fresh',
-                  value: false,
-                },
-              ],
-              id: 'stale',
-            },
-          ],
-          onDelete: expect.any(Function),
-          showDeleteButton: true,
-        },
-      }),
-      {},
-    );
-  });
-
-  it('should show reset when inventory-based operating system filters are active', async () => {
-    const filteredState = {
-      ...mockState,
-      SystemsStore: {
-        queryParams: {
-          filter: { os: ['RHEL 8.8'], stale: [true, false] },
+          filter: { os: ['RHEL 8.8'] },
         },
       },
     };
@@ -341,7 +247,7 @@ describe('SystemsTable', () => {
     expect(InventoryTable).toHaveBeenCalledWith(
       expect.objectContaining({
         activeFiltersConfig: expect.objectContaining({
-          deleteTitle: 'Reset filters',
+          deleteTitle: 'Clear filters',
           showDeleteButton: true,
         }),
         customFilters: expect.objectContaining({
@@ -360,7 +266,7 @@ describe('SystemsTable', () => {
     );
   });
 
-  it('should show reset before an inventory-backed fetch resolves', async () => {
+  it('should show clear before an inventory-backed fetch resolves', async () => {
     let resolveFetch;
     fetchSystems.mockImplementationOnce(
       () =>
@@ -381,7 +287,7 @@ describe('SystemsTable', () => {
         page: 1,
         per_page: 20,
         patchParams: {
-          filter: { stale: [true, false] },
+          filter: {},
           selectedTags: [],
           systemProfile: {},
         },
@@ -399,7 +305,7 @@ describe('SystemsTable', () => {
       expect(InventoryTable).toHaveBeenLastCalledWith(
         expect.objectContaining({
           activeFiltersConfig: expect.objectContaining({
-            deleteTitle: 'Reset filters',
+            deleteTitle: 'Clear filters',
             showDeleteButton: true,
           }),
         }),
