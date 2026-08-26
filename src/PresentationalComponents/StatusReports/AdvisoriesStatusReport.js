@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import { intl } from '../../Utilities/IntlProvider';
 import { fetchApplicableAdvisoriesApi } from '../../Utilities/api/api';
@@ -46,8 +46,8 @@ const StatusCard = ({ advisory: { attributes, id } }) => (
 );
 
 const AdvisoriesStatusBar = () => {
-  const [advisories, setAdvisories] = React.useState({});
-  React.useEffect(() => {
+  const [advisories, setAdvisories] = useState({});
+  useEffect(() => {
     fetchApplicableAdvisoriesApi({
       limit: 4,
       sort: '-advisory_type_name,-applicable_systems',

@@ -1,5 +1,5 @@
-import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
 import {
@@ -47,7 +47,7 @@ const AdvisorySystems = ({ advisoryName }) => {
   }
 
   return (
-    <React.Fragment>
+    <>
       {(isRemediationOpen && (
         <RemediationWizard
           data={remediationIssues}
@@ -63,7 +63,7 @@ const AdvisorySystems = ({ advisoryName }) => {
         decodedParams={decodedParams}
         apply={apply}
       />
-    </React.Fragment>
+    </>
   );
 };
 

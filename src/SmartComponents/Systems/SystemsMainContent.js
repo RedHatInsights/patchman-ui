@@ -52,7 +52,7 @@ const SystemsMainContent = () => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <SystemsStatusReport apply={setQueryParams} queryParams={queryParams} />
       {(isRemediationOpen && (
         <RemediationWizard
@@ -71,7 +71,7 @@ const SystemsMainContent = () => {
           decodedParams={decodedParams}
         />
       </Main>
-    </React.Fragment>
+    </>
   );
 };
 

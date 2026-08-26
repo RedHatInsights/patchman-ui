@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState, useMemo } from 'react';
 import { TableVariant } from '@patternfly/react-table';
 import { InventoryTable } from '@redhat-cloud-services/frontend-components/Inventory';
 import isDeepEqualReact from 'fast-deep-equal/react';
@@ -11,7 +11,12 @@ import {
 } from '../../store/Reducers/InventoryEntitiesReducer';
 import { exportSystemsCSV, exportSystemsJSON, fetchSystems } from '../../Utilities/api/api';
 import { pageDefaultFilters, NO_ADVISORIES_TEXT } from '../../Utilities/constants';
-import { arrayFromObj, hasActiveInventoryFilters, persistantParams } from '../../Utilities/Helpers';
+import {
+  arrayFromObj,
+  buildActiveFilterConfig,
+  hasActiveInventoryFilters,
+  persistantParams,
+} from '../../Utilities/Helpers';
 import {
   useBulkSelectConfig,
   useGetEntities,
@@ -25,12 +30,13 @@ import { SYSTEMS_LIST_COLUMNS, systemsRowActions } from './SystemsListAssets';
 import AsyncRemediationButton from '../Remediation/AsyncRemediationButton';
 import {
   buildFilterConfig,
-  buildActiveFiltersConfig,
   mergeInventoryColumns,
   workloadToSystemProfile,
 } from '../../Utilities/SystemsHelpers';
 import { combineReducers } from 'redux';
 import propTypes from 'prop-types';
+import { intl } from '../../Utilities/IntlProvider';
+import messages from '../../Messages';
 
 const buildInventorySnapshot = (filters = {}, selectedTags = [], systemProfile = {}) => ({
   filters,
@@ -108,7 +114,11 @@ const SystemsTable = ({
     dispatch(changeTags(tags));
   };
 
-  const [deleteFilters] = useRemoveFilter(filter, apply, pageDefaultFilters.systems);
+  const [deleteFilters, deleteFilterGroup] = useRemoveFilter(
+    filter,
+    apply,
+    pageDefaultFilters.systems,
+  );
   const filterConfig = buildFilterConfig(filter, apply);
   const applyInventorySnapshot = useCallback((nextSnapshot) => {
     setInventorySnapshot((previousSnapshot) =>
@@ -123,13 +133,20 @@ const SystemsTable = ({
     );
 
   const activeFiltersConfig = useMemo(() => {
-    const config = buildActiveFiltersConfig(filter, '', deleteFilters, pageDefaultFilters.systems);
+    const config = buildActiveFilterConfig(
+      filter,
+      '',
+      deleteFilters,
+      deleteFilterGroup,
+      intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
+      pageDefaultFilters.systems,
+    );
 
     return {
       ...config,
       showDeleteButton: config.showDeleteButton || hasInventoryFilterDeviation,
     };
-  }, [deleteFilters, filter, hasInventoryFilterDeviation]);
+  }, [deleteFilters, deleteFilterGroup, filter, hasInventoryFilterDeviation]);
 
   const onSelect = useOnSelect(systems, selectedRows, {
     endpoint: ID_API_ENDPOINTS.systems,

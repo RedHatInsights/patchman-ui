@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { advisorySeverities } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -8,7 +8,7 @@ import { conditionalFilterType } from '@redhat-cloud-services/frontend-component
 // Keep UI state as string arrays for PatternFly checkboxes, but collapse `[null]` to bare `null`.
 
 const severityFilter = (apply, currentFilter = {}) => {
-  const advisorySeverityMap = React.useMemo(
+  const advisorySeverityMap = useMemo(
     () =>
       advisorySeverities.map(({ value, label }) => ({
         label,

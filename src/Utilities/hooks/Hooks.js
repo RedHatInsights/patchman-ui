@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useMemo, useState, Fragment } from 'react';
+import React, { useCallback, useEffect, useRef, Fragment, useState, useMemo } from 'react';
 import { SortByDirection } from '@patternfly/react-table';
 import { useAddNotification } from '@redhat-cloud-services/frontend-components-notifications';
 import { downloadFile } from '@redhat-cloud-services/frontend-components-utilities/helpers';
@@ -75,47 +75,50 @@ export const useRemoveFilter = (filters, callback, defaultFilters = { filter: {}
   const { filter: defaultFilterState, search: defaultSearch } =
     getDefaultFilterState(defaultFilters);
 
-  const removeFilter = useCallback((selected, resetFilters, shouldReset) => {
-    let newParams = { filter: {} };
-    selected.forEach((selectedItem) => {
-      let { id: categoryId, chips } = selectedItem;
+  const removeFilter = useCallback(
+    (selected, resetFilters, shouldReset) => {
+      let newParams = { filter: {} };
+      selected.forEach((selectedItem) => {
+        let { id: categoryId, chips } = selectedItem;
 
-      if (categoryId !== 'search' && !multiValueFilters.includes(categoryId)) {
-        let activeFilter = filters[categoryId];
-        const toRemove = chips.map((item) => item.id?.toString());
-        if (Array.isArray(activeFilter)) {
-          const nextValue = activeFilter.filter((item) => !toRemove.includes(item.toString()));
-          newParams.filter[categoryId] =
-            nextValue.length > 0 ? nextValue : defaultFilterState[categoryId];
+        if (categoryId !== 'search' && !multiValueFilters.includes(categoryId)) {
+          let activeFilter = filters[categoryId];
+          const toRemove = chips.map((item) => item.id?.toString());
+          if (Array.isArray(activeFilter)) {
+            const nextValue = activeFilter.filter((item) => !toRemove.includes(item.toString()));
+            newParams.filter[categoryId] =
+              nextValue.length > 0 ? nextValue : defaultFilterState[categoryId];
+          } else {
+            newParams.filter[categoryId] = defaultFilterState[categoryId];
+          }
+        } else if (multiValueFilters.includes(categoryId)) {
+          const filterValues =
+            (filters[categoryId] &&
+              ((typeof filters[categoryId] === 'string' && filters[categoryId].split(',')) ||
+                filters[categoryId])) ||
+            [];
+
+          const nextValue =
+            (filterValues.length !== 1 &&
+              filterValues
+                .filter((filterValue) => !chips.find((chip) => chip.value === filterValue))
+                .join(',')) ||
+            undefined;
+
+          newParams.filter[categoryId] = nextValue ?? defaultFilterState[categoryId];
         } else {
-          newParams.filter[categoryId] = defaultFilterState[categoryId];
+          newParams.search = defaultSearch;
         }
-      } else if (multiValueFilters.includes(categoryId)) {
-        const filterValues =
-          (filters[categoryId] &&
-            ((typeof filters[categoryId] === 'string' && filters[categoryId].split(',')) ||
-              filters[categoryId])) ||
-          [];
+      });
 
-        const nextValue =
-          (filterValues.length !== 1 &&
-            filterValues
-              .filter((filterValue) => !chips.find((chip) => chip.value === filterValue))
-              .join(',')) ||
-          undefined;
-
-        newParams.filter[categoryId] = nextValue ?? defaultFilterState[categoryId];
-      } else {
-        newParams.search = defaultSearch;
+      if (shouldReset) {
+        newParams = resetFilters(newParams);
       }
-    });
 
-    if (shouldReset) {
-      newParams = resetFilters(newParams);
-    }
-
-    callback({ ...newParams });
-  });
+      callback({ ...newParams });
+    },
+    [filters, defaultFilterState, defaultSearch, callback],
+  );
 
   const deleteFilterGroup = (__, filters) => {
     removeFilter(filters);

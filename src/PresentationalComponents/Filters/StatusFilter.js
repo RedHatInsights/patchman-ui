@@ -1,5 +1,5 @@
+import { useMemo } from 'react';
 import { conditionalFilterType } from '@redhat-cloud-services/frontend-components/ConditionalFilter';
-import React from 'react';
 import { updatableTypes } from '../../Utilities/constants';
 import { intl } from '../../Utilities/IntlProvider';
 import messages from '../../Messages';
@@ -7,7 +7,7 @@ import messages from '../../Messages';
 const statusFilter = (apply, currentFilter = {}) => {
   let { update_status: currentValue } = currentFilter;
 
-  const updatableTypesMap = React.useMemo(
+  const updatableTypesMap = useMemo(
     () =>
       updatableTypes.map(({ value, label }) => ({
         label,

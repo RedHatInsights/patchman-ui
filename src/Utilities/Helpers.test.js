@@ -323,6 +323,7 @@ describe('Helpers tests', () => {
         { systems_applicable: ['gt:0'] },
         '',
         jest.fn(),
+        jest.fn(),
         'Name',
         pageDefaultFilters.packages,
       ),
@@ -337,6 +338,7 @@ describe('Helpers tests', () => {
       ],
       onDelete: expect.any(Function),
       showDeleteButton: false,
+      onDeleteGroup: expect.any(Function),
     });
   });
 
@@ -345,6 +347,7 @@ describe('Helpers tests', () => {
       buildActiveFilterConfig(
         { systems_applicable: ['eq:0'] },
         '',
+        jest.fn(),
         jest.fn(),
         'Name',
         pageDefaultFilters.packages,
@@ -360,14 +363,16 @@ describe('Helpers tests', () => {
       ],
       onDelete: expect.any(Function),
       showDeleteButton: true,
+      onDeleteGroup: expect.any(Function),
     });
   });
-
+  
   it('buildActiveFilterConfig: should show clear filters when a page has no defaults', () => {
     expect(
       buildActiveFilterConfig(
         { advisory_type_name: 'bugfix' },
         '',
+        jest.fn(),
         jest.fn(),
         'Name',
         pageDefaultFilters.advisories,
@@ -382,6 +387,7 @@ describe('Helpers tests', () => {
         },
       ],
       onDelete: expect.any(Function),
+      onDeleteGroup: expect.any(Function),
     });
   });
 
