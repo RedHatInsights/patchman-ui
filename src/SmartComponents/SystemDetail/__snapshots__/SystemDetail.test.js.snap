@@ -636,7 +636,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               tabindex="-1"
             />
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-15"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="2"
               data-label="Name"
               scope="col"
@@ -687,7 +687,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-35"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-nowrap"
               data-key="3"
               data-label="Synopsis"
               scope="col"
@@ -738,7 +738,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="4"
               data-label="Status"
               scope="col"
@@ -789,7 +789,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="5"
               data-label="Type"
               scope="col"
@@ -840,7 +840,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="6"
               data-label="Severity"
               scope="col"
@@ -891,7 +891,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="7"
               data-label="Reboot"
               scope="col"
@@ -942,7 +942,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="8"
               data-label="Publish date"
               scope="col"
@@ -2720,7 +2720,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               tabindex="-1"
             />
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-15"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="2"
               data-label="Name"
               scope="col"
@@ -2771,7 +2771,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-35"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-nowrap"
               data-key="3"
               data-label="Synopsis"
               scope="col"
@@ -2822,7 +2822,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="4"
               data-label="Status"
               scope="col"
@@ -2873,7 +2873,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="5"
               data-label="Type"
               scope="col"
@@ -2924,7 +2924,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="6"
               data-label="Severity"
               scope="col"
@@ -2975,7 +2975,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="7"
               data-label="Reboot"
               scope="col"
@@ -3026,7 +3026,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               </button>
             </th>
             <th
-              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-width-10"
+              class="pf-v6-c-table__th pf-v6-c-table__sort pf-m-wrap"
               data-key="8"
               data-label="Publish date"
               scope="col"

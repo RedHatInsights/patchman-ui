@@ -27,6 +27,7 @@ import {
   persistantParams,
   remediationProvider,
   transformPairs,
+  wrappableEVRA,
 } from './Helpers';
 import { render } from '@testing-library/react';
 
@@ -597,5 +598,64 @@ describe('buildApiFilters', () => {
       osFilter,
     };
     expect(buildApiFilters(patchFilters, inventoryFilters).os).toEqual('RHEL 8.8,RHEL 8.9');
+  });
+});
+
+describe('wrappableEVRA', () => {
+  it.each`
+    evra                           | description
+    ${'1:2.3.4-5.el8.x86_64'}      | ${'full EVRA with epoch'}
+    ${'2.3.4-5.el8.x86_64'}        | ${'EVRA without epoch'}
+    ${'0:1.0-1.el9.noarch'}        | ${'EVRA with epoch 0'}
+    ${'10:3.14.159-2.el8.aarch64'} | ${'EVRA with multi-digit epoch'}
+    ${'1.2.3-4.5.6.el8.x86_64'}    | ${'EVRA with complex version and release'}
+    ${''}                          | ${'empty string'}
+    ${'1.0'}                       | ${'minimal version only'}
+    ${'1.0-1'}                     | ${'version and release without architecture'}
+    ${'2024.1'}                    | ${'unconventional versioning'}
+    ${'1.0-1.fc40'}                | ${'release without architecture'}
+  `('should render wrappable EVRA for $description', ({ evra }) => {
+    const { container } = render(wrappableEVRA(evra));
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should insert zero-width spaces at correct positions for full EVRA', () => {
+    const { container } = render(wrappableEVRA('1:2.3.4-5.el8.x86_64'));
+    const span = container.querySelector('span');
+    expect(span).not.toBeNull();
+    expect(span.style.overflowWrap).toBe('anywhere');
+    expect(span.textContent).toEqual('1:\u200B2.3.4\u200B-5.el8\u200B.x86_64');
+  });
+
+  it('should handle EVRA without epoch correctly', () => {
+    const { container } = render(wrappableEVRA('2.3.4-5.el8.x86_64'));
+    const span = container.querySelector('span');
+    expect(span.textContent).toEqual('2.3.4\u200B-5.el8\u200B.x86_64');
+  });
+
+  it('should handle empty string with empty element', () => {
+    const { container } = render(wrappableEVRA(''));
+    const span = container.querySelector('span');
+    expect(span).not.toBeNull();
+    expect(span.textContent).toEqual('\u200B');
+  });
+
+  it('should use default empty string when no parameter provided', () => {
+    const { container } = render(wrappableEVRA());
+    const span = container.querySelector('span');
+    expect(span).not.toBeNull();
+    expect(span.textContent).toEqual('\u200B');
+  });
+
+  it('should handle version only (no release or architecture)', () => {
+    const { container } = render(wrappableEVRA('1.0'));
+    const span = container.querySelector('span');
+    expect(span.textContent).toEqual('1.0\u200B');
+  });
+
+  it('should handle unconventional versioning schemes', () => {
+    const { container } = render(wrappableEVRA('2024.1-1.el8.x86_64'));
+    const span = container.querySelector('span');
+    expect(span.textContent).toEqual('2024.1\u200B-1.el8\u200B.x86_64');
   });
 });
