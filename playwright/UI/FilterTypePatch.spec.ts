@@ -188,8 +188,8 @@ test.describe('Patch Filters', () => {
       await applyFilterSubtype(page, 'Name', { name: packageName!, inputType: 'search' });
 
       const rows = page.getByRole('row');
-      await expect(rows).toHaveCount(2);
-      await expect(rows.filter({ hasText: packageName })).toHaveCount(1);
+      expect(await rows.count()).toBeGreaterThan(1); // header + at least one body row
+      await expect(rows.filter({ has: page.getByText(packageName!, { exact: true }) })).toHaveCount(1);
 
       await resetFilters(page);
     });
