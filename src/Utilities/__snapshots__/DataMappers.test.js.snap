@@ -11,13 +11,43 @@ exports[`DataMappers Should create package list 1`] = `
       </InsightsLink>,
     },
     {
-      "title": "test-evra",
+      "title": <span
+        style={
+          {
+            "overflowWrap": "anywhere",
+          }
+        }
+      >
+        test​
+        
+        .evra
+      </span>,
     },
     {
-      "title": "test-evra",
+      "title": <span
+        style={
+          {
+            "overflowWrap": "anywhere",
+          }
+        }
+      >
+        test​
+        
+        .evra
+      </span>,
     },
     {
-      "title": "test-evra",
+      "title": <span
+        style={
+          {
+            "overflowWrap": "anywhere",
+          }
+        }
+      >
+        test​
+        
+        .evra
+      </span>,
     },
     {
       "title": "Up to applicable version",

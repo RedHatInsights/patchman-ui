@@ -7,8 +7,9 @@ import {
   remediationProvider,
   createOSColumn,
   createPackagesColumn,
+  wrappableEVRA,
 } from '../../Utilities/Helpers';
-import { sortable } from '@patternfly/react-table';
+import { sortable, wrappable, nowrap } from '@patternfly/react-table';
 import { InsightsLink } from '@redhat-cloud-services/frontend-components/InsightsLink';
 import { Content, Tooltip } from '@patternfly/react-core';
 import { useFetchBatched } from '../../Utilities/hooks';
@@ -27,38 +28,31 @@ export const SYSTEMS_LIST_COLUMNS = [
   {
     key: 'display_name',
     title: 'Name',
+    transforms: [wrappable],
     renderFunc: (displayName, id) => (
       <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
     ),
-    isShown: true,
-    isShownByDefault: true,
-    isUntoggleable: true,
   },
   {
     key: 'groups',
     title: 'Workspace',
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [wrappable],
   },
   {
     key: 'tags',
     title: 'Tags',
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [wrappable],
   },
   {
     key: 'operating_system',
     title: 'OS',
+    transforms: [wrappable],
     renderFunc: (value) => createOSColumn(value),
-    props: {
-      width: 5,
-    },
-    isShown: true,
-    isShownByDefault: true,
   },
   {
     key: 'template_name',
     title: 'Template',
+    transforms: [wrappable],
     renderFunc: (value, _, row) =>
       row.satellite_managed ? (
         <ManagedBySatelliteCell />
@@ -69,38 +63,24 @@ export const SYSTEMS_LIST_COLUMNS = [
       ) : (
         'No template'
       ),
-    props: {
-      width: 5,
-    },
-    isShown: true,
-    isShownByDefault: true,
   },
   {
     key: 'applicable_advisories',
     title: 'Installable advisories',
-    props: {
-      width: 15,
-    },
+    transforms: [wrappable],
     renderFunc: (value) => createAdvisoriesIcons(value, 'installable'),
-    isShown: true,
-    isShownByDefault: true,
   },
   {
     key: 'packages_installed',
     title: 'Installed packages',
+    transforms: [wrappable],
     renderFunc: (packageCount, systemID) => createPackagesColumn(packageCount, systemID),
-    props: {
-      width: 10,
-    },
-    isShown: true,
-    isShownByDefault: true,
   },
   {
     inventoryKey: 'updated',
     key: 'last_upload',
+    transforms: [nowrap],
     sortKey: 'last_upload',
-    isShown: true,
-    isShownByDefault: true,
   },
 ];
 
@@ -108,38 +88,31 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
   {
     key: 'display_name',
     title: 'Name',
+    transforms: [wrappable],
     renderFunc: (displayName, id) => (
       <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
     ),
-    isShown: true,
-    isShownByDefault: true,
-    isUntoggleable: true,
   },
   {
     key: 'groups',
     title: 'Workspace',
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [wrappable],
   },
   {
     key: 'tags',
     title: 'Tags',
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [wrappable],
   },
   {
     key: 'os',
     title: 'OS',
+    transforms: [wrappable],
     renderFunc: (value) => createOSColumn(value),
-    props: {
-      width: 5,
-    },
-    isShown: true,
-    isShownByDefault: true,
   },
   {
     key: 'template_name',
     title: 'Template',
+    transforms: [wrappable],
     renderFunc: (value, _, row) =>
       row.satellite_managed ? (
         <ManagedBySatelliteCell />
@@ -150,29 +123,20 @@ export const ADVISORY_SYSTEMS_COLUMNS = [
       ) : (
         'No template'
       ),
-    props: {
-      width: 5,
-    },
-    isShown: true,
-    isShownByDefault: true,
   },
   {
     key: 'status',
     title: 'Status',
     props: {
-      width: 5,
       isStatic: true,
     },
-    transforms: [sortable],
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [sortable, wrappable],
   },
   {
     inventoryKey: 'updated',
     key: 'last_upload',
+    transforms: [nowrap],
     sortKey: 'last_upload',
-    isShown: true,
-    isShownByDefault: true,
   },
 ];
 
@@ -180,35 +144,31 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
   {
     key: 'display_name',
     title: 'Name',
-    isShown: true,
-    isShownByDefault: true,
-    isUntoggleable: true,
+    transforms: [wrappable],
+    renderFunc: (displayName, id) => (
+      <InsightsLink to={`/systems/${id}`}>{displayName}</InsightsLink>
+    ),
   },
   {
     key: 'groups',
     title: 'Workspace',
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [wrappable],
   },
   {
     key: 'tags',
     title: 'Tags',
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [wrappable],
   },
   {
     key: 'os',
     title: 'OS',
+    transforms: [wrappable],
     renderFunc: (value) => createOSColumn(value),
-    props: {
-      width: 5,
-    },
-    isShown: true,
-    isShownByDefault: true,
   },
   {
     key: 'template_name',
     title: 'Template',
+    transforms: [wrappable],
     renderFunc: (value, _, row) =>
       row.satellite_managed ? (
         <ManagedBySatelliteCell />
@@ -219,39 +179,24 @@ export const PACKAGE_SYSTEMS_COLUMNS = [
       ) : (
         'No template'
       ),
-    props: {
-      width: 5,
-    },
-    isShown: true,
-    isShownByDefault: true,
   },
   {
     key: 'installed_evra',
     title: 'Installed version',
-    props: {
-      width: 15,
-    },
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [wrappable],
+    renderFunc: (value) => wrappableEVRA(value),
   },
   {
     key: 'available_evra',
     title: 'Latest version',
-    props: {
-      width: 15,
-    },
-    isShown: true,
-    isShownByDefault: true,
+    transforms: [wrappable],
+    renderFunc: (value) => wrappableEVRA(value),
   },
   {
     key: 'update_status',
     title: 'Status',
-    props: {
-      width: 20,
-    },
+    transforms: [wrappable],
     renderFunc: (value) => createUpgradableColumn(value),
-    isShown: true,
-    isShownByDefault: true,
   },
 ];
 

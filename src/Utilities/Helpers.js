@@ -177,6 +177,29 @@ export function createUpgradableColumn(updatableStatus) {
   }
 }
 
+/**
+ * Inserts zero-width breakable spaces to correctly break EVRA.
+ */
+export const wrappableEVRA = (evra = '') => {
+  const [ev, ra] = evra.split('-');
+  let [e, v] = ev.split(':');
+  if (v === undefined) {
+    v = e;
+    e = undefined;
+  }
+  const raParts = (ra ?? '').split('.');
+  const a = raParts.pop();
+  const r = raParts.join('.');
+  return (
+    <span style={{ overflowWrap: 'anywhere' }}>
+      {e && `${e}:\u200B`}
+      {v + '\u200B'}
+      {r && `-${r}\u200B`}
+      {a && `.${a}`}
+    </span>
+  );
+};
+
 export const getSeverityByCveImpact = (impact) => {
   switch (impact) {
     case 'None':

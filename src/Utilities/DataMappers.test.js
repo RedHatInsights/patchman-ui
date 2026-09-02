@@ -128,8 +128,20 @@ describe('DataMappers', () => {
         disableSelection: true,
         cells: [
           { title: expect.anything() }, // FIXME!
-          { title: 'test-evra' },
-          { title: 'test-evra' },
+          {
+            title: expect.objectContaining({
+              props: expect.objectContaining({
+                children: expect.arrayContaining(['test\u200B', '.evra']),
+              }),
+            }),
+          },
+          {
+            title: expect.objectContaining({
+              props: expect.objectContaining({
+                children: expect.arrayContaining(['test\u200B', '.evra']),
+              }),
+            }),
+          },
           { title: expect.anything() },
           { title: expect.anything() },
           { title: 'Access control list utilities' },
@@ -156,8 +168,20 @@ describe('DataMappers', () => {
         disableSelection: false,
         cells: [
           { title: expect.anything() }, // FIXME!
-          { title: 'test-evra' },
-          { title: 'testEvra' },
+          {
+            title: expect.objectContaining({
+              props: expect.objectContaining({
+                children: expect.arrayContaining(['test\u200B', '.evra']),
+              }),
+            }),
+          },
+          {
+            title: expect.objectContaining({
+              props: expect.objectContaining({
+                children: expect.arrayContaining(['testEvra\u200B']),
+              }),
+            }),
+          },
           { title: expect.anything() },
           { title: expect.anything() },
           { title: 'Access control list utilities' },
