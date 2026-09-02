@@ -167,7 +167,7 @@ export const applyFilterSubtype = async (
   // Tags uses a textbox (combobox) "input with dropdown and clear button", not Group filter.
   // Two exist (global filter + table toolbar); use the table toolbar one (second) when filtering the Systems table.
   if (filterType === 'Tags' && subtype.inputType !== 'search') {
-    const tagsTextbox = page.getByRole('textbox', { name: 'input with dropdown and clear button' }).nth(1);
+    const tagsTextbox = page.locator('.pf-v6-c-toolbar').getByRole('textbox', { name: 'input with dropdown and clear button' }).first();
     await tagsTextbox.waitFor({ state: 'visible', timeout: 10000 });
     await tagsTextbox.click();
   } else {
