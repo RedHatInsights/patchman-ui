@@ -226,6 +226,33 @@ describe('Custom hooks tests', () => {
     await request;
   });
 
+  it('useGetEntities: should propagate search from inventory filters to setSearchParams', async () => {
+    const fetchApi = jest.fn(() => Promise.resolve({ data: [], meta: { total_items: 0 } }));
+    const apply = jest.fn();
+    const setSearchParams = jest.fn();
+    const params = {
+      orderBy: 'display_name',
+      orderDirection: 'ASC',
+      page: 1,
+      per_page: 20,
+      patchParams: {
+        filter: { stale: [true, false] },
+      },
+      filters: {
+        hostnameOrId: 'test-host',
+      },
+    };
+    const { result } = renderHook(() => useGetEntities(fetchApi, apply, {}, setSearchParams));
+
+    await result.current([], params);
+
+    expect(fetchApi).toHaveBeenCalledWith(expect.objectContaining({ search: 'test-host' }));
+    expect(apply).toHaveBeenCalledWith(expect.objectContaining({ search: 'test-host' }));
+    expect(setSearchParams).toHaveBeenCalledWith(expect.stringContaining('search=test-host'), {
+      replace: true,
+    });
+  });
+
   it('useEntitlements, should return correct entitlements', async () => {
     const { result } = renderHook(() => useEntitlements());
     const finalResult = await result.current();
