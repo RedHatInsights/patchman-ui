@@ -5,7 +5,6 @@ import propTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import messages from '../../Messages';
-import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import statusFilter from '../../PresentationalComponents/Filters/StatusFilter';
 import versionFilter from '../../PresentationalComponents/Filters/VersionFilter';
 import ErrorHandler from '../../PresentationalComponents/Snippets/ErrorHandler';
@@ -85,19 +84,13 @@ const PackageSystems = ({ packageName }) => {
   );
 
   const [deleteFilters, deleteFilterGroup] = useRemoveFilter(
-    { ...filter, search },
+    filter,
     apply,
     pageDefaultFilters.packageSystems,
   );
 
   const filterConfig = {
     items: [
-      searchFilter(
-        apply,
-        search,
-        intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-        intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder),
-      ),
       statusFilter(apply, filter),
       versionFilter(apply, filter, packageVersions),
     ],
@@ -107,13 +100,13 @@ const PackageSystems = ({ packageName }) => {
     () =>
       buildActiveFilterConfig(
         filter,
-        search,
+        undefined,
         deleteFilters,
         deleteFilterGroup,
         intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
         pageDefaultFilters.packageSystems,
       ),
-    [deleteFilters, deleteFilterGroup, filter, search],
+    [deleteFilters, deleteFilterGroup, filter],
   );
 
   const constructFilename = (system) => `${system.available_evra}`;
@@ -189,13 +182,16 @@ const PackageSystems = ({ packageName }) => {
       isFullView
       autoRefresh
       initialLoading
-      hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
+      hideFilters={{ all: true, name: false, tags: false, hostGroupFilter: false, operatingSystem: false }}
       columns={(inventoryColumns) =>
         mergeInventoryColumns(PACKAGE_SYSTEMS_COLUMNS, inventoryColumns)
       }
       showTags
       getEntities={getEntites}
       customFilters={{
+        filters: [
+          ...(search ? [{ value: 'hostname_or_id', filter: search }] : []),
+        ],
         patchParams: {
           search,
           filter,
