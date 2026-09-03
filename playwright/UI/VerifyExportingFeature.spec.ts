@@ -125,6 +125,9 @@ test.describe('Verify exporting feature', () => {
       getRowCellByHeader(page, row, 'Installed packages'),
     ]);
 
+    await expect(osCell).not.toBeEmpty();
+    await expect(installedPackagesCell).not.toBeEmpty();
+
     const [osText, installedPackagesText] = await Promise.all([
       osCell.textContent(),
       installedPackagesCell.textContent(),
