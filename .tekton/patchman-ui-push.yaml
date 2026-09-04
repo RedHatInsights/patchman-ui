@@ -35,6 +35,8 @@ spec:
     value:
       - ENABLE_SENTRY=true
       - SENTRY_RELEASE={{revision}}
+  - name: prefetch-input
+    value: gomod
   pipelineRef:
     name: docker-build-oci-ta
   taskRunTemplate:
