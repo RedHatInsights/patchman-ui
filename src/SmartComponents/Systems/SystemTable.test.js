@@ -76,6 +76,7 @@ describe('SystemsTable', () => {
       SystemsStore: {
         queryParams: {
           filter: { packages_updatable: 'eq:0' },
+          search: 'test-search',
           selectedTags: ['tags=test-tag'],
           systemProfile: { ansible: { controller_version: 'not_nil' } },
         },
@@ -87,8 +88,10 @@ describe('SystemsTable', () => {
       expect(InventoryTable).toHaveBeenCalledWith(
         expect.objectContaining({
           customFilters: {
+            filters: [{ filter: 'test-search', value: 'hostname_or_id' }],
             patchParams: {
               filter: { packages_updatable: 'eq:0' },
+              search: 'test-search',
               selectedTags: ['tags=test-tag'],
               systemProfile: { ansible: { controller_version: 'not_nil' } },
             },

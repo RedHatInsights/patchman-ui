@@ -1,4 +1,6 @@
+import { renderHook } from '@testing-library/react';
 import {
+  buildFilterConfig,
   createSystemsSortBy,
   mergeInventoryColumns,
   workloadToSystemProfile,
@@ -167,6 +169,28 @@ describe('workloadToSystemProfile', () => {
       ansible: { controller_version: 'not_nil' },
       mssql: { version: 'not_nil' },
       crowdstrike: true,
+    });
+  });
+});
+
+describe('buildFilterConfig', () => {
+  it('should return filter items for status, patch status, and workload', () => {
+    const apply = jest.fn();
+    const filter = { stale: [true, false] };
+
+    const { result } = renderHook(() => buildFilterConfig(filter, apply));
+    expect(result.current.items).toHaveLength(3);
+    expect(result.current.items[0]).toMatchObject({
+      label: 'Status',
+      type: 'checkbox',
+    });
+    expect(result.current.items[1]).toMatchObject({
+      label: 'Patch status',
+      type: 'singleSelect',
+    });
+    expect(result.current.items[2]).toMatchObject({
+      label: 'Workload',
+      type: 'checkbox',
     });
   });
 });

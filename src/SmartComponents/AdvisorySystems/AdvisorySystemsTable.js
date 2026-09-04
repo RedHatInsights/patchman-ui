@@ -5,7 +5,6 @@ import propTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector, useStore } from 'react-redux';
 import { combineReducers } from 'redux';
 import messages from '../../Messages';
-import searchFilter from '../../PresentationalComponents/Filters/SearchFilter';
 import { defaultReducers } from '../../store';
 import { systemSelectAction } from '../../store/Actions/Actions';
 import {
@@ -59,30 +58,23 @@ const AdvisorySystemsTable = ({
   const { systemProfile, selectedTags, filter, search, page, perPage, sort } = queryParams;
 
   const [deleteFilters, deleteFilterGroup] = useRemoveFilter(
-    { search, ...filter },
+    filter,
     apply,
     pageDefaultFilters.advisorySystems,
   );
 
   const filterConfig = {
     items: [
-      searchFilter(
-        apply,
-        search,
-        intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-        intl.formatMessage(messages.labelsFiltersSystemsSearchPlaceholder),
-      ),
       advisoryStatusFilter(apply, filter),
     ],
   };
 
   const activeFiltersConfig = buildActiveFilterConfig(
     filter,
-    search,
+    undefined,
     deleteFilters,
     deleteFilterGroup,
     intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
-    deleteFilterGroup,
     pageDefaultFilters.advisorySystems,
   );
 
@@ -134,12 +126,15 @@ const AdvisorySystemsTable = ({
       autoRefresh
       initialLoading
       ignoreRefresh
-      hideFilters={{ all: true, tags: false, hostGroupFilter: false, operatingSystem: false }}
+      hideFilters={{ all: true, name: false, tags: false, hostGroupFilter: false, operatingSystem: false }}
       columns={(inventoryColumns) =>
         mergeInventoryColumns(ADVISORY_SYSTEMS_COLUMNS, inventoryColumns)
       }
       showTags
       customFilters={{
+        filters: [
+          ...(search ? [{ value: 'hostname_or_id', filter: search }] : []),
+        ],
         patchParams: {
           search,
           filter,
