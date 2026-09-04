@@ -144,7 +144,8 @@ const SystemsTable = ({
 
     return {
       ...config,
-      showDeleteButton: config.showDeleteButton || hasInventoryFilterDeviation,
+      showDeleteButton:
+        config.showDeleteButton || config.filters.length > 0 || hasInventoryFilterDeviation,
     };
   }, [deleteFilters, deleteFilterGroup, filter, hasInventoryFilterDeviation]);
 
