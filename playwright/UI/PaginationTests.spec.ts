@@ -44,7 +44,7 @@ test.describe('Pagination', () => {
     await test.step('Filter and sort the table', async () => {
       await page.getByPlaceholder(/^Filter by name.*$/).fill(prefix);
       await waitForTableLoad(page);
-      await page.getByRole('columnheader', { name: 'Name' }).click();
+      await page.getByRole('columnheader', { name: 'Name' }).getByRole('button').click();
 
       await expect(toolbarPaginationButton).toHaveText('1 - 12 of 12');
       await expect(targetRows).toHaveCount(12);
