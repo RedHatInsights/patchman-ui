@@ -71,6 +71,7 @@ describe('AdvisorySystemsTable.js', () => {
       expect(InventoryTable).toHaveBeenCalledWith(
         expect.objectContaining({
           customFilters: {
+            filters: [{ filter: 'test-search', value: 'hostname_or_id' }],
             patchParams: {
               filter: { status: ['Installable'] },
               search: 'test-search',
@@ -90,6 +91,7 @@ describe('AdvisorySystemsTable.js', () => {
       expect.objectContaining({
         hideFilters: {
           all: true,
+          name: false,
           tags: false,
           hostGroupFilter: false,
           operatingSystem: false,
@@ -136,16 +138,6 @@ describe('AdvisorySystemsTable.js', () => {
         expect.objectContaining({
           filterConfig: {
             items: [
-              {
-                filterValues: {
-                  'aria-label': 'search-field',
-                  onChange: expect.any(Function),
-                  placeholder: 'Filter by name',
-                  value: undefined,
-                },
-                label: 'Name',
-                type: 'text',
-              },
               {
                 filterValues: {
                   items: [

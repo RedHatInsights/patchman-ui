@@ -234,7 +234,7 @@ export const useGetEntities = (
   ) => {
     const { selectedTags: activeTags = [] } = patchParams;
     const { selectedTags } = mapGlobalFilters(filters.tagFilters);
-    const search = filters?.hostnameOrId || '';
+    const search = filters?.hostnameOrId ?? '';
 
     const sort = createSystemsSortBy(orderBy, orderDirection, packageName);
     const filter = buildApiFilters(patchParams.filter, filters);
@@ -277,6 +277,7 @@ export const useGetEntities = (
           perPage,
           sort,
           filter,
+          search,
         }),
         {
           replace: true,

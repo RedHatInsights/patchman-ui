@@ -87,6 +87,6 @@ export const navigateToTemplates = async (page: Page) => {
     await page.goto('/insights/content/templates');
   }
   await expect(page.getByRole('heading', { name: 'Templates' })).toBeVisible();
-  const subheading = page.getByText('View all content templates within your organization.');
+  const subheading = page.getByText('Control content stability of your systems by combining repositories into templates.');
   await expect(subheading).toBeVisible(); // Wait for either list page or zero state
 };
