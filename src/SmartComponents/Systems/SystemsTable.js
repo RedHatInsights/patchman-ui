@@ -70,6 +70,7 @@ const SystemsTable = ({
     page,
     perPage,
     sort,
+    search,
   } = queryParams;
   const {
     os: operatingSystemFilter,
@@ -135,7 +136,7 @@ const SystemsTable = ({
   const activeFiltersConfig = useMemo(() => {
     const config = buildActiveFilterConfig(
       filter,
-      '',
+      undefined,
       deleteFilters,
       deleteFilterGroup,
       intl.formatMessage(messages.labelsFiltersSystemsSearchTitle),
@@ -208,12 +209,12 @@ const SystemsTable = ({
       columns={(inventoryColumns) => mergeInventoryColumns(SYSTEMS_LIST_COLUMNS, inventoryColumns)}
       showTags
       customFilters={{
-        ...(operatingSystemFilter
-          ? {
-              filters: [...(osFilter || [])],
-            }
-          : {}),
+        filters: [
+          ...(search ? [{ value: 'hostname_or_id', filter: search }] : []),
+          ...(operatingSystemFilter ? osFilter : []),
+        ],
         patchParams: {
+          search,
           filter: apiFilter,
           systemProfile: mergedSystemProfile,
           selectedTags,
@@ -228,7 +229,7 @@ const SystemsTable = ({
             ...defaultReducers,
             ...mergeWithEntities(
               inventoryEntitiesReducer(SYSTEMS_LIST_COLUMNS, modifyInventory),
-              persistantParams({ page, perPage, sort }, decodedParams),
+              persistantParams({ page, perPage, sort, search }, decodedParams),
             ),
           }),
         );
