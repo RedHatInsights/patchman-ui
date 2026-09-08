@@ -182,7 +182,7 @@ describe('buildFilterConfig', () => {
     expect(result.current.items).toHaveLength(3);
     expect(result.current.items[0]).toMatchObject({
       label: 'Status',
-      type: 'checkbox',
+      type: 'singleSelect',
     });
     expect(result.current.items[1]).toMatchObject({
       label: 'Patch status',

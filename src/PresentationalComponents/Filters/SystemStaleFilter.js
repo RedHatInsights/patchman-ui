@@ -28,7 +28,7 @@ const systemsStaleFilter = (apply, currentFilter = {}) => {
 
   return {
     label: intl.formatMessage(messages.labelsFiltersStale),
-    type: conditionalFilterType.checkbox,
+    type: conditionalFilterType.singleSelect,
     filterValues: {
       onChange: (event, value) => {
         filterByStale(value);
