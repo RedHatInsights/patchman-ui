@@ -4,7 +4,7 @@
   "browser": "dist/index.js",
   "private": false,
   "dependencies": {
-    "@patternfly/react-component-groups": "^6.5.0",
+    "@patternfly/react-component-groups": "^6.7.0",
     "@patternfly/react-core": "^6.6.1",
     "@patternfly/react-icons": "^6.3.1",
     "@patternfly/react-table": "^6.6.1",
