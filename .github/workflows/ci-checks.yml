@@ -23,7 +23,7 @@ jobs:
       - run: npm run ci:verify
       - name: Upload code coverage
         if: github.actor != 'dependabot[bot]'
-        uses: codecov/codecov-action@v7.0.0
+        uses: codecov/codecov-action@v7.1.0
         with:
           fail_ci_if_error: true
           files: ./coverage/coverage-final.json,./coverage-jest/coverage-final.json
