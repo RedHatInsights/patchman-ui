@@ -13,8 +13,11 @@ import {
   fetchAvisoryDetails,
 } from '../../store/Actions/Actions';
 import { intl } from '../../Utilities/IntlProvider';
-import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
+import AdvisorySystems from '../AdvisorySystems/AdvisorySystems.tsx';
+import AdvisorySystemsLegacy from '../AdvisorySystems/AdvisorySystems.js';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+
+const isLegacy = false;
 
 const AdvisoryDetail = () => {
   const dispatch = useDispatch();
@@ -78,7 +81,11 @@ const AdvisoryDetail = () => {
             </Content>
           </StackItem>
           <StackItem>
-            <AdvisorySystems advisoryName={advisoryName} />
+            {isLegacy ? (
+              <AdvisorySystemsLegacy advisoryName={advisoryName} />
+            ) : (
+              <AdvisorySystems advisoryName={advisoryName} />
+            )}
           </StackItem>
         </Stack>
       </Main>
