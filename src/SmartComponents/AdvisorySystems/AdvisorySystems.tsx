@@ -1,17 +1,21 @@
 import React from 'react';
 import { Spinner } from '@patternfly/react-core';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
+import type { SystemsViewItem, SystemsViewProps } from '../../SystemsView';
+
+type AdvisorySystem = SystemsViewItem;
+type AdvisorySystemsViewProps = SystemsViewProps<AdvisorySystem>;
+
+const fetchData: AdvisorySystemsViewProps['fetchData'] = async () => ({ results: [], total: 0 });
+const columns: AdvisorySystemsViewProps['columns'] = () => [];
+const filters: AdvisorySystemsViewProps['filters'] = () => [];
 
 interface AdvisorySystemsProps {
   advisoryName: string;
 }
 
-const fetchData = async () => ({ results: [], total: 0 });
-const columns = () => [];
-const filters = () => [];
-
 const AdvisorySystems = ({ advisoryName }: AdvisorySystemsProps) => (
-  <AsyncComponent
+  <AsyncComponent<AdvisorySystemsViewProps>
     scope='inventory'
     module='./SystemsView'
     fallback={<Spinner size='lg' />}
