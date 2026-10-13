@@ -111,7 +111,33 @@ jobs:
       ### End of pull request specific steps ###
 
       - name: Run Playwright tests
+        env:
+          CURRENTS_OUTPUT_FILE: currents-summary.json
         run: CURRENTS_PROJECT_ID=nKL5NV CURRENTS_RECORD_KEY=$CURRENTS_RECORD_KEY CURRENTS_CI_BUILD_ID="${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt }}" npx playwright test
+
+      - name: Build Currents Slack button
+        id: currents
+        if: ${{ always() && !cancelled() && github.event_name == 'schedule' }}
+        shell: bash
+        run: |
+          if [[ -f currents-summary.json ]]; then
+            if button=$(jq -c '
+              .url | strings | select(startswith("https://")) |
+              {
+                type: "actions",
+                elements: [{
+                  type: "button",
+                  action_id: "currents_run",
+                  text: {type: "plain_text", text: "Currents Run"},
+                  url: .
+                }]
+              }
+            ' currents-summary.json 2>/dev/null); then
+              if [[ -n "$button" ]]; then
+                echo "button=,$button" >> "$GITHUB_OUTPUT"
+              fi
+            fi
+          fi
 
       - name: Publish Test Report
         uses: ctrf-io/github-test-reporter@v1
@@ -146,6 +172,7 @@ jobs:
                         "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/ | :milky_way: Nightly Stage Test (Patch)>: *SUCCESS* :partymeow:"
                       }
                     }
+                    ${{ steps.currents.outputs.button }}
                   ]
                 }
               ]
@@ -170,6 +197,7 @@ jobs:
                         "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/ | :milky_way: Nightly Stage Test (Patch)>: *FAILED* :big-sad:"
                       }
                     }
+                    ${{ steps.currents.outputs.button }}
                   ]
                 }
               ]
