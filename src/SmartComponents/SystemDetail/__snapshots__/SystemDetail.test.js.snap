@@ -114,6 +114,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 </label>
                 <button
                   aria-expanded="false"
+                  aria-haspopup="menu"
                   aria-label="Select"
                   class="pf-v6-c-menu-toggle__button"
                   data-ouia-component-id="BulkSelect"
@@ -156,6 +157,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 >
                   <button
                     aria-expanded="false"
+                    aria-haspopup="menu"
                     aria-label="Conditional filter toggle"
                     class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
                     data-ouia-component-id="ConditionalFilterToggle"
@@ -294,13 +296,8 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             <div
               class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
             >
-              <div
-                buttonprops="[object Object]"
-                fallback="[object Object]"
-                module="./RemediationButton"
-                scope="remediations"
-              >
-                AsyncComponent
+              <div>
+                Plan remediation
               </div>
             </div>
             <div
@@ -311,6 +308,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               >
                 <button
                   aria-expanded="false"
+                  aria-haspopup="menu"
                   aria-label="Export"
                   class="pf-v6-c-menu-toggle pf-m-plain"
                   data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r3c:"
@@ -355,6 +353,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             >
               <button
                 aria-expanded="false"
+                aria-haspopup="menu"
                 aria-label="kebab dropdown toggle"
                 class="pf-v6-c-menu-toggle pf-m-plain"
                 data-ouia-component-id="BulkActionsToggle"
@@ -490,24 +489,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                           fill="currentColor"
                           height="1em"
                           role="img"
+                          viewBox="0 0 20 20"
                           width="1em"
                         >
-                          <svg
-                            class="pf-v6-icon-default"
-                            viewBox="0 0 256 512"
-                          >
-                            <path
-                              d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                            />
-                          </svg>
-                          <svg
-                            class="pf-v6-icon-rh-ui"
-                            viewBox="0 0 32 32"
-                          >
-                            <path
-                              d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"
-                            />
-                          </svg>
+                          <path
+                            d="m6.41 10 7.29-7.29.02-.02c.38-.4.37-1.03-.02-1.41-.4-.38-1.03-.37-1.41.02L4.64 8.95a1.49 1.49 0 0 0 0 2.12l7.65 7.65c.19.19.44.29.71.29.27 0 .52-.11.71-.29a.996.996 0 0 0 0-1.41l-7.29-7.29Z"
+                          />
                         </svg>
                       </span>
                     </button>
@@ -534,24 +521,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                           fill="currentColor"
                           height="1em"
                           role="img"
+                          viewBox="0 0 20 20"
                           width="1em"
                         >
-                          <svg
-                            class="pf-v6-icon-default"
-                            viewBox="0 0 256 512"
-                          >
-                            <path
-                              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                            />
-                          </svg>
-                          <svg
-                            class="pf-v6-icon-rh-ui"
-                            viewBox="0 0 32 32"
-                          >
-                            <path
-                              d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"
-                            />
-                          </svg>
+                          <path
+                            d="M14.35 8.94 6.71 1.29l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l7.29 7.29-7.29 7.29a1.003 1.003 0 0 0 1.42 1.42l7.65-7.65c.59-.59.59-1.54 0-2.12Z"
+                          />
                         </svg>
                       </span>
                     </button>
@@ -598,7 +573,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 aria-expanded="false"
                 aria-label="Expand all rows"
                 aria-labelledby="simple-node-1 expandable-toggle-1"
-                class="pf-v6-c-button pf-m-plain"
+                class="pf-v6-c-button pf-m-plain pf-m-small"
                 data-ouia-component-id="OUIA-Generated-Button-plain-:r3o:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
@@ -663,24 +638,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -714,24 +677,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -765,24 +716,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -816,24 +755,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -867,24 +794,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -918,24 +833,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -969,24 +872,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -1013,7 +904,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 aria-expanded="false"
                 aria-label="Details"
                 aria-labelledby="simple-node0 expandable-toggle0"
-                class="pf-v6-c-button pf-m-plain"
+                class="pf-v6-c-button pf-m-plain pf-m-small"
                 data-ouia-component-id="OUIA-Generated-Button-plain-:r3q:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
@@ -1481,24 +1372,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                     fill="currentColor"
                     height="1em"
                     role="img"
+                    viewBox="0 0 20 20"
                     width="1em"
                   >
-                    <svg
-                      class="pf-v6-icon-default"
-                      viewBox="0 0 256 512"
-                    >
-                      <path
-                        d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                      />
-                    </svg>
-                    <svg
-                      class="pf-v6-icon-rh-ui"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"
-                      />
-                    </svg>
+                    <path
+                      d="m6.41 10 7.29-7.29.02-.02c.38-.4.37-1.03-.02-1.41-.4-.38-1.03-.37-1.41.02L4.64 8.95a1.49 1.49 0 0 0 0 2.12l7.65 7.65c.19.19.44.29.71.29.27 0 .52-.11.71-.29a.996.996 0 0 0 0-1.41l-7.29-7.29Z"
+                    />
                   </svg>
                 </span>
               </button>
@@ -1550,24 +1429,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                     fill="currentColor"
                     height="1em"
                     role="img"
+                    viewBox="0 0 20 20"
                     width="1em"
                   >
-                    <svg
-                      class="pf-v6-icon-default"
-                      viewBox="0 0 256 512"
-                    >
-                      <path
-                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                      />
-                    </svg>
-                    <svg
-                      class="pf-v6-icon-rh-ui"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"
-                      />
-                    </svg>
+                    <path
+                      d="M14.35 8.94 6.71 1.29l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l7.29 7.29-7.29 7.29a1.003 1.003 0 0 0 1.42 1.42l7.65-7.65c.59-.59.59-1.54 0-2.12Z"
+                    />
                   </svg>
                 </span>
               </button>
@@ -1594,24 +1461,12 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                     fill="currentColor"
                     height="1em"
                     role="img"
+                    viewBox="0 0 20 20"
                     width="1em"
                   >
-                    <svg
-                      class="pf-v6-icon-default"
-                      viewBox="0 0 448 512"
-                    >
-                      <path
-                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
-                      />
-                    </svg>
-                    <svg
-                      class="pf-v6-icon-rh-ui"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M30.354 17.061 17.708 29.707a.997.997 0 0 1-1.414 0 .999.999 0 0 1 0-1.414L28.587 16 16.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121Zm-14-2.122L3.707 2.293a.999.999 0 1 0-1.414 1.414L14.586 16 2.293 28.293a.999.999 0 1 0 1.414 1.414l12.646-12.646a1.501 1.501 0 0 0 0-2.121Z"
-                      />
-                    </svg>
+                    <path
+                      d="M10 19a1 1 0 0 1-.707-1.707L16.586 10 9.293 2.707a1 1 0 1 1 1.414-1.414l7.647 7.646c.283.284.439.66.439 1.061s-.156.777-.44 1.06l-7.646 7.647A.997.997 0 0 1 10 19Zm-7.293-.293 7.647-7.646c.283-.284.439-.66.439-1.061s-.156-.777-.44-1.06L2.708 1.292a1 1 0 1 0-1.414 1.414L8.586 10l-7.293 7.293a1 1 0 1 0 1.414 1.414Z"
+                    />
                   </svg>
                 </span>
               </button>
@@ -1677,6 +1532,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 </label>
                 <button
                   aria-expanded="false"
+                  aria-haspopup="menu"
                   aria-label="Select"
                   class="pf-v6-c-menu-toggle__button"
                   data-ouia-component-id="BulkSelect"
@@ -1720,6 +1576,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
                 >
                   <button
                     aria-expanded="false"
+                    aria-haspopup="menu"
                     aria-label="Conditional filter toggle"
                     class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
                     data-ouia-component-id="ConditionalFilterToggle"
@@ -1858,13 +1715,8 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             <div
               class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
             >
-              <div
-                buttonprops="[object Object]"
-                fallback="[object Object]"
-                module="./RemediationButton"
-                scope="remediations"
-              >
-                AsyncComponent
+              <div>
+                Plan remediation
               </div>
             </div>
             <div
@@ -1875,6 +1727,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
               >
                 <button
                   aria-expanded="false"
+                  aria-haspopup="menu"
                   aria-label="Export"
                   class="pf-v6-c-menu-toggle pf-m-plain"
                   data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r51:"
@@ -1919,6 +1772,7 @@ exports[`SystemDetail.js Should match the snapshot when Package tab is active by
             >
               <button
                 aria-expanded="false"
+                aria-haspopup="menu"
                 aria-label="kebab dropdown toggle"
                 class="pf-v6-c-menu-toggle pf-m-plain"
                 data-ouia-component-id="BulkActionsToggle"
@@ -2199,6 +2053,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 </label>
                 <button
                   aria-expanded="false"
+                  aria-haspopup="menu"
                   aria-label="Select"
                   class="pf-v6-c-menu-toggle__button"
                   data-ouia-component-id="BulkSelect"
@@ -2241,6 +2096,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 >
                   <button
                     aria-expanded="false"
+                    aria-haspopup="menu"
                     aria-label="Conditional filter toggle"
                     class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
                     data-ouia-component-id="ConditionalFilterToggle"
@@ -2379,13 +2235,8 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             <div
               class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
             >
-              <div
-                buttonprops="[object Object]"
-                fallback="[object Object]"
-                module="./RemediationButton"
-                scope="remediations"
-              >
-                AsyncComponent
+              <div>
+                Plan remediation
               </div>
             </div>
             <div
@@ -2396,6 +2247,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               >
                 <button
                   aria-expanded="false"
+                  aria-haspopup="menu"
                   aria-label="Export"
                   class="pf-v6-c-menu-toggle pf-m-plain"
                   data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:rk:"
@@ -2440,6 +2292,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             >
               <button
                 aria-expanded="false"
+                aria-haspopup="menu"
                 aria-label="kebab dropdown toggle"
                 class="pf-v6-c-menu-toggle pf-m-plain"
                 data-ouia-component-id="BulkActionsToggle"
@@ -2575,24 +2428,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                           fill="currentColor"
                           height="1em"
                           role="img"
+                          viewBox="0 0 20 20"
                           width="1em"
                         >
-                          <svg
-                            class="pf-v6-icon-default"
-                            viewBox="0 0 256 512"
-                          >
-                            <path
-                              d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                            />
-                          </svg>
-                          <svg
-                            class="pf-v6-icon-rh-ui"
-                            viewBox="0 0 32 32"
-                          >
-                            <path
-                              d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"
-                            />
-                          </svg>
+                          <path
+                            d="m6.41 10 7.29-7.29.02-.02c.38-.4.37-1.03-.02-1.41-.4-.38-1.03-.37-1.41.02L4.64 8.95a1.49 1.49 0 0 0 0 2.12l7.65 7.65c.19.19.44.29.71.29.27 0 .52-.11.71-.29a.996.996 0 0 0 0-1.41l-7.29-7.29Z"
+                          />
                         </svg>
                       </span>
                     </button>
@@ -2619,24 +2460,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                           fill="currentColor"
                           height="1em"
                           role="img"
+                          viewBox="0 0 20 20"
                           width="1em"
                         >
-                          <svg
-                            class="pf-v6-icon-default"
-                            viewBox="0 0 256 512"
-                          >
-                            <path
-                              d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                            />
-                          </svg>
-                          <svg
-                            class="pf-v6-icon-rh-ui"
-                            viewBox="0 0 32 32"
-                          >
-                            <path
-                              d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"
-                            />
-                          </svg>
+                          <path
+                            d="M14.35 8.94 6.71 1.29l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l7.29 7.29-7.29 7.29a1.003 1.003 0 0 0 1.42 1.42l7.65-7.65c.59-.59.59-1.54 0-2.12Z"
+                          />
                         </svg>
                       </span>
                     </button>
@@ -2683,7 +2512,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 aria-expanded="false"
                 aria-label="Expand all rows"
                 aria-labelledby="simple-node-1 expandable-toggle-1"
-                class="pf-v6-c-button pf-m-plain"
+                class="pf-v6-c-button pf-m-plain pf-m-small"
                 data-ouia-component-id="OUIA-Generated-Button-plain-:r10:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
@@ -2748,24 +2577,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -2799,24 +2616,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -2850,24 +2655,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -2901,24 +2694,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -2952,24 +2733,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -3003,24 +2772,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -3054,24 +2811,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                       fill="currentColor"
                       height="1em"
                       role="img"
+                      viewBox="0 0 32 32"
                       width="1em"
                     >
-                      <svg
-                        class="pf-v6-icon-default"
-                        viewBox="0 0 256 512"
-                      >
-                        <path
-                          d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        />
-                      </svg>
-                      <svg
-                        class="pf-v6-icon-rh-ui"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
-                        />
-                      </svg>
+                      <path
+                        d="M21.293 23.293 17 27.586V4.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414l-5.646-5.646a1.5 1.5 0 0 0-2.121 0L9.294 7.293a.999.999 0 1 0 1.414 1.414l4.293-4.293v23.172l-4.293-4.293a.999.999 0 1 0-1.414 1.414l5.646 5.646c.292.293.676.438 1.061.438s.768-.146 1.061-.438l5.646-5.646a.999.999 0 1 0-1.414-1.414Z"
+                      />
                     </svg>
                   </span>
                 </div>
@@ -3098,7 +2843,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 aria-expanded="false"
                 aria-label="Details"
                 aria-labelledby="simple-node0 expandable-toggle0"
-                class="pf-v6-c-button pf-m-plain"
+                class="pf-v6-c-button pf-m-plain pf-m-small"
                 data-ouia-component-id="OUIA-Generated-Button-plain-:r12:"
                 data-ouia-component-type="PF6/Button"
                 data-ouia-safe="true"
@@ -3566,24 +3311,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                     fill="currentColor"
                     height="1em"
                     role="img"
+                    viewBox="0 0 20 20"
                     width="1em"
                   >
-                    <svg
-                      class="pf-v6-icon-default"
-                      viewBox="0 0 256 512"
-                    >
-                      <path
-                        d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                      />
-                    </svg>
-                    <svg
-                      class="pf-v6-icon-rh-ui"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"
-                      />
-                    </svg>
+                    <path
+                      d="m6.41 10 7.29-7.29.02-.02c.38-.4.37-1.03-.02-1.41-.4-.38-1.03-.37-1.41.02L4.64 8.95a1.49 1.49 0 0 0 0 2.12l7.65 7.65c.19.19.44.29.71.29.27 0 .52-.11.71-.29a.996.996 0 0 0 0-1.41l-7.29-7.29Z"
+                    />
                   </svg>
                 </span>
               </button>
@@ -3635,24 +3368,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                     fill="currentColor"
                     height="1em"
                     role="img"
+                    viewBox="0 0 20 20"
                     width="1em"
                   >
-                    <svg
-                      class="pf-v6-icon-default"
-                      viewBox="0 0 256 512"
-                    >
-                      <path
-                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-                      />
-                    </svg>
-                    <svg
-                      class="pf-v6-icon-rh-ui"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"
-                      />
-                    </svg>
+                    <path
+                      d="M14.35 8.94 6.71 1.29l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l7.29 7.29-7.29 7.29a1.003 1.003 0 0 0 1.42 1.42l7.65-7.65c.59-.59.59-1.54 0-2.12Z"
+                    />
                   </svg>
                 </span>
               </button>
@@ -3679,24 +3400,12 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                     fill="currentColor"
                     height="1em"
                     role="img"
+                    viewBox="0 0 20 20"
                     width="1em"
                   >
-                    <svg
-                      class="pf-v6-icon-default"
-                      viewBox="0 0 448 512"
-                    >
-                      <path
-                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
-                      />
-                    </svg>
-                    <svg
-                      class="pf-v6-icon-rh-ui"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M30.354 17.061 17.708 29.707a.997.997 0 0 1-1.414 0 .999.999 0 0 1 0-1.414L28.587 16 16.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121Zm-14-2.122L3.707 2.293a.999.999 0 1 0-1.414 1.414L14.586 16 2.293 28.293a.999.999 0 1 0 1.414 1.414l12.646-12.646a1.501 1.501 0 0 0 0-2.121Z"
-                      />
-                    </svg>
+                    <path
+                      d="M10 19a1 1 0 0 1-.707-1.707L16.586 10 9.293 2.707a1 1 0 1 1 1.414-1.414l7.647 7.646c.283.284.439.66.439 1.061s-.156.777-.44 1.06l-7.646 7.647A.997.997 0 0 1 10 19Zm-7.293-.293 7.647-7.646c.283-.284.439-.66.439-1.061s-.156-.777-.44-1.06L2.708 1.292a1 1 0 1 0-1.414 1.414L8.586 10l-7.293 7.293a1 1 0 1 0 1.414 1.414Z"
+                    />
                   </svg>
                 </span>
               </button>
@@ -3763,6 +3472,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 </label>
                 <button
                   aria-expanded="false"
+                  aria-haspopup="menu"
                   aria-label="Select"
                   class="pf-v6-c-menu-toggle__button"
                   data-ouia-component-id="BulkSelect"
@@ -3806,6 +3516,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
                 >
                   <button
                     aria-expanded="false"
+                    aria-haspopup="menu"
                     aria-label="Conditional filter toggle"
                     class="pf-v6-c-menu-toggle ins-c-conditional-filter__group"
                     data-ouia-component-id="ConditionalFilterToggle"
@@ -3944,13 +3655,8 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             <div
               class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
             >
-              <div
-                buttonprops="[object Object]"
-                fallback="[object Object]"
-                module="./RemediationButton"
-                scope="remediations"
-              >
-                AsyncComponent
+              <div>
+                Plan remediation
               </div>
             </div>
             <div
@@ -3961,6 +3667,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
               >
                 <button
                   aria-expanded="false"
+                  aria-haspopup="menu"
                   aria-label="Export"
                   class="pf-v6-c-menu-toggle pf-m-plain"
                   data-ouia-component-id="OUIA-Generated-MenuToggle-plain-:r29:"
@@ -4005,6 +3712,7 @@ exports[`SystemDetail.js Should match the snapshots 1`] = `
             >
               <button
                 aria-expanded="false"
+                aria-haspopup="menu"
                 aria-label="kebab dropdown toggle"
                 class="pf-v6-c-menu-toggle pf-m-plain"
                 data-ouia-component-id="BulkActionsToggle"
