@@ -217,13 +217,8 @@ exports[`TableView Should open remediation modal 1`] = `
         <div
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
         >
-          <div
-            buttonprops="[object Object]"
-            fallback="[object Object]"
-            module="./RemediationButton"
-            scope="remediations"
-          >
-            AsyncComponent
+          <div>
+            Plan remediation
           </div>
         </div>
         <div
@@ -987,13 +982,8 @@ exports[`TableView TableView 1`] = `
         <div
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
         >
-          <div
-            buttonprops="[object Object]"
-            fallback="[object Object]"
-            module="./RemediationButton"
-            scope="remediations"
-          >
-            AsyncComponent
+          <div>
+            Plan remediation
           </div>
         </div>
         <div
@@ -1757,13 +1747,8 @@ exports[`TableView TableView 2`] = `
         <div
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
         >
-          <div
-            buttonprops="[object Object]"
-            fallback="[object Object]"
-            module="./RemediationButton"
-            scope="remediations"
-          >
-            AsyncComponent
+          <div>
+            Plan remediation
           </div>
         </div>
         <div
@@ -2527,13 +2512,8 @@ exports[`TableView test table props TableView 1`] = `
         <div
           class="pf-v6-c-toolbar__item ins-c-primary-toolbar__first-action pf-m-spacer-sm"
         >
-          <div
-            buttonprops="[object Object]"
-            fallback="[object Object]"
-            module="./RemediationButton"
-            scope="remediations"
-          >
-            AsyncComponent
+          <div>
+            Plan remediation
           </div>
         </div>
         <div
