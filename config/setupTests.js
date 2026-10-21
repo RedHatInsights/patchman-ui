@@ -47,7 +47,8 @@ jest.mock(
     '@redhat-cloud-services/frontend-components/AsyncComponent',
     () => ({
         __esModule: true,
-        default: (props) => <div {...props}>AsyncComponent</div>
+        // Omit module props so they are not spread onto a DOM node
+        default: ({ children }) => <div>{children || 'AsyncComponent'}</div>
     })
 );
 

@@ -36,9 +36,7 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
       <div
         class="pf-v6-l-flex pf-m-column"
       >
-        <div
-          class=""
-        >
+        <div>
           <h5
             class="pf-v6-c-title pf-m-h5"
             data-ouia-component-id="OUIA-Generated-Title-:r2:"
@@ -88,9 +86,7 @@ exports[`AdvisoryHeader Should match the snapshots when loaded 1`] = `
             Security
           </p>
         </div>
-        <div
-          class=""
-        >
+        <div>
           <h5
             class="pf-v6-c-title pf-m-h5"
             data-ouia-component-id="OUIA-Generated-Title-:r3:"
@@ -173,9 +169,7 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
       <div
         class="pf-v6-l-flex pf-m-column"
       >
-        <div
-          class=""
-        >
+        <div>
           <h5
             class="pf-v6-c-title pf-m-h5"
             data-ouia-component-id="OUIA-Generated-Title-:r0:"
@@ -225,9 +219,7 @@ exports[`AdvisoryHeader Should match the snapshots when loading 1`] = `
             Security
           </p>
         </div>
-        <div
-          class=""
-        >
+        <div>
           <h5
             class="pf-v6-c-title pf-m-h5"
             data-ouia-component-id="OUIA-Generated-Title-:r1:"
