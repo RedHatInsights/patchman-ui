@@ -308,18 +308,26 @@ export const useGetEntities = (
 
 export const useOnExport = (prefix, queryParams, formatHandlers) => {
   const addNotification = useAddNotification();
+  // InventoryTable (federated) can keep an early onSelect; always read latest params.
+  const queryParamsRef = useRef(queryParams);
+  const formatHandlersRef = useRef(formatHandlers);
+  queryParamsRef.current = queryParams;
+  formatHandlersRef.current = formatHandlers;
 
-  const onExport = useCallback((_, format) => {
-    const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
-    const filename = `${prefix}-${date}`;
-    addNotification(exportNotifications(format).pending);
-    formatHandlers[format](queryParams, prefix)
-      .then((data) => {
-        addNotification(exportNotifications(format).success);
-        downloadFile(data, filename, format);
-      })
-      .catch(() => addNotification(exportNotifications().error));
-  });
+  const onExport = useCallback(
+    (_, format) => {
+      const date = new Date().toISOString().replace(/[T:]/g, '-').split('.')[0] + '-utc';
+      const filename = `${prefix}-${date}`;
+      addNotification(exportNotifications(format).pending);
+      formatHandlersRef.current[format](queryParamsRef.current, prefix)
+        .then((data) => {
+          addNotification(exportNotifications(format).success);
+          downloadFile(data, filename, format);
+        })
+        .catch(() => addNotification(exportNotifications().error));
+    },
+    [prefix, addNotification],
+  );
   return onExport;
 };
 

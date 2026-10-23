@@ -159,3 +159,7 @@ updates:
       npm:
         patterns:
           - "*"
+      npm-security:
+        applies-to: security-updates
+        patterns:
+          - "*"

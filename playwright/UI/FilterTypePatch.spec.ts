@@ -9,7 +9,6 @@ import {
   verifyFilterTypeExists,
   applyFilterSubtype,
   resetFilters,
-  waitForTableLoad,
   getPublishDateCutoff,
   parsePublishDateCell,
   osBaseName,
@@ -169,7 +168,6 @@ test.describe('Patch Filters', () => {
 
     await navigateToPackages(page);
     await closePopupsIfExist(page);
-    await waitForTableLoad(page);
 
     // Use a package name from the table so the filter is guaranteed to match a visible row
     await page.getByRole('grid', { name: 'Patch table view' }).scrollIntoViewIfNeeded();
@@ -304,7 +302,6 @@ test('Verify filter contents', async ({ page, systems }) => {
       name: osBaseName,
       inputType: 'checkbox',
     });
-    await waitForTableLoad(page);
     await page.locator('td[data-label="OS"]').first().scrollIntoViewIfNeeded();
     await expect(page.locator('td[data-label="OS"]').first()).toContainText('RHEL');
     await resetFilters(page);
@@ -319,7 +316,6 @@ test('Verify filter contents', async ({ page, systems }) => {
       { name: workspaceGroup!, inputType: 'checkbox' },
       { exactMatch: true },
     );
-    await waitForTableLoad(page);
     await page.locator('td[data-label="Name"]').first().scrollIntoViewIfNeeded();
     await expect(
       page

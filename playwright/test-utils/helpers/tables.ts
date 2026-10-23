@@ -2,23 +2,36 @@
  * Table interaction helpers for Playwright tests.
  *
  * This module provides utilities for:
- * - Waiting for table loading states to complete
+ * - Waiting for table content to be ready (real cells or empty state)
  * - Filtering tables by name and clearing filters
  * - Locating table rows and cells by name or column header
  */
 
-import { expect, sleep } from 'test-utils';
+import { expect } from 'test-utils';
 import { Locator, Page } from '@playwright/test';
 
+const PAGE_READY_TIMEOUT_MS = 30_000;
+
 /**
- * Waits for the skeleton table loading state to disappear.
+ * Waits until the table shows real UI: a data cell with a label, or a known empty state.
+ * Does not use skeleton/progressbar heuristics (those can pass before MF/API finish).
  *
  * @param locator - Page or Locator containing the table
  */
 export const waitForTableLoad = async (locator: Locator | Page) => {
-  await sleep(500);
-  await expect(locator.getByRole('progressbar', { name: 'Contents' })).toBeHidden();
-  await expect(locator.locator('.pf-v6-c-table__td > .pf-v6-c-skeleton').first()).toBeHidden();
+  // Require a non-empty data-label so we ignore placeholder/header cells with data-label="".
+  const dataCell = locator.locator('td[data-label]:not([data-label=""])').first();
+  const emptyState = locator
+    .getByText(
+      /No matching (advisories|packages|systems)|No execution history|No results found|No systems match/i,
+    )
+    .first();
+
+  // Use race instead of locator.or(): or() can match both branches and trip strict mode.
+  await Promise.race([
+    dataCell.waitFor({ state: 'visible', timeout: PAGE_READY_TIMEOUT_MS }),
+    emptyState.waitFor({ state: 'visible', timeout: PAGE_READY_TIMEOUT_MS }),
+  ]);
 };
 
 /**
@@ -29,7 +42,10 @@ export const waitForTableLoad = async (locator: Locator | Page) => {
  * @param name - Name to filter by
  */
 export const filterByName = async (locator: Locator | Page, name: string) => {
-  await locator.getByPlaceholder(/^Filter by name.*$/).fill(name);
+  const nameFilter = locator.getByPlaceholder(/^Filter by name.*$/);
+  await nameFilter.fill(name);
+  // Inventory TextFilter applies the search on Enter (debounce alone can race)
+  await nameFilter.press('Enter');
   await waitForTableLoad(locator);
   // We are expecting the first item in the table to contain the name
   // Ensure that your filter is unique to your subject!
