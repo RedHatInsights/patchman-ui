@@ -116,14 +116,11 @@ test.describe('Verify exporting feature', () => {
     await page.getByPlaceholder(/^Filter by name.*$/).fill(system.name);
     await waitForTableLoad(page);
 
-    const row = page.locator('tbody[role="rowgroup"]').first();
+    const row = page.getByRole('row').filter({ hasText: system.name }).first();
     await expect(row).toBeVisible();
-    await expect(row).toContainText(system.name);
 
-    const [osCell, installedPackagesCell] = await Promise.all([
-      getRowCellByHeader(page, row, 'OS'),
-      getRowCellByHeader(page, row, 'Installed packages'),
-    ]);
+    const osCell = row.locator('td[data-label="OS"]');
+    const installedPackagesCell = row.locator('td[data-label="Installed packages"]');
 
     await expect(osCell).not.toBeEmpty();
     await expect(installedPackagesCell).not.toBeEmpty();
@@ -142,7 +139,7 @@ test.describe('Verify exporting feature', () => {
     const matchingCsvRow = csvData.find((row) => row.display_name === system.name);
     expect(matchingCsvRow).toBeDefined();
 
-    const expectedOsText = osText?.replace('\u00A0', ' ')
+    const expectedOsText = osText?.replace(/\u00A0/g, ' ');
     expect(matchingCsvRow!.os).toBe(expectedOsText);
     expect(matchingCsvRow!.packages_installed).toBe(installedPackagesText);
 
