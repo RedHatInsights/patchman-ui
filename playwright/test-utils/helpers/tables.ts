@@ -42,7 +42,10 @@ export const waitForTableLoad = async (locator: Locator | Page) => {
  * @param name - Name to filter by
  */
 export const filterByName = async (locator: Locator | Page, name: string) => {
-  await locator.getByPlaceholder(/^Filter by name.*$/).fill(name);
+  const nameFilter = locator.getByPlaceholder(/^Filter by name.*$/);
+  await nameFilter.fill(name);
+  // Inventory TextFilter applies the search on Enter (debounce alone can race)
+  await nameFilter.press('Enter');
   await waitForTableLoad(locator);
   // We are expecting the first item in the table to contain the name
   // Ensure that your filter is unique to your subject!

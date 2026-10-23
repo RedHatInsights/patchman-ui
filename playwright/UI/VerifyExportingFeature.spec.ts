@@ -112,9 +112,17 @@ test.describe('Verify exporting feature', () => {
     await closePopupsIfExist(page);
     await navigateToSystems(page);
 
-    // Filter by our created system to ensure we're testing the right one
-    await page.getByPlaceholder(/^Filter by name.*$/).fill(system.name);
+    // Filter by created system so export receives search= in queryParams.
+    // Inventory TextFilter applies on Enter (debounce on change); wait until
+    // the table updates, waitForTableLoad alone can pass on the
+    // pre-filter page if the system was already visible.
+    const nameFilter = page.getByPlaceholder(/^Filter by name.*$/);
+    await nameFilter.fill(system.name);
+    await nameFilter.press('Enter');
     await waitForTableLoad(page);
+    await expect
+      .poll(async () => getTotalCountFromPagination(page), { timeout: 30_000 })
+      .toBe(1);
 
     const row = page.getByRole('row').filter({ hasText: system.name }).first();
     await expect(row).toBeVisible();
