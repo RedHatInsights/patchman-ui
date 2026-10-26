@@ -3,7 +3,7 @@ import { Spinner } from '@patternfly/react-core';
 import AsyncComponent from '@redhat-cloud-services/frontend-components/AsyncComponent';
 import type { SystemsViewProps } from '../../SystemsView';
 import { createApiCall } from '../../Utilities/api/api';
-import { prepareEntitiesParams } from '../../Utilities/Helpers';
+import { fromSystemsViewParams, prepareEntitiesParams } from '../../Utilities/Helpers';
 
 const filters: AdvisorySystemsViewProps['filters'] = () => [];
 
@@ -54,7 +54,7 @@ const AdvisorySystems = ({ advisoryName }: AdvisorySystemsProps) => {
       `/advisories/${advisoryName}/systems`,
       'v3',
       'get',
-      prepareEntitiesParams(params),
+      fromSystemsViewParams(params),
     )) as ListAdvisorySystemsReturnType;
 
     return {
