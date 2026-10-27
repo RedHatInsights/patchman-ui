@@ -33,3 +33,31 @@ export interface ListAdvisorySystemsReturnType {
 export type AdvisorySystem = NonNullable<ListAdvisorySystemsReturnType['data']>[number] & {
   id: string;
 };
+
+/**
+ * Filter fields passed to `encodeApiParams` (`filter[os]`, `filter[status]`, `search`).
+ * `selectedTags` holds prebuilt `tags=<encoded>` fragments; the encoder
+ * appends those as repeated `tags` query parameters.
+ * Pagination, sort, and advisory id stay on the SystemsView fetch params.
+ */
+export type AdvisoryFilterParams = {
+  search?: string;
+  selectedTags?: string[];
+  filter?: {
+    status?: string[];
+    os?: string;
+    group_name?: string[];
+    stale?: string;
+    satellite_managed?: string;
+    template?: string;
+    built_pkgcache?: string;
+    id?: string;
+    display_name?: string;
+    system_profile?: {
+      sap_system?: string;
+      sap_sids?: string[];
+      ansible?: string;
+      mssql?: string;
+    };
+  };
+};

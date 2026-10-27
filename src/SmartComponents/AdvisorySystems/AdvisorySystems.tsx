@@ -12,11 +12,10 @@ import { intl } from '../../Utilities/IntlProvider';
 import RemediationWizard from '../Remediation/RemediationWizard';
 import { useActivateRemediationModal } from '../Systems/SystemsListAssets';
 import columns from './columns';
-import type { AdvisorySystem, ListAdvisorySystemsReturnType } from './types';
+import filters from './filters';
+import type { AdvisoryFilterParams, AdvisorySystem, ListAdvisorySystemsReturnType } from './types';
 
-type AdvisorySystemsViewProps = SystemsViewProps<AdvisorySystem>;
-
-const filters: AdvisorySystemsViewProps['filters'] = () => [];
+type AdvisorySystemsViewProps = SystemsViewProps<AdvisorySystem, AdvisoryFilterParams>;
 
 interface AdvisorySystemsProps {
   advisoryName: string;
