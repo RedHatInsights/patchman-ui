@@ -11,6 +11,14 @@ type AdvisorySystemsViewProps = SystemsViewProps<AdvisorySystem>;
 
 const filters: AdvisorySystemsViewProps['filters'] = () => [];
 
+const rowActions: AdvisorySystemsViewProps['rowActions'] = [
+  {
+    id: 'apply-all-applicable-advisories',
+    label: 'Apply all applicable advisories',
+    onAction: () => undefined,
+  },
+];
+
 interface AdvisorySystemsProps {
   advisoryName: string;
 }
@@ -42,6 +50,7 @@ const AdvisorySystems = ({ advisoryName }: AdvisorySystemsProps) => {
       fetchData={fetchAdvisorySystems}
       columns={columns}
       filters={filters}
+      rowActions={rowActions}
     />
   );
 };
