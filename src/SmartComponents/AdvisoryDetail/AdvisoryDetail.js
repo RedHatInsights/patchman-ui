@@ -13,10 +13,13 @@ import {
   fetchAvisoryDetails,
 } from '../../store/Actions/Actions';
 import { intl } from '../../Utilities/IntlProvider';
-import AdvisorySystems from '../AdvisorySystems/AdvisorySystems';
+import AdvisorySystems from '../AdvisorySystems/AdvisorySystems.tsx';
+import AdvisorySystemsLegacy from '../AdvisorySystems/AdvisorySystems.js';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
+import useAdvisorySystemsView from '../AdvisorySystems/useAdvisorySystemsView';
 
 const AdvisoryDetail = () => {
+  const isSystemsViewOn = useAdvisorySystemsView();
   const dispatch = useDispatch();
   const chrome = useChrome();
   const { advisoryId: advisoryName } = useParams();
@@ -78,7 +81,11 @@ const AdvisoryDetail = () => {
             </Content>
           </StackItem>
           <StackItem>
-            <AdvisorySystems advisoryName={advisoryName} />
+            {isSystemsViewOn ? (
+              <AdvisorySystems advisoryName={advisoryName} />
+            ) : (
+              <AdvisorySystemsLegacy advisoryName={advisoryName} />
+            )}
           </StackItem>
         </Stack>
       </Main>
