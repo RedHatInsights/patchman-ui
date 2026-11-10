@@ -151,6 +151,11 @@ export type ColumnCatalog = {
  *  @returns bound columns
  */
 export type ColumnSelector<TItem = unknown> = (catalog: ColumnCatalog) => readonly Column<TItem>[];
+/** Extra props a caller may pass through `catalog.operatingSystem` `filterProps`. */
+export type OperatingSystemsFilterExtraProps = {
+  /** When false, CentOS and CentOS Linux groups are omitted. Defaults to true. */
+  showCentosOptions?: boolean;
+};
 declare const LAST_SEEN_KEYS: readonly ['last24', '24more', '7more', '15more', '30more', 'custom'];
 export type LastSeenKey = (typeof LAST_SEEN_KEYS)[number];
 export type SingleGroupLabels = (string | ToolbarLabel)[];
@@ -180,6 +185,8 @@ export interface DataViewCustomFilterProps<TValue> {
     placeholder?: string;
     filterId?: string;
   }>;
+  /** Props passed to filterComponent, writable from filter binding */
+  filterProps?: Record<string, unknown>;
   createLabel: (value: TValue | undefined, title: string) => SingleGroupLabels | MultiGroupLabels;
   deleteLabel?: (
     category: string | ToolbarLabelGroup,
@@ -227,8 +234,14 @@ export type FilterIdentity = {
  * Consumer adapter passed to `bindFilter`, named catalog factories, and `catalog.custom`
  * while `TValue` is still known.
  */
-export type FilterBinding<TFilterParams, TValue> = {
+export type FilterBinding<
+  TFilterParams,
+  TValue,
+  TFilterProps extends object = Record<string, never>,
+> = {
   updateFilterParams: (params: TFilterParams, value: TValue) => TFilterParams;
+  /** Extra props forwarded to a custom filter component. */
+  filterProps?: TFilterProps;
 };
 export type TextFilterSpec = FilterIdentity & {
   type: 'text';
@@ -276,6 +289,7 @@ export type FilterSpec =
 export type BoundFilter<TFilterParams = unknown> = Resolve<
   FilterSpec & {
     updateFilterParams: (params: TFilterParams, value: unknown) => TFilterParams;
+    filterProps?: Record<string, unknown>;
   }
 >;
 /**
@@ -292,7 +306,7 @@ export type FilterCatalog = {
     binding: FilterBinding<TFilterParams, string[]>,
   ) => BoundFilter<TFilterParams>;
   operatingSystem: <TFilterParams>(
-    binding: FilterBinding<TFilterParams, string[]>,
+    binding: FilterBinding<TFilterParams, string[], OperatingSystemsFilterExtraProps>,
   ) => BoundFilter<TFilterParams>;
   source: <TFilterParams>(
     binding: FilterBinding<TFilterParams, string[]>,
@@ -316,9 +330,9 @@ export type FilterCatalog = {
    * Escape hatch for filters that are not in the shared catalog.
    * Same as `bindFilter`; keeps ad-hoc definitions inside the selector.
    */
-  custom: <TFilterParams, TValue>(
+  custom: <TFilterParams, TValue, TFilterProps extends object = Record<string, never>>(
     spec: FilterSpec,
-    binding: FilterBinding<TFilterParams, TValue>,
+    binding: FilterBinding<TFilterParams, TValue, TFilterProps>,
   ) => BoundFilter<TFilterParams>;
 };
 /**
