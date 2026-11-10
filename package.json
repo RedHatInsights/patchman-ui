@@ -15,7 +15,7 @@
     "@patternfly/react-styles": "^6.4.0",
     "@project-kessel/react-kessel-access-check": "^0.5.0",
     "@redhat-cloud-services/frontend-components": "^7.10.17",
-    "@redhat-cloud-services/frontend-components-notifications": "^6.11.18",
+    "@redhat-cloud-services/frontend-components-notifications": "^6.11.19",
     "@redhat-cloud-services/frontend-components-remediations": "^4.11.17",
     "@redhat-cloud-services/frontend-components-translations": "^4.5.14",
     "@redhat-cloud-services/frontend-components-utilities": "^7.5.13",
