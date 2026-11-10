@@ -19,7 +19,7 @@
     "@redhat-cloud-services/frontend-components-remediations": "^4.11.17",
     "@redhat-cloud-services/frontend-components-translations": "^4.5.14",
     "@redhat-cloud-services/frontend-components-utilities": "^7.5.13",
-    "@redhat-cloud-services/host-inventory-client": "^8.0.0",
+    "@redhat-cloud-services/host-inventory-client": "^8.1.0",
     "@redhat-cloud-services/javascript-clients-shared": "^2.0.21",
     "@scalprum/react-core": "^0.14.1",
     "@sentry/webpack-plugin": "^5.1.1",
