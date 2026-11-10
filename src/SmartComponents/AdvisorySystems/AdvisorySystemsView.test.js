@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { preloadModule } from '@scalprum/core';
-import AdvisorySystems from './AdvisorySystems.tsx';
+import AdvisorySystems from './AdvisorySystemsView.tsx';
 
 const mockAddNotification = jest.fn();
 const mockWizardProps = {};

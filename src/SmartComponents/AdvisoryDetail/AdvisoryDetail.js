@@ -13,7 +13,7 @@ import {
   fetchAvisoryDetails,
 } from '../../store/Actions/Actions';
 import { intl } from '../../Utilities/IntlProvider';
-import AdvisorySystems from '../AdvisorySystems/AdvisorySystems.tsx';
+import AdvisorySystems from '../AdvisorySystems/AdvisorySystemsView.tsx';
 import AdvisorySystemsLegacy from '../AdvisorySystems/AdvisorySystems.js';
 import { useChrome } from '@redhat-cloud-services/frontend-components/useChrome';
 import useAdvisorySystemsView from '../AdvisorySystems/useAdvisorySystemsViewFeatureFlag';
