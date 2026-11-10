@@ -16,7 +16,8 @@ interface AdvisorySystemsProps {
 }
 
 const AdvisorySystems = ({ advisoryName }: AdvisorySystemsProps) => {
-  const { remediationWizard, bulkActions, rowActions } = useAdvisorySystemsRemediation(advisoryName);
+  const { remediationWizard, bulkActions, rowActions } =
+    useAdvisorySystemsRemediation(advisoryName);
 
   const fetchAdvisorySystems: AdvisorySystemsViewProps['fetchData'] = async (params) => {
     const response = (await createApiCall(

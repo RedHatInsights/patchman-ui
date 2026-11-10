@@ -18,6 +18,9 @@ const filters: AdvisorySystemsFilters = (catalog) => [
     },
   }),
   catalog.operatingSystem({
+    filterProps: {
+      showCentosOptions: false,
+    },
     updateFilterParams(params, value) {
       const restFilter = { ...params.filter };
       delete restFilter.os;
