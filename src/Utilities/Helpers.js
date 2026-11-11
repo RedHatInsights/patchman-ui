@@ -681,6 +681,16 @@ export const prepareEntitiesParams = (parameters) => {
   return removeUndefinedObjectItems(apiParams);
 };
 
+export const fromSystemsViewParams = (params) => {
+  const { sortBy, direction, page, perPage, filterParams, ...rest } = params;
+  const prefixDir = direction === 'desc' ? '-' : '';
+  const sort = `${prefixDir}${sortBy}`;
+  const limit = getLimitFromPageSize(perPage);
+  const offset = getOffsetFromPageLimit(page, limit);
+
+  return { sort, offset, limit, ...filterParams, ...rest };
+};
+
 export const filterRemediatableSystems = (result) => ({
   data: result?.data.filter((system) => {
     const {

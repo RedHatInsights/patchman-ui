@@ -22,7 +22,14 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['node_modules/*', 'dist/*', 'coverage-jest/*', 'coverage-cypress/*'],
+    ignores: [
+      'node_modules/*',
+      'dist/*',
+      'coverage-jest/*',
+      'coverage-cypress/*',
+      // Copied from insights-inventory-frontend; regenerated, so local rules do not apply.
+      'src/SystemsView.d.ts',
+    ],
   },
   ...compat.extends('eslint:recommended', 'plugin:react/recommended', 'prettier'),
   {
