@@ -30,10 +30,14 @@ export const cleanupTemplates = async (
 
       // Fetch all templates
       try {
-        templates = await request
-          .get('/api/content-sources/v1.0/templates/', { params: { limit: 1000 } })
-          .then((response) => response.json())
-          .then((response) => response.data);
+        const response = await request.get('/api/content-sources/v1.0/templates/', {
+          params: { limit: 1000 },
+        });
+        if (!response.ok()) {
+          console.error(`Failed to fetch templates for cleanup: HTTP ${response.status()}`);
+          return;
+        }
+        templates = (await response.json()).data ?? [];
       } catch (error) {
         console.error(`Failed to fetch templates for cleanup with an error: ${error}`);
         return;
@@ -53,31 +57,33 @@ export const cleanupTemplates = async (
       }
 
       // Start deletion of matching templates
+      const deletedUuids: string[] = [];
       for (const uuid of uuids) {
-        try {
-          await request.delete(`/api/content-sources/v1.0/templates/${uuid}`);
-        } catch (error) {
-          const status = (error as any)?.response?.status || (error as any)?.status;
-          if (status === 404) {
-            console.info(`Template with UUID ${uuid} not found or already deleted (404)`);
-          } else {
-            // Only ignore 404 errors (template not found, already deleted), re-throw others as they are unexpected
-            throw error;
-          }
+        const response = await request.delete(`/api/content-sources/v1.0/templates/${uuid}`);
+        if (response.ok()) {
+          deletedUuids.push(uuid);
+        } else if (response.status() === 404) {
+          console.info(`Template with UUID ${uuid} not found or already deleted (404)`);
+        } else {
+          console.warn(`Failed to delete template ${uuid}: HTTP ${response.status()}`);
         }
+      }
+
+      if (deletedUuids.length === 0) {
+        return; // Nothing was deleted, so there are no tasks to wait for
       }
 
       const getTasks = async () =>
         await request
           .get('/api/content-sources/v1.0/tasks/', {
-            params: { type: 'delete-templates', limit: uuids.length },
+            params: { type: 'delete-templates', limit: deletedUuids.length },
           })
           .then((response) => response.json());
 
       const hasPendingTasks = (result: any) =>
         // Look for failed tasks too, to ensure tests won't keep hanging on the polling loop
         result.data?.filter((task: any) => task.status === 'completed' || task.status === 'failed')
-          .length !== uuids.length;
+          .length !== deletedUuids.length;
 
       try {
         tasks = await poll(getTasks, hasPendingTasks, 100).then((response) => response.data);
@@ -94,7 +100,7 @@ export const cleanupTemplates = async (
       const allTasksCompleted = tasks.every((task: any) => task.status === 'completed');
 
       if (allTasksCompleted) {
-        console.info(`Template(s) ${uuids.join(', ')} deleted successfully`);
+        console.info(`Template(s) ${deletedUuids.join(', ')} deleted successfully`);
       } else {
         const failedTasks = tasks.filter((task: any) => task.status === 'failed');
         console.warn(`Template cleanup: ${failedTasks.length} task(s) failed`);
