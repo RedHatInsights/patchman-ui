@@ -150,14 +150,16 @@ test.describe('System Registration and Template Assignment', () => {
       await expect(page.getByRole('link', { name: templateName })).toBeVisible();
     });
 
-    await test.step('Verify system uses internal repository URLs', async () => {
+    await test.step('Verify system uses template content URLs', async () => {
+      const contentHost = process.env.PROD ? 'packages.redhat.com' : 'packages.stage.redhat.com';
+
       await expect
         .poll(
           async () => {
             try {
               await refreshSubscriptionManager(client);
               const result = await client.Exec(
-                ['grep', '-c', 'cert.console', '/etc/yum.repos.d/redhat.repo'],
+                ['grep', '-cF', `https://${contentHost}/`, '/etc/yum.repos.d/redhat.repo'],
                 10_000,
               );
               return Number(result?.stdout?.trim()) || 0;
@@ -166,7 +168,7 @@ test.describe('System Registration and Template Assignment', () => {
             }
           },
           {
-            message: 'Internal URLs should match expected count of 2',
+            message: `Template content URLs (${contentHost}) should match expected count of 2`,
             timeout: 60_000,
             intervals: [5_000], // Retry every 5 seconds
           },
