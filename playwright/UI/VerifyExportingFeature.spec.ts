@@ -115,6 +115,12 @@ test.describe('Verify exporting feature', () => {
     // Filter by our created system to ensure we're testing the right one
     await page.getByPlaceholder(/^Filter by name.*$/).fill(system.name);
     await waitForTableLoad(page);
+    // The new system sorts first even unfiltered, so wait for the filter to apply
+    await expect
+      .poll(() => getTotalCountFromPagination(page), {
+        message: `Systems table should be filtered to '${system.name}'`,
+      })
+      .toBe(1);
 
     const row = page.locator('tbody[role="rowgroup"]').first();
     await expect(row).toBeVisible();
