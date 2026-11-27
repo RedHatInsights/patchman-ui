@@ -14,13 +14,13 @@
     "@patternfly/react-table": "^6.7.0",
     "@patternfly/react-styles": "^6.4.0",
     "@project-kessel/react-kessel-access-check": "^0.5.0",
-    "@redhat-cloud-services/frontend-components": "^7.10.17",
-    "@redhat-cloud-services/frontend-components-notifications": "^6.11.19",
-    "@redhat-cloud-services/frontend-components-remediations": "^4.11.17",
-    "@redhat-cloud-services/frontend-components-translations": "^4.5.14",
-    "@redhat-cloud-services/frontend-components-utilities": "^7.5.13",
+    "@redhat-cloud-services/frontend-components": "^7.10.21",
+    "@redhat-cloud-services/frontend-components-notifications": "^6.11.23",
+    "@redhat-cloud-services/frontend-components-remediations": "^4.11.21",
+    "@redhat-cloud-services/frontend-components-translations": "^4.5.18",
+    "@redhat-cloud-services/frontend-components-utilities": "^7.5.17",
     "@redhat-cloud-services/host-inventory-client": "^8.3.0",
-    "@redhat-cloud-services/javascript-clients-shared": "^2.0.21",
+    "@redhat-cloud-services/javascript-clients-shared": ">=2.0.21 <2.0.22 || >=2.0.23",
     "@scalprum/react-core": "^0.14.1",
     "@sentry/webpack-plugin": "^5.1.1",
     "@types/dockerode": "^4.0.1",
@@ -52,8 +52,8 @@
     "@eslint/js": "^9.17.0",
     "@patternfly/patternfly": "^6.7.0",
     "@playwright/test": "^1.60.0",
-    "@redhat-cloud-services/frontend-components-config": "^6.14.19",
-    "@redhat-cloud-services/tsc-transform-imports": "^1.3.13",
+    "@redhat-cloud-services/frontend-components-config": "^6.14.23",
+    "@redhat-cloud-services/tsc-transform-imports": "^1.3.17",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.5.2",
@@ -137,6 +137,7 @@
   "overrides": {
     "query-string": "^6.14.1",
     "react-redux": "^7.2.9",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "@redhat-cloud-services/javascript-clients-shared@2.0.22": "2.0.21"
   }
 }
