@@ -20,7 +20,7 @@
     "@redhat-cloud-services/frontend-components-translations": "^4.5.18",
     "@redhat-cloud-services/frontend-components-utilities": "^7.5.17",
     "@redhat-cloud-services/host-inventory-client": "^8.3.0",
-    "@redhat-cloud-services/javascript-clients-shared": "^2.0.22",
+    "@redhat-cloud-services/javascript-clients-shared": ">=2.0.21 <2.0.22 || >=2.0.23",
     "@scalprum/react-core": "^0.14.1",
     "@sentry/webpack-plugin": "^5.1.1",
     "@types/dockerode": "^4.0.1",
@@ -137,6 +137,7 @@
   "overrides": {
     "query-string": "^6.14.1",
     "react-redux": "^7.2.9",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "@redhat-cloud-services/javascript-clients-shared@2.0.22": "2.0.21"
   }
 }
